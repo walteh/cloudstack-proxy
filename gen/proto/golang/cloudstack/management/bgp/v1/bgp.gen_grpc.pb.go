@@ -19,11 +19,11 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	BgpService_ListASNRanges_FullMethodName   = "/cloudstack.management.bgp.v1.BgpService/ListASNRanges"
-	BgpService_ReleaseASNumber_FullMethodName = "/cloudstack.management.bgp.v1.BgpService/ReleaseASNumber"
-	BgpService_ListASNumbers_FullMethodName   = "/cloudstack.management.bgp.v1.BgpService/ListASNumbers"
 	BgpService_CreateASNRange_FullMethodName  = "/cloudstack.management.bgp.v1.BgpService/CreateASNRange"
 	BgpService_DeleteASNRange_FullMethodName  = "/cloudstack.management.bgp.v1.BgpService/DeleteASNRange"
+	BgpService_ListASNRanges_FullMethodName   = "/cloudstack.management.bgp.v1.BgpService/ListASNRanges"
+	BgpService_ListASNumbers_FullMethodName   = "/cloudstack.management.bgp.v1.BgpService/ListASNumbers"
+	BgpService_ReleaseASNumber_FullMethodName = "/cloudstack.management.bgp.v1.BgpService/ReleaseASNumber"
 )
 
 // BgpServiceClient is the client API for BgpService service.
@@ -32,16 +32,16 @@ const (
 //
 // BgpService provides operations for managing Bgps
 type BgpServiceClient interface {
-	// ListASNRanges List Autonomous Systems Number Ranges
-	ListASNRanges(ctx context.Context, in *ListASNRangesRequest, opts ...grpc.CallOption) (*ListASNRangesResponse, error)
-	// ReleaseASNumber Releases an AS Number back to the pool
-	ReleaseASNumber(ctx context.Context, in *ReleaseASNumberRequest, opts ...grpc.CallOption) (*ReleaseASNumberResponse, error)
-	// ListASNumbers List Autonomous Systems Numbers
-	ListASNumbers(ctx context.Context, in *ListASNumbersRequest, opts ...grpc.CallOption) (*ListASNumbersResponse, error)
 	// CreateASNRange Creates a range of Autonomous Systems for BGP Dynamic Routing
 	CreateASNRange(ctx context.Context, in *CreateASNRangeRequest, opts ...grpc.CallOption) (*CreateASNRangeResponse, error)
 	// DeleteASNRange deletes a range of Autonomous Systems for BGP Dynamic Routing
 	DeleteASNRange(ctx context.Context, in *DeleteASNRangeRequest, opts ...grpc.CallOption) (*DeleteASNRangeResponse, error)
+	// ListASNRanges List Autonomous Systems Number Ranges
+	ListASNRanges(ctx context.Context, in *ListASNRangesRequest, opts ...grpc.CallOption) (*ListASNRangesResponse, error)
+	// ListASNumbers List Autonomous Systems Numbers
+	ListASNumbers(ctx context.Context, in *ListASNumbersRequest, opts ...grpc.CallOption) (*ListASNumbersResponse, error)
+	// ReleaseASNumber Releases an AS Number back to the pool
+	ReleaseASNumber(ctx context.Context, in *ReleaseASNumberRequest, opts ...grpc.CallOption) (*ReleaseASNumberResponse, error)
 }
 
 type bgpServiceClient struct {
@@ -50,36 +50,6 @@ type bgpServiceClient struct {
 
 func NewBgpServiceClient(cc grpc.ClientConnInterface) BgpServiceClient {
 	return &bgpServiceClient{cc}
-}
-
-func (c *bgpServiceClient) ListASNRanges(ctx context.Context, in *ListASNRangesRequest, opts ...grpc.CallOption) (*ListASNRangesResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListASNRangesResponse)
-	err := c.cc.Invoke(ctx, BgpService_ListASNRanges_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *bgpServiceClient) ReleaseASNumber(ctx context.Context, in *ReleaseASNumberRequest, opts ...grpc.CallOption) (*ReleaseASNumberResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ReleaseASNumberResponse)
-	err := c.cc.Invoke(ctx, BgpService_ReleaseASNumber_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *bgpServiceClient) ListASNumbers(ctx context.Context, in *ListASNumbersRequest, opts ...grpc.CallOption) (*ListASNumbersResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListASNumbersResponse)
-	err := c.cc.Invoke(ctx, BgpService_ListASNumbers_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 func (c *bgpServiceClient) CreateASNRange(ctx context.Context, in *CreateASNRangeRequest, opts ...grpc.CallOption) (*CreateASNRangeResponse, error) {
@@ -102,22 +72,52 @@ func (c *bgpServiceClient) DeleteASNRange(ctx context.Context, in *DeleteASNRang
 	return out, nil
 }
 
+func (c *bgpServiceClient) ListASNRanges(ctx context.Context, in *ListASNRangesRequest, opts ...grpc.CallOption) (*ListASNRangesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListASNRangesResponse)
+	err := c.cc.Invoke(ctx, BgpService_ListASNRanges_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *bgpServiceClient) ListASNumbers(ctx context.Context, in *ListASNumbersRequest, opts ...grpc.CallOption) (*ListASNumbersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListASNumbersResponse)
+	err := c.cc.Invoke(ctx, BgpService_ListASNumbers_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *bgpServiceClient) ReleaseASNumber(ctx context.Context, in *ReleaseASNumberRequest, opts ...grpc.CallOption) (*ReleaseASNumberResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ReleaseASNumberResponse)
+	err := c.cc.Invoke(ctx, BgpService_ReleaseASNumber_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // BgpServiceServer is the server API for BgpService service.
 // All implementations must embed UnimplementedBgpServiceServer
 // for forward compatibility.
 //
 // BgpService provides operations for managing Bgps
 type BgpServiceServer interface {
-	// ListASNRanges List Autonomous Systems Number Ranges
-	ListASNRanges(context.Context, *ListASNRangesRequest) (*ListASNRangesResponse, error)
-	// ReleaseASNumber Releases an AS Number back to the pool
-	ReleaseASNumber(context.Context, *ReleaseASNumberRequest) (*ReleaseASNumberResponse, error)
-	// ListASNumbers List Autonomous Systems Numbers
-	ListASNumbers(context.Context, *ListASNumbersRequest) (*ListASNumbersResponse, error)
 	// CreateASNRange Creates a range of Autonomous Systems for BGP Dynamic Routing
 	CreateASNRange(context.Context, *CreateASNRangeRequest) (*CreateASNRangeResponse, error)
 	// DeleteASNRange deletes a range of Autonomous Systems for BGP Dynamic Routing
 	DeleteASNRange(context.Context, *DeleteASNRangeRequest) (*DeleteASNRangeResponse, error)
+	// ListASNRanges List Autonomous Systems Number Ranges
+	ListASNRanges(context.Context, *ListASNRangesRequest) (*ListASNRangesResponse, error)
+	// ListASNumbers List Autonomous Systems Numbers
+	ListASNumbers(context.Context, *ListASNumbersRequest) (*ListASNumbersResponse, error)
+	// ReleaseASNumber Releases an AS Number back to the pool
+	ReleaseASNumber(context.Context, *ReleaseASNumberRequest) (*ReleaseASNumberResponse, error)
 	mustEmbedUnimplementedBgpServiceServer()
 }
 
@@ -128,20 +128,20 @@ type BgpServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedBgpServiceServer struct{}
 
-func (UnimplementedBgpServiceServer) ListASNRanges(context.Context, *ListASNRangesRequest) (*ListASNRangesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListASNRanges not implemented")
-}
-func (UnimplementedBgpServiceServer) ReleaseASNumber(context.Context, *ReleaseASNumberRequest) (*ReleaseASNumberResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ReleaseASNumber not implemented")
-}
-func (UnimplementedBgpServiceServer) ListASNumbers(context.Context, *ListASNumbersRequest) (*ListASNumbersResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListASNumbers not implemented")
-}
 func (UnimplementedBgpServiceServer) CreateASNRange(context.Context, *CreateASNRangeRequest) (*CreateASNRangeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateASNRange not implemented")
 }
 func (UnimplementedBgpServiceServer) DeleteASNRange(context.Context, *DeleteASNRangeRequest) (*DeleteASNRangeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteASNRange not implemented")
+}
+func (UnimplementedBgpServiceServer) ListASNRanges(context.Context, *ListASNRangesRequest) (*ListASNRangesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListASNRanges not implemented")
+}
+func (UnimplementedBgpServiceServer) ListASNumbers(context.Context, *ListASNumbersRequest) (*ListASNumbersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListASNumbers not implemented")
+}
+func (UnimplementedBgpServiceServer) ReleaseASNumber(context.Context, *ReleaseASNumberRequest) (*ReleaseASNumberResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReleaseASNumber not implemented")
 }
 func (UnimplementedBgpServiceServer) mustEmbedUnimplementedBgpServiceServer() {}
 func (UnimplementedBgpServiceServer) testEmbeddedByValue()                    {}
@@ -162,60 +162,6 @@ func RegisterBgpServiceServer(s grpc.ServiceRegistrar, srv BgpServiceServer) {
 		t.testEmbeddedByValue()
 	}
 	s.RegisterService(&BgpService_ServiceDesc, srv)
-}
-
-func _BgpService_ListASNRanges_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListASNRangesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BgpServiceServer).ListASNRanges(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BgpService_ListASNRanges_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BgpServiceServer).ListASNRanges(ctx, req.(*ListASNRangesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _BgpService_ReleaseASNumber_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ReleaseASNumberRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BgpServiceServer).ReleaseASNumber(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BgpService_ReleaseASNumber_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BgpServiceServer).ReleaseASNumber(ctx, req.(*ReleaseASNumberRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _BgpService_ListASNumbers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListASNumbersRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BgpServiceServer).ListASNumbers(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BgpService_ListASNumbers_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BgpServiceServer).ListASNumbers(ctx, req.(*ListASNumbersRequest))
-	}
-	return interceptor(ctx, in, info, handler)
 }
 
 func _BgpService_CreateASNRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -254,6 +200,60 @@ func _BgpService_DeleteASNRange_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _BgpService_ListASNRanges_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListASNRangesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BgpServiceServer).ListASNRanges(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BgpService_ListASNRanges_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BgpServiceServer).ListASNRanges(ctx, req.(*ListASNRangesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BgpService_ListASNumbers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListASNumbersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BgpServiceServer).ListASNumbers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BgpService_ListASNumbers_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BgpServiceServer).ListASNumbers(ctx, req.(*ListASNumbersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BgpService_ReleaseASNumber_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReleaseASNumberRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BgpServiceServer).ReleaseASNumber(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BgpService_ReleaseASNumber_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BgpServiceServer).ReleaseASNumber(ctx, req.(*ReleaseASNumberRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // BgpService_ServiceDesc is the grpc.ServiceDesc for BgpService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -262,24 +262,24 @@ var BgpService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*BgpServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "ListASNRanges",
-			Handler:    _BgpService_ListASNRanges_Handler,
-		},
-		{
-			MethodName: "ReleaseASNumber",
-			Handler:    _BgpService_ReleaseASNumber_Handler,
-		},
-		{
-			MethodName: "ListASNumbers",
-			Handler:    _BgpService_ListASNumbers_Handler,
-		},
-		{
 			MethodName: "CreateASNRange",
 			Handler:    _BgpService_CreateASNRange_Handler,
 		},
 		{
 			MethodName: "DeleteASNRange",
 			Handler:    _BgpService_DeleteASNRange_Handler,
+		},
+		{
+			MethodName: "ListASNRanges",
+			Handler:    _BgpService_ListASNRanges_Handler,
+		},
+		{
+			MethodName: "ListASNumbers",
+			Handler:    _BgpService_ListASNumbers_Handler,
+		},
+		{
+			MethodName: "ReleaseASNumber",
+			Handler:    _BgpService_ReleaseASNumber_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

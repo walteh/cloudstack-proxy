@@ -19,13 +19,13 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	RegionService_DeletePortableIpRange_FullMethodName = "/cloudstack.management.region.v1.RegionService/DeletePortableIpRange"
-	RegionService_RemoveRegion_FullMethodName          = "/cloudstack.management.region.v1.RegionService/RemoveRegion"
-	RegionService_CreatePortableIpRange_FullMethodName = "/cloudstack.management.region.v1.RegionService/CreatePortableIpRange"
-	RegionService_UpdateRegion_FullMethodName          = "/cloudstack.management.region.v1.RegionService/UpdateRegion"
-	RegionService_ListPortableIpRanges_FullMethodName  = "/cloudstack.management.region.v1.RegionService/ListPortableIpRanges"
 	RegionService_AddRegion_FullMethodName             = "/cloudstack.management.region.v1.RegionService/AddRegion"
+	RegionService_CreatePortableIpRange_FullMethodName = "/cloudstack.management.region.v1.RegionService/CreatePortableIpRange"
+	RegionService_DeletePortableIpRange_FullMethodName = "/cloudstack.management.region.v1.RegionService/DeletePortableIpRange"
+	RegionService_ListPortableIpRanges_FullMethodName  = "/cloudstack.management.region.v1.RegionService/ListPortableIpRanges"
 	RegionService_ListRegions_FullMethodName           = "/cloudstack.management.region.v1.RegionService/ListRegions"
+	RegionService_RemoveRegion_FullMethodName          = "/cloudstack.management.region.v1.RegionService/RemoveRegion"
+	RegionService_UpdateRegion_FullMethodName          = "/cloudstack.management.region.v1.RegionService/UpdateRegion"
 )
 
 // RegionServiceClient is the client API for RegionService service.
@@ -34,20 +34,20 @@ const (
 //
 // RegionService provides operations for managing Regions
 type RegionServiceClient interface {
-	// DeletePortableIpRange deletes a range of portable public IP's associated with a region
-	DeletePortableIpRange(ctx context.Context, in *DeletePortableIpRangeRequest, opts ...grpc.CallOption) (*DeletePortableIpRangeResponse, error)
-	// RemoveRegion Removes specified region
-	RemoveRegion(ctx context.Context, in *RemoveRegionRequest, opts ...grpc.CallOption) (*RemoveRegionResponse, error)
-	// CreatePortableIpRange adds a range of portable public IP's to a region
-	CreatePortableIpRange(ctx context.Context, in *CreatePortableIpRangeRequest, opts ...grpc.CallOption) (*CreatePortableIpRangeResponse, error)
-	// UpdateRegion Updates a region
-	UpdateRegion(ctx context.Context, in *UpdateRegionRequest, opts ...grpc.CallOption) (*UpdateRegionResponse, error)
-	// ListPortableIpRanges list portable IP ranges
-	ListPortableIpRanges(ctx context.Context, in *ListPortableIpRangesRequest, opts ...grpc.CallOption) (*ListPortableIpRangesResponse, error)
 	// AddRegion Adds a Region
 	AddRegion(ctx context.Context, in *AddRegionRequest, opts ...grpc.CallOption) (*AddRegionResponse, error)
+	// CreatePortableIpRange adds a range of portable public IP's to a region
+	CreatePortableIpRange(ctx context.Context, in *CreatePortableIpRangeRequest, opts ...grpc.CallOption) (*CreatePortableIpRangeResponse, error)
+	// DeletePortableIpRange deletes a range of portable public IP's associated with a region
+	DeletePortableIpRange(ctx context.Context, in *DeletePortableIpRangeRequest, opts ...grpc.CallOption) (*DeletePortableIpRangeResponse, error)
+	// ListPortableIpRanges list portable IP ranges
+	ListPortableIpRanges(ctx context.Context, in *ListPortableIpRangesRequest, opts ...grpc.CallOption) (*ListPortableIpRangesResponse, error)
 	// ListRegions Lists Regions
 	ListRegions(ctx context.Context, in *ListRegionsRequest, opts ...grpc.CallOption) (*ListRegionsResponse, error)
+	// RemoveRegion Removes specified region
+	RemoveRegion(ctx context.Context, in *RemoveRegionRequest, opts ...grpc.CallOption) (*RemoveRegionResponse, error)
+	// UpdateRegion Updates a region
+	UpdateRegion(ctx context.Context, in *UpdateRegionRequest, opts ...grpc.CallOption) (*UpdateRegionResponse, error)
 }
 
 type regionServiceClient struct {
@@ -58,20 +58,10 @@ func NewRegionServiceClient(cc grpc.ClientConnInterface) RegionServiceClient {
 	return &regionServiceClient{cc}
 }
 
-func (c *regionServiceClient) DeletePortableIpRange(ctx context.Context, in *DeletePortableIpRangeRequest, opts ...grpc.CallOption) (*DeletePortableIpRangeResponse, error) {
+func (c *regionServiceClient) AddRegion(ctx context.Context, in *AddRegionRequest, opts ...grpc.CallOption) (*AddRegionResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeletePortableIpRangeResponse)
-	err := c.cc.Invoke(ctx, RegionService_DeletePortableIpRange_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *regionServiceClient) RemoveRegion(ctx context.Context, in *RemoveRegionRequest, opts ...grpc.CallOption) (*RemoveRegionResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RemoveRegionResponse)
-	err := c.cc.Invoke(ctx, RegionService_RemoveRegion_FullMethodName, in, out, cOpts...)
+	out := new(AddRegionResponse)
+	err := c.cc.Invoke(ctx, RegionService_AddRegion_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -88,10 +78,10 @@ func (c *regionServiceClient) CreatePortableIpRange(ctx context.Context, in *Cre
 	return out, nil
 }
 
-func (c *regionServiceClient) UpdateRegion(ctx context.Context, in *UpdateRegionRequest, opts ...grpc.CallOption) (*UpdateRegionResponse, error) {
+func (c *regionServiceClient) DeletePortableIpRange(ctx context.Context, in *DeletePortableIpRangeRequest, opts ...grpc.CallOption) (*DeletePortableIpRangeResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateRegionResponse)
-	err := c.cc.Invoke(ctx, RegionService_UpdateRegion_FullMethodName, in, out, cOpts...)
+	out := new(DeletePortableIpRangeResponse)
+	err := c.cc.Invoke(ctx, RegionService_DeletePortableIpRange_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -108,20 +98,30 @@ func (c *regionServiceClient) ListPortableIpRanges(ctx context.Context, in *List
 	return out, nil
 }
 
-func (c *regionServiceClient) AddRegion(ctx context.Context, in *AddRegionRequest, opts ...grpc.CallOption) (*AddRegionResponse, error) {
+func (c *regionServiceClient) ListRegions(ctx context.Context, in *ListRegionsRequest, opts ...grpc.CallOption) (*ListRegionsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AddRegionResponse)
-	err := c.cc.Invoke(ctx, RegionService_AddRegion_FullMethodName, in, out, cOpts...)
+	out := new(ListRegionsResponse)
+	err := c.cc.Invoke(ctx, RegionService_ListRegions_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *regionServiceClient) ListRegions(ctx context.Context, in *ListRegionsRequest, opts ...grpc.CallOption) (*ListRegionsResponse, error) {
+func (c *regionServiceClient) RemoveRegion(ctx context.Context, in *RemoveRegionRequest, opts ...grpc.CallOption) (*RemoveRegionResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListRegionsResponse)
-	err := c.cc.Invoke(ctx, RegionService_ListRegions_FullMethodName, in, out, cOpts...)
+	out := new(RemoveRegionResponse)
+	err := c.cc.Invoke(ctx, RegionService_RemoveRegion_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *regionServiceClient) UpdateRegion(ctx context.Context, in *UpdateRegionRequest, opts ...grpc.CallOption) (*UpdateRegionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateRegionResponse)
+	err := c.cc.Invoke(ctx, RegionService_UpdateRegion_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -134,20 +134,20 @@ func (c *regionServiceClient) ListRegions(ctx context.Context, in *ListRegionsRe
 //
 // RegionService provides operations for managing Regions
 type RegionServiceServer interface {
-	// DeletePortableIpRange deletes a range of portable public IP's associated with a region
-	DeletePortableIpRange(context.Context, *DeletePortableIpRangeRequest) (*DeletePortableIpRangeResponse, error)
-	// RemoveRegion Removes specified region
-	RemoveRegion(context.Context, *RemoveRegionRequest) (*RemoveRegionResponse, error)
-	// CreatePortableIpRange adds a range of portable public IP's to a region
-	CreatePortableIpRange(context.Context, *CreatePortableIpRangeRequest) (*CreatePortableIpRangeResponse, error)
-	// UpdateRegion Updates a region
-	UpdateRegion(context.Context, *UpdateRegionRequest) (*UpdateRegionResponse, error)
-	// ListPortableIpRanges list portable IP ranges
-	ListPortableIpRanges(context.Context, *ListPortableIpRangesRequest) (*ListPortableIpRangesResponse, error)
 	// AddRegion Adds a Region
 	AddRegion(context.Context, *AddRegionRequest) (*AddRegionResponse, error)
+	// CreatePortableIpRange adds a range of portable public IP's to a region
+	CreatePortableIpRange(context.Context, *CreatePortableIpRangeRequest) (*CreatePortableIpRangeResponse, error)
+	// DeletePortableIpRange deletes a range of portable public IP's associated with a region
+	DeletePortableIpRange(context.Context, *DeletePortableIpRangeRequest) (*DeletePortableIpRangeResponse, error)
+	// ListPortableIpRanges list portable IP ranges
+	ListPortableIpRanges(context.Context, *ListPortableIpRangesRequest) (*ListPortableIpRangesResponse, error)
 	// ListRegions Lists Regions
 	ListRegions(context.Context, *ListRegionsRequest) (*ListRegionsResponse, error)
+	// RemoveRegion Removes specified region
+	RemoveRegion(context.Context, *RemoveRegionRequest) (*RemoveRegionResponse, error)
+	// UpdateRegion Updates a region
+	UpdateRegion(context.Context, *UpdateRegionRequest) (*UpdateRegionResponse, error)
 	mustEmbedUnimplementedRegionServiceServer()
 }
 
@@ -158,26 +158,26 @@ type RegionServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedRegionServiceServer struct{}
 
-func (UnimplementedRegionServiceServer) DeletePortableIpRange(context.Context, *DeletePortableIpRangeRequest) (*DeletePortableIpRangeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeletePortableIpRange not implemented")
-}
-func (UnimplementedRegionServiceServer) RemoveRegion(context.Context, *RemoveRegionRequest) (*RemoveRegionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RemoveRegion not implemented")
+func (UnimplementedRegionServiceServer) AddRegion(context.Context, *AddRegionRequest) (*AddRegionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddRegion not implemented")
 }
 func (UnimplementedRegionServiceServer) CreatePortableIpRange(context.Context, *CreatePortableIpRangeRequest) (*CreatePortableIpRangeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreatePortableIpRange not implemented")
 }
-func (UnimplementedRegionServiceServer) UpdateRegion(context.Context, *UpdateRegionRequest) (*UpdateRegionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateRegion not implemented")
+func (UnimplementedRegionServiceServer) DeletePortableIpRange(context.Context, *DeletePortableIpRangeRequest) (*DeletePortableIpRangeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeletePortableIpRange not implemented")
 }
 func (UnimplementedRegionServiceServer) ListPortableIpRanges(context.Context, *ListPortableIpRangesRequest) (*ListPortableIpRangesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListPortableIpRanges not implemented")
 }
-func (UnimplementedRegionServiceServer) AddRegion(context.Context, *AddRegionRequest) (*AddRegionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddRegion not implemented")
-}
 func (UnimplementedRegionServiceServer) ListRegions(context.Context, *ListRegionsRequest) (*ListRegionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListRegions not implemented")
+}
+func (UnimplementedRegionServiceServer) RemoveRegion(context.Context, *RemoveRegionRequest) (*RemoveRegionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveRegion not implemented")
+}
+func (UnimplementedRegionServiceServer) UpdateRegion(context.Context, *UpdateRegionRequest) (*UpdateRegionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateRegion not implemented")
 }
 func (UnimplementedRegionServiceServer) mustEmbedUnimplementedRegionServiceServer() {}
 func (UnimplementedRegionServiceServer) testEmbeddedByValue()                       {}
@@ -200,38 +200,20 @@ func RegisterRegionServiceServer(s grpc.ServiceRegistrar, srv RegionServiceServe
 	s.RegisterService(&RegionService_ServiceDesc, srv)
 }
 
-func _RegionService_DeletePortableIpRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeletePortableIpRangeRequest)
+func _RegionService_AddRegion_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddRegionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RegionServiceServer).DeletePortableIpRange(ctx, in)
+		return srv.(RegionServiceServer).AddRegion(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: RegionService_DeletePortableIpRange_FullMethodName,
+		FullMethod: RegionService_AddRegion_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RegionServiceServer).DeletePortableIpRange(ctx, req.(*DeletePortableIpRangeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RegionService_RemoveRegion_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RemoveRegionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RegionServiceServer).RemoveRegion(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RegionService_RemoveRegion_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RegionServiceServer).RemoveRegion(ctx, req.(*RemoveRegionRequest))
+		return srv.(RegionServiceServer).AddRegion(ctx, req.(*AddRegionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -254,20 +236,20 @@ func _RegionService_CreatePortableIpRange_Handler(srv interface{}, ctx context.C
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RegionService_UpdateRegion_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateRegionRequest)
+func _RegionService_DeletePortableIpRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeletePortableIpRangeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RegionServiceServer).UpdateRegion(ctx, in)
+		return srv.(RegionServiceServer).DeletePortableIpRange(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: RegionService_UpdateRegion_FullMethodName,
+		FullMethod: RegionService_DeletePortableIpRange_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RegionServiceServer).UpdateRegion(ctx, req.(*UpdateRegionRequest))
+		return srv.(RegionServiceServer).DeletePortableIpRange(ctx, req.(*DeletePortableIpRangeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -290,24 +272,6 @@ func _RegionService_ListPortableIpRanges_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RegionService_AddRegion_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddRegionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RegionServiceServer).AddRegion(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RegionService_AddRegion_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RegionServiceServer).AddRegion(ctx, req.(*AddRegionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _RegionService_ListRegions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListRegionsRequest)
 	if err := dec(in); err != nil {
@@ -326,6 +290,42 @@ func _RegionService_ListRegions_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RegionService_RemoveRegion_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveRegionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RegionServiceServer).RemoveRegion(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RegionService_RemoveRegion_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RegionServiceServer).RemoveRegion(ctx, req.(*RemoveRegionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RegionService_UpdateRegion_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateRegionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RegionServiceServer).UpdateRegion(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RegionService_UpdateRegion_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RegionServiceServer).UpdateRegion(ctx, req.(*UpdateRegionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RegionService_ServiceDesc is the grpc.ServiceDesc for RegionService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -334,32 +334,32 @@ var RegionService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*RegionServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "DeletePortableIpRange",
-			Handler:    _RegionService_DeletePortableIpRange_Handler,
-		},
-		{
-			MethodName: "RemoveRegion",
-			Handler:    _RegionService_RemoveRegion_Handler,
+			MethodName: "AddRegion",
+			Handler:    _RegionService_AddRegion_Handler,
 		},
 		{
 			MethodName: "CreatePortableIpRange",
 			Handler:    _RegionService_CreatePortableIpRange_Handler,
 		},
 		{
-			MethodName: "UpdateRegion",
-			Handler:    _RegionService_UpdateRegion_Handler,
+			MethodName: "DeletePortableIpRange",
+			Handler:    _RegionService_DeletePortableIpRange_Handler,
 		},
 		{
 			MethodName: "ListPortableIpRanges",
 			Handler:    _RegionService_ListPortableIpRanges_Handler,
 		},
 		{
-			MethodName: "AddRegion",
-			Handler:    _RegionService_AddRegion_Handler,
-		},
-		{
 			MethodName: "ListRegions",
 			Handler:    _RegionService_ListRegions_Handler,
+		},
+		{
+			MethodName: "RemoveRegion",
+			Handler:    _RegionService_RemoveRegion_Handler,
+		},
+		{
+			MethodName: "UpdateRegion",
+			Handler:    _RegionService_UpdateRegion_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

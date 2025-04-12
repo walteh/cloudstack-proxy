@@ -20,8 +20,8 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	EventService_ArchiveEvents_FullMethodName  = "/cloudstack.management.event.v1.EventService/ArchiveEvents"
-	EventService_ListEventTypes_FullMethodName = "/cloudstack.management.event.v1.EventService/ListEventTypes"
 	EventService_DeleteEvents_FullMethodName   = "/cloudstack.management.event.v1.EventService/DeleteEvents"
+	EventService_ListEventTypes_FullMethodName = "/cloudstack.management.event.v1.EventService/ListEventTypes"
 	EventService_ListEvents_FullMethodName     = "/cloudstack.management.event.v1.EventService/ListEvents"
 )
 
@@ -33,10 +33,10 @@ const (
 type EventServiceClient interface {
 	// ArchiveEvents Archive one or more events.
 	ArchiveEvents(ctx context.Context, in *ArchiveEventsRequest, opts ...grpc.CallOption) (*ArchiveEventsResponse, error)
-	// ListEventTypes List Event Types
-	ListEventTypes(ctx context.Context, in *ListEventTypesRequest, opts ...grpc.CallOption) (*ListEventTypesResponse, error)
 	// DeleteEvents Delete one or more events.
 	DeleteEvents(ctx context.Context, in *DeleteEventsRequest, opts ...grpc.CallOption) (*DeleteEventsResponse, error)
+	// ListEventTypes List Event Types
+	ListEventTypes(ctx context.Context, in *ListEventTypesRequest, opts ...grpc.CallOption) (*ListEventTypesResponse, error)
 	// ListEvents A command to list events.
 	ListEvents(ctx context.Context, in *ListEventsRequest, opts ...grpc.CallOption) (*ListEventsResponse, error)
 }
@@ -59,20 +59,20 @@ func (c *eventServiceClient) ArchiveEvents(ctx context.Context, in *ArchiveEvent
 	return out, nil
 }
 
-func (c *eventServiceClient) ListEventTypes(ctx context.Context, in *ListEventTypesRequest, opts ...grpc.CallOption) (*ListEventTypesResponse, error) {
+func (c *eventServiceClient) DeleteEvents(ctx context.Context, in *DeleteEventsRequest, opts ...grpc.CallOption) (*DeleteEventsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListEventTypesResponse)
-	err := c.cc.Invoke(ctx, EventService_ListEventTypes_FullMethodName, in, out, cOpts...)
+	out := new(DeleteEventsResponse)
+	err := c.cc.Invoke(ctx, EventService_DeleteEvents_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *eventServiceClient) DeleteEvents(ctx context.Context, in *DeleteEventsRequest, opts ...grpc.CallOption) (*DeleteEventsResponse, error) {
+func (c *eventServiceClient) ListEventTypes(ctx context.Context, in *ListEventTypesRequest, opts ...grpc.CallOption) (*ListEventTypesResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteEventsResponse)
-	err := c.cc.Invoke(ctx, EventService_DeleteEvents_FullMethodName, in, out, cOpts...)
+	out := new(ListEventTypesResponse)
+	err := c.cc.Invoke(ctx, EventService_ListEventTypes_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -97,10 +97,10 @@ func (c *eventServiceClient) ListEvents(ctx context.Context, in *ListEventsReque
 type EventServiceServer interface {
 	// ArchiveEvents Archive one or more events.
 	ArchiveEvents(context.Context, *ArchiveEventsRequest) (*ArchiveEventsResponse, error)
-	// ListEventTypes List Event Types
-	ListEventTypes(context.Context, *ListEventTypesRequest) (*ListEventTypesResponse, error)
 	// DeleteEvents Delete one or more events.
 	DeleteEvents(context.Context, *DeleteEventsRequest) (*DeleteEventsResponse, error)
+	// ListEventTypes List Event Types
+	ListEventTypes(context.Context, *ListEventTypesRequest) (*ListEventTypesResponse, error)
 	// ListEvents A command to list events.
 	ListEvents(context.Context, *ListEventsRequest) (*ListEventsResponse, error)
 	mustEmbedUnimplementedEventServiceServer()
@@ -116,11 +116,11 @@ type UnimplementedEventServiceServer struct{}
 func (UnimplementedEventServiceServer) ArchiveEvents(context.Context, *ArchiveEventsRequest) (*ArchiveEventsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ArchiveEvents not implemented")
 }
-func (UnimplementedEventServiceServer) ListEventTypes(context.Context, *ListEventTypesRequest) (*ListEventTypesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListEventTypes not implemented")
-}
 func (UnimplementedEventServiceServer) DeleteEvents(context.Context, *DeleteEventsRequest) (*DeleteEventsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteEvents not implemented")
+}
+func (UnimplementedEventServiceServer) ListEventTypes(context.Context, *ListEventTypesRequest) (*ListEventTypesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListEventTypes not implemented")
 }
 func (UnimplementedEventServiceServer) ListEvents(context.Context, *ListEventsRequest) (*ListEventsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListEvents not implemented")
@@ -164,24 +164,6 @@ func _EventService_ArchiveEvents_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
-func _EventService_ListEventTypes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListEventTypesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(EventServiceServer).ListEventTypes(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: EventService_ListEventTypes_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(EventServiceServer).ListEventTypes(ctx, req.(*ListEventTypesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _EventService_DeleteEvents_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteEventsRequest)
 	if err := dec(in); err != nil {
@@ -196,6 +178,24 @@ func _EventService_DeleteEvents_Handler(srv interface{}, ctx context.Context, de
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(EventServiceServer).DeleteEvents(ctx, req.(*DeleteEventsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _EventService_ListEventTypes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListEventTypesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(EventServiceServer).ListEventTypes(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: EventService_ListEventTypes_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EventServiceServer).ListEventTypes(ctx, req.(*ListEventTypesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -230,12 +230,12 @@ var EventService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _EventService_ArchiveEvents_Handler,
 		},
 		{
-			MethodName: "ListEventTypes",
-			Handler:    _EventService_ListEventTypes_Handler,
-		},
-		{
 			MethodName: "DeleteEvents",
 			Handler:    _EventService_DeleteEvents_Handler,
+		},
+		{
+			MethodName: "ListEventTypes",
+			Handler:    _EventService_ListEventTypes_Handler,
 		},
 		{
 			MethodName: "ListEvents",

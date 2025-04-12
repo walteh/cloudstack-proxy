@@ -33,30 +33,30 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// BucketServiceDeleteBucketProcedure is the fully-qualified name of the BucketService's
-	// DeleteBucket RPC.
-	BucketServiceDeleteBucketProcedure = "/cloudstack.management.bucket.v1.BucketService/DeleteBucket"
 	// BucketServiceCreateBucketProcedure is the fully-qualified name of the BucketService's
 	// CreateBucket RPC.
 	BucketServiceCreateBucketProcedure = "/cloudstack.management.bucket.v1.BucketService/CreateBucket"
-	// BucketServiceUpdateBucketProcedure is the fully-qualified name of the BucketService's
-	// UpdateBucket RPC.
-	BucketServiceUpdateBucketProcedure = "/cloudstack.management.bucket.v1.BucketService/UpdateBucket"
+	// BucketServiceDeleteBucketProcedure is the fully-qualified name of the BucketService's
+	// DeleteBucket RPC.
+	BucketServiceDeleteBucketProcedure = "/cloudstack.management.bucket.v1.BucketService/DeleteBucket"
 	// BucketServiceListBucketsProcedure is the fully-qualified name of the BucketService's ListBuckets
 	// RPC.
 	BucketServiceListBucketsProcedure = "/cloudstack.management.bucket.v1.BucketService/ListBuckets"
+	// BucketServiceUpdateBucketProcedure is the fully-qualified name of the BucketService's
+	// UpdateBucket RPC.
+	BucketServiceUpdateBucketProcedure = "/cloudstack.management.bucket.v1.BucketService/UpdateBucket"
 )
 
 // BucketServiceClient is a client for the cloudstack.management.bucket.v1.BucketService service.
 type BucketServiceClient interface {
-	// DeleteBucket Deletes an empty Bucket.
-	DeleteBucket(context.Context, *connect.Request[v1.DeleteBucketRequest]) (*connect.Response[v1.DeleteBucketResponse], error)
 	// CreateBucket Creates a bucket in the specified object storage pool.
 	CreateBucket(context.Context, *connect.Request[v1.CreateBucketRequest]) (*connect.Response[v1.CreateBucketResponse], error)
-	// UpdateBucket Updates Bucket properties
-	UpdateBucket(context.Context, *connect.Request[v1.UpdateBucketRequest]) (*connect.Response[v1.UpdateBucketResponse], error)
+	// DeleteBucket Deletes an empty Bucket.
+	DeleteBucket(context.Context, *connect.Request[v1.DeleteBucketRequest]) (*connect.Response[v1.DeleteBucketResponse], error)
 	// ListBuckets Lists all Buckets.
 	ListBuckets(context.Context, *connect.Request[v1.ListBucketsRequest]) (*connect.Response[v1.ListBucketsResponse], error)
+	// UpdateBucket Updates Bucket properties
+	UpdateBucket(context.Context, *connect.Request[v1.UpdateBucketRequest]) (*connect.Response[v1.UpdateBucketResponse], error)
 }
 
 // NewBucketServiceClient constructs a client for the cloudstack.management.bucket.v1.BucketService
@@ -70,22 +70,16 @@ func NewBucketServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 	baseURL = strings.TrimRight(baseURL, "/")
 	bucketServiceMethods := v1.File_cloudstack_management_bucket_v1_bucket_gen_proto.Services().ByName("BucketService").Methods()
 	return &bucketServiceClient{
-		deleteBucket: connect.NewClient[v1.DeleteBucketRequest, v1.DeleteBucketResponse](
-			httpClient,
-			baseURL+BucketServiceDeleteBucketProcedure,
-			connect.WithSchema(bucketServiceMethods.ByName("DeleteBucket")),
-			connect.WithClientOptions(opts...),
-		),
 		createBucket: connect.NewClient[v1.CreateBucketRequest, v1.CreateBucketResponse](
 			httpClient,
 			baseURL+BucketServiceCreateBucketProcedure,
 			connect.WithSchema(bucketServiceMethods.ByName("CreateBucket")),
 			connect.WithClientOptions(opts...),
 		),
-		updateBucket: connect.NewClient[v1.UpdateBucketRequest, v1.UpdateBucketResponse](
+		deleteBucket: connect.NewClient[v1.DeleteBucketRequest, v1.DeleteBucketResponse](
 			httpClient,
-			baseURL+BucketServiceUpdateBucketProcedure,
-			connect.WithSchema(bucketServiceMethods.ByName("UpdateBucket")),
+			baseURL+BucketServiceDeleteBucketProcedure,
+			connect.WithSchema(bucketServiceMethods.ByName("DeleteBucket")),
 			connect.WithClientOptions(opts...),
 		),
 		listBuckets: connect.NewClient[v1.ListBucketsRequest, v1.ListBucketsResponse](
@@ -94,20 +88,21 @@ func NewBucketServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			connect.WithSchema(bucketServiceMethods.ByName("ListBuckets")),
 			connect.WithClientOptions(opts...),
 		),
+		updateBucket: connect.NewClient[v1.UpdateBucketRequest, v1.UpdateBucketResponse](
+			httpClient,
+			baseURL+BucketServiceUpdateBucketProcedure,
+			connect.WithSchema(bucketServiceMethods.ByName("UpdateBucket")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // bucketServiceClient implements BucketServiceClient.
 type bucketServiceClient struct {
-	deleteBucket *connect.Client[v1.DeleteBucketRequest, v1.DeleteBucketResponse]
 	createBucket *connect.Client[v1.CreateBucketRequest, v1.CreateBucketResponse]
-	updateBucket *connect.Client[v1.UpdateBucketRequest, v1.UpdateBucketResponse]
+	deleteBucket *connect.Client[v1.DeleteBucketRequest, v1.DeleteBucketResponse]
 	listBuckets  *connect.Client[v1.ListBucketsRequest, v1.ListBucketsResponse]
-}
-
-// DeleteBucket calls cloudstack.management.bucket.v1.BucketService.DeleteBucket.
-func (c *bucketServiceClient) DeleteBucket(ctx context.Context, req *connect.Request[v1.DeleteBucketRequest]) (*connect.Response[v1.DeleteBucketResponse], error) {
-	return c.deleteBucket.CallUnary(ctx, req)
+	updateBucket *connect.Client[v1.UpdateBucketRequest, v1.UpdateBucketResponse]
 }
 
 // CreateBucket calls cloudstack.management.bucket.v1.BucketService.CreateBucket.
@@ -115,9 +110,9 @@ func (c *bucketServiceClient) CreateBucket(ctx context.Context, req *connect.Req
 	return c.createBucket.CallUnary(ctx, req)
 }
 
-// UpdateBucket calls cloudstack.management.bucket.v1.BucketService.UpdateBucket.
-func (c *bucketServiceClient) UpdateBucket(ctx context.Context, req *connect.Request[v1.UpdateBucketRequest]) (*connect.Response[v1.UpdateBucketResponse], error) {
-	return c.updateBucket.CallUnary(ctx, req)
+// DeleteBucket calls cloudstack.management.bucket.v1.BucketService.DeleteBucket.
+func (c *bucketServiceClient) DeleteBucket(ctx context.Context, req *connect.Request[v1.DeleteBucketRequest]) (*connect.Response[v1.DeleteBucketResponse], error) {
+	return c.deleteBucket.CallUnary(ctx, req)
 }
 
 // ListBuckets calls cloudstack.management.bucket.v1.BucketService.ListBuckets.
@@ -125,17 +120,22 @@ func (c *bucketServiceClient) ListBuckets(ctx context.Context, req *connect.Requ
 	return c.listBuckets.CallUnary(ctx, req)
 }
 
+// UpdateBucket calls cloudstack.management.bucket.v1.BucketService.UpdateBucket.
+func (c *bucketServiceClient) UpdateBucket(ctx context.Context, req *connect.Request[v1.UpdateBucketRequest]) (*connect.Response[v1.UpdateBucketResponse], error) {
+	return c.updateBucket.CallUnary(ctx, req)
+}
+
 // BucketServiceHandler is an implementation of the cloudstack.management.bucket.v1.BucketService
 // service.
 type BucketServiceHandler interface {
-	// DeleteBucket Deletes an empty Bucket.
-	DeleteBucket(context.Context, *connect.Request[v1.DeleteBucketRequest]) (*connect.Response[v1.DeleteBucketResponse], error)
 	// CreateBucket Creates a bucket in the specified object storage pool.
 	CreateBucket(context.Context, *connect.Request[v1.CreateBucketRequest]) (*connect.Response[v1.CreateBucketResponse], error)
-	// UpdateBucket Updates Bucket properties
-	UpdateBucket(context.Context, *connect.Request[v1.UpdateBucketRequest]) (*connect.Response[v1.UpdateBucketResponse], error)
+	// DeleteBucket Deletes an empty Bucket.
+	DeleteBucket(context.Context, *connect.Request[v1.DeleteBucketRequest]) (*connect.Response[v1.DeleteBucketResponse], error)
 	// ListBuckets Lists all Buckets.
 	ListBuckets(context.Context, *connect.Request[v1.ListBucketsRequest]) (*connect.Response[v1.ListBucketsResponse], error)
+	// UpdateBucket Updates Bucket properties
+	UpdateBucket(context.Context, *connect.Request[v1.UpdateBucketRequest]) (*connect.Response[v1.UpdateBucketResponse], error)
 }
 
 // NewBucketServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -145,22 +145,16 @@ type BucketServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewBucketServiceHandler(svc BucketServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	bucketServiceMethods := v1.File_cloudstack_management_bucket_v1_bucket_gen_proto.Services().ByName("BucketService").Methods()
-	bucketServiceDeleteBucketHandler := connect.NewUnaryHandler(
-		BucketServiceDeleteBucketProcedure,
-		svc.DeleteBucket,
-		connect.WithSchema(bucketServiceMethods.ByName("DeleteBucket")),
-		connect.WithHandlerOptions(opts...),
-	)
 	bucketServiceCreateBucketHandler := connect.NewUnaryHandler(
 		BucketServiceCreateBucketProcedure,
 		svc.CreateBucket,
 		connect.WithSchema(bucketServiceMethods.ByName("CreateBucket")),
 		connect.WithHandlerOptions(opts...),
 	)
-	bucketServiceUpdateBucketHandler := connect.NewUnaryHandler(
-		BucketServiceUpdateBucketProcedure,
-		svc.UpdateBucket,
-		connect.WithSchema(bucketServiceMethods.ByName("UpdateBucket")),
+	bucketServiceDeleteBucketHandler := connect.NewUnaryHandler(
+		BucketServiceDeleteBucketProcedure,
+		svc.DeleteBucket,
+		connect.WithSchema(bucketServiceMethods.ByName("DeleteBucket")),
 		connect.WithHandlerOptions(opts...),
 	)
 	bucketServiceListBucketsHandler := connect.NewUnaryHandler(
@@ -169,16 +163,22 @@ func NewBucketServiceHandler(svc BucketServiceHandler, opts ...connect.HandlerOp
 		connect.WithSchema(bucketServiceMethods.ByName("ListBuckets")),
 		connect.WithHandlerOptions(opts...),
 	)
+	bucketServiceUpdateBucketHandler := connect.NewUnaryHandler(
+		BucketServiceUpdateBucketProcedure,
+		svc.UpdateBucket,
+		connect.WithSchema(bucketServiceMethods.ByName("UpdateBucket")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.bucket.v1.BucketService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case BucketServiceDeleteBucketProcedure:
-			bucketServiceDeleteBucketHandler.ServeHTTP(w, r)
 		case BucketServiceCreateBucketProcedure:
 			bucketServiceCreateBucketHandler.ServeHTTP(w, r)
-		case BucketServiceUpdateBucketProcedure:
-			bucketServiceUpdateBucketHandler.ServeHTTP(w, r)
+		case BucketServiceDeleteBucketProcedure:
+			bucketServiceDeleteBucketHandler.ServeHTTP(w, r)
 		case BucketServiceListBucketsProcedure:
 			bucketServiceListBucketsHandler.ServeHTTP(w, r)
+		case BucketServiceUpdateBucketProcedure:
+			bucketServiceUpdateBucketHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -188,18 +188,18 @@ func NewBucketServiceHandler(svc BucketServiceHandler, opts ...connect.HandlerOp
 // UnimplementedBucketServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedBucketServiceHandler struct{}
 
-func (UnimplementedBucketServiceHandler) DeleteBucket(context.Context, *connect.Request[v1.DeleteBucketRequest]) (*connect.Response[v1.DeleteBucketResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.bucket.v1.BucketService.DeleteBucket is not implemented"))
-}
-
 func (UnimplementedBucketServiceHandler) CreateBucket(context.Context, *connect.Request[v1.CreateBucketRequest]) (*connect.Response[v1.CreateBucketResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.bucket.v1.BucketService.CreateBucket is not implemented"))
 }
 
-func (UnimplementedBucketServiceHandler) UpdateBucket(context.Context, *connect.Request[v1.UpdateBucketRequest]) (*connect.Response[v1.UpdateBucketResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.bucket.v1.BucketService.UpdateBucket is not implemented"))
+func (UnimplementedBucketServiceHandler) DeleteBucket(context.Context, *connect.Request[v1.DeleteBucketRequest]) (*connect.Response[v1.DeleteBucketResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.bucket.v1.BucketService.DeleteBucket is not implemented"))
 }
 
 func (UnimplementedBucketServiceHandler) ListBuckets(context.Context, *connect.Request[v1.ListBucketsRequest]) (*connect.Response[v1.ListBucketsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.bucket.v1.BucketService.ListBuckets is not implemented"))
+}
+
+func (UnimplementedBucketServiceHandler) UpdateBucket(context.Context, *connect.Request[v1.UpdateBucketRequest]) (*connect.Response[v1.UpdateBucketResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.bucket.v1.BucketService.UpdateBucket is not implemented"))
 }

@@ -33,82 +33,92 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// IsoServiceGetUploadParamsForIsoProcedure is the fully-qualified name of the IsoService's
-	// GetUploadParamsForIso RPC.
-	IsoServiceGetUploadParamsForIsoProcedure = "/cloudstack.management.iso.v1.IsoService/GetUploadParamsForIso"
-	// IsoServiceDetachIsoCmdByAdminProcedure is the fully-qualified name of the IsoService's
-	// DetachIsoCmdByAdmin RPC.
-	IsoServiceDetachIsoCmdByAdminProcedure = "/cloudstack.management.iso.v1.IsoService/DetachIsoCmdByAdmin"
-	// IsoServiceUpdateIsoCmdByAdminProcedure is the fully-qualified name of the IsoService's
-	// UpdateIsoCmdByAdmin RPC.
-	IsoServiceUpdateIsoCmdByAdminProcedure = "/cloudstack.management.iso.v1.IsoService/UpdateIsoCmdByAdmin"
 	// IsoServiceAttachIsoProcedure is the fully-qualified name of the IsoService's AttachIso RPC.
 	IsoServiceAttachIsoProcedure = "/cloudstack.management.iso.v1.IsoService/AttachIso"
-	// IsoServiceListIsosCmdByAdminProcedure is the fully-qualified name of the IsoService's
-	// ListIsosCmdByAdmin RPC.
-	IsoServiceListIsosCmdByAdminProcedure = "/cloudstack.management.iso.v1.IsoService/ListIsosCmdByAdmin"
-	// IsoServiceListIsosProcedure is the fully-qualified name of the IsoService's ListIsos RPC.
-	IsoServiceListIsosProcedure = "/cloudstack.management.iso.v1.IsoService/ListIsos"
-	// IsoServiceRegisterIsoProcedure is the fully-qualified name of the IsoService's RegisterIso RPC.
-	IsoServiceRegisterIsoProcedure = "/cloudstack.management.iso.v1.IsoService/RegisterIso"
-	// IsoServiceUpdateIsoProcedure is the fully-qualified name of the IsoService's UpdateIso RPC.
-	IsoServiceUpdateIsoProcedure = "/cloudstack.management.iso.v1.IsoService/UpdateIso"
-	// IsoServiceExtractIsoProcedure is the fully-qualified name of the IsoService's ExtractIso RPC.
-	IsoServiceExtractIsoProcedure = "/cloudstack.management.iso.v1.IsoService/ExtractIso"
-	// IsoServiceDetachIsoProcedure is the fully-qualified name of the IsoService's DetachIso RPC.
-	IsoServiceDetachIsoProcedure = "/cloudstack.management.iso.v1.IsoService/DetachIso"
-	// IsoServiceDeleteIsoProcedure is the fully-qualified name of the IsoService's DeleteIso RPC.
-	IsoServiceDeleteIsoProcedure = "/cloudstack.management.iso.v1.IsoService/DeleteIso"
-	// IsoServiceListIsoPermissionsCmdByAdminProcedure is the fully-qualified name of the IsoService's
-	// ListIsoPermissionsCmdByAdmin RPC.
-	IsoServiceListIsoPermissionsCmdByAdminProcedure = "/cloudstack.management.iso.v1.IsoService/ListIsoPermissionsCmdByAdmin"
+	// IsoServiceAttachIsoCmdByAdminProcedure is the fully-qualified name of the IsoService's
+	// AttachIsoCmdByAdmin RPC.
+	IsoServiceAttachIsoCmdByAdminProcedure = "/cloudstack.management.iso.v1.IsoService/AttachIsoCmdByAdmin"
+	// IsoServiceCopyIsoProcedure is the fully-qualified name of the IsoService's CopyIso RPC.
+	IsoServiceCopyIsoProcedure = "/cloudstack.management.iso.v1.IsoService/CopyIso"
 	// IsoServiceCopyIsoCmdByAdminProcedure is the fully-qualified name of the IsoService's
 	// CopyIsoCmdByAdmin RPC.
 	IsoServiceCopyIsoCmdByAdminProcedure = "/cloudstack.management.iso.v1.IsoService/CopyIsoCmdByAdmin"
+	// IsoServiceDeleteIsoProcedure is the fully-qualified name of the IsoService's DeleteIso RPC.
+	IsoServiceDeleteIsoProcedure = "/cloudstack.management.iso.v1.IsoService/DeleteIso"
+	// IsoServiceDetachIsoProcedure is the fully-qualified name of the IsoService's DetachIso RPC.
+	IsoServiceDetachIsoProcedure = "/cloudstack.management.iso.v1.IsoService/DetachIso"
+	// IsoServiceDetachIsoCmdByAdminProcedure is the fully-qualified name of the IsoService's
+	// DetachIsoCmdByAdmin RPC.
+	IsoServiceDetachIsoCmdByAdminProcedure = "/cloudstack.management.iso.v1.IsoService/DetachIsoCmdByAdmin"
+	// IsoServiceExtractIsoProcedure is the fully-qualified name of the IsoService's ExtractIso RPC.
+	IsoServiceExtractIsoProcedure = "/cloudstack.management.iso.v1.IsoService/ExtractIso"
+	// IsoServiceGetUploadParamsForIsoProcedure is the fully-qualified name of the IsoService's
+	// GetUploadParamsForIso RPC.
+	IsoServiceGetUploadParamsForIsoProcedure = "/cloudstack.management.iso.v1.IsoService/GetUploadParamsForIso"
 	// IsoServiceListIsoPermissionsProcedure is the fully-qualified name of the IsoService's
 	// ListIsoPermissions RPC.
 	IsoServiceListIsoPermissionsProcedure = "/cloudstack.management.iso.v1.IsoService/ListIsoPermissions"
+	// IsoServiceListIsoPermissionsCmdByAdminProcedure is the fully-qualified name of the IsoService's
+	// ListIsoPermissionsCmdByAdmin RPC.
+	IsoServiceListIsoPermissionsCmdByAdminProcedure = "/cloudstack.management.iso.v1.IsoService/ListIsoPermissionsCmdByAdmin"
+	// IsoServiceListIsosProcedure is the fully-qualified name of the IsoService's ListIsos RPC.
+	IsoServiceListIsosProcedure = "/cloudstack.management.iso.v1.IsoService/ListIsos"
+	// IsoServiceListIsosCmdByAdminProcedure is the fully-qualified name of the IsoService's
+	// ListIsosCmdByAdmin RPC.
+	IsoServiceListIsosCmdByAdminProcedure = "/cloudstack.management.iso.v1.IsoService/ListIsosCmdByAdmin"
+	// IsoServiceRegisterIsoProcedure is the fully-qualified name of the IsoService's RegisterIso RPC.
+	IsoServiceRegisterIsoProcedure = "/cloudstack.management.iso.v1.IsoService/RegisterIso"
+	// IsoServiceRegisterIsoCmdByAdminProcedure is the fully-qualified name of the IsoService's
+	// RegisterIsoCmdByAdmin RPC.
+	IsoServiceRegisterIsoCmdByAdminProcedure = "/cloudstack.management.iso.v1.IsoService/RegisterIsoCmdByAdmin"
+	// IsoServiceUpdateIsoProcedure is the fully-qualified name of the IsoService's UpdateIso RPC.
+	IsoServiceUpdateIsoProcedure = "/cloudstack.management.iso.v1.IsoService/UpdateIso"
+	// IsoServiceUpdateIsoCmdByAdminProcedure is the fully-qualified name of the IsoService's
+	// UpdateIsoCmdByAdmin RPC.
+	IsoServiceUpdateIsoCmdByAdminProcedure = "/cloudstack.management.iso.v1.IsoService/UpdateIsoCmdByAdmin"
 	// IsoServiceUpdateIsoPermissionsProcedure is the fully-qualified name of the IsoService's
 	// UpdateIsoPermissions RPC.
 	IsoServiceUpdateIsoPermissionsProcedure = "/cloudstack.management.iso.v1.IsoService/UpdateIsoPermissions"
-	// IsoServiceCopyIsoProcedure is the fully-qualified name of the IsoService's CopyIso RPC.
-	IsoServiceCopyIsoProcedure = "/cloudstack.management.iso.v1.IsoService/CopyIso"
 )
 
 // IsoServiceClient is a client for the cloudstack.management.iso.v1.IsoService service.
 type IsoServiceClient interface {
-	// GetUploadParamsForIso upload an existing ISO into the CloudStack cloud.
-	GetUploadParamsForIso(context.Context, *connect.Request[v1.GetUploadParamsForIsoRequest]) (*connect.Response[v1.GetUploadParamsForIsoResponse], error)
-	// DetachIsoCmdByAdmin Detaches any ISO file (if any) currently attached to a virtual machine.
-	DetachIsoCmdByAdmin(context.Context, *connect.Request[v1.DetachIsoCmdByAdminRequest]) (*connect.Response[v1.DetachIsoCmdByAdminResponse], error)
-	// UpdateIsoCmdByAdmin Updates an ISO file.
-	UpdateIsoCmdByAdmin(context.Context, *connect.Request[v1.UpdateIsoCmdByAdminRequest]) (*connect.Response[v1.UpdateIsoCmdByAdminResponse], error)
 	// AttachIso Attaches an ISO to a virtual machine.
 	AttachIso(context.Context, *connect.Request[v1.AttachIsoRequest]) (*connect.Response[v1.AttachIsoResponse], error)
-	// ListIsosCmdByAdmin Lists all available ISO files.
-	ListIsosCmdByAdmin(context.Context, *connect.Request[v1.ListIsosCmdByAdminRequest]) (*connect.Response[v1.ListIsosCmdByAdminResponse], error)
-	// ListIsos Lists all available ISO files.
-	ListIsos(context.Context, *connect.Request[v1.ListIsosRequest]) (*connect.Response[v1.ListIsosResponse], error)
-	// RegisterIso Registers an existing ISO into the CloudStack Cloud.
-	RegisterIso(context.Context, *connect.Request[v1.RegisterIsoRequest]) (*connect.Response[v1.RegisterIsoResponse], error)
-	// UpdateIso Updates an ISO file.
-	UpdateIso(context.Context, *connect.Request[v1.UpdateIsoRequest]) (*connect.Response[v1.UpdateIsoResponse], error)
-	// ExtractIso Extracts an ISO
-	ExtractIso(context.Context, *connect.Request[v1.ExtractIsoRequest]) (*connect.Response[v1.ExtractIsoResponse], error)
-	// DetachIso Detaches any ISO file (if any) currently attached to a virtual machine.
-	DetachIso(context.Context, *connect.Request[v1.DetachIsoRequest]) (*connect.Response[v1.DetachIsoResponse], error)
-	// DeleteIso Deletes an ISO file.
-	DeleteIso(context.Context, *connect.Request[v1.DeleteIsoRequest]) (*connect.Response[v1.DeleteIsoResponse], error)
-	// ListIsoPermissionsCmdByAdmin List iso visibility and all accounts that have permissions to view this iso.
-	ListIsoPermissionsCmdByAdmin(context.Context, *connect.Request[v1.ListIsoPermissionsCmdByAdminRequest]) (*connect.Response[v1.ListIsoPermissionsCmdByAdminResponse], error)
-	// CopyIsoCmdByAdmin Copies an iso from one zone to another.
-	CopyIsoCmdByAdmin(context.Context, *connect.Request[v1.CopyIsoCmdByAdminRequest]) (*connect.Response[v1.CopyIsoCmdByAdminResponse], error)
-	// ListIsoPermissions List ISO visibility and all accounts that have permissions to view this ISO.
-	ListIsoPermissions(context.Context, *connect.Request[v1.ListIsoPermissionsRequest]) (*connect.Response[v1.ListIsoPermissionsResponse], error)
-	// UpdateIsoPermissions Updates ISO permissions
-	UpdateIsoPermissions(context.Context, *connect.Request[v1.UpdateIsoPermissionsRequest]) (*connect.Response[v1.UpdateIsoPermissionsResponse], error)
+	// AttachIsoCmdByAdmin Attaches an ISO to a virtual machine.
+	AttachIsoCmdByAdmin(context.Context, *connect.Request[v1.AttachIsoCmdByAdminRequest]) (*connect.Response[v1.AttachIsoCmdByAdminResponse], error)
 	// CopyIso Copies an ISO from one zone to another.
 	CopyIso(context.Context, *connect.Request[v1.CopyIsoRequest]) (*connect.Response[v1.CopyIsoResponse], error)
+	// CopyIsoCmdByAdmin Copies an iso from one zone to another.
+	CopyIsoCmdByAdmin(context.Context, *connect.Request[v1.CopyIsoCmdByAdminRequest]) (*connect.Response[v1.CopyIsoCmdByAdminResponse], error)
+	// DeleteIso Deletes an ISO file.
+	DeleteIso(context.Context, *connect.Request[v1.DeleteIsoRequest]) (*connect.Response[v1.DeleteIsoResponse], error)
+	// DetachIso Detaches any ISO file (if any) currently attached to a virtual machine.
+	DetachIso(context.Context, *connect.Request[v1.DetachIsoRequest]) (*connect.Response[v1.DetachIsoResponse], error)
+	// DetachIsoCmdByAdmin Detaches any ISO file (if any) currently attached to a virtual machine.
+	DetachIsoCmdByAdmin(context.Context, *connect.Request[v1.DetachIsoCmdByAdminRequest]) (*connect.Response[v1.DetachIsoCmdByAdminResponse], error)
+	// ExtractIso Extracts an ISO
+	ExtractIso(context.Context, *connect.Request[v1.ExtractIsoRequest]) (*connect.Response[v1.ExtractIsoResponse], error)
+	// GetUploadParamsForIso upload an existing ISO into the CloudStack cloud.
+	GetUploadParamsForIso(context.Context, *connect.Request[v1.GetUploadParamsForIsoRequest]) (*connect.Response[v1.GetUploadParamsForIsoResponse], error)
+	// ListIsoPermissions List ISO visibility and all accounts that have permissions to view this ISO.
+	ListIsoPermissions(context.Context, *connect.Request[v1.ListIsoPermissionsRequest]) (*connect.Response[v1.ListIsoPermissionsResponse], error)
+	// ListIsoPermissionsCmdByAdmin List iso visibility and all accounts that have permissions to view this iso.
+	ListIsoPermissionsCmdByAdmin(context.Context, *connect.Request[v1.ListIsoPermissionsCmdByAdminRequest]) (*connect.Response[v1.ListIsoPermissionsCmdByAdminResponse], error)
+	// ListIsos Lists all available ISO files.
+	ListIsos(context.Context, *connect.Request[v1.ListIsosRequest]) (*connect.Response[v1.ListIsosResponse], error)
+	// ListIsosCmdByAdmin Lists all available ISO files.
+	ListIsosCmdByAdmin(context.Context, *connect.Request[v1.ListIsosCmdByAdminRequest]) (*connect.Response[v1.ListIsosCmdByAdminResponse], error)
+	// RegisterIso Registers an existing ISO into the CloudStack Cloud.
+	RegisterIso(context.Context, *connect.Request[v1.RegisterIsoRequest]) (*connect.Response[v1.RegisterIsoResponse], error)
+	// RegisterIsoCmdByAdmin Registers an existing ISO into the CloudStack Cloud.
+	RegisterIsoCmdByAdmin(context.Context, *connect.Request[v1.RegisterIsoCmdByAdminRequest]) (*connect.Response[v1.RegisterIsoCmdByAdminResponse], error)
+	// UpdateIso Updates an ISO file.
+	UpdateIso(context.Context, *connect.Request[v1.UpdateIsoRequest]) (*connect.Response[v1.UpdateIsoResponse], error)
+	// UpdateIsoCmdByAdmin Updates an ISO file.
+	UpdateIsoCmdByAdmin(context.Context, *connect.Request[v1.UpdateIsoCmdByAdminRequest]) (*connect.Response[v1.UpdateIsoCmdByAdminResponse], error)
+	// UpdateIsoPermissions Updates ISO permissions
+	UpdateIsoPermissions(context.Context, *connect.Request[v1.UpdateIsoPermissionsRequest]) (*connect.Response[v1.UpdateIsoPermissionsResponse], error)
 }
 
 // NewIsoServiceClient constructs a client for the cloudstack.management.iso.v1.IsoService service.
@@ -122,94 +132,16 @@ func NewIsoServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 	baseURL = strings.TrimRight(baseURL, "/")
 	isoServiceMethods := v1.File_cloudstack_management_iso_v1_iso_gen_proto.Services().ByName("IsoService").Methods()
 	return &isoServiceClient{
-		getUploadParamsForIso: connect.NewClient[v1.GetUploadParamsForIsoRequest, v1.GetUploadParamsForIsoResponse](
-			httpClient,
-			baseURL+IsoServiceGetUploadParamsForIsoProcedure,
-			connect.WithSchema(isoServiceMethods.ByName("GetUploadParamsForIso")),
-			connect.WithClientOptions(opts...),
-		),
-		detachIsoCmdByAdmin: connect.NewClient[v1.DetachIsoCmdByAdminRequest, v1.DetachIsoCmdByAdminResponse](
-			httpClient,
-			baseURL+IsoServiceDetachIsoCmdByAdminProcedure,
-			connect.WithSchema(isoServiceMethods.ByName("DetachIsoCmdByAdmin")),
-			connect.WithClientOptions(opts...),
-		),
-		updateIsoCmdByAdmin: connect.NewClient[v1.UpdateIsoCmdByAdminRequest, v1.UpdateIsoCmdByAdminResponse](
-			httpClient,
-			baseURL+IsoServiceUpdateIsoCmdByAdminProcedure,
-			connect.WithSchema(isoServiceMethods.ByName("UpdateIsoCmdByAdmin")),
-			connect.WithClientOptions(opts...),
-		),
 		attachIso: connect.NewClient[v1.AttachIsoRequest, v1.AttachIsoResponse](
 			httpClient,
 			baseURL+IsoServiceAttachIsoProcedure,
 			connect.WithSchema(isoServiceMethods.ByName("AttachIso")),
 			connect.WithClientOptions(opts...),
 		),
-		listIsosCmdByAdmin: connect.NewClient[v1.ListIsosCmdByAdminRequest, v1.ListIsosCmdByAdminResponse](
+		attachIsoCmdByAdmin: connect.NewClient[v1.AttachIsoCmdByAdminRequest, v1.AttachIsoCmdByAdminResponse](
 			httpClient,
-			baseURL+IsoServiceListIsosCmdByAdminProcedure,
-			connect.WithSchema(isoServiceMethods.ByName("ListIsosCmdByAdmin")),
-			connect.WithClientOptions(opts...),
-		),
-		listIsos: connect.NewClient[v1.ListIsosRequest, v1.ListIsosResponse](
-			httpClient,
-			baseURL+IsoServiceListIsosProcedure,
-			connect.WithSchema(isoServiceMethods.ByName("ListIsos")),
-			connect.WithClientOptions(opts...),
-		),
-		registerIso: connect.NewClient[v1.RegisterIsoRequest, v1.RegisterIsoResponse](
-			httpClient,
-			baseURL+IsoServiceRegisterIsoProcedure,
-			connect.WithSchema(isoServiceMethods.ByName("RegisterIso")),
-			connect.WithClientOptions(opts...),
-		),
-		updateIso: connect.NewClient[v1.UpdateIsoRequest, v1.UpdateIsoResponse](
-			httpClient,
-			baseURL+IsoServiceUpdateIsoProcedure,
-			connect.WithSchema(isoServiceMethods.ByName("UpdateIso")),
-			connect.WithClientOptions(opts...),
-		),
-		extractIso: connect.NewClient[v1.ExtractIsoRequest, v1.ExtractIsoResponse](
-			httpClient,
-			baseURL+IsoServiceExtractIsoProcedure,
-			connect.WithSchema(isoServiceMethods.ByName("ExtractIso")),
-			connect.WithClientOptions(opts...),
-		),
-		detachIso: connect.NewClient[v1.DetachIsoRequest, v1.DetachIsoResponse](
-			httpClient,
-			baseURL+IsoServiceDetachIsoProcedure,
-			connect.WithSchema(isoServiceMethods.ByName("DetachIso")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteIso: connect.NewClient[v1.DeleteIsoRequest, v1.DeleteIsoResponse](
-			httpClient,
-			baseURL+IsoServiceDeleteIsoProcedure,
-			connect.WithSchema(isoServiceMethods.ByName("DeleteIso")),
-			connect.WithClientOptions(opts...),
-		),
-		listIsoPermissionsCmdByAdmin: connect.NewClient[v1.ListIsoPermissionsCmdByAdminRequest, v1.ListIsoPermissionsCmdByAdminResponse](
-			httpClient,
-			baseURL+IsoServiceListIsoPermissionsCmdByAdminProcedure,
-			connect.WithSchema(isoServiceMethods.ByName("ListIsoPermissionsCmdByAdmin")),
-			connect.WithClientOptions(opts...),
-		),
-		copyIsoCmdByAdmin: connect.NewClient[v1.CopyIsoCmdByAdminRequest, v1.CopyIsoCmdByAdminResponse](
-			httpClient,
-			baseURL+IsoServiceCopyIsoCmdByAdminProcedure,
-			connect.WithSchema(isoServiceMethods.ByName("CopyIsoCmdByAdmin")),
-			connect.WithClientOptions(opts...),
-		),
-		listIsoPermissions: connect.NewClient[v1.ListIsoPermissionsRequest, v1.ListIsoPermissionsResponse](
-			httpClient,
-			baseURL+IsoServiceListIsoPermissionsProcedure,
-			connect.WithSchema(isoServiceMethods.ByName("ListIsoPermissions")),
-			connect.WithClientOptions(opts...),
-		),
-		updateIsoPermissions: connect.NewClient[v1.UpdateIsoPermissionsRequest, v1.UpdateIsoPermissionsResponse](
-			httpClient,
-			baseURL+IsoServiceUpdateIsoPermissionsProcedure,
-			connect.WithSchema(isoServiceMethods.ByName("UpdateIsoPermissions")),
+			baseURL+IsoServiceAttachIsoCmdByAdminProcedure,
+			connect.WithSchema(isoServiceMethods.ByName("AttachIsoCmdByAdmin")),
 			connect.WithClientOptions(opts...),
 		),
 		copyIso: connect.NewClient[v1.CopyIsoRequest, v1.CopyIsoResponse](
@@ -218,42 +150,119 @@ func NewIsoServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 			connect.WithSchema(isoServiceMethods.ByName("CopyIso")),
 			connect.WithClientOptions(opts...),
 		),
+		copyIsoCmdByAdmin: connect.NewClient[v1.CopyIsoCmdByAdminRequest, v1.CopyIsoCmdByAdminResponse](
+			httpClient,
+			baseURL+IsoServiceCopyIsoCmdByAdminProcedure,
+			connect.WithSchema(isoServiceMethods.ByName("CopyIsoCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteIso: connect.NewClient[v1.DeleteIsoRequest, v1.DeleteIsoResponse](
+			httpClient,
+			baseURL+IsoServiceDeleteIsoProcedure,
+			connect.WithSchema(isoServiceMethods.ByName("DeleteIso")),
+			connect.WithClientOptions(opts...),
+		),
+		detachIso: connect.NewClient[v1.DetachIsoRequest, v1.DetachIsoResponse](
+			httpClient,
+			baseURL+IsoServiceDetachIsoProcedure,
+			connect.WithSchema(isoServiceMethods.ByName("DetachIso")),
+			connect.WithClientOptions(opts...),
+		),
+		detachIsoCmdByAdmin: connect.NewClient[v1.DetachIsoCmdByAdminRequest, v1.DetachIsoCmdByAdminResponse](
+			httpClient,
+			baseURL+IsoServiceDetachIsoCmdByAdminProcedure,
+			connect.WithSchema(isoServiceMethods.ByName("DetachIsoCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		extractIso: connect.NewClient[v1.ExtractIsoRequest, v1.ExtractIsoResponse](
+			httpClient,
+			baseURL+IsoServiceExtractIsoProcedure,
+			connect.WithSchema(isoServiceMethods.ByName("ExtractIso")),
+			connect.WithClientOptions(opts...),
+		),
+		getUploadParamsForIso: connect.NewClient[v1.GetUploadParamsForIsoRequest, v1.GetUploadParamsForIsoResponse](
+			httpClient,
+			baseURL+IsoServiceGetUploadParamsForIsoProcedure,
+			connect.WithSchema(isoServiceMethods.ByName("GetUploadParamsForIso")),
+			connect.WithClientOptions(opts...),
+		),
+		listIsoPermissions: connect.NewClient[v1.ListIsoPermissionsRequest, v1.ListIsoPermissionsResponse](
+			httpClient,
+			baseURL+IsoServiceListIsoPermissionsProcedure,
+			connect.WithSchema(isoServiceMethods.ByName("ListIsoPermissions")),
+			connect.WithClientOptions(opts...),
+		),
+		listIsoPermissionsCmdByAdmin: connect.NewClient[v1.ListIsoPermissionsCmdByAdminRequest, v1.ListIsoPermissionsCmdByAdminResponse](
+			httpClient,
+			baseURL+IsoServiceListIsoPermissionsCmdByAdminProcedure,
+			connect.WithSchema(isoServiceMethods.ByName("ListIsoPermissionsCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		listIsos: connect.NewClient[v1.ListIsosRequest, v1.ListIsosResponse](
+			httpClient,
+			baseURL+IsoServiceListIsosProcedure,
+			connect.WithSchema(isoServiceMethods.ByName("ListIsos")),
+			connect.WithClientOptions(opts...),
+		),
+		listIsosCmdByAdmin: connect.NewClient[v1.ListIsosCmdByAdminRequest, v1.ListIsosCmdByAdminResponse](
+			httpClient,
+			baseURL+IsoServiceListIsosCmdByAdminProcedure,
+			connect.WithSchema(isoServiceMethods.ByName("ListIsosCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		registerIso: connect.NewClient[v1.RegisterIsoRequest, v1.RegisterIsoResponse](
+			httpClient,
+			baseURL+IsoServiceRegisterIsoProcedure,
+			connect.WithSchema(isoServiceMethods.ByName("RegisterIso")),
+			connect.WithClientOptions(opts...),
+		),
+		registerIsoCmdByAdmin: connect.NewClient[v1.RegisterIsoCmdByAdminRequest, v1.RegisterIsoCmdByAdminResponse](
+			httpClient,
+			baseURL+IsoServiceRegisterIsoCmdByAdminProcedure,
+			connect.WithSchema(isoServiceMethods.ByName("RegisterIsoCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		updateIso: connect.NewClient[v1.UpdateIsoRequest, v1.UpdateIsoResponse](
+			httpClient,
+			baseURL+IsoServiceUpdateIsoProcedure,
+			connect.WithSchema(isoServiceMethods.ByName("UpdateIso")),
+			connect.WithClientOptions(opts...),
+		),
+		updateIsoCmdByAdmin: connect.NewClient[v1.UpdateIsoCmdByAdminRequest, v1.UpdateIsoCmdByAdminResponse](
+			httpClient,
+			baseURL+IsoServiceUpdateIsoCmdByAdminProcedure,
+			connect.WithSchema(isoServiceMethods.ByName("UpdateIsoCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		updateIsoPermissions: connect.NewClient[v1.UpdateIsoPermissionsRequest, v1.UpdateIsoPermissionsResponse](
+			httpClient,
+			baseURL+IsoServiceUpdateIsoPermissionsProcedure,
+			connect.WithSchema(isoServiceMethods.ByName("UpdateIsoPermissions")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // isoServiceClient implements IsoServiceClient.
 type isoServiceClient struct {
-	getUploadParamsForIso        *connect.Client[v1.GetUploadParamsForIsoRequest, v1.GetUploadParamsForIsoResponse]
-	detachIsoCmdByAdmin          *connect.Client[v1.DetachIsoCmdByAdminRequest, v1.DetachIsoCmdByAdminResponse]
-	updateIsoCmdByAdmin          *connect.Client[v1.UpdateIsoCmdByAdminRequest, v1.UpdateIsoCmdByAdminResponse]
 	attachIso                    *connect.Client[v1.AttachIsoRequest, v1.AttachIsoResponse]
-	listIsosCmdByAdmin           *connect.Client[v1.ListIsosCmdByAdminRequest, v1.ListIsosCmdByAdminResponse]
-	listIsos                     *connect.Client[v1.ListIsosRequest, v1.ListIsosResponse]
-	registerIso                  *connect.Client[v1.RegisterIsoRequest, v1.RegisterIsoResponse]
-	updateIso                    *connect.Client[v1.UpdateIsoRequest, v1.UpdateIsoResponse]
-	extractIso                   *connect.Client[v1.ExtractIsoRequest, v1.ExtractIsoResponse]
-	detachIso                    *connect.Client[v1.DetachIsoRequest, v1.DetachIsoResponse]
-	deleteIso                    *connect.Client[v1.DeleteIsoRequest, v1.DeleteIsoResponse]
-	listIsoPermissionsCmdByAdmin *connect.Client[v1.ListIsoPermissionsCmdByAdminRequest, v1.ListIsoPermissionsCmdByAdminResponse]
-	copyIsoCmdByAdmin            *connect.Client[v1.CopyIsoCmdByAdminRequest, v1.CopyIsoCmdByAdminResponse]
-	listIsoPermissions           *connect.Client[v1.ListIsoPermissionsRequest, v1.ListIsoPermissionsResponse]
-	updateIsoPermissions         *connect.Client[v1.UpdateIsoPermissionsRequest, v1.UpdateIsoPermissionsResponse]
+	attachIsoCmdByAdmin          *connect.Client[v1.AttachIsoCmdByAdminRequest, v1.AttachIsoCmdByAdminResponse]
 	copyIso                      *connect.Client[v1.CopyIsoRequest, v1.CopyIsoResponse]
-}
-
-// GetUploadParamsForIso calls cloudstack.management.iso.v1.IsoService.GetUploadParamsForIso.
-func (c *isoServiceClient) GetUploadParamsForIso(ctx context.Context, req *connect.Request[v1.GetUploadParamsForIsoRequest]) (*connect.Response[v1.GetUploadParamsForIsoResponse], error) {
-	return c.getUploadParamsForIso.CallUnary(ctx, req)
-}
-
-// DetachIsoCmdByAdmin calls cloudstack.management.iso.v1.IsoService.DetachIsoCmdByAdmin.
-func (c *isoServiceClient) DetachIsoCmdByAdmin(ctx context.Context, req *connect.Request[v1.DetachIsoCmdByAdminRequest]) (*connect.Response[v1.DetachIsoCmdByAdminResponse], error) {
-	return c.detachIsoCmdByAdmin.CallUnary(ctx, req)
-}
-
-// UpdateIsoCmdByAdmin calls cloudstack.management.iso.v1.IsoService.UpdateIsoCmdByAdmin.
-func (c *isoServiceClient) UpdateIsoCmdByAdmin(ctx context.Context, req *connect.Request[v1.UpdateIsoCmdByAdminRequest]) (*connect.Response[v1.UpdateIsoCmdByAdminResponse], error) {
-	return c.updateIsoCmdByAdmin.CallUnary(ctx, req)
+	copyIsoCmdByAdmin            *connect.Client[v1.CopyIsoCmdByAdminRequest, v1.CopyIsoCmdByAdminResponse]
+	deleteIso                    *connect.Client[v1.DeleteIsoRequest, v1.DeleteIsoResponse]
+	detachIso                    *connect.Client[v1.DetachIsoRequest, v1.DetachIsoResponse]
+	detachIsoCmdByAdmin          *connect.Client[v1.DetachIsoCmdByAdminRequest, v1.DetachIsoCmdByAdminResponse]
+	extractIso                   *connect.Client[v1.ExtractIsoRequest, v1.ExtractIsoResponse]
+	getUploadParamsForIso        *connect.Client[v1.GetUploadParamsForIsoRequest, v1.GetUploadParamsForIsoResponse]
+	listIsoPermissions           *connect.Client[v1.ListIsoPermissionsRequest, v1.ListIsoPermissionsResponse]
+	listIsoPermissionsCmdByAdmin *connect.Client[v1.ListIsoPermissionsCmdByAdminRequest, v1.ListIsoPermissionsCmdByAdminResponse]
+	listIsos                     *connect.Client[v1.ListIsosRequest, v1.ListIsosResponse]
+	listIsosCmdByAdmin           *connect.Client[v1.ListIsosCmdByAdminRequest, v1.ListIsosCmdByAdminResponse]
+	registerIso                  *connect.Client[v1.RegisterIsoRequest, v1.RegisterIsoResponse]
+	registerIsoCmdByAdmin        *connect.Client[v1.RegisterIsoCmdByAdminRequest, v1.RegisterIsoCmdByAdminResponse]
+	updateIso                    *connect.Client[v1.UpdateIsoRequest, v1.UpdateIsoResponse]
+	updateIsoCmdByAdmin          *connect.Client[v1.UpdateIsoCmdByAdminRequest, v1.UpdateIsoCmdByAdminResponse]
+	updateIsoPermissions         *connect.Client[v1.UpdateIsoPermissionsRequest, v1.UpdateIsoPermissionsResponse]
 }
 
 // AttachIso calls cloudstack.management.iso.v1.IsoService.AttachIso.
@@ -261,29 +270,24 @@ func (c *isoServiceClient) AttachIso(ctx context.Context, req *connect.Request[v
 	return c.attachIso.CallUnary(ctx, req)
 }
 
-// ListIsosCmdByAdmin calls cloudstack.management.iso.v1.IsoService.ListIsosCmdByAdmin.
-func (c *isoServiceClient) ListIsosCmdByAdmin(ctx context.Context, req *connect.Request[v1.ListIsosCmdByAdminRequest]) (*connect.Response[v1.ListIsosCmdByAdminResponse], error) {
-	return c.listIsosCmdByAdmin.CallUnary(ctx, req)
+// AttachIsoCmdByAdmin calls cloudstack.management.iso.v1.IsoService.AttachIsoCmdByAdmin.
+func (c *isoServiceClient) AttachIsoCmdByAdmin(ctx context.Context, req *connect.Request[v1.AttachIsoCmdByAdminRequest]) (*connect.Response[v1.AttachIsoCmdByAdminResponse], error) {
+	return c.attachIsoCmdByAdmin.CallUnary(ctx, req)
 }
 
-// ListIsos calls cloudstack.management.iso.v1.IsoService.ListIsos.
-func (c *isoServiceClient) ListIsos(ctx context.Context, req *connect.Request[v1.ListIsosRequest]) (*connect.Response[v1.ListIsosResponse], error) {
-	return c.listIsos.CallUnary(ctx, req)
+// CopyIso calls cloudstack.management.iso.v1.IsoService.CopyIso.
+func (c *isoServiceClient) CopyIso(ctx context.Context, req *connect.Request[v1.CopyIsoRequest]) (*connect.Response[v1.CopyIsoResponse], error) {
+	return c.copyIso.CallUnary(ctx, req)
 }
 
-// RegisterIso calls cloudstack.management.iso.v1.IsoService.RegisterIso.
-func (c *isoServiceClient) RegisterIso(ctx context.Context, req *connect.Request[v1.RegisterIsoRequest]) (*connect.Response[v1.RegisterIsoResponse], error) {
-	return c.registerIso.CallUnary(ctx, req)
+// CopyIsoCmdByAdmin calls cloudstack.management.iso.v1.IsoService.CopyIsoCmdByAdmin.
+func (c *isoServiceClient) CopyIsoCmdByAdmin(ctx context.Context, req *connect.Request[v1.CopyIsoCmdByAdminRequest]) (*connect.Response[v1.CopyIsoCmdByAdminResponse], error) {
+	return c.copyIsoCmdByAdmin.CallUnary(ctx, req)
 }
 
-// UpdateIso calls cloudstack.management.iso.v1.IsoService.UpdateIso.
-func (c *isoServiceClient) UpdateIso(ctx context.Context, req *connect.Request[v1.UpdateIsoRequest]) (*connect.Response[v1.UpdateIsoResponse], error) {
-	return c.updateIso.CallUnary(ctx, req)
-}
-
-// ExtractIso calls cloudstack.management.iso.v1.IsoService.ExtractIso.
-func (c *isoServiceClient) ExtractIso(ctx context.Context, req *connect.Request[v1.ExtractIsoRequest]) (*connect.Response[v1.ExtractIsoResponse], error) {
-	return c.extractIso.CallUnary(ctx, req)
+// DeleteIso calls cloudstack.management.iso.v1.IsoService.DeleteIso.
+func (c *isoServiceClient) DeleteIso(ctx context.Context, req *connect.Request[v1.DeleteIsoRequest]) (*connect.Response[v1.DeleteIsoResponse], error) {
+	return c.deleteIso.CallUnary(ctx, req)
 }
 
 // DetachIso calls cloudstack.management.iso.v1.IsoService.DetachIso.
@@ -291,9 +295,24 @@ func (c *isoServiceClient) DetachIso(ctx context.Context, req *connect.Request[v
 	return c.detachIso.CallUnary(ctx, req)
 }
 
-// DeleteIso calls cloudstack.management.iso.v1.IsoService.DeleteIso.
-func (c *isoServiceClient) DeleteIso(ctx context.Context, req *connect.Request[v1.DeleteIsoRequest]) (*connect.Response[v1.DeleteIsoResponse], error) {
-	return c.deleteIso.CallUnary(ctx, req)
+// DetachIsoCmdByAdmin calls cloudstack.management.iso.v1.IsoService.DetachIsoCmdByAdmin.
+func (c *isoServiceClient) DetachIsoCmdByAdmin(ctx context.Context, req *connect.Request[v1.DetachIsoCmdByAdminRequest]) (*connect.Response[v1.DetachIsoCmdByAdminResponse], error) {
+	return c.detachIsoCmdByAdmin.CallUnary(ctx, req)
+}
+
+// ExtractIso calls cloudstack.management.iso.v1.IsoService.ExtractIso.
+func (c *isoServiceClient) ExtractIso(ctx context.Context, req *connect.Request[v1.ExtractIsoRequest]) (*connect.Response[v1.ExtractIsoResponse], error) {
+	return c.extractIso.CallUnary(ctx, req)
+}
+
+// GetUploadParamsForIso calls cloudstack.management.iso.v1.IsoService.GetUploadParamsForIso.
+func (c *isoServiceClient) GetUploadParamsForIso(ctx context.Context, req *connect.Request[v1.GetUploadParamsForIsoRequest]) (*connect.Response[v1.GetUploadParamsForIsoResponse], error) {
+	return c.getUploadParamsForIso.CallUnary(ctx, req)
+}
+
+// ListIsoPermissions calls cloudstack.management.iso.v1.IsoService.ListIsoPermissions.
+func (c *isoServiceClient) ListIsoPermissions(ctx context.Context, req *connect.Request[v1.ListIsoPermissionsRequest]) (*connect.Response[v1.ListIsoPermissionsResponse], error) {
+	return c.listIsoPermissions.CallUnary(ctx, req)
 }
 
 // ListIsoPermissionsCmdByAdmin calls
@@ -302,14 +321,34 @@ func (c *isoServiceClient) ListIsoPermissionsCmdByAdmin(ctx context.Context, req
 	return c.listIsoPermissionsCmdByAdmin.CallUnary(ctx, req)
 }
 
-// CopyIsoCmdByAdmin calls cloudstack.management.iso.v1.IsoService.CopyIsoCmdByAdmin.
-func (c *isoServiceClient) CopyIsoCmdByAdmin(ctx context.Context, req *connect.Request[v1.CopyIsoCmdByAdminRequest]) (*connect.Response[v1.CopyIsoCmdByAdminResponse], error) {
-	return c.copyIsoCmdByAdmin.CallUnary(ctx, req)
+// ListIsos calls cloudstack.management.iso.v1.IsoService.ListIsos.
+func (c *isoServiceClient) ListIsos(ctx context.Context, req *connect.Request[v1.ListIsosRequest]) (*connect.Response[v1.ListIsosResponse], error) {
+	return c.listIsos.CallUnary(ctx, req)
 }
 
-// ListIsoPermissions calls cloudstack.management.iso.v1.IsoService.ListIsoPermissions.
-func (c *isoServiceClient) ListIsoPermissions(ctx context.Context, req *connect.Request[v1.ListIsoPermissionsRequest]) (*connect.Response[v1.ListIsoPermissionsResponse], error) {
-	return c.listIsoPermissions.CallUnary(ctx, req)
+// ListIsosCmdByAdmin calls cloudstack.management.iso.v1.IsoService.ListIsosCmdByAdmin.
+func (c *isoServiceClient) ListIsosCmdByAdmin(ctx context.Context, req *connect.Request[v1.ListIsosCmdByAdminRequest]) (*connect.Response[v1.ListIsosCmdByAdminResponse], error) {
+	return c.listIsosCmdByAdmin.CallUnary(ctx, req)
+}
+
+// RegisterIso calls cloudstack.management.iso.v1.IsoService.RegisterIso.
+func (c *isoServiceClient) RegisterIso(ctx context.Context, req *connect.Request[v1.RegisterIsoRequest]) (*connect.Response[v1.RegisterIsoResponse], error) {
+	return c.registerIso.CallUnary(ctx, req)
+}
+
+// RegisterIsoCmdByAdmin calls cloudstack.management.iso.v1.IsoService.RegisterIsoCmdByAdmin.
+func (c *isoServiceClient) RegisterIsoCmdByAdmin(ctx context.Context, req *connect.Request[v1.RegisterIsoCmdByAdminRequest]) (*connect.Response[v1.RegisterIsoCmdByAdminResponse], error) {
+	return c.registerIsoCmdByAdmin.CallUnary(ctx, req)
+}
+
+// UpdateIso calls cloudstack.management.iso.v1.IsoService.UpdateIso.
+func (c *isoServiceClient) UpdateIso(ctx context.Context, req *connect.Request[v1.UpdateIsoRequest]) (*connect.Response[v1.UpdateIsoResponse], error) {
+	return c.updateIso.CallUnary(ctx, req)
+}
+
+// UpdateIsoCmdByAdmin calls cloudstack.management.iso.v1.IsoService.UpdateIsoCmdByAdmin.
+func (c *isoServiceClient) UpdateIsoCmdByAdmin(ctx context.Context, req *connect.Request[v1.UpdateIsoCmdByAdminRequest]) (*connect.Response[v1.UpdateIsoCmdByAdminResponse], error) {
+	return c.updateIsoCmdByAdmin.CallUnary(ctx, req)
 }
 
 // UpdateIsoPermissions calls cloudstack.management.iso.v1.IsoService.UpdateIsoPermissions.
@@ -317,45 +356,44 @@ func (c *isoServiceClient) UpdateIsoPermissions(ctx context.Context, req *connec
 	return c.updateIsoPermissions.CallUnary(ctx, req)
 }
 
-// CopyIso calls cloudstack.management.iso.v1.IsoService.CopyIso.
-func (c *isoServiceClient) CopyIso(ctx context.Context, req *connect.Request[v1.CopyIsoRequest]) (*connect.Response[v1.CopyIsoResponse], error) {
-	return c.copyIso.CallUnary(ctx, req)
-}
-
 // IsoServiceHandler is an implementation of the cloudstack.management.iso.v1.IsoService service.
 type IsoServiceHandler interface {
-	// GetUploadParamsForIso upload an existing ISO into the CloudStack cloud.
-	GetUploadParamsForIso(context.Context, *connect.Request[v1.GetUploadParamsForIsoRequest]) (*connect.Response[v1.GetUploadParamsForIsoResponse], error)
-	// DetachIsoCmdByAdmin Detaches any ISO file (if any) currently attached to a virtual machine.
-	DetachIsoCmdByAdmin(context.Context, *connect.Request[v1.DetachIsoCmdByAdminRequest]) (*connect.Response[v1.DetachIsoCmdByAdminResponse], error)
-	// UpdateIsoCmdByAdmin Updates an ISO file.
-	UpdateIsoCmdByAdmin(context.Context, *connect.Request[v1.UpdateIsoCmdByAdminRequest]) (*connect.Response[v1.UpdateIsoCmdByAdminResponse], error)
 	// AttachIso Attaches an ISO to a virtual machine.
 	AttachIso(context.Context, *connect.Request[v1.AttachIsoRequest]) (*connect.Response[v1.AttachIsoResponse], error)
-	// ListIsosCmdByAdmin Lists all available ISO files.
-	ListIsosCmdByAdmin(context.Context, *connect.Request[v1.ListIsosCmdByAdminRequest]) (*connect.Response[v1.ListIsosCmdByAdminResponse], error)
-	// ListIsos Lists all available ISO files.
-	ListIsos(context.Context, *connect.Request[v1.ListIsosRequest]) (*connect.Response[v1.ListIsosResponse], error)
-	// RegisterIso Registers an existing ISO into the CloudStack Cloud.
-	RegisterIso(context.Context, *connect.Request[v1.RegisterIsoRequest]) (*connect.Response[v1.RegisterIsoResponse], error)
-	// UpdateIso Updates an ISO file.
-	UpdateIso(context.Context, *connect.Request[v1.UpdateIsoRequest]) (*connect.Response[v1.UpdateIsoResponse], error)
-	// ExtractIso Extracts an ISO
-	ExtractIso(context.Context, *connect.Request[v1.ExtractIsoRequest]) (*connect.Response[v1.ExtractIsoResponse], error)
-	// DetachIso Detaches any ISO file (if any) currently attached to a virtual machine.
-	DetachIso(context.Context, *connect.Request[v1.DetachIsoRequest]) (*connect.Response[v1.DetachIsoResponse], error)
-	// DeleteIso Deletes an ISO file.
-	DeleteIso(context.Context, *connect.Request[v1.DeleteIsoRequest]) (*connect.Response[v1.DeleteIsoResponse], error)
-	// ListIsoPermissionsCmdByAdmin List iso visibility and all accounts that have permissions to view this iso.
-	ListIsoPermissionsCmdByAdmin(context.Context, *connect.Request[v1.ListIsoPermissionsCmdByAdminRequest]) (*connect.Response[v1.ListIsoPermissionsCmdByAdminResponse], error)
-	// CopyIsoCmdByAdmin Copies an iso from one zone to another.
-	CopyIsoCmdByAdmin(context.Context, *connect.Request[v1.CopyIsoCmdByAdminRequest]) (*connect.Response[v1.CopyIsoCmdByAdminResponse], error)
-	// ListIsoPermissions List ISO visibility and all accounts that have permissions to view this ISO.
-	ListIsoPermissions(context.Context, *connect.Request[v1.ListIsoPermissionsRequest]) (*connect.Response[v1.ListIsoPermissionsResponse], error)
-	// UpdateIsoPermissions Updates ISO permissions
-	UpdateIsoPermissions(context.Context, *connect.Request[v1.UpdateIsoPermissionsRequest]) (*connect.Response[v1.UpdateIsoPermissionsResponse], error)
+	// AttachIsoCmdByAdmin Attaches an ISO to a virtual machine.
+	AttachIsoCmdByAdmin(context.Context, *connect.Request[v1.AttachIsoCmdByAdminRequest]) (*connect.Response[v1.AttachIsoCmdByAdminResponse], error)
 	// CopyIso Copies an ISO from one zone to another.
 	CopyIso(context.Context, *connect.Request[v1.CopyIsoRequest]) (*connect.Response[v1.CopyIsoResponse], error)
+	// CopyIsoCmdByAdmin Copies an iso from one zone to another.
+	CopyIsoCmdByAdmin(context.Context, *connect.Request[v1.CopyIsoCmdByAdminRequest]) (*connect.Response[v1.CopyIsoCmdByAdminResponse], error)
+	// DeleteIso Deletes an ISO file.
+	DeleteIso(context.Context, *connect.Request[v1.DeleteIsoRequest]) (*connect.Response[v1.DeleteIsoResponse], error)
+	// DetachIso Detaches any ISO file (if any) currently attached to a virtual machine.
+	DetachIso(context.Context, *connect.Request[v1.DetachIsoRequest]) (*connect.Response[v1.DetachIsoResponse], error)
+	// DetachIsoCmdByAdmin Detaches any ISO file (if any) currently attached to a virtual machine.
+	DetachIsoCmdByAdmin(context.Context, *connect.Request[v1.DetachIsoCmdByAdminRequest]) (*connect.Response[v1.DetachIsoCmdByAdminResponse], error)
+	// ExtractIso Extracts an ISO
+	ExtractIso(context.Context, *connect.Request[v1.ExtractIsoRequest]) (*connect.Response[v1.ExtractIsoResponse], error)
+	// GetUploadParamsForIso upload an existing ISO into the CloudStack cloud.
+	GetUploadParamsForIso(context.Context, *connect.Request[v1.GetUploadParamsForIsoRequest]) (*connect.Response[v1.GetUploadParamsForIsoResponse], error)
+	// ListIsoPermissions List ISO visibility and all accounts that have permissions to view this ISO.
+	ListIsoPermissions(context.Context, *connect.Request[v1.ListIsoPermissionsRequest]) (*connect.Response[v1.ListIsoPermissionsResponse], error)
+	// ListIsoPermissionsCmdByAdmin List iso visibility and all accounts that have permissions to view this iso.
+	ListIsoPermissionsCmdByAdmin(context.Context, *connect.Request[v1.ListIsoPermissionsCmdByAdminRequest]) (*connect.Response[v1.ListIsoPermissionsCmdByAdminResponse], error)
+	// ListIsos Lists all available ISO files.
+	ListIsos(context.Context, *connect.Request[v1.ListIsosRequest]) (*connect.Response[v1.ListIsosResponse], error)
+	// ListIsosCmdByAdmin Lists all available ISO files.
+	ListIsosCmdByAdmin(context.Context, *connect.Request[v1.ListIsosCmdByAdminRequest]) (*connect.Response[v1.ListIsosCmdByAdminResponse], error)
+	// RegisterIso Registers an existing ISO into the CloudStack Cloud.
+	RegisterIso(context.Context, *connect.Request[v1.RegisterIsoRequest]) (*connect.Response[v1.RegisterIsoResponse], error)
+	// RegisterIsoCmdByAdmin Registers an existing ISO into the CloudStack Cloud.
+	RegisterIsoCmdByAdmin(context.Context, *connect.Request[v1.RegisterIsoCmdByAdminRequest]) (*connect.Response[v1.RegisterIsoCmdByAdminResponse], error)
+	// UpdateIso Updates an ISO file.
+	UpdateIso(context.Context, *connect.Request[v1.UpdateIsoRequest]) (*connect.Response[v1.UpdateIsoResponse], error)
+	// UpdateIsoCmdByAdmin Updates an ISO file.
+	UpdateIsoCmdByAdmin(context.Context, *connect.Request[v1.UpdateIsoCmdByAdminRequest]) (*connect.Response[v1.UpdateIsoCmdByAdminResponse], error)
+	// UpdateIsoPermissions Updates ISO permissions
+	UpdateIsoPermissions(context.Context, *connect.Request[v1.UpdateIsoPermissionsRequest]) (*connect.Response[v1.UpdateIsoPermissionsResponse], error)
 }
 
 // NewIsoServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -365,94 +403,16 @@ type IsoServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewIsoServiceHandler(svc IsoServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	isoServiceMethods := v1.File_cloudstack_management_iso_v1_iso_gen_proto.Services().ByName("IsoService").Methods()
-	isoServiceGetUploadParamsForIsoHandler := connect.NewUnaryHandler(
-		IsoServiceGetUploadParamsForIsoProcedure,
-		svc.GetUploadParamsForIso,
-		connect.WithSchema(isoServiceMethods.ByName("GetUploadParamsForIso")),
-		connect.WithHandlerOptions(opts...),
-	)
-	isoServiceDetachIsoCmdByAdminHandler := connect.NewUnaryHandler(
-		IsoServiceDetachIsoCmdByAdminProcedure,
-		svc.DetachIsoCmdByAdmin,
-		connect.WithSchema(isoServiceMethods.ByName("DetachIsoCmdByAdmin")),
-		connect.WithHandlerOptions(opts...),
-	)
-	isoServiceUpdateIsoCmdByAdminHandler := connect.NewUnaryHandler(
-		IsoServiceUpdateIsoCmdByAdminProcedure,
-		svc.UpdateIsoCmdByAdmin,
-		connect.WithSchema(isoServiceMethods.ByName("UpdateIsoCmdByAdmin")),
-		connect.WithHandlerOptions(opts...),
-	)
 	isoServiceAttachIsoHandler := connect.NewUnaryHandler(
 		IsoServiceAttachIsoProcedure,
 		svc.AttachIso,
 		connect.WithSchema(isoServiceMethods.ByName("AttachIso")),
 		connect.WithHandlerOptions(opts...),
 	)
-	isoServiceListIsosCmdByAdminHandler := connect.NewUnaryHandler(
-		IsoServiceListIsosCmdByAdminProcedure,
-		svc.ListIsosCmdByAdmin,
-		connect.WithSchema(isoServiceMethods.ByName("ListIsosCmdByAdmin")),
-		connect.WithHandlerOptions(opts...),
-	)
-	isoServiceListIsosHandler := connect.NewUnaryHandler(
-		IsoServiceListIsosProcedure,
-		svc.ListIsos,
-		connect.WithSchema(isoServiceMethods.ByName("ListIsos")),
-		connect.WithHandlerOptions(opts...),
-	)
-	isoServiceRegisterIsoHandler := connect.NewUnaryHandler(
-		IsoServiceRegisterIsoProcedure,
-		svc.RegisterIso,
-		connect.WithSchema(isoServiceMethods.ByName("RegisterIso")),
-		connect.WithHandlerOptions(opts...),
-	)
-	isoServiceUpdateIsoHandler := connect.NewUnaryHandler(
-		IsoServiceUpdateIsoProcedure,
-		svc.UpdateIso,
-		connect.WithSchema(isoServiceMethods.ByName("UpdateIso")),
-		connect.WithHandlerOptions(opts...),
-	)
-	isoServiceExtractIsoHandler := connect.NewUnaryHandler(
-		IsoServiceExtractIsoProcedure,
-		svc.ExtractIso,
-		connect.WithSchema(isoServiceMethods.ByName("ExtractIso")),
-		connect.WithHandlerOptions(opts...),
-	)
-	isoServiceDetachIsoHandler := connect.NewUnaryHandler(
-		IsoServiceDetachIsoProcedure,
-		svc.DetachIso,
-		connect.WithSchema(isoServiceMethods.ByName("DetachIso")),
-		connect.WithHandlerOptions(opts...),
-	)
-	isoServiceDeleteIsoHandler := connect.NewUnaryHandler(
-		IsoServiceDeleteIsoProcedure,
-		svc.DeleteIso,
-		connect.WithSchema(isoServiceMethods.ByName("DeleteIso")),
-		connect.WithHandlerOptions(opts...),
-	)
-	isoServiceListIsoPermissionsCmdByAdminHandler := connect.NewUnaryHandler(
-		IsoServiceListIsoPermissionsCmdByAdminProcedure,
-		svc.ListIsoPermissionsCmdByAdmin,
-		connect.WithSchema(isoServiceMethods.ByName("ListIsoPermissionsCmdByAdmin")),
-		connect.WithHandlerOptions(opts...),
-	)
-	isoServiceCopyIsoCmdByAdminHandler := connect.NewUnaryHandler(
-		IsoServiceCopyIsoCmdByAdminProcedure,
-		svc.CopyIsoCmdByAdmin,
-		connect.WithSchema(isoServiceMethods.ByName("CopyIsoCmdByAdmin")),
-		connect.WithHandlerOptions(opts...),
-	)
-	isoServiceListIsoPermissionsHandler := connect.NewUnaryHandler(
-		IsoServiceListIsoPermissionsProcedure,
-		svc.ListIsoPermissions,
-		connect.WithSchema(isoServiceMethods.ByName("ListIsoPermissions")),
-		connect.WithHandlerOptions(opts...),
-	)
-	isoServiceUpdateIsoPermissionsHandler := connect.NewUnaryHandler(
-		IsoServiceUpdateIsoPermissionsProcedure,
-		svc.UpdateIsoPermissions,
-		connect.WithSchema(isoServiceMethods.ByName("UpdateIsoPermissions")),
+	isoServiceAttachIsoCmdByAdminHandler := connect.NewUnaryHandler(
+		IsoServiceAttachIsoCmdByAdminProcedure,
+		svc.AttachIsoCmdByAdmin,
+		connect.WithSchema(isoServiceMethods.ByName("AttachIsoCmdByAdmin")),
 		connect.WithHandlerOptions(opts...),
 	)
 	isoServiceCopyIsoHandler := connect.NewUnaryHandler(
@@ -461,40 +421,134 @@ func NewIsoServiceHandler(svc IsoServiceHandler, opts ...connect.HandlerOption) 
 		connect.WithSchema(isoServiceMethods.ByName("CopyIso")),
 		connect.WithHandlerOptions(opts...),
 	)
+	isoServiceCopyIsoCmdByAdminHandler := connect.NewUnaryHandler(
+		IsoServiceCopyIsoCmdByAdminProcedure,
+		svc.CopyIsoCmdByAdmin,
+		connect.WithSchema(isoServiceMethods.ByName("CopyIsoCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	isoServiceDeleteIsoHandler := connect.NewUnaryHandler(
+		IsoServiceDeleteIsoProcedure,
+		svc.DeleteIso,
+		connect.WithSchema(isoServiceMethods.ByName("DeleteIso")),
+		connect.WithHandlerOptions(opts...),
+	)
+	isoServiceDetachIsoHandler := connect.NewUnaryHandler(
+		IsoServiceDetachIsoProcedure,
+		svc.DetachIso,
+		connect.WithSchema(isoServiceMethods.ByName("DetachIso")),
+		connect.WithHandlerOptions(opts...),
+	)
+	isoServiceDetachIsoCmdByAdminHandler := connect.NewUnaryHandler(
+		IsoServiceDetachIsoCmdByAdminProcedure,
+		svc.DetachIsoCmdByAdmin,
+		connect.WithSchema(isoServiceMethods.ByName("DetachIsoCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	isoServiceExtractIsoHandler := connect.NewUnaryHandler(
+		IsoServiceExtractIsoProcedure,
+		svc.ExtractIso,
+		connect.WithSchema(isoServiceMethods.ByName("ExtractIso")),
+		connect.WithHandlerOptions(opts...),
+	)
+	isoServiceGetUploadParamsForIsoHandler := connect.NewUnaryHandler(
+		IsoServiceGetUploadParamsForIsoProcedure,
+		svc.GetUploadParamsForIso,
+		connect.WithSchema(isoServiceMethods.ByName("GetUploadParamsForIso")),
+		connect.WithHandlerOptions(opts...),
+	)
+	isoServiceListIsoPermissionsHandler := connect.NewUnaryHandler(
+		IsoServiceListIsoPermissionsProcedure,
+		svc.ListIsoPermissions,
+		connect.WithSchema(isoServiceMethods.ByName("ListIsoPermissions")),
+		connect.WithHandlerOptions(opts...),
+	)
+	isoServiceListIsoPermissionsCmdByAdminHandler := connect.NewUnaryHandler(
+		IsoServiceListIsoPermissionsCmdByAdminProcedure,
+		svc.ListIsoPermissionsCmdByAdmin,
+		connect.WithSchema(isoServiceMethods.ByName("ListIsoPermissionsCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	isoServiceListIsosHandler := connect.NewUnaryHandler(
+		IsoServiceListIsosProcedure,
+		svc.ListIsos,
+		connect.WithSchema(isoServiceMethods.ByName("ListIsos")),
+		connect.WithHandlerOptions(opts...),
+	)
+	isoServiceListIsosCmdByAdminHandler := connect.NewUnaryHandler(
+		IsoServiceListIsosCmdByAdminProcedure,
+		svc.ListIsosCmdByAdmin,
+		connect.WithSchema(isoServiceMethods.ByName("ListIsosCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	isoServiceRegisterIsoHandler := connect.NewUnaryHandler(
+		IsoServiceRegisterIsoProcedure,
+		svc.RegisterIso,
+		connect.WithSchema(isoServiceMethods.ByName("RegisterIso")),
+		connect.WithHandlerOptions(opts...),
+	)
+	isoServiceRegisterIsoCmdByAdminHandler := connect.NewUnaryHandler(
+		IsoServiceRegisterIsoCmdByAdminProcedure,
+		svc.RegisterIsoCmdByAdmin,
+		connect.WithSchema(isoServiceMethods.ByName("RegisterIsoCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	isoServiceUpdateIsoHandler := connect.NewUnaryHandler(
+		IsoServiceUpdateIsoProcedure,
+		svc.UpdateIso,
+		connect.WithSchema(isoServiceMethods.ByName("UpdateIso")),
+		connect.WithHandlerOptions(opts...),
+	)
+	isoServiceUpdateIsoCmdByAdminHandler := connect.NewUnaryHandler(
+		IsoServiceUpdateIsoCmdByAdminProcedure,
+		svc.UpdateIsoCmdByAdmin,
+		connect.WithSchema(isoServiceMethods.ByName("UpdateIsoCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	isoServiceUpdateIsoPermissionsHandler := connect.NewUnaryHandler(
+		IsoServiceUpdateIsoPermissionsProcedure,
+		svc.UpdateIsoPermissions,
+		connect.WithSchema(isoServiceMethods.ByName("UpdateIsoPermissions")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.iso.v1.IsoService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case IsoServiceGetUploadParamsForIsoProcedure:
-			isoServiceGetUploadParamsForIsoHandler.ServeHTTP(w, r)
-		case IsoServiceDetachIsoCmdByAdminProcedure:
-			isoServiceDetachIsoCmdByAdminHandler.ServeHTTP(w, r)
-		case IsoServiceUpdateIsoCmdByAdminProcedure:
-			isoServiceUpdateIsoCmdByAdminHandler.ServeHTTP(w, r)
 		case IsoServiceAttachIsoProcedure:
 			isoServiceAttachIsoHandler.ServeHTTP(w, r)
-		case IsoServiceListIsosCmdByAdminProcedure:
-			isoServiceListIsosCmdByAdminHandler.ServeHTTP(w, r)
-		case IsoServiceListIsosProcedure:
-			isoServiceListIsosHandler.ServeHTTP(w, r)
-		case IsoServiceRegisterIsoProcedure:
-			isoServiceRegisterIsoHandler.ServeHTTP(w, r)
-		case IsoServiceUpdateIsoProcedure:
-			isoServiceUpdateIsoHandler.ServeHTTP(w, r)
-		case IsoServiceExtractIsoProcedure:
-			isoServiceExtractIsoHandler.ServeHTTP(w, r)
-		case IsoServiceDetachIsoProcedure:
-			isoServiceDetachIsoHandler.ServeHTTP(w, r)
-		case IsoServiceDeleteIsoProcedure:
-			isoServiceDeleteIsoHandler.ServeHTTP(w, r)
-		case IsoServiceListIsoPermissionsCmdByAdminProcedure:
-			isoServiceListIsoPermissionsCmdByAdminHandler.ServeHTTP(w, r)
-		case IsoServiceCopyIsoCmdByAdminProcedure:
-			isoServiceCopyIsoCmdByAdminHandler.ServeHTTP(w, r)
-		case IsoServiceListIsoPermissionsProcedure:
-			isoServiceListIsoPermissionsHandler.ServeHTTP(w, r)
-		case IsoServiceUpdateIsoPermissionsProcedure:
-			isoServiceUpdateIsoPermissionsHandler.ServeHTTP(w, r)
+		case IsoServiceAttachIsoCmdByAdminProcedure:
+			isoServiceAttachIsoCmdByAdminHandler.ServeHTTP(w, r)
 		case IsoServiceCopyIsoProcedure:
 			isoServiceCopyIsoHandler.ServeHTTP(w, r)
+		case IsoServiceCopyIsoCmdByAdminProcedure:
+			isoServiceCopyIsoCmdByAdminHandler.ServeHTTP(w, r)
+		case IsoServiceDeleteIsoProcedure:
+			isoServiceDeleteIsoHandler.ServeHTTP(w, r)
+		case IsoServiceDetachIsoProcedure:
+			isoServiceDetachIsoHandler.ServeHTTP(w, r)
+		case IsoServiceDetachIsoCmdByAdminProcedure:
+			isoServiceDetachIsoCmdByAdminHandler.ServeHTTP(w, r)
+		case IsoServiceExtractIsoProcedure:
+			isoServiceExtractIsoHandler.ServeHTTP(w, r)
+		case IsoServiceGetUploadParamsForIsoProcedure:
+			isoServiceGetUploadParamsForIsoHandler.ServeHTTP(w, r)
+		case IsoServiceListIsoPermissionsProcedure:
+			isoServiceListIsoPermissionsHandler.ServeHTTP(w, r)
+		case IsoServiceListIsoPermissionsCmdByAdminProcedure:
+			isoServiceListIsoPermissionsCmdByAdminHandler.ServeHTTP(w, r)
+		case IsoServiceListIsosProcedure:
+			isoServiceListIsosHandler.ServeHTTP(w, r)
+		case IsoServiceListIsosCmdByAdminProcedure:
+			isoServiceListIsosCmdByAdminHandler.ServeHTTP(w, r)
+		case IsoServiceRegisterIsoProcedure:
+			isoServiceRegisterIsoHandler.ServeHTTP(w, r)
+		case IsoServiceRegisterIsoCmdByAdminProcedure:
+			isoServiceRegisterIsoCmdByAdminHandler.ServeHTTP(w, r)
+		case IsoServiceUpdateIsoProcedure:
+			isoServiceUpdateIsoHandler.ServeHTTP(w, r)
+		case IsoServiceUpdateIsoCmdByAdminProcedure:
+			isoServiceUpdateIsoCmdByAdminHandler.ServeHTTP(w, r)
+		case IsoServiceUpdateIsoPermissionsProcedure:
+			isoServiceUpdateIsoPermissionsHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -504,66 +558,74 @@ func NewIsoServiceHandler(svc IsoServiceHandler, opts ...connect.HandlerOption) 
 // UnimplementedIsoServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedIsoServiceHandler struct{}
 
-func (UnimplementedIsoServiceHandler) GetUploadParamsForIso(context.Context, *connect.Request[v1.GetUploadParamsForIsoRequest]) (*connect.Response[v1.GetUploadParamsForIsoResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.GetUploadParamsForIso is not implemented"))
-}
-
-func (UnimplementedIsoServiceHandler) DetachIsoCmdByAdmin(context.Context, *connect.Request[v1.DetachIsoCmdByAdminRequest]) (*connect.Response[v1.DetachIsoCmdByAdminResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.DetachIsoCmdByAdmin is not implemented"))
-}
-
-func (UnimplementedIsoServiceHandler) UpdateIsoCmdByAdmin(context.Context, *connect.Request[v1.UpdateIsoCmdByAdminRequest]) (*connect.Response[v1.UpdateIsoCmdByAdminResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.UpdateIsoCmdByAdmin is not implemented"))
-}
-
 func (UnimplementedIsoServiceHandler) AttachIso(context.Context, *connect.Request[v1.AttachIsoRequest]) (*connect.Response[v1.AttachIsoResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.AttachIso is not implemented"))
 }
 
-func (UnimplementedIsoServiceHandler) ListIsosCmdByAdmin(context.Context, *connect.Request[v1.ListIsosCmdByAdminRequest]) (*connect.Response[v1.ListIsosCmdByAdminResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.ListIsosCmdByAdmin is not implemented"))
+func (UnimplementedIsoServiceHandler) AttachIsoCmdByAdmin(context.Context, *connect.Request[v1.AttachIsoCmdByAdminRequest]) (*connect.Response[v1.AttachIsoCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.AttachIsoCmdByAdmin is not implemented"))
 }
 
-func (UnimplementedIsoServiceHandler) ListIsos(context.Context, *connect.Request[v1.ListIsosRequest]) (*connect.Response[v1.ListIsosResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.ListIsos is not implemented"))
-}
-
-func (UnimplementedIsoServiceHandler) RegisterIso(context.Context, *connect.Request[v1.RegisterIsoRequest]) (*connect.Response[v1.RegisterIsoResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.RegisterIso is not implemented"))
-}
-
-func (UnimplementedIsoServiceHandler) UpdateIso(context.Context, *connect.Request[v1.UpdateIsoRequest]) (*connect.Response[v1.UpdateIsoResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.UpdateIso is not implemented"))
-}
-
-func (UnimplementedIsoServiceHandler) ExtractIso(context.Context, *connect.Request[v1.ExtractIsoRequest]) (*connect.Response[v1.ExtractIsoResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.ExtractIso is not implemented"))
-}
-
-func (UnimplementedIsoServiceHandler) DetachIso(context.Context, *connect.Request[v1.DetachIsoRequest]) (*connect.Response[v1.DetachIsoResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.DetachIso is not implemented"))
-}
-
-func (UnimplementedIsoServiceHandler) DeleteIso(context.Context, *connect.Request[v1.DeleteIsoRequest]) (*connect.Response[v1.DeleteIsoResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.DeleteIso is not implemented"))
-}
-
-func (UnimplementedIsoServiceHandler) ListIsoPermissionsCmdByAdmin(context.Context, *connect.Request[v1.ListIsoPermissionsCmdByAdminRequest]) (*connect.Response[v1.ListIsoPermissionsCmdByAdminResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.ListIsoPermissionsCmdByAdmin is not implemented"))
+func (UnimplementedIsoServiceHandler) CopyIso(context.Context, *connect.Request[v1.CopyIsoRequest]) (*connect.Response[v1.CopyIsoResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.CopyIso is not implemented"))
 }
 
 func (UnimplementedIsoServiceHandler) CopyIsoCmdByAdmin(context.Context, *connect.Request[v1.CopyIsoCmdByAdminRequest]) (*connect.Response[v1.CopyIsoCmdByAdminResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.CopyIsoCmdByAdmin is not implemented"))
 }
 
+func (UnimplementedIsoServiceHandler) DeleteIso(context.Context, *connect.Request[v1.DeleteIsoRequest]) (*connect.Response[v1.DeleteIsoResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.DeleteIso is not implemented"))
+}
+
+func (UnimplementedIsoServiceHandler) DetachIso(context.Context, *connect.Request[v1.DetachIsoRequest]) (*connect.Response[v1.DetachIsoResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.DetachIso is not implemented"))
+}
+
+func (UnimplementedIsoServiceHandler) DetachIsoCmdByAdmin(context.Context, *connect.Request[v1.DetachIsoCmdByAdminRequest]) (*connect.Response[v1.DetachIsoCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.DetachIsoCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedIsoServiceHandler) ExtractIso(context.Context, *connect.Request[v1.ExtractIsoRequest]) (*connect.Response[v1.ExtractIsoResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.ExtractIso is not implemented"))
+}
+
+func (UnimplementedIsoServiceHandler) GetUploadParamsForIso(context.Context, *connect.Request[v1.GetUploadParamsForIsoRequest]) (*connect.Response[v1.GetUploadParamsForIsoResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.GetUploadParamsForIso is not implemented"))
+}
+
 func (UnimplementedIsoServiceHandler) ListIsoPermissions(context.Context, *connect.Request[v1.ListIsoPermissionsRequest]) (*connect.Response[v1.ListIsoPermissionsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.ListIsoPermissions is not implemented"))
 }
 
-func (UnimplementedIsoServiceHandler) UpdateIsoPermissions(context.Context, *connect.Request[v1.UpdateIsoPermissionsRequest]) (*connect.Response[v1.UpdateIsoPermissionsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.UpdateIsoPermissions is not implemented"))
+func (UnimplementedIsoServiceHandler) ListIsoPermissionsCmdByAdmin(context.Context, *connect.Request[v1.ListIsoPermissionsCmdByAdminRequest]) (*connect.Response[v1.ListIsoPermissionsCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.ListIsoPermissionsCmdByAdmin is not implemented"))
 }
 
-func (UnimplementedIsoServiceHandler) CopyIso(context.Context, *connect.Request[v1.CopyIsoRequest]) (*connect.Response[v1.CopyIsoResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.CopyIso is not implemented"))
+func (UnimplementedIsoServiceHandler) ListIsos(context.Context, *connect.Request[v1.ListIsosRequest]) (*connect.Response[v1.ListIsosResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.ListIsos is not implemented"))
+}
+
+func (UnimplementedIsoServiceHandler) ListIsosCmdByAdmin(context.Context, *connect.Request[v1.ListIsosCmdByAdminRequest]) (*connect.Response[v1.ListIsosCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.ListIsosCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedIsoServiceHandler) RegisterIso(context.Context, *connect.Request[v1.RegisterIsoRequest]) (*connect.Response[v1.RegisterIsoResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.RegisterIso is not implemented"))
+}
+
+func (UnimplementedIsoServiceHandler) RegisterIsoCmdByAdmin(context.Context, *connect.Request[v1.RegisterIsoCmdByAdminRequest]) (*connect.Response[v1.RegisterIsoCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.RegisterIsoCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedIsoServiceHandler) UpdateIso(context.Context, *connect.Request[v1.UpdateIsoRequest]) (*connect.Response[v1.UpdateIsoResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.UpdateIso is not implemented"))
+}
+
+func (UnimplementedIsoServiceHandler) UpdateIsoCmdByAdmin(context.Context, *connect.Request[v1.UpdateIsoCmdByAdminRequest]) (*connect.Response[v1.UpdateIsoCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.UpdateIsoCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedIsoServiceHandler) UpdateIsoPermissions(context.Context, *connect.Request[v1.UpdateIsoPermissionsRequest]) (*connect.Response[v1.UpdateIsoPermissionsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.iso.v1.IsoService.UpdateIsoPermissions is not implemented"))
 }

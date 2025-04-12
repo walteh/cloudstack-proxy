@@ -24,6 +24,158 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// ChangeSharedFSDiskOfferingRequest represents the parameters for change disk offering of a shared filesystem
+type ChangeSharedFSDiskOfferingRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the shared filesystem
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the disk offering to use for the underlying storage
+	DiskOfferingId *int64 `protobuf:"varint,2,opt,name=disk_offering_id,json=diskOfferingId" json:"disk_offering_id,omitempty"`
+	// the size of the shared filesystem in GiB
+	Size *int64 `protobuf:"varint,3,opt,name=size" json:"size,omitempty"`
+	// min iops
+	MinIops *int64 `protobuf:"varint,4,opt,name=min_iops,json=minIops" json:"min_iops,omitempty"`
+	// max iops
+	MaxIops *int64 `protobuf:"varint,5,opt,name=max_iops,json=maxIops" json:"max_iops,omitempty"`
+	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ChangeSharedFSDiskOfferingRequest) Reset() {
+	*x = ChangeSharedFSDiskOfferingRequest{}
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ChangeSharedFSDiskOfferingRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChangeSharedFSDiskOfferingRequest) ProtoMessage() {}
+
+func (x *ChangeSharedFSDiskOfferingRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChangeSharedFSDiskOfferingRequest.ProtoReflect.Descriptor instead.
+func (*ChangeSharedFSDiskOfferingRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *ChangeSharedFSDiskOfferingRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ChangeSharedFSDiskOfferingRequest) GetDiskOfferingId() int64 {
+	if x != nil && x.DiskOfferingId != nil {
+		return *x.DiskOfferingId
+	}
+	return 0
+}
+
+func (x *ChangeSharedFSDiskOfferingRequest) GetSize() int64 {
+	if x != nil && x.Size != nil {
+		return *x.Size
+	}
+	return 0
+}
+
+func (x *ChangeSharedFSDiskOfferingRequest) GetMinIops() int64 {
+	if x != nil && x.MinIops != nil {
+		return *x.MinIops
+	}
+	return 0
+}
+
+func (x *ChangeSharedFSDiskOfferingRequest) GetMaxIops() int64 {
+	if x != nil && x.MaxIops != nil {
+		return *x.MaxIops
+	}
+	return 0
+}
+
+func (x *ChangeSharedFSDiskOfferingRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *ChangeSharedFSDiskOfferingRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *ChangeSharedFSDiskOfferingRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ChangeSharedFSDiskOfferingResponse represents the response from change disk offering of a shared filesystem
+type ChangeSharedFSDiskOfferingResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ChangeSharedFSDiskOfferingResponse) Reset() {
+	*x = ChangeSharedFSDiskOfferingResponse{}
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ChangeSharedFSDiskOfferingResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChangeSharedFSDiskOfferingResponse) ProtoMessage() {}
+
+func (x *ChangeSharedFSDiskOfferingResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChangeSharedFSDiskOfferingResponse.ProtoReflect.Descriptor instead.
+func (*ChangeSharedFSDiskOfferingResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *ChangeSharedFSDiskOfferingResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
 // ChangeSharedFSServiceOfferingRequest represents the parameters for change service offering of a shared filesystem
 type ChangeSharedFSServiceOfferingRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -40,7 +192,7 @@ type ChangeSharedFSServiceOfferingRequest struct {
 
 func (x *ChangeSharedFSServiceOfferingRequest) Reset() {
 	*x = ChangeSharedFSServiceOfferingRequest{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -52,7 +204,7 @@ func (x *ChangeSharedFSServiceOfferingRequest) String() string {
 func (*ChangeSharedFSServiceOfferingRequest) ProtoMessage() {}
 
 func (x *ChangeSharedFSServiceOfferingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -65,7 +217,7 @@ func (x *ChangeSharedFSServiceOfferingRequest) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use ChangeSharedFSServiceOfferingRequest.ProtoReflect.Descriptor instead.
 func (*ChangeSharedFSServiceOfferingRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{0}
+	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ChangeSharedFSServiceOfferingRequest) GetId() int64 {
@@ -114,7 +266,7 @@ type ChangeSharedFSServiceOfferingResponse struct {
 
 func (x *ChangeSharedFSServiceOfferingResponse) Reset() {
 	*x = ChangeSharedFSServiceOfferingResponse{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -126,7 +278,7 @@ func (x *ChangeSharedFSServiceOfferingResponse) String() string {
 func (*ChangeSharedFSServiceOfferingResponse) ProtoMessage() {}
 
 func (x *ChangeSharedFSServiceOfferingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -139,7 +291,7 @@ func (x *ChangeSharedFSServiceOfferingResponse) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use ChangeSharedFSServiceOfferingResponse.ProtoReflect.Descriptor instead.
 func (*ChangeSharedFSServiceOfferingResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{1}
+	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ChangeSharedFSServiceOfferingResponse) GetResult() *Result {
@@ -189,7 +341,7 @@ type CreateSharedFSRequest struct {
 
 func (x *CreateSharedFSRequest) Reset() {
 	*x = CreateSharedFSRequest{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -201,7 +353,7 @@ func (x *CreateSharedFSRequest) String() string {
 func (*CreateSharedFSRequest) ProtoMessage() {}
 
 func (x *CreateSharedFSRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -214,7 +366,7 @@ func (x *CreateSharedFSRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateSharedFSRequest.ProtoReflect.Descriptor instead.
 func (*CreateSharedFSRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{2}
+	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *CreateSharedFSRequest) GetName() string {
@@ -347,7 +499,7 @@ type CreateSharedFSResponse struct {
 
 func (x *CreateSharedFSResponse) Reset() {
 	*x = CreateSharedFSResponse{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -359,7 +511,7 @@ func (x *CreateSharedFSResponse) String() string {
 func (*CreateSharedFSResponse) ProtoMessage() {}
 
 func (x *CreateSharedFSResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -372,835 +524,10 @@ func (x *CreateSharedFSResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateSharedFSResponse.ProtoReflect.Descriptor instead.
 func (*CreateSharedFSResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *CreateSharedFSResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// RecoverSharedFSRequest represents the parameters for recover a shared filesystem by id
-type RecoverSharedFSRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the shared filesystem to recover
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RecoverSharedFSRequest) Reset() {
-	*x = RecoverSharedFSRequest{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RecoverSharedFSRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RecoverSharedFSRequest) ProtoMessage() {}
-
-func (x *RecoverSharedFSRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RecoverSharedFSRequest.ProtoReflect.Descriptor instead.
-func (*RecoverSharedFSRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *RecoverSharedFSRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *RecoverSharedFSRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// RecoverSharedFSResponse represents the response from recover a shared filesystem by id
-type RecoverSharedFSResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RecoverSharedFSResponse) Reset() {
-	*x = RecoverSharedFSResponse{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RecoverSharedFSResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RecoverSharedFSResponse) ProtoMessage() {}
-
-func (x *RecoverSharedFSResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RecoverSharedFSResponse.ProtoReflect.Descriptor instead.
-func (*RecoverSharedFSResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *RecoverSharedFSResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateSharedFSRequest represents the parameters for update a shared filesystem
-type UpdateSharedFSRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the shared filesystem
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the name of the shared filesystem.
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// the description for the shared filesystem.
-	Description *string `protobuf:"bytes,3,opt,name=description" json:"description,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateSharedFSRequest) Reset() {
-	*x = UpdateSharedFSRequest{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateSharedFSRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateSharedFSRequest) ProtoMessage() {}
-
-func (x *UpdateSharedFSRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateSharedFSRequest.ProtoReflect.Descriptor instead.
-func (*UpdateSharedFSRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *UpdateSharedFSRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateSharedFSRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *UpdateSharedFSRequest) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *UpdateSharedFSRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateSharedFSResponse represents the response from update a shared filesystem
-type UpdateSharedFSResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateSharedFSResponse) Reset() {
-	*x = UpdateSharedFSResponse{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateSharedFSResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateSharedFSResponse) ProtoMessage() {}
-
-func (x *UpdateSharedFSResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateSharedFSResponse.ProtoReflect.Descriptor instead.
-func (*UpdateSharedFSResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *UpdateSharedFSResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// StartSharedFSRequest represents the parameters for start a shared filesystem
-type StartSharedFSRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the shared filesystem
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *StartSharedFSRequest) Reset() {
-	*x = StartSharedFSRequest{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *StartSharedFSRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*StartSharedFSRequest) ProtoMessage() {}
-
-func (x *StartSharedFSRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use StartSharedFSRequest.ProtoReflect.Descriptor instead.
-func (*StartSharedFSRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *StartSharedFSRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *StartSharedFSRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *StartSharedFSRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *StartSharedFSRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// StartSharedFSResponse represents the response from start a shared filesystem
-type StartSharedFSResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *StartSharedFSResponse) Reset() {
-	*x = StartSharedFSResponse{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *StartSharedFSResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*StartSharedFSResponse) ProtoMessage() {}
-
-func (x *StartSharedFSResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use StartSharedFSResponse.ProtoReflect.Descriptor instead.
-func (*StartSharedFSResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *StartSharedFSResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ExpungeSharedFSRequest represents the parameters for expunge a shared filesystem by id
-type ExpungeSharedFSRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the shared filesystem to expunge
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ExpungeSharedFSRequest) Reset() {
-	*x = ExpungeSharedFSRequest{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ExpungeSharedFSRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ExpungeSharedFSRequest) ProtoMessage() {}
-
-func (x *ExpungeSharedFSRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ExpungeSharedFSRequest.ProtoReflect.Descriptor instead.
-func (*ExpungeSharedFSRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *ExpungeSharedFSRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ExpungeSharedFSRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *ExpungeSharedFSRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *ExpungeSharedFSRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ExpungeSharedFSResponse represents the response from expunge a shared filesystem by id
-type ExpungeSharedFSResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ExpungeSharedFSResponse) Reset() {
-	*x = ExpungeSharedFSResponse{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ExpungeSharedFSResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ExpungeSharedFSResponse) ProtoMessage() {}
-
-func (x *ExpungeSharedFSResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ExpungeSharedFSResponse.ProtoReflect.Descriptor instead.
-func (*ExpungeSharedFSResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *ExpungeSharedFSResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListSharedFSProvidersRequest represents the parameters for lists all available shared filesystem providers.
-type ListSharedFSProvidersRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,1,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,2,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListSharedFSProvidersRequest) Reset() {
-	*x = ListSharedFSProvidersRequest{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListSharedFSProvidersRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListSharedFSProvidersRequest) ProtoMessage() {}
-
-func (x *ListSharedFSProvidersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListSharedFSProvidersRequest.ProtoReflect.Descriptor instead.
-func (*ListSharedFSProvidersRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *ListSharedFSProvidersRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListSharedFSProvidersRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListSharedFSProvidersRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListSharedFSProvidersRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListSharedFSProvidersResponse represents the response from lists all available shared filesystem providers.
-type ListSharedFSProvidersResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of SharedFSProviders
-	Items []*SharedFSProvider `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of SharedFSProviders
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListSharedFSProvidersResponse) Reset() {
-	*x = ListSharedFSProvidersResponse{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListSharedFSProvidersResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListSharedFSProvidersResponse) ProtoMessage() {}
-
-func (x *ListSharedFSProvidersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListSharedFSProvidersResponse.ProtoReflect.Descriptor instead.
-func (*ListSharedFSProvidersResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *ListSharedFSProvidersResponse) GetItems() []*SharedFSProvider {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListSharedFSProvidersResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// StopSharedFSRequest represents the parameters for stop a shared filesystem
-type StopSharedFSRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the shared filesystem
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// Force stop the shared filesystem.
-	Forced *bool `protobuf:"varint,2,opt,name=forced" json:"forced,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *StopSharedFSRequest) Reset() {
-	*x = StopSharedFSRequest{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *StopSharedFSRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*StopSharedFSRequest) ProtoMessage() {}
-
-func (x *StopSharedFSRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use StopSharedFSRequest.ProtoReflect.Descriptor instead.
-func (*StopSharedFSRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *StopSharedFSRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *StopSharedFSRequest) GetForced() bool {
-	if x != nil && x.Forced != nil {
-		return *x.Forced
-	}
-	return false
-}
-
-func (x *StopSharedFSRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *StopSharedFSRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *StopSharedFSRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// StopSharedFSResponse represents the response from stop a shared filesystem
-type StopSharedFSResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *StopSharedFSResponse) Reset() {
-	*x = StopSharedFSResponse{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *StopSharedFSResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*StopSharedFSResponse) ProtoMessage() {}
-
-func (x *StopSharedFSResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use StopSharedFSResponse.ProtoReflect.Descriptor instead.
-func (*StopSharedFSResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *StopSharedFSResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// RestartSharedFSRequest represents the parameters for restart a shared filesystem
-type RestartSharedFSRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the shared filesystem
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// is cleanup required
-	Cleanup *bool `protobuf:"varint,2,opt,name=cleanup" json:"cleanup,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RestartSharedFSRequest) Reset() {
-	*x = RestartSharedFSRequest{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[16]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RestartSharedFSRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RestartSharedFSRequest) ProtoMessage() {}
-
-func (x *RestartSharedFSRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[16]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RestartSharedFSRequest.ProtoReflect.Descriptor instead.
-func (*RestartSharedFSRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{16}
-}
-
-func (x *RestartSharedFSRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *RestartSharedFSRequest) GetCleanup() bool {
-	if x != nil && x.Cleanup != nil {
-		return *x.Cleanup
-	}
-	return false
-}
-
-func (x *RestartSharedFSRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *RestartSharedFSRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *RestartSharedFSRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// RestartSharedFSResponse represents the response from restart a shared filesystem
-type RestartSharedFSResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RestartSharedFSResponse) Reset() {
-	*x = RestartSharedFSResponse{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[17]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RestartSharedFSResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RestartSharedFSResponse) ProtoMessage() {}
-
-func (x *RestartSharedFSResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[17]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RestartSharedFSResponse.ProtoReflect.Descriptor instead.
-func (*RestartSharedFSResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{17}
-}
-
-func (x *RestartSharedFSResponse) GetResult() *Result {
+func (x *CreateSharedFSResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1225,7 +552,7 @@ type DestroySharedFSRequest struct {
 
 func (x *DestroySharedFSRequest) Reset() {
 	*x = DestroySharedFSRequest{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[18]
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1237,7 +564,7 @@ func (x *DestroySharedFSRequest) String() string {
 func (*DestroySharedFSRequest) ProtoMessage() {}
 
 func (x *DestroySharedFSRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[18]
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1250,7 +577,7 @@ func (x *DestroySharedFSRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DestroySharedFSRequest.ProtoReflect.Descriptor instead.
 func (*DestroySharedFSRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{18}
+	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *DestroySharedFSRequest) GetId() int64 {
@@ -1306,7 +633,7 @@ type DestroySharedFSResponse struct {
 
 func (x *DestroySharedFSResponse) Reset() {
 	*x = DestroySharedFSResponse{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[19]
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1318,7 +645,7 @@ func (x *DestroySharedFSResponse) String() string {
 func (*DestroySharedFSResponse) ProtoMessage() {}
 
 func (x *DestroySharedFSResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[19]
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1331,10 +658,126 @@ func (x *DestroySharedFSResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DestroySharedFSResponse.ProtoReflect.Descriptor instead.
 func (*DestroySharedFSResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{19}
+	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *DestroySharedFSResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ExpungeSharedFSRequest represents the parameters for expunge a shared filesystem by id
+type ExpungeSharedFSRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the shared filesystem to expunge
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ExpungeSharedFSRequest) Reset() {
+	*x = ExpungeSharedFSRequest{}
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ExpungeSharedFSRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExpungeSharedFSRequest) ProtoMessage() {}
+
+func (x *ExpungeSharedFSRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ExpungeSharedFSRequest.ProtoReflect.Descriptor instead.
+func (*ExpungeSharedFSRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *ExpungeSharedFSRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ExpungeSharedFSRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *ExpungeSharedFSRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *ExpungeSharedFSRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ExpungeSharedFSResponse represents the response from expunge a shared filesystem by id
+type ExpungeSharedFSResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ExpungeSharedFSResponse) Reset() {
+	*x = ExpungeSharedFSResponse{}
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ExpungeSharedFSResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExpungeSharedFSResponse) ProtoMessage() {}
+
+func (x *ExpungeSharedFSResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ExpungeSharedFSResponse.ProtoReflect.Descriptor instead.
+func (*ExpungeSharedFSResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *ExpungeSharedFSResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1381,7 +824,7 @@ type ListSharedFSRequest struct {
 
 func (x *ListSharedFSRequest) Reset() {
 	*x = ListSharedFSRequest{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[20]
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1393,7 +836,7 @@ func (x *ListSharedFSRequest) String() string {
 func (*ListSharedFSRequest) ProtoMessage() {}
 
 func (x *ListSharedFSRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[20]
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1406,7 +849,7 @@ func (x *ListSharedFSRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListSharedFSRequest.ProtoReflect.Descriptor instead.
 func (*ListSharedFSRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{20}
+	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ListSharedFSRequest) GetId() int64 {
@@ -1541,7 +984,7 @@ type ListSharedFSResponse struct {
 
 func (x *ListSharedFSResponse) Reset() {
 	*x = ListSharedFSResponse{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[21]
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1553,7 +996,7 @@ func (x *ListSharedFSResponse) String() string {
 func (*ListSharedFSResponse) ProtoMessage() {}
 
 func (x *ListSharedFSResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[21]
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1566,7 +1009,7 @@ func (x *ListSharedFSResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListSharedFSResponse.ProtoReflect.Descriptor instead.
 func (*ListSharedFSResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{21}
+	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *ListSharedFSResponse) GetItems() []*SharedFS {
@@ -1583,41 +1026,33 @@ func (x *ListSharedFSResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// ChangeSharedFSDiskOfferingRequest represents the parameters for change disk offering of a shared filesystem
-type ChangeSharedFSDiskOfferingRequest struct {
+// ListSharedFSProvidersRequest represents the parameters for lists all available shared filesystem providers.
+type ListSharedFSProvidersRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the shared filesystem
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the disk offering to use for the underlying storage
-	DiskOfferingId *int64 `protobuf:"varint,2,opt,name=disk_offering_id,json=diskOfferingId" json:"disk_offering_id,omitempty"`
-	// the size of the shared filesystem in GiB
-	Size *int64 `protobuf:"varint,3,opt,name=size" json:"size,omitempty"`
-	// min iops
-	MinIops *int64 `protobuf:"varint,4,opt,name=min_iops,json=minIops" json:"min_iops,omitempty"`
-	// max iops
-	MaxIops *int64 `protobuf:"varint,5,opt,name=max_iops,json=maxIops" json:"max_iops,omitempty"`
-	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,1,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,2,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ChangeSharedFSDiskOfferingRequest) Reset() {
-	*x = ChangeSharedFSDiskOfferingRequest{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[22]
+func (x *ListSharedFSProvidersRequest) Reset() {
+	*x = ListSharedFSProvidersRequest{}
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ChangeSharedFSDiskOfferingRequest) String() string {
+func (x *ListSharedFSProvidersRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ChangeSharedFSDiskOfferingRequest) ProtoMessage() {}
+func (*ListSharedFSProvidersRequest) ProtoMessage() {}
 
-func (x *ChangeSharedFSDiskOfferingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[22]
+func (x *ListSharedFSProvidersRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1628,69 +1063,150 @@ func (x *ChangeSharedFSDiskOfferingRequest) ProtoReflect() protoreflect.Message 
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ChangeSharedFSDiskOfferingRequest.ProtoReflect.Descriptor instead.
-func (*ChangeSharedFSDiskOfferingRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{22}
+// Deprecated: Use ListSharedFSProvidersRequest.ProtoReflect.Descriptor instead.
+func (*ListSharedFSProvidersRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{12}
 }
 
-func (x *ChangeSharedFSDiskOfferingRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ChangeSharedFSDiskOfferingRequest) GetDiskOfferingId() int64 {
-	if x != nil && x.DiskOfferingId != nil {
-		return *x.DiskOfferingId
-	}
-	return 0
-}
-
-func (x *ChangeSharedFSDiskOfferingRequest) GetSize() int64 {
-	if x != nil && x.Size != nil {
-		return *x.Size
-	}
-	return 0
-}
-
-func (x *ChangeSharedFSDiskOfferingRequest) GetMinIops() int64 {
-	if x != nil && x.MinIops != nil {
-		return *x.MinIops
-	}
-	return 0
-}
-
-func (x *ChangeSharedFSDiskOfferingRequest) GetMaxIops() int64 {
-	if x != nil && x.MaxIops != nil {
-		return *x.MaxIops
-	}
-	return 0
-}
-
-func (x *ChangeSharedFSDiskOfferingRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *ChangeSharedFSDiskOfferingRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
+func (x *ListSharedFSProvidersRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
 	}
 	return ""
 }
 
-func (x *ChangeSharedFSDiskOfferingRequest) GetResponseType() string {
+func (x *ListSharedFSProvidersRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListSharedFSProvidersRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListSharedFSProvidersRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// ChangeSharedFSDiskOfferingResponse represents the response from change disk offering of a shared filesystem
-type ChangeSharedFSDiskOfferingResponse struct {
+// ListSharedFSProvidersResponse represents the response from lists all available shared filesystem providers.
+type ListSharedFSProvidersResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of SharedFSProviders
+	Items []*SharedFSProvider `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of SharedFSProviders
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListSharedFSProvidersResponse) Reset() {
+	*x = ListSharedFSProvidersResponse{}
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListSharedFSProvidersResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListSharedFSProvidersResponse) ProtoMessage() {}
+
+func (x *ListSharedFSProvidersResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListSharedFSProvidersResponse.ProtoReflect.Descriptor instead.
+func (*ListSharedFSProvidersResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *ListSharedFSProvidersResponse) GetItems() []*SharedFSProvider {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListSharedFSProvidersResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// RecoverSharedFSRequest represents the parameters for recover a shared filesystem by id
+type RecoverSharedFSRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the shared filesystem to recover
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RecoverSharedFSRequest) Reset() {
+	*x = RecoverSharedFSRequest{}
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RecoverSharedFSRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RecoverSharedFSRequest) ProtoMessage() {}
+
+func (x *RecoverSharedFSRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RecoverSharedFSRequest.ProtoReflect.Descriptor instead.
+func (*RecoverSharedFSRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *RecoverSharedFSRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *RecoverSharedFSRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// RecoverSharedFSResponse represents the response from recover a shared filesystem by id
+type RecoverSharedFSResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -1698,21 +1214,21 @@ type ChangeSharedFSDiskOfferingResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ChangeSharedFSDiskOfferingResponse) Reset() {
-	*x = ChangeSharedFSDiskOfferingResponse{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[23]
+func (x *RecoverSharedFSResponse) Reset() {
+	*x = RecoverSharedFSResponse{}
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ChangeSharedFSDiskOfferingResponse) String() string {
+func (x *RecoverSharedFSResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ChangeSharedFSDiskOfferingResponse) ProtoMessage() {}
+func (*RecoverSharedFSResponse) ProtoMessage() {}
 
-func (x *ChangeSharedFSDiskOfferingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[23]
+func (x *RecoverSharedFSResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1723,50 +1239,47 @@ func (x *ChangeSharedFSDiskOfferingResponse) ProtoReflect() protoreflect.Message
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ChangeSharedFSDiskOfferingResponse.ProtoReflect.Descriptor instead.
-func (*ChangeSharedFSDiskOfferingResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{23}
+// Deprecated: Use RecoverSharedFSResponse.ProtoReflect.Descriptor instead.
+func (*RecoverSharedFSResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{15}
 }
 
-func (x *ChangeSharedFSDiskOfferingResponse) GetResult() *Result {
+func (x *RecoverSharedFSResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
 	return nil
 }
 
-// SharedFSProvider represents a SharedFSProvider Item
-type SharedFSProvider struct {
+// RestartSharedFSRequest represents the parameters for restart a shared filesystem
+type RestartSharedFSRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the SharedFSProvider
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the SharedFSProvider
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the SharedFSProvider
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the SharedFSProvider
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	// the ID of the shared filesystem
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// is cleanup required
+	Cleanup *bool `protobuf:"varint,2,opt,name=cleanup" json:"cleanup,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *SharedFSProvider) Reset() {
-	*x = SharedFSProvider{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[24]
+func (x *RestartSharedFSRequest) Reset() {
+	*x = RestartSharedFSRequest{}
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *SharedFSProvider) String() string {
+func (x *RestartSharedFSRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SharedFSProvider) ProtoMessage() {}
+func (*RestartSharedFSRequest) ProtoMessage() {}
 
-func (x *SharedFSProvider) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[24]
+func (x *RestartSharedFSRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1777,44 +1290,449 @@ func (x *SharedFSProvider) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SharedFSProvider.ProtoReflect.Descriptor instead.
-func (*SharedFSProvider) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{24}
+// Deprecated: Use RestartSharedFSRequest.ProtoReflect.Descriptor instead.
+func (*RestartSharedFSRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{16}
 }
 
-func (x *SharedFSProvider) GetId() string {
+func (x *RestartSharedFSRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
+	}
+	return 0
+}
+
+func (x *RestartSharedFSRequest) GetCleanup() bool {
+	if x != nil && x.Cleanup != nil {
+		return *x.Cleanup
+	}
+	return false
+}
+
+func (x *RestartSharedFSRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *RestartSharedFSRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *SharedFSProvider) GetName() string {
+func (x *RestartSharedFSRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// RestartSharedFSResponse represents the response from restart a shared filesystem
+type RestartSharedFSResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RestartSharedFSResponse) Reset() {
+	*x = RestartSharedFSResponse{}
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RestartSharedFSResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RestartSharedFSResponse) ProtoMessage() {}
+
+func (x *RestartSharedFSResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RestartSharedFSResponse.ProtoReflect.Descriptor instead.
+func (*RestartSharedFSResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *RestartSharedFSResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// StartSharedFSRequest represents the parameters for start a shared filesystem
+type StartSharedFSRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the shared filesystem
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StartSharedFSRequest) Reset() {
+	*x = StartSharedFSRequest{}
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StartSharedFSRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StartSharedFSRequest) ProtoMessage() {}
+
+func (x *StartSharedFSRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StartSharedFSRequest.ProtoReflect.Descriptor instead.
+func (*StartSharedFSRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *StartSharedFSRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *StartSharedFSRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *StartSharedFSRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *StartSharedFSRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// StartSharedFSResponse represents the response from start a shared filesystem
+type StartSharedFSResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StartSharedFSResponse) Reset() {
+	*x = StartSharedFSResponse{}
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StartSharedFSResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StartSharedFSResponse) ProtoMessage() {}
+
+func (x *StartSharedFSResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StartSharedFSResponse.ProtoReflect.Descriptor instead.
+func (*StartSharedFSResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *StartSharedFSResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// StopSharedFSRequest represents the parameters for stop a shared filesystem
+type StopSharedFSRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the shared filesystem
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// Force stop the shared filesystem.
+	Forced *bool `protobuf:"varint,2,opt,name=forced" json:"forced,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StopSharedFSRequest) Reset() {
+	*x = StopSharedFSRequest{}
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StopSharedFSRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StopSharedFSRequest) ProtoMessage() {}
+
+func (x *StopSharedFSRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StopSharedFSRequest.ProtoReflect.Descriptor instead.
+func (*StopSharedFSRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *StopSharedFSRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *StopSharedFSRequest) GetForced() bool {
+	if x != nil && x.Forced != nil {
+		return *x.Forced
+	}
+	return false
+}
+
+func (x *StopSharedFSRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *StopSharedFSRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *StopSharedFSRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// StopSharedFSResponse represents the response from stop a shared filesystem
+type StopSharedFSResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StopSharedFSResponse) Reset() {
+	*x = StopSharedFSResponse{}
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StopSharedFSResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StopSharedFSResponse) ProtoMessage() {}
+
+func (x *StopSharedFSResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StopSharedFSResponse.ProtoReflect.Descriptor instead.
+func (*StopSharedFSResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *StopSharedFSResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UpdateSharedFSRequest represents the parameters for update a shared filesystem
+type UpdateSharedFSRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the shared filesystem
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the name of the shared filesystem.
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// the description for the shared filesystem.
+	Description *string `protobuf:"bytes,3,opt,name=description" json:"description,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateSharedFSRequest) Reset() {
+	*x = UpdateSharedFSRequest{}
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateSharedFSRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateSharedFSRequest) ProtoMessage() {}
+
+func (x *UpdateSharedFSRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateSharedFSRequest.ProtoReflect.Descriptor instead.
+func (*UpdateSharedFSRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *UpdateSharedFSRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateSharedFSRequest) GetName() string {
 	if x != nil && x.Name != nil {
 		return *x.Name
 	}
 	return ""
 }
 
-func (x *SharedFSProvider) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *SharedFSProvider) GetDescription() string {
+func (x *UpdateSharedFSRequest) GetDescription() string {
 	if x != nil && x.Description != nil {
 		return *x.Description
 	}
 	return ""
 }
 
-func (x *SharedFSProvider) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
+func (x *UpdateSharedFSRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
 	}
 	return ""
+}
+
+// UpdateSharedFSResponse represents the response from update a shared filesystem
+type UpdateSharedFSResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateSharedFSResponse) Reset() {
+	*x = UpdateSharedFSResponse{}
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateSharedFSResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateSharedFSResponse) ProtoMessage() {}
+
+func (x *UpdateSharedFSResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateSharedFSResponse.ProtoReflect.Descriptor instead.
+func (*UpdateSharedFSResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *UpdateSharedFSResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
 }
 
 // SharedFS represents a SharedFS Item
@@ -1836,7 +1754,7 @@ type SharedFS struct {
 
 func (x *SharedFS) Reset() {
 	*x = SharedFS{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[25]
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1848,7 +1766,7 @@ func (x *SharedFS) String() string {
 func (*SharedFS) ProtoMessage() {}
 
 func (x *SharedFS) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[25]
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1861,7 +1779,7 @@ func (x *SharedFS) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SharedFS.ProtoReflect.Descriptor instead.
 func (*SharedFS) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{25}
+	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *SharedFS) GetId() string {
@@ -1893,6 +1811,88 @@ func (x *SharedFS) GetDescription() string {
 }
 
 func (x *SharedFS) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// SharedFSProvider represents a SharedFSProvider Item
+type SharedFSProvider struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the SharedFSProvider
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the SharedFSProvider
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the SharedFSProvider
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the SharedFSProvider
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SharedFSProvider) Reset() {
+	*x = SharedFSProvider{}
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SharedFSProvider) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SharedFSProvider) ProtoMessage() {}
+
+func (x *SharedFSProvider) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SharedFSProvider.ProtoReflect.Descriptor instead.
+func (*SharedFSProvider) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *SharedFSProvider) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *SharedFSProvider) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *SharedFSProvider) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *SharedFSProvider) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *SharedFSProvider) GetCreated() string {
 	if x != nil && x.Created != nil {
 		return *x.Created
 	}
@@ -1954,151 +1954,6 @@ func (x *Success) GetDisplayText() string {
 	return ""
 }
 
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[27]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[27]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{27}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
 // Result represents a generic operation result
 type Result struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -2118,7 +1973,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[28]
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2130,7 +1985,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[28]
+	mi := &file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2143,7 +1998,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{28}
+	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -2185,7 +2040,18 @@ var File_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto protorefle
 
 const file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDesc = "" +
 	"\n" +
-	"<cloudstack/management/storage/sharedfs/v1/sharedfs.gen.proto\x12)cloudstack.management.storage.sharedfs.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xf3\x01\n" +
+	"<cloudstack/management/storage/sharedfs/v1/sharedfs.gen.proto\x12)cloudstack.management.storage.sharedfs.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xac\x02\n" +
+	"!ChangeSharedFSDiskOfferingRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12(\n" +
+	"\x10disk_offering_id\x18\x02 \x01(\x03R\x0ediskOfferingId\x12\x12\n" +
+	"\x04size\x18\x03 \x01(\x03R\x04size\x12\x19\n" +
+	"\bmin_iops\x18\x04 \x01(\x03R\aminIops\x12\x19\n" +
+	"\bmax_iops\x18\x05 \x01(\x03R\amaxIops\x12$\n" +
+	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\"o\n" +
+	"\"ChangeSharedFSDiskOfferingResponse\x12I\n" +
+	"\x06result\x18\x01 \x01(\v21.cloudstack.management.storage.sharedfs.v1.ResultR\x06result\"\xf3\x01\n" +
 	"$ChangeSharedFSServiceOfferingRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x126\n" +
 	"\x13service_offering_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11serviceOfferingId\x12$\n" +
@@ -2219,59 +2085,6 @@ const file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDesc 
 	"\x0finjected_job_id\x18\x10 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x11 \x01(\tR\fresponseType\"c\n" +
 	"\x16CreateSharedFSResponse\x12I\n" +
-	"\x06result\x18\x01 \x01(\v21.cloudstack.management.storage.sharedfs.v1.ResultR\x06result\"M\n" +
-	"\x16RecoverSharedFSRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"d\n" +
-	"\x17RecoverSharedFSResponse\x12I\n" +
-	"\x06result\x18\x01 \x01(\v21.cloudstack.management.storage.sharedfs.v1.ResultR\x06result\"\xa2\x01\n" +
-	"\x15UpdateSharedFSRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1e\n" +
-	"\x04name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12,\n" +
-	"\vdescription\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"c\n" +
-	"\x16UpdateSharedFSResponse\x12I\n" +
-	"\x06result\x18\x01 \x01(\v21.cloudstack.management.storage.sharedfs.v1.ResultR\x06result\"\xab\x01\n" +
-	"\x14StartSharedFSRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"b\n" +
-	"\x15StartSharedFSResponse\x12I\n" +
-	"\x06result\x18\x01 \x01(\v21.cloudstack.management.storage.sharedfs.v1.ResultR\x06result\"\xa5\x01\n" +
-	"\x16ExpungeSharedFSRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"d\n" +
-	"\x17ExpungeSharedFSResponse\x12I\n" +
-	"\x06result\x18\x01 \x01(\v21.cloudstack.management.storage.sharedfs.v1.ResultR\x06result\"\x8e\x01\n" +
-	"\x1cListSharedFSProvidersRequest\x12\x18\n" +
-	"\akeyword\x18\x01 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x03 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"\x9a\x01\n" +
-	"\x1dListSharedFSProvidersResponse\x12Q\n" +
-	"\x05items\x18\x01 \x03(\v2;.cloudstack.management.storage.sharedfs.v1.SharedFSProviderR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xc9\x01\n" +
-	"\x13StopSharedFSRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1d\n" +
-	"\x06forced\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"a\n" +
-	"\x14StopSharedFSResponse\x12I\n" +
-	"\x06result\x18\x01 \x01(\v21.cloudstack.management.storage.sharedfs.v1.ResultR\x06result\"\xce\x01\n" +
-	"\x16RestartSharedFSRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
-	"\acleanup\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\acleanup\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"d\n" +
-	"\x17RestartSharedFSResponse\x12I\n" +
 	"\x06result\x18\x01 \x01(\v21.cloudstack.management.storage.sharedfs.v1.ResultR\x06result\"\xe5\x01\n" +
 	"\x16DestroySharedFSRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1f\n" +
@@ -2281,6 +2094,13 @@ const file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDesc 
 	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"d\n" +
 	"\x17DestroySharedFSResponse\x12I\n" +
+	"\x06result\x18\x01 \x01(\v21.cloudstack.management.storage.sharedfs.v1.ResultR\x06result\"\xa5\x01\n" +
+	"\x16ExpungeSharedFSRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"d\n" +
+	"\x17ExpungeSharedFSResponse\x12I\n" +
 	"\x06result\x18\x01 \x01(\v21.cloudstack.management.storage.sharedfs.v1.ResultR\x06result\"\xcc\x06\n" +
 	"\x13ListSharedFSRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1e\n" +
@@ -2311,25 +2131,60 @@ const file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDesc 
 	"\x14ListSharedFSResponse\x12I\n" +
 	"\x05items\x18\x01 \x03(\v23.cloudstack.management.storage.sharedfs.v1.SharedFSR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xac\x02\n" +
-	"!ChangeSharedFSDiskOfferingRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12(\n" +
-	"\x10disk_offering_id\x18\x02 \x01(\x03R\x0ediskOfferingId\x12\x12\n" +
-	"\x04size\x18\x03 \x01(\x03R\x04size\x12\x19\n" +
-	"\bmin_iops\x18\x04 \x01(\x03R\aminIops\x12\x19\n" +
-	"\bmax_iops\x18\x05 \x01(\x03R\amaxIops\x12$\n" +
-	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\"o\n" +
-	"\"ChangeSharedFSDiskOfferingResponse\x12I\n" +
-	"\x06result\x18\x01 \x01(\v21.cloudstack.management.storage.sharedfs.v1.ResultR\x06result\"\x9f\x01\n" +
-	"\x10SharedFSProvider\x12\x18\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x8e\x01\n" +
+	"\x1cListSharedFSProvidersRequest\x12\x18\n" +
+	"\akeyword\x18\x01 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x03 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"\x9a\x01\n" +
+	"\x1dListSharedFSProvidersResponse\x12Q\n" +
+	"\x05items\x18\x01 \x03(\v2;.cloudstack.management.storage.sharedfs.v1.SharedFSProviderR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"M\n" +
+	"\x16RecoverSharedFSRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"d\n" +
+	"\x17RecoverSharedFSResponse\x12I\n" +
+	"\x06result\x18\x01 \x01(\v21.cloudstack.management.storage.sharedfs.v1.ResultR\x06result\"\xce\x01\n" +
+	"\x16RestartSharedFSRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
+	"\acleanup\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\acleanup\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"d\n" +
+	"\x17RestartSharedFSResponse\x12I\n" +
+	"\x06result\x18\x01 \x01(\v21.cloudstack.management.storage.sharedfs.v1.ResultR\x06result\"\xab\x01\n" +
+	"\x14StartSharedFSRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"b\n" +
+	"\x15StartSharedFSResponse\x12I\n" +
+	"\x06result\x18\x01 \x01(\v21.cloudstack.management.storage.sharedfs.v1.ResultR\x06result\"\xc9\x01\n" +
+	"\x13StopSharedFSRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1d\n" +
+	"\x06forced\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"a\n" +
+	"\x14StopSharedFSResponse\x12I\n" +
+	"\x06result\x18\x01 \x01(\v21.cloudstack.management.storage.sharedfs.v1.ResultR\x06result\"\xa2\x01\n" +
+	"\x15UpdateSharedFSRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1e\n" +
+	"\x04name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12,\n" +
+	"\vdescription\x18\x03 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"c\n" +
+	"\x16UpdateSharedFSResponse\x12I\n" +
+	"\x06result\x18\x01 \x01(\v21.cloudstack.management.storage.sharedfs.v1.ResultR\x06result\"\x97\x01\n" +
+	"\bSharedFS\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x97\x01\n" +
-	"\bSharedFS\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x9f\x01\n" +
+	"\x10SharedFSProvider\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -2337,46 +2192,27 @@ const file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDesc 
 	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xe8\x03\n" +
-	"\x04Item\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12V\n" +
-	"\adetails\x18\f \x03(\v2<.cloudstack.management.storage.sharedfs.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xb4\x0f\n" +
-	"\x0fSharedfsService\x12\xc4\x01\n" +
-	"\x1dChangeSharedFSServiceOffering\x12O.cloudstack.management.storage.sharedfs.v1.ChangeSharedFSServiceOfferingRequest\x1aP.cloudstack.management.storage.sharedfs.v1.ChangeSharedFSServiceOfferingResponse\"\x00\x12\x97\x01\n" +
-	"\x0eCreateSharedFS\x12@.cloudstack.management.storage.sharedfs.v1.CreateSharedFSRequest\x1aA.cloudstack.management.storage.sharedfs.v1.CreateSharedFSResponse\"\x00\x12\x9a\x01\n" +
-	"\x0fRecoverSharedFS\x12A.cloudstack.management.storage.sharedfs.v1.RecoverSharedFSRequest\x1aB.cloudstack.management.storage.sharedfs.v1.RecoverSharedFSResponse\"\x00\x12\x97\x01\n" +
-	"\x0eUpdateSharedFS\x12@.cloudstack.management.storage.sharedfs.v1.UpdateSharedFSRequest\x1aA.cloudstack.management.storage.sharedfs.v1.UpdateSharedFSResponse\"\x00\x12\x94\x01\n" +
-	"\rStartSharedFS\x12?.cloudstack.management.storage.sharedfs.v1.StartSharedFSRequest\x1a@.cloudstack.management.storage.sharedfs.v1.StartSharedFSResponse\"\x00\x12\x9a\x01\n" +
-	"\x0fExpungeSharedFS\x12A.cloudstack.management.storage.sharedfs.v1.ExpungeSharedFSRequest\x1aB.cloudstack.management.storage.sharedfs.v1.ExpungeSharedFSResponse\"\x00\x12\xac\x01\n" +
-	"\x15ListSharedFSProviders\x12G.cloudstack.management.storage.sharedfs.v1.ListSharedFSProvidersRequest\x1aH.cloudstack.management.storage.sharedfs.v1.ListSharedFSProvidersResponse\"\x00\x12\x91\x01\n" +
-	"\fStopSharedFS\x12>.cloudstack.management.storage.sharedfs.v1.StopSharedFSRequest\x1a?.cloudstack.management.storage.sharedfs.v1.StopSharedFSResponse\"\x00\x12\x9a\x01\n" +
-	"\x0fRestartSharedFS\x12A.cloudstack.management.storage.sharedfs.v1.RestartSharedFSRequest\x1aB.cloudstack.management.storage.sharedfs.v1.RestartSharedFSResponse\"\x00\x12\x9a\x01\n" +
-	"\x0fDestroySharedFS\x12A.cloudstack.management.storage.sharedfs.v1.DestroySharedFSRequest\x1aB.cloudstack.management.storage.sharedfs.v1.DestroySharedFSResponse\"\x00\x12\x91\x01\n" +
-	"\fListSharedFS\x12>.cloudstack.management.storage.sharedfs.v1.ListSharedFSRequest\x1a?.cloudstack.management.storage.sharedfs.v1.ListSharedFSResponse\"\x00\x12\xbb\x01\n" +
-	"\x1aChangeSharedFSDiskOffering\x12L.cloudstack.management.storage.sharedfs.v1.ChangeSharedFSDiskOfferingRequest\x1aM.cloudstack.management.storage.sharedfs.v1.ChangeSharedFSDiskOfferingResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xf4\x02\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\x89\x10\n" +
+	"\x0fSharedfsService\x12\xc2\x01\n" +
+	"\x1aChangeSharedFSDiskOffering\x12L.cloudstack.management.storage.sharedfs.v1.ChangeSharedFSDiskOfferingRequest\x1aM.cloudstack.management.storage.sharedfs.v1.ChangeSharedFSDiskOfferingResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xcb\x01\n" +
+	"\x1dChangeSharedFSServiceOffering\x12O.cloudstack.management.storage.sharedfs.v1.ChangeSharedFSServiceOfferingRequest\x1aP.cloudstack.management.storage.sharedfs.v1.ChangeSharedFSServiceOfferingResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x9e\x01\n" +
+	"\x0eCreateSharedFS\x12@.cloudstack.management.storage.sharedfs.v1.CreateSharedFSRequest\x1aA.cloudstack.management.storage.sharedfs.v1.CreateSharedFSResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xa1\x01\n" +
+	"\x0fDestroySharedFS\x12A.cloudstack.management.storage.sharedfs.v1.DestroySharedFSRequest\x1aB.cloudstack.management.storage.sharedfs.v1.DestroySharedFSResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xa1\x01\n" +
+	"\x0fExpungeSharedFS\x12A.cloudstack.management.storage.sharedfs.v1.ExpungeSharedFSRequest\x1aB.cloudstack.management.storage.sharedfs.v1.ExpungeSharedFSResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x98\x01\n" +
+	"\fListSharedFS\x12>.cloudstack.management.storage.sharedfs.v1.ListSharedFSRequest\x1a?.cloudstack.management.storage.sharedfs.v1.ListSharedFSResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xb3\x01\n" +
+	"\x15ListSharedFSProviders\x12G.cloudstack.management.storage.sharedfs.v1.ListSharedFSProvidersRequest\x1aH.cloudstack.management.storage.sharedfs.v1.ListSharedFSProvidersResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xa1\x01\n" +
+	"\x0fRecoverSharedFS\x12A.cloudstack.management.storage.sharedfs.v1.RecoverSharedFSRequest\x1aB.cloudstack.management.storage.sharedfs.v1.RecoverSharedFSResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xa1\x01\n" +
+	"\x0fRestartSharedFS\x12A.cloudstack.management.storage.sharedfs.v1.RestartSharedFSRequest\x1aB.cloudstack.management.storage.sharedfs.v1.RestartSharedFSResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x9b\x01\n" +
+	"\rStartSharedFS\x12?.cloudstack.management.storage.sharedfs.v1.StartSharedFSRequest\x1a@.cloudstack.management.storage.sharedfs.v1.StartSharedFSResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x98\x01\n" +
+	"\fStopSharedFS\x12>.cloudstack.management.storage.sharedfs.v1.StopSharedFSRequest\x1a?.cloudstack.management.storage.sharedfs.v1.StopSharedFSResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x9e\x01\n" +
+	"\x0eUpdateSharedFS\x12@.cloudstack.management.storage.sharedfs.v1.UpdateSharedFSRequest\x1aA.cloudstack.management.storage.sharedfs.v1.UpdateSharedFSResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\a\xc2>\x04\xc2>\x01\x02B\xf4\x02\n" +
 	"-com.cloudstack.management.storage.sharedfs.v1B\x10SharedfsGenProtoP\x01Zhgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/storage/sharedfs/v1;sharedfsv1\xa2\x02\x04CMSS\xaa\x02)Cloudstack.Management.Storage.Sharedfs.V1\xca\x02)Cloudstack\\Management\\Storage\\Sharedfs\\V1\xe2\x025Cloudstack\\Management\\Storage\\Sharedfs\\V1\\GPBMetadata\xea\x02-Cloudstack::Management::Storage::Sharedfs::V1b\beditionsp\xe8\a"
 
 var (
@@ -2391,84 +2227,81 @@ func file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescGZ
 	return file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDescData
 }
 
-var file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 31)
+var file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 29)
 var file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_goTypes = []any{
-	(*ChangeSharedFSServiceOfferingRequest)(nil),  // 0: cloudstack.management.storage.sharedfs.v1.ChangeSharedFSServiceOfferingRequest
-	(*ChangeSharedFSServiceOfferingResponse)(nil), // 1: cloudstack.management.storage.sharedfs.v1.ChangeSharedFSServiceOfferingResponse
-	(*CreateSharedFSRequest)(nil),                 // 2: cloudstack.management.storage.sharedfs.v1.CreateSharedFSRequest
-	(*CreateSharedFSResponse)(nil),                // 3: cloudstack.management.storage.sharedfs.v1.CreateSharedFSResponse
-	(*RecoverSharedFSRequest)(nil),                // 4: cloudstack.management.storage.sharedfs.v1.RecoverSharedFSRequest
-	(*RecoverSharedFSResponse)(nil),               // 5: cloudstack.management.storage.sharedfs.v1.RecoverSharedFSResponse
-	(*UpdateSharedFSRequest)(nil),                 // 6: cloudstack.management.storage.sharedfs.v1.UpdateSharedFSRequest
-	(*UpdateSharedFSResponse)(nil),                // 7: cloudstack.management.storage.sharedfs.v1.UpdateSharedFSResponse
-	(*StartSharedFSRequest)(nil),                  // 8: cloudstack.management.storage.sharedfs.v1.StartSharedFSRequest
-	(*StartSharedFSResponse)(nil),                 // 9: cloudstack.management.storage.sharedfs.v1.StartSharedFSResponse
-	(*ExpungeSharedFSRequest)(nil),                // 10: cloudstack.management.storage.sharedfs.v1.ExpungeSharedFSRequest
-	(*ExpungeSharedFSResponse)(nil),               // 11: cloudstack.management.storage.sharedfs.v1.ExpungeSharedFSResponse
+	(*ChangeSharedFSDiskOfferingRequest)(nil),     // 0: cloudstack.management.storage.sharedfs.v1.ChangeSharedFSDiskOfferingRequest
+	(*ChangeSharedFSDiskOfferingResponse)(nil),    // 1: cloudstack.management.storage.sharedfs.v1.ChangeSharedFSDiskOfferingResponse
+	(*ChangeSharedFSServiceOfferingRequest)(nil),  // 2: cloudstack.management.storage.sharedfs.v1.ChangeSharedFSServiceOfferingRequest
+	(*ChangeSharedFSServiceOfferingResponse)(nil), // 3: cloudstack.management.storage.sharedfs.v1.ChangeSharedFSServiceOfferingResponse
+	(*CreateSharedFSRequest)(nil),                 // 4: cloudstack.management.storage.sharedfs.v1.CreateSharedFSRequest
+	(*CreateSharedFSResponse)(nil),                // 5: cloudstack.management.storage.sharedfs.v1.CreateSharedFSResponse
+	(*DestroySharedFSRequest)(nil),                // 6: cloudstack.management.storage.sharedfs.v1.DestroySharedFSRequest
+	(*DestroySharedFSResponse)(nil),               // 7: cloudstack.management.storage.sharedfs.v1.DestroySharedFSResponse
+	(*ExpungeSharedFSRequest)(nil),                // 8: cloudstack.management.storage.sharedfs.v1.ExpungeSharedFSRequest
+	(*ExpungeSharedFSResponse)(nil),               // 9: cloudstack.management.storage.sharedfs.v1.ExpungeSharedFSResponse
+	(*ListSharedFSRequest)(nil),                   // 10: cloudstack.management.storage.sharedfs.v1.ListSharedFSRequest
+	(*ListSharedFSResponse)(nil),                  // 11: cloudstack.management.storage.sharedfs.v1.ListSharedFSResponse
 	(*ListSharedFSProvidersRequest)(nil),          // 12: cloudstack.management.storage.sharedfs.v1.ListSharedFSProvidersRequest
 	(*ListSharedFSProvidersResponse)(nil),         // 13: cloudstack.management.storage.sharedfs.v1.ListSharedFSProvidersResponse
-	(*StopSharedFSRequest)(nil),                   // 14: cloudstack.management.storage.sharedfs.v1.StopSharedFSRequest
-	(*StopSharedFSResponse)(nil),                  // 15: cloudstack.management.storage.sharedfs.v1.StopSharedFSResponse
+	(*RecoverSharedFSRequest)(nil),                // 14: cloudstack.management.storage.sharedfs.v1.RecoverSharedFSRequest
+	(*RecoverSharedFSResponse)(nil),               // 15: cloudstack.management.storage.sharedfs.v1.RecoverSharedFSResponse
 	(*RestartSharedFSRequest)(nil),                // 16: cloudstack.management.storage.sharedfs.v1.RestartSharedFSRequest
 	(*RestartSharedFSResponse)(nil),               // 17: cloudstack.management.storage.sharedfs.v1.RestartSharedFSResponse
-	(*DestroySharedFSRequest)(nil),                // 18: cloudstack.management.storage.sharedfs.v1.DestroySharedFSRequest
-	(*DestroySharedFSResponse)(nil),               // 19: cloudstack.management.storage.sharedfs.v1.DestroySharedFSResponse
-	(*ListSharedFSRequest)(nil),                   // 20: cloudstack.management.storage.sharedfs.v1.ListSharedFSRequest
-	(*ListSharedFSResponse)(nil),                  // 21: cloudstack.management.storage.sharedfs.v1.ListSharedFSResponse
-	(*ChangeSharedFSDiskOfferingRequest)(nil),     // 22: cloudstack.management.storage.sharedfs.v1.ChangeSharedFSDiskOfferingRequest
-	(*ChangeSharedFSDiskOfferingResponse)(nil),    // 23: cloudstack.management.storage.sharedfs.v1.ChangeSharedFSDiskOfferingResponse
-	(*SharedFSProvider)(nil),                      // 24: cloudstack.management.storage.sharedfs.v1.SharedFSProvider
-	(*SharedFS)(nil),                              // 25: cloudstack.management.storage.sharedfs.v1.SharedFS
+	(*StartSharedFSRequest)(nil),                  // 18: cloudstack.management.storage.sharedfs.v1.StartSharedFSRequest
+	(*StartSharedFSResponse)(nil),                 // 19: cloudstack.management.storage.sharedfs.v1.StartSharedFSResponse
+	(*StopSharedFSRequest)(nil),                   // 20: cloudstack.management.storage.sharedfs.v1.StopSharedFSRequest
+	(*StopSharedFSResponse)(nil),                  // 21: cloudstack.management.storage.sharedfs.v1.StopSharedFSResponse
+	(*UpdateSharedFSRequest)(nil),                 // 22: cloudstack.management.storage.sharedfs.v1.UpdateSharedFSRequest
+	(*UpdateSharedFSResponse)(nil),                // 23: cloudstack.management.storage.sharedfs.v1.UpdateSharedFSResponse
+	(*SharedFS)(nil),                              // 24: cloudstack.management.storage.sharedfs.v1.SharedFS
+	(*SharedFSProvider)(nil),                      // 25: cloudstack.management.storage.sharedfs.v1.SharedFSProvider
 	(*Success)(nil),                               // 26: cloudstack.management.storage.sharedfs.v1.Success
-	(*Item)(nil),                                  // 27: cloudstack.management.storage.sharedfs.v1.Item
-	(*Result)(nil),                                // 28: cloudstack.management.storage.sharedfs.v1.Result
-	nil,                                           // 29: cloudstack.management.storage.sharedfs.v1.ListSharedFSRequest.TagsEntry
-	nil,                                           // 30: cloudstack.management.storage.sharedfs.v1.Item.DetailsEntry
+	(*Result)(nil),                                // 27: cloudstack.management.storage.sharedfs.v1.Result
+	nil,                                           // 28: cloudstack.management.storage.sharedfs.v1.ListSharedFSRequest.TagsEntry
 }
 var file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_depIdxs = []int32{
-	28, // 0: cloudstack.management.storage.sharedfs.v1.ChangeSharedFSServiceOfferingResponse.result:type_name -> cloudstack.management.storage.sharedfs.v1.Result
-	28, // 1: cloudstack.management.storage.sharedfs.v1.CreateSharedFSResponse.result:type_name -> cloudstack.management.storage.sharedfs.v1.Result
-	28, // 2: cloudstack.management.storage.sharedfs.v1.RecoverSharedFSResponse.result:type_name -> cloudstack.management.storage.sharedfs.v1.Result
-	28, // 3: cloudstack.management.storage.sharedfs.v1.UpdateSharedFSResponse.result:type_name -> cloudstack.management.storage.sharedfs.v1.Result
-	28, // 4: cloudstack.management.storage.sharedfs.v1.StartSharedFSResponse.result:type_name -> cloudstack.management.storage.sharedfs.v1.Result
-	28, // 5: cloudstack.management.storage.sharedfs.v1.ExpungeSharedFSResponse.result:type_name -> cloudstack.management.storage.sharedfs.v1.Result
-	24, // 6: cloudstack.management.storage.sharedfs.v1.ListSharedFSProvidersResponse.items:type_name -> cloudstack.management.storage.sharedfs.v1.SharedFSProvider
-	28, // 7: cloudstack.management.storage.sharedfs.v1.StopSharedFSResponse.result:type_name -> cloudstack.management.storage.sharedfs.v1.Result
-	28, // 8: cloudstack.management.storage.sharedfs.v1.RestartSharedFSResponse.result:type_name -> cloudstack.management.storage.sharedfs.v1.Result
-	28, // 9: cloudstack.management.storage.sharedfs.v1.DestroySharedFSResponse.result:type_name -> cloudstack.management.storage.sharedfs.v1.Result
-	29, // 10: cloudstack.management.storage.sharedfs.v1.ListSharedFSRequest.tags:type_name -> cloudstack.management.storage.sharedfs.v1.ListSharedFSRequest.TagsEntry
-	25, // 11: cloudstack.management.storage.sharedfs.v1.ListSharedFSResponse.items:type_name -> cloudstack.management.storage.sharedfs.v1.SharedFS
-	28, // 12: cloudstack.management.storage.sharedfs.v1.ChangeSharedFSDiskOfferingResponse.result:type_name -> cloudstack.management.storage.sharedfs.v1.Result
-	30, // 13: cloudstack.management.storage.sharedfs.v1.Item.details:type_name -> cloudstack.management.storage.sharedfs.v1.Item.DetailsEntry
-	0,  // 14: cloudstack.management.storage.sharedfs.v1.SharedfsService.ChangeSharedFSServiceOffering:input_type -> cloudstack.management.storage.sharedfs.v1.ChangeSharedFSServiceOfferingRequest
-	2,  // 15: cloudstack.management.storage.sharedfs.v1.SharedfsService.CreateSharedFS:input_type -> cloudstack.management.storage.sharedfs.v1.CreateSharedFSRequest
-	4,  // 16: cloudstack.management.storage.sharedfs.v1.SharedfsService.RecoverSharedFS:input_type -> cloudstack.management.storage.sharedfs.v1.RecoverSharedFSRequest
-	6,  // 17: cloudstack.management.storage.sharedfs.v1.SharedfsService.UpdateSharedFS:input_type -> cloudstack.management.storage.sharedfs.v1.UpdateSharedFSRequest
-	8,  // 18: cloudstack.management.storage.sharedfs.v1.SharedfsService.StartSharedFS:input_type -> cloudstack.management.storage.sharedfs.v1.StartSharedFSRequest
-	10, // 19: cloudstack.management.storage.sharedfs.v1.SharedfsService.ExpungeSharedFS:input_type -> cloudstack.management.storage.sharedfs.v1.ExpungeSharedFSRequest
-	12, // 20: cloudstack.management.storage.sharedfs.v1.SharedfsService.ListSharedFSProviders:input_type -> cloudstack.management.storage.sharedfs.v1.ListSharedFSProvidersRequest
-	14, // 21: cloudstack.management.storage.sharedfs.v1.SharedfsService.StopSharedFS:input_type -> cloudstack.management.storage.sharedfs.v1.StopSharedFSRequest
-	16, // 22: cloudstack.management.storage.sharedfs.v1.SharedfsService.RestartSharedFS:input_type -> cloudstack.management.storage.sharedfs.v1.RestartSharedFSRequest
-	18, // 23: cloudstack.management.storage.sharedfs.v1.SharedfsService.DestroySharedFS:input_type -> cloudstack.management.storage.sharedfs.v1.DestroySharedFSRequest
-	20, // 24: cloudstack.management.storage.sharedfs.v1.SharedfsService.ListSharedFS:input_type -> cloudstack.management.storage.sharedfs.v1.ListSharedFSRequest
-	22, // 25: cloudstack.management.storage.sharedfs.v1.SharedfsService.ChangeSharedFSDiskOffering:input_type -> cloudstack.management.storage.sharedfs.v1.ChangeSharedFSDiskOfferingRequest
-	1,  // 26: cloudstack.management.storage.sharedfs.v1.SharedfsService.ChangeSharedFSServiceOffering:output_type -> cloudstack.management.storage.sharedfs.v1.ChangeSharedFSServiceOfferingResponse
-	3,  // 27: cloudstack.management.storage.sharedfs.v1.SharedfsService.CreateSharedFS:output_type -> cloudstack.management.storage.sharedfs.v1.CreateSharedFSResponse
-	5,  // 28: cloudstack.management.storage.sharedfs.v1.SharedfsService.RecoverSharedFS:output_type -> cloudstack.management.storage.sharedfs.v1.RecoverSharedFSResponse
-	7,  // 29: cloudstack.management.storage.sharedfs.v1.SharedfsService.UpdateSharedFS:output_type -> cloudstack.management.storage.sharedfs.v1.UpdateSharedFSResponse
-	9,  // 30: cloudstack.management.storage.sharedfs.v1.SharedfsService.StartSharedFS:output_type -> cloudstack.management.storage.sharedfs.v1.StartSharedFSResponse
-	11, // 31: cloudstack.management.storage.sharedfs.v1.SharedfsService.ExpungeSharedFS:output_type -> cloudstack.management.storage.sharedfs.v1.ExpungeSharedFSResponse
-	13, // 32: cloudstack.management.storage.sharedfs.v1.SharedfsService.ListSharedFSProviders:output_type -> cloudstack.management.storage.sharedfs.v1.ListSharedFSProvidersResponse
-	15, // 33: cloudstack.management.storage.sharedfs.v1.SharedfsService.StopSharedFS:output_type -> cloudstack.management.storage.sharedfs.v1.StopSharedFSResponse
-	17, // 34: cloudstack.management.storage.sharedfs.v1.SharedfsService.RestartSharedFS:output_type -> cloudstack.management.storage.sharedfs.v1.RestartSharedFSResponse
-	19, // 35: cloudstack.management.storage.sharedfs.v1.SharedfsService.DestroySharedFS:output_type -> cloudstack.management.storage.sharedfs.v1.DestroySharedFSResponse
-	21, // 36: cloudstack.management.storage.sharedfs.v1.SharedfsService.ListSharedFS:output_type -> cloudstack.management.storage.sharedfs.v1.ListSharedFSResponse
-	23, // 37: cloudstack.management.storage.sharedfs.v1.SharedfsService.ChangeSharedFSDiskOffering:output_type -> cloudstack.management.storage.sharedfs.v1.ChangeSharedFSDiskOfferingResponse
-	26, // [26:38] is the sub-list for method output_type
-	14, // [14:26] is the sub-list for method input_type
-	14, // [14:14] is the sub-list for extension type_name
-	14, // [14:14] is the sub-list for extension extendee
-	0,  // [0:14] is the sub-list for field type_name
+	27, // 0: cloudstack.management.storage.sharedfs.v1.ChangeSharedFSDiskOfferingResponse.result:type_name -> cloudstack.management.storage.sharedfs.v1.Result
+	27, // 1: cloudstack.management.storage.sharedfs.v1.ChangeSharedFSServiceOfferingResponse.result:type_name -> cloudstack.management.storage.sharedfs.v1.Result
+	27, // 2: cloudstack.management.storage.sharedfs.v1.CreateSharedFSResponse.result:type_name -> cloudstack.management.storage.sharedfs.v1.Result
+	27, // 3: cloudstack.management.storage.sharedfs.v1.DestroySharedFSResponse.result:type_name -> cloudstack.management.storage.sharedfs.v1.Result
+	27, // 4: cloudstack.management.storage.sharedfs.v1.ExpungeSharedFSResponse.result:type_name -> cloudstack.management.storage.sharedfs.v1.Result
+	28, // 5: cloudstack.management.storage.sharedfs.v1.ListSharedFSRequest.tags:type_name -> cloudstack.management.storage.sharedfs.v1.ListSharedFSRequest.TagsEntry
+	24, // 6: cloudstack.management.storage.sharedfs.v1.ListSharedFSResponse.items:type_name -> cloudstack.management.storage.sharedfs.v1.SharedFS
+	25, // 7: cloudstack.management.storage.sharedfs.v1.ListSharedFSProvidersResponse.items:type_name -> cloudstack.management.storage.sharedfs.v1.SharedFSProvider
+	27, // 8: cloudstack.management.storage.sharedfs.v1.RecoverSharedFSResponse.result:type_name -> cloudstack.management.storage.sharedfs.v1.Result
+	27, // 9: cloudstack.management.storage.sharedfs.v1.RestartSharedFSResponse.result:type_name -> cloudstack.management.storage.sharedfs.v1.Result
+	27, // 10: cloudstack.management.storage.sharedfs.v1.StartSharedFSResponse.result:type_name -> cloudstack.management.storage.sharedfs.v1.Result
+	27, // 11: cloudstack.management.storage.sharedfs.v1.StopSharedFSResponse.result:type_name -> cloudstack.management.storage.sharedfs.v1.Result
+	27, // 12: cloudstack.management.storage.sharedfs.v1.UpdateSharedFSResponse.result:type_name -> cloudstack.management.storage.sharedfs.v1.Result
+	0,  // 13: cloudstack.management.storage.sharedfs.v1.SharedfsService.ChangeSharedFSDiskOffering:input_type -> cloudstack.management.storage.sharedfs.v1.ChangeSharedFSDiskOfferingRequest
+	2,  // 14: cloudstack.management.storage.sharedfs.v1.SharedfsService.ChangeSharedFSServiceOffering:input_type -> cloudstack.management.storage.sharedfs.v1.ChangeSharedFSServiceOfferingRequest
+	4,  // 15: cloudstack.management.storage.sharedfs.v1.SharedfsService.CreateSharedFS:input_type -> cloudstack.management.storage.sharedfs.v1.CreateSharedFSRequest
+	6,  // 16: cloudstack.management.storage.sharedfs.v1.SharedfsService.DestroySharedFS:input_type -> cloudstack.management.storage.sharedfs.v1.DestroySharedFSRequest
+	8,  // 17: cloudstack.management.storage.sharedfs.v1.SharedfsService.ExpungeSharedFS:input_type -> cloudstack.management.storage.sharedfs.v1.ExpungeSharedFSRequest
+	10, // 18: cloudstack.management.storage.sharedfs.v1.SharedfsService.ListSharedFS:input_type -> cloudstack.management.storage.sharedfs.v1.ListSharedFSRequest
+	12, // 19: cloudstack.management.storage.sharedfs.v1.SharedfsService.ListSharedFSProviders:input_type -> cloudstack.management.storage.sharedfs.v1.ListSharedFSProvidersRequest
+	14, // 20: cloudstack.management.storage.sharedfs.v1.SharedfsService.RecoverSharedFS:input_type -> cloudstack.management.storage.sharedfs.v1.RecoverSharedFSRequest
+	16, // 21: cloudstack.management.storage.sharedfs.v1.SharedfsService.RestartSharedFS:input_type -> cloudstack.management.storage.sharedfs.v1.RestartSharedFSRequest
+	18, // 22: cloudstack.management.storage.sharedfs.v1.SharedfsService.StartSharedFS:input_type -> cloudstack.management.storage.sharedfs.v1.StartSharedFSRequest
+	20, // 23: cloudstack.management.storage.sharedfs.v1.SharedfsService.StopSharedFS:input_type -> cloudstack.management.storage.sharedfs.v1.StopSharedFSRequest
+	22, // 24: cloudstack.management.storage.sharedfs.v1.SharedfsService.UpdateSharedFS:input_type -> cloudstack.management.storage.sharedfs.v1.UpdateSharedFSRequest
+	1,  // 25: cloudstack.management.storage.sharedfs.v1.SharedfsService.ChangeSharedFSDiskOffering:output_type -> cloudstack.management.storage.sharedfs.v1.ChangeSharedFSDiskOfferingResponse
+	3,  // 26: cloudstack.management.storage.sharedfs.v1.SharedfsService.ChangeSharedFSServiceOffering:output_type -> cloudstack.management.storage.sharedfs.v1.ChangeSharedFSServiceOfferingResponse
+	5,  // 27: cloudstack.management.storage.sharedfs.v1.SharedfsService.CreateSharedFS:output_type -> cloudstack.management.storage.sharedfs.v1.CreateSharedFSResponse
+	7,  // 28: cloudstack.management.storage.sharedfs.v1.SharedfsService.DestroySharedFS:output_type -> cloudstack.management.storage.sharedfs.v1.DestroySharedFSResponse
+	9,  // 29: cloudstack.management.storage.sharedfs.v1.SharedfsService.ExpungeSharedFS:output_type -> cloudstack.management.storage.sharedfs.v1.ExpungeSharedFSResponse
+	11, // 30: cloudstack.management.storage.sharedfs.v1.SharedfsService.ListSharedFS:output_type -> cloudstack.management.storage.sharedfs.v1.ListSharedFSResponse
+	13, // 31: cloudstack.management.storage.sharedfs.v1.SharedfsService.ListSharedFSProviders:output_type -> cloudstack.management.storage.sharedfs.v1.ListSharedFSProvidersResponse
+	15, // 32: cloudstack.management.storage.sharedfs.v1.SharedfsService.RecoverSharedFS:output_type -> cloudstack.management.storage.sharedfs.v1.RecoverSharedFSResponse
+	17, // 33: cloudstack.management.storage.sharedfs.v1.SharedfsService.RestartSharedFS:output_type -> cloudstack.management.storage.sharedfs.v1.RestartSharedFSResponse
+	19, // 34: cloudstack.management.storage.sharedfs.v1.SharedfsService.StartSharedFS:output_type -> cloudstack.management.storage.sharedfs.v1.StartSharedFSResponse
+	21, // 35: cloudstack.management.storage.sharedfs.v1.SharedfsService.StopSharedFS:output_type -> cloudstack.management.storage.sharedfs.v1.StopSharedFSResponse
+	23, // 36: cloudstack.management.storage.sharedfs.v1.SharedfsService.UpdateSharedFS:output_type -> cloudstack.management.storage.sharedfs.v1.UpdateSharedFSResponse
+	25, // [25:37] is the sub-list for method output_type
+	13, // [13:25] is the sub-list for method input_type
+	13, // [13:13] is the sub-list for extension type_name
+	13, // [13:13] is the sub-list for extension extendee
+	0,  // [0:13] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_init() }
@@ -2482,7 +2315,7 @@ func file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDesc), len(file_cloudstack_management_storage_sharedfs_v1_sharedfs_gen_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   31,
+			NumMessages:   29,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

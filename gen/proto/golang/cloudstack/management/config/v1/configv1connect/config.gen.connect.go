@@ -33,48 +33,48 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// ConfigServiceUpdateHypervisorCapabilitiesProcedure is the fully-qualified name of the
-	// ConfigService's UpdateHypervisorCapabilities RPC.
-	ConfigServiceUpdateHypervisorCapabilitiesProcedure = "/cloudstack.management.config.v1.ConfigService/UpdateHypervisorCapabilities"
-	// ConfigServiceListDeploymentPlannersProcedure is the fully-qualified name of the ConfigService's
-	// ListDeploymentPlanners RPC.
-	ConfigServiceListDeploymentPlannersProcedure = "/cloudstack.management.config.v1.ConfigService/ListDeploymentPlanners"
-	// ConfigServiceUpdateCfgProcedure is the fully-qualified name of the ConfigService's UpdateCfg RPC.
-	ConfigServiceUpdateCfgProcedure = "/cloudstack.management.config.v1.ConfigService/UpdateCfg"
-	// ConfigServiceListCfgsByProcedure is the fully-qualified name of the ConfigService's ListCfgsBy
-	// RPC.
-	ConfigServiceListCfgsByProcedure = "/cloudstack.management.config.v1.ConfigService/ListCfgsBy"
-	// ConfigServiceListCfgGroupsByProcedure is the fully-qualified name of the ConfigService's
-	// ListCfgGroupsBy RPC.
-	ConfigServiceListCfgGroupsByProcedure = "/cloudstack.management.config.v1.ConfigService/ListCfgGroupsBy"
 	// ConfigServiceListCapabilitiesProcedure is the fully-qualified name of the ConfigService's
 	// ListCapabilities RPC.
 	ConfigServiceListCapabilitiesProcedure = "/cloudstack.management.config.v1.ConfigService/ListCapabilities"
-	// ConfigServiceResetCfgProcedure is the fully-qualified name of the ConfigService's ResetCfg RPC.
-	ConfigServiceResetCfgProcedure = "/cloudstack.management.config.v1.ConfigService/ResetCfg"
+	// ConfigServiceListCfgGroupsByProcedure is the fully-qualified name of the ConfigService's
+	// ListCfgGroupsBy RPC.
+	ConfigServiceListCfgGroupsByProcedure = "/cloudstack.management.config.v1.ConfigService/ListCfgGroupsBy"
+	// ConfigServiceListCfgsByProcedure is the fully-qualified name of the ConfigService's ListCfgsBy
+	// RPC.
+	ConfigServiceListCfgsByProcedure = "/cloudstack.management.config.v1.ConfigService/ListCfgsBy"
+	// ConfigServiceListDeploymentPlannersProcedure is the fully-qualified name of the ConfigService's
+	// ListDeploymentPlanners RPC.
+	ConfigServiceListDeploymentPlannersProcedure = "/cloudstack.management.config.v1.ConfigService/ListDeploymentPlanners"
 	// ConfigServiceListHypervisorCapabilitiesProcedure is the fully-qualified name of the
 	// ConfigService's ListHypervisorCapabilities RPC.
 	ConfigServiceListHypervisorCapabilitiesProcedure = "/cloudstack.management.config.v1.ConfigService/ListHypervisorCapabilities"
+	// ConfigServiceResetCfgProcedure is the fully-qualified name of the ConfigService's ResetCfg RPC.
+	ConfigServiceResetCfgProcedure = "/cloudstack.management.config.v1.ConfigService/ResetCfg"
+	// ConfigServiceUpdateCfgProcedure is the fully-qualified name of the ConfigService's UpdateCfg RPC.
+	ConfigServiceUpdateCfgProcedure = "/cloudstack.management.config.v1.ConfigService/UpdateCfg"
+	// ConfigServiceUpdateHypervisorCapabilitiesProcedure is the fully-qualified name of the
+	// ConfigService's UpdateHypervisorCapabilities RPC.
+	ConfigServiceUpdateHypervisorCapabilitiesProcedure = "/cloudstack.management.config.v1.ConfigService/UpdateHypervisorCapabilities"
 )
 
 // ConfigServiceClient is a client for the cloudstack.management.config.v1.ConfigService service.
 type ConfigServiceClient interface {
-	// UpdateHypervisorCapabilities Updates a hypervisor capabilities.
-	UpdateHypervisorCapabilities(context.Context, *connect.Request[v1.UpdateHypervisorCapabilitiesRequest]) (*connect.Response[v1.UpdateHypervisorCapabilitiesResponse], error)
-	// ListDeploymentPlanners Lists all DeploymentPlanners available.
-	ListDeploymentPlanners(context.Context, *connect.Request[v1.ListDeploymentPlannersRequest]) (*connect.Response[v1.ListDeploymentPlannersResponse], error)
-	// UpdateCfg Updates a configuration.
-	UpdateCfg(context.Context, *connect.Request[v1.UpdateCfgRequest]) (*connect.Response[v1.UpdateCfgResponse], error)
-	// ListCfgsBy Lists all configurations.
-	ListCfgsBy(context.Context, *connect.Request[v1.ListCfgsByRequest]) (*connect.Response[v1.ListCfgsByResponse], error)
-	// ListCfgGroupsBy Lists all configuration groups (primarily used for UI).
-	ListCfgGroupsBy(context.Context, *connect.Request[v1.ListCfgGroupsByRequest]) (*connect.Response[v1.ListCfgGroupsByResponse], error)
 	// ListCapabilities Lists capabilities
 	ListCapabilities(context.Context, *connect.Request[v1.ListCapabilitiesRequest]) (*connect.Response[v1.ListCapabilitiesResponse], error)
-	// ResetCfg Resets a configuration. The configuration will be set to default value for global setting, and removed from account_details or domain_details for Account/Domain settings
-	ResetCfg(context.Context, *connect.Request[v1.ResetCfgRequest]) (*connect.Response[v1.ResetCfgResponse], error)
+	// ListCfgGroupsBy Lists all configuration groups (primarily used for UI).
+	ListCfgGroupsBy(context.Context, *connect.Request[v1.ListCfgGroupsByRequest]) (*connect.Response[v1.ListCfgGroupsByResponse], error)
+	// ListCfgsBy Lists all configurations.
+	ListCfgsBy(context.Context, *connect.Request[v1.ListCfgsByRequest]) (*connect.Response[v1.ListCfgsByResponse], error)
+	// ListDeploymentPlanners Lists all DeploymentPlanners available.
+	ListDeploymentPlanners(context.Context, *connect.Request[v1.ListDeploymentPlannersRequest]) (*connect.Response[v1.ListDeploymentPlannersResponse], error)
 	// ListHypervisorCapabilities Lists all hypervisor capabilities.
 	ListHypervisorCapabilities(context.Context, *connect.Request[v1.ListHypervisorCapabilitiesRequest]) (*connect.Response[v1.ListHypervisorCapabilitiesResponse], error)
+	// ResetCfg Resets a configuration. The configuration will be set to default value for global setting, and removed from account_details or domain_details for Account/Domain settings
+	ResetCfg(context.Context, *connect.Request[v1.ResetCfgRequest]) (*connect.Response[v1.ResetCfgResponse], error)
+	// UpdateCfg Updates a configuration.
+	UpdateCfg(context.Context, *connect.Request[v1.UpdateCfgRequest]) (*connect.Response[v1.UpdateCfgResponse], error)
+	// UpdateHypervisorCapabilities Updates a hypervisor capabilities.
+	UpdateHypervisorCapabilities(context.Context, *connect.Request[v1.UpdateHypervisorCapabilitiesRequest]) (*connect.Response[v1.UpdateHypervisorCapabilitiesResponse], error)
 }
 
 // NewConfigServiceClient constructs a client for the cloudstack.management.config.v1.ConfigService
@@ -88,28 +88,10 @@ func NewConfigServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 	baseURL = strings.TrimRight(baseURL, "/")
 	configServiceMethods := v1.File_cloudstack_management_config_v1_config_gen_proto.Services().ByName("ConfigService").Methods()
 	return &configServiceClient{
-		updateHypervisorCapabilities: connect.NewClient[v1.UpdateHypervisorCapabilitiesRequest, v1.UpdateHypervisorCapabilitiesResponse](
+		listCapabilities: connect.NewClient[v1.ListCapabilitiesRequest, v1.ListCapabilitiesResponse](
 			httpClient,
-			baseURL+ConfigServiceUpdateHypervisorCapabilitiesProcedure,
-			connect.WithSchema(configServiceMethods.ByName("UpdateHypervisorCapabilities")),
-			connect.WithClientOptions(opts...),
-		),
-		listDeploymentPlanners: connect.NewClient[v1.ListDeploymentPlannersRequest, v1.ListDeploymentPlannersResponse](
-			httpClient,
-			baseURL+ConfigServiceListDeploymentPlannersProcedure,
-			connect.WithSchema(configServiceMethods.ByName("ListDeploymentPlanners")),
-			connect.WithClientOptions(opts...),
-		),
-		updateCfg: connect.NewClient[v1.UpdateCfgRequest, v1.UpdateCfgResponse](
-			httpClient,
-			baseURL+ConfigServiceUpdateCfgProcedure,
-			connect.WithSchema(configServiceMethods.ByName("UpdateCfg")),
-			connect.WithClientOptions(opts...),
-		),
-		listCfgsBy: connect.NewClient[v1.ListCfgsByRequest, v1.ListCfgsByResponse](
-			httpClient,
-			baseURL+ConfigServiceListCfgsByProcedure,
-			connect.WithSchema(configServiceMethods.ByName("ListCfgsBy")),
+			baseURL+ConfigServiceListCapabilitiesProcedure,
+			connect.WithSchema(configServiceMethods.ByName("ListCapabilities")),
 			connect.WithClientOptions(opts...),
 		),
 		listCfgGroupsBy: connect.NewClient[v1.ListCfgGroupsByRequest, v1.ListCfgGroupsByResponse](
@@ -118,16 +100,16 @@ func NewConfigServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			connect.WithSchema(configServiceMethods.ByName("ListCfgGroupsBy")),
 			connect.WithClientOptions(opts...),
 		),
-		listCapabilities: connect.NewClient[v1.ListCapabilitiesRequest, v1.ListCapabilitiesResponse](
+		listCfgsBy: connect.NewClient[v1.ListCfgsByRequest, v1.ListCfgsByResponse](
 			httpClient,
-			baseURL+ConfigServiceListCapabilitiesProcedure,
-			connect.WithSchema(configServiceMethods.ByName("ListCapabilities")),
+			baseURL+ConfigServiceListCfgsByProcedure,
+			connect.WithSchema(configServiceMethods.ByName("ListCfgsBy")),
 			connect.WithClientOptions(opts...),
 		),
-		resetCfg: connect.NewClient[v1.ResetCfgRequest, v1.ResetCfgResponse](
+		listDeploymentPlanners: connect.NewClient[v1.ListDeploymentPlannersRequest, v1.ListDeploymentPlannersResponse](
 			httpClient,
-			baseURL+ConfigServiceResetCfgProcedure,
-			connect.WithSchema(configServiceMethods.ByName("ResetCfg")),
+			baseURL+ConfigServiceListDeploymentPlannersProcedure,
+			connect.WithSchema(configServiceMethods.ByName("ListDeploymentPlanners")),
 			connect.WithClientOptions(opts...),
 		),
 		listHypervisorCapabilities: connect.NewClient[v1.ListHypervisorCapabilitiesRequest, v1.ListHypervisorCapabilitiesResponse](
@@ -136,25 +118,52 @@ func NewConfigServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			connect.WithSchema(configServiceMethods.ByName("ListHypervisorCapabilities")),
 			connect.WithClientOptions(opts...),
 		),
+		resetCfg: connect.NewClient[v1.ResetCfgRequest, v1.ResetCfgResponse](
+			httpClient,
+			baseURL+ConfigServiceResetCfgProcedure,
+			connect.WithSchema(configServiceMethods.ByName("ResetCfg")),
+			connect.WithClientOptions(opts...),
+		),
+		updateCfg: connect.NewClient[v1.UpdateCfgRequest, v1.UpdateCfgResponse](
+			httpClient,
+			baseURL+ConfigServiceUpdateCfgProcedure,
+			connect.WithSchema(configServiceMethods.ByName("UpdateCfg")),
+			connect.WithClientOptions(opts...),
+		),
+		updateHypervisorCapabilities: connect.NewClient[v1.UpdateHypervisorCapabilitiesRequest, v1.UpdateHypervisorCapabilitiesResponse](
+			httpClient,
+			baseURL+ConfigServiceUpdateHypervisorCapabilitiesProcedure,
+			connect.WithSchema(configServiceMethods.ByName("UpdateHypervisorCapabilities")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // configServiceClient implements ConfigServiceClient.
 type configServiceClient struct {
-	updateHypervisorCapabilities *connect.Client[v1.UpdateHypervisorCapabilitiesRequest, v1.UpdateHypervisorCapabilitiesResponse]
-	listDeploymentPlanners       *connect.Client[v1.ListDeploymentPlannersRequest, v1.ListDeploymentPlannersResponse]
-	updateCfg                    *connect.Client[v1.UpdateCfgRequest, v1.UpdateCfgResponse]
-	listCfgsBy                   *connect.Client[v1.ListCfgsByRequest, v1.ListCfgsByResponse]
-	listCfgGroupsBy              *connect.Client[v1.ListCfgGroupsByRequest, v1.ListCfgGroupsByResponse]
 	listCapabilities             *connect.Client[v1.ListCapabilitiesRequest, v1.ListCapabilitiesResponse]
-	resetCfg                     *connect.Client[v1.ResetCfgRequest, v1.ResetCfgResponse]
+	listCfgGroupsBy              *connect.Client[v1.ListCfgGroupsByRequest, v1.ListCfgGroupsByResponse]
+	listCfgsBy                   *connect.Client[v1.ListCfgsByRequest, v1.ListCfgsByResponse]
+	listDeploymentPlanners       *connect.Client[v1.ListDeploymentPlannersRequest, v1.ListDeploymentPlannersResponse]
 	listHypervisorCapabilities   *connect.Client[v1.ListHypervisorCapabilitiesRequest, v1.ListHypervisorCapabilitiesResponse]
+	resetCfg                     *connect.Client[v1.ResetCfgRequest, v1.ResetCfgResponse]
+	updateCfg                    *connect.Client[v1.UpdateCfgRequest, v1.UpdateCfgResponse]
+	updateHypervisorCapabilities *connect.Client[v1.UpdateHypervisorCapabilitiesRequest, v1.UpdateHypervisorCapabilitiesResponse]
 }
 
-// UpdateHypervisorCapabilities calls
-// cloudstack.management.config.v1.ConfigService.UpdateHypervisorCapabilities.
-func (c *configServiceClient) UpdateHypervisorCapabilities(ctx context.Context, req *connect.Request[v1.UpdateHypervisorCapabilitiesRequest]) (*connect.Response[v1.UpdateHypervisorCapabilitiesResponse], error) {
-	return c.updateHypervisorCapabilities.CallUnary(ctx, req)
+// ListCapabilities calls cloudstack.management.config.v1.ConfigService.ListCapabilities.
+func (c *configServiceClient) ListCapabilities(ctx context.Context, req *connect.Request[v1.ListCapabilitiesRequest]) (*connect.Response[v1.ListCapabilitiesResponse], error) {
+	return c.listCapabilities.CallUnary(ctx, req)
+}
+
+// ListCfgGroupsBy calls cloudstack.management.config.v1.ConfigService.ListCfgGroupsBy.
+func (c *configServiceClient) ListCfgGroupsBy(ctx context.Context, req *connect.Request[v1.ListCfgGroupsByRequest]) (*connect.Response[v1.ListCfgGroupsByResponse], error) {
+	return c.listCfgGroupsBy.CallUnary(ctx, req)
+}
+
+// ListCfgsBy calls cloudstack.management.config.v1.ConfigService.ListCfgsBy.
+func (c *configServiceClient) ListCfgsBy(ctx context.Context, req *connect.Request[v1.ListCfgsByRequest]) (*connect.Response[v1.ListCfgsByResponse], error) {
+	return c.listCfgsBy.CallUnary(ctx, req)
 }
 
 // ListDeploymentPlanners calls
@@ -163,24 +172,10 @@ func (c *configServiceClient) ListDeploymentPlanners(ctx context.Context, req *c
 	return c.listDeploymentPlanners.CallUnary(ctx, req)
 }
 
-// UpdateCfg calls cloudstack.management.config.v1.ConfigService.UpdateCfg.
-func (c *configServiceClient) UpdateCfg(ctx context.Context, req *connect.Request[v1.UpdateCfgRequest]) (*connect.Response[v1.UpdateCfgResponse], error) {
-	return c.updateCfg.CallUnary(ctx, req)
-}
-
-// ListCfgsBy calls cloudstack.management.config.v1.ConfigService.ListCfgsBy.
-func (c *configServiceClient) ListCfgsBy(ctx context.Context, req *connect.Request[v1.ListCfgsByRequest]) (*connect.Response[v1.ListCfgsByResponse], error) {
-	return c.listCfgsBy.CallUnary(ctx, req)
-}
-
-// ListCfgGroupsBy calls cloudstack.management.config.v1.ConfigService.ListCfgGroupsBy.
-func (c *configServiceClient) ListCfgGroupsBy(ctx context.Context, req *connect.Request[v1.ListCfgGroupsByRequest]) (*connect.Response[v1.ListCfgGroupsByResponse], error) {
-	return c.listCfgGroupsBy.CallUnary(ctx, req)
-}
-
-// ListCapabilities calls cloudstack.management.config.v1.ConfigService.ListCapabilities.
-func (c *configServiceClient) ListCapabilities(ctx context.Context, req *connect.Request[v1.ListCapabilitiesRequest]) (*connect.Response[v1.ListCapabilitiesResponse], error) {
-	return c.listCapabilities.CallUnary(ctx, req)
+// ListHypervisorCapabilities calls
+// cloudstack.management.config.v1.ConfigService.ListHypervisorCapabilities.
+func (c *configServiceClient) ListHypervisorCapabilities(ctx context.Context, req *connect.Request[v1.ListHypervisorCapabilitiesRequest]) (*connect.Response[v1.ListHypervisorCapabilitiesResponse], error) {
+	return c.listHypervisorCapabilities.CallUnary(ctx, req)
 }
 
 // ResetCfg calls cloudstack.management.config.v1.ConfigService.ResetCfg.
@@ -188,31 +183,36 @@ func (c *configServiceClient) ResetCfg(ctx context.Context, req *connect.Request
 	return c.resetCfg.CallUnary(ctx, req)
 }
 
-// ListHypervisorCapabilities calls
-// cloudstack.management.config.v1.ConfigService.ListHypervisorCapabilities.
-func (c *configServiceClient) ListHypervisorCapabilities(ctx context.Context, req *connect.Request[v1.ListHypervisorCapabilitiesRequest]) (*connect.Response[v1.ListHypervisorCapabilitiesResponse], error) {
-	return c.listHypervisorCapabilities.CallUnary(ctx, req)
+// UpdateCfg calls cloudstack.management.config.v1.ConfigService.UpdateCfg.
+func (c *configServiceClient) UpdateCfg(ctx context.Context, req *connect.Request[v1.UpdateCfgRequest]) (*connect.Response[v1.UpdateCfgResponse], error) {
+	return c.updateCfg.CallUnary(ctx, req)
+}
+
+// UpdateHypervisorCapabilities calls
+// cloudstack.management.config.v1.ConfigService.UpdateHypervisorCapabilities.
+func (c *configServiceClient) UpdateHypervisorCapabilities(ctx context.Context, req *connect.Request[v1.UpdateHypervisorCapabilitiesRequest]) (*connect.Response[v1.UpdateHypervisorCapabilitiesResponse], error) {
+	return c.updateHypervisorCapabilities.CallUnary(ctx, req)
 }
 
 // ConfigServiceHandler is an implementation of the cloudstack.management.config.v1.ConfigService
 // service.
 type ConfigServiceHandler interface {
-	// UpdateHypervisorCapabilities Updates a hypervisor capabilities.
-	UpdateHypervisorCapabilities(context.Context, *connect.Request[v1.UpdateHypervisorCapabilitiesRequest]) (*connect.Response[v1.UpdateHypervisorCapabilitiesResponse], error)
-	// ListDeploymentPlanners Lists all DeploymentPlanners available.
-	ListDeploymentPlanners(context.Context, *connect.Request[v1.ListDeploymentPlannersRequest]) (*connect.Response[v1.ListDeploymentPlannersResponse], error)
-	// UpdateCfg Updates a configuration.
-	UpdateCfg(context.Context, *connect.Request[v1.UpdateCfgRequest]) (*connect.Response[v1.UpdateCfgResponse], error)
-	// ListCfgsBy Lists all configurations.
-	ListCfgsBy(context.Context, *connect.Request[v1.ListCfgsByRequest]) (*connect.Response[v1.ListCfgsByResponse], error)
-	// ListCfgGroupsBy Lists all configuration groups (primarily used for UI).
-	ListCfgGroupsBy(context.Context, *connect.Request[v1.ListCfgGroupsByRequest]) (*connect.Response[v1.ListCfgGroupsByResponse], error)
 	// ListCapabilities Lists capabilities
 	ListCapabilities(context.Context, *connect.Request[v1.ListCapabilitiesRequest]) (*connect.Response[v1.ListCapabilitiesResponse], error)
-	// ResetCfg Resets a configuration. The configuration will be set to default value for global setting, and removed from account_details or domain_details for Account/Domain settings
-	ResetCfg(context.Context, *connect.Request[v1.ResetCfgRequest]) (*connect.Response[v1.ResetCfgResponse], error)
+	// ListCfgGroupsBy Lists all configuration groups (primarily used for UI).
+	ListCfgGroupsBy(context.Context, *connect.Request[v1.ListCfgGroupsByRequest]) (*connect.Response[v1.ListCfgGroupsByResponse], error)
+	// ListCfgsBy Lists all configurations.
+	ListCfgsBy(context.Context, *connect.Request[v1.ListCfgsByRequest]) (*connect.Response[v1.ListCfgsByResponse], error)
+	// ListDeploymentPlanners Lists all DeploymentPlanners available.
+	ListDeploymentPlanners(context.Context, *connect.Request[v1.ListDeploymentPlannersRequest]) (*connect.Response[v1.ListDeploymentPlannersResponse], error)
 	// ListHypervisorCapabilities Lists all hypervisor capabilities.
 	ListHypervisorCapabilities(context.Context, *connect.Request[v1.ListHypervisorCapabilitiesRequest]) (*connect.Response[v1.ListHypervisorCapabilitiesResponse], error)
+	// ResetCfg Resets a configuration. The configuration will be set to default value for global setting, and removed from account_details or domain_details for Account/Domain settings
+	ResetCfg(context.Context, *connect.Request[v1.ResetCfgRequest]) (*connect.Response[v1.ResetCfgResponse], error)
+	// UpdateCfg Updates a configuration.
+	UpdateCfg(context.Context, *connect.Request[v1.UpdateCfgRequest]) (*connect.Response[v1.UpdateCfgResponse], error)
+	// UpdateHypervisorCapabilities Updates a hypervisor capabilities.
+	UpdateHypervisorCapabilities(context.Context, *connect.Request[v1.UpdateHypervisorCapabilitiesRequest]) (*connect.Response[v1.UpdateHypervisorCapabilitiesResponse], error)
 }
 
 // NewConfigServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -222,28 +222,10 @@ type ConfigServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewConfigServiceHandler(svc ConfigServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	configServiceMethods := v1.File_cloudstack_management_config_v1_config_gen_proto.Services().ByName("ConfigService").Methods()
-	configServiceUpdateHypervisorCapabilitiesHandler := connect.NewUnaryHandler(
-		ConfigServiceUpdateHypervisorCapabilitiesProcedure,
-		svc.UpdateHypervisorCapabilities,
-		connect.WithSchema(configServiceMethods.ByName("UpdateHypervisorCapabilities")),
-		connect.WithHandlerOptions(opts...),
-	)
-	configServiceListDeploymentPlannersHandler := connect.NewUnaryHandler(
-		ConfigServiceListDeploymentPlannersProcedure,
-		svc.ListDeploymentPlanners,
-		connect.WithSchema(configServiceMethods.ByName("ListDeploymentPlanners")),
-		connect.WithHandlerOptions(opts...),
-	)
-	configServiceUpdateCfgHandler := connect.NewUnaryHandler(
-		ConfigServiceUpdateCfgProcedure,
-		svc.UpdateCfg,
-		connect.WithSchema(configServiceMethods.ByName("UpdateCfg")),
-		connect.WithHandlerOptions(opts...),
-	)
-	configServiceListCfgsByHandler := connect.NewUnaryHandler(
-		ConfigServiceListCfgsByProcedure,
-		svc.ListCfgsBy,
-		connect.WithSchema(configServiceMethods.ByName("ListCfgsBy")),
+	configServiceListCapabilitiesHandler := connect.NewUnaryHandler(
+		ConfigServiceListCapabilitiesProcedure,
+		svc.ListCapabilities,
+		connect.WithSchema(configServiceMethods.ByName("ListCapabilities")),
 		connect.WithHandlerOptions(opts...),
 	)
 	configServiceListCfgGroupsByHandler := connect.NewUnaryHandler(
@@ -252,16 +234,16 @@ func NewConfigServiceHandler(svc ConfigServiceHandler, opts ...connect.HandlerOp
 		connect.WithSchema(configServiceMethods.ByName("ListCfgGroupsBy")),
 		connect.WithHandlerOptions(opts...),
 	)
-	configServiceListCapabilitiesHandler := connect.NewUnaryHandler(
-		ConfigServiceListCapabilitiesProcedure,
-		svc.ListCapabilities,
-		connect.WithSchema(configServiceMethods.ByName("ListCapabilities")),
+	configServiceListCfgsByHandler := connect.NewUnaryHandler(
+		ConfigServiceListCfgsByProcedure,
+		svc.ListCfgsBy,
+		connect.WithSchema(configServiceMethods.ByName("ListCfgsBy")),
 		connect.WithHandlerOptions(opts...),
 	)
-	configServiceResetCfgHandler := connect.NewUnaryHandler(
-		ConfigServiceResetCfgProcedure,
-		svc.ResetCfg,
-		connect.WithSchema(configServiceMethods.ByName("ResetCfg")),
+	configServiceListDeploymentPlannersHandler := connect.NewUnaryHandler(
+		ConfigServiceListDeploymentPlannersProcedure,
+		svc.ListDeploymentPlanners,
+		connect.WithSchema(configServiceMethods.ByName("ListDeploymentPlanners")),
 		connect.WithHandlerOptions(opts...),
 	)
 	configServiceListHypervisorCapabilitiesHandler := connect.NewUnaryHandler(
@@ -270,24 +252,42 @@ func NewConfigServiceHandler(svc ConfigServiceHandler, opts ...connect.HandlerOp
 		connect.WithSchema(configServiceMethods.ByName("ListHypervisorCapabilities")),
 		connect.WithHandlerOptions(opts...),
 	)
+	configServiceResetCfgHandler := connect.NewUnaryHandler(
+		ConfigServiceResetCfgProcedure,
+		svc.ResetCfg,
+		connect.WithSchema(configServiceMethods.ByName("ResetCfg")),
+		connect.WithHandlerOptions(opts...),
+	)
+	configServiceUpdateCfgHandler := connect.NewUnaryHandler(
+		ConfigServiceUpdateCfgProcedure,
+		svc.UpdateCfg,
+		connect.WithSchema(configServiceMethods.ByName("UpdateCfg")),
+		connect.WithHandlerOptions(opts...),
+	)
+	configServiceUpdateHypervisorCapabilitiesHandler := connect.NewUnaryHandler(
+		ConfigServiceUpdateHypervisorCapabilitiesProcedure,
+		svc.UpdateHypervisorCapabilities,
+		connect.WithSchema(configServiceMethods.ByName("UpdateHypervisorCapabilities")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.config.v1.ConfigService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case ConfigServiceUpdateHypervisorCapabilitiesProcedure:
-			configServiceUpdateHypervisorCapabilitiesHandler.ServeHTTP(w, r)
-		case ConfigServiceListDeploymentPlannersProcedure:
-			configServiceListDeploymentPlannersHandler.ServeHTTP(w, r)
-		case ConfigServiceUpdateCfgProcedure:
-			configServiceUpdateCfgHandler.ServeHTTP(w, r)
-		case ConfigServiceListCfgsByProcedure:
-			configServiceListCfgsByHandler.ServeHTTP(w, r)
-		case ConfigServiceListCfgGroupsByProcedure:
-			configServiceListCfgGroupsByHandler.ServeHTTP(w, r)
 		case ConfigServiceListCapabilitiesProcedure:
 			configServiceListCapabilitiesHandler.ServeHTTP(w, r)
-		case ConfigServiceResetCfgProcedure:
-			configServiceResetCfgHandler.ServeHTTP(w, r)
+		case ConfigServiceListCfgGroupsByProcedure:
+			configServiceListCfgGroupsByHandler.ServeHTTP(w, r)
+		case ConfigServiceListCfgsByProcedure:
+			configServiceListCfgsByHandler.ServeHTTP(w, r)
+		case ConfigServiceListDeploymentPlannersProcedure:
+			configServiceListDeploymentPlannersHandler.ServeHTTP(w, r)
 		case ConfigServiceListHypervisorCapabilitiesProcedure:
 			configServiceListHypervisorCapabilitiesHandler.ServeHTTP(w, r)
+		case ConfigServiceResetCfgProcedure:
+			configServiceResetCfgHandler.ServeHTTP(w, r)
+		case ConfigServiceUpdateCfgProcedure:
+			configServiceUpdateCfgHandler.ServeHTTP(w, r)
+		case ConfigServiceUpdateHypervisorCapabilitiesProcedure:
+			configServiceUpdateHypervisorCapabilitiesHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -297,34 +297,34 @@ func NewConfigServiceHandler(svc ConfigServiceHandler, opts ...connect.HandlerOp
 // UnimplementedConfigServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedConfigServiceHandler struct{}
 
-func (UnimplementedConfigServiceHandler) UpdateHypervisorCapabilities(context.Context, *connect.Request[v1.UpdateHypervisorCapabilitiesRequest]) (*connect.Response[v1.UpdateHypervisorCapabilitiesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.config.v1.ConfigService.UpdateHypervisorCapabilities is not implemented"))
-}
-
-func (UnimplementedConfigServiceHandler) ListDeploymentPlanners(context.Context, *connect.Request[v1.ListDeploymentPlannersRequest]) (*connect.Response[v1.ListDeploymentPlannersResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.config.v1.ConfigService.ListDeploymentPlanners is not implemented"))
-}
-
-func (UnimplementedConfigServiceHandler) UpdateCfg(context.Context, *connect.Request[v1.UpdateCfgRequest]) (*connect.Response[v1.UpdateCfgResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.config.v1.ConfigService.UpdateCfg is not implemented"))
-}
-
-func (UnimplementedConfigServiceHandler) ListCfgsBy(context.Context, *connect.Request[v1.ListCfgsByRequest]) (*connect.Response[v1.ListCfgsByResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.config.v1.ConfigService.ListCfgsBy is not implemented"))
+func (UnimplementedConfigServiceHandler) ListCapabilities(context.Context, *connect.Request[v1.ListCapabilitiesRequest]) (*connect.Response[v1.ListCapabilitiesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.config.v1.ConfigService.ListCapabilities is not implemented"))
 }
 
 func (UnimplementedConfigServiceHandler) ListCfgGroupsBy(context.Context, *connect.Request[v1.ListCfgGroupsByRequest]) (*connect.Response[v1.ListCfgGroupsByResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.config.v1.ConfigService.ListCfgGroupsBy is not implemented"))
 }
 
-func (UnimplementedConfigServiceHandler) ListCapabilities(context.Context, *connect.Request[v1.ListCapabilitiesRequest]) (*connect.Response[v1.ListCapabilitiesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.config.v1.ConfigService.ListCapabilities is not implemented"))
+func (UnimplementedConfigServiceHandler) ListCfgsBy(context.Context, *connect.Request[v1.ListCfgsByRequest]) (*connect.Response[v1.ListCfgsByResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.config.v1.ConfigService.ListCfgsBy is not implemented"))
+}
+
+func (UnimplementedConfigServiceHandler) ListDeploymentPlanners(context.Context, *connect.Request[v1.ListDeploymentPlannersRequest]) (*connect.Response[v1.ListDeploymentPlannersResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.config.v1.ConfigService.ListDeploymentPlanners is not implemented"))
+}
+
+func (UnimplementedConfigServiceHandler) ListHypervisorCapabilities(context.Context, *connect.Request[v1.ListHypervisorCapabilitiesRequest]) (*connect.Response[v1.ListHypervisorCapabilitiesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.config.v1.ConfigService.ListHypervisorCapabilities is not implemented"))
 }
 
 func (UnimplementedConfigServiceHandler) ResetCfg(context.Context, *connect.Request[v1.ResetCfgRequest]) (*connect.Response[v1.ResetCfgResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.config.v1.ConfigService.ResetCfg is not implemented"))
 }
 
-func (UnimplementedConfigServiceHandler) ListHypervisorCapabilities(context.Context, *connect.Request[v1.ListHypervisorCapabilitiesRequest]) (*connect.Response[v1.ListHypervisorCapabilitiesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.config.v1.ConfigService.ListHypervisorCapabilities is not implemented"))
+func (UnimplementedConfigServiceHandler) UpdateCfg(context.Context, *connect.Request[v1.UpdateCfgRequest]) (*connect.Response[v1.UpdateCfgResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.config.v1.ConfigService.UpdateCfg is not implemented"))
+}
+
+func (UnimplementedConfigServiceHandler) UpdateHypervisorCapabilities(context.Context, *connect.Request[v1.UpdateHypervisorCapabilitiesRequest]) (*connect.Response[v1.UpdateHypervisorCapabilitiesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.config.v1.ConfigService.UpdateHypervisorCapabilities is not implemented"))
 }

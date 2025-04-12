@@ -19,11 +19,11 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	NatService_ListIpForwardingRules_FullMethodName  = "/cloudstack.management.nat.v1.NatService/ListIpForwardingRules"
+	NatService_CreateIpForwardingRule_FullMethodName = "/cloudstack.management.nat.v1.NatService/CreateIpForwardingRule"
 	NatService_DeleteIpForwardingRule_FullMethodName = "/cloudstack.management.nat.v1.NatService/DeleteIpForwardingRule"
 	NatService_DisableStaticNat_FullMethodName       = "/cloudstack.management.nat.v1.NatService/DisableStaticNat"
-	NatService_CreateIpForwardingRule_FullMethodName = "/cloudstack.management.nat.v1.NatService/CreateIpForwardingRule"
 	NatService_EnableStaticNat_FullMethodName        = "/cloudstack.management.nat.v1.NatService/EnableStaticNat"
+	NatService_ListIpForwardingRules_FullMethodName  = "/cloudstack.management.nat.v1.NatService/ListIpForwardingRules"
 )
 
 // NatServiceClient is the client API for NatService service.
@@ -32,16 +32,16 @@ const (
 //
 // NatService provides operations for managing Nats
 type NatServiceClient interface {
-	// ListIpForwardingRules List the IP forwarding rules
-	ListIpForwardingRules(ctx context.Context, in *ListIpForwardingRulesRequest, opts ...grpc.CallOption) (*ListIpForwardingRulesResponse, error)
+	// CreateIpForwardingRule Creates an IP forwarding rule
+	CreateIpForwardingRule(ctx context.Context, in *CreateIpForwardingRuleRequest, opts ...grpc.CallOption) (*CreateIpForwardingRuleResponse, error)
 	// DeleteIpForwardingRule Deletes an IP forwarding rule
 	DeleteIpForwardingRule(ctx context.Context, in *DeleteIpForwardingRuleRequest, opts ...grpc.CallOption) (*DeleteIpForwardingRuleResponse, error)
 	// DisableStaticNat Disables static rule for given IP address
 	DisableStaticNat(ctx context.Context, in *DisableStaticNatRequest, opts ...grpc.CallOption) (*DisableStaticNatResponse, error)
-	// CreateIpForwardingRule Creates an IP forwarding rule
-	CreateIpForwardingRule(ctx context.Context, in *CreateIpForwardingRuleRequest, opts ...grpc.CallOption) (*CreateIpForwardingRuleResponse, error)
 	// EnableStaticNat Enables static NAT for given IP address
 	EnableStaticNat(ctx context.Context, in *EnableStaticNatRequest, opts ...grpc.CallOption) (*EnableStaticNatResponse, error)
+	// ListIpForwardingRules List the IP forwarding rules
+	ListIpForwardingRules(ctx context.Context, in *ListIpForwardingRulesRequest, opts ...grpc.CallOption) (*ListIpForwardingRulesResponse, error)
 }
 
 type natServiceClient struct {
@@ -52,10 +52,10 @@ func NewNatServiceClient(cc grpc.ClientConnInterface) NatServiceClient {
 	return &natServiceClient{cc}
 }
 
-func (c *natServiceClient) ListIpForwardingRules(ctx context.Context, in *ListIpForwardingRulesRequest, opts ...grpc.CallOption) (*ListIpForwardingRulesResponse, error) {
+func (c *natServiceClient) CreateIpForwardingRule(ctx context.Context, in *CreateIpForwardingRuleRequest, opts ...grpc.CallOption) (*CreateIpForwardingRuleResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListIpForwardingRulesResponse)
-	err := c.cc.Invoke(ctx, NatService_ListIpForwardingRules_FullMethodName, in, out, cOpts...)
+	out := new(CreateIpForwardingRuleResponse)
+	err := c.cc.Invoke(ctx, NatService_CreateIpForwardingRule_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -82,20 +82,20 @@ func (c *natServiceClient) DisableStaticNat(ctx context.Context, in *DisableStat
 	return out, nil
 }
 
-func (c *natServiceClient) CreateIpForwardingRule(ctx context.Context, in *CreateIpForwardingRuleRequest, opts ...grpc.CallOption) (*CreateIpForwardingRuleResponse, error) {
+func (c *natServiceClient) EnableStaticNat(ctx context.Context, in *EnableStaticNatRequest, opts ...grpc.CallOption) (*EnableStaticNatResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateIpForwardingRuleResponse)
-	err := c.cc.Invoke(ctx, NatService_CreateIpForwardingRule_FullMethodName, in, out, cOpts...)
+	out := new(EnableStaticNatResponse)
+	err := c.cc.Invoke(ctx, NatService_EnableStaticNat_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *natServiceClient) EnableStaticNat(ctx context.Context, in *EnableStaticNatRequest, opts ...grpc.CallOption) (*EnableStaticNatResponse, error) {
+func (c *natServiceClient) ListIpForwardingRules(ctx context.Context, in *ListIpForwardingRulesRequest, opts ...grpc.CallOption) (*ListIpForwardingRulesResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(EnableStaticNatResponse)
-	err := c.cc.Invoke(ctx, NatService_EnableStaticNat_FullMethodName, in, out, cOpts...)
+	out := new(ListIpForwardingRulesResponse)
+	err := c.cc.Invoke(ctx, NatService_ListIpForwardingRules_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -108,16 +108,16 @@ func (c *natServiceClient) EnableStaticNat(ctx context.Context, in *EnableStatic
 //
 // NatService provides operations for managing Nats
 type NatServiceServer interface {
-	// ListIpForwardingRules List the IP forwarding rules
-	ListIpForwardingRules(context.Context, *ListIpForwardingRulesRequest) (*ListIpForwardingRulesResponse, error)
+	// CreateIpForwardingRule Creates an IP forwarding rule
+	CreateIpForwardingRule(context.Context, *CreateIpForwardingRuleRequest) (*CreateIpForwardingRuleResponse, error)
 	// DeleteIpForwardingRule Deletes an IP forwarding rule
 	DeleteIpForwardingRule(context.Context, *DeleteIpForwardingRuleRequest) (*DeleteIpForwardingRuleResponse, error)
 	// DisableStaticNat Disables static rule for given IP address
 	DisableStaticNat(context.Context, *DisableStaticNatRequest) (*DisableStaticNatResponse, error)
-	// CreateIpForwardingRule Creates an IP forwarding rule
-	CreateIpForwardingRule(context.Context, *CreateIpForwardingRuleRequest) (*CreateIpForwardingRuleResponse, error)
 	// EnableStaticNat Enables static NAT for given IP address
 	EnableStaticNat(context.Context, *EnableStaticNatRequest) (*EnableStaticNatResponse, error)
+	// ListIpForwardingRules List the IP forwarding rules
+	ListIpForwardingRules(context.Context, *ListIpForwardingRulesRequest) (*ListIpForwardingRulesResponse, error)
 	mustEmbedUnimplementedNatServiceServer()
 }
 
@@ -128,8 +128,8 @@ type NatServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedNatServiceServer struct{}
 
-func (UnimplementedNatServiceServer) ListIpForwardingRules(context.Context, *ListIpForwardingRulesRequest) (*ListIpForwardingRulesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListIpForwardingRules not implemented")
+func (UnimplementedNatServiceServer) CreateIpForwardingRule(context.Context, *CreateIpForwardingRuleRequest) (*CreateIpForwardingRuleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateIpForwardingRule not implemented")
 }
 func (UnimplementedNatServiceServer) DeleteIpForwardingRule(context.Context, *DeleteIpForwardingRuleRequest) (*DeleteIpForwardingRuleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteIpForwardingRule not implemented")
@@ -137,11 +137,11 @@ func (UnimplementedNatServiceServer) DeleteIpForwardingRule(context.Context, *De
 func (UnimplementedNatServiceServer) DisableStaticNat(context.Context, *DisableStaticNatRequest) (*DisableStaticNatResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DisableStaticNat not implemented")
 }
-func (UnimplementedNatServiceServer) CreateIpForwardingRule(context.Context, *CreateIpForwardingRuleRequest) (*CreateIpForwardingRuleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateIpForwardingRule not implemented")
-}
 func (UnimplementedNatServiceServer) EnableStaticNat(context.Context, *EnableStaticNatRequest) (*EnableStaticNatResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method EnableStaticNat not implemented")
+}
+func (UnimplementedNatServiceServer) ListIpForwardingRules(context.Context, *ListIpForwardingRulesRequest) (*ListIpForwardingRulesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListIpForwardingRules not implemented")
 }
 func (UnimplementedNatServiceServer) mustEmbedUnimplementedNatServiceServer() {}
 func (UnimplementedNatServiceServer) testEmbeddedByValue()                    {}
@@ -164,20 +164,20 @@ func RegisterNatServiceServer(s grpc.ServiceRegistrar, srv NatServiceServer) {
 	s.RegisterService(&NatService_ServiceDesc, srv)
 }
 
-func _NatService_ListIpForwardingRules_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListIpForwardingRulesRequest)
+func _NatService_CreateIpForwardingRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateIpForwardingRuleRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NatServiceServer).ListIpForwardingRules(ctx, in)
+		return srv.(NatServiceServer).CreateIpForwardingRule(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: NatService_ListIpForwardingRules_FullMethodName,
+		FullMethod: NatService_CreateIpForwardingRule_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NatServiceServer).ListIpForwardingRules(ctx, req.(*ListIpForwardingRulesRequest))
+		return srv.(NatServiceServer).CreateIpForwardingRule(ctx, req.(*CreateIpForwardingRuleRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -218,24 +218,6 @@ func _NatService_DisableStaticNat_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _NatService_CreateIpForwardingRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateIpForwardingRuleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NatServiceServer).CreateIpForwardingRule(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: NatService_CreateIpForwardingRule_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NatServiceServer).CreateIpForwardingRule(ctx, req.(*CreateIpForwardingRuleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _NatService_EnableStaticNat_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(EnableStaticNatRequest)
 	if err := dec(in); err != nil {
@@ -254,6 +236,24 @@ func _NatService_EnableStaticNat_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _NatService_ListIpForwardingRules_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListIpForwardingRulesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NatServiceServer).ListIpForwardingRules(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NatService_ListIpForwardingRules_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NatServiceServer).ListIpForwardingRules(ctx, req.(*ListIpForwardingRulesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // NatService_ServiceDesc is the grpc.ServiceDesc for NatService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -262,8 +262,8 @@ var NatService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*NatServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "ListIpForwardingRules",
-			Handler:    _NatService_ListIpForwardingRules_Handler,
+			MethodName: "CreateIpForwardingRule",
+			Handler:    _NatService_CreateIpForwardingRule_Handler,
 		},
 		{
 			MethodName: "DeleteIpForwardingRule",
@@ -274,12 +274,12 @@ var NatService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _NatService_DisableStaticNat_Handler,
 		},
 		{
-			MethodName: "CreateIpForwardingRule",
-			Handler:    _NatService_CreateIpForwardingRule_Handler,
-		},
-		{
 			MethodName: "EnableStaticNat",
 			Handler:    _NatService_EnableStaticNat_Handler,
+		},
+		{
+			MethodName: "ListIpForwardingRules",
+			Handler:    _NatService_ListIpForwardingRules_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -33,49 +33,49 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// BgpServiceDedicateBgpPeerProcedure is the fully-qualified name of the BgpService's
-	// DedicateBgpPeer RPC.
-	BgpServiceDedicateBgpPeerProcedure = "/cloudstack.management.network.bgp.v1.BgpService/DedicateBgpPeer"
-	// BgpServiceListBgpPeersProcedure is the fully-qualified name of the BgpService's ListBgpPeers RPC.
-	BgpServiceListBgpPeersProcedure = "/cloudstack.management.network.bgp.v1.BgpService/ListBgpPeers"
 	// BgpServiceChangeBgpPeersForNetworkProcedure is the fully-qualified name of the BgpService's
 	// ChangeBgpPeersForNetwork RPC.
 	BgpServiceChangeBgpPeersForNetworkProcedure = "/cloudstack.management.network.bgp.v1.BgpService/ChangeBgpPeersForNetwork"
-	// BgpServiceUpdateBgpPeerProcedure is the fully-qualified name of the BgpService's UpdateBgpPeer
-	// RPC.
-	BgpServiceUpdateBgpPeerProcedure = "/cloudstack.management.network.bgp.v1.BgpService/UpdateBgpPeer"
-	// BgpServiceDeleteBgpPeerProcedure is the fully-qualified name of the BgpService's DeleteBgpPeer
-	// RPC.
-	BgpServiceDeleteBgpPeerProcedure = "/cloudstack.management.network.bgp.v1.BgpService/DeleteBgpPeer"
-	// BgpServiceReleaseDedicatedBgpPeerProcedure is the fully-qualified name of the BgpService's
-	// ReleaseDedicatedBgpPeer RPC.
-	BgpServiceReleaseDedicatedBgpPeerProcedure = "/cloudstack.management.network.bgp.v1.BgpService/ReleaseDedicatedBgpPeer"
 	// BgpServiceChangeBgpPeersForVpcProcedure is the fully-qualified name of the BgpService's
 	// ChangeBgpPeersForVpc RPC.
 	BgpServiceChangeBgpPeersForVpcProcedure = "/cloudstack.management.network.bgp.v1.BgpService/ChangeBgpPeersForVpc"
 	// BgpServiceCreateBgpPeerProcedure is the fully-qualified name of the BgpService's CreateBgpPeer
 	// RPC.
 	BgpServiceCreateBgpPeerProcedure = "/cloudstack.management.network.bgp.v1.BgpService/CreateBgpPeer"
+	// BgpServiceDedicateBgpPeerProcedure is the fully-qualified name of the BgpService's
+	// DedicateBgpPeer RPC.
+	BgpServiceDedicateBgpPeerProcedure = "/cloudstack.management.network.bgp.v1.BgpService/DedicateBgpPeer"
+	// BgpServiceDeleteBgpPeerProcedure is the fully-qualified name of the BgpService's DeleteBgpPeer
+	// RPC.
+	BgpServiceDeleteBgpPeerProcedure = "/cloudstack.management.network.bgp.v1.BgpService/DeleteBgpPeer"
+	// BgpServiceListBgpPeersProcedure is the fully-qualified name of the BgpService's ListBgpPeers RPC.
+	BgpServiceListBgpPeersProcedure = "/cloudstack.management.network.bgp.v1.BgpService/ListBgpPeers"
+	// BgpServiceReleaseDedicatedBgpPeerProcedure is the fully-qualified name of the BgpService's
+	// ReleaseDedicatedBgpPeer RPC.
+	BgpServiceReleaseDedicatedBgpPeerProcedure = "/cloudstack.management.network.bgp.v1.BgpService/ReleaseDedicatedBgpPeer"
+	// BgpServiceUpdateBgpPeerProcedure is the fully-qualified name of the BgpService's UpdateBgpPeer
+	// RPC.
+	BgpServiceUpdateBgpPeerProcedure = "/cloudstack.management.network.bgp.v1.BgpService/UpdateBgpPeer"
 )
 
 // BgpServiceClient is a client for the cloudstack.management.network.bgp.v1.BgpService service.
 type BgpServiceClient interface {
-	// DedicateBgpPeer Dedicates an existing Bgp Peer to an account or a domain.
-	DedicateBgpPeer(context.Context, *connect.Request[v1.DedicateBgpPeerRequest]) (*connect.Response[v1.DedicateBgpPeerResponse], error)
-	// ListBgpPeers Lists Bgp Peers.
-	ListBgpPeers(context.Context, *connect.Request[v1.ListBgpPeersRequest]) (*connect.Response[v1.ListBgpPeersResponse], error)
 	// ChangeBgpPeersForNetwork Change the BGP peers for a network.
 	ChangeBgpPeersForNetwork(context.Context, *connect.Request[v1.ChangeBgpPeersForNetworkRequest]) (*connect.Response[v1.ChangeBgpPeersForNetworkResponse], error)
-	// UpdateBgpPeer Updates an existing Bgp Peer.
-	UpdateBgpPeer(context.Context, *connect.Request[v1.UpdateBgpPeerRequest]) (*connect.Response[v1.UpdateBgpPeerResponse], error)
-	// DeleteBgpPeer Deletes an existing Bgp Peer.
-	DeleteBgpPeer(context.Context, *connect.Request[v1.DeleteBgpPeerRequest]) (*connect.Response[v1.DeleteBgpPeerResponse], error)
-	// ReleaseDedicatedBgpPeer Releases an existing dedicated Bgp Peer.
-	ReleaseDedicatedBgpPeer(context.Context, *connect.Request[v1.ReleaseDedicatedBgpPeerRequest]) (*connect.Response[v1.ReleaseDedicatedBgpPeerResponse], error)
 	// ChangeBgpPeersForVpc Change the BGP peers for a VPC.
 	ChangeBgpPeersForVpc(context.Context, *connect.Request[v1.ChangeBgpPeersForVpcRequest]) (*connect.Response[v1.ChangeBgpPeersForVpcResponse], error)
 	// CreateBgpPeer Creates a Bgp Peer for a zone.
 	CreateBgpPeer(context.Context, *connect.Request[v1.CreateBgpPeerRequest]) (*connect.Response[v1.CreateBgpPeerResponse], error)
+	// DedicateBgpPeer Dedicates an existing Bgp Peer to an account or a domain.
+	DedicateBgpPeer(context.Context, *connect.Request[v1.DedicateBgpPeerRequest]) (*connect.Response[v1.DedicateBgpPeerResponse], error)
+	// DeleteBgpPeer Deletes an existing Bgp Peer.
+	DeleteBgpPeer(context.Context, *connect.Request[v1.DeleteBgpPeerRequest]) (*connect.Response[v1.DeleteBgpPeerResponse], error)
+	// ListBgpPeers Lists Bgp Peers.
+	ListBgpPeers(context.Context, *connect.Request[v1.ListBgpPeersRequest]) (*connect.Response[v1.ListBgpPeersResponse], error)
+	// ReleaseDedicatedBgpPeer Releases an existing dedicated Bgp Peer.
+	ReleaseDedicatedBgpPeer(context.Context, *connect.Request[v1.ReleaseDedicatedBgpPeerRequest]) (*connect.Response[v1.ReleaseDedicatedBgpPeerResponse], error)
+	// UpdateBgpPeer Updates an existing Bgp Peer.
+	UpdateBgpPeer(context.Context, *connect.Request[v1.UpdateBgpPeerRequest]) (*connect.Response[v1.UpdateBgpPeerResponse], error)
 }
 
 // NewBgpServiceClient constructs a client for the cloudstack.management.network.bgp.v1.BgpService
@@ -89,40 +89,10 @@ func NewBgpServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 	baseURL = strings.TrimRight(baseURL, "/")
 	bgpServiceMethods := v1.File_cloudstack_management_network_bgp_v1_bgp_gen_proto.Services().ByName("BgpService").Methods()
 	return &bgpServiceClient{
-		dedicateBgpPeer: connect.NewClient[v1.DedicateBgpPeerRequest, v1.DedicateBgpPeerResponse](
-			httpClient,
-			baseURL+BgpServiceDedicateBgpPeerProcedure,
-			connect.WithSchema(bgpServiceMethods.ByName("DedicateBgpPeer")),
-			connect.WithClientOptions(opts...),
-		),
-		listBgpPeers: connect.NewClient[v1.ListBgpPeersRequest, v1.ListBgpPeersResponse](
-			httpClient,
-			baseURL+BgpServiceListBgpPeersProcedure,
-			connect.WithSchema(bgpServiceMethods.ByName("ListBgpPeers")),
-			connect.WithClientOptions(opts...),
-		),
 		changeBgpPeersForNetwork: connect.NewClient[v1.ChangeBgpPeersForNetworkRequest, v1.ChangeBgpPeersForNetworkResponse](
 			httpClient,
 			baseURL+BgpServiceChangeBgpPeersForNetworkProcedure,
 			connect.WithSchema(bgpServiceMethods.ByName("ChangeBgpPeersForNetwork")),
-			connect.WithClientOptions(opts...),
-		),
-		updateBgpPeer: connect.NewClient[v1.UpdateBgpPeerRequest, v1.UpdateBgpPeerResponse](
-			httpClient,
-			baseURL+BgpServiceUpdateBgpPeerProcedure,
-			connect.WithSchema(bgpServiceMethods.ByName("UpdateBgpPeer")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteBgpPeer: connect.NewClient[v1.DeleteBgpPeerRequest, v1.DeleteBgpPeerResponse](
-			httpClient,
-			baseURL+BgpServiceDeleteBgpPeerProcedure,
-			connect.WithSchema(bgpServiceMethods.ByName("DeleteBgpPeer")),
-			connect.WithClientOptions(opts...),
-		),
-		releaseDedicatedBgpPeer: connect.NewClient[v1.ReleaseDedicatedBgpPeerRequest, v1.ReleaseDedicatedBgpPeerResponse](
-			httpClient,
-			baseURL+BgpServiceReleaseDedicatedBgpPeerProcedure,
-			connect.WithSchema(bgpServiceMethods.ByName("ReleaseDedicatedBgpPeer")),
 			connect.WithClientOptions(opts...),
 		),
 		changeBgpPeersForVpc: connect.NewClient[v1.ChangeBgpPeersForVpcRequest, v1.ChangeBgpPeersForVpcResponse](
@@ -137,51 +107,55 @@ func NewBgpServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 			connect.WithSchema(bgpServiceMethods.ByName("CreateBgpPeer")),
 			connect.WithClientOptions(opts...),
 		),
+		dedicateBgpPeer: connect.NewClient[v1.DedicateBgpPeerRequest, v1.DedicateBgpPeerResponse](
+			httpClient,
+			baseURL+BgpServiceDedicateBgpPeerProcedure,
+			connect.WithSchema(bgpServiceMethods.ByName("DedicateBgpPeer")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteBgpPeer: connect.NewClient[v1.DeleteBgpPeerRequest, v1.DeleteBgpPeerResponse](
+			httpClient,
+			baseURL+BgpServiceDeleteBgpPeerProcedure,
+			connect.WithSchema(bgpServiceMethods.ByName("DeleteBgpPeer")),
+			connect.WithClientOptions(opts...),
+		),
+		listBgpPeers: connect.NewClient[v1.ListBgpPeersRequest, v1.ListBgpPeersResponse](
+			httpClient,
+			baseURL+BgpServiceListBgpPeersProcedure,
+			connect.WithSchema(bgpServiceMethods.ByName("ListBgpPeers")),
+			connect.WithClientOptions(opts...),
+		),
+		releaseDedicatedBgpPeer: connect.NewClient[v1.ReleaseDedicatedBgpPeerRequest, v1.ReleaseDedicatedBgpPeerResponse](
+			httpClient,
+			baseURL+BgpServiceReleaseDedicatedBgpPeerProcedure,
+			connect.WithSchema(bgpServiceMethods.ByName("ReleaseDedicatedBgpPeer")),
+			connect.WithClientOptions(opts...),
+		),
+		updateBgpPeer: connect.NewClient[v1.UpdateBgpPeerRequest, v1.UpdateBgpPeerResponse](
+			httpClient,
+			baseURL+BgpServiceUpdateBgpPeerProcedure,
+			connect.WithSchema(bgpServiceMethods.ByName("UpdateBgpPeer")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // bgpServiceClient implements BgpServiceClient.
 type bgpServiceClient struct {
-	dedicateBgpPeer          *connect.Client[v1.DedicateBgpPeerRequest, v1.DedicateBgpPeerResponse]
-	listBgpPeers             *connect.Client[v1.ListBgpPeersRequest, v1.ListBgpPeersResponse]
 	changeBgpPeersForNetwork *connect.Client[v1.ChangeBgpPeersForNetworkRequest, v1.ChangeBgpPeersForNetworkResponse]
-	updateBgpPeer            *connect.Client[v1.UpdateBgpPeerRequest, v1.UpdateBgpPeerResponse]
-	deleteBgpPeer            *connect.Client[v1.DeleteBgpPeerRequest, v1.DeleteBgpPeerResponse]
-	releaseDedicatedBgpPeer  *connect.Client[v1.ReleaseDedicatedBgpPeerRequest, v1.ReleaseDedicatedBgpPeerResponse]
 	changeBgpPeersForVpc     *connect.Client[v1.ChangeBgpPeersForVpcRequest, v1.ChangeBgpPeersForVpcResponse]
 	createBgpPeer            *connect.Client[v1.CreateBgpPeerRequest, v1.CreateBgpPeerResponse]
-}
-
-// DedicateBgpPeer calls cloudstack.management.network.bgp.v1.BgpService.DedicateBgpPeer.
-func (c *bgpServiceClient) DedicateBgpPeer(ctx context.Context, req *connect.Request[v1.DedicateBgpPeerRequest]) (*connect.Response[v1.DedicateBgpPeerResponse], error) {
-	return c.dedicateBgpPeer.CallUnary(ctx, req)
-}
-
-// ListBgpPeers calls cloudstack.management.network.bgp.v1.BgpService.ListBgpPeers.
-func (c *bgpServiceClient) ListBgpPeers(ctx context.Context, req *connect.Request[v1.ListBgpPeersRequest]) (*connect.Response[v1.ListBgpPeersResponse], error) {
-	return c.listBgpPeers.CallUnary(ctx, req)
+	dedicateBgpPeer          *connect.Client[v1.DedicateBgpPeerRequest, v1.DedicateBgpPeerResponse]
+	deleteBgpPeer            *connect.Client[v1.DeleteBgpPeerRequest, v1.DeleteBgpPeerResponse]
+	listBgpPeers             *connect.Client[v1.ListBgpPeersRequest, v1.ListBgpPeersResponse]
+	releaseDedicatedBgpPeer  *connect.Client[v1.ReleaseDedicatedBgpPeerRequest, v1.ReleaseDedicatedBgpPeerResponse]
+	updateBgpPeer            *connect.Client[v1.UpdateBgpPeerRequest, v1.UpdateBgpPeerResponse]
 }
 
 // ChangeBgpPeersForNetwork calls
 // cloudstack.management.network.bgp.v1.BgpService.ChangeBgpPeersForNetwork.
 func (c *bgpServiceClient) ChangeBgpPeersForNetwork(ctx context.Context, req *connect.Request[v1.ChangeBgpPeersForNetworkRequest]) (*connect.Response[v1.ChangeBgpPeersForNetworkResponse], error) {
 	return c.changeBgpPeersForNetwork.CallUnary(ctx, req)
-}
-
-// UpdateBgpPeer calls cloudstack.management.network.bgp.v1.BgpService.UpdateBgpPeer.
-func (c *bgpServiceClient) UpdateBgpPeer(ctx context.Context, req *connect.Request[v1.UpdateBgpPeerRequest]) (*connect.Response[v1.UpdateBgpPeerResponse], error) {
-	return c.updateBgpPeer.CallUnary(ctx, req)
-}
-
-// DeleteBgpPeer calls cloudstack.management.network.bgp.v1.BgpService.DeleteBgpPeer.
-func (c *bgpServiceClient) DeleteBgpPeer(ctx context.Context, req *connect.Request[v1.DeleteBgpPeerRequest]) (*connect.Response[v1.DeleteBgpPeerResponse], error) {
-	return c.deleteBgpPeer.CallUnary(ctx, req)
-}
-
-// ReleaseDedicatedBgpPeer calls
-// cloudstack.management.network.bgp.v1.BgpService.ReleaseDedicatedBgpPeer.
-func (c *bgpServiceClient) ReleaseDedicatedBgpPeer(ctx context.Context, req *connect.Request[v1.ReleaseDedicatedBgpPeerRequest]) (*connect.Response[v1.ReleaseDedicatedBgpPeerResponse], error) {
-	return c.releaseDedicatedBgpPeer.CallUnary(ctx, req)
 }
 
 // ChangeBgpPeersForVpc calls cloudstack.management.network.bgp.v1.BgpService.ChangeBgpPeersForVpc.
@@ -194,25 +168,51 @@ func (c *bgpServiceClient) CreateBgpPeer(ctx context.Context, req *connect.Reque
 	return c.createBgpPeer.CallUnary(ctx, req)
 }
 
+// DedicateBgpPeer calls cloudstack.management.network.bgp.v1.BgpService.DedicateBgpPeer.
+func (c *bgpServiceClient) DedicateBgpPeer(ctx context.Context, req *connect.Request[v1.DedicateBgpPeerRequest]) (*connect.Response[v1.DedicateBgpPeerResponse], error) {
+	return c.dedicateBgpPeer.CallUnary(ctx, req)
+}
+
+// DeleteBgpPeer calls cloudstack.management.network.bgp.v1.BgpService.DeleteBgpPeer.
+func (c *bgpServiceClient) DeleteBgpPeer(ctx context.Context, req *connect.Request[v1.DeleteBgpPeerRequest]) (*connect.Response[v1.DeleteBgpPeerResponse], error) {
+	return c.deleteBgpPeer.CallUnary(ctx, req)
+}
+
+// ListBgpPeers calls cloudstack.management.network.bgp.v1.BgpService.ListBgpPeers.
+func (c *bgpServiceClient) ListBgpPeers(ctx context.Context, req *connect.Request[v1.ListBgpPeersRequest]) (*connect.Response[v1.ListBgpPeersResponse], error) {
+	return c.listBgpPeers.CallUnary(ctx, req)
+}
+
+// ReleaseDedicatedBgpPeer calls
+// cloudstack.management.network.bgp.v1.BgpService.ReleaseDedicatedBgpPeer.
+func (c *bgpServiceClient) ReleaseDedicatedBgpPeer(ctx context.Context, req *connect.Request[v1.ReleaseDedicatedBgpPeerRequest]) (*connect.Response[v1.ReleaseDedicatedBgpPeerResponse], error) {
+	return c.releaseDedicatedBgpPeer.CallUnary(ctx, req)
+}
+
+// UpdateBgpPeer calls cloudstack.management.network.bgp.v1.BgpService.UpdateBgpPeer.
+func (c *bgpServiceClient) UpdateBgpPeer(ctx context.Context, req *connect.Request[v1.UpdateBgpPeerRequest]) (*connect.Response[v1.UpdateBgpPeerResponse], error) {
+	return c.updateBgpPeer.CallUnary(ctx, req)
+}
+
 // BgpServiceHandler is an implementation of the cloudstack.management.network.bgp.v1.BgpService
 // service.
 type BgpServiceHandler interface {
-	// DedicateBgpPeer Dedicates an existing Bgp Peer to an account or a domain.
-	DedicateBgpPeer(context.Context, *connect.Request[v1.DedicateBgpPeerRequest]) (*connect.Response[v1.DedicateBgpPeerResponse], error)
-	// ListBgpPeers Lists Bgp Peers.
-	ListBgpPeers(context.Context, *connect.Request[v1.ListBgpPeersRequest]) (*connect.Response[v1.ListBgpPeersResponse], error)
 	// ChangeBgpPeersForNetwork Change the BGP peers for a network.
 	ChangeBgpPeersForNetwork(context.Context, *connect.Request[v1.ChangeBgpPeersForNetworkRequest]) (*connect.Response[v1.ChangeBgpPeersForNetworkResponse], error)
-	// UpdateBgpPeer Updates an existing Bgp Peer.
-	UpdateBgpPeer(context.Context, *connect.Request[v1.UpdateBgpPeerRequest]) (*connect.Response[v1.UpdateBgpPeerResponse], error)
-	// DeleteBgpPeer Deletes an existing Bgp Peer.
-	DeleteBgpPeer(context.Context, *connect.Request[v1.DeleteBgpPeerRequest]) (*connect.Response[v1.DeleteBgpPeerResponse], error)
-	// ReleaseDedicatedBgpPeer Releases an existing dedicated Bgp Peer.
-	ReleaseDedicatedBgpPeer(context.Context, *connect.Request[v1.ReleaseDedicatedBgpPeerRequest]) (*connect.Response[v1.ReleaseDedicatedBgpPeerResponse], error)
 	// ChangeBgpPeersForVpc Change the BGP peers for a VPC.
 	ChangeBgpPeersForVpc(context.Context, *connect.Request[v1.ChangeBgpPeersForVpcRequest]) (*connect.Response[v1.ChangeBgpPeersForVpcResponse], error)
 	// CreateBgpPeer Creates a Bgp Peer for a zone.
 	CreateBgpPeer(context.Context, *connect.Request[v1.CreateBgpPeerRequest]) (*connect.Response[v1.CreateBgpPeerResponse], error)
+	// DedicateBgpPeer Dedicates an existing Bgp Peer to an account or a domain.
+	DedicateBgpPeer(context.Context, *connect.Request[v1.DedicateBgpPeerRequest]) (*connect.Response[v1.DedicateBgpPeerResponse], error)
+	// DeleteBgpPeer Deletes an existing Bgp Peer.
+	DeleteBgpPeer(context.Context, *connect.Request[v1.DeleteBgpPeerRequest]) (*connect.Response[v1.DeleteBgpPeerResponse], error)
+	// ListBgpPeers Lists Bgp Peers.
+	ListBgpPeers(context.Context, *connect.Request[v1.ListBgpPeersRequest]) (*connect.Response[v1.ListBgpPeersResponse], error)
+	// ReleaseDedicatedBgpPeer Releases an existing dedicated Bgp Peer.
+	ReleaseDedicatedBgpPeer(context.Context, *connect.Request[v1.ReleaseDedicatedBgpPeerRequest]) (*connect.Response[v1.ReleaseDedicatedBgpPeerResponse], error)
+	// UpdateBgpPeer Updates an existing Bgp Peer.
+	UpdateBgpPeer(context.Context, *connect.Request[v1.UpdateBgpPeerRequest]) (*connect.Response[v1.UpdateBgpPeerResponse], error)
 }
 
 // NewBgpServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -222,40 +222,10 @@ type BgpServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewBgpServiceHandler(svc BgpServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	bgpServiceMethods := v1.File_cloudstack_management_network_bgp_v1_bgp_gen_proto.Services().ByName("BgpService").Methods()
-	bgpServiceDedicateBgpPeerHandler := connect.NewUnaryHandler(
-		BgpServiceDedicateBgpPeerProcedure,
-		svc.DedicateBgpPeer,
-		connect.WithSchema(bgpServiceMethods.ByName("DedicateBgpPeer")),
-		connect.WithHandlerOptions(opts...),
-	)
-	bgpServiceListBgpPeersHandler := connect.NewUnaryHandler(
-		BgpServiceListBgpPeersProcedure,
-		svc.ListBgpPeers,
-		connect.WithSchema(bgpServiceMethods.ByName("ListBgpPeers")),
-		connect.WithHandlerOptions(opts...),
-	)
 	bgpServiceChangeBgpPeersForNetworkHandler := connect.NewUnaryHandler(
 		BgpServiceChangeBgpPeersForNetworkProcedure,
 		svc.ChangeBgpPeersForNetwork,
 		connect.WithSchema(bgpServiceMethods.ByName("ChangeBgpPeersForNetwork")),
-		connect.WithHandlerOptions(opts...),
-	)
-	bgpServiceUpdateBgpPeerHandler := connect.NewUnaryHandler(
-		BgpServiceUpdateBgpPeerProcedure,
-		svc.UpdateBgpPeer,
-		connect.WithSchema(bgpServiceMethods.ByName("UpdateBgpPeer")),
-		connect.WithHandlerOptions(opts...),
-	)
-	bgpServiceDeleteBgpPeerHandler := connect.NewUnaryHandler(
-		BgpServiceDeleteBgpPeerProcedure,
-		svc.DeleteBgpPeer,
-		connect.WithSchema(bgpServiceMethods.ByName("DeleteBgpPeer")),
-		connect.WithHandlerOptions(opts...),
-	)
-	bgpServiceReleaseDedicatedBgpPeerHandler := connect.NewUnaryHandler(
-		BgpServiceReleaseDedicatedBgpPeerProcedure,
-		svc.ReleaseDedicatedBgpPeer,
-		connect.WithSchema(bgpServiceMethods.ByName("ReleaseDedicatedBgpPeer")),
 		connect.WithHandlerOptions(opts...),
 	)
 	bgpServiceChangeBgpPeersForVpcHandler := connect.NewUnaryHandler(
@@ -270,24 +240,54 @@ func NewBgpServiceHandler(svc BgpServiceHandler, opts ...connect.HandlerOption) 
 		connect.WithSchema(bgpServiceMethods.ByName("CreateBgpPeer")),
 		connect.WithHandlerOptions(opts...),
 	)
+	bgpServiceDedicateBgpPeerHandler := connect.NewUnaryHandler(
+		BgpServiceDedicateBgpPeerProcedure,
+		svc.DedicateBgpPeer,
+		connect.WithSchema(bgpServiceMethods.ByName("DedicateBgpPeer")),
+		connect.WithHandlerOptions(opts...),
+	)
+	bgpServiceDeleteBgpPeerHandler := connect.NewUnaryHandler(
+		BgpServiceDeleteBgpPeerProcedure,
+		svc.DeleteBgpPeer,
+		connect.WithSchema(bgpServiceMethods.ByName("DeleteBgpPeer")),
+		connect.WithHandlerOptions(opts...),
+	)
+	bgpServiceListBgpPeersHandler := connect.NewUnaryHandler(
+		BgpServiceListBgpPeersProcedure,
+		svc.ListBgpPeers,
+		connect.WithSchema(bgpServiceMethods.ByName("ListBgpPeers")),
+		connect.WithHandlerOptions(opts...),
+	)
+	bgpServiceReleaseDedicatedBgpPeerHandler := connect.NewUnaryHandler(
+		BgpServiceReleaseDedicatedBgpPeerProcedure,
+		svc.ReleaseDedicatedBgpPeer,
+		connect.WithSchema(bgpServiceMethods.ByName("ReleaseDedicatedBgpPeer")),
+		connect.WithHandlerOptions(opts...),
+	)
+	bgpServiceUpdateBgpPeerHandler := connect.NewUnaryHandler(
+		BgpServiceUpdateBgpPeerProcedure,
+		svc.UpdateBgpPeer,
+		connect.WithSchema(bgpServiceMethods.ByName("UpdateBgpPeer")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.network.bgp.v1.BgpService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case BgpServiceDedicateBgpPeerProcedure:
-			bgpServiceDedicateBgpPeerHandler.ServeHTTP(w, r)
-		case BgpServiceListBgpPeersProcedure:
-			bgpServiceListBgpPeersHandler.ServeHTTP(w, r)
 		case BgpServiceChangeBgpPeersForNetworkProcedure:
 			bgpServiceChangeBgpPeersForNetworkHandler.ServeHTTP(w, r)
-		case BgpServiceUpdateBgpPeerProcedure:
-			bgpServiceUpdateBgpPeerHandler.ServeHTTP(w, r)
-		case BgpServiceDeleteBgpPeerProcedure:
-			bgpServiceDeleteBgpPeerHandler.ServeHTTP(w, r)
-		case BgpServiceReleaseDedicatedBgpPeerProcedure:
-			bgpServiceReleaseDedicatedBgpPeerHandler.ServeHTTP(w, r)
 		case BgpServiceChangeBgpPeersForVpcProcedure:
 			bgpServiceChangeBgpPeersForVpcHandler.ServeHTTP(w, r)
 		case BgpServiceCreateBgpPeerProcedure:
 			bgpServiceCreateBgpPeerHandler.ServeHTTP(w, r)
+		case BgpServiceDedicateBgpPeerProcedure:
+			bgpServiceDedicateBgpPeerHandler.ServeHTTP(w, r)
+		case BgpServiceDeleteBgpPeerProcedure:
+			bgpServiceDeleteBgpPeerHandler.ServeHTTP(w, r)
+		case BgpServiceListBgpPeersProcedure:
+			bgpServiceListBgpPeersHandler.ServeHTTP(w, r)
+		case BgpServiceReleaseDedicatedBgpPeerProcedure:
+			bgpServiceReleaseDedicatedBgpPeerHandler.ServeHTTP(w, r)
+		case BgpServiceUpdateBgpPeerProcedure:
+			bgpServiceUpdateBgpPeerHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -297,28 +297,8 @@ func NewBgpServiceHandler(svc BgpServiceHandler, opts ...connect.HandlerOption) 
 // UnimplementedBgpServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedBgpServiceHandler struct{}
 
-func (UnimplementedBgpServiceHandler) DedicateBgpPeer(context.Context, *connect.Request[v1.DedicateBgpPeerRequest]) (*connect.Response[v1.DedicateBgpPeerResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.bgp.v1.BgpService.DedicateBgpPeer is not implemented"))
-}
-
-func (UnimplementedBgpServiceHandler) ListBgpPeers(context.Context, *connect.Request[v1.ListBgpPeersRequest]) (*connect.Response[v1.ListBgpPeersResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.bgp.v1.BgpService.ListBgpPeers is not implemented"))
-}
-
 func (UnimplementedBgpServiceHandler) ChangeBgpPeersForNetwork(context.Context, *connect.Request[v1.ChangeBgpPeersForNetworkRequest]) (*connect.Response[v1.ChangeBgpPeersForNetworkResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.bgp.v1.BgpService.ChangeBgpPeersForNetwork is not implemented"))
-}
-
-func (UnimplementedBgpServiceHandler) UpdateBgpPeer(context.Context, *connect.Request[v1.UpdateBgpPeerRequest]) (*connect.Response[v1.UpdateBgpPeerResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.bgp.v1.BgpService.UpdateBgpPeer is not implemented"))
-}
-
-func (UnimplementedBgpServiceHandler) DeleteBgpPeer(context.Context, *connect.Request[v1.DeleteBgpPeerRequest]) (*connect.Response[v1.DeleteBgpPeerResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.bgp.v1.BgpService.DeleteBgpPeer is not implemented"))
-}
-
-func (UnimplementedBgpServiceHandler) ReleaseDedicatedBgpPeer(context.Context, *connect.Request[v1.ReleaseDedicatedBgpPeerRequest]) (*connect.Response[v1.ReleaseDedicatedBgpPeerResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.bgp.v1.BgpService.ReleaseDedicatedBgpPeer is not implemented"))
 }
 
 func (UnimplementedBgpServiceHandler) ChangeBgpPeersForVpc(context.Context, *connect.Request[v1.ChangeBgpPeersForVpcRequest]) (*connect.Response[v1.ChangeBgpPeersForVpcResponse], error) {
@@ -327,4 +307,24 @@ func (UnimplementedBgpServiceHandler) ChangeBgpPeersForVpc(context.Context, *con
 
 func (UnimplementedBgpServiceHandler) CreateBgpPeer(context.Context, *connect.Request[v1.CreateBgpPeerRequest]) (*connect.Response[v1.CreateBgpPeerResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.bgp.v1.BgpService.CreateBgpPeer is not implemented"))
+}
+
+func (UnimplementedBgpServiceHandler) DedicateBgpPeer(context.Context, *connect.Request[v1.DedicateBgpPeerRequest]) (*connect.Response[v1.DedicateBgpPeerResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.bgp.v1.BgpService.DedicateBgpPeer is not implemented"))
+}
+
+func (UnimplementedBgpServiceHandler) DeleteBgpPeer(context.Context, *connect.Request[v1.DeleteBgpPeerRequest]) (*connect.Response[v1.DeleteBgpPeerResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.bgp.v1.BgpService.DeleteBgpPeer is not implemented"))
+}
+
+func (UnimplementedBgpServiceHandler) ListBgpPeers(context.Context, *connect.Request[v1.ListBgpPeersRequest]) (*connect.Response[v1.ListBgpPeersResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.bgp.v1.BgpService.ListBgpPeers is not implemented"))
+}
+
+func (UnimplementedBgpServiceHandler) ReleaseDedicatedBgpPeer(context.Context, *connect.Request[v1.ReleaseDedicatedBgpPeerRequest]) (*connect.Response[v1.ReleaseDedicatedBgpPeerResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.bgp.v1.BgpService.ReleaseDedicatedBgpPeer is not implemented"))
+}
+
+func (UnimplementedBgpServiceHandler) UpdateBgpPeer(context.Context, *connect.Request[v1.UpdateBgpPeerRequest]) (*connect.Response[v1.UpdateBgpPeerResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.bgp.v1.BgpService.UpdateBgpPeer is not implemented"))
 }

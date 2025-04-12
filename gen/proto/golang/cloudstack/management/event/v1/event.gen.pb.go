@@ -151,106 +151,6 @@ func (x *ArchiveEventsResponse) GetResult() *Result {
 	return nil
 }
 
-// ListEventTypesRequest represents the parameters for list event types
-type ListEventTypesRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	ResponseType  *string `protobuf:"bytes,1,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListEventTypesRequest) Reset() {
-	*x = ListEventTypesRequest{}
-	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListEventTypesRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListEventTypesRequest) ProtoMessage() {}
-
-func (x *ListEventTypesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListEventTypesRequest.ProtoReflect.Descriptor instead.
-func (*ListEventTypesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_event_v1_event_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *ListEventTypesRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListEventTypesResponse represents the response from list event types
-type ListEventTypesResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of EventTypes
-	Items []*EventType `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of EventTypes
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListEventTypesResponse) Reset() {
-	*x = ListEventTypesResponse{}
-	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListEventTypesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListEventTypesResponse) ProtoMessage() {}
-
-func (x *ListEventTypesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListEventTypesResponse.ProtoReflect.Descriptor instead.
-func (*ListEventTypesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_event_v1_event_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *ListEventTypesResponse) GetItems() []*EventType {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListEventTypesResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
 // DeleteEventsRequest represents the parameters for delete one or more events.
 type DeleteEventsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -269,7 +169,7 @@ type DeleteEventsRequest struct {
 
 func (x *DeleteEventsRequest) Reset() {
 	*x = DeleteEventsRequest{}
-	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -281,7 +181,7 @@ func (x *DeleteEventsRequest) String() string {
 func (*DeleteEventsRequest) ProtoMessage() {}
 
 func (x *DeleteEventsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -294,7 +194,7 @@ func (x *DeleteEventsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteEventsRequest.ProtoReflect.Descriptor instead.
 func (*DeleteEventsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_event_v1_event_gen_proto_rawDescGZIP(), []int{4}
+	return file_cloudstack_management_event_v1_event_gen_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *DeleteEventsRequest) GetIds() []string {
@@ -343,7 +243,7 @@ type DeleteEventsResponse struct {
 
 func (x *DeleteEventsResponse) Reset() {
 	*x = DeleteEventsResponse{}
-	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -355,7 +255,7 @@ func (x *DeleteEventsResponse) String() string {
 func (*DeleteEventsResponse) ProtoMessage() {}
 
 func (x *DeleteEventsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -368,7 +268,7 @@ func (x *DeleteEventsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteEventsResponse.ProtoReflect.Descriptor instead.
 func (*DeleteEventsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_event_v1_event_gen_proto_rawDescGZIP(), []int{5}
+	return file_cloudstack_management_event_v1_event_gen_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *DeleteEventsResponse) GetResult() *Result {
@@ -376,6 +276,106 @@ func (x *DeleteEventsResponse) GetResult() *Result {
 		return x.Result
 	}
 	return nil
+}
+
+// ListEventTypesRequest represents the parameters for list event types
+type ListEventTypesRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	ResponseType  *string `protobuf:"bytes,1,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListEventTypesRequest) Reset() {
+	*x = ListEventTypesRequest{}
+	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListEventTypesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListEventTypesRequest) ProtoMessage() {}
+
+func (x *ListEventTypesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListEventTypesRequest.ProtoReflect.Descriptor instead.
+func (*ListEventTypesRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_event_v1_event_gen_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *ListEventTypesRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListEventTypesResponse represents the response from list event types
+type ListEventTypesResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of EventTypes
+	Items []*EventType `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of EventTypes
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListEventTypesResponse) Reset() {
+	*x = ListEventTypesResponse{}
+	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListEventTypesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListEventTypesResponse) ProtoMessage() {}
+
+func (x *ListEventTypesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListEventTypesResponse.ProtoReflect.Descriptor instead.
+func (*ListEventTypesResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_event_v1_event_gen_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *ListEventTypesResponse) GetItems() []*EventType {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListEventTypesResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
 }
 
 // ListEventsRequest represents the parameters for a command to list events.
@@ -647,88 +647,6 @@ func (x *ListEventsResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// EventType represents a EventType Item
-type EventType struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the EventType
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the EventType
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the EventType
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the EventType
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *EventType) Reset() {
-	*x = EventType{}
-	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *EventType) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*EventType) ProtoMessage() {}
-
-func (x *EventType) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use EventType.ProtoReflect.Descriptor instead.
-func (*EventType) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_event_v1_event_gen_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *EventType) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *EventType) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *EventType) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *EventType) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *EventType) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
 // Event represents a Event Item
 type Event struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -748,7 +666,7 @@ type Event struct {
 
 func (x *Event) Reset() {
 	*x = Event{}
-	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -760,7 +678,7 @@ func (x *Event) String() string {
 func (*Event) ProtoMessage() {}
 
 func (x *Event) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -773,7 +691,7 @@ func (x *Event) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Event.ProtoReflect.Descriptor instead.
 func (*Event) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_event_v1_event_gen_proto_rawDescGZIP(), []int{9}
+	return file_cloudstack_management_event_v1_event_gen_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *Event) GetId() string {
@@ -805,6 +723,88 @@ func (x *Event) GetDescription() string {
 }
 
 func (x *Event) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// EventType represents a EventType Item
+type EventType struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the EventType
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the EventType
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the EventType
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the EventType
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EventType) Reset() {
+	*x = EventType{}
+	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EventType) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventType) ProtoMessage() {}
+
+func (x *EventType) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventType.ProtoReflect.Descriptor instead.
+func (*EventType) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_event_v1_event_gen_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *EventType) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *EventType) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *EventType) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *EventType) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *EventType) GetCreated() string {
 	if x != nil && x.Created != nil {
 		return *x.Created
 	}
@@ -866,151 +866,6 @@ func (x *Success) GetDisplayText() string {
 	return ""
 }
 
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_event_v1_event_gen_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
 // Result represents a generic operation result
 type Result struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1030,7 +885,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[12]
+	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1042,7 +897,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[12]
+	mi := &file_cloudstack_management_event_v1_event_gen_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1055,7 +910,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_event_v1_event_gen_proto_rawDescGZIP(), []int{12}
+	return file_cloudstack_management_event_v1_event_gen_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -1106,13 +961,7 @@ const file_cloudstack_management_event_v1_event_gen_proto_rawDesc = "" +
 	"\x04type\x18\x04 \x01(\tR\x04type\x12#\n" +
 	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"W\n" +
 	"\x15ArchiveEventsResponse\x12>\n" +
-	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.event.v1.ResultR\x06result\"<\n" +
-	"\x15ListEventTypesRequest\x12#\n" +
-	"\rresponse_type\x18\x01 \x01(\tR\fresponseType\"\x81\x01\n" +
-	"\x16ListEventTypesResponse\x12?\n" +
-	"\x05items\x18\x01 \x03(\v2).cloudstack.management.event.v1.EventTypeR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x9a\x01\n" +
+	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.event.v1.ResultR\x06result\"\x9a\x01\n" +
 	"\x13DeleteEventsRequest\x12\x10\n" +
 	"\x03ids\x18\x01 \x03(\tR\x03ids\x12\x19\n" +
 	"\bend_date\x18\x02 \x01(\tR\aendDate\x12\x1d\n" +
@@ -1121,7 +970,13 @@ const file_cloudstack_management_event_v1_event_gen_proto_rawDesc = "" +
 	"\x04type\x18\x04 \x01(\tR\x04type\x12#\n" +
 	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"V\n" +
 	"\x14DeleteEventsResponse\x12>\n" +
-	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.event.v1.ResultR\x06result\"\xe6\x05\n" +
+	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.event.v1.ResultR\x06result\"<\n" +
+	"\x15ListEventTypesRequest\x12#\n" +
+	"\rresponse_type\x18\x01 \x01(\tR\fresponseType\"\x81\x01\n" +
+	"\x16ListEventTypesResponse\x12?\n" +
+	"\x05items\x18\x01 \x03(\v2).cloudstack.management.event.v1.EventTypeR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xe6\x05\n" +
 	"\x11ListEventsRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1a\n" +
 	"\bduration\x18\x02 \x01(\x05R\bduration\x12\x19\n" +
@@ -1152,14 +1007,14 @@ const file_cloudstack_management_event_v1_event_gen_proto_rawDesc = "" +
 	"\x12ListEventsResponse\x12;\n" +
 	"\x05items\x18\x01 \x03(\v2%.cloudstack.management.event.v1.EventR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x98\x01\n" +
-	"\tEventType\x12\x18\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x94\x01\n" +
+	"\x05Event\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x94\x01\n" +
-	"\x05Event\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x98\x01\n" +
+	"\tEventType\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -1167,39 +1022,20 @@ const file_cloudstack_management_event_v1_event_gen_proto_rawDesc = "" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xdd\x03\n" +
-	"\x04Item\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12K\n" +
-	"\adetails\x18\f \x03(\v21.cloudstack.management.event.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\x8e\x04\n" +
-	"\fEventService\x12~\n" +
-	"\rArchiveEvents\x124.cloudstack.management.event.v1.ArchiveEventsRequest\x1a5.cloudstack.management.event.v1.ArchiveEventsResponse\"\x00\x12\x81\x01\n" +
-	"\x0eListEventTypes\x125.cloudstack.management.event.v1.ListEventTypesRequest\x1a6.cloudstack.management.event.v1.ListEventTypesResponse\"\x00\x12{\n" +
-	"\fDeleteEvents\x123.cloudstack.management.event.v1.DeleteEventsRequest\x1a4.cloudstack.management.event.v1.DeleteEventsResponse\"\x00\x12u\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\xad\x04\n" +
+	"\fEventService\x12\x85\x01\n" +
+	"\rArchiveEvents\x124.cloudstack.management.event.v1.ArchiveEventsRequest\x1a5.cloudstack.management.event.v1.ArchiveEventsResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x82\x01\n" +
+	"\fDeleteEvents\x123.cloudstack.management.event.v1.DeleteEventsRequest\x1a4.cloudstack.management.event.v1.DeleteEventsResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x88\x01\n" +
+	"\x0eListEventTypes\x125.cloudstack.management.event.v1.ListEventTypesRequest\x1a6.cloudstack.management.event.v1.ListEventTypesResponse\"\a\xc2>\x04\xc2>\x01\x02\x12|\n" +
 	"\n" +
-	"ListEvents\x121.cloudstack.management.event.v1.ListEventsRequest\x1a2.cloudstack.management.event.v1.ListEventsResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xaa\x02\n" +
+	"ListEvents\x121.cloudstack.management.event.v1.ListEventsRequest\x1a2.cloudstack.management.event.v1.ListEventsResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\a\xc2>\x04\xc2>\x01\x02B\xaa\x02\n" +
 	"\"com.cloudstack.management.event.v1B\rEventGenProtoP\x01ZZgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/event/v1;eventv1\xa2\x02\x03CME\xaa\x02\x1eCloudstack.Management.Event.V1\xca\x02\x1eCloudstack\\Management\\Event\\V1\xe2\x02*Cloudstack\\Management\\Event\\V1\\GPBMetadata\xea\x02!Cloudstack::Management::Event::V1b\beditionsp\xe8\a"
 
 var (
@@ -1214,42 +1050,39 @@ func file_cloudstack_management_event_v1_event_gen_proto_rawDescGZIP() []byte {
 	return file_cloudstack_management_event_v1_event_gen_proto_rawDescData
 }
 
-var file_cloudstack_management_event_v1_event_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
+var file_cloudstack_management_event_v1_event_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_cloudstack_management_event_v1_event_gen_proto_goTypes = []any{
 	(*ArchiveEventsRequest)(nil),   // 0: cloudstack.management.event.v1.ArchiveEventsRequest
 	(*ArchiveEventsResponse)(nil),  // 1: cloudstack.management.event.v1.ArchiveEventsResponse
-	(*ListEventTypesRequest)(nil),  // 2: cloudstack.management.event.v1.ListEventTypesRequest
-	(*ListEventTypesResponse)(nil), // 3: cloudstack.management.event.v1.ListEventTypesResponse
-	(*DeleteEventsRequest)(nil),    // 4: cloudstack.management.event.v1.DeleteEventsRequest
-	(*DeleteEventsResponse)(nil),   // 5: cloudstack.management.event.v1.DeleteEventsResponse
+	(*DeleteEventsRequest)(nil),    // 2: cloudstack.management.event.v1.DeleteEventsRequest
+	(*DeleteEventsResponse)(nil),   // 3: cloudstack.management.event.v1.DeleteEventsResponse
+	(*ListEventTypesRequest)(nil),  // 4: cloudstack.management.event.v1.ListEventTypesRequest
+	(*ListEventTypesResponse)(nil), // 5: cloudstack.management.event.v1.ListEventTypesResponse
 	(*ListEventsRequest)(nil),      // 6: cloudstack.management.event.v1.ListEventsRequest
 	(*ListEventsResponse)(nil),     // 7: cloudstack.management.event.v1.ListEventsResponse
-	(*EventType)(nil),              // 8: cloudstack.management.event.v1.EventType
-	(*Event)(nil),                  // 9: cloudstack.management.event.v1.Event
+	(*Event)(nil),                  // 8: cloudstack.management.event.v1.Event
+	(*EventType)(nil),              // 9: cloudstack.management.event.v1.EventType
 	(*Success)(nil),                // 10: cloudstack.management.event.v1.Success
-	(*Item)(nil),                   // 11: cloudstack.management.event.v1.Item
-	(*Result)(nil),                 // 12: cloudstack.management.event.v1.Result
-	nil,                            // 13: cloudstack.management.event.v1.Item.DetailsEntry
+	(*Result)(nil),                 // 11: cloudstack.management.event.v1.Result
 }
 var file_cloudstack_management_event_v1_event_gen_proto_depIdxs = []int32{
-	12, // 0: cloudstack.management.event.v1.ArchiveEventsResponse.result:type_name -> cloudstack.management.event.v1.Result
-	8,  // 1: cloudstack.management.event.v1.ListEventTypesResponse.items:type_name -> cloudstack.management.event.v1.EventType
-	12, // 2: cloudstack.management.event.v1.DeleteEventsResponse.result:type_name -> cloudstack.management.event.v1.Result
-	9,  // 3: cloudstack.management.event.v1.ListEventsResponse.items:type_name -> cloudstack.management.event.v1.Event
-	13, // 4: cloudstack.management.event.v1.Item.details:type_name -> cloudstack.management.event.v1.Item.DetailsEntry
-	0,  // 5: cloudstack.management.event.v1.EventService.ArchiveEvents:input_type -> cloudstack.management.event.v1.ArchiveEventsRequest
-	2,  // 6: cloudstack.management.event.v1.EventService.ListEventTypes:input_type -> cloudstack.management.event.v1.ListEventTypesRequest
-	4,  // 7: cloudstack.management.event.v1.EventService.DeleteEvents:input_type -> cloudstack.management.event.v1.DeleteEventsRequest
-	6,  // 8: cloudstack.management.event.v1.EventService.ListEvents:input_type -> cloudstack.management.event.v1.ListEventsRequest
-	1,  // 9: cloudstack.management.event.v1.EventService.ArchiveEvents:output_type -> cloudstack.management.event.v1.ArchiveEventsResponse
-	3,  // 10: cloudstack.management.event.v1.EventService.ListEventTypes:output_type -> cloudstack.management.event.v1.ListEventTypesResponse
-	5,  // 11: cloudstack.management.event.v1.EventService.DeleteEvents:output_type -> cloudstack.management.event.v1.DeleteEventsResponse
-	7,  // 12: cloudstack.management.event.v1.EventService.ListEvents:output_type -> cloudstack.management.event.v1.ListEventsResponse
-	9,  // [9:13] is the sub-list for method output_type
-	5,  // [5:9] is the sub-list for method input_type
-	5,  // [5:5] is the sub-list for extension type_name
-	5,  // [5:5] is the sub-list for extension extendee
-	0,  // [0:5] is the sub-list for field type_name
+	11, // 0: cloudstack.management.event.v1.ArchiveEventsResponse.result:type_name -> cloudstack.management.event.v1.Result
+	11, // 1: cloudstack.management.event.v1.DeleteEventsResponse.result:type_name -> cloudstack.management.event.v1.Result
+	9,  // 2: cloudstack.management.event.v1.ListEventTypesResponse.items:type_name -> cloudstack.management.event.v1.EventType
+	8,  // 3: cloudstack.management.event.v1.ListEventsResponse.items:type_name -> cloudstack.management.event.v1.Event
+	0,  // 4: cloudstack.management.event.v1.EventService.ArchiveEvents:input_type -> cloudstack.management.event.v1.ArchiveEventsRequest
+	2,  // 5: cloudstack.management.event.v1.EventService.DeleteEvents:input_type -> cloudstack.management.event.v1.DeleteEventsRequest
+	4,  // 6: cloudstack.management.event.v1.EventService.ListEventTypes:input_type -> cloudstack.management.event.v1.ListEventTypesRequest
+	6,  // 7: cloudstack.management.event.v1.EventService.ListEvents:input_type -> cloudstack.management.event.v1.ListEventsRequest
+	1,  // 8: cloudstack.management.event.v1.EventService.ArchiveEvents:output_type -> cloudstack.management.event.v1.ArchiveEventsResponse
+	3,  // 9: cloudstack.management.event.v1.EventService.DeleteEvents:output_type -> cloudstack.management.event.v1.DeleteEventsResponse
+	5,  // 10: cloudstack.management.event.v1.EventService.ListEventTypes:output_type -> cloudstack.management.event.v1.ListEventTypesResponse
+	7,  // 11: cloudstack.management.event.v1.EventService.ListEvents:output_type -> cloudstack.management.event.v1.ListEventsResponse
+	8,  // [8:12] is the sub-list for method output_type
+	4,  // [4:8] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_event_v1_event_gen_proto_init() }
@@ -1263,7 +1096,7 @@ func file_cloudstack_management_event_v1_event_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_event_v1_event_gen_proto_rawDesc), len(file_cloudstack_management_event_v1_event_gen_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   14,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

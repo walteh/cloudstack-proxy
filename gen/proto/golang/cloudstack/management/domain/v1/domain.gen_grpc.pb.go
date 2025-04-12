@@ -19,12 +19,13 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	DomainService_DeleteDomain_FullMethodName       = "/cloudstack.management.domain.v1.DomainService/DeleteDomain"
-	DomainService_UpdateDomain_FullMethodName       = "/cloudstack.management.domain.v1.DomainService/UpdateDomain"
-	DomainService_CreateDomain_FullMethodName       = "/cloudstack.management.domain.v1.DomainService/CreateDomain"
-	DomainService_MoveDomain_FullMethodName         = "/cloudstack.management.domain.v1.DomainService/MoveDomain"
-	DomainService_ListDomains_FullMethodName        = "/cloudstack.management.domain.v1.DomainService/ListDomains"
-	DomainService_ListDomainChildren_FullMethodName = "/cloudstack.management.domain.v1.DomainService/ListDomainChildren"
+	DomainService_CreateDomain_FullMethodName          = "/cloudstack.management.domain.v1.DomainService/CreateDomain"
+	DomainService_DeleteDomain_FullMethodName          = "/cloudstack.management.domain.v1.DomainService/DeleteDomain"
+	DomainService_ListDomainChildren_FullMethodName    = "/cloudstack.management.domain.v1.DomainService/ListDomainChildren"
+	DomainService_ListDomains_FullMethodName           = "/cloudstack.management.domain.v1.DomainService/ListDomains"
+	DomainService_ListDomainsCmdByAdmin_FullMethodName = "/cloudstack.management.domain.v1.DomainService/ListDomainsCmdByAdmin"
+	DomainService_MoveDomain_FullMethodName            = "/cloudstack.management.domain.v1.DomainService/MoveDomain"
+	DomainService_UpdateDomain_FullMethodName          = "/cloudstack.management.domain.v1.DomainService/UpdateDomain"
 )
 
 // DomainServiceClient is the client API for DomainService service.
@@ -33,18 +34,20 @@ const (
 //
 // DomainService provides operations for managing Domains
 type DomainServiceClient interface {
-	// DeleteDomain Deletes a specified domain
-	DeleteDomain(ctx context.Context, in *DeleteDomainRequest, opts ...grpc.CallOption) (*DeleteDomainResponse, error)
-	// UpdateDomain Updates a domain with a new name
-	UpdateDomain(ctx context.Context, in *UpdateDomainRequest, opts ...grpc.CallOption) (*UpdateDomainResponse, error)
 	// CreateDomain Creates a domain
 	CreateDomain(ctx context.Context, in *CreateDomainRequest, opts ...grpc.CallOption) (*CreateDomainResponse, error)
-	// MoveDomain Moves a domain and its children to a new parent domain.
-	MoveDomain(ctx context.Context, in *MoveDomainRequest, opts ...grpc.CallOption) (*MoveDomainResponse, error)
-	// ListDomains Lists domains and provides detailed information for listed domains
-	ListDomains(ctx context.Context, in *ListDomainsRequest, opts ...grpc.CallOption) (*ListDomainsResponse, error)
+	// DeleteDomain Deletes a specified domain
+	DeleteDomain(ctx context.Context, in *DeleteDomainRequest, opts ...grpc.CallOption) (*DeleteDomainResponse, error)
 	// ListDomainChildren Lists all children domains belonging to a specified domain
 	ListDomainChildren(ctx context.Context, in *ListDomainChildrenRequest, opts ...grpc.CallOption) (*ListDomainChildrenResponse, error)
+	// ListDomains Lists domains and provides detailed information for listed domains
+	ListDomains(ctx context.Context, in *ListDomainsRequest, opts ...grpc.CallOption) (*ListDomainsResponse, error)
+	// ListDomainsCmdByAdmin Lists domains and provides detailed information for listed domains
+	ListDomainsCmdByAdmin(ctx context.Context, in *ListDomainsCmdByAdminRequest, opts ...grpc.CallOption) (*ListDomainsCmdByAdminResponse, error)
+	// MoveDomain Moves a domain and its children to a new parent domain.
+	MoveDomain(ctx context.Context, in *MoveDomainRequest, opts ...grpc.CallOption) (*MoveDomainResponse, error)
+	// UpdateDomain Updates a domain with a new name
+	UpdateDomain(ctx context.Context, in *UpdateDomainRequest, opts ...grpc.CallOption) (*UpdateDomainResponse, error)
 }
 
 type domainServiceClient struct {
@@ -53,26 +56,6 @@ type domainServiceClient struct {
 
 func NewDomainServiceClient(cc grpc.ClientConnInterface) DomainServiceClient {
 	return &domainServiceClient{cc}
-}
-
-func (c *domainServiceClient) DeleteDomain(ctx context.Context, in *DeleteDomainRequest, opts ...grpc.CallOption) (*DeleteDomainResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteDomainResponse)
-	err := c.cc.Invoke(ctx, DomainService_DeleteDomain_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *domainServiceClient) UpdateDomain(ctx context.Context, in *UpdateDomainRequest, opts ...grpc.CallOption) (*UpdateDomainResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateDomainResponse)
-	err := c.cc.Invoke(ctx, DomainService_UpdateDomain_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 func (c *domainServiceClient) CreateDomain(ctx context.Context, in *CreateDomainRequest, opts ...grpc.CallOption) (*CreateDomainResponse, error) {
@@ -85,20 +68,10 @@ func (c *domainServiceClient) CreateDomain(ctx context.Context, in *CreateDomain
 	return out, nil
 }
 
-func (c *domainServiceClient) MoveDomain(ctx context.Context, in *MoveDomainRequest, opts ...grpc.CallOption) (*MoveDomainResponse, error) {
+func (c *domainServiceClient) DeleteDomain(ctx context.Context, in *DeleteDomainRequest, opts ...grpc.CallOption) (*DeleteDomainResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(MoveDomainResponse)
-	err := c.cc.Invoke(ctx, DomainService_MoveDomain_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *domainServiceClient) ListDomains(ctx context.Context, in *ListDomainsRequest, opts ...grpc.CallOption) (*ListDomainsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListDomainsResponse)
-	err := c.cc.Invoke(ctx, DomainService_ListDomains_FullMethodName, in, out, cOpts...)
+	out := new(DeleteDomainResponse)
+	err := c.cc.Invoke(ctx, DomainService_DeleteDomain_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -115,24 +88,66 @@ func (c *domainServiceClient) ListDomainChildren(ctx context.Context, in *ListDo
 	return out, nil
 }
 
+func (c *domainServiceClient) ListDomains(ctx context.Context, in *ListDomainsRequest, opts ...grpc.CallOption) (*ListDomainsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListDomainsResponse)
+	err := c.cc.Invoke(ctx, DomainService_ListDomains_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *domainServiceClient) ListDomainsCmdByAdmin(ctx context.Context, in *ListDomainsCmdByAdminRequest, opts ...grpc.CallOption) (*ListDomainsCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListDomainsCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, DomainService_ListDomainsCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *domainServiceClient) MoveDomain(ctx context.Context, in *MoveDomainRequest, opts ...grpc.CallOption) (*MoveDomainResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(MoveDomainResponse)
+	err := c.cc.Invoke(ctx, DomainService_MoveDomain_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *domainServiceClient) UpdateDomain(ctx context.Context, in *UpdateDomainRequest, opts ...grpc.CallOption) (*UpdateDomainResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateDomainResponse)
+	err := c.cc.Invoke(ctx, DomainService_UpdateDomain_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // DomainServiceServer is the server API for DomainService service.
 // All implementations must embed UnimplementedDomainServiceServer
 // for forward compatibility.
 //
 // DomainService provides operations for managing Domains
 type DomainServiceServer interface {
-	// DeleteDomain Deletes a specified domain
-	DeleteDomain(context.Context, *DeleteDomainRequest) (*DeleteDomainResponse, error)
-	// UpdateDomain Updates a domain with a new name
-	UpdateDomain(context.Context, *UpdateDomainRequest) (*UpdateDomainResponse, error)
 	// CreateDomain Creates a domain
 	CreateDomain(context.Context, *CreateDomainRequest) (*CreateDomainResponse, error)
-	// MoveDomain Moves a domain and its children to a new parent domain.
-	MoveDomain(context.Context, *MoveDomainRequest) (*MoveDomainResponse, error)
-	// ListDomains Lists domains and provides detailed information for listed domains
-	ListDomains(context.Context, *ListDomainsRequest) (*ListDomainsResponse, error)
+	// DeleteDomain Deletes a specified domain
+	DeleteDomain(context.Context, *DeleteDomainRequest) (*DeleteDomainResponse, error)
 	// ListDomainChildren Lists all children domains belonging to a specified domain
 	ListDomainChildren(context.Context, *ListDomainChildrenRequest) (*ListDomainChildrenResponse, error)
+	// ListDomains Lists domains and provides detailed information for listed domains
+	ListDomains(context.Context, *ListDomainsRequest) (*ListDomainsResponse, error)
+	// ListDomainsCmdByAdmin Lists domains and provides detailed information for listed domains
+	ListDomainsCmdByAdmin(context.Context, *ListDomainsCmdByAdminRequest) (*ListDomainsCmdByAdminResponse, error)
+	// MoveDomain Moves a domain and its children to a new parent domain.
+	MoveDomain(context.Context, *MoveDomainRequest) (*MoveDomainResponse, error)
+	// UpdateDomain Updates a domain with a new name
+	UpdateDomain(context.Context, *UpdateDomainRequest) (*UpdateDomainResponse, error)
 	mustEmbedUnimplementedDomainServiceServer()
 }
 
@@ -143,23 +158,26 @@ type DomainServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedDomainServiceServer struct{}
 
-func (UnimplementedDomainServiceServer) DeleteDomain(context.Context, *DeleteDomainRequest) (*DeleteDomainResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteDomain not implemented")
-}
-func (UnimplementedDomainServiceServer) UpdateDomain(context.Context, *UpdateDomainRequest) (*UpdateDomainResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateDomain not implemented")
-}
 func (UnimplementedDomainServiceServer) CreateDomain(context.Context, *CreateDomainRequest) (*CreateDomainResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateDomain not implemented")
 }
-func (UnimplementedDomainServiceServer) MoveDomain(context.Context, *MoveDomainRequest) (*MoveDomainResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MoveDomain not implemented")
+func (UnimplementedDomainServiceServer) DeleteDomain(context.Context, *DeleteDomainRequest) (*DeleteDomainResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteDomain not implemented")
+}
+func (UnimplementedDomainServiceServer) ListDomainChildren(context.Context, *ListDomainChildrenRequest) (*ListDomainChildrenResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListDomainChildren not implemented")
 }
 func (UnimplementedDomainServiceServer) ListDomains(context.Context, *ListDomainsRequest) (*ListDomainsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListDomains not implemented")
 }
-func (UnimplementedDomainServiceServer) ListDomainChildren(context.Context, *ListDomainChildrenRequest) (*ListDomainChildrenResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListDomainChildren not implemented")
+func (UnimplementedDomainServiceServer) ListDomainsCmdByAdmin(context.Context, *ListDomainsCmdByAdminRequest) (*ListDomainsCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListDomainsCmdByAdmin not implemented")
+}
+func (UnimplementedDomainServiceServer) MoveDomain(context.Context, *MoveDomainRequest) (*MoveDomainResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MoveDomain not implemented")
+}
+func (UnimplementedDomainServiceServer) UpdateDomain(context.Context, *UpdateDomainRequest) (*UpdateDomainResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateDomain not implemented")
 }
 func (UnimplementedDomainServiceServer) mustEmbedUnimplementedDomainServiceServer() {}
 func (UnimplementedDomainServiceServer) testEmbeddedByValue()                       {}
@@ -182,42 +200,6 @@ func RegisterDomainServiceServer(s grpc.ServiceRegistrar, srv DomainServiceServe
 	s.RegisterService(&DomainService_ServiceDesc, srv)
 }
 
-func _DomainService_DeleteDomain_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteDomainRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(DomainServiceServer).DeleteDomain(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: DomainService_DeleteDomain_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DomainServiceServer).DeleteDomain(ctx, req.(*DeleteDomainRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _DomainService_UpdateDomain_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateDomainRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(DomainServiceServer).UpdateDomain(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: DomainService_UpdateDomain_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DomainServiceServer).UpdateDomain(ctx, req.(*UpdateDomainRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _DomainService_CreateDomain_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateDomainRequest)
 	if err := dec(in); err != nil {
@@ -236,38 +218,20 @@ func _DomainService_CreateDomain_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
-func _DomainService_MoveDomain_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MoveDomainRequest)
+func _DomainService_DeleteDomain_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteDomainRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(DomainServiceServer).MoveDomain(ctx, in)
+		return srv.(DomainServiceServer).DeleteDomain(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: DomainService_MoveDomain_FullMethodName,
+		FullMethod: DomainService_DeleteDomain_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DomainServiceServer).MoveDomain(ctx, req.(*MoveDomainRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _DomainService_ListDomains_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListDomainsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(DomainServiceServer).ListDomains(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: DomainService_ListDomains_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DomainServiceServer).ListDomains(ctx, req.(*ListDomainsRequest))
+		return srv.(DomainServiceServer).DeleteDomain(ctx, req.(*DeleteDomainRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -290,6 +254,78 @@ func _DomainService_ListDomainChildren_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _DomainService_ListDomains_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListDomainsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DomainServiceServer).ListDomains(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DomainService_ListDomains_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DomainServiceServer).ListDomains(ctx, req.(*ListDomainsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DomainService_ListDomainsCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListDomainsCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DomainServiceServer).ListDomainsCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DomainService_ListDomainsCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DomainServiceServer).ListDomainsCmdByAdmin(ctx, req.(*ListDomainsCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DomainService_MoveDomain_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MoveDomainRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DomainServiceServer).MoveDomain(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DomainService_MoveDomain_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DomainServiceServer).MoveDomain(ctx, req.(*MoveDomainRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DomainService_UpdateDomain_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateDomainRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DomainServiceServer).UpdateDomain(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DomainService_UpdateDomain_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DomainServiceServer).UpdateDomain(ctx, req.(*UpdateDomainRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // DomainService_ServiceDesc is the grpc.ServiceDesc for DomainService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -298,28 +334,32 @@ var DomainService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*DomainServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "DeleteDomain",
-			Handler:    _DomainService_DeleteDomain_Handler,
-		},
-		{
-			MethodName: "UpdateDomain",
-			Handler:    _DomainService_UpdateDomain_Handler,
-		},
-		{
 			MethodName: "CreateDomain",
 			Handler:    _DomainService_CreateDomain_Handler,
 		},
 		{
-			MethodName: "MoveDomain",
-			Handler:    _DomainService_MoveDomain_Handler,
+			MethodName: "DeleteDomain",
+			Handler:    _DomainService_DeleteDomain_Handler,
+		},
+		{
+			MethodName: "ListDomainChildren",
+			Handler:    _DomainService_ListDomainChildren_Handler,
 		},
 		{
 			MethodName: "ListDomains",
 			Handler:    _DomainService_ListDomains_Handler,
 		},
 		{
-			MethodName: "ListDomainChildren",
-			Handler:    _DomainService_ListDomainChildren_Handler,
+			MethodName: "ListDomainsCmdByAdmin",
+			Handler:    _DomainService_ListDomainsCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "MoveDomain",
+			Handler:    _DomainService_MoveDomain_Handler,
+		},
+		{
+			MethodName: "UpdateDomain",
+			Handler:    _DomainService_UpdateDomain_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -19,17 +19,17 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	UserService_MoveUser_FullMethodName    = "/cloudstack.management.user.v1.UserService/MoveUser"
-	UserService_DisableUser_FullMethodName = "/cloudstack.management.user.v1.UserService/DisableUser"
-	UserService_UpdateUser_FullMethodName  = "/cloudstack.management.user.v1.UserService/UpdateUser"
-	UserService_GetUser_FullMethodName     = "/cloudstack.management.user.v1.UserService/GetUser"
-	UserService_DeleteUser_FullMethodName  = "/cloudstack.management.user.v1.UserService/DeleteUser"
-	UserService_GetUserKeys_FullMethodName = "/cloudstack.management.user.v1.UserService/GetUserKeys"
-	UserService_EnableUser_FullMethodName  = "/cloudstack.management.user.v1.UserService/EnableUser"
-	UserService_ListUsers_FullMethodName   = "/cloudstack.management.user.v1.UserService/ListUsers"
 	UserService_CreateUser_FullMethodName  = "/cloudstack.management.user.v1.UserService/CreateUser"
-	UserService_Register_FullMethodName    = "/cloudstack.management.user.v1.UserService/Register"
+	UserService_DeleteUser_FullMethodName  = "/cloudstack.management.user.v1.UserService/DeleteUser"
+	UserService_DisableUser_FullMethodName = "/cloudstack.management.user.v1.UserService/DisableUser"
+	UserService_EnableUser_FullMethodName  = "/cloudstack.management.user.v1.UserService/EnableUser"
+	UserService_GetUser_FullMethodName     = "/cloudstack.management.user.v1.UserService/GetUser"
+	UserService_GetUserKeys_FullMethodName = "/cloudstack.management.user.v1.UserService/GetUserKeys"
+	UserService_ListUsers_FullMethodName   = "/cloudstack.management.user.v1.UserService/ListUsers"
 	UserService_LockUser_FullMethodName    = "/cloudstack.management.user.v1.UserService/LockUser"
+	UserService_MoveUser_FullMethodName    = "/cloudstack.management.user.v1.UserService/MoveUser"
+	UserService_Register_FullMethodName    = "/cloudstack.management.user.v1.UserService/Register"
+	UserService_UpdateUser_FullMethodName  = "/cloudstack.management.user.v1.UserService/UpdateUser"
 )
 
 // UserServiceClient is the client API for UserService service.
@@ -38,28 +38,28 @@ const (
 //
 // UserService provides operations for managing Users
 type UserServiceClient interface {
-	// MoveUser Moves a user to another account in the same domain.
-	MoveUser(ctx context.Context, in *MoveUserRequest, opts ...grpc.CallOption) (*MoveUserResponse, error)
-	// DisableUser Disables a user account
-	DisableUser(ctx context.Context, in *DisableUserRequest, opts ...grpc.CallOption) (*DisableUserResponse, error)
-	// UpdateUser Updates a user account
-	UpdateUser(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*UpdateUserResponse, error)
-	// GetUser Find user account by API key
-	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
-	// DeleteUser Deletes a user for an account
-	DeleteUser(ctx context.Context, in *DeleteUserRequest, opts ...grpc.CallOption) (*DeleteUserResponse, error)
-	// GetUserKeys This command allows the user to query the seceret and API keys for the account
-	GetUserKeys(ctx context.Context, in *GetUserKeysRequest, opts ...grpc.CallOption) (*GetUserKeysResponse, error)
-	// EnableUser Enables a user account
-	EnableUser(ctx context.Context, in *EnableUserRequest, opts ...grpc.CallOption) (*EnableUserResponse, error)
-	// ListUsers Lists user accounts
-	ListUsers(ctx context.Context, in *ListUsersRequest, opts ...grpc.CallOption) (*ListUsersResponse, error)
 	// CreateUser Creates a user for an account that already exists
 	CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error)
-	// Register This command allows a user to register for the developer API, returning a secret key and an API key. This request is made through the integration API port, so it is a privileged command and must be made on behalf of a user. It is up to the implementer just how the username and password are entered, and then how that translates to an integration API request. Both secret key and API key should be returned to the user
-	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
+	// DeleteUser Deletes a user for an account
+	DeleteUser(ctx context.Context, in *DeleteUserRequest, opts ...grpc.CallOption) (*DeleteUserResponse, error)
+	// DisableUser Disables a user account
+	DisableUser(ctx context.Context, in *DisableUserRequest, opts ...grpc.CallOption) (*DisableUserResponse, error)
+	// EnableUser Enables a user account
+	EnableUser(ctx context.Context, in *EnableUserRequest, opts ...grpc.CallOption) (*EnableUserResponse, error)
+	// GetUser Find user account by API key
+	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
+	// GetUserKeys This command allows the user to query the seceret and API keys for the account
+	GetUserKeys(ctx context.Context, in *GetUserKeysRequest, opts ...grpc.CallOption) (*GetUserKeysResponse, error)
+	// ListUsers Lists user accounts
+	ListUsers(ctx context.Context, in *ListUsersRequest, opts ...grpc.CallOption) (*ListUsersResponse, error)
 	// LockUser Locks a user account
 	LockUser(ctx context.Context, in *LockUserRequest, opts ...grpc.CallOption) (*LockUserResponse, error)
+	// MoveUser Moves a user to another account in the same domain.
+	MoveUser(ctx context.Context, in *MoveUserRequest, opts ...grpc.CallOption) (*MoveUserResponse, error)
+	// Register This command allows a user to register for the developer API, returning a secret key and an API key. This request is made through the integration API port, so it is a privileged command and must be made on behalf of a user. It is up to the implementer just how the username and password are entered, and then how that translates to an integration API request. Both secret key and API key should be returned to the user
+	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
+	// UpdateUser Updates a user account
+	UpdateUser(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*UpdateUserResponse, error)
 }
 
 type userServiceClient struct {
@@ -70,40 +70,10 @@ func NewUserServiceClient(cc grpc.ClientConnInterface) UserServiceClient {
 	return &userServiceClient{cc}
 }
 
-func (c *userServiceClient) MoveUser(ctx context.Context, in *MoveUserRequest, opts ...grpc.CallOption) (*MoveUserResponse, error) {
+func (c *userServiceClient) CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(MoveUserResponse)
-	err := c.cc.Invoke(ctx, UserService_MoveUser_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *userServiceClient) DisableUser(ctx context.Context, in *DisableUserRequest, opts ...grpc.CallOption) (*DisableUserResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DisableUserResponse)
-	err := c.cc.Invoke(ctx, UserService_DisableUser_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *userServiceClient) UpdateUser(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*UpdateUserResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateUserResponse)
-	err := c.cc.Invoke(ctx, UserService_UpdateUser_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *userServiceClient) GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetUserResponse)
-	err := c.cc.Invoke(ctx, UserService_GetUser_FullMethodName, in, out, cOpts...)
+	out := new(CreateUserResponse)
+	err := c.cc.Invoke(ctx, UserService_CreateUser_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -120,10 +90,10 @@ func (c *userServiceClient) DeleteUser(ctx context.Context, in *DeleteUserReques
 	return out, nil
 }
 
-func (c *userServiceClient) GetUserKeys(ctx context.Context, in *GetUserKeysRequest, opts ...grpc.CallOption) (*GetUserKeysResponse, error) {
+func (c *userServiceClient) DisableUser(ctx context.Context, in *DisableUserRequest, opts ...grpc.CallOption) (*DisableUserResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetUserKeysResponse)
-	err := c.cc.Invoke(ctx, UserService_GetUserKeys_FullMethodName, in, out, cOpts...)
+	out := new(DisableUserResponse)
+	err := c.cc.Invoke(ctx, UserService_DisableUser_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -140,30 +110,30 @@ func (c *userServiceClient) EnableUser(ctx context.Context, in *EnableUserReques
 	return out, nil
 }
 
+func (c *userServiceClient) GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUserResponse)
+	err := c.cc.Invoke(ctx, UserService_GetUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) GetUserKeys(ctx context.Context, in *GetUserKeysRequest, opts ...grpc.CallOption) (*GetUserKeysResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUserKeysResponse)
+	err := c.cc.Invoke(ctx, UserService_GetUserKeys_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *userServiceClient) ListUsers(ctx context.Context, in *ListUsersRequest, opts ...grpc.CallOption) (*ListUsersResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListUsersResponse)
 	err := c.cc.Invoke(ctx, UserService_ListUsers_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *userServiceClient) CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateUserResponse)
-	err := c.cc.Invoke(ctx, UserService_CreateUser_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *userServiceClient) Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RegisterResponse)
-	err := c.cc.Invoke(ctx, UserService_Register_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -180,34 +150,64 @@ func (c *userServiceClient) LockUser(ctx context.Context, in *LockUserRequest, o
 	return out, nil
 }
 
+func (c *userServiceClient) MoveUser(ctx context.Context, in *MoveUserRequest, opts ...grpc.CallOption) (*MoveUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(MoveUserResponse)
+	err := c.cc.Invoke(ctx, UserService_MoveUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RegisterResponse)
+	err := c.cc.Invoke(ctx, UserService_Register_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) UpdateUser(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*UpdateUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateUserResponse)
+	err := c.cc.Invoke(ctx, UserService_UpdateUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServiceServer is the server API for UserService service.
 // All implementations must embed UnimplementedUserServiceServer
 // for forward compatibility.
 //
 // UserService provides operations for managing Users
 type UserServiceServer interface {
-	// MoveUser Moves a user to another account in the same domain.
-	MoveUser(context.Context, *MoveUserRequest) (*MoveUserResponse, error)
-	// DisableUser Disables a user account
-	DisableUser(context.Context, *DisableUserRequest) (*DisableUserResponse, error)
-	// UpdateUser Updates a user account
-	UpdateUser(context.Context, *UpdateUserRequest) (*UpdateUserResponse, error)
-	// GetUser Find user account by API key
-	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
-	// DeleteUser Deletes a user for an account
-	DeleteUser(context.Context, *DeleteUserRequest) (*DeleteUserResponse, error)
-	// GetUserKeys This command allows the user to query the seceret and API keys for the account
-	GetUserKeys(context.Context, *GetUserKeysRequest) (*GetUserKeysResponse, error)
-	// EnableUser Enables a user account
-	EnableUser(context.Context, *EnableUserRequest) (*EnableUserResponse, error)
-	// ListUsers Lists user accounts
-	ListUsers(context.Context, *ListUsersRequest) (*ListUsersResponse, error)
 	// CreateUser Creates a user for an account that already exists
 	CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error)
-	// Register This command allows a user to register for the developer API, returning a secret key and an API key. This request is made through the integration API port, so it is a privileged command and must be made on behalf of a user. It is up to the implementer just how the username and password are entered, and then how that translates to an integration API request. Both secret key and API key should be returned to the user
-	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
+	// DeleteUser Deletes a user for an account
+	DeleteUser(context.Context, *DeleteUserRequest) (*DeleteUserResponse, error)
+	// DisableUser Disables a user account
+	DisableUser(context.Context, *DisableUserRequest) (*DisableUserResponse, error)
+	// EnableUser Enables a user account
+	EnableUser(context.Context, *EnableUserRequest) (*EnableUserResponse, error)
+	// GetUser Find user account by API key
+	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
+	// GetUserKeys This command allows the user to query the seceret and API keys for the account
+	GetUserKeys(context.Context, *GetUserKeysRequest) (*GetUserKeysResponse, error)
+	// ListUsers Lists user accounts
+	ListUsers(context.Context, *ListUsersRequest) (*ListUsersResponse, error)
 	// LockUser Locks a user account
 	LockUser(context.Context, *LockUserRequest) (*LockUserResponse, error)
+	// MoveUser Moves a user to another account in the same domain.
+	MoveUser(context.Context, *MoveUserRequest) (*MoveUserResponse, error)
+	// Register This command allows a user to register for the developer API, returning a secret key and an API key. This request is made through the integration API port, so it is a privileged command and must be made on behalf of a user. It is up to the implementer just how the username and password are entered, and then how that translates to an integration API request. Both secret key and API key should be returned to the user
+	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
+	// UpdateUser Updates a user account
+	UpdateUser(context.Context, *UpdateUserRequest) (*UpdateUserResponse, error)
 	mustEmbedUnimplementedUserServiceServer()
 }
 
@@ -218,38 +218,38 @@ type UserServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedUserServiceServer struct{}
 
-func (UnimplementedUserServiceServer) MoveUser(context.Context, *MoveUserRequest) (*MoveUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MoveUser not implemented")
-}
-func (UnimplementedUserServiceServer) DisableUser(context.Context, *DisableUserRequest) (*DisableUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DisableUser not implemented")
-}
-func (UnimplementedUserServiceServer) UpdateUser(context.Context, *UpdateUserRequest) (*UpdateUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateUser not implemented")
-}
-func (UnimplementedUserServiceServer) GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
+func (UnimplementedUserServiceServer) CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateUser not implemented")
 }
 func (UnimplementedUserServiceServer) DeleteUser(context.Context, *DeleteUserRequest) (*DeleteUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteUser not implemented")
 }
-func (UnimplementedUserServiceServer) GetUserKeys(context.Context, *GetUserKeysRequest) (*GetUserKeysResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetUserKeys not implemented")
+func (UnimplementedUserServiceServer) DisableUser(context.Context, *DisableUserRequest) (*DisableUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DisableUser not implemented")
 }
 func (UnimplementedUserServiceServer) EnableUser(context.Context, *EnableUserRequest) (*EnableUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method EnableUser not implemented")
 }
+func (UnimplementedUserServiceServer) GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
+}
+func (UnimplementedUserServiceServer) GetUserKeys(context.Context, *GetUserKeysRequest) (*GetUserKeysResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserKeys not implemented")
+}
 func (UnimplementedUserServiceServer) ListUsers(context.Context, *ListUsersRequest) (*ListUsersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListUsers not implemented")
 }
-func (UnimplementedUserServiceServer) CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateUser not implemented")
+func (UnimplementedUserServiceServer) LockUser(context.Context, *LockUserRequest) (*LockUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LockUser not implemented")
+}
+func (UnimplementedUserServiceServer) MoveUser(context.Context, *MoveUserRequest) (*MoveUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MoveUser not implemented")
 }
 func (UnimplementedUserServiceServer) Register(context.Context, *RegisterRequest) (*RegisterResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Register not implemented")
 }
-func (UnimplementedUserServiceServer) LockUser(context.Context, *LockUserRequest) (*LockUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method LockUser not implemented")
+func (UnimplementedUserServiceServer) UpdateUser(context.Context, *UpdateUserRequest) (*UpdateUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateUser not implemented")
 }
 func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
 func (UnimplementedUserServiceServer) testEmbeddedByValue()                     {}
@@ -272,74 +272,20 @@ func RegisterUserServiceServer(s grpc.ServiceRegistrar, srv UserServiceServer) {
 	s.RegisterService(&UserService_ServiceDesc, srv)
 }
 
-func _UserService_MoveUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MoveUserRequest)
+func _UserService_CreateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateUserRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).MoveUser(ctx, in)
+		return srv.(UserServiceServer).CreateUser(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: UserService_MoveUser_FullMethodName,
+		FullMethod: UserService_CreateUser_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).MoveUser(ctx, req.(*MoveUserRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _UserService_DisableUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DisableUserRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(UserServiceServer).DisableUser(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: UserService_DisableUser_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).DisableUser(ctx, req.(*DisableUserRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _UserService_UpdateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateUserRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(UserServiceServer).UpdateUser(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: UserService_UpdateUser_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).UpdateUser(ctx, req.(*UpdateUserRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _UserService_GetUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetUserRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(UserServiceServer).GetUser(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: UserService_GetUser_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).GetUser(ctx, req.(*GetUserRequest))
+		return srv.(UserServiceServer).CreateUser(ctx, req.(*CreateUserRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -362,20 +308,20 @@ func _UserService_DeleteUser_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserService_GetUserKeys_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetUserKeysRequest)
+func _UserService_DisableUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DisableUserRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).GetUserKeys(ctx, in)
+		return srv.(UserServiceServer).DisableUser(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: UserService_GetUserKeys_FullMethodName,
+		FullMethod: UserService_DisableUser_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).GetUserKeys(ctx, req.(*GetUserKeysRequest))
+		return srv.(UserServiceServer).DisableUser(ctx, req.(*DisableUserRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -398,6 +344,42 @@ func _UserService_EnableUser_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_GetUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).GetUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_GetUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).GetUser(ctx, req.(*GetUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_GetUserKeys_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserKeysRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).GetUserKeys(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_GetUserKeys_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).GetUserKeys(ctx, req.(*GetUserKeysRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _UserService_ListUsers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListUsersRequest)
 	if err := dec(in); err != nil {
@@ -412,42 +394,6 @@ func _UserService_ListUsers_Handler(srv interface{}, ctx context.Context, dec fu
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UserServiceServer).ListUsers(ctx, req.(*ListUsersRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _UserService_CreateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateUserRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(UserServiceServer).CreateUser(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: UserService_CreateUser_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).CreateUser(ctx, req.(*CreateUserRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _UserService_Register_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RegisterRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(UserServiceServer).Register(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: UserService_Register_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).Register(ctx, req.(*RegisterRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -470,6 +416,60 @@ func _UserService_LockUser_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_MoveUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MoveUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).MoveUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_MoveUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).MoveUser(ctx, req.(*MoveUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_Register_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RegisterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).Register(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_Register_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).Register(ctx, req.(*RegisterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_UpdateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).UpdateUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_UpdateUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).UpdateUser(ctx, req.(*UpdateUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -478,48 +478,48 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*UserServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "MoveUser",
-			Handler:    _UserService_MoveUser_Handler,
-		},
-		{
-			MethodName: "DisableUser",
-			Handler:    _UserService_DisableUser_Handler,
-		},
-		{
-			MethodName: "UpdateUser",
-			Handler:    _UserService_UpdateUser_Handler,
-		},
-		{
-			MethodName: "GetUser",
-			Handler:    _UserService_GetUser_Handler,
+			MethodName: "CreateUser",
+			Handler:    _UserService_CreateUser_Handler,
 		},
 		{
 			MethodName: "DeleteUser",
 			Handler:    _UserService_DeleteUser_Handler,
 		},
 		{
-			MethodName: "GetUserKeys",
-			Handler:    _UserService_GetUserKeys_Handler,
+			MethodName: "DisableUser",
+			Handler:    _UserService_DisableUser_Handler,
 		},
 		{
 			MethodName: "EnableUser",
 			Handler:    _UserService_EnableUser_Handler,
 		},
 		{
+			MethodName: "GetUser",
+			Handler:    _UserService_GetUser_Handler,
+		},
+		{
+			MethodName: "GetUserKeys",
+			Handler:    _UserService_GetUserKeys_Handler,
+		},
+		{
 			MethodName: "ListUsers",
 			Handler:    _UserService_ListUsers_Handler,
 		},
 		{
-			MethodName: "CreateUser",
-			Handler:    _UserService_CreateUser_Handler,
+			MethodName: "LockUser",
+			Handler:    _UserService_LockUser_Handler,
+		},
+		{
+			MethodName: "MoveUser",
+			Handler:    _UserService_MoveUser_Handler,
 		},
 		{
 			MethodName: "Register",
 			Handler:    _UserService_Register_Handler,
 		},
 		{
-			MethodName: "LockUser",
-			Handler:    _UserService_LockUser_Handler,
+			MethodName: "UpdateUser",
+			Handler:    _UserService_UpdateUser_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

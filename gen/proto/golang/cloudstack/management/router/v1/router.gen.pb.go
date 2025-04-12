@@ -24,6 +24,606 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// ConfigureOvsElementRequest represents the parameters for configures an ovs element.
+type ConfigureOvsElementRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the ovs provider
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// Enabled/Disabled the service provider
+	Enabled *bool `protobuf:"varint,2,opt,name=enabled" json:"enabled,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ConfigureOvsElementRequest) Reset() {
+	*x = ConfigureOvsElementRequest{}
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ConfigureOvsElementRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConfigureOvsElementRequest) ProtoMessage() {}
+
+func (x *ConfigureOvsElementRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConfigureOvsElementRequest.ProtoReflect.Descriptor instead.
+func (*ConfigureOvsElementRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *ConfigureOvsElementRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ConfigureOvsElementRequest) GetEnabled() bool {
+	if x != nil && x.Enabled != nil {
+		return *x.Enabled
+	}
+	return false
+}
+
+func (x *ConfigureOvsElementRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *ConfigureOvsElementRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *ConfigureOvsElementRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ConfigureOvsElementResponse represents the response from configures an ovs element.
+type ConfigureOvsElementResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ConfigureOvsElementResponse) Reset() {
+	*x = ConfigureOvsElementResponse{}
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ConfigureOvsElementResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConfigureOvsElementResponse) ProtoMessage() {}
+
+func (x *ConfigureOvsElementResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConfigureOvsElementResponse.ProtoReflect.Descriptor instead.
+func (*ConfigureOvsElementResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *ConfigureOvsElementResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ConfigureVirtualRouterElementRequest represents the parameters for configures a virtual router element.
+type ConfigureVirtualRouterElementRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the virtual router provider
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// Enabled/Disabled the service provider
+	Enabled *bool `protobuf:"varint,2,opt,name=enabled" json:"enabled,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ConfigureVirtualRouterElementRequest) Reset() {
+	*x = ConfigureVirtualRouterElementRequest{}
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ConfigureVirtualRouterElementRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConfigureVirtualRouterElementRequest) ProtoMessage() {}
+
+func (x *ConfigureVirtualRouterElementRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConfigureVirtualRouterElementRequest.ProtoReflect.Descriptor instead.
+func (*ConfigureVirtualRouterElementRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ConfigureVirtualRouterElementRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ConfigureVirtualRouterElementRequest) GetEnabled() bool {
+	if x != nil && x.Enabled != nil {
+		return *x.Enabled
+	}
+	return false
+}
+
+func (x *ConfigureVirtualRouterElementRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *ConfigureVirtualRouterElementRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *ConfigureVirtualRouterElementRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ConfigureVirtualRouterElementResponse represents the response from configures a virtual router element.
+type ConfigureVirtualRouterElementResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ConfigureVirtualRouterElementResponse) Reset() {
+	*x = ConfigureVirtualRouterElementResponse{}
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ConfigureVirtualRouterElementResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConfigureVirtualRouterElementResponse) ProtoMessage() {}
+
+func (x *ConfigureVirtualRouterElementResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConfigureVirtualRouterElementResponse.ProtoReflect.Descriptor instead.
+func (*ConfigureVirtualRouterElementResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ConfigureVirtualRouterElementResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// CreateVirtualRouterElementRequest represents the parameters for create a virtual router element.
+type CreateVirtualRouterElementRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the network service provider ID of the virtual router element
+	NspId *int64 `protobuf:"varint,1,opt,name=nsp_id,json=nspId" json:"nsp_id,omitempty"`
+	// The provider type. Supported types are VirtualRouter (default) and VPCVirtualRouter
+	ProviderType *string `protobuf:"bytes,2,opt,name=provider_type,json=providerType" json:"provider_type,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateVirtualRouterElementRequest) Reset() {
+	*x = CreateVirtualRouterElementRequest{}
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateVirtualRouterElementRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateVirtualRouterElementRequest) ProtoMessage() {}
+
+func (x *CreateVirtualRouterElementRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateVirtualRouterElementRequest.ProtoReflect.Descriptor instead.
+func (*CreateVirtualRouterElementRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *CreateVirtualRouterElementRequest) GetNspId() int64 {
+	if x != nil && x.NspId != nil {
+		return *x.NspId
+	}
+	return 0
+}
+
+func (x *CreateVirtualRouterElementRequest) GetProviderType() string {
+	if x != nil && x.ProviderType != nil {
+		return *x.ProviderType
+	}
+	return ""
+}
+
+func (x *CreateVirtualRouterElementRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreateVirtualRouterElementRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CreateVirtualRouterElementRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateVirtualRouterElementResponse represents the response from create a virtual router element.
+type CreateVirtualRouterElementResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateVirtualRouterElementResponse) Reset() {
+	*x = CreateVirtualRouterElementResponse{}
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateVirtualRouterElementResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateVirtualRouterElementResponse) ProtoMessage() {}
+
+func (x *CreateVirtualRouterElementResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateVirtualRouterElementResponse.ProtoReflect.Descriptor instead.
+func (*CreateVirtualRouterElementResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *CreateVirtualRouterElementResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DestroyRouterRequest represents the parameters for destroys a router.
+type DestroyRouterRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the router
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DestroyRouterRequest) Reset() {
+	*x = DestroyRouterRequest{}
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DestroyRouterRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DestroyRouterRequest) ProtoMessage() {}
+
+func (x *DestroyRouterRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DestroyRouterRequest.ProtoReflect.Descriptor instead.
+func (*DestroyRouterRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *DestroyRouterRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DestroyRouterRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DestroyRouterRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DestroyRouterRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DestroyRouterResponse represents the response from destroys a router.
+type DestroyRouterResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DestroyRouterResponse) Reset() {
+	*x = DestroyRouterResponse{}
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DestroyRouterResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DestroyRouterResponse) ProtoMessage() {}
+
+func (x *DestroyRouterResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DestroyRouterResponse.ProtoReflect.Descriptor instead.
+func (*DestroyRouterResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *DestroyRouterResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// GetRouterHealthCheckResultsRequest represents the parameters for starts a router.
+type GetRouterHealthCheckResultsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the router
+	RouterId *int64 `protobuf:"varint,1,opt,name=router_id,json=routerId" json:"router_id,omitempty"`
+	// if true is passed for this parameter, health checks are performed on the fly. Else last performed checks data is fetched
+	PerformFreshChecks *bool `protobuf:"varint,2,opt,name=perform_fresh_checks,json=performFreshChecks" json:"perform_fresh_checks,omitempty"`
+	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetRouterHealthCheckResultsRequest) Reset() {
+	*x = GetRouterHealthCheckResultsRequest{}
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetRouterHealthCheckResultsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetRouterHealthCheckResultsRequest) ProtoMessage() {}
+
+func (x *GetRouterHealthCheckResultsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetRouterHealthCheckResultsRequest.ProtoReflect.Descriptor instead.
+func (*GetRouterHealthCheckResultsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GetRouterHealthCheckResultsRequest) GetRouterId() int64 {
+	if x != nil && x.RouterId != nil {
+		return *x.RouterId
+	}
+	return 0
+}
+
+func (x *GetRouterHealthCheckResultsRequest) GetPerformFreshChecks() bool {
+	if x != nil && x.PerformFreshChecks != nil {
+		return *x.PerformFreshChecks
+	}
+	return false
+}
+
+func (x *GetRouterHealthCheckResultsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// GetRouterHealthCheckResultsResponse represents the response from starts a router.
+type GetRouterHealthCheckResultsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetRouterHealthCheckResultsResponse) Reset() {
+	*x = GetRouterHealthCheckResultsResponse{}
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetRouterHealthCheckResultsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetRouterHealthCheckResultsResponse) ProtoMessage() {}
+
+func (x *GetRouterHealthCheckResultsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetRouterHealthCheckResultsResponse.ProtoReflect.Descriptor instead.
+func (*GetRouterHealthCheckResultsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *GetRouterHealthCheckResultsResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
 // ListOvsElementsRequest represents the parameters for lists all available ovs elements.
 type ListOvsElementsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -44,7 +644,7 @@ type ListOvsElementsRequest struct {
 
 func (x *ListOvsElementsRequest) Reset() {
 	*x = ListOvsElementsRequest{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -56,7 +656,7 @@ func (x *ListOvsElementsRequest) String() string {
 func (*ListOvsElementsRequest) ProtoMessage() {}
 
 func (x *ListOvsElementsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -69,7 +669,7 @@ func (x *ListOvsElementsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListOvsElementsRequest.ProtoReflect.Descriptor instead.
 func (*ListOvsElementsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{0}
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ListOvsElementsRequest) GetId() int64 {
@@ -134,7 +734,7 @@ type ListOvsElementsResponse struct {
 
 func (x *ListOvsElementsResponse) Reset() {
 	*x = ListOvsElementsResponse{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -146,7 +746,7 @@ func (x *ListOvsElementsResponse) String() string {
 func (*ListOvsElementsResponse) ProtoMessage() {}
 
 func (x *ListOvsElementsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -159,7 +759,7 @@ func (x *ListOvsElementsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListOvsElementsResponse.ProtoReflect.Descriptor instead.
 func (*ListOvsElementsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{1}
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *ListOvsElementsResponse) GetItems() []*OvsProvider {
@@ -174,1019 +774,6 @@ func (x *ListOvsElementsResponse) GetTotalCount() int32 {
 		return *x.TotalCount
 	}
 	return 0
-}
-
-// ListVirtualRouterElementsRequest represents the parameters for lists all available virtual router elements.
-type ListVirtualRouterElementsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// list virtual router elements by id
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// list virtual router elements by network service provider id
-	NspId *int64 `protobuf:"varint,2,opt,name=nsp_id,json=nspId" json:"nsp_id,omitempty"`
-	// list network offerings by enabled state
-	Enabled *bool `protobuf:"varint,3,opt,name=enabled" json:"enabled,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,4,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,5,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,6,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListVirtualRouterElementsRequest) Reset() {
-	*x = ListVirtualRouterElementsRequest{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListVirtualRouterElementsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListVirtualRouterElementsRequest) ProtoMessage() {}
-
-func (x *ListVirtualRouterElementsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListVirtualRouterElementsRequest.ProtoReflect.Descriptor instead.
-func (*ListVirtualRouterElementsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *ListVirtualRouterElementsRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListVirtualRouterElementsRequest) GetNspId() int64 {
-	if x != nil && x.NspId != nil {
-		return *x.NspId
-	}
-	return 0
-}
-
-func (x *ListVirtualRouterElementsRequest) GetEnabled() bool {
-	if x != nil && x.Enabled != nil {
-		return *x.Enabled
-	}
-	return false
-}
-
-func (x *ListVirtualRouterElementsRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListVirtualRouterElementsRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListVirtualRouterElementsRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListVirtualRouterElementsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListVirtualRouterElementsResponse represents the response from lists all available virtual router elements.
-type ListVirtualRouterElementsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of VirtualRouterProviders
-	Items []*VirtualRouterProvider `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of VirtualRouterProviders
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListVirtualRouterElementsResponse) Reset() {
-	*x = ListVirtualRouterElementsResponse{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListVirtualRouterElementsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListVirtualRouterElementsResponse) ProtoMessage() {}
-
-func (x *ListVirtualRouterElementsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListVirtualRouterElementsResponse.ProtoReflect.Descriptor instead.
-func (*ListVirtualRouterElementsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *ListVirtualRouterElementsResponse) GetItems() []*VirtualRouterProvider {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListVirtualRouterElementsResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// RebootRouterRequest represents the parameters for starts a router.
-type RebootRouterRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the router
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// Force reboot the router (Router is force Stopped and then Started)
-	Forced *bool `protobuf:"varint,2,opt,name=forced" json:"forced,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RebootRouterRequest) Reset() {
-	*x = RebootRouterRequest{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RebootRouterRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RebootRouterRequest) ProtoMessage() {}
-
-func (x *RebootRouterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RebootRouterRequest.ProtoReflect.Descriptor instead.
-func (*RebootRouterRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *RebootRouterRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *RebootRouterRequest) GetForced() bool {
-	if x != nil && x.Forced != nil {
-		return *x.Forced
-	}
-	return false
-}
-
-func (x *RebootRouterRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *RebootRouterRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *RebootRouterRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// RebootRouterResponse represents the response from starts a router.
-type RebootRouterResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RebootRouterResponse) Reset() {
-	*x = RebootRouterResponse{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RebootRouterResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RebootRouterResponse) ProtoMessage() {}
-
-func (x *RebootRouterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RebootRouterResponse.ProtoReflect.Descriptor instead.
-func (*RebootRouterResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *RebootRouterResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// GetRouterHealthCheckResultsRequest represents the parameters for starts a router.
-type GetRouterHealthCheckResultsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the router
-	RouterId *int64 `protobuf:"varint,1,opt,name=router_id,json=routerId" json:"router_id,omitempty"`
-	// if true is passed for this parameter, health checks are performed on the fly. Else last performed checks data is fetched
-	PerformFreshChecks *bool `protobuf:"varint,2,opt,name=perform_fresh_checks,json=performFreshChecks" json:"perform_fresh_checks,omitempty"`
-	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetRouterHealthCheckResultsRequest) Reset() {
-	*x = GetRouterHealthCheckResultsRequest{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetRouterHealthCheckResultsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetRouterHealthCheckResultsRequest) ProtoMessage() {}
-
-func (x *GetRouterHealthCheckResultsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetRouterHealthCheckResultsRequest.ProtoReflect.Descriptor instead.
-func (*GetRouterHealthCheckResultsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *GetRouterHealthCheckResultsRequest) GetRouterId() int64 {
-	if x != nil && x.RouterId != nil {
-		return *x.RouterId
-	}
-	return 0
-}
-
-func (x *GetRouterHealthCheckResultsRequest) GetPerformFreshChecks() bool {
-	if x != nil && x.PerformFreshChecks != nil {
-		return *x.PerformFreshChecks
-	}
-	return false
-}
-
-func (x *GetRouterHealthCheckResultsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// GetRouterHealthCheckResultsResponse represents the response from starts a router.
-type GetRouterHealthCheckResultsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetRouterHealthCheckResultsResponse) Reset() {
-	*x = GetRouterHealthCheckResultsResponse{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetRouterHealthCheckResultsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetRouterHealthCheckResultsResponse) ProtoMessage() {}
-
-func (x *GetRouterHealthCheckResultsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetRouterHealthCheckResultsResponse.ProtoReflect.Descriptor instead.
-func (*GetRouterHealthCheckResultsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *GetRouterHealthCheckResultsResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ConfigureVirtualRouterElementRequest represents the parameters for configures a virtual router element.
-type ConfigureVirtualRouterElementRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the virtual router provider
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// Enabled/Disabled the service provider
-	Enabled *bool `protobuf:"varint,2,opt,name=enabled" json:"enabled,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ConfigureVirtualRouterElementRequest) Reset() {
-	*x = ConfigureVirtualRouterElementRequest{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ConfigureVirtualRouterElementRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ConfigureVirtualRouterElementRequest) ProtoMessage() {}
-
-func (x *ConfigureVirtualRouterElementRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ConfigureVirtualRouterElementRequest.ProtoReflect.Descriptor instead.
-func (*ConfigureVirtualRouterElementRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *ConfigureVirtualRouterElementRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ConfigureVirtualRouterElementRequest) GetEnabled() bool {
-	if x != nil && x.Enabled != nil {
-		return *x.Enabled
-	}
-	return false
-}
-
-func (x *ConfigureVirtualRouterElementRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *ConfigureVirtualRouterElementRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *ConfigureVirtualRouterElementRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ConfigureVirtualRouterElementResponse represents the response from configures a virtual router element.
-type ConfigureVirtualRouterElementResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ConfigureVirtualRouterElementResponse) Reset() {
-	*x = ConfigureVirtualRouterElementResponse{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ConfigureVirtualRouterElementResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ConfigureVirtualRouterElementResponse) ProtoMessage() {}
-
-func (x *ConfigureVirtualRouterElementResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ConfigureVirtualRouterElementResponse.ProtoReflect.Descriptor instead.
-func (*ConfigureVirtualRouterElementResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *ConfigureVirtualRouterElementResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpgradeRouterTemplateRequest represents the parameters for upgrades router to use newer template
-type UpgradeRouterTemplateRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// upgrades router with the specified Id
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// upgrades all routers within the specified cluster
-	ClusterId *int64 `protobuf:"varint,2,opt,name=cluster_id,json=clusterId" json:"cluster_id,omitempty"`
-	// upgrades all routers within the specified pod
-	PodId *int64 `protobuf:"varint,3,opt,name=pod_id,json=podId" json:"pod_id,omitempty"`
-	// upgrades all routers within the specified zone
-	ZoneId *int64 `protobuf:"varint,4,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// upgrades all routers owned by the specified account
-	Account *string `protobuf:"bytes,5,opt,name=account" json:"account,omitempty"`
-	// upgrades all routers owned by the specified domain
-	DomainId *int64 `protobuf:"varint,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpgradeRouterTemplateRequest) Reset() {
-	*x = UpgradeRouterTemplateRequest{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpgradeRouterTemplateRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpgradeRouterTemplateRequest) ProtoMessage() {}
-
-func (x *UpgradeRouterTemplateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpgradeRouterTemplateRequest.ProtoReflect.Descriptor instead.
-func (*UpgradeRouterTemplateRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *UpgradeRouterTemplateRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpgradeRouterTemplateRequest) GetClusterId() int64 {
-	if x != nil && x.ClusterId != nil {
-		return *x.ClusterId
-	}
-	return 0
-}
-
-func (x *UpgradeRouterTemplateRequest) GetPodId() int64 {
-	if x != nil && x.PodId != nil {
-		return *x.PodId
-	}
-	return 0
-}
-
-func (x *UpgradeRouterTemplateRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *UpgradeRouterTemplateRequest) GetAccount() string {
-	if x != nil && x.Account != nil {
-		return *x.Account
-	}
-	return ""
-}
-
-func (x *UpgradeRouterTemplateRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *UpgradeRouterTemplateRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpgradeRouterTemplateResponse represents the response from upgrades router to use newer template
-type UpgradeRouterTemplateResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpgradeRouterTemplateResponse) Reset() {
-	*x = UpgradeRouterTemplateResponse{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpgradeRouterTemplateResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpgradeRouterTemplateResponse) ProtoMessage() {}
-
-func (x *UpgradeRouterTemplateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpgradeRouterTemplateResponse.ProtoReflect.Descriptor instead.
-func (*UpgradeRouterTemplateResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *UpgradeRouterTemplateResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// StartRouterRequest represents the parameters for starts a router.
-type StartRouterRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the router
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *StartRouterRequest) Reset() {
-	*x = StartRouterRequest{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *StartRouterRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*StartRouterRequest) ProtoMessage() {}
-
-func (x *StartRouterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use StartRouterRequest.ProtoReflect.Descriptor instead.
-func (*StartRouterRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *StartRouterRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *StartRouterRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *StartRouterRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *StartRouterRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// StartRouterResponse represents the response from starts a router.
-type StartRouterResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *StartRouterResponse) Reset() {
-	*x = StartRouterResponse{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *StartRouterResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*StartRouterResponse) ProtoMessage() {}
-
-func (x *StartRouterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use StartRouterResponse.ProtoReflect.Descriptor instead.
-func (*StartRouterResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *StartRouterResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DestroyRouterRequest represents the parameters for destroys a router.
-type DestroyRouterRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the router
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DestroyRouterRequest) Reset() {
-	*x = DestroyRouterRequest{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DestroyRouterRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DestroyRouterRequest) ProtoMessage() {}
-
-func (x *DestroyRouterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DestroyRouterRequest.ProtoReflect.Descriptor instead.
-func (*DestroyRouterRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *DestroyRouterRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DestroyRouterRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DestroyRouterRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DestroyRouterRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DestroyRouterResponse represents the response from destroys a router.
-type DestroyRouterResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DestroyRouterResponse) Reset() {
-	*x = DestroyRouterResponse{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DestroyRouterResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DestroyRouterResponse) ProtoMessage() {}
-
-func (x *DestroyRouterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DestroyRouterResponse.ProtoReflect.Descriptor instead.
-func (*DestroyRouterResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *DestroyRouterResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// StopRouterRequest represents the parameters for stops a router.
-type StopRouterRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the router
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// Force stop the VM (vm is marked as Stopped even when command fails to be send to the backend, otherwise a force poweroff is attempted). To be used if the caller knows the VM is stopped and should be marked as such.
-	Forced *bool `protobuf:"varint,2,opt,name=forced" json:"forced,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *StopRouterRequest) Reset() {
-	*x = StopRouterRequest{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[16]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *StopRouterRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*StopRouterRequest) ProtoMessage() {}
-
-func (x *StopRouterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[16]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use StopRouterRequest.ProtoReflect.Descriptor instead.
-func (*StopRouterRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{16}
-}
-
-func (x *StopRouterRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *StopRouterRequest) GetForced() bool {
-	if x != nil && x.Forced != nil {
-		return *x.Forced
-	}
-	return false
-}
-
-func (x *StopRouterRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *StopRouterRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *StopRouterRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// StopRouterResponse represents the response from stops a router.
-type StopRouterResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *StopRouterResponse) Reset() {
-	*x = StopRouterResponse{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[17]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *StopRouterResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*StopRouterResponse) ProtoMessage() {}
-
-func (x *StopRouterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[17]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use StopRouterResponse.ProtoReflect.Descriptor instead.
-func (*StopRouterResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{17}
-}
-
-func (x *StopRouterResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
 }
 
 // ListRoutersRequest represents the parameters for list routers.
@@ -1239,7 +826,7 @@ type ListRoutersRequest struct {
 
 func (x *ListRoutersRequest) Reset() {
 	*x = ListRoutersRequest{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[18]
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1251,7 +838,7 @@ func (x *ListRoutersRequest) String() string {
 func (*ListRoutersRequest) ProtoMessage() {}
 
 func (x *ListRoutersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[18]
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1264,7 +851,7 @@ func (x *ListRoutersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRoutersRequest.ProtoReflect.Descriptor instead.
 func (*ListRoutersRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{18}
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *ListRoutersRequest) GetHostId() int64 {
@@ -1434,7 +1021,7 @@ type ListRoutersResponse struct {
 
 func (x *ListRoutersResponse) Reset() {
 	*x = ListRoutersResponse{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[19]
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1446,7 +1033,7 @@ func (x *ListRoutersResponse) String() string {
 func (*ListRoutersResponse) ProtoMessage() {}
 
 func (x *ListRoutersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[19]
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1459,7 +1046,7 @@ func (x *ListRoutersResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRoutersResponse.ProtoReflect.Descriptor instead.
 func (*ListRoutersResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{19}
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *ListRoutersResponse) GetItems() []*DomainRouter {
@@ -1476,35 +1063,39 @@ func (x *ListRoutersResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// ConfigureOvsElementRequest represents the parameters for configures an ovs element.
-type ConfigureOvsElementRequest struct {
+// ListVirtualRouterElementsRequest represents the parameters for lists all available virtual router elements.
+type ListVirtualRouterElementsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the ovs provider
+	// list virtual router elements by id
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// Enabled/Disabled the service provider
-	Enabled *bool `protobuf:"varint,2,opt,name=enabled" json:"enabled,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// list virtual router elements by network service provider id
+	NspId *int64 `protobuf:"varint,2,opt,name=nsp_id,json=nspId" json:"nsp_id,omitempty"`
+	// list network offerings by enabled state
+	Enabled *bool `protobuf:"varint,3,opt,name=enabled" json:"enabled,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,4,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,5,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,6,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ConfigureOvsElementRequest) Reset() {
-	*x = ConfigureOvsElementRequest{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[20]
+func (x *ListVirtualRouterElementsRequest) Reset() {
+	*x = ListVirtualRouterElementsRequest{}
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ConfigureOvsElementRequest) String() string {
+func (x *ListVirtualRouterElementsRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ConfigureOvsElementRequest) ProtoMessage() {}
+func (*ListVirtualRouterElementsRequest) ProtoMessage() {}
 
-func (x *ConfigureOvsElementRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[20]
+func (x *ListVirtualRouterElementsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1515,70 +1106,86 @@ func (x *ConfigureOvsElementRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ConfigureOvsElementRequest.ProtoReflect.Descriptor instead.
-func (*ConfigureOvsElementRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{20}
+// Deprecated: Use ListVirtualRouterElementsRequest.ProtoReflect.Descriptor instead.
+func (*ListVirtualRouterElementsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{14}
 }
 
-func (x *ConfigureOvsElementRequest) GetId() int64 {
+func (x *ListVirtualRouterElementsRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *ConfigureOvsElementRequest) GetEnabled() bool {
+func (x *ListVirtualRouterElementsRequest) GetNspId() int64 {
+	if x != nil && x.NspId != nil {
+		return *x.NspId
+	}
+	return 0
+}
+
+func (x *ListVirtualRouterElementsRequest) GetEnabled() bool {
 	if x != nil && x.Enabled != nil {
 		return *x.Enabled
 	}
 	return false
 }
 
-func (x *ConfigureOvsElementRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *ConfigureOvsElementRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
+func (x *ListVirtualRouterElementsRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
 	}
 	return ""
 }
 
-func (x *ConfigureOvsElementRequest) GetResponseType() string {
+func (x *ListVirtualRouterElementsRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListVirtualRouterElementsRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListVirtualRouterElementsRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// ConfigureOvsElementResponse represents the response from configures an ovs element.
-type ConfigureOvsElementResponse struct {
+// ListVirtualRouterElementsResponse represents the response from lists all available virtual router elements.
+type ListVirtualRouterElementsResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	// The list of VirtualRouterProviders
+	Items []*VirtualRouterProvider `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of VirtualRouterProviders
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ConfigureOvsElementResponse) Reset() {
-	*x = ConfigureOvsElementResponse{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[21]
+func (x *ListVirtualRouterElementsResponse) Reset() {
+	*x = ListVirtualRouterElementsResponse{}
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ConfigureOvsElementResponse) String() string {
+func (x *ListVirtualRouterElementsResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ConfigureOvsElementResponse) ProtoMessage() {}
+func (*ListVirtualRouterElementsResponse) ProtoMessage() {}
 
-func (x *ConfigureOvsElementResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[21]
+func (x *ListVirtualRouterElementsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1589,25 +1196,32 @@ func (x *ConfigureOvsElementResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ConfigureOvsElementResponse.ProtoReflect.Descriptor instead.
-func (*ConfigureOvsElementResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{21}
+// Deprecated: Use ListVirtualRouterElementsResponse.ProtoReflect.Descriptor instead.
+func (*ListVirtualRouterElementsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{15}
 }
 
-func (x *ConfigureOvsElementResponse) GetResult() *Result {
+func (x *ListVirtualRouterElementsResponse) GetItems() []*VirtualRouterProvider {
 	if x != nil {
-		return x.Result
+		return x.Items
 	}
 	return nil
 }
 
-// CreateVirtualRouterElementRequest represents the parameters for create a virtual router element.
-type CreateVirtualRouterElementRequest struct {
+func (x *ListVirtualRouterElementsResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// RebootRouterRequest represents the parameters for starts a router.
+type RebootRouterRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// the network service provider ID of the virtual router element
-	NspId *int64 `protobuf:"varint,1,opt,name=nsp_id,json=nspId" json:"nsp_id,omitempty"`
-	// The provider type. Supported types are VirtualRouter (default) and VPCVirtualRouter
-	ProviderType *string `protobuf:"bytes,2,opt,name=provider_type,json=providerType" json:"provider_type,omitempty"`
+	// the ID of the router
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// Force reboot the router (Router is force Stopped and then Started)
+	Forced *bool `protobuf:"varint,2,opt,name=forced" json:"forced,omitempty"`
 	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
 	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
 	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
@@ -1615,21 +1229,21 @@ type CreateVirtualRouterElementRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateVirtualRouterElementRequest) Reset() {
-	*x = CreateVirtualRouterElementRequest{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[22]
+func (x *RebootRouterRequest) Reset() {
+	*x = RebootRouterRequest{}
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateVirtualRouterElementRequest) String() string {
+func (x *RebootRouterRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateVirtualRouterElementRequest) ProtoMessage() {}
+func (*RebootRouterRequest) ProtoMessage() {}
 
-func (x *CreateVirtualRouterElementRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[22]
+func (x *RebootRouterRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1640,48 +1254,48 @@ func (x *CreateVirtualRouterElementRequest) ProtoReflect() protoreflect.Message 
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateVirtualRouterElementRequest.ProtoReflect.Descriptor instead.
-func (*CreateVirtualRouterElementRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{22}
+// Deprecated: Use RebootRouterRequest.ProtoReflect.Descriptor instead.
+func (*RebootRouterRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{16}
 }
 
-func (x *CreateVirtualRouterElementRequest) GetNspId() int64 {
-	if x != nil && x.NspId != nil {
-		return *x.NspId
+func (x *RebootRouterRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
 	}
 	return 0
 }
 
-func (x *CreateVirtualRouterElementRequest) GetProviderType() string {
-	if x != nil && x.ProviderType != nil {
-		return *x.ProviderType
+func (x *RebootRouterRequest) GetForced() bool {
+	if x != nil && x.Forced != nil {
+		return *x.Forced
 	}
-	return ""
+	return false
 }
 
-func (x *CreateVirtualRouterElementRequest) GetStartEventId() int64 {
+func (x *RebootRouterRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *CreateVirtualRouterElementRequest) GetInjectedJobId() string {
+func (x *RebootRouterRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *CreateVirtualRouterElementRequest) GetResponseType() string {
+func (x *RebootRouterRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// CreateVirtualRouterElementResponse represents the response from create a virtual router element.
-type CreateVirtualRouterElementResponse struct {
+// RebootRouterResponse represents the response from starts a router.
+type RebootRouterResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -1689,21 +1303,21 @@ type CreateVirtualRouterElementResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateVirtualRouterElementResponse) Reset() {
-	*x = CreateVirtualRouterElementResponse{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[23]
+func (x *RebootRouterResponse) Reset() {
+	*x = RebootRouterResponse{}
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateVirtualRouterElementResponse) String() string {
+func (x *RebootRouterResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateVirtualRouterElementResponse) ProtoMessage() {}
+func (*RebootRouterResponse) ProtoMessage() {}
 
-func (x *CreateVirtualRouterElementResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[23]
+func (x *RebootRouterResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1714,12 +1328,253 @@ func (x *CreateVirtualRouterElementResponse) ProtoReflect() protoreflect.Message
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateVirtualRouterElementResponse.ProtoReflect.Descriptor instead.
-func (*CreateVirtualRouterElementResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{23}
+// Deprecated: Use RebootRouterResponse.ProtoReflect.Descriptor instead.
+func (*RebootRouterResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{17}
 }
 
-func (x *CreateVirtualRouterElementResponse) GetResult() *Result {
+func (x *RebootRouterResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// StartRouterRequest represents the parameters for starts a router.
+type StartRouterRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the router
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StartRouterRequest) Reset() {
+	*x = StartRouterRequest{}
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StartRouterRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StartRouterRequest) ProtoMessage() {}
+
+func (x *StartRouterRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StartRouterRequest.ProtoReflect.Descriptor instead.
+func (*StartRouterRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *StartRouterRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *StartRouterRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *StartRouterRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *StartRouterRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// StartRouterResponse represents the response from starts a router.
+type StartRouterResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StartRouterResponse) Reset() {
+	*x = StartRouterResponse{}
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StartRouterResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StartRouterResponse) ProtoMessage() {}
+
+func (x *StartRouterResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StartRouterResponse.ProtoReflect.Descriptor instead.
+func (*StartRouterResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *StartRouterResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// StopRouterRequest represents the parameters for stops a router.
+type StopRouterRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the router
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// Force stop the VM (vm is marked as Stopped even when command fails to be send to the backend, otherwise a force poweroff is attempted). To be used if the caller knows the VM is stopped and should be marked as such.
+	Forced *bool `protobuf:"varint,2,opt,name=forced" json:"forced,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StopRouterRequest) Reset() {
+	*x = StopRouterRequest{}
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StopRouterRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StopRouterRequest) ProtoMessage() {}
+
+func (x *StopRouterRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StopRouterRequest.ProtoReflect.Descriptor instead.
+func (*StopRouterRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *StopRouterRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *StopRouterRequest) GetForced() bool {
+	if x != nil && x.Forced != nil {
+		return *x.Forced
+	}
+	return false
+}
+
+func (x *StopRouterRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *StopRouterRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *StopRouterRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// StopRouterResponse represents the response from stops a router.
+type StopRouterResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StopRouterResponse) Reset() {
+	*x = StopRouterResponse{}
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StopRouterResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StopRouterResponse) ProtoMessage() {}
+
+func (x *StopRouterResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StopRouterResponse.ProtoReflect.Descriptor instead.
+func (*StopRouterResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *StopRouterResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1740,7 +1595,7 @@ type UpgradeRouterRequest struct {
 
 func (x *UpgradeRouterRequest) Reset() {
 	*x = UpgradeRouterRequest{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[24]
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1752,7 +1607,7 @@ func (x *UpgradeRouterRequest) String() string {
 func (*UpgradeRouterRequest) ProtoMessage() {}
 
 func (x *UpgradeRouterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[24]
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1765,7 +1620,7 @@ func (x *UpgradeRouterRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpgradeRouterRequest.ProtoReflect.Descriptor instead.
 func (*UpgradeRouterRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{24}
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *UpgradeRouterRequest) GetId() int64 {
@@ -1800,7 +1655,7 @@ type UpgradeRouterResponse struct {
 
 func (x *UpgradeRouterResponse) Reset() {
 	*x = UpgradeRouterResponse{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[25]
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1812,7 +1667,7 @@ func (x *UpgradeRouterResponse) String() string {
 func (*UpgradeRouterResponse) ProtoMessage() {}
 
 func (x *UpgradeRouterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[25]
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1825,7 +1680,7 @@ func (x *UpgradeRouterResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpgradeRouterResponse.ProtoReflect.Descriptor instead.
 func (*UpgradeRouterResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{25}
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *UpgradeRouterResponse) GetResult() *Result {
@@ -1833,6 +1688,233 @@ func (x *UpgradeRouterResponse) GetResult() *Result {
 		return x.Result
 	}
 	return nil
+}
+
+// UpgradeRouterTemplateRequest represents the parameters for upgrades router to use newer template
+type UpgradeRouterTemplateRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// upgrades router with the specified Id
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// upgrades all routers within the specified cluster
+	ClusterId *int64 `protobuf:"varint,2,opt,name=cluster_id,json=clusterId" json:"cluster_id,omitempty"`
+	// upgrades all routers within the specified pod
+	PodId *int64 `protobuf:"varint,3,opt,name=pod_id,json=podId" json:"pod_id,omitempty"`
+	// upgrades all routers within the specified zone
+	ZoneId *int64 `protobuf:"varint,4,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// upgrades all routers owned by the specified account
+	Account *string `protobuf:"bytes,5,opt,name=account" json:"account,omitempty"`
+	// upgrades all routers owned by the specified domain
+	DomainId *int64 `protobuf:"varint,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpgradeRouterTemplateRequest) Reset() {
+	*x = UpgradeRouterTemplateRequest{}
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpgradeRouterTemplateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpgradeRouterTemplateRequest) ProtoMessage() {}
+
+func (x *UpgradeRouterTemplateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpgradeRouterTemplateRequest.ProtoReflect.Descriptor instead.
+func (*UpgradeRouterTemplateRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *UpgradeRouterTemplateRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpgradeRouterTemplateRequest) GetClusterId() int64 {
+	if x != nil && x.ClusterId != nil {
+		return *x.ClusterId
+	}
+	return 0
+}
+
+func (x *UpgradeRouterTemplateRequest) GetPodId() int64 {
+	if x != nil && x.PodId != nil {
+		return *x.PodId
+	}
+	return 0
+}
+
+func (x *UpgradeRouterTemplateRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *UpgradeRouterTemplateRequest) GetAccount() string {
+	if x != nil && x.Account != nil {
+		return *x.Account
+	}
+	return ""
+}
+
+func (x *UpgradeRouterTemplateRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *UpgradeRouterTemplateRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpgradeRouterTemplateResponse represents the response from upgrades router to use newer template
+type UpgradeRouterTemplateResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpgradeRouterTemplateResponse) Reset() {
+	*x = UpgradeRouterTemplateResponse{}
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpgradeRouterTemplateResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpgradeRouterTemplateResponse) ProtoMessage() {}
+
+func (x *UpgradeRouterTemplateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpgradeRouterTemplateResponse.ProtoReflect.Descriptor instead.
+func (*UpgradeRouterTemplateResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *UpgradeRouterTemplateResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DomainRouter represents a DomainRouter Item
+type DomainRouter struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the DomainRouter
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the DomainRouter
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the DomainRouter
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the DomainRouter
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DomainRouter) Reset() {
+	*x = DomainRouter{}
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DomainRouter) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DomainRouter) ProtoMessage() {}
+
+func (x *DomainRouter) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DomainRouter.ProtoReflect.Descriptor instead.
+func (*DomainRouter) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{26}
+}
+
+func (x *DomainRouter) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *DomainRouter) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *DomainRouter) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *DomainRouter) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *DomainRouter) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
 }
 
 // OvsProvider represents a OvsProvider Item
@@ -1854,7 +1936,7 @@ type OvsProvider struct {
 
 func (x *OvsProvider) Reset() {
 	*x = OvsProvider{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[26]
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1866,7 +1948,7 @@ func (x *OvsProvider) String() string {
 func (*OvsProvider) ProtoMessage() {}
 
 func (x *OvsProvider) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[26]
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1879,7 +1961,7 @@ func (x *OvsProvider) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OvsProvider.ProtoReflect.Descriptor instead.
 func (*OvsProvider) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{26}
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *OvsProvider) GetId() string {
@@ -1936,7 +2018,7 @@ type VirtualRouterProvider struct {
 
 func (x *VirtualRouterProvider) Reset() {
 	*x = VirtualRouterProvider{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[27]
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1948,7 +2030,7 @@ func (x *VirtualRouterProvider) String() string {
 func (*VirtualRouterProvider) ProtoMessage() {}
 
 func (x *VirtualRouterProvider) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[27]
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1961,7 +2043,7 @@ func (x *VirtualRouterProvider) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VirtualRouterProvider.ProtoReflect.Descriptor instead.
 func (*VirtualRouterProvider) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{27}
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *VirtualRouterProvider) GetId() string {
@@ -1993,88 +2075,6 @@ func (x *VirtualRouterProvider) GetDescription() string {
 }
 
 func (x *VirtualRouterProvider) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-// DomainRouter represents a DomainRouter Item
-type DomainRouter struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the DomainRouter
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the DomainRouter
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the DomainRouter
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the DomainRouter
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DomainRouter) Reset() {
-	*x = DomainRouter{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[28]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DomainRouter) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DomainRouter) ProtoMessage() {}
-
-func (x *DomainRouter) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[28]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DomainRouter.ProtoReflect.Descriptor instead.
-func (*DomainRouter) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{28}
-}
-
-func (x *DomainRouter) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *DomainRouter) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *DomainRouter) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *DomainRouter) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *DomainRouter) GetCreated() string {
 	if x != nil && x.Created != nil {
 		return *x.Created
 	}
@@ -2136,151 +2136,6 @@ func (x *Success) GetDisplayText() string {
 	return ""
 }
 
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[30]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[30]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{30}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
 // Result represents a generic operation result
 type Result struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -2300,7 +2155,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[31]
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2312,7 +2167,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[31]
+	mi := &file_cloudstack_management_router_v1_router_gen_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2325,7 +2180,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{31}
+	return file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -2367,7 +2222,44 @@ var File_cloudstack_management_router_v1_router_gen_proto protoreflect.FileDescr
 
 const file_cloudstack_management_router_v1_router_gen_proto_rawDesc = "" +
 	"\n" +
-	"0cloudstack/management/router/v1/router.gen.proto\x12\x1fcloudstack.management.router.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xd0\x01\n" +
+	"0cloudstack/management/router/v1/router.gen.proto\x12\x1fcloudstack.management.router.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xd8\x01\n" +
+	"\x1aConfigureOvsElementRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12%\n" +
+	"\aenabled\x18\x02 \x01(\bB\v\xbaH\x03\xc8\x01\x01\xaa\x01\x02\b\x01R\aenabled\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"^\n" +
+	"\x1bConfigureOvsElementResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.router.v1.ResultR\x06result\"\xe2\x01\n" +
+	"$ConfigureVirtualRouterElementRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12%\n" +
+	"\aenabled\x18\x02 \x01(\bB\v\xbaH\x03\xc8\x01\x01\xaa\x01\x02\b\x01R\aenabled\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"h\n" +
+	"%ConfigureVirtualRouterElementResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.router.v1.ResultR\x06result\"\xee\x01\n" +
+	"!CreateVirtualRouterElementRequest\x12\x1d\n" +
+	"\x06nsp_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05nspId\x12-\n" +
+	"\rprovider_type\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\fproviderType\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"e\n" +
+	"\"CreateVirtualRouterElementResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.router.v1.ResultR\x06result\"\xab\x01\n" +
+	"\x14DestroyRouterRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"X\n" +
+	"\x15DestroyRouterResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.router.v1.ResultR\x06result\"\xa7\x01\n" +
+	"\"GetRouterHealthCheckResultsRequest\x12#\n" +
+	"\trouter_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\brouterId\x127\n" +
+	"\x14perform_fresh_checks\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\x12performFreshChecks\x12#\n" +
+	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"f\n" +
+	"#GetRouterHealthCheckResultsResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.router.v1.ResultR\x06result\"\xd0\x01\n" +
 	"\x16ListOvsElementsRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x15\n" +
 	"\x06nsp_id\x18\x02 \x01(\x03R\x05nspId\x12\x1f\n" +
@@ -2379,74 +2271,7 @@ const file_cloudstack_management_router_v1_router_gen_proto_rawDesc = "" +
 	"\x17ListOvsElementsResponse\x12B\n" +
 	"\x05items\x18\x01 \x03(\v2,.cloudstack.management.router.v1.OvsProviderR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xda\x01\n" +
-	" ListVirtualRouterElementsRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x15\n" +
-	"\x06nsp_id\x18\x02 \x01(\x03R\x05nspId\x12\x1f\n" +
-	"\aenabled\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\aenabled\x12\x18\n" +
-	"\akeyword\x18\x04 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x05 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x06 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"\x99\x01\n" +
-	"!ListVirtualRouterElementsResponse\x12L\n" +
-	"\x05items\x18\x01 \x03(\v26.cloudstack.management.router.v1.VirtualRouterProviderR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xc9\x01\n" +
-	"\x13RebootRouterRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1d\n" +
-	"\x06forced\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"W\n" +
-	"\x14RebootRouterResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.router.v1.ResultR\x06result\"\xa7\x01\n" +
-	"\"GetRouterHealthCheckResultsRequest\x12#\n" +
-	"\trouter_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\brouterId\x127\n" +
-	"\x14perform_fresh_checks\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\x12performFreshChecks\x12#\n" +
-	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"f\n" +
-	"#GetRouterHealthCheckResultsResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.router.v1.ResultR\x06result\"\xe2\x01\n" +
-	"$ConfigureVirtualRouterElementRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12%\n" +
-	"\aenabled\x18\x02 \x01(\bB\v\xbaH\x03\xc8\x01\x01\xaa\x01\x02\b\x01R\aenabled\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"h\n" +
-	"%ConfigureVirtualRouterElementResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.router.v1.ResultR\x06result\"\xd9\x01\n" +
-	"\x1cUpgradeRouterTemplateRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1d\n" +
-	"\n" +
-	"cluster_id\x18\x02 \x01(\x03R\tclusterId\x12\x15\n" +
-	"\x06pod_id\x18\x03 \x01(\x03R\x05podId\x12\x17\n" +
-	"\azone_id\x18\x04 \x01(\x03R\x06zoneId\x12\x18\n" +
-	"\aaccount\x18\x05 \x01(\tR\aaccount\x12\x1b\n" +
-	"\tdomain_id\x18\x06 \x01(\x03R\bdomainId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"`\n" +
-	"\x1dUpgradeRouterTemplateResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.router.v1.ResultR\x06result\"\xa9\x01\n" +
-	"\x12StartRouterRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"V\n" +
-	"\x13StartRouterResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.router.v1.ResultR\x06result\"\xab\x01\n" +
-	"\x14DestroyRouterRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"X\n" +
-	"\x15DestroyRouterResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.router.v1.ResultR\x06result\"\xc7\x01\n" +
-	"\x11StopRouterRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1d\n" +
-	"\x06forced\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"U\n" +
-	"\x12StopRouterResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.router.v1.ResultR\x06result\"\xd0\x06\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xd0\x06\n" +
 	"\x12ListRoutersRequest\x12\x17\n" +
 	"\ahost_id\x18\x01 \x01(\x03R\x06hostId\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\x03R\x02id\x12+\n" +
@@ -2480,29 +2305,65 @@ const file_cloudstack_management_router_v1_router_gen_proto_rawDesc = "" +
 	"\x13ListRoutersResponse\x12C\n" +
 	"\x05items\x18\x01 \x03(\v2-.cloudstack.management.router.v1.DomainRouterR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xd8\x01\n" +
-	"\x1aConfigureOvsElementRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12%\n" +
-	"\aenabled\x18\x02 \x01(\bB\v\xbaH\x03\xc8\x01\x01\xaa\x01\x02\b\x01R\aenabled\x12$\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xda\x01\n" +
+	" ListVirtualRouterElementsRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x15\n" +
+	"\x06nsp_id\x18\x02 \x01(\x03R\x05nspId\x12\x1f\n" +
+	"\aenabled\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\aenabled\x12\x18\n" +
+	"\akeyword\x18\x04 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x05 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x06 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"\x99\x01\n" +
+	"!ListVirtualRouterElementsResponse\x12L\n" +
+	"\x05items\x18\x01 \x03(\v26.cloudstack.management.router.v1.VirtualRouterProviderR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xc9\x01\n" +
+	"\x13RebootRouterRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1d\n" +
+	"\x06forced\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12$\n" +
 	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
 	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"^\n" +
-	"\x1bConfigureOvsElementResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.router.v1.ResultR\x06result\"\xee\x01\n" +
-	"!CreateVirtualRouterElementRequest\x12\x1d\n" +
-	"\x06nsp_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05nspId\x12-\n" +
-	"\rprovider_type\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\fproviderType\x12$\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"W\n" +
+	"\x14RebootRouterResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.router.v1.ResultR\x06result\"\xa9\x01\n" +
+	"\x12StartRouterRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"V\n" +
+	"\x13StartRouterResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.router.v1.ResultR\x06result\"\xc7\x01\n" +
+	"\x11StopRouterRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1d\n" +
+	"\x06forced\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12$\n" +
 	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
 	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"e\n" +
-	"\"CreateVirtualRouterElementResponse\x12?\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"U\n" +
+	"\x12StopRouterResponse\x12?\n" +
 	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.router.v1.ResultR\x06result\"\x8b\x01\n" +
 	"\x14UpgradeRouterRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x126\n" +
 	"\x13service_offering_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11serviceOfferingId\x12#\n" +
 	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"X\n" +
 	"\x15UpgradeRouterResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.router.v1.ResultR\x06result\"\x9a\x01\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.router.v1.ResultR\x06result\"\xd9\x01\n" +
+	"\x1cUpgradeRouterTemplateRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1d\n" +
+	"\n" +
+	"cluster_id\x18\x02 \x01(\x03R\tclusterId\x12\x15\n" +
+	"\x06pod_id\x18\x03 \x01(\x03R\x05podId\x12\x17\n" +
+	"\azone_id\x18\x04 \x01(\x03R\x06zoneId\x12\x18\n" +
+	"\aaccount\x18\x05 \x01(\tR\aaccount\x12\x1b\n" +
+	"\tdomain_id\x18\x06 \x01(\x03R\bdomainId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"`\n" +
+	"\x1dUpgradeRouterTemplateResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.router.v1.ResultR\x06result\"\x9b\x01\n" +
+	"\fDomainRouter\x12\x18\n" +
+	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
+	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
+	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x9a\x01\n" +
 	"\vOvsProvider\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
@@ -2514,57 +2375,32 @@ const file_cloudstack_management_router_v1_router_gen_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x9b\x01\n" +
-	"\fDomainRouter\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xde\x03\n" +
-	"\x04Item\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12L\n" +
-	"\adetails\x18\f \x03(\v22.cloudstack.management.router.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xf7\x0e\n" +
-	"\rRouterService\x12\x86\x01\n" +
-	"\x0fListOvsElements\x127.cloudstack.management.router.v1.ListOvsElementsRequest\x1a8.cloudstack.management.router.v1.ListOvsElementsResponse\"\x00\x12\xa4\x01\n" +
-	"\x19ListVirtualRouterElements\x12A.cloudstack.management.router.v1.ListVirtualRouterElementsRequest\x1aB.cloudstack.management.router.v1.ListVirtualRouterElementsResponse\"\x00\x12}\n" +
-	"\fRebootRouter\x124.cloudstack.management.router.v1.RebootRouterRequest\x1a5.cloudstack.management.router.v1.RebootRouterResponse\"\x00\x12\xaa\x01\n" +
-	"\x1bGetRouterHealthCheckResults\x12C.cloudstack.management.router.v1.GetRouterHealthCheckResultsRequest\x1aD.cloudstack.management.router.v1.GetRouterHealthCheckResultsResponse\"\x00\x12\xb0\x01\n" +
-	"\x1dConfigureVirtualRouterElement\x12E.cloudstack.management.router.v1.ConfigureVirtualRouterElementRequest\x1aF.cloudstack.management.router.v1.ConfigureVirtualRouterElementResponse\"\x00\x12\x98\x01\n" +
-	"\x15UpgradeRouterTemplate\x12=.cloudstack.management.router.v1.UpgradeRouterTemplateRequest\x1a>.cloudstack.management.router.v1.UpgradeRouterTemplateResponse\"\x00\x12z\n" +
-	"\vStartRouter\x123.cloudstack.management.router.v1.StartRouterRequest\x1a4.cloudstack.management.router.v1.StartRouterResponse\"\x00\x12\x80\x01\n" +
-	"\rDestroyRouter\x125.cloudstack.management.router.v1.DestroyRouterRequest\x1a6.cloudstack.management.router.v1.DestroyRouterResponse\"\x00\x12w\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\xd6\x0f\n" +
+	"\rRouterService\x12\x99\x01\n" +
+	"\x13ConfigureOvsElement\x12;.cloudstack.management.router.v1.ConfigureOvsElementRequest\x1a<.cloudstack.management.router.v1.ConfigureOvsElementResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xb7\x01\n" +
+	"\x1dConfigureVirtualRouterElement\x12E.cloudstack.management.router.v1.ConfigureVirtualRouterElementRequest\x1aF.cloudstack.management.router.v1.ConfigureVirtualRouterElementResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xae\x01\n" +
+	"\x1aCreateVirtualRouterElement\x12B.cloudstack.management.router.v1.CreateVirtualRouterElementRequest\x1aC.cloudstack.management.router.v1.CreateVirtualRouterElementResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x87\x01\n" +
+	"\rDestroyRouter\x125.cloudstack.management.router.v1.DestroyRouterRequest\x1a6.cloudstack.management.router.v1.DestroyRouterResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xb1\x01\n" +
+	"\x1bGetRouterHealthCheckResults\x12C.cloudstack.management.router.v1.GetRouterHealthCheckResultsRequest\x1aD.cloudstack.management.router.v1.GetRouterHealthCheckResultsResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x8d\x01\n" +
+	"\x0fListOvsElements\x127.cloudstack.management.router.v1.ListOvsElementsRequest\x1a8.cloudstack.management.router.v1.ListOvsElementsResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x81\x01\n" +
+	"\vListRouters\x123.cloudstack.management.router.v1.ListRoutersRequest\x1a4.cloudstack.management.router.v1.ListRoutersResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xab\x01\n" +
+	"\x19ListVirtualRouterElements\x12A.cloudstack.management.router.v1.ListVirtualRouterElementsRequest\x1aB.cloudstack.management.router.v1.ListVirtualRouterElementsResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x84\x01\n" +
+	"\fRebootRouter\x124.cloudstack.management.router.v1.RebootRouterRequest\x1a5.cloudstack.management.router.v1.RebootRouterResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x81\x01\n" +
+	"\vStartRouter\x123.cloudstack.management.router.v1.StartRouterRequest\x1a4.cloudstack.management.router.v1.StartRouterResponse\"\a\xc2>\x04\xc2>\x01\x02\x12~\n" +
 	"\n" +
-	"StopRouter\x122.cloudstack.management.router.v1.StopRouterRequest\x1a3.cloudstack.management.router.v1.StopRouterResponse\"\x00\x12z\n" +
-	"\vListRouters\x123.cloudstack.management.router.v1.ListRoutersRequest\x1a4.cloudstack.management.router.v1.ListRoutersResponse\"\x00\x12\x92\x01\n" +
-	"\x13ConfigureOvsElement\x12;.cloudstack.management.router.v1.ConfigureOvsElementRequest\x1a<.cloudstack.management.router.v1.ConfigureOvsElementResponse\"\x00\x12\xa7\x01\n" +
-	"\x1aCreateVirtualRouterElement\x12B.cloudstack.management.router.v1.CreateVirtualRouterElementRequest\x1aC.cloudstack.management.router.v1.CreateVirtualRouterElementResponse\"\x00\x12\x80\x01\n" +
-	"\rUpgradeRouter\x125.cloudstack.management.router.v1.UpgradeRouterRequest\x1a6.cloudstack.management.router.v1.UpgradeRouterResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xb2\x02\n" +
+	"StopRouter\x122.cloudstack.management.router.v1.StopRouterRequest\x1a3.cloudstack.management.router.v1.StopRouterResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x87\x01\n" +
+	"\rUpgradeRouter\x125.cloudstack.management.router.v1.UpgradeRouterRequest\x1a6.cloudstack.management.router.v1.UpgradeRouterResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x9f\x01\n" +
+	"\x15UpgradeRouterTemplate\x12=.cloudstack.management.router.v1.UpgradeRouterTemplateRequest\x1a>.cloudstack.management.router.v1.UpgradeRouterTemplateResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\a\xc2>\x04\xc2>\x01\x02B\xb2\x02\n" +
 	"#com.cloudstack.management.router.v1B\x0eRouterGenProtoP\x01Z\\github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/router/v1;routerv1\xa2\x02\x03CMR\xaa\x02\x1fCloudstack.Management.Router.V1\xca\x02\x1fCloudstack\\Management\\Router\\V1\xe2\x02+Cloudstack\\Management\\Router\\V1\\GPBMetadata\xea\x02\"Cloudstack::Management::Router::V1b\beditionsp\xe8\a"
 
 var (
@@ -2579,88 +2415,85 @@ func file_cloudstack_management_router_v1_router_gen_proto_rawDescGZIP() []byte 
 	return file_cloudstack_management_router_v1_router_gen_proto_rawDescData
 }
 
-var file_cloudstack_management_router_v1_router_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 33)
+var file_cloudstack_management_router_v1_router_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 31)
 var file_cloudstack_management_router_v1_router_gen_proto_goTypes = []any{
-	(*ListOvsElementsRequest)(nil),                // 0: cloudstack.management.router.v1.ListOvsElementsRequest
-	(*ListOvsElementsResponse)(nil),               // 1: cloudstack.management.router.v1.ListOvsElementsResponse
-	(*ListVirtualRouterElementsRequest)(nil),      // 2: cloudstack.management.router.v1.ListVirtualRouterElementsRequest
-	(*ListVirtualRouterElementsResponse)(nil),     // 3: cloudstack.management.router.v1.ListVirtualRouterElementsResponse
-	(*RebootRouterRequest)(nil),                   // 4: cloudstack.management.router.v1.RebootRouterRequest
-	(*RebootRouterResponse)(nil),                  // 5: cloudstack.management.router.v1.RebootRouterResponse
-	(*GetRouterHealthCheckResultsRequest)(nil),    // 6: cloudstack.management.router.v1.GetRouterHealthCheckResultsRequest
-	(*GetRouterHealthCheckResultsResponse)(nil),   // 7: cloudstack.management.router.v1.GetRouterHealthCheckResultsResponse
-	(*ConfigureVirtualRouterElementRequest)(nil),  // 8: cloudstack.management.router.v1.ConfigureVirtualRouterElementRequest
-	(*ConfigureVirtualRouterElementResponse)(nil), // 9: cloudstack.management.router.v1.ConfigureVirtualRouterElementResponse
-	(*UpgradeRouterTemplateRequest)(nil),          // 10: cloudstack.management.router.v1.UpgradeRouterTemplateRequest
-	(*UpgradeRouterTemplateResponse)(nil),         // 11: cloudstack.management.router.v1.UpgradeRouterTemplateResponse
-	(*StartRouterRequest)(nil),                    // 12: cloudstack.management.router.v1.StartRouterRequest
-	(*StartRouterResponse)(nil),                   // 13: cloudstack.management.router.v1.StartRouterResponse
-	(*DestroyRouterRequest)(nil),                  // 14: cloudstack.management.router.v1.DestroyRouterRequest
-	(*DestroyRouterResponse)(nil),                 // 15: cloudstack.management.router.v1.DestroyRouterResponse
-	(*StopRouterRequest)(nil),                     // 16: cloudstack.management.router.v1.StopRouterRequest
-	(*StopRouterResponse)(nil),                    // 17: cloudstack.management.router.v1.StopRouterResponse
-	(*ListRoutersRequest)(nil),                    // 18: cloudstack.management.router.v1.ListRoutersRequest
-	(*ListRoutersResponse)(nil),                   // 19: cloudstack.management.router.v1.ListRoutersResponse
-	(*ConfigureOvsElementRequest)(nil),            // 20: cloudstack.management.router.v1.ConfigureOvsElementRequest
-	(*ConfigureOvsElementResponse)(nil),           // 21: cloudstack.management.router.v1.ConfigureOvsElementResponse
-	(*CreateVirtualRouterElementRequest)(nil),     // 22: cloudstack.management.router.v1.CreateVirtualRouterElementRequest
-	(*CreateVirtualRouterElementResponse)(nil),    // 23: cloudstack.management.router.v1.CreateVirtualRouterElementResponse
-	(*UpgradeRouterRequest)(nil),                  // 24: cloudstack.management.router.v1.UpgradeRouterRequest
-	(*UpgradeRouterResponse)(nil),                 // 25: cloudstack.management.router.v1.UpgradeRouterResponse
-	(*OvsProvider)(nil),                           // 26: cloudstack.management.router.v1.OvsProvider
-	(*VirtualRouterProvider)(nil),                 // 27: cloudstack.management.router.v1.VirtualRouterProvider
-	(*DomainRouter)(nil),                          // 28: cloudstack.management.router.v1.DomainRouter
+	(*ConfigureOvsElementRequest)(nil),            // 0: cloudstack.management.router.v1.ConfigureOvsElementRequest
+	(*ConfigureOvsElementResponse)(nil),           // 1: cloudstack.management.router.v1.ConfigureOvsElementResponse
+	(*ConfigureVirtualRouterElementRequest)(nil),  // 2: cloudstack.management.router.v1.ConfigureVirtualRouterElementRequest
+	(*ConfigureVirtualRouterElementResponse)(nil), // 3: cloudstack.management.router.v1.ConfigureVirtualRouterElementResponse
+	(*CreateVirtualRouterElementRequest)(nil),     // 4: cloudstack.management.router.v1.CreateVirtualRouterElementRequest
+	(*CreateVirtualRouterElementResponse)(nil),    // 5: cloudstack.management.router.v1.CreateVirtualRouterElementResponse
+	(*DestroyRouterRequest)(nil),                  // 6: cloudstack.management.router.v1.DestroyRouterRequest
+	(*DestroyRouterResponse)(nil),                 // 7: cloudstack.management.router.v1.DestroyRouterResponse
+	(*GetRouterHealthCheckResultsRequest)(nil),    // 8: cloudstack.management.router.v1.GetRouterHealthCheckResultsRequest
+	(*GetRouterHealthCheckResultsResponse)(nil),   // 9: cloudstack.management.router.v1.GetRouterHealthCheckResultsResponse
+	(*ListOvsElementsRequest)(nil),                // 10: cloudstack.management.router.v1.ListOvsElementsRequest
+	(*ListOvsElementsResponse)(nil),               // 11: cloudstack.management.router.v1.ListOvsElementsResponse
+	(*ListRoutersRequest)(nil),                    // 12: cloudstack.management.router.v1.ListRoutersRequest
+	(*ListRoutersResponse)(nil),                   // 13: cloudstack.management.router.v1.ListRoutersResponse
+	(*ListVirtualRouterElementsRequest)(nil),      // 14: cloudstack.management.router.v1.ListVirtualRouterElementsRequest
+	(*ListVirtualRouterElementsResponse)(nil),     // 15: cloudstack.management.router.v1.ListVirtualRouterElementsResponse
+	(*RebootRouterRequest)(nil),                   // 16: cloudstack.management.router.v1.RebootRouterRequest
+	(*RebootRouterResponse)(nil),                  // 17: cloudstack.management.router.v1.RebootRouterResponse
+	(*StartRouterRequest)(nil),                    // 18: cloudstack.management.router.v1.StartRouterRequest
+	(*StartRouterResponse)(nil),                   // 19: cloudstack.management.router.v1.StartRouterResponse
+	(*StopRouterRequest)(nil),                     // 20: cloudstack.management.router.v1.StopRouterRequest
+	(*StopRouterResponse)(nil),                    // 21: cloudstack.management.router.v1.StopRouterResponse
+	(*UpgradeRouterRequest)(nil),                  // 22: cloudstack.management.router.v1.UpgradeRouterRequest
+	(*UpgradeRouterResponse)(nil),                 // 23: cloudstack.management.router.v1.UpgradeRouterResponse
+	(*UpgradeRouterTemplateRequest)(nil),          // 24: cloudstack.management.router.v1.UpgradeRouterTemplateRequest
+	(*UpgradeRouterTemplateResponse)(nil),         // 25: cloudstack.management.router.v1.UpgradeRouterTemplateResponse
+	(*DomainRouter)(nil),                          // 26: cloudstack.management.router.v1.DomainRouter
+	(*OvsProvider)(nil),                           // 27: cloudstack.management.router.v1.OvsProvider
+	(*VirtualRouterProvider)(nil),                 // 28: cloudstack.management.router.v1.VirtualRouterProvider
 	(*Success)(nil),                               // 29: cloudstack.management.router.v1.Success
-	(*Item)(nil),                                  // 30: cloudstack.management.router.v1.Item
-	(*Result)(nil),                                // 31: cloudstack.management.router.v1.Result
-	nil,                                           // 32: cloudstack.management.router.v1.Item.DetailsEntry
+	(*Result)(nil),                                // 30: cloudstack.management.router.v1.Result
 }
 var file_cloudstack_management_router_v1_router_gen_proto_depIdxs = []int32{
-	26, // 0: cloudstack.management.router.v1.ListOvsElementsResponse.items:type_name -> cloudstack.management.router.v1.OvsProvider
-	27, // 1: cloudstack.management.router.v1.ListVirtualRouterElementsResponse.items:type_name -> cloudstack.management.router.v1.VirtualRouterProvider
-	31, // 2: cloudstack.management.router.v1.RebootRouterResponse.result:type_name -> cloudstack.management.router.v1.Result
-	31, // 3: cloudstack.management.router.v1.GetRouterHealthCheckResultsResponse.result:type_name -> cloudstack.management.router.v1.Result
-	31, // 4: cloudstack.management.router.v1.ConfigureVirtualRouterElementResponse.result:type_name -> cloudstack.management.router.v1.Result
-	31, // 5: cloudstack.management.router.v1.UpgradeRouterTemplateResponse.result:type_name -> cloudstack.management.router.v1.Result
-	31, // 6: cloudstack.management.router.v1.StartRouterResponse.result:type_name -> cloudstack.management.router.v1.Result
-	31, // 7: cloudstack.management.router.v1.DestroyRouterResponse.result:type_name -> cloudstack.management.router.v1.Result
-	31, // 8: cloudstack.management.router.v1.StopRouterResponse.result:type_name -> cloudstack.management.router.v1.Result
-	28, // 9: cloudstack.management.router.v1.ListRoutersResponse.items:type_name -> cloudstack.management.router.v1.DomainRouter
-	31, // 10: cloudstack.management.router.v1.ConfigureOvsElementResponse.result:type_name -> cloudstack.management.router.v1.Result
-	31, // 11: cloudstack.management.router.v1.CreateVirtualRouterElementResponse.result:type_name -> cloudstack.management.router.v1.Result
-	31, // 12: cloudstack.management.router.v1.UpgradeRouterResponse.result:type_name -> cloudstack.management.router.v1.Result
-	32, // 13: cloudstack.management.router.v1.Item.details:type_name -> cloudstack.management.router.v1.Item.DetailsEntry
-	0,  // 14: cloudstack.management.router.v1.RouterService.ListOvsElements:input_type -> cloudstack.management.router.v1.ListOvsElementsRequest
-	2,  // 15: cloudstack.management.router.v1.RouterService.ListVirtualRouterElements:input_type -> cloudstack.management.router.v1.ListVirtualRouterElementsRequest
-	4,  // 16: cloudstack.management.router.v1.RouterService.RebootRouter:input_type -> cloudstack.management.router.v1.RebootRouterRequest
-	6,  // 17: cloudstack.management.router.v1.RouterService.GetRouterHealthCheckResults:input_type -> cloudstack.management.router.v1.GetRouterHealthCheckResultsRequest
-	8,  // 18: cloudstack.management.router.v1.RouterService.ConfigureVirtualRouterElement:input_type -> cloudstack.management.router.v1.ConfigureVirtualRouterElementRequest
-	10, // 19: cloudstack.management.router.v1.RouterService.UpgradeRouterTemplate:input_type -> cloudstack.management.router.v1.UpgradeRouterTemplateRequest
-	12, // 20: cloudstack.management.router.v1.RouterService.StartRouter:input_type -> cloudstack.management.router.v1.StartRouterRequest
-	14, // 21: cloudstack.management.router.v1.RouterService.DestroyRouter:input_type -> cloudstack.management.router.v1.DestroyRouterRequest
-	16, // 22: cloudstack.management.router.v1.RouterService.StopRouter:input_type -> cloudstack.management.router.v1.StopRouterRequest
-	18, // 23: cloudstack.management.router.v1.RouterService.ListRouters:input_type -> cloudstack.management.router.v1.ListRoutersRequest
-	20, // 24: cloudstack.management.router.v1.RouterService.ConfigureOvsElement:input_type -> cloudstack.management.router.v1.ConfigureOvsElementRequest
-	22, // 25: cloudstack.management.router.v1.RouterService.CreateVirtualRouterElement:input_type -> cloudstack.management.router.v1.CreateVirtualRouterElementRequest
-	24, // 26: cloudstack.management.router.v1.RouterService.UpgradeRouter:input_type -> cloudstack.management.router.v1.UpgradeRouterRequest
-	1,  // 27: cloudstack.management.router.v1.RouterService.ListOvsElements:output_type -> cloudstack.management.router.v1.ListOvsElementsResponse
-	3,  // 28: cloudstack.management.router.v1.RouterService.ListVirtualRouterElements:output_type -> cloudstack.management.router.v1.ListVirtualRouterElementsResponse
-	5,  // 29: cloudstack.management.router.v1.RouterService.RebootRouter:output_type -> cloudstack.management.router.v1.RebootRouterResponse
-	7,  // 30: cloudstack.management.router.v1.RouterService.GetRouterHealthCheckResults:output_type -> cloudstack.management.router.v1.GetRouterHealthCheckResultsResponse
-	9,  // 31: cloudstack.management.router.v1.RouterService.ConfigureVirtualRouterElement:output_type -> cloudstack.management.router.v1.ConfigureVirtualRouterElementResponse
-	11, // 32: cloudstack.management.router.v1.RouterService.UpgradeRouterTemplate:output_type -> cloudstack.management.router.v1.UpgradeRouterTemplateResponse
-	13, // 33: cloudstack.management.router.v1.RouterService.StartRouter:output_type -> cloudstack.management.router.v1.StartRouterResponse
-	15, // 34: cloudstack.management.router.v1.RouterService.DestroyRouter:output_type -> cloudstack.management.router.v1.DestroyRouterResponse
-	17, // 35: cloudstack.management.router.v1.RouterService.StopRouter:output_type -> cloudstack.management.router.v1.StopRouterResponse
-	19, // 36: cloudstack.management.router.v1.RouterService.ListRouters:output_type -> cloudstack.management.router.v1.ListRoutersResponse
-	21, // 37: cloudstack.management.router.v1.RouterService.ConfigureOvsElement:output_type -> cloudstack.management.router.v1.ConfigureOvsElementResponse
-	23, // 38: cloudstack.management.router.v1.RouterService.CreateVirtualRouterElement:output_type -> cloudstack.management.router.v1.CreateVirtualRouterElementResponse
-	25, // 39: cloudstack.management.router.v1.RouterService.UpgradeRouter:output_type -> cloudstack.management.router.v1.UpgradeRouterResponse
-	27, // [27:40] is the sub-list for method output_type
-	14, // [14:27] is the sub-list for method input_type
-	14, // [14:14] is the sub-list for extension type_name
-	14, // [14:14] is the sub-list for extension extendee
-	0,  // [0:14] is the sub-list for field type_name
+	30, // 0: cloudstack.management.router.v1.ConfigureOvsElementResponse.result:type_name -> cloudstack.management.router.v1.Result
+	30, // 1: cloudstack.management.router.v1.ConfigureVirtualRouterElementResponse.result:type_name -> cloudstack.management.router.v1.Result
+	30, // 2: cloudstack.management.router.v1.CreateVirtualRouterElementResponse.result:type_name -> cloudstack.management.router.v1.Result
+	30, // 3: cloudstack.management.router.v1.DestroyRouterResponse.result:type_name -> cloudstack.management.router.v1.Result
+	30, // 4: cloudstack.management.router.v1.GetRouterHealthCheckResultsResponse.result:type_name -> cloudstack.management.router.v1.Result
+	27, // 5: cloudstack.management.router.v1.ListOvsElementsResponse.items:type_name -> cloudstack.management.router.v1.OvsProvider
+	26, // 6: cloudstack.management.router.v1.ListRoutersResponse.items:type_name -> cloudstack.management.router.v1.DomainRouter
+	28, // 7: cloudstack.management.router.v1.ListVirtualRouterElementsResponse.items:type_name -> cloudstack.management.router.v1.VirtualRouterProvider
+	30, // 8: cloudstack.management.router.v1.RebootRouterResponse.result:type_name -> cloudstack.management.router.v1.Result
+	30, // 9: cloudstack.management.router.v1.StartRouterResponse.result:type_name -> cloudstack.management.router.v1.Result
+	30, // 10: cloudstack.management.router.v1.StopRouterResponse.result:type_name -> cloudstack.management.router.v1.Result
+	30, // 11: cloudstack.management.router.v1.UpgradeRouterResponse.result:type_name -> cloudstack.management.router.v1.Result
+	30, // 12: cloudstack.management.router.v1.UpgradeRouterTemplateResponse.result:type_name -> cloudstack.management.router.v1.Result
+	0,  // 13: cloudstack.management.router.v1.RouterService.ConfigureOvsElement:input_type -> cloudstack.management.router.v1.ConfigureOvsElementRequest
+	2,  // 14: cloudstack.management.router.v1.RouterService.ConfigureVirtualRouterElement:input_type -> cloudstack.management.router.v1.ConfigureVirtualRouterElementRequest
+	4,  // 15: cloudstack.management.router.v1.RouterService.CreateVirtualRouterElement:input_type -> cloudstack.management.router.v1.CreateVirtualRouterElementRequest
+	6,  // 16: cloudstack.management.router.v1.RouterService.DestroyRouter:input_type -> cloudstack.management.router.v1.DestroyRouterRequest
+	8,  // 17: cloudstack.management.router.v1.RouterService.GetRouterHealthCheckResults:input_type -> cloudstack.management.router.v1.GetRouterHealthCheckResultsRequest
+	10, // 18: cloudstack.management.router.v1.RouterService.ListOvsElements:input_type -> cloudstack.management.router.v1.ListOvsElementsRequest
+	12, // 19: cloudstack.management.router.v1.RouterService.ListRouters:input_type -> cloudstack.management.router.v1.ListRoutersRequest
+	14, // 20: cloudstack.management.router.v1.RouterService.ListVirtualRouterElements:input_type -> cloudstack.management.router.v1.ListVirtualRouterElementsRequest
+	16, // 21: cloudstack.management.router.v1.RouterService.RebootRouter:input_type -> cloudstack.management.router.v1.RebootRouterRequest
+	18, // 22: cloudstack.management.router.v1.RouterService.StartRouter:input_type -> cloudstack.management.router.v1.StartRouterRequest
+	20, // 23: cloudstack.management.router.v1.RouterService.StopRouter:input_type -> cloudstack.management.router.v1.StopRouterRequest
+	22, // 24: cloudstack.management.router.v1.RouterService.UpgradeRouter:input_type -> cloudstack.management.router.v1.UpgradeRouterRequest
+	24, // 25: cloudstack.management.router.v1.RouterService.UpgradeRouterTemplate:input_type -> cloudstack.management.router.v1.UpgradeRouterTemplateRequest
+	1,  // 26: cloudstack.management.router.v1.RouterService.ConfigureOvsElement:output_type -> cloudstack.management.router.v1.ConfigureOvsElementResponse
+	3,  // 27: cloudstack.management.router.v1.RouterService.ConfigureVirtualRouterElement:output_type -> cloudstack.management.router.v1.ConfigureVirtualRouterElementResponse
+	5,  // 28: cloudstack.management.router.v1.RouterService.CreateVirtualRouterElement:output_type -> cloudstack.management.router.v1.CreateVirtualRouterElementResponse
+	7,  // 29: cloudstack.management.router.v1.RouterService.DestroyRouter:output_type -> cloudstack.management.router.v1.DestroyRouterResponse
+	9,  // 30: cloudstack.management.router.v1.RouterService.GetRouterHealthCheckResults:output_type -> cloudstack.management.router.v1.GetRouterHealthCheckResultsResponse
+	11, // 31: cloudstack.management.router.v1.RouterService.ListOvsElements:output_type -> cloudstack.management.router.v1.ListOvsElementsResponse
+	13, // 32: cloudstack.management.router.v1.RouterService.ListRouters:output_type -> cloudstack.management.router.v1.ListRoutersResponse
+	15, // 33: cloudstack.management.router.v1.RouterService.ListVirtualRouterElements:output_type -> cloudstack.management.router.v1.ListVirtualRouterElementsResponse
+	17, // 34: cloudstack.management.router.v1.RouterService.RebootRouter:output_type -> cloudstack.management.router.v1.RebootRouterResponse
+	19, // 35: cloudstack.management.router.v1.RouterService.StartRouter:output_type -> cloudstack.management.router.v1.StartRouterResponse
+	21, // 36: cloudstack.management.router.v1.RouterService.StopRouter:output_type -> cloudstack.management.router.v1.StopRouterResponse
+	23, // 37: cloudstack.management.router.v1.RouterService.UpgradeRouter:output_type -> cloudstack.management.router.v1.UpgradeRouterResponse
+	25, // 38: cloudstack.management.router.v1.RouterService.UpgradeRouterTemplate:output_type -> cloudstack.management.router.v1.UpgradeRouterTemplateResponse
+	26, // [26:39] is the sub-list for method output_type
+	13, // [13:26] is the sub-list for method input_type
+	13, // [13:13] is the sub-list for extension type_name
+	13, // [13:13] is the sub-list for extension extendee
+	0,  // [0:13] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_router_v1_router_gen_proto_init() }
@@ -2674,7 +2507,7 @@ func file_cloudstack_management_router_v1_router_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_router_v1_router_gen_proto_rawDesc), len(file_cloudstack_management_router_v1_router_gen_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   33,
+			NumMessages:   31,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

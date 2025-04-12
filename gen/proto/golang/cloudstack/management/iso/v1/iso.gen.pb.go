@@ -24,6 +24,1105 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// AttachIsoRequest represents the parameters for attaches an iso to a virtual machine.
+type AttachIsoRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// the ID of the ISO file
+	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
+	// the ID of the virtual machine
+	VirtualMachineId *int64 `protobuf:"varint,3,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
+	// If true, ejects existing ISO before attaching on VMware. Default: false
+	Forced *bool `protobuf:"varint,4,opt,name=forced" json:"forced,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AttachIsoRequest) Reset() {
+	*x = AttachIsoRequest{}
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AttachIsoRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AttachIsoRequest) ProtoMessage() {}
+
+func (x *AttachIsoRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AttachIsoRequest.ProtoReflect.Descriptor instead.
+func (*AttachIsoRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *AttachIsoRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *AttachIsoRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *AttachIsoRequest) GetVirtualMachineId() int64 {
+	if x != nil && x.VirtualMachineId != nil {
+		return *x.VirtualMachineId
+	}
+	return 0
+}
+
+func (x *AttachIsoRequest) GetForced() bool {
+	if x != nil && x.Forced != nil {
+		return *x.Forced
+	}
+	return false
+}
+
+func (x *AttachIsoRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *AttachIsoRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *AttachIsoRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// AttachIsoResponse represents the response from attaches an iso to a virtual machine.
+type AttachIsoResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AttachIsoResponse) Reset() {
+	*x = AttachIsoResponse{}
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AttachIsoResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AttachIsoResponse) ProtoMessage() {}
+
+func (x *AttachIsoResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AttachIsoResponse.ProtoReflect.Descriptor instead.
+func (*AttachIsoResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *AttachIsoResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// AttachIsoCmdByAdminRequest represents the parameters for attaches an iso to a virtual machine.
+type AttachIsoCmdByAdminRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the ISO file
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the ID of the virtual machine
+	VirtualMachineId *int64 `protobuf:"varint,2,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
+	// If true, ejects existing ISO before attaching on VMware. Default: false
+	Forced *bool `protobuf:"varint,3,opt,name=forced" json:"forced,omitempty"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AttachIsoCmdByAdminRequest) Reset() {
+	*x = AttachIsoCmdByAdminRequest{}
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AttachIsoCmdByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AttachIsoCmdByAdminRequest) ProtoMessage() {}
+
+func (x *AttachIsoCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AttachIsoCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*AttachIsoCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *AttachIsoCmdByAdminRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *AttachIsoCmdByAdminRequest) GetVirtualMachineId() int64 {
+	if x != nil && x.VirtualMachineId != nil {
+		return *x.VirtualMachineId
+	}
+	return 0
+}
+
+func (x *AttachIsoCmdByAdminRequest) GetForced() bool {
+	if x != nil && x.Forced != nil {
+		return *x.Forced
+	}
+	return false
+}
+
+func (x *AttachIsoCmdByAdminRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *AttachIsoCmdByAdminRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *AttachIsoCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// AttachIsoCmdByAdminResponse represents the response from attaches an iso to a virtual machine.
+type AttachIsoCmdByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AttachIsoCmdByAdminResponse) Reset() {
+	*x = AttachIsoCmdByAdminResponse{}
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AttachIsoCmdByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AttachIsoCmdByAdminResponse) ProtoMessage() {}
+
+func (x *AttachIsoCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AttachIsoCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*AttachIsoCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *AttachIsoCmdByAdminResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// CopyIsoRequest represents the parameters for copies an iso from one zone to another.
+type CopyIsoRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// ID of the zone the template is being copied to.
+	DestZoneId *int64 `protobuf:"varint,2,opt,name=dest_zone_id,json=destZoneId" json:"dest_zone_id,omitempty"`
+	// Template ID.
+	Id *int64 `protobuf:"varint,3,opt,name=id" json:"id,omitempty"`
+	// ID of the zone the template is currently hosted on. If not specified and template is cross-zone, then we will sync this template to region wide image store.
+	SourceZoneId *int64 `protobuf:"varint,4,opt,name=source_zone_id,json=sourceZoneId" json:"source_zone_id,omitempty"`
+	// A list of IDs of the zones that the template needs to be copied to.Specify this list if the template needs to copied to multiple zones in one go. Do not specify destzoneid and destzoneids together, however one of them is required.
+	DestZoneIds []string `protobuf:"bytes,5,rep,name=dest_zone_ids,json=destZoneIds" json:"dest_zone_ids,omitempty"`
+	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CopyIsoRequest) Reset() {
+	*x = CopyIsoRequest{}
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CopyIsoRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CopyIsoRequest) ProtoMessage() {}
+
+func (x *CopyIsoRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CopyIsoRequest.ProtoReflect.Descriptor instead.
+func (*CopyIsoRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *CopyIsoRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *CopyIsoRequest) GetDestZoneId() int64 {
+	if x != nil && x.DestZoneId != nil {
+		return *x.DestZoneId
+	}
+	return 0
+}
+
+func (x *CopyIsoRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *CopyIsoRequest) GetSourceZoneId() int64 {
+	if x != nil && x.SourceZoneId != nil {
+		return *x.SourceZoneId
+	}
+	return 0
+}
+
+func (x *CopyIsoRequest) GetDestZoneIds() []string {
+	if x != nil {
+		return x.DestZoneIds
+	}
+	return nil
+}
+
+func (x *CopyIsoRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CopyIsoRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CopyIsoRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CopyIsoResponse represents the response from copies an iso from one zone to another.
+type CopyIsoResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CopyIsoResponse) Reset() {
+	*x = CopyIsoResponse{}
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CopyIsoResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CopyIsoResponse) ProtoMessage() {}
+
+func (x *CopyIsoResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CopyIsoResponse.ProtoReflect.Descriptor instead.
+func (*CopyIsoResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *CopyIsoResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// CopyIsoCmdByAdminRequest represents the parameters for copies an iso from one zone to another.
+type CopyIsoCmdByAdminRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of the zone the template is being copied to.
+	DestZoneId *int64 `protobuf:"varint,1,opt,name=dest_zone_id,json=destZoneId" json:"dest_zone_id,omitempty"`
+	// Template ID.
+	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
+	// ID of the zone the template is currently hosted on. If not specified and template is cross-zone, then we will sync this template to region wide image store.
+	SourceZoneId *int64 `protobuf:"varint,3,opt,name=source_zone_id,json=sourceZoneId" json:"source_zone_id,omitempty"`
+	// A list of IDs of the zones that the template needs to be copied to.Specify this list if the template needs to copied to multiple zones in one go. Do not specify destzoneid and destzoneids together, however one of them is required.
+	DestZoneIds []string `protobuf:"bytes,4,rep,name=dest_zone_ids,json=destZoneIds" json:"dest_zone_ids,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CopyIsoCmdByAdminRequest) Reset() {
+	*x = CopyIsoCmdByAdminRequest{}
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CopyIsoCmdByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CopyIsoCmdByAdminRequest) ProtoMessage() {}
+
+func (x *CopyIsoCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CopyIsoCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*CopyIsoCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *CopyIsoCmdByAdminRequest) GetDestZoneId() int64 {
+	if x != nil && x.DestZoneId != nil {
+		return *x.DestZoneId
+	}
+	return 0
+}
+
+func (x *CopyIsoCmdByAdminRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *CopyIsoCmdByAdminRequest) GetSourceZoneId() int64 {
+	if x != nil && x.SourceZoneId != nil {
+		return *x.SourceZoneId
+	}
+	return 0
+}
+
+func (x *CopyIsoCmdByAdminRequest) GetDestZoneIds() []string {
+	if x != nil {
+		return x.DestZoneIds
+	}
+	return nil
+}
+
+func (x *CopyIsoCmdByAdminRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CopyIsoCmdByAdminRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CopyIsoCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CopyIsoCmdByAdminResponse represents the response from copies an iso from one zone to another.
+type CopyIsoCmdByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CopyIsoCmdByAdminResponse) Reset() {
+	*x = CopyIsoCmdByAdminResponse{}
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CopyIsoCmdByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CopyIsoCmdByAdminResponse) ProtoMessage() {}
+
+func (x *CopyIsoCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CopyIsoCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*CopyIsoCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *CopyIsoCmdByAdminResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteIsoRequest represents the parameters for deletes an iso file.
+type DeleteIsoRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the ISO file
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the ID of the zone of the ISO file. If not specified, the ISO will be deleted from all the zones
+	ZoneId *int64 `protobuf:"varint,2,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteIsoRequest) Reset() {
+	*x = DeleteIsoRequest{}
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteIsoRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteIsoRequest) ProtoMessage() {}
+
+func (x *DeleteIsoRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteIsoRequest.ProtoReflect.Descriptor instead.
+func (*DeleteIsoRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *DeleteIsoRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteIsoRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *DeleteIsoRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeleteIsoRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeleteIsoRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteIsoResponse represents the response from deletes an iso file.
+type DeleteIsoResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteIsoResponse) Reset() {
+	*x = DeleteIsoResponse{}
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteIsoResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteIsoResponse) ProtoMessage() {}
+
+func (x *DeleteIsoResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteIsoResponse.ProtoReflect.Descriptor instead.
+func (*DeleteIsoResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *DeleteIsoResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DetachIsoRequest represents the parameters for detaches any iso file (if any) currently attached to a virtual machine.
+type DetachIsoRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// The ID of the virtual machine
+	VirtualMachineId *int64 `protobuf:"varint,2,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
+	// If true, ejects the ISO before detaching on VMware. Default: false
+	Forced *bool `protobuf:"varint,3,opt,name=forced" json:"forced,omitempty"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DetachIsoRequest) Reset() {
+	*x = DetachIsoRequest{}
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DetachIsoRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DetachIsoRequest) ProtoMessage() {}
+
+func (x *DetachIsoRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DetachIsoRequest.ProtoReflect.Descriptor instead.
+func (*DetachIsoRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *DetachIsoRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *DetachIsoRequest) GetVirtualMachineId() int64 {
+	if x != nil && x.VirtualMachineId != nil {
+		return *x.VirtualMachineId
+	}
+	return 0
+}
+
+func (x *DetachIsoRequest) GetForced() bool {
+	if x != nil && x.Forced != nil {
+		return *x.Forced
+	}
+	return false
+}
+
+func (x *DetachIsoRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DetachIsoRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DetachIsoRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DetachIsoResponse represents the response from detaches any iso file (if any) currently attached to a virtual machine.
+type DetachIsoResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DetachIsoResponse) Reset() {
+	*x = DetachIsoResponse{}
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DetachIsoResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DetachIsoResponse) ProtoMessage() {}
+
+func (x *DetachIsoResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DetachIsoResponse.ProtoReflect.Descriptor instead.
+func (*DetachIsoResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *DetachIsoResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DetachIsoCmdByAdminRequest represents the parameters for detaches any iso file (if any) currently attached to a virtual machine.
+type DetachIsoCmdByAdminRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the virtual machine
+	VirtualMachineId *int64 `protobuf:"varint,1,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
+	// If true, ejects the ISO before detaching on VMware. Default: false
+	Forced *bool `protobuf:"varint,2,opt,name=forced" json:"forced,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DetachIsoCmdByAdminRequest) Reset() {
+	*x = DetachIsoCmdByAdminRequest{}
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DetachIsoCmdByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DetachIsoCmdByAdminRequest) ProtoMessage() {}
+
+func (x *DetachIsoCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DetachIsoCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*DetachIsoCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *DetachIsoCmdByAdminRequest) GetVirtualMachineId() int64 {
+	if x != nil && x.VirtualMachineId != nil {
+		return *x.VirtualMachineId
+	}
+	return 0
+}
+
+func (x *DetachIsoCmdByAdminRequest) GetForced() bool {
+	if x != nil && x.Forced != nil {
+		return *x.Forced
+	}
+	return false
+}
+
+func (x *DetachIsoCmdByAdminRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DetachIsoCmdByAdminRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DetachIsoCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DetachIsoCmdByAdminResponse represents the response from detaches any iso file (if any) currently attached to a virtual machine.
+type DetachIsoCmdByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DetachIsoCmdByAdminResponse) Reset() {
+	*x = DetachIsoCmdByAdminResponse{}
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DetachIsoCmdByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DetachIsoCmdByAdminResponse) ProtoMessage() {}
+
+func (x *DetachIsoCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DetachIsoCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*DetachIsoCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *DetachIsoCmdByAdminResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ExtractIsoRequest represents the parameters for extracts an iso
+type ExtractIsoRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the ISO file
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the URL to which the ISO would be extracted
+	Url *string `protobuf:"bytes,2,opt,name=url" json:"url,omitempty"`
+	// the ID of the zone where the ISO is originally located
+	ZoneId *int64 `protobuf:"varint,3,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// the mode of extraction - HTTP_DOWNLOAD or FTP_UPLOAD
+	Mode *string `protobuf:"bytes,4,opt,name=mode" json:"mode,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ExtractIsoRequest) Reset() {
+	*x = ExtractIsoRequest{}
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ExtractIsoRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExtractIsoRequest) ProtoMessage() {}
+
+func (x *ExtractIsoRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ExtractIsoRequest.ProtoReflect.Descriptor instead.
+func (*ExtractIsoRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *ExtractIsoRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ExtractIsoRequest) GetUrl() string {
+	if x != nil && x.Url != nil {
+		return *x.Url
+	}
+	return ""
+}
+
+func (x *ExtractIsoRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ExtractIsoRequest) GetMode() string {
+	if x != nil && x.Mode != nil {
+		return *x.Mode
+	}
+	return ""
+}
+
+func (x *ExtractIsoRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *ExtractIsoRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *ExtractIsoRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ExtractIsoResponse represents the response from extracts an iso
+type ExtractIsoResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ExtractIsoResponse) Reset() {
+	*x = ExtractIsoResponse{}
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ExtractIsoResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExtractIsoResponse) ProtoMessage() {}
+
+func (x *ExtractIsoResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ExtractIsoResponse.ProtoReflect.Descriptor instead.
+func (*ExtractIsoResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *ExtractIsoResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
 // GetUploadParamsForIsoRequest represents the parameters for upload an existing iso into the cloudstack cloud.
 type GetUploadParamsForIsoRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -65,7 +1164,7 @@ type GetUploadParamsForIsoRequest struct {
 
 func (x *GetUploadParamsForIsoRequest) Reset() {
 	*x = GetUploadParamsForIsoRequest{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -77,7 +1176,7 @@ func (x *GetUploadParamsForIsoRequest) String() string {
 func (*GetUploadParamsForIsoRequest) ProtoMessage() {}
 
 func (x *GetUploadParamsForIsoRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -90,7 +1189,7 @@ func (x *GetUploadParamsForIsoRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUploadParamsForIsoRequest.ProtoReflect.Descriptor instead.
 func (*GetUploadParamsForIsoRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{0}
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *GetUploadParamsForIsoRequest) GetBootable() bool {
@@ -202,7 +1301,7 @@ type GetUploadParamsForIsoResponse struct {
 
 func (x *GetUploadParamsForIsoResponse) Reset() {
 	*x = GetUploadParamsForIsoResponse{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -214,7 +1313,7 @@ func (x *GetUploadParamsForIsoResponse) String() string {
 func (*GetUploadParamsForIsoResponse) ProtoMessage() {}
 
 func (x *GetUploadParamsForIsoResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -227,7 +1326,7 @@ func (x *GetUploadParamsForIsoResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUploadParamsForIsoResponse.ProtoReflect.Descriptor instead.
 func (*GetUploadParamsForIsoResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{1}
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *GetUploadParamsForIsoResponse) GetResult() *Result {
@@ -237,390 +1336,33 @@ func (x *GetUploadParamsForIsoResponse) GetResult() *Result {
 	return nil
 }
 
-// DetachIsoCmdByAdminRequest represents the parameters for detaches any iso file (if any) currently attached to a virtual machine.
-type DetachIsoCmdByAdminRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the virtual machine
-	VirtualMachineId *int64 `protobuf:"varint,1,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
-	// If true, ejects the ISO before detaching on VMware. Default: false
-	Forced *bool `protobuf:"varint,2,opt,name=forced" json:"forced,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DetachIsoCmdByAdminRequest) Reset() {
-	*x = DetachIsoCmdByAdminRequest{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DetachIsoCmdByAdminRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DetachIsoCmdByAdminRequest) ProtoMessage() {}
-
-func (x *DetachIsoCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DetachIsoCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*DetachIsoCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *DetachIsoCmdByAdminRequest) GetVirtualMachineId() int64 {
-	if x != nil && x.VirtualMachineId != nil {
-		return *x.VirtualMachineId
-	}
-	return 0
-}
-
-func (x *DetachIsoCmdByAdminRequest) GetForced() bool {
-	if x != nil && x.Forced != nil {
-		return *x.Forced
-	}
-	return false
-}
-
-func (x *DetachIsoCmdByAdminRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DetachIsoCmdByAdminRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DetachIsoCmdByAdminRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DetachIsoCmdByAdminResponse represents the response from detaches any iso file (if any) currently attached to a virtual machine.
-type DetachIsoCmdByAdminResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DetachIsoCmdByAdminResponse) Reset() {
-	*x = DetachIsoCmdByAdminResponse{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DetachIsoCmdByAdminResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DetachIsoCmdByAdminResponse) ProtoMessage() {}
-
-func (x *DetachIsoCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DetachIsoCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*DetachIsoCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *DetachIsoCmdByAdminResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateIsoCmdByAdminRequest represents the parameters for updates an iso file.
-type UpdateIsoCmdByAdminRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// true if image is bootable, false otherwise; available only for updateIso API
-	Bootable *bool `protobuf:"varint,1,opt,name=bootable" json:"bootable,omitempty"`
-	// true if the template requires HVM, false otherwise; available only for updateTemplate API
-	RequiresHvm *bool `protobuf:"varint,2,opt,name=requires_hvm,json=requiresHvm" json:"requires_hvm,omitempty"`
-	// the display text of the image
-	DisplayText *string `protobuf:"bytes,3,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
-	// the ID of the image file
-	Id *int64 `protobuf:"varint,4,opt,name=id" json:"id,omitempty"`
-	// the name of the image file
-	TemplateName *string `protobuf:"bytes,5,opt,name=template_name,json=templateName" json:"template_name,omitempty"`
-	// the ID of the OS type that best represents the OS of this image.
-	OsTypeId *int64 `protobuf:"varint,6,opt,name=os_type_id,json=osTypeId" json:"os_type_id,omitempty"`
-	// the format for the image
-	Format *string `protobuf:"bytes,7,opt,name=format" json:"format,omitempty"`
-	// true if the image supports the password reset feature; default is false
-	PasswordEnabled *bool `protobuf:"varint,8,opt,name=password_enabled,json=passwordEnabled" json:"password_enabled,omitempty"`
-	// true if the template supports the sshkey upload feature; default is false
-	SshKeyEnabled *bool `protobuf:"varint,9,opt,name=ssh_key_enabled,json=sshKeyEnabled" json:"ssh_key_enabled,omitempty"`
-	// sort key of the template, integer
-	SortKey *int32 `protobuf:"varint,10,opt,name=sort_key,json=sortKey" json:"sort_key,omitempty"`
-	// true if template/ISO contains XS/VMWare tools inorder to support dynamic scaling of VM cpu/memory
-	IsDynamicallyScalable *bool `protobuf:"varint,11,opt,name=is_dynamically_scalable,json=isDynamicallyScalable" json:"is_dynamically_scalable,omitempty"`
-	// true if the template type is routing i.e., if template is used to deploy router
-	IsRoutingType *bool `protobuf:"varint,12,opt,name=is_routing_type,json=isRoutingType" json:"is_routing_type,omitempty"`
-	// Details in key/value pairs using format details[i].keyname=keyvalue. Example: details[0].hypervisortoolsversion=xenserver61
-	Details map[string]string `protobuf:"bytes,13,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// optional boolean field, which indicates if details should be cleaned up or not (if set to true, details removed for this resource, details field ignored; if false or not set, no action)
-	CleanupDetails *bool `protobuf:"varint,14,opt,name=cleanup_details,json=cleanupDetails" json:"cleanup_details,omitempty"`
-	// the CPU arch of the template/ISO. Valid options are: x86_64, aarch64
-	Arch *string `protobuf:"bytes,15,opt,name=arch" json:"arch,omitempty"`
-	ResponseType  *string `protobuf:"bytes,16,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateIsoCmdByAdminRequest) Reset() {
-	*x = UpdateIsoCmdByAdminRequest{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateIsoCmdByAdminRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateIsoCmdByAdminRequest) ProtoMessage() {}
-
-func (x *UpdateIsoCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateIsoCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*UpdateIsoCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *UpdateIsoCmdByAdminRequest) GetBootable() bool {
-	if x != nil && x.Bootable != nil {
-		return *x.Bootable
-	}
-	return false
-}
-
-func (x *UpdateIsoCmdByAdminRequest) GetRequiresHvm() bool {
-	if x != nil && x.RequiresHvm != nil {
-		return *x.RequiresHvm
-	}
-	return false
-}
-
-func (x *UpdateIsoCmdByAdminRequest) GetDisplayText() string {
-	if x != nil && x.DisplayText != nil {
-		return *x.DisplayText
-	}
-	return ""
-}
-
-func (x *UpdateIsoCmdByAdminRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateIsoCmdByAdminRequest) GetTemplateName() string {
-	if x != nil && x.TemplateName != nil {
-		return *x.TemplateName
-	}
-	return ""
-}
-
-func (x *UpdateIsoCmdByAdminRequest) GetOsTypeId() int64 {
-	if x != nil && x.OsTypeId != nil {
-		return *x.OsTypeId
-	}
-	return 0
-}
-
-func (x *UpdateIsoCmdByAdminRequest) GetFormat() string {
-	if x != nil && x.Format != nil {
-		return *x.Format
-	}
-	return ""
-}
-
-func (x *UpdateIsoCmdByAdminRequest) GetPasswordEnabled() bool {
-	if x != nil && x.PasswordEnabled != nil {
-		return *x.PasswordEnabled
-	}
-	return false
-}
-
-func (x *UpdateIsoCmdByAdminRequest) GetSshKeyEnabled() bool {
-	if x != nil && x.SshKeyEnabled != nil {
-		return *x.SshKeyEnabled
-	}
-	return false
-}
-
-func (x *UpdateIsoCmdByAdminRequest) GetSortKey() int32 {
-	if x != nil && x.SortKey != nil {
-		return *x.SortKey
-	}
-	return 0
-}
-
-func (x *UpdateIsoCmdByAdminRequest) GetIsDynamicallyScalable() bool {
-	if x != nil && x.IsDynamicallyScalable != nil {
-		return *x.IsDynamicallyScalable
-	}
-	return false
-}
-
-func (x *UpdateIsoCmdByAdminRequest) GetIsRoutingType() bool {
-	if x != nil && x.IsRoutingType != nil {
-		return *x.IsRoutingType
-	}
-	return false
-}
-
-func (x *UpdateIsoCmdByAdminRequest) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
-func (x *UpdateIsoCmdByAdminRequest) GetCleanupDetails() bool {
-	if x != nil && x.CleanupDetails != nil {
-		return *x.CleanupDetails
-	}
-	return false
-}
-
-func (x *UpdateIsoCmdByAdminRequest) GetArch() string {
-	if x != nil && x.Arch != nil {
-		return *x.Arch
-	}
-	return ""
-}
-
-func (x *UpdateIsoCmdByAdminRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateIsoCmdByAdminResponse represents the response from updates an iso file.
-type UpdateIsoCmdByAdminResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateIsoCmdByAdminResponse) Reset() {
-	*x = UpdateIsoCmdByAdminResponse{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateIsoCmdByAdminResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateIsoCmdByAdminResponse) ProtoMessage() {}
-
-func (x *UpdateIsoCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateIsoCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*UpdateIsoCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *UpdateIsoCmdByAdminResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// AttachIsoRequest represents the parameters for attaches an iso to a virtual machine.
-type AttachIsoRequest struct {
+// ListIsoPermissionsRequest represents the parameters for list iso visibility and all accounts that have permissions to view this iso.
+type ListIsoPermissionsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Whether to run this operation as an administrator
 	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// the ID of the ISO file
+	// the template ID
 	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	// the ID of the virtual machine
-	VirtualMachineId *int64 `protobuf:"varint,3,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
-	// If true, ejects existing ISO before attaching on VMware. Default: false
-	Forced *bool `protobuf:"varint,4,opt,name=forced" json:"forced,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AttachIsoRequest) Reset() {
-	*x = AttachIsoRequest{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[6]
+func (x *ListIsoPermissionsRequest) Reset() {
+	*x = ListIsoPermissionsRequest{}
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *AttachIsoRequest) String() string {
+func (x *ListIsoPermissionsRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AttachIsoRequest) ProtoMessage() {}
+func (*ListIsoPermissionsRequest) ProtoMessage() {}
 
-func (x *AttachIsoRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[6]
+func (x *ListIsoPermissionsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -631,84 +1373,58 @@ func (x *AttachIsoRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AttachIsoRequest.ProtoReflect.Descriptor instead.
-func (*AttachIsoRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{6}
+// Deprecated: Use ListIsoPermissionsRequest.ProtoReflect.Descriptor instead.
+func (*ListIsoPermissionsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{18}
 }
 
-func (x *AttachIsoRequest) GetRunAsAdmin() bool {
+func (x *ListIsoPermissionsRequest) GetRunAsAdmin() bool {
 	if x != nil && x.RunAsAdmin != nil {
 		return *x.RunAsAdmin
 	}
 	return false
 }
 
-func (x *AttachIsoRequest) GetId() int64 {
+func (x *ListIsoPermissionsRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *AttachIsoRequest) GetVirtualMachineId() int64 {
-	if x != nil && x.VirtualMachineId != nil {
-		return *x.VirtualMachineId
-	}
-	return 0
-}
-
-func (x *AttachIsoRequest) GetForced() bool {
-	if x != nil && x.Forced != nil {
-		return *x.Forced
-	}
-	return false
-}
-
-func (x *AttachIsoRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *AttachIsoRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *AttachIsoRequest) GetResponseType() string {
+func (x *ListIsoPermissionsRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// AttachIsoResponse represents the response from attaches an iso to a virtual machine.
-type AttachIsoResponse struct {
+// ListIsoPermissionsResponse represents the response from list iso visibility and all accounts that have permissions to view this iso.
+type ListIsoPermissionsResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	// The list of TemplatePermissionss
+	Items []*TemplatePermissions `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of TemplatePermissionss
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AttachIsoResponse) Reset() {
-	*x = AttachIsoResponse{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[7]
+func (x *ListIsoPermissionsResponse) Reset() {
+	*x = ListIsoPermissionsResponse{}
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *AttachIsoResponse) String() string {
+func (x *ListIsoPermissionsResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AttachIsoResponse) ProtoMessage() {}
+func (*ListIsoPermissionsResponse) ProtoMessage() {}
 
-func (x *AttachIsoResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[7]
+func (x *ListIsoPermissionsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -719,16 +1435,428 @@ func (x *AttachIsoResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AttachIsoResponse.ProtoReflect.Descriptor instead.
-func (*AttachIsoResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{7}
+// Deprecated: Use ListIsoPermissionsResponse.ProtoReflect.Descriptor instead.
+func (*ListIsoPermissionsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{19}
 }
 
-func (x *AttachIsoResponse) GetResult() *Result {
+func (x *ListIsoPermissionsResponse) GetItems() []*TemplatePermissions {
 	if x != nil {
-		return x.Result
+		return x.Items
 	}
 	return nil
+}
+
+func (x *ListIsoPermissionsResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// ListIsoPermissionsCmdByAdminRequest represents the parameters for list iso visibility and all accounts that have permissions to view this iso.
+type ListIsoPermissionsCmdByAdminRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the template ID
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListIsoPermissionsCmdByAdminRequest) Reset() {
+	*x = ListIsoPermissionsCmdByAdminRequest{}
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListIsoPermissionsCmdByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListIsoPermissionsCmdByAdminRequest) ProtoMessage() {}
+
+func (x *ListIsoPermissionsCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListIsoPermissionsCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*ListIsoPermissionsCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *ListIsoPermissionsCmdByAdminRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListIsoPermissionsCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListIsoPermissionsCmdByAdminResponse represents the response from list iso visibility and all accounts that have permissions to view this iso.
+type ListIsoPermissionsCmdByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of TemplatePermissionss
+	Items []*TemplatePermissions `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of TemplatePermissionss
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListIsoPermissionsCmdByAdminResponse) Reset() {
+	*x = ListIsoPermissionsCmdByAdminResponse{}
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListIsoPermissionsCmdByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListIsoPermissionsCmdByAdminResponse) ProtoMessage() {}
+
+func (x *ListIsoPermissionsCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListIsoPermissionsCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*ListIsoPermissionsCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *ListIsoPermissionsCmdByAdminResponse) GetItems() []*TemplatePermissions {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListIsoPermissionsCmdByAdminResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// ListIsosRequest represents the parameters for lists all available iso files.
+type ListIsosRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// true if the ISO is bootable, false otherwise
+	Bootable *bool `protobuf:"varint,2,opt,name=bootable" json:"bootable,omitempty"`
+	// the hypervisor for which to restrict the search
+	Hypervisor *string `protobuf:"bytes,3,opt,name=hypervisor" json:"hypervisor,omitempty"`
+	// list ISO by ID
+	Id *int64 `protobuf:"varint,4,opt,name=id" json:"id,omitempty"`
+	// true if the ISO is publicly available to all users, false otherwise.
+	PublicIso *bool `protobuf:"varint,5,opt,name=public_iso,json=publicIso" json:"public_iso,omitempty"`
+	// true if this ISO is ready to be deployed
+	Ready *bool `protobuf:"varint,6,opt,name=ready" json:"ready,omitempty"`
+	// possible values are "featured", "self", "selfexecutable","sharedexecutable","executable", and "community". * featured : templates that have been marked as featured and public. * self : templates that have been registered or created by the calling user. * selfexecutable : same as self, but only returns templates that can be used to deploy a new VM. * sharedexecutable : templates ready to be deployed that have been granted to the calling user by another user. * executable : templates that are owned by the calling user, or public templates, that can be used to deploy a VM. * community : templates that have been marked as public but not featured. * all : all templates (only usable by admins).
+	IsoFilter *string `protobuf:"bytes,7,opt,name=iso_filter,json=isoFilter" json:"iso_filter,omitempty"`
+	// list all ISOs by name
+	IsoName *string `protobuf:"bytes,8,opt,name=iso_name,json=isoName" json:"iso_name,omitempty"`
+	// the ID of the zone
+	ZoneId *int64 `protobuf:"varint,9,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// show removed ISOs as well
+	ShowRemoved *bool `protobuf:"varint,10,opt,name=show_removed,json=showRemoved" json:"show_removed,omitempty"`
+	// If set to true, list only unique isos across zones
+	ShowUnique *bool `protobuf:"varint,11,opt,name=show_unique,json=showUnique" json:"show_unique,omitempty"`
+	// flag to display the resource image for the isos
+	ShowIcon *bool `protobuf:"varint,12,opt,name=show_icon,json=showIcon" json:"show_icon,omitempty"`
+	// the CPU arch of the ISO. Valid options are: x86_64, aarch64
+	Arch *string `protobuf:"bytes,13,opt,name=arch" json:"arch,omitempty"`
+	// List resources by tags (key/value pairs)
+	Tags map[string]string `protobuf:"bytes,14,rep,name=tags" json:"tags,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// list objects by project; if projectid=-1 lists All VMs
+	ProjectId *int64 `protobuf:"varint,15,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// list resources by account. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,16,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	ListAll *bool `protobuf:"varint,17,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
+	// list only resources belonging to the domain specified
+	DomainId *int64 `protobuf:"varint,18,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	Recursive *bool `protobuf:"varint,19,opt,name=recursive" json:"recursive,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,20,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,21,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,22,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,23,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListIsosRequest) Reset() {
+	*x = ListIsosRequest{}
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListIsosRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListIsosRequest) ProtoMessage() {}
+
+func (x *ListIsosRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListIsosRequest.ProtoReflect.Descriptor instead.
+func (*ListIsosRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *ListIsosRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *ListIsosRequest) GetBootable() bool {
+	if x != nil && x.Bootable != nil {
+		return *x.Bootable
+	}
+	return false
+}
+
+func (x *ListIsosRequest) GetHypervisor() string {
+	if x != nil && x.Hypervisor != nil {
+		return *x.Hypervisor
+	}
+	return ""
+}
+
+func (x *ListIsosRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListIsosRequest) GetPublicIso() bool {
+	if x != nil && x.PublicIso != nil {
+		return *x.PublicIso
+	}
+	return false
+}
+
+func (x *ListIsosRequest) GetReady() bool {
+	if x != nil && x.Ready != nil {
+		return *x.Ready
+	}
+	return false
+}
+
+func (x *ListIsosRequest) GetIsoFilter() string {
+	if x != nil && x.IsoFilter != nil {
+		return *x.IsoFilter
+	}
+	return ""
+}
+
+func (x *ListIsosRequest) GetIsoName() string {
+	if x != nil && x.IsoName != nil {
+		return *x.IsoName
+	}
+	return ""
+}
+
+func (x *ListIsosRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ListIsosRequest) GetShowRemoved() bool {
+	if x != nil && x.ShowRemoved != nil {
+		return *x.ShowRemoved
+	}
+	return false
+}
+
+func (x *ListIsosRequest) GetShowUnique() bool {
+	if x != nil && x.ShowUnique != nil {
+		return *x.ShowUnique
+	}
+	return false
+}
+
+func (x *ListIsosRequest) GetShowIcon() bool {
+	if x != nil && x.ShowIcon != nil {
+		return *x.ShowIcon
+	}
+	return false
+}
+
+func (x *ListIsosRequest) GetArch() string {
+	if x != nil && x.Arch != nil {
+		return *x.Arch
+	}
+	return ""
+}
+
+func (x *ListIsosRequest) GetTags() map[string]string {
+	if x != nil {
+		return x.Tags
+	}
+	return nil
+}
+
+func (x *ListIsosRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *ListIsosRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *ListIsosRequest) GetListAll() bool {
+	if x != nil && x.ListAll != nil {
+		return *x.ListAll
+	}
+	return false
+}
+
+func (x *ListIsosRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ListIsosRequest) GetRecursive() bool {
+	if x != nil && x.Recursive != nil {
+		return *x.Recursive
+	}
+	return false
+}
+
+func (x *ListIsosRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListIsosRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListIsosRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListIsosRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListIsosResponse represents the response from lists all available iso files.
+type ListIsosResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of Templates
+	Items []*Template `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of Templates
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListIsosResponse) Reset() {
+	*x = ListIsosResponse{}
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListIsosResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListIsosResponse) ProtoMessage() {}
+
+func (x *ListIsosResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListIsosResponse.ProtoReflect.Descriptor instead.
+func (*ListIsosResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *ListIsosResponse) GetItems() []*Template {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListIsosResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
 }
 
 // ListIsosCmdByAdminRequest represents the parameters for lists all available iso files.
@@ -785,7 +1913,7 @@ type ListIsosCmdByAdminRequest struct {
 
 func (x *ListIsosCmdByAdminRequest) Reset() {
 	*x = ListIsosCmdByAdminRequest{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[8]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -797,7 +1925,7 @@ func (x *ListIsosCmdByAdminRequest) String() string {
 func (*ListIsosCmdByAdminRequest) ProtoMessage() {}
 
 func (x *ListIsosCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[8]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -810,7 +1938,7 @@ func (x *ListIsosCmdByAdminRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListIsosCmdByAdminRequest.ProtoReflect.Descriptor instead.
 func (*ListIsosCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{8}
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *ListIsosCmdByAdminRequest) GetImageStoreId() int64 {
@@ -994,7 +2122,7 @@ type ListIsosCmdByAdminResponse struct {
 
 func (x *ListIsosCmdByAdminResponse) Reset() {
 	*x = ListIsosCmdByAdminResponse{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1006,7 +2134,7 @@ func (x *ListIsosCmdByAdminResponse) String() string {
 func (*ListIsosCmdByAdminResponse) ProtoMessage() {}
 
 func (x *ListIsosCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1019,7 +2147,7 @@ func (x *ListIsosCmdByAdminResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListIsosCmdByAdminResponse.ProtoReflect.Descriptor instead.
 func (*ListIsosCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{9}
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *ListIsosCmdByAdminResponse) GetItems() []*Template {
@@ -1030,302 +2158,6 @@ func (x *ListIsosCmdByAdminResponse) GetItems() []*Template {
 }
 
 func (x *ListIsosCmdByAdminResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// ListIsosRequest represents the parameters for lists all available iso files.
-type ListIsosRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// true if the ISO is bootable, false otherwise
-	Bootable *bool `protobuf:"varint,2,opt,name=bootable" json:"bootable,omitempty"`
-	// the hypervisor for which to restrict the search
-	Hypervisor *string `protobuf:"bytes,3,opt,name=hypervisor" json:"hypervisor,omitempty"`
-	// list ISO by ID
-	Id *int64 `protobuf:"varint,4,opt,name=id" json:"id,omitempty"`
-	// true if the ISO is publicly available to all users, false otherwise.
-	PublicIso *bool `protobuf:"varint,5,opt,name=public_iso,json=publicIso" json:"public_iso,omitempty"`
-	// true if this ISO is ready to be deployed
-	Ready *bool `protobuf:"varint,6,opt,name=ready" json:"ready,omitempty"`
-	// possible values are "featured", "self", "selfexecutable","sharedexecutable","executable", and "community". * featured : templates that have been marked as featured and public. * self : templates that have been registered or created by the calling user. * selfexecutable : same as self, but only returns templates that can be used to deploy a new VM. * sharedexecutable : templates ready to be deployed that have been granted to the calling user by another user. * executable : templates that are owned by the calling user, or public templates, that can be used to deploy a VM. * community : templates that have been marked as public but not featured. * all : all templates (only usable by admins).
-	IsoFilter *string `protobuf:"bytes,7,opt,name=iso_filter,json=isoFilter" json:"iso_filter,omitempty"`
-	// list all ISOs by name
-	IsoName *string `protobuf:"bytes,8,opt,name=iso_name,json=isoName" json:"iso_name,omitempty"`
-	// the ID of the zone
-	ZoneId *int64 `protobuf:"varint,9,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// show removed ISOs as well
-	ShowRemoved *bool `protobuf:"varint,10,opt,name=show_removed,json=showRemoved" json:"show_removed,omitempty"`
-	// If set to true, list only unique isos across zones
-	ShowUnique *bool `protobuf:"varint,11,opt,name=show_unique,json=showUnique" json:"show_unique,omitempty"`
-	// flag to display the resource image for the isos
-	ShowIcon *bool `protobuf:"varint,12,opt,name=show_icon,json=showIcon" json:"show_icon,omitempty"`
-	// the CPU arch of the ISO. Valid options are: x86_64, aarch64
-	Arch *string `protobuf:"bytes,13,opt,name=arch" json:"arch,omitempty"`
-	// List resources by tags (key/value pairs)
-	Tags map[string]string `protobuf:"bytes,14,rep,name=tags" json:"tags,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// list objects by project; if projectid=-1 lists All VMs
-	ProjectId *int64 `protobuf:"varint,15,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// list resources by account. Must be used with the domainId parameter.
-	AccountName *string `protobuf:"bytes,16,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	ListAll *bool `protobuf:"varint,17,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
-	// list only resources belonging to the domain specified
-	DomainId *int64 `protobuf:"varint,18,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	Recursive *bool `protobuf:"varint,19,opt,name=recursive" json:"recursive,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,20,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,21,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,22,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,23,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListIsosRequest) Reset() {
-	*x = ListIsosRequest{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListIsosRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListIsosRequest) ProtoMessage() {}
-
-func (x *ListIsosRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListIsosRequest.ProtoReflect.Descriptor instead.
-func (*ListIsosRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *ListIsosRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *ListIsosRequest) GetBootable() bool {
-	if x != nil && x.Bootable != nil {
-		return *x.Bootable
-	}
-	return false
-}
-
-func (x *ListIsosRequest) GetHypervisor() string {
-	if x != nil && x.Hypervisor != nil {
-		return *x.Hypervisor
-	}
-	return ""
-}
-
-func (x *ListIsosRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListIsosRequest) GetPublicIso() bool {
-	if x != nil && x.PublicIso != nil {
-		return *x.PublicIso
-	}
-	return false
-}
-
-func (x *ListIsosRequest) GetReady() bool {
-	if x != nil && x.Ready != nil {
-		return *x.Ready
-	}
-	return false
-}
-
-func (x *ListIsosRequest) GetIsoFilter() string {
-	if x != nil && x.IsoFilter != nil {
-		return *x.IsoFilter
-	}
-	return ""
-}
-
-func (x *ListIsosRequest) GetIsoName() string {
-	if x != nil && x.IsoName != nil {
-		return *x.IsoName
-	}
-	return ""
-}
-
-func (x *ListIsosRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ListIsosRequest) GetShowRemoved() bool {
-	if x != nil && x.ShowRemoved != nil {
-		return *x.ShowRemoved
-	}
-	return false
-}
-
-func (x *ListIsosRequest) GetShowUnique() bool {
-	if x != nil && x.ShowUnique != nil {
-		return *x.ShowUnique
-	}
-	return false
-}
-
-func (x *ListIsosRequest) GetShowIcon() bool {
-	if x != nil && x.ShowIcon != nil {
-		return *x.ShowIcon
-	}
-	return false
-}
-
-func (x *ListIsosRequest) GetArch() string {
-	if x != nil && x.Arch != nil {
-		return *x.Arch
-	}
-	return ""
-}
-
-func (x *ListIsosRequest) GetTags() map[string]string {
-	if x != nil {
-		return x.Tags
-	}
-	return nil
-}
-
-func (x *ListIsosRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *ListIsosRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *ListIsosRequest) GetListAll() bool {
-	if x != nil && x.ListAll != nil {
-		return *x.ListAll
-	}
-	return false
-}
-
-func (x *ListIsosRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ListIsosRequest) GetRecursive() bool {
-	if x != nil && x.Recursive != nil {
-		return *x.Recursive
-	}
-	return false
-}
-
-func (x *ListIsosRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListIsosRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListIsosRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListIsosRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListIsosResponse represents the response from lists all available iso files.
-type ListIsosResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of Templates
-	Items []*Template `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of Templates
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListIsosResponse) Reset() {
-	*x = ListIsosResponse{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListIsosResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListIsosResponse) ProtoMessage() {}
-
-func (x *ListIsosResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListIsosResponse.ProtoReflect.Descriptor instead.
-func (*ListIsosResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *ListIsosResponse) GetItems() []*Template {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListIsosResponse) GetTotalCount() int32 {
 	if x != nil && x.TotalCount != nil {
 		return *x.TotalCount
 	}
@@ -1385,7 +2217,7 @@ type RegisterIsoRequest struct {
 
 func (x *RegisterIsoRequest) Reset() {
 	*x = RegisterIsoRequest{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[12]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1397,7 +2229,7 @@ func (x *RegisterIsoRequest) String() string {
 func (*RegisterIsoRequest) ProtoMessage() {}
 
 func (x *RegisterIsoRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[12]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1410,7 +2242,7 @@ func (x *RegisterIsoRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterIsoRequest.ProtoReflect.Descriptor instead.
 func (*RegisterIsoRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{12}
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *RegisterIsoRequest) GetRunAsAdmin() bool {
@@ -1564,7 +2396,7 @@ type RegisterIsoResponse struct {
 
 func (x *RegisterIsoResponse) Reset() {
 	*x = RegisterIsoResponse{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[13]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1576,7 +2408,7 @@ func (x *RegisterIsoResponse) String() string {
 func (*RegisterIsoResponse) ProtoMessage() {}
 
 func (x *RegisterIsoResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[13]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1589,10 +2421,268 @@ func (x *RegisterIsoResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterIsoResponse.ProtoReflect.Descriptor instead.
 func (*RegisterIsoResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{13}
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *RegisterIsoResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// RegisterIsoCmdByAdminRequest represents the parameters for registers an existing iso into the cloudstack cloud.
+type RegisterIsoCmdByAdminRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// true if this ISO is bootable. If not passed explicitly its assumed to be true
+	Bootable *bool `protobuf:"varint,1,opt,name=bootable" json:"bootable,omitempty"`
+	// the display text of the ISO, defaults to the 'name'
+	DisplayText *string `protobuf:"bytes,2,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
+	// true if you want this ISO to be featured
+	Featured *bool `protobuf:"varint,3,opt,name=featured" json:"featured,omitempty"`
+	// true if you want to register the ISO to be publicly available to all users, false otherwise.
+	PublicIso *bool `protobuf:"varint,4,opt,name=public_iso,json=publicIso" json:"public_iso,omitempty"`
+	// true if the ISO or its derivatives are extractable; default is false
+	Extractable *bool `protobuf:"varint,5,opt,name=extractable" json:"extractable,omitempty"`
+	// the name of the ISO
+	IsoName *string `protobuf:"bytes,6,opt,name=iso_name,json=isoName" json:"iso_name,omitempty"`
+	// the ID of the OS type that best represents the OS of this ISO. If the ISO is bootable this parameter needs to be passed
+	OsTypeId *int64 `protobuf:"varint,7,opt,name=os_type_id,json=osTypeId" json:"os_type_id,omitempty"`
+	// the URL to where the ISO is currently being hosted
+	Url *string `protobuf:"bytes,8,opt,name=url" json:"url,omitempty"`
+	// the ID of the zone you wish to register the ISO to.
+	ZoneId *int64 `protobuf:"varint,9,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// an optional domainId. If the account parameter is used, domainId must also be used.
+	DomainId *int64 `protobuf:"varint,10,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// an optional account name. Must be used with domainId.
+	AccountName *string `protobuf:"bytes,11,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// the checksum value of this ISO. The parameter containing the checksum will be considered a MD5sum if it is not prefixed
+	// and just a plain ascii/utf8 representation of a hexadecimal string. If it is required to
+	// use another algorithm the hexadecimal string is to be prefixed with a string of the form,
+	// "{<algorithm>}", not including the double quotes. In this <algorithm> is the exact string
+	// representing the java supported algorithm, i.e. MD5 or SHA-256. Note that java does not
+	// contain an algorithm called SHA256 or one called sha-256, only SHA-256.
+	Checksum *string `protobuf:"bytes,12,opt,name=checksum" json:"checksum,omitempty"`
+	// Register ISO for the project
+	ProjectId *int64 `protobuf:"varint,13,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// Image store UUID
+	ImageStoreUuid *string `protobuf:"bytes,14,opt,name=image_store_uuid,json=imageStoreUuid" json:"image_store_uuid,omitempty"`
+	// true if ISO contains XS/VMWare tools inorder to support dynamic scaling of VM CPU/memory
+	IsDynamicallyScalable *bool `protobuf:"varint,15,opt,name=is_dynamically_scalable,json=isDynamicallyScalable" json:"is_dynamically_scalable,omitempty"`
+	// true if ISO should bypass Secondary Storage and be downloaded to Primary Storage on deployment
+	DirectDownload *bool `protobuf:"varint,16,opt,name=direct_download,json=directDownload" json:"direct_download,omitempty"`
+	// true if password reset feature is supported; default is false
+	PasswordEnabled *bool `protobuf:"varint,17,opt,name=password_enabled,json=passwordEnabled" json:"password_enabled,omitempty"`
+	// the CPU arch of the ISO. Valid options are: x86_64, aarch64
+	Arch *string `protobuf:"bytes,18,opt,name=arch" json:"arch,omitempty"`
+	ResponseType  *string `protobuf:"bytes,19,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RegisterIsoCmdByAdminRequest) Reset() {
+	*x = RegisterIsoCmdByAdminRequest{}
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[28]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RegisterIsoCmdByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RegisterIsoCmdByAdminRequest) ProtoMessage() {}
+
+func (x *RegisterIsoCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[28]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RegisterIsoCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*RegisterIsoCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *RegisterIsoCmdByAdminRequest) GetBootable() bool {
+	if x != nil && x.Bootable != nil {
+		return *x.Bootable
+	}
+	return false
+}
+
+func (x *RegisterIsoCmdByAdminRequest) GetDisplayText() string {
+	if x != nil && x.DisplayText != nil {
+		return *x.DisplayText
+	}
+	return ""
+}
+
+func (x *RegisterIsoCmdByAdminRequest) GetFeatured() bool {
+	if x != nil && x.Featured != nil {
+		return *x.Featured
+	}
+	return false
+}
+
+func (x *RegisterIsoCmdByAdminRequest) GetPublicIso() bool {
+	if x != nil && x.PublicIso != nil {
+		return *x.PublicIso
+	}
+	return false
+}
+
+func (x *RegisterIsoCmdByAdminRequest) GetExtractable() bool {
+	if x != nil && x.Extractable != nil {
+		return *x.Extractable
+	}
+	return false
+}
+
+func (x *RegisterIsoCmdByAdminRequest) GetIsoName() string {
+	if x != nil && x.IsoName != nil {
+		return *x.IsoName
+	}
+	return ""
+}
+
+func (x *RegisterIsoCmdByAdminRequest) GetOsTypeId() int64 {
+	if x != nil && x.OsTypeId != nil {
+		return *x.OsTypeId
+	}
+	return 0
+}
+
+func (x *RegisterIsoCmdByAdminRequest) GetUrl() string {
+	if x != nil && x.Url != nil {
+		return *x.Url
+	}
+	return ""
+}
+
+func (x *RegisterIsoCmdByAdminRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *RegisterIsoCmdByAdminRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *RegisterIsoCmdByAdminRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *RegisterIsoCmdByAdminRequest) GetChecksum() string {
+	if x != nil && x.Checksum != nil {
+		return *x.Checksum
+	}
+	return ""
+}
+
+func (x *RegisterIsoCmdByAdminRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *RegisterIsoCmdByAdminRequest) GetImageStoreUuid() string {
+	if x != nil && x.ImageStoreUuid != nil {
+		return *x.ImageStoreUuid
+	}
+	return ""
+}
+
+func (x *RegisterIsoCmdByAdminRequest) GetIsDynamicallyScalable() bool {
+	if x != nil && x.IsDynamicallyScalable != nil {
+		return *x.IsDynamicallyScalable
+	}
+	return false
+}
+
+func (x *RegisterIsoCmdByAdminRequest) GetDirectDownload() bool {
+	if x != nil && x.DirectDownload != nil {
+		return *x.DirectDownload
+	}
+	return false
+}
+
+func (x *RegisterIsoCmdByAdminRequest) GetPasswordEnabled() bool {
+	if x != nil && x.PasswordEnabled != nil {
+		return *x.PasswordEnabled
+	}
+	return false
+}
+
+func (x *RegisterIsoCmdByAdminRequest) GetArch() string {
+	if x != nil && x.Arch != nil {
+		return *x.Arch
+	}
+	return ""
+}
+
+func (x *RegisterIsoCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// RegisterIsoCmdByAdminResponse represents the response from registers an existing iso into the cloudstack cloud.
+type RegisterIsoCmdByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RegisterIsoCmdByAdminResponse) Reset() {
+	*x = RegisterIsoCmdByAdminResponse{}
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RegisterIsoCmdByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RegisterIsoCmdByAdminResponse) ProtoMessage() {}
+
+func (x *RegisterIsoCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RegisterIsoCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*RegisterIsoCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{29}
+}
+
+func (x *RegisterIsoCmdByAdminResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1641,7 +2731,7 @@ type UpdateIsoRequest struct {
 
 func (x *UpdateIsoRequest) Reset() {
 	*x = UpdateIsoRequest{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[14]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1653,7 +2743,7 @@ func (x *UpdateIsoRequest) String() string {
 func (*UpdateIsoRequest) ProtoMessage() {}
 
 func (x *UpdateIsoRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[14]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1666,7 +2756,7 @@ func (x *UpdateIsoRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateIsoRequest.ProtoReflect.Descriptor instead.
 func (*UpdateIsoRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{14}
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *UpdateIsoRequest) GetRunAsAdmin() bool {
@@ -1799,7 +2889,7 @@ type UpdateIsoResponse struct {
 
 func (x *UpdateIsoResponse) Reset() {
 	*x = UpdateIsoResponse{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[15]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1811,7 +2901,7 @@ func (x *UpdateIsoResponse) String() string {
 func (*UpdateIsoResponse) ProtoMessage() {}
 
 func (x *UpdateIsoResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[15]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1824,7 +2914,7 @@ func (x *UpdateIsoResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateIsoResponse.ProtoReflect.Descriptor instead.
 func (*UpdateIsoResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{15}
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *UpdateIsoResponse) GetResult() *Result {
@@ -1834,39 +2924,59 @@ func (x *UpdateIsoResponse) GetResult() *Result {
 	return nil
 }
 
-// ExtractIsoRequest represents the parameters for extracts an iso
-type ExtractIsoRequest struct {
+// UpdateIsoCmdByAdminRequest represents the parameters for updates an iso file.
+type UpdateIsoCmdByAdminRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the ISO file
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the URL to which the ISO would be extracted
-	Url *string `protobuf:"bytes,2,opt,name=url" json:"url,omitempty"`
-	// the ID of the zone where the ISO is originally located
-	ZoneId *int64 `protobuf:"varint,3,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// the mode of extraction - HTTP_DOWNLOAD or FTP_UPLOAD
-	Mode *string `protobuf:"bytes,4,opt,name=mode" json:"mode,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// true if image is bootable, false otherwise; available only for updateIso API
+	Bootable *bool `protobuf:"varint,1,opt,name=bootable" json:"bootable,omitempty"`
+	// true if the template requires HVM, false otherwise; available only for updateTemplate API
+	RequiresHvm *bool `protobuf:"varint,2,opt,name=requires_hvm,json=requiresHvm" json:"requires_hvm,omitempty"`
+	// the display text of the image
+	DisplayText *string `protobuf:"bytes,3,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
+	// the ID of the image file
+	Id *int64 `protobuf:"varint,4,opt,name=id" json:"id,omitempty"`
+	// the name of the image file
+	TemplateName *string `protobuf:"bytes,5,opt,name=template_name,json=templateName" json:"template_name,omitempty"`
+	// the ID of the OS type that best represents the OS of this image.
+	OsTypeId *int64 `protobuf:"varint,6,opt,name=os_type_id,json=osTypeId" json:"os_type_id,omitempty"`
+	// the format for the image
+	Format *string `protobuf:"bytes,7,opt,name=format" json:"format,omitempty"`
+	// true if the image supports the password reset feature; default is false
+	PasswordEnabled *bool `protobuf:"varint,8,opt,name=password_enabled,json=passwordEnabled" json:"password_enabled,omitempty"`
+	// true if the template supports the sshkey upload feature; default is false
+	SshKeyEnabled *bool `protobuf:"varint,9,opt,name=ssh_key_enabled,json=sshKeyEnabled" json:"ssh_key_enabled,omitempty"`
+	// sort key of the template, integer
+	SortKey *int32 `protobuf:"varint,10,opt,name=sort_key,json=sortKey" json:"sort_key,omitempty"`
+	// true if template/ISO contains XS/VMWare tools inorder to support dynamic scaling of VM cpu/memory
+	IsDynamicallyScalable *bool `protobuf:"varint,11,opt,name=is_dynamically_scalable,json=isDynamicallyScalable" json:"is_dynamically_scalable,omitempty"`
+	// true if the template type is routing i.e., if template is used to deploy router
+	IsRoutingType *bool `protobuf:"varint,12,opt,name=is_routing_type,json=isRoutingType" json:"is_routing_type,omitempty"`
+	// Details in key/value pairs using format details[i].keyname=keyvalue. Example: details[0].hypervisortoolsversion=xenserver61
+	Details map[string]string `protobuf:"bytes,13,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// optional boolean field, which indicates if details should be cleaned up or not (if set to true, details removed for this resource, details field ignored; if false or not set, no action)
+	CleanupDetails *bool `protobuf:"varint,14,opt,name=cleanup_details,json=cleanupDetails" json:"cleanup_details,omitempty"`
+	// the CPU arch of the template/ISO. Valid options are: x86_64, aarch64
+	Arch *string `protobuf:"bytes,15,opt,name=arch" json:"arch,omitempty"`
+	ResponseType  *string `protobuf:"bytes,16,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ExtractIsoRequest) Reset() {
-	*x = ExtractIsoRequest{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[16]
+func (x *UpdateIsoCmdByAdminRequest) Reset() {
+	*x = UpdateIsoCmdByAdminRequest{}
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ExtractIsoRequest) String() string {
+func (x *UpdateIsoCmdByAdminRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ExtractIsoRequest) ProtoMessage() {}
+func (*UpdateIsoCmdByAdminRequest) ProtoMessage() {}
 
-func (x *ExtractIsoRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[16]
+func (x *UpdateIsoCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1877,706 +2987,147 @@ func (x *ExtractIsoRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ExtractIsoRequest.ProtoReflect.Descriptor instead.
-func (*ExtractIsoRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{16}
+// Deprecated: Use UpdateIsoCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*UpdateIsoCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{32}
 }
 
-func (x *ExtractIsoRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ExtractIsoRequest) GetUrl() string {
-	if x != nil && x.Url != nil {
-		return *x.Url
-	}
-	return ""
-}
-
-func (x *ExtractIsoRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ExtractIsoRequest) GetMode() string {
-	if x != nil && x.Mode != nil {
-		return *x.Mode
-	}
-	return ""
-}
-
-func (x *ExtractIsoRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *ExtractIsoRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *ExtractIsoRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ExtractIsoResponse represents the response from extracts an iso
-type ExtractIsoResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ExtractIsoResponse) Reset() {
-	*x = ExtractIsoResponse{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[17]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ExtractIsoResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ExtractIsoResponse) ProtoMessage() {}
-
-func (x *ExtractIsoResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[17]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ExtractIsoResponse.ProtoReflect.Descriptor instead.
-func (*ExtractIsoResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{17}
-}
-
-func (x *ExtractIsoResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DetachIsoRequest represents the parameters for detaches any iso file (if any) currently attached to a virtual machine.
-type DetachIsoRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// The ID of the virtual machine
-	VirtualMachineId *int64 `protobuf:"varint,2,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
-	// If true, ejects the ISO before detaching on VMware. Default: false
-	Forced *bool `protobuf:"varint,3,opt,name=forced" json:"forced,omitempty"`
-	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DetachIsoRequest) Reset() {
-	*x = DetachIsoRequest{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[18]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DetachIsoRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DetachIsoRequest) ProtoMessage() {}
-
-func (x *DetachIsoRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[18]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DetachIsoRequest.ProtoReflect.Descriptor instead.
-func (*DetachIsoRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{18}
-}
-
-func (x *DetachIsoRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
+func (x *UpdateIsoCmdByAdminRequest) GetBootable() bool {
+	if x != nil && x.Bootable != nil {
+		return *x.Bootable
 	}
 	return false
 }
 
-func (x *DetachIsoRequest) GetVirtualMachineId() int64 {
-	if x != nil && x.VirtualMachineId != nil {
-		return *x.VirtualMachineId
-	}
-	return 0
-}
-
-func (x *DetachIsoRequest) GetForced() bool {
-	if x != nil && x.Forced != nil {
-		return *x.Forced
+func (x *UpdateIsoCmdByAdminRequest) GetRequiresHvm() bool {
+	if x != nil && x.RequiresHvm != nil {
+		return *x.RequiresHvm
 	}
 	return false
 }
 
-func (x *DetachIsoRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DetachIsoRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
+func (x *UpdateIsoCmdByAdminRequest) GetDisplayText() string {
+	if x != nil && x.DisplayText != nil {
+		return *x.DisplayText
 	}
 	return ""
 }
 
-func (x *DetachIsoRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DetachIsoResponse represents the response from detaches any iso file (if any) currently attached to a virtual machine.
-type DetachIsoResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DetachIsoResponse) Reset() {
-	*x = DetachIsoResponse{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[19]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DetachIsoResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DetachIsoResponse) ProtoMessage() {}
-
-func (x *DetachIsoResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[19]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DetachIsoResponse.ProtoReflect.Descriptor instead.
-func (*DetachIsoResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{19}
-}
-
-func (x *DetachIsoResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteIsoRequest represents the parameters for deletes an iso file.
-type DeleteIsoRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the ISO file
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the ID of the zone of the ISO file. If not specified, the ISO will be deleted from all the zones
-	ZoneId *int64 `protobuf:"varint,2,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteIsoRequest) Reset() {
-	*x = DeleteIsoRequest{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[20]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteIsoRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteIsoRequest) ProtoMessage() {}
-
-func (x *DeleteIsoRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[20]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteIsoRequest.ProtoReflect.Descriptor instead.
-func (*DeleteIsoRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{20}
-}
-
-func (x *DeleteIsoRequest) GetId() int64 {
+func (x *UpdateIsoCmdByAdminRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *DeleteIsoRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *DeleteIsoRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteIsoRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
+func (x *UpdateIsoCmdByAdminRequest) GetTemplateName() string {
+	if x != nil && x.TemplateName != nil {
+		return *x.TemplateName
 	}
 	return ""
 }
 
-func (x *DeleteIsoRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
+func (x *UpdateIsoCmdByAdminRequest) GetOsTypeId() int64 {
+	if x != nil && x.OsTypeId != nil {
+		return *x.OsTypeId
+	}
+	return 0
+}
+
+func (x *UpdateIsoCmdByAdminRequest) GetFormat() string {
+	if x != nil && x.Format != nil {
+		return *x.Format
 	}
 	return ""
 }
 
-// DeleteIsoResponse represents the response from deletes an iso file.
-type DeleteIsoResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteIsoResponse) Reset() {
-	*x = DeleteIsoResponse{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[21]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteIsoResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteIsoResponse) ProtoMessage() {}
-
-func (x *DeleteIsoResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[21]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteIsoResponse.ProtoReflect.Descriptor instead.
-func (*DeleteIsoResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{21}
-}
-
-func (x *DeleteIsoResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListIsoPermissionsCmdByAdminRequest represents the parameters for list iso visibility and all accounts that have permissions to view this iso.
-type ListIsoPermissionsCmdByAdminRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the template ID
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListIsoPermissionsCmdByAdminRequest) Reset() {
-	*x = ListIsoPermissionsCmdByAdminRequest{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[22]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListIsoPermissionsCmdByAdminRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListIsoPermissionsCmdByAdminRequest) ProtoMessage() {}
-
-func (x *ListIsoPermissionsCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[22]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListIsoPermissionsCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*ListIsoPermissionsCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{22}
-}
-
-func (x *ListIsoPermissionsCmdByAdminRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListIsoPermissionsCmdByAdminRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListIsoPermissionsCmdByAdminResponse represents the response from list iso visibility and all accounts that have permissions to view this iso.
-type ListIsoPermissionsCmdByAdminResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of TemplatePermissionss
-	Items []*TemplatePermissions `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of TemplatePermissionss
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListIsoPermissionsCmdByAdminResponse) Reset() {
-	*x = ListIsoPermissionsCmdByAdminResponse{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[23]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListIsoPermissionsCmdByAdminResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListIsoPermissionsCmdByAdminResponse) ProtoMessage() {}
-
-func (x *ListIsoPermissionsCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[23]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListIsoPermissionsCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*ListIsoPermissionsCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{23}
-}
-
-func (x *ListIsoPermissionsCmdByAdminResponse) GetItems() []*TemplatePermissions {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListIsoPermissionsCmdByAdminResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// CopyIsoCmdByAdminRequest represents the parameters for copies an iso from one zone to another.
-type CopyIsoCmdByAdminRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the zone the template is being copied to.
-	DestZoneId *int64 `protobuf:"varint,1,opt,name=dest_zone_id,json=destZoneId" json:"dest_zone_id,omitempty"`
-	// Template ID.
-	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	// ID of the zone the template is currently hosted on. If not specified and template is cross-zone, then we will sync this template to region wide image store.
-	SourceZoneId *int64 `protobuf:"varint,3,opt,name=source_zone_id,json=sourceZoneId" json:"source_zone_id,omitempty"`
-	// A list of IDs of the zones that the template needs to be copied to.Specify this list if the template needs to copied to multiple zones in one go. Do not specify destzoneid and destzoneids together, however one of them is required.
-	DestZoneIds []string `protobuf:"bytes,4,rep,name=dest_zone_ids,json=destZoneIds" json:"dest_zone_ids,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CopyIsoCmdByAdminRequest) Reset() {
-	*x = CopyIsoCmdByAdminRequest{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[24]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CopyIsoCmdByAdminRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CopyIsoCmdByAdminRequest) ProtoMessage() {}
-
-func (x *CopyIsoCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[24]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CopyIsoCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*CopyIsoCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{24}
-}
-
-func (x *CopyIsoCmdByAdminRequest) GetDestZoneId() int64 {
-	if x != nil && x.DestZoneId != nil {
-		return *x.DestZoneId
-	}
-	return 0
-}
-
-func (x *CopyIsoCmdByAdminRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *CopyIsoCmdByAdminRequest) GetSourceZoneId() int64 {
-	if x != nil && x.SourceZoneId != nil {
-		return *x.SourceZoneId
-	}
-	return 0
-}
-
-func (x *CopyIsoCmdByAdminRequest) GetDestZoneIds() []string {
-	if x != nil {
-		return x.DestZoneIds
-	}
-	return nil
-}
-
-func (x *CopyIsoCmdByAdminRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CopyIsoCmdByAdminRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CopyIsoCmdByAdminRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CopyIsoCmdByAdminResponse represents the response from copies an iso from one zone to another.
-type CopyIsoCmdByAdminResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CopyIsoCmdByAdminResponse) Reset() {
-	*x = CopyIsoCmdByAdminResponse{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[25]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CopyIsoCmdByAdminResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CopyIsoCmdByAdminResponse) ProtoMessage() {}
-
-func (x *CopyIsoCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[25]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CopyIsoCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*CopyIsoCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{25}
-}
-
-func (x *CopyIsoCmdByAdminResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListIsoPermissionsRequest represents the parameters for list iso visibility and all accounts that have permissions to view this iso.
-type ListIsoPermissionsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// the template ID
-	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListIsoPermissionsRequest) Reset() {
-	*x = ListIsoPermissionsRequest{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[26]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListIsoPermissionsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListIsoPermissionsRequest) ProtoMessage() {}
-
-func (x *ListIsoPermissionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[26]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListIsoPermissionsRequest.ProtoReflect.Descriptor instead.
-func (*ListIsoPermissionsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{26}
-}
-
-func (x *ListIsoPermissionsRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
+func (x *UpdateIsoCmdByAdminRequest) GetPasswordEnabled() bool {
+	if x != nil && x.PasswordEnabled != nil {
+		return *x.PasswordEnabled
 	}
 	return false
 }
 
-func (x *ListIsoPermissionsRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *UpdateIsoCmdByAdminRequest) GetSshKeyEnabled() bool {
+	if x != nil && x.SshKeyEnabled != nil {
+		return *x.SshKeyEnabled
+	}
+	return false
+}
+
+func (x *UpdateIsoCmdByAdminRequest) GetSortKey() int32 {
+	if x != nil && x.SortKey != nil {
+		return *x.SortKey
 	}
 	return 0
 }
 
-func (x *ListIsoPermissionsRequest) GetResponseType() string {
+func (x *UpdateIsoCmdByAdminRequest) GetIsDynamicallyScalable() bool {
+	if x != nil && x.IsDynamicallyScalable != nil {
+		return *x.IsDynamicallyScalable
+	}
+	return false
+}
+
+func (x *UpdateIsoCmdByAdminRequest) GetIsRoutingType() bool {
+	if x != nil && x.IsRoutingType != nil {
+		return *x.IsRoutingType
+	}
+	return false
+}
+
+func (x *UpdateIsoCmdByAdminRequest) GetDetails() map[string]string {
+	if x != nil {
+		return x.Details
+	}
+	return nil
+}
+
+func (x *UpdateIsoCmdByAdminRequest) GetCleanupDetails() bool {
+	if x != nil && x.CleanupDetails != nil {
+		return *x.CleanupDetails
+	}
+	return false
+}
+
+func (x *UpdateIsoCmdByAdminRequest) GetArch() string {
+	if x != nil && x.Arch != nil {
+		return *x.Arch
+	}
+	return ""
+}
+
+func (x *UpdateIsoCmdByAdminRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// ListIsoPermissionsResponse represents the response from list iso visibility and all accounts that have permissions to view this iso.
-type ListIsoPermissionsResponse struct {
+// UpdateIsoCmdByAdminResponse represents the response from updates an iso file.
+type UpdateIsoCmdByAdminResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of TemplatePermissionss
-	Items []*TemplatePermissions `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of TemplatePermissionss
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListIsoPermissionsResponse) Reset() {
-	*x = ListIsoPermissionsResponse{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[27]
+func (x *UpdateIsoCmdByAdminResponse) Reset() {
+	*x = UpdateIsoCmdByAdminResponse{}
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListIsoPermissionsResponse) String() string {
+func (x *UpdateIsoCmdByAdminResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListIsoPermissionsResponse) ProtoMessage() {}
+func (*UpdateIsoCmdByAdminResponse) ProtoMessage() {}
 
-func (x *ListIsoPermissionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[27]
+func (x *UpdateIsoCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2587,23 +3138,16 @@ func (x *ListIsoPermissionsResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListIsoPermissionsResponse.ProtoReflect.Descriptor instead.
-func (*ListIsoPermissionsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{27}
+// Deprecated: Use UpdateIsoCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*UpdateIsoCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{33}
 }
 
-func (x *ListIsoPermissionsResponse) GetItems() []*TemplatePermissions {
+func (x *UpdateIsoCmdByAdminResponse) GetResult() *Result {
 	if x != nil {
-		return x.Items
+		return x.Result
 	}
 	return nil
-}
-
-func (x *ListIsoPermissionsResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
 }
 
 // UpdateIsoPermissionsRequest represents the parameters for updates iso permissions
@@ -2630,7 +3174,7 @@ type UpdateIsoPermissionsRequest struct {
 
 func (x *UpdateIsoPermissionsRequest) Reset() {
 	*x = UpdateIsoPermissionsRequest{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[28]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2642,7 +3186,7 @@ func (x *UpdateIsoPermissionsRequest) String() string {
 func (*UpdateIsoPermissionsRequest) ProtoMessage() {}
 
 func (x *UpdateIsoPermissionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[28]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2655,7 +3199,7 @@ func (x *UpdateIsoPermissionsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateIsoPermissionsRequest.ProtoReflect.Descriptor instead.
 func (*UpdateIsoPermissionsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{28}
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *UpdateIsoPermissionsRequest) GetAccountNames() []string {
@@ -2725,7 +3269,7 @@ type UpdateIsoPermissionsResponse struct {
 
 func (x *UpdateIsoPermissionsResponse) Reset() {
 	*x = UpdateIsoPermissionsResponse{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[29]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2737,7 +3281,7 @@ func (x *UpdateIsoPermissionsResponse) String() string {
 func (*UpdateIsoPermissionsResponse) ProtoMessage() {}
 
 func (x *UpdateIsoPermissionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[29]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2750,162 +3294,10 @@ func (x *UpdateIsoPermissionsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateIsoPermissionsResponse.ProtoReflect.Descriptor instead.
 func (*UpdateIsoPermissionsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{29}
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *UpdateIsoPermissionsResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// CopyIsoRequest represents the parameters for copies an iso from one zone to another.
-type CopyIsoRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// ID of the zone the template is being copied to.
-	DestZoneId *int64 `protobuf:"varint,2,opt,name=dest_zone_id,json=destZoneId" json:"dest_zone_id,omitempty"`
-	// Template ID.
-	Id *int64 `protobuf:"varint,3,opt,name=id" json:"id,omitempty"`
-	// ID of the zone the template is currently hosted on. If not specified and template is cross-zone, then we will sync this template to region wide image store.
-	SourceZoneId *int64 `protobuf:"varint,4,opt,name=source_zone_id,json=sourceZoneId" json:"source_zone_id,omitempty"`
-	// A list of IDs of the zones that the template needs to be copied to.Specify this list if the template needs to copied to multiple zones in one go. Do not specify destzoneid and destzoneids together, however one of them is required.
-	DestZoneIds []string `protobuf:"bytes,5,rep,name=dest_zone_ids,json=destZoneIds" json:"dest_zone_ids,omitempty"`
-	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CopyIsoRequest) Reset() {
-	*x = CopyIsoRequest{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[30]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CopyIsoRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CopyIsoRequest) ProtoMessage() {}
-
-func (x *CopyIsoRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[30]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CopyIsoRequest.ProtoReflect.Descriptor instead.
-func (*CopyIsoRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{30}
-}
-
-func (x *CopyIsoRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *CopyIsoRequest) GetDestZoneId() int64 {
-	if x != nil && x.DestZoneId != nil {
-		return *x.DestZoneId
-	}
-	return 0
-}
-
-func (x *CopyIsoRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *CopyIsoRequest) GetSourceZoneId() int64 {
-	if x != nil && x.SourceZoneId != nil {
-		return *x.SourceZoneId
-	}
-	return 0
-}
-
-func (x *CopyIsoRequest) GetDestZoneIds() []string {
-	if x != nil {
-		return x.DestZoneIds
-	}
-	return nil
-}
-
-func (x *CopyIsoRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CopyIsoRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CopyIsoRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CopyIsoResponse represents the response from copies an iso from one zone to another.
-type CopyIsoResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CopyIsoResponse) Reset() {
-	*x = CopyIsoResponse{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[31]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CopyIsoResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CopyIsoResponse) ProtoMessage() {}
-
-func (x *CopyIsoResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[31]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CopyIsoResponse.ProtoReflect.Descriptor instead.
-func (*CopyIsoResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{31}
-}
-
-func (x *CopyIsoResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -2931,7 +3323,7 @@ type Template struct {
 
 func (x *Template) Reset() {
 	*x = Template{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[32]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2943,7 +3335,7 @@ func (x *Template) String() string {
 func (*Template) ProtoMessage() {}
 
 func (x *Template) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[32]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2956,7 +3348,7 @@ func (x *Template) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Template.ProtoReflect.Descriptor instead.
 func (*Template) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{32}
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *Template) GetId() string {
@@ -3013,7 +3405,7 @@ type TemplatePermissions struct {
 
 func (x *TemplatePermissions) Reset() {
 	*x = TemplatePermissions{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[33]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3025,7 +3417,7 @@ func (x *TemplatePermissions) String() string {
 func (*TemplatePermissions) ProtoMessage() {}
 
 func (x *TemplatePermissions) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[33]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3038,7 +3430,7 @@ func (x *TemplatePermissions) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TemplatePermissions.ProtoReflect.Descriptor instead.
 func (*TemplatePermissions) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{33}
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *TemplatePermissions) GetId() string {
@@ -3089,7 +3481,7 @@ type Success struct {
 
 func (x *Success) Reset() {
 	*x = Success{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[34]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3101,7 +3493,7 @@ func (x *Success) String() string {
 func (*Success) ProtoMessage() {}
 
 func (x *Success) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[34]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3114,7 +3506,7 @@ func (x *Success) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Success.ProtoReflect.Descriptor instead.
 func (*Success) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{34}
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *Success) GetSuccess() bool {
@@ -3129,151 +3521,6 @@ func (x *Success) GetDisplayText() string {
 		return *x.DisplayText
 	}
 	return ""
-}
-
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[35]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[35]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{35}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
 }
 
 // Result represents a generic operation result
@@ -3295,7 +3542,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[36]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3307,7 +3554,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[36]
+	mi := &file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3320,7 +3567,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{36}
+	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -3362,7 +3609,87 @@ var File_cloudstack_management_iso_v1_iso_gen_proto protoreflect.FileDescriptor
 
 const file_cloudstack_management_iso_v1_iso_gen_proto_rawDesc = "" +
 	"\n" +
-	"*cloudstack/management/iso/v1/iso.gen.proto\x12\x1ccloudstack.management.iso.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xf8\x03\n" +
+	"*cloudstack/management/iso/v1/iso.gen.proto\x12\x1ccloudstack.management.iso.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x9e\x02\n" +
+	"\x10AttachIsoRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x12\x16\n" +
+	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x124\n" +
+	"\x12virtual_machine_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x10virtualMachineId\x12\x1d\n" +
+	"\x06forced\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"Q\n" +
+	"\x11AttachIsoResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.iso.v1.ResultR\x06result\"\x86\x02\n" +
+	"\x1aAttachIsoCmdByAdminRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x124\n" +
+	"\x12virtual_machine_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x10virtualMachineId\x12\x1d\n" +
+	"\x06forced\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12$\n" +
+	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"[\n" +
+	"\x1bAttachIsoCmdByAdminResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.iso.v1.ResultR\x06result\"\xb3\x02\n" +
+	"\x0eCopyIsoRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x12 \n" +
+	"\fdest_zone_id\x18\x02 \x01(\x03R\n" +
+	"destZoneId\x12\x16\n" +
+	"\x02id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0esource_zone_id\x18\x04 \x01(\x03R\fsourceZoneId\x12\"\n" +
+	"\rdest_zone_ids\x18\x05 \x03(\tR\vdestZoneIds\x12$\n" +
+	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\"O\n" +
+	"\x0fCopyIsoResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.iso.v1.ResultR\x06result\"\x9b\x02\n" +
+	"\x18CopyIsoCmdByAdminRequest\x12 \n" +
+	"\fdest_zone_id\x18\x01 \x01(\x03R\n" +
+	"destZoneId\x12\x16\n" +
+	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0esource_zone_id\x18\x03 \x01(\x03R\fsourceZoneId\x12\"\n" +
+	"\rdest_zone_ids\x18\x04 \x03(\tR\vdestZoneIds\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"Y\n" +
+	"\x19CopyIsoCmdByAdminResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.iso.v1.ResultR\x06result\"\xc0\x01\n" +
+	"\x10DeleteIsoRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x17\n" +
+	"\azone_id\x18\x02 \x01(\x03R\x06zoneId\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"Q\n" +
+	"\x11DeleteIsoResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.iso.v1.ResultR\x06result\"\x86\x02\n" +
+	"\x10DetachIsoRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x124\n" +
+	"\x12virtual_machine_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x10virtualMachineId\x12\x1d\n" +
+	"\x06forced\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12$\n" +
+	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"Q\n" +
+	"\x11DetachIsoResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.iso.v1.ResultR\x06result\"\xee\x01\n" +
+	"\x1aDetachIsoCmdByAdminRequest\x124\n" +
+	"\x12virtual_machine_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x10virtualMachineId\x12\x1d\n" +
+	"\x06forced\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"[\n" +
+	"\x1bDetachIsoCmdByAdminResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.iso.v1.ResultR\x06result\"\xef\x01\n" +
+	"\x11ExtractIsoRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x10\n" +
+	"\x03url\x18\x02 \x01(\tR\x03url\x12\x17\n" +
+	"\azone_id\x18\x03 \x01(\x03R\x06zoneId\x12\x1a\n" +
+	"\x04mode\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04mode\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"R\n" +
+	"\x12ExtractIsoResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.iso.v1.ResultR\x06result\"\xf8\x03\n" +
 	"\x1cGetUploadParamsForIsoRequest\x12!\n" +
 	"\bbootable\x18\x01 \x01(\bB\x05\xaa\x01\x02\b\x01R\bbootable\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12!\n" +
@@ -3384,90 +3711,21 @@ const file_cloudstack_management_iso_v1_iso_gen_proto_rawDesc = "" +
 	"project_id\x18\r \x01(\x03R\tprojectId\x12#\n" +
 	"\rresponse_type\x18\x0e \x01(\tR\fresponseType\"]\n" +
 	"\x1dGetUploadParamsForIsoResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.iso.v1.ResultR\x06result\"\xee\x01\n" +
-	"\x1aDetachIsoCmdByAdminRequest\x124\n" +
-	"\x12virtual_machine_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x10virtualMachineId\x12\x1d\n" +
-	"\x06forced\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"[\n" +
-	"\x1bDetachIsoCmdByAdminResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.iso.v1.ResultR\x06result\"\xfb\x05\n" +
-	"\x1aUpdateIsoCmdByAdminRequest\x12!\n" +
-	"\bbootable\x18\x01 \x01(\bB\x05\xaa\x01\x02\b\x01R\bbootable\x12(\n" +
-	"\frequires_hvm\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\vrequiresHvm\x12!\n" +
-	"\fdisplay_text\x18\x03 \x01(\tR\vdisplayText\x12\x16\n" +
-	"\x02id\x18\x04 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12/\n" +
-	"\rtemplate_name\x18\x05 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\ftemplateName\x12\x1c\n" +
-	"\n" +
-	"os_type_id\x18\x06 \x01(\x03R\bosTypeId\x12\x16\n" +
-	"\x06format\x18\a \x01(\tR\x06format\x120\n" +
-	"\x10password_enabled\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\x0fpasswordEnabled\x12-\n" +
-	"\x0fssh_key_enabled\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\rsshKeyEnabled\x12\x19\n" +
-	"\bsort_key\x18\n" +
-	" \x01(\x05R\asortKey\x12=\n" +
-	"\x17is_dynamically_scalable\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\x15isDynamicallyScalable\x12-\n" +
-	"\x0fis_routing_type\x18\f \x01(\bB\x05\xaa\x01\x02\b\x01R\risRoutingType\x12_\n" +
-	"\adetails\x18\r \x03(\v2E.cloudstack.management.iso.v1.UpdateIsoCmdByAdminRequest.DetailsEntryR\adetails\x12.\n" +
-	"\x0fcleanup_details\x18\x0e \x01(\bB\x05\xaa\x01\x02\b\x01R\x0ecleanupDetails\x12\x12\n" +
-	"\x04arch\x18\x0f \x01(\tR\x04arch\x12#\n" +
-	"\rresponse_type\x18\x10 \x01(\tR\fresponseType\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"[\n" +
-	"\x1bUpdateIsoCmdByAdminResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.iso.v1.ResultR\x06result\"\x9e\x02\n" +
-	"\x10AttachIsoRequest\x12 \n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.iso.v1.ResultR\x06result\"z\n" +
+	"\x19ListIsoPermissionsRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
 	"runAsAdmin\x12\x16\n" +
-	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x124\n" +
-	"\x12virtual_machine_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x10virtualMachineId\x12\x1d\n" +
-	"\x06forced\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"Q\n" +
-	"\x11AttachIsoResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.iso.v1.ResultR\x06result\"\x8e\b\n" +
-	"\x19ListIsosCmdByAdminRequest\x12$\n" +
-	"\x0eimage_store_id\x18\x01 \x01(\x03R\fimageStoreId\x12&\n" +
-	"\x0fstorage_pool_id\x18\x02 \x01(\x03R\rstoragePoolId\x12!\n" +
-	"\bbootable\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\bbootable\x12\x1e\n" +
-	"\n" +
-	"hypervisor\x18\x04 \x01(\tR\n" +
-	"hypervisor\x12\x0e\n" +
-	"\x02id\x18\x05 \x01(\x03R\x02id\x12$\n" +
-	"\n" +
-	"public_iso\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\tpublicIso\x12\x1b\n" +
-	"\x05ready\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\x05ready\x12\x1d\n" +
-	"\n" +
-	"iso_filter\x18\b \x01(\tR\tisoFilter\x12%\n" +
-	"\biso_name\x18\t \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\aisoName\x12\x17\n" +
-	"\azone_id\x18\n" +
-	" \x01(\x03R\x06zoneId\x12(\n" +
-	"\fshow_removed\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\vshowRemoved\x12&\n" +
-	"\vshow_unique\x18\f \x01(\bB\x05\xaa\x01\x02\b\x01R\n" +
-	"showUnique\x12\"\n" +
-	"\tshow_icon\x18\r \x01(\bB\x05\xaa\x01\x02\b\x01R\bshowIcon\x12\x12\n" +
-	"\x04arch\x18\x0e \x01(\tR\x04arch\x12U\n" +
-	"\x04tags\x18\x0f \x03(\v2A.cloudstack.management.iso.v1.ListIsosCmdByAdminRequest.TagsEntryR\x04tags\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x10 \x01(\x03R\tprojectId\x12\xa0\x01\n" +
-	"\faccount_name\x18\x11 \x01(\tB}\xbaHz\xba\x01w\n" +
-	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
-	"\blist_all\x18\x12 \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
-	"\tdomain_id\x18\x13 \x01(\x03R\bdomainId\x12#\n" +
-	"\trecursive\x18\x14 \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
-	"\akeyword\x18\x15 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x16 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x17 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x18 \x01(\tR\fresponseType\x1a7\n" +
-	"\tTagsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x82\x01\n" +
-	"\x1aListIsosCmdByAdminResponse\x12<\n" +
-	"\x05items\x18\x01 \x03(\v2&.cloudstack.management.iso.v1.TemplateR\x05items\x12\x1f\n" +
+	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"\x8d\x01\n" +
+	"\x1aListIsoPermissionsResponse\x12G\n" +
+	"\x05items\x18\x01 \x03(\v21.cloudstack.management.iso.v1.TemplatePermissionsR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"b\n" +
+	"#ListIsoPermissionsCmdByAdminRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"\x97\x01\n" +
+	"$ListIsoPermissionsCmdByAdminResponse\x12G\n" +
+	"\x05items\x18\x01 \x03(\v21.cloudstack.management.iso.v1.TemplatePermissionsR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
 	"totalCount:\x05\xbaH\x02\b\x00\"\xce\a\n" +
 	"\x0fListIsosRequest\x12 \n" +
@@ -3510,6 +3768,47 @@ const file_cloudstack_management_iso_v1_iso_gen_proto_rawDesc = "" +
 	"\x10ListIsosResponse\x12<\n" +
 	"\x05items\x18\x01 \x03(\v2&.cloudstack.management.iso.v1.TemplateR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x8e\b\n" +
+	"\x19ListIsosCmdByAdminRequest\x12$\n" +
+	"\x0eimage_store_id\x18\x01 \x01(\x03R\fimageStoreId\x12&\n" +
+	"\x0fstorage_pool_id\x18\x02 \x01(\x03R\rstoragePoolId\x12!\n" +
+	"\bbootable\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\bbootable\x12\x1e\n" +
+	"\n" +
+	"hypervisor\x18\x04 \x01(\tR\n" +
+	"hypervisor\x12\x0e\n" +
+	"\x02id\x18\x05 \x01(\x03R\x02id\x12$\n" +
+	"\n" +
+	"public_iso\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\tpublicIso\x12\x1b\n" +
+	"\x05ready\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\x05ready\x12\x1d\n" +
+	"\n" +
+	"iso_filter\x18\b \x01(\tR\tisoFilter\x12%\n" +
+	"\biso_name\x18\t \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\aisoName\x12\x17\n" +
+	"\azone_id\x18\n" +
+	" \x01(\x03R\x06zoneId\x12(\n" +
+	"\fshow_removed\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\vshowRemoved\x12&\n" +
+	"\vshow_unique\x18\f \x01(\bB\x05\xaa\x01\x02\b\x01R\n" +
+	"showUnique\x12\"\n" +
+	"\tshow_icon\x18\r \x01(\bB\x05\xaa\x01\x02\b\x01R\bshowIcon\x12\x12\n" +
+	"\x04arch\x18\x0e \x01(\tR\x04arch\x12U\n" +
+	"\x04tags\x18\x0f \x03(\v2A.cloudstack.management.iso.v1.ListIsosCmdByAdminRequest.TagsEntryR\x04tags\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x10 \x01(\x03R\tprojectId\x12\xa0\x01\n" +
+	"\faccount_name\x18\x11 \x01(\tB}\xbaHz\xba\x01w\n" +
+	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
+	"\blist_all\x18\x12 \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
+	"\tdomain_id\x18\x13 \x01(\x03R\bdomainId\x12#\n" +
+	"\trecursive\x18\x14 \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
+	"\akeyword\x18\x15 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x16 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x17 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x18 \x01(\tR\fresponseType\x1a7\n" +
+	"\tTagsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x82\x01\n" +
+	"\x1aListIsosCmdByAdminResponse\x12<\n" +
+	"\x05items\x18\x01 \x03(\v2&.cloudstack.management.iso.v1.TemplateR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
 	"totalCount:\x05\xbaH\x02\b\x00\"\xfa\x05\n" +
 	"\x12RegisterIsoRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
@@ -3539,6 +3838,33 @@ const file_cloudstack_management_iso_v1_iso_gen_proto_rawDesc = "" +
 	"\x04arch\x18\x13 \x01(\tR\x04arch\x12#\n" +
 	"\rresponse_type\x18\x14 \x01(\tR\fresponseType\"S\n" +
 	"\x13RegisterIsoResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.iso.v1.ResultR\x06result\"\xe2\x05\n" +
+	"\x1cRegisterIsoCmdByAdminRequest\x12!\n" +
+	"\bbootable\x18\x01 \x01(\bB\x05\xaa\x01\x02\b\x01R\bbootable\x12!\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12!\n" +
+	"\bfeatured\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\bfeatured\x12$\n" +
+	"\n" +
+	"public_iso\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\tpublicIso\x12'\n" +
+	"\vextractable\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\vextractable\x12(\n" +
+	"\biso_name\x18\x06 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\aisoName\x12\x1c\n" +
+	"\n" +
+	"os_type_id\x18\a \x01(\x03R\bosTypeId\x12\x18\n" +
+	"\x03url\x18\b \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x03url\x12\x1f\n" +
+	"\azone_id\x18\t \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12\x1b\n" +
+	"\tdomain_id\x18\n" +
+	" \x01(\x03R\bdomainId\x12!\n" +
+	"\faccount_name\x18\v \x01(\tR\vaccountName\x12\x1a\n" +
+	"\bchecksum\x18\f \x01(\tR\bchecksum\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\r \x01(\x03R\tprojectId\x122\n" +
+	"\x10image_store_uuid\x18\x0e \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x0eimageStoreUuid\x12=\n" +
+	"\x17is_dynamically_scalable\x18\x0f \x01(\bB\x05\xaa\x01\x02\b\x01R\x15isDynamicallyScalable\x12.\n" +
+	"\x0fdirect_download\x18\x10 \x01(\bB\x05\xaa\x01\x02\b\x01R\x0edirectDownload\x120\n" +
+	"\x10password_enabled\x18\x11 \x01(\bB\x05\xaa\x01\x02\b\x01R\x0fpasswordEnabled\x12\x12\n" +
+	"\x04arch\x18\x12 \x01(\tR\x04arch\x12#\n" +
+	"\rresponse_type\x18\x13 \x01(\tR\fresponseType\"]\n" +
+	"\x1dRegisterIsoCmdByAdminResponse\x12<\n" +
 	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.iso.v1.ResultR\x06result\"\x89\x06\n" +
 	"\x10UpdateIsoRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
@@ -3566,62 +3892,32 @@ const file_cloudstack_management_iso_v1_iso_gen_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"Q\n" +
 	"\x11UpdateIsoResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.iso.v1.ResultR\x06result\"\xef\x01\n" +
-	"\x11ExtractIsoRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x10\n" +
-	"\x03url\x18\x02 \x01(\tR\x03url\x12\x17\n" +
-	"\azone_id\x18\x03 \x01(\x03R\x06zoneId\x12\x1a\n" +
-	"\x04mode\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04mode\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"R\n" +
-	"\x12ExtractIsoResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.iso.v1.ResultR\x06result\"\x86\x02\n" +
-	"\x10DetachIsoRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x124\n" +
-	"\x12virtual_machine_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x10virtualMachineId\x12\x1d\n" +
-	"\x06forced\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12$\n" +
-	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"Q\n" +
-	"\x11DetachIsoResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.iso.v1.ResultR\x06result\"\xc0\x01\n" +
-	"\x10DeleteIsoRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x17\n" +
-	"\azone_id\x18\x02 \x01(\x03R\x06zoneId\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"Q\n" +
-	"\x11DeleteIsoResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.iso.v1.ResultR\x06result\"b\n" +
-	"#ListIsoPermissionsCmdByAdminRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"\x97\x01\n" +
-	"$ListIsoPermissionsCmdByAdminResponse\x12G\n" +
-	"\x05items\x18\x01 \x03(\v21.cloudstack.management.iso.v1.TemplatePermissionsR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x9b\x02\n" +
-	"\x18CopyIsoCmdByAdminRequest\x12 \n" +
-	"\fdest_zone_id\x18\x01 \x01(\x03R\n" +
-	"destZoneId\x12\x16\n" +
-	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0esource_zone_id\x18\x03 \x01(\x03R\fsourceZoneId\x12\"\n" +
-	"\rdest_zone_ids\x18\x04 \x03(\tR\vdestZoneIds\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"Y\n" +
-	"\x19CopyIsoCmdByAdminResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.iso.v1.ResultR\x06result\"z\n" +
-	"\x19ListIsoPermissionsRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12\x16\n" +
-	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"\x8d\x01\n" +
-	"\x1aListIsoPermissionsResponse\x12G\n" +
-	"\x05items\x18\x01 \x03(\v21.cloudstack.management.iso.v1.TemplatePermissionsR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xb3\x02\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.iso.v1.ResultR\x06result\"\xfb\x05\n" +
+	"\x1aUpdateIsoCmdByAdminRequest\x12!\n" +
+	"\bbootable\x18\x01 \x01(\bB\x05\xaa\x01\x02\b\x01R\bbootable\x12(\n" +
+	"\frequires_hvm\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\vrequiresHvm\x12!\n" +
+	"\fdisplay_text\x18\x03 \x01(\tR\vdisplayText\x12\x16\n" +
+	"\x02id\x18\x04 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12/\n" +
+	"\rtemplate_name\x18\x05 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\ftemplateName\x12\x1c\n" +
+	"\n" +
+	"os_type_id\x18\x06 \x01(\x03R\bosTypeId\x12\x16\n" +
+	"\x06format\x18\a \x01(\tR\x06format\x120\n" +
+	"\x10password_enabled\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\x0fpasswordEnabled\x12-\n" +
+	"\x0fssh_key_enabled\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\rsshKeyEnabled\x12\x19\n" +
+	"\bsort_key\x18\n" +
+	" \x01(\x05R\asortKey\x12=\n" +
+	"\x17is_dynamically_scalable\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\x15isDynamicallyScalable\x12-\n" +
+	"\x0fis_routing_type\x18\f \x01(\bB\x05\xaa\x01\x02\b\x01R\risRoutingType\x12_\n" +
+	"\adetails\x18\r \x03(\v2E.cloudstack.management.iso.v1.UpdateIsoCmdByAdminRequest.DetailsEntryR\adetails\x12.\n" +
+	"\x0fcleanup_details\x18\x0e \x01(\bB\x05\xaa\x01\x02\b\x01R\x0ecleanupDetails\x12\x12\n" +
+	"\x04arch\x18\x0f \x01(\tR\x04arch\x12#\n" +
+	"\rresponse_type\x18\x10 \x01(\tR\fresponseType\x1a:\n" +
+	"\fDetailsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"[\n" +
+	"\x1bUpdateIsoCmdByAdminResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.iso.v1.ResultR\x06result\"\xb3\x02\n" +
 	"\x1bUpdateIsoPermissionsRequest\x12#\n" +
 	"\raccount_names\x18\x01 \x03(\tR\faccountNames\x12\x16\n" +
 	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12!\n" +
@@ -3633,19 +3929,6 @@ const file_cloudstack_management_iso_v1_iso_gen_proto_rawDesc = "" +
 	"projectIds\x12#\n" +
 	"\rresponse_type\x18\b \x01(\tR\fresponseType\"\\\n" +
 	"\x1cUpdateIsoPermissionsResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.iso.v1.ResultR\x06result\"\xb3\x02\n" +
-	"\x0eCopyIsoRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12 \n" +
-	"\fdest_zone_id\x18\x02 \x01(\x03R\n" +
-	"destZoneId\x12\x16\n" +
-	"\x02id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0esource_zone_id\x18\x04 \x01(\x03R\fsourceZoneId\x12\"\n" +
-	"\rdest_zone_ids\x18\x05 \x03(\tR\vdestZoneIds\x12$\n" +
-	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\"O\n" +
-	"\x0fCopyIsoResponse\x12<\n" +
 	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.iso.v1.ResultR\x06result\"\x97\x01\n" +
 	"\bTemplate\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
@@ -3661,52 +3944,35 @@ const file_cloudstack_management_iso_v1_iso_gen_proto_rawDesc = "" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xdb\x03\n" +
-	"\x04Item\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12I\n" +
-	"\adetails\x18\f \x03(\v2/.cloudstack.management.iso.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xce\x10\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\xce\x13\n" +
 	"\n" +
-	"IsoService\x12\x92\x01\n" +
-	"\x15GetUploadParamsForIso\x12:.cloudstack.management.iso.v1.GetUploadParamsForIsoRequest\x1a;.cloudstack.management.iso.v1.GetUploadParamsForIsoResponse\"\x00\x12\x8c\x01\n" +
-	"\x13DetachIsoCmdByAdmin\x128.cloudstack.management.iso.v1.DetachIsoCmdByAdminRequest\x1a9.cloudstack.management.iso.v1.DetachIsoCmdByAdminResponse\"\x00\x12\x8c\x01\n" +
-	"\x13UpdateIsoCmdByAdmin\x128.cloudstack.management.iso.v1.UpdateIsoCmdByAdminRequest\x1a9.cloudstack.management.iso.v1.UpdateIsoCmdByAdminResponse\"\x00\x12t\n" +
-	"\tAttachIso\x12..cloudstack.management.iso.v1.AttachIsoRequest\x1a/.cloudstack.management.iso.v1.AttachIsoResponse\"\x06\xc2>\x03\xc0>\x01\x12\x89\x01\n" +
-	"\x12ListIsosCmdByAdmin\x127.cloudstack.management.iso.v1.ListIsosCmdByAdminRequest\x1a8.cloudstack.management.iso.v1.ListIsosCmdByAdminResponse\"\x00\x12q\n" +
-	"\bListIsos\x12-.cloudstack.management.iso.v1.ListIsosRequest\x1a..cloudstack.management.iso.v1.ListIsosResponse\"\x06\xc2>\x03\xc0>\x01\x12z\n" +
-	"\vRegisterIso\x120.cloudstack.management.iso.v1.RegisterIsoRequest\x1a1.cloudstack.management.iso.v1.RegisterIsoResponse\"\x06\xc2>\x03\xc0>\x01\x12t\n" +
-	"\tUpdateIso\x12..cloudstack.management.iso.v1.UpdateIsoRequest\x1a/.cloudstack.management.iso.v1.UpdateIsoResponse\"\x06\xc2>\x03\xc0>\x01\x12q\n" +
+	"IsoService\x12v\n" +
+	"\tAttachIso\x12..cloudstack.management.iso.v1.AttachIsoRequest\x1a/.cloudstack.management.iso.v1.AttachIsoResponse\"\b\xc2>\x05\xc2>\x02\x01\x02\x12\x93\x01\n" +
+	"\x13AttachIsoCmdByAdmin\x128.cloudstack.management.iso.v1.AttachIsoCmdByAdminRequest\x1a9.cloudstack.management.iso.v1.AttachIsoCmdByAdminResponse\"\a\xc2>\x04\xc2>\x01\x02\x12p\n" +
+	"\aCopyIso\x12,.cloudstack.management.iso.v1.CopyIsoRequest\x1a-.cloudstack.management.iso.v1.CopyIsoResponse\"\b\xc2>\x05\xc2>\x02\x01\x02\x12\x8d\x01\n" +
+	"\x11CopyIsoCmdByAdmin\x126.cloudstack.management.iso.v1.CopyIsoCmdByAdminRequest\x1a7.cloudstack.management.iso.v1.CopyIsoCmdByAdminResponse\"\a\xc2>\x04\xc2>\x01\x02\x12u\n" +
+	"\tDeleteIso\x12..cloudstack.management.iso.v1.DeleteIsoRequest\x1a/.cloudstack.management.iso.v1.DeleteIsoResponse\"\a\xc2>\x04\xc2>\x01\x02\x12v\n" +
+	"\tDetachIso\x12..cloudstack.management.iso.v1.DetachIsoRequest\x1a/.cloudstack.management.iso.v1.DetachIsoResponse\"\b\xc2>\x05\xc2>\x02\x01\x02\x12\x93\x01\n" +
+	"\x13DetachIsoCmdByAdmin\x128.cloudstack.management.iso.v1.DetachIsoCmdByAdminRequest\x1a9.cloudstack.management.iso.v1.DetachIsoCmdByAdminResponse\"\a\xc2>\x04\xc2>\x01\x02\x12x\n" +
 	"\n" +
-	"ExtractIso\x12/.cloudstack.management.iso.v1.ExtractIsoRequest\x1a0.cloudstack.management.iso.v1.ExtractIsoResponse\"\x00\x12t\n" +
-	"\tDetachIso\x12..cloudstack.management.iso.v1.DetachIsoRequest\x1a/.cloudstack.management.iso.v1.DetachIsoResponse\"\x06\xc2>\x03\xc0>\x01\x12n\n" +
-	"\tDeleteIso\x12..cloudstack.management.iso.v1.DeleteIsoRequest\x1a/.cloudstack.management.iso.v1.DeleteIsoResponse\"\x00\x12\xa7\x01\n" +
-	"\x1cListIsoPermissionsCmdByAdmin\x12A.cloudstack.management.iso.v1.ListIsoPermissionsCmdByAdminRequest\x1aB.cloudstack.management.iso.v1.ListIsoPermissionsCmdByAdminResponse\"\x00\x12\x86\x01\n" +
-	"\x11CopyIsoCmdByAdmin\x126.cloudstack.management.iso.v1.CopyIsoCmdByAdminRequest\x1a7.cloudstack.management.iso.v1.CopyIsoCmdByAdminResponse\"\x00\x12\x8f\x01\n" +
-	"\x12ListIsoPermissions\x127.cloudstack.management.iso.v1.ListIsoPermissionsRequest\x1a8.cloudstack.management.iso.v1.ListIsoPermissionsResponse\"\x06\xc2>\x03\xc0>\x01\x12\x8f\x01\n" +
-	"\x14UpdateIsoPermissions\x129.cloudstack.management.iso.v1.UpdateIsoPermissionsRequest\x1a:.cloudstack.management.iso.v1.UpdateIsoPermissionsResponse\"\x00\x12n\n" +
-	"\aCopyIso\x12,.cloudstack.management.iso.v1.CopyIsoRequest\x1a-.cloudstack.management.iso.v1.CopyIsoResponse\"\x06\xc2>\x03\xc0>\x01\x1a\x06\xc2>\x03\xc0>\x02B\x9a\x02\n" +
+	"ExtractIso\x12/.cloudstack.management.iso.v1.ExtractIsoRequest\x1a0.cloudstack.management.iso.v1.ExtractIsoResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x99\x01\n" +
+	"\x15GetUploadParamsForIso\x12:.cloudstack.management.iso.v1.GetUploadParamsForIsoRequest\x1a;.cloudstack.management.iso.v1.GetUploadParamsForIsoResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x91\x01\n" +
+	"\x12ListIsoPermissions\x127.cloudstack.management.iso.v1.ListIsoPermissionsRequest\x1a8.cloudstack.management.iso.v1.ListIsoPermissionsResponse\"\b\xc2>\x05\xc2>\x02\x01\x02\x12\xae\x01\n" +
+	"\x1cListIsoPermissionsCmdByAdmin\x12A.cloudstack.management.iso.v1.ListIsoPermissionsCmdByAdminRequest\x1aB.cloudstack.management.iso.v1.ListIsoPermissionsCmdByAdminResponse\"\a\xc2>\x04\xc2>\x01\x02\x12s\n" +
+	"\bListIsos\x12-.cloudstack.management.iso.v1.ListIsosRequest\x1a..cloudstack.management.iso.v1.ListIsosResponse\"\b\xc2>\x05\xc2>\x02\x01\x02\x12\x90\x01\n" +
+	"\x12ListIsosCmdByAdmin\x127.cloudstack.management.iso.v1.ListIsosCmdByAdminRequest\x1a8.cloudstack.management.iso.v1.ListIsosCmdByAdminResponse\"\a\xc2>\x04\xc2>\x01\x02\x12|\n" +
+	"\vRegisterIso\x120.cloudstack.management.iso.v1.RegisterIsoRequest\x1a1.cloudstack.management.iso.v1.RegisterIsoResponse\"\b\xc2>\x05\xc2>\x02\x01\x02\x12\x99\x01\n" +
+	"\x15RegisterIsoCmdByAdmin\x12:.cloudstack.management.iso.v1.RegisterIsoCmdByAdminRequest\x1a;.cloudstack.management.iso.v1.RegisterIsoCmdByAdminResponse\"\a\xc2>\x04\xc2>\x01\x02\x12v\n" +
+	"\tUpdateIso\x12..cloudstack.management.iso.v1.UpdateIsoRequest\x1a/.cloudstack.management.iso.v1.UpdateIsoResponse\"\b\xc2>\x05\xc2>\x02\x01\x02\x12\x93\x01\n" +
+	"\x13UpdateIsoCmdByAdmin\x128.cloudstack.management.iso.v1.UpdateIsoCmdByAdminRequest\x1a9.cloudstack.management.iso.v1.UpdateIsoCmdByAdminResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x96\x01\n" +
+	"\x14UpdateIsoPermissions\x129.cloudstack.management.iso.v1.UpdateIsoPermissionsRequest\x1a:.cloudstack.management.iso.v1.UpdateIsoPermissionsResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\a\xc2>\x04\xc2>\x01\x02B\x9a\x02\n" +
 	" com.cloudstack.management.iso.v1B\vIsoGenProtoP\x01ZVgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/iso/v1;isov1\xa2\x02\x03CMI\xaa\x02\x1cCloudstack.Management.Iso.V1\xca\x02\x1cCloudstack\\Management\\Iso\\V1\xe2\x02(Cloudstack\\Management\\Iso\\V1\\GPBMetadata\xea\x02\x1fCloudstack::Management::Iso::V1b\beditionsp\xe8\a"
 
 var (
@@ -3721,110 +3987,117 @@ func file_cloudstack_management_iso_v1_iso_gen_proto_rawDescGZIP() []byte {
 	return file_cloudstack_management_iso_v1_iso_gen_proto_rawDescData
 }
 
-var file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 42)
+var file_cloudstack_management_iso_v1_iso_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 44)
 var file_cloudstack_management_iso_v1_iso_gen_proto_goTypes = []any{
-	(*GetUploadParamsForIsoRequest)(nil),         // 0: cloudstack.management.iso.v1.GetUploadParamsForIsoRequest
-	(*GetUploadParamsForIsoResponse)(nil),        // 1: cloudstack.management.iso.v1.GetUploadParamsForIsoResponse
-	(*DetachIsoCmdByAdminRequest)(nil),           // 2: cloudstack.management.iso.v1.DetachIsoCmdByAdminRequest
-	(*DetachIsoCmdByAdminResponse)(nil),          // 3: cloudstack.management.iso.v1.DetachIsoCmdByAdminResponse
-	(*UpdateIsoCmdByAdminRequest)(nil),           // 4: cloudstack.management.iso.v1.UpdateIsoCmdByAdminRequest
-	(*UpdateIsoCmdByAdminResponse)(nil),          // 5: cloudstack.management.iso.v1.UpdateIsoCmdByAdminResponse
-	(*AttachIsoRequest)(nil),                     // 6: cloudstack.management.iso.v1.AttachIsoRequest
-	(*AttachIsoResponse)(nil),                    // 7: cloudstack.management.iso.v1.AttachIsoResponse
-	(*ListIsosCmdByAdminRequest)(nil),            // 8: cloudstack.management.iso.v1.ListIsosCmdByAdminRequest
-	(*ListIsosCmdByAdminResponse)(nil),           // 9: cloudstack.management.iso.v1.ListIsosCmdByAdminResponse
-	(*ListIsosRequest)(nil),                      // 10: cloudstack.management.iso.v1.ListIsosRequest
-	(*ListIsosResponse)(nil),                     // 11: cloudstack.management.iso.v1.ListIsosResponse
-	(*RegisterIsoRequest)(nil),                   // 12: cloudstack.management.iso.v1.RegisterIsoRequest
-	(*RegisterIsoResponse)(nil),                  // 13: cloudstack.management.iso.v1.RegisterIsoResponse
-	(*UpdateIsoRequest)(nil),                     // 14: cloudstack.management.iso.v1.UpdateIsoRequest
-	(*UpdateIsoResponse)(nil),                    // 15: cloudstack.management.iso.v1.UpdateIsoResponse
-	(*ExtractIsoRequest)(nil),                    // 16: cloudstack.management.iso.v1.ExtractIsoRequest
-	(*ExtractIsoResponse)(nil),                   // 17: cloudstack.management.iso.v1.ExtractIsoResponse
-	(*DetachIsoRequest)(nil),                     // 18: cloudstack.management.iso.v1.DetachIsoRequest
-	(*DetachIsoResponse)(nil),                    // 19: cloudstack.management.iso.v1.DetachIsoResponse
-	(*DeleteIsoRequest)(nil),                     // 20: cloudstack.management.iso.v1.DeleteIsoRequest
-	(*DeleteIsoResponse)(nil),                    // 21: cloudstack.management.iso.v1.DeleteIsoResponse
-	(*ListIsoPermissionsCmdByAdminRequest)(nil),  // 22: cloudstack.management.iso.v1.ListIsoPermissionsCmdByAdminRequest
-	(*ListIsoPermissionsCmdByAdminResponse)(nil), // 23: cloudstack.management.iso.v1.ListIsoPermissionsCmdByAdminResponse
-	(*CopyIsoCmdByAdminRequest)(nil),             // 24: cloudstack.management.iso.v1.CopyIsoCmdByAdminRequest
-	(*CopyIsoCmdByAdminResponse)(nil),            // 25: cloudstack.management.iso.v1.CopyIsoCmdByAdminResponse
-	(*ListIsoPermissionsRequest)(nil),            // 26: cloudstack.management.iso.v1.ListIsoPermissionsRequest
-	(*ListIsoPermissionsResponse)(nil),           // 27: cloudstack.management.iso.v1.ListIsoPermissionsResponse
-	(*UpdateIsoPermissionsRequest)(nil),          // 28: cloudstack.management.iso.v1.UpdateIsoPermissionsRequest
-	(*UpdateIsoPermissionsResponse)(nil),         // 29: cloudstack.management.iso.v1.UpdateIsoPermissionsResponse
-	(*CopyIsoRequest)(nil),                       // 30: cloudstack.management.iso.v1.CopyIsoRequest
-	(*CopyIsoResponse)(nil),                      // 31: cloudstack.management.iso.v1.CopyIsoResponse
-	(*Template)(nil),                             // 32: cloudstack.management.iso.v1.Template
-	(*TemplatePermissions)(nil),                  // 33: cloudstack.management.iso.v1.TemplatePermissions
-	(*Success)(nil),                              // 34: cloudstack.management.iso.v1.Success
-	(*Item)(nil),                                 // 35: cloudstack.management.iso.v1.Item
-	(*Result)(nil),                               // 36: cloudstack.management.iso.v1.Result
-	nil,                                          // 37: cloudstack.management.iso.v1.UpdateIsoCmdByAdminRequest.DetailsEntry
-	nil,                                          // 38: cloudstack.management.iso.v1.ListIsosCmdByAdminRequest.TagsEntry
-	nil,                                          // 39: cloudstack.management.iso.v1.ListIsosRequest.TagsEntry
-	nil,                                          // 40: cloudstack.management.iso.v1.UpdateIsoRequest.DetailsEntry
-	nil,                                          // 41: cloudstack.management.iso.v1.Item.DetailsEntry
+	(*AttachIsoRequest)(nil),                     // 0: cloudstack.management.iso.v1.AttachIsoRequest
+	(*AttachIsoResponse)(nil),                    // 1: cloudstack.management.iso.v1.AttachIsoResponse
+	(*AttachIsoCmdByAdminRequest)(nil),           // 2: cloudstack.management.iso.v1.AttachIsoCmdByAdminRequest
+	(*AttachIsoCmdByAdminResponse)(nil),          // 3: cloudstack.management.iso.v1.AttachIsoCmdByAdminResponse
+	(*CopyIsoRequest)(nil),                       // 4: cloudstack.management.iso.v1.CopyIsoRequest
+	(*CopyIsoResponse)(nil),                      // 5: cloudstack.management.iso.v1.CopyIsoResponse
+	(*CopyIsoCmdByAdminRequest)(nil),             // 6: cloudstack.management.iso.v1.CopyIsoCmdByAdminRequest
+	(*CopyIsoCmdByAdminResponse)(nil),            // 7: cloudstack.management.iso.v1.CopyIsoCmdByAdminResponse
+	(*DeleteIsoRequest)(nil),                     // 8: cloudstack.management.iso.v1.DeleteIsoRequest
+	(*DeleteIsoResponse)(nil),                    // 9: cloudstack.management.iso.v1.DeleteIsoResponse
+	(*DetachIsoRequest)(nil),                     // 10: cloudstack.management.iso.v1.DetachIsoRequest
+	(*DetachIsoResponse)(nil),                    // 11: cloudstack.management.iso.v1.DetachIsoResponse
+	(*DetachIsoCmdByAdminRequest)(nil),           // 12: cloudstack.management.iso.v1.DetachIsoCmdByAdminRequest
+	(*DetachIsoCmdByAdminResponse)(nil),          // 13: cloudstack.management.iso.v1.DetachIsoCmdByAdminResponse
+	(*ExtractIsoRequest)(nil),                    // 14: cloudstack.management.iso.v1.ExtractIsoRequest
+	(*ExtractIsoResponse)(nil),                   // 15: cloudstack.management.iso.v1.ExtractIsoResponse
+	(*GetUploadParamsForIsoRequest)(nil),         // 16: cloudstack.management.iso.v1.GetUploadParamsForIsoRequest
+	(*GetUploadParamsForIsoResponse)(nil),        // 17: cloudstack.management.iso.v1.GetUploadParamsForIsoResponse
+	(*ListIsoPermissionsRequest)(nil),            // 18: cloudstack.management.iso.v1.ListIsoPermissionsRequest
+	(*ListIsoPermissionsResponse)(nil),           // 19: cloudstack.management.iso.v1.ListIsoPermissionsResponse
+	(*ListIsoPermissionsCmdByAdminRequest)(nil),  // 20: cloudstack.management.iso.v1.ListIsoPermissionsCmdByAdminRequest
+	(*ListIsoPermissionsCmdByAdminResponse)(nil), // 21: cloudstack.management.iso.v1.ListIsoPermissionsCmdByAdminResponse
+	(*ListIsosRequest)(nil),                      // 22: cloudstack.management.iso.v1.ListIsosRequest
+	(*ListIsosResponse)(nil),                     // 23: cloudstack.management.iso.v1.ListIsosResponse
+	(*ListIsosCmdByAdminRequest)(nil),            // 24: cloudstack.management.iso.v1.ListIsosCmdByAdminRequest
+	(*ListIsosCmdByAdminResponse)(nil),           // 25: cloudstack.management.iso.v1.ListIsosCmdByAdminResponse
+	(*RegisterIsoRequest)(nil),                   // 26: cloudstack.management.iso.v1.RegisterIsoRequest
+	(*RegisterIsoResponse)(nil),                  // 27: cloudstack.management.iso.v1.RegisterIsoResponse
+	(*RegisterIsoCmdByAdminRequest)(nil),         // 28: cloudstack.management.iso.v1.RegisterIsoCmdByAdminRequest
+	(*RegisterIsoCmdByAdminResponse)(nil),        // 29: cloudstack.management.iso.v1.RegisterIsoCmdByAdminResponse
+	(*UpdateIsoRequest)(nil),                     // 30: cloudstack.management.iso.v1.UpdateIsoRequest
+	(*UpdateIsoResponse)(nil),                    // 31: cloudstack.management.iso.v1.UpdateIsoResponse
+	(*UpdateIsoCmdByAdminRequest)(nil),           // 32: cloudstack.management.iso.v1.UpdateIsoCmdByAdminRequest
+	(*UpdateIsoCmdByAdminResponse)(nil),          // 33: cloudstack.management.iso.v1.UpdateIsoCmdByAdminResponse
+	(*UpdateIsoPermissionsRequest)(nil),          // 34: cloudstack.management.iso.v1.UpdateIsoPermissionsRequest
+	(*UpdateIsoPermissionsResponse)(nil),         // 35: cloudstack.management.iso.v1.UpdateIsoPermissionsResponse
+	(*Template)(nil),                             // 36: cloudstack.management.iso.v1.Template
+	(*TemplatePermissions)(nil),                  // 37: cloudstack.management.iso.v1.TemplatePermissions
+	(*Success)(nil),                              // 38: cloudstack.management.iso.v1.Success
+	(*Result)(nil),                               // 39: cloudstack.management.iso.v1.Result
+	nil,                                          // 40: cloudstack.management.iso.v1.ListIsosRequest.TagsEntry
+	nil,                                          // 41: cloudstack.management.iso.v1.ListIsosCmdByAdminRequest.TagsEntry
+	nil,                                          // 42: cloudstack.management.iso.v1.UpdateIsoRequest.DetailsEntry
+	nil,                                          // 43: cloudstack.management.iso.v1.UpdateIsoCmdByAdminRequest.DetailsEntry
 }
 var file_cloudstack_management_iso_v1_iso_gen_proto_depIdxs = []int32{
-	36, // 0: cloudstack.management.iso.v1.GetUploadParamsForIsoResponse.result:type_name -> cloudstack.management.iso.v1.Result
-	36, // 1: cloudstack.management.iso.v1.DetachIsoCmdByAdminResponse.result:type_name -> cloudstack.management.iso.v1.Result
-	37, // 2: cloudstack.management.iso.v1.UpdateIsoCmdByAdminRequest.details:type_name -> cloudstack.management.iso.v1.UpdateIsoCmdByAdminRequest.DetailsEntry
-	36, // 3: cloudstack.management.iso.v1.UpdateIsoCmdByAdminResponse.result:type_name -> cloudstack.management.iso.v1.Result
-	36, // 4: cloudstack.management.iso.v1.AttachIsoResponse.result:type_name -> cloudstack.management.iso.v1.Result
-	38, // 5: cloudstack.management.iso.v1.ListIsosCmdByAdminRequest.tags:type_name -> cloudstack.management.iso.v1.ListIsosCmdByAdminRequest.TagsEntry
-	32, // 6: cloudstack.management.iso.v1.ListIsosCmdByAdminResponse.items:type_name -> cloudstack.management.iso.v1.Template
-	39, // 7: cloudstack.management.iso.v1.ListIsosRequest.tags:type_name -> cloudstack.management.iso.v1.ListIsosRequest.TagsEntry
-	32, // 8: cloudstack.management.iso.v1.ListIsosResponse.items:type_name -> cloudstack.management.iso.v1.Template
-	36, // 9: cloudstack.management.iso.v1.RegisterIsoResponse.result:type_name -> cloudstack.management.iso.v1.Result
-	40, // 10: cloudstack.management.iso.v1.UpdateIsoRequest.details:type_name -> cloudstack.management.iso.v1.UpdateIsoRequest.DetailsEntry
-	36, // 11: cloudstack.management.iso.v1.UpdateIsoResponse.result:type_name -> cloudstack.management.iso.v1.Result
-	36, // 12: cloudstack.management.iso.v1.ExtractIsoResponse.result:type_name -> cloudstack.management.iso.v1.Result
-	36, // 13: cloudstack.management.iso.v1.DetachIsoResponse.result:type_name -> cloudstack.management.iso.v1.Result
-	36, // 14: cloudstack.management.iso.v1.DeleteIsoResponse.result:type_name -> cloudstack.management.iso.v1.Result
-	33, // 15: cloudstack.management.iso.v1.ListIsoPermissionsCmdByAdminResponse.items:type_name -> cloudstack.management.iso.v1.TemplatePermissions
-	36, // 16: cloudstack.management.iso.v1.CopyIsoCmdByAdminResponse.result:type_name -> cloudstack.management.iso.v1.Result
-	33, // 17: cloudstack.management.iso.v1.ListIsoPermissionsResponse.items:type_name -> cloudstack.management.iso.v1.TemplatePermissions
-	36, // 18: cloudstack.management.iso.v1.UpdateIsoPermissionsResponse.result:type_name -> cloudstack.management.iso.v1.Result
-	36, // 19: cloudstack.management.iso.v1.CopyIsoResponse.result:type_name -> cloudstack.management.iso.v1.Result
-	41, // 20: cloudstack.management.iso.v1.Item.details:type_name -> cloudstack.management.iso.v1.Item.DetailsEntry
-	0,  // 21: cloudstack.management.iso.v1.IsoService.GetUploadParamsForIso:input_type -> cloudstack.management.iso.v1.GetUploadParamsForIsoRequest
-	2,  // 22: cloudstack.management.iso.v1.IsoService.DetachIsoCmdByAdmin:input_type -> cloudstack.management.iso.v1.DetachIsoCmdByAdminRequest
-	4,  // 23: cloudstack.management.iso.v1.IsoService.UpdateIsoCmdByAdmin:input_type -> cloudstack.management.iso.v1.UpdateIsoCmdByAdminRequest
-	6,  // 24: cloudstack.management.iso.v1.IsoService.AttachIso:input_type -> cloudstack.management.iso.v1.AttachIsoRequest
-	8,  // 25: cloudstack.management.iso.v1.IsoService.ListIsosCmdByAdmin:input_type -> cloudstack.management.iso.v1.ListIsosCmdByAdminRequest
-	10, // 26: cloudstack.management.iso.v1.IsoService.ListIsos:input_type -> cloudstack.management.iso.v1.ListIsosRequest
-	12, // 27: cloudstack.management.iso.v1.IsoService.RegisterIso:input_type -> cloudstack.management.iso.v1.RegisterIsoRequest
-	14, // 28: cloudstack.management.iso.v1.IsoService.UpdateIso:input_type -> cloudstack.management.iso.v1.UpdateIsoRequest
-	16, // 29: cloudstack.management.iso.v1.IsoService.ExtractIso:input_type -> cloudstack.management.iso.v1.ExtractIsoRequest
-	18, // 30: cloudstack.management.iso.v1.IsoService.DetachIso:input_type -> cloudstack.management.iso.v1.DetachIsoRequest
-	20, // 31: cloudstack.management.iso.v1.IsoService.DeleteIso:input_type -> cloudstack.management.iso.v1.DeleteIsoRequest
-	22, // 32: cloudstack.management.iso.v1.IsoService.ListIsoPermissionsCmdByAdmin:input_type -> cloudstack.management.iso.v1.ListIsoPermissionsCmdByAdminRequest
-	24, // 33: cloudstack.management.iso.v1.IsoService.CopyIsoCmdByAdmin:input_type -> cloudstack.management.iso.v1.CopyIsoCmdByAdminRequest
-	26, // 34: cloudstack.management.iso.v1.IsoService.ListIsoPermissions:input_type -> cloudstack.management.iso.v1.ListIsoPermissionsRequest
-	28, // 35: cloudstack.management.iso.v1.IsoService.UpdateIsoPermissions:input_type -> cloudstack.management.iso.v1.UpdateIsoPermissionsRequest
-	30, // 36: cloudstack.management.iso.v1.IsoService.CopyIso:input_type -> cloudstack.management.iso.v1.CopyIsoRequest
-	1,  // 37: cloudstack.management.iso.v1.IsoService.GetUploadParamsForIso:output_type -> cloudstack.management.iso.v1.GetUploadParamsForIsoResponse
-	3,  // 38: cloudstack.management.iso.v1.IsoService.DetachIsoCmdByAdmin:output_type -> cloudstack.management.iso.v1.DetachIsoCmdByAdminResponse
-	5,  // 39: cloudstack.management.iso.v1.IsoService.UpdateIsoCmdByAdmin:output_type -> cloudstack.management.iso.v1.UpdateIsoCmdByAdminResponse
-	7,  // 40: cloudstack.management.iso.v1.IsoService.AttachIso:output_type -> cloudstack.management.iso.v1.AttachIsoResponse
-	9,  // 41: cloudstack.management.iso.v1.IsoService.ListIsosCmdByAdmin:output_type -> cloudstack.management.iso.v1.ListIsosCmdByAdminResponse
-	11, // 42: cloudstack.management.iso.v1.IsoService.ListIsos:output_type -> cloudstack.management.iso.v1.ListIsosResponse
-	13, // 43: cloudstack.management.iso.v1.IsoService.RegisterIso:output_type -> cloudstack.management.iso.v1.RegisterIsoResponse
-	15, // 44: cloudstack.management.iso.v1.IsoService.UpdateIso:output_type -> cloudstack.management.iso.v1.UpdateIsoResponse
-	17, // 45: cloudstack.management.iso.v1.IsoService.ExtractIso:output_type -> cloudstack.management.iso.v1.ExtractIsoResponse
-	19, // 46: cloudstack.management.iso.v1.IsoService.DetachIso:output_type -> cloudstack.management.iso.v1.DetachIsoResponse
-	21, // 47: cloudstack.management.iso.v1.IsoService.DeleteIso:output_type -> cloudstack.management.iso.v1.DeleteIsoResponse
-	23, // 48: cloudstack.management.iso.v1.IsoService.ListIsoPermissionsCmdByAdmin:output_type -> cloudstack.management.iso.v1.ListIsoPermissionsCmdByAdminResponse
-	25, // 49: cloudstack.management.iso.v1.IsoService.CopyIsoCmdByAdmin:output_type -> cloudstack.management.iso.v1.CopyIsoCmdByAdminResponse
-	27, // 50: cloudstack.management.iso.v1.IsoService.ListIsoPermissions:output_type -> cloudstack.management.iso.v1.ListIsoPermissionsResponse
-	29, // 51: cloudstack.management.iso.v1.IsoService.UpdateIsoPermissions:output_type -> cloudstack.management.iso.v1.UpdateIsoPermissionsResponse
-	31, // 52: cloudstack.management.iso.v1.IsoService.CopyIso:output_type -> cloudstack.management.iso.v1.CopyIsoResponse
-	37, // [37:53] is the sub-list for method output_type
-	21, // [21:37] is the sub-list for method input_type
-	21, // [21:21] is the sub-list for extension type_name
-	21, // [21:21] is the sub-list for extension extendee
-	0,  // [0:21] is the sub-list for field type_name
+	39, // 0: cloudstack.management.iso.v1.AttachIsoResponse.result:type_name -> cloudstack.management.iso.v1.Result
+	39, // 1: cloudstack.management.iso.v1.AttachIsoCmdByAdminResponse.result:type_name -> cloudstack.management.iso.v1.Result
+	39, // 2: cloudstack.management.iso.v1.CopyIsoResponse.result:type_name -> cloudstack.management.iso.v1.Result
+	39, // 3: cloudstack.management.iso.v1.CopyIsoCmdByAdminResponse.result:type_name -> cloudstack.management.iso.v1.Result
+	39, // 4: cloudstack.management.iso.v1.DeleteIsoResponse.result:type_name -> cloudstack.management.iso.v1.Result
+	39, // 5: cloudstack.management.iso.v1.DetachIsoResponse.result:type_name -> cloudstack.management.iso.v1.Result
+	39, // 6: cloudstack.management.iso.v1.DetachIsoCmdByAdminResponse.result:type_name -> cloudstack.management.iso.v1.Result
+	39, // 7: cloudstack.management.iso.v1.ExtractIsoResponse.result:type_name -> cloudstack.management.iso.v1.Result
+	39, // 8: cloudstack.management.iso.v1.GetUploadParamsForIsoResponse.result:type_name -> cloudstack.management.iso.v1.Result
+	37, // 9: cloudstack.management.iso.v1.ListIsoPermissionsResponse.items:type_name -> cloudstack.management.iso.v1.TemplatePermissions
+	37, // 10: cloudstack.management.iso.v1.ListIsoPermissionsCmdByAdminResponse.items:type_name -> cloudstack.management.iso.v1.TemplatePermissions
+	40, // 11: cloudstack.management.iso.v1.ListIsosRequest.tags:type_name -> cloudstack.management.iso.v1.ListIsosRequest.TagsEntry
+	36, // 12: cloudstack.management.iso.v1.ListIsosResponse.items:type_name -> cloudstack.management.iso.v1.Template
+	41, // 13: cloudstack.management.iso.v1.ListIsosCmdByAdminRequest.tags:type_name -> cloudstack.management.iso.v1.ListIsosCmdByAdminRequest.TagsEntry
+	36, // 14: cloudstack.management.iso.v1.ListIsosCmdByAdminResponse.items:type_name -> cloudstack.management.iso.v1.Template
+	39, // 15: cloudstack.management.iso.v1.RegisterIsoResponse.result:type_name -> cloudstack.management.iso.v1.Result
+	39, // 16: cloudstack.management.iso.v1.RegisterIsoCmdByAdminResponse.result:type_name -> cloudstack.management.iso.v1.Result
+	42, // 17: cloudstack.management.iso.v1.UpdateIsoRequest.details:type_name -> cloudstack.management.iso.v1.UpdateIsoRequest.DetailsEntry
+	39, // 18: cloudstack.management.iso.v1.UpdateIsoResponse.result:type_name -> cloudstack.management.iso.v1.Result
+	43, // 19: cloudstack.management.iso.v1.UpdateIsoCmdByAdminRequest.details:type_name -> cloudstack.management.iso.v1.UpdateIsoCmdByAdminRequest.DetailsEntry
+	39, // 20: cloudstack.management.iso.v1.UpdateIsoCmdByAdminResponse.result:type_name -> cloudstack.management.iso.v1.Result
+	39, // 21: cloudstack.management.iso.v1.UpdateIsoPermissionsResponse.result:type_name -> cloudstack.management.iso.v1.Result
+	0,  // 22: cloudstack.management.iso.v1.IsoService.AttachIso:input_type -> cloudstack.management.iso.v1.AttachIsoRequest
+	2,  // 23: cloudstack.management.iso.v1.IsoService.AttachIsoCmdByAdmin:input_type -> cloudstack.management.iso.v1.AttachIsoCmdByAdminRequest
+	4,  // 24: cloudstack.management.iso.v1.IsoService.CopyIso:input_type -> cloudstack.management.iso.v1.CopyIsoRequest
+	6,  // 25: cloudstack.management.iso.v1.IsoService.CopyIsoCmdByAdmin:input_type -> cloudstack.management.iso.v1.CopyIsoCmdByAdminRequest
+	8,  // 26: cloudstack.management.iso.v1.IsoService.DeleteIso:input_type -> cloudstack.management.iso.v1.DeleteIsoRequest
+	10, // 27: cloudstack.management.iso.v1.IsoService.DetachIso:input_type -> cloudstack.management.iso.v1.DetachIsoRequest
+	12, // 28: cloudstack.management.iso.v1.IsoService.DetachIsoCmdByAdmin:input_type -> cloudstack.management.iso.v1.DetachIsoCmdByAdminRequest
+	14, // 29: cloudstack.management.iso.v1.IsoService.ExtractIso:input_type -> cloudstack.management.iso.v1.ExtractIsoRequest
+	16, // 30: cloudstack.management.iso.v1.IsoService.GetUploadParamsForIso:input_type -> cloudstack.management.iso.v1.GetUploadParamsForIsoRequest
+	18, // 31: cloudstack.management.iso.v1.IsoService.ListIsoPermissions:input_type -> cloudstack.management.iso.v1.ListIsoPermissionsRequest
+	20, // 32: cloudstack.management.iso.v1.IsoService.ListIsoPermissionsCmdByAdmin:input_type -> cloudstack.management.iso.v1.ListIsoPermissionsCmdByAdminRequest
+	22, // 33: cloudstack.management.iso.v1.IsoService.ListIsos:input_type -> cloudstack.management.iso.v1.ListIsosRequest
+	24, // 34: cloudstack.management.iso.v1.IsoService.ListIsosCmdByAdmin:input_type -> cloudstack.management.iso.v1.ListIsosCmdByAdminRequest
+	26, // 35: cloudstack.management.iso.v1.IsoService.RegisterIso:input_type -> cloudstack.management.iso.v1.RegisterIsoRequest
+	28, // 36: cloudstack.management.iso.v1.IsoService.RegisterIsoCmdByAdmin:input_type -> cloudstack.management.iso.v1.RegisterIsoCmdByAdminRequest
+	30, // 37: cloudstack.management.iso.v1.IsoService.UpdateIso:input_type -> cloudstack.management.iso.v1.UpdateIsoRequest
+	32, // 38: cloudstack.management.iso.v1.IsoService.UpdateIsoCmdByAdmin:input_type -> cloudstack.management.iso.v1.UpdateIsoCmdByAdminRequest
+	34, // 39: cloudstack.management.iso.v1.IsoService.UpdateIsoPermissions:input_type -> cloudstack.management.iso.v1.UpdateIsoPermissionsRequest
+	1,  // 40: cloudstack.management.iso.v1.IsoService.AttachIso:output_type -> cloudstack.management.iso.v1.AttachIsoResponse
+	3,  // 41: cloudstack.management.iso.v1.IsoService.AttachIsoCmdByAdmin:output_type -> cloudstack.management.iso.v1.AttachIsoCmdByAdminResponse
+	5,  // 42: cloudstack.management.iso.v1.IsoService.CopyIso:output_type -> cloudstack.management.iso.v1.CopyIsoResponse
+	7,  // 43: cloudstack.management.iso.v1.IsoService.CopyIsoCmdByAdmin:output_type -> cloudstack.management.iso.v1.CopyIsoCmdByAdminResponse
+	9,  // 44: cloudstack.management.iso.v1.IsoService.DeleteIso:output_type -> cloudstack.management.iso.v1.DeleteIsoResponse
+	11, // 45: cloudstack.management.iso.v1.IsoService.DetachIso:output_type -> cloudstack.management.iso.v1.DetachIsoResponse
+	13, // 46: cloudstack.management.iso.v1.IsoService.DetachIsoCmdByAdmin:output_type -> cloudstack.management.iso.v1.DetachIsoCmdByAdminResponse
+	15, // 47: cloudstack.management.iso.v1.IsoService.ExtractIso:output_type -> cloudstack.management.iso.v1.ExtractIsoResponse
+	17, // 48: cloudstack.management.iso.v1.IsoService.GetUploadParamsForIso:output_type -> cloudstack.management.iso.v1.GetUploadParamsForIsoResponse
+	19, // 49: cloudstack.management.iso.v1.IsoService.ListIsoPermissions:output_type -> cloudstack.management.iso.v1.ListIsoPermissionsResponse
+	21, // 50: cloudstack.management.iso.v1.IsoService.ListIsoPermissionsCmdByAdmin:output_type -> cloudstack.management.iso.v1.ListIsoPermissionsCmdByAdminResponse
+	23, // 51: cloudstack.management.iso.v1.IsoService.ListIsos:output_type -> cloudstack.management.iso.v1.ListIsosResponse
+	25, // 52: cloudstack.management.iso.v1.IsoService.ListIsosCmdByAdmin:output_type -> cloudstack.management.iso.v1.ListIsosCmdByAdminResponse
+	27, // 53: cloudstack.management.iso.v1.IsoService.RegisterIso:output_type -> cloudstack.management.iso.v1.RegisterIsoResponse
+	29, // 54: cloudstack.management.iso.v1.IsoService.RegisterIsoCmdByAdmin:output_type -> cloudstack.management.iso.v1.RegisterIsoCmdByAdminResponse
+	31, // 55: cloudstack.management.iso.v1.IsoService.UpdateIso:output_type -> cloudstack.management.iso.v1.UpdateIsoResponse
+	33, // 56: cloudstack.management.iso.v1.IsoService.UpdateIsoCmdByAdmin:output_type -> cloudstack.management.iso.v1.UpdateIsoCmdByAdminResponse
+	35, // 57: cloudstack.management.iso.v1.IsoService.UpdateIsoPermissions:output_type -> cloudstack.management.iso.v1.UpdateIsoPermissionsResponse
+	40, // [40:58] is the sub-list for method output_type
+	22, // [22:40] is the sub-list for method input_type
+	22, // [22:22] is the sub-list for extension type_name
+	22, // [22:22] is the sub-list for extension extendee
+	0,  // [0:22] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_iso_v1_iso_gen_proto_init() }
@@ -3838,7 +4111,7 @@ func file_cloudstack_management_iso_v1_iso_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_iso_v1_iso_gen_proto_rawDesc), len(file_cloudstack_management_iso_v1_iso_gen_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   42,
+			NumMessages:   44,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

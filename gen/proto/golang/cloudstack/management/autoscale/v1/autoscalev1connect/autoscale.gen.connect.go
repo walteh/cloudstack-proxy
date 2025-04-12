@@ -33,116 +33,116 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// AutoscaleServiceCreateConditionProcedure is the fully-qualified name of the AutoscaleService's
-	// CreateCondition RPC.
-	AutoscaleServiceCreateConditionProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/CreateCondition"
-	// AutoscaleServiceCreateAutoScaleVmGroupProcedure is the fully-qualified name of the
-	// AutoscaleService's CreateAutoScaleVmGroup RPC.
-	AutoscaleServiceCreateAutoScaleVmGroupProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/CreateAutoScaleVmGroup"
-	// AutoscaleServiceListAutoScalePoliciesProcedure is the fully-qualified name of the
-	// AutoscaleService's ListAutoScalePolicies RPC.
-	AutoscaleServiceListAutoScalePoliciesProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/ListAutoScalePolicies"
 	// AutoscaleServiceCreateAutoScalePolicyProcedure is the fully-qualified name of the
 	// AutoscaleService's CreateAutoScalePolicy RPC.
 	AutoscaleServiceCreateAutoScalePolicyProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/CreateAutoScalePolicy"
-	// AutoscaleServiceDeleteConditionProcedure is the fully-qualified name of the AutoscaleService's
-	// DeleteCondition RPC.
-	AutoscaleServiceDeleteConditionProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/DeleteCondition"
-	// AutoscaleServiceDeleteAutoScaleVmProfileProcedure is the fully-qualified name of the
-	// AutoscaleService's DeleteAutoScaleVmProfile RPC.
-	AutoscaleServiceDeleteAutoScaleVmProfileProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/DeleteAutoScaleVmProfile"
-	// AutoscaleServiceListAutoScaleVmProfilesProcedure is the fully-qualified name of the
-	// AutoscaleService's ListAutoScaleVmProfiles RPC.
-	AutoscaleServiceListAutoScaleVmProfilesProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/ListAutoScaleVmProfiles"
-	// AutoscaleServiceUpdateAutoScalePolicyProcedure is the fully-qualified name of the
-	// AutoscaleService's UpdateAutoScalePolicy RPC.
-	AutoscaleServiceUpdateAutoScalePolicyProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/UpdateAutoScalePolicy"
-	// AutoscaleServiceUpdateAutoScaleVmProfileProcedure is the fully-qualified name of the
-	// AutoscaleService's UpdateAutoScaleVmProfile RPC.
-	AutoscaleServiceUpdateAutoScaleVmProfileProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/UpdateAutoScaleVmProfile"
-	// AutoscaleServiceUpdateAutoScaleVmGroupProcedure is the fully-qualified name of the
-	// AutoscaleService's UpdateAutoScaleVmGroup RPC.
-	AutoscaleServiceUpdateAutoScaleVmGroupProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/UpdateAutoScaleVmGroup"
-	// AutoscaleServiceEnableAutoScaleVmGroupProcedure is the fully-qualified name of the
-	// AutoscaleService's EnableAutoScaleVmGroup RPC.
-	AutoscaleServiceEnableAutoScaleVmGroupProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/EnableAutoScaleVmGroup"
+	// AutoscaleServiceCreateAutoScaleVmGroupProcedure is the fully-qualified name of the
+	// AutoscaleService's CreateAutoScaleVmGroup RPC.
+	AutoscaleServiceCreateAutoScaleVmGroupProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/CreateAutoScaleVmGroup"
 	// AutoscaleServiceCreateAutoScaleVmProfileProcedure is the fully-qualified name of the
 	// AutoscaleService's CreateAutoScaleVmProfile RPC.
 	AutoscaleServiceCreateAutoScaleVmProfileProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/CreateAutoScaleVmProfile"
-	// AutoscaleServiceDisableAutoScaleVmGroupProcedure is the fully-qualified name of the
-	// AutoscaleService's DisableAutoScaleVmGroup RPC.
-	AutoscaleServiceDisableAutoScaleVmGroupProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/DisableAutoScaleVmGroup"
+	// AutoscaleServiceCreateConditionProcedure is the fully-qualified name of the AutoscaleService's
+	// CreateCondition RPC.
+	AutoscaleServiceCreateConditionProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/CreateCondition"
 	// AutoscaleServiceCreateCounterProcedure is the fully-qualified name of the AutoscaleService's
 	// CreateCounter RPC.
 	AutoscaleServiceCreateCounterProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/CreateCounter"
-	// AutoscaleServiceDeleteCounterProcedure is the fully-qualified name of the AutoscaleService's
-	// DeleteCounter RPC.
-	AutoscaleServiceDeleteCounterProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/DeleteCounter"
-	// AutoscaleServiceListConditionsProcedure is the fully-qualified name of the AutoscaleService's
-	// ListConditions RPC.
-	AutoscaleServiceListConditionsProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/ListConditions"
-	// AutoscaleServiceUpdateConditionProcedure is the fully-qualified name of the AutoscaleService's
-	// UpdateCondition RPC.
-	AutoscaleServiceUpdateConditionProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/UpdateCondition"
-	// AutoscaleServiceListCountersProcedure is the fully-qualified name of the AutoscaleService's
-	// ListCounters RPC.
-	AutoscaleServiceListCountersProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/ListCounters"
-	// AutoscaleServiceListAutoScaleVmGroupsProcedure is the fully-qualified name of the
-	// AutoscaleService's ListAutoScaleVmGroups RPC.
-	AutoscaleServiceListAutoScaleVmGroupsProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/ListAutoScaleVmGroups"
 	// AutoscaleServiceDeleteAutoScalePolicyProcedure is the fully-qualified name of the
 	// AutoscaleService's DeleteAutoScalePolicy RPC.
 	AutoscaleServiceDeleteAutoScalePolicyProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/DeleteAutoScalePolicy"
 	// AutoscaleServiceDeleteAutoScaleVmGroupProcedure is the fully-qualified name of the
 	// AutoscaleService's DeleteAutoScaleVmGroup RPC.
 	AutoscaleServiceDeleteAutoScaleVmGroupProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/DeleteAutoScaleVmGroup"
+	// AutoscaleServiceDeleteAutoScaleVmProfileProcedure is the fully-qualified name of the
+	// AutoscaleService's DeleteAutoScaleVmProfile RPC.
+	AutoscaleServiceDeleteAutoScaleVmProfileProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/DeleteAutoScaleVmProfile"
+	// AutoscaleServiceDeleteConditionProcedure is the fully-qualified name of the AutoscaleService's
+	// DeleteCondition RPC.
+	AutoscaleServiceDeleteConditionProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/DeleteCondition"
+	// AutoscaleServiceDeleteCounterProcedure is the fully-qualified name of the AutoscaleService's
+	// DeleteCounter RPC.
+	AutoscaleServiceDeleteCounterProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/DeleteCounter"
+	// AutoscaleServiceDisableAutoScaleVmGroupProcedure is the fully-qualified name of the
+	// AutoscaleService's DisableAutoScaleVmGroup RPC.
+	AutoscaleServiceDisableAutoScaleVmGroupProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/DisableAutoScaleVmGroup"
+	// AutoscaleServiceEnableAutoScaleVmGroupProcedure is the fully-qualified name of the
+	// AutoscaleService's EnableAutoScaleVmGroup RPC.
+	AutoscaleServiceEnableAutoScaleVmGroupProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/EnableAutoScaleVmGroup"
+	// AutoscaleServiceListAutoScalePoliciesProcedure is the fully-qualified name of the
+	// AutoscaleService's ListAutoScalePolicies RPC.
+	AutoscaleServiceListAutoScalePoliciesProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/ListAutoScalePolicies"
+	// AutoscaleServiceListAutoScaleVmGroupsProcedure is the fully-qualified name of the
+	// AutoscaleService's ListAutoScaleVmGroups RPC.
+	AutoscaleServiceListAutoScaleVmGroupsProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/ListAutoScaleVmGroups"
+	// AutoscaleServiceListAutoScaleVmProfilesProcedure is the fully-qualified name of the
+	// AutoscaleService's ListAutoScaleVmProfiles RPC.
+	AutoscaleServiceListAutoScaleVmProfilesProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/ListAutoScaleVmProfiles"
+	// AutoscaleServiceListConditionsProcedure is the fully-qualified name of the AutoscaleService's
+	// ListConditions RPC.
+	AutoscaleServiceListConditionsProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/ListConditions"
+	// AutoscaleServiceListCountersProcedure is the fully-qualified name of the AutoscaleService's
+	// ListCounters RPC.
+	AutoscaleServiceListCountersProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/ListCounters"
+	// AutoscaleServiceUpdateAutoScalePolicyProcedure is the fully-qualified name of the
+	// AutoscaleService's UpdateAutoScalePolicy RPC.
+	AutoscaleServiceUpdateAutoScalePolicyProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/UpdateAutoScalePolicy"
+	// AutoscaleServiceUpdateAutoScaleVmGroupProcedure is the fully-qualified name of the
+	// AutoscaleService's UpdateAutoScaleVmGroup RPC.
+	AutoscaleServiceUpdateAutoScaleVmGroupProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/UpdateAutoScaleVmGroup"
+	// AutoscaleServiceUpdateAutoScaleVmProfileProcedure is the fully-qualified name of the
+	// AutoscaleService's UpdateAutoScaleVmProfile RPC.
+	AutoscaleServiceUpdateAutoScaleVmProfileProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/UpdateAutoScaleVmProfile"
+	// AutoscaleServiceUpdateConditionProcedure is the fully-qualified name of the AutoscaleService's
+	// UpdateCondition RPC.
+	AutoscaleServiceUpdateConditionProcedure = "/cloudstack.management.autoscale.v1.AutoscaleService/UpdateCondition"
 )
 
 // AutoscaleServiceClient is a client for the cloudstack.management.autoscale.v1.AutoscaleService
 // service.
 type AutoscaleServiceClient interface {
-	// CreateCondition Creates a condition for VM auto scaling
-	CreateCondition(context.Context, *connect.Request[v1.CreateConditionRequest]) (*connect.Response[v1.CreateConditionResponse], error)
-	// CreateAutoScaleVmGroup Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
-	CreateAutoScaleVmGroup(context.Context, *connect.Request[v1.CreateAutoScaleVmGroupRequest]) (*connect.Response[v1.CreateAutoScaleVmGroupResponse], error)
-	// ListAutoScalePolicies Lists autoscale policies.
-	ListAutoScalePolicies(context.Context, *connect.Request[v1.ListAutoScalePoliciesRequest]) (*connect.Response[v1.ListAutoScalePoliciesResponse], error)
 	// CreateAutoScalePolicy Creates an autoscale policy for a provision or deprovision action, the action is taken when the all the conditions evaluates to true for the specified duration. The policy is in effect once it is attached to a autscale vm group.
 	CreateAutoScalePolicy(context.Context, *connect.Request[v1.CreateAutoScalePolicyRequest]) (*connect.Response[v1.CreateAutoScalePolicyResponse], error)
-	// DeleteCondition Removes a condition for VM auto scaling
-	DeleteCondition(context.Context, *connect.Request[v1.DeleteConditionRequest]) (*connect.Response[v1.DeleteConditionResponse], error)
-	// DeleteAutoScaleVmProfile Deletes a autoscale vm profile.
-	DeleteAutoScaleVmProfile(context.Context, *connect.Request[v1.DeleteAutoScaleVmProfileRequest]) (*connect.Response[v1.DeleteAutoScaleVmProfileResponse], error)
-	// ListAutoScaleVmProfiles Lists autoscale vm profiles.
-	ListAutoScaleVmProfiles(context.Context, *connect.Request[v1.ListAutoScaleVmProfilesRequest]) (*connect.Response[v1.ListAutoScaleVmProfilesResponse], error)
-	// UpdateAutoScalePolicy Updates an existing autoscale policy.
-	UpdateAutoScalePolicy(context.Context, *connect.Request[v1.UpdateAutoScalePolicyRequest]) (*connect.Response[v1.UpdateAutoScalePolicyResponse], error)
-	// UpdateAutoScaleVmProfile Updates an existing autoscale vm profile.
-	UpdateAutoScaleVmProfile(context.Context, *connect.Request[v1.UpdateAutoScaleVmProfileRequest]) (*connect.Response[v1.UpdateAutoScaleVmProfileResponse], error)
-	// UpdateAutoScaleVmGroup Updates an existing autoscale vm group.
-	UpdateAutoScaleVmGroup(context.Context, *connect.Request[v1.UpdateAutoScaleVmGroupRequest]) (*connect.Response[v1.UpdateAutoScaleVmGroupResponse], error)
-	// EnableAutoScaleVmGroup Enables an AutoScale Vm Group
-	EnableAutoScaleVmGroup(context.Context, *connect.Request[v1.EnableAutoScaleVmGroupRequest]) (*connect.Response[v1.EnableAutoScaleVmGroupResponse], error)
+	// CreateAutoScaleVmGroup Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
+	CreateAutoScaleVmGroup(context.Context, *connect.Request[v1.CreateAutoScaleVmGroupRequest]) (*connect.Response[v1.CreateAutoScaleVmGroupResponse], error)
 	// CreateAutoScaleVmProfile Creates a profile that contains information about the virtual machine which will be provisioned automatically by autoscale feature.
 	CreateAutoScaleVmProfile(context.Context, *connect.Request[v1.CreateAutoScaleVmProfileRequest]) (*connect.Response[v1.CreateAutoScaleVmProfileResponse], error)
-	// DisableAutoScaleVmGroup Disables an AutoScale Vm Group
-	DisableAutoScaleVmGroup(context.Context, *connect.Request[v1.DisableAutoScaleVmGroupRequest]) (*connect.Response[v1.DisableAutoScaleVmGroupResponse], error)
+	// CreateCondition Creates a condition for VM auto scaling
+	CreateCondition(context.Context, *connect.Request[v1.CreateConditionRequest]) (*connect.Response[v1.CreateConditionResponse], error)
 	// CreateCounter Adds metric counter for VM auto scaling
 	CreateCounter(context.Context, *connect.Request[v1.CreateCounterRequest]) (*connect.Response[v1.CreateCounterResponse], error)
-	// DeleteCounter Deletes a counter for VM auto scaling
-	DeleteCounter(context.Context, *connect.Request[v1.DeleteCounterRequest]) (*connect.Response[v1.DeleteCounterResponse], error)
-	// ListConditions List Conditions for VM auto scaling
-	ListConditions(context.Context, *connect.Request[v1.ListConditionsRequest]) (*connect.Response[v1.ListConditionsResponse], error)
-	// UpdateCondition Updates a condition for VM auto scaling
-	UpdateCondition(context.Context, *connect.Request[v1.UpdateConditionRequest]) (*connect.Response[v1.UpdateConditionResponse], error)
-	// ListCounters List the counters for VM auto scaling
-	ListCounters(context.Context, *connect.Request[v1.ListCountersRequest]) (*connect.Response[v1.ListCountersResponse], error)
-	// ListAutoScaleVmGroups Lists autoscale vm groups.
-	ListAutoScaleVmGroups(context.Context, *connect.Request[v1.ListAutoScaleVmGroupsRequest]) (*connect.Response[v1.ListAutoScaleVmGroupsResponse], error)
 	// DeleteAutoScalePolicy Deletes a autoscale policy.
 	DeleteAutoScalePolicy(context.Context, *connect.Request[v1.DeleteAutoScalePolicyRequest]) (*connect.Response[v1.DeleteAutoScalePolicyResponse], error)
 	// DeleteAutoScaleVmGroup Deletes a autoscale vm group.
 	DeleteAutoScaleVmGroup(context.Context, *connect.Request[v1.DeleteAutoScaleVmGroupRequest]) (*connect.Response[v1.DeleteAutoScaleVmGroupResponse], error)
+	// DeleteAutoScaleVmProfile Deletes a autoscale vm profile.
+	DeleteAutoScaleVmProfile(context.Context, *connect.Request[v1.DeleteAutoScaleVmProfileRequest]) (*connect.Response[v1.DeleteAutoScaleVmProfileResponse], error)
+	// DeleteCondition Removes a condition for VM auto scaling
+	DeleteCondition(context.Context, *connect.Request[v1.DeleteConditionRequest]) (*connect.Response[v1.DeleteConditionResponse], error)
+	// DeleteCounter Deletes a counter for VM auto scaling
+	DeleteCounter(context.Context, *connect.Request[v1.DeleteCounterRequest]) (*connect.Response[v1.DeleteCounterResponse], error)
+	// DisableAutoScaleVmGroup Disables an AutoScale Vm Group
+	DisableAutoScaleVmGroup(context.Context, *connect.Request[v1.DisableAutoScaleVmGroupRequest]) (*connect.Response[v1.DisableAutoScaleVmGroupResponse], error)
+	// EnableAutoScaleVmGroup Enables an AutoScale Vm Group
+	EnableAutoScaleVmGroup(context.Context, *connect.Request[v1.EnableAutoScaleVmGroupRequest]) (*connect.Response[v1.EnableAutoScaleVmGroupResponse], error)
+	// ListAutoScalePolicies Lists autoscale policies.
+	ListAutoScalePolicies(context.Context, *connect.Request[v1.ListAutoScalePoliciesRequest]) (*connect.Response[v1.ListAutoScalePoliciesResponse], error)
+	// ListAutoScaleVmGroups Lists autoscale vm groups.
+	ListAutoScaleVmGroups(context.Context, *connect.Request[v1.ListAutoScaleVmGroupsRequest]) (*connect.Response[v1.ListAutoScaleVmGroupsResponse], error)
+	// ListAutoScaleVmProfiles Lists autoscale vm profiles.
+	ListAutoScaleVmProfiles(context.Context, *connect.Request[v1.ListAutoScaleVmProfilesRequest]) (*connect.Response[v1.ListAutoScaleVmProfilesResponse], error)
+	// ListConditions List Conditions for VM auto scaling
+	ListConditions(context.Context, *connect.Request[v1.ListConditionsRequest]) (*connect.Response[v1.ListConditionsResponse], error)
+	// ListCounters List the counters for VM auto scaling
+	ListCounters(context.Context, *connect.Request[v1.ListCountersRequest]) (*connect.Response[v1.ListCountersResponse], error)
+	// UpdateAutoScalePolicy Updates an existing autoscale policy.
+	UpdateAutoScalePolicy(context.Context, *connect.Request[v1.UpdateAutoScalePolicyRequest]) (*connect.Response[v1.UpdateAutoScalePolicyResponse], error)
+	// UpdateAutoScaleVmGroup Updates an existing autoscale vm group.
+	UpdateAutoScaleVmGroup(context.Context, *connect.Request[v1.UpdateAutoScaleVmGroupRequest]) (*connect.Response[v1.UpdateAutoScaleVmGroupResponse], error)
+	// UpdateAutoScaleVmProfile Updates an existing autoscale vm profile.
+	UpdateAutoScaleVmProfile(context.Context, *connect.Request[v1.UpdateAutoScaleVmProfileRequest]) (*connect.Response[v1.UpdateAutoScaleVmProfileResponse], error)
+	// UpdateCondition Updates a condition for VM auto scaling
+	UpdateCondition(context.Context, *connect.Request[v1.UpdateConditionRequest]) (*connect.Response[v1.UpdateConditionResponse], error)
 }
 
 // NewAutoscaleServiceClient constructs a client for the
@@ -157,10 +157,10 @@ func NewAutoscaleServiceClient(httpClient connect.HTTPClient, baseURL string, op
 	baseURL = strings.TrimRight(baseURL, "/")
 	autoscaleServiceMethods := v1.File_cloudstack_management_autoscale_v1_autoscale_gen_proto.Services().ByName("AutoscaleService").Methods()
 	return &autoscaleServiceClient{
-		createCondition: connect.NewClient[v1.CreateConditionRequest, v1.CreateConditionResponse](
+		createAutoScalePolicy: connect.NewClient[v1.CreateAutoScalePolicyRequest, v1.CreateAutoScalePolicyResponse](
 			httpClient,
-			baseURL+AutoscaleServiceCreateConditionProcedure,
-			connect.WithSchema(autoscaleServiceMethods.ByName("CreateCondition")),
+			baseURL+AutoscaleServiceCreateAutoScalePolicyProcedure,
+			connect.WithSchema(autoscaleServiceMethods.ByName("CreateAutoScalePolicy")),
 			connect.WithClientOptions(opts...),
 		),
 		createAutoScaleVmGroup: connect.NewClient[v1.CreateAutoScaleVmGroupRequest, v1.CreateAutoScaleVmGroupResponse](
@@ -169,106 +169,22 @@ func NewAutoscaleServiceClient(httpClient connect.HTTPClient, baseURL string, op
 			connect.WithSchema(autoscaleServiceMethods.ByName("CreateAutoScaleVmGroup")),
 			connect.WithClientOptions(opts...),
 		),
-		listAutoScalePolicies: connect.NewClient[v1.ListAutoScalePoliciesRequest, v1.ListAutoScalePoliciesResponse](
-			httpClient,
-			baseURL+AutoscaleServiceListAutoScalePoliciesProcedure,
-			connect.WithSchema(autoscaleServiceMethods.ByName("ListAutoScalePolicies")),
-			connect.WithClientOptions(opts...),
-		),
-		createAutoScalePolicy: connect.NewClient[v1.CreateAutoScalePolicyRequest, v1.CreateAutoScalePolicyResponse](
-			httpClient,
-			baseURL+AutoscaleServiceCreateAutoScalePolicyProcedure,
-			connect.WithSchema(autoscaleServiceMethods.ByName("CreateAutoScalePolicy")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteCondition: connect.NewClient[v1.DeleteConditionRequest, v1.DeleteConditionResponse](
-			httpClient,
-			baseURL+AutoscaleServiceDeleteConditionProcedure,
-			connect.WithSchema(autoscaleServiceMethods.ByName("DeleteCondition")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteAutoScaleVmProfile: connect.NewClient[v1.DeleteAutoScaleVmProfileRequest, v1.DeleteAutoScaleVmProfileResponse](
-			httpClient,
-			baseURL+AutoscaleServiceDeleteAutoScaleVmProfileProcedure,
-			connect.WithSchema(autoscaleServiceMethods.ByName("DeleteAutoScaleVmProfile")),
-			connect.WithClientOptions(opts...),
-		),
-		listAutoScaleVmProfiles: connect.NewClient[v1.ListAutoScaleVmProfilesRequest, v1.ListAutoScaleVmProfilesResponse](
-			httpClient,
-			baseURL+AutoscaleServiceListAutoScaleVmProfilesProcedure,
-			connect.WithSchema(autoscaleServiceMethods.ByName("ListAutoScaleVmProfiles")),
-			connect.WithClientOptions(opts...),
-		),
-		updateAutoScalePolicy: connect.NewClient[v1.UpdateAutoScalePolicyRequest, v1.UpdateAutoScalePolicyResponse](
-			httpClient,
-			baseURL+AutoscaleServiceUpdateAutoScalePolicyProcedure,
-			connect.WithSchema(autoscaleServiceMethods.ByName("UpdateAutoScalePolicy")),
-			connect.WithClientOptions(opts...),
-		),
-		updateAutoScaleVmProfile: connect.NewClient[v1.UpdateAutoScaleVmProfileRequest, v1.UpdateAutoScaleVmProfileResponse](
-			httpClient,
-			baseURL+AutoscaleServiceUpdateAutoScaleVmProfileProcedure,
-			connect.WithSchema(autoscaleServiceMethods.ByName("UpdateAutoScaleVmProfile")),
-			connect.WithClientOptions(opts...),
-		),
-		updateAutoScaleVmGroup: connect.NewClient[v1.UpdateAutoScaleVmGroupRequest, v1.UpdateAutoScaleVmGroupResponse](
-			httpClient,
-			baseURL+AutoscaleServiceUpdateAutoScaleVmGroupProcedure,
-			connect.WithSchema(autoscaleServiceMethods.ByName("UpdateAutoScaleVmGroup")),
-			connect.WithClientOptions(opts...),
-		),
-		enableAutoScaleVmGroup: connect.NewClient[v1.EnableAutoScaleVmGroupRequest, v1.EnableAutoScaleVmGroupResponse](
-			httpClient,
-			baseURL+AutoscaleServiceEnableAutoScaleVmGroupProcedure,
-			connect.WithSchema(autoscaleServiceMethods.ByName("EnableAutoScaleVmGroup")),
-			connect.WithClientOptions(opts...),
-		),
 		createAutoScaleVmProfile: connect.NewClient[v1.CreateAutoScaleVmProfileRequest, v1.CreateAutoScaleVmProfileResponse](
 			httpClient,
 			baseURL+AutoscaleServiceCreateAutoScaleVmProfileProcedure,
 			connect.WithSchema(autoscaleServiceMethods.ByName("CreateAutoScaleVmProfile")),
 			connect.WithClientOptions(opts...),
 		),
-		disableAutoScaleVmGroup: connect.NewClient[v1.DisableAutoScaleVmGroupRequest, v1.DisableAutoScaleVmGroupResponse](
+		createCondition: connect.NewClient[v1.CreateConditionRequest, v1.CreateConditionResponse](
 			httpClient,
-			baseURL+AutoscaleServiceDisableAutoScaleVmGroupProcedure,
-			connect.WithSchema(autoscaleServiceMethods.ByName("DisableAutoScaleVmGroup")),
+			baseURL+AutoscaleServiceCreateConditionProcedure,
+			connect.WithSchema(autoscaleServiceMethods.ByName("CreateCondition")),
 			connect.WithClientOptions(opts...),
 		),
 		createCounter: connect.NewClient[v1.CreateCounterRequest, v1.CreateCounterResponse](
 			httpClient,
 			baseURL+AutoscaleServiceCreateCounterProcedure,
 			connect.WithSchema(autoscaleServiceMethods.ByName("CreateCounter")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteCounter: connect.NewClient[v1.DeleteCounterRequest, v1.DeleteCounterResponse](
-			httpClient,
-			baseURL+AutoscaleServiceDeleteCounterProcedure,
-			connect.WithSchema(autoscaleServiceMethods.ByName("DeleteCounter")),
-			connect.WithClientOptions(opts...),
-		),
-		listConditions: connect.NewClient[v1.ListConditionsRequest, v1.ListConditionsResponse](
-			httpClient,
-			baseURL+AutoscaleServiceListConditionsProcedure,
-			connect.WithSchema(autoscaleServiceMethods.ByName("ListConditions")),
-			connect.WithClientOptions(opts...),
-		),
-		updateCondition: connect.NewClient[v1.UpdateConditionRequest, v1.UpdateConditionResponse](
-			httpClient,
-			baseURL+AutoscaleServiceUpdateConditionProcedure,
-			connect.WithSchema(autoscaleServiceMethods.ByName("UpdateCondition")),
-			connect.WithClientOptions(opts...),
-		),
-		listCounters: connect.NewClient[v1.ListCountersRequest, v1.ListCountersResponse](
-			httpClient,
-			baseURL+AutoscaleServiceListCountersProcedure,
-			connect.WithSchema(autoscaleServiceMethods.ByName("ListCounters")),
-			connect.WithClientOptions(opts...),
-		),
-		listAutoScaleVmGroups: connect.NewClient[v1.ListAutoScaleVmGroupsRequest, v1.ListAutoScaleVmGroupsResponse](
-			httpClient,
-			baseURL+AutoscaleServiceListAutoScaleVmGroupsProcedure,
-			connect.WithSchema(autoscaleServiceMethods.ByName("ListAutoScaleVmGroups")),
 			connect.WithClientOptions(opts...),
 		),
 		deleteAutoScalePolicy: connect.NewClient[v1.DeleteAutoScalePolicyRequest, v1.DeleteAutoScalePolicyResponse](
@@ -283,49 +199,116 @@ func NewAutoscaleServiceClient(httpClient connect.HTTPClient, baseURL string, op
 			connect.WithSchema(autoscaleServiceMethods.ByName("DeleteAutoScaleVmGroup")),
 			connect.WithClientOptions(opts...),
 		),
+		deleteAutoScaleVmProfile: connect.NewClient[v1.DeleteAutoScaleVmProfileRequest, v1.DeleteAutoScaleVmProfileResponse](
+			httpClient,
+			baseURL+AutoscaleServiceDeleteAutoScaleVmProfileProcedure,
+			connect.WithSchema(autoscaleServiceMethods.ByName("DeleteAutoScaleVmProfile")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteCondition: connect.NewClient[v1.DeleteConditionRequest, v1.DeleteConditionResponse](
+			httpClient,
+			baseURL+AutoscaleServiceDeleteConditionProcedure,
+			connect.WithSchema(autoscaleServiceMethods.ByName("DeleteCondition")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteCounter: connect.NewClient[v1.DeleteCounterRequest, v1.DeleteCounterResponse](
+			httpClient,
+			baseURL+AutoscaleServiceDeleteCounterProcedure,
+			connect.WithSchema(autoscaleServiceMethods.ByName("DeleteCounter")),
+			connect.WithClientOptions(opts...),
+		),
+		disableAutoScaleVmGroup: connect.NewClient[v1.DisableAutoScaleVmGroupRequest, v1.DisableAutoScaleVmGroupResponse](
+			httpClient,
+			baseURL+AutoscaleServiceDisableAutoScaleVmGroupProcedure,
+			connect.WithSchema(autoscaleServiceMethods.ByName("DisableAutoScaleVmGroup")),
+			connect.WithClientOptions(opts...),
+		),
+		enableAutoScaleVmGroup: connect.NewClient[v1.EnableAutoScaleVmGroupRequest, v1.EnableAutoScaleVmGroupResponse](
+			httpClient,
+			baseURL+AutoscaleServiceEnableAutoScaleVmGroupProcedure,
+			connect.WithSchema(autoscaleServiceMethods.ByName("EnableAutoScaleVmGroup")),
+			connect.WithClientOptions(opts...),
+		),
+		listAutoScalePolicies: connect.NewClient[v1.ListAutoScalePoliciesRequest, v1.ListAutoScalePoliciesResponse](
+			httpClient,
+			baseURL+AutoscaleServiceListAutoScalePoliciesProcedure,
+			connect.WithSchema(autoscaleServiceMethods.ByName("ListAutoScalePolicies")),
+			connect.WithClientOptions(opts...),
+		),
+		listAutoScaleVmGroups: connect.NewClient[v1.ListAutoScaleVmGroupsRequest, v1.ListAutoScaleVmGroupsResponse](
+			httpClient,
+			baseURL+AutoscaleServiceListAutoScaleVmGroupsProcedure,
+			connect.WithSchema(autoscaleServiceMethods.ByName("ListAutoScaleVmGroups")),
+			connect.WithClientOptions(opts...),
+		),
+		listAutoScaleVmProfiles: connect.NewClient[v1.ListAutoScaleVmProfilesRequest, v1.ListAutoScaleVmProfilesResponse](
+			httpClient,
+			baseURL+AutoscaleServiceListAutoScaleVmProfilesProcedure,
+			connect.WithSchema(autoscaleServiceMethods.ByName("ListAutoScaleVmProfiles")),
+			connect.WithClientOptions(opts...),
+		),
+		listConditions: connect.NewClient[v1.ListConditionsRequest, v1.ListConditionsResponse](
+			httpClient,
+			baseURL+AutoscaleServiceListConditionsProcedure,
+			connect.WithSchema(autoscaleServiceMethods.ByName("ListConditions")),
+			connect.WithClientOptions(opts...),
+		),
+		listCounters: connect.NewClient[v1.ListCountersRequest, v1.ListCountersResponse](
+			httpClient,
+			baseURL+AutoscaleServiceListCountersProcedure,
+			connect.WithSchema(autoscaleServiceMethods.ByName("ListCounters")),
+			connect.WithClientOptions(opts...),
+		),
+		updateAutoScalePolicy: connect.NewClient[v1.UpdateAutoScalePolicyRequest, v1.UpdateAutoScalePolicyResponse](
+			httpClient,
+			baseURL+AutoscaleServiceUpdateAutoScalePolicyProcedure,
+			connect.WithSchema(autoscaleServiceMethods.ByName("UpdateAutoScalePolicy")),
+			connect.WithClientOptions(opts...),
+		),
+		updateAutoScaleVmGroup: connect.NewClient[v1.UpdateAutoScaleVmGroupRequest, v1.UpdateAutoScaleVmGroupResponse](
+			httpClient,
+			baseURL+AutoscaleServiceUpdateAutoScaleVmGroupProcedure,
+			connect.WithSchema(autoscaleServiceMethods.ByName("UpdateAutoScaleVmGroup")),
+			connect.WithClientOptions(opts...),
+		),
+		updateAutoScaleVmProfile: connect.NewClient[v1.UpdateAutoScaleVmProfileRequest, v1.UpdateAutoScaleVmProfileResponse](
+			httpClient,
+			baseURL+AutoscaleServiceUpdateAutoScaleVmProfileProcedure,
+			connect.WithSchema(autoscaleServiceMethods.ByName("UpdateAutoScaleVmProfile")),
+			connect.WithClientOptions(opts...),
+		),
+		updateCondition: connect.NewClient[v1.UpdateConditionRequest, v1.UpdateConditionResponse](
+			httpClient,
+			baseURL+AutoscaleServiceUpdateConditionProcedure,
+			connect.WithSchema(autoscaleServiceMethods.ByName("UpdateCondition")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // autoscaleServiceClient implements AutoscaleServiceClient.
 type autoscaleServiceClient struct {
-	createCondition          *connect.Client[v1.CreateConditionRequest, v1.CreateConditionResponse]
-	createAutoScaleVmGroup   *connect.Client[v1.CreateAutoScaleVmGroupRequest, v1.CreateAutoScaleVmGroupResponse]
-	listAutoScalePolicies    *connect.Client[v1.ListAutoScalePoliciesRequest, v1.ListAutoScalePoliciesResponse]
 	createAutoScalePolicy    *connect.Client[v1.CreateAutoScalePolicyRequest, v1.CreateAutoScalePolicyResponse]
-	deleteCondition          *connect.Client[v1.DeleteConditionRequest, v1.DeleteConditionResponse]
-	deleteAutoScaleVmProfile *connect.Client[v1.DeleteAutoScaleVmProfileRequest, v1.DeleteAutoScaleVmProfileResponse]
-	listAutoScaleVmProfiles  *connect.Client[v1.ListAutoScaleVmProfilesRequest, v1.ListAutoScaleVmProfilesResponse]
-	updateAutoScalePolicy    *connect.Client[v1.UpdateAutoScalePolicyRequest, v1.UpdateAutoScalePolicyResponse]
-	updateAutoScaleVmProfile *connect.Client[v1.UpdateAutoScaleVmProfileRequest, v1.UpdateAutoScaleVmProfileResponse]
-	updateAutoScaleVmGroup   *connect.Client[v1.UpdateAutoScaleVmGroupRequest, v1.UpdateAutoScaleVmGroupResponse]
-	enableAutoScaleVmGroup   *connect.Client[v1.EnableAutoScaleVmGroupRequest, v1.EnableAutoScaleVmGroupResponse]
+	createAutoScaleVmGroup   *connect.Client[v1.CreateAutoScaleVmGroupRequest, v1.CreateAutoScaleVmGroupResponse]
 	createAutoScaleVmProfile *connect.Client[v1.CreateAutoScaleVmProfileRequest, v1.CreateAutoScaleVmProfileResponse]
-	disableAutoScaleVmGroup  *connect.Client[v1.DisableAutoScaleVmGroupRequest, v1.DisableAutoScaleVmGroupResponse]
+	createCondition          *connect.Client[v1.CreateConditionRequest, v1.CreateConditionResponse]
 	createCounter            *connect.Client[v1.CreateCounterRequest, v1.CreateCounterResponse]
-	deleteCounter            *connect.Client[v1.DeleteCounterRequest, v1.DeleteCounterResponse]
-	listConditions           *connect.Client[v1.ListConditionsRequest, v1.ListConditionsResponse]
-	updateCondition          *connect.Client[v1.UpdateConditionRequest, v1.UpdateConditionResponse]
-	listCounters             *connect.Client[v1.ListCountersRequest, v1.ListCountersResponse]
-	listAutoScaleVmGroups    *connect.Client[v1.ListAutoScaleVmGroupsRequest, v1.ListAutoScaleVmGroupsResponse]
 	deleteAutoScalePolicy    *connect.Client[v1.DeleteAutoScalePolicyRequest, v1.DeleteAutoScalePolicyResponse]
 	deleteAutoScaleVmGroup   *connect.Client[v1.DeleteAutoScaleVmGroupRequest, v1.DeleteAutoScaleVmGroupResponse]
-}
-
-// CreateCondition calls cloudstack.management.autoscale.v1.AutoscaleService.CreateCondition.
-func (c *autoscaleServiceClient) CreateCondition(ctx context.Context, req *connect.Request[v1.CreateConditionRequest]) (*connect.Response[v1.CreateConditionResponse], error) {
-	return c.createCondition.CallUnary(ctx, req)
-}
-
-// CreateAutoScaleVmGroup calls
-// cloudstack.management.autoscale.v1.AutoscaleService.CreateAutoScaleVmGroup.
-func (c *autoscaleServiceClient) CreateAutoScaleVmGroup(ctx context.Context, req *connect.Request[v1.CreateAutoScaleVmGroupRequest]) (*connect.Response[v1.CreateAutoScaleVmGroupResponse], error) {
-	return c.createAutoScaleVmGroup.CallUnary(ctx, req)
-}
-
-// ListAutoScalePolicies calls
-// cloudstack.management.autoscale.v1.AutoscaleService.ListAutoScalePolicies.
-func (c *autoscaleServiceClient) ListAutoScalePolicies(ctx context.Context, req *connect.Request[v1.ListAutoScalePoliciesRequest]) (*connect.Response[v1.ListAutoScalePoliciesResponse], error) {
-	return c.listAutoScalePolicies.CallUnary(ctx, req)
+	deleteAutoScaleVmProfile *connect.Client[v1.DeleteAutoScaleVmProfileRequest, v1.DeleteAutoScaleVmProfileResponse]
+	deleteCondition          *connect.Client[v1.DeleteConditionRequest, v1.DeleteConditionResponse]
+	deleteCounter            *connect.Client[v1.DeleteCounterRequest, v1.DeleteCounterResponse]
+	disableAutoScaleVmGroup  *connect.Client[v1.DisableAutoScaleVmGroupRequest, v1.DisableAutoScaleVmGroupResponse]
+	enableAutoScaleVmGroup   *connect.Client[v1.EnableAutoScaleVmGroupRequest, v1.EnableAutoScaleVmGroupResponse]
+	listAutoScalePolicies    *connect.Client[v1.ListAutoScalePoliciesRequest, v1.ListAutoScalePoliciesResponse]
+	listAutoScaleVmGroups    *connect.Client[v1.ListAutoScaleVmGroupsRequest, v1.ListAutoScaleVmGroupsResponse]
+	listAutoScaleVmProfiles  *connect.Client[v1.ListAutoScaleVmProfilesRequest, v1.ListAutoScaleVmProfilesResponse]
+	listConditions           *connect.Client[v1.ListConditionsRequest, v1.ListConditionsResponse]
+	listCounters             *connect.Client[v1.ListCountersRequest, v1.ListCountersResponse]
+	updateAutoScalePolicy    *connect.Client[v1.UpdateAutoScalePolicyRequest, v1.UpdateAutoScalePolicyResponse]
+	updateAutoScaleVmGroup   *connect.Client[v1.UpdateAutoScaleVmGroupRequest, v1.UpdateAutoScaleVmGroupResponse]
+	updateAutoScaleVmProfile *connect.Client[v1.UpdateAutoScaleVmProfileRequest, v1.UpdateAutoScaleVmProfileResponse]
+	updateCondition          *connect.Client[v1.UpdateConditionRequest, v1.UpdateConditionResponse]
 }
 
 // CreateAutoScalePolicy calls
@@ -334,45 +317,10 @@ func (c *autoscaleServiceClient) CreateAutoScalePolicy(ctx context.Context, req 
 	return c.createAutoScalePolicy.CallUnary(ctx, req)
 }
 
-// DeleteCondition calls cloudstack.management.autoscale.v1.AutoscaleService.DeleteCondition.
-func (c *autoscaleServiceClient) DeleteCondition(ctx context.Context, req *connect.Request[v1.DeleteConditionRequest]) (*connect.Response[v1.DeleteConditionResponse], error) {
-	return c.deleteCondition.CallUnary(ctx, req)
-}
-
-// DeleteAutoScaleVmProfile calls
-// cloudstack.management.autoscale.v1.AutoscaleService.DeleteAutoScaleVmProfile.
-func (c *autoscaleServiceClient) DeleteAutoScaleVmProfile(ctx context.Context, req *connect.Request[v1.DeleteAutoScaleVmProfileRequest]) (*connect.Response[v1.DeleteAutoScaleVmProfileResponse], error) {
-	return c.deleteAutoScaleVmProfile.CallUnary(ctx, req)
-}
-
-// ListAutoScaleVmProfiles calls
-// cloudstack.management.autoscale.v1.AutoscaleService.ListAutoScaleVmProfiles.
-func (c *autoscaleServiceClient) ListAutoScaleVmProfiles(ctx context.Context, req *connect.Request[v1.ListAutoScaleVmProfilesRequest]) (*connect.Response[v1.ListAutoScaleVmProfilesResponse], error) {
-	return c.listAutoScaleVmProfiles.CallUnary(ctx, req)
-}
-
-// UpdateAutoScalePolicy calls
-// cloudstack.management.autoscale.v1.AutoscaleService.UpdateAutoScalePolicy.
-func (c *autoscaleServiceClient) UpdateAutoScalePolicy(ctx context.Context, req *connect.Request[v1.UpdateAutoScalePolicyRequest]) (*connect.Response[v1.UpdateAutoScalePolicyResponse], error) {
-	return c.updateAutoScalePolicy.CallUnary(ctx, req)
-}
-
-// UpdateAutoScaleVmProfile calls
-// cloudstack.management.autoscale.v1.AutoscaleService.UpdateAutoScaleVmProfile.
-func (c *autoscaleServiceClient) UpdateAutoScaleVmProfile(ctx context.Context, req *connect.Request[v1.UpdateAutoScaleVmProfileRequest]) (*connect.Response[v1.UpdateAutoScaleVmProfileResponse], error) {
-	return c.updateAutoScaleVmProfile.CallUnary(ctx, req)
-}
-
-// UpdateAutoScaleVmGroup calls
-// cloudstack.management.autoscale.v1.AutoscaleService.UpdateAutoScaleVmGroup.
-func (c *autoscaleServiceClient) UpdateAutoScaleVmGroup(ctx context.Context, req *connect.Request[v1.UpdateAutoScaleVmGroupRequest]) (*connect.Response[v1.UpdateAutoScaleVmGroupResponse], error) {
-	return c.updateAutoScaleVmGroup.CallUnary(ctx, req)
-}
-
-// EnableAutoScaleVmGroup calls
-// cloudstack.management.autoscale.v1.AutoscaleService.EnableAutoScaleVmGroup.
-func (c *autoscaleServiceClient) EnableAutoScaleVmGroup(ctx context.Context, req *connect.Request[v1.EnableAutoScaleVmGroupRequest]) (*connect.Response[v1.EnableAutoScaleVmGroupResponse], error) {
-	return c.enableAutoScaleVmGroup.CallUnary(ctx, req)
+// CreateAutoScaleVmGroup calls
+// cloudstack.management.autoscale.v1.AutoscaleService.CreateAutoScaleVmGroup.
+func (c *autoscaleServiceClient) CreateAutoScaleVmGroup(ctx context.Context, req *connect.Request[v1.CreateAutoScaleVmGroupRequest]) (*connect.Response[v1.CreateAutoScaleVmGroupResponse], error) {
+	return c.createAutoScaleVmGroup.CallUnary(ctx, req)
 }
 
 // CreateAutoScaleVmProfile calls
@@ -381,41 +329,14 @@ func (c *autoscaleServiceClient) CreateAutoScaleVmProfile(ctx context.Context, r
 	return c.createAutoScaleVmProfile.CallUnary(ctx, req)
 }
 
-// DisableAutoScaleVmGroup calls
-// cloudstack.management.autoscale.v1.AutoscaleService.DisableAutoScaleVmGroup.
-func (c *autoscaleServiceClient) DisableAutoScaleVmGroup(ctx context.Context, req *connect.Request[v1.DisableAutoScaleVmGroupRequest]) (*connect.Response[v1.DisableAutoScaleVmGroupResponse], error) {
-	return c.disableAutoScaleVmGroup.CallUnary(ctx, req)
+// CreateCondition calls cloudstack.management.autoscale.v1.AutoscaleService.CreateCondition.
+func (c *autoscaleServiceClient) CreateCondition(ctx context.Context, req *connect.Request[v1.CreateConditionRequest]) (*connect.Response[v1.CreateConditionResponse], error) {
+	return c.createCondition.CallUnary(ctx, req)
 }
 
 // CreateCounter calls cloudstack.management.autoscale.v1.AutoscaleService.CreateCounter.
 func (c *autoscaleServiceClient) CreateCounter(ctx context.Context, req *connect.Request[v1.CreateCounterRequest]) (*connect.Response[v1.CreateCounterResponse], error) {
 	return c.createCounter.CallUnary(ctx, req)
-}
-
-// DeleteCounter calls cloudstack.management.autoscale.v1.AutoscaleService.DeleteCounter.
-func (c *autoscaleServiceClient) DeleteCounter(ctx context.Context, req *connect.Request[v1.DeleteCounterRequest]) (*connect.Response[v1.DeleteCounterResponse], error) {
-	return c.deleteCounter.CallUnary(ctx, req)
-}
-
-// ListConditions calls cloudstack.management.autoscale.v1.AutoscaleService.ListConditions.
-func (c *autoscaleServiceClient) ListConditions(ctx context.Context, req *connect.Request[v1.ListConditionsRequest]) (*connect.Response[v1.ListConditionsResponse], error) {
-	return c.listConditions.CallUnary(ctx, req)
-}
-
-// UpdateCondition calls cloudstack.management.autoscale.v1.AutoscaleService.UpdateCondition.
-func (c *autoscaleServiceClient) UpdateCondition(ctx context.Context, req *connect.Request[v1.UpdateConditionRequest]) (*connect.Response[v1.UpdateConditionResponse], error) {
-	return c.updateCondition.CallUnary(ctx, req)
-}
-
-// ListCounters calls cloudstack.management.autoscale.v1.AutoscaleService.ListCounters.
-func (c *autoscaleServiceClient) ListCounters(ctx context.Context, req *connect.Request[v1.ListCountersRequest]) (*connect.Response[v1.ListCountersResponse], error) {
-	return c.listCounters.CallUnary(ctx, req)
-}
-
-// ListAutoScaleVmGroups calls
-// cloudstack.management.autoscale.v1.AutoscaleService.ListAutoScaleVmGroups.
-func (c *autoscaleServiceClient) ListAutoScaleVmGroups(ctx context.Context, req *connect.Request[v1.ListAutoScaleVmGroupsRequest]) (*connect.Response[v1.ListAutoScaleVmGroupsResponse], error) {
-	return c.listAutoScaleVmGroups.CallUnary(ctx, req)
 }
 
 // DeleteAutoScalePolicy calls
@@ -430,51 +351,130 @@ func (c *autoscaleServiceClient) DeleteAutoScaleVmGroup(ctx context.Context, req
 	return c.deleteAutoScaleVmGroup.CallUnary(ctx, req)
 }
 
+// DeleteAutoScaleVmProfile calls
+// cloudstack.management.autoscale.v1.AutoscaleService.DeleteAutoScaleVmProfile.
+func (c *autoscaleServiceClient) DeleteAutoScaleVmProfile(ctx context.Context, req *connect.Request[v1.DeleteAutoScaleVmProfileRequest]) (*connect.Response[v1.DeleteAutoScaleVmProfileResponse], error) {
+	return c.deleteAutoScaleVmProfile.CallUnary(ctx, req)
+}
+
+// DeleteCondition calls cloudstack.management.autoscale.v1.AutoscaleService.DeleteCondition.
+func (c *autoscaleServiceClient) DeleteCondition(ctx context.Context, req *connect.Request[v1.DeleteConditionRequest]) (*connect.Response[v1.DeleteConditionResponse], error) {
+	return c.deleteCondition.CallUnary(ctx, req)
+}
+
+// DeleteCounter calls cloudstack.management.autoscale.v1.AutoscaleService.DeleteCounter.
+func (c *autoscaleServiceClient) DeleteCounter(ctx context.Context, req *connect.Request[v1.DeleteCounterRequest]) (*connect.Response[v1.DeleteCounterResponse], error) {
+	return c.deleteCounter.CallUnary(ctx, req)
+}
+
+// DisableAutoScaleVmGroup calls
+// cloudstack.management.autoscale.v1.AutoscaleService.DisableAutoScaleVmGroup.
+func (c *autoscaleServiceClient) DisableAutoScaleVmGroup(ctx context.Context, req *connect.Request[v1.DisableAutoScaleVmGroupRequest]) (*connect.Response[v1.DisableAutoScaleVmGroupResponse], error) {
+	return c.disableAutoScaleVmGroup.CallUnary(ctx, req)
+}
+
+// EnableAutoScaleVmGroup calls
+// cloudstack.management.autoscale.v1.AutoscaleService.EnableAutoScaleVmGroup.
+func (c *autoscaleServiceClient) EnableAutoScaleVmGroup(ctx context.Context, req *connect.Request[v1.EnableAutoScaleVmGroupRequest]) (*connect.Response[v1.EnableAutoScaleVmGroupResponse], error) {
+	return c.enableAutoScaleVmGroup.CallUnary(ctx, req)
+}
+
+// ListAutoScalePolicies calls
+// cloudstack.management.autoscale.v1.AutoscaleService.ListAutoScalePolicies.
+func (c *autoscaleServiceClient) ListAutoScalePolicies(ctx context.Context, req *connect.Request[v1.ListAutoScalePoliciesRequest]) (*connect.Response[v1.ListAutoScalePoliciesResponse], error) {
+	return c.listAutoScalePolicies.CallUnary(ctx, req)
+}
+
+// ListAutoScaleVmGroups calls
+// cloudstack.management.autoscale.v1.AutoscaleService.ListAutoScaleVmGroups.
+func (c *autoscaleServiceClient) ListAutoScaleVmGroups(ctx context.Context, req *connect.Request[v1.ListAutoScaleVmGroupsRequest]) (*connect.Response[v1.ListAutoScaleVmGroupsResponse], error) {
+	return c.listAutoScaleVmGroups.CallUnary(ctx, req)
+}
+
+// ListAutoScaleVmProfiles calls
+// cloudstack.management.autoscale.v1.AutoscaleService.ListAutoScaleVmProfiles.
+func (c *autoscaleServiceClient) ListAutoScaleVmProfiles(ctx context.Context, req *connect.Request[v1.ListAutoScaleVmProfilesRequest]) (*connect.Response[v1.ListAutoScaleVmProfilesResponse], error) {
+	return c.listAutoScaleVmProfiles.CallUnary(ctx, req)
+}
+
+// ListConditions calls cloudstack.management.autoscale.v1.AutoscaleService.ListConditions.
+func (c *autoscaleServiceClient) ListConditions(ctx context.Context, req *connect.Request[v1.ListConditionsRequest]) (*connect.Response[v1.ListConditionsResponse], error) {
+	return c.listConditions.CallUnary(ctx, req)
+}
+
+// ListCounters calls cloudstack.management.autoscale.v1.AutoscaleService.ListCounters.
+func (c *autoscaleServiceClient) ListCounters(ctx context.Context, req *connect.Request[v1.ListCountersRequest]) (*connect.Response[v1.ListCountersResponse], error) {
+	return c.listCounters.CallUnary(ctx, req)
+}
+
+// UpdateAutoScalePolicy calls
+// cloudstack.management.autoscale.v1.AutoscaleService.UpdateAutoScalePolicy.
+func (c *autoscaleServiceClient) UpdateAutoScalePolicy(ctx context.Context, req *connect.Request[v1.UpdateAutoScalePolicyRequest]) (*connect.Response[v1.UpdateAutoScalePolicyResponse], error) {
+	return c.updateAutoScalePolicy.CallUnary(ctx, req)
+}
+
+// UpdateAutoScaleVmGroup calls
+// cloudstack.management.autoscale.v1.AutoscaleService.UpdateAutoScaleVmGroup.
+func (c *autoscaleServiceClient) UpdateAutoScaleVmGroup(ctx context.Context, req *connect.Request[v1.UpdateAutoScaleVmGroupRequest]) (*connect.Response[v1.UpdateAutoScaleVmGroupResponse], error) {
+	return c.updateAutoScaleVmGroup.CallUnary(ctx, req)
+}
+
+// UpdateAutoScaleVmProfile calls
+// cloudstack.management.autoscale.v1.AutoscaleService.UpdateAutoScaleVmProfile.
+func (c *autoscaleServiceClient) UpdateAutoScaleVmProfile(ctx context.Context, req *connect.Request[v1.UpdateAutoScaleVmProfileRequest]) (*connect.Response[v1.UpdateAutoScaleVmProfileResponse], error) {
+	return c.updateAutoScaleVmProfile.CallUnary(ctx, req)
+}
+
+// UpdateCondition calls cloudstack.management.autoscale.v1.AutoscaleService.UpdateCondition.
+func (c *autoscaleServiceClient) UpdateCondition(ctx context.Context, req *connect.Request[v1.UpdateConditionRequest]) (*connect.Response[v1.UpdateConditionResponse], error) {
+	return c.updateCondition.CallUnary(ctx, req)
+}
+
 // AutoscaleServiceHandler is an implementation of the
 // cloudstack.management.autoscale.v1.AutoscaleService service.
 type AutoscaleServiceHandler interface {
-	// CreateCondition Creates a condition for VM auto scaling
-	CreateCondition(context.Context, *connect.Request[v1.CreateConditionRequest]) (*connect.Response[v1.CreateConditionResponse], error)
-	// CreateAutoScaleVmGroup Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
-	CreateAutoScaleVmGroup(context.Context, *connect.Request[v1.CreateAutoScaleVmGroupRequest]) (*connect.Response[v1.CreateAutoScaleVmGroupResponse], error)
-	// ListAutoScalePolicies Lists autoscale policies.
-	ListAutoScalePolicies(context.Context, *connect.Request[v1.ListAutoScalePoliciesRequest]) (*connect.Response[v1.ListAutoScalePoliciesResponse], error)
 	// CreateAutoScalePolicy Creates an autoscale policy for a provision or deprovision action, the action is taken when the all the conditions evaluates to true for the specified duration. The policy is in effect once it is attached to a autscale vm group.
 	CreateAutoScalePolicy(context.Context, *connect.Request[v1.CreateAutoScalePolicyRequest]) (*connect.Response[v1.CreateAutoScalePolicyResponse], error)
-	// DeleteCondition Removes a condition for VM auto scaling
-	DeleteCondition(context.Context, *connect.Request[v1.DeleteConditionRequest]) (*connect.Response[v1.DeleteConditionResponse], error)
-	// DeleteAutoScaleVmProfile Deletes a autoscale vm profile.
-	DeleteAutoScaleVmProfile(context.Context, *connect.Request[v1.DeleteAutoScaleVmProfileRequest]) (*connect.Response[v1.DeleteAutoScaleVmProfileResponse], error)
-	// ListAutoScaleVmProfiles Lists autoscale vm profiles.
-	ListAutoScaleVmProfiles(context.Context, *connect.Request[v1.ListAutoScaleVmProfilesRequest]) (*connect.Response[v1.ListAutoScaleVmProfilesResponse], error)
-	// UpdateAutoScalePolicy Updates an existing autoscale policy.
-	UpdateAutoScalePolicy(context.Context, *connect.Request[v1.UpdateAutoScalePolicyRequest]) (*connect.Response[v1.UpdateAutoScalePolicyResponse], error)
-	// UpdateAutoScaleVmProfile Updates an existing autoscale vm profile.
-	UpdateAutoScaleVmProfile(context.Context, *connect.Request[v1.UpdateAutoScaleVmProfileRequest]) (*connect.Response[v1.UpdateAutoScaleVmProfileResponse], error)
-	// UpdateAutoScaleVmGroup Updates an existing autoscale vm group.
-	UpdateAutoScaleVmGroup(context.Context, *connect.Request[v1.UpdateAutoScaleVmGroupRequest]) (*connect.Response[v1.UpdateAutoScaleVmGroupResponse], error)
-	// EnableAutoScaleVmGroup Enables an AutoScale Vm Group
-	EnableAutoScaleVmGroup(context.Context, *connect.Request[v1.EnableAutoScaleVmGroupRequest]) (*connect.Response[v1.EnableAutoScaleVmGroupResponse], error)
+	// CreateAutoScaleVmGroup Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
+	CreateAutoScaleVmGroup(context.Context, *connect.Request[v1.CreateAutoScaleVmGroupRequest]) (*connect.Response[v1.CreateAutoScaleVmGroupResponse], error)
 	// CreateAutoScaleVmProfile Creates a profile that contains information about the virtual machine which will be provisioned automatically by autoscale feature.
 	CreateAutoScaleVmProfile(context.Context, *connect.Request[v1.CreateAutoScaleVmProfileRequest]) (*connect.Response[v1.CreateAutoScaleVmProfileResponse], error)
-	// DisableAutoScaleVmGroup Disables an AutoScale Vm Group
-	DisableAutoScaleVmGroup(context.Context, *connect.Request[v1.DisableAutoScaleVmGroupRequest]) (*connect.Response[v1.DisableAutoScaleVmGroupResponse], error)
+	// CreateCondition Creates a condition for VM auto scaling
+	CreateCondition(context.Context, *connect.Request[v1.CreateConditionRequest]) (*connect.Response[v1.CreateConditionResponse], error)
 	// CreateCounter Adds metric counter for VM auto scaling
 	CreateCounter(context.Context, *connect.Request[v1.CreateCounterRequest]) (*connect.Response[v1.CreateCounterResponse], error)
-	// DeleteCounter Deletes a counter for VM auto scaling
-	DeleteCounter(context.Context, *connect.Request[v1.DeleteCounterRequest]) (*connect.Response[v1.DeleteCounterResponse], error)
-	// ListConditions List Conditions for VM auto scaling
-	ListConditions(context.Context, *connect.Request[v1.ListConditionsRequest]) (*connect.Response[v1.ListConditionsResponse], error)
-	// UpdateCondition Updates a condition for VM auto scaling
-	UpdateCondition(context.Context, *connect.Request[v1.UpdateConditionRequest]) (*connect.Response[v1.UpdateConditionResponse], error)
-	// ListCounters List the counters for VM auto scaling
-	ListCounters(context.Context, *connect.Request[v1.ListCountersRequest]) (*connect.Response[v1.ListCountersResponse], error)
-	// ListAutoScaleVmGroups Lists autoscale vm groups.
-	ListAutoScaleVmGroups(context.Context, *connect.Request[v1.ListAutoScaleVmGroupsRequest]) (*connect.Response[v1.ListAutoScaleVmGroupsResponse], error)
 	// DeleteAutoScalePolicy Deletes a autoscale policy.
 	DeleteAutoScalePolicy(context.Context, *connect.Request[v1.DeleteAutoScalePolicyRequest]) (*connect.Response[v1.DeleteAutoScalePolicyResponse], error)
 	// DeleteAutoScaleVmGroup Deletes a autoscale vm group.
 	DeleteAutoScaleVmGroup(context.Context, *connect.Request[v1.DeleteAutoScaleVmGroupRequest]) (*connect.Response[v1.DeleteAutoScaleVmGroupResponse], error)
+	// DeleteAutoScaleVmProfile Deletes a autoscale vm profile.
+	DeleteAutoScaleVmProfile(context.Context, *connect.Request[v1.DeleteAutoScaleVmProfileRequest]) (*connect.Response[v1.DeleteAutoScaleVmProfileResponse], error)
+	// DeleteCondition Removes a condition for VM auto scaling
+	DeleteCondition(context.Context, *connect.Request[v1.DeleteConditionRequest]) (*connect.Response[v1.DeleteConditionResponse], error)
+	// DeleteCounter Deletes a counter for VM auto scaling
+	DeleteCounter(context.Context, *connect.Request[v1.DeleteCounterRequest]) (*connect.Response[v1.DeleteCounterResponse], error)
+	// DisableAutoScaleVmGroup Disables an AutoScale Vm Group
+	DisableAutoScaleVmGroup(context.Context, *connect.Request[v1.DisableAutoScaleVmGroupRequest]) (*connect.Response[v1.DisableAutoScaleVmGroupResponse], error)
+	// EnableAutoScaleVmGroup Enables an AutoScale Vm Group
+	EnableAutoScaleVmGroup(context.Context, *connect.Request[v1.EnableAutoScaleVmGroupRequest]) (*connect.Response[v1.EnableAutoScaleVmGroupResponse], error)
+	// ListAutoScalePolicies Lists autoscale policies.
+	ListAutoScalePolicies(context.Context, *connect.Request[v1.ListAutoScalePoliciesRequest]) (*connect.Response[v1.ListAutoScalePoliciesResponse], error)
+	// ListAutoScaleVmGroups Lists autoscale vm groups.
+	ListAutoScaleVmGroups(context.Context, *connect.Request[v1.ListAutoScaleVmGroupsRequest]) (*connect.Response[v1.ListAutoScaleVmGroupsResponse], error)
+	// ListAutoScaleVmProfiles Lists autoscale vm profiles.
+	ListAutoScaleVmProfiles(context.Context, *connect.Request[v1.ListAutoScaleVmProfilesRequest]) (*connect.Response[v1.ListAutoScaleVmProfilesResponse], error)
+	// ListConditions List Conditions for VM auto scaling
+	ListConditions(context.Context, *connect.Request[v1.ListConditionsRequest]) (*connect.Response[v1.ListConditionsResponse], error)
+	// ListCounters List the counters for VM auto scaling
+	ListCounters(context.Context, *connect.Request[v1.ListCountersRequest]) (*connect.Response[v1.ListCountersResponse], error)
+	// UpdateAutoScalePolicy Updates an existing autoscale policy.
+	UpdateAutoScalePolicy(context.Context, *connect.Request[v1.UpdateAutoScalePolicyRequest]) (*connect.Response[v1.UpdateAutoScalePolicyResponse], error)
+	// UpdateAutoScaleVmGroup Updates an existing autoscale vm group.
+	UpdateAutoScaleVmGroup(context.Context, *connect.Request[v1.UpdateAutoScaleVmGroupRequest]) (*connect.Response[v1.UpdateAutoScaleVmGroupResponse], error)
+	// UpdateAutoScaleVmProfile Updates an existing autoscale vm profile.
+	UpdateAutoScaleVmProfile(context.Context, *connect.Request[v1.UpdateAutoScaleVmProfileRequest]) (*connect.Response[v1.UpdateAutoScaleVmProfileResponse], error)
+	// UpdateCondition Updates a condition for VM auto scaling
+	UpdateCondition(context.Context, *connect.Request[v1.UpdateConditionRequest]) (*connect.Response[v1.UpdateConditionResponse], error)
 }
 
 // NewAutoscaleServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -484,10 +484,10 @@ type AutoscaleServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewAutoscaleServiceHandler(svc AutoscaleServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	autoscaleServiceMethods := v1.File_cloudstack_management_autoscale_v1_autoscale_gen_proto.Services().ByName("AutoscaleService").Methods()
-	autoscaleServiceCreateConditionHandler := connect.NewUnaryHandler(
-		AutoscaleServiceCreateConditionProcedure,
-		svc.CreateCondition,
-		connect.WithSchema(autoscaleServiceMethods.ByName("CreateCondition")),
+	autoscaleServiceCreateAutoScalePolicyHandler := connect.NewUnaryHandler(
+		AutoscaleServiceCreateAutoScalePolicyProcedure,
+		svc.CreateAutoScalePolicy,
+		connect.WithSchema(autoscaleServiceMethods.ByName("CreateAutoScalePolicy")),
 		connect.WithHandlerOptions(opts...),
 	)
 	autoscaleServiceCreateAutoScaleVmGroupHandler := connect.NewUnaryHandler(
@@ -496,106 +496,22 @@ func NewAutoscaleServiceHandler(svc AutoscaleServiceHandler, opts ...connect.Han
 		connect.WithSchema(autoscaleServiceMethods.ByName("CreateAutoScaleVmGroup")),
 		connect.WithHandlerOptions(opts...),
 	)
-	autoscaleServiceListAutoScalePoliciesHandler := connect.NewUnaryHandler(
-		AutoscaleServiceListAutoScalePoliciesProcedure,
-		svc.ListAutoScalePolicies,
-		connect.WithSchema(autoscaleServiceMethods.ByName("ListAutoScalePolicies")),
-		connect.WithHandlerOptions(opts...),
-	)
-	autoscaleServiceCreateAutoScalePolicyHandler := connect.NewUnaryHandler(
-		AutoscaleServiceCreateAutoScalePolicyProcedure,
-		svc.CreateAutoScalePolicy,
-		connect.WithSchema(autoscaleServiceMethods.ByName("CreateAutoScalePolicy")),
-		connect.WithHandlerOptions(opts...),
-	)
-	autoscaleServiceDeleteConditionHandler := connect.NewUnaryHandler(
-		AutoscaleServiceDeleteConditionProcedure,
-		svc.DeleteCondition,
-		connect.WithSchema(autoscaleServiceMethods.ByName("DeleteCondition")),
-		connect.WithHandlerOptions(opts...),
-	)
-	autoscaleServiceDeleteAutoScaleVmProfileHandler := connect.NewUnaryHandler(
-		AutoscaleServiceDeleteAutoScaleVmProfileProcedure,
-		svc.DeleteAutoScaleVmProfile,
-		connect.WithSchema(autoscaleServiceMethods.ByName("DeleteAutoScaleVmProfile")),
-		connect.WithHandlerOptions(opts...),
-	)
-	autoscaleServiceListAutoScaleVmProfilesHandler := connect.NewUnaryHandler(
-		AutoscaleServiceListAutoScaleVmProfilesProcedure,
-		svc.ListAutoScaleVmProfiles,
-		connect.WithSchema(autoscaleServiceMethods.ByName("ListAutoScaleVmProfiles")),
-		connect.WithHandlerOptions(opts...),
-	)
-	autoscaleServiceUpdateAutoScalePolicyHandler := connect.NewUnaryHandler(
-		AutoscaleServiceUpdateAutoScalePolicyProcedure,
-		svc.UpdateAutoScalePolicy,
-		connect.WithSchema(autoscaleServiceMethods.ByName("UpdateAutoScalePolicy")),
-		connect.WithHandlerOptions(opts...),
-	)
-	autoscaleServiceUpdateAutoScaleVmProfileHandler := connect.NewUnaryHandler(
-		AutoscaleServiceUpdateAutoScaleVmProfileProcedure,
-		svc.UpdateAutoScaleVmProfile,
-		connect.WithSchema(autoscaleServiceMethods.ByName("UpdateAutoScaleVmProfile")),
-		connect.WithHandlerOptions(opts...),
-	)
-	autoscaleServiceUpdateAutoScaleVmGroupHandler := connect.NewUnaryHandler(
-		AutoscaleServiceUpdateAutoScaleVmGroupProcedure,
-		svc.UpdateAutoScaleVmGroup,
-		connect.WithSchema(autoscaleServiceMethods.ByName("UpdateAutoScaleVmGroup")),
-		connect.WithHandlerOptions(opts...),
-	)
-	autoscaleServiceEnableAutoScaleVmGroupHandler := connect.NewUnaryHandler(
-		AutoscaleServiceEnableAutoScaleVmGroupProcedure,
-		svc.EnableAutoScaleVmGroup,
-		connect.WithSchema(autoscaleServiceMethods.ByName("EnableAutoScaleVmGroup")),
-		connect.WithHandlerOptions(opts...),
-	)
 	autoscaleServiceCreateAutoScaleVmProfileHandler := connect.NewUnaryHandler(
 		AutoscaleServiceCreateAutoScaleVmProfileProcedure,
 		svc.CreateAutoScaleVmProfile,
 		connect.WithSchema(autoscaleServiceMethods.ByName("CreateAutoScaleVmProfile")),
 		connect.WithHandlerOptions(opts...),
 	)
-	autoscaleServiceDisableAutoScaleVmGroupHandler := connect.NewUnaryHandler(
-		AutoscaleServiceDisableAutoScaleVmGroupProcedure,
-		svc.DisableAutoScaleVmGroup,
-		connect.WithSchema(autoscaleServiceMethods.ByName("DisableAutoScaleVmGroup")),
+	autoscaleServiceCreateConditionHandler := connect.NewUnaryHandler(
+		AutoscaleServiceCreateConditionProcedure,
+		svc.CreateCondition,
+		connect.WithSchema(autoscaleServiceMethods.ByName("CreateCondition")),
 		connect.WithHandlerOptions(opts...),
 	)
 	autoscaleServiceCreateCounterHandler := connect.NewUnaryHandler(
 		AutoscaleServiceCreateCounterProcedure,
 		svc.CreateCounter,
 		connect.WithSchema(autoscaleServiceMethods.ByName("CreateCounter")),
-		connect.WithHandlerOptions(opts...),
-	)
-	autoscaleServiceDeleteCounterHandler := connect.NewUnaryHandler(
-		AutoscaleServiceDeleteCounterProcedure,
-		svc.DeleteCounter,
-		connect.WithSchema(autoscaleServiceMethods.ByName("DeleteCounter")),
-		connect.WithHandlerOptions(opts...),
-	)
-	autoscaleServiceListConditionsHandler := connect.NewUnaryHandler(
-		AutoscaleServiceListConditionsProcedure,
-		svc.ListConditions,
-		connect.WithSchema(autoscaleServiceMethods.ByName("ListConditions")),
-		connect.WithHandlerOptions(opts...),
-	)
-	autoscaleServiceUpdateConditionHandler := connect.NewUnaryHandler(
-		AutoscaleServiceUpdateConditionProcedure,
-		svc.UpdateCondition,
-		connect.WithSchema(autoscaleServiceMethods.ByName("UpdateCondition")),
-		connect.WithHandlerOptions(opts...),
-	)
-	autoscaleServiceListCountersHandler := connect.NewUnaryHandler(
-		AutoscaleServiceListCountersProcedure,
-		svc.ListCounters,
-		connect.WithSchema(autoscaleServiceMethods.ByName("ListCounters")),
-		connect.WithHandlerOptions(opts...),
-	)
-	autoscaleServiceListAutoScaleVmGroupsHandler := connect.NewUnaryHandler(
-		AutoscaleServiceListAutoScaleVmGroupsProcedure,
-		svc.ListAutoScaleVmGroups,
-		connect.WithSchema(autoscaleServiceMethods.ByName("ListAutoScaleVmGroups")),
 		connect.WithHandlerOptions(opts...),
 	)
 	autoscaleServiceDeleteAutoScalePolicyHandler := connect.NewUnaryHandler(
@@ -610,50 +526,134 @@ func NewAutoscaleServiceHandler(svc AutoscaleServiceHandler, opts ...connect.Han
 		connect.WithSchema(autoscaleServiceMethods.ByName("DeleteAutoScaleVmGroup")),
 		connect.WithHandlerOptions(opts...),
 	)
+	autoscaleServiceDeleteAutoScaleVmProfileHandler := connect.NewUnaryHandler(
+		AutoscaleServiceDeleteAutoScaleVmProfileProcedure,
+		svc.DeleteAutoScaleVmProfile,
+		connect.WithSchema(autoscaleServiceMethods.ByName("DeleteAutoScaleVmProfile")),
+		connect.WithHandlerOptions(opts...),
+	)
+	autoscaleServiceDeleteConditionHandler := connect.NewUnaryHandler(
+		AutoscaleServiceDeleteConditionProcedure,
+		svc.DeleteCondition,
+		connect.WithSchema(autoscaleServiceMethods.ByName("DeleteCondition")),
+		connect.WithHandlerOptions(opts...),
+	)
+	autoscaleServiceDeleteCounterHandler := connect.NewUnaryHandler(
+		AutoscaleServiceDeleteCounterProcedure,
+		svc.DeleteCounter,
+		connect.WithSchema(autoscaleServiceMethods.ByName("DeleteCounter")),
+		connect.WithHandlerOptions(opts...),
+	)
+	autoscaleServiceDisableAutoScaleVmGroupHandler := connect.NewUnaryHandler(
+		AutoscaleServiceDisableAutoScaleVmGroupProcedure,
+		svc.DisableAutoScaleVmGroup,
+		connect.WithSchema(autoscaleServiceMethods.ByName("DisableAutoScaleVmGroup")),
+		connect.WithHandlerOptions(opts...),
+	)
+	autoscaleServiceEnableAutoScaleVmGroupHandler := connect.NewUnaryHandler(
+		AutoscaleServiceEnableAutoScaleVmGroupProcedure,
+		svc.EnableAutoScaleVmGroup,
+		connect.WithSchema(autoscaleServiceMethods.ByName("EnableAutoScaleVmGroup")),
+		connect.WithHandlerOptions(opts...),
+	)
+	autoscaleServiceListAutoScalePoliciesHandler := connect.NewUnaryHandler(
+		AutoscaleServiceListAutoScalePoliciesProcedure,
+		svc.ListAutoScalePolicies,
+		connect.WithSchema(autoscaleServiceMethods.ByName("ListAutoScalePolicies")),
+		connect.WithHandlerOptions(opts...),
+	)
+	autoscaleServiceListAutoScaleVmGroupsHandler := connect.NewUnaryHandler(
+		AutoscaleServiceListAutoScaleVmGroupsProcedure,
+		svc.ListAutoScaleVmGroups,
+		connect.WithSchema(autoscaleServiceMethods.ByName("ListAutoScaleVmGroups")),
+		connect.WithHandlerOptions(opts...),
+	)
+	autoscaleServiceListAutoScaleVmProfilesHandler := connect.NewUnaryHandler(
+		AutoscaleServiceListAutoScaleVmProfilesProcedure,
+		svc.ListAutoScaleVmProfiles,
+		connect.WithSchema(autoscaleServiceMethods.ByName("ListAutoScaleVmProfiles")),
+		connect.WithHandlerOptions(opts...),
+	)
+	autoscaleServiceListConditionsHandler := connect.NewUnaryHandler(
+		AutoscaleServiceListConditionsProcedure,
+		svc.ListConditions,
+		connect.WithSchema(autoscaleServiceMethods.ByName("ListConditions")),
+		connect.WithHandlerOptions(opts...),
+	)
+	autoscaleServiceListCountersHandler := connect.NewUnaryHandler(
+		AutoscaleServiceListCountersProcedure,
+		svc.ListCounters,
+		connect.WithSchema(autoscaleServiceMethods.ByName("ListCounters")),
+		connect.WithHandlerOptions(opts...),
+	)
+	autoscaleServiceUpdateAutoScalePolicyHandler := connect.NewUnaryHandler(
+		AutoscaleServiceUpdateAutoScalePolicyProcedure,
+		svc.UpdateAutoScalePolicy,
+		connect.WithSchema(autoscaleServiceMethods.ByName("UpdateAutoScalePolicy")),
+		connect.WithHandlerOptions(opts...),
+	)
+	autoscaleServiceUpdateAutoScaleVmGroupHandler := connect.NewUnaryHandler(
+		AutoscaleServiceUpdateAutoScaleVmGroupProcedure,
+		svc.UpdateAutoScaleVmGroup,
+		connect.WithSchema(autoscaleServiceMethods.ByName("UpdateAutoScaleVmGroup")),
+		connect.WithHandlerOptions(opts...),
+	)
+	autoscaleServiceUpdateAutoScaleVmProfileHandler := connect.NewUnaryHandler(
+		AutoscaleServiceUpdateAutoScaleVmProfileProcedure,
+		svc.UpdateAutoScaleVmProfile,
+		connect.WithSchema(autoscaleServiceMethods.ByName("UpdateAutoScaleVmProfile")),
+		connect.WithHandlerOptions(opts...),
+	)
+	autoscaleServiceUpdateConditionHandler := connect.NewUnaryHandler(
+		AutoscaleServiceUpdateConditionProcedure,
+		svc.UpdateCondition,
+		connect.WithSchema(autoscaleServiceMethods.ByName("UpdateCondition")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.autoscale.v1.AutoscaleService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case AutoscaleServiceCreateConditionProcedure:
-			autoscaleServiceCreateConditionHandler.ServeHTTP(w, r)
-		case AutoscaleServiceCreateAutoScaleVmGroupProcedure:
-			autoscaleServiceCreateAutoScaleVmGroupHandler.ServeHTTP(w, r)
-		case AutoscaleServiceListAutoScalePoliciesProcedure:
-			autoscaleServiceListAutoScalePoliciesHandler.ServeHTTP(w, r)
 		case AutoscaleServiceCreateAutoScalePolicyProcedure:
 			autoscaleServiceCreateAutoScalePolicyHandler.ServeHTTP(w, r)
-		case AutoscaleServiceDeleteConditionProcedure:
-			autoscaleServiceDeleteConditionHandler.ServeHTTP(w, r)
-		case AutoscaleServiceDeleteAutoScaleVmProfileProcedure:
-			autoscaleServiceDeleteAutoScaleVmProfileHandler.ServeHTTP(w, r)
-		case AutoscaleServiceListAutoScaleVmProfilesProcedure:
-			autoscaleServiceListAutoScaleVmProfilesHandler.ServeHTTP(w, r)
-		case AutoscaleServiceUpdateAutoScalePolicyProcedure:
-			autoscaleServiceUpdateAutoScalePolicyHandler.ServeHTTP(w, r)
-		case AutoscaleServiceUpdateAutoScaleVmProfileProcedure:
-			autoscaleServiceUpdateAutoScaleVmProfileHandler.ServeHTTP(w, r)
-		case AutoscaleServiceUpdateAutoScaleVmGroupProcedure:
-			autoscaleServiceUpdateAutoScaleVmGroupHandler.ServeHTTP(w, r)
-		case AutoscaleServiceEnableAutoScaleVmGroupProcedure:
-			autoscaleServiceEnableAutoScaleVmGroupHandler.ServeHTTP(w, r)
+		case AutoscaleServiceCreateAutoScaleVmGroupProcedure:
+			autoscaleServiceCreateAutoScaleVmGroupHandler.ServeHTTP(w, r)
 		case AutoscaleServiceCreateAutoScaleVmProfileProcedure:
 			autoscaleServiceCreateAutoScaleVmProfileHandler.ServeHTTP(w, r)
-		case AutoscaleServiceDisableAutoScaleVmGroupProcedure:
-			autoscaleServiceDisableAutoScaleVmGroupHandler.ServeHTTP(w, r)
+		case AutoscaleServiceCreateConditionProcedure:
+			autoscaleServiceCreateConditionHandler.ServeHTTP(w, r)
 		case AutoscaleServiceCreateCounterProcedure:
 			autoscaleServiceCreateCounterHandler.ServeHTTP(w, r)
-		case AutoscaleServiceDeleteCounterProcedure:
-			autoscaleServiceDeleteCounterHandler.ServeHTTP(w, r)
-		case AutoscaleServiceListConditionsProcedure:
-			autoscaleServiceListConditionsHandler.ServeHTTP(w, r)
-		case AutoscaleServiceUpdateConditionProcedure:
-			autoscaleServiceUpdateConditionHandler.ServeHTTP(w, r)
-		case AutoscaleServiceListCountersProcedure:
-			autoscaleServiceListCountersHandler.ServeHTTP(w, r)
-		case AutoscaleServiceListAutoScaleVmGroupsProcedure:
-			autoscaleServiceListAutoScaleVmGroupsHandler.ServeHTTP(w, r)
 		case AutoscaleServiceDeleteAutoScalePolicyProcedure:
 			autoscaleServiceDeleteAutoScalePolicyHandler.ServeHTTP(w, r)
 		case AutoscaleServiceDeleteAutoScaleVmGroupProcedure:
 			autoscaleServiceDeleteAutoScaleVmGroupHandler.ServeHTTP(w, r)
+		case AutoscaleServiceDeleteAutoScaleVmProfileProcedure:
+			autoscaleServiceDeleteAutoScaleVmProfileHandler.ServeHTTP(w, r)
+		case AutoscaleServiceDeleteConditionProcedure:
+			autoscaleServiceDeleteConditionHandler.ServeHTTP(w, r)
+		case AutoscaleServiceDeleteCounterProcedure:
+			autoscaleServiceDeleteCounterHandler.ServeHTTP(w, r)
+		case AutoscaleServiceDisableAutoScaleVmGroupProcedure:
+			autoscaleServiceDisableAutoScaleVmGroupHandler.ServeHTTP(w, r)
+		case AutoscaleServiceEnableAutoScaleVmGroupProcedure:
+			autoscaleServiceEnableAutoScaleVmGroupHandler.ServeHTTP(w, r)
+		case AutoscaleServiceListAutoScalePoliciesProcedure:
+			autoscaleServiceListAutoScalePoliciesHandler.ServeHTTP(w, r)
+		case AutoscaleServiceListAutoScaleVmGroupsProcedure:
+			autoscaleServiceListAutoScaleVmGroupsHandler.ServeHTTP(w, r)
+		case AutoscaleServiceListAutoScaleVmProfilesProcedure:
+			autoscaleServiceListAutoScaleVmProfilesHandler.ServeHTTP(w, r)
+		case AutoscaleServiceListConditionsProcedure:
+			autoscaleServiceListConditionsHandler.ServeHTTP(w, r)
+		case AutoscaleServiceListCountersProcedure:
+			autoscaleServiceListCountersHandler.ServeHTTP(w, r)
+		case AutoscaleServiceUpdateAutoScalePolicyProcedure:
+			autoscaleServiceUpdateAutoScalePolicyHandler.ServeHTTP(w, r)
+		case AutoscaleServiceUpdateAutoScaleVmGroupProcedure:
+			autoscaleServiceUpdateAutoScaleVmGroupHandler.ServeHTTP(w, r)
+		case AutoscaleServiceUpdateAutoScaleVmProfileProcedure:
+			autoscaleServiceUpdateAutoScaleVmProfileHandler.ServeHTTP(w, r)
+		case AutoscaleServiceUpdateConditionProcedure:
+			autoscaleServiceUpdateConditionHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -663,80 +663,24 @@ func NewAutoscaleServiceHandler(svc AutoscaleServiceHandler, opts ...connect.Han
 // UnimplementedAutoscaleServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedAutoscaleServiceHandler struct{}
 
-func (UnimplementedAutoscaleServiceHandler) CreateCondition(context.Context, *connect.Request[v1.CreateConditionRequest]) (*connect.Response[v1.CreateConditionResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.CreateCondition is not implemented"))
+func (UnimplementedAutoscaleServiceHandler) CreateAutoScalePolicy(context.Context, *connect.Request[v1.CreateAutoScalePolicyRequest]) (*connect.Response[v1.CreateAutoScalePolicyResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.CreateAutoScalePolicy is not implemented"))
 }
 
 func (UnimplementedAutoscaleServiceHandler) CreateAutoScaleVmGroup(context.Context, *connect.Request[v1.CreateAutoScaleVmGroupRequest]) (*connect.Response[v1.CreateAutoScaleVmGroupResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.CreateAutoScaleVmGroup is not implemented"))
 }
 
-func (UnimplementedAutoscaleServiceHandler) ListAutoScalePolicies(context.Context, *connect.Request[v1.ListAutoScalePoliciesRequest]) (*connect.Response[v1.ListAutoScalePoliciesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.ListAutoScalePolicies is not implemented"))
-}
-
-func (UnimplementedAutoscaleServiceHandler) CreateAutoScalePolicy(context.Context, *connect.Request[v1.CreateAutoScalePolicyRequest]) (*connect.Response[v1.CreateAutoScalePolicyResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.CreateAutoScalePolicy is not implemented"))
-}
-
-func (UnimplementedAutoscaleServiceHandler) DeleteCondition(context.Context, *connect.Request[v1.DeleteConditionRequest]) (*connect.Response[v1.DeleteConditionResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.DeleteCondition is not implemented"))
-}
-
-func (UnimplementedAutoscaleServiceHandler) DeleteAutoScaleVmProfile(context.Context, *connect.Request[v1.DeleteAutoScaleVmProfileRequest]) (*connect.Response[v1.DeleteAutoScaleVmProfileResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.DeleteAutoScaleVmProfile is not implemented"))
-}
-
-func (UnimplementedAutoscaleServiceHandler) ListAutoScaleVmProfiles(context.Context, *connect.Request[v1.ListAutoScaleVmProfilesRequest]) (*connect.Response[v1.ListAutoScaleVmProfilesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.ListAutoScaleVmProfiles is not implemented"))
-}
-
-func (UnimplementedAutoscaleServiceHandler) UpdateAutoScalePolicy(context.Context, *connect.Request[v1.UpdateAutoScalePolicyRequest]) (*connect.Response[v1.UpdateAutoScalePolicyResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.UpdateAutoScalePolicy is not implemented"))
-}
-
-func (UnimplementedAutoscaleServiceHandler) UpdateAutoScaleVmProfile(context.Context, *connect.Request[v1.UpdateAutoScaleVmProfileRequest]) (*connect.Response[v1.UpdateAutoScaleVmProfileResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.UpdateAutoScaleVmProfile is not implemented"))
-}
-
-func (UnimplementedAutoscaleServiceHandler) UpdateAutoScaleVmGroup(context.Context, *connect.Request[v1.UpdateAutoScaleVmGroupRequest]) (*connect.Response[v1.UpdateAutoScaleVmGroupResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.UpdateAutoScaleVmGroup is not implemented"))
-}
-
-func (UnimplementedAutoscaleServiceHandler) EnableAutoScaleVmGroup(context.Context, *connect.Request[v1.EnableAutoScaleVmGroupRequest]) (*connect.Response[v1.EnableAutoScaleVmGroupResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.EnableAutoScaleVmGroup is not implemented"))
-}
-
 func (UnimplementedAutoscaleServiceHandler) CreateAutoScaleVmProfile(context.Context, *connect.Request[v1.CreateAutoScaleVmProfileRequest]) (*connect.Response[v1.CreateAutoScaleVmProfileResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.CreateAutoScaleVmProfile is not implemented"))
 }
 
-func (UnimplementedAutoscaleServiceHandler) DisableAutoScaleVmGroup(context.Context, *connect.Request[v1.DisableAutoScaleVmGroupRequest]) (*connect.Response[v1.DisableAutoScaleVmGroupResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.DisableAutoScaleVmGroup is not implemented"))
+func (UnimplementedAutoscaleServiceHandler) CreateCondition(context.Context, *connect.Request[v1.CreateConditionRequest]) (*connect.Response[v1.CreateConditionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.CreateCondition is not implemented"))
 }
 
 func (UnimplementedAutoscaleServiceHandler) CreateCounter(context.Context, *connect.Request[v1.CreateCounterRequest]) (*connect.Response[v1.CreateCounterResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.CreateCounter is not implemented"))
-}
-
-func (UnimplementedAutoscaleServiceHandler) DeleteCounter(context.Context, *connect.Request[v1.DeleteCounterRequest]) (*connect.Response[v1.DeleteCounterResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.DeleteCounter is not implemented"))
-}
-
-func (UnimplementedAutoscaleServiceHandler) ListConditions(context.Context, *connect.Request[v1.ListConditionsRequest]) (*connect.Response[v1.ListConditionsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.ListConditions is not implemented"))
-}
-
-func (UnimplementedAutoscaleServiceHandler) UpdateCondition(context.Context, *connect.Request[v1.UpdateConditionRequest]) (*connect.Response[v1.UpdateConditionResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.UpdateCondition is not implemented"))
-}
-
-func (UnimplementedAutoscaleServiceHandler) ListCounters(context.Context, *connect.Request[v1.ListCountersRequest]) (*connect.Response[v1.ListCountersResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.ListCounters is not implemented"))
-}
-
-func (UnimplementedAutoscaleServiceHandler) ListAutoScaleVmGroups(context.Context, *connect.Request[v1.ListAutoScaleVmGroupsRequest]) (*connect.Response[v1.ListAutoScaleVmGroupsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.ListAutoScaleVmGroups is not implemented"))
 }
 
 func (UnimplementedAutoscaleServiceHandler) DeleteAutoScalePolicy(context.Context, *connect.Request[v1.DeleteAutoScalePolicyRequest]) (*connect.Response[v1.DeleteAutoScalePolicyResponse], error) {
@@ -745,4 +689,60 @@ func (UnimplementedAutoscaleServiceHandler) DeleteAutoScalePolicy(context.Contex
 
 func (UnimplementedAutoscaleServiceHandler) DeleteAutoScaleVmGroup(context.Context, *connect.Request[v1.DeleteAutoScaleVmGroupRequest]) (*connect.Response[v1.DeleteAutoScaleVmGroupResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.DeleteAutoScaleVmGroup is not implemented"))
+}
+
+func (UnimplementedAutoscaleServiceHandler) DeleteAutoScaleVmProfile(context.Context, *connect.Request[v1.DeleteAutoScaleVmProfileRequest]) (*connect.Response[v1.DeleteAutoScaleVmProfileResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.DeleteAutoScaleVmProfile is not implemented"))
+}
+
+func (UnimplementedAutoscaleServiceHandler) DeleteCondition(context.Context, *connect.Request[v1.DeleteConditionRequest]) (*connect.Response[v1.DeleteConditionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.DeleteCondition is not implemented"))
+}
+
+func (UnimplementedAutoscaleServiceHandler) DeleteCounter(context.Context, *connect.Request[v1.DeleteCounterRequest]) (*connect.Response[v1.DeleteCounterResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.DeleteCounter is not implemented"))
+}
+
+func (UnimplementedAutoscaleServiceHandler) DisableAutoScaleVmGroup(context.Context, *connect.Request[v1.DisableAutoScaleVmGroupRequest]) (*connect.Response[v1.DisableAutoScaleVmGroupResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.DisableAutoScaleVmGroup is not implemented"))
+}
+
+func (UnimplementedAutoscaleServiceHandler) EnableAutoScaleVmGroup(context.Context, *connect.Request[v1.EnableAutoScaleVmGroupRequest]) (*connect.Response[v1.EnableAutoScaleVmGroupResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.EnableAutoScaleVmGroup is not implemented"))
+}
+
+func (UnimplementedAutoscaleServiceHandler) ListAutoScalePolicies(context.Context, *connect.Request[v1.ListAutoScalePoliciesRequest]) (*connect.Response[v1.ListAutoScalePoliciesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.ListAutoScalePolicies is not implemented"))
+}
+
+func (UnimplementedAutoscaleServiceHandler) ListAutoScaleVmGroups(context.Context, *connect.Request[v1.ListAutoScaleVmGroupsRequest]) (*connect.Response[v1.ListAutoScaleVmGroupsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.ListAutoScaleVmGroups is not implemented"))
+}
+
+func (UnimplementedAutoscaleServiceHandler) ListAutoScaleVmProfiles(context.Context, *connect.Request[v1.ListAutoScaleVmProfilesRequest]) (*connect.Response[v1.ListAutoScaleVmProfilesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.ListAutoScaleVmProfiles is not implemented"))
+}
+
+func (UnimplementedAutoscaleServiceHandler) ListConditions(context.Context, *connect.Request[v1.ListConditionsRequest]) (*connect.Response[v1.ListConditionsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.ListConditions is not implemented"))
+}
+
+func (UnimplementedAutoscaleServiceHandler) ListCounters(context.Context, *connect.Request[v1.ListCountersRequest]) (*connect.Response[v1.ListCountersResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.ListCounters is not implemented"))
+}
+
+func (UnimplementedAutoscaleServiceHandler) UpdateAutoScalePolicy(context.Context, *connect.Request[v1.UpdateAutoScalePolicyRequest]) (*connect.Response[v1.UpdateAutoScalePolicyResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.UpdateAutoScalePolicy is not implemented"))
+}
+
+func (UnimplementedAutoscaleServiceHandler) UpdateAutoScaleVmGroup(context.Context, *connect.Request[v1.UpdateAutoScaleVmGroupRequest]) (*connect.Response[v1.UpdateAutoScaleVmGroupResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.UpdateAutoScaleVmGroup is not implemented"))
+}
+
+func (UnimplementedAutoscaleServiceHandler) UpdateAutoScaleVmProfile(context.Context, *connect.Request[v1.UpdateAutoScaleVmProfileRequest]) (*connect.Response[v1.UpdateAutoScaleVmProfileResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.UpdateAutoScaleVmProfile is not implemented"))
+}
+
+func (UnimplementedAutoscaleServiceHandler) UpdateCondition(context.Context, *connect.Request[v1.UpdateConditionRequest]) (*connect.Response[v1.UpdateConditionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.autoscale.v1.AutoscaleService.UpdateCondition is not implemented"))
 }

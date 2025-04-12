@@ -21,8 +21,8 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	InternallbService_ConfigureInternalLoadBalancerElement_FullMethodName = "/cloudstack.management.internallb.v1.InternallbService/ConfigureInternalLoadBalancerElement"
 	InternallbService_CreateInternalLoadBalancerElement_FullMethodName    = "/cloudstack.management.internallb.v1.InternallbService/CreateInternalLoadBalancerElement"
-	InternallbService_ListInternalLoadBalancerElements_FullMethodName     = "/cloudstack.management.internallb.v1.InternallbService/ListInternalLoadBalancerElements"
 	InternallbService_ListInternalLBVMs_FullMethodName                    = "/cloudstack.management.internallb.v1.InternallbService/ListInternalLBVMs"
+	InternallbService_ListInternalLoadBalancerElements_FullMethodName     = "/cloudstack.management.internallb.v1.InternallbService/ListInternalLoadBalancerElements"
 	InternallbService_StartInternalLBVM_FullMethodName                    = "/cloudstack.management.internallb.v1.InternallbService/StartInternalLBVM"
 	InternallbService_StopInternalLBVM_FullMethodName                     = "/cloudstack.management.internallb.v1.InternallbService/StopInternalLBVM"
 )
@@ -37,10 +37,10 @@ type InternallbServiceClient interface {
 	ConfigureInternalLoadBalancerElement(ctx context.Context, in *ConfigureInternalLoadBalancerElementRequest, opts ...grpc.CallOption) (*ConfigureInternalLoadBalancerElementResponse, error)
 	// CreateInternalLoadBalancerElement Create an Internal Load Balancer element.
 	CreateInternalLoadBalancerElement(ctx context.Context, in *CreateInternalLoadBalancerElementRequest, opts ...grpc.CallOption) (*CreateInternalLoadBalancerElementResponse, error)
-	// ListInternalLoadBalancerElements Lists all available Internal Load Balancer elements.
-	ListInternalLoadBalancerElements(ctx context.Context, in *ListInternalLoadBalancerElementsRequest, opts ...grpc.CallOption) (*ListInternalLoadBalancerElementsResponse, error)
 	// ListInternalLBVMs List internal LB VMs.
 	ListInternalLBVMs(ctx context.Context, in *ListInternalLBVMsRequest, opts ...grpc.CallOption) (*ListInternalLBVMsResponse, error)
+	// ListInternalLoadBalancerElements Lists all available Internal Load Balancer elements.
+	ListInternalLoadBalancerElements(ctx context.Context, in *ListInternalLoadBalancerElementsRequest, opts ...grpc.CallOption) (*ListInternalLoadBalancerElementsResponse, error)
 	// StartInternalLBVM Starts an existing internal lb vm.
 	StartInternalLBVM(ctx context.Context, in *StartInternalLBVMRequest, opts ...grpc.CallOption) (*StartInternalLBVMResponse, error)
 	// StopInternalLBVM Stops an Internal LB vm.
@@ -75,20 +75,20 @@ func (c *internallbServiceClient) CreateInternalLoadBalancerElement(ctx context.
 	return out, nil
 }
 
-func (c *internallbServiceClient) ListInternalLoadBalancerElements(ctx context.Context, in *ListInternalLoadBalancerElementsRequest, opts ...grpc.CallOption) (*ListInternalLoadBalancerElementsResponse, error) {
+func (c *internallbServiceClient) ListInternalLBVMs(ctx context.Context, in *ListInternalLBVMsRequest, opts ...grpc.CallOption) (*ListInternalLBVMsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListInternalLoadBalancerElementsResponse)
-	err := c.cc.Invoke(ctx, InternallbService_ListInternalLoadBalancerElements_FullMethodName, in, out, cOpts...)
+	out := new(ListInternalLBVMsResponse)
+	err := c.cc.Invoke(ctx, InternallbService_ListInternalLBVMs_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *internallbServiceClient) ListInternalLBVMs(ctx context.Context, in *ListInternalLBVMsRequest, opts ...grpc.CallOption) (*ListInternalLBVMsResponse, error) {
+func (c *internallbServiceClient) ListInternalLoadBalancerElements(ctx context.Context, in *ListInternalLoadBalancerElementsRequest, opts ...grpc.CallOption) (*ListInternalLoadBalancerElementsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListInternalLBVMsResponse)
-	err := c.cc.Invoke(ctx, InternallbService_ListInternalLBVMs_FullMethodName, in, out, cOpts...)
+	out := new(ListInternalLoadBalancerElementsResponse)
+	err := c.cc.Invoke(ctx, InternallbService_ListInternalLoadBalancerElements_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -125,10 +125,10 @@ type InternallbServiceServer interface {
 	ConfigureInternalLoadBalancerElement(context.Context, *ConfigureInternalLoadBalancerElementRequest) (*ConfigureInternalLoadBalancerElementResponse, error)
 	// CreateInternalLoadBalancerElement Create an Internal Load Balancer element.
 	CreateInternalLoadBalancerElement(context.Context, *CreateInternalLoadBalancerElementRequest) (*CreateInternalLoadBalancerElementResponse, error)
-	// ListInternalLoadBalancerElements Lists all available Internal Load Balancer elements.
-	ListInternalLoadBalancerElements(context.Context, *ListInternalLoadBalancerElementsRequest) (*ListInternalLoadBalancerElementsResponse, error)
 	// ListInternalLBVMs List internal LB VMs.
 	ListInternalLBVMs(context.Context, *ListInternalLBVMsRequest) (*ListInternalLBVMsResponse, error)
+	// ListInternalLoadBalancerElements Lists all available Internal Load Balancer elements.
+	ListInternalLoadBalancerElements(context.Context, *ListInternalLoadBalancerElementsRequest) (*ListInternalLoadBalancerElementsResponse, error)
 	// StartInternalLBVM Starts an existing internal lb vm.
 	StartInternalLBVM(context.Context, *StartInternalLBVMRequest) (*StartInternalLBVMResponse, error)
 	// StopInternalLBVM Stops an Internal LB vm.
@@ -149,11 +149,11 @@ func (UnimplementedInternallbServiceServer) ConfigureInternalLoadBalancerElement
 func (UnimplementedInternallbServiceServer) CreateInternalLoadBalancerElement(context.Context, *CreateInternalLoadBalancerElementRequest) (*CreateInternalLoadBalancerElementResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateInternalLoadBalancerElement not implemented")
 }
-func (UnimplementedInternallbServiceServer) ListInternalLoadBalancerElements(context.Context, *ListInternalLoadBalancerElementsRequest) (*ListInternalLoadBalancerElementsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListInternalLoadBalancerElements not implemented")
-}
 func (UnimplementedInternallbServiceServer) ListInternalLBVMs(context.Context, *ListInternalLBVMsRequest) (*ListInternalLBVMsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListInternalLBVMs not implemented")
+}
+func (UnimplementedInternallbServiceServer) ListInternalLoadBalancerElements(context.Context, *ListInternalLoadBalancerElementsRequest) (*ListInternalLoadBalancerElementsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListInternalLoadBalancerElements not implemented")
 }
 func (UnimplementedInternallbServiceServer) StartInternalLBVM(context.Context, *StartInternalLBVMRequest) (*StartInternalLBVMResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StartInternalLBVM not implemented")
@@ -218,24 +218,6 @@ func _InternallbService_CreateInternalLoadBalancerElement_Handler(srv interface{
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InternallbService_ListInternalLoadBalancerElements_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListInternalLoadBalancerElementsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(InternallbServiceServer).ListInternalLoadBalancerElements(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: InternallbService_ListInternalLoadBalancerElements_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InternallbServiceServer).ListInternalLoadBalancerElements(ctx, req.(*ListInternalLoadBalancerElementsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _InternallbService_ListInternalLBVMs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListInternalLBVMsRequest)
 	if err := dec(in); err != nil {
@@ -250,6 +232,24 @@ func _InternallbService_ListInternalLBVMs_Handler(srv interface{}, ctx context.C
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(InternallbServiceServer).ListInternalLBVMs(ctx, req.(*ListInternalLBVMsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _InternallbService_ListInternalLoadBalancerElements_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListInternalLoadBalancerElementsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InternallbServiceServer).ListInternalLoadBalancerElements(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: InternallbService_ListInternalLoadBalancerElements_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InternallbServiceServer).ListInternalLoadBalancerElements(ctx, req.(*ListInternalLoadBalancerElementsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -306,12 +306,12 @@ var InternallbService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _InternallbService_CreateInternalLoadBalancerElement_Handler,
 		},
 		{
-			MethodName: "ListInternalLoadBalancerElements",
-			Handler:    _InternallbService_ListInternalLoadBalancerElements_Handler,
-		},
-		{
 			MethodName: "ListInternalLBVMs",
 			Handler:    _InternallbService_ListInternalLBVMs_Handler,
+		},
+		{
+			MethodName: "ListInternalLoadBalancerElements",
+			Handler:    _InternallbService_ListInternalLoadBalancerElements_Handler,
 		},
 		{
 			MethodName: "StartInternalLBVM",

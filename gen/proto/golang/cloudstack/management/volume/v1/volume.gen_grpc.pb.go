@@ -19,36 +19,38 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	VolumeService_DestroyVolume_FullMethodName            = "/cloudstack.management.volume.v1.VolumeService/DestroyVolume"
-	VolumeService_UpdateVolumeCmdByAdmin_FullMethodName   = "/cloudstack.management.volume.v1.VolumeService/UpdateVolumeCmdByAdmin"
-	VolumeService_CheckAndRepairVolume_FullMethodName     = "/cloudstack.management.volume.v1.VolumeService/CheckAndRepairVolume"
-	VolumeService_ExtractVolume_FullMethodName            = "/cloudstack.management.volume.v1.VolumeService/ExtractVolume"
-	VolumeService_ListVolumesCmdByAdmin_FullMethodName    = "/cloudstack.management.volume.v1.VolumeService/ListVolumesCmdByAdmin"
-	VolumeService_UnmanageVolume_FullMethodName           = "/cloudstack.management.volume.v1.VolumeService/UnmanageVolume"
-	VolumeService_UploadVolume_FullMethodName             = "/cloudstack.management.volume.v1.VolumeService/UploadVolume"
-	VolumeService_ImportVolume_FullMethodName             = "/cloudstack.management.volume.v1.VolumeService/ImportVolume"
-	VolumeService_DetachVolumeCmdByAdmin_FullMethodName   = "/cloudstack.management.volume.v1.VolumeService/DetachVolumeCmdByAdmin"
-	VolumeService_ChangeOfferingForVolume_FullMethodName  = "/cloudstack.management.volume.v1.VolumeService/ChangeOfferingForVolume"
-	VolumeService_CreateVolumeCmdByAdmin_FullMethodName   = "/cloudstack.management.volume.v1.VolumeService/CreateVolumeCmdByAdmin"
-	VolumeService_ListVolumes_FullMethodName              = "/cloudstack.management.volume.v1.VolumeService/ListVolumes"
-	VolumeService_AssignVolume_FullMethodName             = "/cloudstack.management.volume.v1.VolumeService/AssignVolume"
-	VolumeService_GetUploadParamsForVolume_FullMethodName = "/cloudstack.management.volume.v1.VolumeService/GetUploadParamsForVolume"
-	VolumeService_ListVolumesForImport_FullMethodName     = "/cloudstack.management.volume.v1.VolumeService/ListVolumesForImport"
-	VolumeService_DeleteVolume_FullMethodName             = "/cloudstack.management.volume.v1.VolumeService/DeleteVolume"
-	VolumeService_RecoverVolumeCmdByAdmin_FullMethodName  = "/cloudstack.management.volume.v1.VolumeService/RecoverVolumeCmdByAdmin"
-	VolumeService_CreateVolume_FullMethodName             = "/cloudstack.management.volume.v1.VolumeService/CreateVolume"
-	VolumeService_MigrateVolumeCmdByAdmin_FullMethodName  = "/cloudstack.management.volume.v1.VolumeService/MigrateVolumeCmdByAdmin"
 	VolumeService_AddResourceDetail_FullMethodName        = "/cloudstack.management.volume.v1.VolumeService/AddResourceDetail"
-	VolumeService_AttachVolumeCmdByAdmin_FullMethodName   = "/cloudstack.management.volume.v1.VolumeService/AttachVolumeCmdByAdmin"
-	VolumeService_ListResourceDetails_FullMethodName      = "/cloudstack.management.volume.v1.VolumeService/ListResourceDetails"
-	VolumeService_UpdateVolume_FullMethodName             = "/cloudstack.management.volume.v1.VolumeService/UpdateVolume"
+	VolumeService_AssignVolume_FullMethodName             = "/cloudstack.management.volume.v1.VolumeService/AssignVolume"
 	VolumeService_AttachVolume_FullMethodName             = "/cloudstack.management.volume.v1.VolumeService/AttachVolume"
-	VolumeService_MigrateVolume_FullMethodName            = "/cloudstack.management.volume.v1.VolumeService/MigrateVolume"
+	VolumeService_AttachVolumeCmdByAdmin_FullMethodName   = "/cloudstack.management.volume.v1.VolumeService/AttachVolumeCmdByAdmin"
+	VolumeService_ChangeOfferingForVolume_FullMethodName  = "/cloudstack.management.volume.v1.VolumeService/ChangeOfferingForVolume"
+	VolumeService_CheckAndRepairVolume_FullMethodName     = "/cloudstack.management.volume.v1.VolumeService/CheckAndRepairVolume"
+	VolumeService_CreateVolume_FullMethodName             = "/cloudstack.management.volume.v1.VolumeService/CreateVolume"
+	VolumeService_CreateVolumeCmdByAdmin_FullMethodName   = "/cloudstack.management.volume.v1.VolumeService/CreateVolumeCmdByAdmin"
+	VolumeService_DeleteVolume_FullMethodName             = "/cloudstack.management.volume.v1.VolumeService/DeleteVolume"
+	VolumeService_DestroyVolume_FullMethodName            = "/cloudstack.management.volume.v1.VolumeService/DestroyVolume"
+	VolumeService_DestroyVolumeCmdByAdmin_FullMethodName  = "/cloudstack.management.volume.v1.VolumeService/DestroyVolumeCmdByAdmin"
 	VolumeService_DetachVolume_FullMethodName             = "/cloudstack.management.volume.v1.VolumeService/DetachVolume"
-	VolumeService_RemoveResourceDetail_FullMethodName     = "/cloudstack.management.volume.v1.VolumeService/RemoveResourceDetail"
+	VolumeService_DetachVolumeCmdByAdmin_FullMethodName   = "/cloudstack.management.volume.v1.VolumeService/DetachVolumeCmdByAdmin"
+	VolumeService_ExtractVolume_FullMethodName            = "/cloudstack.management.volume.v1.VolumeService/ExtractVolume"
+	VolumeService_GetUploadParamsForVolume_FullMethodName = "/cloudstack.management.volume.v1.VolumeService/GetUploadParamsForVolume"
+	VolumeService_ImportVolume_FullMethodName             = "/cloudstack.management.volume.v1.VolumeService/ImportVolume"
+	VolumeService_ListResourceDetails_FullMethodName      = "/cloudstack.management.volume.v1.VolumeService/ListResourceDetails"
+	VolumeService_ListVolumes_FullMethodName              = "/cloudstack.management.volume.v1.VolumeService/ListVolumes"
+	VolumeService_ListVolumesCmdByAdmin_FullMethodName    = "/cloudstack.management.volume.v1.VolumeService/ListVolumesCmdByAdmin"
+	VolumeService_ListVolumesForImport_FullMethodName     = "/cloudstack.management.volume.v1.VolumeService/ListVolumesForImport"
+	VolumeService_MigrateVolume_FullMethodName            = "/cloudstack.management.volume.v1.VolumeService/MigrateVolume"
+	VolumeService_MigrateVolumeCmdByAdmin_FullMethodName  = "/cloudstack.management.volume.v1.VolumeService/MigrateVolumeCmdByAdmin"
 	VolumeService_RecoverVolume_FullMethodName            = "/cloudstack.management.volume.v1.VolumeService/RecoverVolume"
-	VolumeService_ResizeVolumeCmdByAdmin_FullMethodName   = "/cloudstack.management.volume.v1.VolumeService/ResizeVolumeCmdByAdmin"
+	VolumeService_RecoverVolumeCmdByAdmin_FullMethodName  = "/cloudstack.management.volume.v1.VolumeService/RecoverVolumeCmdByAdmin"
+	VolumeService_RemoveResourceDetail_FullMethodName     = "/cloudstack.management.volume.v1.VolumeService/RemoveResourceDetail"
 	VolumeService_ResizeVolume_FullMethodName             = "/cloudstack.management.volume.v1.VolumeService/ResizeVolume"
+	VolumeService_ResizeVolumeCmdByAdmin_FullMethodName   = "/cloudstack.management.volume.v1.VolumeService/ResizeVolumeCmdByAdmin"
+	VolumeService_UnmanageVolume_FullMethodName           = "/cloudstack.management.volume.v1.VolumeService/UnmanageVolume"
+	VolumeService_UpdateVolume_FullMethodName             = "/cloudstack.management.volume.v1.VolumeService/UpdateVolume"
+	VolumeService_UpdateVolumeCmdByAdmin_FullMethodName   = "/cloudstack.management.volume.v1.VolumeService/UpdateVolumeCmdByAdmin"
+	VolumeService_UploadVolume_FullMethodName             = "/cloudstack.management.volume.v1.VolumeService/UploadVolume"
+	VolumeService_UploadVolumeCmdByAdmin_FullMethodName   = "/cloudstack.management.volume.v1.VolumeService/UploadVolumeCmdByAdmin"
 )
 
 // VolumeServiceClient is the client API for VolumeService service.
@@ -57,66 +59,70 @@ const (
 //
 // VolumeService provides operations for managing Volumes
 type VolumeServiceClient interface {
-	// DestroyVolume Destroys a Volume.
-	DestroyVolume(ctx context.Context, in *DestroyVolumeRequest, opts ...grpc.CallOption) (*DestroyVolumeResponse, error)
-	// UpdateVolumeCmdByAdmin Updates the volume.
-	UpdateVolumeCmdByAdmin(ctx context.Context, in *UpdateVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*UpdateVolumeCmdByAdminResponse, error)
-	// CheckAndRepairVolume Check the volume for any errors or leaks and also repairs when repair parameter is passed, this is currently supported for KVM only
-	CheckAndRepairVolume(ctx context.Context, in *CheckAndRepairVolumeRequest, opts ...grpc.CallOption) (*CheckAndRepairVolumeResponse, error)
-	// ExtractVolume Extracts volume
-	ExtractVolume(ctx context.Context, in *ExtractVolumeRequest, opts ...grpc.CallOption) (*ExtractVolumeResponse, error)
-	// ListVolumesCmdByAdmin Lists all volumes.
-	ListVolumesCmdByAdmin(ctx context.Context, in *ListVolumesCmdByAdminRequest, opts ...grpc.CallOption) (*ListVolumesCmdByAdminResponse, error)
-	// UnmanageVolume Unmanage a volume on storage pool.
-	UnmanageVolume(ctx context.Context, in *UnmanageVolumeRequest, opts ...grpc.CallOption) (*UnmanageVolumeResponse, error)
-	// UploadVolume Uploads a data disk.
-	UploadVolume(ctx context.Context, in *UploadVolumeRequest, opts ...grpc.CallOption) (*UploadVolumeResponse, error)
-	// ImportVolume Import an unmanaged volume from a storage pool on a host into CloudStack
-	ImportVolume(ctx context.Context, in *ImportVolumeRequest, opts ...grpc.CallOption) (*ImportVolumeResponse, error)
-	// DetachVolumeCmdByAdmin Detaches a disk volume from a virtual machine.
-	DetachVolumeCmdByAdmin(ctx context.Context, in *DetachVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*DetachVolumeCmdByAdminResponse, error)
-	// ChangeOfferingForVolume Change disk offering of the volume and also an option to auto migrate if required to apply the new disk offering
-	ChangeOfferingForVolume(ctx context.Context, in *ChangeOfferingForVolumeRequest, opts ...grpc.CallOption) (*ChangeOfferingForVolumeResponse, error)
-	// CreateVolumeCmdByAdmin Creates a disk volume from a disk offering. This disk volume must still be attached to a virtual machine to make use of it.
-	CreateVolumeCmdByAdmin(ctx context.Context, in *CreateVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*CreateVolumeCmdByAdminResponse, error)
-	// ListVolumes Lists all volumes.
-	ListVolumes(ctx context.Context, in *ListVolumesRequest, opts ...grpc.CallOption) (*ListVolumesResponse, error)
-	// AssignVolume Changes ownership of a Volume from one account to another.
-	AssignVolume(ctx context.Context, in *AssignVolumeRequest, opts ...grpc.CallOption) (*AssignVolumeResponse, error)
-	// GetUploadParamsForVolume Upload a data disk to the cloudstack cloud.
-	GetUploadParamsForVolume(ctx context.Context, in *GetUploadParamsForVolumeRequest, opts ...grpc.CallOption) (*GetUploadParamsForVolumeResponse, error)
-	// ListVolumesForImport Lists unmanaged volumes on a storage pool
-	ListVolumesForImport(ctx context.Context, in *ListVolumesForImportRequest, opts ...grpc.CallOption) (*ListVolumesForImportResponse, error)
-	// DeleteVolume Deletes a detached disk volume.
-	DeleteVolume(ctx context.Context, in *DeleteVolumeRequest, opts ...grpc.CallOption) (*DeleteVolumeResponse, error)
-	// RecoverVolumeCmdByAdmin Recovers a Destroy volume.
-	RecoverVolumeCmdByAdmin(ctx context.Context, in *RecoverVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*RecoverVolumeCmdByAdminResponse, error)
-	// CreateVolume Creates a disk volume from a disk offering. This disk volume must still be attached to a virtual machine to make use of it.
-	CreateVolume(ctx context.Context, in *CreateVolumeRequest, opts ...grpc.CallOption) (*CreateVolumeResponse, error)
-	// MigrateVolumeCmdByAdmin Migrate volume
-	MigrateVolumeCmdByAdmin(ctx context.Context, in *MigrateVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*MigrateVolumeCmdByAdminResponse, error)
 	// AddResourceDetail Adds detail for the Resource.
 	AddResourceDetail(ctx context.Context, in *AddResourceDetailRequest, opts ...grpc.CallOption) (*AddResourceDetailResponse, error)
-	// AttachVolumeCmdByAdmin Attaches a disk volume to a virtual machine.
-	AttachVolumeCmdByAdmin(ctx context.Context, in *AttachVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*AttachVolumeCmdByAdminResponse, error)
-	// ListResourceDetails List resource detail(s)
-	ListResourceDetails(ctx context.Context, in *ListResourceDetailsRequest, opts ...grpc.CallOption) (*ListResourceDetailsResponse, error)
-	// UpdateVolume Updates the volume.
-	UpdateVolume(ctx context.Context, in *UpdateVolumeRequest, opts ...grpc.CallOption) (*UpdateVolumeResponse, error)
+	// AssignVolume Changes ownership of a Volume from one account to another.
+	AssignVolume(ctx context.Context, in *AssignVolumeRequest, opts ...grpc.CallOption) (*AssignVolumeResponse, error)
 	// AttachVolume Attaches a disk volume to a virtual machine.
 	AttachVolume(ctx context.Context, in *AttachVolumeRequest, opts ...grpc.CallOption) (*AttachVolumeResponse, error)
-	// MigrateVolume Migrate volume
-	MigrateVolume(ctx context.Context, in *MigrateVolumeRequest, opts ...grpc.CallOption) (*MigrateVolumeResponse, error)
+	// AttachVolumeCmdByAdmin Attaches a disk volume to a virtual machine.
+	AttachVolumeCmdByAdmin(ctx context.Context, in *AttachVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*AttachVolumeCmdByAdminResponse, error)
+	// ChangeOfferingForVolume Change disk offering of the volume and also an option to auto migrate if required to apply the new disk offering
+	ChangeOfferingForVolume(ctx context.Context, in *ChangeOfferingForVolumeRequest, opts ...grpc.CallOption) (*ChangeOfferingForVolumeResponse, error)
+	// CheckAndRepairVolume Check the volume for any errors or leaks and also repairs when repair parameter is passed, this is currently supported for KVM only
+	CheckAndRepairVolume(ctx context.Context, in *CheckAndRepairVolumeRequest, opts ...grpc.CallOption) (*CheckAndRepairVolumeResponse, error)
+	// CreateVolume Creates a disk volume from a disk offering. This disk volume must still be attached to a virtual machine to make use of it.
+	CreateVolume(ctx context.Context, in *CreateVolumeRequest, opts ...grpc.CallOption) (*CreateVolumeResponse, error)
+	// CreateVolumeCmdByAdmin Creates a disk volume from a disk offering. This disk volume must still be attached to a virtual machine to make use of it.
+	CreateVolumeCmdByAdmin(ctx context.Context, in *CreateVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*CreateVolumeCmdByAdminResponse, error)
+	// DeleteVolume Deletes a detached disk volume.
+	DeleteVolume(ctx context.Context, in *DeleteVolumeRequest, opts ...grpc.CallOption) (*DeleteVolumeResponse, error)
+	// DestroyVolume Destroys a Volume.
+	DestroyVolume(ctx context.Context, in *DestroyVolumeRequest, opts ...grpc.CallOption) (*DestroyVolumeResponse, error)
+	// DestroyVolumeCmdByAdmin Destroys a Volume.
+	DestroyVolumeCmdByAdmin(ctx context.Context, in *DestroyVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*DestroyVolumeCmdByAdminResponse, error)
 	// DetachVolume Detaches a disk volume from a virtual machine.
 	DetachVolume(ctx context.Context, in *DetachVolumeRequest, opts ...grpc.CallOption) (*DetachVolumeResponse, error)
-	// RemoveResourceDetail Removes detail for the Resource.
-	RemoveResourceDetail(ctx context.Context, in *RemoveResourceDetailRequest, opts ...grpc.CallOption) (*RemoveResourceDetailResponse, error)
+	// DetachVolumeCmdByAdmin Detaches a disk volume from a virtual machine.
+	DetachVolumeCmdByAdmin(ctx context.Context, in *DetachVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*DetachVolumeCmdByAdminResponse, error)
+	// ExtractVolume Extracts volume
+	ExtractVolume(ctx context.Context, in *ExtractVolumeRequest, opts ...grpc.CallOption) (*ExtractVolumeResponse, error)
+	// GetUploadParamsForVolume Upload a data disk to the cloudstack cloud.
+	GetUploadParamsForVolume(ctx context.Context, in *GetUploadParamsForVolumeRequest, opts ...grpc.CallOption) (*GetUploadParamsForVolumeResponse, error)
+	// ImportVolume Import an unmanaged volume from a storage pool on a host into CloudStack
+	ImportVolume(ctx context.Context, in *ImportVolumeRequest, opts ...grpc.CallOption) (*ImportVolumeResponse, error)
+	// ListResourceDetails List resource detail(s)
+	ListResourceDetails(ctx context.Context, in *ListResourceDetailsRequest, opts ...grpc.CallOption) (*ListResourceDetailsResponse, error)
+	// ListVolumes Lists all volumes.
+	ListVolumes(ctx context.Context, in *ListVolumesRequest, opts ...grpc.CallOption) (*ListVolumesResponse, error)
+	// ListVolumesCmdByAdmin Lists all volumes.
+	ListVolumesCmdByAdmin(ctx context.Context, in *ListVolumesCmdByAdminRequest, opts ...grpc.CallOption) (*ListVolumesCmdByAdminResponse, error)
+	// ListVolumesForImport Lists unmanaged volumes on a storage pool
+	ListVolumesForImport(ctx context.Context, in *ListVolumesForImportRequest, opts ...grpc.CallOption) (*ListVolumesForImportResponse, error)
+	// MigrateVolume Migrate volume
+	MigrateVolume(ctx context.Context, in *MigrateVolumeRequest, opts ...grpc.CallOption) (*MigrateVolumeResponse, error)
+	// MigrateVolumeCmdByAdmin Migrate volume
+	MigrateVolumeCmdByAdmin(ctx context.Context, in *MigrateVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*MigrateVolumeCmdByAdminResponse, error)
 	// RecoverVolume Recovers a Destroy volume.
 	RecoverVolume(ctx context.Context, in *RecoverVolumeRequest, opts ...grpc.CallOption) (*RecoverVolumeResponse, error)
-	// ResizeVolumeCmdByAdmin Resizes a volume
-	ResizeVolumeCmdByAdmin(ctx context.Context, in *ResizeVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*ResizeVolumeCmdByAdminResponse, error)
+	// RecoverVolumeCmdByAdmin Recovers a Destroy volume.
+	RecoverVolumeCmdByAdmin(ctx context.Context, in *RecoverVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*RecoverVolumeCmdByAdminResponse, error)
+	// RemoveResourceDetail Removes detail for the Resource.
+	RemoveResourceDetail(ctx context.Context, in *RemoveResourceDetailRequest, opts ...grpc.CallOption) (*RemoveResourceDetailResponse, error)
 	// ResizeVolume Resizes a volume
 	ResizeVolume(ctx context.Context, in *ResizeVolumeRequest, opts ...grpc.CallOption) (*ResizeVolumeResponse, error)
+	// ResizeVolumeCmdByAdmin Resizes a volume
+	ResizeVolumeCmdByAdmin(ctx context.Context, in *ResizeVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*ResizeVolumeCmdByAdminResponse, error)
+	// UnmanageVolume Unmanage a volume on storage pool.
+	UnmanageVolume(ctx context.Context, in *UnmanageVolumeRequest, opts ...grpc.CallOption) (*UnmanageVolumeResponse, error)
+	// UpdateVolume Updates the volume.
+	UpdateVolume(ctx context.Context, in *UpdateVolumeRequest, opts ...grpc.CallOption) (*UpdateVolumeResponse, error)
+	// UpdateVolumeCmdByAdmin Updates the volume.
+	UpdateVolumeCmdByAdmin(ctx context.Context, in *UpdateVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*UpdateVolumeCmdByAdminResponse, error)
+	// UploadVolume Uploads a data disk.
+	UploadVolume(ctx context.Context, in *UploadVolumeRequest, opts ...grpc.CallOption) (*UploadVolumeResponse, error)
+	// UploadVolumeCmdByAdmin Uploads a data disk.
+	UploadVolumeCmdByAdmin(ctx context.Context, in *UploadVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*UploadVolumeCmdByAdminResponse, error)
 }
 
 type volumeServiceClient struct {
@@ -127,120 +133,10 @@ func NewVolumeServiceClient(cc grpc.ClientConnInterface) VolumeServiceClient {
 	return &volumeServiceClient{cc}
 }
 
-func (c *volumeServiceClient) DestroyVolume(ctx context.Context, in *DestroyVolumeRequest, opts ...grpc.CallOption) (*DestroyVolumeResponse, error) {
+func (c *volumeServiceClient) AddResourceDetail(ctx context.Context, in *AddResourceDetailRequest, opts ...grpc.CallOption) (*AddResourceDetailResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DestroyVolumeResponse)
-	err := c.cc.Invoke(ctx, VolumeService_DestroyVolume_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *volumeServiceClient) UpdateVolumeCmdByAdmin(ctx context.Context, in *UpdateVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*UpdateVolumeCmdByAdminResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateVolumeCmdByAdminResponse)
-	err := c.cc.Invoke(ctx, VolumeService_UpdateVolumeCmdByAdmin_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *volumeServiceClient) CheckAndRepairVolume(ctx context.Context, in *CheckAndRepairVolumeRequest, opts ...grpc.CallOption) (*CheckAndRepairVolumeResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CheckAndRepairVolumeResponse)
-	err := c.cc.Invoke(ctx, VolumeService_CheckAndRepairVolume_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *volumeServiceClient) ExtractVolume(ctx context.Context, in *ExtractVolumeRequest, opts ...grpc.CallOption) (*ExtractVolumeResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ExtractVolumeResponse)
-	err := c.cc.Invoke(ctx, VolumeService_ExtractVolume_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *volumeServiceClient) ListVolumesCmdByAdmin(ctx context.Context, in *ListVolumesCmdByAdminRequest, opts ...grpc.CallOption) (*ListVolumesCmdByAdminResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListVolumesCmdByAdminResponse)
-	err := c.cc.Invoke(ctx, VolumeService_ListVolumesCmdByAdmin_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *volumeServiceClient) UnmanageVolume(ctx context.Context, in *UnmanageVolumeRequest, opts ...grpc.CallOption) (*UnmanageVolumeResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UnmanageVolumeResponse)
-	err := c.cc.Invoke(ctx, VolumeService_UnmanageVolume_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *volumeServiceClient) UploadVolume(ctx context.Context, in *UploadVolumeRequest, opts ...grpc.CallOption) (*UploadVolumeResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UploadVolumeResponse)
-	err := c.cc.Invoke(ctx, VolumeService_UploadVolume_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *volumeServiceClient) ImportVolume(ctx context.Context, in *ImportVolumeRequest, opts ...grpc.CallOption) (*ImportVolumeResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ImportVolumeResponse)
-	err := c.cc.Invoke(ctx, VolumeService_ImportVolume_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *volumeServiceClient) DetachVolumeCmdByAdmin(ctx context.Context, in *DetachVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*DetachVolumeCmdByAdminResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DetachVolumeCmdByAdminResponse)
-	err := c.cc.Invoke(ctx, VolumeService_DetachVolumeCmdByAdmin_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *volumeServiceClient) ChangeOfferingForVolume(ctx context.Context, in *ChangeOfferingForVolumeRequest, opts ...grpc.CallOption) (*ChangeOfferingForVolumeResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ChangeOfferingForVolumeResponse)
-	err := c.cc.Invoke(ctx, VolumeService_ChangeOfferingForVolume_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *volumeServiceClient) CreateVolumeCmdByAdmin(ctx context.Context, in *CreateVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*CreateVolumeCmdByAdminResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateVolumeCmdByAdminResponse)
-	err := c.cc.Invoke(ctx, VolumeService_CreateVolumeCmdByAdmin_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *volumeServiceClient) ListVolumes(ctx context.Context, in *ListVolumesRequest, opts ...grpc.CallOption) (*ListVolumesResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListVolumesResponse)
-	err := c.cc.Invoke(ctx, VolumeService_ListVolumes_FullMethodName, in, out, cOpts...)
+	out := new(AddResourceDetailResponse)
+	err := c.cc.Invoke(ctx, VolumeService_AddResourceDetail_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -257,70 +153,10 @@ func (c *volumeServiceClient) AssignVolume(ctx context.Context, in *AssignVolume
 	return out, nil
 }
 
-func (c *volumeServiceClient) GetUploadParamsForVolume(ctx context.Context, in *GetUploadParamsForVolumeRequest, opts ...grpc.CallOption) (*GetUploadParamsForVolumeResponse, error) {
+func (c *volumeServiceClient) AttachVolume(ctx context.Context, in *AttachVolumeRequest, opts ...grpc.CallOption) (*AttachVolumeResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetUploadParamsForVolumeResponse)
-	err := c.cc.Invoke(ctx, VolumeService_GetUploadParamsForVolume_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *volumeServiceClient) ListVolumesForImport(ctx context.Context, in *ListVolumesForImportRequest, opts ...grpc.CallOption) (*ListVolumesForImportResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListVolumesForImportResponse)
-	err := c.cc.Invoke(ctx, VolumeService_ListVolumesForImport_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *volumeServiceClient) DeleteVolume(ctx context.Context, in *DeleteVolumeRequest, opts ...grpc.CallOption) (*DeleteVolumeResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteVolumeResponse)
-	err := c.cc.Invoke(ctx, VolumeService_DeleteVolume_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *volumeServiceClient) RecoverVolumeCmdByAdmin(ctx context.Context, in *RecoverVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*RecoverVolumeCmdByAdminResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RecoverVolumeCmdByAdminResponse)
-	err := c.cc.Invoke(ctx, VolumeService_RecoverVolumeCmdByAdmin_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *volumeServiceClient) CreateVolume(ctx context.Context, in *CreateVolumeRequest, opts ...grpc.CallOption) (*CreateVolumeResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateVolumeResponse)
-	err := c.cc.Invoke(ctx, VolumeService_CreateVolume_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *volumeServiceClient) MigrateVolumeCmdByAdmin(ctx context.Context, in *MigrateVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*MigrateVolumeCmdByAdminResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(MigrateVolumeCmdByAdminResponse)
-	err := c.cc.Invoke(ctx, VolumeService_MigrateVolumeCmdByAdmin_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *volumeServiceClient) AddResourceDetail(ctx context.Context, in *AddResourceDetailRequest, opts ...grpc.CallOption) (*AddResourceDetailResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AddResourceDetailResponse)
-	err := c.cc.Invoke(ctx, VolumeService_AddResourceDetail_FullMethodName, in, out, cOpts...)
+	out := new(AttachVolumeResponse)
+	err := c.cc.Invoke(ctx, VolumeService_AttachVolume_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -337,40 +173,70 @@ func (c *volumeServiceClient) AttachVolumeCmdByAdmin(ctx context.Context, in *At
 	return out, nil
 }
 
-func (c *volumeServiceClient) ListResourceDetails(ctx context.Context, in *ListResourceDetailsRequest, opts ...grpc.CallOption) (*ListResourceDetailsResponse, error) {
+func (c *volumeServiceClient) ChangeOfferingForVolume(ctx context.Context, in *ChangeOfferingForVolumeRequest, opts ...grpc.CallOption) (*ChangeOfferingForVolumeResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListResourceDetailsResponse)
-	err := c.cc.Invoke(ctx, VolumeService_ListResourceDetails_FullMethodName, in, out, cOpts...)
+	out := new(ChangeOfferingForVolumeResponse)
+	err := c.cc.Invoke(ctx, VolumeService_ChangeOfferingForVolume_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *volumeServiceClient) UpdateVolume(ctx context.Context, in *UpdateVolumeRequest, opts ...grpc.CallOption) (*UpdateVolumeResponse, error) {
+func (c *volumeServiceClient) CheckAndRepairVolume(ctx context.Context, in *CheckAndRepairVolumeRequest, opts ...grpc.CallOption) (*CheckAndRepairVolumeResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateVolumeResponse)
-	err := c.cc.Invoke(ctx, VolumeService_UpdateVolume_FullMethodName, in, out, cOpts...)
+	out := new(CheckAndRepairVolumeResponse)
+	err := c.cc.Invoke(ctx, VolumeService_CheckAndRepairVolume_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *volumeServiceClient) AttachVolume(ctx context.Context, in *AttachVolumeRequest, opts ...grpc.CallOption) (*AttachVolumeResponse, error) {
+func (c *volumeServiceClient) CreateVolume(ctx context.Context, in *CreateVolumeRequest, opts ...grpc.CallOption) (*CreateVolumeResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AttachVolumeResponse)
-	err := c.cc.Invoke(ctx, VolumeService_AttachVolume_FullMethodName, in, out, cOpts...)
+	out := new(CreateVolumeResponse)
+	err := c.cc.Invoke(ctx, VolumeService_CreateVolume_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *volumeServiceClient) MigrateVolume(ctx context.Context, in *MigrateVolumeRequest, opts ...grpc.CallOption) (*MigrateVolumeResponse, error) {
+func (c *volumeServiceClient) CreateVolumeCmdByAdmin(ctx context.Context, in *CreateVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*CreateVolumeCmdByAdminResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(MigrateVolumeResponse)
-	err := c.cc.Invoke(ctx, VolumeService_MigrateVolume_FullMethodName, in, out, cOpts...)
+	out := new(CreateVolumeCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VolumeService_CreateVolumeCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *volumeServiceClient) DeleteVolume(ctx context.Context, in *DeleteVolumeRequest, opts ...grpc.CallOption) (*DeleteVolumeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteVolumeResponse)
+	err := c.cc.Invoke(ctx, VolumeService_DeleteVolume_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *volumeServiceClient) DestroyVolume(ctx context.Context, in *DestroyVolumeRequest, opts ...grpc.CallOption) (*DestroyVolumeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DestroyVolumeResponse)
+	err := c.cc.Invoke(ctx, VolumeService_DestroyVolume_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *volumeServiceClient) DestroyVolumeCmdByAdmin(ctx context.Context, in *DestroyVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*DestroyVolumeCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DestroyVolumeCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VolumeService_DestroyVolumeCmdByAdmin_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -387,10 +253,100 @@ func (c *volumeServiceClient) DetachVolume(ctx context.Context, in *DetachVolume
 	return out, nil
 }
 
-func (c *volumeServiceClient) RemoveResourceDetail(ctx context.Context, in *RemoveResourceDetailRequest, opts ...grpc.CallOption) (*RemoveResourceDetailResponse, error) {
+func (c *volumeServiceClient) DetachVolumeCmdByAdmin(ctx context.Context, in *DetachVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*DetachVolumeCmdByAdminResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RemoveResourceDetailResponse)
-	err := c.cc.Invoke(ctx, VolumeService_RemoveResourceDetail_FullMethodName, in, out, cOpts...)
+	out := new(DetachVolumeCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VolumeService_DetachVolumeCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *volumeServiceClient) ExtractVolume(ctx context.Context, in *ExtractVolumeRequest, opts ...grpc.CallOption) (*ExtractVolumeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ExtractVolumeResponse)
+	err := c.cc.Invoke(ctx, VolumeService_ExtractVolume_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *volumeServiceClient) GetUploadParamsForVolume(ctx context.Context, in *GetUploadParamsForVolumeRequest, opts ...grpc.CallOption) (*GetUploadParamsForVolumeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUploadParamsForVolumeResponse)
+	err := c.cc.Invoke(ctx, VolumeService_GetUploadParamsForVolume_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *volumeServiceClient) ImportVolume(ctx context.Context, in *ImportVolumeRequest, opts ...grpc.CallOption) (*ImportVolumeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ImportVolumeResponse)
+	err := c.cc.Invoke(ctx, VolumeService_ImportVolume_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *volumeServiceClient) ListResourceDetails(ctx context.Context, in *ListResourceDetailsRequest, opts ...grpc.CallOption) (*ListResourceDetailsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListResourceDetailsResponse)
+	err := c.cc.Invoke(ctx, VolumeService_ListResourceDetails_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *volumeServiceClient) ListVolumes(ctx context.Context, in *ListVolumesRequest, opts ...grpc.CallOption) (*ListVolumesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListVolumesResponse)
+	err := c.cc.Invoke(ctx, VolumeService_ListVolumes_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *volumeServiceClient) ListVolumesCmdByAdmin(ctx context.Context, in *ListVolumesCmdByAdminRequest, opts ...grpc.CallOption) (*ListVolumesCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListVolumesCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VolumeService_ListVolumesCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *volumeServiceClient) ListVolumesForImport(ctx context.Context, in *ListVolumesForImportRequest, opts ...grpc.CallOption) (*ListVolumesForImportResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListVolumesForImportResponse)
+	err := c.cc.Invoke(ctx, VolumeService_ListVolumesForImport_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *volumeServiceClient) MigrateVolume(ctx context.Context, in *MigrateVolumeRequest, opts ...grpc.CallOption) (*MigrateVolumeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(MigrateVolumeResponse)
+	err := c.cc.Invoke(ctx, VolumeService_MigrateVolume_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *volumeServiceClient) MigrateVolumeCmdByAdmin(ctx context.Context, in *MigrateVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*MigrateVolumeCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(MigrateVolumeCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VolumeService_MigrateVolumeCmdByAdmin_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -407,10 +363,20 @@ func (c *volumeServiceClient) RecoverVolume(ctx context.Context, in *RecoverVolu
 	return out, nil
 }
 
-func (c *volumeServiceClient) ResizeVolumeCmdByAdmin(ctx context.Context, in *ResizeVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*ResizeVolumeCmdByAdminResponse, error) {
+func (c *volumeServiceClient) RecoverVolumeCmdByAdmin(ctx context.Context, in *RecoverVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*RecoverVolumeCmdByAdminResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ResizeVolumeCmdByAdminResponse)
-	err := c.cc.Invoke(ctx, VolumeService_ResizeVolumeCmdByAdmin_FullMethodName, in, out, cOpts...)
+	out := new(RecoverVolumeCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VolumeService_RecoverVolumeCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *volumeServiceClient) RemoveResourceDetail(ctx context.Context, in *RemoveResourceDetailRequest, opts ...grpc.CallOption) (*RemoveResourceDetailResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RemoveResourceDetailResponse)
+	err := c.cc.Invoke(ctx, VolumeService_RemoveResourceDetail_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -427,72 +393,136 @@ func (c *volumeServiceClient) ResizeVolume(ctx context.Context, in *ResizeVolume
 	return out, nil
 }
 
+func (c *volumeServiceClient) ResizeVolumeCmdByAdmin(ctx context.Context, in *ResizeVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*ResizeVolumeCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResizeVolumeCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VolumeService_ResizeVolumeCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *volumeServiceClient) UnmanageVolume(ctx context.Context, in *UnmanageVolumeRequest, opts ...grpc.CallOption) (*UnmanageVolumeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UnmanageVolumeResponse)
+	err := c.cc.Invoke(ctx, VolumeService_UnmanageVolume_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *volumeServiceClient) UpdateVolume(ctx context.Context, in *UpdateVolumeRequest, opts ...grpc.CallOption) (*UpdateVolumeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateVolumeResponse)
+	err := c.cc.Invoke(ctx, VolumeService_UpdateVolume_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *volumeServiceClient) UpdateVolumeCmdByAdmin(ctx context.Context, in *UpdateVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*UpdateVolumeCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateVolumeCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VolumeService_UpdateVolumeCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *volumeServiceClient) UploadVolume(ctx context.Context, in *UploadVolumeRequest, opts ...grpc.CallOption) (*UploadVolumeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UploadVolumeResponse)
+	err := c.cc.Invoke(ctx, VolumeService_UploadVolume_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *volumeServiceClient) UploadVolumeCmdByAdmin(ctx context.Context, in *UploadVolumeCmdByAdminRequest, opts ...grpc.CallOption) (*UploadVolumeCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UploadVolumeCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VolumeService_UploadVolumeCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // VolumeServiceServer is the server API for VolumeService service.
 // All implementations must embed UnimplementedVolumeServiceServer
 // for forward compatibility.
 //
 // VolumeService provides operations for managing Volumes
 type VolumeServiceServer interface {
-	// DestroyVolume Destroys a Volume.
-	DestroyVolume(context.Context, *DestroyVolumeRequest) (*DestroyVolumeResponse, error)
-	// UpdateVolumeCmdByAdmin Updates the volume.
-	UpdateVolumeCmdByAdmin(context.Context, *UpdateVolumeCmdByAdminRequest) (*UpdateVolumeCmdByAdminResponse, error)
-	// CheckAndRepairVolume Check the volume for any errors or leaks and also repairs when repair parameter is passed, this is currently supported for KVM only
-	CheckAndRepairVolume(context.Context, *CheckAndRepairVolumeRequest) (*CheckAndRepairVolumeResponse, error)
-	// ExtractVolume Extracts volume
-	ExtractVolume(context.Context, *ExtractVolumeRequest) (*ExtractVolumeResponse, error)
-	// ListVolumesCmdByAdmin Lists all volumes.
-	ListVolumesCmdByAdmin(context.Context, *ListVolumesCmdByAdminRequest) (*ListVolumesCmdByAdminResponse, error)
-	// UnmanageVolume Unmanage a volume on storage pool.
-	UnmanageVolume(context.Context, *UnmanageVolumeRequest) (*UnmanageVolumeResponse, error)
-	// UploadVolume Uploads a data disk.
-	UploadVolume(context.Context, *UploadVolumeRequest) (*UploadVolumeResponse, error)
-	// ImportVolume Import an unmanaged volume from a storage pool on a host into CloudStack
-	ImportVolume(context.Context, *ImportVolumeRequest) (*ImportVolumeResponse, error)
-	// DetachVolumeCmdByAdmin Detaches a disk volume from a virtual machine.
-	DetachVolumeCmdByAdmin(context.Context, *DetachVolumeCmdByAdminRequest) (*DetachVolumeCmdByAdminResponse, error)
-	// ChangeOfferingForVolume Change disk offering of the volume and also an option to auto migrate if required to apply the new disk offering
-	ChangeOfferingForVolume(context.Context, *ChangeOfferingForVolumeRequest) (*ChangeOfferingForVolumeResponse, error)
-	// CreateVolumeCmdByAdmin Creates a disk volume from a disk offering. This disk volume must still be attached to a virtual machine to make use of it.
-	CreateVolumeCmdByAdmin(context.Context, *CreateVolumeCmdByAdminRequest) (*CreateVolumeCmdByAdminResponse, error)
-	// ListVolumes Lists all volumes.
-	ListVolumes(context.Context, *ListVolumesRequest) (*ListVolumesResponse, error)
-	// AssignVolume Changes ownership of a Volume from one account to another.
-	AssignVolume(context.Context, *AssignVolumeRequest) (*AssignVolumeResponse, error)
-	// GetUploadParamsForVolume Upload a data disk to the cloudstack cloud.
-	GetUploadParamsForVolume(context.Context, *GetUploadParamsForVolumeRequest) (*GetUploadParamsForVolumeResponse, error)
-	// ListVolumesForImport Lists unmanaged volumes on a storage pool
-	ListVolumesForImport(context.Context, *ListVolumesForImportRequest) (*ListVolumesForImportResponse, error)
-	// DeleteVolume Deletes a detached disk volume.
-	DeleteVolume(context.Context, *DeleteVolumeRequest) (*DeleteVolumeResponse, error)
-	// RecoverVolumeCmdByAdmin Recovers a Destroy volume.
-	RecoverVolumeCmdByAdmin(context.Context, *RecoverVolumeCmdByAdminRequest) (*RecoverVolumeCmdByAdminResponse, error)
-	// CreateVolume Creates a disk volume from a disk offering. This disk volume must still be attached to a virtual machine to make use of it.
-	CreateVolume(context.Context, *CreateVolumeRequest) (*CreateVolumeResponse, error)
-	// MigrateVolumeCmdByAdmin Migrate volume
-	MigrateVolumeCmdByAdmin(context.Context, *MigrateVolumeCmdByAdminRequest) (*MigrateVolumeCmdByAdminResponse, error)
 	// AddResourceDetail Adds detail for the Resource.
 	AddResourceDetail(context.Context, *AddResourceDetailRequest) (*AddResourceDetailResponse, error)
-	// AttachVolumeCmdByAdmin Attaches a disk volume to a virtual machine.
-	AttachVolumeCmdByAdmin(context.Context, *AttachVolumeCmdByAdminRequest) (*AttachVolumeCmdByAdminResponse, error)
-	// ListResourceDetails List resource detail(s)
-	ListResourceDetails(context.Context, *ListResourceDetailsRequest) (*ListResourceDetailsResponse, error)
-	// UpdateVolume Updates the volume.
-	UpdateVolume(context.Context, *UpdateVolumeRequest) (*UpdateVolumeResponse, error)
+	// AssignVolume Changes ownership of a Volume from one account to another.
+	AssignVolume(context.Context, *AssignVolumeRequest) (*AssignVolumeResponse, error)
 	// AttachVolume Attaches a disk volume to a virtual machine.
 	AttachVolume(context.Context, *AttachVolumeRequest) (*AttachVolumeResponse, error)
-	// MigrateVolume Migrate volume
-	MigrateVolume(context.Context, *MigrateVolumeRequest) (*MigrateVolumeResponse, error)
+	// AttachVolumeCmdByAdmin Attaches a disk volume to a virtual machine.
+	AttachVolumeCmdByAdmin(context.Context, *AttachVolumeCmdByAdminRequest) (*AttachVolumeCmdByAdminResponse, error)
+	// ChangeOfferingForVolume Change disk offering of the volume and also an option to auto migrate if required to apply the new disk offering
+	ChangeOfferingForVolume(context.Context, *ChangeOfferingForVolumeRequest) (*ChangeOfferingForVolumeResponse, error)
+	// CheckAndRepairVolume Check the volume for any errors or leaks and also repairs when repair parameter is passed, this is currently supported for KVM only
+	CheckAndRepairVolume(context.Context, *CheckAndRepairVolumeRequest) (*CheckAndRepairVolumeResponse, error)
+	// CreateVolume Creates a disk volume from a disk offering. This disk volume must still be attached to a virtual machine to make use of it.
+	CreateVolume(context.Context, *CreateVolumeRequest) (*CreateVolumeResponse, error)
+	// CreateVolumeCmdByAdmin Creates a disk volume from a disk offering. This disk volume must still be attached to a virtual machine to make use of it.
+	CreateVolumeCmdByAdmin(context.Context, *CreateVolumeCmdByAdminRequest) (*CreateVolumeCmdByAdminResponse, error)
+	// DeleteVolume Deletes a detached disk volume.
+	DeleteVolume(context.Context, *DeleteVolumeRequest) (*DeleteVolumeResponse, error)
+	// DestroyVolume Destroys a Volume.
+	DestroyVolume(context.Context, *DestroyVolumeRequest) (*DestroyVolumeResponse, error)
+	// DestroyVolumeCmdByAdmin Destroys a Volume.
+	DestroyVolumeCmdByAdmin(context.Context, *DestroyVolumeCmdByAdminRequest) (*DestroyVolumeCmdByAdminResponse, error)
 	// DetachVolume Detaches a disk volume from a virtual machine.
 	DetachVolume(context.Context, *DetachVolumeRequest) (*DetachVolumeResponse, error)
-	// RemoveResourceDetail Removes detail for the Resource.
-	RemoveResourceDetail(context.Context, *RemoveResourceDetailRequest) (*RemoveResourceDetailResponse, error)
+	// DetachVolumeCmdByAdmin Detaches a disk volume from a virtual machine.
+	DetachVolumeCmdByAdmin(context.Context, *DetachVolumeCmdByAdminRequest) (*DetachVolumeCmdByAdminResponse, error)
+	// ExtractVolume Extracts volume
+	ExtractVolume(context.Context, *ExtractVolumeRequest) (*ExtractVolumeResponse, error)
+	// GetUploadParamsForVolume Upload a data disk to the cloudstack cloud.
+	GetUploadParamsForVolume(context.Context, *GetUploadParamsForVolumeRequest) (*GetUploadParamsForVolumeResponse, error)
+	// ImportVolume Import an unmanaged volume from a storage pool on a host into CloudStack
+	ImportVolume(context.Context, *ImportVolumeRequest) (*ImportVolumeResponse, error)
+	// ListResourceDetails List resource detail(s)
+	ListResourceDetails(context.Context, *ListResourceDetailsRequest) (*ListResourceDetailsResponse, error)
+	// ListVolumes Lists all volumes.
+	ListVolumes(context.Context, *ListVolumesRequest) (*ListVolumesResponse, error)
+	// ListVolumesCmdByAdmin Lists all volumes.
+	ListVolumesCmdByAdmin(context.Context, *ListVolumesCmdByAdminRequest) (*ListVolumesCmdByAdminResponse, error)
+	// ListVolumesForImport Lists unmanaged volumes on a storage pool
+	ListVolumesForImport(context.Context, *ListVolumesForImportRequest) (*ListVolumesForImportResponse, error)
+	// MigrateVolume Migrate volume
+	MigrateVolume(context.Context, *MigrateVolumeRequest) (*MigrateVolumeResponse, error)
+	// MigrateVolumeCmdByAdmin Migrate volume
+	MigrateVolumeCmdByAdmin(context.Context, *MigrateVolumeCmdByAdminRequest) (*MigrateVolumeCmdByAdminResponse, error)
 	// RecoverVolume Recovers a Destroy volume.
 	RecoverVolume(context.Context, *RecoverVolumeRequest) (*RecoverVolumeResponse, error)
-	// ResizeVolumeCmdByAdmin Resizes a volume
-	ResizeVolumeCmdByAdmin(context.Context, *ResizeVolumeCmdByAdminRequest) (*ResizeVolumeCmdByAdminResponse, error)
+	// RecoverVolumeCmdByAdmin Recovers a Destroy volume.
+	RecoverVolumeCmdByAdmin(context.Context, *RecoverVolumeCmdByAdminRequest) (*RecoverVolumeCmdByAdminResponse, error)
+	// RemoveResourceDetail Removes detail for the Resource.
+	RemoveResourceDetail(context.Context, *RemoveResourceDetailRequest) (*RemoveResourceDetailResponse, error)
 	// ResizeVolume Resizes a volume
 	ResizeVolume(context.Context, *ResizeVolumeRequest) (*ResizeVolumeResponse, error)
+	// ResizeVolumeCmdByAdmin Resizes a volume
+	ResizeVolumeCmdByAdmin(context.Context, *ResizeVolumeCmdByAdminRequest) (*ResizeVolumeCmdByAdminResponse, error)
+	// UnmanageVolume Unmanage a volume on storage pool.
+	UnmanageVolume(context.Context, *UnmanageVolumeRequest) (*UnmanageVolumeResponse, error)
+	// UpdateVolume Updates the volume.
+	UpdateVolume(context.Context, *UpdateVolumeRequest) (*UpdateVolumeResponse, error)
+	// UpdateVolumeCmdByAdmin Updates the volume.
+	UpdateVolumeCmdByAdmin(context.Context, *UpdateVolumeCmdByAdminRequest) (*UpdateVolumeCmdByAdminResponse, error)
+	// UploadVolume Uploads a data disk.
+	UploadVolume(context.Context, *UploadVolumeRequest) (*UploadVolumeResponse, error)
+	// UploadVolumeCmdByAdmin Uploads a data disk.
+	UploadVolumeCmdByAdmin(context.Context, *UploadVolumeCmdByAdminRequest) (*UploadVolumeCmdByAdminResponse, error)
 	mustEmbedUnimplementedVolumeServiceServer()
 }
 
@@ -503,95 +533,101 @@ type VolumeServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedVolumeServiceServer struct{}
 
-func (UnimplementedVolumeServiceServer) DestroyVolume(context.Context, *DestroyVolumeRequest) (*DestroyVolumeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DestroyVolume not implemented")
-}
-func (UnimplementedVolumeServiceServer) UpdateVolumeCmdByAdmin(context.Context, *UpdateVolumeCmdByAdminRequest) (*UpdateVolumeCmdByAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateVolumeCmdByAdmin not implemented")
-}
-func (UnimplementedVolumeServiceServer) CheckAndRepairVolume(context.Context, *CheckAndRepairVolumeRequest) (*CheckAndRepairVolumeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CheckAndRepairVolume not implemented")
-}
-func (UnimplementedVolumeServiceServer) ExtractVolume(context.Context, *ExtractVolumeRequest) (*ExtractVolumeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ExtractVolume not implemented")
-}
-func (UnimplementedVolumeServiceServer) ListVolumesCmdByAdmin(context.Context, *ListVolumesCmdByAdminRequest) (*ListVolumesCmdByAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListVolumesCmdByAdmin not implemented")
-}
-func (UnimplementedVolumeServiceServer) UnmanageVolume(context.Context, *UnmanageVolumeRequest) (*UnmanageVolumeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UnmanageVolume not implemented")
-}
-func (UnimplementedVolumeServiceServer) UploadVolume(context.Context, *UploadVolumeRequest) (*UploadVolumeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UploadVolume not implemented")
-}
-func (UnimplementedVolumeServiceServer) ImportVolume(context.Context, *ImportVolumeRequest) (*ImportVolumeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ImportVolume not implemented")
-}
-func (UnimplementedVolumeServiceServer) DetachVolumeCmdByAdmin(context.Context, *DetachVolumeCmdByAdminRequest) (*DetachVolumeCmdByAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DetachVolumeCmdByAdmin not implemented")
-}
-func (UnimplementedVolumeServiceServer) ChangeOfferingForVolume(context.Context, *ChangeOfferingForVolumeRequest) (*ChangeOfferingForVolumeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ChangeOfferingForVolume not implemented")
-}
-func (UnimplementedVolumeServiceServer) CreateVolumeCmdByAdmin(context.Context, *CreateVolumeCmdByAdminRequest) (*CreateVolumeCmdByAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateVolumeCmdByAdmin not implemented")
-}
-func (UnimplementedVolumeServiceServer) ListVolumes(context.Context, *ListVolumesRequest) (*ListVolumesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListVolumes not implemented")
+func (UnimplementedVolumeServiceServer) AddResourceDetail(context.Context, *AddResourceDetailRequest) (*AddResourceDetailResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddResourceDetail not implemented")
 }
 func (UnimplementedVolumeServiceServer) AssignVolume(context.Context, *AssignVolumeRequest) (*AssignVolumeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AssignVolume not implemented")
 }
-func (UnimplementedVolumeServiceServer) GetUploadParamsForVolume(context.Context, *GetUploadParamsForVolumeRequest) (*GetUploadParamsForVolumeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetUploadParamsForVolume not implemented")
-}
-func (UnimplementedVolumeServiceServer) ListVolumesForImport(context.Context, *ListVolumesForImportRequest) (*ListVolumesForImportResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListVolumesForImport not implemented")
-}
-func (UnimplementedVolumeServiceServer) DeleteVolume(context.Context, *DeleteVolumeRequest) (*DeleteVolumeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteVolume not implemented")
-}
-func (UnimplementedVolumeServiceServer) RecoverVolumeCmdByAdmin(context.Context, *RecoverVolumeCmdByAdminRequest) (*RecoverVolumeCmdByAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RecoverVolumeCmdByAdmin not implemented")
-}
-func (UnimplementedVolumeServiceServer) CreateVolume(context.Context, *CreateVolumeRequest) (*CreateVolumeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateVolume not implemented")
-}
-func (UnimplementedVolumeServiceServer) MigrateVolumeCmdByAdmin(context.Context, *MigrateVolumeCmdByAdminRequest) (*MigrateVolumeCmdByAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MigrateVolumeCmdByAdmin not implemented")
-}
-func (UnimplementedVolumeServiceServer) AddResourceDetail(context.Context, *AddResourceDetailRequest) (*AddResourceDetailResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddResourceDetail not implemented")
+func (UnimplementedVolumeServiceServer) AttachVolume(context.Context, *AttachVolumeRequest) (*AttachVolumeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AttachVolume not implemented")
 }
 func (UnimplementedVolumeServiceServer) AttachVolumeCmdByAdmin(context.Context, *AttachVolumeCmdByAdminRequest) (*AttachVolumeCmdByAdminResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AttachVolumeCmdByAdmin not implemented")
 }
-func (UnimplementedVolumeServiceServer) ListResourceDetails(context.Context, *ListResourceDetailsRequest) (*ListResourceDetailsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListResourceDetails not implemented")
+func (UnimplementedVolumeServiceServer) ChangeOfferingForVolume(context.Context, *ChangeOfferingForVolumeRequest) (*ChangeOfferingForVolumeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChangeOfferingForVolume not implemented")
 }
-func (UnimplementedVolumeServiceServer) UpdateVolume(context.Context, *UpdateVolumeRequest) (*UpdateVolumeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateVolume not implemented")
+func (UnimplementedVolumeServiceServer) CheckAndRepairVolume(context.Context, *CheckAndRepairVolumeRequest) (*CheckAndRepairVolumeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CheckAndRepairVolume not implemented")
 }
-func (UnimplementedVolumeServiceServer) AttachVolume(context.Context, *AttachVolumeRequest) (*AttachVolumeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AttachVolume not implemented")
+func (UnimplementedVolumeServiceServer) CreateVolume(context.Context, *CreateVolumeRequest) (*CreateVolumeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateVolume not implemented")
 }
-func (UnimplementedVolumeServiceServer) MigrateVolume(context.Context, *MigrateVolumeRequest) (*MigrateVolumeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MigrateVolume not implemented")
+func (UnimplementedVolumeServiceServer) CreateVolumeCmdByAdmin(context.Context, *CreateVolumeCmdByAdminRequest) (*CreateVolumeCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateVolumeCmdByAdmin not implemented")
+}
+func (UnimplementedVolumeServiceServer) DeleteVolume(context.Context, *DeleteVolumeRequest) (*DeleteVolumeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteVolume not implemented")
+}
+func (UnimplementedVolumeServiceServer) DestroyVolume(context.Context, *DestroyVolumeRequest) (*DestroyVolumeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DestroyVolume not implemented")
+}
+func (UnimplementedVolumeServiceServer) DestroyVolumeCmdByAdmin(context.Context, *DestroyVolumeCmdByAdminRequest) (*DestroyVolumeCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DestroyVolumeCmdByAdmin not implemented")
 }
 func (UnimplementedVolumeServiceServer) DetachVolume(context.Context, *DetachVolumeRequest) (*DetachVolumeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DetachVolume not implemented")
 }
-func (UnimplementedVolumeServiceServer) RemoveResourceDetail(context.Context, *RemoveResourceDetailRequest) (*RemoveResourceDetailResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RemoveResourceDetail not implemented")
+func (UnimplementedVolumeServiceServer) DetachVolumeCmdByAdmin(context.Context, *DetachVolumeCmdByAdminRequest) (*DetachVolumeCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DetachVolumeCmdByAdmin not implemented")
+}
+func (UnimplementedVolumeServiceServer) ExtractVolume(context.Context, *ExtractVolumeRequest) (*ExtractVolumeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ExtractVolume not implemented")
+}
+func (UnimplementedVolumeServiceServer) GetUploadParamsForVolume(context.Context, *GetUploadParamsForVolumeRequest) (*GetUploadParamsForVolumeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUploadParamsForVolume not implemented")
+}
+func (UnimplementedVolumeServiceServer) ImportVolume(context.Context, *ImportVolumeRequest) (*ImportVolumeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ImportVolume not implemented")
+}
+func (UnimplementedVolumeServiceServer) ListResourceDetails(context.Context, *ListResourceDetailsRequest) (*ListResourceDetailsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListResourceDetails not implemented")
+}
+func (UnimplementedVolumeServiceServer) ListVolumes(context.Context, *ListVolumesRequest) (*ListVolumesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListVolumes not implemented")
+}
+func (UnimplementedVolumeServiceServer) ListVolumesCmdByAdmin(context.Context, *ListVolumesCmdByAdminRequest) (*ListVolumesCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListVolumesCmdByAdmin not implemented")
+}
+func (UnimplementedVolumeServiceServer) ListVolumesForImport(context.Context, *ListVolumesForImportRequest) (*ListVolumesForImportResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListVolumesForImport not implemented")
+}
+func (UnimplementedVolumeServiceServer) MigrateVolume(context.Context, *MigrateVolumeRequest) (*MigrateVolumeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MigrateVolume not implemented")
+}
+func (UnimplementedVolumeServiceServer) MigrateVolumeCmdByAdmin(context.Context, *MigrateVolumeCmdByAdminRequest) (*MigrateVolumeCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MigrateVolumeCmdByAdmin not implemented")
 }
 func (UnimplementedVolumeServiceServer) RecoverVolume(context.Context, *RecoverVolumeRequest) (*RecoverVolumeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RecoverVolume not implemented")
 }
-func (UnimplementedVolumeServiceServer) ResizeVolumeCmdByAdmin(context.Context, *ResizeVolumeCmdByAdminRequest) (*ResizeVolumeCmdByAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ResizeVolumeCmdByAdmin not implemented")
+func (UnimplementedVolumeServiceServer) RecoverVolumeCmdByAdmin(context.Context, *RecoverVolumeCmdByAdminRequest) (*RecoverVolumeCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RecoverVolumeCmdByAdmin not implemented")
+}
+func (UnimplementedVolumeServiceServer) RemoveResourceDetail(context.Context, *RemoveResourceDetailRequest) (*RemoveResourceDetailResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveResourceDetail not implemented")
 }
 func (UnimplementedVolumeServiceServer) ResizeVolume(context.Context, *ResizeVolumeRequest) (*ResizeVolumeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResizeVolume not implemented")
+}
+func (UnimplementedVolumeServiceServer) ResizeVolumeCmdByAdmin(context.Context, *ResizeVolumeCmdByAdminRequest) (*ResizeVolumeCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResizeVolumeCmdByAdmin not implemented")
+}
+func (UnimplementedVolumeServiceServer) UnmanageVolume(context.Context, *UnmanageVolumeRequest) (*UnmanageVolumeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UnmanageVolume not implemented")
+}
+func (UnimplementedVolumeServiceServer) UpdateVolume(context.Context, *UpdateVolumeRequest) (*UpdateVolumeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateVolume not implemented")
+}
+func (UnimplementedVolumeServiceServer) UpdateVolumeCmdByAdmin(context.Context, *UpdateVolumeCmdByAdminRequest) (*UpdateVolumeCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateVolumeCmdByAdmin not implemented")
+}
+func (UnimplementedVolumeServiceServer) UploadVolume(context.Context, *UploadVolumeRequest) (*UploadVolumeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UploadVolume not implemented")
+}
+func (UnimplementedVolumeServiceServer) UploadVolumeCmdByAdmin(context.Context, *UploadVolumeCmdByAdminRequest) (*UploadVolumeCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UploadVolumeCmdByAdmin not implemented")
 }
 func (UnimplementedVolumeServiceServer) mustEmbedUnimplementedVolumeServiceServer() {}
 func (UnimplementedVolumeServiceServer) testEmbeddedByValue()                       {}
@@ -614,218 +650,20 @@ func RegisterVolumeServiceServer(s grpc.ServiceRegistrar, srv VolumeServiceServe
 	s.RegisterService(&VolumeService_ServiceDesc, srv)
 }
 
-func _VolumeService_DestroyVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DestroyVolumeRequest)
+func _VolumeService_AddResourceDetail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddResourceDetailRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VolumeServiceServer).DestroyVolume(ctx, in)
+		return srv.(VolumeServiceServer).AddResourceDetail(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: VolumeService_DestroyVolume_FullMethodName,
+		FullMethod: VolumeService_AddResourceDetail_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VolumeServiceServer).DestroyVolume(ctx, req.(*DestroyVolumeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VolumeService_UpdateVolumeCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateVolumeCmdByAdminRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VolumeServiceServer).UpdateVolumeCmdByAdmin(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VolumeService_UpdateVolumeCmdByAdmin_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VolumeServiceServer).UpdateVolumeCmdByAdmin(ctx, req.(*UpdateVolumeCmdByAdminRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VolumeService_CheckAndRepairVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CheckAndRepairVolumeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VolumeServiceServer).CheckAndRepairVolume(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VolumeService_CheckAndRepairVolume_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VolumeServiceServer).CheckAndRepairVolume(ctx, req.(*CheckAndRepairVolumeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VolumeService_ExtractVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ExtractVolumeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VolumeServiceServer).ExtractVolume(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VolumeService_ExtractVolume_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VolumeServiceServer).ExtractVolume(ctx, req.(*ExtractVolumeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VolumeService_ListVolumesCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListVolumesCmdByAdminRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VolumeServiceServer).ListVolumesCmdByAdmin(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VolumeService_ListVolumesCmdByAdmin_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VolumeServiceServer).ListVolumesCmdByAdmin(ctx, req.(*ListVolumesCmdByAdminRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VolumeService_UnmanageVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UnmanageVolumeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VolumeServiceServer).UnmanageVolume(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VolumeService_UnmanageVolume_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VolumeServiceServer).UnmanageVolume(ctx, req.(*UnmanageVolumeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VolumeService_UploadVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UploadVolumeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VolumeServiceServer).UploadVolume(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VolumeService_UploadVolume_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VolumeServiceServer).UploadVolume(ctx, req.(*UploadVolumeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VolumeService_ImportVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ImportVolumeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VolumeServiceServer).ImportVolume(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VolumeService_ImportVolume_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VolumeServiceServer).ImportVolume(ctx, req.(*ImportVolumeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VolumeService_DetachVolumeCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DetachVolumeCmdByAdminRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VolumeServiceServer).DetachVolumeCmdByAdmin(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VolumeService_DetachVolumeCmdByAdmin_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VolumeServiceServer).DetachVolumeCmdByAdmin(ctx, req.(*DetachVolumeCmdByAdminRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VolumeService_ChangeOfferingForVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ChangeOfferingForVolumeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VolumeServiceServer).ChangeOfferingForVolume(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VolumeService_ChangeOfferingForVolume_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VolumeServiceServer).ChangeOfferingForVolume(ctx, req.(*ChangeOfferingForVolumeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VolumeService_CreateVolumeCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateVolumeCmdByAdminRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VolumeServiceServer).CreateVolumeCmdByAdmin(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VolumeService_CreateVolumeCmdByAdmin_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VolumeServiceServer).CreateVolumeCmdByAdmin(ctx, req.(*CreateVolumeCmdByAdminRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VolumeService_ListVolumes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListVolumesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VolumeServiceServer).ListVolumes(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VolumeService_ListVolumes_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VolumeServiceServer).ListVolumes(ctx, req.(*ListVolumesRequest))
+		return srv.(VolumeServiceServer).AddResourceDetail(ctx, req.(*AddResourceDetailRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -848,128 +686,20 @@ func _VolumeService_AssignVolume_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
-func _VolumeService_GetUploadParamsForVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetUploadParamsForVolumeRequest)
+func _VolumeService_AttachVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AttachVolumeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VolumeServiceServer).GetUploadParamsForVolume(ctx, in)
+		return srv.(VolumeServiceServer).AttachVolume(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: VolumeService_GetUploadParamsForVolume_FullMethodName,
+		FullMethod: VolumeService_AttachVolume_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VolumeServiceServer).GetUploadParamsForVolume(ctx, req.(*GetUploadParamsForVolumeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VolumeService_ListVolumesForImport_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListVolumesForImportRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VolumeServiceServer).ListVolumesForImport(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VolumeService_ListVolumesForImport_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VolumeServiceServer).ListVolumesForImport(ctx, req.(*ListVolumesForImportRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VolumeService_DeleteVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteVolumeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VolumeServiceServer).DeleteVolume(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VolumeService_DeleteVolume_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VolumeServiceServer).DeleteVolume(ctx, req.(*DeleteVolumeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VolumeService_RecoverVolumeCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RecoverVolumeCmdByAdminRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VolumeServiceServer).RecoverVolumeCmdByAdmin(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VolumeService_RecoverVolumeCmdByAdmin_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VolumeServiceServer).RecoverVolumeCmdByAdmin(ctx, req.(*RecoverVolumeCmdByAdminRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VolumeService_CreateVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateVolumeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VolumeServiceServer).CreateVolume(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VolumeService_CreateVolume_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VolumeServiceServer).CreateVolume(ctx, req.(*CreateVolumeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VolumeService_MigrateVolumeCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MigrateVolumeCmdByAdminRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VolumeServiceServer).MigrateVolumeCmdByAdmin(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VolumeService_MigrateVolumeCmdByAdmin_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VolumeServiceServer).MigrateVolumeCmdByAdmin(ctx, req.(*MigrateVolumeCmdByAdminRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VolumeService_AddResourceDetail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddResourceDetailRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VolumeServiceServer).AddResourceDetail(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VolumeService_AddResourceDetail_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VolumeServiceServer).AddResourceDetail(ctx, req.(*AddResourceDetailRequest))
+		return srv.(VolumeServiceServer).AttachVolume(ctx, req.(*AttachVolumeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -992,74 +722,128 @@ func _VolumeService_AttachVolumeCmdByAdmin_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
-func _VolumeService_ListResourceDetails_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListResourceDetailsRequest)
+func _VolumeService_ChangeOfferingForVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ChangeOfferingForVolumeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VolumeServiceServer).ListResourceDetails(ctx, in)
+		return srv.(VolumeServiceServer).ChangeOfferingForVolume(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: VolumeService_ListResourceDetails_FullMethodName,
+		FullMethod: VolumeService_ChangeOfferingForVolume_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VolumeServiceServer).ListResourceDetails(ctx, req.(*ListResourceDetailsRequest))
+		return srv.(VolumeServiceServer).ChangeOfferingForVolume(ctx, req.(*ChangeOfferingForVolumeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _VolumeService_UpdateVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateVolumeRequest)
+func _VolumeService_CheckAndRepairVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CheckAndRepairVolumeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VolumeServiceServer).UpdateVolume(ctx, in)
+		return srv.(VolumeServiceServer).CheckAndRepairVolume(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: VolumeService_UpdateVolume_FullMethodName,
+		FullMethod: VolumeService_CheckAndRepairVolume_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VolumeServiceServer).UpdateVolume(ctx, req.(*UpdateVolumeRequest))
+		return srv.(VolumeServiceServer).CheckAndRepairVolume(ctx, req.(*CheckAndRepairVolumeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _VolumeService_AttachVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AttachVolumeRequest)
+func _VolumeService_CreateVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateVolumeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VolumeServiceServer).AttachVolume(ctx, in)
+		return srv.(VolumeServiceServer).CreateVolume(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: VolumeService_AttachVolume_FullMethodName,
+		FullMethod: VolumeService_CreateVolume_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VolumeServiceServer).AttachVolume(ctx, req.(*AttachVolumeRequest))
+		return srv.(VolumeServiceServer).CreateVolume(ctx, req.(*CreateVolumeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _VolumeService_MigrateVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MigrateVolumeRequest)
+func _VolumeService_CreateVolumeCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateVolumeCmdByAdminRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VolumeServiceServer).MigrateVolume(ctx, in)
+		return srv.(VolumeServiceServer).CreateVolumeCmdByAdmin(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: VolumeService_MigrateVolume_FullMethodName,
+		FullMethod: VolumeService_CreateVolumeCmdByAdmin_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VolumeServiceServer).MigrateVolume(ctx, req.(*MigrateVolumeRequest))
+		return srv.(VolumeServiceServer).CreateVolumeCmdByAdmin(ctx, req.(*CreateVolumeCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VolumeService_DeleteVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteVolumeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VolumeServiceServer).DeleteVolume(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VolumeService_DeleteVolume_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VolumeServiceServer).DeleteVolume(ctx, req.(*DeleteVolumeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VolumeService_DestroyVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DestroyVolumeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VolumeServiceServer).DestroyVolume(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VolumeService_DestroyVolume_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VolumeServiceServer).DestroyVolume(ctx, req.(*DestroyVolumeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VolumeService_DestroyVolumeCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DestroyVolumeCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VolumeServiceServer).DestroyVolumeCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VolumeService_DestroyVolumeCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VolumeServiceServer).DestroyVolumeCmdByAdmin(ctx, req.(*DestroyVolumeCmdByAdminRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1082,20 +866,182 @@ func _VolumeService_DetachVolume_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
-func _VolumeService_RemoveResourceDetail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RemoveResourceDetailRequest)
+func _VolumeService_DetachVolumeCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DetachVolumeCmdByAdminRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VolumeServiceServer).RemoveResourceDetail(ctx, in)
+		return srv.(VolumeServiceServer).DetachVolumeCmdByAdmin(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: VolumeService_RemoveResourceDetail_FullMethodName,
+		FullMethod: VolumeService_DetachVolumeCmdByAdmin_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VolumeServiceServer).RemoveResourceDetail(ctx, req.(*RemoveResourceDetailRequest))
+		return srv.(VolumeServiceServer).DetachVolumeCmdByAdmin(ctx, req.(*DetachVolumeCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VolumeService_ExtractVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ExtractVolumeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VolumeServiceServer).ExtractVolume(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VolumeService_ExtractVolume_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VolumeServiceServer).ExtractVolume(ctx, req.(*ExtractVolumeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VolumeService_GetUploadParamsForVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUploadParamsForVolumeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VolumeServiceServer).GetUploadParamsForVolume(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VolumeService_GetUploadParamsForVolume_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VolumeServiceServer).GetUploadParamsForVolume(ctx, req.(*GetUploadParamsForVolumeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VolumeService_ImportVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ImportVolumeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VolumeServiceServer).ImportVolume(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VolumeService_ImportVolume_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VolumeServiceServer).ImportVolume(ctx, req.(*ImportVolumeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VolumeService_ListResourceDetails_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListResourceDetailsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VolumeServiceServer).ListResourceDetails(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VolumeService_ListResourceDetails_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VolumeServiceServer).ListResourceDetails(ctx, req.(*ListResourceDetailsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VolumeService_ListVolumes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListVolumesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VolumeServiceServer).ListVolumes(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VolumeService_ListVolumes_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VolumeServiceServer).ListVolumes(ctx, req.(*ListVolumesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VolumeService_ListVolumesCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListVolumesCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VolumeServiceServer).ListVolumesCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VolumeService_ListVolumesCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VolumeServiceServer).ListVolumesCmdByAdmin(ctx, req.(*ListVolumesCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VolumeService_ListVolumesForImport_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListVolumesForImportRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VolumeServiceServer).ListVolumesForImport(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VolumeService_ListVolumesForImport_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VolumeServiceServer).ListVolumesForImport(ctx, req.(*ListVolumesForImportRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VolumeService_MigrateVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MigrateVolumeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VolumeServiceServer).MigrateVolume(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VolumeService_MigrateVolume_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VolumeServiceServer).MigrateVolume(ctx, req.(*MigrateVolumeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VolumeService_MigrateVolumeCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MigrateVolumeCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VolumeServiceServer).MigrateVolumeCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VolumeService_MigrateVolumeCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VolumeServiceServer).MigrateVolumeCmdByAdmin(ctx, req.(*MigrateVolumeCmdByAdminRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1118,20 +1064,38 @@ func _VolumeService_RecoverVolume_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _VolumeService_ResizeVolumeCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ResizeVolumeCmdByAdminRequest)
+func _VolumeService_RecoverVolumeCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RecoverVolumeCmdByAdminRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VolumeServiceServer).ResizeVolumeCmdByAdmin(ctx, in)
+		return srv.(VolumeServiceServer).RecoverVolumeCmdByAdmin(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: VolumeService_ResizeVolumeCmdByAdmin_FullMethodName,
+		FullMethod: VolumeService_RecoverVolumeCmdByAdmin_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VolumeServiceServer).ResizeVolumeCmdByAdmin(ctx, req.(*ResizeVolumeCmdByAdminRequest))
+		return srv.(VolumeServiceServer).RecoverVolumeCmdByAdmin(ctx, req.(*RecoverVolumeCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VolumeService_RemoveResourceDetail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveResourceDetailRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VolumeServiceServer).RemoveResourceDetail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VolumeService_RemoveResourceDetail_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VolumeServiceServer).RemoveResourceDetail(ctx, req.(*RemoveResourceDetailRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1154,6 +1118,114 @@ func _VolumeService_ResizeVolume_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _VolumeService_ResizeVolumeCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResizeVolumeCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VolumeServiceServer).ResizeVolumeCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VolumeService_ResizeVolumeCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VolumeServiceServer).ResizeVolumeCmdByAdmin(ctx, req.(*ResizeVolumeCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VolumeService_UnmanageVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UnmanageVolumeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VolumeServiceServer).UnmanageVolume(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VolumeService_UnmanageVolume_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VolumeServiceServer).UnmanageVolume(ctx, req.(*UnmanageVolumeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VolumeService_UpdateVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateVolumeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VolumeServiceServer).UpdateVolume(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VolumeService_UpdateVolume_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VolumeServiceServer).UpdateVolume(ctx, req.(*UpdateVolumeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VolumeService_UpdateVolumeCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateVolumeCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VolumeServiceServer).UpdateVolumeCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VolumeService_UpdateVolumeCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VolumeServiceServer).UpdateVolumeCmdByAdmin(ctx, req.(*UpdateVolumeCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VolumeService_UploadVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UploadVolumeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VolumeServiceServer).UploadVolume(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VolumeService_UploadVolume_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VolumeServiceServer).UploadVolume(ctx, req.(*UploadVolumeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VolumeService_UploadVolumeCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UploadVolumeCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VolumeServiceServer).UploadVolumeCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VolumeService_UploadVolumeCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VolumeServiceServer).UploadVolumeCmdByAdmin(ctx, req.(*UploadVolumeCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // VolumeService_ServiceDesc is the grpc.ServiceDesc for VolumeService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -1162,124 +1234,132 @@ var VolumeService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*VolumeServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "DestroyVolume",
-			Handler:    _VolumeService_DestroyVolume_Handler,
-		},
-		{
-			MethodName: "UpdateVolumeCmdByAdmin",
-			Handler:    _VolumeService_UpdateVolumeCmdByAdmin_Handler,
-		},
-		{
-			MethodName: "CheckAndRepairVolume",
-			Handler:    _VolumeService_CheckAndRepairVolume_Handler,
-		},
-		{
-			MethodName: "ExtractVolume",
-			Handler:    _VolumeService_ExtractVolume_Handler,
-		},
-		{
-			MethodName: "ListVolumesCmdByAdmin",
-			Handler:    _VolumeService_ListVolumesCmdByAdmin_Handler,
-		},
-		{
-			MethodName: "UnmanageVolume",
-			Handler:    _VolumeService_UnmanageVolume_Handler,
-		},
-		{
-			MethodName: "UploadVolume",
-			Handler:    _VolumeService_UploadVolume_Handler,
-		},
-		{
-			MethodName: "ImportVolume",
-			Handler:    _VolumeService_ImportVolume_Handler,
-		},
-		{
-			MethodName: "DetachVolumeCmdByAdmin",
-			Handler:    _VolumeService_DetachVolumeCmdByAdmin_Handler,
-		},
-		{
-			MethodName: "ChangeOfferingForVolume",
-			Handler:    _VolumeService_ChangeOfferingForVolume_Handler,
-		},
-		{
-			MethodName: "CreateVolumeCmdByAdmin",
-			Handler:    _VolumeService_CreateVolumeCmdByAdmin_Handler,
-		},
-		{
-			MethodName: "ListVolumes",
-			Handler:    _VolumeService_ListVolumes_Handler,
+			MethodName: "AddResourceDetail",
+			Handler:    _VolumeService_AddResourceDetail_Handler,
 		},
 		{
 			MethodName: "AssignVolume",
 			Handler:    _VolumeService_AssignVolume_Handler,
 		},
 		{
-			MethodName: "GetUploadParamsForVolume",
-			Handler:    _VolumeService_GetUploadParamsForVolume_Handler,
-		},
-		{
-			MethodName: "ListVolumesForImport",
-			Handler:    _VolumeService_ListVolumesForImport_Handler,
-		},
-		{
-			MethodName: "DeleteVolume",
-			Handler:    _VolumeService_DeleteVolume_Handler,
-		},
-		{
-			MethodName: "RecoverVolumeCmdByAdmin",
-			Handler:    _VolumeService_RecoverVolumeCmdByAdmin_Handler,
-		},
-		{
-			MethodName: "CreateVolume",
-			Handler:    _VolumeService_CreateVolume_Handler,
-		},
-		{
-			MethodName: "MigrateVolumeCmdByAdmin",
-			Handler:    _VolumeService_MigrateVolumeCmdByAdmin_Handler,
-		},
-		{
-			MethodName: "AddResourceDetail",
-			Handler:    _VolumeService_AddResourceDetail_Handler,
+			MethodName: "AttachVolume",
+			Handler:    _VolumeService_AttachVolume_Handler,
 		},
 		{
 			MethodName: "AttachVolumeCmdByAdmin",
 			Handler:    _VolumeService_AttachVolumeCmdByAdmin_Handler,
 		},
 		{
-			MethodName: "ListResourceDetails",
-			Handler:    _VolumeService_ListResourceDetails_Handler,
+			MethodName: "ChangeOfferingForVolume",
+			Handler:    _VolumeService_ChangeOfferingForVolume_Handler,
 		},
 		{
-			MethodName: "UpdateVolume",
-			Handler:    _VolumeService_UpdateVolume_Handler,
+			MethodName: "CheckAndRepairVolume",
+			Handler:    _VolumeService_CheckAndRepairVolume_Handler,
 		},
 		{
-			MethodName: "AttachVolume",
-			Handler:    _VolumeService_AttachVolume_Handler,
+			MethodName: "CreateVolume",
+			Handler:    _VolumeService_CreateVolume_Handler,
 		},
 		{
-			MethodName: "MigrateVolume",
-			Handler:    _VolumeService_MigrateVolume_Handler,
+			MethodName: "CreateVolumeCmdByAdmin",
+			Handler:    _VolumeService_CreateVolumeCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "DeleteVolume",
+			Handler:    _VolumeService_DeleteVolume_Handler,
+		},
+		{
+			MethodName: "DestroyVolume",
+			Handler:    _VolumeService_DestroyVolume_Handler,
+		},
+		{
+			MethodName: "DestroyVolumeCmdByAdmin",
+			Handler:    _VolumeService_DestroyVolumeCmdByAdmin_Handler,
 		},
 		{
 			MethodName: "DetachVolume",
 			Handler:    _VolumeService_DetachVolume_Handler,
 		},
 		{
-			MethodName: "RemoveResourceDetail",
-			Handler:    _VolumeService_RemoveResourceDetail_Handler,
+			MethodName: "DetachVolumeCmdByAdmin",
+			Handler:    _VolumeService_DetachVolumeCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "ExtractVolume",
+			Handler:    _VolumeService_ExtractVolume_Handler,
+		},
+		{
+			MethodName: "GetUploadParamsForVolume",
+			Handler:    _VolumeService_GetUploadParamsForVolume_Handler,
+		},
+		{
+			MethodName: "ImportVolume",
+			Handler:    _VolumeService_ImportVolume_Handler,
+		},
+		{
+			MethodName: "ListResourceDetails",
+			Handler:    _VolumeService_ListResourceDetails_Handler,
+		},
+		{
+			MethodName: "ListVolumes",
+			Handler:    _VolumeService_ListVolumes_Handler,
+		},
+		{
+			MethodName: "ListVolumesCmdByAdmin",
+			Handler:    _VolumeService_ListVolumesCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "ListVolumesForImport",
+			Handler:    _VolumeService_ListVolumesForImport_Handler,
+		},
+		{
+			MethodName: "MigrateVolume",
+			Handler:    _VolumeService_MigrateVolume_Handler,
+		},
+		{
+			MethodName: "MigrateVolumeCmdByAdmin",
+			Handler:    _VolumeService_MigrateVolumeCmdByAdmin_Handler,
 		},
 		{
 			MethodName: "RecoverVolume",
 			Handler:    _VolumeService_RecoverVolume_Handler,
 		},
 		{
-			MethodName: "ResizeVolumeCmdByAdmin",
-			Handler:    _VolumeService_ResizeVolumeCmdByAdmin_Handler,
+			MethodName: "RecoverVolumeCmdByAdmin",
+			Handler:    _VolumeService_RecoverVolumeCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "RemoveResourceDetail",
+			Handler:    _VolumeService_RemoveResourceDetail_Handler,
 		},
 		{
 			MethodName: "ResizeVolume",
 			Handler:    _VolumeService_ResizeVolume_Handler,
+		},
+		{
+			MethodName: "ResizeVolumeCmdByAdmin",
+			Handler:    _VolumeService_ResizeVolumeCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "UnmanageVolume",
+			Handler:    _VolumeService_UnmanageVolume_Handler,
+		},
+		{
+			MethodName: "UpdateVolume",
+			Handler:    _VolumeService_UpdateVolume_Handler,
+		},
+		{
+			MethodName: "UpdateVolumeCmdByAdmin",
+			Handler:    _VolumeService_UpdateVolumeCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "UploadVolume",
+			Handler:    _VolumeService_UploadVolume_Handler,
+		},
+		{
+			MethodName: "UploadVolumeCmdByAdmin",
+			Handler:    _VolumeService_UploadVolumeCmdByAdmin_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

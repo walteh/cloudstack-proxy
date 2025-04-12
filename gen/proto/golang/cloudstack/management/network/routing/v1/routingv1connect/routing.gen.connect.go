@@ -33,31 +33,31 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// RoutingServiceListRoutingFirewallRulesProcedure is the fully-qualified name of the
-	// RoutingService's ListRoutingFirewallRules RPC.
-	RoutingServiceListRoutingFirewallRulesProcedure = "/cloudstack.management.network.routing.v1.RoutingService/ListRoutingFirewallRules"
 	// RoutingServiceCreateRoutingFirewallRuleProcedure is the fully-qualified name of the
 	// RoutingService's CreateRoutingFirewallRule RPC.
 	RoutingServiceCreateRoutingFirewallRuleProcedure = "/cloudstack.management.network.routing.v1.RoutingService/CreateRoutingFirewallRule"
-	// RoutingServiceUpdateRoutingFirewallRuleProcedure is the fully-qualified name of the
-	// RoutingService's UpdateRoutingFirewallRule RPC.
-	RoutingServiceUpdateRoutingFirewallRuleProcedure = "/cloudstack.management.network.routing.v1.RoutingService/UpdateRoutingFirewallRule"
 	// RoutingServiceDeleteRoutingFirewallRuleProcedure is the fully-qualified name of the
 	// RoutingService's DeleteRoutingFirewallRule RPC.
 	RoutingServiceDeleteRoutingFirewallRuleProcedure = "/cloudstack.management.network.routing.v1.RoutingService/DeleteRoutingFirewallRule"
+	// RoutingServiceListRoutingFirewallRulesProcedure is the fully-qualified name of the
+	// RoutingService's ListRoutingFirewallRules RPC.
+	RoutingServiceListRoutingFirewallRulesProcedure = "/cloudstack.management.network.routing.v1.RoutingService/ListRoutingFirewallRules"
+	// RoutingServiceUpdateRoutingFirewallRuleProcedure is the fully-qualified name of the
+	// RoutingService's UpdateRoutingFirewallRule RPC.
+	RoutingServiceUpdateRoutingFirewallRuleProcedure = "/cloudstack.management.network.routing.v1.RoutingService/UpdateRoutingFirewallRule"
 )
 
 // RoutingServiceClient is a client for the cloudstack.management.network.routing.v1.RoutingService
 // service.
 type RoutingServiceClient interface {
-	// ListRoutingFirewallRules Lists all Routing firewall rules
-	ListRoutingFirewallRules(context.Context, *connect.Request[v1.ListRoutingFirewallRulesRequest]) (*connect.Response[v1.ListRoutingFirewallRulesResponse], error)
 	// CreateRoutingFirewallRule Creates a routing firewall rule in the given network in ROUTED mode
 	CreateRoutingFirewallRule(context.Context, *connect.Request[v1.CreateRoutingFirewallRuleRequest]) (*connect.Response[v1.CreateRoutingFirewallRuleResponse], error)
-	// UpdateRoutingFirewallRule Updates Routing firewall rule with specified ID
-	UpdateRoutingFirewallRule(context.Context, *connect.Request[v1.UpdateRoutingFirewallRuleRequest]) (*connect.Response[v1.UpdateRoutingFirewallRuleResponse], error)
 	// DeleteRoutingFirewallRule Deletes a routing firewall rule
 	DeleteRoutingFirewallRule(context.Context, *connect.Request[v1.DeleteRoutingFirewallRuleRequest]) (*connect.Response[v1.DeleteRoutingFirewallRuleResponse], error)
+	// ListRoutingFirewallRules Lists all Routing firewall rules
+	ListRoutingFirewallRules(context.Context, *connect.Request[v1.ListRoutingFirewallRulesRequest]) (*connect.Response[v1.ListRoutingFirewallRulesResponse], error)
+	// UpdateRoutingFirewallRule Updates Routing firewall rule with specified ID
+	UpdateRoutingFirewallRule(context.Context, *connect.Request[v1.UpdateRoutingFirewallRuleRequest]) (*connect.Response[v1.UpdateRoutingFirewallRuleResponse], error)
 }
 
 // NewRoutingServiceClient constructs a client for the
@@ -72,22 +72,10 @@ func NewRoutingServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 	baseURL = strings.TrimRight(baseURL, "/")
 	routingServiceMethods := v1.File_cloudstack_management_network_routing_v1_routing_gen_proto.Services().ByName("RoutingService").Methods()
 	return &routingServiceClient{
-		listRoutingFirewallRules: connect.NewClient[v1.ListRoutingFirewallRulesRequest, v1.ListRoutingFirewallRulesResponse](
-			httpClient,
-			baseURL+RoutingServiceListRoutingFirewallRulesProcedure,
-			connect.WithSchema(routingServiceMethods.ByName("ListRoutingFirewallRules")),
-			connect.WithClientOptions(opts...),
-		),
 		createRoutingFirewallRule: connect.NewClient[v1.CreateRoutingFirewallRuleRequest, v1.CreateRoutingFirewallRuleResponse](
 			httpClient,
 			baseURL+RoutingServiceCreateRoutingFirewallRuleProcedure,
 			connect.WithSchema(routingServiceMethods.ByName("CreateRoutingFirewallRule")),
-			connect.WithClientOptions(opts...),
-		),
-		updateRoutingFirewallRule: connect.NewClient[v1.UpdateRoutingFirewallRuleRequest, v1.UpdateRoutingFirewallRuleResponse](
-			httpClient,
-			baseURL+RoutingServiceUpdateRoutingFirewallRuleProcedure,
-			connect.WithSchema(routingServiceMethods.ByName("UpdateRoutingFirewallRule")),
 			connect.WithClientOptions(opts...),
 		),
 		deleteRoutingFirewallRule: connect.NewClient[v1.DeleteRoutingFirewallRuleRequest, v1.DeleteRoutingFirewallRuleResponse](
@@ -96,21 +84,27 @@ func NewRoutingServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(routingServiceMethods.ByName("DeleteRoutingFirewallRule")),
 			connect.WithClientOptions(opts...),
 		),
+		listRoutingFirewallRules: connect.NewClient[v1.ListRoutingFirewallRulesRequest, v1.ListRoutingFirewallRulesResponse](
+			httpClient,
+			baseURL+RoutingServiceListRoutingFirewallRulesProcedure,
+			connect.WithSchema(routingServiceMethods.ByName("ListRoutingFirewallRules")),
+			connect.WithClientOptions(opts...),
+		),
+		updateRoutingFirewallRule: connect.NewClient[v1.UpdateRoutingFirewallRuleRequest, v1.UpdateRoutingFirewallRuleResponse](
+			httpClient,
+			baseURL+RoutingServiceUpdateRoutingFirewallRuleProcedure,
+			connect.WithSchema(routingServiceMethods.ByName("UpdateRoutingFirewallRule")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // routingServiceClient implements RoutingServiceClient.
 type routingServiceClient struct {
-	listRoutingFirewallRules  *connect.Client[v1.ListRoutingFirewallRulesRequest, v1.ListRoutingFirewallRulesResponse]
 	createRoutingFirewallRule *connect.Client[v1.CreateRoutingFirewallRuleRequest, v1.CreateRoutingFirewallRuleResponse]
-	updateRoutingFirewallRule *connect.Client[v1.UpdateRoutingFirewallRuleRequest, v1.UpdateRoutingFirewallRuleResponse]
 	deleteRoutingFirewallRule *connect.Client[v1.DeleteRoutingFirewallRuleRequest, v1.DeleteRoutingFirewallRuleResponse]
-}
-
-// ListRoutingFirewallRules calls
-// cloudstack.management.network.routing.v1.RoutingService.ListRoutingFirewallRules.
-func (c *routingServiceClient) ListRoutingFirewallRules(ctx context.Context, req *connect.Request[v1.ListRoutingFirewallRulesRequest]) (*connect.Response[v1.ListRoutingFirewallRulesResponse], error) {
-	return c.listRoutingFirewallRules.CallUnary(ctx, req)
+	listRoutingFirewallRules  *connect.Client[v1.ListRoutingFirewallRulesRequest, v1.ListRoutingFirewallRulesResponse]
+	updateRoutingFirewallRule *connect.Client[v1.UpdateRoutingFirewallRuleRequest, v1.UpdateRoutingFirewallRuleResponse]
 }
 
 // CreateRoutingFirewallRule calls
@@ -119,29 +113,35 @@ func (c *routingServiceClient) CreateRoutingFirewallRule(ctx context.Context, re
 	return c.createRoutingFirewallRule.CallUnary(ctx, req)
 }
 
-// UpdateRoutingFirewallRule calls
-// cloudstack.management.network.routing.v1.RoutingService.UpdateRoutingFirewallRule.
-func (c *routingServiceClient) UpdateRoutingFirewallRule(ctx context.Context, req *connect.Request[v1.UpdateRoutingFirewallRuleRequest]) (*connect.Response[v1.UpdateRoutingFirewallRuleResponse], error) {
-	return c.updateRoutingFirewallRule.CallUnary(ctx, req)
-}
-
 // DeleteRoutingFirewallRule calls
 // cloudstack.management.network.routing.v1.RoutingService.DeleteRoutingFirewallRule.
 func (c *routingServiceClient) DeleteRoutingFirewallRule(ctx context.Context, req *connect.Request[v1.DeleteRoutingFirewallRuleRequest]) (*connect.Response[v1.DeleteRoutingFirewallRuleResponse], error) {
 	return c.deleteRoutingFirewallRule.CallUnary(ctx, req)
 }
 
+// ListRoutingFirewallRules calls
+// cloudstack.management.network.routing.v1.RoutingService.ListRoutingFirewallRules.
+func (c *routingServiceClient) ListRoutingFirewallRules(ctx context.Context, req *connect.Request[v1.ListRoutingFirewallRulesRequest]) (*connect.Response[v1.ListRoutingFirewallRulesResponse], error) {
+	return c.listRoutingFirewallRules.CallUnary(ctx, req)
+}
+
+// UpdateRoutingFirewallRule calls
+// cloudstack.management.network.routing.v1.RoutingService.UpdateRoutingFirewallRule.
+func (c *routingServiceClient) UpdateRoutingFirewallRule(ctx context.Context, req *connect.Request[v1.UpdateRoutingFirewallRuleRequest]) (*connect.Response[v1.UpdateRoutingFirewallRuleResponse], error) {
+	return c.updateRoutingFirewallRule.CallUnary(ctx, req)
+}
+
 // RoutingServiceHandler is an implementation of the
 // cloudstack.management.network.routing.v1.RoutingService service.
 type RoutingServiceHandler interface {
-	// ListRoutingFirewallRules Lists all Routing firewall rules
-	ListRoutingFirewallRules(context.Context, *connect.Request[v1.ListRoutingFirewallRulesRequest]) (*connect.Response[v1.ListRoutingFirewallRulesResponse], error)
 	// CreateRoutingFirewallRule Creates a routing firewall rule in the given network in ROUTED mode
 	CreateRoutingFirewallRule(context.Context, *connect.Request[v1.CreateRoutingFirewallRuleRequest]) (*connect.Response[v1.CreateRoutingFirewallRuleResponse], error)
-	// UpdateRoutingFirewallRule Updates Routing firewall rule with specified ID
-	UpdateRoutingFirewallRule(context.Context, *connect.Request[v1.UpdateRoutingFirewallRuleRequest]) (*connect.Response[v1.UpdateRoutingFirewallRuleResponse], error)
 	// DeleteRoutingFirewallRule Deletes a routing firewall rule
 	DeleteRoutingFirewallRule(context.Context, *connect.Request[v1.DeleteRoutingFirewallRuleRequest]) (*connect.Response[v1.DeleteRoutingFirewallRuleResponse], error)
+	// ListRoutingFirewallRules Lists all Routing firewall rules
+	ListRoutingFirewallRules(context.Context, *connect.Request[v1.ListRoutingFirewallRulesRequest]) (*connect.Response[v1.ListRoutingFirewallRulesResponse], error)
+	// UpdateRoutingFirewallRule Updates Routing firewall rule with specified ID
+	UpdateRoutingFirewallRule(context.Context, *connect.Request[v1.UpdateRoutingFirewallRuleRequest]) (*connect.Response[v1.UpdateRoutingFirewallRuleResponse], error)
 }
 
 // NewRoutingServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -151,22 +151,10 @@ type RoutingServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewRoutingServiceHandler(svc RoutingServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	routingServiceMethods := v1.File_cloudstack_management_network_routing_v1_routing_gen_proto.Services().ByName("RoutingService").Methods()
-	routingServiceListRoutingFirewallRulesHandler := connect.NewUnaryHandler(
-		RoutingServiceListRoutingFirewallRulesProcedure,
-		svc.ListRoutingFirewallRules,
-		connect.WithSchema(routingServiceMethods.ByName("ListRoutingFirewallRules")),
-		connect.WithHandlerOptions(opts...),
-	)
 	routingServiceCreateRoutingFirewallRuleHandler := connect.NewUnaryHandler(
 		RoutingServiceCreateRoutingFirewallRuleProcedure,
 		svc.CreateRoutingFirewallRule,
 		connect.WithSchema(routingServiceMethods.ByName("CreateRoutingFirewallRule")),
-		connect.WithHandlerOptions(opts...),
-	)
-	routingServiceUpdateRoutingFirewallRuleHandler := connect.NewUnaryHandler(
-		RoutingServiceUpdateRoutingFirewallRuleProcedure,
-		svc.UpdateRoutingFirewallRule,
-		connect.WithSchema(routingServiceMethods.ByName("UpdateRoutingFirewallRule")),
 		connect.WithHandlerOptions(opts...),
 	)
 	routingServiceDeleteRoutingFirewallRuleHandler := connect.NewUnaryHandler(
@@ -175,16 +163,28 @@ func NewRoutingServiceHandler(svc RoutingServiceHandler, opts ...connect.Handler
 		connect.WithSchema(routingServiceMethods.ByName("DeleteRoutingFirewallRule")),
 		connect.WithHandlerOptions(opts...),
 	)
+	routingServiceListRoutingFirewallRulesHandler := connect.NewUnaryHandler(
+		RoutingServiceListRoutingFirewallRulesProcedure,
+		svc.ListRoutingFirewallRules,
+		connect.WithSchema(routingServiceMethods.ByName("ListRoutingFirewallRules")),
+		connect.WithHandlerOptions(opts...),
+	)
+	routingServiceUpdateRoutingFirewallRuleHandler := connect.NewUnaryHandler(
+		RoutingServiceUpdateRoutingFirewallRuleProcedure,
+		svc.UpdateRoutingFirewallRule,
+		connect.WithSchema(routingServiceMethods.ByName("UpdateRoutingFirewallRule")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.network.routing.v1.RoutingService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case RoutingServiceListRoutingFirewallRulesProcedure:
-			routingServiceListRoutingFirewallRulesHandler.ServeHTTP(w, r)
 		case RoutingServiceCreateRoutingFirewallRuleProcedure:
 			routingServiceCreateRoutingFirewallRuleHandler.ServeHTTP(w, r)
-		case RoutingServiceUpdateRoutingFirewallRuleProcedure:
-			routingServiceUpdateRoutingFirewallRuleHandler.ServeHTTP(w, r)
 		case RoutingServiceDeleteRoutingFirewallRuleProcedure:
 			routingServiceDeleteRoutingFirewallRuleHandler.ServeHTTP(w, r)
+		case RoutingServiceListRoutingFirewallRulesProcedure:
+			routingServiceListRoutingFirewallRulesHandler.ServeHTTP(w, r)
+		case RoutingServiceUpdateRoutingFirewallRuleProcedure:
+			routingServiceUpdateRoutingFirewallRuleHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -194,18 +194,18 @@ func NewRoutingServiceHandler(svc RoutingServiceHandler, opts ...connect.Handler
 // UnimplementedRoutingServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedRoutingServiceHandler struct{}
 
-func (UnimplementedRoutingServiceHandler) ListRoutingFirewallRules(context.Context, *connect.Request[v1.ListRoutingFirewallRulesRequest]) (*connect.Response[v1.ListRoutingFirewallRulesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.routing.v1.RoutingService.ListRoutingFirewallRules is not implemented"))
-}
-
 func (UnimplementedRoutingServiceHandler) CreateRoutingFirewallRule(context.Context, *connect.Request[v1.CreateRoutingFirewallRuleRequest]) (*connect.Response[v1.CreateRoutingFirewallRuleResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.routing.v1.RoutingService.CreateRoutingFirewallRule is not implemented"))
 }
 
-func (UnimplementedRoutingServiceHandler) UpdateRoutingFirewallRule(context.Context, *connect.Request[v1.UpdateRoutingFirewallRuleRequest]) (*connect.Response[v1.UpdateRoutingFirewallRuleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.routing.v1.RoutingService.UpdateRoutingFirewallRule is not implemented"))
-}
-
 func (UnimplementedRoutingServiceHandler) DeleteRoutingFirewallRule(context.Context, *connect.Request[v1.DeleteRoutingFirewallRuleRequest]) (*connect.Response[v1.DeleteRoutingFirewallRuleResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.routing.v1.RoutingService.DeleteRoutingFirewallRule is not implemented"))
+}
+
+func (UnimplementedRoutingServiceHandler) ListRoutingFirewallRules(context.Context, *connect.Request[v1.ListRoutingFirewallRulesRequest]) (*connect.Response[v1.ListRoutingFirewallRulesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.routing.v1.RoutingService.ListRoutingFirewallRules is not implemented"))
+}
+
+func (UnimplementedRoutingServiceHandler) UpdateRoutingFirewallRule(context.Context, *connect.Request[v1.UpdateRoutingFirewallRuleRequest]) (*connect.Response[v1.UpdateRoutingFirewallRuleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.network.routing.v1.RoutingService.UpdateRoutingFirewallRule is not implemented"))
 }

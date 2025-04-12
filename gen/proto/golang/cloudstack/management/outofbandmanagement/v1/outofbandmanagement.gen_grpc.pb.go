@@ -19,15 +19,15 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
+	OutofbandmanagementService_ChangeOutOfBandManagementPassword_FullMethodName    = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/ChangeOutOfBandManagementPassword"
+	OutofbandmanagementService_ConfigureOutOfBandManagement_FullMethodName         = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/ConfigureOutOfBandManagement"
+	OutofbandmanagementService_DisableOutOfBandManagementForCluster_FullMethodName = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/DisableOutOfBandManagementForCluster"
+	OutofbandmanagementService_DisableOutOfBandManagementForHost_FullMethodName    = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/DisableOutOfBandManagementForHost"
+	OutofbandmanagementService_DisableOutOfBandManagementForZone_FullMethodName    = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/DisableOutOfBandManagementForZone"
+	OutofbandmanagementService_EnableOutOfBandManagementForCluster_FullMethodName  = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/EnableOutOfBandManagementForCluster"
+	OutofbandmanagementService_EnableOutOfBandManagementForHost_FullMethodName     = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/EnableOutOfBandManagementForHost"
 	OutofbandmanagementService_EnableOutOfBandManagementForZone_FullMethodName     = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/EnableOutOfBandManagementForZone"
 	OutofbandmanagementService_IssueOutOfBandManagementPowerAction_FullMethodName  = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/IssueOutOfBandManagementPowerAction"
-	OutofbandmanagementService_DisableOutOfBandManagementForHost_FullMethodName    = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/DisableOutOfBandManagementForHost"
-	OutofbandmanagementService_ConfigureOutOfBandManagement_FullMethodName         = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/ConfigureOutOfBandManagement"
-	OutofbandmanagementService_EnableOutOfBandManagementForCluster_FullMethodName  = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/EnableOutOfBandManagementForCluster"
-	OutofbandmanagementService_ChangeOutOfBandManagementPassword_FullMethodName    = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/ChangeOutOfBandManagementPassword"
-	OutofbandmanagementService_DisableOutOfBandManagementForCluster_FullMethodName = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/DisableOutOfBandManagementForCluster"
-	OutofbandmanagementService_DisableOutOfBandManagementForZone_FullMethodName    = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/DisableOutOfBandManagementForZone"
-	OutofbandmanagementService_EnableOutOfBandManagementForHost_FullMethodName     = "/cloudstack.management.outofbandmanagement.v1.OutofbandmanagementService/EnableOutOfBandManagementForHost"
 )
 
 // OutofbandmanagementServiceClient is the client API for OutofbandmanagementService service.
@@ -36,24 +36,24 @@ const (
 //
 // OutofbandmanagementService provides operations for managing Outofbandmanagements
 type OutofbandmanagementServiceClient interface {
+	// ChangeOutOfBandManagementPassword Changes out-of-band management interface password on the host and updates the interface configuration in CloudStack if the operation succeeds, else reverts the old password
+	ChangeOutOfBandManagementPassword(ctx context.Context, in *ChangeOutOfBandManagementPasswordRequest, opts ...grpc.CallOption) (*ChangeOutOfBandManagementPasswordResponse, error)
+	// ConfigureOutOfBandManagement Configures a host's out-of-band management interface
+	ConfigureOutOfBandManagement(ctx context.Context, in *ConfigureOutOfBandManagementRequest, opts ...grpc.CallOption) (*ConfigureOutOfBandManagementResponse, error)
+	// DisableOutOfBandManagementForCluster Disables out-of-band management for a cluster
+	DisableOutOfBandManagementForCluster(ctx context.Context, in *DisableOutOfBandManagementForClusterRequest, opts ...grpc.CallOption) (*DisableOutOfBandManagementForClusterResponse, error)
+	// DisableOutOfBandManagementForHost Disables out-of-band management for a host
+	DisableOutOfBandManagementForHost(ctx context.Context, in *DisableOutOfBandManagementForHostRequest, opts ...grpc.CallOption) (*DisableOutOfBandManagementForHostResponse, error)
+	// DisableOutOfBandManagementForZone Disables out-of-band management for a zone
+	DisableOutOfBandManagementForZone(ctx context.Context, in *DisableOutOfBandManagementForZoneRequest, opts ...grpc.CallOption) (*DisableOutOfBandManagementForZoneResponse, error)
+	// EnableOutOfBandManagementForCluster Enables out-of-band management for a cluster
+	EnableOutOfBandManagementForCluster(ctx context.Context, in *EnableOutOfBandManagementForClusterRequest, opts ...grpc.CallOption) (*EnableOutOfBandManagementForClusterResponse, error)
+	// EnableOutOfBandManagementForHost Enables out-of-band management for a host
+	EnableOutOfBandManagementForHost(ctx context.Context, in *EnableOutOfBandManagementForHostRequest, opts ...grpc.CallOption) (*EnableOutOfBandManagementForHostResponse, error)
 	// EnableOutOfBandManagementForZone Enables out-of-band management for a zone
 	EnableOutOfBandManagementForZone(ctx context.Context, in *EnableOutOfBandManagementForZoneRequest, opts ...grpc.CallOption) (*EnableOutOfBandManagementForZoneResponse, error)
 	// IssueOutOfBandManagementPowerAction Initiates the specified power action to the host's out-of-band management interface
 	IssueOutOfBandManagementPowerAction(ctx context.Context, in *IssueOutOfBandManagementPowerActionRequest, opts ...grpc.CallOption) (*IssueOutOfBandManagementPowerActionResponse, error)
-	// DisableOutOfBandManagementForHost Disables out-of-band management for a host
-	DisableOutOfBandManagementForHost(ctx context.Context, in *DisableOutOfBandManagementForHostRequest, opts ...grpc.CallOption) (*DisableOutOfBandManagementForHostResponse, error)
-	// ConfigureOutOfBandManagement Configures a host's out-of-band management interface
-	ConfigureOutOfBandManagement(ctx context.Context, in *ConfigureOutOfBandManagementRequest, opts ...grpc.CallOption) (*ConfigureOutOfBandManagementResponse, error)
-	// EnableOutOfBandManagementForCluster Enables out-of-band management for a cluster
-	EnableOutOfBandManagementForCluster(ctx context.Context, in *EnableOutOfBandManagementForClusterRequest, opts ...grpc.CallOption) (*EnableOutOfBandManagementForClusterResponse, error)
-	// ChangeOutOfBandManagementPassword Changes out-of-band management interface password on the host and updates the interface configuration in CloudStack if the operation succeeds, else reverts the old password
-	ChangeOutOfBandManagementPassword(ctx context.Context, in *ChangeOutOfBandManagementPasswordRequest, opts ...grpc.CallOption) (*ChangeOutOfBandManagementPasswordResponse, error)
-	// DisableOutOfBandManagementForCluster Disables out-of-band management for a cluster
-	DisableOutOfBandManagementForCluster(ctx context.Context, in *DisableOutOfBandManagementForClusterRequest, opts ...grpc.CallOption) (*DisableOutOfBandManagementForClusterResponse, error)
-	// DisableOutOfBandManagementForZone Disables out-of-band management for a zone
-	DisableOutOfBandManagementForZone(ctx context.Context, in *DisableOutOfBandManagementForZoneRequest, opts ...grpc.CallOption) (*DisableOutOfBandManagementForZoneResponse, error)
-	// EnableOutOfBandManagementForHost Enables out-of-band management for a host
-	EnableOutOfBandManagementForHost(ctx context.Context, in *EnableOutOfBandManagementForHostRequest, opts ...grpc.CallOption) (*EnableOutOfBandManagementForHostResponse, error)
 }
 
 type outofbandmanagementServiceClient struct {
@@ -62,6 +62,76 @@ type outofbandmanagementServiceClient struct {
 
 func NewOutofbandmanagementServiceClient(cc grpc.ClientConnInterface) OutofbandmanagementServiceClient {
 	return &outofbandmanagementServiceClient{cc}
+}
+
+func (c *outofbandmanagementServiceClient) ChangeOutOfBandManagementPassword(ctx context.Context, in *ChangeOutOfBandManagementPasswordRequest, opts ...grpc.CallOption) (*ChangeOutOfBandManagementPasswordResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ChangeOutOfBandManagementPasswordResponse)
+	err := c.cc.Invoke(ctx, OutofbandmanagementService_ChangeOutOfBandManagementPassword_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *outofbandmanagementServiceClient) ConfigureOutOfBandManagement(ctx context.Context, in *ConfigureOutOfBandManagementRequest, opts ...grpc.CallOption) (*ConfigureOutOfBandManagementResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ConfigureOutOfBandManagementResponse)
+	err := c.cc.Invoke(ctx, OutofbandmanagementService_ConfigureOutOfBandManagement_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *outofbandmanagementServiceClient) DisableOutOfBandManagementForCluster(ctx context.Context, in *DisableOutOfBandManagementForClusterRequest, opts ...grpc.CallOption) (*DisableOutOfBandManagementForClusterResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DisableOutOfBandManagementForClusterResponse)
+	err := c.cc.Invoke(ctx, OutofbandmanagementService_DisableOutOfBandManagementForCluster_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *outofbandmanagementServiceClient) DisableOutOfBandManagementForHost(ctx context.Context, in *DisableOutOfBandManagementForHostRequest, opts ...grpc.CallOption) (*DisableOutOfBandManagementForHostResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DisableOutOfBandManagementForHostResponse)
+	err := c.cc.Invoke(ctx, OutofbandmanagementService_DisableOutOfBandManagementForHost_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *outofbandmanagementServiceClient) DisableOutOfBandManagementForZone(ctx context.Context, in *DisableOutOfBandManagementForZoneRequest, opts ...grpc.CallOption) (*DisableOutOfBandManagementForZoneResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DisableOutOfBandManagementForZoneResponse)
+	err := c.cc.Invoke(ctx, OutofbandmanagementService_DisableOutOfBandManagementForZone_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *outofbandmanagementServiceClient) EnableOutOfBandManagementForCluster(ctx context.Context, in *EnableOutOfBandManagementForClusterRequest, opts ...grpc.CallOption) (*EnableOutOfBandManagementForClusterResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(EnableOutOfBandManagementForClusterResponse)
+	err := c.cc.Invoke(ctx, OutofbandmanagementService_EnableOutOfBandManagementForCluster_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *outofbandmanagementServiceClient) EnableOutOfBandManagementForHost(ctx context.Context, in *EnableOutOfBandManagementForHostRequest, opts ...grpc.CallOption) (*EnableOutOfBandManagementForHostResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(EnableOutOfBandManagementForHostResponse)
+	err := c.cc.Invoke(ctx, OutofbandmanagementService_EnableOutOfBandManagementForHost_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *outofbandmanagementServiceClient) EnableOutOfBandManagementForZone(ctx context.Context, in *EnableOutOfBandManagementForZoneRequest, opts ...grpc.CallOption) (*EnableOutOfBandManagementForZoneResponse, error) {
@@ -84,100 +154,30 @@ func (c *outofbandmanagementServiceClient) IssueOutOfBandManagementPowerAction(c
 	return out, nil
 }
 
-func (c *outofbandmanagementServiceClient) DisableOutOfBandManagementForHost(ctx context.Context, in *DisableOutOfBandManagementForHostRequest, opts ...grpc.CallOption) (*DisableOutOfBandManagementForHostResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DisableOutOfBandManagementForHostResponse)
-	err := c.cc.Invoke(ctx, OutofbandmanagementService_DisableOutOfBandManagementForHost_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *outofbandmanagementServiceClient) ConfigureOutOfBandManagement(ctx context.Context, in *ConfigureOutOfBandManagementRequest, opts ...grpc.CallOption) (*ConfigureOutOfBandManagementResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ConfigureOutOfBandManagementResponse)
-	err := c.cc.Invoke(ctx, OutofbandmanagementService_ConfigureOutOfBandManagement_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *outofbandmanagementServiceClient) EnableOutOfBandManagementForCluster(ctx context.Context, in *EnableOutOfBandManagementForClusterRequest, opts ...grpc.CallOption) (*EnableOutOfBandManagementForClusterResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(EnableOutOfBandManagementForClusterResponse)
-	err := c.cc.Invoke(ctx, OutofbandmanagementService_EnableOutOfBandManagementForCluster_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *outofbandmanagementServiceClient) ChangeOutOfBandManagementPassword(ctx context.Context, in *ChangeOutOfBandManagementPasswordRequest, opts ...grpc.CallOption) (*ChangeOutOfBandManagementPasswordResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ChangeOutOfBandManagementPasswordResponse)
-	err := c.cc.Invoke(ctx, OutofbandmanagementService_ChangeOutOfBandManagementPassword_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *outofbandmanagementServiceClient) DisableOutOfBandManagementForCluster(ctx context.Context, in *DisableOutOfBandManagementForClusterRequest, opts ...grpc.CallOption) (*DisableOutOfBandManagementForClusterResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DisableOutOfBandManagementForClusterResponse)
-	err := c.cc.Invoke(ctx, OutofbandmanagementService_DisableOutOfBandManagementForCluster_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *outofbandmanagementServiceClient) DisableOutOfBandManagementForZone(ctx context.Context, in *DisableOutOfBandManagementForZoneRequest, opts ...grpc.CallOption) (*DisableOutOfBandManagementForZoneResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DisableOutOfBandManagementForZoneResponse)
-	err := c.cc.Invoke(ctx, OutofbandmanagementService_DisableOutOfBandManagementForZone_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *outofbandmanagementServiceClient) EnableOutOfBandManagementForHost(ctx context.Context, in *EnableOutOfBandManagementForHostRequest, opts ...grpc.CallOption) (*EnableOutOfBandManagementForHostResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(EnableOutOfBandManagementForHostResponse)
-	err := c.cc.Invoke(ctx, OutofbandmanagementService_EnableOutOfBandManagementForHost_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // OutofbandmanagementServiceServer is the server API for OutofbandmanagementService service.
 // All implementations must embed UnimplementedOutofbandmanagementServiceServer
 // for forward compatibility.
 //
 // OutofbandmanagementService provides operations for managing Outofbandmanagements
 type OutofbandmanagementServiceServer interface {
+	// ChangeOutOfBandManagementPassword Changes out-of-band management interface password on the host and updates the interface configuration in CloudStack if the operation succeeds, else reverts the old password
+	ChangeOutOfBandManagementPassword(context.Context, *ChangeOutOfBandManagementPasswordRequest) (*ChangeOutOfBandManagementPasswordResponse, error)
+	// ConfigureOutOfBandManagement Configures a host's out-of-band management interface
+	ConfigureOutOfBandManagement(context.Context, *ConfigureOutOfBandManagementRequest) (*ConfigureOutOfBandManagementResponse, error)
+	// DisableOutOfBandManagementForCluster Disables out-of-band management for a cluster
+	DisableOutOfBandManagementForCluster(context.Context, *DisableOutOfBandManagementForClusterRequest) (*DisableOutOfBandManagementForClusterResponse, error)
+	// DisableOutOfBandManagementForHost Disables out-of-band management for a host
+	DisableOutOfBandManagementForHost(context.Context, *DisableOutOfBandManagementForHostRequest) (*DisableOutOfBandManagementForHostResponse, error)
+	// DisableOutOfBandManagementForZone Disables out-of-band management for a zone
+	DisableOutOfBandManagementForZone(context.Context, *DisableOutOfBandManagementForZoneRequest) (*DisableOutOfBandManagementForZoneResponse, error)
+	// EnableOutOfBandManagementForCluster Enables out-of-band management for a cluster
+	EnableOutOfBandManagementForCluster(context.Context, *EnableOutOfBandManagementForClusterRequest) (*EnableOutOfBandManagementForClusterResponse, error)
+	// EnableOutOfBandManagementForHost Enables out-of-band management for a host
+	EnableOutOfBandManagementForHost(context.Context, *EnableOutOfBandManagementForHostRequest) (*EnableOutOfBandManagementForHostResponse, error)
 	// EnableOutOfBandManagementForZone Enables out-of-band management for a zone
 	EnableOutOfBandManagementForZone(context.Context, *EnableOutOfBandManagementForZoneRequest) (*EnableOutOfBandManagementForZoneResponse, error)
 	// IssueOutOfBandManagementPowerAction Initiates the specified power action to the host's out-of-band management interface
 	IssueOutOfBandManagementPowerAction(context.Context, *IssueOutOfBandManagementPowerActionRequest) (*IssueOutOfBandManagementPowerActionResponse, error)
-	// DisableOutOfBandManagementForHost Disables out-of-band management for a host
-	DisableOutOfBandManagementForHost(context.Context, *DisableOutOfBandManagementForHostRequest) (*DisableOutOfBandManagementForHostResponse, error)
-	// ConfigureOutOfBandManagement Configures a host's out-of-band management interface
-	ConfigureOutOfBandManagement(context.Context, *ConfigureOutOfBandManagementRequest) (*ConfigureOutOfBandManagementResponse, error)
-	// EnableOutOfBandManagementForCluster Enables out-of-band management for a cluster
-	EnableOutOfBandManagementForCluster(context.Context, *EnableOutOfBandManagementForClusterRequest) (*EnableOutOfBandManagementForClusterResponse, error)
-	// ChangeOutOfBandManagementPassword Changes out-of-band management interface password on the host and updates the interface configuration in CloudStack if the operation succeeds, else reverts the old password
-	ChangeOutOfBandManagementPassword(context.Context, *ChangeOutOfBandManagementPasswordRequest) (*ChangeOutOfBandManagementPasswordResponse, error)
-	// DisableOutOfBandManagementForCluster Disables out-of-band management for a cluster
-	DisableOutOfBandManagementForCluster(context.Context, *DisableOutOfBandManagementForClusterRequest) (*DisableOutOfBandManagementForClusterResponse, error)
-	// DisableOutOfBandManagementForZone Disables out-of-band management for a zone
-	DisableOutOfBandManagementForZone(context.Context, *DisableOutOfBandManagementForZoneRequest) (*DisableOutOfBandManagementForZoneResponse, error)
-	// EnableOutOfBandManagementForHost Enables out-of-band management for a host
-	EnableOutOfBandManagementForHost(context.Context, *EnableOutOfBandManagementForHostRequest) (*EnableOutOfBandManagementForHostResponse, error)
 	mustEmbedUnimplementedOutofbandmanagementServiceServer()
 }
 
@@ -188,32 +188,32 @@ type OutofbandmanagementServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedOutofbandmanagementServiceServer struct{}
 
+func (UnimplementedOutofbandmanagementServiceServer) ChangeOutOfBandManagementPassword(context.Context, *ChangeOutOfBandManagementPasswordRequest) (*ChangeOutOfBandManagementPasswordResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChangeOutOfBandManagementPassword not implemented")
+}
+func (UnimplementedOutofbandmanagementServiceServer) ConfigureOutOfBandManagement(context.Context, *ConfigureOutOfBandManagementRequest) (*ConfigureOutOfBandManagementResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ConfigureOutOfBandManagement not implemented")
+}
+func (UnimplementedOutofbandmanagementServiceServer) DisableOutOfBandManagementForCluster(context.Context, *DisableOutOfBandManagementForClusterRequest) (*DisableOutOfBandManagementForClusterResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DisableOutOfBandManagementForCluster not implemented")
+}
+func (UnimplementedOutofbandmanagementServiceServer) DisableOutOfBandManagementForHost(context.Context, *DisableOutOfBandManagementForHostRequest) (*DisableOutOfBandManagementForHostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DisableOutOfBandManagementForHost not implemented")
+}
+func (UnimplementedOutofbandmanagementServiceServer) DisableOutOfBandManagementForZone(context.Context, *DisableOutOfBandManagementForZoneRequest) (*DisableOutOfBandManagementForZoneResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DisableOutOfBandManagementForZone not implemented")
+}
+func (UnimplementedOutofbandmanagementServiceServer) EnableOutOfBandManagementForCluster(context.Context, *EnableOutOfBandManagementForClusterRequest) (*EnableOutOfBandManagementForClusterResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EnableOutOfBandManagementForCluster not implemented")
+}
+func (UnimplementedOutofbandmanagementServiceServer) EnableOutOfBandManagementForHost(context.Context, *EnableOutOfBandManagementForHostRequest) (*EnableOutOfBandManagementForHostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EnableOutOfBandManagementForHost not implemented")
+}
 func (UnimplementedOutofbandmanagementServiceServer) EnableOutOfBandManagementForZone(context.Context, *EnableOutOfBandManagementForZoneRequest) (*EnableOutOfBandManagementForZoneResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method EnableOutOfBandManagementForZone not implemented")
 }
 func (UnimplementedOutofbandmanagementServiceServer) IssueOutOfBandManagementPowerAction(context.Context, *IssueOutOfBandManagementPowerActionRequest) (*IssueOutOfBandManagementPowerActionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method IssueOutOfBandManagementPowerAction not implemented")
-}
-func (UnimplementedOutofbandmanagementServiceServer) DisableOutOfBandManagementForHost(context.Context, *DisableOutOfBandManagementForHostRequest) (*DisableOutOfBandManagementForHostResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DisableOutOfBandManagementForHost not implemented")
-}
-func (UnimplementedOutofbandmanagementServiceServer) ConfigureOutOfBandManagement(context.Context, *ConfigureOutOfBandManagementRequest) (*ConfigureOutOfBandManagementResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ConfigureOutOfBandManagement not implemented")
-}
-func (UnimplementedOutofbandmanagementServiceServer) EnableOutOfBandManagementForCluster(context.Context, *EnableOutOfBandManagementForClusterRequest) (*EnableOutOfBandManagementForClusterResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method EnableOutOfBandManagementForCluster not implemented")
-}
-func (UnimplementedOutofbandmanagementServiceServer) ChangeOutOfBandManagementPassword(context.Context, *ChangeOutOfBandManagementPasswordRequest) (*ChangeOutOfBandManagementPasswordResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ChangeOutOfBandManagementPassword not implemented")
-}
-func (UnimplementedOutofbandmanagementServiceServer) DisableOutOfBandManagementForCluster(context.Context, *DisableOutOfBandManagementForClusterRequest) (*DisableOutOfBandManagementForClusterResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DisableOutOfBandManagementForCluster not implemented")
-}
-func (UnimplementedOutofbandmanagementServiceServer) DisableOutOfBandManagementForZone(context.Context, *DisableOutOfBandManagementForZoneRequest) (*DisableOutOfBandManagementForZoneResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DisableOutOfBandManagementForZone not implemented")
-}
-func (UnimplementedOutofbandmanagementServiceServer) EnableOutOfBandManagementForHost(context.Context, *EnableOutOfBandManagementForHostRequest) (*EnableOutOfBandManagementForHostResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method EnableOutOfBandManagementForHost not implemented")
 }
 func (UnimplementedOutofbandmanagementServiceServer) mustEmbedUnimplementedOutofbandmanagementServiceServer() {
 }
@@ -235,6 +235,132 @@ func RegisterOutofbandmanagementServiceServer(s grpc.ServiceRegistrar, srv Outof
 		t.testEmbeddedByValue()
 	}
 	s.RegisterService(&OutofbandmanagementService_ServiceDesc, srv)
+}
+
+func _OutofbandmanagementService_ChangeOutOfBandManagementPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ChangeOutOfBandManagementPasswordRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OutofbandmanagementServiceServer).ChangeOutOfBandManagementPassword(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OutofbandmanagementService_ChangeOutOfBandManagementPassword_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OutofbandmanagementServiceServer).ChangeOutOfBandManagementPassword(ctx, req.(*ChangeOutOfBandManagementPasswordRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OutofbandmanagementService_ConfigureOutOfBandManagement_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ConfigureOutOfBandManagementRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OutofbandmanagementServiceServer).ConfigureOutOfBandManagement(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OutofbandmanagementService_ConfigureOutOfBandManagement_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OutofbandmanagementServiceServer).ConfigureOutOfBandManagement(ctx, req.(*ConfigureOutOfBandManagementRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OutofbandmanagementService_DisableOutOfBandManagementForCluster_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DisableOutOfBandManagementForClusterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OutofbandmanagementServiceServer).DisableOutOfBandManagementForCluster(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OutofbandmanagementService_DisableOutOfBandManagementForCluster_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OutofbandmanagementServiceServer).DisableOutOfBandManagementForCluster(ctx, req.(*DisableOutOfBandManagementForClusterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OutofbandmanagementService_DisableOutOfBandManagementForHost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DisableOutOfBandManagementForHostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OutofbandmanagementServiceServer).DisableOutOfBandManagementForHost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OutofbandmanagementService_DisableOutOfBandManagementForHost_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OutofbandmanagementServiceServer).DisableOutOfBandManagementForHost(ctx, req.(*DisableOutOfBandManagementForHostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OutofbandmanagementService_DisableOutOfBandManagementForZone_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DisableOutOfBandManagementForZoneRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OutofbandmanagementServiceServer).DisableOutOfBandManagementForZone(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OutofbandmanagementService_DisableOutOfBandManagementForZone_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OutofbandmanagementServiceServer).DisableOutOfBandManagementForZone(ctx, req.(*DisableOutOfBandManagementForZoneRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OutofbandmanagementService_EnableOutOfBandManagementForCluster_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EnableOutOfBandManagementForClusterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OutofbandmanagementServiceServer).EnableOutOfBandManagementForCluster(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OutofbandmanagementService_EnableOutOfBandManagementForCluster_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OutofbandmanagementServiceServer).EnableOutOfBandManagementForCluster(ctx, req.(*EnableOutOfBandManagementForClusterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OutofbandmanagementService_EnableOutOfBandManagementForHost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EnableOutOfBandManagementForHostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OutofbandmanagementServiceServer).EnableOutOfBandManagementForHost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OutofbandmanagementService_EnableOutOfBandManagementForHost_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OutofbandmanagementServiceServer).EnableOutOfBandManagementForHost(ctx, req.(*EnableOutOfBandManagementForHostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _OutofbandmanagementService_EnableOutOfBandManagementForZone_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -273,132 +399,6 @@ func _OutofbandmanagementService_IssueOutOfBandManagementPowerAction_Handler(srv
 	return interceptor(ctx, in, info, handler)
 }
 
-func _OutofbandmanagementService_DisableOutOfBandManagementForHost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DisableOutOfBandManagementForHostRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(OutofbandmanagementServiceServer).DisableOutOfBandManagementForHost(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: OutofbandmanagementService_DisableOutOfBandManagementForHost_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OutofbandmanagementServiceServer).DisableOutOfBandManagementForHost(ctx, req.(*DisableOutOfBandManagementForHostRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _OutofbandmanagementService_ConfigureOutOfBandManagement_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ConfigureOutOfBandManagementRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(OutofbandmanagementServiceServer).ConfigureOutOfBandManagement(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: OutofbandmanagementService_ConfigureOutOfBandManagement_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OutofbandmanagementServiceServer).ConfigureOutOfBandManagement(ctx, req.(*ConfigureOutOfBandManagementRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _OutofbandmanagementService_EnableOutOfBandManagementForCluster_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(EnableOutOfBandManagementForClusterRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(OutofbandmanagementServiceServer).EnableOutOfBandManagementForCluster(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: OutofbandmanagementService_EnableOutOfBandManagementForCluster_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OutofbandmanagementServiceServer).EnableOutOfBandManagementForCluster(ctx, req.(*EnableOutOfBandManagementForClusterRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _OutofbandmanagementService_ChangeOutOfBandManagementPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ChangeOutOfBandManagementPasswordRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(OutofbandmanagementServiceServer).ChangeOutOfBandManagementPassword(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: OutofbandmanagementService_ChangeOutOfBandManagementPassword_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OutofbandmanagementServiceServer).ChangeOutOfBandManagementPassword(ctx, req.(*ChangeOutOfBandManagementPasswordRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _OutofbandmanagementService_DisableOutOfBandManagementForCluster_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DisableOutOfBandManagementForClusterRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(OutofbandmanagementServiceServer).DisableOutOfBandManagementForCluster(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: OutofbandmanagementService_DisableOutOfBandManagementForCluster_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OutofbandmanagementServiceServer).DisableOutOfBandManagementForCluster(ctx, req.(*DisableOutOfBandManagementForClusterRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _OutofbandmanagementService_DisableOutOfBandManagementForZone_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DisableOutOfBandManagementForZoneRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(OutofbandmanagementServiceServer).DisableOutOfBandManagementForZone(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: OutofbandmanagementService_DisableOutOfBandManagementForZone_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OutofbandmanagementServiceServer).DisableOutOfBandManagementForZone(ctx, req.(*DisableOutOfBandManagementForZoneRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _OutofbandmanagementService_EnableOutOfBandManagementForHost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(EnableOutOfBandManagementForHostRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(OutofbandmanagementServiceServer).EnableOutOfBandManagementForHost(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: OutofbandmanagementService_EnableOutOfBandManagementForHost_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OutofbandmanagementServiceServer).EnableOutOfBandManagementForHost(ctx, req.(*EnableOutOfBandManagementForHostRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // OutofbandmanagementService_ServiceDesc is the grpc.ServiceDesc for OutofbandmanagementService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -407,40 +407,40 @@ var OutofbandmanagementService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*OutofbandmanagementServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "EnableOutOfBandManagementForZone",
-			Handler:    _OutofbandmanagementService_EnableOutOfBandManagementForZone_Handler,
-		},
-		{
-			MethodName: "IssueOutOfBandManagementPowerAction",
-			Handler:    _OutofbandmanagementService_IssueOutOfBandManagementPowerAction_Handler,
-		},
-		{
-			MethodName: "DisableOutOfBandManagementForHost",
-			Handler:    _OutofbandmanagementService_DisableOutOfBandManagementForHost_Handler,
+			MethodName: "ChangeOutOfBandManagementPassword",
+			Handler:    _OutofbandmanagementService_ChangeOutOfBandManagementPassword_Handler,
 		},
 		{
 			MethodName: "ConfigureOutOfBandManagement",
 			Handler:    _OutofbandmanagementService_ConfigureOutOfBandManagement_Handler,
 		},
 		{
-			MethodName: "EnableOutOfBandManagementForCluster",
-			Handler:    _OutofbandmanagementService_EnableOutOfBandManagementForCluster_Handler,
-		},
-		{
-			MethodName: "ChangeOutOfBandManagementPassword",
-			Handler:    _OutofbandmanagementService_ChangeOutOfBandManagementPassword_Handler,
-		},
-		{
 			MethodName: "DisableOutOfBandManagementForCluster",
 			Handler:    _OutofbandmanagementService_DisableOutOfBandManagementForCluster_Handler,
+		},
+		{
+			MethodName: "DisableOutOfBandManagementForHost",
+			Handler:    _OutofbandmanagementService_DisableOutOfBandManagementForHost_Handler,
 		},
 		{
 			MethodName: "DisableOutOfBandManagementForZone",
 			Handler:    _OutofbandmanagementService_DisableOutOfBandManagementForZone_Handler,
 		},
 		{
+			MethodName: "EnableOutOfBandManagementForCluster",
+			Handler:    _OutofbandmanagementService_EnableOutOfBandManagementForCluster_Handler,
+		},
+		{
 			MethodName: "EnableOutOfBandManagementForHost",
 			Handler:    _OutofbandmanagementService_EnableOutOfBandManagementForHost_Handler,
+		},
+		{
+			MethodName: "EnableOutOfBandManagementForZone",
+			Handler:    _OutofbandmanagementService_EnableOutOfBandManagementForZone_Handler,
+		},
+		{
+			MethodName: "IssueOutOfBandManagementPowerAction",
+			Handler:    _OutofbandmanagementService_IssueOutOfBandManagementPowerAction_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

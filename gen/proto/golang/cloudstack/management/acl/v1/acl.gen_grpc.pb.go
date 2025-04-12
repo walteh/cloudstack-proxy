@@ -19,17 +19,17 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AclService_CreateRolePermission_FullMethodName = "/cloudstack.management.acl.v1.AclService/CreateRolePermission"
 	AclService_CreateRole_FullMethodName           = "/cloudstack.management.acl.v1.AclService/CreateRole"
-	AclService_DeleteRolePermission_FullMethodName = "/cloudstack.management.acl.v1.AclService/DeleteRolePermission"
-	AclService_UpdateRolePermission_FullMethodName = "/cloudstack.management.acl.v1.AclService/UpdateRolePermission"
+	AclService_CreateRolePermission_FullMethodName = "/cloudstack.management.acl.v1.AclService/CreateRolePermission"
 	AclService_DeleteRole_FullMethodName           = "/cloudstack.management.acl.v1.AclService/DeleteRole"
+	AclService_DeleteRolePermission_FullMethodName = "/cloudstack.management.acl.v1.AclService/DeleteRolePermission"
 	AclService_DisableRole_FullMethodName          = "/cloudstack.management.acl.v1.AclService/DisableRole"
 	AclService_EnableRole_FullMethodName           = "/cloudstack.management.acl.v1.AclService/EnableRole"
-	AclService_ListRoles_FullMethodName            = "/cloudstack.management.acl.v1.AclService/ListRoles"
 	AclService_ImportRole_FullMethodName           = "/cloudstack.management.acl.v1.AclService/ImportRole"
-	AclService_UpdateRole_FullMethodName           = "/cloudstack.management.acl.v1.AclService/UpdateRole"
 	AclService_ListRolePermissions_FullMethodName  = "/cloudstack.management.acl.v1.AclService/ListRolePermissions"
+	AclService_ListRoles_FullMethodName            = "/cloudstack.management.acl.v1.AclService/ListRoles"
+	AclService_UpdateRole_FullMethodName           = "/cloudstack.management.acl.v1.AclService/UpdateRole"
+	AclService_UpdateRolePermission_FullMethodName = "/cloudstack.management.acl.v1.AclService/UpdateRolePermission"
 )
 
 // AclServiceClient is the client API for AclService service.
@@ -38,28 +38,28 @@ const (
 //
 // AclService provides operations for managing Acls
 type AclServiceClient interface {
-	// CreateRolePermission Adds an API permission to a role
-	CreateRolePermission(ctx context.Context, in *CreateRolePermissionRequest, opts ...grpc.CallOption) (*CreateRolePermissionResponse, error)
 	// CreateRole Creates a role
 	CreateRole(ctx context.Context, in *CreateRoleRequest, opts ...grpc.CallOption) (*CreateRoleResponse, error)
-	// DeleteRolePermission Deletes a role permission
-	DeleteRolePermission(ctx context.Context, in *DeleteRolePermissionRequest, opts ...grpc.CallOption) (*DeleteRolePermissionResponse, error)
-	// UpdateRolePermission Updates a role permission order
-	UpdateRolePermission(ctx context.Context, in *UpdateRolePermissionRequest, opts ...grpc.CallOption) (*UpdateRolePermissionResponse, error)
+	// CreateRolePermission Adds an API permission to a role
+	CreateRolePermission(ctx context.Context, in *CreateRolePermissionRequest, opts ...grpc.CallOption) (*CreateRolePermissionResponse, error)
 	// DeleteRole Deletes a role
 	DeleteRole(ctx context.Context, in *DeleteRoleRequest, opts ...grpc.CallOption) (*DeleteRoleResponse, error)
+	// DeleteRolePermission Deletes a role permission
+	DeleteRolePermission(ctx context.Context, in *DeleteRolePermissionRequest, opts ...grpc.CallOption) (*DeleteRolePermissionResponse, error)
 	// DisableRole Disables a role
 	DisableRole(ctx context.Context, in *DisableRoleRequest, opts ...grpc.CallOption) (*DisableRoleResponse, error)
 	// EnableRole Enables a role
 	EnableRole(ctx context.Context, in *EnableRoleRequest, opts ...grpc.CallOption) (*EnableRoleResponse, error)
-	// ListRoles Lists dynamic roles in CloudStack
-	ListRoles(ctx context.Context, in *ListRolesRequest, opts ...grpc.CallOption) (*ListRolesResponse, error)
 	// ImportRole Imports a role based on provided map of rule permissions
 	ImportRole(ctx context.Context, in *ImportRoleRequest, opts ...grpc.CallOption) (*ImportRoleResponse, error)
-	// UpdateRole Updates a role
-	UpdateRole(ctx context.Context, in *UpdateRoleRequest, opts ...grpc.CallOption) (*UpdateRoleResponse, error)
 	// ListRolePermissions Lists role permissions
 	ListRolePermissions(ctx context.Context, in *ListRolePermissionsRequest, opts ...grpc.CallOption) (*ListRolePermissionsResponse, error)
+	// ListRoles Lists dynamic roles in CloudStack
+	ListRoles(ctx context.Context, in *ListRolesRequest, opts ...grpc.CallOption) (*ListRolesResponse, error)
+	// UpdateRole Updates a role
+	UpdateRole(ctx context.Context, in *UpdateRoleRequest, opts ...grpc.CallOption) (*UpdateRoleResponse, error)
+	// UpdateRolePermission Updates a role permission order
+	UpdateRolePermission(ctx context.Context, in *UpdateRolePermissionRequest, opts ...grpc.CallOption) (*UpdateRolePermissionResponse, error)
 }
 
 type aclServiceClient struct {
@@ -68,16 +68,6 @@ type aclServiceClient struct {
 
 func NewAclServiceClient(cc grpc.ClientConnInterface) AclServiceClient {
 	return &aclServiceClient{cc}
-}
-
-func (c *aclServiceClient) CreateRolePermission(ctx context.Context, in *CreateRolePermissionRequest, opts ...grpc.CallOption) (*CreateRolePermissionResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateRolePermissionResponse)
-	err := c.cc.Invoke(ctx, AclService_CreateRolePermission_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 func (c *aclServiceClient) CreateRole(ctx context.Context, in *CreateRoleRequest, opts ...grpc.CallOption) (*CreateRoleResponse, error) {
@@ -90,20 +80,10 @@ func (c *aclServiceClient) CreateRole(ctx context.Context, in *CreateRoleRequest
 	return out, nil
 }
 
-func (c *aclServiceClient) DeleteRolePermission(ctx context.Context, in *DeleteRolePermissionRequest, opts ...grpc.CallOption) (*DeleteRolePermissionResponse, error) {
+func (c *aclServiceClient) CreateRolePermission(ctx context.Context, in *CreateRolePermissionRequest, opts ...grpc.CallOption) (*CreateRolePermissionResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteRolePermissionResponse)
-	err := c.cc.Invoke(ctx, AclService_DeleteRolePermission_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *aclServiceClient) UpdateRolePermission(ctx context.Context, in *UpdateRolePermissionRequest, opts ...grpc.CallOption) (*UpdateRolePermissionResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateRolePermissionResponse)
-	err := c.cc.Invoke(ctx, AclService_UpdateRolePermission_FullMethodName, in, out, cOpts...)
+	out := new(CreateRolePermissionResponse)
+	err := c.cc.Invoke(ctx, AclService_CreateRolePermission_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -114,6 +94,16 @@ func (c *aclServiceClient) DeleteRole(ctx context.Context, in *DeleteRoleRequest
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DeleteRoleResponse)
 	err := c.cc.Invoke(ctx, AclService_DeleteRole_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *aclServiceClient) DeleteRolePermission(ctx context.Context, in *DeleteRolePermissionRequest, opts ...grpc.CallOption) (*DeleteRolePermissionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteRolePermissionResponse)
+	err := c.cc.Invoke(ctx, AclService_DeleteRolePermission_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -140,30 +130,10 @@ func (c *aclServiceClient) EnableRole(ctx context.Context, in *EnableRoleRequest
 	return out, nil
 }
 
-func (c *aclServiceClient) ListRoles(ctx context.Context, in *ListRolesRequest, opts ...grpc.CallOption) (*ListRolesResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListRolesResponse)
-	err := c.cc.Invoke(ctx, AclService_ListRoles_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *aclServiceClient) ImportRole(ctx context.Context, in *ImportRoleRequest, opts ...grpc.CallOption) (*ImportRoleResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ImportRoleResponse)
 	err := c.cc.Invoke(ctx, AclService_ImportRole_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *aclServiceClient) UpdateRole(ctx context.Context, in *UpdateRoleRequest, opts ...grpc.CallOption) (*UpdateRoleResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateRoleResponse)
-	err := c.cc.Invoke(ctx, AclService_UpdateRole_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -180,34 +150,64 @@ func (c *aclServiceClient) ListRolePermissions(ctx context.Context, in *ListRole
 	return out, nil
 }
 
+func (c *aclServiceClient) ListRoles(ctx context.Context, in *ListRolesRequest, opts ...grpc.CallOption) (*ListRolesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListRolesResponse)
+	err := c.cc.Invoke(ctx, AclService_ListRoles_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *aclServiceClient) UpdateRole(ctx context.Context, in *UpdateRoleRequest, opts ...grpc.CallOption) (*UpdateRoleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateRoleResponse)
+	err := c.cc.Invoke(ctx, AclService_UpdateRole_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *aclServiceClient) UpdateRolePermission(ctx context.Context, in *UpdateRolePermissionRequest, opts ...grpc.CallOption) (*UpdateRolePermissionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateRolePermissionResponse)
+	err := c.cc.Invoke(ctx, AclService_UpdateRolePermission_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AclServiceServer is the server API for AclService service.
 // All implementations must embed UnimplementedAclServiceServer
 // for forward compatibility.
 //
 // AclService provides operations for managing Acls
 type AclServiceServer interface {
-	// CreateRolePermission Adds an API permission to a role
-	CreateRolePermission(context.Context, *CreateRolePermissionRequest) (*CreateRolePermissionResponse, error)
 	// CreateRole Creates a role
 	CreateRole(context.Context, *CreateRoleRequest) (*CreateRoleResponse, error)
-	// DeleteRolePermission Deletes a role permission
-	DeleteRolePermission(context.Context, *DeleteRolePermissionRequest) (*DeleteRolePermissionResponse, error)
-	// UpdateRolePermission Updates a role permission order
-	UpdateRolePermission(context.Context, *UpdateRolePermissionRequest) (*UpdateRolePermissionResponse, error)
+	// CreateRolePermission Adds an API permission to a role
+	CreateRolePermission(context.Context, *CreateRolePermissionRequest) (*CreateRolePermissionResponse, error)
 	// DeleteRole Deletes a role
 	DeleteRole(context.Context, *DeleteRoleRequest) (*DeleteRoleResponse, error)
+	// DeleteRolePermission Deletes a role permission
+	DeleteRolePermission(context.Context, *DeleteRolePermissionRequest) (*DeleteRolePermissionResponse, error)
 	// DisableRole Disables a role
 	DisableRole(context.Context, *DisableRoleRequest) (*DisableRoleResponse, error)
 	// EnableRole Enables a role
 	EnableRole(context.Context, *EnableRoleRequest) (*EnableRoleResponse, error)
-	// ListRoles Lists dynamic roles in CloudStack
-	ListRoles(context.Context, *ListRolesRequest) (*ListRolesResponse, error)
 	// ImportRole Imports a role based on provided map of rule permissions
 	ImportRole(context.Context, *ImportRoleRequest) (*ImportRoleResponse, error)
-	// UpdateRole Updates a role
-	UpdateRole(context.Context, *UpdateRoleRequest) (*UpdateRoleResponse, error)
 	// ListRolePermissions Lists role permissions
 	ListRolePermissions(context.Context, *ListRolePermissionsRequest) (*ListRolePermissionsResponse, error)
+	// ListRoles Lists dynamic roles in CloudStack
+	ListRoles(context.Context, *ListRolesRequest) (*ListRolesResponse, error)
+	// UpdateRole Updates a role
+	UpdateRole(context.Context, *UpdateRoleRequest) (*UpdateRoleResponse, error)
+	// UpdateRolePermission Updates a role permission order
+	UpdateRolePermission(context.Context, *UpdateRolePermissionRequest) (*UpdateRolePermissionResponse, error)
 	mustEmbedUnimplementedAclServiceServer()
 }
 
@@ -218,20 +218,17 @@ type AclServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedAclServiceServer struct{}
 
-func (UnimplementedAclServiceServer) CreateRolePermission(context.Context, *CreateRolePermissionRequest) (*CreateRolePermissionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateRolePermission not implemented")
-}
 func (UnimplementedAclServiceServer) CreateRole(context.Context, *CreateRoleRequest) (*CreateRoleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateRole not implemented")
 }
-func (UnimplementedAclServiceServer) DeleteRolePermission(context.Context, *DeleteRolePermissionRequest) (*DeleteRolePermissionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteRolePermission not implemented")
-}
-func (UnimplementedAclServiceServer) UpdateRolePermission(context.Context, *UpdateRolePermissionRequest) (*UpdateRolePermissionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateRolePermission not implemented")
+func (UnimplementedAclServiceServer) CreateRolePermission(context.Context, *CreateRolePermissionRequest) (*CreateRolePermissionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateRolePermission not implemented")
 }
 func (UnimplementedAclServiceServer) DeleteRole(context.Context, *DeleteRoleRequest) (*DeleteRoleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteRole not implemented")
+}
+func (UnimplementedAclServiceServer) DeleteRolePermission(context.Context, *DeleteRolePermissionRequest) (*DeleteRolePermissionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteRolePermission not implemented")
 }
 func (UnimplementedAclServiceServer) DisableRole(context.Context, *DisableRoleRequest) (*DisableRoleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DisableRole not implemented")
@@ -239,17 +236,20 @@ func (UnimplementedAclServiceServer) DisableRole(context.Context, *DisableRoleRe
 func (UnimplementedAclServiceServer) EnableRole(context.Context, *EnableRoleRequest) (*EnableRoleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method EnableRole not implemented")
 }
-func (UnimplementedAclServiceServer) ListRoles(context.Context, *ListRolesRequest) (*ListRolesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListRoles not implemented")
-}
 func (UnimplementedAclServiceServer) ImportRole(context.Context, *ImportRoleRequest) (*ImportRoleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ImportRole not implemented")
+}
+func (UnimplementedAclServiceServer) ListRolePermissions(context.Context, *ListRolePermissionsRequest) (*ListRolePermissionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListRolePermissions not implemented")
+}
+func (UnimplementedAclServiceServer) ListRoles(context.Context, *ListRolesRequest) (*ListRolesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListRoles not implemented")
 }
 func (UnimplementedAclServiceServer) UpdateRole(context.Context, *UpdateRoleRequest) (*UpdateRoleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateRole not implemented")
 }
-func (UnimplementedAclServiceServer) ListRolePermissions(context.Context, *ListRolePermissionsRequest) (*ListRolePermissionsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListRolePermissions not implemented")
+func (UnimplementedAclServiceServer) UpdateRolePermission(context.Context, *UpdateRolePermissionRequest) (*UpdateRolePermissionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateRolePermission not implemented")
 }
 func (UnimplementedAclServiceServer) mustEmbedUnimplementedAclServiceServer() {}
 func (UnimplementedAclServiceServer) testEmbeddedByValue()                    {}
@@ -272,24 +272,6 @@ func RegisterAclServiceServer(s grpc.ServiceRegistrar, srv AclServiceServer) {
 	s.RegisterService(&AclService_ServiceDesc, srv)
 }
 
-func _AclService_CreateRolePermission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateRolePermissionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AclServiceServer).CreateRolePermission(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AclService_CreateRolePermission_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AclServiceServer).CreateRolePermission(ctx, req.(*CreateRolePermissionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _AclService_CreateRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateRoleRequest)
 	if err := dec(in); err != nil {
@@ -308,38 +290,20 @@ func _AclService_CreateRole_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AclService_DeleteRolePermission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteRolePermissionRequest)
+func _AclService_CreateRolePermission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateRolePermissionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AclServiceServer).DeleteRolePermission(ctx, in)
+		return srv.(AclServiceServer).CreateRolePermission(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: AclService_DeleteRolePermission_FullMethodName,
+		FullMethod: AclService_CreateRolePermission_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AclServiceServer).DeleteRolePermission(ctx, req.(*DeleteRolePermissionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AclService_UpdateRolePermission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateRolePermissionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AclServiceServer).UpdateRolePermission(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AclService_UpdateRolePermission_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AclServiceServer).UpdateRolePermission(ctx, req.(*UpdateRolePermissionRequest))
+		return srv.(AclServiceServer).CreateRolePermission(ctx, req.(*CreateRolePermissionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -358,6 +322,24 @@ func _AclService_DeleteRole_Handler(srv interface{}, ctx context.Context, dec fu
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AclServiceServer).DeleteRole(ctx, req.(*DeleteRoleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AclService_DeleteRolePermission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteRolePermissionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AclServiceServer).DeleteRolePermission(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AclService_DeleteRolePermission_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AclServiceServer).DeleteRolePermission(ctx, req.(*DeleteRolePermissionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -398,24 +380,6 @@ func _AclService_EnableRole_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AclService_ListRoles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListRolesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AclServiceServer).ListRoles(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AclService_ListRoles_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AclServiceServer).ListRoles(ctx, req.(*ListRolesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _AclService_ImportRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ImportRoleRequest)
 	if err := dec(in); err != nil {
@@ -430,24 +394,6 @@ func _AclService_ImportRole_Handler(srv interface{}, ctx context.Context, dec fu
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AclServiceServer).ImportRole(ctx, req.(*ImportRoleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AclService_UpdateRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateRoleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AclServiceServer).UpdateRole(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AclService_UpdateRole_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AclServiceServer).UpdateRole(ctx, req.(*UpdateRoleRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -470,6 +416,60 @@ func _AclService_ListRolePermissions_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AclService_ListRoles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListRolesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AclServiceServer).ListRoles(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AclService_ListRoles_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AclServiceServer).ListRoles(ctx, req.(*ListRolesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AclService_UpdateRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateRoleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AclServiceServer).UpdateRole(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AclService_UpdateRole_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AclServiceServer).UpdateRole(ctx, req.(*UpdateRoleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AclService_UpdateRolePermission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateRolePermissionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AclServiceServer).UpdateRolePermission(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AclService_UpdateRolePermission_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AclServiceServer).UpdateRolePermission(ctx, req.(*UpdateRolePermissionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AclService_ServiceDesc is the grpc.ServiceDesc for AclService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -478,24 +478,20 @@ var AclService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*AclServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CreateRolePermission",
-			Handler:    _AclService_CreateRolePermission_Handler,
-		},
-		{
 			MethodName: "CreateRole",
 			Handler:    _AclService_CreateRole_Handler,
 		},
 		{
-			MethodName: "DeleteRolePermission",
-			Handler:    _AclService_DeleteRolePermission_Handler,
-		},
-		{
-			MethodName: "UpdateRolePermission",
-			Handler:    _AclService_UpdateRolePermission_Handler,
+			MethodName: "CreateRolePermission",
+			Handler:    _AclService_CreateRolePermission_Handler,
 		},
 		{
 			MethodName: "DeleteRole",
 			Handler:    _AclService_DeleteRole_Handler,
+		},
+		{
+			MethodName: "DeleteRolePermission",
+			Handler:    _AclService_DeleteRolePermission_Handler,
 		},
 		{
 			MethodName: "DisableRole",
@@ -506,20 +502,24 @@ var AclService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _AclService_EnableRole_Handler,
 		},
 		{
-			MethodName: "ListRoles",
-			Handler:    _AclService_ListRoles_Handler,
-		},
-		{
 			MethodName: "ImportRole",
 			Handler:    _AclService_ImportRole_Handler,
+		},
+		{
+			MethodName: "ListRolePermissions",
+			Handler:    _AclService_ListRolePermissions_Handler,
+		},
+		{
+			MethodName: "ListRoles",
+			Handler:    _AclService_ListRoles_Handler,
 		},
 		{
 			MethodName: "UpdateRole",
 			Handler:    _AclService_UpdateRole_Handler,
 		},
 		{
-			MethodName: "ListRolePermissions",
-			Handler:    _AclService_ListRolePermissions_Handler,
+			MethodName: "UpdateRolePermission",
+			Handler:    _AclService_UpdateRolePermission_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

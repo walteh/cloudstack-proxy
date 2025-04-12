@@ -24,215 +24,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// DeleteVMGroupRequest represents the parameters for deletes a vm group
-type DeleteVMGroupRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the instance group
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteVMGroupRequest) Reset() {
-	*x = DeleteVMGroupRequest{}
-	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteVMGroupRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteVMGroupRequest) ProtoMessage() {}
-
-func (x *DeleteVMGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteVMGroupRequest.ProtoReflect.Descriptor instead.
-func (*DeleteVMGroupRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *DeleteVMGroupRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteVMGroupRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteVMGroupResponse represents the response from deletes a vm group
-type DeleteVMGroupResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteVMGroupResponse) Reset() {
-	*x = DeleteVMGroupResponse{}
-	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteVMGroupResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteVMGroupResponse) ProtoMessage() {}
-
-func (x *DeleteVMGroupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteVMGroupResponse.ProtoReflect.Descriptor instead.
-func (*DeleteVMGroupResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *DeleteVMGroupResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateVMGroupRequest represents the parameters for updates a vm group
-type UpdateVMGroupRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Instance group ID
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// new instance group name
-	GroupName *string `protobuf:"bytes,2,opt,name=group_name,json=groupName" json:"group_name,omitempty"`
-	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateVMGroupRequest) Reset() {
-	*x = UpdateVMGroupRequest{}
-	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateVMGroupRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateVMGroupRequest) ProtoMessage() {}
-
-func (x *UpdateVMGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateVMGroupRequest.ProtoReflect.Descriptor instead.
-func (*UpdateVMGroupRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *UpdateVMGroupRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateVMGroupRequest) GetGroupName() string {
-	if x != nil && x.GroupName != nil {
-		return *x.GroupName
-	}
-	return ""
-}
-
-func (x *UpdateVMGroupRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateVMGroupResponse represents the response from updates a vm group
-type UpdateVMGroupResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateVMGroupResponse) Reset() {
-	*x = UpdateVMGroupResponse{}
-	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateVMGroupResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateVMGroupResponse) ProtoMessage() {}
-
-func (x *UpdateVMGroupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateVMGroupResponse.ProtoReflect.Descriptor instead.
-func (*UpdateVMGroupResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *UpdateVMGroupResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
 // CreateVMGroupRequest represents the parameters for creates a vm group
 type CreateVMGroupRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -251,7 +42,7 @@ type CreateVMGroupRequest struct {
 
 func (x *CreateVMGroupRequest) Reset() {
 	*x = CreateVMGroupRequest{}
-	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -263,7 +54,7 @@ func (x *CreateVMGroupRequest) String() string {
 func (*CreateVMGroupRequest) ProtoMessage() {}
 
 func (x *CreateVMGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -276,7 +67,7 @@ func (x *CreateVMGroupRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateVMGroupRequest.ProtoReflect.Descriptor instead.
 func (*CreateVMGroupRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_rawDescGZIP(), []int{4}
+	return file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *CreateVMGroupRequest) GetGroupName() string {
@@ -325,7 +116,7 @@ type CreateVMGroupResponse struct {
 
 func (x *CreateVMGroupResponse) Reset() {
 	*x = CreateVMGroupResponse{}
-	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -337,7 +128,7 @@ func (x *CreateVMGroupResponse) String() string {
 func (*CreateVMGroupResponse) ProtoMessage() {}
 
 func (x *CreateVMGroupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -350,10 +141,110 @@ func (x *CreateVMGroupResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateVMGroupResponse.ProtoReflect.Descriptor instead.
 func (*CreateVMGroupResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_rawDescGZIP(), []int{5}
+	return file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *CreateVMGroupResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteVMGroupRequest represents the parameters for deletes a vm group
+type DeleteVMGroupRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the instance group
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteVMGroupRequest) Reset() {
+	*x = DeleteVMGroupRequest{}
+	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteVMGroupRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteVMGroupRequest) ProtoMessage() {}
+
+func (x *DeleteVMGroupRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteVMGroupRequest.ProtoReflect.Descriptor instead.
+func (*DeleteVMGroupRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *DeleteVMGroupRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteVMGroupRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteVMGroupResponse represents the response from deletes a vm group
+type DeleteVMGroupResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteVMGroupResponse) Reset() {
+	*x = DeleteVMGroupResponse{}
+	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteVMGroupResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteVMGroupResponse) ProtoMessage() {}
+
+func (x *DeleteVMGroupResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteVMGroupResponse.ProtoReflect.Descriptor instead.
+func (*DeleteVMGroupResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *DeleteVMGroupResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -388,7 +279,7 @@ type ListVMGroupsRequest struct {
 
 func (x *ListVMGroupsRequest) Reset() {
 	*x = ListVMGroupsRequest{}
-	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -400,7 +291,7 @@ func (x *ListVMGroupsRequest) String() string {
 func (*ListVMGroupsRequest) ProtoMessage() {}
 
 func (x *ListVMGroupsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -413,7 +304,7 @@ func (x *ListVMGroupsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListVMGroupsRequest.ProtoReflect.Descriptor instead.
 func (*ListVMGroupsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_rawDescGZIP(), []int{6}
+	return file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ListVMGroupsRequest) GetId() int64 {
@@ -506,7 +397,7 @@ type ListVMGroupsResponse struct {
 
 func (x *ListVMGroupsResponse) Reset() {
 	*x = ListVMGroupsResponse{}
-	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -518,7 +409,7 @@ func (x *ListVMGroupsResponse) String() string {
 func (*ListVMGroupsResponse) ProtoMessage() {}
 
 func (x *ListVMGroupsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -531,7 +422,7 @@ func (x *ListVMGroupsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListVMGroupsResponse.ProtoReflect.Descriptor instead.
 func (*ListVMGroupsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_rawDescGZIP(), []int{7}
+	return file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ListVMGroupsResponse) GetItems() []*InstanceGroup {
@@ -546,6 +437,115 @@ func (x *ListVMGroupsResponse) GetTotalCount() int32 {
 		return *x.TotalCount
 	}
 	return 0
+}
+
+// UpdateVMGroupRequest represents the parameters for updates a vm group
+type UpdateVMGroupRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Instance group ID
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// new instance group name
+	GroupName *string `protobuf:"bytes,2,opt,name=group_name,json=groupName" json:"group_name,omitempty"`
+	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateVMGroupRequest) Reset() {
+	*x = UpdateVMGroupRequest{}
+	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateVMGroupRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateVMGroupRequest) ProtoMessage() {}
+
+func (x *UpdateVMGroupRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateVMGroupRequest.ProtoReflect.Descriptor instead.
+func (*UpdateVMGroupRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *UpdateVMGroupRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateVMGroupRequest) GetGroupName() string {
+	if x != nil && x.GroupName != nil {
+		return *x.GroupName
+	}
+	return ""
+}
+
+func (x *UpdateVMGroupRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateVMGroupResponse represents the response from updates a vm group
+type UpdateVMGroupResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateVMGroupResponse) Reset() {
+	*x = UpdateVMGroupResponse{}
+	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateVMGroupResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateVMGroupResponse) ProtoMessage() {}
+
+func (x *UpdateVMGroupResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateVMGroupResponse.ProtoReflect.Descriptor instead.
+func (*UpdateVMGroupResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *UpdateVMGroupResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
 }
 
 // InstanceGroup represents a InstanceGroup Item
@@ -685,151 +685,6 @@ func (x *Success) GetDisplayText() string {
 	return ""
 }
 
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
 // Result represents a generic operation result
 type Result struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -849,7 +704,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -861,7 +716,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -874,7 +729,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_rawDescGZIP(), []int{11}
+	return file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -916,20 +771,7 @@ var File_cloudstack_management_vmgroup_v1_vmgroup_gen_proto protoreflect.FileDes
 
 const file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_rawDesc = "" +
 	"\n" +
-	"2cloudstack/management/vmgroup/v1/vmgroup.gen.proto\x12 cloudstack.management.vmgroup.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"S\n" +
-	"\x14DeleteVMGroupRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"Y\n" +
-	"\x15DeleteVMGroupResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.vmgroup.v1.ResultR\x06result\"~\n" +
-	"\x14UpdateVMGroupRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12)\n" +
-	"\n" +
-	"group_name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\tgroupName\x12#\n" +
-	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"Y\n" +
-	"\x15UpdateVMGroupResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.vmgroup.v1.ResultR\x06result\"\xc8\x01\n" +
+	"2cloudstack/management/vmgroup/v1/vmgroup.gen.proto\x12 cloudstack.management.vmgroup.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xc8\x01\n" +
 	"\x14CreateVMGroupRequest\x12,\n" +
 	"\n" +
 	"group_name\x18\x01 \x01(\tB\r\xbaH\n" +
@@ -940,6 +782,11 @@ const file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_rawDesc = "" +
 	"project_id\x18\x04 \x01(\x03R\tprojectId\x12#\n" +
 	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"Y\n" +
 	"\x15CreateVMGroupResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.vmgroup.v1.ResultR\x06result\"S\n" +
+	"\x14DeleteVMGroupRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"Y\n" +
+	"\x15DeleteVMGroupResponse\x12@\n" +
 	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.vmgroup.v1.ResultR\x06result\"\xe6\x03\n" +
 	"\x13ListVMGroupsRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12)\n" +
@@ -961,7 +808,15 @@ const file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_rawDesc = "" +
 	"\x14ListVMGroupsResponse\x12E\n" +
 	"\x05items\x18\x01 \x03(\v2/.cloudstack.management.vmgroup.v1.InstanceGroupR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x9c\x01\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"~\n" +
+	"\x14UpdateVMGroupRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12)\n" +
+	"\n" +
+	"group_name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\tgroupName\x12#\n" +
+	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"Y\n" +
+	"\x15UpdateVMGroupResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.vmgroup.v1.ResultR\x06result\"\x9c\x01\n" +
 	"\rInstanceGroup\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
@@ -970,38 +825,19 @@ const file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_rawDesc = "" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xdf\x03\n" +
-	"\x04Item\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12M\n" +
-	"\adetails\x18\f \x03(\v23.cloudstack.management.vmgroup.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xa8\x04\n" +
-	"\x0eVmgroupService\x12\x82\x01\n" +
-	"\rDeleteVMGroup\x126.cloudstack.management.vmgroup.v1.DeleteVMGroupRequest\x1a7.cloudstack.management.vmgroup.v1.DeleteVMGroupResponse\"\x00\x12\x82\x01\n" +
-	"\rUpdateVMGroup\x126.cloudstack.management.vmgroup.v1.UpdateVMGroupRequest\x1a7.cloudstack.management.vmgroup.v1.UpdateVMGroupResponse\"\x00\x12\x82\x01\n" +
-	"\rCreateVMGroup\x126.cloudstack.management.vmgroup.v1.CreateVMGroupRequest\x1a7.cloudstack.management.vmgroup.v1.CreateVMGroupResponse\"\x00\x12\x7f\n" +
-	"\fListVMGroups\x125.cloudstack.management.vmgroup.v1.ListVMGroupsRequest\x1a6.cloudstack.management.vmgroup.v1.ListVMGroupsResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xba\x02\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\xc6\x04\n" +
+	"\x0eVmgroupService\x12\x89\x01\n" +
+	"\rCreateVMGroup\x126.cloudstack.management.vmgroup.v1.CreateVMGroupRequest\x1a7.cloudstack.management.vmgroup.v1.CreateVMGroupResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x89\x01\n" +
+	"\rDeleteVMGroup\x126.cloudstack.management.vmgroup.v1.DeleteVMGroupRequest\x1a7.cloudstack.management.vmgroup.v1.DeleteVMGroupResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x86\x01\n" +
+	"\fListVMGroups\x125.cloudstack.management.vmgroup.v1.ListVMGroupsRequest\x1a6.cloudstack.management.vmgroup.v1.ListVMGroupsResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x89\x01\n" +
+	"\rUpdateVMGroup\x126.cloudstack.management.vmgroup.v1.UpdateVMGroupRequest\x1a7.cloudstack.management.vmgroup.v1.UpdateVMGroupResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\a\xc2>\x04\xc2>\x01\x02B\xba\x02\n" +
 	"$com.cloudstack.management.vmgroup.v1B\x0fVmgroupGenProtoP\x01Z^github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/vmgroup/v1;vmgroupv1\xa2\x02\x03CMV\xaa\x02 Cloudstack.Management.Vmgroup.V1\xca\x02 Cloudstack\\Management\\Vmgroup\\V1\xe2\x02,Cloudstack\\Management\\Vmgroup\\V1\\GPBMetadata\xea\x02#Cloudstack::Management::Vmgroup::V1b\beditionsp\xe8\a"
 
 var (
@@ -1016,41 +852,38 @@ func file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_rawDescGZIP() []byt
 	return file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_rawDescData
 }
 
-var file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_goTypes = []any{
-	(*DeleteVMGroupRequest)(nil),  // 0: cloudstack.management.vmgroup.v1.DeleteVMGroupRequest
-	(*DeleteVMGroupResponse)(nil), // 1: cloudstack.management.vmgroup.v1.DeleteVMGroupResponse
-	(*UpdateVMGroupRequest)(nil),  // 2: cloudstack.management.vmgroup.v1.UpdateVMGroupRequest
-	(*UpdateVMGroupResponse)(nil), // 3: cloudstack.management.vmgroup.v1.UpdateVMGroupResponse
-	(*CreateVMGroupRequest)(nil),  // 4: cloudstack.management.vmgroup.v1.CreateVMGroupRequest
-	(*CreateVMGroupResponse)(nil), // 5: cloudstack.management.vmgroup.v1.CreateVMGroupResponse
-	(*ListVMGroupsRequest)(nil),   // 6: cloudstack.management.vmgroup.v1.ListVMGroupsRequest
-	(*ListVMGroupsResponse)(nil),  // 7: cloudstack.management.vmgroup.v1.ListVMGroupsResponse
+	(*CreateVMGroupRequest)(nil),  // 0: cloudstack.management.vmgroup.v1.CreateVMGroupRequest
+	(*CreateVMGroupResponse)(nil), // 1: cloudstack.management.vmgroup.v1.CreateVMGroupResponse
+	(*DeleteVMGroupRequest)(nil),  // 2: cloudstack.management.vmgroup.v1.DeleteVMGroupRequest
+	(*DeleteVMGroupResponse)(nil), // 3: cloudstack.management.vmgroup.v1.DeleteVMGroupResponse
+	(*ListVMGroupsRequest)(nil),   // 4: cloudstack.management.vmgroup.v1.ListVMGroupsRequest
+	(*ListVMGroupsResponse)(nil),  // 5: cloudstack.management.vmgroup.v1.ListVMGroupsResponse
+	(*UpdateVMGroupRequest)(nil),  // 6: cloudstack.management.vmgroup.v1.UpdateVMGroupRequest
+	(*UpdateVMGroupResponse)(nil), // 7: cloudstack.management.vmgroup.v1.UpdateVMGroupResponse
 	(*InstanceGroup)(nil),         // 8: cloudstack.management.vmgroup.v1.InstanceGroup
 	(*Success)(nil),               // 9: cloudstack.management.vmgroup.v1.Success
-	(*Item)(nil),                  // 10: cloudstack.management.vmgroup.v1.Item
-	(*Result)(nil),                // 11: cloudstack.management.vmgroup.v1.Result
-	nil,                           // 12: cloudstack.management.vmgroup.v1.Item.DetailsEntry
+	(*Result)(nil),                // 10: cloudstack.management.vmgroup.v1.Result
 }
 var file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_depIdxs = []int32{
-	11, // 0: cloudstack.management.vmgroup.v1.DeleteVMGroupResponse.result:type_name -> cloudstack.management.vmgroup.v1.Result
-	11, // 1: cloudstack.management.vmgroup.v1.UpdateVMGroupResponse.result:type_name -> cloudstack.management.vmgroup.v1.Result
-	11, // 2: cloudstack.management.vmgroup.v1.CreateVMGroupResponse.result:type_name -> cloudstack.management.vmgroup.v1.Result
-	8,  // 3: cloudstack.management.vmgroup.v1.ListVMGroupsResponse.items:type_name -> cloudstack.management.vmgroup.v1.InstanceGroup
-	12, // 4: cloudstack.management.vmgroup.v1.Item.details:type_name -> cloudstack.management.vmgroup.v1.Item.DetailsEntry
-	0,  // 5: cloudstack.management.vmgroup.v1.VmgroupService.DeleteVMGroup:input_type -> cloudstack.management.vmgroup.v1.DeleteVMGroupRequest
-	2,  // 6: cloudstack.management.vmgroup.v1.VmgroupService.UpdateVMGroup:input_type -> cloudstack.management.vmgroup.v1.UpdateVMGroupRequest
-	4,  // 7: cloudstack.management.vmgroup.v1.VmgroupService.CreateVMGroup:input_type -> cloudstack.management.vmgroup.v1.CreateVMGroupRequest
-	6,  // 8: cloudstack.management.vmgroup.v1.VmgroupService.ListVMGroups:input_type -> cloudstack.management.vmgroup.v1.ListVMGroupsRequest
-	1,  // 9: cloudstack.management.vmgroup.v1.VmgroupService.DeleteVMGroup:output_type -> cloudstack.management.vmgroup.v1.DeleteVMGroupResponse
-	3,  // 10: cloudstack.management.vmgroup.v1.VmgroupService.UpdateVMGroup:output_type -> cloudstack.management.vmgroup.v1.UpdateVMGroupResponse
-	5,  // 11: cloudstack.management.vmgroup.v1.VmgroupService.CreateVMGroup:output_type -> cloudstack.management.vmgroup.v1.CreateVMGroupResponse
-	7,  // 12: cloudstack.management.vmgroup.v1.VmgroupService.ListVMGroups:output_type -> cloudstack.management.vmgroup.v1.ListVMGroupsResponse
-	9,  // [9:13] is the sub-list for method output_type
-	5,  // [5:9] is the sub-list for method input_type
-	5,  // [5:5] is the sub-list for extension type_name
-	5,  // [5:5] is the sub-list for extension extendee
-	0,  // [0:5] is the sub-list for field type_name
+	10, // 0: cloudstack.management.vmgroup.v1.CreateVMGroupResponse.result:type_name -> cloudstack.management.vmgroup.v1.Result
+	10, // 1: cloudstack.management.vmgroup.v1.DeleteVMGroupResponse.result:type_name -> cloudstack.management.vmgroup.v1.Result
+	8,  // 2: cloudstack.management.vmgroup.v1.ListVMGroupsResponse.items:type_name -> cloudstack.management.vmgroup.v1.InstanceGroup
+	10, // 3: cloudstack.management.vmgroup.v1.UpdateVMGroupResponse.result:type_name -> cloudstack.management.vmgroup.v1.Result
+	0,  // 4: cloudstack.management.vmgroup.v1.VmgroupService.CreateVMGroup:input_type -> cloudstack.management.vmgroup.v1.CreateVMGroupRequest
+	2,  // 5: cloudstack.management.vmgroup.v1.VmgroupService.DeleteVMGroup:input_type -> cloudstack.management.vmgroup.v1.DeleteVMGroupRequest
+	4,  // 6: cloudstack.management.vmgroup.v1.VmgroupService.ListVMGroups:input_type -> cloudstack.management.vmgroup.v1.ListVMGroupsRequest
+	6,  // 7: cloudstack.management.vmgroup.v1.VmgroupService.UpdateVMGroup:input_type -> cloudstack.management.vmgroup.v1.UpdateVMGroupRequest
+	1,  // 8: cloudstack.management.vmgroup.v1.VmgroupService.CreateVMGroup:output_type -> cloudstack.management.vmgroup.v1.CreateVMGroupResponse
+	3,  // 9: cloudstack.management.vmgroup.v1.VmgroupService.DeleteVMGroup:output_type -> cloudstack.management.vmgroup.v1.DeleteVMGroupResponse
+	5,  // 10: cloudstack.management.vmgroup.v1.VmgroupService.ListVMGroups:output_type -> cloudstack.management.vmgroup.v1.ListVMGroupsResponse
+	7,  // 11: cloudstack.management.vmgroup.v1.VmgroupService.UpdateVMGroup:output_type -> cloudstack.management.vmgroup.v1.UpdateVMGroupResponse
+	8,  // [8:12] is the sub-list for method output_type
+	4,  // [4:8] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_init() }
@@ -1064,7 +897,7 @@ func file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_rawDesc), len(file_cloudstack_management_vmgroup_v1_vmgroup_gen_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   13,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

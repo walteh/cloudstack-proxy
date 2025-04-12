@@ -188,151 +188,6 @@ func (x *Success) GetDisplayText() string {
 	return ""
 }
 
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_consoleproxy_v1_consoleproxy_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_consoleproxy_v1_consoleproxy_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_consoleproxy_v1_consoleproxy_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
 // Result represents a generic operation result
 type Result struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -352,7 +207,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_consoleproxy_v1_consoleproxy_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_consoleproxy_v1_consoleproxy_gen_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -364,7 +219,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_consoleproxy_v1_consoleproxy_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_consoleproxy_v1_consoleproxy_gen_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -377,7 +232,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_consoleproxy_v1_consoleproxy_gen_proto_rawDescGZIP(), []int{4}
+	return file_cloudstack_management_consoleproxy_v1_consoleproxy_gen_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -428,35 +283,16 @@ const file_cloudstack_management_consoleproxy_v1_consoleproxy_gen_proto_rawDesc 
 	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.consoleproxy.v1.ResultR\x06result\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xe4\x03\n" +
-	"\x04Item\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12R\n" +
-	"\adetails\x18\f \x03(\v28.cloudstack.management.consoleproxy.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xc4\x01\n" +
-	"\x13ConsoleproxyService\x12\xa4\x01\n" +
-	"\x15CreateConsoleEndpoint\x12C.cloudstack.management.consoleproxy.v1.CreateConsoleEndpointRequest\x1aD.cloudstack.management.consoleproxy.v1.CreateConsoleEndpointResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xe2\x02\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\xcc\x01\n" +
+	"\x13ConsoleproxyService\x12\xab\x01\n" +
+	"\x15CreateConsoleEndpoint\x12C.cloudstack.management.consoleproxy.v1.CreateConsoleEndpointRequest\x1aD.cloudstack.management.consoleproxy.v1.CreateConsoleEndpointResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\a\xc2>\x04\xc2>\x01\x02B\xe2\x02\n" +
 	")com.cloudstack.management.consoleproxy.v1B\x14ConsoleproxyGenProtoP\x01Zhgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/consoleproxy/v1;consoleproxyv1\xa2\x02\x03CMC\xaa\x02%Cloudstack.Management.Consoleproxy.V1\xca\x02%Cloudstack\\Management\\Consoleproxy\\V1\xe2\x021Cloudstack\\Management\\Consoleproxy\\V1\\GPBMetadata\xea\x02(Cloudstack::Management::Consoleproxy::V1b\beditionsp\xe8\a"
 
 var (
@@ -471,25 +307,22 @@ func file_cloudstack_management_consoleproxy_v1_consoleproxy_gen_proto_rawDescGZ
 	return file_cloudstack_management_consoleproxy_v1_consoleproxy_gen_proto_rawDescData
 }
 
-var file_cloudstack_management_consoleproxy_v1_consoleproxy_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_cloudstack_management_consoleproxy_v1_consoleproxy_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_cloudstack_management_consoleproxy_v1_consoleproxy_gen_proto_goTypes = []any{
 	(*CreateConsoleEndpointRequest)(nil),  // 0: cloudstack.management.consoleproxy.v1.CreateConsoleEndpointRequest
 	(*CreateConsoleEndpointResponse)(nil), // 1: cloudstack.management.consoleproxy.v1.CreateConsoleEndpointResponse
 	(*Success)(nil),                       // 2: cloudstack.management.consoleproxy.v1.Success
-	(*Item)(nil),                          // 3: cloudstack.management.consoleproxy.v1.Item
-	(*Result)(nil),                        // 4: cloudstack.management.consoleproxy.v1.Result
-	nil,                                   // 5: cloudstack.management.consoleproxy.v1.Item.DetailsEntry
+	(*Result)(nil),                        // 3: cloudstack.management.consoleproxy.v1.Result
 }
 var file_cloudstack_management_consoleproxy_v1_consoleproxy_gen_proto_depIdxs = []int32{
-	4, // 0: cloudstack.management.consoleproxy.v1.CreateConsoleEndpointResponse.result:type_name -> cloudstack.management.consoleproxy.v1.Result
-	5, // 1: cloudstack.management.consoleproxy.v1.Item.details:type_name -> cloudstack.management.consoleproxy.v1.Item.DetailsEntry
-	0, // 2: cloudstack.management.consoleproxy.v1.ConsoleproxyService.CreateConsoleEndpoint:input_type -> cloudstack.management.consoleproxy.v1.CreateConsoleEndpointRequest
-	1, // 3: cloudstack.management.consoleproxy.v1.ConsoleproxyService.CreateConsoleEndpoint:output_type -> cloudstack.management.consoleproxy.v1.CreateConsoleEndpointResponse
-	3, // [3:4] is the sub-list for method output_type
-	2, // [2:3] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	3, // 0: cloudstack.management.consoleproxy.v1.CreateConsoleEndpointResponse.result:type_name -> cloudstack.management.consoleproxy.v1.Result
+	0, // 1: cloudstack.management.consoleproxy.v1.ConsoleproxyService.CreateConsoleEndpoint:input_type -> cloudstack.management.consoleproxy.v1.CreateConsoleEndpointRequest
+	1, // 2: cloudstack.management.consoleproxy.v1.ConsoleproxyService.CreateConsoleEndpoint:output_type -> cloudstack.management.consoleproxy.v1.CreateConsoleEndpointResponse
+	2, // [2:3] is the sub-list for method output_type
+	1, // [1:2] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_consoleproxy_v1_consoleproxy_gen_proto_init() }
@@ -503,7 +336,7 @@ func file_cloudstack_management_consoleproxy_v1_consoleproxy_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_consoleproxy_v1_consoleproxy_gen_proto_rawDesc), len(file_cloudstack_management_consoleproxy_v1_consoleproxy_gen_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -33,58 +33,58 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
+	// AclServiceCreateRoleProcedure is the fully-qualified name of the AclService's CreateRole RPC.
+	AclServiceCreateRoleProcedure = "/cloudstack.management.acl.v1.AclService/CreateRole"
 	// AclServiceCreateRolePermissionProcedure is the fully-qualified name of the AclService's
 	// CreateRolePermission RPC.
 	AclServiceCreateRolePermissionProcedure = "/cloudstack.management.acl.v1.AclService/CreateRolePermission"
-	// AclServiceCreateRoleProcedure is the fully-qualified name of the AclService's CreateRole RPC.
-	AclServiceCreateRoleProcedure = "/cloudstack.management.acl.v1.AclService/CreateRole"
+	// AclServiceDeleteRoleProcedure is the fully-qualified name of the AclService's DeleteRole RPC.
+	AclServiceDeleteRoleProcedure = "/cloudstack.management.acl.v1.AclService/DeleteRole"
 	// AclServiceDeleteRolePermissionProcedure is the fully-qualified name of the AclService's
 	// DeleteRolePermission RPC.
 	AclServiceDeleteRolePermissionProcedure = "/cloudstack.management.acl.v1.AclService/DeleteRolePermission"
-	// AclServiceUpdateRolePermissionProcedure is the fully-qualified name of the AclService's
-	// UpdateRolePermission RPC.
-	AclServiceUpdateRolePermissionProcedure = "/cloudstack.management.acl.v1.AclService/UpdateRolePermission"
-	// AclServiceDeleteRoleProcedure is the fully-qualified name of the AclService's DeleteRole RPC.
-	AclServiceDeleteRoleProcedure = "/cloudstack.management.acl.v1.AclService/DeleteRole"
 	// AclServiceDisableRoleProcedure is the fully-qualified name of the AclService's DisableRole RPC.
 	AclServiceDisableRoleProcedure = "/cloudstack.management.acl.v1.AclService/DisableRole"
 	// AclServiceEnableRoleProcedure is the fully-qualified name of the AclService's EnableRole RPC.
 	AclServiceEnableRoleProcedure = "/cloudstack.management.acl.v1.AclService/EnableRole"
-	// AclServiceListRolesProcedure is the fully-qualified name of the AclService's ListRoles RPC.
-	AclServiceListRolesProcedure = "/cloudstack.management.acl.v1.AclService/ListRoles"
 	// AclServiceImportRoleProcedure is the fully-qualified name of the AclService's ImportRole RPC.
 	AclServiceImportRoleProcedure = "/cloudstack.management.acl.v1.AclService/ImportRole"
-	// AclServiceUpdateRoleProcedure is the fully-qualified name of the AclService's UpdateRole RPC.
-	AclServiceUpdateRoleProcedure = "/cloudstack.management.acl.v1.AclService/UpdateRole"
 	// AclServiceListRolePermissionsProcedure is the fully-qualified name of the AclService's
 	// ListRolePermissions RPC.
 	AclServiceListRolePermissionsProcedure = "/cloudstack.management.acl.v1.AclService/ListRolePermissions"
+	// AclServiceListRolesProcedure is the fully-qualified name of the AclService's ListRoles RPC.
+	AclServiceListRolesProcedure = "/cloudstack.management.acl.v1.AclService/ListRoles"
+	// AclServiceUpdateRoleProcedure is the fully-qualified name of the AclService's UpdateRole RPC.
+	AclServiceUpdateRoleProcedure = "/cloudstack.management.acl.v1.AclService/UpdateRole"
+	// AclServiceUpdateRolePermissionProcedure is the fully-qualified name of the AclService's
+	// UpdateRolePermission RPC.
+	AclServiceUpdateRolePermissionProcedure = "/cloudstack.management.acl.v1.AclService/UpdateRolePermission"
 )
 
 // AclServiceClient is a client for the cloudstack.management.acl.v1.AclService service.
 type AclServiceClient interface {
-	// CreateRolePermission Adds an API permission to a role
-	CreateRolePermission(context.Context, *connect.Request[v1.CreateRolePermissionRequest]) (*connect.Response[v1.CreateRolePermissionResponse], error)
 	// CreateRole Creates a role
 	CreateRole(context.Context, *connect.Request[v1.CreateRoleRequest]) (*connect.Response[v1.CreateRoleResponse], error)
-	// DeleteRolePermission Deletes a role permission
-	DeleteRolePermission(context.Context, *connect.Request[v1.DeleteRolePermissionRequest]) (*connect.Response[v1.DeleteRolePermissionResponse], error)
-	// UpdateRolePermission Updates a role permission order
-	UpdateRolePermission(context.Context, *connect.Request[v1.UpdateRolePermissionRequest]) (*connect.Response[v1.UpdateRolePermissionResponse], error)
+	// CreateRolePermission Adds an API permission to a role
+	CreateRolePermission(context.Context, *connect.Request[v1.CreateRolePermissionRequest]) (*connect.Response[v1.CreateRolePermissionResponse], error)
 	// DeleteRole Deletes a role
 	DeleteRole(context.Context, *connect.Request[v1.DeleteRoleRequest]) (*connect.Response[v1.DeleteRoleResponse], error)
+	// DeleteRolePermission Deletes a role permission
+	DeleteRolePermission(context.Context, *connect.Request[v1.DeleteRolePermissionRequest]) (*connect.Response[v1.DeleteRolePermissionResponse], error)
 	// DisableRole Disables a role
 	DisableRole(context.Context, *connect.Request[v1.DisableRoleRequest]) (*connect.Response[v1.DisableRoleResponse], error)
 	// EnableRole Enables a role
 	EnableRole(context.Context, *connect.Request[v1.EnableRoleRequest]) (*connect.Response[v1.EnableRoleResponse], error)
-	// ListRoles Lists dynamic roles in CloudStack
-	ListRoles(context.Context, *connect.Request[v1.ListRolesRequest]) (*connect.Response[v1.ListRolesResponse], error)
 	// ImportRole Imports a role based on provided map of rule permissions
 	ImportRole(context.Context, *connect.Request[v1.ImportRoleRequest]) (*connect.Response[v1.ImportRoleResponse], error)
-	// UpdateRole Updates a role
-	UpdateRole(context.Context, *connect.Request[v1.UpdateRoleRequest]) (*connect.Response[v1.UpdateRoleResponse], error)
 	// ListRolePermissions Lists role permissions
 	ListRolePermissions(context.Context, *connect.Request[v1.ListRolePermissionsRequest]) (*connect.Response[v1.ListRolePermissionsResponse], error)
+	// ListRoles Lists dynamic roles in CloudStack
+	ListRoles(context.Context, *connect.Request[v1.ListRolesRequest]) (*connect.Response[v1.ListRolesResponse], error)
+	// UpdateRole Updates a role
+	UpdateRole(context.Context, *connect.Request[v1.UpdateRoleRequest]) (*connect.Response[v1.UpdateRoleResponse], error)
+	// UpdateRolePermission Updates a role permission order
+	UpdateRolePermission(context.Context, *connect.Request[v1.UpdateRolePermissionRequest]) (*connect.Response[v1.UpdateRolePermissionResponse], error)
 }
 
 // NewAclServiceClient constructs a client for the cloudstack.management.acl.v1.AclService service.
@@ -98,34 +98,28 @@ func NewAclServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 	baseURL = strings.TrimRight(baseURL, "/")
 	aclServiceMethods := v1.File_cloudstack_management_acl_v1_acl_gen_proto.Services().ByName("AclService").Methods()
 	return &aclServiceClient{
-		createRolePermission: connect.NewClient[v1.CreateRolePermissionRequest, v1.CreateRolePermissionResponse](
-			httpClient,
-			baseURL+AclServiceCreateRolePermissionProcedure,
-			connect.WithSchema(aclServiceMethods.ByName("CreateRolePermission")),
-			connect.WithClientOptions(opts...),
-		),
 		createRole: connect.NewClient[v1.CreateRoleRequest, v1.CreateRoleResponse](
 			httpClient,
 			baseURL+AclServiceCreateRoleProcedure,
 			connect.WithSchema(aclServiceMethods.ByName("CreateRole")),
 			connect.WithClientOptions(opts...),
 		),
-		deleteRolePermission: connect.NewClient[v1.DeleteRolePermissionRequest, v1.DeleteRolePermissionResponse](
+		createRolePermission: connect.NewClient[v1.CreateRolePermissionRequest, v1.CreateRolePermissionResponse](
 			httpClient,
-			baseURL+AclServiceDeleteRolePermissionProcedure,
-			connect.WithSchema(aclServiceMethods.ByName("DeleteRolePermission")),
-			connect.WithClientOptions(opts...),
-		),
-		updateRolePermission: connect.NewClient[v1.UpdateRolePermissionRequest, v1.UpdateRolePermissionResponse](
-			httpClient,
-			baseURL+AclServiceUpdateRolePermissionProcedure,
-			connect.WithSchema(aclServiceMethods.ByName("UpdateRolePermission")),
+			baseURL+AclServiceCreateRolePermissionProcedure,
+			connect.WithSchema(aclServiceMethods.ByName("CreateRolePermission")),
 			connect.WithClientOptions(opts...),
 		),
 		deleteRole: connect.NewClient[v1.DeleteRoleRequest, v1.DeleteRoleResponse](
 			httpClient,
 			baseURL+AclServiceDeleteRoleProcedure,
 			connect.WithSchema(aclServiceMethods.ByName("DeleteRole")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteRolePermission: connect.NewClient[v1.DeleteRolePermissionRequest, v1.DeleteRolePermissionResponse](
+			httpClient,
+			baseURL+AclServiceDeleteRolePermissionProcedure,
+			connect.WithSchema(aclServiceMethods.ByName("DeleteRolePermission")),
 			connect.WithClientOptions(opts...),
 		),
 		disableRole: connect.NewClient[v1.DisableRoleRequest, v1.DisableRoleResponse](
@@ -140,22 +134,10 @@ func NewAclServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 			connect.WithSchema(aclServiceMethods.ByName("EnableRole")),
 			connect.WithClientOptions(opts...),
 		),
-		listRoles: connect.NewClient[v1.ListRolesRequest, v1.ListRolesResponse](
-			httpClient,
-			baseURL+AclServiceListRolesProcedure,
-			connect.WithSchema(aclServiceMethods.ByName("ListRoles")),
-			connect.WithClientOptions(opts...),
-		),
 		importRole: connect.NewClient[v1.ImportRoleRequest, v1.ImportRoleResponse](
 			httpClient,
 			baseURL+AclServiceImportRoleProcedure,
 			connect.WithSchema(aclServiceMethods.ByName("ImportRole")),
-			connect.WithClientOptions(opts...),
-		),
-		updateRole: connect.NewClient[v1.UpdateRoleRequest, v1.UpdateRoleResponse](
-			httpClient,
-			baseURL+AclServiceUpdateRoleProcedure,
-			connect.WithSchema(aclServiceMethods.ByName("UpdateRole")),
 			connect.WithClientOptions(opts...),
 		),
 		listRolePermissions: connect.NewClient[v1.ListRolePermissionsRequest, v1.ListRolePermissionsResponse](
@@ -164,27 +146,40 @@ func NewAclServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 			connect.WithSchema(aclServiceMethods.ByName("ListRolePermissions")),
 			connect.WithClientOptions(opts...),
 		),
+		listRoles: connect.NewClient[v1.ListRolesRequest, v1.ListRolesResponse](
+			httpClient,
+			baseURL+AclServiceListRolesProcedure,
+			connect.WithSchema(aclServiceMethods.ByName("ListRoles")),
+			connect.WithClientOptions(opts...),
+		),
+		updateRole: connect.NewClient[v1.UpdateRoleRequest, v1.UpdateRoleResponse](
+			httpClient,
+			baseURL+AclServiceUpdateRoleProcedure,
+			connect.WithSchema(aclServiceMethods.ByName("UpdateRole")),
+			connect.WithClientOptions(opts...),
+		),
+		updateRolePermission: connect.NewClient[v1.UpdateRolePermissionRequest, v1.UpdateRolePermissionResponse](
+			httpClient,
+			baseURL+AclServiceUpdateRolePermissionProcedure,
+			connect.WithSchema(aclServiceMethods.ByName("UpdateRolePermission")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // aclServiceClient implements AclServiceClient.
 type aclServiceClient struct {
-	createRolePermission *connect.Client[v1.CreateRolePermissionRequest, v1.CreateRolePermissionResponse]
 	createRole           *connect.Client[v1.CreateRoleRequest, v1.CreateRoleResponse]
-	deleteRolePermission *connect.Client[v1.DeleteRolePermissionRequest, v1.DeleteRolePermissionResponse]
-	updateRolePermission *connect.Client[v1.UpdateRolePermissionRequest, v1.UpdateRolePermissionResponse]
+	createRolePermission *connect.Client[v1.CreateRolePermissionRequest, v1.CreateRolePermissionResponse]
 	deleteRole           *connect.Client[v1.DeleteRoleRequest, v1.DeleteRoleResponse]
+	deleteRolePermission *connect.Client[v1.DeleteRolePermissionRequest, v1.DeleteRolePermissionResponse]
 	disableRole          *connect.Client[v1.DisableRoleRequest, v1.DisableRoleResponse]
 	enableRole           *connect.Client[v1.EnableRoleRequest, v1.EnableRoleResponse]
-	listRoles            *connect.Client[v1.ListRolesRequest, v1.ListRolesResponse]
 	importRole           *connect.Client[v1.ImportRoleRequest, v1.ImportRoleResponse]
-	updateRole           *connect.Client[v1.UpdateRoleRequest, v1.UpdateRoleResponse]
 	listRolePermissions  *connect.Client[v1.ListRolePermissionsRequest, v1.ListRolePermissionsResponse]
-}
-
-// CreateRolePermission calls cloudstack.management.acl.v1.AclService.CreateRolePermission.
-func (c *aclServiceClient) CreateRolePermission(ctx context.Context, req *connect.Request[v1.CreateRolePermissionRequest]) (*connect.Response[v1.CreateRolePermissionResponse], error) {
-	return c.createRolePermission.CallUnary(ctx, req)
+	listRoles            *connect.Client[v1.ListRolesRequest, v1.ListRolesResponse]
+	updateRole           *connect.Client[v1.UpdateRoleRequest, v1.UpdateRoleResponse]
+	updateRolePermission *connect.Client[v1.UpdateRolePermissionRequest, v1.UpdateRolePermissionResponse]
 }
 
 // CreateRole calls cloudstack.management.acl.v1.AclService.CreateRole.
@@ -192,19 +187,19 @@ func (c *aclServiceClient) CreateRole(ctx context.Context, req *connect.Request[
 	return c.createRole.CallUnary(ctx, req)
 }
 
-// DeleteRolePermission calls cloudstack.management.acl.v1.AclService.DeleteRolePermission.
-func (c *aclServiceClient) DeleteRolePermission(ctx context.Context, req *connect.Request[v1.DeleteRolePermissionRequest]) (*connect.Response[v1.DeleteRolePermissionResponse], error) {
-	return c.deleteRolePermission.CallUnary(ctx, req)
-}
-
-// UpdateRolePermission calls cloudstack.management.acl.v1.AclService.UpdateRolePermission.
-func (c *aclServiceClient) UpdateRolePermission(ctx context.Context, req *connect.Request[v1.UpdateRolePermissionRequest]) (*connect.Response[v1.UpdateRolePermissionResponse], error) {
-	return c.updateRolePermission.CallUnary(ctx, req)
+// CreateRolePermission calls cloudstack.management.acl.v1.AclService.CreateRolePermission.
+func (c *aclServiceClient) CreateRolePermission(ctx context.Context, req *connect.Request[v1.CreateRolePermissionRequest]) (*connect.Response[v1.CreateRolePermissionResponse], error) {
+	return c.createRolePermission.CallUnary(ctx, req)
 }
 
 // DeleteRole calls cloudstack.management.acl.v1.AclService.DeleteRole.
 func (c *aclServiceClient) DeleteRole(ctx context.Context, req *connect.Request[v1.DeleteRoleRequest]) (*connect.Response[v1.DeleteRoleResponse], error) {
 	return c.deleteRole.CallUnary(ctx, req)
+}
+
+// DeleteRolePermission calls cloudstack.management.acl.v1.AclService.DeleteRolePermission.
+func (c *aclServiceClient) DeleteRolePermission(ctx context.Context, req *connect.Request[v1.DeleteRolePermissionRequest]) (*connect.Response[v1.DeleteRolePermissionResponse], error) {
+	return c.deleteRolePermission.CallUnary(ctx, req)
 }
 
 // DisableRole calls cloudstack.management.acl.v1.AclService.DisableRole.
@@ -217,19 +212,9 @@ func (c *aclServiceClient) EnableRole(ctx context.Context, req *connect.Request[
 	return c.enableRole.CallUnary(ctx, req)
 }
 
-// ListRoles calls cloudstack.management.acl.v1.AclService.ListRoles.
-func (c *aclServiceClient) ListRoles(ctx context.Context, req *connect.Request[v1.ListRolesRequest]) (*connect.Response[v1.ListRolesResponse], error) {
-	return c.listRoles.CallUnary(ctx, req)
-}
-
 // ImportRole calls cloudstack.management.acl.v1.AclService.ImportRole.
 func (c *aclServiceClient) ImportRole(ctx context.Context, req *connect.Request[v1.ImportRoleRequest]) (*connect.Response[v1.ImportRoleResponse], error) {
 	return c.importRole.CallUnary(ctx, req)
-}
-
-// UpdateRole calls cloudstack.management.acl.v1.AclService.UpdateRole.
-func (c *aclServiceClient) UpdateRole(ctx context.Context, req *connect.Request[v1.UpdateRoleRequest]) (*connect.Response[v1.UpdateRoleResponse], error) {
-	return c.updateRole.CallUnary(ctx, req)
 }
 
 // ListRolePermissions calls cloudstack.management.acl.v1.AclService.ListRolePermissions.
@@ -237,30 +222,45 @@ func (c *aclServiceClient) ListRolePermissions(ctx context.Context, req *connect
 	return c.listRolePermissions.CallUnary(ctx, req)
 }
 
+// ListRoles calls cloudstack.management.acl.v1.AclService.ListRoles.
+func (c *aclServiceClient) ListRoles(ctx context.Context, req *connect.Request[v1.ListRolesRequest]) (*connect.Response[v1.ListRolesResponse], error) {
+	return c.listRoles.CallUnary(ctx, req)
+}
+
+// UpdateRole calls cloudstack.management.acl.v1.AclService.UpdateRole.
+func (c *aclServiceClient) UpdateRole(ctx context.Context, req *connect.Request[v1.UpdateRoleRequest]) (*connect.Response[v1.UpdateRoleResponse], error) {
+	return c.updateRole.CallUnary(ctx, req)
+}
+
+// UpdateRolePermission calls cloudstack.management.acl.v1.AclService.UpdateRolePermission.
+func (c *aclServiceClient) UpdateRolePermission(ctx context.Context, req *connect.Request[v1.UpdateRolePermissionRequest]) (*connect.Response[v1.UpdateRolePermissionResponse], error) {
+	return c.updateRolePermission.CallUnary(ctx, req)
+}
+
 // AclServiceHandler is an implementation of the cloudstack.management.acl.v1.AclService service.
 type AclServiceHandler interface {
-	// CreateRolePermission Adds an API permission to a role
-	CreateRolePermission(context.Context, *connect.Request[v1.CreateRolePermissionRequest]) (*connect.Response[v1.CreateRolePermissionResponse], error)
 	// CreateRole Creates a role
 	CreateRole(context.Context, *connect.Request[v1.CreateRoleRequest]) (*connect.Response[v1.CreateRoleResponse], error)
-	// DeleteRolePermission Deletes a role permission
-	DeleteRolePermission(context.Context, *connect.Request[v1.DeleteRolePermissionRequest]) (*connect.Response[v1.DeleteRolePermissionResponse], error)
-	// UpdateRolePermission Updates a role permission order
-	UpdateRolePermission(context.Context, *connect.Request[v1.UpdateRolePermissionRequest]) (*connect.Response[v1.UpdateRolePermissionResponse], error)
+	// CreateRolePermission Adds an API permission to a role
+	CreateRolePermission(context.Context, *connect.Request[v1.CreateRolePermissionRequest]) (*connect.Response[v1.CreateRolePermissionResponse], error)
 	// DeleteRole Deletes a role
 	DeleteRole(context.Context, *connect.Request[v1.DeleteRoleRequest]) (*connect.Response[v1.DeleteRoleResponse], error)
+	// DeleteRolePermission Deletes a role permission
+	DeleteRolePermission(context.Context, *connect.Request[v1.DeleteRolePermissionRequest]) (*connect.Response[v1.DeleteRolePermissionResponse], error)
 	// DisableRole Disables a role
 	DisableRole(context.Context, *connect.Request[v1.DisableRoleRequest]) (*connect.Response[v1.DisableRoleResponse], error)
 	// EnableRole Enables a role
 	EnableRole(context.Context, *connect.Request[v1.EnableRoleRequest]) (*connect.Response[v1.EnableRoleResponse], error)
-	// ListRoles Lists dynamic roles in CloudStack
-	ListRoles(context.Context, *connect.Request[v1.ListRolesRequest]) (*connect.Response[v1.ListRolesResponse], error)
 	// ImportRole Imports a role based on provided map of rule permissions
 	ImportRole(context.Context, *connect.Request[v1.ImportRoleRequest]) (*connect.Response[v1.ImportRoleResponse], error)
-	// UpdateRole Updates a role
-	UpdateRole(context.Context, *connect.Request[v1.UpdateRoleRequest]) (*connect.Response[v1.UpdateRoleResponse], error)
 	// ListRolePermissions Lists role permissions
 	ListRolePermissions(context.Context, *connect.Request[v1.ListRolePermissionsRequest]) (*connect.Response[v1.ListRolePermissionsResponse], error)
+	// ListRoles Lists dynamic roles in CloudStack
+	ListRoles(context.Context, *connect.Request[v1.ListRolesRequest]) (*connect.Response[v1.ListRolesResponse], error)
+	// UpdateRole Updates a role
+	UpdateRole(context.Context, *connect.Request[v1.UpdateRoleRequest]) (*connect.Response[v1.UpdateRoleResponse], error)
+	// UpdateRolePermission Updates a role permission order
+	UpdateRolePermission(context.Context, *connect.Request[v1.UpdateRolePermissionRequest]) (*connect.Response[v1.UpdateRolePermissionResponse], error)
 }
 
 // NewAclServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -270,34 +270,28 @@ type AclServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewAclServiceHandler(svc AclServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	aclServiceMethods := v1.File_cloudstack_management_acl_v1_acl_gen_proto.Services().ByName("AclService").Methods()
-	aclServiceCreateRolePermissionHandler := connect.NewUnaryHandler(
-		AclServiceCreateRolePermissionProcedure,
-		svc.CreateRolePermission,
-		connect.WithSchema(aclServiceMethods.ByName("CreateRolePermission")),
-		connect.WithHandlerOptions(opts...),
-	)
 	aclServiceCreateRoleHandler := connect.NewUnaryHandler(
 		AclServiceCreateRoleProcedure,
 		svc.CreateRole,
 		connect.WithSchema(aclServiceMethods.ByName("CreateRole")),
 		connect.WithHandlerOptions(opts...),
 	)
-	aclServiceDeleteRolePermissionHandler := connect.NewUnaryHandler(
-		AclServiceDeleteRolePermissionProcedure,
-		svc.DeleteRolePermission,
-		connect.WithSchema(aclServiceMethods.ByName("DeleteRolePermission")),
-		connect.WithHandlerOptions(opts...),
-	)
-	aclServiceUpdateRolePermissionHandler := connect.NewUnaryHandler(
-		AclServiceUpdateRolePermissionProcedure,
-		svc.UpdateRolePermission,
-		connect.WithSchema(aclServiceMethods.ByName("UpdateRolePermission")),
+	aclServiceCreateRolePermissionHandler := connect.NewUnaryHandler(
+		AclServiceCreateRolePermissionProcedure,
+		svc.CreateRolePermission,
+		connect.WithSchema(aclServiceMethods.ByName("CreateRolePermission")),
 		connect.WithHandlerOptions(opts...),
 	)
 	aclServiceDeleteRoleHandler := connect.NewUnaryHandler(
 		AclServiceDeleteRoleProcedure,
 		svc.DeleteRole,
 		connect.WithSchema(aclServiceMethods.ByName("DeleteRole")),
+		connect.WithHandlerOptions(opts...),
+	)
+	aclServiceDeleteRolePermissionHandler := connect.NewUnaryHandler(
+		AclServiceDeleteRolePermissionProcedure,
+		svc.DeleteRolePermission,
+		connect.WithSchema(aclServiceMethods.ByName("DeleteRolePermission")),
 		connect.WithHandlerOptions(opts...),
 	)
 	aclServiceDisableRoleHandler := connect.NewUnaryHandler(
@@ -312,22 +306,10 @@ func NewAclServiceHandler(svc AclServiceHandler, opts ...connect.HandlerOption) 
 		connect.WithSchema(aclServiceMethods.ByName("EnableRole")),
 		connect.WithHandlerOptions(opts...),
 	)
-	aclServiceListRolesHandler := connect.NewUnaryHandler(
-		AclServiceListRolesProcedure,
-		svc.ListRoles,
-		connect.WithSchema(aclServiceMethods.ByName("ListRoles")),
-		connect.WithHandlerOptions(opts...),
-	)
 	aclServiceImportRoleHandler := connect.NewUnaryHandler(
 		AclServiceImportRoleProcedure,
 		svc.ImportRole,
 		connect.WithSchema(aclServiceMethods.ByName("ImportRole")),
-		connect.WithHandlerOptions(opts...),
-	)
-	aclServiceUpdateRoleHandler := connect.NewUnaryHandler(
-		AclServiceUpdateRoleProcedure,
-		svc.UpdateRole,
-		connect.WithSchema(aclServiceMethods.ByName("UpdateRole")),
 		connect.WithHandlerOptions(opts...),
 	)
 	aclServiceListRolePermissionsHandler := connect.NewUnaryHandler(
@@ -336,30 +318,48 @@ func NewAclServiceHandler(svc AclServiceHandler, opts ...connect.HandlerOption) 
 		connect.WithSchema(aclServiceMethods.ByName("ListRolePermissions")),
 		connect.WithHandlerOptions(opts...),
 	)
+	aclServiceListRolesHandler := connect.NewUnaryHandler(
+		AclServiceListRolesProcedure,
+		svc.ListRoles,
+		connect.WithSchema(aclServiceMethods.ByName("ListRoles")),
+		connect.WithHandlerOptions(opts...),
+	)
+	aclServiceUpdateRoleHandler := connect.NewUnaryHandler(
+		AclServiceUpdateRoleProcedure,
+		svc.UpdateRole,
+		connect.WithSchema(aclServiceMethods.ByName("UpdateRole")),
+		connect.WithHandlerOptions(opts...),
+	)
+	aclServiceUpdateRolePermissionHandler := connect.NewUnaryHandler(
+		AclServiceUpdateRolePermissionProcedure,
+		svc.UpdateRolePermission,
+		connect.WithSchema(aclServiceMethods.ByName("UpdateRolePermission")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.acl.v1.AclService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case AclServiceCreateRolePermissionProcedure:
-			aclServiceCreateRolePermissionHandler.ServeHTTP(w, r)
 		case AclServiceCreateRoleProcedure:
 			aclServiceCreateRoleHandler.ServeHTTP(w, r)
-		case AclServiceDeleteRolePermissionProcedure:
-			aclServiceDeleteRolePermissionHandler.ServeHTTP(w, r)
-		case AclServiceUpdateRolePermissionProcedure:
-			aclServiceUpdateRolePermissionHandler.ServeHTTP(w, r)
+		case AclServiceCreateRolePermissionProcedure:
+			aclServiceCreateRolePermissionHandler.ServeHTTP(w, r)
 		case AclServiceDeleteRoleProcedure:
 			aclServiceDeleteRoleHandler.ServeHTTP(w, r)
+		case AclServiceDeleteRolePermissionProcedure:
+			aclServiceDeleteRolePermissionHandler.ServeHTTP(w, r)
 		case AclServiceDisableRoleProcedure:
 			aclServiceDisableRoleHandler.ServeHTTP(w, r)
 		case AclServiceEnableRoleProcedure:
 			aclServiceEnableRoleHandler.ServeHTTP(w, r)
-		case AclServiceListRolesProcedure:
-			aclServiceListRolesHandler.ServeHTTP(w, r)
 		case AclServiceImportRoleProcedure:
 			aclServiceImportRoleHandler.ServeHTTP(w, r)
-		case AclServiceUpdateRoleProcedure:
-			aclServiceUpdateRoleHandler.ServeHTTP(w, r)
 		case AclServiceListRolePermissionsProcedure:
 			aclServiceListRolePermissionsHandler.ServeHTTP(w, r)
+		case AclServiceListRolesProcedure:
+			aclServiceListRolesHandler.ServeHTTP(w, r)
+		case AclServiceUpdateRoleProcedure:
+			aclServiceUpdateRoleHandler.ServeHTTP(w, r)
+		case AclServiceUpdateRolePermissionProcedure:
+			aclServiceUpdateRolePermissionHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -369,24 +369,20 @@ func NewAclServiceHandler(svc AclServiceHandler, opts ...connect.HandlerOption) 
 // UnimplementedAclServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedAclServiceHandler struct{}
 
-func (UnimplementedAclServiceHandler) CreateRolePermission(context.Context, *connect.Request[v1.CreateRolePermissionRequest]) (*connect.Response[v1.CreateRolePermissionResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.acl.v1.AclService.CreateRolePermission is not implemented"))
-}
-
 func (UnimplementedAclServiceHandler) CreateRole(context.Context, *connect.Request[v1.CreateRoleRequest]) (*connect.Response[v1.CreateRoleResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.acl.v1.AclService.CreateRole is not implemented"))
 }
 
-func (UnimplementedAclServiceHandler) DeleteRolePermission(context.Context, *connect.Request[v1.DeleteRolePermissionRequest]) (*connect.Response[v1.DeleteRolePermissionResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.acl.v1.AclService.DeleteRolePermission is not implemented"))
-}
-
-func (UnimplementedAclServiceHandler) UpdateRolePermission(context.Context, *connect.Request[v1.UpdateRolePermissionRequest]) (*connect.Response[v1.UpdateRolePermissionResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.acl.v1.AclService.UpdateRolePermission is not implemented"))
+func (UnimplementedAclServiceHandler) CreateRolePermission(context.Context, *connect.Request[v1.CreateRolePermissionRequest]) (*connect.Response[v1.CreateRolePermissionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.acl.v1.AclService.CreateRolePermission is not implemented"))
 }
 
 func (UnimplementedAclServiceHandler) DeleteRole(context.Context, *connect.Request[v1.DeleteRoleRequest]) (*connect.Response[v1.DeleteRoleResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.acl.v1.AclService.DeleteRole is not implemented"))
+}
+
+func (UnimplementedAclServiceHandler) DeleteRolePermission(context.Context, *connect.Request[v1.DeleteRolePermissionRequest]) (*connect.Response[v1.DeleteRolePermissionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.acl.v1.AclService.DeleteRolePermission is not implemented"))
 }
 
 func (UnimplementedAclServiceHandler) DisableRole(context.Context, *connect.Request[v1.DisableRoleRequest]) (*connect.Response[v1.DisableRoleResponse], error) {
@@ -397,18 +393,22 @@ func (UnimplementedAclServiceHandler) EnableRole(context.Context, *connect.Reque
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.acl.v1.AclService.EnableRole is not implemented"))
 }
 
-func (UnimplementedAclServiceHandler) ListRoles(context.Context, *connect.Request[v1.ListRolesRequest]) (*connect.Response[v1.ListRolesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.acl.v1.AclService.ListRoles is not implemented"))
-}
-
 func (UnimplementedAclServiceHandler) ImportRole(context.Context, *connect.Request[v1.ImportRoleRequest]) (*connect.Response[v1.ImportRoleResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.acl.v1.AclService.ImportRole is not implemented"))
+}
+
+func (UnimplementedAclServiceHandler) ListRolePermissions(context.Context, *connect.Request[v1.ListRolePermissionsRequest]) (*connect.Response[v1.ListRolePermissionsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.acl.v1.AclService.ListRolePermissions is not implemented"))
+}
+
+func (UnimplementedAclServiceHandler) ListRoles(context.Context, *connect.Request[v1.ListRolesRequest]) (*connect.Response[v1.ListRolesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.acl.v1.AclService.ListRoles is not implemented"))
 }
 
 func (UnimplementedAclServiceHandler) UpdateRole(context.Context, *connect.Request[v1.UpdateRoleRequest]) (*connect.Response[v1.UpdateRoleResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.acl.v1.AclService.UpdateRole is not implemented"))
 }
 
-func (UnimplementedAclServiceHandler) ListRolePermissions(context.Context, *connect.Request[v1.ListRolePermissionsRequest]) (*connect.Response[v1.ListRolePermissionsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.acl.v1.AclService.ListRolePermissions is not implemented"))
+func (UnimplementedAclServiceHandler) UpdateRolePermission(context.Context, *connect.Request[v1.UpdateRolePermissionRequest]) (*connect.Response[v1.UpdateRolePermissionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.acl.v1.AclService.UpdateRolePermission is not implemented"))
 }

@@ -19,24 +19,30 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	TemplateService_DeleteVnfTemplate_FullMethodName                 = "/cloudstack.management.template.v1.TemplateService/DeleteVnfTemplate"
-	TemplateService_ListTemplatePermissionsCmdByAdmin_FullMethodName = "/cloudstack.management.template.v1.TemplateService/ListTemplatePermissionsCmdByAdmin"
-	TemplateService_ListVnfTemplates_FullMethodName                  = "/cloudstack.management.template.v1.TemplateService/ListVnfTemplates"
-	TemplateService_UpdateVnfTemplate_FullMethodName                 = "/cloudstack.management.template.v1.TemplateService/UpdateVnfTemplate"
-	TemplateService_ListTemplates_FullMethodName                     = "/cloudstack.management.template.v1.TemplateService/ListTemplates"
-	TemplateService_CreateTemplateCmdByAdmin_FullMethodName          = "/cloudstack.management.template.v1.TemplateService/CreateTemplateCmdByAdmin"
 	TemplateService_CopyTemplate_FullMethodName                      = "/cloudstack.management.template.v1.TemplateService/CopyTemplate"
+	TemplateService_CopyTemplateCmdByAdmin_FullMethodName            = "/cloudstack.management.template.v1.TemplateService/CopyTemplateCmdByAdmin"
+	TemplateService_CreateTemplate_FullMethodName                    = "/cloudstack.management.template.v1.TemplateService/CreateTemplate"
+	TemplateService_CreateTemplateCmdByAdmin_FullMethodName          = "/cloudstack.management.template.v1.TemplateService/CreateTemplateCmdByAdmin"
 	TemplateService_DeleteTemplate_FullMethodName                    = "/cloudstack.management.template.v1.TemplateService/DeleteTemplate"
+	TemplateService_DeleteVnfTemplate_FullMethodName                 = "/cloudstack.management.template.v1.TemplateService/DeleteVnfTemplate"
+	TemplateService_ExtractTemplate_FullMethodName                   = "/cloudstack.management.template.v1.TemplateService/ExtractTemplate"
+	TemplateService_GetUploadParamsForTemplate_FullMethodName        = "/cloudstack.management.template.v1.TemplateService/GetUploadParamsForTemplate"
 	TemplateService_ListTemplatePermissions_FullMethodName           = "/cloudstack.management.template.v1.TemplateService/ListTemplatePermissions"
+	TemplateService_ListTemplatePermissionsCmdByAdmin_FullMethodName = "/cloudstack.management.template.v1.TemplateService/ListTemplatePermissionsCmdByAdmin"
+	TemplateService_ListTemplates_FullMethodName                     = "/cloudstack.management.template.v1.TemplateService/ListTemplates"
+	TemplateService_ListTemplatesCmdByAdmin_FullMethodName           = "/cloudstack.management.template.v1.TemplateService/ListTemplatesCmdByAdmin"
+	TemplateService_ListVnfTemplates_FullMethodName                  = "/cloudstack.management.template.v1.TemplateService/ListVnfTemplates"
+	TemplateService_ListVnfTemplatesCmdByAdmin_FullMethodName        = "/cloudstack.management.template.v1.TemplateService/ListVnfTemplatesCmdByAdmin"
+	TemplateService_PrepareTemplate_FullMethodName                   = "/cloudstack.management.template.v1.TemplateService/PrepareTemplate"
+	TemplateService_RegisterTemplate_FullMethodName                  = "/cloudstack.management.template.v1.TemplateService/RegisterTemplate"
+	TemplateService_RegisterTemplateCmdByAdmin_FullMethodName        = "/cloudstack.management.template.v1.TemplateService/RegisterTemplateCmdByAdmin"
+	TemplateService_RegisterVnfTemplate_FullMethodName               = "/cloudstack.management.template.v1.TemplateService/RegisterVnfTemplate"
+	TemplateService_RegisterVnfTemplateCmdByAdmin_FullMethodName     = "/cloudstack.management.template.v1.TemplateService/RegisterVnfTemplateCmdByAdmin"
+	TemplateService_UpdateTemplate_FullMethodName                    = "/cloudstack.management.template.v1.TemplateService/UpdateTemplate"
 	TemplateService_UpdateTemplateCmdByAdmin_FullMethodName          = "/cloudstack.management.template.v1.TemplateService/UpdateTemplateCmdByAdmin"
 	TemplateService_UpdateTemplatePermissions_FullMethodName         = "/cloudstack.management.template.v1.TemplateService/UpdateTemplatePermissions"
-	TemplateService_CreateTemplate_FullMethodName                    = "/cloudstack.management.template.v1.TemplateService/CreateTemplate"
-	TemplateService_RegisterTemplate_FullMethodName                  = "/cloudstack.management.template.v1.TemplateService/RegisterTemplate"
-	TemplateService_RegisterVnfTemplate_FullMethodName               = "/cloudstack.management.template.v1.TemplateService/RegisterVnfTemplate"
-	TemplateService_ExtractTemplate_FullMethodName                   = "/cloudstack.management.template.v1.TemplateService/ExtractTemplate"
-	TemplateService_UpdateTemplate_FullMethodName                    = "/cloudstack.management.template.v1.TemplateService/UpdateTemplate"
-	TemplateService_GetUploadParamsForTemplate_FullMethodName        = "/cloudstack.management.template.v1.TemplateService/GetUploadParamsForTemplate"
-	TemplateService_PrepareTemplate_FullMethodName                   = "/cloudstack.management.template.v1.TemplateService/PrepareTemplate"
+	TemplateService_UpdateVnfTemplate_FullMethodName                 = "/cloudstack.management.template.v1.TemplateService/UpdateVnfTemplate"
+	TemplateService_UpdateVnfTemplateCmdByAdmin_FullMethodName       = "/cloudstack.management.template.v1.TemplateService/UpdateVnfTemplateCmdByAdmin"
 )
 
 // TemplateServiceClient is the client API for TemplateService service.
@@ -45,42 +51,54 @@ const (
 //
 // TemplateService provides operations for managing Templates
 type TemplateServiceClient interface {
-	// DeleteVnfTemplate Deletes a VNF template from the system. All virtual machines using the deleted template will not be affected.
-	DeleteVnfTemplate(ctx context.Context, in *DeleteVnfTemplateRequest, opts ...grpc.CallOption) (*DeleteVnfTemplateResponse, error)
-	// ListTemplatePermissionsCmdByAdmin List template visibility and all accounts that have permissions to view this template.
-	ListTemplatePermissionsCmdByAdmin(ctx context.Context, in *ListTemplatePermissionsCmdByAdminRequest, opts ...grpc.CallOption) (*ListTemplatePermissionsCmdByAdminResponse, error)
-	// ListVnfTemplates List all public, private, and privileged VNF templates.
-	ListVnfTemplates(ctx context.Context, in *ListVnfTemplatesRequest, opts ...grpc.CallOption) (*ListVnfTemplatesResponse, error)
-	// UpdateVnfTemplate Updates a template to VNF template or attributes of a VNF template.
-	UpdateVnfTemplate(ctx context.Context, in *UpdateVnfTemplateRequest, opts ...grpc.CallOption) (*UpdateVnfTemplateResponse, error)
-	// ListTemplates List all public, private, and privileged templates.
-	ListTemplates(ctx context.Context, in *ListTemplatesRequest, opts ...grpc.CallOption) (*ListTemplatesResponse, error)
-	// CreateTemplateCmdByAdmin Creates a template of a virtual machine. The virtual machine must be in a STOPPED state. A template created from this command is automatically designated as a private template visible to the account that created it.
-	CreateTemplateCmdByAdmin(ctx context.Context, in *CreateTemplateCmdByAdminRequest, opts ...grpc.CallOption) (*CreateTemplateCmdByAdminResponse, error)
 	// CopyTemplate Copies a template from one zone to another.
 	CopyTemplate(ctx context.Context, in *CopyTemplateRequest, opts ...grpc.CallOption) (*CopyTemplateResponse, error)
+	// CopyTemplateCmdByAdmin Copies a template from one zone to another.
+	CopyTemplateCmdByAdmin(ctx context.Context, in *CopyTemplateCmdByAdminRequest, opts ...grpc.CallOption) (*CopyTemplateCmdByAdminResponse, error)
+	// CreateTemplate Creates a template of a virtual machine. The virtual machine must be in a STOPPED state. A template created from this command is automatically designated as a private template visible to the account that created it.
+	CreateTemplate(ctx context.Context, in *CreateTemplateRequest, opts ...grpc.CallOption) (*CreateTemplateResponse, error)
+	// CreateTemplateCmdByAdmin Creates a template of a virtual machine. The virtual machine must be in a STOPPED state. A template created from this command is automatically designated as a private template visible to the account that created it.
+	CreateTemplateCmdByAdmin(ctx context.Context, in *CreateTemplateCmdByAdminRequest, opts ...grpc.CallOption) (*CreateTemplateCmdByAdminResponse, error)
 	// DeleteTemplate Deletes a template from the system. All virtual machines using the deleted template will not be affected.
 	DeleteTemplate(ctx context.Context, in *DeleteTemplateRequest, opts ...grpc.CallOption) (*DeleteTemplateResponse, error)
+	// DeleteVnfTemplate Deletes a VNF template from the system. All virtual machines using the deleted template will not be affected.
+	DeleteVnfTemplate(ctx context.Context, in *DeleteVnfTemplateRequest, opts ...grpc.CallOption) (*DeleteVnfTemplateResponse, error)
+	// ExtractTemplate Extracts a template
+	ExtractTemplate(ctx context.Context, in *ExtractTemplateRequest, opts ...grpc.CallOption) (*ExtractTemplateResponse, error)
+	// GetUploadParamsForTemplate upload an existing template into the CloudStack cloud.
+	GetUploadParamsForTemplate(ctx context.Context, in *GetUploadParamsForTemplateRequest, opts ...grpc.CallOption) (*GetUploadParamsForTemplateResponse, error)
 	// ListTemplatePermissions List template visibility and all accounts that have permissions to view this template.
 	ListTemplatePermissions(ctx context.Context, in *ListTemplatePermissionsRequest, opts ...grpc.CallOption) (*ListTemplatePermissionsResponse, error)
+	// ListTemplatePermissionsCmdByAdmin List template visibility and all accounts that have permissions to view this template.
+	ListTemplatePermissionsCmdByAdmin(ctx context.Context, in *ListTemplatePermissionsCmdByAdminRequest, opts ...grpc.CallOption) (*ListTemplatePermissionsCmdByAdminResponse, error)
+	// ListTemplates List all public, private, and privileged templates.
+	ListTemplates(ctx context.Context, in *ListTemplatesRequest, opts ...grpc.CallOption) (*ListTemplatesResponse, error)
+	// ListTemplatesCmdByAdmin List all public, private, and privileged templates.
+	ListTemplatesCmdByAdmin(ctx context.Context, in *ListTemplatesCmdByAdminRequest, opts ...grpc.CallOption) (*ListTemplatesCmdByAdminResponse, error)
+	// ListVnfTemplates List all public, private, and privileged VNF templates.
+	ListVnfTemplates(ctx context.Context, in *ListVnfTemplatesRequest, opts ...grpc.CallOption) (*ListVnfTemplatesResponse, error)
+	// ListVnfTemplatesCmdByAdmin List all public, private, and privileged VNF templates.
+	ListVnfTemplatesCmdByAdmin(ctx context.Context, in *ListVnfTemplatesCmdByAdminRequest, opts ...grpc.CallOption) (*ListVnfTemplatesCmdByAdminResponse, error)
+	// PrepareTemplate load template into primary storage
+	PrepareTemplate(ctx context.Context, in *PrepareTemplateRequest, opts ...grpc.CallOption) (*PrepareTemplateResponse, error)
+	// RegisterTemplate Registers an existing template into the CloudStack cloud.
+	RegisterTemplate(ctx context.Context, in *RegisterTemplateRequest, opts ...grpc.CallOption) (*RegisterTemplateResponse, error)
+	// RegisterTemplateCmdByAdmin Registers an existing template into the CloudStack cloud.
+	RegisterTemplateCmdByAdmin(ctx context.Context, in *RegisterTemplateCmdByAdminRequest, opts ...grpc.CallOption) (*RegisterTemplateCmdByAdminResponse, error)
+	// RegisterVnfTemplate Registers an existing VNF template into the CloudStack cloud.
+	RegisterVnfTemplate(ctx context.Context, in *RegisterVnfTemplateRequest, opts ...grpc.CallOption) (*RegisterVnfTemplateResponse, error)
+	// RegisterVnfTemplateCmdByAdmin Registers an existing VNF template into the CloudStack cloud.
+	RegisterVnfTemplateCmdByAdmin(ctx context.Context, in *RegisterVnfTemplateCmdByAdminRequest, opts ...grpc.CallOption) (*RegisterVnfTemplateCmdByAdminResponse, error)
+	// UpdateTemplate Updates attributes of a template.
+	UpdateTemplate(ctx context.Context, in *UpdateTemplateRequest, opts ...grpc.CallOption) (*UpdateTemplateResponse, error)
 	// UpdateTemplateCmdByAdmin Updates attributes of a template.
 	UpdateTemplateCmdByAdmin(ctx context.Context, in *UpdateTemplateCmdByAdminRequest, opts ...grpc.CallOption) (*UpdateTemplateCmdByAdminResponse, error)
 	// UpdateTemplatePermissions Updates a template visibility permissions. A public template is visible to all accounts within the same domain. A private template is visible only to the owner of the template. A privileged template is a private template with account permissions added. Only accounts specified under the template permissions are visible to them.
 	UpdateTemplatePermissions(ctx context.Context, in *UpdateTemplatePermissionsRequest, opts ...grpc.CallOption) (*UpdateTemplatePermissionsResponse, error)
-	// CreateTemplate Creates a template of a virtual machine. The virtual machine must be in a STOPPED state. A template created from this command is automatically designated as a private template visible to the account that created it.
-	CreateTemplate(ctx context.Context, in *CreateTemplateRequest, opts ...grpc.CallOption) (*CreateTemplateResponse, error)
-	// RegisterTemplate Registers an existing template into the CloudStack cloud.
-	RegisterTemplate(ctx context.Context, in *RegisterTemplateRequest, opts ...grpc.CallOption) (*RegisterTemplateResponse, error)
-	// RegisterVnfTemplate Registers an existing VNF template into the CloudStack cloud.
-	RegisterVnfTemplate(ctx context.Context, in *RegisterVnfTemplateRequest, opts ...grpc.CallOption) (*RegisterVnfTemplateResponse, error)
-	// ExtractTemplate Extracts a template
-	ExtractTemplate(ctx context.Context, in *ExtractTemplateRequest, opts ...grpc.CallOption) (*ExtractTemplateResponse, error)
-	// UpdateTemplate Updates attributes of a template.
-	UpdateTemplate(ctx context.Context, in *UpdateTemplateRequest, opts ...grpc.CallOption) (*UpdateTemplateResponse, error)
-	// GetUploadParamsForTemplate upload an existing template into the CloudStack cloud.
-	GetUploadParamsForTemplate(ctx context.Context, in *GetUploadParamsForTemplateRequest, opts ...grpc.CallOption) (*GetUploadParamsForTemplateResponse, error)
-	// PrepareTemplate load template into primary storage
-	PrepareTemplate(ctx context.Context, in *PrepareTemplateRequest, opts ...grpc.CallOption) (*PrepareTemplateResponse, error)
+	// UpdateVnfTemplate Updates a template to VNF template or attributes of a VNF template.
+	UpdateVnfTemplate(ctx context.Context, in *UpdateVnfTemplateRequest, opts ...grpc.CallOption) (*UpdateVnfTemplateResponse, error)
+	// UpdateVnfTemplateCmdByAdmin Updates a template to VNF template or attributes of a VNF template.
+	UpdateVnfTemplateCmdByAdmin(ctx context.Context, in *UpdateVnfTemplateCmdByAdminRequest, opts ...grpc.CallOption) (*UpdateVnfTemplateCmdByAdminResponse, error)
 }
 
 type templateServiceClient struct {
@@ -91,50 +109,30 @@ func NewTemplateServiceClient(cc grpc.ClientConnInterface) TemplateServiceClient
 	return &templateServiceClient{cc}
 }
 
-func (c *templateServiceClient) DeleteVnfTemplate(ctx context.Context, in *DeleteVnfTemplateRequest, opts ...grpc.CallOption) (*DeleteVnfTemplateResponse, error) {
+func (c *templateServiceClient) CopyTemplate(ctx context.Context, in *CopyTemplateRequest, opts ...grpc.CallOption) (*CopyTemplateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteVnfTemplateResponse)
-	err := c.cc.Invoke(ctx, TemplateService_DeleteVnfTemplate_FullMethodName, in, out, cOpts...)
+	out := new(CopyTemplateResponse)
+	err := c.cc.Invoke(ctx, TemplateService_CopyTemplate_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *templateServiceClient) ListTemplatePermissionsCmdByAdmin(ctx context.Context, in *ListTemplatePermissionsCmdByAdminRequest, opts ...grpc.CallOption) (*ListTemplatePermissionsCmdByAdminResponse, error) {
+func (c *templateServiceClient) CopyTemplateCmdByAdmin(ctx context.Context, in *CopyTemplateCmdByAdminRequest, opts ...grpc.CallOption) (*CopyTemplateCmdByAdminResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListTemplatePermissionsCmdByAdminResponse)
-	err := c.cc.Invoke(ctx, TemplateService_ListTemplatePermissionsCmdByAdmin_FullMethodName, in, out, cOpts...)
+	out := new(CopyTemplateCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, TemplateService_CopyTemplateCmdByAdmin_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *templateServiceClient) ListVnfTemplates(ctx context.Context, in *ListVnfTemplatesRequest, opts ...grpc.CallOption) (*ListVnfTemplatesResponse, error) {
+func (c *templateServiceClient) CreateTemplate(ctx context.Context, in *CreateTemplateRequest, opts ...grpc.CallOption) (*CreateTemplateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListVnfTemplatesResponse)
-	err := c.cc.Invoke(ctx, TemplateService_ListVnfTemplates_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *templateServiceClient) UpdateVnfTemplate(ctx context.Context, in *UpdateVnfTemplateRequest, opts ...grpc.CallOption) (*UpdateVnfTemplateResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateVnfTemplateResponse)
-	err := c.cc.Invoke(ctx, TemplateService_UpdateVnfTemplate_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *templateServiceClient) ListTemplates(ctx context.Context, in *ListTemplatesRequest, opts ...grpc.CallOption) (*ListTemplatesResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListTemplatesResponse)
-	err := c.cc.Invoke(ctx, TemplateService_ListTemplates_FullMethodName, in, out, cOpts...)
+	out := new(CreateTemplateResponse)
+	err := c.cc.Invoke(ctx, TemplateService_CreateTemplate_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -151,16 +149,6 @@ func (c *templateServiceClient) CreateTemplateCmdByAdmin(ctx context.Context, in
 	return out, nil
 }
 
-func (c *templateServiceClient) CopyTemplate(ctx context.Context, in *CopyTemplateRequest, opts ...grpc.CallOption) (*CopyTemplateResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CopyTemplateResponse)
-	err := c.cc.Invoke(ctx, TemplateService_CopyTemplate_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *templateServiceClient) DeleteTemplate(ctx context.Context, in *DeleteTemplateRequest, opts ...grpc.CallOption) (*DeleteTemplateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DeleteTemplateResponse)
@@ -171,10 +159,150 @@ func (c *templateServiceClient) DeleteTemplate(ctx context.Context, in *DeleteTe
 	return out, nil
 }
 
+func (c *templateServiceClient) DeleteVnfTemplate(ctx context.Context, in *DeleteVnfTemplateRequest, opts ...grpc.CallOption) (*DeleteVnfTemplateResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteVnfTemplateResponse)
+	err := c.cc.Invoke(ctx, TemplateService_DeleteVnfTemplate_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *templateServiceClient) ExtractTemplate(ctx context.Context, in *ExtractTemplateRequest, opts ...grpc.CallOption) (*ExtractTemplateResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ExtractTemplateResponse)
+	err := c.cc.Invoke(ctx, TemplateService_ExtractTemplate_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *templateServiceClient) GetUploadParamsForTemplate(ctx context.Context, in *GetUploadParamsForTemplateRequest, opts ...grpc.CallOption) (*GetUploadParamsForTemplateResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUploadParamsForTemplateResponse)
+	err := c.cc.Invoke(ctx, TemplateService_GetUploadParamsForTemplate_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *templateServiceClient) ListTemplatePermissions(ctx context.Context, in *ListTemplatePermissionsRequest, opts ...grpc.CallOption) (*ListTemplatePermissionsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListTemplatePermissionsResponse)
 	err := c.cc.Invoke(ctx, TemplateService_ListTemplatePermissions_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *templateServiceClient) ListTemplatePermissionsCmdByAdmin(ctx context.Context, in *ListTemplatePermissionsCmdByAdminRequest, opts ...grpc.CallOption) (*ListTemplatePermissionsCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListTemplatePermissionsCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, TemplateService_ListTemplatePermissionsCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *templateServiceClient) ListTemplates(ctx context.Context, in *ListTemplatesRequest, opts ...grpc.CallOption) (*ListTemplatesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListTemplatesResponse)
+	err := c.cc.Invoke(ctx, TemplateService_ListTemplates_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *templateServiceClient) ListTemplatesCmdByAdmin(ctx context.Context, in *ListTemplatesCmdByAdminRequest, opts ...grpc.CallOption) (*ListTemplatesCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListTemplatesCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, TemplateService_ListTemplatesCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *templateServiceClient) ListVnfTemplates(ctx context.Context, in *ListVnfTemplatesRequest, opts ...grpc.CallOption) (*ListVnfTemplatesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListVnfTemplatesResponse)
+	err := c.cc.Invoke(ctx, TemplateService_ListVnfTemplates_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *templateServiceClient) ListVnfTemplatesCmdByAdmin(ctx context.Context, in *ListVnfTemplatesCmdByAdminRequest, opts ...grpc.CallOption) (*ListVnfTemplatesCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListVnfTemplatesCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, TemplateService_ListVnfTemplatesCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *templateServiceClient) PrepareTemplate(ctx context.Context, in *PrepareTemplateRequest, opts ...grpc.CallOption) (*PrepareTemplateResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(PrepareTemplateResponse)
+	err := c.cc.Invoke(ctx, TemplateService_PrepareTemplate_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *templateServiceClient) RegisterTemplate(ctx context.Context, in *RegisterTemplateRequest, opts ...grpc.CallOption) (*RegisterTemplateResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RegisterTemplateResponse)
+	err := c.cc.Invoke(ctx, TemplateService_RegisterTemplate_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *templateServiceClient) RegisterTemplateCmdByAdmin(ctx context.Context, in *RegisterTemplateCmdByAdminRequest, opts ...grpc.CallOption) (*RegisterTemplateCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RegisterTemplateCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, TemplateService_RegisterTemplateCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *templateServiceClient) RegisterVnfTemplate(ctx context.Context, in *RegisterVnfTemplateRequest, opts ...grpc.CallOption) (*RegisterVnfTemplateResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RegisterVnfTemplateResponse)
+	err := c.cc.Invoke(ctx, TemplateService_RegisterVnfTemplate_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *templateServiceClient) RegisterVnfTemplateCmdByAdmin(ctx context.Context, in *RegisterVnfTemplateCmdByAdminRequest, opts ...grpc.CallOption) (*RegisterVnfTemplateCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RegisterVnfTemplateCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, TemplateService_RegisterVnfTemplateCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *templateServiceClient) UpdateTemplate(ctx context.Context, in *UpdateTemplateRequest, opts ...grpc.CallOption) (*UpdateTemplateResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateTemplateResponse)
+	err := c.cc.Invoke(ctx, TemplateService_UpdateTemplate_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -201,70 +329,20 @@ func (c *templateServiceClient) UpdateTemplatePermissions(ctx context.Context, i
 	return out, nil
 }
 
-func (c *templateServiceClient) CreateTemplate(ctx context.Context, in *CreateTemplateRequest, opts ...grpc.CallOption) (*CreateTemplateResponse, error) {
+func (c *templateServiceClient) UpdateVnfTemplate(ctx context.Context, in *UpdateVnfTemplateRequest, opts ...grpc.CallOption) (*UpdateVnfTemplateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateTemplateResponse)
-	err := c.cc.Invoke(ctx, TemplateService_CreateTemplate_FullMethodName, in, out, cOpts...)
+	out := new(UpdateVnfTemplateResponse)
+	err := c.cc.Invoke(ctx, TemplateService_UpdateVnfTemplate_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *templateServiceClient) RegisterTemplate(ctx context.Context, in *RegisterTemplateRequest, opts ...grpc.CallOption) (*RegisterTemplateResponse, error) {
+func (c *templateServiceClient) UpdateVnfTemplateCmdByAdmin(ctx context.Context, in *UpdateVnfTemplateCmdByAdminRequest, opts ...grpc.CallOption) (*UpdateVnfTemplateCmdByAdminResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RegisterTemplateResponse)
-	err := c.cc.Invoke(ctx, TemplateService_RegisterTemplate_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *templateServiceClient) RegisterVnfTemplate(ctx context.Context, in *RegisterVnfTemplateRequest, opts ...grpc.CallOption) (*RegisterVnfTemplateResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RegisterVnfTemplateResponse)
-	err := c.cc.Invoke(ctx, TemplateService_RegisterVnfTemplate_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *templateServiceClient) ExtractTemplate(ctx context.Context, in *ExtractTemplateRequest, opts ...grpc.CallOption) (*ExtractTemplateResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ExtractTemplateResponse)
-	err := c.cc.Invoke(ctx, TemplateService_ExtractTemplate_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *templateServiceClient) UpdateTemplate(ctx context.Context, in *UpdateTemplateRequest, opts ...grpc.CallOption) (*UpdateTemplateResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateTemplateResponse)
-	err := c.cc.Invoke(ctx, TemplateService_UpdateTemplate_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *templateServiceClient) GetUploadParamsForTemplate(ctx context.Context, in *GetUploadParamsForTemplateRequest, opts ...grpc.CallOption) (*GetUploadParamsForTemplateResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetUploadParamsForTemplateResponse)
-	err := c.cc.Invoke(ctx, TemplateService_GetUploadParamsForTemplate_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *templateServiceClient) PrepareTemplate(ctx context.Context, in *PrepareTemplateRequest, opts ...grpc.CallOption) (*PrepareTemplateResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(PrepareTemplateResponse)
-	err := c.cc.Invoke(ctx, TemplateService_PrepareTemplate_FullMethodName, in, out, cOpts...)
+	out := new(UpdateVnfTemplateCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, TemplateService_UpdateVnfTemplateCmdByAdmin_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -277,42 +355,54 @@ func (c *templateServiceClient) PrepareTemplate(ctx context.Context, in *Prepare
 //
 // TemplateService provides operations for managing Templates
 type TemplateServiceServer interface {
-	// DeleteVnfTemplate Deletes a VNF template from the system. All virtual machines using the deleted template will not be affected.
-	DeleteVnfTemplate(context.Context, *DeleteVnfTemplateRequest) (*DeleteVnfTemplateResponse, error)
-	// ListTemplatePermissionsCmdByAdmin List template visibility and all accounts that have permissions to view this template.
-	ListTemplatePermissionsCmdByAdmin(context.Context, *ListTemplatePermissionsCmdByAdminRequest) (*ListTemplatePermissionsCmdByAdminResponse, error)
-	// ListVnfTemplates List all public, private, and privileged VNF templates.
-	ListVnfTemplates(context.Context, *ListVnfTemplatesRequest) (*ListVnfTemplatesResponse, error)
-	// UpdateVnfTemplate Updates a template to VNF template or attributes of a VNF template.
-	UpdateVnfTemplate(context.Context, *UpdateVnfTemplateRequest) (*UpdateVnfTemplateResponse, error)
-	// ListTemplates List all public, private, and privileged templates.
-	ListTemplates(context.Context, *ListTemplatesRequest) (*ListTemplatesResponse, error)
-	// CreateTemplateCmdByAdmin Creates a template of a virtual machine. The virtual machine must be in a STOPPED state. A template created from this command is automatically designated as a private template visible to the account that created it.
-	CreateTemplateCmdByAdmin(context.Context, *CreateTemplateCmdByAdminRequest) (*CreateTemplateCmdByAdminResponse, error)
 	// CopyTemplate Copies a template from one zone to another.
 	CopyTemplate(context.Context, *CopyTemplateRequest) (*CopyTemplateResponse, error)
+	// CopyTemplateCmdByAdmin Copies a template from one zone to another.
+	CopyTemplateCmdByAdmin(context.Context, *CopyTemplateCmdByAdminRequest) (*CopyTemplateCmdByAdminResponse, error)
+	// CreateTemplate Creates a template of a virtual machine. The virtual machine must be in a STOPPED state. A template created from this command is automatically designated as a private template visible to the account that created it.
+	CreateTemplate(context.Context, *CreateTemplateRequest) (*CreateTemplateResponse, error)
+	// CreateTemplateCmdByAdmin Creates a template of a virtual machine. The virtual machine must be in a STOPPED state. A template created from this command is automatically designated as a private template visible to the account that created it.
+	CreateTemplateCmdByAdmin(context.Context, *CreateTemplateCmdByAdminRequest) (*CreateTemplateCmdByAdminResponse, error)
 	// DeleteTemplate Deletes a template from the system. All virtual machines using the deleted template will not be affected.
 	DeleteTemplate(context.Context, *DeleteTemplateRequest) (*DeleteTemplateResponse, error)
+	// DeleteVnfTemplate Deletes a VNF template from the system. All virtual machines using the deleted template will not be affected.
+	DeleteVnfTemplate(context.Context, *DeleteVnfTemplateRequest) (*DeleteVnfTemplateResponse, error)
+	// ExtractTemplate Extracts a template
+	ExtractTemplate(context.Context, *ExtractTemplateRequest) (*ExtractTemplateResponse, error)
+	// GetUploadParamsForTemplate upload an existing template into the CloudStack cloud.
+	GetUploadParamsForTemplate(context.Context, *GetUploadParamsForTemplateRequest) (*GetUploadParamsForTemplateResponse, error)
 	// ListTemplatePermissions List template visibility and all accounts that have permissions to view this template.
 	ListTemplatePermissions(context.Context, *ListTemplatePermissionsRequest) (*ListTemplatePermissionsResponse, error)
+	// ListTemplatePermissionsCmdByAdmin List template visibility and all accounts that have permissions to view this template.
+	ListTemplatePermissionsCmdByAdmin(context.Context, *ListTemplatePermissionsCmdByAdminRequest) (*ListTemplatePermissionsCmdByAdminResponse, error)
+	// ListTemplates List all public, private, and privileged templates.
+	ListTemplates(context.Context, *ListTemplatesRequest) (*ListTemplatesResponse, error)
+	// ListTemplatesCmdByAdmin List all public, private, and privileged templates.
+	ListTemplatesCmdByAdmin(context.Context, *ListTemplatesCmdByAdminRequest) (*ListTemplatesCmdByAdminResponse, error)
+	// ListVnfTemplates List all public, private, and privileged VNF templates.
+	ListVnfTemplates(context.Context, *ListVnfTemplatesRequest) (*ListVnfTemplatesResponse, error)
+	// ListVnfTemplatesCmdByAdmin List all public, private, and privileged VNF templates.
+	ListVnfTemplatesCmdByAdmin(context.Context, *ListVnfTemplatesCmdByAdminRequest) (*ListVnfTemplatesCmdByAdminResponse, error)
+	// PrepareTemplate load template into primary storage
+	PrepareTemplate(context.Context, *PrepareTemplateRequest) (*PrepareTemplateResponse, error)
+	// RegisterTemplate Registers an existing template into the CloudStack cloud.
+	RegisterTemplate(context.Context, *RegisterTemplateRequest) (*RegisterTemplateResponse, error)
+	// RegisterTemplateCmdByAdmin Registers an existing template into the CloudStack cloud.
+	RegisterTemplateCmdByAdmin(context.Context, *RegisterTemplateCmdByAdminRequest) (*RegisterTemplateCmdByAdminResponse, error)
+	// RegisterVnfTemplate Registers an existing VNF template into the CloudStack cloud.
+	RegisterVnfTemplate(context.Context, *RegisterVnfTemplateRequest) (*RegisterVnfTemplateResponse, error)
+	// RegisterVnfTemplateCmdByAdmin Registers an existing VNF template into the CloudStack cloud.
+	RegisterVnfTemplateCmdByAdmin(context.Context, *RegisterVnfTemplateCmdByAdminRequest) (*RegisterVnfTemplateCmdByAdminResponse, error)
+	// UpdateTemplate Updates attributes of a template.
+	UpdateTemplate(context.Context, *UpdateTemplateRequest) (*UpdateTemplateResponse, error)
 	// UpdateTemplateCmdByAdmin Updates attributes of a template.
 	UpdateTemplateCmdByAdmin(context.Context, *UpdateTemplateCmdByAdminRequest) (*UpdateTemplateCmdByAdminResponse, error)
 	// UpdateTemplatePermissions Updates a template visibility permissions. A public template is visible to all accounts within the same domain. A private template is visible only to the owner of the template. A privileged template is a private template with account permissions added. Only accounts specified under the template permissions are visible to them.
 	UpdateTemplatePermissions(context.Context, *UpdateTemplatePermissionsRequest) (*UpdateTemplatePermissionsResponse, error)
-	// CreateTemplate Creates a template of a virtual machine. The virtual machine must be in a STOPPED state. A template created from this command is automatically designated as a private template visible to the account that created it.
-	CreateTemplate(context.Context, *CreateTemplateRequest) (*CreateTemplateResponse, error)
-	// RegisterTemplate Registers an existing template into the CloudStack cloud.
-	RegisterTemplate(context.Context, *RegisterTemplateRequest) (*RegisterTemplateResponse, error)
-	// RegisterVnfTemplate Registers an existing VNF template into the CloudStack cloud.
-	RegisterVnfTemplate(context.Context, *RegisterVnfTemplateRequest) (*RegisterVnfTemplateResponse, error)
-	// ExtractTemplate Extracts a template
-	ExtractTemplate(context.Context, *ExtractTemplateRequest) (*ExtractTemplateResponse, error)
-	// UpdateTemplate Updates attributes of a template.
-	UpdateTemplate(context.Context, *UpdateTemplateRequest) (*UpdateTemplateResponse, error)
-	// GetUploadParamsForTemplate upload an existing template into the CloudStack cloud.
-	GetUploadParamsForTemplate(context.Context, *GetUploadParamsForTemplateRequest) (*GetUploadParamsForTemplateResponse, error)
-	// PrepareTemplate load template into primary storage
-	PrepareTemplate(context.Context, *PrepareTemplateRequest) (*PrepareTemplateResponse, error)
+	// UpdateVnfTemplate Updates a template to VNF template or attributes of a VNF template.
+	UpdateVnfTemplate(context.Context, *UpdateVnfTemplateRequest) (*UpdateVnfTemplateResponse, error)
+	// UpdateVnfTemplateCmdByAdmin Updates a template to VNF template or attributes of a VNF template.
+	UpdateVnfTemplateCmdByAdmin(context.Context, *UpdateVnfTemplateCmdByAdminRequest) (*UpdateVnfTemplateCmdByAdminResponse, error)
 	mustEmbedUnimplementedTemplateServiceServer()
 }
 
@@ -323,32 +413,65 @@ type TemplateServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedTemplateServiceServer struct{}
 
-func (UnimplementedTemplateServiceServer) DeleteVnfTemplate(context.Context, *DeleteVnfTemplateRequest) (*DeleteVnfTemplateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteVnfTemplate not implemented")
+func (UnimplementedTemplateServiceServer) CopyTemplate(context.Context, *CopyTemplateRequest) (*CopyTemplateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CopyTemplate not implemented")
 }
-func (UnimplementedTemplateServiceServer) ListTemplatePermissionsCmdByAdmin(context.Context, *ListTemplatePermissionsCmdByAdminRequest) (*ListTemplatePermissionsCmdByAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListTemplatePermissionsCmdByAdmin not implemented")
+func (UnimplementedTemplateServiceServer) CopyTemplateCmdByAdmin(context.Context, *CopyTemplateCmdByAdminRequest) (*CopyTemplateCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CopyTemplateCmdByAdmin not implemented")
 }
-func (UnimplementedTemplateServiceServer) ListVnfTemplates(context.Context, *ListVnfTemplatesRequest) (*ListVnfTemplatesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListVnfTemplates not implemented")
-}
-func (UnimplementedTemplateServiceServer) UpdateVnfTemplate(context.Context, *UpdateVnfTemplateRequest) (*UpdateVnfTemplateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateVnfTemplate not implemented")
-}
-func (UnimplementedTemplateServiceServer) ListTemplates(context.Context, *ListTemplatesRequest) (*ListTemplatesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListTemplates not implemented")
+func (UnimplementedTemplateServiceServer) CreateTemplate(context.Context, *CreateTemplateRequest) (*CreateTemplateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateTemplate not implemented")
 }
 func (UnimplementedTemplateServiceServer) CreateTemplateCmdByAdmin(context.Context, *CreateTemplateCmdByAdminRequest) (*CreateTemplateCmdByAdminResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateTemplateCmdByAdmin not implemented")
 }
-func (UnimplementedTemplateServiceServer) CopyTemplate(context.Context, *CopyTemplateRequest) (*CopyTemplateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CopyTemplate not implemented")
-}
 func (UnimplementedTemplateServiceServer) DeleteTemplate(context.Context, *DeleteTemplateRequest) (*DeleteTemplateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteTemplate not implemented")
 }
+func (UnimplementedTemplateServiceServer) DeleteVnfTemplate(context.Context, *DeleteVnfTemplateRequest) (*DeleteVnfTemplateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteVnfTemplate not implemented")
+}
+func (UnimplementedTemplateServiceServer) ExtractTemplate(context.Context, *ExtractTemplateRequest) (*ExtractTemplateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ExtractTemplate not implemented")
+}
+func (UnimplementedTemplateServiceServer) GetUploadParamsForTemplate(context.Context, *GetUploadParamsForTemplateRequest) (*GetUploadParamsForTemplateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUploadParamsForTemplate not implemented")
+}
 func (UnimplementedTemplateServiceServer) ListTemplatePermissions(context.Context, *ListTemplatePermissionsRequest) (*ListTemplatePermissionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListTemplatePermissions not implemented")
+}
+func (UnimplementedTemplateServiceServer) ListTemplatePermissionsCmdByAdmin(context.Context, *ListTemplatePermissionsCmdByAdminRequest) (*ListTemplatePermissionsCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTemplatePermissionsCmdByAdmin not implemented")
+}
+func (UnimplementedTemplateServiceServer) ListTemplates(context.Context, *ListTemplatesRequest) (*ListTemplatesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTemplates not implemented")
+}
+func (UnimplementedTemplateServiceServer) ListTemplatesCmdByAdmin(context.Context, *ListTemplatesCmdByAdminRequest) (*ListTemplatesCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTemplatesCmdByAdmin not implemented")
+}
+func (UnimplementedTemplateServiceServer) ListVnfTemplates(context.Context, *ListVnfTemplatesRequest) (*ListVnfTemplatesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListVnfTemplates not implemented")
+}
+func (UnimplementedTemplateServiceServer) ListVnfTemplatesCmdByAdmin(context.Context, *ListVnfTemplatesCmdByAdminRequest) (*ListVnfTemplatesCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListVnfTemplatesCmdByAdmin not implemented")
+}
+func (UnimplementedTemplateServiceServer) PrepareTemplate(context.Context, *PrepareTemplateRequest) (*PrepareTemplateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PrepareTemplate not implemented")
+}
+func (UnimplementedTemplateServiceServer) RegisterTemplate(context.Context, *RegisterTemplateRequest) (*RegisterTemplateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RegisterTemplate not implemented")
+}
+func (UnimplementedTemplateServiceServer) RegisterTemplateCmdByAdmin(context.Context, *RegisterTemplateCmdByAdminRequest) (*RegisterTemplateCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RegisterTemplateCmdByAdmin not implemented")
+}
+func (UnimplementedTemplateServiceServer) RegisterVnfTemplate(context.Context, *RegisterVnfTemplateRequest) (*RegisterVnfTemplateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RegisterVnfTemplate not implemented")
+}
+func (UnimplementedTemplateServiceServer) RegisterVnfTemplateCmdByAdmin(context.Context, *RegisterVnfTemplateCmdByAdminRequest) (*RegisterVnfTemplateCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RegisterVnfTemplateCmdByAdmin not implemented")
+}
+func (UnimplementedTemplateServiceServer) UpdateTemplate(context.Context, *UpdateTemplateRequest) (*UpdateTemplateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateTemplate not implemented")
 }
 func (UnimplementedTemplateServiceServer) UpdateTemplateCmdByAdmin(context.Context, *UpdateTemplateCmdByAdminRequest) (*UpdateTemplateCmdByAdminResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateTemplateCmdByAdmin not implemented")
@@ -356,26 +479,11 @@ func (UnimplementedTemplateServiceServer) UpdateTemplateCmdByAdmin(context.Conte
 func (UnimplementedTemplateServiceServer) UpdateTemplatePermissions(context.Context, *UpdateTemplatePermissionsRequest) (*UpdateTemplatePermissionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateTemplatePermissions not implemented")
 }
-func (UnimplementedTemplateServiceServer) CreateTemplate(context.Context, *CreateTemplateRequest) (*CreateTemplateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateTemplate not implemented")
+func (UnimplementedTemplateServiceServer) UpdateVnfTemplate(context.Context, *UpdateVnfTemplateRequest) (*UpdateVnfTemplateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateVnfTemplate not implemented")
 }
-func (UnimplementedTemplateServiceServer) RegisterTemplate(context.Context, *RegisterTemplateRequest) (*RegisterTemplateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RegisterTemplate not implemented")
-}
-func (UnimplementedTemplateServiceServer) RegisterVnfTemplate(context.Context, *RegisterVnfTemplateRequest) (*RegisterVnfTemplateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RegisterVnfTemplate not implemented")
-}
-func (UnimplementedTemplateServiceServer) ExtractTemplate(context.Context, *ExtractTemplateRequest) (*ExtractTemplateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ExtractTemplate not implemented")
-}
-func (UnimplementedTemplateServiceServer) UpdateTemplate(context.Context, *UpdateTemplateRequest) (*UpdateTemplateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateTemplate not implemented")
-}
-func (UnimplementedTemplateServiceServer) GetUploadParamsForTemplate(context.Context, *GetUploadParamsForTemplateRequest) (*GetUploadParamsForTemplateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetUploadParamsForTemplate not implemented")
-}
-func (UnimplementedTemplateServiceServer) PrepareTemplate(context.Context, *PrepareTemplateRequest) (*PrepareTemplateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PrepareTemplate not implemented")
+func (UnimplementedTemplateServiceServer) UpdateVnfTemplateCmdByAdmin(context.Context, *UpdateVnfTemplateCmdByAdminRequest) (*UpdateVnfTemplateCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateVnfTemplateCmdByAdmin not implemented")
 }
 func (UnimplementedTemplateServiceServer) mustEmbedUnimplementedTemplateServiceServer() {}
 func (UnimplementedTemplateServiceServer) testEmbeddedByValue()                         {}
@@ -398,92 +506,56 @@ func RegisterTemplateServiceServer(s grpc.ServiceRegistrar, srv TemplateServiceS
 	s.RegisterService(&TemplateService_ServiceDesc, srv)
 }
 
-func _TemplateService_DeleteVnfTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteVnfTemplateRequest)
+func _TemplateService_CopyTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CopyTemplateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TemplateServiceServer).DeleteVnfTemplate(ctx, in)
+		return srv.(TemplateServiceServer).CopyTemplate(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: TemplateService_DeleteVnfTemplate_FullMethodName,
+		FullMethod: TemplateService_CopyTemplate_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TemplateServiceServer).DeleteVnfTemplate(ctx, req.(*DeleteVnfTemplateRequest))
+		return srv.(TemplateServiceServer).CopyTemplate(ctx, req.(*CopyTemplateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _TemplateService_ListTemplatePermissionsCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListTemplatePermissionsCmdByAdminRequest)
+func _TemplateService_CopyTemplateCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CopyTemplateCmdByAdminRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TemplateServiceServer).ListTemplatePermissionsCmdByAdmin(ctx, in)
+		return srv.(TemplateServiceServer).CopyTemplateCmdByAdmin(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: TemplateService_ListTemplatePermissionsCmdByAdmin_FullMethodName,
+		FullMethod: TemplateService_CopyTemplateCmdByAdmin_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TemplateServiceServer).ListTemplatePermissionsCmdByAdmin(ctx, req.(*ListTemplatePermissionsCmdByAdminRequest))
+		return srv.(TemplateServiceServer).CopyTemplateCmdByAdmin(ctx, req.(*CopyTemplateCmdByAdminRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _TemplateService_ListVnfTemplates_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListVnfTemplatesRequest)
+func _TemplateService_CreateTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateTemplateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TemplateServiceServer).ListVnfTemplates(ctx, in)
+		return srv.(TemplateServiceServer).CreateTemplate(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: TemplateService_ListVnfTemplates_FullMethodName,
+		FullMethod: TemplateService_CreateTemplate_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TemplateServiceServer).ListVnfTemplates(ctx, req.(*ListVnfTemplatesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _TemplateService_UpdateVnfTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateVnfTemplateRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TemplateServiceServer).UpdateVnfTemplate(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TemplateService_UpdateVnfTemplate_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TemplateServiceServer).UpdateVnfTemplate(ctx, req.(*UpdateVnfTemplateRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _TemplateService_ListTemplates_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListTemplatesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TemplateServiceServer).ListTemplates(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TemplateService_ListTemplates_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TemplateServiceServer).ListTemplates(ctx, req.(*ListTemplatesRequest))
+		return srv.(TemplateServiceServer).CreateTemplate(ctx, req.(*CreateTemplateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -506,24 +578,6 @@ func _TemplateService_CreateTemplateCmdByAdmin_Handler(srv interface{}, ctx cont
 	return interceptor(ctx, in, info, handler)
 }
 
-func _TemplateService_CopyTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CopyTemplateRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TemplateServiceServer).CopyTemplate(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TemplateService_CopyTemplate_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TemplateServiceServer).CopyTemplate(ctx, req.(*CopyTemplateRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _TemplateService_DeleteTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteTemplateRequest)
 	if err := dec(in); err != nil {
@@ -542,6 +596,60 @@ func _TemplateService_DeleteTemplate_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _TemplateService_DeleteVnfTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteVnfTemplateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TemplateServiceServer).DeleteVnfTemplate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TemplateService_DeleteVnfTemplate_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TemplateServiceServer).DeleteVnfTemplate(ctx, req.(*DeleteVnfTemplateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TemplateService_ExtractTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ExtractTemplateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TemplateServiceServer).ExtractTemplate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TemplateService_ExtractTemplate_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TemplateServiceServer).ExtractTemplate(ctx, req.(*ExtractTemplateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TemplateService_GetUploadParamsForTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUploadParamsForTemplateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TemplateServiceServer).GetUploadParamsForTemplate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TemplateService_GetUploadParamsForTemplate_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TemplateServiceServer).GetUploadParamsForTemplate(ctx, req.(*GetUploadParamsForTemplateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _TemplateService_ListTemplatePermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListTemplatePermissionsRequest)
 	if err := dec(in); err != nil {
@@ -556,6 +664,204 @@ func _TemplateService_ListTemplatePermissions_Handler(srv interface{}, ctx conte
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TemplateServiceServer).ListTemplatePermissions(ctx, req.(*ListTemplatePermissionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TemplateService_ListTemplatePermissionsCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListTemplatePermissionsCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TemplateServiceServer).ListTemplatePermissionsCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TemplateService_ListTemplatePermissionsCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TemplateServiceServer).ListTemplatePermissionsCmdByAdmin(ctx, req.(*ListTemplatePermissionsCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TemplateService_ListTemplates_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListTemplatesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TemplateServiceServer).ListTemplates(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TemplateService_ListTemplates_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TemplateServiceServer).ListTemplates(ctx, req.(*ListTemplatesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TemplateService_ListTemplatesCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListTemplatesCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TemplateServiceServer).ListTemplatesCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TemplateService_ListTemplatesCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TemplateServiceServer).ListTemplatesCmdByAdmin(ctx, req.(*ListTemplatesCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TemplateService_ListVnfTemplates_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListVnfTemplatesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TemplateServiceServer).ListVnfTemplates(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TemplateService_ListVnfTemplates_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TemplateServiceServer).ListVnfTemplates(ctx, req.(*ListVnfTemplatesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TemplateService_ListVnfTemplatesCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListVnfTemplatesCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TemplateServiceServer).ListVnfTemplatesCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TemplateService_ListVnfTemplatesCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TemplateServiceServer).ListVnfTemplatesCmdByAdmin(ctx, req.(*ListVnfTemplatesCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TemplateService_PrepareTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PrepareTemplateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TemplateServiceServer).PrepareTemplate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TemplateService_PrepareTemplate_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TemplateServiceServer).PrepareTemplate(ctx, req.(*PrepareTemplateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TemplateService_RegisterTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RegisterTemplateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TemplateServiceServer).RegisterTemplate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TemplateService_RegisterTemplate_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TemplateServiceServer).RegisterTemplate(ctx, req.(*RegisterTemplateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TemplateService_RegisterTemplateCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RegisterTemplateCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TemplateServiceServer).RegisterTemplateCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TemplateService_RegisterTemplateCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TemplateServiceServer).RegisterTemplateCmdByAdmin(ctx, req.(*RegisterTemplateCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TemplateService_RegisterVnfTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RegisterVnfTemplateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TemplateServiceServer).RegisterVnfTemplate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TemplateService_RegisterVnfTemplate_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TemplateServiceServer).RegisterVnfTemplate(ctx, req.(*RegisterVnfTemplateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TemplateService_RegisterVnfTemplateCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RegisterVnfTemplateCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TemplateServiceServer).RegisterVnfTemplateCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TemplateService_RegisterVnfTemplateCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TemplateServiceServer).RegisterVnfTemplateCmdByAdmin(ctx, req.(*RegisterVnfTemplateCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TemplateService_UpdateTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateTemplateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TemplateServiceServer).UpdateTemplate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TemplateService_UpdateTemplate_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TemplateServiceServer).UpdateTemplate(ctx, req.(*UpdateTemplateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -596,128 +902,38 @@ func _TemplateService_UpdateTemplatePermissions_Handler(srv interface{}, ctx con
 	return interceptor(ctx, in, info, handler)
 }
 
-func _TemplateService_CreateTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateTemplateRequest)
+func _TemplateService_UpdateVnfTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateVnfTemplateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TemplateServiceServer).CreateTemplate(ctx, in)
+		return srv.(TemplateServiceServer).UpdateVnfTemplate(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: TemplateService_CreateTemplate_FullMethodName,
+		FullMethod: TemplateService_UpdateVnfTemplate_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TemplateServiceServer).CreateTemplate(ctx, req.(*CreateTemplateRequest))
+		return srv.(TemplateServiceServer).UpdateVnfTemplate(ctx, req.(*UpdateVnfTemplateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _TemplateService_RegisterTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RegisterTemplateRequest)
+func _TemplateService_UpdateVnfTemplateCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateVnfTemplateCmdByAdminRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TemplateServiceServer).RegisterTemplate(ctx, in)
+		return srv.(TemplateServiceServer).UpdateVnfTemplateCmdByAdmin(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: TemplateService_RegisterTemplate_FullMethodName,
+		FullMethod: TemplateService_UpdateVnfTemplateCmdByAdmin_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TemplateServiceServer).RegisterTemplate(ctx, req.(*RegisterTemplateRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _TemplateService_RegisterVnfTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RegisterVnfTemplateRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TemplateServiceServer).RegisterVnfTemplate(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TemplateService_RegisterVnfTemplate_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TemplateServiceServer).RegisterVnfTemplate(ctx, req.(*RegisterVnfTemplateRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _TemplateService_ExtractTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ExtractTemplateRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TemplateServiceServer).ExtractTemplate(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TemplateService_ExtractTemplate_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TemplateServiceServer).ExtractTemplate(ctx, req.(*ExtractTemplateRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _TemplateService_UpdateTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateTemplateRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TemplateServiceServer).UpdateTemplate(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TemplateService_UpdateTemplate_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TemplateServiceServer).UpdateTemplate(ctx, req.(*UpdateTemplateRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _TemplateService_GetUploadParamsForTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetUploadParamsForTemplateRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TemplateServiceServer).GetUploadParamsForTemplate(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TemplateService_GetUploadParamsForTemplate_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TemplateServiceServer).GetUploadParamsForTemplate(ctx, req.(*GetUploadParamsForTemplateRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _TemplateService_PrepareTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PrepareTemplateRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TemplateServiceServer).PrepareTemplate(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TemplateService_PrepareTemplate_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TemplateServiceServer).PrepareTemplate(ctx, req.(*PrepareTemplateRequest))
+		return srv.(TemplateServiceServer).UpdateVnfTemplateCmdByAdmin(ctx, req.(*UpdateVnfTemplateCmdByAdminRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -730,40 +946,84 @@ var TemplateService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*TemplateServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "DeleteVnfTemplate",
-			Handler:    _TemplateService_DeleteVnfTemplate_Handler,
+			MethodName: "CopyTemplate",
+			Handler:    _TemplateService_CopyTemplate_Handler,
 		},
 		{
-			MethodName: "ListTemplatePermissionsCmdByAdmin",
-			Handler:    _TemplateService_ListTemplatePermissionsCmdByAdmin_Handler,
+			MethodName: "CopyTemplateCmdByAdmin",
+			Handler:    _TemplateService_CopyTemplateCmdByAdmin_Handler,
 		},
 		{
-			MethodName: "ListVnfTemplates",
-			Handler:    _TemplateService_ListVnfTemplates_Handler,
-		},
-		{
-			MethodName: "UpdateVnfTemplate",
-			Handler:    _TemplateService_UpdateVnfTemplate_Handler,
-		},
-		{
-			MethodName: "ListTemplates",
-			Handler:    _TemplateService_ListTemplates_Handler,
+			MethodName: "CreateTemplate",
+			Handler:    _TemplateService_CreateTemplate_Handler,
 		},
 		{
 			MethodName: "CreateTemplateCmdByAdmin",
 			Handler:    _TemplateService_CreateTemplateCmdByAdmin_Handler,
 		},
 		{
-			MethodName: "CopyTemplate",
-			Handler:    _TemplateService_CopyTemplate_Handler,
-		},
-		{
 			MethodName: "DeleteTemplate",
 			Handler:    _TemplateService_DeleteTemplate_Handler,
 		},
 		{
+			MethodName: "DeleteVnfTemplate",
+			Handler:    _TemplateService_DeleteVnfTemplate_Handler,
+		},
+		{
+			MethodName: "ExtractTemplate",
+			Handler:    _TemplateService_ExtractTemplate_Handler,
+		},
+		{
+			MethodName: "GetUploadParamsForTemplate",
+			Handler:    _TemplateService_GetUploadParamsForTemplate_Handler,
+		},
+		{
 			MethodName: "ListTemplatePermissions",
 			Handler:    _TemplateService_ListTemplatePermissions_Handler,
+		},
+		{
+			MethodName: "ListTemplatePermissionsCmdByAdmin",
+			Handler:    _TemplateService_ListTemplatePermissionsCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "ListTemplates",
+			Handler:    _TemplateService_ListTemplates_Handler,
+		},
+		{
+			MethodName: "ListTemplatesCmdByAdmin",
+			Handler:    _TemplateService_ListTemplatesCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "ListVnfTemplates",
+			Handler:    _TemplateService_ListVnfTemplates_Handler,
+		},
+		{
+			MethodName: "ListVnfTemplatesCmdByAdmin",
+			Handler:    _TemplateService_ListVnfTemplatesCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "PrepareTemplate",
+			Handler:    _TemplateService_PrepareTemplate_Handler,
+		},
+		{
+			MethodName: "RegisterTemplate",
+			Handler:    _TemplateService_RegisterTemplate_Handler,
+		},
+		{
+			MethodName: "RegisterTemplateCmdByAdmin",
+			Handler:    _TemplateService_RegisterTemplateCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "RegisterVnfTemplate",
+			Handler:    _TemplateService_RegisterVnfTemplate_Handler,
+		},
+		{
+			MethodName: "RegisterVnfTemplateCmdByAdmin",
+			Handler:    _TemplateService_RegisterVnfTemplateCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "UpdateTemplate",
+			Handler:    _TemplateService_UpdateTemplate_Handler,
 		},
 		{
 			MethodName: "UpdateTemplateCmdByAdmin",
@@ -774,32 +1034,12 @@ var TemplateService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _TemplateService_UpdateTemplatePermissions_Handler,
 		},
 		{
-			MethodName: "CreateTemplate",
-			Handler:    _TemplateService_CreateTemplate_Handler,
+			MethodName: "UpdateVnfTemplate",
+			Handler:    _TemplateService_UpdateVnfTemplate_Handler,
 		},
 		{
-			MethodName: "RegisterTemplate",
-			Handler:    _TemplateService_RegisterTemplate_Handler,
-		},
-		{
-			MethodName: "RegisterVnfTemplate",
-			Handler:    _TemplateService_RegisterVnfTemplate_Handler,
-		},
-		{
-			MethodName: "ExtractTemplate",
-			Handler:    _TemplateService_ExtractTemplate_Handler,
-		},
-		{
-			MethodName: "UpdateTemplate",
-			Handler:    _TemplateService_UpdateTemplate_Handler,
-		},
-		{
-			MethodName: "GetUploadParamsForTemplate",
-			Handler:    _TemplateService_GetUploadParamsForTemplate_Handler,
-		},
-		{
-			MethodName: "PrepareTemplate",
-			Handler:    _TemplateService_PrepareTemplate_Handler,
+			MethodName: "UpdateVnfTemplateCmdByAdmin",
+			Handler:    _TemplateService_UpdateVnfTemplateCmdByAdmin_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

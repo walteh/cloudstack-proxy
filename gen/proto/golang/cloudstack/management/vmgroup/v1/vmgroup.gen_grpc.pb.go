@@ -19,10 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	VmgroupService_DeleteVMGroup_FullMethodName = "/cloudstack.management.vmgroup.v1.VmgroupService/DeleteVMGroup"
-	VmgroupService_UpdateVMGroup_FullMethodName = "/cloudstack.management.vmgroup.v1.VmgroupService/UpdateVMGroup"
 	VmgroupService_CreateVMGroup_FullMethodName = "/cloudstack.management.vmgroup.v1.VmgroupService/CreateVMGroup"
+	VmgroupService_DeleteVMGroup_FullMethodName = "/cloudstack.management.vmgroup.v1.VmgroupService/DeleteVMGroup"
 	VmgroupService_ListVMGroups_FullMethodName  = "/cloudstack.management.vmgroup.v1.VmgroupService/ListVMGroups"
+	VmgroupService_UpdateVMGroup_FullMethodName = "/cloudstack.management.vmgroup.v1.VmgroupService/UpdateVMGroup"
 )
 
 // VmgroupServiceClient is the client API for VmgroupService service.
@@ -31,14 +31,14 @@ const (
 //
 // VmgroupService provides operations for managing Vmgroups
 type VmgroupServiceClient interface {
-	// DeleteVMGroup Deletes a vm group
-	DeleteVMGroup(ctx context.Context, in *DeleteVMGroupRequest, opts ...grpc.CallOption) (*DeleteVMGroupResponse, error)
-	// UpdateVMGroup Updates a vm group
-	UpdateVMGroup(ctx context.Context, in *UpdateVMGroupRequest, opts ...grpc.CallOption) (*UpdateVMGroupResponse, error)
 	// CreateVMGroup Creates a vm group
 	CreateVMGroup(ctx context.Context, in *CreateVMGroupRequest, opts ...grpc.CallOption) (*CreateVMGroupResponse, error)
+	// DeleteVMGroup Deletes a vm group
+	DeleteVMGroup(ctx context.Context, in *DeleteVMGroupRequest, opts ...grpc.CallOption) (*DeleteVMGroupResponse, error)
 	// ListVMGroups Lists vm groups
 	ListVMGroups(ctx context.Context, in *ListVMGroupsRequest, opts ...grpc.CallOption) (*ListVMGroupsResponse, error)
+	// UpdateVMGroup Updates a vm group
+	UpdateVMGroup(ctx context.Context, in *UpdateVMGroupRequest, opts ...grpc.CallOption) (*UpdateVMGroupResponse, error)
 }
 
 type vmgroupServiceClient struct {
@@ -49,30 +49,20 @@ func NewVmgroupServiceClient(cc grpc.ClientConnInterface) VmgroupServiceClient {
 	return &vmgroupServiceClient{cc}
 }
 
-func (c *vmgroupServiceClient) DeleteVMGroup(ctx context.Context, in *DeleteVMGroupRequest, opts ...grpc.CallOption) (*DeleteVMGroupResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteVMGroupResponse)
-	err := c.cc.Invoke(ctx, VmgroupService_DeleteVMGroup_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmgroupServiceClient) UpdateVMGroup(ctx context.Context, in *UpdateVMGroupRequest, opts ...grpc.CallOption) (*UpdateVMGroupResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateVMGroupResponse)
-	err := c.cc.Invoke(ctx, VmgroupService_UpdateVMGroup_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *vmgroupServiceClient) CreateVMGroup(ctx context.Context, in *CreateVMGroupRequest, opts ...grpc.CallOption) (*CreateVMGroupResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreateVMGroupResponse)
 	err := c.cc.Invoke(ctx, VmgroupService_CreateVMGroup_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmgroupServiceClient) DeleteVMGroup(ctx context.Context, in *DeleteVMGroupRequest, opts ...grpc.CallOption) (*DeleteVMGroupResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteVMGroupResponse)
+	err := c.cc.Invoke(ctx, VmgroupService_DeleteVMGroup_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -89,20 +79,30 @@ func (c *vmgroupServiceClient) ListVMGroups(ctx context.Context, in *ListVMGroup
 	return out, nil
 }
 
+func (c *vmgroupServiceClient) UpdateVMGroup(ctx context.Context, in *UpdateVMGroupRequest, opts ...grpc.CallOption) (*UpdateVMGroupResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateVMGroupResponse)
+	err := c.cc.Invoke(ctx, VmgroupService_UpdateVMGroup_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // VmgroupServiceServer is the server API for VmgroupService service.
 // All implementations must embed UnimplementedVmgroupServiceServer
 // for forward compatibility.
 //
 // VmgroupService provides operations for managing Vmgroups
 type VmgroupServiceServer interface {
-	// DeleteVMGroup Deletes a vm group
-	DeleteVMGroup(context.Context, *DeleteVMGroupRequest) (*DeleteVMGroupResponse, error)
-	// UpdateVMGroup Updates a vm group
-	UpdateVMGroup(context.Context, *UpdateVMGroupRequest) (*UpdateVMGroupResponse, error)
 	// CreateVMGroup Creates a vm group
 	CreateVMGroup(context.Context, *CreateVMGroupRequest) (*CreateVMGroupResponse, error)
+	// DeleteVMGroup Deletes a vm group
+	DeleteVMGroup(context.Context, *DeleteVMGroupRequest) (*DeleteVMGroupResponse, error)
 	// ListVMGroups Lists vm groups
 	ListVMGroups(context.Context, *ListVMGroupsRequest) (*ListVMGroupsResponse, error)
+	// UpdateVMGroup Updates a vm group
+	UpdateVMGroup(context.Context, *UpdateVMGroupRequest) (*UpdateVMGroupResponse, error)
 	mustEmbedUnimplementedVmgroupServiceServer()
 }
 
@@ -113,17 +113,17 @@ type VmgroupServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedVmgroupServiceServer struct{}
 
-func (UnimplementedVmgroupServiceServer) DeleteVMGroup(context.Context, *DeleteVMGroupRequest) (*DeleteVMGroupResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteVMGroup not implemented")
-}
-func (UnimplementedVmgroupServiceServer) UpdateVMGroup(context.Context, *UpdateVMGroupRequest) (*UpdateVMGroupResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateVMGroup not implemented")
-}
 func (UnimplementedVmgroupServiceServer) CreateVMGroup(context.Context, *CreateVMGroupRequest) (*CreateVMGroupResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateVMGroup not implemented")
 }
+func (UnimplementedVmgroupServiceServer) DeleteVMGroup(context.Context, *DeleteVMGroupRequest) (*DeleteVMGroupResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteVMGroup not implemented")
+}
 func (UnimplementedVmgroupServiceServer) ListVMGroups(context.Context, *ListVMGroupsRequest) (*ListVMGroupsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListVMGroups not implemented")
+}
+func (UnimplementedVmgroupServiceServer) UpdateVMGroup(context.Context, *UpdateVMGroupRequest) (*UpdateVMGroupResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateVMGroup not implemented")
 }
 func (UnimplementedVmgroupServiceServer) mustEmbedUnimplementedVmgroupServiceServer() {}
 func (UnimplementedVmgroupServiceServer) testEmbeddedByValue()                        {}
@@ -146,42 +146,6 @@ func RegisterVmgroupServiceServer(s grpc.ServiceRegistrar, srv VmgroupServiceSer
 	s.RegisterService(&VmgroupService_ServiceDesc, srv)
 }
 
-func _VmgroupService_DeleteVMGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteVMGroupRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmgroupServiceServer).DeleteVMGroup(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmgroupService_DeleteVMGroup_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmgroupServiceServer).DeleteVMGroup(ctx, req.(*DeleteVMGroupRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmgroupService_UpdateVMGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateVMGroupRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmgroupServiceServer).UpdateVMGroup(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmgroupService_UpdateVMGroup_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmgroupServiceServer).UpdateVMGroup(ctx, req.(*UpdateVMGroupRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _VmgroupService_CreateVMGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateVMGroupRequest)
 	if err := dec(in); err != nil {
@@ -196,6 +160,24 @@ func _VmgroupService_CreateVMGroup_Handler(srv interface{}, ctx context.Context,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(VmgroupServiceServer).CreateVMGroup(ctx, req.(*CreateVMGroupRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmgroupService_DeleteVMGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteVMGroupRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmgroupServiceServer).DeleteVMGroup(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmgroupService_DeleteVMGroup_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmgroupServiceServer).DeleteVMGroup(ctx, req.(*DeleteVMGroupRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -218,6 +200,24 @@ func _VmgroupService_ListVMGroups_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _VmgroupService_UpdateVMGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateVMGroupRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmgroupServiceServer).UpdateVMGroup(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmgroupService_UpdateVMGroup_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmgroupServiceServer).UpdateVMGroup(ctx, req.(*UpdateVMGroupRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // VmgroupService_ServiceDesc is the grpc.ServiceDesc for VmgroupService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -226,20 +226,20 @@ var VmgroupService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*VmgroupServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "DeleteVMGroup",
-			Handler:    _VmgroupService_DeleteVMGroup_Handler,
-		},
-		{
-			MethodName: "UpdateVMGroup",
-			Handler:    _VmgroupService_UpdateVMGroup_Handler,
-		},
-		{
 			MethodName: "CreateVMGroup",
 			Handler:    _VmgroupService_CreateVMGroup_Handler,
 		},
 		{
+			MethodName: "DeleteVMGroup",
+			Handler:    _VmgroupService_DeleteVMGroup_Handler,
+		},
+		{
 			MethodName: "ListVMGroups",
 			Handler:    _VmgroupService_ListVMGroups_Handler,
+		},
+		{
+			MethodName: "UpdateVMGroup",
+			Handler:    _VmgroupService_UpdateVMGroup_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

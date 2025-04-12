@@ -77,133 +77,6 @@ func (RulePermissionType) EnumDescriptor() ([]byte, []int) {
 	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{0}
 }
 
-// CreateRolePermissionRequest represents the parameters for adds an api permission to a role
-type CreateRolePermissionRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the role
-	RoleId *int64 `protobuf:"varint,1,opt,name=role_id,json=roleId" json:"role_id,omitempty"`
-	// The API name or wildcard rule such as list*
-	Rule *string `protobuf:"bytes,2,opt,name=rule" json:"rule,omitempty"`
-	// The rule permission, allow or deny. Default: deny.
-	Permission *string `protobuf:"bytes,3,opt,name=permission" json:"permission,omitempty"`
-	// The description of the role permission
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateRolePermissionRequest) Reset() {
-	*x = CreateRolePermissionRequest{}
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateRolePermissionRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateRolePermissionRequest) ProtoMessage() {}
-
-func (x *CreateRolePermissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateRolePermissionRequest.ProtoReflect.Descriptor instead.
-func (*CreateRolePermissionRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *CreateRolePermissionRequest) GetRoleId() int64 {
-	if x != nil && x.RoleId != nil {
-		return *x.RoleId
-	}
-	return 0
-}
-
-func (x *CreateRolePermissionRequest) GetRule() string {
-	if x != nil && x.Rule != nil {
-		return *x.Rule
-	}
-	return ""
-}
-
-func (x *CreateRolePermissionRequest) GetPermission() string {
-	if x != nil && x.Permission != nil {
-		return *x.Permission
-	}
-	return ""
-}
-
-func (x *CreateRolePermissionRequest) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *CreateRolePermissionRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateRolePermissionResponse represents the response from adds an api permission to a role
-type CreateRolePermissionResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateRolePermissionResponse) Reset() {
-	*x = CreateRolePermissionResponse{}
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateRolePermissionResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateRolePermissionResponse) ProtoMessage() {}
-
-func (x *CreateRolePermissionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateRolePermissionResponse.ProtoReflect.Descriptor instead.
-func (*CreateRolePermissionResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *CreateRolePermissionResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
 // CreateRoleRequest represents the parameters for creates a role
 type CreateRoleRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -224,7 +97,7 @@ type CreateRoleRequest struct {
 
 func (x *CreateRoleRequest) Reset() {
 	*x = CreateRoleRequest{}
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -236,7 +109,7 @@ func (x *CreateRoleRequest) String() string {
 func (*CreateRoleRequest) ProtoMessage() {}
 
 func (x *CreateRoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -249,7 +122,7 @@ func (x *CreateRoleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateRoleRequest.ProtoReflect.Descriptor instead.
 func (*CreateRoleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{2}
+	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *CreateRoleRequest) GetRoleName() string {
@@ -305,7 +178,7 @@ type CreateRoleResponse struct {
 
 func (x *CreateRoleResponse) Reset() {
 	*x = CreateRoleResponse{}
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -317,7 +190,7 @@ func (x *CreateRoleResponse) String() string {
 func (*CreateRoleResponse) ProtoMessage() {}
 
 func (x *CreateRoleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -330,7 +203,7 @@ func (x *CreateRoleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateRoleResponse.ProtoReflect.Descriptor instead.
 func (*CreateRoleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{3}
+	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *CreateRoleResponse) GetResult() *Result {
@@ -340,137 +213,37 @@ func (x *CreateRoleResponse) GetResult() *Result {
 	return nil
 }
 
-// DeleteRolePermissionRequest represents the parameters for deletes a role permission
-type DeleteRolePermissionRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the role permission
-	RolePermissionId *int64 `protobuf:"varint,1,opt,name=role_permission_id,json=rolePermissionId" json:"role_permission_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteRolePermissionRequest) Reset() {
-	*x = DeleteRolePermissionRequest{}
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteRolePermissionRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteRolePermissionRequest) ProtoMessage() {}
-
-func (x *DeleteRolePermissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteRolePermissionRequest.ProtoReflect.Descriptor instead.
-func (*DeleteRolePermissionRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *DeleteRolePermissionRequest) GetRolePermissionId() int64 {
-	if x != nil && x.RolePermissionId != nil {
-		return *x.RolePermissionId
-	}
-	return 0
-}
-
-func (x *DeleteRolePermissionRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteRolePermissionResponse represents the response from deletes a role permission
-type DeleteRolePermissionResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteRolePermissionResponse) Reset() {
-	*x = DeleteRolePermissionResponse{}
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteRolePermissionResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteRolePermissionResponse) ProtoMessage() {}
-
-func (x *DeleteRolePermissionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteRolePermissionResponse.ProtoReflect.Descriptor instead.
-func (*DeleteRolePermissionResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *DeleteRolePermissionResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateRolePermissionRequest represents the parameters for updates a role permission order
-type UpdateRolePermissionRequest struct {
+// CreateRolePermissionRequest represents the parameters for adds an api permission to a role
+type CreateRolePermissionRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of the role
 	RoleId *int64 `protobuf:"varint,1,opt,name=role_id,json=roleId" json:"role_id,omitempty"`
-	// The parent role permission uuid, use 0 to move this rule at the top of the list
-	RulePermissionOrder []string `protobuf:"bytes,2,rep,name=rule_permission_order,json=rulePermissionOrder" json:"rule_permission_order,omitempty"`
-	// Role permission rule id
-	RuleId *int64 `protobuf:"varint,3,opt,name=rule_id,json=ruleId" json:"rule_id,omitempty"`
-	// Rule permission, can be: allow or deny
-	RulePermission *string `protobuf:"bytes,4,opt,name=rule_permission,json=rulePermission" json:"rule_permission,omitempty"`
+	// The API name or wildcard rule such as list*
+	Rule *string `protobuf:"bytes,2,opt,name=rule" json:"rule,omitempty"`
+	// The rule permission, allow or deny. Default: deny.
+	Permission *string `protobuf:"bytes,3,opt,name=permission" json:"permission,omitempty"`
+	// The description of the role permission
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
 	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateRolePermissionRequest) Reset() {
-	*x = UpdateRolePermissionRequest{}
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[6]
+func (x *CreateRolePermissionRequest) Reset() {
+	*x = CreateRolePermissionRequest{}
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateRolePermissionRequest) String() string {
+func (x *CreateRolePermissionRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateRolePermissionRequest) ProtoMessage() {}
+func (*CreateRolePermissionRequest) ProtoMessage() {}
 
-func (x *UpdateRolePermissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[6]
+func (x *CreateRolePermissionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -481,48 +254,48 @@ func (x *UpdateRolePermissionRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateRolePermissionRequest.ProtoReflect.Descriptor instead.
-func (*UpdateRolePermissionRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{6}
+// Deprecated: Use CreateRolePermissionRequest.ProtoReflect.Descriptor instead.
+func (*CreateRolePermissionRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *UpdateRolePermissionRequest) GetRoleId() int64 {
+func (x *CreateRolePermissionRequest) GetRoleId() int64 {
 	if x != nil && x.RoleId != nil {
 		return *x.RoleId
 	}
 	return 0
 }
 
-func (x *UpdateRolePermissionRequest) GetRulePermissionOrder() []string {
-	if x != nil {
-		return x.RulePermissionOrder
-	}
-	return nil
-}
-
-func (x *UpdateRolePermissionRequest) GetRuleId() int64 {
-	if x != nil && x.RuleId != nil {
-		return *x.RuleId
-	}
-	return 0
-}
-
-func (x *UpdateRolePermissionRequest) GetRulePermission() string {
-	if x != nil && x.RulePermission != nil {
-		return *x.RulePermission
+func (x *CreateRolePermissionRequest) GetRule() string {
+	if x != nil && x.Rule != nil {
+		return *x.Rule
 	}
 	return ""
 }
 
-func (x *UpdateRolePermissionRequest) GetResponseType() string {
+func (x *CreateRolePermissionRequest) GetPermission() string {
+	if x != nil && x.Permission != nil {
+		return *x.Permission
+	}
+	return ""
+}
+
+func (x *CreateRolePermissionRequest) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *CreateRolePermissionRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// UpdateRolePermissionResponse represents the response from updates a role permission order
-type UpdateRolePermissionResponse struct {
+// CreateRolePermissionResponse represents the response from adds an api permission to a role
+type CreateRolePermissionResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -530,21 +303,21 @@ type UpdateRolePermissionResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateRolePermissionResponse) Reset() {
-	*x = UpdateRolePermissionResponse{}
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[7]
+func (x *CreateRolePermissionResponse) Reset() {
+	*x = CreateRolePermissionResponse{}
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateRolePermissionResponse) String() string {
+func (x *CreateRolePermissionResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateRolePermissionResponse) ProtoMessage() {}
+func (*CreateRolePermissionResponse) ProtoMessage() {}
 
-func (x *UpdateRolePermissionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[7]
+func (x *CreateRolePermissionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -555,12 +328,12 @@ func (x *UpdateRolePermissionResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateRolePermissionResponse.ProtoReflect.Descriptor instead.
-func (*UpdateRolePermissionResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{7}
+// Deprecated: Use CreateRolePermissionResponse.ProtoReflect.Descriptor instead.
+func (*CreateRolePermissionResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *UpdateRolePermissionResponse) GetResult() *Result {
+func (x *CreateRolePermissionResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -579,7 +352,7 @@ type DeleteRoleRequest struct {
 
 func (x *DeleteRoleRequest) Reset() {
 	*x = DeleteRoleRequest{}
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[8]
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -591,7 +364,7 @@ func (x *DeleteRoleRequest) String() string {
 func (*DeleteRoleRequest) ProtoMessage() {}
 
 func (x *DeleteRoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[8]
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -604,7 +377,7 @@ func (x *DeleteRoleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteRoleRequest.ProtoReflect.Descriptor instead.
 func (*DeleteRoleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{8}
+	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *DeleteRoleRequest) GetRoleId() int64 {
@@ -632,7 +405,7 @@ type DeleteRoleResponse struct {
 
 func (x *DeleteRoleResponse) Reset() {
 	*x = DeleteRoleResponse{}
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -644,7 +417,7 @@ func (x *DeleteRoleResponse) String() string {
 func (*DeleteRoleResponse) ProtoMessage() {}
 
 func (x *DeleteRoleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -657,10 +430,110 @@ func (x *DeleteRoleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteRoleResponse.ProtoReflect.Descriptor instead.
 func (*DeleteRoleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{9}
+	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *DeleteRoleResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteRolePermissionRequest represents the parameters for deletes a role permission
+type DeleteRolePermissionRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of the role permission
+	RolePermissionId *int64 `protobuf:"varint,1,opt,name=role_permission_id,json=rolePermissionId" json:"role_permission_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteRolePermissionRequest) Reset() {
+	*x = DeleteRolePermissionRequest{}
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteRolePermissionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteRolePermissionRequest) ProtoMessage() {}
+
+func (x *DeleteRolePermissionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteRolePermissionRequest.ProtoReflect.Descriptor instead.
+func (*DeleteRolePermissionRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *DeleteRolePermissionRequest) GetRolePermissionId() int64 {
+	if x != nil && x.RolePermissionId != nil {
+		return *x.RolePermissionId
+	}
+	return 0
+}
+
+func (x *DeleteRolePermissionRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteRolePermissionResponse represents the response from deletes a role permission
+type DeleteRolePermissionResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteRolePermissionResponse) Reset() {
+	*x = DeleteRolePermissionResponse{}
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteRolePermissionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteRolePermissionResponse) ProtoMessage() {}
+
+func (x *DeleteRolePermissionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteRolePermissionResponse.ProtoReflect.Descriptor instead.
+func (*DeleteRolePermissionResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *DeleteRolePermissionResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -679,7 +552,7 @@ type DisableRoleRequest struct {
 
 func (x *DisableRoleRequest) Reset() {
 	*x = DisableRoleRequest{}
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[10]
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -691,7 +564,7 @@ func (x *DisableRoleRequest) String() string {
 func (*DisableRoleRequest) ProtoMessage() {}
 
 func (x *DisableRoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[10]
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -704,7 +577,7 @@ func (x *DisableRoleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DisableRoleRequest.ProtoReflect.Descriptor instead.
 func (*DisableRoleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{10}
+	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *DisableRoleRequest) GetRoleId() int64 {
@@ -732,7 +605,7 @@ type DisableRoleResponse struct {
 
 func (x *DisableRoleResponse) Reset() {
 	*x = DisableRoleResponse{}
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -744,7 +617,7 @@ func (x *DisableRoleResponse) String() string {
 func (*DisableRoleResponse) ProtoMessage() {}
 
 func (x *DisableRoleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -757,7 +630,7 @@ func (x *DisableRoleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DisableRoleResponse.ProtoReflect.Descriptor instead.
 func (*DisableRoleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{11}
+	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *DisableRoleResponse) GetResult() *Result {
@@ -779,7 +652,7 @@ type EnableRoleRequest struct {
 
 func (x *EnableRoleRequest) Reset() {
 	*x = EnableRoleRequest{}
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[12]
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -791,7 +664,7 @@ func (x *EnableRoleRequest) String() string {
 func (*EnableRoleRequest) ProtoMessage() {}
 
 func (x *EnableRoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[12]
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -804,7 +677,7 @@ func (x *EnableRoleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EnableRoleRequest.ProtoReflect.Descriptor instead.
 func (*EnableRoleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{12}
+	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *EnableRoleRequest) GetRoleId() int64 {
@@ -832,7 +705,7 @@ type EnableRoleResponse struct {
 
 func (x *EnableRoleResponse) Reset() {
 	*x = EnableRoleResponse{}
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[13]
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -844,7 +717,7 @@ func (x *EnableRoleResponse) String() string {
 func (*EnableRoleResponse) ProtoMessage() {}
 
 func (x *EnableRoleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[13]
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -857,7 +730,7 @@ func (x *EnableRoleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EnableRoleResponse.ProtoReflect.Descriptor instead.
 func (*EnableRoleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{13}
+	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *EnableRoleResponse) GetResult() *Result {
@@ -865,6 +738,260 @@ func (x *EnableRoleResponse) GetResult() *Result {
 		return x.Result
 	}
 	return nil
+}
+
+// ImportRoleRequest represents the parameters for imports a role based on provided map of rule permissions
+type ImportRoleRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Creates a role with this unique name
+	RoleName *string `protobuf:"bytes,1,opt,name=role_name,json=roleName" json:"role_name,omitempty"`
+	// Rules param list, rule and permission is must. Example: rules[0].rule=create*&rules[0].permission=allow&rules[0].description=create%20rule&rules[1].rule=list*&rules[1].permission=allow&rules[1].description=listing
+	Rules map[string]string `protobuf:"bytes,2,rep,name=rules" json:"rules,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// Force create a role with the same name. This overrides the role type, description and rule permissions for the existing role. Default is false.
+	Forced *bool `protobuf:"varint,3,opt,name=forced" json:"forced,omitempty"`
+	// Indicates whether the role will be visible to all users (public) or only to root admins (private). If this parameter is not specified during the creation of the role its value will be defaulted to true (public).
+	PublicRole *bool `protobuf:"varint,4,opt,name=public_role,json=publicRole" json:"public_role,omitempty"`
+	// The type of the role, valid options are: Admin, ResourceAdmin, DomainAdmin, User
+	RoleType *string `protobuf:"bytes,5,opt,name=role_type,json=roleType" json:"role_type,omitempty"`
+	// The description of the role
+	RoleDescription *string `protobuf:"bytes,6,opt,name=role_description,json=roleDescription" json:"role_description,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ImportRoleRequest) Reset() {
+	*x = ImportRoleRequest{}
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ImportRoleRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ImportRoleRequest) ProtoMessage() {}
+
+func (x *ImportRoleRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ImportRoleRequest.ProtoReflect.Descriptor instead.
+func (*ImportRoleRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *ImportRoleRequest) GetRoleName() string {
+	if x != nil && x.RoleName != nil {
+		return *x.RoleName
+	}
+	return ""
+}
+
+func (x *ImportRoleRequest) GetRules() map[string]string {
+	if x != nil {
+		return x.Rules
+	}
+	return nil
+}
+
+func (x *ImportRoleRequest) GetForced() bool {
+	if x != nil && x.Forced != nil {
+		return *x.Forced
+	}
+	return false
+}
+
+func (x *ImportRoleRequest) GetPublicRole() bool {
+	if x != nil && x.PublicRole != nil {
+		return *x.PublicRole
+	}
+	return false
+}
+
+func (x *ImportRoleRequest) GetRoleType() string {
+	if x != nil && x.RoleType != nil {
+		return *x.RoleType
+	}
+	return ""
+}
+
+func (x *ImportRoleRequest) GetRoleDescription() string {
+	if x != nil && x.RoleDescription != nil {
+		return *x.RoleDescription
+	}
+	return ""
+}
+
+func (x *ImportRoleRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ImportRoleResponse represents the response from imports a role based on provided map of rule permissions
+type ImportRoleResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ImportRoleResponse) Reset() {
+	*x = ImportRoleResponse{}
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ImportRoleResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ImportRoleResponse) ProtoMessage() {}
+
+func (x *ImportRoleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ImportRoleResponse.ProtoReflect.Descriptor instead.
+func (*ImportRoleResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *ImportRoleResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListRolePermissionsRequest represents the parameters for lists role permissions
+type ListRolePermissionsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of the role
+	RoleId *int64 `protobuf:"varint,1,opt,name=role_id,json=roleId" json:"role_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListRolePermissionsRequest) Reset() {
+	*x = ListRolePermissionsRequest{}
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListRolePermissionsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListRolePermissionsRequest) ProtoMessage() {}
+
+func (x *ListRolePermissionsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListRolePermissionsRequest.ProtoReflect.Descriptor instead.
+func (*ListRolePermissionsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *ListRolePermissionsRequest) GetRoleId() int64 {
+	if x != nil && x.RoleId != nil {
+		return *x.RoleId
+	}
+	return 0
+}
+
+func (x *ListRolePermissionsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListRolePermissionsResponse represents the response from lists role permissions
+type ListRolePermissionsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of RolePermissions
+	Items []*RolePermission `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of RolePermissions
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListRolePermissionsResponse) Reset() {
+	*x = ListRolePermissionsResponse{}
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListRolePermissionsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListRolePermissionsResponse) ProtoMessage() {}
+
+func (x *ListRolePermissionsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListRolePermissionsResponse.ProtoReflect.Descriptor instead.
+func (*ListRolePermissionsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *ListRolePermissionsResponse) GetItems() []*RolePermission {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListRolePermissionsResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
 }
 
 // ListRolesRequest represents the parameters for lists dynamic roles in cloudstack
@@ -889,7 +1016,7 @@ type ListRolesRequest struct {
 
 func (x *ListRolesRequest) Reset() {
 	*x = ListRolesRequest{}
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[14]
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -901,7 +1028,7 @@ func (x *ListRolesRequest) String() string {
 func (*ListRolesRequest) ProtoMessage() {}
 
 func (x *ListRolesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[14]
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -914,7 +1041,7 @@ func (x *ListRolesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRolesRequest.ProtoReflect.Descriptor instead.
 func (*ListRolesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{14}
+	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *ListRolesRequest) GetId() int64 {
@@ -986,7 +1113,7 @@ type ListRolesResponse struct {
 
 func (x *ListRolesResponse) Reset() {
 	*x = ListRolesResponse{}
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[15]
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -998,7 +1125,7 @@ func (x *ListRolesResponse) String() string {
 func (*ListRolesResponse) ProtoMessage() {}
 
 func (x *ListRolesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[15]
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1011,7 +1138,7 @@ func (x *ListRolesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRolesResponse.ProtoReflect.Descriptor instead.
 func (*ListRolesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{15}
+	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *ListRolesResponse) GetItems() []*Role {
@@ -1026,151 +1153,6 @@ func (x *ListRolesResponse) GetTotalCount() int32 {
 		return *x.TotalCount
 	}
 	return 0
-}
-
-// ImportRoleRequest represents the parameters for imports a role based on provided map of rule permissions
-type ImportRoleRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Creates a role with this unique name
-	RoleName *string `protobuf:"bytes,1,opt,name=role_name,json=roleName" json:"role_name,omitempty"`
-	// Rules param list, rule and permission is must. Example: rules[0].rule=create*&rules[0].permission=allow&rules[0].description=create%20rule&rules[1].rule=list*&rules[1].permission=allow&rules[1].description=listing
-	Rules map[string]string `protobuf:"bytes,2,rep,name=rules" json:"rules,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// Force create a role with the same name. This overrides the role type, description and rule permissions for the existing role. Default is false.
-	Forced *bool `protobuf:"varint,3,opt,name=forced" json:"forced,omitempty"`
-	// Indicates whether the role will be visible to all users (public) or only to root admins (private). If this parameter is not specified during the creation of the role its value will be defaulted to true (public).
-	PublicRole *bool `protobuf:"varint,4,opt,name=public_role,json=publicRole" json:"public_role,omitempty"`
-	// The type of the role, valid options are: Admin, ResourceAdmin, DomainAdmin, User
-	RoleType *string `protobuf:"bytes,5,opt,name=role_type,json=roleType" json:"role_type,omitempty"`
-	// The description of the role
-	RoleDescription *string `protobuf:"bytes,6,opt,name=role_description,json=roleDescription" json:"role_description,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ImportRoleRequest) Reset() {
-	*x = ImportRoleRequest{}
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[16]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ImportRoleRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ImportRoleRequest) ProtoMessage() {}
-
-func (x *ImportRoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[16]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ImportRoleRequest.ProtoReflect.Descriptor instead.
-func (*ImportRoleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{16}
-}
-
-func (x *ImportRoleRequest) GetRoleName() string {
-	if x != nil && x.RoleName != nil {
-		return *x.RoleName
-	}
-	return ""
-}
-
-func (x *ImportRoleRequest) GetRules() map[string]string {
-	if x != nil {
-		return x.Rules
-	}
-	return nil
-}
-
-func (x *ImportRoleRequest) GetForced() bool {
-	if x != nil && x.Forced != nil {
-		return *x.Forced
-	}
-	return false
-}
-
-func (x *ImportRoleRequest) GetPublicRole() bool {
-	if x != nil && x.PublicRole != nil {
-		return *x.PublicRole
-	}
-	return false
-}
-
-func (x *ImportRoleRequest) GetRoleType() string {
-	if x != nil && x.RoleType != nil {
-		return *x.RoleType
-	}
-	return ""
-}
-
-func (x *ImportRoleRequest) GetRoleDescription() string {
-	if x != nil && x.RoleDescription != nil {
-		return *x.RoleDescription
-	}
-	return ""
-}
-
-func (x *ImportRoleRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ImportRoleResponse represents the response from imports a role based on provided map of rule permissions
-type ImportRoleResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ImportRoleResponse) Reset() {
-	*x = ImportRoleResponse{}
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[17]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ImportRoleResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ImportRoleResponse) ProtoMessage() {}
-
-func (x *ImportRoleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[17]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ImportRoleResponse.ProtoReflect.Descriptor instead.
-func (*ImportRoleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{17}
-}
-
-func (x *ImportRoleResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
 }
 
 // UpdateRoleRequest represents the parameters for updates a role
@@ -1309,30 +1291,36 @@ func (x *UpdateRoleResponse) GetResult() *Result {
 	return nil
 }
 
-// ListRolePermissionsRequest represents the parameters for lists role permissions
-type ListRolePermissionsRequest struct {
+// UpdateRolePermissionRequest represents the parameters for updates a role permission order
+type UpdateRolePermissionRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of the role
 	RoleId *int64 `protobuf:"varint,1,opt,name=role_id,json=roleId" json:"role_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// The parent role permission uuid, use 0 to move this rule at the top of the list
+	RulePermissionOrder []string `protobuf:"bytes,2,rep,name=rule_permission_order,json=rulePermissionOrder" json:"rule_permission_order,omitempty"`
+	// Role permission rule id
+	RuleId *int64 `protobuf:"varint,3,opt,name=rule_id,json=ruleId" json:"rule_id,omitempty"`
+	// Rule permission, can be: allow or deny
+	RulePermission *string `protobuf:"bytes,4,opt,name=rule_permission,json=rulePermission" json:"rule_permission,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListRolePermissionsRequest) Reset() {
-	*x = ListRolePermissionsRequest{}
+func (x *UpdateRolePermissionRequest) Reset() {
+	*x = UpdateRolePermissionRequest{}
 	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListRolePermissionsRequest) String() string {
+func (x *UpdateRolePermissionRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListRolePermissionsRequest) ProtoMessage() {}
+func (*UpdateRolePermissionRequest) ProtoMessage() {}
 
-func (x *ListRolePermissionsRequest) ProtoReflect() protoreflect.Message {
+func (x *UpdateRolePermissionRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1344,50 +1332,69 @@ func (x *ListRolePermissionsRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListRolePermissionsRequest.ProtoReflect.Descriptor instead.
-func (*ListRolePermissionsRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateRolePermissionRequest.ProtoReflect.Descriptor instead.
+func (*UpdateRolePermissionRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{20}
 }
 
-func (x *ListRolePermissionsRequest) GetRoleId() int64 {
+func (x *UpdateRolePermissionRequest) GetRoleId() int64 {
 	if x != nil && x.RoleId != nil {
 		return *x.RoleId
 	}
 	return 0
 }
 
-func (x *ListRolePermissionsRequest) GetResponseType() string {
+func (x *UpdateRolePermissionRequest) GetRulePermissionOrder() []string {
+	if x != nil {
+		return x.RulePermissionOrder
+	}
+	return nil
+}
+
+func (x *UpdateRolePermissionRequest) GetRuleId() int64 {
+	if x != nil && x.RuleId != nil {
+		return *x.RuleId
+	}
+	return 0
+}
+
+func (x *UpdateRolePermissionRequest) GetRulePermission() string {
+	if x != nil && x.RulePermission != nil {
+		return *x.RulePermission
+	}
+	return ""
+}
+
+func (x *UpdateRolePermissionRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// ListRolePermissionsResponse represents the response from lists role permissions
-type ListRolePermissionsResponse struct {
+// UpdateRolePermissionResponse represents the response from updates a role permission order
+type UpdateRolePermissionResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of RolePermissions
-	Items []*RolePermission `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of RolePermissions
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListRolePermissionsResponse) Reset() {
-	*x = ListRolePermissionsResponse{}
+func (x *UpdateRolePermissionResponse) Reset() {
+	*x = UpdateRolePermissionResponse{}
 	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListRolePermissionsResponse) String() string {
+func (x *UpdateRolePermissionResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListRolePermissionsResponse) ProtoMessage() {}
+func (*UpdateRolePermissionResponse) ProtoMessage() {}
 
-func (x *ListRolePermissionsResponse) ProtoReflect() protoreflect.Message {
+func (x *UpdateRolePermissionResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1399,23 +1406,16 @@ func (x *ListRolePermissionsResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListRolePermissionsResponse.ProtoReflect.Descriptor instead.
-func (*ListRolePermissionsResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateRolePermissionResponse.ProtoReflect.Descriptor instead.
+func (*UpdateRolePermissionResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{21}
 }
 
-func (x *ListRolePermissionsResponse) GetItems() []*RolePermission {
+func (x *UpdateRolePermissionResponse) GetResult() *Result {
 	if x != nil {
-		return x.Items
+		return x.Result
 	}
 	return nil
-}
-
-func (x *ListRolePermissionsResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
 }
 
 // Role represents a Role Item
@@ -1637,151 +1637,6 @@ func (x *Success) GetDisplayText() string {
 	return ""
 }
 
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[25]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[25]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{25}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
 // Result represents a generic operation result
 type Result struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1801,7 +1656,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[26]
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1813,7 +1668,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[26]
+	mi := &file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1826,7 +1681,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{26}
+	return file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -1868,18 +1723,7 @@ var File_cloudstack_management_acl_v1_acl_gen_proto protoreflect.FileDescriptor
 
 const file_cloudstack_management_acl_v1_acl_gen_proto_rawDesc = "" +
 	"\n" +
-	"*cloudstack/management/acl/v1/acl.gen.proto\x12\x1ccloudstack.management.acl.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xd5\x01\n" +
-	"\x1bCreateRolePermissionRequest\x12\x1f\n" +
-	"\arole_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06roleId\x12\x1a\n" +
-	"\x04rule\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04rule\x12&\n" +
-	"\n" +
-	"permission\x18\x03 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\n" +
-	"permission\x12,\n" +
-	"\vdescription\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"\\\n" +
-	"\x1cCreateRolePermissionResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.acl.v1.ResultR\x06result\"\xf9\x01\n" +
+	"*cloudstack/management/acl/v1/acl.gen.proto\x12\x1ccloudstack.management.acl.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xf9\x01\n" +
 	"\x11CreateRoleRequest\x12*\n" +
 	"\trole_name\x18\x01 \x01(\tB\r\xbaH\n" +
 	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\broleName\x12\x17\n" +
@@ -1891,24 +1735,27 @@ const file_cloudstack_management_acl_v1_acl_gen_proto_rawDesc = "" +
 	"\xbaH\ar\x05\x10\x01\x18\x80\bR\x0froleDescription\x12#\n" +
 	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"R\n" +
 	"\x12CreateRoleResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.acl.v1.ResultR\x06result\"x\n" +
-	"\x1bDeleteRolePermissionRequest\x124\n" +
-	"\x12role_permission_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x10rolePermissionId\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"\\\n" +
-	"\x1cDeleteRolePermissionResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.acl.v1.ResultR\x06result\"\xd9\x01\n" +
-	"\x1bUpdateRolePermissionRequest\x12\x1f\n" +
-	"\arole_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06roleId\x122\n" +
-	"\x15rule_permission_order\x18\x02 \x03(\tR\x13rulePermissionOrder\x12\x17\n" +
-	"\arule_id\x18\x03 \x01(\x03R\x06ruleId\x12'\n" +
-	"\x0frule_permission\x18\x04 \x01(\tR\x0erulePermission\x12#\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.acl.v1.ResultR\x06result\"\xd5\x01\n" +
+	"\x1bCreateRolePermissionRequest\x12\x1f\n" +
+	"\arole_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06roleId\x12\x1a\n" +
+	"\x04rule\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04rule\x12&\n" +
+	"\n" +
+	"permission\x18\x03 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\n" +
+	"permission\x12,\n" +
+	"\vdescription\x18\x04 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12#\n" +
 	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"\\\n" +
-	"\x1cUpdateRolePermissionResponse\x12<\n" +
+	"\x1cCreateRolePermissionResponse\x12<\n" +
 	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.acl.v1.ResultR\x06result\"Y\n" +
 	"\x11DeleteRoleRequest\x12\x1f\n" +
 	"\arole_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06roleId\x12#\n" +
 	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"R\n" +
 	"\x12DeleteRoleResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.acl.v1.ResultR\x06result\"x\n" +
+	"\x1bDeleteRolePermissionRequest\x124\n" +
+	"\x12role_permission_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x10rolePermissionId\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"\\\n" +
+	"\x1cDeleteRolePermissionResponse\x12<\n" +
 	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.acl.v1.ResultR\x06result\"Z\n" +
 	"\x12DisableRoleRequest\x12\x1f\n" +
 	"\arole_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06roleId\x12#\n" +
@@ -1919,22 +1766,7 @@ const file_cloudstack_management_acl_v1_acl_gen_proto_rawDesc = "" +
 	"\arole_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06roleId\x12#\n" +
 	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"R\n" +
 	"\x12EnableRoleResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.acl.v1.ResultR\x06result\"\xf7\x01\n" +
-	"\x10ListRolesRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12'\n" +
-	"\trole_name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\broleName\x12\x1b\n" +
-	"\trole_type\x18\x03 \x01(\tR\broleType\x12\x1d\n" +
-	"\n" +
-	"role_state\x18\x04 \x01(\tR\troleState\x12\x18\n" +
-	"\akeyword\x18\x05 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x06 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\a \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\"u\n" +
-	"\x11ListRolesResponse\x128\n" +
-	"\x05items\x18\x01 \x03(\v2\".cloudstack.management.acl.v1.RoleR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x93\x03\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.acl.v1.ResultR\x06result\"\x93\x03\n" +
 	"\x11ImportRoleRequest\x12*\n" +
 	"\trole_name\x18\x01 \x01(\tB\r\xbaH\n" +
 	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\broleName\x12X\n" +
@@ -1951,7 +1783,29 @@ const file_cloudstack_management_acl_v1_acl_gen_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"R\n" +
 	"\x12ImportRoleResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.acl.v1.ResultR\x06result\"\xfe\x01\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.acl.v1.ResultR\x06result\"Z\n" +
+	"\x1aListRolePermissionsRequest\x12\x17\n" +
+	"\arole_id\x18\x01 \x01(\x03R\x06roleId\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"\x89\x01\n" +
+	"\x1bListRolePermissionsResponse\x12B\n" +
+	"\x05items\x18\x01 \x03(\v2,.cloudstack.management.acl.v1.RolePermissionR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xf7\x01\n" +
+	"\x10ListRolesRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12'\n" +
+	"\trole_name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\broleName\x12\x1b\n" +
+	"\trole_type\x18\x03 \x01(\tR\broleType\x12\x1d\n" +
+	"\n" +
+	"role_state\x18\x04 \x01(\tR\troleState\x12\x18\n" +
+	"\akeyword\x18\x05 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x06 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\a \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\"u\n" +
+	"\x11ListRolesResponse\x128\n" +
+	"\x05items\x18\x01 \x03(\v2\".cloudstack.management.acl.v1.RoleR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xfe\x01\n" +
 	"\x11UpdateRoleRequest\x12\x1f\n" +
 	"\arole_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06roleId\x12'\n" +
 	"\trole_name\x18\x02 \x01(\tB\n" +
@@ -1963,14 +1817,15 @@ const file_cloudstack_management_acl_v1_acl_gen_proto_rawDesc = "" +
 	"\trole_type\x18\x05 \x01(\tR\broleType\x12#\n" +
 	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"R\n" +
 	"\x12UpdateRoleResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.acl.v1.ResultR\x06result\"Z\n" +
-	"\x1aListRolePermissionsRequest\x12\x17\n" +
-	"\arole_id\x18\x01 \x01(\x03R\x06roleId\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"\x89\x01\n" +
-	"\x1bListRolePermissionsResponse\x12B\n" +
-	"\x05items\x18\x01 \x03(\v2,.cloudstack.management.acl.v1.RolePermissionR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x93\x01\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.acl.v1.ResultR\x06result\"\xd9\x01\n" +
+	"\x1bUpdateRolePermissionRequest\x12\x1f\n" +
+	"\arole_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06roleId\x122\n" +
+	"\x15rule_permission_order\x18\x02 \x03(\tR\x13rulePermissionOrder\x12\x17\n" +
+	"\arule_id\x18\x03 \x01(\x03R\x06ruleId\x12'\n" +
+	"\x0frule_permission\x18\x04 \x01(\tR\x0erulePermission\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"\\\n" +
+	"\x1cUpdateRolePermissionResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.acl.v1.ResultR\x06result\"\x93\x01\n" +
 	"\x04Role\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
@@ -1985,26 +1840,7 @@ const file_cloudstack_management_acl_v1_acl_gen_proto_rawDesc = "" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xdb\x03\n" +
-	"\x04Item\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12I\n" +
-	"\adetails\x18\f \x03(\v2/.cloudstack.management.acl.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
@@ -2015,26 +1851,25 @@ const file_cloudstack_management_acl_v1_acl_gen_proto_rawDesc = "" +
 	"\x12RulePermissionType\x12$\n" +
 	" RULE_PERMISSION_TYPE_UNSPECIFIED\x10\x00\x12\x1e\n" +
 	"\x1aRULE_PERMISSION_TYPE_ALLOW\x10\x01\x12\x1d\n" +
-	"\x19RULE_PERMISSION_TYPE_DENY\x10\x022\xfe\n" +
+	"\x19RULE_PERMISSION_TYPE_DENY\x10\x022\xcc\v\n" +
 	"\n" +
+	"AclService\x12x\n" +
 	"\n" +
-	"AclService\x12\x8f\x01\n" +
-	"\x14CreateRolePermission\x129.cloudstack.management.acl.v1.CreateRolePermissionRequest\x1a:.cloudstack.management.acl.v1.CreateRolePermissionResponse\"\x00\x12q\n" +
+	"CreateRole\x12/.cloudstack.management.acl.v1.CreateRoleRequest\x1a0.cloudstack.management.acl.v1.CreateRoleResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x96\x01\n" +
+	"\x14CreateRolePermission\x129.cloudstack.management.acl.v1.CreateRolePermissionRequest\x1a:.cloudstack.management.acl.v1.CreateRolePermissionResponse\"\a\xc2>\x04\xc2>\x01\x02\x12x\n" +
 	"\n" +
-	"CreateRole\x12/.cloudstack.management.acl.v1.CreateRoleRequest\x1a0.cloudstack.management.acl.v1.CreateRoleResponse\"\x00\x12\x8f\x01\n" +
-	"\x14DeleteRolePermission\x129.cloudstack.management.acl.v1.DeleteRolePermissionRequest\x1a:.cloudstack.management.acl.v1.DeleteRolePermissionResponse\"\x00\x12\x8f\x01\n" +
-	"\x14UpdateRolePermission\x129.cloudstack.management.acl.v1.UpdateRolePermissionRequest\x1a:.cloudstack.management.acl.v1.UpdateRolePermissionResponse\"\x00\x12q\n" +
+	"DeleteRole\x12/.cloudstack.management.acl.v1.DeleteRoleRequest\x1a0.cloudstack.management.acl.v1.DeleteRoleResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x96\x01\n" +
+	"\x14DeleteRolePermission\x129.cloudstack.management.acl.v1.DeleteRolePermissionRequest\x1a:.cloudstack.management.acl.v1.DeleteRolePermissionResponse\"\a\xc2>\x04\xc2>\x01\x02\x12{\n" +
+	"\vDisableRole\x120.cloudstack.management.acl.v1.DisableRoleRequest\x1a1.cloudstack.management.acl.v1.DisableRoleResponse\"\a\xc2>\x04\xc2>\x01\x02\x12x\n" +
 	"\n" +
-	"DeleteRole\x12/.cloudstack.management.acl.v1.DeleteRoleRequest\x1a0.cloudstack.management.acl.v1.DeleteRoleResponse\"\x00\x12t\n" +
-	"\vDisableRole\x120.cloudstack.management.acl.v1.DisableRoleRequest\x1a1.cloudstack.management.acl.v1.DisableRoleResponse\"\x00\x12q\n" +
+	"EnableRole\x12/.cloudstack.management.acl.v1.EnableRoleRequest\x1a0.cloudstack.management.acl.v1.EnableRoleResponse\"\a\xc2>\x04\xc2>\x01\x02\x12x\n" +
 	"\n" +
-	"EnableRole\x12/.cloudstack.management.acl.v1.EnableRoleRequest\x1a0.cloudstack.management.acl.v1.EnableRoleResponse\"\x00\x12n\n" +
-	"\tListRoles\x12..cloudstack.management.acl.v1.ListRolesRequest\x1a/.cloudstack.management.acl.v1.ListRolesResponse\"\x00\x12q\n" +
+	"ImportRole\x12/.cloudstack.management.acl.v1.ImportRoleRequest\x1a0.cloudstack.management.acl.v1.ImportRoleResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x93\x01\n" +
+	"\x13ListRolePermissions\x128.cloudstack.management.acl.v1.ListRolePermissionsRequest\x1a9.cloudstack.management.acl.v1.ListRolePermissionsResponse\"\a\xc2>\x04\xc2>\x01\x02\x12u\n" +
+	"\tListRoles\x12..cloudstack.management.acl.v1.ListRolesRequest\x1a/.cloudstack.management.acl.v1.ListRolesResponse\"\a\xc2>\x04\xc2>\x01\x02\x12x\n" +
 	"\n" +
-	"ImportRole\x12/.cloudstack.management.acl.v1.ImportRoleRequest\x1a0.cloudstack.management.acl.v1.ImportRoleResponse\"\x00\x12q\n" +
-	"\n" +
-	"UpdateRole\x12/.cloudstack.management.acl.v1.UpdateRoleRequest\x1a0.cloudstack.management.acl.v1.UpdateRoleResponse\"\x00\x12\x8c\x01\n" +
-	"\x13ListRolePermissions\x128.cloudstack.management.acl.v1.ListRolePermissionsRequest\x1a9.cloudstack.management.acl.v1.ListRolePermissionsResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\x9a\x02\n" +
+	"UpdateRole\x12/.cloudstack.management.acl.v1.UpdateRoleRequest\x1a0.cloudstack.management.acl.v1.UpdateRoleResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x96\x01\n" +
+	"\x14UpdateRolePermission\x129.cloudstack.management.acl.v1.UpdateRolePermissionRequest\x1a:.cloudstack.management.acl.v1.UpdateRolePermissionResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\a\xc2>\x04\xc2>\x01\x02B\x9a\x02\n" +
 	" com.cloudstack.management.acl.v1B\vAclGenProtoP\x01ZVgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/acl/v1;aclv1\xa2\x02\x03CMA\xaa\x02\x1cCloudstack.Management.Acl.V1\xca\x02\x1cCloudstack\\Management\\Acl\\V1\xe2\x02(Cloudstack\\Management\\Acl\\V1\\GPBMetadata\xea\x02\x1fCloudstack::Management::Acl::V1b\beditionsp\xe8\a"
 
 var (
@@ -2050,80 +1885,77 @@ func file_cloudstack_management_acl_v1_acl_gen_proto_rawDescGZIP() []byte {
 }
 
 var file_cloudstack_management_acl_v1_acl_gen_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 29)
+var file_cloudstack_management_acl_v1_acl_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
 var file_cloudstack_management_acl_v1_acl_gen_proto_goTypes = []any{
 	(RulePermissionType)(0),              // 0: cloudstack.management.acl.v1.RulePermissionType
-	(*CreateRolePermissionRequest)(nil),  // 1: cloudstack.management.acl.v1.CreateRolePermissionRequest
-	(*CreateRolePermissionResponse)(nil), // 2: cloudstack.management.acl.v1.CreateRolePermissionResponse
-	(*CreateRoleRequest)(nil),            // 3: cloudstack.management.acl.v1.CreateRoleRequest
-	(*CreateRoleResponse)(nil),           // 4: cloudstack.management.acl.v1.CreateRoleResponse
-	(*DeleteRolePermissionRequest)(nil),  // 5: cloudstack.management.acl.v1.DeleteRolePermissionRequest
-	(*DeleteRolePermissionResponse)(nil), // 6: cloudstack.management.acl.v1.DeleteRolePermissionResponse
-	(*UpdateRolePermissionRequest)(nil),  // 7: cloudstack.management.acl.v1.UpdateRolePermissionRequest
-	(*UpdateRolePermissionResponse)(nil), // 8: cloudstack.management.acl.v1.UpdateRolePermissionResponse
-	(*DeleteRoleRequest)(nil),            // 9: cloudstack.management.acl.v1.DeleteRoleRequest
-	(*DeleteRoleResponse)(nil),           // 10: cloudstack.management.acl.v1.DeleteRoleResponse
-	(*DisableRoleRequest)(nil),           // 11: cloudstack.management.acl.v1.DisableRoleRequest
-	(*DisableRoleResponse)(nil),          // 12: cloudstack.management.acl.v1.DisableRoleResponse
-	(*EnableRoleRequest)(nil),            // 13: cloudstack.management.acl.v1.EnableRoleRequest
-	(*EnableRoleResponse)(nil),           // 14: cloudstack.management.acl.v1.EnableRoleResponse
-	(*ListRolesRequest)(nil),             // 15: cloudstack.management.acl.v1.ListRolesRequest
-	(*ListRolesResponse)(nil),            // 16: cloudstack.management.acl.v1.ListRolesResponse
-	(*ImportRoleRequest)(nil),            // 17: cloudstack.management.acl.v1.ImportRoleRequest
-	(*ImportRoleResponse)(nil),           // 18: cloudstack.management.acl.v1.ImportRoleResponse
+	(*CreateRoleRequest)(nil),            // 1: cloudstack.management.acl.v1.CreateRoleRequest
+	(*CreateRoleResponse)(nil),           // 2: cloudstack.management.acl.v1.CreateRoleResponse
+	(*CreateRolePermissionRequest)(nil),  // 3: cloudstack.management.acl.v1.CreateRolePermissionRequest
+	(*CreateRolePermissionResponse)(nil), // 4: cloudstack.management.acl.v1.CreateRolePermissionResponse
+	(*DeleteRoleRequest)(nil),            // 5: cloudstack.management.acl.v1.DeleteRoleRequest
+	(*DeleteRoleResponse)(nil),           // 6: cloudstack.management.acl.v1.DeleteRoleResponse
+	(*DeleteRolePermissionRequest)(nil),  // 7: cloudstack.management.acl.v1.DeleteRolePermissionRequest
+	(*DeleteRolePermissionResponse)(nil), // 8: cloudstack.management.acl.v1.DeleteRolePermissionResponse
+	(*DisableRoleRequest)(nil),           // 9: cloudstack.management.acl.v1.DisableRoleRequest
+	(*DisableRoleResponse)(nil),          // 10: cloudstack.management.acl.v1.DisableRoleResponse
+	(*EnableRoleRequest)(nil),            // 11: cloudstack.management.acl.v1.EnableRoleRequest
+	(*EnableRoleResponse)(nil),           // 12: cloudstack.management.acl.v1.EnableRoleResponse
+	(*ImportRoleRequest)(nil),            // 13: cloudstack.management.acl.v1.ImportRoleRequest
+	(*ImportRoleResponse)(nil),           // 14: cloudstack.management.acl.v1.ImportRoleResponse
+	(*ListRolePermissionsRequest)(nil),   // 15: cloudstack.management.acl.v1.ListRolePermissionsRequest
+	(*ListRolePermissionsResponse)(nil),  // 16: cloudstack.management.acl.v1.ListRolePermissionsResponse
+	(*ListRolesRequest)(nil),             // 17: cloudstack.management.acl.v1.ListRolesRequest
+	(*ListRolesResponse)(nil),            // 18: cloudstack.management.acl.v1.ListRolesResponse
 	(*UpdateRoleRequest)(nil),            // 19: cloudstack.management.acl.v1.UpdateRoleRequest
 	(*UpdateRoleResponse)(nil),           // 20: cloudstack.management.acl.v1.UpdateRoleResponse
-	(*ListRolePermissionsRequest)(nil),   // 21: cloudstack.management.acl.v1.ListRolePermissionsRequest
-	(*ListRolePermissionsResponse)(nil),  // 22: cloudstack.management.acl.v1.ListRolePermissionsResponse
+	(*UpdateRolePermissionRequest)(nil),  // 21: cloudstack.management.acl.v1.UpdateRolePermissionRequest
+	(*UpdateRolePermissionResponse)(nil), // 22: cloudstack.management.acl.v1.UpdateRolePermissionResponse
 	(*Role)(nil),                         // 23: cloudstack.management.acl.v1.Role
 	(*RolePermission)(nil),               // 24: cloudstack.management.acl.v1.RolePermission
 	(*Success)(nil),                      // 25: cloudstack.management.acl.v1.Success
-	(*Item)(nil),                         // 26: cloudstack.management.acl.v1.Item
-	(*Result)(nil),                       // 27: cloudstack.management.acl.v1.Result
-	nil,                                  // 28: cloudstack.management.acl.v1.ImportRoleRequest.RulesEntry
-	nil,                                  // 29: cloudstack.management.acl.v1.Item.DetailsEntry
+	(*Result)(nil),                       // 26: cloudstack.management.acl.v1.Result
+	nil,                                  // 27: cloudstack.management.acl.v1.ImportRoleRequest.RulesEntry
 }
 var file_cloudstack_management_acl_v1_acl_gen_proto_depIdxs = []int32{
-	27, // 0: cloudstack.management.acl.v1.CreateRolePermissionResponse.result:type_name -> cloudstack.management.acl.v1.Result
-	27, // 1: cloudstack.management.acl.v1.CreateRoleResponse.result:type_name -> cloudstack.management.acl.v1.Result
-	27, // 2: cloudstack.management.acl.v1.DeleteRolePermissionResponse.result:type_name -> cloudstack.management.acl.v1.Result
-	27, // 3: cloudstack.management.acl.v1.UpdateRolePermissionResponse.result:type_name -> cloudstack.management.acl.v1.Result
-	27, // 4: cloudstack.management.acl.v1.DeleteRoleResponse.result:type_name -> cloudstack.management.acl.v1.Result
-	27, // 5: cloudstack.management.acl.v1.DisableRoleResponse.result:type_name -> cloudstack.management.acl.v1.Result
-	27, // 6: cloudstack.management.acl.v1.EnableRoleResponse.result:type_name -> cloudstack.management.acl.v1.Result
-	23, // 7: cloudstack.management.acl.v1.ListRolesResponse.items:type_name -> cloudstack.management.acl.v1.Role
-	28, // 8: cloudstack.management.acl.v1.ImportRoleRequest.rules:type_name -> cloudstack.management.acl.v1.ImportRoleRequest.RulesEntry
-	27, // 9: cloudstack.management.acl.v1.ImportRoleResponse.result:type_name -> cloudstack.management.acl.v1.Result
-	27, // 10: cloudstack.management.acl.v1.UpdateRoleResponse.result:type_name -> cloudstack.management.acl.v1.Result
-	24, // 11: cloudstack.management.acl.v1.ListRolePermissionsResponse.items:type_name -> cloudstack.management.acl.v1.RolePermission
-	29, // 12: cloudstack.management.acl.v1.Item.details:type_name -> cloudstack.management.acl.v1.Item.DetailsEntry
-	1,  // 13: cloudstack.management.acl.v1.AclService.CreateRolePermission:input_type -> cloudstack.management.acl.v1.CreateRolePermissionRequest
-	3,  // 14: cloudstack.management.acl.v1.AclService.CreateRole:input_type -> cloudstack.management.acl.v1.CreateRoleRequest
-	5,  // 15: cloudstack.management.acl.v1.AclService.DeleteRolePermission:input_type -> cloudstack.management.acl.v1.DeleteRolePermissionRequest
-	7,  // 16: cloudstack.management.acl.v1.AclService.UpdateRolePermission:input_type -> cloudstack.management.acl.v1.UpdateRolePermissionRequest
-	9,  // 17: cloudstack.management.acl.v1.AclService.DeleteRole:input_type -> cloudstack.management.acl.v1.DeleteRoleRequest
-	11, // 18: cloudstack.management.acl.v1.AclService.DisableRole:input_type -> cloudstack.management.acl.v1.DisableRoleRequest
-	13, // 19: cloudstack.management.acl.v1.AclService.EnableRole:input_type -> cloudstack.management.acl.v1.EnableRoleRequest
-	15, // 20: cloudstack.management.acl.v1.AclService.ListRoles:input_type -> cloudstack.management.acl.v1.ListRolesRequest
-	17, // 21: cloudstack.management.acl.v1.AclService.ImportRole:input_type -> cloudstack.management.acl.v1.ImportRoleRequest
-	19, // 22: cloudstack.management.acl.v1.AclService.UpdateRole:input_type -> cloudstack.management.acl.v1.UpdateRoleRequest
-	21, // 23: cloudstack.management.acl.v1.AclService.ListRolePermissions:input_type -> cloudstack.management.acl.v1.ListRolePermissionsRequest
-	2,  // 24: cloudstack.management.acl.v1.AclService.CreateRolePermission:output_type -> cloudstack.management.acl.v1.CreateRolePermissionResponse
-	4,  // 25: cloudstack.management.acl.v1.AclService.CreateRole:output_type -> cloudstack.management.acl.v1.CreateRoleResponse
-	6,  // 26: cloudstack.management.acl.v1.AclService.DeleteRolePermission:output_type -> cloudstack.management.acl.v1.DeleteRolePermissionResponse
-	8,  // 27: cloudstack.management.acl.v1.AclService.UpdateRolePermission:output_type -> cloudstack.management.acl.v1.UpdateRolePermissionResponse
-	10, // 28: cloudstack.management.acl.v1.AclService.DeleteRole:output_type -> cloudstack.management.acl.v1.DeleteRoleResponse
-	12, // 29: cloudstack.management.acl.v1.AclService.DisableRole:output_type -> cloudstack.management.acl.v1.DisableRoleResponse
-	14, // 30: cloudstack.management.acl.v1.AclService.EnableRole:output_type -> cloudstack.management.acl.v1.EnableRoleResponse
-	16, // 31: cloudstack.management.acl.v1.AclService.ListRoles:output_type -> cloudstack.management.acl.v1.ListRolesResponse
-	18, // 32: cloudstack.management.acl.v1.AclService.ImportRole:output_type -> cloudstack.management.acl.v1.ImportRoleResponse
-	20, // 33: cloudstack.management.acl.v1.AclService.UpdateRole:output_type -> cloudstack.management.acl.v1.UpdateRoleResponse
-	22, // 34: cloudstack.management.acl.v1.AclService.ListRolePermissions:output_type -> cloudstack.management.acl.v1.ListRolePermissionsResponse
-	24, // [24:35] is the sub-list for method output_type
-	13, // [13:24] is the sub-list for method input_type
-	13, // [13:13] is the sub-list for extension type_name
-	13, // [13:13] is the sub-list for extension extendee
-	0,  // [0:13] is the sub-list for field type_name
+	26, // 0: cloudstack.management.acl.v1.CreateRoleResponse.result:type_name -> cloudstack.management.acl.v1.Result
+	26, // 1: cloudstack.management.acl.v1.CreateRolePermissionResponse.result:type_name -> cloudstack.management.acl.v1.Result
+	26, // 2: cloudstack.management.acl.v1.DeleteRoleResponse.result:type_name -> cloudstack.management.acl.v1.Result
+	26, // 3: cloudstack.management.acl.v1.DeleteRolePermissionResponse.result:type_name -> cloudstack.management.acl.v1.Result
+	26, // 4: cloudstack.management.acl.v1.DisableRoleResponse.result:type_name -> cloudstack.management.acl.v1.Result
+	26, // 5: cloudstack.management.acl.v1.EnableRoleResponse.result:type_name -> cloudstack.management.acl.v1.Result
+	27, // 6: cloudstack.management.acl.v1.ImportRoleRequest.rules:type_name -> cloudstack.management.acl.v1.ImportRoleRequest.RulesEntry
+	26, // 7: cloudstack.management.acl.v1.ImportRoleResponse.result:type_name -> cloudstack.management.acl.v1.Result
+	24, // 8: cloudstack.management.acl.v1.ListRolePermissionsResponse.items:type_name -> cloudstack.management.acl.v1.RolePermission
+	23, // 9: cloudstack.management.acl.v1.ListRolesResponse.items:type_name -> cloudstack.management.acl.v1.Role
+	26, // 10: cloudstack.management.acl.v1.UpdateRoleResponse.result:type_name -> cloudstack.management.acl.v1.Result
+	26, // 11: cloudstack.management.acl.v1.UpdateRolePermissionResponse.result:type_name -> cloudstack.management.acl.v1.Result
+	1,  // 12: cloudstack.management.acl.v1.AclService.CreateRole:input_type -> cloudstack.management.acl.v1.CreateRoleRequest
+	3,  // 13: cloudstack.management.acl.v1.AclService.CreateRolePermission:input_type -> cloudstack.management.acl.v1.CreateRolePermissionRequest
+	5,  // 14: cloudstack.management.acl.v1.AclService.DeleteRole:input_type -> cloudstack.management.acl.v1.DeleteRoleRequest
+	7,  // 15: cloudstack.management.acl.v1.AclService.DeleteRolePermission:input_type -> cloudstack.management.acl.v1.DeleteRolePermissionRequest
+	9,  // 16: cloudstack.management.acl.v1.AclService.DisableRole:input_type -> cloudstack.management.acl.v1.DisableRoleRequest
+	11, // 17: cloudstack.management.acl.v1.AclService.EnableRole:input_type -> cloudstack.management.acl.v1.EnableRoleRequest
+	13, // 18: cloudstack.management.acl.v1.AclService.ImportRole:input_type -> cloudstack.management.acl.v1.ImportRoleRequest
+	15, // 19: cloudstack.management.acl.v1.AclService.ListRolePermissions:input_type -> cloudstack.management.acl.v1.ListRolePermissionsRequest
+	17, // 20: cloudstack.management.acl.v1.AclService.ListRoles:input_type -> cloudstack.management.acl.v1.ListRolesRequest
+	19, // 21: cloudstack.management.acl.v1.AclService.UpdateRole:input_type -> cloudstack.management.acl.v1.UpdateRoleRequest
+	21, // 22: cloudstack.management.acl.v1.AclService.UpdateRolePermission:input_type -> cloudstack.management.acl.v1.UpdateRolePermissionRequest
+	2,  // 23: cloudstack.management.acl.v1.AclService.CreateRole:output_type -> cloudstack.management.acl.v1.CreateRoleResponse
+	4,  // 24: cloudstack.management.acl.v1.AclService.CreateRolePermission:output_type -> cloudstack.management.acl.v1.CreateRolePermissionResponse
+	6,  // 25: cloudstack.management.acl.v1.AclService.DeleteRole:output_type -> cloudstack.management.acl.v1.DeleteRoleResponse
+	8,  // 26: cloudstack.management.acl.v1.AclService.DeleteRolePermission:output_type -> cloudstack.management.acl.v1.DeleteRolePermissionResponse
+	10, // 27: cloudstack.management.acl.v1.AclService.DisableRole:output_type -> cloudstack.management.acl.v1.DisableRoleResponse
+	12, // 28: cloudstack.management.acl.v1.AclService.EnableRole:output_type -> cloudstack.management.acl.v1.EnableRoleResponse
+	14, // 29: cloudstack.management.acl.v1.AclService.ImportRole:output_type -> cloudstack.management.acl.v1.ImportRoleResponse
+	16, // 30: cloudstack.management.acl.v1.AclService.ListRolePermissions:output_type -> cloudstack.management.acl.v1.ListRolePermissionsResponse
+	18, // 31: cloudstack.management.acl.v1.AclService.ListRoles:output_type -> cloudstack.management.acl.v1.ListRolesResponse
+	20, // 32: cloudstack.management.acl.v1.AclService.UpdateRole:output_type -> cloudstack.management.acl.v1.UpdateRoleResponse
+	22, // 33: cloudstack.management.acl.v1.AclService.UpdateRolePermission:output_type -> cloudstack.management.acl.v1.UpdateRolePermissionResponse
+	23, // [23:34] is the sub-list for method output_type
+	12, // [12:23] is the sub-list for method input_type
+	12, // [12:12] is the sub-list for extension type_name
+	12, // [12:12] is the sub-list for extension extendee
+	0,  // [0:12] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_acl_v1_acl_gen_proto_init() }
@@ -2137,7 +1969,7 @@ func file_cloudstack_management_acl_v1_acl_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_acl_v1_acl_gen_proto_rawDesc), len(file_cloudstack_management_acl_v1_acl_gen_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   29,
+			NumMessages:   27,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

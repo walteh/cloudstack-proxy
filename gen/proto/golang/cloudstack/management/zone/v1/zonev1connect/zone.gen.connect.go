@@ -35,34 +35,34 @@ const (
 const (
 	// ZoneServiceCreateZoneProcedure is the fully-qualified name of the ZoneService's CreateZone RPC.
 	ZoneServiceCreateZoneProcedure = "/cloudstack.management.zone.v1.ZoneService/CreateZone"
-	// ZoneServiceUpdateZoneProcedure is the fully-qualified name of the ZoneService's UpdateZone RPC.
-	ZoneServiceUpdateZoneProcedure = "/cloudstack.management.zone.v1.ZoneService/UpdateZone"
+	// ZoneServiceDeleteZoneProcedure is the fully-qualified name of the ZoneService's DeleteZone RPC.
+	ZoneServiceDeleteZoneProcedure = "/cloudstack.management.zone.v1.ZoneService/DeleteZone"
+	// ZoneServiceListZonesProcedure is the fully-qualified name of the ZoneService's ListZones RPC.
+	ZoneServiceListZonesProcedure = "/cloudstack.management.zone.v1.ZoneService/ListZones"
 	// ZoneServiceListZonesCmdByAdminProcedure is the fully-qualified name of the ZoneService's
 	// ListZonesCmdByAdmin RPC.
 	ZoneServiceListZonesCmdByAdminProcedure = "/cloudstack.management.zone.v1.ZoneService/ListZonesCmdByAdmin"
-	// ZoneServiceDeleteZoneProcedure is the fully-qualified name of the ZoneService's DeleteZone RPC.
-	ZoneServiceDeleteZoneProcedure = "/cloudstack.management.zone.v1.ZoneService/DeleteZone"
 	// ZoneServiceMarkDefaultZoneForAccountProcedure is the fully-qualified name of the ZoneService's
 	// MarkDefaultZoneForAccount RPC.
 	ZoneServiceMarkDefaultZoneForAccountProcedure = "/cloudstack.management.zone.v1.ZoneService/MarkDefaultZoneForAccount"
-	// ZoneServiceListZonesProcedure is the fully-qualified name of the ZoneService's ListZones RPC.
-	ZoneServiceListZonesProcedure = "/cloudstack.management.zone.v1.ZoneService/ListZones"
+	// ZoneServiceUpdateZoneProcedure is the fully-qualified name of the ZoneService's UpdateZone RPC.
+	ZoneServiceUpdateZoneProcedure = "/cloudstack.management.zone.v1.ZoneService/UpdateZone"
 )
 
 // ZoneServiceClient is a client for the cloudstack.management.zone.v1.ZoneService service.
 type ZoneServiceClient interface {
 	// CreateZone Creates a Zone.
 	CreateZone(context.Context, *connect.Request[v1.CreateZoneRequest]) (*connect.Response[v1.CreateZoneResponse], error)
-	// UpdateZone Updates a Zone.
-	UpdateZone(context.Context, *connect.Request[v1.UpdateZoneRequest]) (*connect.Response[v1.UpdateZoneResponse], error)
-	// ListZonesCmdByAdmin Lists zones
-	ListZonesCmdByAdmin(context.Context, *connect.Request[v1.ListZonesCmdByAdminRequest]) (*connect.Response[v1.ListZonesCmdByAdminResponse], error)
 	// DeleteZone Deletes a Zone.
 	DeleteZone(context.Context, *connect.Request[v1.DeleteZoneRequest]) (*connect.Response[v1.DeleteZoneResponse], error)
-	// MarkDefaultZoneForAccount Marks a default zone for this account
-	MarkDefaultZoneForAccount(context.Context, *connect.Request[v1.MarkDefaultZoneForAccountRequest]) (*connect.Response[v1.MarkDefaultZoneForAccountResponse], error)
 	// ListZones Lists zones
 	ListZones(context.Context, *connect.Request[v1.ListZonesRequest]) (*connect.Response[v1.ListZonesResponse], error)
+	// ListZonesCmdByAdmin Lists zones
+	ListZonesCmdByAdmin(context.Context, *connect.Request[v1.ListZonesCmdByAdminRequest]) (*connect.Response[v1.ListZonesCmdByAdminResponse], error)
+	// MarkDefaultZoneForAccount Marks a default zone for this account
+	MarkDefaultZoneForAccount(context.Context, *connect.Request[v1.MarkDefaultZoneForAccountRequest]) (*connect.Response[v1.MarkDefaultZoneForAccountResponse], error)
+	// UpdateZone Updates a Zone.
+	UpdateZone(context.Context, *connect.Request[v1.UpdateZoneRequest]) (*connect.Response[v1.UpdateZoneResponse], error)
 }
 
 // NewZoneServiceClient constructs a client for the cloudstack.management.zone.v1.ZoneService
@@ -82,28 +82,10 @@ func NewZoneServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithSchema(zoneServiceMethods.ByName("CreateZone")),
 			connect.WithClientOptions(opts...),
 		),
-		updateZone: connect.NewClient[v1.UpdateZoneRequest, v1.UpdateZoneResponse](
-			httpClient,
-			baseURL+ZoneServiceUpdateZoneProcedure,
-			connect.WithSchema(zoneServiceMethods.ByName("UpdateZone")),
-			connect.WithClientOptions(opts...),
-		),
-		listZonesCmdByAdmin: connect.NewClient[v1.ListZonesCmdByAdminRequest, v1.ListZonesCmdByAdminResponse](
-			httpClient,
-			baseURL+ZoneServiceListZonesCmdByAdminProcedure,
-			connect.WithSchema(zoneServiceMethods.ByName("ListZonesCmdByAdmin")),
-			connect.WithClientOptions(opts...),
-		),
 		deleteZone: connect.NewClient[v1.DeleteZoneRequest, v1.DeleteZoneResponse](
 			httpClient,
 			baseURL+ZoneServiceDeleteZoneProcedure,
 			connect.WithSchema(zoneServiceMethods.ByName("DeleteZone")),
-			connect.WithClientOptions(opts...),
-		),
-		markDefaultZoneForAccount: connect.NewClient[v1.MarkDefaultZoneForAccountRequest, v1.MarkDefaultZoneForAccountResponse](
-			httpClient,
-			baseURL+ZoneServiceMarkDefaultZoneForAccountProcedure,
-			connect.WithSchema(zoneServiceMethods.ByName("MarkDefaultZoneForAccount")),
 			connect.WithClientOptions(opts...),
 		),
 		listZones: connect.NewClient[v1.ListZonesRequest, v1.ListZonesResponse](
@@ -112,17 +94,35 @@ func NewZoneServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithSchema(zoneServiceMethods.ByName("ListZones")),
 			connect.WithClientOptions(opts...),
 		),
+		listZonesCmdByAdmin: connect.NewClient[v1.ListZonesCmdByAdminRequest, v1.ListZonesCmdByAdminResponse](
+			httpClient,
+			baseURL+ZoneServiceListZonesCmdByAdminProcedure,
+			connect.WithSchema(zoneServiceMethods.ByName("ListZonesCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		markDefaultZoneForAccount: connect.NewClient[v1.MarkDefaultZoneForAccountRequest, v1.MarkDefaultZoneForAccountResponse](
+			httpClient,
+			baseURL+ZoneServiceMarkDefaultZoneForAccountProcedure,
+			connect.WithSchema(zoneServiceMethods.ByName("MarkDefaultZoneForAccount")),
+			connect.WithClientOptions(opts...),
+		),
+		updateZone: connect.NewClient[v1.UpdateZoneRequest, v1.UpdateZoneResponse](
+			httpClient,
+			baseURL+ZoneServiceUpdateZoneProcedure,
+			connect.WithSchema(zoneServiceMethods.ByName("UpdateZone")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // zoneServiceClient implements ZoneServiceClient.
 type zoneServiceClient struct {
 	createZone                *connect.Client[v1.CreateZoneRequest, v1.CreateZoneResponse]
-	updateZone                *connect.Client[v1.UpdateZoneRequest, v1.UpdateZoneResponse]
-	listZonesCmdByAdmin       *connect.Client[v1.ListZonesCmdByAdminRequest, v1.ListZonesCmdByAdminResponse]
 	deleteZone                *connect.Client[v1.DeleteZoneRequest, v1.DeleteZoneResponse]
-	markDefaultZoneForAccount *connect.Client[v1.MarkDefaultZoneForAccountRequest, v1.MarkDefaultZoneForAccountResponse]
 	listZones                 *connect.Client[v1.ListZonesRequest, v1.ListZonesResponse]
+	listZonesCmdByAdmin       *connect.Client[v1.ListZonesCmdByAdminRequest, v1.ListZonesCmdByAdminResponse]
+	markDefaultZoneForAccount *connect.Client[v1.MarkDefaultZoneForAccountRequest, v1.MarkDefaultZoneForAccountResponse]
+	updateZone                *connect.Client[v1.UpdateZoneRequest, v1.UpdateZoneResponse]
 }
 
 // CreateZone calls cloudstack.management.zone.v1.ZoneService.CreateZone.
@@ -130,19 +130,19 @@ func (c *zoneServiceClient) CreateZone(ctx context.Context, req *connect.Request
 	return c.createZone.CallUnary(ctx, req)
 }
 
-// UpdateZone calls cloudstack.management.zone.v1.ZoneService.UpdateZone.
-func (c *zoneServiceClient) UpdateZone(ctx context.Context, req *connect.Request[v1.UpdateZoneRequest]) (*connect.Response[v1.UpdateZoneResponse], error) {
-	return c.updateZone.CallUnary(ctx, req)
+// DeleteZone calls cloudstack.management.zone.v1.ZoneService.DeleteZone.
+func (c *zoneServiceClient) DeleteZone(ctx context.Context, req *connect.Request[v1.DeleteZoneRequest]) (*connect.Response[v1.DeleteZoneResponse], error) {
+	return c.deleteZone.CallUnary(ctx, req)
+}
+
+// ListZones calls cloudstack.management.zone.v1.ZoneService.ListZones.
+func (c *zoneServiceClient) ListZones(ctx context.Context, req *connect.Request[v1.ListZonesRequest]) (*connect.Response[v1.ListZonesResponse], error) {
+	return c.listZones.CallUnary(ctx, req)
 }
 
 // ListZonesCmdByAdmin calls cloudstack.management.zone.v1.ZoneService.ListZonesCmdByAdmin.
 func (c *zoneServiceClient) ListZonesCmdByAdmin(ctx context.Context, req *connect.Request[v1.ListZonesCmdByAdminRequest]) (*connect.Response[v1.ListZonesCmdByAdminResponse], error) {
 	return c.listZonesCmdByAdmin.CallUnary(ctx, req)
-}
-
-// DeleteZone calls cloudstack.management.zone.v1.ZoneService.DeleteZone.
-func (c *zoneServiceClient) DeleteZone(ctx context.Context, req *connect.Request[v1.DeleteZoneRequest]) (*connect.Response[v1.DeleteZoneResponse], error) {
-	return c.deleteZone.CallUnary(ctx, req)
 }
 
 // MarkDefaultZoneForAccount calls
@@ -151,25 +151,25 @@ func (c *zoneServiceClient) MarkDefaultZoneForAccount(ctx context.Context, req *
 	return c.markDefaultZoneForAccount.CallUnary(ctx, req)
 }
 
-// ListZones calls cloudstack.management.zone.v1.ZoneService.ListZones.
-func (c *zoneServiceClient) ListZones(ctx context.Context, req *connect.Request[v1.ListZonesRequest]) (*connect.Response[v1.ListZonesResponse], error) {
-	return c.listZones.CallUnary(ctx, req)
+// UpdateZone calls cloudstack.management.zone.v1.ZoneService.UpdateZone.
+func (c *zoneServiceClient) UpdateZone(ctx context.Context, req *connect.Request[v1.UpdateZoneRequest]) (*connect.Response[v1.UpdateZoneResponse], error) {
+	return c.updateZone.CallUnary(ctx, req)
 }
 
 // ZoneServiceHandler is an implementation of the cloudstack.management.zone.v1.ZoneService service.
 type ZoneServiceHandler interface {
 	// CreateZone Creates a Zone.
 	CreateZone(context.Context, *connect.Request[v1.CreateZoneRequest]) (*connect.Response[v1.CreateZoneResponse], error)
-	// UpdateZone Updates a Zone.
-	UpdateZone(context.Context, *connect.Request[v1.UpdateZoneRequest]) (*connect.Response[v1.UpdateZoneResponse], error)
-	// ListZonesCmdByAdmin Lists zones
-	ListZonesCmdByAdmin(context.Context, *connect.Request[v1.ListZonesCmdByAdminRequest]) (*connect.Response[v1.ListZonesCmdByAdminResponse], error)
 	// DeleteZone Deletes a Zone.
 	DeleteZone(context.Context, *connect.Request[v1.DeleteZoneRequest]) (*connect.Response[v1.DeleteZoneResponse], error)
-	// MarkDefaultZoneForAccount Marks a default zone for this account
-	MarkDefaultZoneForAccount(context.Context, *connect.Request[v1.MarkDefaultZoneForAccountRequest]) (*connect.Response[v1.MarkDefaultZoneForAccountResponse], error)
 	// ListZones Lists zones
 	ListZones(context.Context, *connect.Request[v1.ListZonesRequest]) (*connect.Response[v1.ListZonesResponse], error)
+	// ListZonesCmdByAdmin Lists zones
+	ListZonesCmdByAdmin(context.Context, *connect.Request[v1.ListZonesCmdByAdminRequest]) (*connect.Response[v1.ListZonesCmdByAdminResponse], error)
+	// MarkDefaultZoneForAccount Marks a default zone for this account
+	MarkDefaultZoneForAccount(context.Context, *connect.Request[v1.MarkDefaultZoneForAccountRequest]) (*connect.Response[v1.MarkDefaultZoneForAccountResponse], error)
+	// UpdateZone Updates a Zone.
+	UpdateZone(context.Context, *connect.Request[v1.UpdateZoneRequest]) (*connect.Response[v1.UpdateZoneResponse], error)
 }
 
 // NewZoneServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -185,28 +185,10 @@ func NewZoneServiceHandler(svc ZoneServiceHandler, opts ...connect.HandlerOption
 		connect.WithSchema(zoneServiceMethods.ByName("CreateZone")),
 		connect.WithHandlerOptions(opts...),
 	)
-	zoneServiceUpdateZoneHandler := connect.NewUnaryHandler(
-		ZoneServiceUpdateZoneProcedure,
-		svc.UpdateZone,
-		connect.WithSchema(zoneServiceMethods.ByName("UpdateZone")),
-		connect.WithHandlerOptions(opts...),
-	)
-	zoneServiceListZonesCmdByAdminHandler := connect.NewUnaryHandler(
-		ZoneServiceListZonesCmdByAdminProcedure,
-		svc.ListZonesCmdByAdmin,
-		connect.WithSchema(zoneServiceMethods.ByName("ListZonesCmdByAdmin")),
-		connect.WithHandlerOptions(opts...),
-	)
 	zoneServiceDeleteZoneHandler := connect.NewUnaryHandler(
 		ZoneServiceDeleteZoneProcedure,
 		svc.DeleteZone,
 		connect.WithSchema(zoneServiceMethods.ByName("DeleteZone")),
-		connect.WithHandlerOptions(opts...),
-	)
-	zoneServiceMarkDefaultZoneForAccountHandler := connect.NewUnaryHandler(
-		ZoneServiceMarkDefaultZoneForAccountProcedure,
-		svc.MarkDefaultZoneForAccount,
-		connect.WithSchema(zoneServiceMethods.ByName("MarkDefaultZoneForAccount")),
 		connect.WithHandlerOptions(opts...),
 	)
 	zoneServiceListZonesHandler := connect.NewUnaryHandler(
@@ -215,20 +197,38 @@ func NewZoneServiceHandler(svc ZoneServiceHandler, opts ...connect.HandlerOption
 		connect.WithSchema(zoneServiceMethods.ByName("ListZones")),
 		connect.WithHandlerOptions(opts...),
 	)
+	zoneServiceListZonesCmdByAdminHandler := connect.NewUnaryHandler(
+		ZoneServiceListZonesCmdByAdminProcedure,
+		svc.ListZonesCmdByAdmin,
+		connect.WithSchema(zoneServiceMethods.ByName("ListZonesCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	zoneServiceMarkDefaultZoneForAccountHandler := connect.NewUnaryHandler(
+		ZoneServiceMarkDefaultZoneForAccountProcedure,
+		svc.MarkDefaultZoneForAccount,
+		connect.WithSchema(zoneServiceMethods.ByName("MarkDefaultZoneForAccount")),
+		connect.WithHandlerOptions(opts...),
+	)
+	zoneServiceUpdateZoneHandler := connect.NewUnaryHandler(
+		ZoneServiceUpdateZoneProcedure,
+		svc.UpdateZone,
+		connect.WithSchema(zoneServiceMethods.ByName("UpdateZone")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.zone.v1.ZoneService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case ZoneServiceCreateZoneProcedure:
 			zoneServiceCreateZoneHandler.ServeHTTP(w, r)
-		case ZoneServiceUpdateZoneProcedure:
-			zoneServiceUpdateZoneHandler.ServeHTTP(w, r)
-		case ZoneServiceListZonesCmdByAdminProcedure:
-			zoneServiceListZonesCmdByAdminHandler.ServeHTTP(w, r)
 		case ZoneServiceDeleteZoneProcedure:
 			zoneServiceDeleteZoneHandler.ServeHTTP(w, r)
-		case ZoneServiceMarkDefaultZoneForAccountProcedure:
-			zoneServiceMarkDefaultZoneForAccountHandler.ServeHTTP(w, r)
 		case ZoneServiceListZonesProcedure:
 			zoneServiceListZonesHandler.ServeHTTP(w, r)
+		case ZoneServiceListZonesCmdByAdminProcedure:
+			zoneServiceListZonesCmdByAdminHandler.ServeHTTP(w, r)
+		case ZoneServiceMarkDefaultZoneForAccountProcedure:
+			zoneServiceMarkDefaultZoneForAccountHandler.ServeHTTP(w, r)
+		case ZoneServiceUpdateZoneProcedure:
+			zoneServiceUpdateZoneHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -242,22 +242,22 @@ func (UnimplementedZoneServiceHandler) CreateZone(context.Context, *connect.Requ
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.zone.v1.ZoneService.CreateZone is not implemented"))
 }
 
-func (UnimplementedZoneServiceHandler) UpdateZone(context.Context, *connect.Request[v1.UpdateZoneRequest]) (*connect.Response[v1.UpdateZoneResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.zone.v1.ZoneService.UpdateZone is not implemented"))
+func (UnimplementedZoneServiceHandler) DeleteZone(context.Context, *connect.Request[v1.DeleteZoneRequest]) (*connect.Response[v1.DeleteZoneResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.zone.v1.ZoneService.DeleteZone is not implemented"))
+}
+
+func (UnimplementedZoneServiceHandler) ListZones(context.Context, *connect.Request[v1.ListZonesRequest]) (*connect.Response[v1.ListZonesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.zone.v1.ZoneService.ListZones is not implemented"))
 }
 
 func (UnimplementedZoneServiceHandler) ListZonesCmdByAdmin(context.Context, *connect.Request[v1.ListZonesCmdByAdminRequest]) (*connect.Response[v1.ListZonesCmdByAdminResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.zone.v1.ZoneService.ListZonesCmdByAdmin is not implemented"))
 }
 
-func (UnimplementedZoneServiceHandler) DeleteZone(context.Context, *connect.Request[v1.DeleteZoneRequest]) (*connect.Response[v1.DeleteZoneResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.zone.v1.ZoneService.DeleteZone is not implemented"))
-}
-
 func (UnimplementedZoneServiceHandler) MarkDefaultZoneForAccount(context.Context, *connect.Request[v1.MarkDefaultZoneForAccountRequest]) (*connect.Response[v1.MarkDefaultZoneForAccountResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.zone.v1.ZoneService.MarkDefaultZoneForAccount is not implemented"))
 }
 
-func (UnimplementedZoneServiceHandler) ListZones(context.Context, *connect.Request[v1.ListZonesRequest]) (*connect.Response[v1.ListZonesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.zone.v1.ZoneService.ListZones is not implemented"))
+func (UnimplementedZoneServiceHandler) UpdateZone(context.Context, *connect.Request[v1.UpdateZoneRequest]) (*connect.Response[v1.UpdateZoneResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.zone.v1.ZoneService.UpdateZone is not implemented"))
 }

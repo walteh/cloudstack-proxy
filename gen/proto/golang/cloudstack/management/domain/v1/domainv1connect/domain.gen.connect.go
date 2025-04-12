@@ -33,40 +33,45 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// DomainServiceDeleteDomainProcedure is the fully-qualified name of the DomainService's
-	// DeleteDomain RPC.
-	DomainServiceDeleteDomainProcedure = "/cloudstack.management.domain.v1.DomainService/DeleteDomain"
-	// DomainServiceUpdateDomainProcedure is the fully-qualified name of the DomainService's
-	// UpdateDomain RPC.
-	DomainServiceUpdateDomainProcedure = "/cloudstack.management.domain.v1.DomainService/UpdateDomain"
 	// DomainServiceCreateDomainProcedure is the fully-qualified name of the DomainService's
 	// CreateDomain RPC.
 	DomainServiceCreateDomainProcedure = "/cloudstack.management.domain.v1.DomainService/CreateDomain"
-	// DomainServiceMoveDomainProcedure is the fully-qualified name of the DomainService's MoveDomain
-	// RPC.
-	DomainServiceMoveDomainProcedure = "/cloudstack.management.domain.v1.DomainService/MoveDomain"
-	// DomainServiceListDomainsProcedure is the fully-qualified name of the DomainService's ListDomains
-	// RPC.
-	DomainServiceListDomainsProcedure = "/cloudstack.management.domain.v1.DomainService/ListDomains"
+	// DomainServiceDeleteDomainProcedure is the fully-qualified name of the DomainService's
+	// DeleteDomain RPC.
+	DomainServiceDeleteDomainProcedure = "/cloudstack.management.domain.v1.DomainService/DeleteDomain"
 	// DomainServiceListDomainChildrenProcedure is the fully-qualified name of the DomainService's
 	// ListDomainChildren RPC.
 	DomainServiceListDomainChildrenProcedure = "/cloudstack.management.domain.v1.DomainService/ListDomainChildren"
+	// DomainServiceListDomainsProcedure is the fully-qualified name of the DomainService's ListDomains
+	// RPC.
+	DomainServiceListDomainsProcedure = "/cloudstack.management.domain.v1.DomainService/ListDomains"
+	// DomainServiceListDomainsCmdByAdminProcedure is the fully-qualified name of the DomainService's
+	// ListDomainsCmdByAdmin RPC.
+	DomainServiceListDomainsCmdByAdminProcedure = "/cloudstack.management.domain.v1.DomainService/ListDomainsCmdByAdmin"
+	// DomainServiceMoveDomainProcedure is the fully-qualified name of the DomainService's MoveDomain
+	// RPC.
+	DomainServiceMoveDomainProcedure = "/cloudstack.management.domain.v1.DomainService/MoveDomain"
+	// DomainServiceUpdateDomainProcedure is the fully-qualified name of the DomainService's
+	// UpdateDomain RPC.
+	DomainServiceUpdateDomainProcedure = "/cloudstack.management.domain.v1.DomainService/UpdateDomain"
 )
 
 // DomainServiceClient is a client for the cloudstack.management.domain.v1.DomainService service.
 type DomainServiceClient interface {
-	// DeleteDomain Deletes a specified domain
-	DeleteDomain(context.Context, *connect.Request[v1.DeleteDomainRequest]) (*connect.Response[v1.DeleteDomainResponse], error)
-	// UpdateDomain Updates a domain with a new name
-	UpdateDomain(context.Context, *connect.Request[v1.UpdateDomainRequest]) (*connect.Response[v1.UpdateDomainResponse], error)
 	// CreateDomain Creates a domain
 	CreateDomain(context.Context, *connect.Request[v1.CreateDomainRequest]) (*connect.Response[v1.CreateDomainResponse], error)
-	// MoveDomain Moves a domain and its children to a new parent domain.
-	MoveDomain(context.Context, *connect.Request[v1.MoveDomainRequest]) (*connect.Response[v1.MoveDomainResponse], error)
-	// ListDomains Lists domains and provides detailed information for listed domains
-	ListDomains(context.Context, *connect.Request[v1.ListDomainsRequest]) (*connect.Response[v1.ListDomainsResponse], error)
+	// DeleteDomain Deletes a specified domain
+	DeleteDomain(context.Context, *connect.Request[v1.DeleteDomainRequest]) (*connect.Response[v1.DeleteDomainResponse], error)
 	// ListDomainChildren Lists all children domains belonging to a specified domain
 	ListDomainChildren(context.Context, *connect.Request[v1.ListDomainChildrenRequest]) (*connect.Response[v1.ListDomainChildrenResponse], error)
+	// ListDomains Lists domains and provides detailed information for listed domains
+	ListDomains(context.Context, *connect.Request[v1.ListDomainsRequest]) (*connect.Response[v1.ListDomainsResponse], error)
+	// ListDomainsCmdByAdmin Lists domains and provides detailed information for listed domains
+	ListDomainsCmdByAdmin(context.Context, *connect.Request[v1.ListDomainsCmdByAdminRequest]) (*connect.Response[v1.ListDomainsCmdByAdminResponse], error)
+	// MoveDomain Moves a domain and its children to a new parent domain.
+	MoveDomain(context.Context, *connect.Request[v1.MoveDomainRequest]) (*connect.Response[v1.MoveDomainResponse], error)
+	// UpdateDomain Updates a domain with a new name
+	UpdateDomain(context.Context, *connect.Request[v1.UpdateDomainRequest]) (*connect.Response[v1.UpdateDomainResponse], error)
 }
 
 // NewDomainServiceClient constructs a client for the cloudstack.management.domain.v1.DomainService
@@ -80,34 +85,16 @@ func NewDomainServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 	baseURL = strings.TrimRight(baseURL, "/")
 	domainServiceMethods := v1.File_cloudstack_management_domain_v1_domain_gen_proto.Services().ByName("DomainService").Methods()
 	return &domainServiceClient{
-		deleteDomain: connect.NewClient[v1.DeleteDomainRequest, v1.DeleteDomainResponse](
-			httpClient,
-			baseURL+DomainServiceDeleteDomainProcedure,
-			connect.WithSchema(domainServiceMethods.ByName("DeleteDomain")),
-			connect.WithClientOptions(opts...),
-		),
-		updateDomain: connect.NewClient[v1.UpdateDomainRequest, v1.UpdateDomainResponse](
-			httpClient,
-			baseURL+DomainServiceUpdateDomainProcedure,
-			connect.WithSchema(domainServiceMethods.ByName("UpdateDomain")),
-			connect.WithClientOptions(opts...),
-		),
 		createDomain: connect.NewClient[v1.CreateDomainRequest, v1.CreateDomainResponse](
 			httpClient,
 			baseURL+DomainServiceCreateDomainProcedure,
 			connect.WithSchema(domainServiceMethods.ByName("CreateDomain")),
 			connect.WithClientOptions(opts...),
 		),
-		moveDomain: connect.NewClient[v1.MoveDomainRequest, v1.MoveDomainResponse](
+		deleteDomain: connect.NewClient[v1.DeleteDomainRequest, v1.DeleteDomainResponse](
 			httpClient,
-			baseURL+DomainServiceMoveDomainProcedure,
-			connect.WithSchema(domainServiceMethods.ByName("MoveDomain")),
-			connect.WithClientOptions(opts...),
-		),
-		listDomains: connect.NewClient[v1.ListDomainsRequest, v1.ListDomainsResponse](
-			httpClient,
-			baseURL+DomainServiceListDomainsProcedure,
-			connect.WithSchema(domainServiceMethods.ByName("ListDomains")),
+			baseURL+DomainServiceDeleteDomainProcedure,
+			connect.WithSchema(domainServiceMethods.ByName("DeleteDomain")),
 			connect.WithClientOptions(opts...),
 		),
 		listDomainChildren: connect.NewClient[v1.ListDomainChildrenRequest, v1.ListDomainChildrenResponse](
@@ -116,27 +103,42 @@ func NewDomainServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			connect.WithSchema(domainServiceMethods.ByName("ListDomainChildren")),
 			connect.WithClientOptions(opts...),
 		),
+		listDomains: connect.NewClient[v1.ListDomainsRequest, v1.ListDomainsResponse](
+			httpClient,
+			baseURL+DomainServiceListDomainsProcedure,
+			connect.WithSchema(domainServiceMethods.ByName("ListDomains")),
+			connect.WithClientOptions(opts...),
+		),
+		listDomainsCmdByAdmin: connect.NewClient[v1.ListDomainsCmdByAdminRequest, v1.ListDomainsCmdByAdminResponse](
+			httpClient,
+			baseURL+DomainServiceListDomainsCmdByAdminProcedure,
+			connect.WithSchema(domainServiceMethods.ByName("ListDomainsCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		moveDomain: connect.NewClient[v1.MoveDomainRequest, v1.MoveDomainResponse](
+			httpClient,
+			baseURL+DomainServiceMoveDomainProcedure,
+			connect.WithSchema(domainServiceMethods.ByName("MoveDomain")),
+			connect.WithClientOptions(opts...),
+		),
+		updateDomain: connect.NewClient[v1.UpdateDomainRequest, v1.UpdateDomainResponse](
+			httpClient,
+			baseURL+DomainServiceUpdateDomainProcedure,
+			connect.WithSchema(domainServiceMethods.ByName("UpdateDomain")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // domainServiceClient implements DomainServiceClient.
 type domainServiceClient struct {
-	deleteDomain       *connect.Client[v1.DeleteDomainRequest, v1.DeleteDomainResponse]
-	updateDomain       *connect.Client[v1.UpdateDomainRequest, v1.UpdateDomainResponse]
-	createDomain       *connect.Client[v1.CreateDomainRequest, v1.CreateDomainResponse]
-	moveDomain         *connect.Client[v1.MoveDomainRequest, v1.MoveDomainResponse]
-	listDomains        *connect.Client[v1.ListDomainsRequest, v1.ListDomainsResponse]
-	listDomainChildren *connect.Client[v1.ListDomainChildrenRequest, v1.ListDomainChildrenResponse]
-}
-
-// DeleteDomain calls cloudstack.management.domain.v1.DomainService.DeleteDomain.
-func (c *domainServiceClient) DeleteDomain(ctx context.Context, req *connect.Request[v1.DeleteDomainRequest]) (*connect.Response[v1.DeleteDomainResponse], error) {
-	return c.deleteDomain.CallUnary(ctx, req)
-}
-
-// UpdateDomain calls cloudstack.management.domain.v1.DomainService.UpdateDomain.
-func (c *domainServiceClient) UpdateDomain(ctx context.Context, req *connect.Request[v1.UpdateDomainRequest]) (*connect.Response[v1.UpdateDomainResponse], error) {
-	return c.updateDomain.CallUnary(ctx, req)
+	createDomain          *connect.Client[v1.CreateDomainRequest, v1.CreateDomainResponse]
+	deleteDomain          *connect.Client[v1.DeleteDomainRequest, v1.DeleteDomainResponse]
+	listDomainChildren    *connect.Client[v1.ListDomainChildrenRequest, v1.ListDomainChildrenResponse]
+	listDomains           *connect.Client[v1.ListDomainsRequest, v1.ListDomainsResponse]
+	listDomainsCmdByAdmin *connect.Client[v1.ListDomainsCmdByAdminRequest, v1.ListDomainsCmdByAdminResponse]
+	moveDomain            *connect.Client[v1.MoveDomainRequest, v1.MoveDomainResponse]
+	updateDomain          *connect.Client[v1.UpdateDomainRequest, v1.UpdateDomainResponse]
 }
 
 // CreateDomain calls cloudstack.management.domain.v1.DomainService.CreateDomain.
@@ -144,14 +146,9 @@ func (c *domainServiceClient) CreateDomain(ctx context.Context, req *connect.Req
 	return c.createDomain.CallUnary(ctx, req)
 }
 
-// MoveDomain calls cloudstack.management.domain.v1.DomainService.MoveDomain.
-func (c *domainServiceClient) MoveDomain(ctx context.Context, req *connect.Request[v1.MoveDomainRequest]) (*connect.Response[v1.MoveDomainResponse], error) {
-	return c.moveDomain.CallUnary(ctx, req)
-}
-
-// ListDomains calls cloudstack.management.domain.v1.DomainService.ListDomains.
-func (c *domainServiceClient) ListDomains(ctx context.Context, req *connect.Request[v1.ListDomainsRequest]) (*connect.Response[v1.ListDomainsResponse], error) {
-	return c.listDomains.CallUnary(ctx, req)
+// DeleteDomain calls cloudstack.management.domain.v1.DomainService.DeleteDomain.
+func (c *domainServiceClient) DeleteDomain(ctx context.Context, req *connect.Request[v1.DeleteDomainRequest]) (*connect.Response[v1.DeleteDomainResponse], error) {
+	return c.deleteDomain.CallUnary(ctx, req)
 }
 
 // ListDomainChildren calls cloudstack.management.domain.v1.DomainService.ListDomainChildren.
@@ -159,21 +156,43 @@ func (c *domainServiceClient) ListDomainChildren(ctx context.Context, req *conne
 	return c.listDomainChildren.CallUnary(ctx, req)
 }
 
+// ListDomains calls cloudstack.management.domain.v1.DomainService.ListDomains.
+func (c *domainServiceClient) ListDomains(ctx context.Context, req *connect.Request[v1.ListDomainsRequest]) (*connect.Response[v1.ListDomainsResponse], error) {
+	return c.listDomains.CallUnary(ctx, req)
+}
+
+// ListDomainsCmdByAdmin calls cloudstack.management.domain.v1.DomainService.ListDomainsCmdByAdmin.
+func (c *domainServiceClient) ListDomainsCmdByAdmin(ctx context.Context, req *connect.Request[v1.ListDomainsCmdByAdminRequest]) (*connect.Response[v1.ListDomainsCmdByAdminResponse], error) {
+	return c.listDomainsCmdByAdmin.CallUnary(ctx, req)
+}
+
+// MoveDomain calls cloudstack.management.domain.v1.DomainService.MoveDomain.
+func (c *domainServiceClient) MoveDomain(ctx context.Context, req *connect.Request[v1.MoveDomainRequest]) (*connect.Response[v1.MoveDomainResponse], error) {
+	return c.moveDomain.CallUnary(ctx, req)
+}
+
+// UpdateDomain calls cloudstack.management.domain.v1.DomainService.UpdateDomain.
+func (c *domainServiceClient) UpdateDomain(ctx context.Context, req *connect.Request[v1.UpdateDomainRequest]) (*connect.Response[v1.UpdateDomainResponse], error) {
+	return c.updateDomain.CallUnary(ctx, req)
+}
+
 // DomainServiceHandler is an implementation of the cloudstack.management.domain.v1.DomainService
 // service.
 type DomainServiceHandler interface {
-	// DeleteDomain Deletes a specified domain
-	DeleteDomain(context.Context, *connect.Request[v1.DeleteDomainRequest]) (*connect.Response[v1.DeleteDomainResponse], error)
-	// UpdateDomain Updates a domain with a new name
-	UpdateDomain(context.Context, *connect.Request[v1.UpdateDomainRequest]) (*connect.Response[v1.UpdateDomainResponse], error)
 	// CreateDomain Creates a domain
 	CreateDomain(context.Context, *connect.Request[v1.CreateDomainRequest]) (*connect.Response[v1.CreateDomainResponse], error)
-	// MoveDomain Moves a domain and its children to a new parent domain.
-	MoveDomain(context.Context, *connect.Request[v1.MoveDomainRequest]) (*connect.Response[v1.MoveDomainResponse], error)
-	// ListDomains Lists domains and provides detailed information for listed domains
-	ListDomains(context.Context, *connect.Request[v1.ListDomainsRequest]) (*connect.Response[v1.ListDomainsResponse], error)
+	// DeleteDomain Deletes a specified domain
+	DeleteDomain(context.Context, *connect.Request[v1.DeleteDomainRequest]) (*connect.Response[v1.DeleteDomainResponse], error)
 	// ListDomainChildren Lists all children domains belonging to a specified domain
 	ListDomainChildren(context.Context, *connect.Request[v1.ListDomainChildrenRequest]) (*connect.Response[v1.ListDomainChildrenResponse], error)
+	// ListDomains Lists domains and provides detailed information for listed domains
+	ListDomains(context.Context, *connect.Request[v1.ListDomainsRequest]) (*connect.Response[v1.ListDomainsResponse], error)
+	// ListDomainsCmdByAdmin Lists domains and provides detailed information for listed domains
+	ListDomainsCmdByAdmin(context.Context, *connect.Request[v1.ListDomainsCmdByAdminRequest]) (*connect.Response[v1.ListDomainsCmdByAdminResponse], error)
+	// MoveDomain Moves a domain and its children to a new parent domain.
+	MoveDomain(context.Context, *connect.Request[v1.MoveDomainRequest]) (*connect.Response[v1.MoveDomainResponse], error)
+	// UpdateDomain Updates a domain with a new name
+	UpdateDomain(context.Context, *connect.Request[v1.UpdateDomainRequest]) (*connect.Response[v1.UpdateDomainResponse], error)
 }
 
 // NewDomainServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -183,34 +202,16 @@ type DomainServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewDomainServiceHandler(svc DomainServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	domainServiceMethods := v1.File_cloudstack_management_domain_v1_domain_gen_proto.Services().ByName("DomainService").Methods()
-	domainServiceDeleteDomainHandler := connect.NewUnaryHandler(
-		DomainServiceDeleteDomainProcedure,
-		svc.DeleteDomain,
-		connect.WithSchema(domainServiceMethods.ByName("DeleteDomain")),
-		connect.WithHandlerOptions(opts...),
-	)
-	domainServiceUpdateDomainHandler := connect.NewUnaryHandler(
-		DomainServiceUpdateDomainProcedure,
-		svc.UpdateDomain,
-		connect.WithSchema(domainServiceMethods.ByName("UpdateDomain")),
-		connect.WithHandlerOptions(opts...),
-	)
 	domainServiceCreateDomainHandler := connect.NewUnaryHandler(
 		DomainServiceCreateDomainProcedure,
 		svc.CreateDomain,
 		connect.WithSchema(domainServiceMethods.ByName("CreateDomain")),
 		connect.WithHandlerOptions(opts...),
 	)
-	domainServiceMoveDomainHandler := connect.NewUnaryHandler(
-		DomainServiceMoveDomainProcedure,
-		svc.MoveDomain,
-		connect.WithSchema(domainServiceMethods.ByName("MoveDomain")),
-		connect.WithHandlerOptions(opts...),
-	)
-	domainServiceListDomainsHandler := connect.NewUnaryHandler(
-		DomainServiceListDomainsProcedure,
-		svc.ListDomains,
-		connect.WithSchema(domainServiceMethods.ByName("ListDomains")),
+	domainServiceDeleteDomainHandler := connect.NewUnaryHandler(
+		DomainServiceDeleteDomainProcedure,
+		svc.DeleteDomain,
+		connect.WithSchema(domainServiceMethods.ByName("DeleteDomain")),
 		connect.WithHandlerOptions(opts...),
 	)
 	domainServiceListDomainChildrenHandler := connect.NewUnaryHandler(
@@ -219,20 +220,46 @@ func NewDomainServiceHandler(svc DomainServiceHandler, opts ...connect.HandlerOp
 		connect.WithSchema(domainServiceMethods.ByName("ListDomainChildren")),
 		connect.WithHandlerOptions(opts...),
 	)
+	domainServiceListDomainsHandler := connect.NewUnaryHandler(
+		DomainServiceListDomainsProcedure,
+		svc.ListDomains,
+		connect.WithSchema(domainServiceMethods.ByName("ListDomains")),
+		connect.WithHandlerOptions(opts...),
+	)
+	domainServiceListDomainsCmdByAdminHandler := connect.NewUnaryHandler(
+		DomainServiceListDomainsCmdByAdminProcedure,
+		svc.ListDomainsCmdByAdmin,
+		connect.WithSchema(domainServiceMethods.ByName("ListDomainsCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	domainServiceMoveDomainHandler := connect.NewUnaryHandler(
+		DomainServiceMoveDomainProcedure,
+		svc.MoveDomain,
+		connect.WithSchema(domainServiceMethods.ByName("MoveDomain")),
+		connect.WithHandlerOptions(opts...),
+	)
+	domainServiceUpdateDomainHandler := connect.NewUnaryHandler(
+		DomainServiceUpdateDomainProcedure,
+		svc.UpdateDomain,
+		connect.WithSchema(domainServiceMethods.ByName("UpdateDomain")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.domain.v1.DomainService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case DomainServiceDeleteDomainProcedure:
-			domainServiceDeleteDomainHandler.ServeHTTP(w, r)
-		case DomainServiceUpdateDomainProcedure:
-			domainServiceUpdateDomainHandler.ServeHTTP(w, r)
 		case DomainServiceCreateDomainProcedure:
 			domainServiceCreateDomainHandler.ServeHTTP(w, r)
-		case DomainServiceMoveDomainProcedure:
-			domainServiceMoveDomainHandler.ServeHTTP(w, r)
-		case DomainServiceListDomainsProcedure:
-			domainServiceListDomainsHandler.ServeHTTP(w, r)
+		case DomainServiceDeleteDomainProcedure:
+			domainServiceDeleteDomainHandler.ServeHTTP(w, r)
 		case DomainServiceListDomainChildrenProcedure:
 			domainServiceListDomainChildrenHandler.ServeHTTP(w, r)
+		case DomainServiceListDomainsProcedure:
+			domainServiceListDomainsHandler.ServeHTTP(w, r)
+		case DomainServiceListDomainsCmdByAdminProcedure:
+			domainServiceListDomainsCmdByAdminHandler.ServeHTTP(w, r)
+		case DomainServiceMoveDomainProcedure:
+			domainServiceMoveDomainHandler.ServeHTTP(w, r)
+		case DomainServiceUpdateDomainProcedure:
+			domainServiceUpdateDomainHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -242,26 +269,30 @@ func NewDomainServiceHandler(svc DomainServiceHandler, opts ...connect.HandlerOp
 // UnimplementedDomainServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedDomainServiceHandler struct{}
 
-func (UnimplementedDomainServiceHandler) DeleteDomain(context.Context, *connect.Request[v1.DeleteDomainRequest]) (*connect.Response[v1.DeleteDomainResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.domain.v1.DomainService.DeleteDomain is not implemented"))
-}
-
-func (UnimplementedDomainServiceHandler) UpdateDomain(context.Context, *connect.Request[v1.UpdateDomainRequest]) (*connect.Response[v1.UpdateDomainResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.domain.v1.DomainService.UpdateDomain is not implemented"))
-}
-
 func (UnimplementedDomainServiceHandler) CreateDomain(context.Context, *connect.Request[v1.CreateDomainRequest]) (*connect.Response[v1.CreateDomainResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.domain.v1.DomainService.CreateDomain is not implemented"))
 }
 
-func (UnimplementedDomainServiceHandler) MoveDomain(context.Context, *connect.Request[v1.MoveDomainRequest]) (*connect.Response[v1.MoveDomainResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.domain.v1.DomainService.MoveDomain is not implemented"))
+func (UnimplementedDomainServiceHandler) DeleteDomain(context.Context, *connect.Request[v1.DeleteDomainRequest]) (*connect.Response[v1.DeleteDomainResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.domain.v1.DomainService.DeleteDomain is not implemented"))
+}
+
+func (UnimplementedDomainServiceHandler) ListDomainChildren(context.Context, *connect.Request[v1.ListDomainChildrenRequest]) (*connect.Response[v1.ListDomainChildrenResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.domain.v1.DomainService.ListDomainChildren is not implemented"))
 }
 
 func (UnimplementedDomainServiceHandler) ListDomains(context.Context, *connect.Request[v1.ListDomainsRequest]) (*connect.Response[v1.ListDomainsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.domain.v1.DomainService.ListDomains is not implemented"))
 }
 
-func (UnimplementedDomainServiceHandler) ListDomainChildren(context.Context, *connect.Request[v1.ListDomainChildrenRequest]) (*connect.Response[v1.ListDomainChildrenResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.domain.v1.DomainService.ListDomainChildren is not implemented"))
+func (UnimplementedDomainServiceHandler) ListDomainsCmdByAdmin(context.Context, *connect.Request[v1.ListDomainsCmdByAdminRequest]) (*connect.Response[v1.ListDomainsCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.domain.v1.DomainService.ListDomainsCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedDomainServiceHandler) MoveDomain(context.Context, *connect.Request[v1.MoveDomainRequest]) (*connect.Response[v1.MoveDomainResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.domain.v1.DomainService.MoveDomain is not implemented"))
+}
+
+func (UnimplementedDomainServiceHandler) UpdateDomain(context.Context, *connect.Request[v1.UpdateDomainRequest]) (*connect.Response[v1.UpdateDomainResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.domain.v1.DomainService.UpdateDomain is not implemented"))
 }

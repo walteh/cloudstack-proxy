@@ -33,213 +33,273 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// VmServiceAssignVMProcedure is the fully-qualified name of the VmService's AssignVM RPC.
-	VmServiceAssignVMProcedure = "/cloudstack.management.vm.v1.VmService/AssignVM"
-	// VmServiceDeployVMCmdByAdminProcedure is the fully-qualified name of the VmService's
-	// DeployVMCmdByAdmin RPC.
-	VmServiceDeployVMCmdByAdminProcedure = "/cloudstack.management.vm.v1.VmService/DeployVMCmdByAdmin"
-	// VmServiceUpdateDefaultNicForVMProcedure is the fully-qualified name of the VmService's
-	// UpdateDefaultNicForVM RPC.
-	VmServiceUpdateDefaultNicForVMProcedure = "/cloudstack.management.vm.v1.VmService/UpdateDefaultNicForVM"
-	// VmServiceExpungeVMProcedure is the fully-qualified name of the VmService's ExpungeVM RPC.
-	VmServiceExpungeVMProcedure = "/cloudstack.management.vm.v1.VmService/ExpungeVM"
-	// VmServiceUpgradeVMProcedure is the fully-qualified name of the VmService's UpgradeVM RPC.
-	VmServiceUpgradeVMProcedure = "/cloudstack.management.vm.v1.VmService/UpgradeVM"
-	// VmServiceDestroyVMProcedure is the fully-qualified name of the VmService's DestroyVM RPC.
-	VmServiceDestroyVMProcedure = "/cloudstack.management.vm.v1.VmService/DestroyVM"
-	// VmServiceRemoveNicFromVMCmdByAdminProcedure is the fully-qualified name of the VmService's
-	// RemoveNicFromVMCmdByAdmin RPC.
-	VmServiceRemoveNicFromVMCmdByAdminProcedure = "/cloudstack.management.vm.v1.VmService/RemoveNicFromVMCmdByAdmin"
+	// VmServiceAddIpToVmNicProcedure is the fully-qualified name of the VmService's AddIpToVmNic RPC.
+	VmServiceAddIpToVmNicProcedure = "/cloudstack.management.vm.v1.VmService/AddIpToVmNic"
+	// VmServiceAddNicToVMProcedure is the fully-qualified name of the VmService's AddNicToVM RPC.
+	VmServiceAddNicToVMProcedure = "/cloudstack.management.vm.v1.VmService/AddNicToVM"
 	// VmServiceAddNicToVMCmdByAdminProcedure is the fully-qualified name of the VmService's
 	// AddNicToVMCmdByAdmin RPC.
 	VmServiceAddNicToVMCmdByAdminProcedure = "/cloudstack.management.vm.v1.VmService/AddNicToVMCmdByAdmin"
-	// VmServiceListUnmanagedInstancesProcedure is the fully-qualified name of the VmService's
-	// ListUnmanagedInstances RPC.
-	VmServiceListUnmanagedInstancesProcedure = "/cloudstack.management.vm.v1.VmService/ListUnmanagedInstances"
-	// VmServiceUnmanageVMInstanceProcedure is the fully-qualified name of the VmService's
-	// UnmanageVMInstance RPC.
-	VmServiceUnmanageVMInstanceProcedure = "/cloudstack.management.vm.v1.VmService/UnmanageVMInstance"
-	// VmServiceResetVMPasswordProcedure is the fully-qualified name of the VmService's ResetVMPassword
-	// RPC.
-	VmServiceResetVMPasswordProcedure = "/cloudstack.management.vm.v1.VmService/ResetVMPassword"
-	// VmServiceDeployVnfApplianceCmdByAdminProcedure is the fully-qualified name of the VmService's
-	// DeployVnfApplianceCmdByAdmin RPC.
-	VmServiceDeployVnfApplianceCmdByAdminProcedure = "/cloudstack.management.vm.v1.VmService/DeployVnfApplianceCmdByAdmin"
-	// VmServiceListNicsProcedure is the fully-qualified name of the VmService's ListNics RPC.
-	VmServiceListNicsProcedure = "/cloudstack.management.vm.v1.VmService/ListNics"
-	// VmServiceListVMScheduleProcedure is the fully-qualified name of the VmService's ListVMSchedule
-	// RPC.
-	VmServiceListVMScheduleProcedure = "/cloudstack.management.vm.v1.VmService/ListVMSchedule"
-	// VmServiceRestoreVMProcedure is the fully-qualified name of the VmService's RestoreVM RPC.
-	VmServiceRestoreVMProcedure = "/cloudstack.management.vm.v1.VmService/RestoreVM"
-	// VmServiceStartVMProcedure is the fully-qualified name of the VmService's StartVM RPC.
-	VmServiceStartVMProcedure = "/cloudstack.management.vm.v1.VmService/StartVM"
-	// VmServiceDeployVnfApplianceProcedure is the fully-qualified name of the VmService's
-	// DeployVnfAppliance RPC.
-	VmServiceDeployVnfApplianceProcedure = "/cloudstack.management.vm.v1.VmService/DeployVnfAppliance"
-	// VmServiceMigrateVMProcedure is the fully-qualified name of the VmService's MigrateVM RPC.
-	VmServiceMigrateVMProcedure = "/cloudstack.management.vm.v1.VmService/MigrateVM"
-	// VmServiceListVnfAppliancesProcedure is the fully-qualified name of the VmService's
-	// ListVnfAppliances RPC.
-	VmServiceListVnfAppliancesProcedure = "/cloudstack.management.vm.v1.VmService/ListVnfAppliances"
-	// VmServiceListAffectedVmsForStorageScopeChangeProcedure is the fully-qualified name of the
-	// VmService's ListAffectedVmsForStorageScopeChange RPC.
-	VmServiceListAffectedVmsForStorageScopeChangeProcedure = "/cloudstack.management.vm.v1.VmService/ListAffectedVmsForStorageScopeChange"
-	// VmServiceStopVMCmdByAdminProcedure is the fully-qualified name of the VmService's
-	// StopVMCmdByAdmin RPC.
-	VmServiceStopVMCmdByAdminProcedure = "/cloudstack.management.vm.v1.VmService/StopVMCmdByAdmin"
-	// VmServiceUpdateVmNicIpProcedure is the fully-qualified name of the VmService's UpdateVmNicIp RPC.
-	VmServiceUpdateVmNicIpProcedure = "/cloudstack.management.vm.v1.VmService/UpdateVmNicIp"
-	// VmServiceImportUnmanagedInstanceProcedure is the fully-qualified name of the VmService's
-	// ImportUnmanagedInstance RPC.
-	VmServiceImportUnmanagedInstanceProcedure = "/cloudstack.management.vm.v1.VmService/ImportUnmanagedInstance"
-	// VmServiceDeleteVMScheduleProcedure is the fully-qualified name of the VmService's
-	// DeleteVMSchedule RPC.
-	VmServiceDeleteVMScheduleProcedure = "/cloudstack.management.vm.v1.VmService/DeleteVMSchedule"
-	// VmServiceResetVMSSHKeyProcedure is the fully-qualified name of the VmService's ResetVMSSHKey RPC.
-	VmServiceResetVMSSHKeyProcedure = "/cloudstack.management.vm.v1.VmService/ResetVMSSHKey"
-	// VmServiceGetVMPasswordProcedure is the fully-qualified name of the VmService's GetVMPassword RPC.
-	VmServiceGetVMPasswordProcedure = "/cloudstack.management.vm.v1.VmService/GetVMPassword"
-	// VmServiceListVmsForImportProcedure is the fully-qualified name of the VmService's
-	// ListVmsForImport RPC.
-	VmServiceListVmsForImportProcedure = "/cloudstack.management.vm.v1.VmService/ListVmsForImport"
-	// VmServiceDeployVMProcedure is the fully-qualified name of the VmService's DeployVM RPC.
-	VmServiceDeployVMProcedure = "/cloudstack.management.vm.v1.VmService/DeployVM"
-	// VmServiceScaleVMProcedure is the fully-qualified name of the VmService's ScaleVM RPC.
-	VmServiceScaleVMProcedure = "/cloudstack.management.vm.v1.VmService/ScaleVM"
-	// VmServiceUpdateVMCmdByAdminProcedure is the fully-qualified name of the VmService's
-	// UpdateVMCmdByAdmin RPC.
-	VmServiceUpdateVMCmdByAdminProcedure = "/cloudstack.management.vm.v1.VmService/UpdateVMCmdByAdmin"
-	// VmServiceResetVMUserDataProcedure is the fully-qualified name of the VmService's ResetVMUserData
-	// RPC.
-	VmServiceResetVMUserDataProcedure = "/cloudstack.management.vm.v1.VmService/ResetVMUserData"
+	// VmServiceAssignVMProcedure is the fully-qualified name of the VmService's AssignVM RPC.
+	VmServiceAssignVMProcedure = "/cloudstack.management.vm.v1.VmService/AssignVM"
 	// VmServiceCreateVMScheduleProcedure is the fully-qualified name of the VmService's
 	// CreateVMSchedule RPC.
 	VmServiceCreateVMScheduleProcedure = "/cloudstack.management.vm.v1.VmService/CreateVMSchedule"
-	// VmServiceRemoveNicFromVMProcedure is the fully-qualified name of the VmService's RemoveNicFromVM
-	// RPC.
-	VmServiceRemoveNicFromVMProcedure = "/cloudstack.management.vm.v1.VmService/RemoveNicFromVM"
-	// VmServiceListVMsProcedure is the fully-qualified name of the VmService's ListVMs RPC.
-	VmServiceListVMsProcedure = "/cloudstack.management.vm.v1.VmService/ListVMs"
-	// VmServiceRebootVMProcedure is the fully-qualified name of the VmService's RebootVM RPC.
-	VmServiceRebootVMProcedure = "/cloudstack.management.vm.v1.VmService/RebootVM"
-	// VmServiceImportVmProcedure is the fully-qualified name of the VmService's ImportVm RPC.
-	VmServiceImportVmProcedure = "/cloudstack.management.vm.v1.VmService/ImportVm"
-	// VmServiceAddIpToVmNicProcedure is the fully-qualified name of the VmService's AddIpToVmNic RPC.
-	VmServiceAddIpToVmNicProcedure = "/cloudstack.management.vm.v1.VmService/AddIpToVmNic"
+	// VmServiceDeleteVMScheduleProcedure is the fully-qualified name of the VmService's
+	// DeleteVMSchedule RPC.
+	VmServiceDeleteVMScheduleProcedure = "/cloudstack.management.vm.v1.VmService/DeleteVMSchedule"
+	// VmServiceDeployVMProcedure is the fully-qualified name of the VmService's DeployVM RPC.
+	VmServiceDeployVMProcedure = "/cloudstack.management.vm.v1.VmService/DeployVM"
+	// VmServiceDeployVMCmdByAdminProcedure is the fully-qualified name of the VmService's
+	// DeployVMCmdByAdmin RPC.
+	VmServiceDeployVMCmdByAdminProcedure = "/cloudstack.management.vm.v1.VmService/DeployVMCmdByAdmin"
+	// VmServiceDeployVnfApplianceProcedure is the fully-qualified name of the VmService's
+	// DeployVnfAppliance RPC.
+	VmServiceDeployVnfApplianceProcedure = "/cloudstack.management.vm.v1.VmService/DeployVnfAppliance"
+	// VmServiceDeployVnfApplianceCmdByAdminProcedure is the fully-qualified name of the VmService's
+	// DeployVnfApplianceCmdByAdmin RPC.
+	VmServiceDeployVnfApplianceCmdByAdminProcedure = "/cloudstack.management.vm.v1.VmService/DeployVnfApplianceCmdByAdmin"
+	// VmServiceDestroyVMProcedure is the fully-qualified name of the VmService's DestroyVM RPC.
+	VmServiceDestroyVMProcedure = "/cloudstack.management.vm.v1.VmService/DestroyVM"
+	// VmServiceDestroyVMCmdByAdminProcedure is the fully-qualified name of the VmService's
+	// DestroyVMCmdByAdmin RPC.
+	VmServiceDestroyVMCmdByAdminProcedure = "/cloudstack.management.vm.v1.VmService/DestroyVMCmdByAdmin"
+	// VmServiceExpungeVMProcedure is the fully-qualified name of the VmService's ExpungeVM RPC.
+	VmServiceExpungeVMProcedure = "/cloudstack.management.vm.v1.VmService/ExpungeVM"
+	// VmServiceGetVMPasswordProcedure is the fully-qualified name of the VmService's GetVMPassword RPC.
+	VmServiceGetVMPasswordProcedure = "/cloudstack.management.vm.v1.VmService/GetVMPassword"
 	// VmServiceGetVMUserDataProcedure is the fully-qualified name of the VmService's GetVMUserData RPC.
 	VmServiceGetVMUserDataProcedure = "/cloudstack.management.vm.v1.VmService/GetVMUserData"
-	// VmServiceUpdateVMScheduleProcedure is the fully-qualified name of the VmService's
-	// UpdateVMSchedule RPC.
-	VmServiceUpdateVMScheduleProcedure = "/cloudstack.management.vm.v1.VmService/UpdateVMSchedule"
+	// VmServiceImportUnmanagedInstanceProcedure is the fully-qualified name of the VmService's
+	// ImportUnmanagedInstance RPC.
+	VmServiceImportUnmanagedInstanceProcedure = "/cloudstack.management.vm.v1.VmService/ImportUnmanagedInstance"
+	// VmServiceImportVmProcedure is the fully-qualified name of the VmService's ImportVm RPC.
+	VmServiceImportVmProcedure = "/cloudstack.management.vm.v1.VmService/ImportVm"
+	// VmServiceListAffectedVmsForStorageScopeChangeProcedure is the fully-qualified name of the
+	// VmService's ListAffectedVmsForStorageScopeChange RPC.
+	VmServiceListAffectedVmsForStorageScopeChangeProcedure = "/cloudstack.management.vm.v1.VmService/ListAffectedVmsForStorageScopeChange"
+	// VmServiceListNicsProcedure is the fully-qualified name of the VmService's ListNics RPC.
+	VmServiceListNicsProcedure = "/cloudstack.management.vm.v1.VmService/ListNics"
+	// VmServiceListUnmanagedInstancesProcedure is the fully-qualified name of the VmService's
+	// ListUnmanagedInstances RPC.
+	VmServiceListUnmanagedInstancesProcedure = "/cloudstack.management.vm.v1.VmService/ListUnmanagedInstances"
+	// VmServiceListVMScheduleProcedure is the fully-qualified name of the VmService's ListVMSchedule
+	// RPC.
+	VmServiceListVMScheduleProcedure = "/cloudstack.management.vm.v1.VmService/ListVMSchedule"
+	// VmServiceListVMsProcedure is the fully-qualified name of the VmService's ListVMs RPC.
+	VmServiceListVMsProcedure = "/cloudstack.management.vm.v1.VmService/ListVMs"
+	// VmServiceListVMsCmdByAdminProcedure is the fully-qualified name of the VmService's
+	// ListVMsCmdByAdmin RPC.
+	VmServiceListVMsCmdByAdminProcedure = "/cloudstack.management.vm.v1.VmService/ListVMsCmdByAdmin"
+	// VmServiceListVmsForImportProcedure is the fully-qualified name of the VmService's
+	// ListVmsForImport RPC.
+	VmServiceListVmsForImportProcedure = "/cloudstack.management.vm.v1.VmService/ListVmsForImport"
+	// VmServiceListVnfAppliancesProcedure is the fully-qualified name of the VmService's
+	// ListVnfAppliances RPC.
+	VmServiceListVnfAppliancesProcedure = "/cloudstack.management.vm.v1.VmService/ListVnfAppliances"
+	// VmServiceListVnfAppliancesCmdByAdminProcedure is the fully-qualified name of the VmService's
+	// ListVnfAppliancesCmdByAdmin RPC.
+	VmServiceListVnfAppliancesCmdByAdminProcedure = "/cloudstack.management.vm.v1.VmService/ListVnfAppliancesCmdByAdmin"
+	// VmServiceMigrateVMProcedure is the fully-qualified name of the VmService's MigrateVM RPC.
+	VmServiceMigrateVMProcedure = "/cloudstack.management.vm.v1.VmService/MigrateVM"
 	// VmServiceMigrateVirtualMachineWithVolumeProcedure is the fully-qualified name of the VmService's
 	// MigrateVirtualMachineWithVolume RPC.
 	VmServiceMigrateVirtualMachineWithVolumeProcedure = "/cloudstack.management.vm.v1.VmService/MigrateVirtualMachineWithVolume"
-	// VmServiceAddNicToVMProcedure is the fully-qualified name of the VmService's AddNicToVM RPC.
-	VmServiceAddNicToVMProcedure = "/cloudstack.management.vm.v1.VmService/AddNicToVM"
+	// VmServiceRebootVMProcedure is the fully-qualified name of the VmService's RebootVM RPC.
+	VmServiceRebootVMProcedure = "/cloudstack.management.vm.v1.VmService/RebootVM"
+	// VmServiceRebootVMCmdByAdminProcedure is the fully-qualified name of the VmService's
+	// RebootVMCmdByAdmin RPC.
+	VmServiceRebootVMCmdByAdminProcedure = "/cloudstack.management.vm.v1.VmService/RebootVMCmdByAdmin"
+	// VmServiceRecoverVMProcedure is the fully-qualified name of the VmService's RecoverVM RPC.
+	VmServiceRecoverVMProcedure = "/cloudstack.management.vm.v1.VmService/RecoverVM"
 	// VmServiceRemoveIpFromVmNicProcedure is the fully-qualified name of the VmService's
 	// RemoveIpFromVmNic RPC.
 	VmServiceRemoveIpFromVmNicProcedure = "/cloudstack.management.vm.v1.VmService/RemoveIpFromVmNic"
+	// VmServiceRemoveNicFromVMProcedure is the fully-qualified name of the VmService's RemoveNicFromVM
+	// RPC.
+	VmServiceRemoveNicFromVMProcedure = "/cloudstack.management.vm.v1.VmService/RemoveNicFromVM"
+	// VmServiceRemoveNicFromVMCmdByAdminProcedure is the fully-qualified name of the VmService's
+	// RemoveNicFromVMCmdByAdmin RPC.
+	VmServiceRemoveNicFromVMCmdByAdminProcedure = "/cloudstack.management.vm.v1.VmService/RemoveNicFromVMCmdByAdmin"
+	// VmServiceResetVMPasswordProcedure is the fully-qualified name of the VmService's ResetVMPassword
+	// RPC.
+	VmServiceResetVMPasswordProcedure = "/cloudstack.management.vm.v1.VmService/ResetVMPassword"
+	// VmServiceResetVMPasswordCmdByAdminProcedure is the fully-qualified name of the VmService's
+	// ResetVMPasswordCmdByAdmin RPC.
+	VmServiceResetVMPasswordCmdByAdminProcedure = "/cloudstack.management.vm.v1.VmService/ResetVMPasswordCmdByAdmin"
+	// VmServiceResetVMSSHKeyProcedure is the fully-qualified name of the VmService's ResetVMSSHKey RPC.
+	VmServiceResetVMSSHKeyProcedure = "/cloudstack.management.vm.v1.VmService/ResetVMSSHKey"
+	// VmServiceResetVMSSHKeyCmdByAdminProcedure is the fully-qualified name of the VmService's
+	// ResetVMSSHKeyCmdByAdmin RPC.
+	VmServiceResetVMSSHKeyCmdByAdminProcedure = "/cloudstack.management.vm.v1.VmService/ResetVMSSHKeyCmdByAdmin"
+	// VmServiceResetVMUserDataProcedure is the fully-qualified name of the VmService's ResetVMUserData
+	// RPC.
+	VmServiceResetVMUserDataProcedure = "/cloudstack.management.vm.v1.VmService/ResetVMUserData"
+	// VmServiceResetVMUserDataCmdAdminProcedure is the fully-qualified name of the VmService's
+	// ResetVMUserDataCmdAdmin RPC.
+	VmServiceResetVMUserDataCmdAdminProcedure = "/cloudstack.management.vm.v1.VmService/ResetVMUserDataCmdAdmin"
+	// VmServiceRestoreVMProcedure is the fully-qualified name of the VmService's RestoreVM RPC.
+	VmServiceRestoreVMProcedure = "/cloudstack.management.vm.v1.VmService/RestoreVM"
+	// VmServiceRestoreVMCmdByAdminProcedure is the fully-qualified name of the VmService's
+	// RestoreVMCmdByAdmin RPC.
+	VmServiceRestoreVMCmdByAdminProcedure = "/cloudstack.management.vm.v1.VmService/RestoreVMCmdByAdmin"
+	// VmServiceScaleVMProcedure is the fully-qualified name of the VmService's ScaleVM RPC.
+	VmServiceScaleVMProcedure = "/cloudstack.management.vm.v1.VmService/ScaleVM"
+	// VmServiceScaleVMCmdByAdminProcedure is the fully-qualified name of the VmService's
+	// ScaleVMCmdByAdmin RPC.
+	VmServiceScaleVMCmdByAdminProcedure = "/cloudstack.management.vm.v1.VmService/ScaleVMCmdByAdmin"
+	// VmServiceStartVMProcedure is the fully-qualified name of the VmService's StartVM RPC.
+	VmServiceStartVMProcedure = "/cloudstack.management.vm.v1.VmService/StartVM"
+	// VmServiceStartVMCmdByAdminProcedure is the fully-qualified name of the VmService's
+	// StartVMCmdByAdmin RPC.
+	VmServiceStartVMCmdByAdminProcedure = "/cloudstack.management.vm.v1.VmService/StartVMCmdByAdmin"
 	// VmServiceStopVMProcedure is the fully-qualified name of the VmService's StopVM RPC.
 	VmServiceStopVMProcedure = "/cloudstack.management.vm.v1.VmService/StopVM"
+	// VmServiceStopVMCmdByAdminProcedure is the fully-qualified name of the VmService's
+	// StopVMCmdByAdmin RPC.
+	VmServiceStopVMCmdByAdminProcedure = "/cloudstack.management.vm.v1.VmService/StopVMCmdByAdmin"
+	// VmServiceUnmanageVMInstanceProcedure is the fully-qualified name of the VmService's
+	// UnmanageVMInstance RPC.
+	VmServiceUnmanageVMInstanceProcedure = "/cloudstack.management.vm.v1.VmService/UnmanageVMInstance"
+	// VmServiceUpdateDefaultNicForVMProcedure is the fully-qualified name of the VmService's
+	// UpdateDefaultNicForVM RPC.
+	VmServiceUpdateDefaultNicForVMProcedure = "/cloudstack.management.vm.v1.VmService/UpdateDefaultNicForVM"
+	// VmServiceUpdateDefaultNicForVMCmdByAdminProcedure is the fully-qualified name of the VmService's
+	// UpdateDefaultNicForVMCmdByAdmin RPC.
+	VmServiceUpdateDefaultNicForVMCmdByAdminProcedure = "/cloudstack.management.vm.v1.VmService/UpdateDefaultNicForVMCmdByAdmin"
 	// VmServiceUpdateVMProcedure is the fully-qualified name of the VmService's UpdateVM RPC.
 	VmServiceUpdateVMProcedure = "/cloudstack.management.vm.v1.VmService/UpdateVM"
-	// VmServiceRecoverVMProcedure is the fully-qualified name of the VmService's RecoverVM RPC.
-	VmServiceRecoverVMProcedure = "/cloudstack.management.vm.v1.VmService/RecoverVM"
+	// VmServiceUpdateVMCmdByAdminProcedure is the fully-qualified name of the VmService's
+	// UpdateVMCmdByAdmin RPC.
+	VmServiceUpdateVMCmdByAdminProcedure = "/cloudstack.management.vm.v1.VmService/UpdateVMCmdByAdmin"
+	// VmServiceUpdateVMScheduleProcedure is the fully-qualified name of the VmService's
+	// UpdateVMSchedule RPC.
+	VmServiceUpdateVMScheduleProcedure = "/cloudstack.management.vm.v1.VmService/UpdateVMSchedule"
+	// VmServiceUpdateVmNicIpProcedure is the fully-qualified name of the VmService's UpdateVmNicIp RPC.
+	VmServiceUpdateVmNicIpProcedure = "/cloudstack.management.vm.v1.VmService/UpdateVmNicIp"
+	// VmServiceUpgradeVMProcedure is the fully-qualified name of the VmService's UpgradeVM RPC.
+	VmServiceUpgradeVMProcedure = "/cloudstack.management.vm.v1.VmService/UpgradeVM"
+	// VmServiceUpgradeVMCmdByAdminProcedure is the fully-qualified name of the VmService's
+	// UpgradeVMCmdByAdmin RPC.
+	VmServiceUpgradeVMCmdByAdminProcedure = "/cloudstack.management.vm.v1.VmService/UpgradeVMCmdByAdmin"
 )
 
 // VmServiceClient is a client for the cloudstack.management.vm.v1.VmService service.
 type VmServiceClient interface {
-	// AssignVM Change ownership of a VM from one account to another. This API is available for Basic zones with security groups and Advanced zones with guest networks. A root administrator can reassign a VM from any account to any other account in any domain. A domain administrator can reassign a VM to any account in the same domain.
-	AssignVM(context.Context, *connect.Request[v1.AssignVMRequest]) (*connect.Response[v1.AssignVMResponse], error)
-	// DeployVMCmdByAdmin Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
-	DeployVMCmdByAdmin(context.Context, *connect.Request[v1.DeployVMCmdByAdminRequest]) (*connect.Response[v1.DeployVMCmdByAdminResponse], error)
-	// UpdateDefaultNicForVM Changes the default NIC on a VM
-	UpdateDefaultNicForVM(context.Context, *connect.Request[v1.UpdateDefaultNicForVMRequest]) (*connect.Response[v1.UpdateDefaultNicForVMResponse], error)
-	// ExpungeVM Expunge a virtual machine. Once expunged, it cannot be recoverd.
-	ExpungeVM(context.Context, *connect.Request[v1.ExpungeVMRequest]) (*connect.Response[v1.ExpungeVMResponse], error)
-	// UpgradeVM (This API is deprecated, use scaleVirtualMachine API)Changes the service offering for a virtual machine. The virtual machine must be in a "Stopped" state for this command to take effect.
-	UpgradeVM(context.Context, *connect.Request[v1.UpgradeVMRequest]) (*connect.Response[v1.UpgradeVMResponse], error)
-	// DestroyVM Destroys a virtual machine.
-	DestroyVM(context.Context, *connect.Request[v1.DestroyVMRequest]) (*connect.Response[v1.DestroyVMResponse], error)
-	// RemoveNicFromVMCmdByAdmin Removes VM from specified network by deleting a NIC
-	RemoveNicFromVMCmdByAdmin(context.Context, *connect.Request[v1.RemoveNicFromVMCmdByAdminRequest]) (*connect.Response[v1.RemoveNicFromVMCmdByAdminResponse], error)
-	// AddNicToVMCmdByAdmin Adds VM to specified network by creating a NIC
-	AddNicToVMCmdByAdmin(context.Context, *connect.Request[v1.AddNicToVMCmdByAdminRequest]) (*connect.Response[v1.AddNicToVMCmdByAdminResponse], error)
-	// ListUnmanagedInstances Lists unmanaged virtual machines for a given cluster.
-	ListUnmanagedInstances(context.Context, *connect.Request[v1.ListUnmanagedInstancesRequest]) (*connect.Response[v1.ListUnmanagedInstancesResponse], error)
-	// UnmanageVMInstance Unmanage a guest virtual machine.
-	UnmanageVMInstance(context.Context, *connect.Request[v1.UnmanageVMInstanceRequest]) (*connect.Response[v1.UnmanageVMInstanceResponse], error)
-	// ResetVMPassword Resets the password for virtual machine. The virtual machine must be in a "Stopped" state and the template must already support this feature for this command to take effect. [async]
-	ResetVMPassword(context.Context, *connect.Request[v1.ResetVMPasswordRequest]) (*connect.Response[v1.ResetVMPasswordResponse], error)
-	// DeployVnfApplianceCmdByAdmin Creates and automatically starts a VNF appliance based on a service offering, disk offering, and template.
-	DeployVnfApplianceCmdByAdmin(context.Context, *connect.Request[v1.DeployVnfApplianceCmdByAdminRequest]) (*connect.Response[v1.DeployVnfApplianceCmdByAdminResponse], error)
-	// ListNics list the vm nics  IP to NIC
-	ListNics(context.Context, *connect.Request[v1.ListNicsRequest]) (*connect.Response[v1.ListNicsResponse], error)
-	// ListVMSchedule List VM Schedules.
-	ListVMSchedule(context.Context, *connect.Request[v1.ListVMScheduleRequest]) (*connect.Response[v1.ListVMScheduleResponse], error)
-	// RestoreVM Restore a VM to original template/ISO or new template/ISO
-	RestoreVM(context.Context, *connect.Request[v1.RestoreVMRequest]) (*connect.Response[v1.RestoreVMResponse], error)
-	// StartVM Starts a virtual machine.
-	StartVM(context.Context, *connect.Request[v1.StartVMRequest]) (*connect.Response[v1.StartVMResponse], error)
-	// DeployVnfAppliance Creates and automatically starts a VNF appliance based on a service offering, disk offering, and template.
-	DeployVnfAppliance(context.Context, *connect.Request[v1.DeployVnfApplianceRequest]) (*connect.Response[v1.DeployVnfApplianceResponse], error)
-	// MigrateVM Attempts Migration of a VM to a different host or Root volume of the vm to a different storage pool
-	MigrateVM(context.Context, *connect.Request[v1.MigrateVMRequest]) (*connect.Response[v1.MigrateVMResponse], error)
-	// ListVnfAppliances List VNF appliance owned by the account.
-	ListVnfAppliances(context.Context, *connect.Request[v1.ListVnfAppliancesRequest]) (*connect.Response[v1.ListVnfAppliancesResponse], error)
-	// ListAffectedVmsForStorageScopeChange List user and system VMs that need to be stopped and destroyed respectively for changing the scope of the storage pool from Zone to Cluster.
-	ListAffectedVmsForStorageScopeChange(context.Context, *connect.Request[v1.ListAffectedVmsForStorageScopeChangeRequest]) (*connect.Response[v1.ListAffectedVmsForStorageScopeChangeResponse], error)
-	// StopVMCmdByAdmin Stops a virtual machine.
-	StopVMCmdByAdmin(context.Context, *connect.Request[v1.StopVMCmdByAdminRequest]) (*connect.Response[v1.StopVMCmdByAdminResponse], error)
-	// UpdateVmNicIp Update the default Ip of a VM Nic
-	UpdateVmNicIp(context.Context, *connect.Request[v1.UpdateVmNicIpRequest]) (*connect.Response[v1.UpdateVmNicIpResponse], error)
-	// ImportUnmanagedInstance Import unmanaged virtual machine from a given cluster.
-	ImportUnmanagedInstance(context.Context, *connect.Request[v1.ImportUnmanagedInstanceRequest]) (*connect.Response[v1.ImportUnmanagedInstanceResponse], error)
-	// DeleteVMSchedule Delete VM Schedule.
-	DeleteVMSchedule(context.Context, *connect.Request[v1.DeleteVMScheduleRequest]) (*connect.Response[v1.DeleteVMScheduleResponse], error)
-	// ResetVMSSHKey Resets the SSH Key for virtual machine. The virtual machine must be in a "Stopped" state. [async]
-	ResetVMSSHKey(context.Context, *connect.Request[v1.ResetVMSSHKeyRequest]) (*connect.Response[v1.ResetVMSSHKeyResponse], error)
-	// GetVMPassword Returns an encrypted password for the VM
-	GetVMPassword(context.Context, *connect.Request[v1.GetVMPasswordRequest]) (*connect.Response[v1.GetVMPasswordResponse], error)
-	// ListVmsForImport Lists virtual machines on a unmanaged host
-	ListVmsForImport(context.Context, *connect.Request[v1.ListVmsForImportRequest]) (*connect.Response[v1.ListVmsForImportResponse], error)
-	// DeployVM Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
-	DeployVM(context.Context, *connect.Request[v1.DeployVMRequest]) (*connect.Response[v1.DeployVMResponse], error)
-	// ScaleVM Scales the virtual machine to a new service offering. This command also considers the volume size in the service offering or disk offering linked to the new service offering and apply all characteristics to the root volume.
-	ScaleVM(context.Context, *connect.Request[v1.ScaleVMRequest]) (*connect.Response[v1.ScaleVMResponse], error)
-	// UpdateVMCmdByAdmin Updates properties of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect. UpdateVirtualMachine does not first check whether the VM is stopped. Therefore, stop the VM manually before issuing this call.
-	UpdateVMCmdByAdmin(context.Context, *connect.Request[v1.UpdateVMCmdByAdminRequest]) (*connect.Response[v1.UpdateVMCmdByAdminResponse], error)
-	// ResetVMUserData Resets the UserData for virtual machine. The virtual machine must be in a "Stopped" state.
-	ResetVMUserData(context.Context, *connect.Request[v1.ResetVMUserDataRequest]) (*connect.Response[v1.ResetVMUserDataResponse], error)
-	// CreateVMSchedule Create VM Schedule
-	CreateVMSchedule(context.Context, *connect.Request[v1.CreateVMScheduleRequest]) (*connect.Response[v1.CreateVMScheduleResponse], error)
-	// RemoveNicFromVM Removes VM from specified network by deleting a NIC
-	RemoveNicFromVM(context.Context, *connect.Request[v1.RemoveNicFromVMRequest]) (*connect.Response[v1.RemoveNicFromVMResponse], error)
-	// ListVMs List the virtual machines owned by the account.
-	ListVMs(context.Context, *connect.Request[v1.ListVMsRequest]) (*connect.Response[v1.ListVMsResponse], error)
-	// RebootVM Reboots a virtual machine.
-	RebootVM(context.Context, *connect.Request[v1.RebootVMRequest]) (*connect.Response[v1.RebootVMResponse], error)
-	// ImportVm Import virtual machine from a unmanaged host into CloudStack
-	ImportVm(context.Context, *connect.Request[v1.ImportVmRequest]) (*connect.Response[v1.ImportVmResponse], error)
 	// AddIpToVmNic Assigns secondary IP to NIC
 	AddIpToVmNic(context.Context, *connect.Request[v1.AddIpToVmNicRequest]) (*connect.Response[v1.AddIpToVmNicResponse], error)
-	// GetVMUserData Returns user data associated with the VM
-	GetVMUserData(context.Context, *connect.Request[v1.GetVMUserDataRequest]) (*connect.Response[v1.GetVMUserDataResponse], error)
-	// UpdateVMSchedule Update VM Schedule.
-	UpdateVMSchedule(context.Context, *connect.Request[v1.UpdateVMScheduleRequest]) (*connect.Response[v1.UpdateVMScheduleResponse], error)
-	// MigrateVirtualMachineWithVolume Attempts Migration of a VM with its volumes to a different host
-	MigrateVirtualMachineWithVolume(context.Context, *connect.Request[v1.MigrateVirtualMachineWithVolumeRequest]) (*connect.Response[v1.MigrateVirtualMachineWithVolumeResponse], error)
 	// AddNicToVM Adds VM to specified network by creating a NIC
 	AddNicToVM(context.Context, *connect.Request[v1.AddNicToVMRequest]) (*connect.Response[v1.AddNicToVMResponse], error)
-	// RemoveIpFromVmNic Removes secondary IP from the NIC.
-	RemoveIpFromVmNic(context.Context, *connect.Request[v1.RemoveIpFromVmNicRequest]) (*connect.Response[v1.RemoveIpFromVmNicResponse], error)
-	// StopVM Stops a virtual machine.
-	StopVM(context.Context, *connect.Request[v1.StopVMRequest]) (*connect.Response[v1.StopVMResponse], error)
-	// UpdateVM Updates properties of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect. UpdateVirtualMachine does not first check whether the VM is stopped. Therefore, stop the VM manually before issuing this call.
-	UpdateVM(context.Context, *connect.Request[v1.UpdateVMRequest]) (*connect.Response[v1.UpdateVMResponse], error)
+	// AddNicToVMCmdByAdmin Adds VM to specified network by creating a NIC
+	AddNicToVMCmdByAdmin(context.Context, *connect.Request[v1.AddNicToVMCmdByAdminRequest]) (*connect.Response[v1.AddNicToVMCmdByAdminResponse], error)
+	// AssignVM Change ownership of a VM from one account to another. This API is available for Basic zones with security groups and Advanced zones with guest networks. A root administrator can reassign a VM from any account to any other account in any domain. A domain administrator can reassign a VM to any account in the same domain.
+	AssignVM(context.Context, *connect.Request[v1.AssignVMRequest]) (*connect.Response[v1.AssignVMResponse], error)
+	// CreateVMSchedule Create VM Schedule
+	CreateVMSchedule(context.Context, *connect.Request[v1.CreateVMScheduleRequest]) (*connect.Response[v1.CreateVMScheduleResponse], error)
+	// DeleteVMSchedule Delete VM Schedule.
+	DeleteVMSchedule(context.Context, *connect.Request[v1.DeleteVMScheduleRequest]) (*connect.Response[v1.DeleteVMScheduleResponse], error)
+	// DeployVM Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
+	DeployVM(context.Context, *connect.Request[v1.DeployVMRequest]) (*connect.Response[v1.DeployVMResponse], error)
+	// DeployVMCmdByAdmin Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
+	DeployVMCmdByAdmin(context.Context, *connect.Request[v1.DeployVMCmdByAdminRequest]) (*connect.Response[v1.DeployVMCmdByAdminResponse], error)
+	// DeployVnfAppliance Creates and automatically starts a VNF appliance based on a service offering, disk offering, and template.
+	DeployVnfAppliance(context.Context, *connect.Request[v1.DeployVnfApplianceRequest]) (*connect.Response[v1.DeployVnfApplianceResponse], error)
+	// DeployVnfApplianceCmdByAdmin Creates and automatically starts a VNF appliance based on a service offering, disk offering, and template.
+	DeployVnfApplianceCmdByAdmin(context.Context, *connect.Request[v1.DeployVnfApplianceCmdByAdminRequest]) (*connect.Response[v1.DeployVnfApplianceCmdByAdminResponse], error)
+	// DestroyVM Destroys a virtual machine.
+	DestroyVM(context.Context, *connect.Request[v1.DestroyVMRequest]) (*connect.Response[v1.DestroyVMResponse], error)
+	// DestroyVMCmdByAdmin Destroys a virtual machine. Once destroyed, only the administrator can recover it.
+	DestroyVMCmdByAdmin(context.Context, *connect.Request[v1.DestroyVMCmdByAdminRequest]) (*connect.Response[v1.DestroyVMCmdByAdminResponse], error)
+	// ExpungeVM Expunge a virtual machine. Once expunged, it cannot be recoverd.
+	ExpungeVM(context.Context, *connect.Request[v1.ExpungeVMRequest]) (*connect.Response[v1.ExpungeVMResponse], error)
+	// GetVMPassword Returns an encrypted password for the VM
+	GetVMPassword(context.Context, *connect.Request[v1.GetVMPasswordRequest]) (*connect.Response[v1.GetVMPasswordResponse], error)
+	// GetVMUserData Returns user data associated with the VM
+	GetVMUserData(context.Context, *connect.Request[v1.GetVMUserDataRequest]) (*connect.Response[v1.GetVMUserDataResponse], error)
+	// ImportUnmanagedInstance Import unmanaged virtual machine from a given cluster.
+	ImportUnmanagedInstance(context.Context, *connect.Request[v1.ImportUnmanagedInstanceRequest]) (*connect.Response[v1.ImportUnmanagedInstanceResponse], error)
+	// ImportVm Import virtual machine from a unmanaged host into CloudStack
+	ImportVm(context.Context, *connect.Request[v1.ImportVmRequest]) (*connect.Response[v1.ImportVmResponse], error)
+	// ListAffectedVmsForStorageScopeChange List user and system VMs that need to be stopped and destroyed respectively for changing the scope of the storage pool from Zone to Cluster.
+	ListAffectedVmsForStorageScopeChange(context.Context, *connect.Request[v1.ListAffectedVmsForStorageScopeChangeRequest]) (*connect.Response[v1.ListAffectedVmsForStorageScopeChangeResponse], error)
+	// ListNics list the vm nics  IP to NIC
+	ListNics(context.Context, *connect.Request[v1.ListNicsRequest]) (*connect.Response[v1.ListNicsResponse], error)
+	// ListUnmanagedInstances Lists unmanaged virtual machines for a given cluster.
+	ListUnmanagedInstances(context.Context, *connect.Request[v1.ListUnmanagedInstancesRequest]) (*connect.Response[v1.ListUnmanagedInstancesResponse], error)
+	// ListVMSchedule List VM Schedules.
+	ListVMSchedule(context.Context, *connect.Request[v1.ListVMScheduleRequest]) (*connect.Response[v1.ListVMScheduleResponse], error)
+	// ListVMs List the virtual machines owned by the account.
+	ListVMs(context.Context, *connect.Request[v1.ListVMsRequest]) (*connect.Response[v1.ListVMsResponse], error)
+	// ListVMsCmdByAdmin List the virtual machines owned by the account.
+	ListVMsCmdByAdmin(context.Context, *connect.Request[v1.ListVMsCmdByAdminRequest]) (*connect.Response[v1.ListVMsCmdByAdminResponse], error)
+	// ListVmsForImport Lists virtual machines on a unmanaged host
+	ListVmsForImport(context.Context, *connect.Request[v1.ListVmsForImportRequest]) (*connect.Response[v1.ListVmsForImportResponse], error)
+	// ListVnfAppliances List VNF appliance owned by the account.
+	ListVnfAppliances(context.Context, *connect.Request[v1.ListVnfAppliancesRequest]) (*connect.Response[v1.ListVnfAppliancesResponse], error)
+	// ListVnfAppliancesCmdByAdmin List VNF appliance owned by the account.
+	ListVnfAppliancesCmdByAdmin(context.Context, *connect.Request[v1.ListVnfAppliancesCmdByAdminRequest]) (*connect.Response[v1.ListVnfAppliancesCmdByAdminResponse], error)
+	// MigrateVM Attempts Migration of a VM to a different host or Root volume of the vm to a different storage pool
+	MigrateVM(context.Context, *connect.Request[v1.MigrateVMRequest]) (*connect.Response[v1.MigrateVMResponse], error)
+	// MigrateVirtualMachineWithVolume Attempts Migration of a VM with its volumes to a different host
+	MigrateVirtualMachineWithVolume(context.Context, *connect.Request[v1.MigrateVirtualMachineWithVolumeRequest]) (*connect.Response[v1.MigrateVirtualMachineWithVolumeResponse], error)
+	// RebootVM Reboots a virtual machine.
+	RebootVM(context.Context, *connect.Request[v1.RebootVMRequest]) (*connect.Response[v1.RebootVMResponse], error)
+	// RebootVMCmdByAdmin Reboots a virtual machine.
+	RebootVMCmdByAdmin(context.Context, *connect.Request[v1.RebootVMCmdByAdminRequest]) (*connect.Response[v1.RebootVMCmdByAdminResponse], error)
 	// RecoverVM Recovers a virtual machine.
 	RecoverVM(context.Context, *connect.Request[v1.RecoverVMRequest]) (*connect.Response[v1.RecoverVMResponse], error)
+	// RemoveIpFromVmNic Removes secondary IP from the NIC.
+	RemoveIpFromVmNic(context.Context, *connect.Request[v1.RemoveIpFromVmNicRequest]) (*connect.Response[v1.RemoveIpFromVmNicResponse], error)
+	// RemoveNicFromVM Removes VM from specified network by deleting a NIC
+	RemoveNicFromVM(context.Context, *connect.Request[v1.RemoveNicFromVMRequest]) (*connect.Response[v1.RemoveNicFromVMResponse], error)
+	// RemoveNicFromVMCmdByAdmin Removes VM from specified network by deleting a NIC
+	RemoveNicFromVMCmdByAdmin(context.Context, *connect.Request[v1.RemoveNicFromVMCmdByAdminRequest]) (*connect.Response[v1.RemoveNicFromVMCmdByAdminResponse], error)
+	// ResetVMPassword Resets the password for virtual machine. The virtual machine must be in a "Stopped" state and the template must already support this feature for this command to take effect. [async]
+	ResetVMPassword(context.Context, *connect.Request[v1.ResetVMPasswordRequest]) (*connect.Response[v1.ResetVMPasswordResponse], error)
+	// ResetVMPasswordCmdByAdmin Resets the password for virtual machine. The virtual machine must be in a "Stopped" state and the template must already support this feature for this command to take effect. [async]
+	ResetVMPasswordCmdByAdmin(context.Context, *connect.Request[v1.ResetVMPasswordCmdByAdminRequest]) (*connect.Response[v1.ResetVMPasswordCmdByAdminResponse], error)
+	// ResetVMSSHKey Resets the SSH Key for virtual machine. The virtual machine must be in a "Stopped" state. [async]
+	ResetVMSSHKey(context.Context, *connect.Request[v1.ResetVMSSHKeyRequest]) (*connect.Response[v1.ResetVMSSHKeyResponse], error)
+	// ResetVMSSHKeyCmdByAdmin Resets the SSH Key for virtual machine. The virtual machine must be in a "Stopped" state. [async]
+	ResetVMSSHKeyCmdByAdmin(context.Context, *connect.Request[v1.ResetVMSSHKeyCmdByAdminRequest]) (*connect.Response[v1.ResetVMSSHKeyCmdByAdminResponse], error)
+	// ResetVMUserData Resets the UserData for virtual machine. The virtual machine must be in a "Stopped" state.
+	ResetVMUserData(context.Context, *connect.Request[v1.ResetVMUserDataRequest]) (*connect.Response[v1.ResetVMUserDataResponse], error)
+	// ResetVMUserDataCmdAdmin Resets the UserData for virtual machine. The virtual machine must be in a "Stopped" state. [async]
+	ResetVMUserDataCmdAdmin(context.Context, *connect.Request[v1.ResetVMUserDataCmdAdminRequest]) (*connect.Response[v1.ResetVMUserDataCmdAdminResponse], error)
+	// RestoreVM Restore a VM to original template/ISO or new template/ISO
+	RestoreVM(context.Context, *connect.Request[v1.RestoreVMRequest]) (*connect.Response[v1.RestoreVMResponse], error)
+	// RestoreVMCmdByAdmin Restore a VM to original template/ISO or new template/ISO
+	RestoreVMCmdByAdmin(context.Context, *connect.Request[v1.RestoreVMCmdByAdminRequest]) (*connect.Response[v1.RestoreVMCmdByAdminResponse], error)
+	// ScaleVM Scales the virtual machine to a new service offering. This command also considers the volume size in the service offering or disk offering linked to the new service offering and apply all characteristics to the root volume.
+	ScaleVM(context.Context, *connect.Request[v1.ScaleVMRequest]) (*connect.Response[v1.ScaleVMResponse], error)
+	// ScaleVMCmdByAdmin Scales the virtual machine to a new service offering. This command also considers the volume size in the service offering or disk offering linked to the new service offering and apply all characteristics to the root volume.
+	ScaleVMCmdByAdmin(context.Context, *connect.Request[v1.ScaleVMCmdByAdminRequest]) (*connect.Response[v1.ScaleVMCmdByAdminResponse], error)
+	// StartVM Starts a virtual machine.
+	StartVM(context.Context, *connect.Request[v1.StartVMRequest]) (*connect.Response[v1.StartVMResponse], error)
+	// StartVMCmdByAdmin Starts a virtual machine.
+	StartVMCmdByAdmin(context.Context, *connect.Request[v1.StartVMCmdByAdminRequest]) (*connect.Response[v1.StartVMCmdByAdminResponse], error)
+	// StopVM Stops a virtual machine.
+	StopVM(context.Context, *connect.Request[v1.StopVMRequest]) (*connect.Response[v1.StopVMResponse], error)
+	// StopVMCmdByAdmin Stops a virtual machine.
+	StopVMCmdByAdmin(context.Context, *connect.Request[v1.StopVMCmdByAdminRequest]) (*connect.Response[v1.StopVMCmdByAdminResponse], error)
+	// UnmanageVMInstance Unmanage a guest virtual machine.
+	UnmanageVMInstance(context.Context, *connect.Request[v1.UnmanageVMInstanceRequest]) (*connect.Response[v1.UnmanageVMInstanceResponse], error)
+	// UpdateDefaultNicForVM Changes the default NIC on a VM
+	UpdateDefaultNicForVM(context.Context, *connect.Request[v1.UpdateDefaultNicForVMRequest]) (*connect.Response[v1.UpdateDefaultNicForVMResponse], error)
+	// UpdateDefaultNicForVMCmdByAdmin Changes the default NIC on a VM
+	UpdateDefaultNicForVMCmdByAdmin(context.Context, *connect.Request[v1.UpdateDefaultNicForVMCmdByAdminRequest]) (*connect.Response[v1.UpdateDefaultNicForVMCmdByAdminResponse], error)
+	// UpdateVM Updates properties of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect. UpdateVirtualMachine does not first check whether the VM is stopped. Therefore, stop the VM manually before issuing this call.
+	UpdateVM(context.Context, *connect.Request[v1.UpdateVMRequest]) (*connect.Response[v1.UpdateVMResponse], error)
+	// UpdateVMCmdByAdmin Updates properties of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect. UpdateVirtualMachine does not first check whether the VM is stopped. Therefore, stop the VM manually before issuing this call.
+	UpdateVMCmdByAdmin(context.Context, *connect.Request[v1.UpdateVMCmdByAdminRequest]) (*connect.Response[v1.UpdateVMCmdByAdminResponse], error)
+	// UpdateVMSchedule Update VM Schedule.
+	UpdateVMSchedule(context.Context, *connect.Request[v1.UpdateVMScheduleRequest]) (*connect.Response[v1.UpdateVMScheduleResponse], error)
+	// UpdateVmNicIp Update the default Ip of a VM Nic
+	UpdateVmNicIp(context.Context, *connect.Request[v1.UpdateVmNicIpRequest]) (*connect.Response[v1.UpdateVmNicIpResponse], error)
+	// UpgradeVM (This API is deprecated, use scaleVirtualMachine API)Changes the service offering for a virtual machine. The virtual machine must be in a "Stopped" state for this command to take effect.
+	UpgradeVM(context.Context, *connect.Request[v1.UpgradeVMRequest]) (*connect.Response[v1.UpgradeVMResponse], error)
+	// UpgradeVMCmdByAdmin (This API is deprecated, use scaleVirtualMachine API)Changes the service offering for a virtual machine. The virtual machine must be in a "Stopped" state for this command to take effect.
+	UpgradeVMCmdByAdmin(context.Context, *connect.Request[v1.UpgradeVMCmdByAdminRequest]) (*connect.Response[v1.UpgradeVMCmdByAdminResponse], error)
 }
 
 // NewVmServiceClient constructs a client for the cloudstack.management.vm.v1.VmService service. By
@@ -253,244 +313,10 @@ func NewVmServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...c
 	baseURL = strings.TrimRight(baseURL, "/")
 	vmServiceMethods := v1.File_cloudstack_management_vm_v1_vm_gen_proto.Services().ByName("VmService").Methods()
 	return &vmServiceClient{
-		assignVM: connect.NewClient[v1.AssignVMRequest, v1.AssignVMResponse](
-			httpClient,
-			baseURL+VmServiceAssignVMProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("AssignVM")),
-			connect.WithClientOptions(opts...),
-		),
-		deployVMCmdByAdmin: connect.NewClient[v1.DeployVMCmdByAdminRequest, v1.DeployVMCmdByAdminResponse](
-			httpClient,
-			baseURL+VmServiceDeployVMCmdByAdminProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("DeployVMCmdByAdmin")),
-			connect.WithClientOptions(opts...),
-		),
-		updateDefaultNicForVM: connect.NewClient[v1.UpdateDefaultNicForVMRequest, v1.UpdateDefaultNicForVMResponse](
-			httpClient,
-			baseURL+VmServiceUpdateDefaultNicForVMProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("UpdateDefaultNicForVM")),
-			connect.WithClientOptions(opts...),
-		),
-		expungeVM: connect.NewClient[v1.ExpungeVMRequest, v1.ExpungeVMResponse](
-			httpClient,
-			baseURL+VmServiceExpungeVMProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("ExpungeVM")),
-			connect.WithClientOptions(opts...),
-		),
-		upgradeVM: connect.NewClient[v1.UpgradeVMRequest, v1.UpgradeVMResponse](
-			httpClient,
-			baseURL+VmServiceUpgradeVMProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("UpgradeVM")),
-			connect.WithClientOptions(opts...),
-		),
-		destroyVM: connect.NewClient[v1.DestroyVMRequest, v1.DestroyVMResponse](
-			httpClient,
-			baseURL+VmServiceDestroyVMProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("DestroyVM")),
-			connect.WithClientOptions(opts...),
-		),
-		removeNicFromVMCmdByAdmin: connect.NewClient[v1.RemoveNicFromVMCmdByAdminRequest, v1.RemoveNicFromVMCmdByAdminResponse](
-			httpClient,
-			baseURL+VmServiceRemoveNicFromVMCmdByAdminProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("RemoveNicFromVMCmdByAdmin")),
-			connect.WithClientOptions(opts...),
-		),
-		addNicToVMCmdByAdmin: connect.NewClient[v1.AddNicToVMCmdByAdminRequest, v1.AddNicToVMCmdByAdminResponse](
-			httpClient,
-			baseURL+VmServiceAddNicToVMCmdByAdminProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("AddNicToVMCmdByAdmin")),
-			connect.WithClientOptions(opts...),
-		),
-		listUnmanagedInstances: connect.NewClient[v1.ListUnmanagedInstancesRequest, v1.ListUnmanagedInstancesResponse](
-			httpClient,
-			baseURL+VmServiceListUnmanagedInstancesProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("ListUnmanagedInstances")),
-			connect.WithClientOptions(opts...),
-		),
-		unmanageVMInstance: connect.NewClient[v1.UnmanageVMInstanceRequest, v1.UnmanageVMInstanceResponse](
-			httpClient,
-			baseURL+VmServiceUnmanageVMInstanceProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("UnmanageVMInstance")),
-			connect.WithClientOptions(opts...),
-		),
-		resetVMPassword: connect.NewClient[v1.ResetVMPasswordRequest, v1.ResetVMPasswordResponse](
-			httpClient,
-			baseURL+VmServiceResetVMPasswordProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("ResetVMPassword")),
-			connect.WithClientOptions(opts...),
-		),
-		deployVnfApplianceCmdByAdmin: connect.NewClient[v1.DeployVnfApplianceCmdByAdminRequest, v1.DeployVnfApplianceCmdByAdminResponse](
-			httpClient,
-			baseURL+VmServiceDeployVnfApplianceCmdByAdminProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("DeployVnfApplianceCmdByAdmin")),
-			connect.WithClientOptions(opts...),
-		),
-		listNics: connect.NewClient[v1.ListNicsRequest, v1.ListNicsResponse](
-			httpClient,
-			baseURL+VmServiceListNicsProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("ListNics")),
-			connect.WithClientOptions(opts...),
-		),
-		listVMSchedule: connect.NewClient[v1.ListVMScheduleRequest, v1.ListVMScheduleResponse](
-			httpClient,
-			baseURL+VmServiceListVMScheduleProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("ListVMSchedule")),
-			connect.WithClientOptions(opts...),
-		),
-		restoreVM: connect.NewClient[v1.RestoreVMRequest, v1.RestoreVMResponse](
-			httpClient,
-			baseURL+VmServiceRestoreVMProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("RestoreVM")),
-			connect.WithClientOptions(opts...),
-		),
-		startVM: connect.NewClient[v1.StartVMRequest, v1.StartVMResponse](
-			httpClient,
-			baseURL+VmServiceStartVMProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("StartVM")),
-			connect.WithClientOptions(opts...),
-		),
-		deployVnfAppliance: connect.NewClient[v1.DeployVnfApplianceRequest, v1.DeployVnfApplianceResponse](
-			httpClient,
-			baseURL+VmServiceDeployVnfApplianceProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("DeployVnfAppliance")),
-			connect.WithClientOptions(opts...),
-		),
-		migrateVM: connect.NewClient[v1.MigrateVMRequest, v1.MigrateVMResponse](
-			httpClient,
-			baseURL+VmServiceMigrateVMProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("MigrateVM")),
-			connect.WithClientOptions(opts...),
-		),
-		listVnfAppliances: connect.NewClient[v1.ListVnfAppliancesRequest, v1.ListVnfAppliancesResponse](
-			httpClient,
-			baseURL+VmServiceListVnfAppliancesProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("ListVnfAppliances")),
-			connect.WithClientOptions(opts...),
-		),
-		listAffectedVmsForStorageScopeChange: connect.NewClient[v1.ListAffectedVmsForStorageScopeChangeRequest, v1.ListAffectedVmsForStorageScopeChangeResponse](
-			httpClient,
-			baseURL+VmServiceListAffectedVmsForStorageScopeChangeProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("ListAffectedVmsForStorageScopeChange")),
-			connect.WithClientOptions(opts...),
-		),
-		stopVMCmdByAdmin: connect.NewClient[v1.StopVMCmdByAdminRequest, v1.StopVMCmdByAdminResponse](
-			httpClient,
-			baseURL+VmServiceStopVMCmdByAdminProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("StopVMCmdByAdmin")),
-			connect.WithClientOptions(opts...),
-		),
-		updateVmNicIp: connect.NewClient[v1.UpdateVmNicIpRequest, v1.UpdateVmNicIpResponse](
-			httpClient,
-			baseURL+VmServiceUpdateVmNicIpProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("UpdateVmNicIp")),
-			connect.WithClientOptions(opts...),
-		),
-		importUnmanagedInstance: connect.NewClient[v1.ImportUnmanagedInstanceRequest, v1.ImportUnmanagedInstanceResponse](
-			httpClient,
-			baseURL+VmServiceImportUnmanagedInstanceProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("ImportUnmanagedInstance")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteVMSchedule: connect.NewClient[v1.DeleteVMScheduleRequest, v1.DeleteVMScheduleResponse](
-			httpClient,
-			baseURL+VmServiceDeleteVMScheduleProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("DeleteVMSchedule")),
-			connect.WithClientOptions(opts...),
-		),
-		resetVMSSHKey: connect.NewClient[v1.ResetVMSSHKeyRequest, v1.ResetVMSSHKeyResponse](
-			httpClient,
-			baseURL+VmServiceResetVMSSHKeyProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("ResetVMSSHKey")),
-			connect.WithClientOptions(opts...),
-		),
-		getVMPassword: connect.NewClient[v1.GetVMPasswordRequest, v1.GetVMPasswordResponse](
-			httpClient,
-			baseURL+VmServiceGetVMPasswordProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("GetVMPassword")),
-			connect.WithClientOptions(opts...),
-		),
-		listVmsForImport: connect.NewClient[v1.ListVmsForImportRequest, v1.ListVmsForImportResponse](
-			httpClient,
-			baseURL+VmServiceListVmsForImportProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("ListVmsForImport")),
-			connect.WithClientOptions(opts...),
-		),
-		deployVM: connect.NewClient[v1.DeployVMRequest, v1.DeployVMResponse](
-			httpClient,
-			baseURL+VmServiceDeployVMProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("DeployVM")),
-			connect.WithClientOptions(opts...),
-		),
-		scaleVM: connect.NewClient[v1.ScaleVMRequest, v1.ScaleVMResponse](
-			httpClient,
-			baseURL+VmServiceScaleVMProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("ScaleVM")),
-			connect.WithClientOptions(opts...),
-		),
-		updateVMCmdByAdmin: connect.NewClient[v1.UpdateVMCmdByAdminRequest, v1.UpdateVMCmdByAdminResponse](
-			httpClient,
-			baseURL+VmServiceUpdateVMCmdByAdminProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("UpdateVMCmdByAdmin")),
-			connect.WithClientOptions(opts...),
-		),
-		resetVMUserData: connect.NewClient[v1.ResetVMUserDataRequest, v1.ResetVMUserDataResponse](
-			httpClient,
-			baseURL+VmServiceResetVMUserDataProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("ResetVMUserData")),
-			connect.WithClientOptions(opts...),
-		),
-		createVMSchedule: connect.NewClient[v1.CreateVMScheduleRequest, v1.CreateVMScheduleResponse](
-			httpClient,
-			baseURL+VmServiceCreateVMScheduleProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("CreateVMSchedule")),
-			connect.WithClientOptions(opts...),
-		),
-		removeNicFromVM: connect.NewClient[v1.RemoveNicFromVMRequest, v1.RemoveNicFromVMResponse](
-			httpClient,
-			baseURL+VmServiceRemoveNicFromVMProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("RemoveNicFromVM")),
-			connect.WithClientOptions(opts...),
-		),
-		listVMs: connect.NewClient[v1.ListVMsRequest, v1.ListVMsResponse](
-			httpClient,
-			baseURL+VmServiceListVMsProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("ListVMs")),
-			connect.WithClientOptions(opts...),
-		),
-		rebootVM: connect.NewClient[v1.RebootVMRequest, v1.RebootVMResponse](
-			httpClient,
-			baseURL+VmServiceRebootVMProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("RebootVM")),
-			connect.WithClientOptions(opts...),
-		),
-		importVm: connect.NewClient[v1.ImportVmRequest, v1.ImportVmResponse](
-			httpClient,
-			baseURL+VmServiceImportVmProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("ImportVm")),
-			connect.WithClientOptions(opts...),
-		),
 		addIpToVmNic: connect.NewClient[v1.AddIpToVmNicRequest, v1.AddIpToVmNicResponse](
 			httpClient,
 			baseURL+VmServiceAddIpToVmNicProcedure,
 			connect.WithSchema(vmServiceMethods.ByName("AddIpToVmNic")),
-			connect.WithClientOptions(opts...),
-		),
-		getVMUserData: connect.NewClient[v1.GetVMUserDataRequest, v1.GetVMUserDataResponse](
-			httpClient,
-			baseURL+VmServiceGetVMUserDataProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("GetVMUserData")),
-			connect.WithClientOptions(opts...),
-		),
-		updateVMSchedule: connect.NewClient[v1.UpdateVMScheduleRequest, v1.UpdateVMScheduleResponse](
-			httpClient,
-			baseURL+VmServiceUpdateVMScheduleProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("UpdateVMSchedule")),
-			connect.WithClientOptions(opts...),
-		),
-		migrateVirtualMachineWithVolume: connect.NewClient[v1.MigrateVirtualMachineWithVolumeRequest, v1.MigrateVirtualMachineWithVolumeResponse](
-			httpClient,
-			baseURL+VmServiceMigrateVirtualMachineWithVolumeProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("MigrateVirtualMachineWithVolume")),
 			connect.WithClientOptions(opts...),
 		),
 		addNicToVM: connect.NewClient[v1.AddNicToVMRequest, v1.AddNicToVMResponse](
@@ -499,22 +325,172 @@ func NewVmServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...c
 			connect.WithSchema(vmServiceMethods.ByName("AddNicToVM")),
 			connect.WithClientOptions(opts...),
 		),
-		removeIpFromVmNic: connect.NewClient[v1.RemoveIpFromVmNicRequest, v1.RemoveIpFromVmNicResponse](
+		addNicToVMCmdByAdmin: connect.NewClient[v1.AddNicToVMCmdByAdminRequest, v1.AddNicToVMCmdByAdminResponse](
 			httpClient,
-			baseURL+VmServiceRemoveIpFromVmNicProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("RemoveIpFromVmNic")),
+			baseURL+VmServiceAddNicToVMCmdByAdminProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("AddNicToVMCmdByAdmin")),
 			connect.WithClientOptions(opts...),
 		),
-		stopVM: connect.NewClient[v1.StopVMRequest, v1.StopVMResponse](
+		assignVM: connect.NewClient[v1.AssignVMRequest, v1.AssignVMResponse](
 			httpClient,
-			baseURL+VmServiceStopVMProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("StopVM")),
+			baseURL+VmServiceAssignVMProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("AssignVM")),
 			connect.WithClientOptions(opts...),
 		),
-		updateVM: connect.NewClient[v1.UpdateVMRequest, v1.UpdateVMResponse](
+		createVMSchedule: connect.NewClient[v1.CreateVMScheduleRequest, v1.CreateVMScheduleResponse](
 			httpClient,
-			baseURL+VmServiceUpdateVMProcedure,
-			connect.WithSchema(vmServiceMethods.ByName("UpdateVM")),
+			baseURL+VmServiceCreateVMScheduleProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("CreateVMSchedule")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteVMSchedule: connect.NewClient[v1.DeleteVMScheduleRequest, v1.DeleteVMScheduleResponse](
+			httpClient,
+			baseURL+VmServiceDeleteVMScheduleProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("DeleteVMSchedule")),
+			connect.WithClientOptions(opts...),
+		),
+		deployVM: connect.NewClient[v1.DeployVMRequest, v1.DeployVMResponse](
+			httpClient,
+			baseURL+VmServiceDeployVMProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("DeployVM")),
+			connect.WithClientOptions(opts...),
+		),
+		deployVMCmdByAdmin: connect.NewClient[v1.DeployVMCmdByAdminRequest, v1.DeployVMCmdByAdminResponse](
+			httpClient,
+			baseURL+VmServiceDeployVMCmdByAdminProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("DeployVMCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		deployVnfAppliance: connect.NewClient[v1.DeployVnfApplianceRequest, v1.DeployVnfApplianceResponse](
+			httpClient,
+			baseURL+VmServiceDeployVnfApplianceProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("DeployVnfAppliance")),
+			connect.WithClientOptions(opts...),
+		),
+		deployVnfApplianceCmdByAdmin: connect.NewClient[v1.DeployVnfApplianceCmdByAdminRequest, v1.DeployVnfApplianceCmdByAdminResponse](
+			httpClient,
+			baseURL+VmServiceDeployVnfApplianceCmdByAdminProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("DeployVnfApplianceCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		destroyVM: connect.NewClient[v1.DestroyVMRequest, v1.DestroyVMResponse](
+			httpClient,
+			baseURL+VmServiceDestroyVMProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("DestroyVM")),
+			connect.WithClientOptions(opts...),
+		),
+		destroyVMCmdByAdmin: connect.NewClient[v1.DestroyVMCmdByAdminRequest, v1.DestroyVMCmdByAdminResponse](
+			httpClient,
+			baseURL+VmServiceDestroyVMCmdByAdminProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("DestroyVMCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		expungeVM: connect.NewClient[v1.ExpungeVMRequest, v1.ExpungeVMResponse](
+			httpClient,
+			baseURL+VmServiceExpungeVMProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("ExpungeVM")),
+			connect.WithClientOptions(opts...),
+		),
+		getVMPassword: connect.NewClient[v1.GetVMPasswordRequest, v1.GetVMPasswordResponse](
+			httpClient,
+			baseURL+VmServiceGetVMPasswordProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("GetVMPassword")),
+			connect.WithClientOptions(opts...),
+		),
+		getVMUserData: connect.NewClient[v1.GetVMUserDataRequest, v1.GetVMUserDataResponse](
+			httpClient,
+			baseURL+VmServiceGetVMUserDataProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("GetVMUserData")),
+			connect.WithClientOptions(opts...),
+		),
+		importUnmanagedInstance: connect.NewClient[v1.ImportUnmanagedInstanceRequest, v1.ImportUnmanagedInstanceResponse](
+			httpClient,
+			baseURL+VmServiceImportUnmanagedInstanceProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("ImportUnmanagedInstance")),
+			connect.WithClientOptions(opts...),
+		),
+		importVm: connect.NewClient[v1.ImportVmRequest, v1.ImportVmResponse](
+			httpClient,
+			baseURL+VmServiceImportVmProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("ImportVm")),
+			connect.WithClientOptions(opts...),
+		),
+		listAffectedVmsForStorageScopeChange: connect.NewClient[v1.ListAffectedVmsForStorageScopeChangeRequest, v1.ListAffectedVmsForStorageScopeChangeResponse](
+			httpClient,
+			baseURL+VmServiceListAffectedVmsForStorageScopeChangeProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("ListAffectedVmsForStorageScopeChange")),
+			connect.WithClientOptions(opts...),
+		),
+		listNics: connect.NewClient[v1.ListNicsRequest, v1.ListNicsResponse](
+			httpClient,
+			baseURL+VmServiceListNicsProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("ListNics")),
+			connect.WithClientOptions(opts...),
+		),
+		listUnmanagedInstances: connect.NewClient[v1.ListUnmanagedInstancesRequest, v1.ListUnmanagedInstancesResponse](
+			httpClient,
+			baseURL+VmServiceListUnmanagedInstancesProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("ListUnmanagedInstances")),
+			connect.WithClientOptions(opts...),
+		),
+		listVMSchedule: connect.NewClient[v1.ListVMScheduleRequest, v1.ListVMScheduleResponse](
+			httpClient,
+			baseURL+VmServiceListVMScheduleProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("ListVMSchedule")),
+			connect.WithClientOptions(opts...),
+		),
+		listVMs: connect.NewClient[v1.ListVMsRequest, v1.ListVMsResponse](
+			httpClient,
+			baseURL+VmServiceListVMsProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("ListVMs")),
+			connect.WithClientOptions(opts...),
+		),
+		listVMsCmdByAdmin: connect.NewClient[v1.ListVMsCmdByAdminRequest, v1.ListVMsCmdByAdminResponse](
+			httpClient,
+			baseURL+VmServiceListVMsCmdByAdminProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("ListVMsCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		listVmsForImport: connect.NewClient[v1.ListVmsForImportRequest, v1.ListVmsForImportResponse](
+			httpClient,
+			baseURL+VmServiceListVmsForImportProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("ListVmsForImport")),
+			connect.WithClientOptions(opts...),
+		),
+		listVnfAppliances: connect.NewClient[v1.ListVnfAppliancesRequest, v1.ListVnfAppliancesResponse](
+			httpClient,
+			baseURL+VmServiceListVnfAppliancesProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("ListVnfAppliances")),
+			connect.WithClientOptions(opts...),
+		),
+		listVnfAppliancesCmdByAdmin: connect.NewClient[v1.ListVnfAppliancesCmdByAdminRequest, v1.ListVnfAppliancesCmdByAdminResponse](
+			httpClient,
+			baseURL+VmServiceListVnfAppliancesCmdByAdminProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("ListVnfAppliancesCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		migrateVM: connect.NewClient[v1.MigrateVMRequest, v1.MigrateVMResponse](
+			httpClient,
+			baseURL+VmServiceMigrateVMProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("MigrateVM")),
+			connect.WithClientOptions(opts...),
+		),
+		migrateVirtualMachineWithVolume: connect.NewClient[v1.MigrateVirtualMachineWithVolumeRequest, v1.MigrateVirtualMachineWithVolumeResponse](
+			httpClient,
+			baseURL+VmServiceMigrateVirtualMachineWithVolumeProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("MigrateVirtualMachineWithVolume")),
+			connect.WithClientOptions(opts...),
+		),
+		rebootVM: connect.NewClient[v1.RebootVMRequest, v1.RebootVMResponse](
+			httpClient,
+			baseURL+VmServiceRebootVMProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("RebootVM")),
+			connect.WithClientOptions(opts...),
+		),
+		rebootVMCmdByAdmin: connect.NewClient[v1.RebootVMCmdByAdminRequest, v1.RebootVMCmdByAdminResponse](
+			httpClient,
+			baseURL+VmServiceRebootVMCmdByAdminProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("RebootVMCmdByAdmin")),
 			connect.WithClientOptions(opts...),
 		),
 		recoverVM: connect.NewClient[v1.RecoverVMRequest, v1.RecoverVMResponse](
@@ -523,91 +499,234 @@ func NewVmServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...c
 			connect.WithSchema(vmServiceMethods.ByName("RecoverVM")),
 			connect.WithClientOptions(opts...),
 		),
+		removeIpFromVmNic: connect.NewClient[v1.RemoveIpFromVmNicRequest, v1.RemoveIpFromVmNicResponse](
+			httpClient,
+			baseURL+VmServiceRemoveIpFromVmNicProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("RemoveIpFromVmNic")),
+			connect.WithClientOptions(opts...),
+		),
+		removeNicFromVM: connect.NewClient[v1.RemoveNicFromVMRequest, v1.RemoveNicFromVMResponse](
+			httpClient,
+			baseURL+VmServiceRemoveNicFromVMProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("RemoveNicFromVM")),
+			connect.WithClientOptions(opts...),
+		),
+		removeNicFromVMCmdByAdmin: connect.NewClient[v1.RemoveNicFromVMCmdByAdminRequest, v1.RemoveNicFromVMCmdByAdminResponse](
+			httpClient,
+			baseURL+VmServiceRemoveNicFromVMCmdByAdminProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("RemoveNicFromVMCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		resetVMPassword: connect.NewClient[v1.ResetVMPasswordRequest, v1.ResetVMPasswordResponse](
+			httpClient,
+			baseURL+VmServiceResetVMPasswordProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("ResetVMPassword")),
+			connect.WithClientOptions(opts...),
+		),
+		resetVMPasswordCmdByAdmin: connect.NewClient[v1.ResetVMPasswordCmdByAdminRequest, v1.ResetVMPasswordCmdByAdminResponse](
+			httpClient,
+			baseURL+VmServiceResetVMPasswordCmdByAdminProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("ResetVMPasswordCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		resetVMSSHKey: connect.NewClient[v1.ResetVMSSHKeyRequest, v1.ResetVMSSHKeyResponse](
+			httpClient,
+			baseURL+VmServiceResetVMSSHKeyProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("ResetVMSSHKey")),
+			connect.WithClientOptions(opts...),
+		),
+		resetVMSSHKeyCmdByAdmin: connect.NewClient[v1.ResetVMSSHKeyCmdByAdminRequest, v1.ResetVMSSHKeyCmdByAdminResponse](
+			httpClient,
+			baseURL+VmServiceResetVMSSHKeyCmdByAdminProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("ResetVMSSHKeyCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		resetVMUserData: connect.NewClient[v1.ResetVMUserDataRequest, v1.ResetVMUserDataResponse](
+			httpClient,
+			baseURL+VmServiceResetVMUserDataProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("ResetVMUserData")),
+			connect.WithClientOptions(opts...),
+		),
+		resetVMUserDataCmdAdmin: connect.NewClient[v1.ResetVMUserDataCmdAdminRequest, v1.ResetVMUserDataCmdAdminResponse](
+			httpClient,
+			baseURL+VmServiceResetVMUserDataCmdAdminProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("ResetVMUserDataCmdAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		restoreVM: connect.NewClient[v1.RestoreVMRequest, v1.RestoreVMResponse](
+			httpClient,
+			baseURL+VmServiceRestoreVMProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("RestoreVM")),
+			connect.WithClientOptions(opts...),
+		),
+		restoreVMCmdByAdmin: connect.NewClient[v1.RestoreVMCmdByAdminRequest, v1.RestoreVMCmdByAdminResponse](
+			httpClient,
+			baseURL+VmServiceRestoreVMCmdByAdminProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("RestoreVMCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		scaleVM: connect.NewClient[v1.ScaleVMRequest, v1.ScaleVMResponse](
+			httpClient,
+			baseURL+VmServiceScaleVMProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("ScaleVM")),
+			connect.WithClientOptions(opts...),
+		),
+		scaleVMCmdByAdmin: connect.NewClient[v1.ScaleVMCmdByAdminRequest, v1.ScaleVMCmdByAdminResponse](
+			httpClient,
+			baseURL+VmServiceScaleVMCmdByAdminProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("ScaleVMCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		startVM: connect.NewClient[v1.StartVMRequest, v1.StartVMResponse](
+			httpClient,
+			baseURL+VmServiceStartVMProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("StartVM")),
+			connect.WithClientOptions(opts...),
+		),
+		startVMCmdByAdmin: connect.NewClient[v1.StartVMCmdByAdminRequest, v1.StartVMCmdByAdminResponse](
+			httpClient,
+			baseURL+VmServiceStartVMCmdByAdminProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("StartVMCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		stopVM: connect.NewClient[v1.StopVMRequest, v1.StopVMResponse](
+			httpClient,
+			baseURL+VmServiceStopVMProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("StopVM")),
+			connect.WithClientOptions(opts...),
+		),
+		stopVMCmdByAdmin: connect.NewClient[v1.StopVMCmdByAdminRequest, v1.StopVMCmdByAdminResponse](
+			httpClient,
+			baseURL+VmServiceStopVMCmdByAdminProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("StopVMCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		unmanageVMInstance: connect.NewClient[v1.UnmanageVMInstanceRequest, v1.UnmanageVMInstanceResponse](
+			httpClient,
+			baseURL+VmServiceUnmanageVMInstanceProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("UnmanageVMInstance")),
+			connect.WithClientOptions(opts...),
+		),
+		updateDefaultNicForVM: connect.NewClient[v1.UpdateDefaultNicForVMRequest, v1.UpdateDefaultNicForVMResponse](
+			httpClient,
+			baseURL+VmServiceUpdateDefaultNicForVMProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("UpdateDefaultNicForVM")),
+			connect.WithClientOptions(opts...),
+		),
+		updateDefaultNicForVMCmdByAdmin: connect.NewClient[v1.UpdateDefaultNicForVMCmdByAdminRequest, v1.UpdateDefaultNicForVMCmdByAdminResponse](
+			httpClient,
+			baseURL+VmServiceUpdateDefaultNicForVMCmdByAdminProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("UpdateDefaultNicForVMCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		updateVM: connect.NewClient[v1.UpdateVMRequest, v1.UpdateVMResponse](
+			httpClient,
+			baseURL+VmServiceUpdateVMProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("UpdateVM")),
+			connect.WithClientOptions(opts...),
+		),
+		updateVMCmdByAdmin: connect.NewClient[v1.UpdateVMCmdByAdminRequest, v1.UpdateVMCmdByAdminResponse](
+			httpClient,
+			baseURL+VmServiceUpdateVMCmdByAdminProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("UpdateVMCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		updateVMSchedule: connect.NewClient[v1.UpdateVMScheduleRequest, v1.UpdateVMScheduleResponse](
+			httpClient,
+			baseURL+VmServiceUpdateVMScheduleProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("UpdateVMSchedule")),
+			connect.WithClientOptions(opts...),
+		),
+		updateVmNicIp: connect.NewClient[v1.UpdateVmNicIpRequest, v1.UpdateVmNicIpResponse](
+			httpClient,
+			baseURL+VmServiceUpdateVmNicIpProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("UpdateVmNicIp")),
+			connect.WithClientOptions(opts...),
+		),
+		upgradeVM: connect.NewClient[v1.UpgradeVMRequest, v1.UpgradeVMResponse](
+			httpClient,
+			baseURL+VmServiceUpgradeVMProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("UpgradeVM")),
+			connect.WithClientOptions(opts...),
+		),
+		upgradeVMCmdByAdmin: connect.NewClient[v1.UpgradeVMCmdByAdminRequest, v1.UpgradeVMCmdByAdminResponse](
+			httpClient,
+			baseURL+VmServiceUpgradeVMCmdByAdminProcedure,
+			connect.WithSchema(vmServiceMethods.ByName("UpgradeVMCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // vmServiceClient implements VmServiceClient.
 type vmServiceClient struct {
-	assignVM                             *connect.Client[v1.AssignVMRequest, v1.AssignVMResponse]
-	deployVMCmdByAdmin                   *connect.Client[v1.DeployVMCmdByAdminRequest, v1.DeployVMCmdByAdminResponse]
-	updateDefaultNicForVM                *connect.Client[v1.UpdateDefaultNicForVMRequest, v1.UpdateDefaultNicForVMResponse]
-	expungeVM                            *connect.Client[v1.ExpungeVMRequest, v1.ExpungeVMResponse]
-	upgradeVM                            *connect.Client[v1.UpgradeVMRequest, v1.UpgradeVMResponse]
-	destroyVM                            *connect.Client[v1.DestroyVMRequest, v1.DestroyVMResponse]
-	removeNicFromVMCmdByAdmin            *connect.Client[v1.RemoveNicFromVMCmdByAdminRequest, v1.RemoveNicFromVMCmdByAdminResponse]
-	addNicToVMCmdByAdmin                 *connect.Client[v1.AddNicToVMCmdByAdminRequest, v1.AddNicToVMCmdByAdminResponse]
-	listUnmanagedInstances               *connect.Client[v1.ListUnmanagedInstancesRequest, v1.ListUnmanagedInstancesResponse]
-	unmanageVMInstance                   *connect.Client[v1.UnmanageVMInstanceRequest, v1.UnmanageVMInstanceResponse]
-	resetVMPassword                      *connect.Client[v1.ResetVMPasswordRequest, v1.ResetVMPasswordResponse]
-	deployVnfApplianceCmdByAdmin         *connect.Client[v1.DeployVnfApplianceCmdByAdminRequest, v1.DeployVnfApplianceCmdByAdminResponse]
-	listNics                             *connect.Client[v1.ListNicsRequest, v1.ListNicsResponse]
-	listVMSchedule                       *connect.Client[v1.ListVMScheduleRequest, v1.ListVMScheduleResponse]
-	restoreVM                            *connect.Client[v1.RestoreVMRequest, v1.RestoreVMResponse]
-	startVM                              *connect.Client[v1.StartVMRequest, v1.StartVMResponse]
-	deployVnfAppliance                   *connect.Client[v1.DeployVnfApplianceRequest, v1.DeployVnfApplianceResponse]
-	migrateVM                            *connect.Client[v1.MigrateVMRequest, v1.MigrateVMResponse]
-	listVnfAppliances                    *connect.Client[v1.ListVnfAppliancesRequest, v1.ListVnfAppliancesResponse]
-	listAffectedVmsForStorageScopeChange *connect.Client[v1.ListAffectedVmsForStorageScopeChangeRequest, v1.ListAffectedVmsForStorageScopeChangeResponse]
-	stopVMCmdByAdmin                     *connect.Client[v1.StopVMCmdByAdminRequest, v1.StopVMCmdByAdminResponse]
-	updateVmNicIp                        *connect.Client[v1.UpdateVmNicIpRequest, v1.UpdateVmNicIpResponse]
-	importUnmanagedInstance              *connect.Client[v1.ImportUnmanagedInstanceRequest, v1.ImportUnmanagedInstanceResponse]
-	deleteVMSchedule                     *connect.Client[v1.DeleteVMScheduleRequest, v1.DeleteVMScheduleResponse]
-	resetVMSSHKey                        *connect.Client[v1.ResetVMSSHKeyRequest, v1.ResetVMSSHKeyResponse]
-	getVMPassword                        *connect.Client[v1.GetVMPasswordRequest, v1.GetVMPasswordResponse]
-	listVmsForImport                     *connect.Client[v1.ListVmsForImportRequest, v1.ListVmsForImportResponse]
-	deployVM                             *connect.Client[v1.DeployVMRequest, v1.DeployVMResponse]
-	scaleVM                              *connect.Client[v1.ScaleVMRequest, v1.ScaleVMResponse]
-	updateVMCmdByAdmin                   *connect.Client[v1.UpdateVMCmdByAdminRequest, v1.UpdateVMCmdByAdminResponse]
-	resetVMUserData                      *connect.Client[v1.ResetVMUserDataRequest, v1.ResetVMUserDataResponse]
-	createVMSchedule                     *connect.Client[v1.CreateVMScheduleRequest, v1.CreateVMScheduleResponse]
-	removeNicFromVM                      *connect.Client[v1.RemoveNicFromVMRequest, v1.RemoveNicFromVMResponse]
-	listVMs                              *connect.Client[v1.ListVMsRequest, v1.ListVMsResponse]
-	rebootVM                             *connect.Client[v1.RebootVMRequest, v1.RebootVMResponse]
-	importVm                             *connect.Client[v1.ImportVmRequest, v1.ImportVmResponse]
 	addIpToVmNic                         *connect.Client[v1.AddIpToVmNicRequest, v1.AddIpToVmNicResponse]
-	getVMUserData                        *connect.Client[v1.GetVMUserDataRequest, v1.GetVMUserDataResponse]
-	updateVMSchedule                     *connect.Client[v1.UpdateVMScheduleRequest, v1.UpdateVMScheduleResponse]
-	migrateVirtualMachineWithVolume      *connect.Client[v1.MigrateVirtualMachineWithVolumeRequest, v1.MigrateVirtualMachineWithVolumeResponse]
 	addNicToVM                           *connect.Client[v1.AddNicToVMRequest, v1.AddNicToVMResponse]
-	removeIpFromVmNic                    *connect.Client[v1.RemoveIpFromVmNicRequest, v1.RemoveIpFromVmNicResponse]
-	stopVM                               *connect.Client[v1.StopVMRequest, v1.StopVMResponse]
-	updateVM                             *connect.Client[v1.UpdateVMRequest, v1.UpdateVMResponse]
+	addNicToVMCmdByAdmin                 *connect.Client[v1.AddNicToVMCmdByAdminRequest, v1.AddNicToVMCmdByAdminResponse]
+	assignVM                             *connect.Client[v1.AssignVMRequest, v1.AssignVMResponse]
+	createVMSchedule                     *connect.Client[v1.CreateVMScheduleRequest, v1.CreateVMScheduleResponse]
+	deleteVMSchedule                     *connect.Client[v1.DeleteVMScheduleRequest, v1.DeleteVMScheduleResponse]
+	deployVM                             *connect.Client[v1.DeployVMRequest, v1.DeployVMResponse]
+	deployVMCmdByAdmin                   *connect.Client[v1.DeployVMCmdByAdminRequest, v1.DeployVMCmdByAdminResponse]
+	deployVnfAppliance                   *connect.Client[v1.DeployVnfApplianceRequest, v1.DeployVnfApplianceResponse]
+	deployVnfApplianceCmdByAdmin         *connect.Client[v1.DeployVnfApplianceCmdByAdminRequest, v1.DeployVnfApplianceCmdByAdminResponse]
+	destroyVM                            *connect.Client[v1.DestroyVMRequest, v1.DestroyVMResponse]
+	destroyVMCmdByAdmin                  *connect.Client[v1.DestroyVMCmdByAdminRequest, v1.DestroyVMCmdByAdminResponse]
+	expungeVM                            *connect.Client[v1.ExpungeVMRequest, v1.ExpungeVMResponse]
+	getVMPassword                        *connect.Client[v1.GetVMPasswordRequest, v1.GetVMPasswordResponse]
+	getVMUserData                        *connect.Client[v1.GetVMUserDataRequest, v1.GetVMUserDataResponse]
+	importUnmanagedInstance              *connect.Client[v1.ImportUnmanagedInstanceRequest, v1.ImportUnmanagedInstanceResponse]
+	importVm                             *connect.Client[v1.ImportVmRequest, v1.ImportVmResponse]
+	listAffectedVmsForStorageScopeChange *connect.Client[v1.ListAffectedVmsForStorageScopeChangeRequest, v1.ListAffectedVmsForStorageScopeChangeResponse]
+	listNics                             *connect.Client[v1.ListNicsRequest, v1.ListNicsResponse]
+	listUnmanagedInstances               *connect.Client[v1.ListUnmanagedInstancesRequest, v1.ListUnmanagedInstancesResponse]
+	listVMSchedule                       *connect.Client[v1.ListVMScheduleRequest, v1.ListVMScheduleResponse]
+	listVMs                              *connect.Client[v1.ListVMsRequest, v1.ListVMsResponse]
+	listVMsCmdByAdmin                    *connect.Client[v1.ListVMsCmdByAdminRequest, v1.ListVMsCmdByAdminResponse]
+	listVmsForImport                     *connect.Client[v1.ListVmsForImportRequest, v1.ListVmsForImportResponse]
+	listVnfAppliances                    *connect.Client[v1.ListVnfAppliancesRequest, v1.ListVnfAppliancesResponse]
+	listVnfAppliancesCmdByAdmin          *connect.Client[v1.ListVnfAppliancesCmdByAdminRequest, v1.ListVnfAppliancesCmdByAdminResponse]
+	migrateVM                            *connect.Client[v1.MigrateVMRequest, v1.MigrateVMResponse]
+	migrateVirtualMachineWithVolume      *connect.Client[v1.MigrateVirtualMachineWithVolumeRequest, v1.MigrateVirtualMachineWithVolumeResponse]
+	rebootVM                             *connect.Client[v1.RebootVMRequest, v1.RebootVMResponse]
+	rebootVMCmdByAdmin                   *connect.Client[v1.RebootVMCmdByAdminRequest, v1.RebootVMCmdByAdminResponse]
 	recoverVM                            *connect.Client[v1.RecoverVMRequest, v1.RecoverVMResponse]
+	removeIpFromVmNic                    *connect.Client[v1.RemoveIpFromVmNicRequest, v1.RemoveIpFromVmNicResponse]
+	removeNicFromVM                      *connect.Client[v1.RemoveNicFromVMRequest, v1.RemoveNicFromVMResponse]
+	removeNicFromVMCmdByAdmin            *connect.Client[v1.RemoveNicFromVMCmdByAdminRequest, v1.RemoveNicFromVMCmdByAdminResponse]
+	resetVMPassword                      *connect.Client[v1.ResetVMPasswordRequest, v1.ResetVMPasswordResponse]
+	resetVMPasswordCmdByAdmin            *connect.Client[v1.ResetVMPasswordCmdByAdminRequest, v1.ResetVMPasswordCmdByAdminResponse]
+	resetVMSSHKey                        *connect.Client[v1.ResetVMSSHKeyRequest, v1.ResetVMSSHKeyResponse]
+	resetVMSSHKeyCmdByAdmin              *connect.Client[v1.ResetVMSSHKeyCmdByAdminRequest, v1.ResetVMSSHKeyCmdByAdminResponse]
+	resetVMUserData                      *connect.Client[v1.ResetVMUserDataRequest, v1.ResetVMUserDataResponse]
+	resetVMUserDataCmdAdmin              *connect.Client[v1.ResetVMUserDataCmdAdminRequest, v1.ResetVMUserDataCmdAdminResponse]
+	restoreVM                            *connect.Client[v1.RestoreVMRequest, v1.RestoreVMResponse]
+	restoreVMCmdByAdmin                  *connect.Client[v1.RestoreVMCmdByAdminRequest, v1.RestoreVMCmdByAdminResponse]
+	scaleVM                              *connect.Client[v1.ScaleVMRequest, v1.ScaleVMResponse]
+	scaleVMCmdByAdmin                    *connect.Client[v1.ScaleVMCmdByAdminRequest, v1.ScaleVMCmdByAdminResponse]
+	startVM                              *connect.Client[v1.StartVMRequest, v1.StartVMResponse]
+	startVMCmdByAdmin                    *connect.Client[v1.StartVMCmdByAdminRequest, v1.StartVMCmdByAdminResponse]
+	stopVM                               *connect.Client[v1.StopVMRequest, v1.StopVMResponse]
+	stopVMCmdByAdmin                     *connect.Client[v1.StopVMCmdByAdminRequest, v1.StopVMCmdByAdminResponse]
+	unmanageVMInstance                   *connect.Client[v1.UnmanageVMInstanceRequest, v1.UnmanageVMInstanceResponse]
+	updateDefaultNicForVM                *connect.Client[v1.UpdateDefaultNicForVMRequest, v1.UpdateDefaultNicForVMResponse]
+	updateDefaultNicForVMCmdByAdmin      *connect.Client[v1.UpdateDefaultNicForVMCmdByAdminRequest, v1.UpdateDefaultNicForVMCmdByAdminResponse]
+	updateVM                             *connect.Client[v1.UpdateVMRequest, v1.UpdateVMResponse]
+	updateVMCmdByAdmin                   *connect.Client[v1.UpdateVMCmdByAdminRequest, v1.UpdateVMCmdByAdminResponse]
+	updateVMSchedule                     *connect.Client[v1.UpdateVMScheduleRequest, v1.UpdateVMScheduleResponse]
+	updateVmNicIp                        *connect.Client[v1.UpdateVmNicIpRequest, v1.UpdateVmNicIpResponse]
+	upgradeVM                            *connect.Client[v1.UpgradeVMRequest, v1.UpgradeVMResponse]
+	upgradeVMCmdByAdmin                  *connect.Client[v1.UpgradeVMCmdByAdminRequest, v1.UpgradeVMCmdByAdminResponse]
 }
 
-// AssignVM calls cloudstack.management.vm.v1.VmService.AssignVM.
-func (c *vmServiceClient) AssignVM(ctx context.Context, req *connect.Request[v1.AssignVMRequest]) (*connect.Response[v1.AssignVMResponse], error) {
-	return c.assignVM.CallUnary(ctx, req)
+// AddIpToVmNic calls cloudstack.management.vm.v1.VmService.AddIpToVmNic.
+func (c *vmServiceClient) AddIpToVmNic(ctx context.Context, req *connect.Request[v1.AddIpToVmNicRequest]) (*connect.Response[v1.AddIpToVmNicResponse], error) {
+	return c.addIpToVmNic.CallUnary(ctx, req)
 }
 
-// DeployVMCmdByAdmin calls cloudstack.management.vm.v1.VmService.DeployVMCmdByAdmin.
-func (c *vmServiceClient) DeployVMCmdByAdmin(ctx context.Context, req *connect.Request[v1.DeployVMCmdByAdminRequest]) (*connect.Response[v1.DeployVMCmdByAdminResponse], error) {
-	return c.deployVMCmdByAdmin.CallUnary(ctx, req)
-}
-
-// UpdateDefaultNicForVM calls cloudstack.management.vm.v1.VmService.UpdateDefaultNicForVM.
-func (c *vmServiceClient) UpdateDefaultNicForVM(ctx context.Context, req *connect.Request[v1.UpdateDefaultNicForVMRequest]) (*connect.Response[v1.UpdateDefaultNicForVMResponse], error) {
-	return c.updateDefaultNicForVM.CallUnary(ctx, req)
-}
-
-// ExpungeVM calls cloudstack.management.vm.v1.VmService.ExpungeVM.
-func (c *vmServiceClient) ExpungeVM(ctx context.Context, req *connect.Request[v1.ExpungeVMRequest]) (*connect.Response[v1.ExpungeVMResponse], error) {
-	return c.expungeVM.CallUnary(ctx, req)
-}
-
-// UpgradeVM calls cloudstack.management.vm.v1.VmService.UpgradeVM.
-func (c *vmServiceClient) UpgradeVM(ctx context.Context, req *connect.Request[v1.UpgradeVMRequest]) (*connect.Response[v1.UpgradeVMResponse], error) {
-	return c.upgradeVM.CallUnary(ctx, req)
-}
-
-// DestroyVM calls cloudstack.management.vm.v1.VmService.DestroyVM.
-func (c *vmServiceClient) DestroyVM(ctx context.Context, req *connect.Request[v1.DestroyVMRequest]) (*connect.Response[v1.DestroyVMResponse], error) {
-	return c.destroyVM.CallUnary(ctx, req)
-}
-
-// RemoveNicFromVMCmdByAdmin calls cloudstack.management.vm.v1.VmService.RemoveNicFromVMCmdByAdmin.
-func (c *vmServiceClient) RemoveNicFromVMCmdByAdmin(ctx context.Context, req *connect.Request[v1.RemoveNicFromVMCmdByAdminRequest]) (*connect.Response[v1.RemoveNicFromVMCmdByAdminResponse], error) {
-	return c.removeNicFromVMCmdByAdmin.CallUnary(ctx, req)
+// AddNicToVM calls cloudstack.management.vm.v1.VmService.AddNicToVM.
+func (c *vmServiceClient) AddNicToVM(ctx context.Context, req *connect.Request[v1.AddNicToVMRequest]) (*connect.Response[v1.AddNicToVMResponse], error) {
+	return c.addNicToVM.CallUnary(ctx, req)
 }
 
 // AddNicToVMCmdByAdmin calls cloudstack.management.vm.v1.VmService.AddNicToVMCmdByAdmin.
@@ -615,19 +734,34 @@ func (c *vmServiceClient) AddNicToVMCmdByAdmin(ctx context.Context, req *connect
 	return c.addNicToVMCmdByAdmin.CallUnary(ctx, req)
 }
 
-// ListUnmanagedInstances calls cloudstack.management.vm.v1.VmService.ListUnmanagedInstances.
-func (c *vmServiceClient) ListUnmanagedInstances(ctx context.Context, req *connect.Request[v1.ListUnmanagedInstancesRequest]) (*connect.Response[v1.ListUnmanagedInstancesResponse], error) {
-	return c.listUnmanagedInstances.CallUnary(ctx, req)
+// AssignVM calls cloudstack.management.vm.v1.VmService.AssignVM.
+func (c *vmServiceClient) AssignVM(ctx context.Context, req *connect.Request[v1.AssignVMRequest]) (*connect.Response[v1.AssignVMResponse], error) {
+	return c.assignVM.CallUnary(ctx, req)
 }
 
-// UnmanageVMInstance calls cloudstack.management.vm.v1.VmService.UnmanageVMInstance.
-func (c *vmServiceClient) UnmanageVMInstance(ctx context.Context, req *connect.Request[v1.UnmanageVMInstanceRequest]) (*connect.Response[v1.UnmanageVMInstanceResponse], error) {
-	return c.unmanageVMInstance.CallUnary(ctx, req)
+// CreateVMSchedule calls cloudstack.management.vm.v1.VmService.CreateVMSchedule.
+func (c *vmServiceClient) CreateVMSchedule(ctx context.Context, req *connect.Request[v1.CreateVMScheduleRequest]) (*connect.Response[v1.CreateVMScheduleResponse], error) {
+	return c.createVMSchedule.CallUnary(ctx, req)
 }
 
-// ResetVMPassword calls cloudstack.management.vm.v1.VmService.ResetVMPassword.
-func (c *vmServiceClient) ResetVMPassword(ctx context.Context, req *connect.Request[v1.ResetVMPasswordRequest]) (*connect.Response[v1.ResetVMPasswordResponse], error) {
-	return c.resetVMPassword.CallUnary(ctx, req)
+// DeleteVMSchedule calls cloudstack.management.vm.v1.VmService.DeleteVMSchedule.
+func (c *vmServiceClient) DeleteVMSchedule(ctx context.Context, req *connect.Request[v1.DeleteVMScheduleRequest]) (*connect.Response[v1.DeleteVMScheduleResponse], error) {
+	return c.deleteVMSchedule.CallUnary(ctx, req)
+}
+
+// DeployVM calls cloudstack.management.vm.v1.VmService.DeployVM.
+func (c *vmServiceClient) DeployVM(ctx context.Context, req *connect.Request[v1.DeployVMRequest]) (*connect.Response[v1.DeployVMResponse], error) {
+	return c.deployVM.CallUnary(ctx, req)
+}
+
+// DeployVMCmdByAdmin calls cloudstack.management.vm.v1.VmService.DeployVMCmdByAdmin.
+func (c *vmServiceClient) DeployVMCmdByAdmin(ctx context.Context, req *connect.Request[v1.DeployVMCmdByAdminRequest]) (*connect.Response[v1.DeployVMCmdByAdminResponse], error) {
+	return c.deployVMCmdByAdmin.CallUnary(ctx, req)
+}
+
+// DeployVnfAppliance calls cloudstack.management.vm.v1.VmService.DeployVnfAppliance.
+func (c *vmServiceClient) DeployVnfAppliance(ctx context.Context, req *connect.Request[v1.DeployVnfApplianceRequest]) (*connect.Response[v1.DeployVnfApplianceResponse], error) {
+	return c.deployVnfAppliance.CallUnary(ctx, req)
 }
 
 // DeployVnfApplianceCmdByAdmin calls
@@ -636,39 +770,39 @@ func (c *vmServiceClient) DeployVnfApplianceCmdByAdmin(ctx context.Context, req 
 	return c.deployVnfApplianceCmdByAdmin.CallUnary(ctx, req)
 }
 
-// ListNics calls cloudstack.management.vm.v1.VmService.ListNics.
-func (c *vmServiceClient) ListNics(ctx context.Context, req *connect.Request[v1.ListNicsRequest]) (*connect.Response[v1.ListNicsResponse], error) {
-	return c.listNics.CallUnary(ctx, req)
+// DestroyVM calls cloudstack.management.vm.v1.VmService.DestroyVM.
+func (c *vmServiceClient) DestroyVM(ctx context.Context, req *connect.Request[v1.DestroyVMRequest]) (*connect.Response[v1.DestroyVMResponse], error) {
+	return c.destroyVM.CallUnary(ctx, req)
 }
 
-// ListVMSchedule calls cloudstack.management.vm.v1.VmService.ListVMSchedule.
-func (c *vmServiceClient) ListVMSchedule(ctx context.Context, req *connect.Request[v1.ListVMScheduleRequest]) (*connect.Response[v1.ListVMScheduleResponse], error) {
-	return c.listVMSchedule.CallUnary(ctx, req)
+// DestroyVMCmdByAdmin calls cloudstack.management.vm.v1.VmService.DestroyVMCmdByAdmin.
+func (c *vmServiceClient) DestroyVMCmdByAdmin(ctx context.Context, req *connect.Request[v1.DestroyVMCmdByAdminRequest]) (*connect.Response[v1.DestroyVMCmdByAdminResponse], error) {
+	return c.destroyVMCmdByAdmin.CallUnary(ctx, req)
 }
 
-// RestoreVM calls cloudstack.management.vm.v1.VmService.RestoreVM.
-func (c *vmServiceClient) RestoreVM(ctx context.Context, req *connect.Request[v1.RestoreVMRequest]) (*connect.Response[v1.RestoreVMResponse], error) {
-	return c.restoreVM.CallUnary(ctx, req)
+// ExpungeVM calls cloudstack.management.vm.v1.VmService.ExpungeVM.
+func (c *vmServiceClient) ExpungeVM(ctx context.Context, req *connect.Request[v1.ExpungeVMRequest]) (*connect.Response[v1.ExpungeVMResponse], error) {
+	return c.expungeVM.CallUnary(ctx, req)
 }
 
-// StartVM calls cloudstack.management.vm.v1.VmService.StartVM.
-func (c *vmServiceClient) StartVM(ctx context.Context, req *connect.Request[v1.StartVMRequest]) (*connect.Response[v1.StartVMResponse], error) {
-	return c.startVM.CallUnary(ctx, req)
+// GetVMPassword calls cloudstack.management.vm.v1.VmService.GetVMPassword.
+func (c *vmServiceClient) GetVMPassword(ctx context.Context, req *connect.Request[v1.GetVMPasswordRequest]) (*connect.Response[v1.GetVMPasswordResponse], error) {
+	return c.getVMPassword.CallUnary(ctx, req)
 }
 
-// DeployVnfAppliance calls cloudstack.management.vm.v1.VmService.DeployVnfAppliance.
-func (c *vmServiceClient) DeployVnfAppliance(ctx context.Context, req *connect.Request[v1.DeployVnfApplianceRequest]) (*connect.Response[v1.DeployVnfApplianceResponse], error) {
-	return c.deployVnfAppliance.CallUnary(ctx, req)
+// GetVMUserData calls cloudstack.management.vm.v1.VmService.GetVMUserData.
+func (c *vmServiceClient) GetVMUserData(ctx context.Context, req *connect.Request[v1.GetVMUserDataRequest]) (*connect.Response[v1.GetVMUserDataResponse], error) {
+	return c.getVMUserData.CallUnary(ctx, req)
 }
 
-// MigrateVM calls cloudstack.management.vm.v1.VmService.MigrateVM.
-func (c *vmServiceClient) MigrateVM(ctx context.Context, req *connect.Request[v1.MigrateVMRequest]) (*connect.Response[v1.MigrateVMResponse], error) {
-	return c.migrateVM.CallUnary(ctx, req)
+// ImportUnmanagedInstance calls cloudstack.management.vm.v1.VmService.ImportUnmanagedInstance.
+func (c *vmServiceClient) ImportUnmanagedInstance(ctx context.Context, req *connect.Request[v1.ImportUnmanagedInstanceRequest]) (*connect.Response[v1.ImportUnmanagedInstanceResponse], error) {
+	return c.importUnmanagedInstance.CallUnary(ctx, req)
 }
 
-// ListVnfAppliances calls cloudstack.management.vm.v1.VmService.ListVnfAppliances.
-func (c *vmServiceClient) ListVnfAppliances(ctx context.Context, req *connect.Request[v1.ListVnfAppliancesRequest]) (*connect.Response[v1.ListVnfAppliancesResponse], error) {
-	return c.listVnfAppliances.CallUnary(ctx, req)
+// ImportVm calls cloudstack.management.vm.v1.VmService.ImportVm.
+func (c *vmServiceClient) ImportVm(ctx context.Context, req *connect.Request[v1.ImportVmRequest]) (*connect.Response[v1.ImportVmResponse], error) {
+	return c.importVm.CallUnary(ctx, req)
 }
 
 // ListAffectedVmsForStorageScopeChange calls
@@ -677,69 +811,19 @@ func (c *vmServiceClient) ListAffectedVmsForStorageScopeChange(ctx context.Conte
 	return c.listAffectedVmsForStorageScopeChange.CallUnary(ctx, req)
 }
 
-// StopVMCmdByAdmin calls cloudstack.management.vm.v1.VmService.StopVMCmdByAdmin.
-func (c *vmServiceClient) StopVMCmdByAdmin(ctx context.Context, req *connect.Request[v1.StopVMCmdByAdminRequest]) (*connect.Response[v1.StopVMCmdByAdminResponse], error) {
-	return c.stopVMCmdByAdmin.CallUnary(ctx, req)
+// ListNics calls cloudstack.management.vm.v1.VmService.ListNics.
+func (c *vmServiceClient) ListNics(ctx context.Context, req *connect.Request[v1.ListNicsRequest]) (*connect.Response[v1.ListNicsResponse], error) {
+	return c.listNics.CallUnary(ctx, req)
 }
 
-// UpdateVmNicIp calls cloudstack.management.vm.v1.VmService.UpdateVmNicIp.
-func (c *vmServiceClient) UpdateVmNicIp(ctx context.Context, req *connect.Request[v1.UpdateVmNicIpRequest]) (*connect.Response[v1.UpdateVmNicIpResponse], error) {
-	return c.updateVmNicIp.CallUnary(ctx, req)
+// ListUnmanagedInstances calls cloudstack.management.vm.v1.VmService.ListUnmanagedInstances.
+func (c *vmServiceClient) ListUnmanagedInstances(ctx context.Context, req *connect.Request[v1.ListUnmanagedInstancesRequest]) (*connect.Response[v1.ListUnmanagedInstancesResponse], error) {
+	return c.listUnmanagedInstances.CallUnary(ctx, req)
 }
 
-// ImportUnmanagedInstance calls cloudstack.management.vm.v1.VmService.ImportUnmanagedInstance.
-func (c *vmServiceClient) ImportUnmanagedInstance(ctx context.Context, req *connect.Request[v1.ImportUnmanagedInstanceRequest]) (*connect.Response[v1.ImportUnmanagedInstanceResponse], error) {
-	return c.importUnmanagedInstance.CallUnary(ctx, req)
-}
-
-// DeleteVMSchedule calls cloudstack.management.vm.v1.VmService.DeleteVMSchedule.
-func (c *vmServiceClient) DeleteVMSchedule(ctx context.Context, req *connect.Request[v1.DeleteVMScheduleRequest]) (*connect.Response[v1.DeleteVMScheduleResponse], error) {
-	return c.deleteVMSchedule.CallUnary(ctx, req)
-}
-
-// ResetVMSSHKey calls cloudstack.management.vm.v1.VmService.ResetVMSSHKey.
-func (c *vmServiceClient) ResetVMSSHKey(ctx context.Context, req *connect.Request[v1.ResetVMSSHKeyRequest]) (*connect.Response[v1.ResetVMSSHKeyResponse], error) {
-	return c.resetVMSSHKey.CallUnary(ctx, req)
-}
-
-// GetVMPassword calls cloudstack.management.vm.v1.VmService.GetVMPassword.
-func (c *vmServiceClient) GetVMPassword(ctx context.Context, req *connect.Request[v1.GetVMPasswordRequest]) (*connect.Response[v1.GetVMPasswordResponse], error) {
-	return c.getVMPassword.CallUnary(ctx, req)
-}
-
-// ListVmsForImport calls cloudstack.management.vm.v1.VmService.ListVmsForImport.
-func (c *vmServiceClient) ListVmsForImport(ctx context.Context, req *connect.Request[v1.ListVmsForImportRequest]) (*connect.Response[v1.ListVmsForImportResponse], error) {
-	return c.listVmsForImport.CallUnary(ctx, req)
-}
-
-// DeployVM calls cloudstack.management.vm.v1.VmService.DeployVM.
-func (c *vmServiceClient) DeployVM(ctx context.Context, req *connect.Request[v1.DeployVMRequest]) (*connect.Response[v1.DeployVMResponse], error) {
-	return c.deployVM.CallUnary(ctx, req)
-}
-
-// ScaleVM calls cloudstack.management.vm.v1.VmService.ScaleVM.
-func (c *vmServiceClient) ScaleVM(ctx context.Context, req *connect.Request[v1.ScaleVMRequest]) (*connect.Response[v1.ScaleVMResponse], error) {
-	return c.scaleVM.CallUnary(ctx, req)
-}
-
-// UpdateVMCmdByAdmin calls cloudstack.management.vm.v1.VmService.UpdateVMCmdByAdmin.
-func (c *vmServiceClient) UpdateVMCmdByAdmin(ctx context.Context, req *connect.Request[v1.UpdateVMCmdByAdminRequest]) (*connect.Response[v1.UpdateVMCmdByAdminResponse], error) {
-	return c.updateVMCmdByAdmin.CallUnary(ctx, req)
-}
-
-// ResetVMUserData calls cloudstack.management.vm.v1.VmService.ResetVMUserData.
-func (c *vmServiceClient) ResetVMUserData(ctx context.Context, req *connect.Request[v1.ResetVMUserDataRequest]) (*connect.Response[v1.ResetVMUserDataResponse], error) {
-	return c.resetVMUserData.CallUnary(ctx, req)
-}
-
-// CreateVMSchedule calls cloudstack.management.vm.v1.VmService.CreateVMSchedule.
-func (c *vmServiceClient) CreateVMSchedule(ctx context.Context, req *connect.Request[v1.CreateVMScheduleRequest]) (*connect.Response[v1.CreateVMScheduleResponse], error) {
-	return c.createVMSchedule.CallUnary(ctx, req)
-}
-
-// RemoveNicFromVM calls cloudstack.management.vm.v1.VmService.RemoveNicFromVM.
-func (c *vmServiceClient) RemoveNicFromVM(ctx context.Context, req *connect.Request[v1.RemoveNicFromVMRequest]) (*connect.Response[v1.RemoveNicFromVMResponse], error) {
-	return c.removeNicFromVM.CallUnary(ctx, req)
+// ListVMSchedule calls cloudstack.management.vm.v1.VmService.ListVMSchedule.
+func (c *vmServiceClient) ListVMSchedule(ctx context.Context, req *connect.Request[v1.ListVMScheduleRequest]) (*connect.Response[v1.ListVMScheduleResponse], error) {
+	return c.listVMSchedule.CallUnary(ctx, req)
 }
 
 // ListVMs calls cloudstack.management.vm.v1.VmService.ListVMs.
@@ -747,29 +831,30 @@ func (c *vmServiceClient) ListVMs(ctx context.Context, req *connect.Request[v1.L
 	return c.listVMs.CallUnary(ctx, req)
 }
 
-// RebootVM calls cloudstack.management.vm.v1.VmService.RebootVM.
-func (c *vmServiceClient) RebootVM(ctx context.Context, req *connect.Request[v1.RebootVMRequest]) (*connect.Response[v1.RebootVMResponse], error) {
-	return c.rebootVM.CallUnary(ctx, req)
+// ListVMsCmdByAdmin calls cloudstack.management.vm.v1.VmService.ListVMsCmdByAdmin.
+func (c *vmServiceClient) ListVMsCmdByAdmin(ctx context.Context, req *connect.Request[v1.ListVMsCmdByAdminRequest]) (*connect.Response[v1.ListVMsCmdByAdminResponse], error) {
+	return c.listVMsCmdByAdmin.CallUnary(ctx, req)
 }
 
-// ImportVm calls cloudstack.management.vm.v1.VmService.ImportVm.
-func (c *vmServiceClient) ImportVm(ctx context.Context, req *connect.Request[v1.ImportVmRequest]) (*connect.Response[v1.ImportVmResponse], error) {
-	return c.importVm.CallUnary(ctx, req)
+// ListVmsForImport calls cloudstack.management.vm.v1.VmService.ListVmsForImport.
+func (c *vmServiceClient) ListVmsForImport(ctx context.Context, req *connect.Request[v1.ListVmsForImportRequest]) (*connect.Response[v1.ListVmsForImportResponse], error) {
+	return c.listVmsForImport.CallUnary(ctx, req)
 }
 
-// AddIpToVmNic calls cloudstack.management.vm.v1.VmService.AddIpToVmNic.
-func (c *vmServiceClient) AddIpToVmNic(ctx context.Context, req *connect.Request[v1.AddIpToVmNicRequest]) (*connect.Response[v1.AddIpToVmNicResponse], error) {
-	return c.addIpToVmNic.CallUnary(ctx, req)
+// ListVnfAppliances calls cloudstack.management.vm.v1.VmService.ListVnfAppliances.
+func (c *vmServiceClient) ListVnfAppliances(ctx context.Context, req *connect.Request[v1.ListVnfAppliancesRequest]) (*connect.Response[v1.ListVnfAppliancesResponse], error) {
+	return c.listVnfAppliances.CallUnary(ctx, req)
 }
 
-// GetVMUserData calls cloudstack.management.vm.v1.VmService.GetVMUserData.
-func (c *vmServiceClient) GetVMUserData(ctx context.Context, req *connect.Request[v1.GetVMUserDataRequest]) (*connect.Response[v1.GetVMUserDataResponse], error) {
-	return c.getVMUserData.CallUnary(ctx, req)
+// ListVnfAppliancesCmdByAdmin calls
+// cloudstack.management.vm.v1.VmService.ListVnfAppliancesCmdByAdmin.
+func (c *vmServiceClient) ListVnfAppliancesCmdByAdmin(ctx context.Context, req *connect.Request[v1.ListVnfAppliancesCmdByAdminRequest]) (*connect.Response[v1.ListVnfAppliancesCmdByAdminResponse], error) {
+	return c.listVnfAppliancesCmdByAdmin.CallUnary(ctx, req)
 }
 
-// UpdateVMSchedule calls cloudstack.management.vm.v1.VmService.UpdateVMSchedule.
-func (c *vmServiceClient) UpdateVMSchedule(ctx context.Context, req *connect.Request[v1.UpdateVMScheduleRequest]) (*connect.Response[v1.UpdateVMScheduleResponse], error) {
-	return c.updateVMSchedule.CallUnary(ctx, req)
+// MigrateVM calls cloudstack.management.vm.v1.VmService.MigrateVM.
+func (c *vmServiceClient) MigrateVM(ctx context.Context, req *connect.Request[v1.MigrateVMRequest]) (*connect.Response[v1.MigrateVMResponse], error) {
+	return c.migrateVM.CallUnary(ctx, req)
 }
 
 // MigrateVirtualMachineWithVolume calls
@@ -778,24 +863,14 @@ func (c *vmServiceClient) MigrateVirtualMachineWithVolume(ctx context.Context, r
 	return c.migrateVirtualMachineWithVolume.CallUnary(ctx, req)
 }
 
-// AddNicToVM calls cloudstack.management.vm.v1.VmService.AddNicToVM.
-func (c *vmServiceClient) AddNicToVM(ctx context.Context, req *connect.Request[v1.AddNicToVMRequest]) (*connect.Response[v1.AddNicToVMResponse], error) {
-	return c.addNicToVM.CallUnary(ctx, req)
+// RebootVM calls cloudstack.management.vm.v1.VmService.RebootVM.
+func (c *vmServiceClient) RebootVM(ctx context.Context, req *connect.Request[v1.RebootVMRequest]) (*connect.Response[v1.RebootVMResponse], error) {
+	return c.rebootVM.CallUnary(ctx, req)
 }
 
-// RemoveIpFromVmNic calls cloudstack.management.vm.v1.VmService.RemoveIpFromVmNic.
-func (c *vmServiceClient) RemoveIpFromVmNic(ctx context.Context, req *connect.Request[v1.RemoveIpFromVmNicRequest]) (*connect.Response[v1.RemoveIpFromVmNicResponse], error) {
-	return c.removeIpFromVmNic.CallUnary(ctx, req)
-}
-
-// StopVM calls cloudstack.management.vm.v1.VmService.StopVM.
-func (c *vmServiceClient) StopVM(ctx context.Context, req *connect.Request[v1.StopVMRequest]) (*connect.Response[v1.StopVMResponse], error) {
-	return c.stopVM.CallUnary(ctx, req)
-}
-
-// UpdateVM calls cloudstack.management.vm.v1.VmService.UpdateVM.
-func (c *vmServiceClient) UpdateVM(ctx context.Context, req *connect.Request[v1.UpdateVMRequest]) (*connect.Response[v1.UpdateVMResponse], error) {
-	return c.updateVM.CallUnary(ctx, req)
+// RebootVMCmdByAdmin calls cloudstack.management.vm.v1.VmService.RebootVMCmdByAdmin.
+func (c *vmServiceClient) RebootVMCmdByAdmin(ctx context.Context, req *connect.Request[v1.RebootVMCmdByAdminRequest]) (*connect.Response[v1.RebootVMCmdByAdminResponse], error) {
+	return c.rebootVMCmdByAdmin.CallUnary(ctx, req)
 }
 
 // RecoverVM calls cloudstack.management.vm.v1.VmService.RecoverVM.
@@ -803,98 +878,253 @@ func (c *vmServiceClient) RecoverVM(ctx context.Context, req *connect.Request[v1
 	return c.recoverVM.CallUnary(ctx, req)
 }
 
+// RemoveIpFromVmNic calls cloudstack.management.vm.v1.VmService.RemoveIpFromVmNic.
+func (c *vmServiceClient) RemoveIpFromVmNic(ctx context.Context, req *connect.Request[v1.RemoveIpFromVmNicRequest]) (*connect.Response[v1.RemoveIpFromVmNicResponse], error) {
+	return c.removeIpFromVmNic.CallUnary(ctx, req)
+}
+
+// RemoveNicFromVM calls cloudstack.management.vm.v1.VmService.RemoveNicFromVM.
+func (c *vmServiceClient) RemoveNicFromVM(ctx context.Context, req *connect.Request[v1.RemoveNicFromVMRequest]) (*connect.Response[v1.RemoveNicFromVMResponse], error) {
+	return c.removeNicFromVM.CallUnary(ctx, req)
+}
+
+// RemoveNicFromVMCmdByAdmin calls cloudstack.management.vm.v1.VmService.RemoveNicFromVMCmdByAdmin.
+func (c *vmServiceClient) RemoveNicFromVMCmdByAdmin(ctx context.Context, req *connect.Request[v1.RemoveNicFromVMCmdByAdminRequest]) (*connect.Response[v1.RemoveNicFromVMCmdByAdminResponse], error) {
+	return c.removeNicFromVMCmdByAdmin.CallUnary(ctx, req)
+}
+
+// ResetVMPassword calls cloudstack.management.vm.v1.VmService.ResetVMPassword.
+func (c *vmServiceClient) ResetVMPassword(ctx context.Context, req *connect.Request[v1.ResetVMPasswordRequest]) (*connect.Response[v1.ResetVMPasswordResponse], error) {
+	return c.resetVMPassword.CallUnary(ctx, req)
+}
+
+// ResetVMPasswordCmdByAdmin calls cloudstack.management.vm.v1.VmService.ResetVMPasswordCmdByAdmin.
+func (c *vmServiceClient) ResetVMPasswordCmdByAdmin(ctx context.Context, req *connect.Request[v1.ResetVMPasswordCmdByAdminRequest]) (*connect.Response[v1.ResetVMPasswordCmdByAdminResponse], error) {
+	return c.resetVMPasswordCmdByAdmin.CallUnary(ctx, req)
+}
+
+// ResetVMSSHKey calls cloudstack.management.vm.v1.VmService.ResetVMSSHKey.
+func (c *vmServiceClient) ResetVMSSHKey(ctx context.Context, req *connect.Request[v1.ResetVMSSHKeyRequest]) (*connect.Response[v1.ResetVMSSHKeyResponse], error) {
+	return c.resetVMSSHKey.CallUnary(ctx, req)
+}
+
+// ResetVMSSHKeyCmdByAdmin calls cloudstack.management.vm.v1.VmService.ResetVMSSHKeyCmdByAdmin.
+func (c *vmServiceClient) ResetVMSSHKeyCmdByAdmin(ctx context.Context, req *connect.Request[v1.ResetVMSSHKeyCmdByAdminRequest]) (*connect.Response[v1.ResetVMSSHKeyCmdByAdminResponse], error) {
+	return c.resetVMSSHKeyCmdByAdmin.CallUnary(ctx, req)
+}
+
+// ResetVMUserData calls cloudstack.management.vm.v1.VmService.ResetVMUserData.
+func (c *vmServiceClient) ResetVMUserData(ctx context.Context, req *connect.Request[v1.ResetVMUserDataRequest]) (*connect.Response[v1.ResetVMUserDataResponse], error) {
+	return c.resetVMUserData.CallUnary(ctx, req)
+}
+
+// ResetVMUserDataCmdAdmin calls cloudstack.management.vm.v1.VmService.ResetVMUserDataCmdAdmin.
+func (c *vmServiceClient) ResetVMUserDataCmdAdmin(ctx context.Context, req *connect.Request[v1.ResetVMUserDataCmdAdminRequest]) (*connect.Response[v1.ResetVMUserDataCmdAdminResponse], error) {
+	return c.resetVMUserDataCmdAdmin.CallUnary(ctx, req)
+}
+
+// RestoreVM calls cloudstack.management.vm.v1.VmService.RestoreVM.
+func (c *vmServiceClient) RestoreVM(ctx context.Context, req *connect.Request[v1.RestoreVMRequest]) (*connect.Response[v1.RestoreVMResponse], error) {
+	return c.restoreVM.CallUnary(ctx, req)
+}
+
+// RestoreVMCmdByAdmin calls cloudstack.management.vm.v1.VmService.RestoreVMCmdByAdmin.
+func (c *vmServiceClient) RestoreVMCmdByAdmin(ctx context.Context, req *connect.Request[v1.RestoreVMCmdByAdminRequest]) (*connect.Response[v1.RestoreVMCmdByAdminResponse], error) {
+	return c.restoreVMCmdByAdmin.CallUnary(ctx, req)
+}
+
+// ScaleVM calls cloudstack.management.vm.v1.VmService.ScaleVM.
+func (c *vmServiceClient) ScaleVM(ctx context.Context, req *connect.Request[v1.ScaleVMRequest]) (*connect.Response[v1.ScaleVMResponse], error) {
+	return c.scaleVM.CallUnary(ctx, req)
+}
+
+// ScaleVMCmdByAdmin calls cloudstack.management.vm.v1.VmService.ScaleVMCmdByAdmin.
+func (c *vmServiceClient) ScaleVMCmdByAdmin(ctx context.Context, req *connect.Request[v1.ScaleVMCmdByAdminRequest]) (*connect.Response[v1.ScaleVMCmdByAdminResponse], error) {
+	return c.scaleVMCmdByAdmin.CallUnary(ctx, req)
+}
+
+// StartVM calls cloudstack.management.vm.v1.VmService.StartVM.
+func (c *vmServiceClient) StartVM(ctx context.Context, req *connect.Request[v1.StartVMRequest]) (*connect.Response[v1.StartVMResponse], error) {
+	return c.startVM.CallUnary(ctx, req)
+}
+
+// StartVMCmdByAdmin calls cloudstack.management.vm.v1.VmService.StartVMCmdByAdmin.
+func (c *vmServiceClient) StartVMCmdByAdmin(ctx context.Context, req *connect.Request[v1.StartVMCmdByAdminRequest]) (*connect.Response[v1.StartVMCmdByAdminResponse], error) {
+	return c.startVMCmdByAdmin.CallUnary(ctx, req)
+}
+
+// StopVM calls cloudstack.management.vm.v1.VmService.StopVM.
+func (c *vmServiceClient) StopVM(ctx context.Context, req *connect.Request[v1.StopVMRequest]) (*connect.Response[v1.StopVMResponse], error) {
+	return c.stopVM.CallUnary(ctx, req)
+}
+
+// StopVMCmdByAdmin calls cloudstack.management.vm.v1.VmService.StopVMCmdByAdmin.
+func (c *vmServiceClient) StopVMCmdByAdmin(ctx context.Context, req *connect.Request[v1.StopVMCmdByAdminRequest]) (*connect.Response[v1.StopVMCmdByAdminResponse], error) {
+	return c.stopVMCmdByAdmin.CallUnary(ctx, req)
+}
+
+// UnmanageVMInstance calls cloudstack.management.vm.v1.VmService.UnmanageVMInstance.
+func (c *vmServiceClient) UnmanageVMInstance(ctx context.Context, req *connect.Request[v1.UnmanageVMInstanceRequest]) (*connect.Response[v1.UnmanageVMInstanceResponse], error) {
+	return c.unmanageVMInstance.CallUnary(ctx, req)
+}
+
+// UpdateDefaultNicForVM calls cloudstack.management.vm.v1.VmService.UpdateDefaultNicForVM.
+func (c *vmServiceClient) UpdateDefaultNicForVM(ctx context.Context, req *connect.Request[v1.UpdateDefaultNicForVMRequest]) (*connect.Response[v1.UpdateDefaultNicForVMResponse], error) {
+	return c.updateDefaultNicForVM.CallUnary(ctx, req)
+}
+
+// UpdateDefaultNicForVMCmdByAdmin calls
+// cloudstack.management.vm.v1.VmService.UpdateDefaultNicForVMCmdByAdmin.
+func (c *vmServiceClient) UpdateDefaultNicForVMCmdByAdmin(ctx context.Context, req *connect.Request[v1.UpdateDefaultNicForVMCmdByAdminRequest]) (*connect.Response[v1.UpdateDefaultNicForVMCmdByAdminResponse], error) {
+	return c.updateDefaultNicForVMCmdByAdmin.CallUnary(ctx, req)
+}
+
+// UpdateVM calls cloudstack.management.vm.v1.VmService.UpdateVM.
+func (c *vmServiceClient) UpdateVM(ctx context.Context, req *connect.Request[v1.UpdateVMRequest]) (*connect.Response[v1.UpdateVMResponse], error) {
+	return c.updateVM.CallUnary(ctx, req)
+}
+
+// UpdateVMCmdByAdmin calls cloudstack.management.vm.v1.VmService.UpdateVMCmdByAdmin.
+func (c *vmServiceClient) UpdateVMCmdByAdmin(ctx context.Context, req *connect.Request[v1.UpdateVMCmdByAdminRequest]) (*connect.Response[v1.UpdateVMCmdByAdminResponse], error) {
+	return c.updateVMCmdByAdmin.CallUnary(ctx, req)
+}
+
+// UpdateVMSchedule calls cloudstack.management.vm.v1.VmService.UpdateVMSchedule.
+func (c *vmServiceClient) UpdateVMSchedule(ctx context.Context, req *connect.Request[v1.UpdateVMScheduleRequest]) (*connect.Response[v1.UpdateVMScheduleResponse], error) {
+	return c.updateVMSchedule.CallUnary(ctx, req)
+}
+
+// UpdateVmNicIp calls cloudstack.management.vm.v1.VmService.UpdateVmNicIp.
+func (c *vmServiceClient) UpdateVmNicIp(ctx context.Context, req *connect.Request[v1.UpdateVmNicIpRequest]) (*connect.Response[v1.UpdateVmNicIpResponse], error) {
+	return c.updateVmNicIp.CallUnary(ctx, req)
+}
+
+// UpgradeVM calls cloudstack.management.vm.v1.VmService.UpgradeVM.
+func (c *vmServiceClient) UpgradeVM(ctx context.Context, req *connect.Request[v1.UpgradeVMRequest]) (*connect.Response[v1.UpgradeVMResponse], error) {
+	return c.upgradeVM.CallUnary(ctx, req)
+}
+
+// UpgradeVMCmdByAdmin calls cloudstack.management.vm.v1.VmService.UpgradeVMCmdByAdmin.
+func (c *vmServiceClient) UpgradeVMCmdByAdmin(ctx context.Context, req *connect.Request[v1.UpgradeVMCmdByAdminRequest]) (*connect.Response[v1.UpgradeVMCmdByAdminResponse], error) {
+	return c.upgradeVMCmdByAdmin.CallUnary(ctx, req)
+}
+
 // VmServiceHandler is an implementation of the cloudstack.management.vm.v1.VmService service.
 type VmServiceHandler interface {
-	// AssignVM Change ownership of a VM from one account to another. This API is available for Basic zones with security groups and Advanced zones with guest networks. A root administrator can reassign a VM from any account to any other account in any domain. A domain administrator can reassign a VM to any account in the same domain.
-	AssignVM(context.Context, *connect.Request[v1.AssignVMRequest]) (*connect.Response[v1.AssignVMResponse], error)
-	// DeployVMCmdByAdmin Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
-	DeployVMCmdByAdmin(context.Context, *connect.Request[v1.DeployVMCmdByAdminRequest]) (*connect.Response[v1.DeployVMCmdByAdminResponse], error)
-	// UpdateDefaultNicForVM Changes the default NIC on a VM
-	UpdateDefaultNicForVM(context.Context, *connect.Request[v1.UpdateDefaultNicForVMRequest]) (*connect.Response[v1.UpdateDefaultNicForVMResponse], error)
-	// ExpungeVM Expunge a virtual machine. Once expunged, it cannot be recoverd.
-	ExpungeVM(context.Context, *connect.Request[v1.ExpungeVMRequest]) (*connect.Response[v1.ExpungeVMResponse], error)
-	// UpgradeVM (This API is deprecated, use scaleVirtualMachine API)Changes the service offering for a virtual machine. The virtual machine must be in a "Stopped" state for this command to take effect.
-	UpgradeVM(context.Context, *connect.Request[v1.UpgradeVMRequest]) (*connect.Response[v1.UpgradeVMResponse], error)
-	// DestroyVM Destroys a virtual machine.
-	DestroyVM(context.Context, *connect.Request[v1.DestroyVMRequest]) (*connect.Response[v1.DestroyVMResponse], error)
-	// RemoveNicFromVMCmdByAdmin Removes VM from specified network by deleting a NIC
-	RemoveNicFromVMCmdByAdmin(context.Context, *connect.Request[v1.RemoveNicFromVMCmdByAdminRequest]) (*connect.Response[v1.RemoveNicFromVMCmdByAdminResponse], error)
-	// AddNicToVMCmdByAdmin Adds VM to specified network by creating a NIC
-	AddNicToVMCmdByAdmin(context.Context, *connect.Request[v1.AddNicToVMCmdByAdminRequest]) (*connect.Response[v1.AddNicToVMCmdByAdminResponse], error)
-	// ListUnmanagedInstances Lists unmanaged virtual machines for a given cluster.
-	ListUnmanagedInstances(context.Context, *connect.Request[v1.ListUnmanagedInstancesRequest]) (*connect.Response[v1.ListUnmanagedInstancesResponse], error)
-	// UnmanageVMInstance Unmanage a guest virtual machine.
-	UnmanageVMInstance(context.Context, *connect.Request[v1.UnmanageVMInstanceRequest]) (*connect.Response[v1.UnmanageVMInstanceResponse], error)
-	// ResetVMPassword Resets the password for virtual machine. The virtual machine must be in a "Stopped" state and the template must already support this feature for this command to take effect. [async]
-	ResetVMPassword(context.Context, *connect.Request[v1.ResetVMPasswordRequest]) (*connect.Response[v1.ResetVMPasswordResponse], error)
-	// DeployVnfApplianceCmdByAdmin Creates and automatically starts a VNF appliance based on a service offering, disk offering, and template.
-	DeployVnfApplianceCmdByAdmin(context.Context, *connect.Request[v1.DeployVnfApplianceCmdByAdminRequest]) (*connect.Response[v1.DeployVnfApplianceCmdByAdminResponse], error)
-	// ListNics list the vm nics  IP to NIC
-	ListNics(context.Context, *connect.Request[v1.ListNicsRequest]) (*connect.Response[v1.ListNicsResponse], error)
-	// ListVMSchedule List VM Schedules.
-	ListVMSchedule(context.Context, *connect.Request[v1.ListVMScheduleRequest]) (*connect.Response[v1.ListVMScheduleResponse], error)
-	// RestoreVM Restore a VM to original template/ISO or new template/ISO
-	RestoreVM(context.Context, *connect.Request[v1.RestoreVMRequest]) (*connect.Response[v1.RestoreVMResponse], error)
-	// StartVM Starts a virtual machine.
-	StartVM(context.Context, *connect.Request[v1.StartVMRequest]) (*connect.Response[v1.StartVMResponse], error)
-	// DeployVnfAppliance Creates and automatically starts a VNF appliance based on a service offering, disk offering, and template.
-	DeployVnfAppliance(context.Context, *connect.Request[v1.DeployVnfApplianceRequest]) (*connect.Response[v1.DeployVnfApplianceResponse], error)
-	// MigrateVM Attempts Migration of a VM to a different host or Root volume of the vm to a different storage pool
-	MigrateVM(context.Context, *connect.Request[v1.MigrateVMRequest]) (*connect.Response[v1.MigrateVMResponse], error)
-	// ListVnfAppliances List VNF appliance owned by the account.
-	ListVnfAppliances(context.Context, *connect.Request[v1.ListVnfAppliancesRequest]) (*connect.Response[v1.ListVnfAppliancesResponse], error)
-	// ListAffectedVmsForStorageScopeChange List user and system VMs that need to be stopped and destroyed respectively for changing the scope of the storage pool from Zone to Cluster.
-	ListAffectedVmsForStorageScopeChange(context.Context, *connect.Request[v1.ListAffectedVmsForStorageScopeChangeRequest]) (*connect.Response[v1.ListAffectedVmsForStorageScopeChangeResponse], error)
-	// StopVMCmdByAdmin Stops a virtual machine.
-	StopVMCmdByAdmin(context.Context, *connect.Request[v1.StopVMCmdByAdminRequest]) (*connect.Response[v1.StopVMCmdByAdminResponse], error)
-	// UpdateVmNicIp Update the default Ip of a VM Nic
-	UpdateVmNicIp(context.Context, *connect.Request[v1.UpdateVmNicIpRequest]) (*connect.Response[v1.UpdateVmNicIpResponse], error)
-	// ImportUnmanagedInstance Import unmanaged virtual machine from a given cluster.
-	ImportUnmanagedInstance(context.Context, *connect.Request[v1.ImportUnmanagedInstanceRequest]) (*connect.Response[v1.ImportUnmanagedInstanceResponse], error)
-	// DeleteVMSchedule Delete VM Schedule.
-	DeleteVMSchedule(context.Context, *connect.Request[v1.DeleteVMScheduleRequest]) (*connect.Response[v1.DeleteVMScheduleResponse], error)
-	// ResetVMSSHKey Resets the SSH Key for virtual machine. The virtual machine must be in a "Stopped" state. [async]
-	ResetVMSSHKey(context.Context, *connect.Request[v1.ResetVMSSHKeyRequest]) (*connect.Response[v1.ResetVMSSHKeyResponse], error)
-	// GetVMPassword Returns an encrypted password for the VM
-	GetVMPassword(context.Context, *connect.Request[v1.GetVMPasswordRequest]) (*connect.Response[v1.GetVMPasswordResponse], error)
-	// ListVmsForImport Lists virtual machines on a unmanaged host
-	ListVmsForImport(context.Context, *connect.Request[v1.ListVmsForImportRequest]) (*connect.Response[v1.ListVmsForImportResponse], error)
-	// DeployVM Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
-	DeployVM(context.Context, *connect.Request[v1.DeployVMRequest]) (*connect.Response[v1.DeployVMResponse], error)
-	// ScaleVM Scales the virtual machine to a new service offering. This command also considers the volume size in the service offering or disk offering linked to the new service offering and apply all characteristics to the root volume.
-	ScaleVM(context.Context, *connect.Request[v1.ScaleVMRequest]) (*connect.Response[v1.ScaleVMResponse], error)
-	// UpdateVMCmdByAdmin Updates properties of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect. UpdateVirtualMachine does not first check whether the VM is stopped. Therefore, stop the VM manually before issuing this call.
-	UpdateVMCmdByAdmin(context.Context, *connect.Request[v1.UpdateVMCmdByAdminRequest]) (*connect.Response[v1.UpdateVMCmdByAdminResponse], error)
-	// ResetVMUserData Resets the UserData for virtual machine. The virtual machine must be in a "Stopped" state.
-	ResetVMUserData(context.Context, *connect.Request[v1.ResetVMUserDataRequest]) (*connect.Response[v1.ResetVMUserDataResponse], error)
-	// CreateVMSchedule Create VM Schedule
-	CreateVMSchedule(context.Context, *connect.Request[v1.CreateVMScheduleRequest]) (*connect.Response[v1.CreateVMScheduleResponse], error)
-	// RemoveNicFromVM Removes VM from specified network by deleting a NIC
-	RemoveNicFromVM(context.Context, *connect.Request[v1.RemoveNicFromVMRequest]) (*connect.Response[v1.RemoveNicFromVMResponse], error)
-	// ListVMs List the virtual machines owned by the account.
-	ListVMs(context.Context, *connect.Request[v1.ListVMsRequest]) (*connect.Response[v1.ListVMsResponse], error)
-	// RebootVM Reboots a virtual machine.
-	RebootVM(context.Context, *connect.Request[v1.RebootVMRequest]) (*connect.Response[v1.RebootVMResponse], error)
-	// ImportVm Import virtual machine from a unmanaged host into CloudStack
-	ImportVm(context.Context, *connect.Request[v1.ImportVmRequest]) (*connect.Response[v1.ImportVmResponse], error)
 	// AddIpToVmNic Assigns secondary IP to NIC
 	AddIpToVmNic(context.Context, *connect.Request[v1.AddIpToVmNicRequest]) (*connect.Response[v1.AddIpToVmNicResponse], error)
-	// GetVMUserData Returns user data associated with the VM
-	GetVMUserData(context.Context, *connect.Request[v1.GetVMUserDataRequest]) (*connect.Response[v1.GetVMUserDataResponse], error)
-	// UpdateVMSchedule Update VM Schedule.
-	UpdateVMSchedule(context.Context, *connect.Request[v1.UpdateVMScheduleRequest]) (*connect.Response[v1.UpdateVMScheduleResponse], error)
-	// MigrateVirtualMachineWithVolume Attempts Migration of a VM with its volumes to a different host
-	MigrateVirtualMachineWithVolume(context.Context, *connect.Request[v1.MigrateVirtualMachineWithVolumeRequest]) (*connect.Response[v1.MigrateVirtualMachineWithVolumeResponse], error)
 	// AddNicToVM Adds VM to specified network by creating a NIC
 	AddNicToVM(context.Context, *connect.Request[v1.AddNicToVMRequest]) (*connect.Response[v1.AddNicToVMResponse], error)
-	// RemoveIpFromVmNic Removes secondary IP from the NIC.
-	RemoveIpFromVmNic(context.Context, *connect.Request[v1.RemoveIpFromVmNicRequest]) (*connect.Response[v1.RemoveIpFromVmNicResponse], error)
-	// StopVM Stops a virtual machine.
-	StopVM(context.Context, *connect.Request[v1.StopVMRequest]) (*connect.Response[v1.StopVMResponse], error)
-	// UpdateVM Updates properties of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect. UpdateVirtualMachine does not first check whether the VM is stopped. Therefore, stop the VM manually before issuing this call.
-	UpdateVM(context.Context, *connect.Request[v1.UpdateVMRequest]) (*connect.Response[v1.UpdateVMResponse], error)
+	// AddNicToVMCmdByAdmin Adds VM to specified network by creating a NIC
+	AddNicToVMCmdByAdmin(context.Context, *connect.Request[v1.AddNicToVMCmdByAdminRequest]) (*connect.Response[v1.AddNicToVMCmdByAdminResponse], error)
+	// AssignVM Change ownership of a VM from one account to another. This API is available for Basic zones with security groups and Advanced zones with guest networks. A root administrator can reassign a VM from any account to any other account in any domain. A domain administrator can reassign a VM to any account in the same domain.
+	AssignVM(context.Context, *connect.Request[v1.AssignVMRequest]) (*connect.Response[v1.AssignVMResponse], error)
+	// CreateVMSchedule Create VM Schedule
+	CreateVMSchedule(context.Context, *connect.Request[v1.CreateVMScheduleRequest]) (*connect.Response[v1.CreateVMScheduleResponse], error)
+	// DeleteVMSchedule Delete VM Schedule.
+	DeleteVMSchedule(context.Context, *connect.Request[v1.DeleteVMScheduleRequest]) (*connect.Response[v1.DeleteVMScheduleResponse], error)
+	// DeployVM Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
+	DeployVM(context.Context, *connect.Request[v1.DeployVMRequest]) (*connect.Response[v1.DeployVMResponse], error)
+	// DeployVMCmdByAdmin Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
+	DeployVMCmdByAdmin(context.Context, *connect.Request[v1.DeployVMCmdByAdminRequest]) (*connect.Response[v1.DeployVMCmdByAdminResponse], error)
+	// DeployVnfAppliance Creates and automatically starts a VNF appliance based on a service offering, disk offering, and template.
+	DeployVnfAppliance(context.Context, *connect.Request[v1.DeployVnfApplianceRequest]) (*connect.Response[v1.DeployVnfApplianceResponse], error)
+	// DeployVnfApplianceCmdByAdmin Creates and automatically starts a VNF appliance based on a service offering, disk offering, and template.
+	DeployVnfApplianceCmdByAdmin(context.Context, *connect.Request[v1.DeployVnfApplianceCmdByAdminRequest]) (*connect.Response[v1.DeployVnfApplianceCmdByAdminResponse], error)
+	// DestroyVM Destroys a virtual machine.
+	DestroyVM(context.Context, *connect.Request[v1.DestroyVMRequest]) (*connect.Response[v1.DestroyVMResponse], error)
+	// DestroyVMCmdByAdmin Destroys a virtual machine. Once destroyed, only the administrator can recover it.
+	DestroyVMCmdByAdmin(context.Context, *connect.Request[v1.DestroyVMCmdByAdminRequest]) (*connect.Response[v1.DestroyVMCmdByAdminResponse], error)
+	// ExpungeVM Expunge a virtual machine. Once expunged, it cannot be recoverd.
+	ExpungeVM(context.Context, *connect.Request[v1.ExpungeVMRequest]) (*connect.Response[v1.ExpungeVMResponse], error)
+	// GetVMPassword Returns an encrypted password for the VM
+	GetVMPassword(context.Context, *connect.Request[v1.GetVMPasswordRequest]) (*connect.Response[v1.GetVMPasswordResponse], error)
+	// GetVMUserData Returns user data associated with the VM
+	GetVMUserData(context.Context, *connect.Request[v1.GetVMUserDataRequest]) (*connect.Response[v1.GetVMUserDataResponse], error)
+	// ImportUnmanagedInstance Import unmanaged virtual machine from a given cluster.
+	ImportUnmanagedInstance(context.Context, *connect.Request[v1.ImportUnmanagedInstanceRequest]) (*connect.Response[v1.ImportUnmanagedInstanceResponse], error)
+	// ImportVm Import virtual machine from a unmanaged host into CloudStack
+	ImportVm(context.Context, *connect.Request[v1.ImportVmRequest]) (*connect.Response[v1.ImportVmResponse], error)
+	// ListAffectedVmsForStorageScopeChange List user and system VMs that need to be stopped and destroyed respectively for changing the scope of the storage pool from Zone to Cluster.
+	ListAffectedVmsForStorageScopeChange(context.Context, *connect.Request[v1.ListAffectedVmsForStorageScopeChangeRequest]) (*connect.Response[v1.ListAffectedVmsForStorageScopeChangeResponse], error)
+	// ListNics list the vm nics  IP to NIC
+	ListNics(context.Context, *connect.Request[v1.ListNicsRequest]) (*connect.Response[v1.ListNicsResponse], error)
+	// ListUnmanagedInstances Lists unmanaged virtual machines for a given cluster.
+	ListUnmanagedInstances(context.Context, *connect.Request[v1.ListUnmanagedInstancesRequest]) (*connect.Response[v1.ListUnmanagedInstancesResponse], error)
+	// ListVMSchedule List VM Schedules.
+	ListVMSchedule(context.Context, *connect.Request[v1.ListVMScheduleRequest]) (*connect.Response[v1.ListVMScheduleResponse], error)
+	// ListVMs List the virtual machines owned by the account.
+	ListVMs(context.Context, *connect.Request[v1.ListVMsRequest]) (*connect.Response[v1.ListVMsResponse], error)
+	// ListVMsCmdByAdmin List the virtual machines owned by the account.
+	ListVMsCmdByAdmin(context.Context, *connect.Request[v1.ListVMsCmdByAdminRequest]) (*connect.Response[v1.ListVMsCmdByAdminResponse], error)
+	// ListVmsForImport Lists virtual machines on a unmanaged host
+	ListVmsForImport(context.Context, *connect.Request[v1.ListVmsForImportRequest]) (*connect.Response[v1.ListVmsForImportResponse], error)
+	// ListVnfAppliances List VNF appliance owned by the account.
+	ListVnfAppliances(context.Context, *connect.Request[v1.ListVnfAppliancesRequest]) (*connect.Response[v1.ListVnfAppliancesResponse], error)
+	// ListVnfAppliancesCmdByAdmin List VNF appliance owned by the account.
+	ListVnfAppliancesCmdByAdmin(context.Context, *connect.Request[v1.ListVnfAppliancesCmdByAdminRequest]) (*connect.Response[v1.ListVnfAppliancesCmdByAdminResponse], error)
+	// MigrateVM Attempts Migration of a VM to a different host or Root volume of the vm to a different storage pool
+	MigrateVM(context.Context, *connect.Request[v1.MigrateVMRequest]) (*connect.Response[v1.MigrateVMResponse], error)
+	// MigrateVirtualMachineWithVolume Attempts Migration of a VM with its volumes to a different host
+	MigrateVirtualMachineWithVolume(context.Context, *connect.Request[v1.MigrateVirtualMachineWithVolumeRequest]) (*connect.Response[v1.MigrateVirtualMachineWithVolumeResponse], error)
+	// RebootVM Reboots a virtual machine.
+	RebootVM(context.Context, *connect.Request[v1.RebootVMRequest]) (*connect.Response[v1.RebootVMResponse], error)
+	// RebootVMCmdByAdmin Reboots a virtual machine.
+	RebootVMCmdByAdmin(context.Context, *connect.Request[v1.RebootVMCmdByAdminRequest]) (*connect.Response[v1.RebootVMCmdByAdminResponse], error)
 	// RecoverVM Recovers a virtual machine.
 	RecoverVM(context.Context, *connect.Request[v1.RecoverVMRequest]) (*connect.Response[v1.RecoverVMResponse], error)
+	// RemoveIpFromVmNic Removes secondary IP from the NIC.
+	RemoveIpFromVmNic(context.Context, *connect.Request[v1.RemoveIpFromVmNicRequest]) (*connect.Response[v1.RemoveIpFromVmNicResponse], error)
+	// RemoveNicFromVM Removes VM from specified network by deleting a NIC
+	RemoveNicFromVM(context.Context, *connect.Request[v1.RemoveNicFromVMRequest]) (*connect.Response[v1.RemoveNicFromVMResponse], error)
+	// RemoveNicFromVMCmdByAdmin Removes VM from specified network by deleting a NIC
+	RemoveNicFromVMCmdByAdmin(context.Context, *connect.Request[v1.RemoveNicFromVMCmdByAdminRequest]) (*connect.Response[v1.RemoveNicFromVMCmdByAdminResponse], error)
+	// ResetVMPassword Resets the password for virtual machine. The virtual machine must be in a "Stopped" state and the template must already support this feature for this command to take effect. [async]
+	ResetVMPassword(context.Context, *connect.Request[v1.ResetVMPasswordRequest]) (*connect.Response[v1.ResetVMPasswordResponse], error)
+	// ResetVMPasswordCmdByAdmin Resets the password for virtual machine. The virtual machine must be in a "Stopped" state and the template must already support this feature for this command to take effect. [async]
+	ResetVMPasswordCmdByAdmin(context.Context, *connect.Request[v1.ResetVMPasswordCmdByAdminRequest]) (*connect.Response[v1.ResetVMPasswordCmdByAdminResponse], error)
+	// ResetVMSSHKey Resets the SSH Key for virtual machine. The virtual machine must be in a "Stopped" state. [async]
+	ResetVMSSHKey(context.Context, *connect.Request[v1.ResetVMSSHKeyRequest]) (*connect.Response[v1.ResetVMSSHKeyResponse], error)
+	// ResetVMSSHKeyCmdByAdmin Resets the SSH Key for virtual machine. The virtual machine must be in a "Stopped" state. [async]
+	ResetVMSSHKeyCmdByAdmin(context.Context, *connect.Request[v1.ResetVMSSHKeyCmdByAdminRequest]) (*connect.Response[v1.ResetVMSSHKeyCmdByAdminResponse], error)
+	// ResetVMUserData Resets the UserData for virtual machine. The virtual machine must be in a "Stopped" state.
+	ResetVMUserData(context.Context, *connect.Request[v1.ResetVMUserDataRequest]) (*connect.Response[v1.ResetVMUserDataResponse], error)
+	// ResetVMUserDataCmdAdmin Resets the UserData for virtual machine. The virtual machine must be in a "Stopped" state. [async]
+	ResetVMUserDataCmdAdmin(context.Context, *connect.Request[v1.ResetVMUserDataCmdAdminRequest]) (*connect.Response[v1.ResetVMUserDataCmdAdminResponse], error)
+	// RestoreVM Restore a VM to original template/ISO or new template/ISO
+	RestoreVM(context.Context, *connect.Request[v1.RestoreVMRequest]) (*connect.Response[v1.RestoreVMResponse], error)
+	// RestoreVMCmdByAdmin Restore a VM to original template/ISO or new template/ISO
+	RestoreVMCmdByAdmin(context.Context, *connect.Request[v1.RestoreVMCmdByAdminRequest]) (*connect.Response[v1.RestoreVMCmdByAdminResponse], error)
+	// ScaleVM Scales the virtual machine to a new service offering. This command also considers the volume size in the service offering or disk offering linked to the new service offering and apply all characteristics to the root volume.
+	ScaleVM(context.Context, *connect.Request[v1.ScaleVMRequest]) (*connect.Response[v1.ScaleVMResponse], error)
+	// ScaleVMCmdByAdmin Scales the virtual machine to a new service offering. This command also considers the volume size in the service offering or disk offering linked to the new service offering and apply all characteristics to the root volume.
+	ScaleVMCmdByAdmin(context.Context, *connect.Request[v1.ScaleVMCmdByAdminRequest]) (*connect.Response[v1.ScaleVMCmdByAdminResponse], error)
+	// StartVM Starts a virtual machine.
+	StartVM(context.Context, *connect.Request[v1.StartVMRequest]) (*connect.Response[v1.StartVMResponse], error)
+	// StartVMCmdByAdmin Starts a virtual machine.
+	StartVMCmdByAdmin(context.Context, *connect.Request[v1.StartVMCmdByAdminRequest]) (*connect.Response[v1.StartVMCmdByAdminResponse], error)
+	// StopVM Stops a virtual machine.
+	StopVM(context.Context, *connect.Request[v1.StopVMRequest]) (*connect.Response[v1.StopVMResponse], error)
+	// StopVMCmdByAdmin Stops a virtual machine.
+	StopVMCmdByAdmin(context.Context, *connect.Request[v1.StopVMCmdByAdminRequest]) (*connect.Response[v1.StopVMCmdByAdminResponse], error)
+	// UnmanageVMInstance Unmanage a guest virtual machine.
+	UnmanageVMInstance(context.Context, *connect.Request[v1.UnmanageVMInstanceRequest]) (*connect.Response[v1.UnmanageVMInstanceResponse], error)
+	// UpdateDefaultNicForVM Changes the default NIC on a VM
+	UpdateDefaultNicForVM(context.Context, *connect.Request[v1.UpdateDefaultNicForVMRequest]) (*connect.Response[v1.UpdateDefaultNicForVMResponse], error)
+	// UpdateDefaultNicForVMCmdByAdmin Changes the default NIC on a VM
+	UpdateDefaultNicForVMCmdByAdmin(context.Context, *connect.Request[v1.UpdateDefaultNicForVMCmdByAdminRequest]) (*connect.Response[v1.UpdateDefaultNicForVMCmdByAdminResponse], error)
+	// UpdateVM Updates properties of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect. UpdateVirtualMachine does not first check whether the VM is stopped. Therefore, stop the VM manually before issuing this call.
+	UpdateVM(context.Context, *connect.Request[v1.UpdateVMRequest]) (*connect.Response[v1.UpdateVMResponse], error)
+	// UpdateVMCmdByAdmin Updates properties of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect. UpdateVirtualMachine does not first check whether the VM is stopped. Therefore, stop the VM manually before issuing this call.
+	UpdateVMCmdByAdmin(context.Context, *connect.Request[v1.UpdateVMCmdByAdminRequest]) (*connect.Response[v1.UpdateVMCmdByAdminResponse], error)
+	// UpdateVMSchedule Update VM Schedule.
+	UpdateVMSchedule(context.Context, *connect.Request[v1.UpdateVMScheduleRequest]) (*connect.Response[v1.UpdateVMScheduleResponse], error)
+	// UpdateVmNicIp Update the default Ip of a VM Nic
+	UpdateVmNicIp(context.Context, *connect.Request[v1.UpdateVmNicIpRequest]) (*connect.Response[v1.UpdateVmNicIpResponse], error)
+	// UpgradeVM (This API is deprecated, use scaleVirtualMachine API)Changes the service offering for a virtual machine. The virtual machine must be in a "Stopped" state for this command to take effect.
+	UpgradeVM(context.Context, *connect.Request[v1.UpgradeVMRequest]) (*connect.Response[v1.UpgradeVMResponse], error)
+	// UpgradeVMCmdByAdmin (This API is deprecated, use scaleVirtualMachine API)Changes the service offering for a virtual machine. The virtual machine must be in a "Stopped" state for this command to take effect.
+	UpgradeVMCmdByAdmin(context.Context, *connect.Request[v1.UpgradeVMCmdByAdminRequest]) (*connect.Response[v1.UpgradeVMCmdByAdminResponse], error)
 }
 
 // NewVmServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -904,244 +1134,10 @@ type VmServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewVmServiceHandler(svc VmServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	vmServiceMethods := v1.File_cloudstack_management_vm_v1_vm_gen_proto.Services().ByName("VmService").Methods()
-	vmServiceAssignVMHandler := connect.NewUnaryHandler(
-		VmServiceAssignVMProcedure,
-		svc.AssignVM,
-		connect.WithSchema(vmServiceMethods.ByName("AssignVM")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceDeployVMCmdByAdminHandler := connect.NewUnaryHandler(
-		VmServiceDeployVMCmdByAdminProcedure,
-		svc.DeployVMCmdByAdmin,
-		connect.WithSchema(vmServiceMethods.ByName("DeployVMCmdByAdmin")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceUpdateDefaultNicForVMHandler := connect.NewUnaryHandler(
-		VmServiceUpdateDefaultNicForVMProcedure,
-		svc.UpdateDefaultNicForVM,
-		connect.WithSchema(vmServiceMethods.ByName("UpdateDefaultNicForVM")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceExpungeVMHandler := connect.NewUnaryHandler(
-		VmServiceExpungeVMProcedure,
-		svc.ExpungeVM,
-		connect.WithSchema(vmServiceMethods.ByName("ExpungeVM")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceUpgradeVMHandler := connect.NewUnaryHandler(
-		VmServiceUpgradeVMProcedure,
-		svc.UpgradeVM,
-		connect.WithSchema(vmServiceMethods.ByName("UpgradeVM")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceDestroyVMHandler := connect.NewUnaryHandler(
-		VmServiceDestroyVMProcedure,
-		svc.DestroyVM,
-		connect.WithSchema(vmServiceMethods.ByName("DestroyVM")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceRemoveNicFromVMCmdByAdminHandler := connect.NewUnaryHandler(
-		VmServiceRemoveNicFromVMCmdByAdminProcedure,
-		svc.RemoveNicFromVMCmdByAdmin,
-		connect.WithSchema(vmServiceMethods.ByName("RemoveNicFromVMCmdByAdmin")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceAddNicToVMCmdByAdminHandler := connect.NewUnaryHandler(
-		VmServiceAddNicToVMCmdByAdminProcedure,
-		svc.AddNicToVMCmdByAdmin,
-		connect.WithSchema(vmServiceMethods.ByName("AddNicToVMCmdByAdmin")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceListUnmanagedInstancesHandler := connect.NewUnaryHandler(
-		VmServiceListUnmanagedInstancesProcedure,
-		svc.ListUnmanagedInstances,
-		connect.WithSchema(vmServiceMethods.ByName("ListUnmanagedInstances")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceUnmanageVMInstanceHandler := connect.NewUnaryHandler(
-		VmServiceUnmanageVMInstanceProcedure,
-		svc.UnmanageVMInstance,
-		connect.WithSchema(vmServiceMethods.ByName("UnmanageVMInstance")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceResetVMPasswordHandler := connect.NewUnaryHandler(
-		VmServiceResetVMPasswordProcedure,
-		svc.ResetVMPassword,
-		connect.WithSchema(vmServiceMethods.ByName("ResetVMPassword")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceDeployVnfApplianceCmdByAdminHandler := connect.NewUnaryHandler(
-		VmServiceDeployVnfApplianceCmdByAdminProcedure,
-		svc.DeployVnfApplianceCmdByAdmin,
-		connect.WithSchema(vmServiceMethods.ByName("DeployVnfApplianceCmdByAdmin")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceListNicsHandler := connect.NewUnaryHandler(
-		VmServiceListNicsProcedure,
-		svc.ListNics,
-		connect.WithSchema(vmServiceMethods.ByName("ListNics")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceListVMScheduleHandler := connect.NewUnaryHandler(
-		VmServiceListVMScheduleProcedure,
-		svc.ListVMSchedule,
-		connect.WithSchema(vmServiceMethods.ByName("ListVMSchedule")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceRestoreVMHandler := connect.NewUnaryHandler(
-		VmServiceRestoreVMProcedure,
-		svc.RestoreVM,
-		connect.WithSchema(vmServiceMethods.ByName("RestoreVM")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceStartVMHandler := connect.NewUnaryHandler(
-		VmServiceStartVMProcedure,
-		svc.StartVM,
-		connect.WithSchema(vmServiceMethods.ByName("StartVM")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceDeployVnfApplianceHandler := connect.NewUnaryHandler(
-		VmServiceDeployVnfApplianceProcedure,
-		svc.DeployVnfAppliance,
-		connect.WithSchema(vmServiceMethods.ByName("DeployVnfAppliance")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceMigrateVMHandler := connect.NewUnaryHandler(
-		VmServiceMigrateVMProcedure,
-		svc.MigrateVM,
-		connect.WithSchema(vmServiceMethods.ByName("MigrateVM")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceListVnfAppliancesHandler := connect.NewUnaryHandler(
-		VmServiceListVnfAppliancesProcedure,
-		svc.ListVnfAppliances,
-		connect.WithSchema(vmServiceMethods.ByName("ListVnfAppliances")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceListAffectedVmsForStorageScopeChangeHandler := connect.NewUnaryHandler(
-		VmServiceListAffectedVmsForStorageScopeChangeProcedure,
-		svc.ListAffectedVmsForStorageScopeChange,
-		connect.WithSchema(vmServiceMethods.ByName("ListAffectedVmsForStorageScopeChange")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceStopVMCmdByAdminHandler := connect.NewUnaryHandler(
-		VmServiceStopVMCmdByAdminProcedure,
-		svc.StopVMCmdByAdmin,
-		connect.WithSchema(vmServiceMethods.ByName("StopVMCmdByAdmin")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceUpdateVmNicIpHandler := connect.NewUnaryHandler(
-		VmServiceUpdateVmNicIpProcedure,
-		svc.UpdateVmNicIp,
-		connect.WithSchema(vmServiceMethods.ByName("UpdateVmNicIp")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceImportUnmanagedInstanceHandler := connect.NewUnaryHandler(
-		VmServiceImportUnmanagedInstanceProcedure,
-		svc.ImportUnmanagedInstance,
-		connect.WithSchema(vmServiceMethods.ByName("ImportUnmanagedInstance")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceDeleteVMScheduleHandler := connect.NewUnaryHandler(
-		VmServiceDeleteVMScheduleProcedure,
-		svc.DeleteVMSchedule,
-		connect.WithSchema(vmServiceMethods.ByName("DeleteVMSchedule")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceResetVMSSHKeyHandler := connect.NewUnaryHandler(
-		VmServiceResetVMSSHKeyProcedure,
-		svc.ResetVMSSHKey,
-		connect.WithSchema(vmServiceMethods.ByName("ResetVMSSHKey")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceGetVMPasswordHandler := connect.NewUnaryHandler(
-		VmServiceGetVMPasswordProcedure,
-		svc.GetVMPassword,
-		connect.WithSchema(vmServiceMethods.ByName("GetVMPassword")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceListVmsForImportHandler := connect.NewUnaryHandler(
-		VmServiceListVmsForImportProcedure,
-		svc.ListVmsForImport,
-		connect.WithSchema(vmServiceMethods.ByName("ListVmsForImport")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceDeployVMHandler := connect.NewUnaryHandler(
-		VmServiceDeployVMProcedure,
-		svc.DeployVM,
-		connect.WithSchema(vmServiceMethods.ByName("DeployVM")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceScaleVMHandler := connect.NewUnaryHandler(
-		VmServiceScaleVMProcedure,
-		svc.ScaleVM,
-		connect.WithSchema(vmServiceMethods.ByName("ScaleVM")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceUpdateVMCmdByAdminHandler := connect.NewUnaryHandler(
-		VmServiceUpdateVMCmdByAdminProcedure,
-		svc.UpdateVMCmdByAdmin,
-		connect.WithSchema(vmServiceMethods.ByName("UpdateVMCmdByAdmin")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceResetVMUserDataHandler := connect.NewUnaryHandler(
-		VmServiceResetVMUserDataProcedure,
-		svc.ResetVMUserData,
-		connect.WithSchema(vmServiceMethods.ByName("ResetVMUserData")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceCreateVMScheduleHandler := connect.NewUnaryHandler(
-		VmServiceCreateVMScheduleProcedure,
-		svc.CreateVMSchedule,
-		connect.WithSchema(vmServiceMethods.ByName("CreateVMSchedule")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceRemoveNicFromVMHandler := connect.NewUnaryHandler(
-		VmServiceRemoveNicFromVMProcedure,
-		svc.RemoveNicFromVM,
-		connect.WithSchema(vmServiceMethods.ByName("RemoveNicFromVM")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceListVMsHandler := connect.NewUnaryHandler(
-		VmServiceListVMsProcedure,
-		svc.ListVMs,
-		connect.WithSchema(vmServiceMethods.ByName("ListVMs")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceRebootVMHandler := connect.NewUnaryHandler(
-		VmServiceRebootVMProcedure,
-		svc.RebootVM,
-		connect.WithSchema(vmServiceMethods.ByName("RebootVM")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceImportVmHandler := connect.NewUnaryHandler(
-		VmServiceImportVmProcedure,
-		svc.ImportVm,
-		connect.WithSchema(vmServiceMethods.ByName("ImportVm")),
-		connect.WithHandlerOptions(opts...),
-	)
 	vmServiceAddIpToVmNicHandler := connect.NewUnaryHandler(
 		VmServiceAddIpToVmNicProcedure,
 		svc.AddIpToVmNic,
 		connect.WithSchema(vmServiceMethods.ByName("AddIpToVmNic")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceGetVMUserDataHandler := connect.NewUnaryHandler(
-		VmServiceGetVMUserDataProcedure,
-		svc.GetVMUserData,
-		connect.WithSchema(vmServiceMethods.ByName("GetVMUserData")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceUpdateVMScheduleHandler := connect.NewUnaryHandler(
-		VmServiceUpdateVMScheduleProcedure,
-		svc.UpdateVMSchedule,
-		connect.WithSchema(vmServiceMethods.ByName("UpdateVMSchedule")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmServiceMigrateVirtualMachineWithVolumeHandler := connect.NewUnaryHandler(
-		VmServiceMigrateVirtualMachineWithVolumeProcedure,
-		svc.MigrateVirtualMachineWithVolume,
-		connect.WithSchema(vmServiceMethods.ByName("MigrateVirtualMachineWithVolume")),
 		connect.WithHandlerOptions(opts...),
 	)
 	vmServiceAddNicToVMHandler := connect.NewUnaryHandler(
@@ -1150,22 +1146,172 @@ func NewVmServiceHandler(svc VmServiceHandler, opts ...connect.HandlerOption) (s
 		connect.WithSchema(vmServiceMethods.ByName("AddNicToVM")),
 		connect.WithHandlerOptions(opts...),
 	)
-	vmServiceRemoveIpFromVmNicHandler := connect.NewUnaryHandler(
-		VmServiceRemoveIpFromVmNicProcedure,
-		svc.RemoveIpFromVmNic,
-		connect.WithSchema(vmServiceMethods.ByName("RemoveIpFromVmNic")),
+	vmServiceAddNicToVMCmdByAdminHandler := connect.NewUnaryHandler(
+		VmServiceAddNicToVMCmdByAdminProcedure,
+		svc.AddNicToVMCmdByAdmin,
+		connect.WithSchema(vmServiceMethods.ByName("AddNicToVMCmdByAdmin")),
 		connect.WithHandlerOptions(opts...),
 	)
-	vmServiceStopVMHandler := connect.NewUnaryHandler(
-		VmServiceStopVMProcedure,
-		svc.StopVM,
-		connect.WithSchema(vmServiceMethods.ByName("StopVM")),
+	vmServiceAssignVMHandler := connect.NewUnaryHandler(
+		VmServiceAssignVMProcedure,
+		svc.AssignVM,
+		connect.WithSchema(vmServiceMethods.ByName("AssignVM")),
 		connect.WithHandlerOptions(opts...),
 	)
-	vmServiceUpdateVMHandler := connect.NewUnaryHandler(
-		VmServiceUpdateVMProcedure,
-		svc.UpdateVM,
-		connect.WithSchema(vmServiceMethods.ByName("UpdateVM")),
+	vmServiceCreateVMScheduleHandler := connect.NewUnaryHandler(
+		VmServiceCreateVMScheduleProcedure,
+		svc.CreateVMSchedule,
+		connect.WithSchema(vmServiceMethods.ByName("CreateVMSchedule")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceDeleteVMScheduleHandler := connect.NewUnaryHandler(
+		VmServiceDeleteVMScheduleProcedure,
+		svc.DeleteVMSchedule,
+		connect.WithSchema(vmServiceMethods.ByName("DeleteVMSchedule")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceDeployVMHandler := connect.NewUnaryHandler(
+		VmServiceDeployVMProcedure,
+		svc.DeployVM,
+		connect.WithSchema(vmServiceMethods.ByName("DeployVM")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceDeployVMCmdByAdminHandler := connect.NewUnaryHandler(
+		VmServiceDeployVMCmdByAdminProcedure,
+		svc.DeployVMCmdByAdmin,
+		connect.WithSchema(vmServiceMethods.ByName("DeployVMCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceDeployVnfApplianceHandler := connect.NewUnaryHandler(
+		VmServiceDeployVnfApplianceProcedure,
+		svc.DeployVnfAppliance,
+		connect.WithSchema(vmServiceMethods.ByName("DeployVnfAppliance")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceDeployVnfApplianceCmdByAdminHandler := connect.NewUnaryHandler(
+		VmServiceDeployVnfApplianceCmdByAdminProcedure,
+		svc.DeployVnfApplianceCmdByAdmin,
+		connect.WithSchema(vmServiceMethods.ByName("DeployVnfApplianceCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceDestroyVMHandler := connect.NewUnaryHandler(
+		VmServiceDestroyVMProcedure,
+		svc.DestroyVM,
+		connect.WithSchema(vmServiceMethods.ByName("DestroyVM")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceDestroyVMCmdByAdminHandler := connect.NewUnaryHandler(
+		VmServiceDestroyVMCmdByAdminProcedure,
+		svc.DestroyVMCmdByAdmin,
+		connect.WithSchema(vmServiceMethods.ByName("DestroyVMCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceExpungeVMHandler := connect.NewUnaryHandler(
+		VmServiceExpungeVMProcedure,
+		svc.ExpungeVM,
+		connect.WithSchema(vmServiceMethods.ByName("ExpungeVM")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceGetVMPasswordHandler := connect.NewUnaryHandler(
+		VmServiceGetVMPasswordProcedure,
+		svc.GetVMPassword,
+		connect.WithSchema(vmServiceMethods.ByName("GetVMPassword")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceGetVMUserDataHandler := connect.NewUnaryHandler(
+		VmServiceGetVMUserDataProcedure,
+		svc.GetVMUserData,
+		connect.WithSchema(vmServiceMethods.ByName("GetVMUserData")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceImportUnmanagedInstanceHandler := connect.NewUnaryHandler(
+		VmServiceImportUnmanagedInstanceProcedure,
+		svc.ImportUnmanagedInstance,
+		connect.WithSchema(vmServiceMethods.ByName("ImportUnmanagedInstance")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceImportVmHandler := connect.NewUnaryHandler(
+		VmServiceImportVmProcedure,
+		svc.ImportVm,
+		connect.WithSchema(vmServiceMethods.ByName("ImportVm")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceListAffectedVmsForStorageScopeChangeHandler := connect.NewUnaryHandler(
+		VmServiceListAffectedVmsForStorageScopeChangeProcedure,
+		svc.ListAffectedVmsForStorageScopeChange,
+		connect.WithSchema(vmServiceMethods.ByName("ListAffectedVmsForStorageScopeChange")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceListNicsHandler := connect.NewUnaryHandler(
+		VmServiceListNicsProcedure,
+		svc.ListNics,
+		connect.WithSchema(vmServiceMethods.ByName("ListNics")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceListUnmanagedInstancesHandler := connect.NewUnaryHandler(
+		VmServiceListUnmanagedInstancesProcedure,
+		svc.ListUnmanagedInstances,
+		connect.WithSchema(vmServiceMethods.ByName("ListUnmanagedInstances")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceListVMScheduleHandler := connect.NewUnaryHandler(
+		VmServiceListVMScheduleProcedure,
+		svc.ListVMSchedule,
+		connect.WithSchema(vmServiceMethods.ByName("ListVMSchedule")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceListVMsHandler := connect.NewUnaryHandler(
+		VmServiceListVMsProcedure,
+		svc.ListVMs,
+		connect.WithSchema(vmServiceMethods.ByName("ListVMs")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceListVMsCmdByAdminHandler := connect.NewUnaryHandler(
+		VmServiceListVMsCmdByAdminProcedure,
+		svc.ListVMsCmdByAdmin,
+		connect.WithSchema(vmServiceMethods.ByName("ListVMsCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceListVmsForImportHandler := connect.NewUnaryHandler(
+		VmServiceListVmsForImportProcedure,
+		svc.ListVmsForImport,
+		connect.WithSchema(vmServiceMethods.ByName("ListVmsForImport")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceListVnfAppliancesHandler := connect.NewUnaryHandler(
+		VmServiceListVnfAppliancesProcedure,
+		svc.ListVnfAppliances,
+		connect.WithSchema(vmServiceMethods.ByName("ListVnfAppliances")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceListVnfAppliancesCmdByAdminHandler := connect.NewUnaryHandler(
+		VmServiceListVnfAppliancesCmdByAdminProcedure,
+		svc.ListVnfAppliancesCmdByAdmin,
+		connect.WithSchema(vmServiceMethods.ByName("ListVnfAppliancesCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceMigrateVMHandler := connect.NewUnaryHandler(
+		VmServiceMigrateVMProcedure,
+		svc.MigrateVM,
+		connect.WithSchema(vmServiceMethods.ByName("MigrateVM")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceMigrateVirtualMachineWithVolumeHandler := connect.NewUnaryHandler(
+		VmServiceMigrateVirtualMachineWithVolumeProcedure,
+		svc.MigrateVirtualMachineWithVolume,
+		connect.WithSchema(vmServiceMethods.ByName("MigrateVirtualMachineWithVolume")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceRebootVMHandler := connect.NewUnaryHandler(
+		VmServiceRebootVMProcedure,
+		svc.RebootVM,
+		connect.WithSchema(vmServiceMethods.ByName("RebootVM")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceRebootVMCmdByAdminHandler := connect.NewUnaryHandler(
+		VmServiceRebootVMCmdByAdminProcedure,
+		svc.RebootVMCmdByAdmin,
+		connect.WithSchema(vmServiceMethods.ByName("RebootVMCmdByAdmin")),
 		connect.WithHandlerOptions(opts...),
 	)
 	vmServiceRecoverVMHandler := connect.NewUnaryHandler(
@@ -1174,98 +1320,278 @@ func NewVmServiceHandler(svc VmServiceHandler, opts ...connect.HandlerOption) (s
 		connect.WithSchema(vmServiceMethods.ByName("RecoverVM")),
 		connect.WithHandlerOptions(opts...),
 	)
+	vmServiceRemoveIpFromVmNicHandler := connect.NewUnaryHandler(
+		VmServiceRemoveIpFromVmNicProcedure,
+		svc.RemoveIpFromVmNic,
+		connect.WithSchema(vmServiceMethods.ByName("RemoveIpFromVmNic")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceRemoveNicFromVMHandler := connect.NewUnaryHandler(
+		VmServiceRemoveNicFromVMProcedure,
+		svc.RemoveNicFromVM,
+		connect.WithSchema(vmServiceMethods.ByName("RemoveNicFromVM")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceRemoveNicFromVMCmdByAdminHandler := connect.NewUnaryHandler(
+		VmServiceRemoveNicFromVMCmdByAdminProcedure,
+		svc.RemoveNicFromVMCmdByAdmin,
+		connect.WithSchema(vmServiceMethods.ByName("RemoveNicFromVMCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceResetVMPasswordHandler := connect.NewUnaryHandler(
+		VmServiceResetVMPasswordProcedure,
+		svc.ResetVMPassword,
+		connect.WithSchema(vmServiceMethods.ByName("ResetVMPassword")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceResetVMPasswordCmdByAdminHandler := connect.NewUnaryHandler(
+		VmServiceResetVMPasswordCmdByAdminProcedure,
+		svc.ResetVMPasswordCmdByAdmin,
+		connect.WithSchema(vmServiceMethods.ByName("ResetVMPasswordCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceResetVMSSHKeyHandler := connect.NewUnaryHandler(
+		VmServiceResetVMSSHKeyProcedure,
+		svc.ResetVMSSHKey,
+		connect.WithSchema(vmServiceMethods.ByName("ResetVMSSHKey")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceResetVMSSHKeyCmdByAdminHandler := connect.NewUnaryHandler(
+		VmServiceResetVMSSHKeyCmdByAdminProcedure,
+		svc.ResetVMSSHKeyCmdByAdmin,
+		connect.WithSchema(vmServiceMethods.ByName("ResetVMSSHKeyCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceResetVMUserDataHandler := connect.NewUnaryHandler(
+		VmServiceResetVMUserDataProcedure,
+		svc.ResetVMUserData,
+		connect.WithSchema(vmServiceMethods.ByName("ResetVMUserData")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceResetVMUserDataCmdAdminHandler := connect.NewUnaryHandler(
+		VmServiceResetVMUserDataCmdAdminProcedure,
+		svc.ResetVMUserDataCmdAdmin,
+		connect.WithSchema(vmServiceMethods.ByName("ResetVMUserDataCmdAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceRestoreVMHandler := connect.NewUnaryHandler(
+		VmServiceRestoreVMProcedure,
+		svc.RestoreVM,
+		connect.WithSchema(vmServiceMethods.ByName("RestoreVM")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceRestoreVMCmdByAdminHandler := connect.NewUnaryHandler(
+		VmServiceRestoreVMCmdByAdminProcedure,
+		svc.RestoreVMCmdByAdmin,
+		connect.WithSchema(vmServiceMethods.ByName("RestoreVMCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceScaleVMHandler := connect.NewUnaryHandler(
+		VmServiceScaleVMProcedure,
+		svc.ScaleVM,
+		connect.WithSchema(vmServiceMethods.ByName("ScaleVM")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceScaleVMCmdByAdminHandler := connect.NewUnaryHandler(
+		VmServiceScaleVMCmdByAdminProcedure,
+		svc.ScaleVMCmdByAdmin,
+		connect.WithSchema(vmServiceMethods.ByName("ScaleVMCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceStartVMHandler := connect.NewUnaryHandler(
+		VmServiceStartVMProcedure,
+		svc.StartVM,
+		connect.WithSchema(vmServiceMethods.ByName("StartVM")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceStartVMCmdByAdminHandler := connect.NewUnaryHandler(
+		VmServiceStartVMCmdByAdminProcedure,
+		svc.StartVMCmdByAdmin,
+		connect.WithSchema(vmServiceMethods.ByName("StartVMCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceStopVMHandler := connect.NewUnaryHandler(
+		VmServiceStopVMProcedure,
+		svc.StopVM,
+		connect.WithSchema(vmServiceMethods.ByName("StopVM")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceStopVMCmdByAdminHandler := connect.NewUnaryHandler(
+		VmServiceStopVMCmdByAdminProcedure,
+		svc.StopVMCmdByAdmin,
+		connect.WithSchema(vmServiceMethods.ByName("StopVMCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceUnmanageVMInstanceHandler := connect.NewUnaryHandler(
+		VmServiceUnmanageVMInstanceProcedure,
+		svc.UnmanageVMInstance,
+		connect.WithSchema(vmServiceMethods.ByName("UnmanageVMInstance")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceUpdateDefaultNicForVMHandler := connect.NewUnaryHandler(
+		VmServiceUpdateDefaultNicForVMProcedure,
+		svc.UpdateDefaultNicForVM,
+		connect.WithSchema(vmServiceMethods.ByName("UpdateDefaultNicForVM")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceUpdateDefaultNicForVMCmdByAdminHandler := connect.NewUnaryHandler(
+		VmServiceUpdateDefaultNicForVMCmdByAdminProcedure,
+		svc.UpdateDefaultNicForVMCmdByAdmin,
+		connect.WithSchema(vmServiceMethods.ByName("UpdateDefaultNicForVMCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceUpdateVMHandler := connect.NewUnaryHandler(
+		VmServiceUpdateVMProcedure,
+		svc.UpdateVM,
+		connect.WithSchema(vmServiceMethods.ByName("UpdateVM")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceUpdateVMCmdByAdminHandler := connect.NewUnaryHandler(
+		VmServiceUpdateVMCmdByAdminProcedure,
+		svc.UpdateVMCmdByAdmin,
+		connect.WithSchema(vmServiceMethods.ByName("UpdateVMCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceUpdateVMScheduleHandler := connect.NewUnaryHandler(
+		VmServiceUpdateVMScheduleProcedure,
+		svc.UpdateVMSchedule,
+		connect.WithSchema(vmServiceMethods.ByName("UpdateVMSchedule")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceUpdateVmNicIpHandler := connect.NewUnaryHandler(
+		VmServiceUpdateVmNicIpProcedure,
+		svc.UpdateVmNicIp,
+		connect.WithSchema(vmServiceMethods.ByName("UpdateVmNicIp")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceUpgradeVMHandler := connect.NewUnaryHandler(
+		VmServiceUpgradeVMProcedure,
+		svc.UpgradeVM,
+		connect.WithSchema(vmServiceMethods.ByName("UpgradeVM")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vmServiceUpgradeVMCmdByAdminHandler := connect.NewUnaryHandler(
+		VmServiceUpgradeVMCmdByAdminProcedure,
+		svc.UpgradeVMCmdByAdmin,
+		connect.WithSchema(vmServiceMethods.ByName("UpgradeVMCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.vm.v1.VmService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case VmServiceAssignVMProcedure:
-			vmServiceAssignVMHandler.ServeHTTP(w, r)
-		case VmServiceDeployVMCmdByAdminProcedure:
-			vmServiceDeployVMCmdByAdminHandler.ServeHTTP(w, r)
-		case VmServiceUpdateDefaultNicForVMProcedure:
-			vmServiceUpdateDefaultNicForVMHandler.ServeHTTP(w, r)
-		case VmServiceExpungeVMProcedure:
-			vmServiceExpungeVMHandler.ServeHTTP(w, r)
-		case VmServiceUpgradeVMProcedure:
-			vmServiceUpgradeVMHandler.ServeHTTP(w, r)
-		case VmServiceDestroyVMProcedure:
-			vmServiceDestroyVMHandler.ServeHTTP(w, r)
-		case VmServiceRemoveNicFromVMCmdByAdminProcedure:
-			vmServiceRemoveNicFromVMCmdByAdminHandler.ServeHTTP(w, r)
-		case VmServiceAddNicToVMCmdByAdminProcedure:
-			vmServiceAddNicToVMCmdByAdminHandler.ServeHTTP(w, r)
-		case VmServiceListUnmanagedInstancesProcedure:
-			vmServiceListUnmanagedInstancesHandler.ServeHTTP(w, r)
-		case VmServiceUnmanageVMInstanceProcedure:
-			vmServiceUnmanageVMInstanceHandler.ServeHTTP(w, r)
-		case VmServiceResetVMPasswordProcedure:
-			vmServiceResetVMPasswordHandler.ServeHTTP(w, r)
-		case VmServiceDeployVnfApplianceCmdByAdminProcedure:
-			vmServiceDeployVnfApplianceCmdByAdminHandler.ServeHTTP(w, r)
-		case VmServiceListNicsProcedure:
-			vmServiceListNicsHandler.ServeHTTP(w, r)
-		case VmServiceListVMScheduleProcedure:
-			vmServiceListVMScheduleHandler.ServeHTTP(w, r)
-		case VmServiceRestoreVMProcedure:
-			vmServiceRestoreVMHandler.ServeHTTP(w, r)
-		case VmServiceStartVMProcedure:
-			vmServiceStartVMHandler.ServeHTTP(w, r)
-		case VmServiceDeployVnfApplianceProcedure:
-			vmServiceDeployVnfApplianceHandler.ServeHTTP(w, r)
-		case VmServiceMigrateVMProcedure:
-			vmServiceMigrateVMHandler.ServeHTTP(w, r)
-		case VmServiceListVnfAppliancesProcedure:
-			vmServiceListVnfAppliancesHandler.ServeHTTP(w, r)
-		case VmServiceListAffectedVmsForStorageScopeChangeProcedure:
-			vmServiceListAffectedVmsForStorageScopeChangeHandler.ServeHTTP(w, r)
-		case VmServiceStopVMCmdByAdminProcedure:
-			vmServiceStopVMCmdByAdminHandler.ServeHTTP(w, r)
-		case VmServiceUpdateVmNicIpProcedure:
-			vmServiceUpdateVmNicIpHandler.ServeHTTP(w, r)
-		case VmServiceImportUnmanagedInstanceProcedure:
-			vmServiceImportUnmanagedInstanceHandler.ServeHTTP(w, r)
-		case VmServiceDeleteVMScheduleProcedure:
-			vmServiceDeleteVMScheduleHandler.ServeHTTP(w, r)
-		case VmServiceResetVMSSHKeyProcedure:
-			vmServiceResetVMSSHKeyHandler.ServeHTTP(w, r)
-		case VmServiceGetVMPasswordProcedure:
-			vmServiceGetVMPasswordHandler.ServeHTTP(w, r)
-		case VmServiceListVmsForImportProcedure:
-			vmServiceListVmsForImportHandler.ServeHTTP(w, r)
-		case VmServiceDeployVMProcedure:
-			vmServiceDeployVMHandler.ServeHTTP(w, r)
-		case VmServiceScaleVMProcedure:
-			vmServiceScaleVMHandler.ServeHTTP(w, r)
-		case VmServiceUpdateVMCmdByAdminProcedure:
-			vmServiceUpdateVMCmdByAdminHandler.ServeHTTP(w, r)
-		case VmServiceResetVMUserDataProcedure:
-			vmServiceResetVMUserDataHandler.ServeHTTP(w, r)
-		case VmServiceCreateVMScheduleProcedure:
-			vmServiceCreateVMScheduleHandler.ServeHTTP(w, r)
-		case VmServiceRemoveNicFromVMProcedure:
-			vmServiceRemoveNicFromVMHandler.ServeHTTP(w, r)
-		case VmServiceListVMsProcedure:
-			vmServiceListVMsHandler.ServeHTTP(w, r)
-		case VmServiceRebootVMProcedure:
-			vmServiceRebootVMHandler.ServeHTTP(w, r)
-		case VmServiceImportVmProcedure:
-			vmServiceImportVmHandler.ServeHTTP(w, r)
 		case VmServiceAddIpToVmNicProcedure:
 			vmServiceAddIpToVmNicHandler.ServeHTTP(w, r)
-		case VmServiceGetVMUserDataProcedure:
-			vmServiceGetVMUserDataHandler.ServeHTTP(w, r)
-		case VmServiceUpdateVMScheduleProcedure:
-			vmServiceUpdateVMScheduleHandler.ServeHTTP(w, r)
-		case VmServiceMigrateVirtualMachineWithVolumeProcedure:
-			vmServiceMigrateVirtualMachineWithVolumeHandler.ServeHTTP(w, r)
 		case VmServiceAddNicToVMProcedure:
 			vmServiceAddNicToVMHandler.ServeHTTP(w, r)
-		case VmServiceRemoveIpFromVmNicProcedure:
-			vmServiceRemoveIpFromVmNicHandler.ServeHTTP(w, r)
-		case VmServiceStopVMProcedure:
-			vmServiceStopVMHandler.ServeHTTP(w, r)
-		case VmServiceUpdateVMProcedure:
-			vmServiceUpdateVMHandler.ServeHTTP(w, r)
+		case VmServiceAddNicToVMCmdByAdminProcedure:
+			vmServiceAddNicToVMCmdByAdminHandler.ServeHTTP(w, r)
+		case VmServiceAssignVMProcedure:
+			vmServiceAssignVMHandler.ServeHTTP(w, r)
+		case VmServiceCreateVMScheduleProcedure:
+			vmServiceCreateVMScheduleHandler.ServeHTTP(w, r)
+		case VmServiceDeleteVMScheduleProcedure:
+			vmServiceDeleteVMScheduleHandler.ServeHTTP(w, r)
+		case VmServiceDeployVMProcedure:
+			vmServiceDeployVMHandler.ServeHTTP(w, r)
+		case VmServiceDeployVMCmdByAdminProcedure:
+			vmServiceDeployVMCmdByAdminHandler.ServeHTTP(w, r)
+		case VmServiceDeployVnfApplianceProcedure:
+			vmServiceDeployVnfApplianceHandler.ServeHTTP(w, r)
+		case VmServiceDeployVnfApplianceCmdByAdminProcedure:
+			vmServiceDeployVnfApplianceCmdByAdminHandler.ServeHTTP(w, r)
+		case VmServiceDestroyVMProcedure:
+			vmServiceDestroyVMHandler.ServeHTTP(w, r)
+		case VmServiceDestroyVMCmdByAdminProcedure:
+			vmServiceDestroyVMCmdByAdminHandler.ServeHTTP(w, r)
+		case VmServiceExpungeVMProcedure:
+			vmServiceExpungeVMHandler.ServeHTTP(w, r)
+		case VmServiceGetVMPasswordProcedure:
+			vmServiceGetVMPasswordHandler.ServeHTTP(w, r)
+		case VmServiceGetVMUserDataProcedure:
+			vmServiceGetVMUserDataHandler.ServeHTTP(w, r)
+		case VmServiceImportUnmanagedInstanceProcedure:
+			vmServiceImportUnmanagedInstanceHandler.ServeHTTP(w, r)
+		case VmServiceImportVmProcedure:
+			vmServiceImportVmHandler.ServeHTTP(w, r)
+		case VmServiceListAffectedVmsForStorageScopeChangeProcedure:
+			vmServiceListAffectedVmsForStorageScopeChangeHandler.ServeHTTP(w, r)
+		case VmServiceListNicsProcedure:
+			vmServiceListNicsHandler.ServeHTTP(w, r)
+		case VmServiceListUnmanagedInstancesProcedure:
+			vmServiceListUnmanagedInstancesHandler.ServeHTTP(w, r)
+		case VmServiceListVMScheduleProcedure:
+			vmServiceListVMScheduleHandler.ServeHTTP(w, r)
+		case VmServiceListVMsProcedure:
+			vmServiceListVMsHandler.ServeHTTP(w, r)
+		case VmServiceListVMsCmdByAdminProcedure:
+			vmServiceListVMsCmdByAdminHandler.ServeHTTP(w, r)
+		case VmServiceListVmsForImportProcedure:
+			vmServiceListVmsForImportHandler.ServeHTTP(w, r)
+		case VmServiceListVnfAppliancesProcedure:
+			vmServiceListVnfAppliancesHandler.ServeHTTP(w, r)
+		case VmServiceListVnfAppliancesCmdByAdminProcedure:
+			vmServiceListVnfAppliancesCmdByAdminHandler.ServeHTTP(w, r)
+		case VmServiceMigrateVMProcedure:
+			vmServiceMigrateVMHandler.ServeHTTP(w, r)
+		case VmServiceMigrateVirtualMachineWithVolumeProcedure:
+			vmServiceMigrateVirtualMachineWithVolumeHandler.ServeHTTP(w, r)
+		case VmServiceRebootVMProcedure:
+			vmServiceRebootVMHandler.ServeHTTP(w, r)
+		case VmServiceRebootVMCmdByAdminProcedure:
+			vmServiceRebootVMCmdByAdminHandler.ServeHTTP(w, r)
 		case VmServiceRecoverVMProcedure:
 			vmServiceRecoverVMHandler.ServeHTTP(w, r)
+		case VmServiceRemoveIpFromVmNicProcedure:
+			vmServiceRemoveIpFromVmNicHandler.ServeHTTP(w, r)
+		case VmServiceRemoveNicFromVMProcedure:
+			vmServiceRemoveNicFromVMHandler.ServeHTTP(w, r)
+		case VmServiceRemoveNicFromVMCmdByAdminProcedure:
+			vmServiceRemoveNicFromVMCmdByAdminHandler.ServeHTTP(w, r)
+		case VmServiceResetVMPasswordProcedure:
+			vmServiceResetVMPasswordHandler.ServeHTTP(w, r)
+		case VmServiceResetVMPasswordCmdByAdminProcedure:
+			vmServiceResetVMPasswordCmdByAdminHandler.ServeHTTP(w, r)
+		case VmServiceResetVMSSHKeyProcedure:
+			vmServiceResetVMSSHKeyHandler.ServeHTTP(w, r)
+		case VmServiceResetVMSSHKeyCmdByAdminProcedure:
+			vmServiceResetVMSSHKeyCmdByAdminHandler.ServeHTTP(w, r)
+		case VmServiceResetVMUserDataProcedure:
+			vmServiceResetVMUserDataHandler.ServeHTTP(w, r)
+		case VmServiceResetVMUserDataCmdAdminProcedure:
+			vmServiceResetVMUserDataCmdAdminHandler.ServeHTTP(w, r)
+		case VmServiceRestoreVMProcedure:
+			vmServiceRestoreVMHandler.ServeHTTP(w, r)
+		case VmServiceRestoreVMCmdByAdminProcedure:
+			vmServiceRestoreVMCmdByAdminHandler.ServeHTTP(w, r)
+		case VmServiceScaleVMProcedure:
+			vmServiceScaleVMHandler.ServeHTTP(w, r)
+		case VmServiceScaleVMCmdByAdminProcedure:
+			vmServiceScaleVMCmdByAdminHandler.ServeHTTP(w, r)
+		case VmServiceStartVMProcedure:
+			vmServiceStartVMHandler.ServeHTTP(w, r)
+		case VmServiceStartVMCmdByAdminProcedure:
+			vmServiceStartVMCmdByAdminHandler.ServeHTTP(w, r)
+		case VmServiceStopVMProcedure:
+			vmServiceStopVMHandler.ServeHTTP(w, r)
+		case VmServiceStopVMCmdByAdminProcedure:
+			vmServiceStopVMCmdByAdminHandler.ServeHTTP(w, r)
+		case VmServiceUnmanageVMInstanceProcedure:
+			vmServiceUnmanageVMInstanceHandler.ServeHTTP(w, r)
+		case VmServiceUpdateDefaultNicForVMProcedure:
+			vmServiceUpdateDefaultNicForVMHandler.ServeHTTP(w, r)
+		case VmServiceUpdateDefaultNicForVMCmdByAdminProcedure:
+			vmServiceUpdateDefaultNicForVMCmdByAdminHandler.ServeHTTP(w, r)
+		case VmServiceUpdateVMProcedure:
+			vmServiceUpdateVMHandler.ServeHTTP(w, r)
+		case VmServiceUpdateVMCmdByAdminProcedure:
+			vmServiceUpdateVMCmdByAdminHandler.ServeHTTP(w, r)
+		case VmServiceUpdateVMScheduleProcedure:
+			vmServiceUpdateVMScheduleHandler.ServeHTTP(w, r)
+		case VmServiceUpdateVmNicIpProcedure:
+			vmServiceUpdateVmNicIpHandler.ServeHTTP(w, r)
+		case VmServiceUpgradeVMProcedure:
+			vmServiceUpgradeVMHandler.ServeHTTP(w, r)
+		case VmServiceUpgradeVMCmdByAdminProcedure:
+			vmServiceUpgradeVMCmdByAdminHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -1275,182 +1601,230 @@ func NewVmServiceHandler(svc VmServiceHandler, opts ...connect.HandlerOption) (s
 // UnimplementedVmServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedVmServiceHandler struct{}
 
-func (UnimplementedVmServiceHandler) AssignVM(context.Context, *connect.Request[v1.AssignVMRequest]) (*connect.Response[v1.AssignVMResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.AssignVM is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) DeployVMCmdByAdmin(context.Context, *connect.Request[v1.DeployVMCmdByAdminRequest]) (*connect.Response[v1.DeployVMCmdByAdminResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.DeployVMCmdByAdmin is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) UpdateDefaultNicForVM(context.Context, *connect.Request[v1.UpdateDefaultNicForVMRequest]) (*connect.Response[v1.UpdateDefaultNicForVMResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.UpdateDefaultNicForVM is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) ExpungeVM(context.Context, *connect.Request[v1.ExpungeVMRequest]) (*connect.Response[v1.ExpungeVMResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ExpungeVM is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) UpgradeVM(context.Context, *connect.Request[v1.UpgradeVMRequest]) (*connect.Response[v1.UpgradeVMResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.UpgradeVM is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) DestroyVM(context.Context, *connect.Request[v1.DestroyVMRequest]) (*connect.Response[v1.DestroyVMResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.DestroyVM is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) RemoveNicFromVMCmdByAdmin(context.Context, *connect.Request[v1.RemoveNicFromVMCmdByAdminRequest]) (*connect.Response[v1.RemoveNicFromVMCmdByAdminResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.RemoveNicFromVMCmdByAdmin is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) AddNicToVMCmdByAdmin(context.Context, *connect.Request[v1.AddNicToVMCmdByAdminRequest]) (*connect.Response[v1.AddNicToVMCmdByAdminResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.AddNicToVMCmdByAdmin is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) ListUnmanagedInstances(context.Context, *connect.Request[v1.ListUnmanagedInstancesRequest]) (*connect.Response[v1.ListUnmanagedInstancesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ListUnmanagedInstances is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) UnmanageVMInstance(context.Context, *connect.Request[v1.UnmanageVMInstanceRequest]) (*connect.Response[v1.UnmanageVMInstanceResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.UnmanageVMInstance is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) ResetVMPassword(context.Context, *connect.Request[v1.ResetVMPasswordRequest]) (*connect.Response[v1.ResetVMPasswordResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ResetVMPassword is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) DeployVnfApplianceCmdByAdmin(context.Context, *connect.Request[v1.DeployVnfApplianceCmdByAdminRequest]) (*connect.Response[v1.DeployVnfApplianceCmdByAdminResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.DeployVnfApplianceCmdByAdmin is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) ListNics(context.Context, *connect.Request[v1.ListNicsRequest]) (*connect.Response[v1.ListNicsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ListNics is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) ListVMSchedule(context.Context, *connect.Request[v1.ListVMScheduleRequest]) (*connect.Response[v1.ListVMScheduleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ListVMSchedule is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) RestoreVM(context.Context, *connect.Request[v1.RestoreVMRequest]) (*connect.Response[v1.RestoreVMResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.RestoreVM is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) StartVM(context.Context, *connect.Request[v1.StartVMRequest]) (*connect.Response[v1.StartVMResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.StartVM is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) DeployVnfAppliance(context.Context, *connect.Request[v1.DeployVnfApplianceRequest]) (*connect.Response[v1.DeployVnfApplianceResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.DeployVnfAppliance is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) MigrateVM(context.Context, *connect.Request[v1.MigrateVMRequest]) (*connect.Response[v1.MigrateVMResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.MigrateVM is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) ListVnfAppliances(context.Context, *connect.Request[v1.ListVnfAppliancesRequest]) (*connect.Response[v1.ListVnfAppliancesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ListVnfAppliances is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) ListAffectedVmsForStorageScopeChange(context.Context, *connect.Request[v1.ListAffectedVmsForStorageScopeChangeRequest]) (*connect.Response[v1.ListAffectedVmsForStorageScopeChangeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ListAffectedVmsForStorageScopeChange is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) StopVMCmdByAdmin(context.Context, *connect.Request[v1.StopVMCmdByAdminRequest]) (*connect.Response[v1.StopVMCmdByAdminResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.StopVMCmdByAdmin is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) UpdateVmNicIp(context.Context, *connect.Request[v1.UpdateVmNicIpRequest]) (*connect.Response[v1.UpdateVmNicIpResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.UpdateVmNicIp is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) ImportUnmanagedInstance(context.Context, *connect.Request[v1.ImportUnmanagedInstanceRequest]) (*connect.Response[v1.ImportUnmanagedInstanceResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ImportUnmanagedInstance is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) DeleteVMSchedule(context.Context, *connect.Request[v1.DeleteVMScheduleRequest]) (*connect.Response[v1.DeleteVMScheduleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.DeleteVMSchedule is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) ResetVMSSHKey(context.Context, *connect.Request[v1.ResetVMSSHKeyRequest]) (*connect.Response[v1.ResetVMSSHKeyResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ResetVMSSHKey is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) GetVMPassword(context.Context, *connect.Request[v1.GetVMPasswordRequest]) (*connect.Response[v1.GetVMPasswordResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.GetVMPassword is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) ListVmsForImport(context.Context, *connect.Request[v1.ListVmsForImportRequest]) (*connect.Response[v1.ListVmsForImportResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ListVmsForImport is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) DeployVM(context.Context, *connect.Request[v1.DeployVMRequest]) (*connect.Response[v1.DeployVMResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.DeployVM is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) ScaleVM(context.Context, *connect.Request[v1.ScaleVMRequest]) (*connect.Response[v1.ScaleVMResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ScaleVM is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) UpdateVMCmdByAdmin(context.Context, *connect.Request[v1.UpdateVMCmdByAdminRequest]) (*connect.Response[v1.UpdateVMCmdByAdminResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.UpdateVMCmdByAdmin is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) ResetVMUserData(context.Context, *connect.Request[v1.ResetVMUserDataRequest]) (*connect.Response[v1.ResetVMUserDataResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ResetVMUserData is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) CreateVMSchedule(context.Context, *connect.Request[v1.CreateVMScheduleRequest]) (*connect.Response[v1.CreateVMScheduleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.CreateVMSchedule is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) RemoveNicFromVM(context.Context, *connect.Request[v1.RemoveNicFromVMRequest]) (*connect.Response[v1.RemoveNicFromVMResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.RemoveNicFromVM is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) ListVMs(context.Context, *connect.Request[v1.ListVMsRequest]) (*connect.Response[v1.ListVMsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ListVMs is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) RebootVM(context.Context, *connect.Request[v1.RebootVMRequest]) (*connect.Response[v1.RebootVMResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.RebootVM is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) ImportVm(context.Context, *connect.Request[v1.ImportVmRequest]) (*connect.Response[v1.ImportVmResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ImportVm is not implemented"))
-}
-
 func (UnimplementedVmServiceHandler) AddIpToVmNic(context.Context, *connect.Request[v1.AddIpToVmNicRequest]) (*connect.Response[v1.AddIpToVmNicResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.AddIpToVmNic is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) GetVMUserData(context.Context, *connect.Request[v1.GetVMUserDataRequest]) (*connect.Response[v1.GetVMUserDataResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.GetVMUserData is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) UpdateVMSchedule(context.Context, *connect.Request[v1.UpdateVMScheduleRequest]) (*connect.Response[v1.UpdateVMScheduleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.UpdateVMSchedule is not implemented"))
-}
-
-func (UnimplementedVmServiceHandler) MigrateVirtualMachineWithVolume(context.Context, *connect.Request[v1.MigrateVirtualMachineWithVolumeRequest]) (*connect.Response[v1.MigrateVirtualMachineWithVolumeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.MigrateVirtualMachineWithVolume is not implemented"))
 }
 
 func (UnimplementedVmServiceHandler) AddNicToVM(context.Context, *connect.Request[v1.AddNicToVMRequest]) (*connect.Response[v1.AddNicToVMResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.AddNicToVM is not implemented"))
 }
 
+func (UnimplementedVmServiceHandler) AddNicToVMCmdByAdmin(context.Context, *connect.Request[v1.AddNicToVMCmdByAdminRequest]) (*connect.Response[v1.AddNicToVMCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.AddNicToVMCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) AssignVM(context.Context, *connect.Request[v1.AssignVMRequest]) (*connect.Response[v1.AssignVMResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.AssignVM is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) CreateVMSchedule(context.Context, *connect.Request[v1.CreateVMScheduleRequest]) (*connect.Response[v1.CreateVMScheduleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.CreateVMSchedule is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) DeleteVMSchedule(context.Context, *connect.Request[v1.DeleteVMScheduleRequest]) (*connect.Response[v1.DeleteVMScheduleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.DeleteVMSchedule is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) DeployVM(context.Context, *connect.Request[v1.DeployVMRequest]) (*connect.Response[v1.DeployVMResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.DeployVM is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) DeployVMCmdByAdmin(context.Context, *connect.Request[v1.DeployVMCmdByAdminRequest]) (*connect.Response[v1.DeployVMCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.DeployVMCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) DeployVnfAppliance(context.Context, *connect.Request[v1.DeployVnfApplianceRequest]) (*connect.Response[v1.DeployVnfApplianceResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.DeployVnfAppliance is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) DeployVnfApplianceCmdByAdmin(context.Context, *connect.Request[v1.DeployVnfApplianceCmdByAdminRequest]) (*connect.Response[v1.DeployVnfApplianceCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.DeployVnfApplianceCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) DestroyVM(context.Context, *connect.Request[v1.DestroyVMRequest]) (*connect.Response[v1.DestroyVMResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.DestroyVM is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) DestroyVMCmdByAdmin(context.Context, *connect.Request[v1.DestroyVMCmdByAdminRequest]) (*connect.Response[v1.DestroyVMCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.DestroyVMCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) ExpungeVM(context.Context, *connect.Request[v1.ExpungeVMRequest]) (*connect.Response[v1.ExpungeVMResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ExpungeVM is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) GetVMPassword(context.Context, *connect.Request[v1.GetVMPasswordRequest]) (*connect.Response[v1.GetVMPasswordResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.GetVMPassword is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) GetVMUserData(context.Context, *connect.Request[v1.GetVMUserDataRequest]) (*connect.Response[v1.GetVMUserDataResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.GetVMUserData is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) ImportUnmanagedInstance(context.Context, *connect.Request[v1.ImportUnmanagedInstanceRequest]) (*connect.Response[v1.ImportUnmanagedInstanceResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ImportUnmanagedInstance is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) ImportVm(context.Context, *connect.Request[v1.ImportVmRequest]) (*connect.Response[v1.ImportVmResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ImportVm is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) ListAffectedVmsForStorageScopeChange(context.Context, *connect.Request[v1.ListAffectedVmsForStorageScopeChangeRequest]) (*connect.Response[v1.ListAffectedVmsForStorageScopeChangeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ListAffectedVmsForStorageScopeChange is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) ListNics(context.Context, *connect.Request[v1.ListNicsRequest]) (*connect.Response[v1.ListNicsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ListNics is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) ListUnmanagedInstances(context.Context, *connect.Request[v1.ListUnmanagedInstancesRequest]) (*connect.Response[v1.ListUnmanagedInstancesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ListUnmanagedInstances is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) ListVMSchedule(context.Context, *connect.Request[v1.ListVMScheduleRequest]) (*connect.Response[v1.ListVMScheduleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ListVMSchedule is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) ListVMs(context.Context, *connect.Request[v1.ListVMsRequest]) (*connect.Response[v1.ListVMsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ListVMs is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) ListVMsCmdByAdmin(context.Context, *connect.Request[v1.ListVMsCmdByAdminRequest]) (*connect.Response[v1.ListVMsCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ListVMsCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) ListVmsForImport(context.Context, *connect.Request[v1.ListVmsForImportRequest]) (*connect.Response[v1.ListVmsForImportResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ListVmsForImport is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) ListVnfAppliances(context.Context, *connect.Request[v1.ListVnfAppliancesRequest]) (*connect.Response[v1.ListVnfAppliancesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ListVnfAppliances is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) ListVnfAppliancesCmdByAdmin(context.Context, *connect.Request[v1.ListVnfAppliancesCmdByAdminRequest]) (*connect.Response[v1.ListVnfAppliancesCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ListVnfAppliancesCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) MigrateVM(context.Context, *connect.Request[v1.MigrateVMRequest]) (*connect.Response[v1.MigrateVMResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.MigrateVM is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) MigrateVirtualMachineWithVolume(context.Context, *connect.Request[v1.MigrateVirtualMachineWithVolumeRequest]) (*connect.Response[v1.MigrateVirtualMachineWithVolumeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.MigrateVirtualMachineWithVolume is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) RebootVM(context.Context, *connect.Request[v1.RebootVMRequest]) (*connect.Response[v1.RebootVMResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.RebootVM is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) RebootVMCmdByAdmin(context.Context, *connect.Request[v1.RebootVMCmdByAdminRequest]) (*connect.Response[v1.RebootVMCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.RebootVMCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) RecoverVM(context.Context, *connect.Request[v1.RecoverVMRequest]) (*connect.Response[v1.RecoverVMResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.RecoverVM is not implemented"))
+}
+
 func (UnimplementedVmServiceHandler) RemoveIpFromVmNic(context.Context, *connect.Request[v1.RemoveIpFromVmNicRequest]) (*connect.Response[v1.RemoveIpFromVmNicResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.RemoveIpFromVmNic is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) RemoveNicFromVM(context.Context, *connect.Request[v1.RemoveNicFromVMRequest]) (*connect.Response[v1.RemoveNicFromVMResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.RemoveNicFromVM is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) RemoveNicFromVMCmdByAdmin(context.Context, *connect.Request[v1.RemoveNicFromVMCmdByAdminRequest]) (*connect.Response[v1.RemoveNicFromVMCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.RemoveNicFromVMCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) ResetVMPassword(context.Context, *connect.Request[v1.ResetVMPasswordRequest]) (*connect.Response[v1.ResetVMPasswordResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ResetVMPassword is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) ResetVMPasswordCmdByAdmin(context.Context, *connect.Request[v1.ResetVMPasswordCmdByAdminRequest]) (*connect.Response[v1.ResetVMPasswordCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ResetVMPasswordCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) ResetVMSSHKey(context.Context, *connect.Request[v1.ResetVMSSHKeyRequest]) (*connect.Response[v1.ResetVMSSHKeyResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ResetVMSSHKey is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) ResetVMSSHKeyCmdByAdmin(context.Context, *connect.Request[v1.ResetVMSSHKeyCmdByAdminRequest]) (*connect.Response[v1.ResetVMSSHKeyCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ResetVMSSHKeyCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) ResetVMUserData(context.Context, *connect.Request[v1.ResetVMUserDataRequest]) (*connect.Response[v1.ResetVMUserDataResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ResetVMUserData is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) ResetVMUserDataCmdAdmin(context.Context, *connect.Request[v1.ResetVMUserDataCmdAdminRequest]) (*connect.Response[v1.ResetVMUserDataCmdAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ResetVMUserDataCmdAdmin is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) RestoreVM(context.Context, *connect.Request[v1.RestoreVMRequest]) (*connect.Response[v1.RestoreVMResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.RestoreVM is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) RestoreVMCmdByAdmin(context.Context, *connect.Request[v1.RestoreVMCmdByAdminRequest]) (*connect.Response[v1.RestoreVMCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.RestoreVMCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) ScaleVM(context.Context, *connect.Request[v1.ScaleVMRequest]) (*connect.Response[v1.ScaleVMResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ScaleVM is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) ScaleVMCmdByAdmin(context.Context, *connect.Request[v1.ScaleVMCmdByAdminRequest]) (*connect.Response[v1.ScaleVMCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.ScaleVMCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) StartVM(context.Context, *connect.Request[v1.StartVMRequest]) (*connect.Response[v1.StartVMResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.StartVM is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) StartVMCmdByAdmin(context.Context, *connect.Request[v1.StartVMCmdByAdminRequest]) (*connect.Response[v1.StartVMCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.StartVMCmdByAdmin is not implemented"))
 }
 
 func (UnimplementedVmServiceHandler) StopVM(context.Context, *connect.Request[v1.StopVMRequest]) (*connect.Response[v1.StopVMResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.StopVM is not implemented"))
 }
 
+func (UnimplementedVmServiceHandler) StopVMCmdByAdmin(context.Context, *connect.Request[v1.StopVMCmdByAdminRequest]) (*connect.Response[v1.StopVMCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.StopVMCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) UnmanageVMInstance(context.Context, *connect.Request[v1.UnmanageVMInstanceRequest]) (*connect.Response[v1.UnmanageVMInstanceResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.UnmanageVMInstance is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) UpdateDefaultNicForVM(context.Context, *connect.Request[v1.UpdateDefaultNicForVMRequest]) (*connect.Response[v1.UpdateDefaultNicForVMResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.UpdateDefaultNicForVM is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) UpdateDefaultNicForVMCmdByAdmin(context.Context, *connect.Request[v1.UpdateDefaultNicForVMCmdByAdminRequest]) (*connect.Response[v1.UpdateDefaultNicForVMCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.UpdateDefaultNicForVMCmdByAdmin is not implemented"))
+}
+
 func (UnimplementedVmServiceHandler) UpdateVM(context.Context, *connect.Request[v1.UpdateVMRequest]) (*connect.Response[v1.UpdateVMResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.UpdateVM is not implemented"))
 }
 
-func (UnimplementedVmServiceHandler) RecoverVM(context.Context, *connect.Request[v1.RecoverVMRequest]) (*connect.Response[v1.RecoverVMResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.RecoverVM is not implemented"))
+func (UnimplementedVmServiceHandler) UpdateVMCmdByAdmin(context.Context, *connect.Request[v1.UpdateVMCmdByAdminRequest]) (*connect.Response[v1.UpdateVMCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.UpdateVMCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) UpdateVMSchedule(context.Context, *connect.Request[v1.UpdateVMScheduleRequest]) (*connect.Response[v1.UpdateVMScheduleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.UpdateVMSchedule is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) UpdateVmNicIp(context.Context, *connect.Request[v1.UpdateVmNicIpRequest]) (*connect.Response[v1.UpdateVmNicIpResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.UpdateVmNicIp is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) UpgradeVM(context.Context, *connect.Request[v1.UpgradeVMRequest]) (*connect.Response[v1.UpgradeVMResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.UpgradeVM is not implemented"))
+}
+
+func (UnimplementedVmServiceHandler) UpgradeVMCmdByAdmin(context.Context, *connect.Request[v1.UpgradeVMCmdByAdminRequest]) (*connect.Response[v1.UpgradeVMCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vm.v1.VmService.UpgradeVMCmdByAdmin is not implemented"))
 }

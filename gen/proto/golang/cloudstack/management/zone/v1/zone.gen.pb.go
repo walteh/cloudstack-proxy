@@ -250,6 +250,661 @@ func (x *CreateZoneResponse) GetResult() *Result {
 	return nil
 }
 
+// DeleteZoneRequest represents the parameters for deletes a zone.
+type DeleteZoneRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the Zone
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteZoneRequest) Reset() {
+	*x = DeleteZoneRequest{}
+	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteZoneRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteZoneRequest) ProtoMessage() {}
+
+func (x *DeleteZoneRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteZoneRequest.ProtoReflect.Descriptor instead.
+func (*DeleteZoneRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_zone_v1_zone_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *DeleteZoneRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteZoneRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteZoneResponse represents the response from deletes a zone.
+type DeleteZoneResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteZoneResponse) Reset() {
+	*x = DeleteZoneResponse{}
+	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteZoneResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteZoneResponse) ProtoMessage() {}
+
+func (x *DeleteZoneResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteZoneResponse.ProtoReflect.Descriptor instead.
+func (*DeleteZoneResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_zone_v1_zone_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *DeleteZoneResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListZonesRequest represents the parameters for lists zones
+type ListZonesRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// the ID of the zone
+	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
+	// the IDs of the zones, mutually exclusive with id
+	Ids []string `protobuf:"bytes,3,rep,name=ids" json:"ids,omitempty"`
+	// true if you want to retrieve all available Zones. False if you only want to return the Zones from which you have at least one VM. Default is false.
+	Available *bool `protobuf:"varint,4,opt,name=available" json:"available,omitempty"`
+	// the ID of the domain associated with the zone
+	DomainId *int64 `protobuf:"varint,5,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// the name of the zone
+	Name *string `protobuf:"bytes,6,opt,name=name" json:"name,omitempty"`
+	// the network type of the zone that the virtual machine belongs to
+	NetworkType *string `protobuf:"bytes,7,opt,name=network_type,json=networkType" json:"network_type,omitempty"`
+	// flag to display the capacity of the zones
+	ShowCapacities *bool `protobuf:"varint,8,opt,name=show_capacities,json=showCapacities" json:"show_capacities,omitempty"`
+	// List zones by resource tags (key/value pairs)
+	Tags map[string]string `protobuf:"bytes,9,rep,name=tags" json:"tags,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// flag to display the resource image for the zones
+	ShowIcon *bool `protobuf:"varint,10,opt,name=show_icon,json=showIcon" json:"show_icon,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,11,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,12,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,13,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,14,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListZonesRequest) Reset() {
+	*x = ListZonesRequest{}
+	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListZonesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListZonesRequest) ProtoMessage() {}
+
+func (x *ListZonesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListZonesRequest.ProtoReflect.Descriptor instead.
+func (*ListZonesRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_zone_v1_zone_gen_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *ListZonesRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *ListZonesRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListZonesRequest) GetIds() []string {
+	if x != nil {
+		return x.Ids
+	}
+	return nil
+}
+
+func (x *ListZonesRequest) GetAvailable() bool {
+	if x != nil && x.Available != nil {
+		return *x.Available
+	}
+	return false
+}
+
+func (x *ListZonesRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ListZonesRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *ListZonesRequest) GetNetworkType() string {
+	if x != nil && x.NetworkType != nil {
+		return *x.NetworkType
+	}
+	return ""
+}
+
+func (x *ListZonesRequest) GetShowCapacities() bool {
+	if x != nil && x.ShowCapacities != nil {
+		return *x.ShowCapacities
+	}
+	return false
+}
+
+func (x *ListZonesRequest) GetTags() map[string]string {
+	if x != nil {
+		return x.Tags
+	}
+	return nil
+}
+
+func (x *ListZonesRequest) GetShowIcon() bool {
+	if x != nil && x.ShowIcon != nil {
+		return *x.ShowIcon
+	}
+	return false
+}
+
+func (x *ListZonesRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListZonesRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListZonesRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListZonesRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListZonesResponse represents the response from lists zones
+type ListZonesResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of Zones
+	Items []*Zone `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of Zones
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListZonesResponse) Reset() {
+	*x = ListZonesResponse{}
+	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListZonesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListZonesResponse) ProtoMessage() {}
+
+func (x *ListZonesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListZonesResponse.ProtoReflect.Descriptor instead.
+func (*ListZonesResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_zone_v1_zone_gen_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *ListZonesResponse) GetItems() []*Zone {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListZonesResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// ListZonesCmdByAdminRequest represents the parameters for lists zones
+type ListZonesCmdByAdminRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the zone
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the IDs of the zones, mutually exclusive with id
+	Ids []string `protobuf:"bytes,2,rep,name=ids" json:"ids,omitempty"`
+	// true if you want to retrieve all available Zones. False if you only want to return the Zones from which you have at least one VM. Default is false.
+	Available *bool `protobuf:"varint,3,opt,name=available" json:"available,omitempty"`
+	// the ID of the domain associated with the zone
+	DomainId *int64 `protobuf:"varint,4,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// the name of the zone
+	Name *string `protobuf:"bytes,5,opt,name=name" json:"name,omitempty"`
+	// the network type of the zone that the virtual machine belongs to
+	NetworkType *string `protobuf:"bytes,6,opt,name=network_type,json=networkType" json:"network_type,omitempty"`
+	// flag to display the capacity of the zones
+	ShowCapacities *bool `protobuf:"varint,7,opt,name=show_capacities,json=showCapacities" json:"show_capacities,omitempty"`
+	// List zones by resource tags (key/value pairs)
+	Tags map[string]string `protobuf:"bytes,8,rep,name=tags" json:"tags,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// flag to display the resource image for the zones
+	ShowIcon *bool `protobuf:"varint,9,opt,name=show_icon,json=showIcon" json:"show_icon,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,10,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,11,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,12,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,13,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListZonesCmdByAdminRequest) Reset() {
+	*x = ListZonesCmdByAdminRequest{}
+	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListZonesCmdByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListZonesCmdByAdminRequest) ProtoMessage() {}
+
+func (x *ListZonesCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListZonesCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*ListZonesCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_zone_v1_zone_gen_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *ListZonesCmdByAdminRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListZonesCmdByAdminRequest) GetIds() []string {
+	if x != nil {
+		return x.Ids
+	}
+	return nil
+}
+
+func (x *ListZonesCmdByAdminRequest) GetAvailable() bool {
+	if x != nil && x.Available != nil {
+		return *x.Available
+	}
+	return false
+}
+
+func (x *ListZonesCmdByAdminRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ListZonesCmdByAdminRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *ListZonesCmdByAdminRequest) GetNetworkType() string {
+	if x != nil && x.NetworkType != nil {
+		return *x.NetworkType
+	}
+	return ""
+}
+
+func (x *ListZonesCmdByAdminRequest) GetShowCapacities() bool {
+	if x != nil && x.ShowCapacities != nil {
+		return *x.ShowCapacities
+	}
+	return false
+}
+
+func (x *ListZonesCmdByAdminRequest) GetTags() map[string]string {
+	if x != nil {
+		return x.Tags
+	}
+	return nil
+}
+
+func (x *ListZonesCmdByAdminRequest) GetShowIcon() bool {
+	if x != nil && x.ShowIcon != nil {
+		return *x.ShowIcon
+	}
+	return false
+}
+
+func (x *ListZonesCmdByAdminRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListZonesCmdByAdminRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListZonesCmdByAdminRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListZonesCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListZonesCmdByAdminResponse represents the response from lists zones
+type ListZonesCmdByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of Zones
+	Items []*Zone `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of Zones
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListZonesCmdByAdminResponse) Reset() {
+	*x = ListZonesCmdByAdminResponse{}
+	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListZonesCmdByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListZonesCmdByAdminResponse) ProtoMessage() {}
+
+func (x *ListZonesCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListZonesCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*ListZonesCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_zone_v1_zone_gen_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *ListZonesCmdByAdminResponse) GetItems() []*Zone {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListZonesCmdByAdminResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// MarkDefaultZoneForAccountRequest represents the parameters for marks a default zone for this account
+type MarkDefaultZoneForAccountRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Name of the account that is to be marked.
+	AccountName *string `protobuf:"bytes,1,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// Marks the account that belongs to the specified domain.
+	DomainId *int64 `protobuf:"varint,2,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// The Zone ID with which the account is to be marked.
+	DefaultZoneId *int64 `protobuf:"varint,3,opt,name=default_zone_id,json=defaultZoneId" json:"default_zone_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MarkDefaultZoneForAccountRequest) Reset() {
+	*x = MarkDefaultZoneForAccountRequest{}
+	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MarkDefaultZoneForAccountRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MarkDefaultZoneForAccountRequest) ProtoMessage() {}
+
+func (x *MarkDefaultZoneForAccountRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MarkDefaultZoneForAccountRequest.ProtoReflect.Descriptor instead.
+func (*MarkDefaultZoneForAccountRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_zone_v1_zone_gen_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *MarkDefaultZoneForAccountRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *MarkDefaultZoneForAccountRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *MarkDefaultZoneForAccountRequest) GetDefaultZoneId() int64 {
+	if x != nil && x.DefaultZoneId != nil {
+		return *x.DefaultZoneId
+	}
+	return 0
+}
+
+func (x *MarkDefaultZoneForAccountRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *MarkDefaultZoneForAccountRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *MarkDefaultZoneForAccountRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// MarkDefaultZoneForAccountResponse represents the response from marks a default zone for this account
+type MarkDefaultZoneForAccountResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MarkDefaultZoneForAccountResponse) Reset() {
+	*x = MarkDefaultZoneForAccountResponse{}
+	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MarkDefaultZoneForAccountResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MarkDefaultZoneForAccountResponse) ProtoMessage() {}
+
+func (x *MarkDefaultZoneForAccountResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MarkDefaultZoneForAccountResponse.ProtoReflect.Descriptor instead.
+func (*MarkDefaultZoneForAccountResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_zone_v1_zone_gen_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *MarkDefaultZoneForAccountResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
 // UpdateZoneRequest represents the parameters for updates a zone.
 type UpdateZoneRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -294,7 +949,7 @@ type UpdateZoneRequest struct {
 
 func (x *UpdateZoneRequest) Reset() {
 	*x = UpdateZoneRequest{}
-	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -306,7 +961,7 @@ func (x *UpdateZoneRequest) String() string {
 func (*UpdateZoneRequest) ProtoMessage() {}
 
 func (x *UpdateZoneRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -319,7 +974,7 @@ func (x *UpdateZoneRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateZoneRequest.ProtoReflect.Descriptor instead.
 func (*UpdateZoneRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_zone_v1_zone_gen_proto_rawDescGZIP(), []int{2}
+	return file_cloudstack_management_zone_v1_zone_gen_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *UpdateZoneRequest) GetDns1() string {
@@ -459,7 +1114,7 @@ type UpdateZoneResponse struct {
 
 func (x *UpdateZoneResponse) Reset() {
 	*x = UpdateZoneResponse{}
-	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -471,7 +1126,7 @@ func (x *UpdateZoneResponse) String() string {
 func (*UpdateZoneResponse) ProtoMessage() {}
 
 func (x *UpdateZoneResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -484,7 +1139,7 @@ func (x *UpdateZoneResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateZoneResponse.ProtoReflect.Descriptor instead.
 func (*UpdateZoneResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_zone_v1_zone_gen_proto_rawDescGZIP(), []int{3}
+	return file_cloudstack_management_zone_v1_zone_gen_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *UpdateZoneResponse) GetResult() *Result {
@@ -492,661 +1147,6 @@ func (x *UpdateZoneResponse) GetResult() *Result {
 		return x.Result
 	}
 	return nil
-}
-
-// ListZonesCmdByAdminRequest represents the parameters for lists zones
-type ListZonesCmdByAdminRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the zone
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the IDs of the zones, mutually exclusive with id
-	Ids []string `protobuf:"bytes,2,rep,name=ids" json:"ids,omitempty"`
-	// true if you want to retrieve all available Zones. False if you only want to return the Zones from which you have at least one VM. Default is false.
-	Available *bool `protobuf:"varint,3,opt,name=available" json:"available,omitempty"`
-	// the ID of the domain associated with the zone
-	DomainId *int64 `protobuf:"varint,4,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// the name of the zone
-	Name *string `protobuf:"bytes,5,opt,name=name" json:"name,omitempty"`
-	// the network type of the zone that the virtual machine belongs to
-	NetworkType *string `protobuf:"bytes,6,opt,name=network_type,json=networkType" json:"network_type,omitempty"`
-	// flag to display the capacity of the zones
-	ShowCapacities *bool `protobuf:"varint,7,opt,name=show_capacities,json=showCapacities" json:"show_capacities,omitempty"`
-	// List zones by resource tags (key/value pairs)
-	Tags map[string]string `protobuf:"bytes,8,rep,name=tags" json:"tags,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// flag to display the resource image for the zones
-	ShowIcon *bool `protobuf:"varint,9,opt,name=show_icon,json=showIcon" json:"show_icon,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,10,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,11,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,12,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,13,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListZonesCmdByAdminRequest) Reset() {
-	*x = ListZonesCmdByAdminRequest{}
-	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListZonesCmdByAdminRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListZonesCmdByAdminRequest) ProtoMessage() {}
-
-func (x *ListZonesCmdByAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListZonesCmdByAdminRequest.ProtoReflect.Descriptor instead.
-func (*ListZonesCmdByAdminRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_zone_v1_zone_gen_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *ListZonesCmdByAdminRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListZonesCmdByAdminRequest) GetIds() []string {
-	if x != nil {
-		return x.Ids
-	}
-	return nil
-}
-
-func (x *ListZonesCmdByAdminRequest) GetAvailable() bool {
-	if x != nil && x.Available != nil {
-		return *x.Available
-	}
-	return false
-}
-
-func (x *ListZonesCmdByAdminRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ListZonesCmdByAdminRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *ListZonesCmdByAdminRequest) GetNetworkType() string {
-	if x != nil && x.NetworkType != nil {
-		return *x.NetworkType
-	}
-	return ""
-}
-
-func (x *ListZonesCmdByAdminRequest) GetShowCapacities() bool {
-	if x != nil && x.ShowCapacities != nil {
-		return *x.ShowCapacities
-	}
-	return false
-}
-
-func (x *ListZonesCmdByAdminRequest) GetTags() map[string]string {
-	if x != nil {
-		return x.Tags
-	}
-	return nil
-}
-
-func (x *ListZonesCmdByAdminRequest) GetShowIcon() bool {
-	if x != nil && x.ShowIcon != nil {
-		return *x.ShowIcon
-	}
-	return false
-}
-
-func (x *ListZonesCmdByAdminRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListZonesCmdByAdminRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListZonesCmdByAdminRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListZonesCmdByAdminRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListZonesCmdByAdminResponse represents the response from lists zones
-type ListZonesCmdByAdminResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of Zones
-	Items []*Zone `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of Zones
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListZonesCmdByAdminResponse) Reset() {
-	*x = ListZonesCmdByAdminResponse{}
-	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListZonesCmdByAdminResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListZonesCmdByAdminResponse) ProtoMessage() {}
-
-func (x *ListZonesCmdByAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListZonesCmdByAdminResponse.ProtoReflect.Descriptor instead.
-func (*ListZonesCmdByAdminResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_zone_v1_zone_gen_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *ListZonesCmdByAdminResponse) GetItems() []*Zone {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListZonesCmdByAdminResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// DeleteZoneRequest represents the parameters for deletes a zone.
-type DeleteZoneRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the Zone
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteZoneRequest) Reset() {
-	*x = DeleteZoneRequest{}
-	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteZoneRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteZoneRequest) ProtoMessage() {}
-
-func (x *DeleteZoneRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteZoneRequest.ProtoReflect.Descriptor instead.
-func (*DeleteZoneRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_zone_v1_zone_gen_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *DeleteZoneRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteZoneRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteZoneResponse represents the response from deletes a zone.
-type DeleteZoneResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteZoneResponse) Reset() {
-	*x = DeleteZoneResponse{}
-	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteZoneResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteZoneResponse) ProtoMessage() {}
-
-func (x *DeleteZoneResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteZoneResponse.ProtoReflect.Descriptor instead.
-func (*DeleteZoneResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_zone_v1_zone_gen_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *DeleteZoneResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// MarkDefaultZoneForAccountRequest represents the parameters for marks a default zone for this account
-type MarkDefaultZoneForAccountRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Name of the account that is to be marked.
-	AccountName *string `protobuf:"bytes,1,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// Marks the account that belongs to the specified domain.
-	DomainId *int64 `protobuf:"varint,2,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The Zone ID with which the account is to be marked.
-	DefaultZoneId *int64 `protobuf:"varint,3,opt,name=default_zone_id,json=defaultZoneId" json:"default_zone_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *MarkDefaultZoneForAccountRequest) Reset() {
-	*x = MarkDefaultZoneForAccountRequest{}
-	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *MarkDefaultZoneForAccountRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MarkDefaultZoneForAccountRequest) ProtoMessage() {}
-
-func (x *MarkDefaultZoneForAccountRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use MarkDefaultZoneForAccountRequest.ProtoReflect.Descriptor instead.
-func (*MarkDefaultZoneForAccountRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_zone_v1_zone_gen_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *MarkDefaultZoneForAccountRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *MarkDefaultZoneForAccountRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *MarkDefaultZoneForAccountRequest) GetDefaultZoneId() int64 {
-	if x != nil && x.DefaultZoneId != nil {
-		return *x.DefaultZoneId
-	}
-	return 0
-}
-
-func (x *MarkDefaultZoneForAccountRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *MarkDefaultZoneForAccountRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *MarkDefaultZoneForAccountRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// MarkDefaultZoneForAccountResponse represents the response from marks a default zone for this account
-type MarkDefaultZoneForAccountResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *MarkDefaultZoneForAccountResponse) Reset() {
-	*x = MarkDefaultZoneForAccountResponse{}
-	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *MarkDefaultZoneForAccountResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MarkDefaultZoneForAccountResponse) ProtoMessage() {}
-
-func (x *MarkDefaultZoneForAccountResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use MarkDefaultZoneForAccountResponse.ProtoReflect.Descriptor instead.
-func (*MarkDefaultZoneForAccountResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_zone_v1_zone_gen_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *MarkDefaultZoneForAccountResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListZonesRequest represents the parameters for lists zones
-type ListZonesRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// the ID of the zone
-	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	// the IDs of the zones, mutually exclusive with id
-	Ids []string `protobuf:"bytes,3,rep,name=ids" json:"ids,omitempty"`
-	// true if you want to retrieve all available Zones. False if you only want to return the Zones from which you have at least one VM. Default is false.
-	Available *bool `protobuf:"varint,4,opt,name=available" json:"available,omitempty"`
-	// the ID of the domain associated with the zone
-	DomainId *int64 `protobuf:"varint,5,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// the name of the zone
-	Name *string `protobuf:"bytes,6,opt,name=name" json:"name,omitempty"`
-	// the network type of the zone that the virtual machine belongs to
-	NetworkType *string `protobuf:"bytes,7,opt,name=network_type,json=networkType" json:"network_type,omitempty"`
-	// flag to display the capacity of the zones
-	ShowCapacities *bool `protobuf:"varint,8,opt,name=show_capacities,json=showCapacities" json:"show_capacities,omitempty"`
-	// List zones by resource tags (key/value pairs)
-	Tags map[string]string `protobuf:"bytes,9,rep,name=tags" json:"tags,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// flag to display the resource image for the zones
-	ShowIcon *bool `protobuf:"varint,10,opt,name=show_icon,json=showIcon" json:"show_icon,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,11,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,12,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,13,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,14,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListZonesRequest) Reset() {
-	*x = ListZonesRequest{}
-	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListZonesRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListZonesRequest) ProtoMessage() {}
-
-func (x *ListZonesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListZonesRequest.ProtoReflect.Descriptor instead.
-func (*ListZonesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_zone_v1_zone_gen_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *ListZonesRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *ListZonesRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListZonesRequest) GetIds() []string {
-	if x != nil {
-		return x.Ids
-	}
-	return nil
-}
-
-func (x *ListZonesRequest) GetAvailable() bool {
-	if x != nil && x.Available != nil {
-		return *x.Available
-	}
-	return false
-}
-
-func (x *ListZonesRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ListZonesRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *ListZonesRequest) GetNetworkType() string {
-	if x != nil && x.NetworkType != nil {
-		return *x.NetworkType
-	}
-	return ""
-}
-
-func (x *ListZonesRequest) GetShowCapacities() bool {
-	if x != nil && x.ShowCapacities != nil {
-		return *x.ShowCapacities
-	}
-	return false
-}
-
-func (x *ListZonesRequest) GetTags() map[string]string {
-	if x != nil {
-		return x.Tags
-	}
-	return nil
-}
-
-func (x *ListZonesRequest) GetShowIcon() bool {
-	if x != nil && x.ShowIcon != nil {
-		return *x.ShowIcon
-	}
-	return false
-}
-
-func (x *ListZonesRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListZonesRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListZonesRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListZonesRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListZonesResponse represents the response from lists zones
-type ListZonesResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of Zones
-	Items []*Zone `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of Zones
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListZonesResponse) Reset() {
-	*x = ListZonesResponse{}
-	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListZonesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListZonesResponse) ProtoMessage() {}
-
-func (x *ListZonesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListZonesResponse.ProtoReflect.Descriptor instead.
-func (*ListZonesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_zone_v1_zone_gen_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *ListZonesResponse) GetItems() []*Zone {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListZonesResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
 }
 
 // Zone represents a Zone Item
@@ -1286,151 +1286,6 @@ func (x *Success) GetDisplayText() string {
 	return ""
 }
 
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_zone_v1_zone_gen_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
 // Result represents a generic operation result
 type Result struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1450,7 +1305,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[15]
+	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1462,7 +1317,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[15]
+	mi := &file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1475,7 +1330,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_zone_v1_zone_gen_proto_rawDescGZIP(), []int{15}
+	return file_cloudstack_management_zone_v1_zone_gen_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -1538,6 +1393,68 @@ const file_cloudstack_management_zone_v1_zone_gen_proto_rawDesc = "" +
 	"\ais_edge\x18\x0f \x01(\bB\x05\xaa\x01\x02\b\x01R\x06isEdge\x12#\n" +
 	"\rresponse_type\x18\x10 \x01(\tR\fresponseType\"S\n" +
 	"\x12CreateZoneResponse\x12=\n" +
+	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.zone.v1.ResultR\x06result\"P\n" +
+	"\x11DeleteZoneRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"S\n" +
+	"\x12DeleteZoneResponse\x12=\n" +
+	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.zone.v1.ResultR\x06result\"\xa7\x04\n" +
+	"\x10ListZonesRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x12\x0e\n" +
+	"\x02id\x18\x02 \x01(\x03R\x02id\x12\x10\n" +
+	"\x03ids\x18\x03 \x03(\tR\x03ids\x12#\n" +
+	"\tavailable\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\tavailable\x12\x1b\n" +
+	"\tdomain_id\x18\x05 \x01(\x03R\bdomainId\x12\x1e\n" +
+	"\x04name\x18\x06 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12!\n" +
+	"\fnetwork_type\x18\a \x01(\tR\vnetworkType\x12.\n" +
+	"\x0fshow_capacities\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\x0eshowCapacities\x12M\n" +
+	"\x04tags\x18\t \x03(\v29.cloudstack.management.zone.v1.ListZonesRequest.TagsEntryR\x04tags\x12\"\n" +
+	"\tshow_icon\x18\n" +
+	" \x01(\bB\x05\xaa\x01\x02\b\x01R\bshowIcon\x12\x18\n" +
+	"\akeyword\x18\v \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\f \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\r \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x0e \x01(\tR\fresponseType\x1a7\n" +
+	"\tTagsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"v\n" +
+	"\x11ListZonesResponse\x129\n" +
+	"\x05items\x18\x01 \x03(\v2#.cloudstack.management.zone.v1.ZoneR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x99\x04\n" +
+	"\x1aListZonesCmdByAdminRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x10\n" +
+	"\x03ids\x18\x02 \x03(\tR\x03ids\x12#\n" +
+	"\tavailable\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\tavailable\x12\x1b\n" +
+	"\tdomain_id\x18\x04 \x01(\x03R\bdomainId\x12\x1e\n" +
+	"\x04name\x18\x05 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12!\n" +
+	"\fnetwork_type\x18\x06 \x01(\tR\vnetworkType\x12.\n" +
+	"\x0fshow_capacities\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\x0eshowCapacities\x12W\n" +
+	"\x04tags\x18\b \x03(\v2C.cloudstack.management.zone.v1.ListZonesCmdByAdminRequest.TagsEntryR\x04tags\x12\"\n" +
+	"\tshow_icon\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\bshowIcon\x12\x18\n" +
+	"\akeyword\x18\n" +
+	" \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\v \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\f \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\r \x01(\tR\fresponseType\x1a7\n" +
+	"\tTagsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x80\x01\n" +
+	"\x1bListZonesCmdByAdminResponse\x129\n" +
+	"\x05items\x18\x01 \x03(\v2#.cloudstack.management.zone.v1.ZoneR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x9f\x02\n" +
+	" MarkDefaultZoneForAccountRequest\x12)\n" +
+	"\faccount_name\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\vaccountName\x12#\n" +
+	"\tdomain_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bdomainId\x12.\n" +
+	"\x0fdefault_zone_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\rdefaultZoneId\x12$\n" +
+	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"b\n" +
+	"!MarkDefaultZoneForAccountResponse\x12=\n" +
 	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.zone.v1.ResultR\x06result\"\x8c\x06\n" +
 	"\x11UpdateZoneRequest\x12\x12\n" +
 	"\x04dns1\x18\x01 \x01(\tR\x04dns1\x12\x12\n" +
@@ -1564,69 +1481,7 @@ const file_cloudstack_management_zone_v1_zone_gen_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"S\n" +
 	"\x12UpdateZoneResponse\x12=\n" +
-	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.zone.v1.ResultR\x06result\"\x99\x04\n" +
-	"\x1aListZonesCmdByAdminRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x10\n" +
-	"\x03ids\x18\x02 \x03(\tR\x03ids\x12#\n" +
-	"\tavailable\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\tavailable\x12\x1b\n" +
-	"\tdomain_id\x18\x04 \x01(\x03R\bdomainId\x12\x1e\n" +
-	"\x04name\x18\x05 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12!\n" +
-	"\fnetwork_type\x18\x06 \x01(\tR\vnetworkType\x12.\n" +
-	"\x0fshow_capacities\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\x0eshowCapacities\x12W\n" +
-	"\x04tags\x18\b \x03(\v2C.cloudstack.management.zone.v1.ListZonesCmdByAdminRequest.TagsEntryR\x04tags\x12\"\n" +
-	"\tshow_icon\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\bshowIcon\x12\x18\n" +
-	"\akeyword\x18\n" +
-	" \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\v \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\f \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\r \x01(\tR\fresponseType\x1a7\n" +
-	"\tTagsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x80\x01\n" +
-	"\x1bListZonesCmdByAdminResponse\x129\n" +
-	"\x05items\x18\x01 \x03(\v2#.cloudstack.management.zone.v1.ZoneR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"P\n" +
-	"\x11DeleteZoneRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"S\n" +
-	"\x12DeleteZoneResponse\x12=\n" +
-	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.zone.v1.ResultR\x06result\"\x9f\x02\n" +
-	" MarkDefaultZoneForAccountRequest\x12)\n" +
-	"\faccount_name\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\vaccountName\x12#\n" +
-	"\tdomain_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bdomainId\x12.\n" +
-	"\x0fdefault_zone_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\rdefaultZoneId\x12$\n" +
-	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"b\n" +
-	"!MarkDefaultZoneForAccountResponse\x12=\n" +
-	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.zone.v1.ResultR\x06result\"\xa7\x04\n" +
-	"\x10ListZonesRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\x03R\x02id\x12\x10\n" +
-	"\x03ids\x18\x03 \x03(\tR\x03ids\x12#\n" +
-	"\tavailable\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\tavailable\x12\x1b\n" +
-	"\tdomain_id\x18\x05 \x01(\x03R\bdomainId\x12\x1e\n" +
-	"\x04name\x18\x06 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12!\n" +
-	"\fnetwork_type\x18\a \x01(\tR\vnetworkType\x12.\n" +
-	"\x0fshow_capacities\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\x0eshowCapacities\x12M\n" +
-	"\x04tags\x18\t \x03(\v29.cloudstack.management.zone.v1.ListZonesRequest.TagsEntryR\x04tags\x12\"\n" +
-	"\tshow_icon\x18\n" +
-	" \x01(\bB\x05\xaa\x01\x02\b\x01R\bshowIcon\x12\x18\n" +
-	"\akeyword\x18\v \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\f \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\r \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x0e \x01(\tR\fresponseType\x1a7\n" +
-	"\tTagsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"v\n" +
-	"\x11ListZonesResponse\x129\n" +
-	"\x05items\x18\x01 \x03(\v2#.cloudstack.management.zone.v1.ZoneR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x93\x01\n" +
+	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.zone.v1.ResultR\x06result\"\x93\x01\n" +
 	"\x04Zone\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
@@ -1635,43 +1490,24 @@ const file_cloudstack_management_zone_v1_zone_gen_proto_rawDesc = "" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xdc\x03\n" +
-	"\x04Item\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12J\n" +
-	"\adetails\x18\f \x03(\v20.cloudstack.management.zone.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xa0\x06\n" +
-	"\vZoneService\x12s\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\xc6\x06\n" +
+	"\vZoneService\x12z\n" +
 	"\n" +
-	"CreateZone\x120.cloudstack.management.zone.v1.CreateZoneRequest\x1a1.cloudstack.management.zone.v1.CreateZoneResponse\"\x00\x12s\n" +
+	"CreateZone\x120.cloudstack.management.zone.v1.CreateZoneRequest\x1a1.cloudstack.management.zone.v1.CreateZoneResponse\"\a\xc2>\x04\xc2>\x01\x02\x12z\n" +
 	"\n" +
-	"UpdateZone\x120.cloudstack.management.zone.v1.UpdateZoneRequest\x1a1.cloudstack.management.zone.v1.UpdateZoneResponse\"\x00\x12\x8e\x01\n" +
-	"\x13ListZonesCmdByAdmin\x129.cloudstack.management.zone.v1.ListZonesCmdByAdminRequest\x1a:.cloudstack.management.zone.v1.ListZonesCmdByAdminResponse\"\x00\x12s\n" +
+	"DeleteZone\x120.cloudstack.management.zone.v1.DeleteZoneRequest\x1a1.cloudstack.management.zone.v1.DeleteZoneResponse\"\a\xc2>\x04\xc2>\x01\x02\x12x\n" +
+	"\tListZones\x12/.cloudstack.management.zone.v1.ListZonesRequest\x1a0.cloudstack.management.zone.v1.ListZonesResponse\"\b\xc2>\x05\xc2>\x02\x01\x02\x12\x95\x01\n" +
+	"\x13ListZonesCmdByAdmin\x129.cloudstack.management.zone.v1.ListZonesCmdByAdminRequest\x1a:.cloudstack.management.zone.v1.ListZonesCmdByAdminResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xa7\x01\n" +
+	"\x19MarkDefaultZoneForAccount\x12?.cloudstack.management.zone.v1.MarkDefaultZoneForAccountRequest\x1a@.cloudstack.management.zone.v1.MarkDefaultZoneForAccountResponse\"\a\xc2>\x04\xc2>\x01\x02\x12z\n" +
 	"\n" +
-	"DeleteZone\x120.cloudstack.management.zone.v1.DeleteZoneRequest\x1a1.cloudstack.management.zone.v1.DeleteZoneResponse\"\x00\x12\xa0\x01\n" +
-	"\x19MarkDefaultZoneForAccount\x12?.cloudstack.management.zone.v1.MarkDefaultZoneForAccountRequest\x1a@.cloudstack.management.zone.v1.MarkDefaultZoneForAccountResponse\"\x00\x12v\n" +
-	"\tListZones\x12/.cloudstack.management.zone.v1.ListZonesRequest\x1a0.cloudstack.management.zone.v1.ListZonesResponse\"\x06\xc2>\x03\xc0>\x01\x1a\x06\xc2>\x03\xc0>\x02B\xa2\x02\n" +
+	"UpdateZone\x120.cloudstack.management.zone.v1.UpdateZoneRequest\x1a1.cloudstack.management.zone.v1.UpdateZoneResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\a\xc2>\x04\xc2>\x01\x02B\xa2\x02\n" +
 	"!com.cloudstack.management.zone.v1B\fZoneGenProtoP\x01ZXgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/zone/v1;zonev1\xa2\x02\x03CMZ\xaa\x02\x1dCloudstack.Management.Zone.V1\xca\x02\x1dCloudstack\\Management\\Zone\\V1\xe2\x02)Cloudstack\\Management\\Zone\\V1\\GPBMetadata\xea\x02 Cloudstack::Management::Zone::V1b\beditionsp\xe8\a"
 
 var (
@@ -1686,57 +1522,54 @@ func file_cloudstack_management_zone_v1_zone_gen_proto_rawDescGZIP() []byte {
 	return file_cloudstack_management_zone_v1_zone_gen_proto_rawDescData
 }
 
-var file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
+var file_cloudstack_management_zone_v1_zone_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
 var file_cloudstack_management_zone_v1_zone_gen_proto_goTypes = []any{
 	(*CreateZoneRequest)(nil),                 // 0: cloudstack.management.zone.v1.CreateZoneRequest
 	(*CreateZoneResponse)(nil),                // 1: cloudstack.management.zone.v1.CreateZoneResponse
-	(*UpdateZoneRequest)(nil),                 // 2: cloudstack.management.zone.v1.UpdateZoneRequest
-	(*UpdateZoneResponse)(nil),                // 3: cloudstack.management.zone.v1.UpdateZoneResponse
-	(*ListZonesCmdByAdminRequest)(nil),        // 4: cloudstack.management.zone.v1.ListZonesCmdByAdminRequest
-	(*ListZonesCmdByAdminResponse)(nil),       // 5: cloudstack.management.zone.v1.ListZonesCmdByAdminResponse
-	(*DeleteZoneRequest)(nil),                 // 6: cloudstack.management.zone.v1.DeleteZoneRequest
-	(*DeleteZoneResponse)(nil),                // 7: cloudstack.management.zone.v1.DeleteZoneResponse
+	(*DeleteZoneRequest)(nil),                 // 2: cloudstack.management.zone.v1.DeleteZoneRequest
+	(*DeleteZoneResponse)(nil),                // 3: cloudstack.management.zone.v1.DeleteZoneResponse
+	(*ListZonesRequest)(nil),                  // 4: cloudstack.management.zone.v1.ListZonesRequest
+	(*ListZonesResponse)(nil),                 // 5: cloudstack.management.zone.v1.ListZonesResponse
+	(*ListZonesCmdByAdminRequest)(nil),        // 6: cloudstack.management.zone.v1.ListZonesCmdByAdminRequest
+	(*ListZonesCmdByAdminResponse)(nil),       // 7: cloudstack.management.zone.v1.ListZonesCmdByAdminResponse
 	(*MarkDefaultZoneForAccountRequest)(nil),  // 8: cloudstack.management.zone.v1.MarkDefaultZoneForAccountRequest
 	(*MarkDefaultZoneForAccountResponse)(nil), // 9: cloudstack.management.zone.v1.MarkDefaultZoneForAccountResponse
-	(*ListZonesRequest)(nil),                  // 10: cloudstack.management.zone.v1.ListZonesRequest
-	(*ListZonesResponse)(nil),                 // 11: cloudstack.management.zone.v1.ListZonesResponse
+	(*UpdateZoneRequest)(nil),                 // 10: cloudstack.management.zone.v1.UpdateZoneRequest
+	(*UpdateZoneResponse)(nil),                // 11: cloudstack.management.zone.v1.UpdateZoneResponse
 	(*Zone)(nil),                              // 12: cloudstack.management.zone.v1.Zone
 	(*Success)(nil),                           // 13: cloudstack.management.zone.v1.Success
-	(*Item)(nil),                              // 14: cloudstack.management.zone.v1.Item
-	(*Result)(nil),                            // 15: cloudstack.management.zone.v1.Result
-	nil,                                       // 16: cloudstack.management.zone.v1.UpdateZoneRequest.DetailsEntry
-	nil,                                       // 17: cloudstack.management.zone.v1.ListZonesCmdByAdminRequest.TagsEntry
-	nil,                                       // 18: cloudstack.management.zone.v1.ListZonesRequest.TagsEntry
-	nil,                                       // 19: cloudstack.management.zone.v1.Item.DetailsEntry
+	(*Result)(nil),                            // 14: cloudstack.management.zone.v1.Result
+	nil,                                       // 15: cloudstack.management.zone.v1.ListZonesRequest.TagsEntry
+	nil,                                       // 16: cloudstack.management.zone.v1.ListZonesCmdByAdminRequest.TagsEntry
+	nil,                                       // 17: cloudstack.management.zone.v1.UpdateZoneRequest.DetailsEntry
 }
 var file_cloudstack_management_zone_v1_zone_gen_proto_depIdxs = []int32{
-	15, // 0: cloudstack.management.zone.v1.CreateZoneResponse.result:type_name -> cloudstack.management.zone.v1.Result
-	16, // 1: cloudstack.management.zone.v1.UpdateZoneRequest.details:type_name -> cloudstack.management.zone.v1.UpdateZoneRequest.DetailsEntry
-	15, // 2: cloudstack.management.zone.v1.UpdateZoneResponse.result:type_name -> cloudstack.management.zone.v1.Result
-	17, // 3: cloudstack.management.zone.v1.ListZonesCmdByAdminRequest.tags:type_name -> cloudstack.management.zone.v1.ListZonesCmdByAdminRequest.TagsEntry
-	12, // 4: cloudstack.management.zone.v1.ListZonesCmdByAdminResponse.items:type_name -> cloudstack.management.zone.v1.Zone
-	15, // 5: cloudstack.management.zone.v1.DeleteZoneResponse.result:type_name -> cloudstack.management.zone.v1.Result
-	15, // 6: cloudstack.management.zone.v1.MarkDefaultZoneForAccountResponse.result:type_name -> cloudstack.management.zone.v1.Result
-	18, // 7: cloudstack.management.zone.v1.ListZonesRequest.tags:type_name -> cloudstack.management.zone.v1.ListZonesRequest.TagsEntry
-	12, // 8: cloudstack.management.zone.v1.ListZonesResponse.items:type_name -> cloudstack.management.zone.v1.Zone
-	19, // 9: cloudstack.management.zone.v1.Item.details:type_name -> cloudstack.management.zone.v1.Item.DetailsEntry
-	0,  // 10: cloudstack.management.zone.v1.ZoneService.CreateZone:input_type -> cloudstack.management.zone.v1.CreateZoneRequest
-	2,  // 11: cloudstack.management.zone.v1.ZoneService.UpdateZone:input_type -> cloudstack.management.zone.v1.UpdateZoneRequest
-	4,  // 12: cloudstack.management.zone.v1.ZoneService.ListZonesCmdByAdmin:input_type -> cloudstack.management.zone.v1.ListZonesCmdByAdminRequest
-	6,  // 13: cloudstack.management.zone.v1.ZoneService.DeleteZone:input_type -> cloudstack.management.zone.v1.DeleteZoneRequest
-	8,  // 14: cloudstack.management.zone.v1.ZoneService.MarkDefaultZoneForAccount:input_type -> cloudstack.management.zone.v1.MarkDefaultZoneForAccountRequest
-	10, // 15: cloudstack.management.zone.v1.ZoneService.ListZones:input_type -> cloudstack.management.zone.v1.ListZonesRequest
-	1,  // 16: cloudstack.management.zone.v1.ZoneService.CreateZone:output_type -> cloudstack.management.zone.v1.CreateZoneResponse
-	3,  // 17: cloudstack.management.zone.v1.ZoneService.UpdateZone:output_type -> cloudstack.management.zone.v1.UpdateZoneResponse
-	5,  // 18: cloudstack.management.zone.v1.ZoneService.ListZonesCmdByAdmin:output_type -> cloudstack.management.zone.v1.ListZonesCmdByAdminResponse
-	7,  // 19: cloudstack.management.zone.v1.ZoneService.DeleteZone:output_type -> cloudstack.management.zone.v1.DeleteZoneResponse
-	9,  // 20: cloudstack.management.zone.v1.ZoneService.MarkDefaultZoneForAccount:output_type -> cloudstack.management.zone.v1.MarkDefaultZoneForAccountResponse
-	11, // 21: cloudstack.management.zone.v1.ZoneService.ListZones:output_type -> cloudstack.management.zone.v1.ListZonesResponse
-	16, // [16:22] is the sub-list for method output_type
-	10, // [10:16] is the sub-list for method input_type
-	10, // [10:10] is the sub-list for extension type_name
-	10, // [10:10] is the sub-list for extension extendee
-	0,  // [0:10] is the sub-list for field type_name
+	14, // 0: cloudstack.management.zone.v1.CreateZoneResponse.result:type_name -> cloudstack.management.zone.v1.Result
+	14, // 1: cloudstack.management.zone.v1.DeleteZoneResponse.result:type_name -> cloudstack.management.zone.v1.Result
+	15, // 2: cloudstack.management.zone.v1.ListZonesRequest.tags:type_name -> cloudstack.management.zone.v1.ListZonesRequest.TagsEntry
+	12, // 3: cloudstack.management.zone.v1.ListZonesResponse.items:type_name -> cloudstack.management.zone.v1.Zone
+	16, // 4: cloudstack.management.zone.v1.ListZonesCmdByAdminRequest.tags:type_name -> cloudstack.management.zone.v1.ListZonesCmdByAdminRequest.TagsEntry
+	12, // 5: cloudstack.management.zone.v1.ListZonesCmdByAdminResponse.items:type_name -> cloudstack.management.zone.v1.Zone
+	14, // 6: cloudstack.management.zone.v1.MarkDefaultZoneForAccountResponse.result:type_name -> cloudstack.management.zone.v1.Result
+	17, // 7: cloudstack.management.zone.v1.UpdateZoneRequest.details:type_name -> cloudstack.management.zone.v1.UpdateZoneRequest.DetailsEntry
+	14, // 8: cloudstack.management.zone.v1.UpdateZoneResponse.result:type_name -> cloudstack.management.zone.v1.Result
+	0,  // 9: cloudstack.management.zone.v1.ZoneService.CreateZone:input_type -> cloudstack.management.zone.v1.CreateZoneRequest
+	2,  // 10: cloudstack.management.zone.v1.ZoneService.DeleteZone:input_type -> cloudstack.management.zone.v1.DeleteZoneRequest
+	4,  // 11: cloudstack.management.zone.v1.ZoneService.ListZones:input_type -> cloudstack.management.zone.v1.ListZonesRequest
+	6,  // 12: cloudstack.management.zone.v1.ZoneService.ListZonesCmdByAdmin:input_type -> cloudstack.management.zone.v1.ListZonesCmdByAdminRequest
+	8,  // 13: cloudstack.management.zone.v1.ZoneService.MarkDefaultZoneForAccount:input_type -> cloudstack.management.zone.v1.MarkDefaultZoneForAccountRequest
+	10, // 14: cloudstack.management.zone.v1.ZoneService.UpdateZone:input_type -> cloudstack.management.zone.v1.UpdateZoneRequest
+	1,  // 15: cloudstack.management.zone.v1.ZoneService.CreateZone:output_type -> cloudstack.management.zone.v1.CreateZoneResponse
+	3,  // 16: cloudstack.management.zone.v1.ZoneService.DeleteZone:output_type -> cloudstack.management.zone.v1.DeleteZoneResponse
+	5,  // 17: cloudstack.management.zone.v1.ZoneService.ListZones:output_type -> cloudstack.management.zone.v1.ListZonesResponse
+	7,  // 18: cloudstack.management.zone.v1.ZoneService.ListZonesCmdByAdmin:output_type -> cloudstack.management.zone.v1.ListZonesCmdByAdminResponse
+	9,  // 19: cloudstack.management.zone.v1.ZoneService.MarkDefaultZoneForAccount:output_type -> cloudstack.management.zone.v1.MarkDefaultZoneForAccountResponse
+	11, // 20: cloudstack.management.zone.v1.ZoneService.UpdateZone:output_type -> cloudstack.management.zone.v1.UpdateZoneResponse
+	15, // [15:21] is the sub-list for method output_type
+	9,  // [9:15] is the sub-list for method input_type
+	9,  // [9:9] is the sub-list for extension type_name
+	9,  // [9:9] is the sub-list for extension extendee
+	0,  // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_zone_v1_zone_gen_proto_init() }
@@ -1750,7 +1583,7 @@ func file_cloudstack_management_zone_v1_zone_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_zone_v1_zone_gen_proto_rawDesc), len(file_cloudstack_management_zone_v1_zone_gen_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   20,
+			NumMessages:   18,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

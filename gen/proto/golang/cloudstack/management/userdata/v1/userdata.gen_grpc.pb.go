@@ -20,9 +20,9 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	UserdataService_DeleteUserData_FullMethodName         = "/cloudstack.management.userdata.v1.UserdataService/DeleteUserData"
-	UserdataService_RegisterUserData_FullMethodName       = "/cloudstack.management.userdata.v1.UserdataService/RegisterUserData"
 	UserdataService_LinkUserDataToTemplate_FullMethodName = "/cloudstack.management.userdata.v1.UserdataService/LinkUserDataToTemplate"
 	UserdataService_ListUserData_FullMethodName           = "/cloudstack.management.userdata.v1.UserdataService/ListUserData"
+	UserdataService_RegisterUserData_FullMethodName       = "/cloudstack.management.userdata.v1.UserdataService/RegisterUserData"
 )
 
 // UserdataServiceClient is the client API for UserdataService service.
@@ -33,12 +33,12 @@ const (
 type UserdataServiceClient interface {
 	// DeleteUserData Deletes a userdata
 	DeleteUserData(ctx context.Context, in *DeleteUserDataRequest, opts ...grpc.CallOption) (*DeleteUserDataResponse, error)
-	// RegisterUserData Register a new userdata.
-	RegisterUserData(ctx context.Context, in *RegisterUserDataRequest, opts ...grpc.CallOption) (*RegisterUserDataResponse, error)
 	// LinkUserDataToTemplate Link or unlink a userdata to a template.
 	LinkUserDataToTemplate(ctx context.Context, in *LinkUserDataToTemplateRequest, opts ...grpc.CallOption) (*LinkUserDataToTemplateResponse, error)
 	// ListUserData List registered userdatas
 	ListUserData(ctx context.Context, in *ListUserDataRequest, opts ...grpc.CallOption) (*ListUserDataResponse, error)
+	// RegisterUserData Register a new userdata.
+	RegisterUserData(ctx context.Context, in *RegisterUserDataRequest, opts ...grpc.CallOption) (*RegisterUserDataResponse, error)
 }
 
 type userdataServiceClient struct {
@@ -53,16 +53,6 @@ func (c *userdataServiceClient) DeleteUserData(ctx context.Context, in *DeleteUs
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DeleteUserDataResponse)
 	err := c.cc.Invoke(ctx, UserdataService_DeleteUserData_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *userdataServiceClient) RegisterUserData(ctx context.Context, in *RegisterUserDataRequest, opts ...grpc.CallOption) (*RegisterUserDataResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RegisterUserDataResponse)
-	err := c.cc.Invoke(ctx, UserdataService_RegisterUserData_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -89,6 +79,16 @@ func (c *userdataServiceClient) ListUserData(ctx context.Context, in *ListUserDa
 	return out, nil
 }
 
+func (c *userdataServiceClient) RegisterUserData(ctx context.Context, in *RegisterUserDataRequest, opts ...grpc.CallOption) (*RegisterUserDataResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RegisterUserDataResponse)
+	err := c.cc.Invoke(ctx, UserdataService_RegisterUserData_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserdataServiceServer is the server API for UserdataService service.
 // All implementations must embed UnimplementedUserdataServiceServer
 // for forward compatibility.
@@ -97,12 +97,12 @@ func (c *userdataServiceClient) ListUserData(ctx context.Context, in *ListUserDa
 type UserdataServiceServer interface {
 	// DeleteUserData Deletes a userdata
 	DeleteUserData(context.Context, *DeleteUserDataRequest) (*DeleteUserDataResponse, error)
-	// RegisterUserData Register a new userdata.
-	RegisterUserData(context.Context, *RegisterUserDataRequest) (*RegisterUserDataResponse, error)
 	// LinkUserDataToTemplate Link or unlink a userdata to a template.
 	LinkUserDataToTemplate(context.Context, *LinkUserDataToTemplateRequest) (*LinkUserDataToTemplateResponse, error)
 	// ListUserData List registered userdatas
 	ListUserData(context.Context, *ListUserDataRequest) (*ListUserDataResponse, error)
+	// RegisterUserData Register a new userdata.
+	RegisterUserData(context.Context, *RegisterUserDataRequest) (*RegisterUserDataResponse, error)
 	mustEmbedUnimplementedUserdataServiceServer()
 }
 
@@ -116,14 +116,14 @@ type UnimplementedUserdataServiceServer struct{}
 func (UnimplementedUserdataServiceServer) DeleteUserData(context.Context, *DeleteUserDataRequest) (*DeleteUserDataResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteUserData not implemented")
 }
-func (UnimplementedUserdataServiceServer) RegisterUserData(context.Context, *RegisterUserDataRequest) (*RegisterUserDataResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RegisterUserData not implemented")
-}
 func (UnimplementedUserdataServiceServer) LinkUserDataToTemplate(context.Context, *LinkUserDataToTemplateRequest) (*LinkUserDataToTemplateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LinkUserDataToTemplate not implemented")
 }
 func (UnimplementedUserdataServiceServer) ListUserData(context.Context, *ListUserDataRequest) (*ListUserDataResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListUserData not implemented")
+}
+func (UnimplementedUserdataServiceServer) RegisterUserData(context.Context, *RegisterUserDataRequest) (*RegisterUserDataResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RegisterUserData not implemented")
 }
 func (UnimplementedUserdataServiceServer) mustEmbedUnimplementedUserdataServiceServer() {}
 func (UnimplementedUserdataServiceServer) testEmbeddedByValue()                         {}
@@ -164,24 +164,6 @@ func _UserdataService_DeleteUserData_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserdataService_RegisterUserData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RegisterUserDataRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(UserdataServiceServer).RegisterUserData(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: UserdataService_RegisterUserData_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserdataServiceServer).RegisterUserData(ctx, req.(*RegisterUserDataRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _UserdataService_LinkUserDataToTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(LinkUserDataToTemplateRequest)
 	if err := dec(in); err != nil {
@@ -218,6 +200,24 @@ func _UserdataService_ListUserData_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserdataService_RegisterUserData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RegisterUserDataRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserdataServiceServer).RegisterUserData(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserdataService_RegisterUserData_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserdataServiceServer).RegisterUserData(ctx, req.(*RegisterUserDataRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UserdataService_ServiceDesc is the grpc.ServiceDesc for UserdataService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -230,16 +230,16 @@ var UserdataService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _UserdataService_DeleteUserData_Handler,
 		},
 		{
-			MethodName: "RegisterUserData",
-			Handler:    _UserdataService_RegisterUserData_Handler,
-		},
-		{
 			MethodName: "LinkUserDataToTemplate",
 			Handler:    _UserdataService_LinkUserDataToTemplate_Handler,
 		},
 		{
 			MethodName: "ListUserData",
 			Handler:    _UserdataService_ListUserData_Handler,
+		},
+		{
+			MethodName: "RegisterUserData",
+			Handler:    _UserdataService_RegisterUserData_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

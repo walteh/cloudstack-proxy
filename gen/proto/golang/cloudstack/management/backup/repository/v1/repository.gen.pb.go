@@ -24,6 +24,260 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// AddBackupRepositoryRequest represents the parameters for adds a backup repository to store nas backups
+type AddBackupRepositoryRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// name of the backup repository
+	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	// address of the backup repository
+	Address *string `protobuf:"bytes,2,opt,name=address" json:"address,omitempty"`
+	// type of the backup repository storage. Supported values: nfs, cephfs, cifs
+	Type *string `protobuf:"bytes,3,opt,name=type" json:"type,omitempty"`
+	// backup repository provider
+	Provider *string `protobuf:"bytes,4,opt,name=provider" json:"provider,omitempty"`
+	// shared storage mount options
+	MountOptions_ *string `protobuf:"bytes,5,opt,name=mount_options_,json=mountOptions" json:"mount_options_,omitempty"`
+	// ID of the zone where the backup repository is to be added
+	ZoneId *int64 `protobuf:"varint,6,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// capacity of this backup repository
+	CapacityBytes *int64 `protobuf:"varint,7,opt,name=capacity_bytes,json=capacityBytes" json:"capacity_bytes,omitempty"`
+	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddBackupRepositoryRequest) Reset() {
+	*x = AddBackupRepositoryRequest{}
+	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddBackupRepositoryRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddBackupRepositoryRequest) ProtoMessage() {}
+
+func (x *AddBackupRepositoryRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddBackupRepositoryRequest.ProtoReflect.Descriptor instead.
+func (*AddBackupRepositoryRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_repository_v1_repository_gen_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *AddBackupRepositoryRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *AddBackupRepositoryRequest) GetAddress() string {
+	if x != nil && x.Address != nil {
+		return *x.Address
+	}
+	return ""
+}
+
+func (x *AddBackupRepositoryRequest) GetType() string {
+	if x != nil && x.Type != nil {
+		return *x.Type
+	}
+	return ""
+}
+
+func (x *AddBackupRepositoryRequest) GetProvider() string {
+	if x != nil && x.Provider != nil {
+		return *x.Provider
+	}
+	return ""
+}
+
+func (x *AddBackupRepositoryRequest) GetMountOptions_() string {
+	if x != nil && x.MountOptions_ != nil {
+		return *x.MountOptions_
+	}
+	return ""
+}
+
+func (x *AddBackupRepositoryRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *AddBackupRepositoryRequest) GetCapacityBytes() int64 {
+	if x != nil && x.CapacityBytes != nil {
+		return *x.CapacityBytes
+	}
+	return 0
+}
+
+func (x *AddBackupRepositoryRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// AddBackupRepositoryResponse represents the response from adds a backup repository to store nas backups
+type AddBackupRepositoryResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddBackupRepositoryResponse) Reset() {
+	*x = AddBackupRepositoryResponse{}
+	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddBackupRepositoryResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddBackupRepositoryResponse) ProtoMessage() {}
+
+func (x *AddBackupRepositoryResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddBackupRepositoryResponse.ProtoReflect.Descriptor instead.
+func (*AddBackupRepositoryResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_repository_v1_repository_gen_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *AddBackupRepositoryResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteBackupRepositoryRequest represents the parameters for delete a backup repository
+type DeleteBackupRepositoryRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of the backup repository to be deleted
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteBackupRepositoryRequest) Reset() {
+	*x = DeleteBackupRepositoryRequest{}
+	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteBackupRepositoryRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteBackupRepositoryRequest) ProtoMessage() {}
+
+func (x *DeleteBackupRepositoryRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteBackupRepositoryRequest.ProtoReflect.Descriptor instead.
+func (*DeleteBackupRepositoryRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_repository_v1_repository_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *DeleteBackupRepositoryRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteBackupRepositoryRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteBackupRepositoryResponse represents the response from delete a backup repository
+type DeleteBackupRepositoryResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteBackupRepositoryResponse) Reset() {
+	*x = DeleteBackupRepositoryResponse{}
+	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteBackupRepositoryResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteBackupRepositoryResponse) ProtoMessage() {}
+
+func (x *DeleteBackupRepositoryResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteBackupRepositoryResponse.ProtoReflect.Descriptor instead.
+func (*DeleteBackupRepositoryResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_backup_repository_v1_repository_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *DeleteBackupRepositoryResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
 // ListBackupRepositoriesRequest represents the parameters for lists all backup repositories
 type ListBackupRepositoriesRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -46,7 +300,7 @@ type ListBackupRepositoriesRequest struct {
 
 func (x *ListBackupRepositoriesRequest) Reset() {
 	*x = ListBackupRepositoriesRequest{}
-	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -58,7 +312,7 @@ func (x *ListBackupRepositoriesRequest) String() string {
 func (*ListBackupRepositoriesRequest) ProtoMessage() {}
 
 func (x *ListBackupRepositoriesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -71,7 +325,7 @@ func (x *ListBackupRepositoriesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListBackupRepositoriesRequest.ProtoReflect.Descriptor instead.
 func (*ListBackupRepositoriesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_repository_v1_repository_gen_proto_rawDescGZIP(), []int{0}
+	return file_cloudstack_management_backup_repository_v1_repository_gen_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ListBackupRepositoriesRequest) GetName() string {
@@ -143,7 +397,7 @@ type ListBackupRepositoriesResponse struct {
 
 func (x *ListBackupRepositoriesResponse) Reset() {
 	*x = ListBackupRepositoriesResponse{}
-	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -155,7 +409,7 @@ func (x *ListBackupRepositoriesResponse) String() string {
 func (*ListBackupRepositoriesResponse) ProtoMessage() {}
 
 func (x *ListBackupRepositoriesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -168,7 +422,7 @@ func (x *ListBackupRepositoriesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListBackupRepositoriesResponse.ProtoReflect.Descriptor instead.
 func (*ListBackupRepositoriesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_repository_v1_repository_gen_proto_rawDescGZIP(), []int{1}
+	return file_cloudstack_management_backup_repository_v1_repository_gen_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ListBackupRepositoriesResponse) GetItems() []*BackupRepository {
@@ -183,260 +437,6 @@ func (x *ListBackupRepositoriesResponse) GetTotalCount() int32 {
 		return *x.TotalCount
 	}
 	return 0
-}
-
-// AddBackupRepositoryRequest represents the parameters for adds a backup repository to store nas backups
-type AddBackupRepositoryRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// name of the backup repository
-	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
-	// address of the backup repository
-	Address *string `protobuf:"bytes,2,opt,name=address" json:"address,omitempty"`
-	// type of the backup repository storage. Supported values: nfs, cephfs, cifs
-	Type *string `protobuf:"bytes,3,opt,name=type" json:"type,omitempty"`
-	// backup repository provider
-	Provider *string `protobuf:"bytes,4,opt,name=provider" json:"provider,omitempty"`
-	// shared storage mount options
-	MountOptions *string `protobuf:"bytes,5,opt,name=mount_options,json=mountOptions" json:"mount_options,omitempty"`
-	// ID of the zone where the backup repository is to be added
-	ZoneId *int64 `protobuf:"varint,6,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// capacity of this backup repository
-	CapacityBytes *int64 `protobuf:"varint,7,opt,name=capacity_bytes,json=capacityBytes" json:"capacity_bytes,omitempty"`
-	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddBackupRepositoryRequest) Reset() {
-	*x = AddBackupRepositoryRequest{}
-	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddBackupRepositoryRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddBackupRepositoryRequest) ProtoMessage() {}
-
-func (x *AddBackupRepositoryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddBackupRepositoryRequest.ProtoReflect.Descriptor instead.
-func (*AddBackupRepositoryRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_repository_v1_repository_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *AddBackupRepositoryRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *AddBackupRepositoryRequest) GetAddress() string {
-	if x != nil && x.Address != nil {
-		return *x.Address
-	}
-	return ""
-}
-
-func (x *AddBackupRepositoryRequest) GetType() string {
-	if x != nil && x.Type != nil {
-		return *x.Type
-	}
-	return ""
-}
-
-func (x *AddBackupRepositoryRequest) GetProvider() string {
-	if x != nil && x.Provider != nil {
-		return *x.Provider
-	}
-	return ""
-}
-
-func (x *AddBackupRepositoryRequest) GetMountOptions() string {
-	if x != nil && x.MountOptions != nil {
-		return *x.MountOptions
-	}
-	return ""
-}
-
-func (x *AddBackupRepositoryRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *AddBackupRepositoryRequest) GetCapacityBytes() int64 {
-	if x != nil && x.CapacityBytes != nil {
-		return *x.CapacityBytes
-	}
-	return 0
-}
-
-func (x *AddBackupRepositoryRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// AddBackupRepositoryResponse represents the response from adds a backup repository to store nas backups
-type AddBackupRepositoryResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddBackupRepositoryResponse) Reset() {
-	*x = AddBackupRepositoryResponse{}
-	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddBackupRepositoryResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddBackupRepositoryResponse) ProtoMessage() {}
-
-func (x *AddBackupRepositoryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddBackupRepositoryResponse.ProtoReflect.Descriptor instead.
-func (*AddBackupRepositoryResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_repository_v1_repository_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *AddBackupRepositoryResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteBackupRepositoryRequest represents the parameters for delete a backup repository
-type DeleteBackupRepositoryRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the backup repository to be deleted
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteBackupRepositoryRequest) Reset() {
-	*x = DeleteBackupRepositoryRequest{}
-	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteBackupRepositoryRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteBackupRepositoryRequest) ProtoMessage() {}
-
-func (x *DeleteBackupRepositoryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteBackupRepositoryRequest.ProtoReflect.Descriptor instead.
-func (*DeleteBackupRepositoryRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_repository_v1_repository_gen_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *DeleteBackupRepositoryRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteBackupRepositoryRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteBackupRepositoryResponse represents the response from delete a backup repository
-type DeleteBackupRepositoryResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteBackupRepositoryResponse) Reset() {
-	*x = DeleteBackupRepositoryResponse{}
-	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteBackupRepositoryResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteBackupRepositoryResponse) ProtoMessage() {}
-
-func (x *DeleteBackupRepositoryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteBackupRepositoryResponse.ProtoReflect.Descriptor instead.
-func (*DeleteBackupRepositoryResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_repository_v1_repository_gen_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *DeleteBackupRepositoryResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
 }
 
 // BackupRepository represents a BackupRepository Item
@@ -576,151 +576,6 @@ func (x *Success) GetDisplayText() string {
 	return ""
 }
 
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_repository_v1_repository_gen_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
 // Result represents a generic operation result
 type Result struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -740,7 +595,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -752,7 +607,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -765,7 +620,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_backup_repository_v1_repository_gen_proto_rawDescGZIP(), []int{9}
+	return file_cloudstack_management_backup_repository_v1_repository_gen_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -807,7 +662,24 @@ var File_cloudstack_management_backup_repository_v1_repository_gen_proto protore
 
 const file_cloudstack_management_backup_repository_v1_repository_gen_proto_rawDesc = "" +
 	"\n" +
-	"?cloudstack/management/backup/repository/v1/repository.gen.proto\x12*cloudstack.management.backup.repository.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xfe\x01\n" +
+	"?cloudstack/management/backup/repository/v1/repository.gen.proto\x12*cloudstack.management.backup.repository.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xb6\x02\n" +
+	"\x1aAddBackupRepositoryRequest\x12!\n" +
+	"\x04name\x18\x01 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12 \n" +
+	"\aaddress\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\aaddress\x12\x1a\n" +
+	"\x04type\x18\x03 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04type\x12$\n" +
+	"\bprovider\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bprovider\x12$\n" +
+	"\x0emount_options_\x18\x05 \x01(\tR\fmountOptions\x12\x1f\n" +
+	"\azone_id\x18\x06 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12%\n" +
+	"\x0ecapacity_bytes\x18\a \x01(\x03R\rcapacityBytes\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\"i\n" +
+	"\x1bAddBackupRepositoryResponse\x12J\n" +
+	"\x06result\x18\x01 \x01(\v22.cloudstack.management.backup.repository.v1.ResultR\x06result\"\\\n" +
+	"\x1dDeleteBackupRepositoryRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"l\n" +
+	"\x1eDeleteBackupRepositoryResponse\x12J\n" +
+	"\x06result\x18\x01 \x01(\v22.cloudstack.management.backup.repository.v1.ResultR\x06result\"\xfe\x01\n" +
 	"\x1dListBackupRepositoriesRequest\x12\x1e\n" +
 	"\x04name\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12\x17\n" +
@@ -821,24 +693,7 @@ const file_cloudstack_management_backup_repository_v1_repository_gen_proto_rawDe
 	"\x1eListBackupRepositoriesResponse\x12R\n" +
 	"\x05items\x18\x01 \x03(\v2<.cloudstack.management.backup.repository.v1.BackupRepositoryR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xb5\x02\n" +
-	"\x1aAddBackupRepositoryRequest\x12!\n" +
-	"\x04name\x18\x01 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12 \n" +
-	"\aaddress\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\aaddress\x12\x1a\n" +
-	"\x04type\x18\x03 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04type\x12$\n" +
-	"\bprovider\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bprovider\x12#\n" +
-	"\rmount_options\x18\x05 \x01(\tR\fmountOptions\x12\x1f\n" +
-	"\azone_id\x18\x06 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12%\n" +
-	"\x0ecapacity_bytes\x18\a \x01(\x03R\rcapacityBytes\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\"i\n" +
-	"\x1bAddBackupRepositoryResponse\x12J\n" +
-	"\x06result\x18\x01 \x01(\v22.cloudstack.management.backup.repository.v1.ResultR\x06result\"\\\n" +
-	"\x1dDeleteBackupRepositoryRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"l\n" +
-	"\x1eDeleteBackupRepositoryResponse\x12J\n" +
-	"\x06result\x18\x01 \x01(\v22.cloudstack.management.backup.repository.v1.ResultR\x06result\"\x9f\x01\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x9f\x01\n" +
 	"\x10BackupRepository\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
@@ -847,37 +702,18 @@ const file_cloudstack_management_backup_repository_v1_repository_gen_proto_rawDe
 	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xe9\x03\n" +
-	"\x04Item\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12W\n" +
-	"\adetails\x18\f \x03(\v2=.cloudstack.management.backup.repository.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xae\x04\n" +
-	"\x11RepositoryService\x12\xb1\x01\n" +
-	"\x16ListBackupRepositories\x12I.cloudstack.management.backup.repository.v1.ListBackupRepositoriesRequest\x1aJ.cloudstack.management.backup.repository.v1.ListBackupRepositoriesResponse\"\x00\x12\xa8\x01\n" +
-	"\x13AddBackupRepository\x12F.cloudstack.management.backup.repository.v1.AddBackupRepositoryRequest\x1aG.cloudstack.management.backup.repository.v1.AddBackupRepositoryResponse\"\x00\x12\xb1\x01\n" +
-	"\x16DeleteBackupRepository\x12I.cloudstack.management.backup.repository.v1.DeleteBackupRepositoryRequest\x1aJ.cloudstack.management.backup.repository.v1.DeleteBackupRepositoryResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xfe\x02\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\xc4\x04\n" +
+	"\x11RepositoryService\x12\xaf\x01\n" +
+	"\x13AddBackupRepository\x12F.cloudstack.management.backup.repository.v1.AddBackupRepositoryRequest\x1aG.cloudstack.management.backup.repository.v1.AddBackupRepositoryResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xb8\x01\n" +
+	"\x16DeleteBackupRepository\x12I.cloudstack.management.backup.repository.v1.DeleteBackupRepositoryRequest\x1aJ.cloudstack.management.backup.repository.v1.DeleteBackupRepositoryResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xb8\x01\n" +
+	"\x16ListBackupRepositories\x12I.cloudstack.management.backup.repository.v1.ListBackupRepositoriesRequest\x1aJ.cloudstack.management.backup.repository.v1.ListBackupRepositoriesResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\a\xc2>\x04\xc2>\x01\x02B\xfe\x02\n" +
 	".com.cloudstack.management.backup.repository.v1B\x12RepositoryGenProtoP\x01Zkgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/backup/repository/v1;repositoryv1\xa2\x02\x04CMBR\xaa\x02*Cloudstack.Management.Backup.Repository.V1\xca\x02*Cloudstack\\Management\\Backup\\Repository\\V1\xe2\x026Cloudstack\\Management\\Backup\\Repository\\V1\\GPBMetadata\xea\x02.Cloudstack::Management::Backup::Repository::V1b\beditionsp\xe8\a"
 
 var (
@@ -892,36 +728,33 @@ func file_cloudstack_management_backup_repository_v1_repository_gen_proto_rawDes
 	return file_cloudstack_management_backup_repository_v1_repository_gen_proto_rawDescData
 }
 
-var file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_cloudstack_management_backup_repository_v1_repository_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_cloudstack_management_backup_repository_v1_repository_gen_proto_goTypes = []any{
-	(*ListBackupRepositoriesRequest)(nil),  // 0: cloudstack.management.backup.repository.v1.ListBackupRepositoriesRequest
-	(*ListBackupRepositoriesResponse)(nil), // 1: cloudstack.management.backup.repository.v1.ListBackupRepositoriesResponse
-	(*AddBackupRepositoryRequest)(nil),     // 2: cloudstack.management.backup.repository.v1.AddBackupRepositoryRequest
-	(*AddBackupRepositoryResponse)(nil),    // 3: cloudstack.management.backup.repository.v1.AddBackupRepositoryResponse
-	(*DeleteBackupRepositoryRequest)(nil),  // 4: cloudstack.management.backup.repository.v1.DeleteBackupRepositoryRequest
-	(*DeleteBackupRepositoryResponse)(nil), // 5: cloudstack.management.backup.repository.v1.DeleteBackupRepositoryResponse
+	(*AddBackupRepositoryRequest)(nil),     // 0: cloudstack.management.backup.repository.v1.AddBackupRepositoryRequest
+	(*AddBackupRepositoryResponse)(nil),    // 1: cloudstack.management.backup.repository.v1.AddBackupRepositoryResponse
+	(*DeleteBackupRepositoryRequest)(nil),  // 2: cloudstack.management.backup.repository.v1.DeleteBackupRepositoryRequest
+	(*DeleteBackupRepositoryResponse)(nil), // 3: cloudstack.management.backup.repository.v1.DeleteBackupRepositoryResponse
+	(*ListBackupRepositoriesRequest)(nil),  // 4: cloudstack.management.backup.repository.v1.ListBackupRepositoriesRequest
+	(*ListBackupRepositoriesResponse)(nil), // 5: cloudstack.management.backup.repository.v1.ListBackupRepositoriesResponse
 	(*BackupRepository)(nil),               // 6: cloudstack.management.backup.repository.v1.BackupRepository
 	(*Success)(nil),                        // 7: cloudstack.management.backup.repository.v1.Success
-	(*Item)(nil),                           // 8: cloudstack.management.backup.repository.v1.Item
-	(*Result)(nil),                         // 9: cloudstack.management.backup.repository.v1.Result
-	nil,                                    // 10: cloudstack.management.backup.repository.v1.Item.DetailsEntry
+	(*Result)(nil),                         // 8: cloudstack.management.backup.repository.v1.Result
 }
 var file_cloudstack_management_backup_repository_v1_repository_gen_proto_depIdxs = []int32{
-	6,  // 0: cloudstack.management.backup.repository.v1.ListBackupRepositoriesResponse.items:type_name -> cloudstack.management.backup.repository.v1.BackupRepository
-	9,  // 1: cloudstack.management.backup.repository.v1.AddBackupRepositoryResponse.result:type_name -> cloudstack.management.backup.repository.v1.Result
-	9,  // 2: cloudstack.management.backup.repository.v1.DeleteBackupRepositoryResponse.result:type_name -> cloudstack.management.backup.repository.v1.Result
-	10, // 3: cloudstack.management.backup.repository.v1.Item.details:type_name -> cloudstack.management.backup.repository.v1.Item.DetailsEntry
-	0,  // 4: cloudstack.management.backup.repository.v1.RepositoryService.ListBackupRepositories:input_type -> cloudstack.management.backup.repository.v1.ListBackupRepositoriesRequest
-	2,  // 5: cloudstack.management.backup.repository.v1.RepositoryService.AddBackupRepository:input_type -> cloudstack.management.backup.repository.v1.AddBackupRepositoryRequest
-	4,  // 6: cloudstack.management.backup.repository.v1.RepositoryService.DeleteBackupRepository:input_type -> cloudstack.management.backup.repository.v1.DeleteBackupRepositoryRequest
-	1,  // 7: cloudstack.management.backup.repository.v1.RepositoryService.ListBackupRepositories:output_type -> cloudstack.management.backup.repository.v1.ListBackupRepositoriesResponse
-	3,  // 8: cloudstack.management.backup.repository.v1.RepositoryService.AddBackupRepository:output_type -> cloudstack.management.backup.repository.v1.AddBackupRepositoryResponse
-	5,  // 9: cloudstack.management.backup.repository.v1.RepositoryService.DeleteBackupRepository:output_type -> cloudstack.management.backup.repository.v1.DeleteBackupRepositoryResponse
-	7,  // [7:10] is the sub-list for method output_type
-	4,  // [4:7] is the sub-list for method input_type
-	4,  // [4:4] is the sub-list for extension type_name
-	4,  // [4:4] is the sub-list for extension extendee
-	0,  // [0:4] is the sub-list for field type_name
+	8, // 0: cloudstack.management.backup.repository.v1.AddBackupRepositoryResponse.result:type_name -> cloudstack.management.backup.repository.v1.Result
+	8, // 1: cloudstack.management.backup.repository.v1.DeleteBackupRepositoryResponse.result:type_name -> cloudstack.management.backup.repository.v1.Result
+	6, // 2: cloudstack.management.backup.repository.v1.ListBackupRepositoriesResponse.items:type_name -> cloudstack.management.backup.repository.v1.BackupRepository
+	0, // 3: cloudstack.management.backup.repository.v1.RepositoryService.AddBackupRepository:input_type -> cloudstack.management.backup.repository.v1.AddBackupRepositoryRequest
+	2, // 4: cloudstack.management.backup.repository.v1.RepositoryService.DeleteBackupRepository:input_type -> cloudstack.management.backup.repository.v1.DeleteBackupRepositoryRequest
+	4, // 5: cloudstack.management.backup.repository.v1.RepositoryService.ListBackupRepositories:input_type -> cloudstack.management.backup.repository.v1.ListBackupRepositoriesRequest
+	1, // 6: cloudstack.management.backup.repository.v1.RepositoryService.AddBackupRepository:output_type -> cloudstack.management.backup.repository.v1.AddBackupRepositoryResponse
+	3, // 7: cloudstack.management.backup.repository.v1.RepositoryService.DeleteBackupRepository:output_type -> cloudstack.management.backup.repository.v1.DeleteBackupRepositoryResponse
+	5, // 8: cloudstack.management.backup.repository.v1.RepositoryService.ListBackupRepositories:output_type -> cloudstack.management.backup.repository.v1.ListBackupRepositoriesResponse
+	6, // [6:9] is the sub-list for method output_type
+	3, // [3:6] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_backup_repository_v1_repository_gen_proto_init() }
@@ -935,7 +768,7 @@ func file_cloudstack_management_backup_repository_v1_repository_gen_proto_init()
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_backup_repository_v1_repository_gen_proto_rawDesc), len(file_cloudstack_management_backup_repository_v1_repository_gen_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

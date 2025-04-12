@@ -24,6 +24,224 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// CreateASNRangeRequest represents the parameters for creates a range of autonomous systems for bgp dynamic routing
+type CreateASNRangeRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the zone ID
+	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// the start AS Number
+	StartASNumber *int64 `protobuf:"varint,2,opt,name=start_a_s_number,json=startASNumber" json:"start_a_s_number,omitempty"`
+	// the end AS Number
+	EndASNumber *int64 `protobuf:"varint,3,opt,name=end_a_s_number,json=endASNumber" json:"end_a_s_number,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateASNRangeRequest) Reset() {
+	*x = CreateASNRangeRequest{}
+	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateASNRangeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateASNRangeRequest) ProtoMessage() {}
+
+func (x *CreateASNRangeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateASNRangeRequest.ProtoReflect.Descriptor instead.
+func (*CreateASNRangeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *CreateASNRangeRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *CreateASNRangeRequest) GetStartASNumber() int64 {
+	if x != nil && x.StartASNumber != nil {
+		return *x.StartASNumber
+	}
+	return 0
+}
+
+func (x *CreateASNRangeRequest) GetEndASNumber() int64 {
+	if x != nil && x.EndASNumber != nil {
+		return *x.EndASNumber
+	}
+	return 0
+}
+
+func (x *CreateASNRangeRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateASNRangeResponse represents the response from creates a range of autonomous systems for bgp dynamic routing
+type CreateASNRangeResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateASNRangeResponse) Reset() {
+	*x = CreateASNRangeResponse{}
+	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateASNRangeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateASNRangeResponse) ProtoMessage() {}
+
+func (x *CreateASNRangeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateASNRangeResponse.ProtoReflect.Descriptor instead.
+func (*CreateASNRangeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *CreateASNRangeResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteASNRangeRequest represents the parameters for deletes a range of autonomous systems for bgp dynamic routing
+type DeleteASNRangeRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of the AS range
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteASNRangeRequest) Reset() {
+	*x = DeleteASNRangeRequest{}
+	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteASNRangeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteASNRangeRequest) ProtoMessage() {}
+
+func (x *DeleteASNRangeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteASNRangeRequest.ProtoReflect.Descriptor instead.
+func (*DeleteASNRangeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *DeleteASNRangeRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteASNRangeRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteASNRangeResponse represents the response from deletes a range of autonomous systems for bgp dynamic routing
+type DeleteASNRangeResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteASNRangeResponse) Reset() {
+	*x = DeleteASNRangeResponse{}
+	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteASNRangeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteASNRangeResponse) ProtoMessage() {}
+
+func (x *DeleteASNRangeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteASNRangeResponse.ProtoReflect.Descriptor instead.
+func (*DeleteASNRangeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *DeleteASNRangeResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
 // ListASNRangesRequest represents the parameters for list autonomous systems number ranges
 type ListASNRangesRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -40,7 +258,7 @@ type ListASNRangesRequest struct {
 
 func (x *ListASNRangesRequest) Reset() {
 	*x = ListASNRangesRequest{}
-	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -52,7 +270,7 @@ func (x *ListASNRangesRequest) String() string {
 func (*ListASNRangesRequest) ProtoMessage() {}
 
 func (x *ListASNRangesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -65,7 +283,7 @@ func (x *ListASNRangesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListASNRangesRequest.ProtoReflect.Descriptor instead.
 func (*ListASNRangesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{0}
+	return file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ListASNRangesRequest) GetZoneId() int64 {
@@ -116,7 +334,7 @@ type ListASNRangesResponse struct {
 
 func (x *ListASNRangesResponse) Reset() {
 	*x = ListASNRangesResponse{}
-	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -128,7 +346,7 @@ func (x *ListASNRangesResponse) String() string {
 func (*ListASNRangesResponse) ProtoMessage() {}
 
 func (x *ListASNRangesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -141,7 +359,7 @@ func (x *ListASNRangesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListASNRangesResponse.ProtoReflect.Descriptor instead.
 func (*ListASNRangesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{1}
+	return file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ListASNRangesResponse) GetItems() []*ASNRange {
@@ -156,115 +374,6 @@ func (x *ListASNRangesResponse) GetTotalCount() int32 {
 		return *x.TotalCount
 	}
 	return 0
-}
-
-// ReleaseASNumberRequest represents the parameters for releases an as number back to the pool
-type ReleaseASNumberRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the zone ID
-	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// the AS Number to be released
-	AsNumber *int64 `protobuf:"varint,2,opt,name=as_number,json=asNumber" json:"as_number,omitempty"`
-	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ReleaseASNumberRequest) Reset() {
-	*x = ReleaseASNumberRequest{}
-	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ReleaseASNumberRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ReleaseASNumberRequest) ProtoMessage() {}
-
-func (x *ReleaseASNumberRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ReleaseASNumberRequest.ProtoReflect.Descriptor instead.
-func (*ReleaseASNumberRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *ReleaseASNumberRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ReleaseASNumberRequest) GetAsNumber() int64 {
-	if x != nil && x.AsNumber != nil {
-		return *x.AsNumber
-	}
-	return 0
-}
-
-func (x *ReleaseASNumberRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ReleaseASNumberResponse represents the response from releases an as number back to the pool
-type ReleaseASNumberResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ReleaseASNumberResponse) Reset() {
-	*x = ReleaseASNumberResponse{}
-	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ReleaseASNumberResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ReleaseASNumberResponse) ProtoMessage() {}
-
-func (x *ReleaseASNumberResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ReleaseASNumberResponse.ProtoReflect.Descriptor instead.
-func (*ReleaseASNumberResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *ReleaseASNumberResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
 }
 
 // ListASNumbersRequest represents the parameters for list autonomous systems numbers
@@ -297,7 +406,7 @@ type ListASNumbersRequest struct {
 
 func (x *ListASNumbersRequest) Reset() {
 	*x = ListASNumbersRequest{}
-	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -309,7 +418,7 @@ func (x *ListASNumbersRequest) String() string {
 func (*ListASNumbersRequest) ProtoMessage() {}
 
 func (x *ListASNumbersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -322,7 +431,7 @@ func (x *ListASNumbersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListASNumbersRequest.ProtoReflect.Descriptor instead.
 func (*ListASNumbersRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{4}
+	return file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ListASNumbersRequest) GetZoneId() int64 {
@@ -422,7 +531,7 @@ type ListASNumbersResponse struct {
 
 func (x *ListASNumbersResponse) Reset() {
 	*x = ListASNumbersResponse{}
-	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -434,7 +543,7 @@ func (x *ListASNumbersResponse) String() string {
 func (*ListASNumbersResponse) ProtoMessage() {}
 
 func (x *ListASNumbersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -447,7 +556,7 @@ func (x *ListASNumbersResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListASNumbersResponse.ProtoReflect.Descriptor instead.
 func (*ListASNumbersResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{5}
+	return file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *ListASNumbersResponse) GetItems() []*ASNumber {
@@ -464,35 +573,33 @@ func (x *ListASNumbersResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// CreateASNRangeRequest represents the parameters for creates a range of autonomous systems for bgp dynamic routing
-type CreateASNRangeRequest struct {
+// ReleaseASNumberRequest represents the parameters for releases an as number back to the pool
+type ReleaseASNumberRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// the zone ID
 	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// the start AS Number
-	StartASNumber *int64 `protobuf:"varint,2,opt,name=start_a_s_number,json=startASNumber" json:"start_a_s_number,omitempty"`
-	// the end AS Number
-	EndASNumber *int64 `protobuf:"varint,3,opt,name=end_a_s_number,json=endASNumber" json:"end_a_s_number,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// the AS Number to be released
+	AsNumber *int64 `protobuf:"varint,2,opt,name=as_number,json=asNumber" json:"as_number,omitempty"`
+	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateASNRangeRequest) Reset() {
-	*x = CreateASNRangeRequest{}
-	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[6]
+func (x *ReleaseASNumberRequest) Reset() {
+	*x = ReleaseASNumberRequest{}
+	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateASNRangeRequest) String() string {
+func (x *ReleaseASNumberRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateASNRangeRequest) ProtoMessage() {}
+func (*ReleaseASNumberRequest) ProtoMessage() {}
 
-func (x *CreateASNRangeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[6]
+func (x *ReleaseASNumberRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -503,41 +610,34 @@ func (x *CreateASNRangeRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateASNRangeRequest.ProtoReflect.Descriptor instead.
-func (*CreateASNRangeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{6}
+// Deprecated: Use ReleaseASNumberRequest.ProtoReflect.Descriptor instead.
+func (*ReleaseASNumberRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *CreateASNRangeRequest) GetZoneId() int64 {
+func (x *ReleaseASNumberRequest) GetZoneId() int64 {
 	if x != nil && x.ZoneId != nil {
 		return *x.ZoneId
 	}
 	return 0
 }
 
-func (x *CreateASNRangeRequest) GetStartASNumber() int64 {
-	if x != nil && x.StartASNumber != nil {
-		return *x.StartASNumber
+func (x *ReleaseASNumberRequest) GetAsNumber() int64 {
+	if x != nil && x.AsNumber != nil {
+		return *x.AsNumber
 	}
 	return 0
 }
 
-func (x *CreateASNRangeRequest) GetEndASNumber() int64 {
-	if x != nil && x.EndASNumber != nil {
-		return *x.EndASNumber
-	}
-	return 0
-}
-
-func (x *CreateASNRangeRequest) GetResponseType() string {
+func (x *ReleaseASNumberRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// CreateASNRangeResponse represents the response from creates a range of autonomous systems for bgp dynamic routing
-type CreateASNRangeResponse struct {
+// ReleaseASNumberResponse represents the response from releases an as number back to the pool
+type ReleaseASNumberResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -545,120 +645,20 @@ type CreateASNRangeResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateASNRangeResponse) Reset() {
-	*x = CreateASNRangeResponse{}
-	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateASNRangeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateASNRangeResponse) ProtoMessage() {}
-
-func (x *CreateASNRangeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateASNRangeResponse.ProtoReflect.Descriptor instead.
-func (*CreateASNRangeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *CreateASNRangeResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteASNRangeRequest represents the parameters for deletes a range of autonomous systems for bgp dynamic routing
-type DeleteASNRangeRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the AS range
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteASNRangeRequest) Reset() {
-	*x = DeleteASNRangeRequest{}
-	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteASNRangeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteASNRangeRequest) ProtoMessage() {}
-
-func (x *DeleteASNRangeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteASNRangeRequest.ProtoReflect.Descriptor instead.
-func (*DeleteASNRangeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *DeleteASNRangeRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteASNRangeRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteASNRangeResponse represents the response from deletes a range of autonomous systems for bgp dynamic routing
-type DeleteASNRangeResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteASNRangeResponse) Reset() {
-	*x = DeleteASNRangeResponse{}
+func (x *ReleaseASNumberResponse) Reset() {
+	*x = ReleaseASNumberResponse{}
 	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeleteASNRangeResponse) String() string {
+func (x *ReleaseASNumberResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteASNRangeResponse) ProtoMessage() {}
+func (*ReleaseASNumberResponse) ProtoMessage() {}
 
-func (x *DeleteASNRangeResponse) ProtoReflect() protoreflect.Message {
+func (x *ReleaseASNumberResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -670,12 +670,12 @@ func (x *DeleteASNRangeResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteASNRangeResponse.ProtoReflect.Descriptor instead.
-func (*DeleteASNRangeResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use ReleaseASNumberResponse.ProtoReflect.Descriptor instead.
+func (*ReleaseASNumberResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *DeleteASNRangeResponse) GetResult() *Result {
+func (x *ReleaseASNumberResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -901,151 +901,6 @@ func (x *Success) GetDisplayText() string {
 	return ""
 }
 
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
 // Result represents a generic operation result
 type Result struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1065,7 +920,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[14]
+	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1077,7 +932,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[14]
+	mi := &file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1090,7 +945,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{14}
+	return file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -1132,7 +987,19 @@ var File_cloudstack_management_bgp_v1_bgp_gen_proto protoreflect.FileDescriptor
 
 const file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDesc = "" +
 	"\n" +
-	"*cloudstack/management/bgp/v1/bgp.gen.proto\x12\x1ccloudstack.management.bgp.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x9f\x01\n" +
+	"*cloudstack/management/bgp/v1/bgp.gen.proto\x12\x1ccloudstack.management.bgp.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xbb\x01\n" +
+	"\x15CreateASNRangeRequest\x12\x1f\n" +
+	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12/\n" +
+	"\x10start_a_s_number\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\rstartASNumber\x12+\n" +
+	"\x0eend_a_s_number\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\vendASNumber\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"V\n" +
+	"\x16CreateASNRangeResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.bgp.v1.ResultR\x06result\"T\n" +
+	"\x15DeleteASNRangeRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"V\n" +
+	"\x16DeleteASNRangeResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.bgp.v1.ResultR\x06result\"\x9f\x01\n" +
 	"\x14ListASNRangesRequest\x12\x17\n" +
 	"\azone_id\x18\x01 \x01(\x03R\x06zoneId\x12\x18\n" +
 	"\akeyword\x18\x02 \x01(\tR\akeyword\x12\x12\n" +
@@ -1142,13 +1009,7 @@ const file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDesc = "" +
 	"\x15ListASNRangesResponse\x12<\n" +
 	"\x05items\x18\x01 \x03(\v2&.cloudstack.management.bgp.v1.ASNRangeR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x83\x01\n" +
-	"\x16ReleaseASNumberRequest\x12\x1f\n" +
-	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12#\n" +
-	"\tas_number\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\basNumber\x12#\n" +
-	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"W\n" +
-	"\x17ReleaseASNumberResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.bgp.v1.ResultR\x06result\"\xfb\x02\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xfb\x02\n" +
 	"\x14ListASNumbersRequest\x12\x17\n" +
 	"\azone_id\x18\x01 \x01(\x03R\x06zoneId\x12+\n" +
 	"\x12as_number_range_id\x18\x02 \x01(\x03R\x0fasNumberRangeId\x12\x1b\n" +
@@ -1167,18 +1028,12 @@ const file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDesc = "" +
 	"\x15ListASNumbersResponse\x12<\n" +
 	"\x05items\x18\x01 \x03(\v2&.cloudstack.management.bgp.v1.ASNumberR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xbb\x01\n" +
-	"\x15CreateASNRangeRequest\x12\x1f\n" +
-	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12/\n" +
-	"\x10start_a_s_number\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\rstartASNumber\x12+\n" +
-	"\x0eend_a_s_number\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\vendASNumber\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"V\n" +
-	"\x16CreateASNRangeResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.bgp.v1.ResultR\x06result\"T\n" +
-	"\x15DeleteASNRangeRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"V\n" +
-	"\x16DeleteASNRangeResponse\x12<\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x83\x01\n" +
+	"\x16ReleaseASNumberRequest\x12\x1f\n" +
+	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12#\n" +
+	"\tas_number\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\basNumber\x12#\n" +
+	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"W\n" +
+	"\x17ReleaseASNumberResponse\x12<\n" +
 	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.bgp.v1.ResultR\x06result\"\x97\x01\n" +
 	"\bASNRange\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
@@ -1194,40 +1049,21 @@ const file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDesc = "" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xdb\x03\n" +
-	"\x04Item\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12I\n" +
-	"\adetails\x18\f \x03(\v2/.cloudstack.management.bgp.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\x8d\x05\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\xb5\x05\n" +
 	"\n" +
-	"BgpService\x12z\n" +
-	"\rListASNRanges\x122.cloudstack.management.bgp.v1.ListASNRangesRequest\x1a3.cloudstack.management.bgp.v1.ListASNRangesResponse\"\x00\x12\x80\x01\n" +
-	"\x0fReleaseASNumber\x124.cloudstack.management.bgp.v1.ReleaseASNumberRequest\x1a5.cloudstack.management.bgp.v1.ReleaseASNumberResponse\"\x00\x12z\n" +
-	"\rListASNumbers\x122.cloudstack.management.bgp.v1.ListASNumbersRequest\x1a3.cloudstack.management.bgp.v1.ListASNumbersResponse\"\x00\x12}\n" +
-	"\x0eCreateASNRange\x123.cloudstack.management.bgp.v1.CreateASNRangeRequest\x1a4.cloudstack.management.bgp.v1.CreateASNRangeResponse\"\x00\x12}\n" +
-	"\x0eDeleteASNRange\x123.cloudstack.management.bgp.v1.DeleteASNRangeRequest\x1a4.cloudstack.management.bgp.v1.DeleteASNRangeResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\x9a\x02\n" +
+	"BgpService\x12\x84\x01\n" +
+	"\x0eCreateASNRange\x123.cloudstack.management.bgp.v1.CreateASNRangeRequest\x1a4.cloudstack.management.bgp.v1.CreateASNRangeResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x84\x01\n" +
+	"\x0eDeleteASNRange\x123.cloudstack.management.bgp.v1.DeleteASNRangeRequest\x1a4.cloudstack.management.bgp.v1.DeleteASNRangeResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x81\x01\n" +
+	"\rListASNRanges\x122.cloudstack.management.bgp.v1.ListASNRangesRequest\x1a3.cloudstack.management.bgp.v1.ListASNRangesResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x81\x01\n" +
+	"\rListASNumbers\x122.cloudstack.management.bgp.v1.ListASNumbersRequest\x1a3.cloudstack.management.bgp.v1.ListASNumbersResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x87\x01\n" +
+	"\x0fReleaseASNumber\x124.cloudstack.management.bgp.v1.ReleaseASNumberRequest\x1a5.cloudstack.management.bgp.v1.ReleaseASNumberResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\a\xc2>\x04\xc2>\x01\x02B\x9a\x02\n" +
 	" com.cloudstack.management.bgp.v1B\vBgpGenProtoP\x01ZVgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/bgp/v1;bgpv1\xa2\x02\x03CMB\xaa\x02\x1cCloudstack.Management.Bgp.V1\xca\x02\x1cCloudstack\\Management\\Bgp\\V1\xe2\x02(Cloudstack\\Management\\Bgp\\V1\\GPBMetadata\xea\x02\x1fCloudstack::Management::Bgp::V1b\beditionsp\xe8\a"
 
 var (
@@ -1242,47 +1078,44 @@ func file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDescGZIP() []byte {
 	return file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDescData
 }
 
-var file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
+var file_cloudstack_management_bgp_v1_bgp_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
 var file_cloudstack_management_bgp_v1_bgp_gen_proto_goTypes = []any{
-	(*ListASNRangesRequest)(nil),    // 0: cloudstack.management.bgp.v1.ListASNRangesRequest
-	(*ListASNRangesResponse)(nil),   // 1: cloudstack.management.bgp.v1.ListASNRangesResponse
-	(*ReleaseASNumberRequest)(nil),  // 2: cloudstack.management.bgp.v1.ReleaseASNumberRequest
-	(*ReleaseASNumberResponse)(nil), // 3: cloudstack.management.bgp.v1.ReleaseASNumberResponse
-	(*ListASNumbersRequest)(nil),    // 4: cloudstack.management.bgp.v1.ListASNumbersRequest
-	(*ListASNumbersResponse)(nil),   // 5: cloudstack.management.bgp.v1.ListASNumbersResponse
-	(*CreateASNRangeRequest)(nil),   // 6: cloudstack.management.bgp.v1.CreateASNRangeRequest
-	(*CreateASNRangeResponse)(nil),  // 7: cloudstack.management.bgp.v1.CreateASNRangeResponse
-	(*DeleteASNRangeRequest)(nil),   // 8: cloudstack.management.bgp.v1.DeleteASNRangeRequest
-	(*DeleteASNRangeResponse)(nil),  // 9: cloudstack.management.bgp.v1.DeleteASNRangeResponse
+	(*CreateASNRangeRequest)(nil),   // 0: cloudstack.management.bgp.v1.CreateASNRangeRequest
+	(*CreateASNRangeResponse)(nil),  // 1: cloudstack.management.bgp.v1.CreateASNRangeResponse
+	(*DeleteASNRangeRequest)(nil),   // 2: cloudstack.management.bgp.v1.DeleteASNRangeRequest
+	(*DeleteASNRangeResponse)(nil),  // 3: cloudstack.management.bgp.v1.DeleteASNRangeResponse
+	(*ListASNRangesRequest)(nil),    // 4: cloudstack.management.bgp.v1.ListASNRangesRequest
+	(*ListASNRangesResponse)(nil),   // 5: cloudstack.management.bgp.v1.ListASNRangesResponse
+	(*ListASNumbersRequest)(nil),    // 6: cloudstack.management.bgp.v1.ListASNumbersRequest
+	(*ListASNumbersResponse)(nil),   // 7: cloudstack.management.bgp.v1.ListASNumbersResponse
+	(*ReleaseASNumberRequest)(nil),  // 8: cloudstack.management.bgp.v1.ReleaseASNumberRequest
+	(*ReleaseASNumberResponse)(nil), // 9: cloudstack.management.bgp.v1.ReleaseASNumberResponse
 	(*ASNRange)(nil),                // 10: cloudstack.management.bgp.v1.ASNRange
 	(*ASNumber)(nil),                // 11: cloudstack.management.bgp.v1.ASNumber
 	(*Success)(nil),                 // 12: cloudstack.management.bgp.v1.Success
-	(*Item)(nil),                    // 13: cloudstack.management.bgp.v1.Item
-	(*Result)(nil),                  // 14: cloudstack.management.bgp.v1.Result
-	nil,                             // 15: cloudstack.management.bgp.v1.Item.DetailsEntry
+	(*Result)(nil),                  // 13: cloudstack.management.bgp.v1.Result
 }
 var file_cloudstack_management_bgp_v1_bgp_gen_proto_depIdxs = []int32{
-	10, // 0: cloudstack.management.bgp.v1.ListASNRangesResponse.items:type_name -> cloudstack.management.bgp.v1.ASNRange
-	14, // 1: cloudstack.management.bgp.v1.ReleaseASNumberResponse.result:type_name -> cloudstack.management.bgp.v1.Result
-	11, // 2: cloudstack.management.bgp.v1.ListASNumbersResponse.items:type_name -> cloudstack.management.bgp.v1.ASNumber
-	14, // 3: cloudstack.management.bgp.v1.CreateASNRangeResponse.result:type_name -> cloudstack.management.bgp.v1.Result
-	14, // 4: cloudstack.management.bgp.v1.DeleteASNRangeResponse.result:type_name -> cloudstack.management.bgp.v1.Result
-	15, // 5: cloudstack.management.bgp.v1.Item.details:type_name -> cloudstack.management.bgp.v1.Item.DetailsEntry
-	0,  // 6: cloudstack.management.bgp.v1.BgpService.ListASNRanges:input_type -> cloudstack.management.bgp.v1.ListASNRangesRequest
-	2,  // 7: cloudstack.management.bgp.v1.BgpService.ReleaseASNumber:input_type -> cloudstack.management.bgp.v1.ReleaseASNumberRequest
-	4,  // 8: cloudstack.management.bgp.v1.BgpService.ListASNumbers:input_type -> cloudstack.management.bgp.v1.ListASNumbersRequest
-	6,  // 9: cloudstack.management.bgp.v1.BgpService.CreateASNRange:input_type -> cloudstack.management.bgp.v1.CreateASNRangeRequest
-	8,  // 10: cloudstack.management.bgp.v1.BgpService.DeleteASNRange:input_type -> cloudstack.management.bgp.v1.DeleteASNRangeRequest
-	1,  // 11: cloudstack.management.bgp.v1.BgpService.ListASNRanges:output_type -> cloudstack.management.bgp.v1.ListASNRangesResponse
-	3,  // 12: cloudstack.management.bgp.v1.BgpService.ReleaseASNumber:output_type -> cloudstack.management.bgp.v1.ReleaseASNumberResponse
-	5,  // 13: cloudstack.management.bgp.v1.BgpService.ListASNumbers:output_type -> cloudstack.management.bgp.v1.ListASNumbersResponse
-	7,  // 14: cloudstack.management.bgp.v1.BgpService.CreateASNRange:output_type -> cloudstack.management.bgp.v1.CreateASNRangeResponse
-	9,  // 15: cloudstack.management.bgp.v1.BgpService.DeleteASNRange:output_type -> cloudstack.management.bgp.v1.DeleteASNRangeResponse
-	11, // [11:16] is the sub-list for method output_type
-	6,  // [6:11] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	13, // 0: cloudstack.management.bgp.v1.CreateASNRangeResponse.result:type_name -> cloudstack.management.bgp.v1.Result
+	13, // 1: cloudstack.management.bgp.v1.DeleteASNRangeResponse.result:type_name -> cloudstack.management.bgp.v1.Result
+	10, // 2: cloudstack.management.bgp.v1.ListASNRangesResponse.items:type_name -> cloudstack.management.bgp.v1.ASNRange
+	11, // 3: cloudstack.management.bgp.v1.ListASNumbersResponse.items:type_name -> cloudstack.management.bgp.v1.ASNumber
+	13, // 4: cloudstack.management.bgp.v1.ReleaseASNumberResponse.result:type_name -> cloudstack.management.bgp.v1.Result
+	0,  // 5: cloudstack.management.bgp.v1.BgpService.CreateASNRange:input_type -> cloudstack.management.bgp.v1.CreateASNRangeRequest
+	2,  // 6: cloudstack.management.bgp.v1.BgpService.DeleteASNRange:input_type -> cloudstack.management.bgp.v1.DeleteASNRangeRequest
+	4,  // 7: cloudstack.management.bgp.v1.BgpService.ListASNRanges:input_type -> cloudstack.management.bgp.v1.ListASNRangesRequest
+	6,  // 8: cloudstack.management.bgp.v1.BgpService.ListASNumbers:input_type -> cloudstack.management.bgp.v1.ListASNumbersRequest
+	8,  // 9: cloudstack.management.bgp.v1.BgpService.ReleaseASNumber:input_type -> cloudstack.management.bgp.v1.ReleaseASNumberRequest
+	1,  // 10: cloudstack.management.bgp.v1.BgpService.CreateASNRange:output_type -> cloudstack.management.bgp.v1.CreateASNRangeResponse
+	3,  // 11: cloudstack.management.bgp.v1.BgpService.DeleteASNRange:output_type -> cloudstack.management.bgp.v1.DeleteASNRangeResponse
+	5,  // 12: cloudstack.management.bgp.v1.BgpService.ListASNRanges:output_type -> cloudstack.management.bgp.v1.ListASNRangesResponse
+	7,  // 13: cloudstack.management.bgp.v1.BgpService.ListASNumbers:output_type -> cloudstack.management.bgp.v1.ListASNumbersResponse
+	9,  // 14: cloudstack.management.bgp.v1.BgpService.ReleaseASNumber:output_type -> cloudstack.management.bgp.v1.ReleaseASNumberResponse
+	10, // [10:15] is the sub-list for method output_type
+	5,  // [5:10] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_bgp_v1_bgp_gen_proto_init() }
@@ -1296,7 +1129,7 @@ func file_cloudstack_management_bgp_v1_bgp_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDesc), len(file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   16,
+			NumMessages:   14,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

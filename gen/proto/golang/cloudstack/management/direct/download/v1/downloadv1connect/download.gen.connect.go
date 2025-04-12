@@ -33,31 +33,31 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// DownloadServiceRevokeTemplateDirectDownloadCertificateProcedure is the fully-qualified name of
-	// the DownloadService's RevokeTemplateDirectDownloadCertificate RPC.
-	DownloadServiceRevokeTemplateDirectDownloadCertificateProcedure = "/cloudstack.management.direct.download.v1.DownloadService/RevokeTemplateDirectDownloadCertificate"
-	// DownloadServiceUploadTemplateDirectDownloadCertificateProcedure is the fully-qualified name of
-	// the DownloadService's UploadTemplateDirectDownloadCertificate RPC.
-	DownloadServiceUploadTemplateDirectDownloadCertificateProcedure = "/cloudstack.management.direct.download.v1.DownloadService/UploadTemplateDirectDownloadCertificate"
 	// DownloadServiceListTemplateDirectDownloadCertificatesProcedure is the fully-qualified name of the
 	// DownloadService's ListTemplateDirectDownloadCertificates RPC.
 	DownloadServiceListTemplateDirectDownloadCertificatesProcedure = "/cloudstack.management.direct.download.v1.DownloadService/ListTemplateDirectDownloadCertificates"
 	// DownloadServiceProvisionTemplateDirectDownloadCertificateProcedure is the fully-qualified name of
 	// the DownloadService's ProvisionTemplateDirectDownloadCertificate RPC.
 	DownloadServiceProvisionTemplateDirectDownloadCertificateProcedure = "/cloudstack.management.direct.download.v1.DownloadService/ProvisionTemplateDirectDownloadCertificate"
+	// DownloadServiceRevokeTemplateDirectDownloadCertificateProcedure is the fully-qualified name of
+	// the DownloadService's RevokeTemplateDirectDownloadCertificate RPC.
+	DownloadServiceRevokeTemplateDirectDownloadCertificateProcedure = "/cloudstack.management.direct.download.v1.DownloadService/RevokeTemplateDirectDownloadCertificate"
+	// DownloadServiceUploadTemplateDirectDownloadCertificateProcedure is the fully-qualified name of
+	// the DownloadService's UploadTemplateDirectDownloadCertificate RPC.
+	DownloadServiceUploadTemplateDirectDownloadCertificateProcedure = "/cloudstack.management.direct.download.v1.DownloadService/UploadTemplateDirectDownloadCertificate"
 )
 
 // DownloadServiceClient is a client for the
 // cloudstack.management.direct.download.v1.DownloadService service.
 type DownloadServiceClient interface {
-	// RevokeTemplateDirectDownloadCertificate Revoke a direct download certificate from hosts in a zone
-	RevokeTemplateDirectDownloadCertificate(context.Context, *connect.Request[v1.RevokeTemplateDirectDownloadCertificateRequest]) (*connect.Response[v1.RevokeTemplateDirectDownloadCertificateResponse], error)
-	// UploadTemplateDirectDownloadCertificate Upload a certificate for HTTPS direct template download on KVM hosts
-	UploadTemplateDirectDownloadCertificate(context.Context, *connect.Request[v1.UploadTemplateDirectDownloadCertificateRequest]) (*connect.Response[v1.UploadTemplateDirectDownloadCertificateResponse], error)
 	// ListTemplateDirectDownloadCertificates List the uploaded certificates for direct download templates
 	ListTemplateDirectDownloadCertificates(context.Context, *connect.Request[v1.ListTemplateDirectDownloadCertificatesRequest]) (*connect.Response[v1.ListTemplateDirectDownloadCertificatesResponse], error)
 	// ProvisionTemplateDirectDownloadCertificate Provisions a host with a direct download certificate
 	ProvisionTemplateDirectDownloadCertificate(context.Context, *connect.Request[v1.ProvisionTemplateDirectDownloadCertificateRequest]) (*connect.Response[v1.ProvisionTemplateDirectDownloadCertificateResponse], error)
+	// RevokeTemplateDirectDownloadCertificate Revoke a direct download certificate from hosts in a zone
+	RevokeTemplateDirectDownloadCertificate(context.Context, *connect.Request[v1.RevokeTemplateDirectDownloadCertificateRequest]) (*connect.Response[v1.RevokeTemplateDirectDownloadCertificateResponse], error)
+	// UploadTemplateDirectDownloadCertificate Upload a certificate for HTTPS direct template download on KVM hosts
+	UploadTemplateDirectDownloadCertificate(context.Context, *connect.Request[v1.UploadTemplateDirectDownloadCertificateRequest]) (*connect.Response[v1.UploadTemplateDirectDownloadCertificateResponse], error)
 }
 
 // NewDownloadServiceClient constructs a client for the
@@ -72,18 +72,6 @@ func NewDownloadServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 	baseURL = strings.TrimRight(baseURL, "/")
 	downloadServiceMethods := v1.File_cloudstack_management_direct_download_v1_download_gen_proto.Services().ByName("DownloadService").Methods()
 	return &downloadServiceClient{
-		revokeTemplateDirectDownloadCertificate: connect.NewClient[v1.RevokeTemplateDirectDownloadCertificateRequest, v1.RevokeTemplateDirectDownloadCertificateResponse](
-			httpClient,
-			baseURL+DownloadServiceRevokeTemplateDirectDownloadCertificateProcedure,
-			connect.WithSchema(downloadServiceMethods.ByName("RevokeTemplateDirectDownloadCertificate")),
-			connect.WithClientOptions(opts...),
-		),
-		uploadTemplateDirectDownloadCertificate: connect.NewClient[v1.UploadTemplateDirectDownloadCertificateRequest, v1.UploadTemplateDirectDownloadCertificateResponse](
-			httpClient,
-			baseURL+DownloadServiceUploadTemplateDirectDownloadCertificateProcedure,
-			connect.WithSchema(downloadServiceMethods.ByName("UploadTemplateDirectDownloadCertificate")),
-			connect.WithClientOptions(opts...),
-		),
 		listTemplateDirectDownloadCertificates: connect.NewClient[v1.ListTemplateDirectDownloadCertificatesRequest, v1.ListTemplateDirectDownloadCertificatesResponse](
 			httpClient,
 			baseURL+DownloadServiceListTemplateDirectDownloadCertificatesProcedure,
@@ -96,27 +84,27 @@ func NewDownloadServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(downloadServiceMethods.ByName("ProvisionTemplateDirectDownloadCertificate")),
 			connect.WithClientOptions(opts...),
 		),
+		revokeTemplateDirectDownloadCertificate: connect.NewClient[v1.RevokeTemplateDirectDownloadCertificateRequest, v1.RevokeTemplateDirectDownloadCertificateResponse](
+			httpClient,
+			baseURL+DownloadServiceRevokeTemplateDirectDownloadCertificateProcedure,
+			connect.WithSchema(downloadServiceMethods.ByName("RevokeTemplateDirectDownloadCertificate")),
+			connect.WithClientOptions(opts...),
+		),
+		uploadTemplateDirectDownloadCertificate: connect.NewClient[v1.UploadTemplateDirectDownloadCertificateRequest, v1.UploadTemplateDirectDownloadCertificateResponse](
+			httpClient,
+			baseURL+DownloadServiceUploadTemplateDirectDownloadCertificateProcedure,
+			connect.WithSchema(downloadServiceMethods.ByName("UploadTemplateDirectDownloadCertificate")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // downloadServiceClient implements DownloadServiceClient.
 type downloadServiceClient struct {
-	revokeTemplateDirectDownloadCertificate    *connect.Client[v1.RevokeTemplateDirectDownloadCertificateRequest, v1.RevokeTemplateDirectDownloadCertificateResponse]
-	uploadTemplateDirectDownloadCertificate    *connect.Client[v1.UploadTemplateDirectDownloadCertificateRequest, v1.UploadTemplateDirectDownloadCertificateResponse]
 	listTemplateDirectDownloadCertificates     *connect.Client[v1.ListTemplateDirectDownloadCertificatesRequest, v1.ListTemplateDirectDownloadCertificatesResponse]
 	provisionTemplateDirectDownloadCertificate *connect.Client[v1.ProvisionTemplateDirectDownloadCertificateRequest, v1.ProvisionTemplateDirectDownloadCertificateResponse]
-}
-
-// RevokeTemplateDirectDownloadCertificate calls
-// cloudstack.management.direct.download.v1.DownloadService.RevokeTemplateDirectDownloadCertificate.
-func (c *downloadServiceClient) RevokeTemplateDirectDownloadCertificate(ctx context.Context, req *connect.Request[v1.RevokeTemplateDirectDownloadCertificateRequest]) (*connect.Response[v1.RevokeTemplateDirectDownloadCertificateResponse], error) {
-	return c.revokeTemplateDirectDownloadCertificate.CallUnary(ctx, req)
-}
-
-// UploadTemplateDirectDownloadCertificate calls
-// cloudstack.management.direct.download.v1.DownloadService.UploadTemplateDirectDownloadCertificate.
-func (c *downloadServiceClient) UploadTemplateDirectDownloadCertificate(ctx context.Context, req *connect.Request[v1.UploadTemplateDirectDownloadCertificateRequest]) (*connect.Response[v1.UploadTemplateDirectDownloadCertificateResponse], error) {
-	return c.uploadTemplateDirectDownloadCertificate.CallUnary(ctx, req)
+	revokeTemplateDirectDownloadCertificate    *connect.Client[v1.RevokeTemplateDirectDownloadCertificateRequest, v1.RevokeTemplateDirectDownloadCertificateResponse]
+	uploadTemplateDirectDownloadCertificate    *connect.Client[v1.UploadTemplateDirectDownloadCertificateRequest, v1.UploadTemplateDirectDownloadCertificateResponse]
 }
 
 // ListTemplateDirectDownloadCertificates calls
@@ -131,17 +119,29 @@ func (c *downloadServiceClient) ProvisionTemplateDirectDownloadCertificate(ctx c
 	return c.provisionTemplateDirectDownloadCertificate.CallUnary(ctx, req)
 }
 
+// RevokeTemplateDirectDownloadCertificate calls
+// cloudstack.management.direct.download.v1.DownloadService.RevokeTemplateDirectDownloadCertificate.
+func (c *downloadServiceClient) RevokeTemplateDirectDownloadCertificate(ctx context.Context, req *connect.Request[v1.RevokeTemplateDirectDownloadCertificateRequest]) (*connect.Response[v1.RevokeTemplateDirectDownloadCertificateResponse], error) {
+	return c.revokeTemplateDirectDownloadCertificate.CallUnary(ctx, req)
+}
+
+// UploadTemplateDirectDownloadCertificate calls
+// cloudstack.management.direct.download.v1.DownloadService.UploadTemplateDirectDownloadCertificate.
+func (c *downloadServiceClient) UploadTemplateDirectDownloadCertificate(ctx context.Context, req *connect.Request[v1.UploadTemplateDirectDownloadCertificateRequest]) (*connect.Response[v1.UploadTemplateDirectDownloadCertificateResponse], error) {
+	return c.uploadTemplateDirectDownloadCertificate.CallUnary(ctx, req)
+}
+
 // DownloadServiceHandler is an implementation of the
 // cloudstack.management.direct.download.v1.DownloadService service.
 type DownloadServiceHandler interface {
-	// RevokeTemplateDirectDownloadCertificate Revoke a direct download certificate from hosts in a zone
-	RevokeTemplateDirectDownloadCertificate(context.Context, *connect.Request[v1.RevokeTemplateDirectDownloadCertificateRequest]) (*connect.Response[v1.RevokeTemplateDirectDownloadCertificateResponse], error)
-	// UploadTemplateDirectDownloadCertificate Upload a certificate for HTTPS direct template download on KVM hosts
-	UploadTemplateDirectDownloadCertificate(context.Context, *connect.Request[v1.UploadTemplateDirectDownloadCertificateRequest]) (*connect.Response[v1.UploadTemplateDirectDownloadCertificateResponse], error)
 	// ListTemplateDirectDownloadCertificates List the uploaded certificates for direct download templates
 	ListTemplateDirectDownloadCertificates(context.Context, *connect.Request[v1.ListTemplateDirectDownloadCertificatesRequest]) (*connect.Response[v1.ListTemplateDirectDownloadCertificatesResponse], error)
 	// ProvisionTemplateDirectDownloadCertificate Provisions a host with a direct download certificate
 	ProvisionTemplateDirectDownloadCertificate(context.Context, *connect.Request[v1.ProvisionTemplateDirectDownloadCertificateRequest]) (*connect.Response[v1.ProvisionTemplateDirectDownloadCertificateResponse], error)
+	// RevokeTemplateDirectDownloadCertificate Revoke a direct download certificate from hosts in a zone
+	RevokeTemplateDirectDownloadCertificate(context.Context, *connect.Request[v1.RevokeTemplateDirectDownloadCertificateRequest]) (*connect.Response[v1.RevokeTemplateDirectDownloadCertificateResponse], error)
+	// UploadTemplateDirectDownloadCertificate Upload a certificate for HTTPS direct template download on KVM hosts
+	UploadTemplateDirectDownloadCertificate(context.Context, *connect.Request[v1.UploadTemplateDirectDownloadCertificateRequest]) (*connect.Response[v1.UploadTemplateDirectDownloadCertificateResponse], error)
 }
 
 // NewDownloadServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -151,18 +151,6 @@ type DownloadServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewDownloadServiceHandler(svc DownloadServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	downloadServiceMethods := v1.File_cloudstack_management_direct_download_v1_download_gen_proto.Services().ByName("DownloadService").Methods()
-	downloadServiceRevokeTemplateDirectDownloadCertificateHandler := connect.NewUnaryHandler(
-		DownloadServiceRevokeTemplateDirectDownloadCertificateProcedure,
-		svc.RevokeTemplateDirectDownloadCertificate,
-		connect.WithSchema(downloadServiceMethods.ByName("RevokeTemplateDirectDownloadCertificate")),
-		connect.WithHandlerOptions(opts...),
-	)
-	downloadServiceUploadTemplateDirectDownloadCertificateHandler := connect.NewUnaryHandler(
-		DownloadServiceUploadTemplateDirectDownloadCertificateProcedure,
-		svc.UploadTemplateDirectDownloadCertificate,
-		connect.WithSchema(downloadServiceMethods.ByName("UploadTemplateDirectDownloadCertificate")),
-		connect.WithHandlerOptions(opts...),
-	)
 	downloadServiceListTemplateDirectDownloadCertificatesHandler := connect.NewUnaryHandler(
 		DownloadServiceListTemplateDirectDownloadCertificatesProcedure,
 		svc.ListTemplateDirectDownloadCertificates,
@@ -175,16 +163,28 @@ func NewDownloadServiceHandler(svc DownloadServiceHandler, opts ...connect.Handl
 		connect.WithSchema(downloadServiceMethods.ByName("ProvisionTemplateDirectDownloadCertificate")),
 		connect.WithHandlerOptions(opts...),
 	)
+	downloadServiceRevokeTemplateDirectDownloadCertificateHandler := connect.NewUnaryHandler(
+		DownloadServiceRevokeTemplateDirectDownloadCertificateProcedure,
+		svc.RevokeTemplateDirectDownloadCertificate,
+		connect.WithSchema(downloadServiceMethods.ByName("RevokeTemplateDirectDownloadCertificate")),
+		connect.WithHandlerOptions(opts...),
+	)
+	downloadServiceUploadTemplateDirectDownloadCertificateHandler := connect.NewUnaryHandler(
+		DownloadServiceUploadTemplateDirectDownloadCertificateProcedure,
+		svc.UploadTemplateDirectDownloadCertificate,
+		connect.WithSchema(downloadServiceMethods.ByName("UploadTemplateDirectDownloadCertificate")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.direct.download.v1.DownloadService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case DownloadServiceRevokeTemplateDirectDownloadCertificateProcedure:
-			downloadServiceRevokeTemplateDirectDownloadCertificateHandler.ServeHTTP(w, r)
-		case DownloadServiceUploadTemplateDirectDownloadCertificateProcedure:
-			downloadServiceUploadTemplateDirectDownloadCertificateHandler.ServeHTTP(w, r)
 		case DownloadServiceListTemplateDirectDownloadCertificatesProcedure:
 			downloadServiceListTemplateDirectDownloadCertificatesHandler.ServeHTTP(w, r)
 		case DownloadServiceProvisionTemplateDirectDownloadCertificateProcedure:
 			downloadServiceProvisionTemplateDirectDownloadCertificateHandler.ServeHTTP(w, r)
+		case DownloadServiceRevokeTemplateDirectDownloadCertificateProcedure:
+			downloadServiceRevokeTemplateDirectDownloadCertificateHandler.ServeHTTP(w, r)
+		case DownloadServiceUploadTemplateDirectDownloadCertificateProcedure:
+			downloadServiceUploadTemplateDirectDownloadCertificateHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -194,18 +194,18 @@ func NewDownloadServiceHandler(svc DownloadServiceHandler, opts ...connect.Handl
 // UnimplementedDownloadServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedDownloadServiceHandler struct{}
 
-func (UnimplementedDownloadServiceHandler) RevokeTemplateDirectDownloadCertificate(context.Context, *connect.Request[v1.RevokeTemplateDirectDownloadCertificateRequest]) (*connect.Response[v1.RevokeTemplateDirectDownloadCertificateResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.direct.download.v1.DownloadService.RevokeTemplateDirectDownloadCertificate is not implemented"))
-}
-
-func (UnimplementedDownloadServiceHandler) UploadTemplateDirectDownloadCertificate(context.Context, *connect.Request[v1.UploadTemplateDirectDownloadCertificateRequest]) (*connect.Response[v1.UploadTemplateDirectDownloadCertificateResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.direct.download.v1.DownloadService.UploadTemplateDirectDownloadCertificate is not implemented"))
-}
-
 func (UnimplementedDownloadServiceHandler) ListTemplateDirectDownloadCertificates(context.Context, *connect.Request[v1.ListTemplateDirectDownloadCertificatesRequest]) (*connect.Response[v1.ListTemplateDirectDownloadCertificatesResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.direct.download.v1.DownloadService.ListTemplateDirectDownloadCertificates is not implemented"))
 }
 
 func (UnimplementedDownloadServiceHandler) ProvisionTemplateDirectDownloadCertificate(context.Context, *connect.Request[v1.ProvisionTemplateDirectDownloadCertificateRequest]) (*connect.Response[v1.ProvisionTemplateDirectDownloadCertificateResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.direct.download.v1.DownloadService.ProvisionTemplateDirectDownloadCertificate is not implemented"))
+}
+
+func (UnimplementedDownloadServiceHandler) RevokeTemplateDirectDownloadCertificate(context.Context, *connect.Request[v1.RevokeTemplateDirectDownloadCertificateRequest]) (*connect.Response[v1.RevokeTemplateDirectDownloadCertificateResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.direct.download.v1.DownloadService.RevokeTemplateDirectDownloadCertificate is not implemented"))
+}
+
+func (UnimplementedDownloadServiceHandler) UploadTemplateDirectDownloadCertificate(context.Context, *connect.Request[v1.UploadTemplateDirectDownloadCertificateRequest]) (*connect.Response[v1.UploadTemplateDirectDownloadCertificateResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.direct.download.v1.DownloadService.UploadTemplateDirectDownloadCertificate is not implemented"))
 }

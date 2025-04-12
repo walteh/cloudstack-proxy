@@ -33,100 +33,105 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// VpcServiceUpdateVPCProcedure is the fully-qualified name of the VpcService's UpdateVPC RPC.
-	VpcServiceUpdateVPCProcedure = "/cloudstack.management.vpc.v1.VpcService/UpdateVPC"
-	// VpcServiceCreateStaticRouteProcedure is the fully-qualified name of the VpcService's
-	// CreateStaticRoute RPC.
-	VpcServiceCreateStaticRouteProcedure = "/cloudstack.management.vpc.v1.VpcService/CreateStaticRoute"
-	// VpcServiceCreateVPCOfferingProcedure is the fully-qualified name of the VpcService's
-	// CreateVPCOffering RPC.
-	VpcServiceCreateVPCOfferingProcedure = "/cloudstack.management.vpc.v1.VpcService/CreateVPCOffering"
-	// VpcServiceListVPCsCmdByAdminProcedure is the fully-qualified name of the VpcService's
-	// ListVPCsCmdByAdmin RPC.
-	VpcServiceListVPCsCmdByAdminProcedure = "/cloudstack.management.vpc.v1.VpcService/ListVPCsCmdByAdmin"
-	// VpcServiceListVPCOfferingsProcedure is the fully-qualified name of the VpcService's
-	// ListVPCOfferings RPC.
-	VpcServiceListVPCOfferingsProcedure = "/cloudstack.management.vpc.v1.VpcService/ListVPCOfferings"
-	// VpcServiceCreatePrivateGatewayByAdminProcedure is the fully-qualified name of the VpcService's
-	// CreatePrivateGatewayByAdmin RPC.
-	VpcServiceCreatePrivateGatewayByAdminProcedure = "/cloudstack.management.vpc.v1.VpcService/CreatePrivateGatewayByAdmin"
 	// VpcServiceCreatePrivateGatewayProcedure is the fully-qualified name of the VpcService's
 	// CreatePrivateGateway RPC.
 	VpcServiceCreatePrivateGatewayProcedure = "/cloudstack.management.vpc.v1.VpcService/CreatePrivateGateway"
-	// VpcServiceDeleteStaticRouteProcedure is the fully-qualified name of the VpcService's
-	// DeleteStaticRoute RPC.
-	VpcServiceDeleteStaticRouteProcedure = "/cloudstack.management.vpc.v1.VpcService/DeleteStaticRoute"
-	// VpcServiceDeleteVPCOfferingProcedure is the fully-qualified name of the VpcService's
-	// DeleteVPCOffering RPC.
-	VpcServiceDeleteVPCOfferingProcedure = "/cloudstack.management.vpc.v1.VpcService/DeleteVPCOffering"
+	// VpcServiceCreatePrivateGatewayByAdminProcedure is the fully-qualified name of the VpcService's
+	// CreatePrivateGatewayByAdmin RPC.
+	VpcServiceCreatePrivateGatewayByAdminProcedure = "/cloudstack.management.vpc.v1.VpcService/CreatePrivateGatewayByAdmin"
+	// VpcServiceCreateStaticRouteProcedure is the fully-qualified name of the VpcService's
+	// CreateStaticRoute RPC.
+	VpcServiceCreateStaticRouteProcedure = "/cloudstack.management.vpc.v1.VpcService/CreateStaticRoute"
+	// VpcServiceCreateVPCProcedure is the fully-qualified name of the VpcService's CreateVPC RPC.
+	VpcServiceCreateVPCProcedure = "/cloudstack.management.vpc.v1.VpcService/CreateVPC"
 	// VpcServiceCreateVPCCmdByAdminProcedure is the fully-qualified name of the VpcService's
 	// CreateVPCCmdByAdmin RPC.
 	VpcServiceCreateVPCCmdByAdminProcedure = "/cloudstack.management.vpc.v1.VpcService/CreateVPCCmdByAdmin"
-	// VpcServiceRestartVPCProcedure is the fully-qualified name of the VpcService's RestartVPC RPC.
-	VpcServiceRestartVPCProcedure = "/cloudstack.management.vpc.v1.VpcService/RestartVPC"
+	// VpcServiceCreateVPCOfferingProcedure is the fully-qualified name of the VpcService's
+	// CreateVPCOffering RPC.
+	VpcServiceCreateVPCOfferingProcedure = "/cloudstack.management.vpc.v1.VpcService/CreateVPCOffering"
 	// VpcServiceDeletePrivateGatewayProcedure is the fully-qualified name of the VpcService's
 	// DeletePrivateGateway RPC.
 	VpcServiceDeletePrivateGatewayProcedure = "/cloudstack.management.vpc.v1.VpcService/DeletePrivateGateway"
-	// VpcServiceListPrivateGatewaysCmdByAdminProcedure is the fully-qualified name of the VpcService's
-	// ListPrivateGatewaysCmdByAdmin RPC.
-	VpcServiceListPrivateGatewaysCmdByAdminProcedure = "/cloudstack.management.vpc.v1.VpcService/ListPrivateGatewaysCmdByAdmin"
+	// VpcServiceDeleteStaticRouteProcedure is the fully-qualified name of the VpcService's
+	// DeleteStaticRoute RPC.
+	VpcServiceDeleteStaticRouteProcedure = "/cloudstack.management.vpc.v1.VpcService/DeleteStaticRoute"
+	// VpcServiceDeleteVPCProcedure is the fully-qualified name of the VpcService's DeleteVPC RPC.
+	VpcServiceDeleteVPCProcedure = "/cloudstack.management.vpc.v1.VpcService/DeleteVPC"
+	// VpcServiceDeleteVPCOfferingProcedure is the fully-qualified name of the VpcService's
+	// DeleteVPCOffering RPC.
+	VpcServiceDeleteVPCOfferingProcedure = "/cloudstack.management.vpc.v1.VpcService/DeleteVPCOffering"
 	// VpcServiceListPrivateGatewaysProcedure is the fully-qualified name of the VpcService's
 	// ListPrivateGateways RPC.
 	VpcServiceListPrivateGatewaysProcedure = "/cloudstack.management.vpc.v1.VpcService/ListPrivateGateways"
-	// VpcServiceDeleteVPCProcedure is the fully-qualified name of the VpcService's DeleteVPC RPC.
-	VpcServiceDeleteVPCProcedure = "/cloudstack.management.vpc.v1.VpcService/DeleteVPC"
-	// VpcServiceUpdateVPCOfferingProcedure is the fully-qualified name of the VpcService's
-	// UpdateVPCOffering RPC.
-	VpcServiceUpdateVPCOfferingProcedure = "/cloudstack.management.vpc.v1.VpcService/UpdateVPCOffering"
-	// VpcServiceListVPCsProcedure is the fully-qualified name of the VpcService's ListVPCs RPC.
-	VpcServiceListVPCsProcedure = "/cloudstack.management.vpc.v1.VpcService/ListVPCs"
-	// VpcServiceCreateVPCProcedure is the fully-qualified name of the VpcService's CreateVPC RPC.
-	VpcServiceCreateVPCProcedure = "/cloudstack.management.vpc.v1.VpcService/CreateVPC"
+	// VpcServiceListPrivateGatewaysCmdByAdminProcedure is the fully-qualified name of the VpcService's
+	// ListPrivateGatewaysCmdByAdmin RPC.
+	VpcServiceListPrivateGatewaysCmdByAdminProcedure = "/cloudstack.management.vpc.v1.VpcService/ListPrivateGatewaysCmdByAdmin"
 	// VpcServiceListStaticRoutesProcedure is the fully-qualified name of the VpcService's
 	// ListStaticRoutes RPC.
 	VpcServiceListStaticRoutesProcedure = "/cloudstack.management.vpc.v1.VpcService/ListStaticRoutes"
+	// VpcServiceListVPCOfferingsProcedure is the fully-qualified name of the VpcService's
+	// ListVPCOfferings RPC.
+	VpcServiceListVPCOfferingsProcedure = "/cloudstack.management.vpc.v1.VpcService/ListVPCOfferings"
+	// VpcServiceListVPCsProcedure is the fully-qualified name of the VpcService's ListVPCs RPC.
+	VpcServiceListVPCsProcedure = "/cloudstack.management.vpc.v1.VpcService/ListVPCs"
+	// VpcServiceListVPCsCmdByAdminProcedure is the fully-qualified name of the VpcService's
+	// ListVPCsCmdByAdmin RPC.
+	VpcServiceListVPCsCmdByAdminProcedure = "/cloudstack.management.vpc.v1.VpcService/ListVPCsCmdByAdmin"
+	// VpcServiceRestartVPCProcedure is the fully-qualified name of the VpcService's RestartVPC RPC.
+	VpcServiceRestartVPCProcedure = "/cloudstack.management.vpc.v1.VpcService/RestartVPC"
+	// VpcServiceUpdateVPCProcedure is the fully-qualified name of the VpcService's UpdateVPC RPC.
+	VpcServiceUpdateVPCProcedure = "/cloudstack.management.vpc.v1.VpcService/UpdateVPC"
+	// VpcServiceUpdateVPCCmdByAdminProcedure is the fully-qualified name of the VpcService's
+	// UpdateVPCCmdByAdmin RPC.
+	VpcServiceUpdateVPCCmdByAdminProcedure = "/cloudstack.management.vpc.v1.VpcService/UpdateVPCCmdByAdmin"
+	// VpcServiceUpdateVPCOfferingProcedure is the fully-qualified name of the VpcService's
+	// UpdateVPCOffering RPC.
+	VpcServiceUpdateVPCOfferingProcedure = "/cloudstack.management.vpc.v1.VpcService/UpdateVPCOffering"
 )
 
 // VpcServiceClient is a client for the cloudstack.management.vpc.v1.VpcService service.
 type VpcServiceClient interface {
-	// UpdateVPC Updates a VPC
-	UpdateVPC(context.Context, *connect.Request[v1.UpdateVPCRequest]) (*connect.Response[v1.UpdateVPCResponse], error)
-	// CreateStaticRoute Creates a static route
-	CreateStaticRoute(context.Context, *connect.Request[v1.CreateStaticRouteRequest]) (*connect.Response[v1.CreateStaticRouteResponse], error)
-	// CreateVPCOffering Creates VPC offering
-	CreateVPCOffering(context.Context, *connect.Request[v1.CreateVPCOfferingRequest]) (*connect.Response[v1.CreateVPCOfferingResponse], error)
-	// ListVPCsCmdByAdmin Lists VPCs
-	ListVPCsCmdByAdmin(context.Context, *connect.Request[v1.ListVPCsCmdByAdminRequest]) (*connect.Response[v1.ListVPCsCmdByAdminResponse], error)
-	// ListVPCOfferings Lists VPC offerings
-	ListVPCOfferings(context.Context, *connect.Request[v1.ListVPCOfferingsRequest]) (*connect.Response[v1.ListVPCOfferingsResponse], error)
-	// CreatePrivateGatewayByAdmin Creates a private gateway
-	CreatePrivateGatewayByAdmin(context.Context, *connect.Request[v1.CreatePrivateGatewayByAdminRequest]) (*connect.Response[v1.CreatePrivateGatewayByAdminResponse], error)
 	// CreatePrivateGateway Creates a private gateway
 	CreatePrivateGateway(context.Context, *connect.Request[v1.CreatePrivateGatewayRequest]) (*connect.Response[v1.CreatePrivateGatewayResponse], error)
-	// DeleteStaticRoute Deletes a static route
-	DeleteStaticRoute(context.Context, *connect.Request[v1.DeleteStaticRouteRequest]) (*connect.Response[v1.DeleteStaticRouteResponse], error)
-	// DeleteVPCOffering Deletes VPC offering
-	DeleteVPCOffering(context.Context, *connect.Request[v1.DeleteVPCOfferingRequest]) (*connect.Response[v1.DeleteVPCOfferingResponse], error)
-	// CreateVPCCmdByAdmin Creates a VPC
-	CreateVPCCmdByAdmin(context.Context, *connect.Request[v1.CreateVPCCmdByAdminRequest]) (*connect.Response[v1.CreateVPCCmdByAdminResponse], error)
-	// RestartVPC Restarts a VPC
-	RestartVPC(context.Context, *connect.Request[v1.RestartVPCRequest]) (*connect.Response[v1.RestartVPCResponse], error)
-	// DeletePrivateGateway Deletes a Private gateway
-	DeletePrivateGateway(context.Context, *connect.Request[v1.DeletePrivateGatewayRequest]) (*connect.Response[v1.DeletePrivateGatewayResponse], error)
-	// ListPrivateGatewaysCmdByAdmin List private gateways
-	ListPrivateGatewaysCmdByAdmin(context.Context, *connect.Request[v1.ListPrivateGatewaysCmdByAdminRequest]) (*connect.Response[v1.ListPrivateGatewaysCmdByAdminResponse], error)
-	// ListPrivateGateways List private gateways
-	ListPrivateGateways(context.Context, *connect.Request[v1.ListPrivateGatewaysRequest]) (*connect.Response[v1.ListPrivateGatewaysResponse], error)
-	// DeleteVPC Deletes a VPC
-	DeleteVPC(context.Context, *connect.Request[v1.DeleteVPCRequest]) (*connect.Response[v1.DeleteVPCResponse], error)
-	// UpdateVPCOffering Updates VPC offering
-	UpdateVPCOffering(context.Context, *connect.Request[v1.UpdateVPCOfferingRequest]) (*connect.Response[v1.UpdateVPCOfferingResponse], error)
-	// ListVPCs Lists VPCs
-	ListVPCs(context.Context, *connect.Request[v1.ListVPCsRequest]) (*connect.Response[v1.ListVPCsResponse], error)
+	// CreatePrivateGatewayByAdmin Creates a private gateway
+	CreatePrivateGatewayByAdmin(context.Context, *connect.Request[v1.CreatePrivateGatewayByAdminRequest]) (*connect.Response[v1.CreatePrivateGatewayByAdminResponse], error)
+	// CreateStaticRoute Creates a static route
+	CreateStaticRoute(context.Context, *connect.Request[v1.CreateStaticRouteRequest]) (*connect.Response[v1.CreateStaticRouteResponse], error)
 	// CreateVPC Creates a VPC
 	CreateVPC(context.Context, *connect.Request[v1.CreateVPCRequest]) (*connect.Response[v1.CreateVPCResponse], error)
+	// CreateVPCCmdByAdmin Creates a VPC
+	CreateVPCCmdByAdmin(context.Context, *connect.Request[v1.CreateVPCCmdByAdminRequest]) (*connect.Response[v1.CreateVPCCmdByAdminResponse], error)
+	// CreateVPCOffering Creates VPC offering
+	CreateVPCOffering(context.Context, *connect.Request[v1.CreateVPCOfferingRequest]) (*connect.Response[v1.CreateVPCOfferingResponse], error)
+	// DeletePrivateGateway Deletes a Private gateway
+	DeletePrivateGateway(context.Context, *connect.Request[v1.DeletePrivateGatewayRequest]) (*connect.Response[v1.DeletePrivateGatewayResponse], error)
+	// DeleteStaticRoute Deletes a static route
+	DeleteStaticRoute(context.Context, *connect.Request[v1.DeleteStaticRouteRequest]) (*connect.Response[v1.DeleteStaticRouteResponse], error)
+	// DeleteVPC Deletes a VPC
+	DeleteVPC(context.Context, *connect.Request[v1.DeleteVPCRequest]) (*connect.Response[v1.DeleteVPCResponse], error)
+	// DeleteVPCOffering Deletes VPC offering
+	DeleteVPCOffering(context.Context, *connect.Request[v1.DeleteVPCOfferingRequest]) (*connect.Response[v1.DeleteVPCOfferingResponse], error)
+	// ListPrivateGateways List private gateways
+	ListPrivateGateways(context.Context, *connect.Request[v1.ListPrivateGatewaysRequest]) (*connect.Response[v1.ListPrivateGatewaysResponse], error)
+	// ListPrivateGatewaysCmdByAdmin List private gateways
+	ListPrivateGatewaysCmdByAdmin(context.Context, *connect.Request[v1.ListPrivateGatewaysCmdByAdminRequest]) (*connect.Response[v1.ListPrivateGatewaysCmdByAdminResponse], error)
 	// ListStaticRoutes Lists all static routes
 	ListStaticRoutes(context.Context, *connect.Request[v1.ListStaticRoutesRequest]) (*connect.Response[v1.ListStaticRoutesResponse], error)
+	// ListVPCOfferings Lists VPC offerings
+	ListVPCOfferings(context.Context, *connect.Request[v1.ListVPCOfferingsRequest]) (*connect.Response[v1.ListVPCOfferingsResponse], error)
+	// ListVPCs Lists VPCs
+	ListVPCs(context.Context, *connect.Request[v1.ListVPCsRequest]) (*connect.Response[v1.ListVPCsResponse], error)
+	// ListVPCsCmdByAdmin Lists VPCs
+	ListVPCsCmdByAdmin(context.Context, *connect.Request[v1.ListVPCsCmdByAdminRequest]) (*connect.Response[v1.ListVPCsCmdByAdminResponse], error)
+	// RestartVPC Restarts a VPC
+	RestartVPC(context.Context, *connect.Request[v1.RestartVPCRequest]) (*connect.Response[v1.RestartVPCResponse], error)
+	// UpdateVPC Updates a VPC
+	UpdateVPC(context.Context, *connect.Request[v1.UpdateVPCRequest]) (*connect.Response[v1.UpdateVPCResponse], error)
+	// UpdateVPCCmdByAdmin Updates a VPC
+	UpdateVPCCmdByAdmin(context.Context, *connect.Request[v1.UpdateVPCCmdByAdminRequest]) (*connect.Response[v1.UpdateVPCCmdByAdminResponse], error)
+	// UpdateVPCOffering Updates VPC offering
+	UpdateVPCOffering(context.Context, *connect.Request[v1.UpdateVPCOfferingRequest]) (*connect.Response[v1.UpdateVPCOfferingResponse], error)
 }
 
 // NewVpcServiceClient constructs a client for the cloudstack.management.vpc.v1.VpcService service.
@@ -140,34 +145,10 @@ func NewVpcServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 	baseURL = strings.TrimRight(baseURL, "/")
 	vpcServiceMethods := v1.File_cloudstack_management_vpc_v1_vpc_gen_proto.Services().ByName("VpcService").Methods()
 	return &vpcServiceClient{
-		updateVPC: connect.NewClient[v1.UpdateVPCRequest, v1.UpdateVPCResponse](
+		createPrivateGateway: connect.NewClient[v1.CreatePrivateGatewayRequest, v1.CreatePrivateGatewayResponse](
 			httpClient,
-			baseURL+VpcServiceUpdateVPCProcedure,
-			connect.WithSchema(vpcServiceMethods.ByName("UpdateVPC")),
-			connect.WithClientOptions(opts...),
-		),
-		createStaticRoute: connect.NewClient[v1.CreateStaticRouteRequest, v1.CreateStaticRouteResponse](
-			httpClient,
-			baseURL+VpcServiceCreateStaticRouteProcedure,
-			connect.WithSchema(vpcServiceMethods.ByName("CreateStaticRoute")),
-			connect.WithClientOptions(opts...),
-		),
-		createVPCOffering: connect.NewClient[v1.CreateVPCOfferingRequest, v1.CreateVPCOfferingResponse](
-			httpClient,
-			baseURL+VpcServiceCreateVPCOfferingProcedure,
-			connect.WithSchema(vpcServiceMethods.ByName("CreateVPCOffering")),
-			connect.WithClientOptions(opts...),
-		),
-		listVPCsCmdByAdmin: connect.NewClient[v1.ListVPCsCmdByAdminRequest, v1.ListVPCsCmdByAdminResponse](
-			httpClient,
-			baseURL+VpcServiceListVPCsCmdByAdminProcedure,
-			connect.WithSchema(vpcServiceMethods.ByName("ListVPCsCmdByAdmin")),
-			connect.WithClientOptions(opts...),
-		),
-		listVPCOfferings: connect.NewClient[v1.ListVPCOfferingsRequest, v1.ListVPCOfferingsResponse](
-			httpClient,
-			baseURL+VpcServiceListVPCOfferingsProcedure,
-			connect.WithSchema(vpcServiceMethods.ByName("ListVPCOfferings")),
+			baseURL+VpcServiceCreatePrivateGatewayProcedure,
+			connect.WithSchema(vpcServiceMethods.ByName("CreatePrivateGateway")),
 			connect.WithClientOptions(opts...),
 		),
 		createPrivateGatewayByAdmin: connect.NewClient[v1.CreatePrivateGatewayByAdminRequest, v1.CreatePrivateGatewayByAdminResponse](
@@ -176,70 +157,10 @@ func NewVpcServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 			connect.WithSchema(vpcServiceMethods.ByName("CreatePrivateGatewayByAdmin")),
 			connect.WithClientOptions(opts...),
 		),
-		createPrivateGateway: connect.NewClient[v1.CreatePrivateGatewayRequest, v1.CreatePrivateGatewayResponse](
+		createStaticRoute: connect.NewClient[v1.CreateStaticRouteRequest, v1.CreateStaticRouteResponse](
 			httpClient,
-			baseURL+VpcServiceCreatePrivateGatewayProcedure,
-			connect.WithSchema(vpcServiceMethods.ByName("CreatePrivateGateway")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteStaticRoute: connect.NewClient[v1.DeleteStaticRouteRequest, v1.DeleteStaticRouteResponse](
-			httpClient,
-			baseURL+VpcServiceDeleteStaticRouteProcedure,
-			connect.WithSchema(vpcServiceMethods.ByName("DeleteStaticRoute")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteVPCOffering: connect.NewClient[v1.DeleteVPCOfferingRequest, v1.DeleteVPCOfferingResponse](
-			httpClient,
-			baseURL+VpcServiceDeleteVPCOfferingProcedure,
-			connect.WithSchema(vpcServiceMethods.ByName("DeleteVPCOffering")),
-			connect.WithClientOptions(opts...),
-		),
-		createVPCCmdByAdmin: connect.NewClient[v1.CreateVPCCmdByAdminRequest, v1.CreateVPCCmdByAdminResponse](
-			httpClient,
-			baseURL+VpcServiceCreateVPCCmdByAdminProcedure,
-			connect.WithSchema(vpcServiceMethods.ByName("CreateVPCCmdByAdmin")),
-			connect.WithClientOptions(opts...),
-		),
-		restartVPC: connect.NewClient[v1.RestartVPCRequest, v1.RestartVPCResponse](
-			httpClient,
-			baseURL+VpcServiceRestartVPCProcedure,
-			connect.WithSchema(vpcServiceMethods.ByName("RestartVPC")),
-			connect.WithClientOptions(opts...),
-		),
-		deletePrivateGateway: connect.NewClient[v1.DeletePrivateGatewayRequest, v1.DeletePrivateGatewayResponse](
-			httpClient,
-			baseURL+VpcServiceDeletePrivateGatewayProcedure,
-			connect.WithSchema(vpcServiceMethods.ByName("DeletePrivateGateway")),
-			connect.WithClientOptions(opts...),
-		),
-		listPrivateGatewaysCmdByAdmin: connect.NewClient[v1.ListPrivateGatewaysCmdByAdminRequest, v1.ListPrivateGatewaysCmdByAdminResponse](
-			httpClient,
-			baseURL+VpcServiceListPrivateGatewaysCmdByAdminProcedure,
-			connect.WithSchema(vpcServiceMethods.ByName("ListPrivateGatewaysCmdByAdmin")),
-			connect.WithClientOptions(opts...),
-		),
-		listPrivateGateways: connect.NewClient[v1.ListPrivateGatewaysRequest, v1.ListPrivateGatewaysResponse](
-			httpClient,
-			baseURL+VpcServiceListPrivateGatewaysProcedure,
-			connect.WithSchema(vpcServiceMethods.ByName("ListPrivateGateways")),
-			connect.WithClientOptions(opts...),
-		),
-		deleteVPC: connect.NewClient[v1.DeleteVPCRequest, v1.DeleteVPCResponse](
-			httpClient,
-			baseURL+VpcServiceDeleteVPCProcedure,
-			connect.WithSchema(vpcServiceMethods.ByName("DeleteVPC")),
-			connect.WithClientOptions(opts...),
-		),
-		updateVPCOffering: connect.NewClient[v1.UpdateVPCOfferingRequest, v1.UpdateVPCOfferingResponse](
-			httpClient,
-			baseURL+VpcServiceUpdateVPCOfferingProcedure,
-			connect.WithSchema(vpcServiceMethods.ByName("UpdateVPCOffering")),
-			connect.WithClientOptions(opts...),
-		),
-		listVPCs: connect.NewClient[v1.ListVPCsRequest, v1.ListVPCsResponse](
-			httpClient,
-			baseURL+VpcServiceListVPCsProcedure,
-			connect.WithSchema(vpcServiceMethods.ByName("ListVPCs")),
+			baseURL+VpcServiceCreateStaticRouteProcedure,
+			connect.WithSchema(vpcServiceMethods.ByName("CreateStaticRoute")),
 			connect.WithClientOptions(opts...),
 		),
 		createVPC: connect.NewClient[v1.CreateVPCRequest, v1.CreateVPCResponse](
@@ -248,10 +169,100 @@ func NewVpcServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 			connect.WithSchema(vpcServiceMethods.ByName("CreateVPC")),
 			connect.WithClientOptions(opts...),
 		),
+		createVPCCmdByAdmin: connect.NewClient[v1.CreateVPCCmdByAdminRequest, v1.CreateVPCCmdByAdminResponse](
+			httpClient,
+			baseURL+VpcServiceCreateVPCCmdByAdminProcedure,
+			connect.WithSchema(vpcServiceMethods.ByName("CreateVPCCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		createVPCOffering: connect.NewClient[v1.CreateVPCOfferingRequest, v1.CreateVPCOfferingResponse](
+			httpClient,
+			baseURL+VpcServiceCreateVPCOfferingProcedure,
+			connect.WithSchema(vpcServiceMethods.ByName("CreateVPCOffering")),
+			connect.WithClientOptions(opts...),
+		),
+		deletePrivateGateway: connect.NewClient[v1.DeletePrivateGatewayRequest, v1.DeletePrivateGatewayResponse](
+			httpClient,
+			baseURL+VpcServiceDeletePrivateGatewayProcedure,
+			connect.WithSchema(vpcServiceMethods.ByName("DeletePrivateGateway")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteStaticRoute: connect.NewClient[v1.DeleteStaticRouteRequest, v1.DeleteStaticRouteResponse](
+			httpClient,
+			baseURL+VpcServiceDeleteStaticRouteProcedure,
+			connect.WithSchema(vpcServiceMethods.ByName("DeleteStaticRoute")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteVPC: connect.NewClient[v1.DeleteVPCRequest, v1.DeleteVPCResponse](
+			httpClient,
+			baseURL+VpcServiceDeleteVPCProcedure,
+			connect.WithSchema(vpcServiceMethods.ByName("DeleteVPC")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteVPCOffering: connect.NewClient[v1.DeleteVPCOfferingRequest, v1.DeleteVPCOfferingResponse](
+			httpClient,
+			baseURL+VpcServiceDeleteVPCOfferingProcedure,
+			connect.WithSchema(vpcServiceMethods.ByName("DeleteVPCOffering")),
+			connect.WithClientOptions(opts...),
+		),
+		listPrivateGateways: connect.NewClient[v1.ListPrivateGatewaysRequest, v1.ListPrivateGatewaysResponse](
+			httpClient,
+			baseURL+VpcServiceListPrivateGatewaysProcedure,
+			connect.WithSchema(vpcServiceMethods.ByName("ListPrivateGateways")),
+			connect.WithClientOptions(opts...),
+		),
+		listPrivateGatewaysCmdByAdmin: connect.NewClient[v1.ListPrivateGatewaysCmdByAdminRequest, v1.ListPrivateGatewaysCmdByAdminResponse](
+			httpClient,
+			baseURL+VpcServiceListPrivateGatewaysCmdByAdminProcedure,
+			connect.WithSchema(vpcServiceMethods.ByName("ListPrivateGatewaysCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
 		listStaticRoutes: connect.NewClient[v1.ListStaticRoutesRequest, v1.ListStaticRoutesResponse](
 			httpClient,
 			baseURL+VpcServiceListStaticRoutesProcedure,
 			connect.WithSchema(vpcServiceMethods.ByName("ListStaticRoutes")),
+			connect.WithClientOptions(opts...),
+		),
+		listVPCOfferings: connect.NewClient[v1.ListVPCOfferingsRequest, v1.ListVPCOfferingsResponse](
+			httpClient,
+			baseURL+VpcServiceListVPCOfferingsProcedure,
+			connect.WithSchema(vpcServiceMethods.ByName("ListVPCOfferings")),
+			connect.WithClientOptions(opts...),
+		),
+		listVPCs: connect.NewClient[v1.ListVPCsRequest, v1.ListVPCsResponse](
+			httpClient,
+			baseURL+VpcServiceListVPCsProcedure,
+			connect.WithSchema(vpcServiceMethods.ByName("ListVPCs")),
+			connect.WithClientOptions(opts...),
+		),
+		listVPCsCmdByAdmin: connect.NewClient[v1.ListVPCsCmdByAdminRequest, v1.ListVPCsCmdByAdminResponse](
+			httpClient,
+			baseURL+VpcServiceListVPCsCmdByAdminProcedure,
+			connect.WithSchema(vpcServiceMethods.ByName("ListVPCsCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		restartVPC: connect.NewClient[v1.RestartVPCRequest, v1.RestartVPCResponse](
+			httpClient,
+			baseURL+VpcServiceRestartVPCProcedure,
+			connect.WithSchema(vpcServiceMethods.ByName("RestartVPC")),
+			connect.WithClientOptions(opts...),
+		),
+		updateVPC: connect.NewClient[v1.UpdateVPCRequest, v1.UpdateVPCResponse](
+			httpClient,
+			baseURL+VpcServiceUpdateVPCProcedure,
+			connect.WithSchema(vpcServiceMethods.ByName("UpdateVPC")),
+			connect.WithClientOptions(opts...),
+		),
+		updateVPCCmdByAdmin: connect.NewClient[v1.UpdateVPCCmdByAdminRequest, v1.UpdateVPCCmdByAdminResponse](
+			httpClient,
+			baseURL+VpcServiceUpdateVPCCmdByAdminProcedure,
+			connect.WithSchema(vpcServiceMethods.ByName("UpdateVPCCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
+		updateVPCOffering: connect.NewClient[v1.UpdateVPCOfferingRequest, v1.UpdateVPCOfferingResponse](
+			httpClient,
+			baseURL+VpcServiceUpdateVPCOfferingProcedure,
+			connect.WithSchema(vpcServiceMethods.ByName("UpdateVPCOffering")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -259,50 +270,31 @@ func NewVpcServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 
 // vpcServiceClient implements VpcServiceClient.
 type vpcServiceClient struct {
-	updateVPC                     *connect.Client[v1.UpdateVPCRequest, v1.UpdateVPCResponse]
-	createStaticRoute             *connect.Client[v1.CreateStaticRouteRequest, v1.CreateStaticRouteResponse]
-	createVPCOffering             *connect.Client[v1.CreateVPCOfferingRequest, v1.CreateVPCOfferingResponse]
-	listVPCsCmdByAdmin            *connect.Client[v1.ListVPCsCmdByAdminRequest, v1.ListVPCsCmdByAdminResponse]
-	listVPCOfferings              *connect.Client[v1.ListVPCOfferingsRequest, v1.ListVPCOfferingsResponse]
-	createPrivateGatewayByAdmin   *connect.Client[v1.CreatePrivateGatewayByAdminRequest, v1.CreatePrivateGatewayByAdminResponse]
 	createPrivateGateway          *connect.Client[v1.CreatePrivateGatewayRequest, v1.CreatePrivateGatewayResponse]
-	deleteStaticRoute             *connect.Client[v1.DeleteStaticRouteRequest, v1.DeleteStaticRouteResponse]
-	deleteVPCOffering             *connect.Client[v1.DeleteVPCOfferingRequest, v1.DeleteVPCOfferingResponse]
-	createVPCCmdByAdmin           *connect.Client[v1.CreateVPCCmdByAdminRequest, v1.CreateVPCCmdByAdminResponse]
-	restartVPC                    *connect.Client[v1.RestartVPCRequest, v1.RestartVPCResponse]
-	deletePrivateGateway          *connect.Client[v1.DeletePrivateGatewayRequest, v1.DeletePrivateGatewayResponse]
-	listPrivateGatewaysCmdByAdmin *connect.Client[v1.ListPrivateGatewaysCmdByAdminRequest, v1.ListPrivateGatewaysCmdByAdminResponse]
-	listPrivateGateways           *connect.Client[v1.ListPrivateGatewaysRequest, v1.ListPrivateGatewaysResponse]
-	deleteVPC                     *connect.Client[v1.DeleteVPCRequest, v1.DeleteVPCResponse]
-	updateVPCOffering             *connect.Client[v1.UpdateVPCOfferingRequest, v1.UpdateVPCOfferingResponse]
-	listVPCs                      *connect.Client[v1.ListVPCsRequest, v1.ListVPCsResponse]
+	createPrivateGatewayByAdmin   *connect.Client[v1.CreatePrivateGatewayByAdminRequest, v1.CreatePrivateGatewayByAdminResponse]
+	createStaticRoute             *connect.Client[v1.CreateStaticRouteRequest, v1.CreateStaticRouteResponse]
 	createVPC                     *connect.Client[v1.CreateVPCRequest, v1.CreateVPCResponse]
+	createVPCCmdByAdmin           *connect.Client[v1.CreateVPCCmdByAdminRequest, v1.CreateVPCCmdByAdminResponse]
+	createVPCOffering             *connect.Client[v1.CreateVPCOfferingRequest, v1.CreateVPCOfferingResponse]
+	deletePrivateGateway          *connect.Client[v1.DeletePrivateGatewayRequest, v1.DeletePrivateGatewayResponse]
+	deleteStaticRoute             *connect.Client[v1.DeleteStaticRouteRequest, v1.DeleteStaticRouteResponse]
+	deleteVPC                     *connect.Client[v1.DeleteVPCRequest, v1.DeleteVPCResponse]
+	deleteVPCOffering             *connect.Client[v1.DeleteVPCOfferingRequest, v1.DeleteVPCOfferingResponse]
+	listPrivateGateways           *connect.Client[v1.ListPrivateGatewaysRequest, v1.ListPrivateGatewaysResponse]
+	listPrivateGatewaysCmdByAdmin *connect.Client[v1.ListPrivateGatewaysCmdByAdminRequest, v1.ListPrivateGatewaysCmdByAdminResponse]
 	listStaticRoutes              *connect.Client[v1.ListStaticRoutesRequest, v1.ListStaticRoutesResponse]
+	listVPCOfferings              *connect.Client[v1.ListVPCOfferingsRequest, v1.ListVPCOfferingsResponse]
+	listVPCs                      *connect.Client[v1.ListVPCsRequest, v1.ListVPCsResponse]
+	listVPCsCmdByAdmin            *connect.Client[v1.ListVPCsCmdByAdminRequest, v1.ListVPCsCmdByAdminResponse]
+	restartVPC                    *connect.Client[v1.RestartVPCRequest, v1.RestartVPCResponse]
+	updateVPC                     *connect.Client[v1.UpdateVPCRequest, v1.UpdateVPCResponse]
+	updateVPCCmdByAdmin           *connect.Client[v1.UpdateVPCCmdByAdminRequest, v1.UpdateVPCCmdByAdminResponse]
+	updateVPCOffering             *connect.Client[v1.UpdateVPCOfferingRequest, v1.UpdateVPCOfferingResponse]
 }
 
-// UpdateVPC calls cloudstack.management.vpc.v1.VpcService.UpdateVPC.
-func (c *vpcServiceClient) UpdateVPC(ctx context.Context, req *connect.Request[v1.UpdateVPCRequest]) (*connect.Response[v1.UpdateVPCResponse], error) {
-	return c.updateVPC.CallUnary(ctx, req)
-}
-
-// CreateStaticRoute calls cloudstack.management.vpc.v1.VpcService.CreateStaticRoute.
-func (c *vpcServiceClient) CreateStaticRoute(ctx context.Context, req *connect.Request[v1.CreateStaticRouteRequest]) (*connect.Response[v1.CreateStaticRouteResponse], error) {
-	return c.createStaticRoute.CallUnary(ctx, req)
-}
-
-// CreateVPCOffering calls cloudstack.management.vpc.v1.VpcService.CreateVPCOffering.
-func (c *vpcServiceClient) CreateVPCOffering(ctx context.Context, req *connect.Request[v1.CreateVPCOfferingRequest]) (*connect.Response[v1.CreateVPCOfferingResponse], error) {
-	return c.createVPCOffering.CallUnary(ctx, req)
-}
-
-// ListVPCsCmdByAdmin calls cloudstack.management.vpc.v1.VpcService.ListVPCsCmdByAdmin.
-func (c *vpcServiceClient) ListVPCsCmdByAdmin(ctx context.Context, req *connect.Request[v1.ListVPCsCmdByAdminRequest]) (*connect.Response[v1.ListVPCsCmdByAdminResponse], error) {
-	return c.listVPCsCmdByAdmin.CallUnary(ctx, req)
-}
-
-// ListVPCOfferings calls cloudstack.management.vpc.v1.VpcService.ListVPCOfferings.
-func (c *vpcServiceClient) ListVPCOfferings(ctx context.Context, req *connect.Request[v1.ListVPCOfferingsRequest]) (*connect.Response[v1.ListVPCOfferingsResponse], error) {
-	return c.listVPCOfferings.CallUnary(ctx, req)
+// CreatePrivateGateway calls cloudstack.management.vpc.v1.VpcService.CreatePrivateGateway.
+func (c *vpcServiceClient) CreatePrivateGateway(ctx context.Context, req *connect.Request[v1.CreatePrivateGatewayRequest]) (*connect.Response[v1.CreatePrivateGatewayResponse], error) {
+	return c.createPrivateGateway.CallUnary(ctx, req)
 }
 
 // CreatePrivateGatewayByAdmin calls
@@ -311,19 +303,14 @@ func (c *vpcServiceClient) CreatePrivateGatewayByAdmin(ctx context.Context, req 
 	return c.createPrivateGatewayByAdmin.CallUnary(ctx, req)
 }
 
-// CreatePrivateGateway calls cloudstack.management.vpc.v1.VpcService.CreatePrivateGateway.
-func (c *vpcServiceClient) CreatePrivateGateway(ctx context.Context, req *connect.Request[v1.CreatePrivateGatewayRequest]) (*connect.Response[v1.CreatePrivateGatewayResponse], error) {
-	return c.createPrivateGateway.CallUnary(ctx, req)
+// CreateStaticRoute calls cloudstack.management.vpc.v1.VpcService.CreateStaticRoute.
+func (c *vpcServiceClient) CreateStaticRoute(ctx context.Context, req *connect.Request[v1.CreateStaticRouteRequest]) (*connect.Response[v1.CreateStaticRouteResponse], error) {
+	return c.createStaticRoute.CallUnary(ctx, req)
 }
 
-// DeleteStaticRoute calls cloudstack.management.vpc.v1.VpcService.DeleteStaticRoute.
-func (c *vpcServiceClient) DeleteStaticRoute(ctx context.Context, req *connect.Request[v1.DeleteStaticRouteRequest]) (*connect.Response[v1.DeleteStaticRouteResponse], error) {
-	return c.deleteStaticRoute.CallUnary(ctx, req)
-}
-
-// DeleteVPCOffering calls cloudstack.management.vpc.v1.VpcService.DeleteVPCOffering.
-func (c *vpcServiceClient) DeleteVPCOffering(ctx context.Context, req *connect.Request[v1.DeleteVPCOfferingRequest]) (*connect.Response[v1.DeleteVPCOfferingResponse], error) {
-	return c.deleteVPCOffering.CallUnary(ctx, req)
+// CreateVPC calls cloudstack.management.vpc.v1.VpcService.CreateVPC.
+func (c *vpcServiceClient) CreateVPC(ctx context.Context, req *connect.Request[v1.CreateVPCRequest]) (*connect.Response[v1.CreateVPCResponse], error) {
+	return c.createVPC.CallUnary(ctx, req)
 }
 
 // CreateVPCCmdByAdmin calls cloudstack.management.vpc.v1.VpcService.CreateVPCCmdByAdmin.
@@ -331,14 +318,34 @@ func (c *vpcServiceClient) CreateVPCCmdByAdmin(ctx context.Context, req *connect
 	return c.createVPCCmdByAdmin.CallUnary(ctx, req)
 }
 
-// RestartVPC calls cloudstack.management.vpc.v1.VpcService.RestartVPC.
-func (c *vpcServiceClient) RestartVPC(ctx context.Context, req *connect.Request[v1.RestartVPCRequest]) (*connect.Response[v1.RestartVPCResponse], error) {
-	return c.restartVPC.CallUnary(ctx, req)
+// CreateVPCOffering calls cloudstack.management.vpc.v1.VpcService.CreateVPCOffering.
+func (c *vpcServiceClient) CreateVPCOffering(ctx context.Context, req *connect.Request[v1.CreateVPCOfferingRequest]) (*connect.Response[v1.CreateVPCOfferingResponse], error) {
+	return c.createVPCOffering.CallUnary(ctx, req)
 }
 
 // DeletePrivateGateway calls cloudstack.management.vpc.v1.VpcService.DeletePrivateGateway.
 func (c *vpcServiceClient) DeletePrivateGateway(ctx context.Context, req *connect.Request[v1.DeletePrivateGatewayRequest]) (*connect.Response[v1.DeletePrivateGatewayResponse], error) {
 	return c.deletePrivateGateway.CallUnary(ctx, req)
+}
+
+// DeleteStaticRoute calls cloudstack.management.vpc.v1.VpcService.DeleteStaticRoute.
+func (c *vpcServiceClient) DeleteStaticRoute(ctx context.Context, req *connect.Request[v1.DeleteStaticRouteRequest]) (*connect.Response[v1.DeleteStaticRouteResponse], error) {
+	return c.deleteStaticRoute.CallUnary(ctx, req)
+}
+
+// DeleteVPC calls cloudstack.management.vpc.v1.VpcService.DeleteVPC.
+func (c *vpcServiceClient) DeleteVPC(ctx context.Context, req *connect.Request[v1.DeleteVPCRequest]) (*connect.Response[v1.DeleteVPCResponse], error) {
+	return c.deleteVPC.CallUnary(ctx, req)
+}
+
+// DeleteVPCOffering calls cloudstack.management.vpc.v1.VpcService.DeleteVPCOffering.
+func (c *vpcServiceClient) DeleteVPCOffering(ctx context.Context, req *connect.Request[v1.DeleteVPCOfferingRequest]) (*connect.Response[v1.DeleteVPCOfferingResponse], error) {
+	return c.deleteVPCOffering.CallUnary(ctx, req)
+}
+
+// ListPrivateGateways calls cloudstack.management.vpc.v1.VpcService.ListPrivateGateways.
+func (c *vpcServiceClient) ListPrivateGateways(ctx context.Context, req *connect.Request[v1.ListPrivateGatewaysRequest]) (*connect.Response[v1.ListPrivateGatewaysResponse], error) {
+	return c.listPrivateGateways.CallUnary(ctx, req)
 }
 
 // ListPrivateGatewaysCmdByAdmin calls
@@ -347,19 +354,14 @@ func (c *vpcServiceClient) ListPrivateGatewaysCmdByAdmin(ctx context.Context, re
 	return c.listPrivateGatewaysCmdByAdmin.CallUnary(ctx, req)
 }
 
-// ListPrivateGateways calls cloudstack.management.vpc.v1.VpcService.ListPrivateGateways.
-func (c *vpcServiceClient) ListPrivateGateways(ctx context.Context, req *connect.Request[v1.ListPrivateGatewaysRequest]) (*connect.Response[v1.ListPrivateGatewaysResponse], error) {
-	return c.listPrivateGateways.CallUnary(ctx, req)
+// ListStaticRoutes calls cloudstack.management.vpc.v1.VpcService.ListStaticRoutes.
+func (c *vpcServiceClient) ListStaticRoutes(ctx context.Context, req *connect.Request[v1.ListStaticRoutesRequest]) (*connect.Response[v1.ListStaticRoutesResponse], error) {
+	return c.listStaticRoutes.CallUnary(ctx, req)
 }
 
-// DeleteVPC calls cloudstack.management.vpc.v1.VpcService.DeleteVPC.
-func (c *vpcServiceClient) DeleteVPC(ctx context.Context, req *connect.Request[v1.DeleteVPCRequest]) (*connect.Response[v1.DeleteVPCResponse], error) {
-	return c.deleteVPC.CallUnary(ctx, req)
-}
-
-// UpdateVPCOffering calls cloudstack.management.vpc.v1.VpcService.UpdateVPCOffering.
-func (c *vpcServiceClient) UpdateVPCOffering(ctx context.Context, req *connect.Request[v1.UpdateVPCOfferingRequest]) (*connect.Response[v1.UpdateVPCOfferingResponse], error) {
-	return c.updateVPCOffering.CallUnary(ctx, req)
+// ListVPCOfferings calls cloudstack.management.vpc.v1.VpcService.ListVPCOfferings.
+func (c *vpcServiceClient) ListVPCOfferings(ctx context.Context, req *connect.Request[v1.ListVPCOfferingsRequest]) (*connect.Response[v1.ListVPCOfferingsResponse], error) {
+	return c.listVPCOfferings.CallUnary(ctx, req)
 }
 
 // ListVPCs calls cloudstack.management.vpc.v1.VpcService.ListVPCs.
@@ -367,56 +369,73 @@ func (c *vpcServiceClient) ListVPCs(ctx context.Context, req *connect.Request[v1
 	return c.listVPCs.CallUnary(ctx, req)
 }
 
-// CreateVPC calls cloudstack.management.vpc.v1.VpcService.CreateVPC.
-func (c *vpcServiceClient) CreateVPC(ctx context.Context, req *connect.Request[v1.CreateVPCRequest]) (*connect.Response[v1.CreateVPCResponse], error) {
-	return c.createVPC.CallUnary(ctx, req)
+// ListVPCsCmdByAdmin calls cloudstack.management.vpc.v1.VpcService.ListVPCsCmdByAdmin.
+func (c *vpcServiceClient) ListVPCsCmdByAdmin(ctx context.Context, req *connect.Request[v1.ListVPCsCmdByAdminRequest]) (*connect.Response[v1.ListVPCsCmdByAdminResponse], error) {
+	return c.listVPCsCmdByAdmin.CallUnary(ctx, req)
 }
 
-// ListStaticRoutes calls cloudstack.management.vpc.v1.VpcService.ListStaticRoutes.
-func (c *vpcServiceClient) ListStaticRoutes(ctx context.Context, req *connect.Request[v1.ListStaticRoutesRequest]) (*connect.Response[v1.ListStaticRoutesResponse], error) {
-	return c.listStaticRoutes.CallUnary(ctx, req)
+// RestartVPC calls cloudstack.management.vpc.v1.VpcService.RestartVPC.
+func (c *vpcServiceClient) RestartVPC(ctx context.Context, req *connect.Request[v1.RestartVPCRequest]) (*connect.Response[v1.RestartVPCResponse], error) {
+	return c.restartVPC.CallUnary(ctx, req)
+}
+
+// UpdateVPC calls cloudstack.management.vpc.v1.VpcService.UpdateVPC.
+func (c *vpcServiceClient) UpdateVPC(ctx context.Context, req *connect.Request[v1.UpdateVPCRequest]) (*connect.Response[v1.UpdateVPCResponse], error) {
+	return c.updateVPC.CallUnary(ctx, req)
+}
+
+// UpdateVPCCmdByAdmin calls cloudstack.management.vpc.v1.VpcService.UpdateVPCCmdByAdmin.
+func (c *vpcServiceClient) UpdateVPCCmdByAdmin(ctx context.Context, req *connect.Request[v1.UpdateVPCCmdByAdminRequest]) (*connect.Response[v1.UpdateVPCCmdByAdminResponse], error) {
+	return c.updateVPCCmdByAdmin.CallUnary(ctx, req)
+}
+
+// UpdateVPCOffering calls cloudstack.management.vpc.v1.VpcService.UpdateVPCOffering.
+func (c *vpcServiceClient) UpdateVPCOffering(ctx context.Context, req *connect.Request[v1.UpdateVPCOfferingRequest]) (*connect.Response[v1.UpdateVPCOfferingResponse], error) {
+	return c.updateVPCOffering.CallUnary(ctx, req)
 }
 
 // VpcServiceHandler is an implementation of the cloudstack.management.vpc.v1.VpcService service.
 type VpcServiceHandler interface {
-	// UpdateVPC Updates a VPC
-	UpdateVPC(context.Context, *connect.Request[v1.UpdateVPCRequest]) (*connect.Response[v1.UpdateVPCResponse], error)
-	// CreateStaticRoute Creates a static route
-	CreateStaticRoute(context.Context, *connect.Request[v1.CreateStaticRouteRequest]) (*connect.Response[v1.CreateStaticRouteResponse], error)
-	// CreateVPCOffering Creates VPC offering
-	CreateVPCOffering(context.Context, *connect.Request[v1.CreateVPCOfferingRequest]) (*connect.Response[v1.CreateVPCOfferingResponse], error)
-	// ListVPCsCmdByAdmin Lists VPCs
-	ListVPCsCmdByAdmin(context.Context, *connect.Request[v1.ListVPCsCmdByAdminRequest]) (*connect.Response[v1.ListVPCsCmdByAdminResponse], error)
-	// ListVPCOfferings Lists VPC offerings
-	ListVPCOfferings(context.Context, *connect.Request[v1.ListVPCOfferingsRequest]) (*connect.Response[v1.ListVPCOfferingsResponse], error)
-	// CreatePrivateGatewayByAdmin Creates a private gateway
-	CreatePrivateGatewayByAdmin(context.Context, *connect.Request[v1.CreatePrivateGatewayByAdminRequest]) (*connect.Response[v1.CreatePrivateGatewayByAdminResponse], error)
 	// CreatePrivateGateway Creates a private gateway
 	CreatePrivateGateway(context.Context, *connect.Request[v1.CreatePrivateGatewayRequest]) (*connect.Response[v1.CreatePrivateGatewayResponse], error)
-	// DeleteStaticRoute Deletes a static route
-	DeleteStaticRoute(context.Context, *connect.Request[v1.DeleteStaticRouteRequest]) (*connect.Response[v1.DeleteStaticRouteResponse], error)
-	// DeleteVPCOffering Deletes VPC offering
-	DeleteVPCOffering(context.Context, *connect.Request[v1.DeleteVPCOfferingRequest]) (*connect.Response[v1.DeleteVPCOfferingResponse], error)
-	// CreateVPCCmdByAdmin Creates a VPC
-	CreateVPCCmdByAdmin(context.Context, *connect.Request[v1.CreateVPCCmdByAdminRequest]) (*connect.Response[v1.CreateVPCCmdByAdminResponse], error)
-	// RestartVPC Restarts a VPC
-	RestartVPC(context.Context, *connect.Request[v1.RestartVPCRequest]) (*connect.Response[v1.RestartVPCResponse], error)
-	// DeletePrivateGateway Deletes a Private gateway
-	DeletePrivateGateway(context.Context, *connect.Request[v1.DeletePrivateGatewayRequest]) (*connect.Response[v1.DeletePrivateGatewayResponse], error)
-	// ListPrivateGatewaysCmdByAdmin List private gateways
-	ListPrivateGatewaysCmdByAdmin(context.Context, *connect.Request[v1.ListPrivateGatewaysCmdByAdminRequest]) (*connect.Response[v1.ListPrivateGatewaysCmdByAdminResponse], error)
-	// ListPrivateGateways List private gateways
-	ListPrivateGateways(context.Context, *connect.Request[v1.ListPrivateGatewaysRequest]) (*connect.Response[v1.ListPrivateGatewaysResponse], error)
-	// DeleteVPC Deletes a VPC
-	DeleteVPC(context.Context, *connect.Request[v1.DeleteVPCRequest]) (*connect.Response[v1.DeleteVPCResponse], error)
-	// UpdateVPCOffering Updates VPC offering
-	UpdateVPCOffering(context.Context, *connect.Request[v1.UpdateVPCOfferingRequest]) (*connect.Response[v1.UpdateVPCOfferingResponse], error)
-	// ListVPCs Lists VPCs
-	ListVPCs(context.Context, *connect.Request[v1.ListVPCsRequest]) (*connect.Response[v1.ListVPCsResponse], error)
+	// CreatePrivateGatewayByAdmin Creates a private gateway
+	CreatePrivateGatewayByAdmin(context.Context, *connect.Request[v1.CreatePrivateGatewayByAdminRequest]) (*connect.Response[v1.CreatePrivateGatewayByAdminResponse], error)
+	// CreateStaticRoute Creates a static route
+	CreateStaticRoute(context.Context, *connect.Request[v1.CreateStaticRouteRequest]) (*connect.Response[v1.CreateStaticRouteResponse], error)
 	// CreateVPC Creates a VPC
 	CreateVPC(context.Context, *connect.Request[v1.CreateVPCRequest]) (*connect.Response[v1.CreateVPCResponse], error)
+	// CreateVPCCmdByAdmin Creates a VPC
+	CreateVPCCmdByAdmin(context.Context, *connect.Request[v1.CreateVPCCmdByAdminRequest]) (*connect.Response[v1.CreateVPCCmdByAdminResponse], error)
+	// CreateVPCOffering Creates VPC offering
+	CreateVPCOffering(context.Context, *connect.Request[v1.CreateVPCOfferingRequest]) (*connect.Response[v1.CreateVPCOfferingResponse], error)
+	// DeletePrivateGateway Deletes a Private gateway
+	DeletePrivateGateway(context.Context, *connect.Request[v1.DeletePrivateGatewayRequest]) (*connect.Response[v1.DeletePrivateGatewayResponse], error)
+	// DeleteStaticRoute Deletes a static route
+	DeleteStaticRoute(context.Context, *connect.Request[v1.DeleteStaticRouteRequest]) (*connect.Response[v1.DeleteStaticRouteResponse], error)
+	// DeleteVPC Deletes a VPC
+	DeleteVPC(context.Context, *connect.Request[v1.DeleteVPCRequest]) (*connect.Response[v1.DeleteVPCResponse], error)
+	// DeleteVPCOffering Deletes VPC offering
+	DeleteVPCOffering(context.Context, *connect.Request[v1.DeleteVPCOfferingRequest]) (*connect.Response[v1.DeleteVPCOfferingResponse], error)
+	// ListPrivateGateways List private gateways
+	ListPrivateGateways(context.Context, *connect.Request[v1.ListPrivateGatewaysRequest]) (*connect.Response[v1.ListPrivateGatewaysResponse], error)
+	// ListPrivateGatewaysCmdByAdmin List private gateways
+	ListPrivateGatewaysCmdByAdmin(context.Context, *connect.Request[v1.ListPrivateGatewaysCmdByAdminRequest]) (*connect.Response[v1.ListPrivateGatewaysCmdByAdminResponse], error)
 	// ListStaticRoutes Lists all static routes
 	ListStaticRoutes(context.Context, *connect.Request[v1.ListStaticRoutesRequest]) (*connect.Response[v1.ListStaticRoutesResponse], error)
+	// ListVPCOfferings Lists VPC offerings
+	ListVPCOfferings(context.Context, *connect.Request[v1.ListVPCOfferingsRequest]) (*connect.Response[v1.ListVPCOfferingsResponse], error)
+	// ListVPCs Lists VPCs
+	ListVPCs(context.Context, *connect.Request[v1.ListVPCsRequest]) (*connect.Response[v1.ListVPCsResponse], error)
+	// ListVPCsCmdByAdmin Lists VPCs
+	ListVPCsCmdByAdmin(context.Context, *connect.Request[v1.ListVPCsCmdByAdminRequest]) (*connect.Response[v1.ListVPCsCmdByAdminResponse], error)
+	// RestartVPC Restarts a VPC
+	RestartVPC(context.Context, *connect.Request[v1.RestartVPCRequest]) (*connect.Response[v1.RestartVPCResponse], error)
+	// UpdateVPC Updates a VPC
+	UpdateVPC(context.Context, *connect.Request[v1.UpdateVPCRequest]) (*connect.Response[v1.UpdateVPCResponse], error)
+	// UpdateVPCCmdByAdmin Updates a VPC
+	UpdateVPCCmdByAdmin(context.Context, *connect.Request[v1.UpdateVPCCmdByAdminRequest]) (*connect.Response[v1.UpdateVPCCmdByAdminResponse], error)
+	// UpdateVPCOffering Updates VPC offering
+	UpdateVPCOffering(context.Context, *connect.Request[v1.UpdateVPCOfferingRequest]) (*connect.Response[v1.UpdateVPCOfferingResponse], error)
 }
 
 // NewVpcServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -426,34 +445,10 @@ type VpcServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewVpcServiceHandler(svc VpcServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	vpcServiceMethods := v1.File_cloudstack_management_vpc_v1_vpc_gen_proto.Services().ByName("VpcService").Methods()
-	vpcServiceUpdateVPCHandler := connect.NewUnaryHandler(
-		VpcServiceUpdateVPCProcedure,
-		svc.UpdateVPC,
-		connect.WithSchema(vpcServiceMethods.ByName("UpdateVPC")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vpcServiceCreateStaticRouteHandler := connect.NewUnaryHandler(
-		VpcServiceCreateStaticRouteProcedure,
-		svc.CreateStaticRoute,
-		connect.WithSchema(vpcServiceMethods.ByName("CreateStaticRoute")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vpcServiceCreateVPCOfferingHandler := connect.NewUnaryHandler(
-		VpcServiceCreateVPCOfferingProcedure,
-		svc.CreateVPCOffering,
-		connect.WithSchema(vpcServiceMethods.ByName("CreateVPCOffering")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vpcServiceListVPCsCmdByAdminHandler := connect.NewUnaryHandler(
-		VpcServiceListVPCsCmdByAdminProcedure,
-		svc.ListVPCsCmdByAdmin,
-		connect.WithSchema(vpcServiceMethods.ByName("ListVPCsCmdByAdmin")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vpcServiceListVPCOfferingsHandler := connect.NewUnaryHandler(
-		VpcServiceListVPCOfferingsProcedure,
-		svc.ListVPCOfferings,
-		connect.WithSchema(vpcServiceMethods.ByName("ListVPCOfferings")),
+	vpcServiceCreatePrivateGatewayHandler := connect.NewUnaryHandler(
+		VpcServiceCreatePrivateGatewayProcedure,
+		svc.CreatePrivateGateway,
+		connect.WithSchema(vpcServiceMethods.ByName("CreatePrivateGateway")),
 		connect.WithHandlerOptions(opts...),
 	)
 	vpcServiceCreatePrivateGatewayByAdminHandler := connect.NewUnaryHandler(
@@ -462,70 +457,10 @@ func NewVpcServiceHandler(svc VpcServiceHandler, opts ...connect.HandlerOption) 
 		connect.WithSchema(vpcServiceMethods.ByName("CreatePrivateGatewayByAdmin")),
 		connect.WithHandlerOptions(opts...),
 	)
-	vpcServiceCreatePrivateGatewayHandler := connect.NewUnaryHandler(
-		VpcServiceCreatePrivateGatewayProcedure,
-		svc.CreatePrivateGateway,
-		connect.WithSchema(vpcServiceMethods.ByName("CreatePrivateGateway")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vpcServiceDeleteStaticRouteHandler := connect.NewUnaryHandler(
-		VpcServiceDeleteStaticRouteProcedure,
-		svc.DeleteStaticRoute,
-		connect.WithSchema(vpcServiceMethods.ByName("DeleteStaticRoute")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vpcServiceDeleteVPCOfferingHandler := connect.NewUnaryHandler(
-		VpcServiceDeleteVPCOfferingProcedure,
-		svc.DeleteVPCOffering,
-		connect.WithSchema(vpcServiceMethods.ByName("DeleteVPCOffering")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vpcServiceCreateVPCCmdByAdminHandler := connect.NewUnaryHandler(
-		VpcServiceCreateVPCCmdByAdminProcedure,
-		svc.CreateVPCCmdByAdmin,
-		connect.WithSchema(vpcServiceMethods.ByName("CreateVPCCmdByAdmin")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vpcServiceRestartVPCHandler := connect.NewUnaryHandler(
-		VpcServiceRestartVPCProcedure,
-		svc.RestartVPC,
-		connect.WithSchema(vpcServiceMethods.ByName("RestartVPC")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vpcServiceDeletePrivateGatewayHandler := connect.NewUnaryHandler(
-		VpcServiceDeletePrivateGatewayProcedure,
-		svc.DeletePrivateGateway,
-		connect.WithSchema(vpcServiceMethods.ByName("DeletePrivateGateway")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vpcServiceListPrivateGatewaysCmdByAdminHandler := connect.NewUnaryHandler(
-		VpcServiceListPrivateGatewaysCmdByAdminProcedure,
-		svc.ListPrivateGatewaysCmdByAdmin,
-		connect.WithSchema(vpcServiceMethods.ByName("ListPrivateGatewaysCmdByAdmin")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vpcServiceListPrivateGatewaysHandler := connect.NewUnaryHandler(
-		VpcServiceListPrivateGatewaysProcedure,
-		svc.ListPrivateGateways,
-		connect.WithSchema(vpcServiceMethods.ByName("ListPrivateGateways")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vpcServiceDeleteVPCHandler := connect.NewUnaryHandler(
-		VpcServiceDeleteVPCProcedure,
-		svc.DeleteVPC,
-		connect.WithSchema(vpcServiceMethods.ByName("DeleteVPC")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vpcServiceUpdateVPCOfferingHandler := connect.NewUnaryHandler(
-		VpcServiceUpdateVPCOfferingProcedure,
-		svc.UpdateVPCOffering,
-		connect.WithSchema(vpcServiceMethods.ByName("UpdateVPCOffering")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vpcServiceListVPCsHandler := connect.NewUnaryHandler(
-		VpcServiceListVPCsProcedure,
-		svc.ListVPCs,
-		connect.WithSchema(vpcServiceMethods.ByName("ListVPCs")),
+	vpcServiceCreateStaticRouteHandler := connect.NewUnaryHandler(
+		VpcServiceCreateStaticRouteProcedure,
+		svc.CreateStaticRoute,
+		connect.WithSchema(vpcServiceMethods.ByName("CreateStaticRoute")),
 		connect.WithHandlerOptions(opts...),
 	)
 	vpcServiceCreateVPCHandler := connect.NewUnaryHandler(
@@ -534,52 +469,144 @@ func NewVpcServiceHandler(svc VpcServiceHandler, opts ...connect.HandlerOption) 
 		connect.WithSchema(vpcServiceMethods.ByName("CreateVPC")),
 		connect.WithHandlerOptions(opts...),
 	)
+	vpcServiceCreateVPCCmdByAdminHandler := connect.NewUnaryHandler(
+		VpcServiceCreateVPCCmdByAdminProcedure,
+		svc.CreateVPCCmdByAdmin,
+		connect.WithSchema(vpcServiceMethods.ByName("CreateVPCCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vpcServiceCreateVPCOfferingHandler := connect.NewUnaryHandler(
+		VpcServiceCreateVPCOfferingProcedure,
+		svc.CreateVPCOffering,
+		connect.WithSchema(vpcServiceMethods.ByName("CreateVPCOffering")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vpcServiceDeletePrivateGatewayHandler := connect.NewUnaryHandler(
+		VpcServiceDeletePrivateGatewayProcedure,
+		svc.DeletePrivateGateway,
+		connect.WithSchema(vpcServiceMethods.ByName("DeletePrivateGateway")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vpcServiceDeleteStaticRouteHandler := connect.NewUnaryHandler(
+		VpcServiceDeleteStaticRouteProcedure,
+		svc.DeleteStaticRoute,
+		connect.WithSchema(vpcServiceMethods.ByName("DeleteStaticRoute")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vpcServiceDeleteVPCHandler := connect.NewUnaryHandler(
+		VpcServiceDeleteVPCProcedure,
+		svc.DeleteVPC,
+		connect.WithSchema(vpcServiceMethods.ByName("DeleteVPC")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vpcServiceDeleteVPCOfferingHandler := connect.NewUnaryHandler(
+		VpcServiceDeleteVPCOfferingProcedure,
+		svc.DeleteVPCOffering,
+		connect.WithSchema(vpcServiceMethods.ByName("DeleteVPCOffering")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vpcServiceListPrivateGatewaysHandler := connect.NewUnaryHandler(
+		VpcServiceListPrivateGatewaysProcedure,
+		svc.ListPrivateGateways,
+		connect.WithSchema(vpcServiceMethods.ByName("ListPrivateGateways")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vpcServiceListPrivateGatewaysCmdByAdminHandler := connect.NewUnaryHandler(
+		VpcServiceListPrivateGatewaysCmdByAdminProcedure,
+		svc.ListPrivateGatewaysCmdByAdmin,
+		connect.WithSchema(vpcServiceMethods.ByName("ListPrivateGatewaysCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
 	vpcServiceListStaticRoutesHandler := connect.NewUnaryHandler(
 		VpcServiceListStaticRoutesProcedure,
 		svc.ListStaticRoutes,
 		connect.WithSchema(vpcServiceMethods.ByName("ListStaticRoutes")),
 		connect.WithHandlerOptions(opts...),
 	)
+	vpcServiceListVPCOfferingsHandler := connect.NewUnaryHandler(
+		VpcServiceListVPCOfferingsProcedure,
+		svc.ListVPCOfferings,
+		connect.WithSchema(vpcServiceMethods.ByName("ListVPCOfferings")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vpcServiceListVPCsHandler := connect.NewUnaryHandler(
+		VpcServiceListVPCsProcedure,
+		svc.ListVPCs,
+		connect.WithSchema(vpcServiceMethods.ByName("ListVPCs")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vpcServiceListVPCsCmdByAdminHandler := connect.NewUnaryHandler(
+		VpcServiceListVPCsCmdByAdminProcedure,
+		svc.ListVPCsCmdByAdmin,
+		connect.WithSchema(vpcServiceMethods.ByName("ListVPCsCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vpcServiceRestartVPCHandler := connect.NewUnaryHandler(
+		VpcServiceRestartVPCProcedure,
+		svc.RestartVPC,
+		connect.WithSchema(vpcServiceMethods.ByName("RestartVPC")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vpcServiceUpdateVPCHandler := connect.NewUnaryHandler(
+		VpcServiceUpdateVPCProcedure,
+		svc.UpdateVPC,
+		connect.WithSchema(vpcServiceMethods.ByName("UpdateVPC")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vpcServiceUpdateVPCCmdByAdminHandler := connect.NewUnaryHandler(
+		VpcServiceUpdateVPCCmdByAdminProcedure,
+		svc.UpdateVPCCmdByAdmin,
+		connect.WithSchema(vpcServiceMethods.ByName("UpdateVPCCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vpcServiceUpdateVPCOfferingHandler := connect.NewUnaryHandler(
+		VpcServiceUpdateVPCOfferingProcedure,
+		svc.UpdateVPCOffering,
+		connect.WithSchema(vpcServiceMethods.ByName("UpdateVPCOffering")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.vpc.v1.VpcService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case VpcServiceUpdateVPCProcedure:
-			vpcServiceUpdateVPCHandler.ServeHTTP(w, r)
-		case VpcServiceCreateStaticRouteProcedure:
-			vpcServiceCreateStaticRouteHandler.ServeHTTP(w, r)
-		case VpcServiceCreateVPCOfferingProcedure:
-			vpcServiceCreateVPCOfferingHandler.ServeHTTP(w, r)
-		case VpcServiceListVPCsCmdByAdminProcedure:
-			vpcServiceListVPCsCmdByAdminHandler.ServeHTTP(w, r)
-		case VpcServiceListVPCOfferingsProcedure:
-			vpcServiceListVPCOfferingsHandler.ServeHTTP(w, r)
-		case VpcServiceCreatePrivateGatewayByAdminProcedure:
-			vpcServiceCreatePrivateGatewayByAdminHandler.ServeHTTP(w, r)
 		case VpcServiceCreatePrivateGatewayProcedure:
 			vpcServiceCreatePrivateGatewayHandler.ServeHTTP(w, r)
-		case VpcServiceDeleteStaticRouteProcedure:
-			vpcServiceDeleteStaticRouteHandler.ServeHTTP(w, r)
-		case VpcServiceDeleteVPCOfferingProcedure:
-			vpcServiceDeleteVPCOfferingHandler.ServeHTTP(w, r)
-		case VpcServiceCreateVPCCmdByAdminProcedure:
-			vpcServiceCreateVPCCmdByAdminHandler.ServeHTTP(w, r)
-		case VpcServiceRestartVPCProcedure:
-			vpcServiceRestartVPCHandler.ServeHTTP(w, r)
-		case VpcServiceDeletePrivateGatewayProcedure:
-			vpcServiceDeletePrivateGatewayHandler.ServeHTTP(w, r)
-		case VpcServiceListPrivateGatewaysCmdByAdminProcedure:
-			vpcServiceListPrivateGatewaysCmdByAdminHandler.ServeHTTP(w, r)
-		case VpcServiceListPrivateGatewaysProcedure:
-			vpcServiceListPrivateGatewaysHandler.ServeHTTP(w, r)
-		case VpcServiceDeleteVPCProcedure:
-			vpcServiceDeleteVPCHandler.ServeHTTP(w, r)
-		case VpcServiceUpdateVPCOfferingProcedure:
-			vpcServiceUpdateVPCOfferingHandler.ServeHTTP(w, r)
-		case VpcServiceListVPCsProcedure:
-			vpcServiceListVPCsHandler.ServeHTTP(w, r)
+		case VpcServiceCreatePrivateGatewayByAdminProcedure:
+			vpcServiceCreatePrivateGatewayByAdminHandler.ServeHTTP(w, r)
+		case VpcServiceCreateStaticRouteProcedure:
+			vpcServiceCreateStaticRouteHandler.ServeHTTP(w, r)
 		case VpcServiceCreateVPCProcedure:
 			vpcServiceCreateVPCHandler.ServeHTTP(w, r)
+		case VpcServiceCreateVPCCmdByAdminProcedure:
+			vpcServiceCreateVPCCmdByAdminHandler.ServeHTTP(w, r)
+		case VpcServiceCreateVPCOfferingProcedure:
+			vpcServiceCreateVPCOfferingHandler.ServeHTTP(w, r)
+		case VpcServiceDeletePrivateGatewayProcedure:
+			vpcServiceDeletePrivateGatewayHandler.ServeHTTP(w, r)
+		case VpcServiceDeleteStaticRouteProcedure:
+			vpcServiceDeleteStaticRouteHandler.ServeHTTP(w, r)
+		case VpcServiceDeleteVPCProcedure:
+			vpcServiceDeleteVPCHandler.ServeHTTP(w, r)
+		case VpcServiceDeleteVPCOfferingProcedure:
+			vpcServiceDeleteVPCOfferingHandler.ServeHTTP(w, r)
+		case VpcServiceListPrivateGatewaysProcedure:
+			vpcServiceListPrivateGatewaysHandler.ServeHTTP(w, r)
+		case VpcServiceListPrivateGatewaysCmdByAdminProcedure:
+			vpcServiceListPrivateGatewaysCmdByAdminHandler.ServeHTTP(w, r)
 		case VpcServiceListStaticRoutesProcedure:
 			vpcServiceListStaticRoutesHandler.ServeHTTP(w, r)
+		case VpcServiceListVPCOfferingsProcedure:
+			vpcServiceListVPCOfferingsHandler.ServeHTTP(w, r)
+		case VpcServiceListVPCsProcedure:
+			vpcServiceListVPCsHandler.ServeHTTP(w, r)
+		case VpcServiceListVPCsCmdByAdminProcedure:
+			vpcServiceListVPCsCmdByAdminHandler.ServeHTTP(w, r)
+		case VpcServiceRestartVPCProcedure:
+			vpcServiceRestartVPCHandler.ServeHTTP(w, r)
+		case VpcServiceUpdateVPCProcedure:
+			vpcServiceUpdateVPCHandler.ServeHTTP(w, r)
+		case VpcServiceUpdateVPCCmdByAdminProcedure:
+			vpcServiceUpdateVPCCmdByAdminHandler.ServeHTTP(w, r)
+		case VpcServiceUpdateVPCOfferingProcedure:
+			vpcServiceUpdateVPCOfferingHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -589,78 +616,82 @@ func NewVpcServiceHandler(svc VpcServiceHandler, opts ...connect.HandlerOption) 
 // UnimplementedVpcServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedVpcServiceHandler struct{}
 
-func (UnimplementedVpcServiceHandler) UpdateVPC(context.Context, *connect.Request[v1.UpdateVPCRequest]) (*connect.Response[v1.UpdateVPCResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.UpdateVPC is not implemented"))
-}
-
-func (UnimplementedVpcServiceHandler) CreateStaticRoute(context.Context, *connect.Request[v1.CreateStaticRouteRequest]) (*connect.Response[v1.CreateStaticRouteResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.CreateStaticRoute is not implemented"))
-}
-
-func (UnimplementedVpcServiceHandler) CreateVPCOffering(context.Context, *connect.Request[v1.CreateVPCOfferingRequest]) (*connect.Response[v1.CreateVPCOfferingResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.CreateVPCOffering is not implemented"))
-}
-
-func (UnimplementedVpcServiceHandler) ListVPCsCmdByAdmin(context.Context, *connect.Request[v1.ListVPCsCmdByAdminRequest]) (*connect.Response[v1.ListVPCsCmdByAdminResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.ListVPCsCmdByAdmin is not implemented"))
-}
-
-func (UnimplementedVpcServiceHandler) ListVPCOfferings(context.Context, *connect.Request[v1.ListVPCOfferingsRequest]) (*connect.Response[v1.ListVPCOfferingsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.ListVPCOfferings is not implemented"))
+func (UnimplementedVpcServiceHandler) CreatePrivateGateway(context.Context, *connect.Request[v1.CreatePrivateGatewayRequest]) (*connect.Response[v1.CreatePrivateGatewayResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.CreatePrivateGateway is not implemented"))
 }
 
 func (UnimplementedVpcServiceHandler) CreatePrivateGatewayByAdmin(context.Context, *connect.Request[v1.CreatePrivateGatewayByAdminRequest]) (*connect.Response[v1.CreatePrivateGatewayByAdminResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.CreatePrivateGatewayByAdmin is not implemented"))
 }
 
-func (UnimplementedVpcServiceHandler) CreatePrivateGateway(context.Context, *connect.Request[v1.CreatePrivateGatewayRequest]) (*connect.Response[v1.CreatePrivateGatewayResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.CreatePrivateGateway is not implemented"))
-}
-
-func (UnimplementedVpcServiceHandler) DeleteStaticRoute(context.Context, *connect.Request[v1.DeleteStaticRouteRequest]) (*connect.Response[v1.DeleteStaticRouteResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.DeleteStaticRoute is not implemented"))
-}
-
-func (UnimplementedVpcServiceHandler) DeleteVPCOffering(context.Context, *connect.Request[v1.DeleteVPCOfferingRequest]) (*connect.Response[v1.DeleteVPCOfferingResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.DeleteVPCOffering is not implemented"))
-}
-
-func (UnimplementedVpcServiceHandler) CreateVPCCmdByAdmin(context.Context, *connect.Request[v1.CreateVPCCmdByAdminRequest]) (*connect.Response[v1.CreateVPCCmdByAdminResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.CreateVPCCmdByAdmin is not implemented"))
-}
-
-func (UnimplementedVpcServiceHandler) RestartVPC(context.Context, *connect.Request[v1.RestartVPCRequest]) (*connect.Response[v1.RestartVPCResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.RestartVPC is not implemented"))
-}
-
-func (UnimplementedVpcServiceHandler) DeletePrivateGateway(context.Context, *connect.Request[v1.DeletePrivateGatewayRequest]) (*connect.Response[v1.DeletePrivateGatewayResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.DeletePrivateGateway is not implemented"))
-}
-
-func (UnimplementedVpcServiceHandler) ListPrivateGatewaysCmdByAdmin(context.Context, *connect.Request[v1.ListPrivateGatewaysCmdByAdminRequest]) (*connect.Response[v1.ListPrivateGatewaysCmdByAdminResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.ListPrivateGatewaysCmdByAdmin is not implemented"))
-}
-
-func (UnimplementedVpcServiceHandler) ListPrivateGateways(context.Context, *connect.Request[v1.ListPrivateGatewaysRequest]) (*connect.Response[v1.ListPrivateGatewaysResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.ListPrivateGateways is not implemented"))
-}
-
-func (UnimplementedVpcServiceHandler) DeleteVPC(context.Context, *connect.Request[v1.DeleteVPCRequest]) (*connect.Response[v1.DeleteVPCResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.DeleteVPC is not implemented"))
-}
-
-func (UnimplementedVpcServiceHandler) UpdateVPCOffering(context.Context, *connect.Request[v1.UpdateVPCOfferingRequest]) (*connect.Response[v1.UpdateVPCOfferingResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.UpdateVPCOffering is not implemented"))
-}
-
-func (UnimplementedVpcServiceHandler) ListVPCs(context.Context, *connect.Request[v1.ListVPCsRequest]) (*connect.Response[v1.ListVPCsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.ListVPCs is not implemented"))
+func (UnimplementedVpcServiceHandler) CreateStaticRoute(context.Context, *connect.Request[v1.CreateStaticRouteRequest]) (*connect.Response[v1.CreateStaticRouteResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.CreateStaticRoute is not implemented"))
 }
 
 func (UnimplementedVpcServiceHandler) CreateVPC(context.Context, *connect.Request[v1.CreateVPCRequest]) (*connect.Response[v1.CreateVPCResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.CreateVPC is not implemented"))
 }
 
+func (UnimplementedVpcServiceHandler) CreateVPCCmdByAdmin(context.Context, *connect.Request[v1.CreateVPCCmdByAdminRequest]) (*connect.Response[v1.CreateVPCCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.CreateVPCCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedVpcServiceHandler) CreateVPCOffering(context.Context, *connect.Request[v1.CreateVPCOfferingRequest]) (*connect.Response[v1.CreateVPCOfferingResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.CreateVPCOffering is not implemented"))
+}
+
+func (UnimplementedVpcServiceHandler) DeletePrivateGateway(context.Context, *connect.Request[v1.DeletePrivateGatewayRequest]) (*connect.Response[v1.DeletePrivateGatewayResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.DeletePrivateGateway is not implemented"))
+}
+
+func (UnimplementedVpcServiceHandler) DeleteStaticRoute(context.Context, *connect.Request[v1.DeleteStaticRouteRequest]) (*connect.Response[v1.DeleteStaticRouteResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.DeleteStaticRoute is not implemented"))
+}
+
+func (UnimplementedVpcServiceHandler) DeleteVPC(context.Context, *connect.Request[v1.DeleteVPCRequest]) (*connect.Response[v1.DeleteVPCResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.DeleteVPC is not implemented"))
+}
+
+func (UnimplementedVpcServiceHandler) DeleteVPCOffering(context.Context, *connect.Request[v1.DeleteVPCOfferingRequest]) (*connect.Response[v1.DeleteVPCOfferingResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.DeleteVPCOffering is not implemented"))
+}
+
+func (UnimplementedVpcServiceHandler) ListPrivateGateways(context.Context, *connect.Request[v1.ListPrivateGatewaysRequest]) (*connect.Response[v1.ListPrivateGatewaysResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.ListPrivateGateways is not implemented"))
+}
+
+func (UnimplementedVpcServiceHandler) ListPrivateGatewaysCmdByAdmin(context.Context, *connect.Request[v1.ListPrivateGatewaysCmdByAdminRequest]) (*connect.Response[v1.ListPrivateGatewaysCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.ListPrivateGatewaysCmdByAdmin is not implemented"))
+}
+
 func (UnimplementedVpcServiceHandler) ListStaticRoutes(context.Context, *connect.Request[v1.ListStaticRoutesRequest]) (*connect.Response[v1.ListStaticRoutesResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.ListStaticRoutes is not implemented"))
+}
+
+func (UnimplementedVpcServiceHandler) ListVPCOfferings(context.Context, *connect.Request[v1.ListVPCOfferingsRequest]) (*connect.Response[v1.ListVPCOfferingsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.ListVPCOfferings is not implemented"))
+}
+
+func (UnimplementedVpcServiceHandler) ListVPCs(context.Context, *connect.Request[v1.ListVPCsRequest]) (*connect.Response[v1.ListVPCsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.ListVPCs is not implemented"))
+}
+
+func (UnimplementedVpcServiceHandler) ListVPCsCmdByAdmin(context.Context, *connect.Request[v1.ListVPCsCmdByAdminRequest]) (*connect.Response[v1.ListVPCsCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.ListVPCsCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedVpcServiceHandler) RestartVPC(context.Context, *connect.Request[v1.RestartVPCRequest]) (*connect.Response[v1.RestartVPCResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.RestartVPC is not implemented"))
+}
+
+func (UnimplementedVpcServiceHandler) UpdateVPC(context.Context, *connect.Request[v1.UpdateVPCRequest]) (*connect.Response[v1.UpdateVPCResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.UpdateVPC is not implemented"))
+}
+
+func (UnimplementedVpcServiceHandler) UpdateVPCCmdByAdmin(context.Context, *connect.Request[v1.UpdateVPCCmdByAdminRequest]) (*connect.Response[v1.UpdateVPCCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.UpdateVPCCmdByAdmin is not implemented"))
+}
+
+func (UnimplementedVpcServiceHandler) UpdateVPCOffering(context.Context, *connect.Request[v1.UpdateVPCOfferingRequest]) (*connect.Response[v1.UpdateVPCOfferingResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vpc.v1.VpcService.UpdateVPCOffering is not implemented"))
 }

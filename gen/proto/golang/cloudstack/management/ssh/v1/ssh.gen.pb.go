@@ -24,6 +24,260 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// CreateSSHKeyPairRequest represents the parameters for create a new keypair and returns the private key
+type CreateSSHKeyPairRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Name of the keypair
+	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	// an optional account for the ssh key. Must be used with domainId.
+	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// an optional domainId for the ssh key. If the account parameter is used, domainId must also be used.
+	DomainId *int64 `protobuf:"varint,3,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// an optional project for the ssh key
+	ProjectId *int64 `protobuf:"varint,4,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateSSHKeyPairRequest) Reset() {
+	*x = CreateSSHKeyPairRequest{}
+	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateSSHKeyPairRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateSSHKeyPairRequest) ProtoMessage() {}
+
+func (x *CreateSSHKeyPairRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateSSHKeyPairRequest.ProtoReflect.Descriptor instead.
+func (*CreateSSHKeyPairRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_ssh_v1_ssh_gen_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *CreateSSHKeyPairRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *CreateSSHKeyPairRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *CreateSSHKeyPairRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *CreateSSHKeyPairRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *CreateSSHKeyPairRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateSSHKeyPairResponse represents the response from create a new keypair and returns the private key
+type CreateSSHKeyPairResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateSSHKeyPairResponse) Reset() {
+	*x = CreateSSHKeyPairResponse{}
+	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateSSHKeyPairResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateSSHKeyPairResponse) ProtoMessage() {}
+
+func (x *CreateSSHKeyPairResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateSSHKeyPairResponse.ProtoReflect.Descriptor instead.
+func (*CreateSSHKeyPairResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_ssh_v1_ssh_gen_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *CreateSSHKeyPairResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteSSHKeyPairRequest represents the parameters for deletes a keypair by name
+type DeleteSSHKeyPairRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Name of the keypair
+	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	// the account associated with the keypair. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// the domain ID associated with the keypair
+	DomainId *int64 `protobuf:"varint,3,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// the project associated with keypair
+	ProjectId *int64 `protobuf:"varint,4,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteSSHKeyPairRequest) Reset() {
+	*x = DeleteSSHKeyPairRequest{}
+	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteSSHKeyPairRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteSSHKeyPairRequest) ProtoMessage() {}
+
+func (x *DeleteSSHKeyPairRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteSSHKeyPairRequest.ProtoReflect.Descriptor instead.
+func (*DeleteSSHKeyPairRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_ssh_v1_ssh_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *DeleteSSHKeyPairRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *DeleteSSHKeyPairRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *DeleteSSHKeyPairRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *DeleteSSHKeyPairRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *DeleteSSHKeyPairRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteSSHKeyPairResponse represents the response from deletes a keypair by name
+type DeleteSSHKeyPairResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteSSHKeyPairResponse) Reset() {
+	*x = DeleteSSHKeyPairResponse{}
+	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteSSHKeyPairResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteSSHKeyPairResponse) ProtoMessage() {}
+
+func (x *DeleteSSHKeyPairResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteSSHKeyPairResponse.ProtoReflect.Descriptor instead.
+func (*DeleteSSHKeyPairResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_ssh_v1_ssh_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *DeleteSSHKeyPairResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
 // ListSSHKeyPairsRequest represents the parameters for list registered keypairs
 type ListSSHKeyPairsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -54,7 +308,7 @@ type ListSSHKeyPairsRequest struct {
 
 func (x *ListSSHKeyPairsRequest) Reset() {
 	*x = ListSSHKeyPairsRequest{}
-	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -66,7 +320,7 @@ func (x *ListSSHKeyPairsRequest) String() string {
 func (*ListSSHKeyPairsRequest) ProtoMessage() {}
 
 func (x *ListSSHKeyPairsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -79,7 +333,7 @@ func (x *ListSSHKeyPairsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListSSHKeyPairsRequest.ProtoReflect.Descriptor instead.
 func (*ListSSHKeyPairsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ssh_v1_ssh_gen_proto_rawDescGZIP(), []int{0}
+	return file_cloudstack_management_ssh_v1_ssh_gen_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ListSSHKeyPairsRequest) GetId() int64 {
@@ -179,7 +433,7 @@ type ListSSHKeyPairsResponse struct {
 
 func (x *ListSSHKeyPairsResponse) Reset() {
 	*x = ListSSHKeyPairsResponse{}
-	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -191,7 +445,7 @@ func (x *ListSSHKeyPairsResponse) String() string {
 func (*ListSSHKeyPairsResponse) ProtoMessage() {}
 
 func (x *ListSSHKeyPairsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -204,7 +458,7 @@ func (x *ListSSHKeyPairsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListSSHKeyPairsResponse.ProtoReflect.Descriptor instead.
 func (*ListSSHKeyPairsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ssh_v1_ssh_gen_proto_rawDescGZIP(), []int{1}
+	return file_cloudstack_management_ssh_v1_ssh_gen_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ListSSHKeyPairsResponse) GetItems() []*SSHKeyPair {
@@ -219,133 +473,6 @@ func (x *ListSSHKeyPairsResponse) GetTotalCount() int32 {
 		return *x.TotalCount
 	}
 	return 0
-}
-
-// CreateSSHKeyPairRequest represents the parameters for create a new keypair and returns the private key
-type CreateSSHKeyPairRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Name of the keypair
-	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
-	// an optional account for the ssh key. Must be used with domainId.
-	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// an optional domainId for the ssh key. If the account parameter is used, domainId must also be used.
-	DomainId *int64 `protobuf:"varint,3,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// an optional project for the ssh key
-	ProjectId *int64 `protobuf:"varint,4,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateSSHKeyPairRequest) Reset() {
-	*x = CreateSSHKeyPairRequest{}
-	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateSSHKeyPairRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateSSHKeyPairRequest) ProtoMessage() {}
-
-func (x *CreateSSHKeyPairRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateSSHKeyPairRequest.ProtoReflect.Descriptor instead.
-func (*CreateSSHKeyPairRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ssh_v1_ssh_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *CreateSSHKeyPairRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *CreateSSHKeyPairRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *CreateSSHKeyPairRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *CreateSSHKeyPairRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *CreateSSHKeyPairRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateSSHKeyPairResponse represents the response from create a new keypair and returns the private key
-type CreateSSHKeyPairResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateSSHKeyPairResponse) Reset() {
-	*x = CreateSSHKeyPairResponse{}
-	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateSSHKeyPairResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateSSHKeyPairResponse) ProtoMessage() {}
-
-func (x *CreateSSHKeyPairResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateSSHKeyPairResponse.ProtoReflect.Descriptor instead.
-func (*CreateSSHKeyPairResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ssh_v1_ssh_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *CreateSSHKeyPairResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
 }
 
 // RegisterSSHKeyPairRequest represents the parameters for register a public key in a keypair under a certain name
@@ -368,7 +495,7 @@ type RegisterSSHKeyPairRequest struct {
 
 func (x *RegisterSSHKeyPairRequest) Reset() {
 	*x = RegisterSSHKeyPairRequest{}
-	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -380,7 +507,7 @@ func (x *RegisterSSHKeyPairRequest) String() string {
 func (*RegisterSSHKeyPairRequest) ProtoMessage() {}
 
 func (x *RegisterSSHKeyPairRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -393,7 +520,7 @@ func (x *RegisterSSHKeyPairRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterSSHKeyPairRequest.ProtoReflect.Descriptor instead.
 func (*RegisterSSHKeyPairRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ssh_v1_ssh_gen_proto_rawDescGZIP(), []int{4}
+	return file_cloudstack_management_ssh_v1_ssh_gen_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *RegisterSSHKeyPairRequest) GetName() string {
@@ -449,7 +576,7 @@ type RegisterSSHKeyPairResponse struct {
 
 func (x *RegisterSSHKeyPairResponse) Reset() {
 	*x = RegisterSSHKeyPairResponse{}
-	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -461,7 +588,7 @@ func (x *RegisterSSHKeyPairResponse) String() string {
 func (*RegisterSSHKeyPairResponse) ProtoMessage() {}
 
 func (x *RegisterSSHKeyPairResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -474,137 +601,10 @@ func (x *RegisterSSHKeyPairResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterSSHKeyPairResponse.ProtoReflect.Descriptor instead.
 func (*RegisterSSHKeyPairResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ssh_v1_ssh_gen_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *RegisterSSHKeyPairResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteSSHKeyPairRequest represents the parameters for deletes a keypair by name
-type DeleteSSHKeyPairRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Name of the keypair
-	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
-	// the account associated with the keypair. Must be used with the domainId parameter.
-	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// the domain ID associated with the keypair
-	DomainId *int64 `protobuf:"varint,3,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// the project associated with keypair
-	ProjectId *int64 `protobuf:"varint,4,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteSSHKeyPairRequest) Reset() {
-	*x = DeleteSSHKeyPairRequest{}
-	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteSSHKeyPairRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteSSHKeyPairRequest) ProtoMessage() {}
-
-func (x *DeleteSSHKeyPairRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteSSHKeyPairRequest.ProtoReflect.Descriptor instead.
-func (*DeleteSSHKeyPairRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ssh_v1_ssh_gen_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *DeleteSSHKeyPairRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *DeleteSSHKeyPairRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *DeleteSSHKeyPairRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *DeleteSSHKeyPairRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *DeleteSSHKeyPairRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteSSHKeyPairResponse represents the response from deletes a keypair by name
-type DeleteSSHKeyPairResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteSSHKeyPairResponse) Reset() {
-	*x = DeleteSSHKeyPairResponse{}
-	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteSSHKeyPairResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteSSHKeyPairResponse) ProtoMessage() {}
-
-func (x *DeleteSSHKeyPairResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteSSHKeyPairResponse.ProtoReflect.Descriptor instead.
-func (*DeleteSSHKeyPairResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_ssh_v1_ssh_gen_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *DeleteSSHKeyPairResponse) GetResult() *Result {
+func (x *RegisterSSHKeyPairResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -748,151 +748,6 @@ func (x *Success) GetDisplayText() string {
 	return ""
 }
 
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ssh_v1_ssh_gen_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
 // Result represents a generic operation result
 type Result struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -912,7 +767,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -924,7 +779,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -937,7 +792,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ssh_v1_ssh_gen_proto_rawDescGZIP(), []int{11}
+	return file_cloudstack_management_ssh_v1_ssh_gen_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -979,7 +834,28 @@ var File_cloudstack_management_ssh_v1_ssh_gen_proto protoreflect.FileDescriptor
 
 const file_cloudstack_management_ssh_v1_ssh_gen_proto_rawDesc = "" +
 	"\n" +
-	"*cloudstack/management/ssh/v1/ssh.gen.proto\x12\x1ccloudstack.management.ssh.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x80\x04\n" +
+	"*cloudstack/management/ssh/v1/ssh.gen.proto\x12\x1ccloudstack.management.ssh.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xc0\x01\n" +
+	"\x17CreateSSHKeyPairRequest\x12!\n" +
+	"\x04name\x18\x01 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12!\n" +
+	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x1b\n" +
+	"\tdomain_id\x18\x03 \x01(\x03R\bdomainId\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x04 \x01(\x03R\tprojectId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"X\n" +
+	"\x18CreateSSHKeyPairResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.ssh.v1.ResultR\x06result\"\xc0\x02\n" +
+	"\x17DeleteSSHKeyPairRequest\x12!\n" +
+	"\x04name\x18\x01 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12\xa0\x01\n" +
+	"\faccount_name\x18\x02 \x01(\tB}\xbaHz\xba\x01w\n" +
+	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12\x1b\n" +
+	"\tdomain_id\x18\x03 \x01(\x03R\bdomainId\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x04 \x01(\x03R\tprojectId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"X\n" +
+	"\x18DeleteSSHKeyPairResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.ssh.v1.ResultR\x06result\"\x80\x04\n" +
 	"\x16ListSSHKeyPairsRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1e\n" +
 	"\x04name\x18\x02 \x01(\tB\n" +
@@ -1000,17 +876,7 @@ const file_cloudstack_management_ssh_v1_ssh_gen_proto_rawDesc = "" +
 	"\x17ListSSHKeyPairsResponse\x12>\n" +
 	"\x05items\x18\x01 \x03(\v2(.cloudstack.management.ssh.v1.SSHKeyPairR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xc0\x01\n" +
-	"\x17CreateSSHKeyPairRequest\x12!\n" +
-	"\x04name\x18\x01 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12!\n" +
-	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x1b\n" +
-	"\tdomain_id\x18\x03 \x01(\x03R\bdomainId\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x04 \x01(\x03R\tprojectId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"X\n" +
-	"\x18CreateSSHKeyPairResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.ssh.v1.ResultR\x06result\"\xe9\x01\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xe9\x01\n" +
 	"\x19RegisterSSHKeyPairRequest\x12!\n" +
 	"\x04name\x18\x01 \x01(\tB\r\xbaH\n" +
 	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12%\n" +
@@ -1022,17 +888,6 @@ const file_cloudstack_management_ssh_v1_ssh_gen_proto_rawDesc = "" +
 	"project_id\x18\x05 \x01(\x03R\tprojectId\x12#\n" +
 	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"Z\n" +
 	"\x1aRegisterSSHKeyPairResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.ssh.v1.ResultR\x06result\"\xc0\x02\n" +
-	"\x17DeleteSSHKeyPairRequest\x12!\n" +
-	"\x04name\x18\x01 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12\xa0\x01\n" +
-	"\faccount_name\x18\x02 \x01(\tB}\xbaHz\xba\x01w\n" +
-	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12\x1b\n" +
-	"\tdomain_id\x18\x03 \x01(\x03R\bdomainId\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x04 \x01(\x03R\tprojectId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"X\n" +
-	"\x18DeleteSSHKeyPairResponse\x12<\n" +
 	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.ssh.v1.ResultR\x06result\"\x99\x01\n" +
 	"\n" +
 	"SSHKeyPair\x12\x18\n" +
@@ -1043,39 +898,20 @@ const file_cloudstack_management_ssh_v1_ssh_gen_proto_rawDesc = "" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xdb\x03\n" +
-	"\x04Item\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12I\n" +
-	"\adetails\x18\f \x03(\v2/.cloudstack.management.ssh.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xaf\x04\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\xcc\x04\n" +
 	"\n" +
-	"SshService\x12\x80\x01\n" +
-	"\x0fListSSHKeyPairs\x124.cloudstack.management.ssh.v1.ListSSHKeyPairsRequest\x1a5.cloudstack.management.ssh.v1.ListSSHKeyPairsResponse\"\x00\x12\x83\x01\n" +
-	"\x10CreateSSHKeyPair\x125.cloudstack.management.ssh.v1.CreateSSHKeyPairRequest\x1a6.cloudstack.management.ssh.v1.CreateSSHKeyPairResponse\"\x00\x12\x89\x01\n" +
-	"\x12RegisterSSHKeyPair\x127.cloudstack.management.ssh.v1.RegisterSSHKeyPairRequest\x1a8.cloudstack.management.ssh.v1.RegisterSSHKeyPairResponse\"\x00\x12\x83\x01\n" +
-	"\x10DeleteSSHKeyPair\x125.cloudstack.management.ssh.v1.DeleteSSHKeyPairRequest\x1a6.cloudstack.management.ssh.v1.DeleteSSHKeyPairResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\x9a\x02\n" +
+	"SshService\x12\x8a\x01\n" +
+	"\x10CreateSSHKeyPair\x125.cloudstack.management.ssh.v1.CreateSSHKeyPairRequest\x1a6.cloudstack.management.ssh.v1.CreateSSHKeyPairResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x8a\x01\n" +
+	"\x10DeleteSSHKeyPair\x125.cloudstack.management.ssh.v1.DeleteSSHKeyPairRequest\x1a6.cloudstack.management.ssh.v1.DeleteSSHKeyPairResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x87\x01\n" +
+	"\x0fListSSHKeyPairs\x124.cloudstack.management.ssh.v1.ListSSHKeyPairsRequest\x1a5.cloudstack.management.ssh.v1.ListSSHKeyPairsResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x90\x01\n" +
+	"\x12RegisterSSHKeyPair\x127.cloudstack.management.ssh.v1.RegisterSSHKeyPairRequest\x1a8.cloudstack.management.ssh.v1.RegisterSSHKeyPairResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\a\xc2>\x04\xc2>\x01\x02B\x9a\x02\n" +
 	" com.cloudstack.management.ssh.v1B\vSshGenProtoP\x01ZVgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/ssh/v1;sshv1\xa2\x02\x03CMS\xaa\x02\x1cCloudstack.Management.Ssh.V1\xca\x02\x1cCloudstack\\Management\\Ssh\\V1\xe2\x02(Cloudstack\\Management\\Ssh\\V1\\GPBMetadata\xea\x02\x1fCloudstack::Management::Ssh::V1b\beditionsp\xe8\a"
 
 var (
@@ -1090,41 +926,38 @@ func file_cloudstack_management_ssh_v1_ssh_gen_proto_rawDescGZIP() []byte {
 	return file_cloudstack_management_ssh_v1_ssh_gen_proto_rawDescData
 }
 
-var file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_cloudstack_management_ssh_v1_ssh_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_cloudstack_management_ssh_v1_ssh_gen_proto_goTypes = []any{
-	(*ListSSHKeyPairsRequest)(nil),     // 0: cloudstack.management.ssh.v1.ListSSHKeyPairsRequest
-	(*ListSSHKeyPairsResponse)(nil),    // 1: cloudstack.management.ssh.v1.ListSSHKeyPairsResponse
-	(*CreateSSHKeyPairRequest)(nil),    // 2: cloudstack.management.ssh.v1.CreateSSHKeyPairRequest
-	(*CreateSSHKeyPairResponse)(nil),   // 3: cloudstack.management.ssh.v1.CreateSSHKeyPairResponse
-	(*RegisterSSHKeyPairRequest)(nil),  // 4: cloudstack.management.ssh.v1.RegisterSSHKeyPairRequest
-	(*RegisterSSHKeyPairResponse)(nil), // 5: cloudstack.management.ssh.v1.RegisterSSHKeyPairResponse
-	(*DeleteSSHKeyPairRequest)(nil),    // 6: cloudstack.management.ssh.v1.DeleteSSHKeyPairRequest
-	(*DeleteSSHKeyPairResponse)(nil),   // 7: cloudstack.management.ssh.v1.DeleteSSHKeyPairResponse
+	(*CreateSSHKeyPairRequest)(nil),    // 0: cloudstack.management.ssh.v1.CreateSSHKeyPairRequest
+	(*CreateSSHKeyPairResponse)(nil),   // 1: cloudstack.management.ssh.v1.CreateSSHKeyPairResponse
+	(*DeleteSSHKeyPairRequest)(nil),    // 2: cloudstack.management.ssh.v1.DeleteSSHKeyPairRequest
+	(*DeleteSSHKeyPairResponse)(nil),   // 3: cloudstack.management.ssh.v1.DeleteSSHKeyPairResponse
+	(*ListSSHKeyPairsRequest)(nil),     // 4: cloudstack.management.ssh.v1.ListSSHKeyPairsRequest
+	(*ListSSHKeyPairsResponse)(nil),    // 5: cloudstack.management.ssh.v1.ListSSHKeyPairsResponse
+	(*RegisterSSHKeyPairRequest)(nil),  // 6: cloudstack.management.ssh.v1.RegisterSSHKeyPairRequest
+	(*RegisterSSHKeyPairResponse)(nil), // 7: cloudstack.management.ssh.v1.RegisterSSHKeyPairResponse
 	(*SSHKeyPair)(nil),                 // 8: cloudstack.management.ssh.v1.SSHKeyPair
 	(*Success)(nil),                    // 9: cloudstack.management.ssh.v1.Success
-	(*Item)(nil),                       // 10: cloudstack.management.ssh.v1.Item
-	(*Result)(nil),                     // 11: cloudstack.management.ssh.v1.Result
-	nil,                                // 12: cloudstack.management.ssh.v1.Item.DetailsEntry
+	(*Result)(nil),                     // 10: cloudstack.management.ssh.v1.Result
 }
 var file_cloudstack_management_ssh_v1_ssh_gen_proto_depIdxs = []int32{
-	8,  // 0: cloudstack.management.ssh.v1.ListSSHKeyPairsResponse.items:type_name -> cloudstack.management.ssh.v1.SSHKeyPair
-	11, // 1: cloudstack.management.ssh.v1.CreateSSHKeyPairResponse.result:type_name -> cloudstack.management.ssh.v1.Result
-	11, // 2: cloudstack.management.ssh.v1.RegisterSSHKeyPairResponse.result:type_name -> cloudstack.management.ssh.v1.Result
-	11, // 3: cloudstack.management.ssh.v1.DeleteSSHKeyPairResponse.result:type_name -> cloudstack.management.ssh.v1.Result
-	12, // 4: cloudstack.management.ssh.v1.Item.details:type_name -> cloudstack.management.ssh.v1.Item.DetailsEntry
-	0,  // 5: cloudstack.management.ssh.v1.SshService.ListSSHKeyPairs:input_type -> cloudstack.management.ssh.v1.ListSSHKeyPairsRequest
-	2,  // 6: cloudstack.management.ssh.v1.SshService.CreateSSHKeyPair:input_type -> cloudstack.management.ssh.v1.CreateSSHKeyPairRequest
-	4,  // 7: cloudstack.management.ssh.v1.SshService.RegisterSSHKeyPair:input_type -> cloudstack.management.ssh.v1.RegisterSSHKeyPairRequest
-	6,  // 8: cloudstack.management.ssh.v1.SshService.DeleteSSHKeyPair:input_type -> cloudstack.management.ssh.v1.DeleteSSHKeyPairRequest
-	1,  // 9: cloudstack.management.ssh.v1.SshService.ListSSHKeyPairs:output_type -> cloudstack.management.ssh.v1.ListSSHKeyPairsResponse
-	3,  // 10: cloudstack.management.ssh.v1.SshService.CreateSSHKeyPair:output_type -> cloudstack.management.ssh.v1.CreateSSHKeyPairResponse
-	5,  // 11: cloudstack.management.ssh.v1.SshService.RegisterSSHKeyPair:output_type -> cloudstack.management.ssh.v1.RegisterSSHKeyPairResponse
-	7,  // 12: cloudstack.management.ssh.v1.SshService.DeleteSSHKeyPair:output_type -> cloudstack.management.ssh.v1.DeleteSSHKeyPairResponse
-	9,  // [9:13] is the sub-list for method output_type
-	5,  // [5:9] is the sub-list for method input_type
-	5,  // [5:5] is the sub-list for extension type_name
-	5,  // [5:5] is the sub-list for extension extendee
-	0,  // [0:5] is the sub-list for field type_name
+	10, // 0: cloudstack.management.ssh.v1.CreateSSHKeyPairResponse.result:type_name -> cloudstack.management.ssh.v1.Result
+	10, // 1: cloudstack.management.ssh.v1.DeleteSSHKeyPairResponse.result:type_name -> cloudstack.management.ssh.v1.Result
+	8,  // 2: cloudstack.management.ssh.v1.ListSSHKeyPairsResponse.items:type_name -> cloudstack.management.ssh.v1.SSHKeyPair
+	10, // 3: cloudstack.management.ssh.v1.RegisterSSHKeyPairResponse.result:type_name -> cloudstack.management.ssh.v1.Result
+	0,  // 4: cloudstack.management.ssh.v1.SshService.CreateSSHKeyPair:input_type -> cloudstack.management.ssh.v1.CreateSSHKeyPairRequest
+	2,  // 5: cloudstack.management.ssh.v1.SshService.DeleteSSHKeyPair:input_type -> cloudstack.management.ssh.v1.DeleteSSHKeyPairRequest
+	4,  // 6: cloudstack.management.ssh.v1.SshService.ListSSHKeyPairs:input_type -> cloudstack.management.ssh.v1.ListSSHKeyPairsRequest
+	6,  // 7: cloudstack.management.ssh.v1.SshService.RegisterSSHKeyPair:input_type -> cloudstack.management.ssh.v1.RegisterSSHKeyPairRequest
+	1,  // 8: cloudstack.management.ssh.v1.SshService.CreateSSHKeyPair:output_type -> cloudstack.management.ssh.v1.CreateSSHKeyPairResponse
+	3,  // 9: cloudstack.management.ssh.v1.SshService.DeleteSSHKeyPair:output_type -> cloudstack.management.ssh.v1.DeleteSSHKeyPairResponse
+	5,  // 10: cloudstack.management.ssh.v1.SshService.ListSSHKeyPairs:output_type -> cloudstack.management.ssh.v1.ListSSHKeyPairsResponse
+	7,  // 11: cloudstack.management.ssh.v1.SshService.RegisterSSHKeyPair:output_type -> cloudstack.management.ssh.v1.RegisterSSHKeyPairResponse
+	8,  // [8:12] is the sub-list for method output_type
+	4,  // [4:8] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_ssh_v1_ssh_gen_proto_init() }
@@ -1138,7 +971,7 @@ func file_cloudstack_management_ssh_v1_ssh_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_ssh_v1_ssh_gen_proto_rawDesc), len(file_cloudstack_management_ssh_v1_ssh_gen_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   13,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

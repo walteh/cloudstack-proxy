@@ -24,629 +24,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// ListVlanIpRangesRequest represents the parameters for lists all vlan ip ranges.
-type ListVlanIpRangesRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the account with which the VLAN IP range is associated. Must be used with the domainId parameter.
-	AccountName *string `protobuf:"bytes,1,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// project who will own the VLAN
-	ProjectId *int64 `protobuf:"varint,2,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// the domain ID with which the VLAN IP range is associated.  If used with the account parameter, returns all VLAN IP ranges for that account in the specified domain.
-	DomainId *int64 `protobuf:"varint,3,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// the ID of the VLAN IP range
-	Id *int64 `protobuf:"varint,4,opt,name=id" json:"id,omitempty"`
-	// the Pod ID of the VLAN IP range
-	PodId *int64 `protobuf:"varint,5,opt,name=pod_id,json=podId" json:"pod_id,omitempty"`
-	// the ID or VID of the VLAN. Default is an "untagged" VLAN.
-	Vlan *string `protobuf:"bytes,6,opt,name=vlan" json:"vlan,omitempty"`
-	// the Zone ID of the VLAN IP range
-	ZoneId *int64 `protobuf:"varint,7,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// network id of the VLAN IP range
-	NetworkId *int64 `protobuf:"varint,8,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
-	// true if VLAN is of Virtual type, false if Direct
-	ForVirtualNetwork *bool `protobuf:"varint,9,opt,name=for_virtual_network,json=forVirtualNetwork" json:"for_virtual_network,omitempty"`
-	// physical network id of the VLAN IP range
-	PhysicalNetworkId *int64 `protobuf:"varint,10,opt,name=physical_network_id,json=physicalNetworkId" json:"physical_network_id,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,11,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,12,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,13,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,14,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListVlanIpRangesRequest) Reset() {
-	*x = ListVlanIpRangesRequest{}
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListVlanIpRangesRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListVlanIpRangesRequest) ProtoMessage() {}
-
-func (x *ListVlanIpRangesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListVlanIpRangesRequest.ProtoReflect.Descriptor instead.
-func (*ListVlanIpRangesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *ListVlanIpRangesRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *ListVlanIpRangesRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *ListVlanIpRangesRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ListVlanIpRangesRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListVlanIpRangesRequest) GetPodId() int64 {
-	if x != nil && x.PodId != nil {
-		return *x.PodId
-	}
-	return 0
-}
-
-func (x *ListVlanIpRangesRequest) GetVlan() string {
-	if x != nil && x.Vlan != nil {
-		return *x.Vlan
-	}
-	return ""
-}
-
-func (x *ListVlanIpRangesRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ListVlanIpRangesRequest) GetNetworkId() int64 {
-	if x != nil && x.NetworkId != nil {
-		return *x.NetworkId
-	}
-	return 0
-}
-
-func (x *ListVlanIpRangesRequest) GetForVirtualNetwork() bool {
-	if x != nil && x.ForVirtualNetwork != nil {
-		return *x.ForVirtualNetwork
-	}
-	return false
-}
-
-func (x *ListVlanIpRangesRequest) GetPhysicalNetworkId() int64 {
-	if x != nil && x.PhysicalNetworkId != nil {
-		return *x.PhysicalNetworkId
-	}
-	return 0
-}
-
-func (x *ListVlanIpRangesRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListVlanIpRangesRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListVlanIpRangesRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListVlanIpRangesRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListVlanIpRangesResponse represents the response from lists all vlan ip ranges.
-type ListVlanIpRangesResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of VlanIpRanges
-	Items []*VlanIpRange `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of VlanIpRanges
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListVlanIpRangesResponse) Reset() {
-	*x = ListVlanIpRangesResponse{}
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListVlanIpRangesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListVlanIpRangesResponse) ProtoMessage() {}
-
-func (x *ListVlanIpRangesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListVlanIpRangesResponse.ProtoReflect.Descriptor instead.
-func (*ListVlanIpRangesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *ListVlanIpRangesResponse) GetItems() []*VlanIpRange {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListVlanIpRangesResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// DeleteVlanIpRangeRequest represents the parameters for deletes a vlan ip range.
-type DeleteVlanIpRangeRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the id of the VLAN IP range
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteVlanIpRangeRequest) Reset() {
-	*x = DeleteVlanIpRangeRequest{}
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteVlanIpRangeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteVlanIpRangeRequest) ProtoMessage() {}
-
-func (x *DeleteVlanIpRangeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteVlanIpRangeRequest.ProtoReflect.Descriptor instead.
-func (*DeleteVlanIpRangeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *DeleteVlanIpRangeRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteVlanIpRangeRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteVlanIpRangeResponse represents the response from deletes a vlan ip range.
-type DeleteVlanIpRangeResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteVlanIpRangeResponse) Reset() {
-	*x = DeleteVlanIpRangeResponse{}
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteVlanIpRangeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteVlanIpRangeResponse) ProtoMessage() {}
-
-func (x *DeleteVlanIpRangeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteVlanIpRangeResponse.ProtoReflect.Descriptor instead.
-func (*DeleteVlanIpRangeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *DeleteVlanIpRangeResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateVlanIpRangeRequest represents the parameters for updates a vlan ip range.
-type UpdateVlanIpRangeRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the UUID of the VLAN IP range
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the gateway of the VLAN IP range
-	Gateway *string `protobuf:"bytes,2,opt,name=gateway" json:"gateway,omitempty"`
-	// the netmask of the VLAN IP range
-	Netmask *string `protobuf:"bytes,3,opt,name=netmask" json:"netmask,omitempty"`
-	// the beginning IP address in the VLAN IP range
-	StartIp *string `protobuf:"bytes,4,opt,name=start_ip,json=startIp" json:"start_ip,omitempty"`
-	// the ending IP address in the VLAN IP range
-	EndIp *string `protobuf:"bytes,5,opt,name=end_ip,json=endIp" json:"end_ip,omitempty"`
-	// the beginning IPv6 address in the IPv6 network range
-	StartIpv6 *string `protobuf:"bytes,6,opt,name=start_ipv6,json=startIpv6" json:"start_ipv6,omitempty"`
-	// the ending IPv6 address in the IPv6 network range
-	EndIpv6 *string `protobuf:"bytes,7,opt,name=end_ipv6,json=endIpv6" json:"end_ipv6,omitempty"`
-	// the gateway of the IPv6 network
-	Ip6Gateway *string `protobuf:"bytes,8,opt,name=ip6_gateway,json=ip6Gateway" json:"ip6_gateway,omitempty"`
-	// the CIDR of IPv6 network, must be at least /64
-	Ip6Cidr *string `protobuf:"bytes,9,opt,name=ip6_cidr,json=ip6Cidr" json:"ip6_cidr,omitempty"`
-	// true if IP range is set to system vms, false if not
-	ForSystemVms *bool `protobuf:"varint,10,opt,name=for_system_vms,json=forSystemVms" json:"for_system_vms,omitempty"`
-	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateVlanIpRangeRequest) Reset() {
-	*x = UpdateVlanIpRangeRequest{}
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateVlanIpRangeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateVlanIpRangeRequest) ProtoMessage() {}
-
-func (x *UpdateVlanIpRangeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateVlanIpRangeRequest.ProtoReflect.Descriptor instead.
-func (*UpdateVlanIpRangeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *UpdateVlanIpRangeRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateVlanIpRangeRequest) GetGateway() string {
-	if x != nil && x.Gateway != nil {
-		return *x.Gateway
-	}
-	return ""
-}
-
-func (x *UpdateVlanIpRangeRequest) GetNetmask() string {
-	if x != nil && x.Netmask != nil {
-		return *x.Netmask
-	}
-	return ""
-}
-
-func (x *UpdateVlanIpRangeRequest) GetStartIp() string {
-	if x != nil && x.StartIp != nil {
-		return *x.StartIp
-	}
-	return ""
-}
-
-func (x *UpdateVlanIpRangeRequest) GetEndIp() string {
-	if x != nil && x.EndIp != nil {
-		return *x.EndIp
-	}
-	return ""
-}
-
-func (x *UpdateVlanIpRangeRequest) GetStartIpv6() string {
-	if x != nil && x.StartIpv6 != nil {
-		return *x.StartIpv6
-	}
-	return ""
-}
-
-func (x *UpdateVlanIpRangeRequest) GetEndIpv6() string {
-	if x != nil && x.EndIpv6 != nil {
-		return *x.EndIpv6
-	}
-	return ""
-}
-
-func (x *UpdateVlanIpRangeRequest) GetIp6Gateway() string {
-	if x != nil && x.Ip6Gateway != nil {
-		return *x.Ip6Gateway
-	}
-	return ""
-}
-
-func (x *UpdateVlanIpRangeRequest) GetIp6Cidr() string {
-	if x != nil && x.Ip6Cidr != nil {
-		return *x.Ip6Cidr
-	}
-	return ""
-}
-
-func (x *UpdateVlanIpRangeRequest) GetForSystemVms() bool {
-	if x != nil && x.ForSystemVms != nil {
-		return *x.ForSystemVms
-	}
-	return false
-}
-
-func (x *UpdateVlanIpRangeRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateVlanIpRangeResponse represents the response from updates a vlan ip range.
-type UpdateVlanIpRangeResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateVlanIpRangeResponse) Reset() {
-	*x = UpdateVlanIpRangeResponse{}
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateVlanIpRangeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateVlanIpRangeResponse) ProtoMessage() {}
-
-func (x *UpdateVlanIpRangeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateVlanIpRangeResponse.ProtoReflect.Descriptor instead.
-func (*UpdateVlanIpRangeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *UpdateVlanIpRangeResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DedicatePublicIpRangeRequest represents the parameters for dedicates a public ip range to an account
-type DedicatePublicIpRangeRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the id of the VLAN IP range
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// account who will own the VLAN
-	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// project who will own the VLAN
-	ProjectId *int64 `protobuf:"varint,3,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// domain ID of the account owning a VLAN
-	DomainId *int64 `protobuf:"varint,4,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DedicatePublicIpRangeRequest) Reset() {
-	*x = DedicatePublicIpRangeRequest{}
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DedicatePublicIpRangeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DedicatePublicIpRangeRequest) ProtoMessage() {}
-
-func (x *DedicatePublicIpRangeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DedicatePublicIpRangeRequest.ProtoReflect.Descriptor instead.
-func (*DedicatePublicIpRangeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *DedicatePublicIpRangeRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DedicatePublicIpRangeRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *DedicatePublicIpRangeRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *DedicatePublicIpRangeRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *DedicatePublicIpRangeRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DedicatePublicIpRangeResponse represents the response from dedicates a public ip range to an account
-type DedicatePublicIpRangeResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DedicatePublicIpRangeResponse) Reset() {
-	*x = DedicatePublicIpRangeResponse{}
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DedicatePublicIpRangeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DedicatePublicIpRangeResponse) ProtoMessage() {}
-
-func (x *DedicatePublicIpRangeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DedicatePublicIpRangeResponse.ProtoReflect.Descriptor instead.
-func (*DedicatePublicIpRangeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *DedicatePublicIpRangeResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
 // CreateVlanIpRangeRequest represents the parameters for creates a vlan ip range.
 type CreateVlanIpRangeRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -695,7 +72,7 @@ type CreateVlanIpRangeRequest struct {
 
 func (x *CreateVlanIpRangeRequest) Reset() {
 	*x = CreateVlanIpRangeRequest{}
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[8]
+	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -707,7 +84,7 @@ func (x *CreateVlanIpRangeRequest) String() string {
 func (*CreateVlanIpRangeRequest) ProtoMessage() {}
 
 func (x *CreateVlanIpRangeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[8]
+	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -720,7 +97,7 @@ func (x *CreateVlanIpRangeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateVlanIpRangeRequest.ProtoReflect.Descriptor instead.
 func (*CreateVlanIpRangeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP(), []int{8}
+	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *CreateVlanIpRangeRequest) GetAccountName() string {
@@ -874,7 +251,7 @@ type CreateVlanIpRangeResponse struct {
 
 func (x *CreateVlanIpRangeResponse) Reset() {
 	*x = CreateVlanIpRangeResponse{}
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -886,7 +263,7 @@ func (x *CreateVlanIpRangeResponse) String() string {
 func (*CreateVlanIpRangeResponse) ProtoMessage() {}
 
 func (x *CreateVlanIpRangeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -899,7 +276,7 @@ func (x *CreateVlanIpRangeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateVlanIpRangeResponse.ProtoReflect.Descriptor instead.
 func (*CreateVlanIpRangeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP(), []int{9}
+	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *CreateVlanIpRangeResponse) GetResult() *Result {
@@ -907,6 +284,448 @@ func (x *CreateVlanIpRangeResponse) GetResult() *Result {
 		return x.Result
 	}
 	return nil
+}
+
+// DedicatePublicIpRangeRequest represents the parameters for dedicates a public ip range to an account
+type DedicatePublicIpRangeRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the id of the VLAN IP range
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// account who will own the VLAN
+	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// project who will own the VLAN
+	ProjectId *int64 `protobuf:"varint,3,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// domain ID of the account owning a VLAN
+	DomainId *int64 `protobuf:"varint,4,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DedicatePublicIpRangeRequest) Reset() {
+	*x = DedicatePublicIpRangeRequest{}
+	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DedicatePublicIpRangeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DedicatePublicIpRangeRequest) ProtoMessage() {}
+
+func (x *DedicatePublicIpRangeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DedicatePublicIpRangeRequest.ProtoReflect.Descriptor instead.
+func (*DedicatePublicIpRangeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *DedicatePublicIpRangeRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DedicatePublicIpRangeRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *DedicatePublicIpRangeRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *DedicatePublicIpRangeRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *DedicatePublicIpRangeRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DedicatePublicIpRangeResponse represents the response from dedicates a public ip range to an account
+type DedicatePublicIpRangeResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DedicatePublicIpRangeResponse) Reset() {
+	*x = DedicatePublicIpRangeResponse{}
+	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DedicatePublicIpRangeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DedicatePublicIpRangeResponse) ProtoMessage() {}
+
+func (x *DedicatePublicIpRangeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DedicatePublicIpRangeResponse.ProtoReflect.Descriptor instead.
+func (*DedicatePublicIpRangeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *DedicatePublicIpRangeResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteVlanIpRangeRequest represents the parameters for deletes a vlan ip range.
+type DeleteVlanIpRangeRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the id of the VLAN IP range
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteVlanIpRangeRequest) Reset() {
+	*x = DeleteVlanIpRangeRequest{}
+	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteVlanIpRangeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteVlanIpRangeRequest) ProtoMessage() {}
+
+func (x *DeleteVlanIpRangeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteVlanIpRangeRequest.ProtoReflect.Descriptor instead.
+func (*DeleteVlanIpRangeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *DeleteVlanIpRangeRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteVlanIpRangeRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteVlanIpRangeResponse represents the response from deletes a vlan ip range.
+type DeleteVlanIpRangeResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteVlanIpRangeResponse) Reset() {
+	*x = DeleteVlanIpRangeResponse{}
+	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteVlanIpRangeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteVlanIpRangeResponse) ProtoMessage() {}
+
+func (x *DeleteVlanIpRangeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteVlanIpRangeResponse.ProtoReflect.Descriptor instead.
+func (*DeleteVlanIpRangeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *DeleteVlanIpRangeResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListVlanIpRangesRequest represents the parameters for lists all vlan ip ranges.
+type ListVlanIpRangesRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the account with which the VLAN IP range is associated. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,1,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// project who will own the VLAN
+	ProjectId *int64 `protobuf:"varint,2,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// the domain ID with which the VLAN IP range is associated.  If used with the account parameter, returns all VLAN IP ranges for that account in the specified domain.
+	DomainId *int64 `protobuf:"varint,3,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// the ID of the VLAN IP range
+	Id *int64 `protobuf:"varint,4,opt,name=id" json:"id,omitempty"`
+	// the Pod ID of the VLAN IP range
+	PodId *int64 `protobuf:"varint,5,opt,name=pod_id,json=podId" json:"pod_id,omitempty"`
+	// the ID or VID of the VLAN. Default is an "untagged" VLAN.
+	Vlan *string `protobuf:"bytes,6,opt,name=vlan" json:"vlan,omitempty"`
+	// the Zone ID of the VLAN IP range
+	ZoneId *int64 `protobuf:"varint,7,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// network id of the VLAN IP range
+	NetworkId *int64 `protobuf:"varint,8,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
+	// true if VLAN is of Virtual type, false if Direct
+	ForVirtualNetwork *bool `protobuf:"varint,9,opt,name=for_virtual_network,json=forVirtualNetwork" json:"for_virtual_network,omitempty"`
+	// physical network id of the VLAN IP range
+	PhysicalNetworkId *int64 `protobuf:"varint,10,opt,name=physical_network_id,json=physicalNetworkId" json:"physical_network_id,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,11,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,12,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,13,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,14,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListVlanIpRangesRequest) Reset() {
+	*x = ListVlanIpRangesRequest{}
+	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListVlanIpRangesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListVlanIpRangesRequest) ProtoMessage() {}
+
+func (x *ListVlanIpRangesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListVlanIpRangesRequest.ProtoReflect.Descriptor instead.
+func (*ListVlanIpRangesRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *ListVlanIpRangesRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *ListVlanIpRangesRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *ListVlanIpRangesRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ListVlanIpRangesRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListVlanIpRangesRequest) GetPodId() int64 {
+	if x != nil && x.PodId != nil {
+		return *x.PodId
+	}
+	return 0
+}
+
+func (x *ListVlanIpRangesRequest) GetVlan() string {
+	if x != nil && x.Vlan != nil {
+		return *x.Vlan
+	}
+	return ""
+}
+
+func (x *ListVlanIpRangesRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ListVlanIpRangesRequest) GetNetworkId() int64 {
+	if x != nil && x.NetworkId != nil {
+		return *x.NetworkId
+	}
+	return 0
+}
+
+func (x *ListVlanIpRangesRequest) GetForVirtualNetwork() bool {
+	if x != nil && x.ForVirtualNetwork != nil {
+		return *x.ForVirtualNetwork
+	}
+	return false
+}
+
+func (x *ListVlanIpRangesRequest) GetPhysicalNetworkId() int64 {
+	if x != nil && x.PhysicalNetworkId != nil {
+		return *x.PhysicalNetworkId
+	}
+	return 0
+}
+
+func (x *ListVlanIpRangesRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListVlanIpRangesRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListVlanIpRangesRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListVlanIpRangesRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListVlanIpRangesResponse represents the response from lists all vlan ip ranges.
+type ListVlanIpRangesResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of VlanIpRanges
+	Items []*VlanIpRange `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of VlanIpRanges
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListVlanIpRangesResponse) Reset() {
+	*x = ListVlanIpRangesResponse{}
+	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListVlanIpRangesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListVlanIpRangesResponse) ProtoMessage() {}
+
+func (x *ListVlanIpRangesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListVlanIpRangesResponse.ProtoReflect.Descriptor instead.
+func (*ListVlanIpRangesResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *ListVlanIpRangesResponse) GetItems() []*VlanIpRange {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListVlanIpRangesResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
 }
 
 // ReleasePublicIpRangeRequest represents the parameters for releases a public ip range back to the system pool
@@ -921,7 +740,7 @@ type ReleasePublicIpRangeRequest struct {
 
 func (x *ReleasePublicIpRangeRequest) Reset() {
 	*x = ReleasePublicIpRangeRequest{}
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[10]
+	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -933,7 +752,7 @@ func (x *ReleasePublicIpRangeRequest) String() string {
 func (*ReleasePublicIpRangeRequest) ProtoMessage() {}
 
 func (x *ReleasePublicIpRangeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[10]
+	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -946,7 +765,7 @@ func (x *ReleasePublicIpRangeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReleasePublicIpRangeRequest.ProtoReflect.Descriptor instead.
 func (*ReleasePublicIpRangeRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP(), []int{10}
+	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *ReleasePublicIpRangeRequest) GetId() int64 {
@@ -974,7 +793,7 @@ type ReleasePublicIpRangeResponse struct {
 
 func (x *ReleasePublicIpRangeResponse) Reset() {
 	*x = ReleasePublicIpRangeResponse{}
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -986,7 +805,7 @@ func (x *ReleasePublicIpRangeResponse) String() string {
 func (*ReleasePublicIpRangeResponse) ProtoMessage() {}
 
 func (x *ReleasePublicIpRangeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -999,10 +818,191 @@ func (x *ReleasePublicIpRangeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReleasePublicIpRangeResponse.ProtoReflect.Descriptor instead.
 func (*ReleasePublicIpRangeResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP(), []int{11}
+	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *ReleasePublicIpRangeResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UpdateVlanIpRangeRequest represents the parameters for updates a vlan ip range.
+type UpdateVlanIpRangeRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the UUID of the VLAN IP range
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the gateway of the VLAN IP range
+	Gateway *string `protobuf:"bytes,2,opt,name=gateway" json:"gateway,omitempty"`
+	// the netmask of the VLAN IP range
+	Netmask *string `protobuf:"bytes,3,opt,name=netmask" json:"netmask,omitempty"`
+	// the beginning IP address in the VLAN IP range
+	StartIp *string `protobuf:"bytes,4,opt,name=start_ip,json=startIp" json:"start_ip,omitempty"`
+	// the ending IP address in the VLAN IP range
+	EndIp *string `protobuf:"bytes,5,opt,name=end_ip,json=endIp" json:"end_ip,omitempty"`
+	// the beginning IPv6 address in the IPv6 network range
+	StartIpv6 *string `protobuf:"bytes,6,opt,name=start_ipv6,json=startIpv6" json:"start_ipv6,omitempty"`
+	// the ending IPv6 address in the IPv6 network range
+	EndIpv6 *string `protobuf:"bytes,7,opt,name=end_ipv6,json=endIpv6" json:"end_ipv6,omitempty"`
+	// the gateway of the IPv6 network
+	Ip6Gateway *string `protobuf:"bytes,8,opt,name=ip6_gateway,json=ip6Gateway" json:"ip6_gateway,omitempty"`
+	// the CIDR of IPv6 network, must be at least /64
+	Ip6Cidr *string `protobuf:"bytes,9,opt,name=ip6_cidr,json=ip6Cidr" json:"ip6_cidr,omitempty"`
+	// true if IP range is set to system vms, false if not
+	ForSystemVms *bool `protobuf:"varint,10,opt,name=for_system_vms,json=forSystemVms" json:"for_system_vms,omitempty"`
+	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateVlanIpRangeRequest) Reset() {
+	*x = UpdateVlanIpRangeRequest{}
+	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateVlanIpRangeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateVlanIpRangeRequest) ProtoMessage() {}
+
+func (x *UpdateVlanIpRangeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateVlanIpRangeRequest.ProtoReflect.Descriptor instead.
+func (*UpdateVlanIpRangeRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *UpdateVlanIpRangeRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateVlanIpRangeRequest) GetGateway() string {
+	if x != nil && x.Gateway != nil {
+		return *x.Gateway
+	}
+	return ""
+}
+
+func (x *UpdateVlanIpRangeRequest) GetNetmask() string {
+	if x != nil && x.Netmask != nil {
+		return *x.Netmask
+	}
+	return ""
+}
+
+func (x *UpdateVlanIpRangeRequest) GetStartIp() string {
+	if x != nil && x.StartIp != nil {
+		return *x.StartIp
+	}
+	return ""
+}
+
+func (x *UpdateVlanIpRangeRequest) GetEndIp() string {
+	if x != nil && x.EndIp != nil {
+		return *x.EndIp
+	}
+	return ""
+}
+
+func (x *UpdateVlanIpRangeRequest) GetStartIpv6() string {
+	if x != nil && x.StartIpv6 != nil {
+		return *x.StartIpv6
+	}
+	return ""
+}
+
+func (x *UpdateVlanIpRangeRequest) GetEndIpv6() string {
+	if x != nil && x.EndIpv6 != nil {
+		return *x.EndIpv6
+	}
+	return ""
+}
+
+func (x *UpdateVlanIpRangeRequest) GetIp6Gateway() string {
+	if x != nil && x.Ip6Gateway != nil {
+		return *x.Ip6Gateway
+	}
+	return ""
+}
+
+func (x *UpdateVlanIpRangeRequest) GetIp6Cidr() string {
+	if x != nil && x.Ip6Cidr != nil {
+		return *x.Ip6Cidr
+	}
+	return ""
+}
+
+func (x *UpdateVlanIpRangeRequest) GetForSystemVms() bool {
+	if x != nil && x.ForSystemVms != nil {
+		return *x.ForSystemVms
+	}
+	return false
+}
+
+func (x *UpdateVlanIpRangeRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateVlanIpRangeResponse represents the response from updates a vlan ip range.
+type UpdateVlanIpRangeResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateVlanIpRangeResponse) Reset() {
+	*x = UpdateVlanIpRangeResponse{}
+	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateVlanIpRangeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateVlanIpRangeResponse) ProtoMessage() {}
+
+func (x *UpdateVlanIpRangeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateVlanIpRangeResponse.ProtoReflect.Descriptor instead.
+func (*UpdateVlanIpRangeResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *UpdateVlanIpRangeResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1146,151 +1146,6 @@ func (x *Success) GetDisplayText() string {
 	return ""
 }
 
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
 // Result represents a generic operation result
 type Result struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1310,7 +1165,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[15]
+	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1322,7 +1177,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[15]
+	mi := &file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1335,7 +1190,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP(), []int{15}
+	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -1377,61 +1232,7 @@ var File_cloudstack_management_vlan_v1_vlan_gen_proto protoreflect.FileDescripto
 
 const file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDesc = "" +
 	"\n" +
-	",cloudstack/management/vlan/v1/vlan.gen.proto\x12\x1dcloudstack.management.vlan.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xc2\x04\n" +
-	"\x17ListVlanIpRangesRequest\x12\xa0\x01\n" +
-	"\faccount_name\x18\x01 \x01(\tB}\xbaHz\xba\x01w\n" +
-	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x02 \x01(\x03R\tprojectId\x12\x1b\n" +
-	"\tdomain_id\x18\x03 \x01(\x03R\bdomainId\x12\x0e\n" +
-	"\x02id\x18\x04 \x01(\x03R\x02id\x12\x15\n" +
-	"\x06pod_id\x18\x05 \x01(\x03R\x05podId\x12\x12\n" +
-	"\x04vlan\x18\x06 \x01(\tR\x04vlan\x12\x17\n" +
-	"\azone_id\x18\a \x01(\x03R\x06zoneId\x12\x1d\n" +
-	"\n" +
-	"network_id\x18\b \x01(\x03R\tnetworkId\x125\n" +
-	"\x13for_virtual_network\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\x11forVirtualNetwork\x12.\n" +
-	"\x13physical_network_id\x18\n" +
-	" \x01(\x03R\x11physicalNetworkId\x12\x18\n" +
-	"\akeyword\x18\v \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\f \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\r \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x0e \x01(\tR\fresponseType\"\x84\x01\n" +
-	"\x18ListVlanIpRangesResponse\x12@\n" +
-	"\x05items\x18\x01 \x03(\v2*.cloudstack.management.vlan.v1.VlanIpRangeR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"W\n" +
-	"\x18DeleteVlanIpRangeRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"Z\n" +
-	"\x19DeleteVlanIpRangeResponse\x12=\n" +
-	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.vlan.v1.ResultR\x06result\"\xa2\x03\n" +
-	"\x18UpdateVlanIpRangeRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12!\n" +
-	"\agateway\x18\x02 \x01(\tB\a\xbaH\x04r\x02x\x01R\agateway\x12\x18\n" +
-	"\anetmask\x18\x03 \x01(\tR\anetmask\x12\"\n" +
-	"\bstart_ip\x18\x04 \x01(\tB\a\xbaH\x04r\x02x\x01R\astartIp\x12\x1e\n" +
-	"\x06end_ip\x18\x05 \x01(\tB\a\xbaH\x04r\x02x\x01R\x05endIp\x12'\n" +
-	"\n" +
-	"start_ipv6\x18\x06 \x01(\tB\b\xbaH\x05r\x03\x80\x01\x01R\tstartIpv6\x12#\n" +
-	"\bend_ipv6\x18\a \x01(\tB\b\xbaH\x05r\x03\x80\x01\x01R\aendIpv6\x12(\n" +
-	"\vip6_gateway\x18\b \x01(\tB\a\xbaH\x04r\x02x\x01R\n" +
-	"ip6Gateway\x12#\n" +
-	"\bip6_cidr\x18\t \x01(\tB\b\xbaH\x05r\x03\xf0\x01\x01R\aip6Cidr\x12+\n" +
-	"\x0efor_system_vms\x18\n" +
-	" \x01(\bB\x05\xaa\x01\x02\b\x01R\fforSystemVms\x12#\n" +
-	"\rresponse_type\x18\v \x01(\tR\fresponseType\"Z\n" +
-	"\x19UpdateVlanIpRangeResponse\x12=\n" +
-	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.vlan.v1.ResultR\x06result\"\xc2\x01\n" +
-	"\x1cDedicatePublicIpRangeRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12!\n" +
-	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x03 \x01(\x03R\tprojectId\x12#\n" +
-	"\tdomain_id\x18\x04 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bdomainId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"^\n" +
-	"\x1dDedicatePublicIpRangeResponse\x12=\n" +
-	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.vlan.v1.ResultR\x06result\"\xd3\x05\n" +
+	",cloudstack/management/vlan/v1/vlan.gen.proto\x12\x1dcloudstack.management.vlan.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xd3\x05\n" +
 	"\x18CreateVlanIpRangeRequest\x12!\n" +
 	"\faccount_name\x18\x01 \x01(\tR\vaccountName\x12\x1d\n" +
 	"\n" +
@@ -1459,11 +1260,65 @@ const file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDesc = "" +
 	"\afor_nsx\x18\x13 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forNsx\x12#\n" +
 	"\rresponse_type\x18\x14 \x01(\tR\fresponseType\"Z\n" +
 	"\x19CreateVlanIpRangeResponse\x12=\n" +
-	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.vlan.v1.ResultR\x06result\"Z\n" +
+	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.vlan.v1.ResultR\x06result\"\xc2\x01\n" +
+	"\x1cDedicatePublicIpRangeRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12!\n" +
+	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x03 \x01(\x03R\tprojectId\x12#\n" +
+	"\tdomain_id\x18\x04 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\bdomainId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"^\n" +
+	"\x1dDedicatePublicIpRangeResponse\x12=\n" +
+	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.vlan.v1.ResultR\x06result\"W\n" +
+	"\x18DeleteVlanIpRangeRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"Z\n" +
+	"\x19DeleteVlanIpRangeResponse\x12=\n" +
+	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.vlan.v1.ResultR\x06result\"\xc2\x04\n" +
+	"\x17ListVlanIpRangesRequest\x12\xa0\x01\n" +
+	"\faccount_name\x18\x01 \x01(\tB}\xbaHz\xba\x01w\n" +
+	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x02 \x01(\x03R\tprojectId\x12\x1b\n" +
+	"\tdomain_id\x18\x03 \x01(\x03R\bdomainId\x12\x0e\n" +
+	"\x02id\x18\x04 \x01(\x03R\x02id\x12\x15\n" +
+	"\x06pod_id\x18\x05 \x01(\x03R\x05podId\x12\x12\n" +
+	"\x04vlan\x18\x06 \x01(\tR\x04vlan\x12\x17\n" +
+	"\azone_id\x18\a \x01(\x03R\x06zoneId\x12\x1d\n" +
+	"\n" +
+	"network_id\x18\b \x01(\x03R\tnetworkId\x125\n" +
+	"\x13for_virtual_network\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\x11forVirtualNetwork\x12.\n" +
+	"\x13physical_network_id\x18\n" +
+	" \x01(\x03R\x11physicalNetworkId\x12\x18\n" +
+	"\akeyword\x18\v \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\f \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\r \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x0e \x01(\tR\fresponseType\"\x84\x01\n" +
+	"\x18ListVlanIpRangesResponse\x12@\n" +
+	"\x05items\x18\x01 \x03(\v2*.cloudstack.management.vlan.v1.VlanIpRangeR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"Z\n" +
 	"\x1bReleasePublicIpRangeRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
 	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"]\n" +
 	"\x1cReleasePublicIpRangeResponse\x12=\n" +
+	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.vlan.v1.ResultR\x06result\"\xa2\x03\n" +
+	"\x18UpdateVlanIpRangeRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12!\n" +
+	"\agateway\x18\x02 \x01(\tB\a\xbaH\x04r\x02x\x01R\agateway\x12\x18\n" +
+	"\anetmask\x18\x03 \x01(\tR\anetmask\x12\"\n" +
+	"\bstart_ip\x18\x04 \x01(\tB\a\xbaH\x04r\x02x\x01R\astartIp\x12\x1e\n" +
+	"\x06end_ip\x18\x05 \x01(\tB\a\xbaH\x04r\x02x\x01R\x05endIp\x12'\n" +
+	"\n" +
+	"start_ipv6\x18\x06 \x01(\tB\b\xbaH\x05r\x03\x80\x01\x01R\tstartIpv6\x12#\n" +
+	"\bend_ipv6\x18\a \x01(\tB\b\xbaH\x05r\x03\x80\x01\x01R\aendIpv6\x12(\n" +
+	"\vip6_gateway\x18\b \x01(\tB\a\xbaH\x04r\x02x\x01R\n" +
+	"ip6Gateway\x12#\n" +
+	"\bip6_cidr\x18\t \x01(\tB\b\xbaH\x05r\x03\xf0\x01\x01R\aip6Cidr\x12+\n" +
+	"\x0efor_system_vms\x18\n" +
+	" \x01(\bB\x05\xaa\x01\x02\b\x01R\fforSystemVms\x12#\n" +
+	"\rresponse_type\x18\v \x01(\tR\fresponseType\"Z\n" +
+	"\x19UpdateVlanIpRangeResponse\x12=\n" +
 	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.vlan.v1.ResultR\x06result\"\x9a\x01\n" +
 	"\vVlanIpRange\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
@@ -1473,40 +1328,21 @@ const file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDesc = "" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xdc\x03\n" +
-	"\x04Item\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12J\n" +
-	"\adetails\x18\f \x03(\v20.cloudstack.management.vlan.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xe9\x06\n" +
-	"\vVlanService\x12\x85\x01\n" +
-	"\x10ListVlanIpRanges\x126.cloudstack.management.vlan.v1.ListVlanIpRangesRequest\x1a7.cloudstack.management.vlan.v1.ListVlanIpRangesResponse\"\x00\x12\x88\x01\n" +
-	"\x11DeleteVlanIpRange\x127.cloudstack.management.vlan.v1.DeleteVlanIpRangeRequest\x1a8.cloudstack.management.vlan.v1.DeleteVlanIpRangeResponse\"\x00\x12\x88\x01\n" +
-	"\x11UpdateVlanIpRange\x127.cloudstack.management.vlan.v1.UpdateVlanIpRangeRequest\x1a8.cloudstack.management.vlan.v1.UpdateVlanIpRangeResponse\"\x00\x12\x94\x01\n" +
-	"\x15DedicatePublicIpRange\x12;.cloudstack.management.vlan.v1.DedicatePublicIpRangeRequest\x1a<.cloudstack.management.vlan.v1.DedicatePublicIpRangeResponse\"\x00\x12\x88\x01\n" +
-	"\x11CreateVlanIpRange\x127.cloudstack.management.vlan.v1.CreateVlanIpRangeRequest\x1a8.cloudstack.management.vlan.v1.CreateVlanIpRangeResponse\"\x00\x12\x91\x01\n" +
-	"\x14ReleasePublicIpRange\x12:.cloudstack.management.vlan.v1.ReleasePublicIpRangeRequest\x1a;.cloudstack.management.vlan.v1.ReleasePublicIpRangeResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xa2\x02\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\x94\a\n" +
+	"\vVlanService\x12\x8f\x01\n" +
+	"\x11CreateVlanIpRange\x127.cloudstack.management.vlan.v1.CreateVlanIpRangeRequest\x1a8.cloudstack.management.vlan.v1.CreateVlanIpRangeResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x9b\x01\n" +
+	"\x15DedicatePublicIpRange\x12;.cloudstack.management.vlan.v1.DedicatePublicIpRangeRequest\x1a<.cloudstack.management.vlan.v1.DedicatePublicIpRangeResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x8f\x01\n" +
+	"\x11DeleteVlanIpRange\x127.cloudstack.management.vlan.v1.DeleteVlanIpRangeRequest\x1a8.cloudstack.management.vlan.v1.DeleteVlanIpRangeResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x8c\x01\n" +
+	"\x10ListVlanIpRanges\x126.cloudstack.management.vlan.v1.ListVlanIpRangesRequest\x1a7.cloudstack.management.vlan.v1.ListVlanIpRangesResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x98\x01\n" +
+	"\x14ReleasePublicIpRange\x12:.cloudstack.management.vlan.v1.ReleasePublicIpRangeRequest\x1a;.cloudstack.management.vlan.v1.ReleasePublicIpRangeResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x8f\x01\n" +
+	"\x11UpdateVlanIpRange\x127.cloudstack.management.vlan.v1.UpdateVlanIpRangeRequest\x1a8.cloudstack.management.vlan.v1.UpdateVlanIpRangeResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\a\xc2>\x04\xc2>\x01\x02B\xa2\x02\n" +
 	"!com.cloudstack.management.vlan.v1B\fVlanGenProtoP\x01ZXgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/vlan/v1;vlanv1\xa2\x02\x03CMV\xaa\x02\x1dCloudstack.Management.Vlan.V1\xca\x02\x1dCloudstack\\Management\\Vlan\\V1\xe2\x02)Cloudstack\\Management\\Vlan\\V1\\GPBMetadata\xea\x02 Cloudstack::Management::Vlan::V1b\beditionsp\xe8\a"
 
 var (
@@ -1521,51 +1357,48 @@ func file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescGZIP() []byte {
 	return file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDescData
 }
 
-var file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
+var file_cloudstack_management_vlan_v1_vlan_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
 var file_cloudstack_management_vlan_v1_vlan_gen_proto_goTypes = []any{
-	(*ListVlanIpRangesRequest)(nil),       // 0: cloudstack.management.vlan.v1.ListVlanIpRangesRequest
-	(*ListVlanIpRangesResponse)(nil),      // 1: cloudstack.management.vlan.v1.ListVlanIpRangesResponse
-	(*DeleteVlanIpRangeRequest)(nil),      // 2: cloudstack.management.vlan.v1.DeleteVlanIpRangeRequest
-	(*DeleteVlanIpRangeResponse)(nil),     // 3: cloudstack.management.vlan.v1.DeleteVlanIpRangeResponse
-	(*UpdateVlanIpRangeRequest)(nil),      // 4: cloudstack.management.vlan.v1.UpdateVlanIpRangeRequest
-	(*UpdateVlanIpRangeResponse)(nil),     // 5: cloudstack.management.vlan.v1.UpdateVlanIpRangeResponse
-	(*DedicatePublicIpRangeRequest)(nil),  // 6: cloudstack.management.vlan.v1.DedicatePublicIpRangeRequest
-	(*DedicatePublicIpRangeResponse)(nil), // 7: cloudstack.management.vlan.v1.DedicatePublicIpRangeResponse
-	(*CreateVlanIpRangeRequest)(nil),      // 8: cloudstack.management.vlan.v1.CreateVlanIpRangeRequest
-	(*CreateVlanIpRangeResponse)(nil),     // 9: cloudstack.management.vlan.v1.CreateVlanIpRangeResponse
-	(*ReleasePublicIpRangeRequest)(nil),   // 10: cloudstack.management.vlan.v1.ReleasePublicIpRangeRequest
-	(*ReleasePublicIpRangeResponse)(nil),  // 11: cloudstack.management.vlan.v1.ReleasePublicIpRangeResponse
+	(*CreateVlanIpRangeRequest)(nil),      // 0: cloudstack.management.vlan.v1.CreateVlanIpRangeRequest
+	(*CreateVlanIpRangeResponse)(nil),     // 1: cloudstack.management.vlan.v1.CreateVlanIpRangeResponse
+	(*DedicatePublicIpRangeRequest)(nil),  // 2: cloudstack.management.vlan.v1.DedicatePublicIpRangeRequest
+	(*DedicatePublicIpRangeResponse)(nil), // 3: cloudstack.management.vlan.v1.DedicatePublicIpRangeResponse
+	(*DeleteVlanIpRangeRequest)(nil),      // 4: cloudstack.management.vlan.v1.DeleteVlanIpRangeRequest
+	(*DeleteVlanIpRangeResponse)(nil),     // 5: cloudstack.management.vlan.v1.DeleteVlanIpRangeResponse
+	(*ListVlanIpRangesRequest)(nil),       // 6: cloudstack.management.vlan.v1.ListVlanIpRangesRequest
+	(*ListVlanIpRangesResponse)(nil),      // 7: cloudstack.management.vlan.v1.ListVlanIpRangesResponse
+	(*ReleasePublicIpRangeRequest)(nil),   // 8: cloudstack.management.vlan.v1.ReleasePublicIpRangeRequest
+	(*ReleasePublicIpRangeResponse)(nil),  // 9: cloudstack.management.vlan.v1.ReleasePublicIpRangeResponse
+	(*UpdateVlanIpRangeRequest)(nil),      // 10: cloudstack.management.vlan.v1.UpdateVlanIpRangeRequest
+	(*UpdateVlanIpRangeResponse)(nil),     // 11: cloudstack.management.vlan.v1.UpdateVlanIpRangeResponse
 	(*VlanIpRange)(nil),                   // 12: cloudstack.management.vlan.v1.VlanIpRange
 	(*Success)(nil),                       // 13: cloudstack.management.vlan.v1.Success
-	(*Item)(nil),                          // 14: cloudstack.management.vlan.v1.Item
-	(*Result)(nil),                        // 15: cloudstack.management.vlan.v1.Result
-	nil,                                   // 16: cloudstack.management.vlan.v1.Item.DetailsEntry
+	(*Result)(nil),                        // 14: cloudstack.management.vlan.v1.Result
 }
 var file_cloudstack_management_vlan_v1_vlan_gen_proto_depIdxs = []int32{
-	12, // 0: cloudstack.management.vlan.v1.ListVlanIpRangesResponse.items:type_name -> cloudstack.management.vlan.v1.VlanIpRange
-	15, // 1: cloudstack.management.vlan.v1.DeleteVlanIpRangeResponse.result:type_name -> cloudstack.management.vlan.v1.Result
-	15, // 2: cloudstack.management.vlan.v1.UpdateVlanIpRangeResponse.result:type_name -> cloudstack.management.vlan.v1.Result
-	15, // 3: cloudstack.management.vlan.v1.DedicatePublicIpRangeResponse.result:type_name -> cloudstack.management.vlan.v1.Result
-	15, // 4: cloudstack.management.vlan.v1.CreateVlanIpRangeResponse.result:type_name -> cloudstack.management.vlan.v1.Result
-	15, // 5: cloudstack.management.vlan.v1.ReleasePublicIpRangeResponse.result:type_name -> cloudstack.management.vlan.v1.Result
-	16, // 6: cloudstack.management.vlan.v1.Item.details:type_name -> cloudstack.management.vlan.v1.Item.DetailsEntry
-	0,  // 7: cloudstack.management.vlan.v1.VlanService.ListVlanIpRanges:input_type -> cloudstack.management.vlan.v1.ListVlanIpRangesRequest
-	2,  // 8: cloudstack.management.vlan.v1.VlanService.DeleteVlanIpRange:input_type -> cloudstack.management.vlan.v1.DeleteVlanIpRangeRequest
-	4,  // 9: cloudstack.management.vlan.v1.VlanService.UpdateVlanIpRange:input_type -> cloudstack.management.vlan.v1.UpdateVlanIpRangeRequest
-	6,  // 10: cloudstack.management.vlan.v1.VlanService.DedicatePublicIpRange:input_type -> cloudstack.management.vlan.v1.DedicatePublicIpRangeRequest
-	8,  // 11: cloudstack.management.vlan.v1.VlanService.CreateVlanIpRange:input_type -> cloudstack.management.vlan.v1.CreateVlanIpRangeRequest
-	10, // 12: cloudstack.management.vlan.v1.VlanService.ReleasePublicIpRange:input_type -> cloudstack.management.vlan.v1.ReleasePublicIpRangeRequest
-	1,  // 13: cloudstack.management.vlan.v1.VlanService.ListVlanIpRanges:output_type -> cloudstack.management.vlan.v1.ListVlanIpRangesResponse
-	3,  // 14: cloudstack.management.vlan.v1.VlanService.DeleteVlanIpRange:output_type -> cloudstack.management.vlan.v1.DeleteVlanIpRangeResponse
-	5,  // 15: cloudstack.management.vlan.v1.VlanService.UpdateVlanIpRange:output_type -> cloudstack.management.vlan.v1.UpdateVlanIpRangeResponse
-	7,  // 16: cloudstack.management.vlan.v1.VlanService.DedicatePublicIpRange:output_type -> cloudstack.management.vlan.v1.DedicatePublicIpRangeResponse
-	9,  // 17: cloudstack.management.vlan.v1.VlanService.CreateVlanIpRange:output_type -> cloudstack.management.vlan.v1.CreateVlanIpRangeResponse
-	11, // 18: cloudstack.management.vlan.v1.VlanService.ReleasePublicIpRange:output_type -> cloudstack.management.vlan.v1.ReleasePublicIpRangeResponse
-	13, // [13:19] is the sub-list for method output_type
-	7,  // [7:13] is the sub-list for method input_type
-	7,  // [7:7] is the sub-list for extension type_name
-	7,  // [7:7] is the sub-list for extension extendee
-	0,  // [0:7] is the sub-list for field type_name
+	14, // 0: cloudstack.management.vlan.v1.CreateVlanIpRangeResponse.result:type_name -> cloudstack.management.vlan.v1.Result
+	14, // 1: cloudstack.management.vlan.v1.DedicatePublicIpRangeResponse.result:type_name -> cloudstack.management.vlan.v1.Result
+	14, // 2: cloudstack.management.vlan.v1.DeleteVlanIpRangeResponse.result:type_name -> cloudstack.management.vlan.v1.Result
+	12, // 3: cloudstack.management.vlan.v1.ListVlanIpRangesResponse.items:type_name -> cloudstack.management.vlan.v1.VlanIpRange
+	14, // 4: cloudstack.management.vlan.v1.ReleasePublicIpRangeResponse.result:type_name -> cloudstack.management.vlan.v1.Result
+	14, // 5: cloudstack.management.vlan.v1.UpdateVlanIpRangeResponse.result:type_name -> cloudstack.management.vlan.v1.Result
+	0,  // 6: cloudstack.management.vlan.v1.VlanService.CreateVlanIpRange:input_type -> cloudstack.management.vlan.v1.CreateVlanIpRangeRequest
+	2,  // 7: cloudstack.management.vlan.v1.VlanService.DedicatePublicIpRange:input_type -> cloudstack.management.vlan.v1.DedicatePublicIpRangeRequest
+	4,  // 8: cloudstack.management.vlan.v1.VlanService.DeleteVlanIpRange:input_type -> cloudstack.management.vlan.v1.DeleteVlanIpRangeRequest
+	6,  // 9: cloudstack.management.vlan.v1.VlanService.ListVlanIpRanges:input_type -> cloudstack.management.vlan.v1.ListVlanIpRangesRequest
+	8,  // 10: cloudstack.management.vlan.v1.VlanService.ReleasePublicIpRange:input_type -> cloudstack.management.vlan.v1.ReleasePublicIpRangeRequest
+	10, // 11: cloudstack.management.vlan.v1.VlanService.UpdateVlanIpRange:input_type -> cloudstack.management.vlan.v1.UpdateVlanIpRangeRequest
+	1,  // 12: cloudstack.management.vlan.v1.VlanService.CreateVlanIpRange:output_type -> cloudstack.management.vlan.v1.CreateVlanIpRangeResponse
+	3,  // 13: cloudstack.management.vlan.v1.VlanService.DedicatePublicIpRange:output_type -> cloudstack.management.vlan.v1.DedicatePublicIpRangeResponse
+	5,  // 14: cloudstack.management.vlan.v1.VlanService.DeleteVlanIpRange:output_type -> cloudstack.management.vlan.v1.DeleteVlanIpRangeResponse
+	7,  // 15: cloudstack.management.vlan.v1.VlanService.ListVlanIpRanges:output_type -> cloudstack.management.vlan.v1.ListVlanIpRangesResponse
+	9,  // 16: cloudstack.management.vlan.v1.VlanService.ReleasePublicIpRange:output_type -> cloudstack.management.vlan.v1.ReleasePublicIpRangeResponse
+	11, // 17: cloudstack.management.vlan.v1.VlanService.UpdateVlanIpRange:output_type -> cloudstack.management.vlan.v1.UpdateVlanIpRangeResponse
+	12, // [12:18] is the sub-list for method output_type
+	6,  // [6:12] is the sub-list for method input_type
+	6,  // [6:6] is the sub-list for extension type_name
+	6,  // [6:6] is the sub-list for extension extendee
+	0,  // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_vlan_v1_vlan_gen_proto_init() }
@@ -1579,7 +1412,7 @@ func file_cloudstack_management_vlan_v1_vlan_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDesc), len(file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   17,
+			NumMessages:   15,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

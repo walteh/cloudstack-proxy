@@ -19,26 +19,26 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	VpnService_ListVpnCustomerGateways_FullMethodName  = "/cloudstack.management.vpn.v1.VpnService/ListVpnCustomerGateways"
-	VpnService_ListVpnConnections_FullMethodName       = "/cloudstack.management.vpn.v1.VpnService/ListVpnConnections"
-	VpnService_UpdateRemoteAccessVpn_FullMethodName    = "/cloudstack.management.vpn.v1.VpnService/UpdateRemoteAccessVpn"
-	VpnService_CreateVpnCustomerGateway_FullMethodName = "/cloudstack.management.vpn.v1.VpnService/CreateVpnCustomerGateway"
-	VpnService_CreateRemoteAccessVpn_FullMethodName    = "/cloudstack.management.vpn.v1.VpnService/CreateRemoteAccessVpn"
-	VpnService_UpdateVpnCustomerGateway_FullMethodName = "/cloudstack.management.vpn.v1.VpnService/UpdateVpnCustomerGateway"
-	VpnService_ListRemoteAccessVpns_FullMethodName     = "/cloudstack.management.vpn.v1.VpnService/ListRemoteAccessVpns"
-	VpnService_DeleteRemoteAccessVpn_FullMethodName    = "/cloudstack.management.vpn.v1.VpnService/DeleteRemoteAccessVpn"
-	VpnService_CreateVpnConnection_FullMethodName      = "/cloudstack.management.vpn.v1.VpnService/CreateVpnConnection"
-	VpnService_DeleteVpnCustomerGateway_FullMethodName = "/cloudstack.management.vpn.v1.VpnService/DeleteVpnCustomerGateway"
-	VpnService_UpdateVpnConnection_FullMethodName      = "/cloudstack.management.vpn.v1.VpnService/UpdateVpnConnection"
-	VpnService_DeleteVpnGateway_FullMethodName         = "/cloudstack.management.vpn.v1.VpnService/DeleteVpnGateway"
-	VpnService_DeleteVpnConnection_FullMethodName      = "/cloudstack.management.vpn.v1.VpnService/DeleteVpnConnection"
-	VpnService_RemoveVpnUser_FullMethodName            = "/cloudstack.management.vpn.v1.VpnService/RemoveVpnUser"
-	VpnService_ResetVpnConnection_FullMethodName       = "/cloudstack.management.vpn.v1.VpnService/ResetVpnConnection"
 	VpnService_AddVpnUser_FullMethodName               = "/cloudstack.management.vpn.v1.VpnService/AddVpnUser"
+	VpnService_CreateRemoteAccessVpn_FullMethodName    = "/cloudstack.management.vpn.v1.VpnService/CreateRemoteAccessVpn"
+	VpnService_CreateVpnConnection_FullMethodName      = "/cloudstack.management.vpn.v1.VpnService/CreateVpnConnection"
+	VpnService_CreateVpnCustomerGateway_FullMethodName = "/cloudstack.management.vpn.v1.VpnService/CreateVpnCustomerGateway"
 	VpnService_CreateVpnGateway_FullMethodName         = "/cloudstack.management.vpn.v1.VpnService/CreateVpnGateway"
-	VpnService_UpdateVpnGateway_FullMethodName         = "/cloudstack.management.vpn.v1.VpnService/UpdateVpnGateway"
+	VpnService_DeleteRemoteAccessVpn_FullMethodName    = "/cloudstack.management.vpn.v1.VpnService/DeleteRemoteAccessVpn"
+	VpnService_DeleteVpnConnection_FullMethodName      = "/cloudstack.management.vpn.v1.VpnService/DeleteVpnConnection"
+	VpnService_DeleteVpnCustomerGateway_FullMethodName = "/cloudstack.management.vpn.v1.VpnService/DeleteVpnCustomerGateway"
+	VpnService_DeleteVpnGateway_FullMethodName         = "/cloudstack.management.vpn.v1.VpnService/DeleteVpnGateway"
+	VpnService_ListRemoteAccessVpns_FullMethodName     = "/cloudstack.management.vpn.v1.VpnService/ListRemoteAccessVpns"
+	VpnService_ListVpnConnections_FullMethodName       = "/cloudstack.management.vpn.v1.VpnService/ListVpnConnections"
+	VpnService_ListVpnCustomerGateways_FullMethodName  = "/cloudstack.management.vpn.v1.VpnService/ListVpnCustomerGateways"
 	VpnService_ListVpnGateways_FullMethodName          = "/cloudstack.management.vpn.v1.VpnService/ListVpnGateways"
 	VpnService_ListVpnUsers_FullMethodName             = "/cloudstack.management.vpn.v1.VpnService/ListVpnUsers"
+	VpnService_RemoveVpnUser_FullMethodName            = "/cloudstack.management.vpn.v1.VpnService/RemoveVpnUser"
+	VpnService_ResetVpnConnection_FullMethodName       = "/cloudstack.management.vpn.v1.VpnService/ResetVpnConnection"
+	VpnService_UpdateRemoteAccessVpn_FullMethodName    = "/cloudstack.management.vpn.v1.VpnService/UpdateRemoteAccessVpn"
+	VpnService_UpdateVpnConnection_FullMethodName      = "/cloudstack.management.vpn.v1.VpnService/UpdateVpnConnection"
+	VpnService_UpdateVpnCustomerGateway_FullMethodName = "/cloudstack.management.vpn.v1.VpnService/UpdateVpnCustomerGateway"
+	VpnService_UpdateVpnGateway_FullMethodName         = "/cloudstack.management.vpn.v1.VpnService/UpdateVpnGateway"
 )
 
 // VpnServiceClient is the client API for VpnService service.
@@ -47,46 +47,46 @@ const (
 //
 // VpnService provides operations for managing Vpns
 type VpnServiceClient interface {
-	// ListVpnCustomerGateways Lists site to site vpn customer gateways
-	ListVpnCustomerGateways(ctx context.Context, in *ListVpnCustomerGatewaysRequest, opts ...grpc.CallOption) (*ListVpnCustomerGatewaysResponse, error)
-	// ListVpnConnections Lists site to site vpn connection gateways
-	ListVpnConnections(ctx context.Context, in *ListVpnConnectionsRequest, opts ...grpc.CallOption) (*ListVpnConnectionsResponse, error)
-	// UpdateRemoteAccessVpn Updates remote access vpn
-	UpdateRemoteAccessVpn(ctx context.Context, in *UpdateRemoteAccessVpnRequest, opts ...grpc.CallOption) (*UpdateRemoteAccessVpnResponse, error)
-	// CreateVpnCustomerGateway Creates site to site vpn customer gateway
-	CreateVpnCustomerGateway(ctx context.Context, in *CreateVpnCustomerGatewayRequest, opts ...grpc.CallOption) (*CreateVpnCustomerGatewayResponse, error)
-	// CreateRemoteAccessVpn Creates a l2tp/ipsec remote access vpn
-	CreateRemoteAccessVpn(ctx context.Context, in *CreateRemoteAccessVpnRequest, opts ...grpc.CallOption) (*CreateRemoteAccessVpnResponse, error)
-	// UpdateVpnCustomerGateway Update site to site vpn customer gateway
-	UpdateVpnCustomerGateway(ctx context.Context, in *UpdateVpnCustomerGatewayRequest, opts ...grpc.CallOption) (*UpdateVpnCustomerGatewayResponse, error)
-	// ListRemoteAccessVpns Lists remote access vpns
-	ListRemoteAccessVpns(ctx context.Context, in *ListRemoteAccessVpnsRequest, opts ...grpc.CallOption) (*ListRemoteAccessVpnsResponse, error)
-	// DeleteRemoteAccessVpn Destroys a l2tp/ipsec remote access vpn
-	DeleteRemoteAccessVpn(ctx context.Context, in *DeleteRemoteAccessVpnRequest, opts ...grpc.CallOption) (*DeleteRemoteAccessVpnResponse, error)
-	// CreateVpnConnection Create site to site vpn connection
-	CreateVpnConnection(ctx context.Context, in *CreateVpnConnectionRequest, opts ...grpc.CallOption) (*CreateVpnConnectionResponse, error)
-	// DeleteVpnCustomerGateway Delete site to site vpn customer gateway
-	DeleteVpnCustomerGateway(ctx context.Context, in *DeleteVpnCustomerGatewayRequest, opts ...grpc.CallOption) (*DeleteVpnCustomerGatewayResponse, error)
-	// UpdateVpnConnection Updates site to site vpn connection
-	UpdateVpnConnection(ctx context.Context, in *UpdateVpnConnectionRequest, opts ...grpc.CallOption) (*UpdateVpnConnectionResponse, error)
-	// DeleteVpnGateway Delete site to site vpn gateway
-	DeleteVpnGateway(ctx context.Context, in *DeleteVpnGatewayRequest, opts ...grpc.CallOption) (*DeleteVpnGatewayResponse, error)
-	// DeleteVpnConnection Delete site to site vpn connection
-	DeleteVpnConnection(ctx context.Context, in *DeleteVpnConnectionRequest, opts ...grpc.CallOption) (*DeleteVpnConnectionResponse, error)
-	// RemoveVpnUser Removes vpn user
-	RemoveVpnUser(ctx context.Context, in *RemoveVpnUserRequest, opts ...grpc.CallOption) (*RemoveVpnUserResponse, error)
-	// ResetVpnConnection Reset site to site vpn connection
-	ResetVpnConnection(ctx context.Context, in *ResetVpnConnectionRequest, opts ...grpc.CallOption) (*ResetVpnConnectionResponse, error)
 	// AddVpnUser Adds vpn users
 	AddVpnUser(ctx context.Context, in *AddVpnUserRequest, opts ...grpc.CallOption) (*AddVpnUserResponse, error)
+	// CreateRemoteAccessVpn Creates a l2tp/ipsec remote access vpn
+	CreateRemoteAccessVpn(ctx context.Context, in *CreateRemoteAccessVpnRequest, opts ...grpc.CallOption) (*CreateRemoteAccessVpnResponse, error)
+	// CreateVpnConnection Create site to site vpn connection
+	CreateVpnConnection(ctx context.Context, in *CreateVpnConnectionRequest, opts ...grpc.CallOption) (*CreateVpnConnectionResponse, error)
+	// CreateVpnCustomerGateway Creates site to site vpn customer gateway
+	CreateVpnCustomerGateway(ctx context.Context, in *CreateVpnCustomerGatewayRequest, opts ...grpc.CallOption) (*CreateVpnCustomerGatewayResponse, error)
 	// CreateVpnGateway Creates site to site vpn local gateway
 	CreateVpnGateway(ctx context.Context, in *CreateVpnGatewayRequest, opts ...grpc.CallOption) (*CreateVpnGatewayResponse, error)
-	// UpdateVpnGateway Updates site to site vpn local gateway
-	UpdateVpnGateway(ctx context.Context, in *UpdateVpnGatewayRequest, opts ...grpc.CallOption) (*UpdateVpnGatewayResponse, error)
+	// DeleteRemoteAccessVpn Destroys a l2tp/ipsec remote access vpn
+	DeleteRemoteAccessVpn(ctx context.Context, in *DeleteRemoteAccessVpnRequest, opts ...grpc.CallOption) (*DeleteRemoteAccessVpnResponse, error)
+	// DeleteVpnConnection Delete site to site vpn connection
+	DeleteVpnConnection(ctx context.Context, in *DeleteVpnConnectionRequest, opts ...grpc.CallOption) (*DeleteVpnConnectionResponse, error)
+	// DeleteVpnCustomerGateway Delete site to site vpn customer gateway
+	DeleteVpnCustomerGateway(ctx context.Context, in *DeleteVpnCustomerGatewayRequest, opts ...grpc.CallOption) (*DeleteVpnCustomerGatewayResponse, error)
+	// DeleteVpnGateway Delete site to site vpn gateway
+	DeleteVpnGateway(ctx context.Context, in *DeleteVpnGatewayRequest, opts ...grpc.CallOption) (*DeleteVpnGatewayResponse, error)
+	// ListRemoteAccessVpns Lists remote access vpns
+	ListRemoteAccessVpns(ctx context.Context, in *ListRemoteAccessVpnsRequest, opts ...grpc.CallOption) (*ListRemoteAccessVpnsResponse, error)
+	// ListVpnConnections Lists site to site vpn connection gateways
+	ListVpnConnections(ctx context.Context, in *ListVpnConnectionsRequest, opts ...grpc.CallOption) (*ListVpnConnectionsResponse, error)
+	// ListVpnCustomerGateways Lists site to site vpn customer gateways
+	ListVpnCustomerGateways(ctx context.Context, in *ListVpnCustomerGatewaysRequest, opts ...grpc.CallOption) (*ListVpnCustomerGatewaysResponse, error)
 	// ListVpnGateways Lists site 2 site vpn gateways
 	ListVpnGateways(ctx context.Context, in *ListVpnGatewaysRequest, opts ...grpc.CallOption) (*ListVpnGatewaysResponse, error)
 	// ListVpnUsers Lists vpn users
 	ListVpnUsers(ctx context.Context, in *ListVpnUsersRequest, opts ...grpc.CallOption) (*ListVpnUsersResponse, error)
+	// RemoveVpnUser Removes vpn user
+	RemoveVpnUser(ctx context.Context, in *RemoveVpnUserRequest, opts ...grpc.CallOption) (*RemoveVpnUserResponse, error)
+	// ResetVpnConnection Reset site to site vpn connection
+	ResetVpnConnection(ctx context.Context, in *ResetVpnConnectionRequest, opts ...grpc.CallOption) (*ResetVpnConnectionResponse, error)
+	// UpdateRemoteAccessVpn Updates remote access vpn
+	UpdateRemoteAccessVpn(ctx context.Context, in *UpdateRemoteAccessVpnRequest, opts ...grpc.CallOption) (*UpdateRemoteAccessVpnResponse, error)
+	// UpdateVpnConnection Updates site to site vpn connection
+	UpdateVpnConnection(ctx context.Context, in *UpdateVpnConnectionRequest, opts ...grpc.CallOption) (*UpdateVpnConnectionResponse, error)
+	// UpdateVpnCustomerGateway Update site to site vpn customer gateway
+	UpdateVpnCustomerGateway(ctx context.Context, in *UpdateVpnCustomerGatewayRequest, opts ...grpc.CallOption) (*UpdateVpnCustomerGatewayResponse, error)
+	// UpdateVpnGateway Updates site to site vpn local gateway
+	UpdateVpnGateway(ctx context.Context, in *UpdateVpnGatewayRequest, opts ...grpc.CallOption) (*UpdateVpnGatewayResponse, error)
 }
 
 type vpnServiceClient struct {
@@ -97,40 +97,10 @@ func NewVpnServiceClient(cc grpc.ClientConnInterface) VpnServiceClient {
 	return &vpnServiceClient{cc}
 }
 
-func (c *vpnServiceClient) ListVpnCustomerGateways(ctx context.Context, in *ListVpnCustomerGatewaysRequest, opts ...grpc.CallOption) (*ListVpnCustomerGatewaysResponse, error) {
+func (c *vpnServiceClient) AddVpnUser(ctx context.Context, in *AddVpnUserRequest, opts ...grpc.CallOption) (*AddVpnUserResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListVpnCustomerGatewaysResponse)
-	err := c.cc.Invoke(ctx, VpnService_ListVpnCustomerGateways_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vpnServiceClient) ListVpnConnections(ctx context.Context, in *ListVpnConnectionsRequest, opts ...grpc.CallOption) (*ListVpnConnectionsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListVpnConnectionsResponse)
-	err := c.cc.Invoke(ctx, VpnService_ListVpnConnections_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vpnServiceClient) UpdateRemoteAccessVpn(ctx context.Context, in *UpdateRemoteAccessVpnRequest, opts ...grpc.CallOption) (*UpdateRemoteAccessVpnResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateRemoteAccessVpnResponse)
-	err := c.cc.Invoke(ctx, VpnService_UpdateRemoteAccessVpn_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vpnServiceClient) CreateVpnCustomerGateway(ctx context.Context, in *CreateVpnCustomerGatewayRequest, opts ...grpc.CallOption) (*CreateVpnCustomerGatewayResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateVpnCustomerGatewayResponse)
-	err := c.cc.Invoke(ctx, VpnService_CreateVpnCustomerGateway_FullMethodName, in, out, cOpts...)
+	out := new(AddVpnUserResponse)
+	err := c.cc.Invoke(ctx, VpnService_AddVpnUser_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -147,36 +117,6 @@ func (c *vpnServiceClient) CreateRemoteAccessVpn(ctx context.Context, in *Create
 	return out, nil
 }
 
-func (c *vpnServiceClient) UpdateVpnCustomerGateway(ctx context.Context, in *UpdateVpnCustomerGatewayRequest, opts ...grpc.CallOption) (*UpdateVpnCustomerGatewayResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateVpnCustomerGatewayResponse)
-	err := c.cc.Invoke(ctx, VpnService_UpdateVpnCustomerGateway_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vpnServiceClient) ListRemoteAccessVpns(ctx context.Context, in *ListRemoteAccessVpnsRequest, opts ...grpc.CallOption) (*ListRemoteAccessVpnsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListRemoteAccessVpnsResponse)
-	err := c.cc.Invoke(ctx, VpnService_ListRemoteAccessVpns_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vpnServiceClient) DeleteRemoteAccessVpn(ctx context.Context, in *DeleteRemoteAccessVpnRequest, opts ...grpc.CallOption) (*DeleteRemoteAccessVpnResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteRemoteAccessVpnResponse)
-	err := c.cc.Invoke(ctx, VpnService_DeleteRemoteAccessVpn_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *vpnServiceClient) CreateVpnConnection(ctx context.Context, in *CreateVpnConnectionRequest, opts ...grpc.CallOption) (*CreateVpnConnectionResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreateVpnConnectionResponse)
@@ -187,70 +127,10 @@ func (c *vpnServiceClient) CreateVpnConnection(ctx context.Context, in *CreateVp
 	return out, nil
 }
 
-func (c *vpnServiceClient) DeleteVpnCustomerGateway(ctx context.Context, in *DeleteVpnCustomerGatewayRequest, opts ...grpc.CallOption) (*DeleteVpnCustomerGatewayResponse, error) {
+func (c *vpnServiceClient) CreateVpnCustomerGateway(ctx context.Context, in *CreateVpnCustomerGatewayRequest, opts ...grpc.CallOption) (*CreateVpnCustomerGatewayResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteVpnCustomerGatewayResponse)
-	err := c.cc.Invoke(ctx, VpnService_DeleteVpnCustomerGateway_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vpnServiceClient) UpdateVpnConnection(ctx context.Context, in *UpdateVpnConnectionRequest, opts ...grpc.CallOption) (*UpdateVpnConnectionResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateVpnConnectionResponse)
-	err := c.cc.Invoke(ctx, VpnService_UpdateVpnConnection_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vpnServiceClient) DeleteVpnGateway(ctx context.Context, in *DeleteVpnGatewayRequest, opts ...grpc.CallOption) (*DeleteVpnGatewayResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteVpnGatewayResponse)
-	err := c.cc.Invoke(ctx, VpnService_DeleteVpnGateway_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vpnServiceClient) DeleteVpnConnection(ctx context.Context, in *DeleteVpnConnectionRequest, opts ...grpc.CallOption) (*DeleteVpnConnectionResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteVpnConnectionResponse)
-	err := c.cc.Invoke(ctx, VpnService_DeleteVpnConnection_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vpnServiceClient) RemoveVpnUser(ctx context.Context, in *RemoveVpnUserRequest, opts ...grpc.CallOption) (*RemoveVpnUserResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RemoveVpnUserResponse)
-	err := c.cc.Invoke(ctx, VpnService_RemoveVpnUser_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vpnServiceClient) ResetVpnConnection(ctx context.Context, in *ResetVpnConnectionRequest, opts ...grpc.CallOption) (*ResetVpnConnectionResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ResetVpnConnectionResponse)
-	err := c.cc.Invoke(ctx, VpnService_ResetVpnConnection_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vpnServiceClient) AddVpnUser(ctx context.Context, in *AddVpnUserRequest, opts ...grpc.CallOption) (*AddVpnUserResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AddVpnUserResponse)
-	err := c.cc.Invoke(ctx, VpnService_AddVpnUser_FullMethodName, in, out, cOpts...)
+	out := new(CreateVpnCustomerGatewayResponse)
+	err := c.cc.Invoke(ctx, VpnService_CreateVpnCustomerGateway_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -267,10 +147,70 @@ func (c *vpnServiceClient) CreateVpnGateway(ctx context.Context, in *CreateVpnGa
 	return out, nil
 }
 
-func (c *vpnServiceClient) UpdateVpnGateway(ctx context.Context, in *UpdateVpnGatewayRequest, opts ...grpc.CallOption) (*UpdateVpnGatewayResponse, error) {
+func (c *vpnServiceClient) DeleteRemoteAccessVpn(ctx context.Context, in *DeleteRemoteAccessVpnRequest, opts ...grpc.CallOption) (*DeleteRemoteAccessVpnResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateVpnGatewayResponse)
-	err := c.cc.Invoke(ctx, VpnService_UpdateVpnGateway_FullMethodName, in, out, cOpts...)
+	out := new(DeleteRemoteAccessVpnResponse)
+	err := c.cc.Invoke(ctx, VpnService_DeleteRemoteAccessVpn_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vpnServiceClient) DeleteVpnConnection(ctx context.Context, in *DeleteVpnConnectionRequest, opts ...grpc.CallOption) (*DeleteVpnConnectionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteVpnConnectionResponse)
+	err := c.cc.Invoke(ctx, VpnService_DeleteVpnConnection_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vpnServiceClient) DeleteVpnCustomerGateway(ctx context.Context, in *DeleteVpnCustomerGatewayRequest, opts ...grpc.CallOption) (*DeleteVpnCustomerGatewayResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteVpnCustomerGatewayResponse)
+	err := c.cc.Invoke(ctx, VpnService_DeleteVpnCustomerGateway_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vpnServiceClient) DeleteVpnGateway(ctx context.Context, in *DeleteVpnGatewayRequest, opts ...grpc.CallOption) (*DeleteVpnGatewayResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteVpnGatewayResponse)
+	err := c.cc.Invoke(ctx, VpnService_DeleteVpnGateway_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vpnServiceClient) ListRemoteAccessVpns(ctx context.Context, in *ListRemoteAccessVpnsRequest, opts ...grpc.CallOption) (*ListRemoteAccessVpnsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListRemoteAccessVpnsResponse)
+	err := c.cc.Invoke(ctx, VpnService_ListRemoteAccessVpns_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vpnServiceClient) ListVpnConnections(ctx context.Context, in *ListVpnConnectionsRequest, opts ...grpc.CallOption) (*ListVpnConnectionsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListVpnConnectionsResponse)
+	err := c.cc.Invoke(ctx, VpnService_ListVpnConnections_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vpnServiceClient) ListVpnCustomerGateways(ctx context.Context, in *ListVpnCustomerGatewaysRequest, opts ...grpc.CallOption) (*ListVpnCustomerGatewaysResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListVpnCustomerGatewaysResponse)
+	err := c.cc.Invoke(ctx, VpnService_ListVpnCustomerGateways_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -297,52 +237,112 @@ func (c *vpnServiceClient) ListVpnUsers(ctx context.Context, in *ListVpnUsersReq
 	return out, nil
 }
 
+func (c *vpnServiceClient) RemoveVpnUser(ctx context.Context, in *RemoveVpnUserRequest, opts ...grpc.CallOption) (*RemoveVpnUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RemoveVpnUserResponse)
+	err := c.cc.Invoke(ctx, VpnService_RemoveVpnUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vpnServiceClient) ResetVpnConnection(ctx context.Context, in *ResetVpnConnectionRequest, opts ...grpc.CallOption) (*ResetVpnConnectionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResetVpnConnectionResponse)
+	err := c.cc.Invoke(ctx, VpnService_ResetVpnConnection_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vpnServiceClient) UpdateRemoteAccessVpn(ctx context.Context, in *UpdateRemoteAccessVpnRequest, opts ...grpc.CallOption) (*UpdateRemoteAccessVpnResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateRemoteAccessVpnResponse)
+	err := c.cc.Invoke(ctx, VpnService_UpdateRemoteAccessVpn_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vpnServiceClient) UpdateVpnConnection(ctx context.Context, in *UpdateVpnConnectionRequest, opts ...grpc.CallOption) (*UpdateVpnConnectionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateVpnConnectionResponse)
+	err := c.cc.Invoke(ctx, VpnService_UpdateVpnConnection_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vpnServiceClient) UpdateVpnCustomerGateway(ctx context.Context, in *UpdateVpnCustomerGatewayRequest, opts ...grpc.CallOption) (*UpdateVpnCustomerGatewayResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateVpnCustomerGatewayResponse)
+	err := c.cc.Invoke(ctx, VpnService_UpdateVpnCustomerGateway_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vpnServiceClient) UpdateVpnGateway(ctx context.Context, in *UpdateVpnGatewayRequest, opts ...grpc.CallOption) (*UpdateVpnGatewayResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateVpnGatewayResponse)
+	err := c.cc.Invoke(ctx, VpnService_UpdateVpnGateway_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // VpnServiceServer is the server API for VpnService service.
 // All implementations must embed UnimplementedVpnServiceServer
 // for forward compatibility.
 //
 // VpnService provides operations for managing Vpns
 type VpnServiceServer interface {
-	// ListVpnCustomerGateways Lists site to site vpn customer gateways
-	ListVpnCustomerGateways(context.Context, *ListVpnCustomerGatewaysRequest) (*ListVpnCustomerGatewaysResponse, error)
-	// ListVpnConnections Lists site to site vpn connection gateways
-	ListVpnConnections(context.Context, *ListVpnConnectionsRequest) (*ListVpnConnectionsResponse, error)
-	// UpdateRemoteAccessVpn Updates remote access vpn
-	UpdateRemoteAccessVpn(context.Context, *UpdateRemoteAccessVpnRequest) (*UpdateRemoteAccessVpnResponse, error)
-	// CreateVpnCustomerGateway Creates site to site vpn customer gateway
-	CreateVpnCustomerGateway(context.Context, *CreateVpnCustomerGatewayRequest) (*CreateVpnCustomerGatewayResponse, error)
-	// CreateRemoteAccessVpn Creates a l2tp/ipsec remote access vpn
-	CreateRemoteAccessVpn(context.Context, *CreateRemoteAccessVpnRequest) (*CreateRemoteAccessVpnResponse, error)
-	// UpdateVpnCustomerGateway Update site to site vpn customer gateway
-	UpdateVpnCustomerGateway(context.Context, *UpdateVpnCustomerGatewayRequest) (*UpdateVpnCustomerGatewayResponse, error)
-	// ListRemoteAccessVpns Lists remote access vpns
-	ListRemoteAccessVpns(context.Context, *ListRemoteAccessVpnsRequest) (*ListRemoteAccessVpnsResponse, error)
-	// DeleteRemoteAccessVpn Destroys a l2tp/ipsec remote access vpn
-	DeleteRemoteAccessVpn(context.Context, *DeleteRemoteAccessVpnRequest) (*DeleteRemoteAccessVpnResponse, error)
-	// CreateVpnConnection Create site to site vpn connection
-	CreateVpnConnection(context.Context, *CreateVpnConnectionRequest) (*CreateVpnConnectionResponse, error)
-	// DeleteVpnCustomerGateway Delete site to site vpn customer gateway
-	DeleteVpnCustomerGateway(context.Context, *DeleteVpnCustomerGatewayRequest) (*DeleteVpnCustomerGatewayResponse, error)
-	// UpdateVpnConnection Updates site to site vpn connection
-	UpdateVpnConnection(context.Context, *UpdateVpnConnectionRequest) (*UpdateVpnConnectionResponse, error)
-	// DeleteVpnGateway Delete site to site vpn gateway
-	DeleteVpnGateway(context.Context, *DeleteVpnGatewayRequest) (*DeleteVpnGatewayResponse, error)
-	// DeleteVpnConnection Delete site to site vpn connection
-	DeleteVpnConnection(context.Context, *DeleteVpnConnectionRequest) (*DeleteVpnConnectionResponse, error)
-	// RemoveVpnUser Removes vpn user
-	RemoveVpnUser(context.Context, *RemoveVpnUserRequest) (*RemoveVpnUserResponse, error)
-	// ResetVpnConnection Reset site to site vpn connection
-	ResetVpnConnection(context.Context, *ResetVpnConnectionRequest) (*ResetVpnConnectionResponse, error)
 	// AddVpnUser Adds vpn users
 	AddVpnUser(context.Context, *AddVpnUserRequest) (*AddVpnUserResponse, error)
+	// CreateRemoteAccessVpn Creates a l2tp/ipsec remote access vpn
+	CreateRemoteAccessVpn(context.Context, *CreateRemoteAccessVpnRequest) (*CreateRemoteAccessVpnResponse, error)
+	// CreateVpnConnection Create site to site vpn connection
+	CreateVpnConnection(context.Context, *CreateVpnConnectionRequest) (*CreateVpnConnectionResponse, error)
+	// CreateVpnCustomerGateway Creates site to site vpn customer gateway
+	CreateVpnCustomerGateway(context.Context, *CreateVpnCustomerGatewayRequest) (*CreateVpnCustomerGatewayResponse, error)
 	// CreateVpnGateway Creates site to site vpn local gateway
 	CreateVpnGateway(context.Context, *CreateVpnGatewayRequest) (*CreateVpnGatewayResponse, error)
-	// UpdateVpnGateway Updates site to site vpn local gateway
-	UpdateVpnGateway(context.Context, *UpdateVpnGatewayRequest) (*UpdateVpnGatewayResponse, error)
+	// DeleteRemoteAccessVpn Destroys a l2tp/ipsec remote access vpn
+	DeleteRemoteAccessVpn(context.Context, *DeleteRemoteAccessVpnRequest) (*DeleteRemoteAccessVpnResponse, error)
+	// DeleteVpnConnection Delete site to site vpn connection
+	DeleteVpnConnection(context.Context, *DeleteVpnConnectionRequest) (*DeleteVpnConnectionResponse, error)
+	// DeleteVpnCustomerGateway Delete site to site vpn customer gateway
+	DeleteVpnCustomerGateway(context.Context, *DeleteVpnCustomerGatewayRequest) (*DeleteVpnCustomerGatewayResponse, error)
+	// DeleteVpnGateway Delete site to site vpn gateway
+	DeleteVpnGateway(context.Context, *DeleteVpnGatewayRequest) (*DeleteVpnGatewayResponse, error)
+	// ListRemoteAccessVpns Lists remote access vpns
+	ListRemoteAccessVpns(context.Context, *ListRemoteAccessVpnsRequest) (*ListRemoteAccessVpnsResponse, error)
+	// ListVpnConnections Lists site to site vpn connection gateways
+	ListVpnConnections(context.Context, *ListVpnConnectionsRequest) (*ListVpnConnectionsResponse, error)
+	// ListVpnCustomerGateways Lists site to site vpn customer gateways
+	ListVpnCustomerGateways(context.Context, *ListVpnCustomerGatewaysRequest) (*ListVpnCustomerGatewaysResponse, error)
 	// ListVpnGateways Lists site 2 site vpn gateways
 	ListVpnGateways(context.Context, *ListVpnGatewaysRequest) (*ListVpnGatewaysResponse, error)
 	// ListVpnUsers Lists vpn users
 	ListVpnUsers(context.Context, *ListVpnUsersRequest) (*ListVpnUsersResponse, error)
+	// RemoveVpnUser Removes vpn user
+	RemoveVpnUser(context.Context, *RemoveVpnUserRequest) (*RemoveVpnUserResponse, error)
+	// ResetVpnConnection Reset site to site vpn connection
+	ResetVpnConnection(context.Context, *ResetVpnConnectionRequest) (*ResetVpnConnectionResponse, error)
+	// UpdateRemoteAccessVpn Updates remote access vpn
+	UpdateRemoteAccessVpn(context.Context, *UpdateRemoteAccessVpnRequest) (*UpdateRemoteAccessVpnResponse, error)
+	// UpdateVpnConnection Updates site to site vpn connection
+	UpdateVpnConnection(context.Context, *UpdateVpnConnectionRequest) (*UpdateVpnConnectionResponse, error)
+	// UpdateVpnCustomerGateway Update site to site vpn customer gateway
+	UpdateVpnCustomerGateway(context.Context, *UpdateVpnCustomerGatewayRequest) (*UpdateVpnCustomerGatewayResponse, error)
+	// UpdateVpnGateway Updates site to site vpn local gateway
+	UpdateVpnGateway(context.Context, *UpdateVpnGatewayRequest) (*UpdateVpnGatewayResponse, error)
 	mustEmbedUnimplementedVpnServiceServer()
 }
 
@@ -353,44 +353,47 @@ type VpnServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedVpnServiceServer struct{}
 
-func (UnimplementedVpnServiceServer) ListVpnCustomerGateways(context.Context, *ListVpnCustomerGatewaysRequest) (*ListVpnCustomerGatewaysResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListVpnCustomerGateways not implemented")
-}
-func (UnimplementedVpnServiceServer) ListVpnConnections(context.Context, *ListVpnConnectionsRequest) (*ListVpnConnectionsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListVpnConnections not implemented")
-}
-func (UnimplementedVpnServiceServer) UpdateRemoteAccessVpn(context.Context, *UpdateRemoteAccessVpnRequest) (*UpdateRemoteAccessVpnResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateRemoteAccessVpn not implemented")
-}
-func (UnimplementedVpnServiceServer) CreateVpnCustomerGateway(context.Context, *CreateVpnCustomerGatewayRequest) (*CreateVpnCustomerGatewayResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateVpnCustomerGateway not implemented")
+func (UnimplementedVpnServiceServer) AddVpnUser(context.Context, *AddVpnUserRequest) (*AddVpnUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddVpnUser not implemented")
 }
 func (UnimplementedVpnServiceServer) CreateRemoteAccessVpn(context.Context, *CreateRemoteAccessVpnRequest) (*CreateRemoteAccessVpnResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateRemoteAccessVpn not implemented")
 }
-func (UnimplementedVpnServiceServer) UpdateVpnCustomerGateway(context.Context, *UpdateVpnCustomerGatewayRequest) (*UpdateVpnCustomerGatewayResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateVpnCustomerGateway not implemented")
+func (UnimplementedVpnServiceServer) CreateVpnConnection(context.Context, *CreateVpnConnectionRequest) (*CreateVpnConnectionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateVpnConnection not implemented")
 }
-func (UnimplementedVpnServiceServer) ListRemoteAccessVpns(context.Context, *ListRemoteAccessVpnsRequest) (*ListRemoteAccessVpnsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListRemoteAccessVpns not implemented")
+func (UnimplementedVpnServiceServer) CreateVpnCustomerGateway(context.Context, *CreateVpnCustomerGatewayRequest) (*CreateVpnCustomerGatewayResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateVpnCustomerGateway not implemented")
+}
+func (UnimplementedVpnServiceServer) CreateVpnGateway(context.Context, *CreateVpnGatewayRequest) (*CreateVpnGatewayResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateVpnGateway not implemented")
 }
 func (UnimplementedVpnServiceServer) DeleteRemoteAccessVpn(context.Context, *DeleteRemoteAccessVpnRequest) (*DeleteRemoteAccessVpnResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteRemoteAccessVpn not implemented")
 }
-func (UnimplementedVpnServiceServer) CreateVpnConnection(context.Context, *CreateVpnConnectionRequest) (*CreateVpnConnectionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateVpnConnection not implemented")
+func (UnimplementedVpnServiceServer) DeleteVpnConnection(context.Context, *DeleteVpnConnectionRequest) (*DeleteVpnConnectionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteVpnConnection not implemented")
 }
 func (UnimplementedVpnServiceServer) DeleteVpnCustomerGateway(context.Context, *DeleteVpnCustomerGatewayRequest) (*DeleteVpnCustomerGatewayResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteVpnCustomerGateway not implemented")
 }
-func (UnimplementedVpnServiceServer) UpdateVpnConnection(context.Context, *UpdateVpnConnectionRequest) (*UpdateVpnConnectionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateVpnConnection not implemented")
-}
 func (UnimplementedVpnServiceServer) DeleteVpnGateway(context.Context, *DeleteVpnGatewayRequest) (*DeleteVpnGatewayResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteVpnGateway not implemented")
 }
-func (UnimplementedVpnServiceServer) DeleteVpnConnection(context.Context, *DeleteVpnConnectionRequest) (*DeleteVpnConnectionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteVpnConnection not implemented")
+func (UnimplementedVpnServiceServer) ListRemoteAccessVpns(context.Context, *ListRemoteAccessVpnsRequest) (*ListRemoteAccessVpnsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListRemoteAccessVpns not implemented")
+}
+func (UnimplementedVpnServiceServer) ListVpnConnections(context.Context, *ListVpnConnectionsRequest) (*ListVpnConnectionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListVpnConnections not implemented")
+}
+func (UnimplementedVpnServiceServer) ListVpnCustomerGateways(context.Context, *ListVpnCustomerGatewaysRequest) (*ListVpnCustomerGatewaysResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListVpnCustomerGateways not implemented")
+}
+func (UnimplementedVpnServiceServer) ListVpnGateways(context.Context, *ListVpnGatewaysRequest) (*ListVpnGatewaysResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListVpnGateways not implemented")
+}
+func (UnimplementedVpnServiceServer) ListVpnUsers(context.Context, *ListVpnUsersRequest) (*ListVpnUsersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListVpnUsers not implemented")
 }
 func (UnimplementedVpnServiceServer) RemoveVpnUser(context.Context, *RemoveVpnUserRequest) (*RemoveVpnUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoveVpnUser not implemented")
@@ -398,20 +401,17 @@ func (UnimplementedVpnServiceServer) RemoveVpnUser(context.Context, *RemoveVpnUs
 func (UnimplementedVpnServiceServer) ResetVpnConnection(context.Context, *ResetVpnConnectionRequest) (*ResetVpnConnectionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResetVpnConnection not implemented")
 }
-func (UnimplementedVpnServiceServer) AddVpnUser(context.Context, *AddVpnUserRequest) (*AddVpnUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddVpnUser not implemented")
+func (UnimplementedVpnServiceServer) UpdateRemoteAccessVpn(context.Context, *UpdateRemoteAccessVpnRequest) (*UpdateRemoteAccessVpnResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateRemoteAccessVpn not implemented")
 }
-func (UnimplementedVpnServiceServer) CreateVpnGateway(context.Context, *CreateVpnGatewayRequest) (*CreateVpnGatewayResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateVpnGateway not implemented")
+func (UnimplementedVpnServiceServer) UpdateVpnConnection(context.Context, *UpdateVpnConnectionRequest) (*UpdateVpnConnectionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateVpnConnection not implemented")
+}
+func (UnimplementedVpnServiceServer) UpdateVpnCustomerGateway(context.Context, *UpdateVpnCustomerGatewayRequest) (*UpdateVpnCustomerGatewayResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateVpnCustomerGateway not implemented")
 }
 func (UnimplementedVpnServiceServer) UpdateVpnGateway(context.Context, *UpdateVpnGatewayRequest) (*UpdateVpnGatewayResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateVpnGateway not implemented")
-}
-func (UnimplementedVpnServiceServer) ListVpnGateways(context.Context, *ListVpnGatewaysRequest) (*ListVpnGatewaysResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListVpnGateways not implemented")
-}
-func (UnimplementedVpnServiceServer) ListVpnUsers(context.Context, *ListVpnUsersRequest) (*ListVpnUsersResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListVpnUsers not implemented")
 }
 func (UnimplementedVpnServiceServer) mustEmbedUnimplementedVpnServiceServer() {}
 func (UnimplementedVpnServiceServer) testEmbeddedByValue()                    {}
@@ -434,74 +434,20 @@ func RegisterVpnServiceServer(s grpc.ServiceRegistrar, srv VpnServiceServer) {
 	s.RegisterService(&VpnService_ServiceDesc, srv)
 }
 
-func _VpnService_ListVpnCustomerGateways_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListVpnCustomerGatewaysRequest)
+func _VpnService_AddVpnUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddVpnUserRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VpnServiceServer).ListVpnCustomerGateways(ctx, in)
+		return srv.(VpnServiceServer).AddVpnUser(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: VpnService_ListVpnCustomerGateways_FullMethodName,
+		FullMethod: VpnService_AddVpnUser_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpnServiceServer).ListVpnCustomerGateways(ctx, req.(*ListVpnCustomerGatewaysRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VpnService_ListVpnConnections_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListVpnConnectionsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VpnServiceServer).ListVpnConnections(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VpnService_ListVpnConnections_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpnServiceServer).ListVpnConnections(ctx, req.(*ListVpnConnectionsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VpnService_UpdateRemoteAccessVpn_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateRemoteAccessVpnRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VpnServiceServer).UpdateRemoteAccessVpn(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VpnService_UpdateRemoteAccessVpn_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpnServiceServer).UpdateRemoteAccessVpn(ctx, req.(*UpdateRemoteAccessVpnRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VpnService_CreateVpnCustomerGateway_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateVpnCustomerGatewayRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VpnServiceServer).CreateVpnCustomerGateway(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VpnService_CreateVpnCustomerGateway_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpnServiceServer).CreateVpnCustomerGateway(ctx, req.(*CreateVpnCustomerGatewayRequest))
+		return srv.(VpnServiceServer).AddVpnUser(ctx, req.(*AddVpnUserRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -524,60 +470,6 @@ func _VpnService_CreateRemoteAccessVpn_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
-func _VpnService_UpdateVpnCustomerGateway_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateVpnCustomerGatewayRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VpnServiceServer).UpdateVpnCustomerGateway(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VpnService_UpdateVpnCustomerGateway_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpnServiceServer).UpdateVpnCustomerGateway(ctx, req.(*UpdateVpnCustomerGatewayRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VpnService_ListRemoteAccessVpns_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListRemoteAccessVpnsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VpnServiceServer).ListRemoteAccessVpns(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VpnService_ListRemoteAccessVpns_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpnServiceServer).ListRemoteAccessVpns(ctx, req.(*ListRemoteAccessVpnsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VpnService_DeleteRemoteAccessVpn_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteRemoteAccessVpnRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VpnServiceServer).DeleteRemoteAccessVpn(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VpnService_DeleteRemoteAccessVpn_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpnServiceServer).DeleteRemoteAccessVpn(ctx, req.(*DeleteRemoteAccessVpnRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _VpnService_CreateVpnConnection_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateVpnConnectionRequest)
 	if err := dec(in); err != nil {
@@ -596,128 +488,20 @@ func _VpnService_CreateVpnConnection_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
-func _VpnService_DeleteVpnCustomerGateway_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteVpnCustomerGatewayRequest)
+func _VpnService_CreateVpnCustomerGateway_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateVpnCustomerGatewayRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VpnServiceServer).DeleteVpnCustomerGateway(ctx, in)
+		return srv.(VpnServiceServer).CreateVpnCustomerGateway(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: VpnService_DeleteVpnCustomerGateway_FullMethodName,
+		FullMethod: VpnService_CreateVpnCustomerGateway_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpnServiceServer).DeleteVpnCustomerGateway(ctx, req.(*DeleteVpnCustomerGatewayRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VpnService_UpdateVpnConnection_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateVpnConnectionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VpnServiceServer).UpdateVpnConnection(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VpnService_UpdateVpnConnection_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpnServiceServer).UpdateVpnConnection(ctx, req.(*UpdateVpnConnectionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VpnService_DeleteVpnGateway_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteVpnGatewayRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VpnServiceServer).DeleteVpnGateway(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VpnService_DeleteVpnGateway_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpnServiceServer).DeleteVpnGateway(ctx, req.(*DeleteVpnGatewayRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VpnService_DeleteVpnConnection_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteVpnConnectionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VpnServiceServer).DeleteVpnConnection(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VpnService_DeleteVpnConnection_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpnServiceServer).DeleteVpnConnection(ctx, req.(*DeleteVpnConnectionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VpnService_RemoveVpnUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RemoveVpnUserRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VpnServiceServer).RemoveVpnUser(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VpnService_RemoveVpnUser_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpnServiceServer).RemoveVpnUser(ctx, req.(*RemoveVpnUserRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VpnService_ResetVpnConnection_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ResetVpnConnectionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VpnServiceServer).ResetVpnConnection(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VpnService_ResetVpnConnection_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpnServiceServer).ResetVpnConnection(ctx, req.(*ResetVpnConnectionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VpnService_AddVpnUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddVpnUserRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VpnServiceServer).AddVpnUser(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VpnService_AddVpnUser_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpnServiceServer).AddVpnUser(ctx, req.(*AddVpnUserRequest))
+		return srv.(VpnServiceServer).CreateVpnCustomerGateway(ctx, req.(*CreateVpnCustomerGatewayRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -740,20 +524,128 @@ func _VpnService_CreateVpnGateway_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _VpnService_UpdateVpnGateway_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateVpnGatewayRequest)
+func _VpnService_DeleteRemoteAccessVpn_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteRemoteAccessVpnRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VpnServiceServer).UpdateVpnGateway(ctx, in)
+		return srv.(VpnServiceServer).DeleteRemoteAccessVpn(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: VpnService_UpdateVpnGateway_FullMethodName,
+		FullMethod: VpnService_DeleteRemoteAccessVpn_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VpnServiceServer).UpdateVpnGateway(ctx, req.(*UpdateVpnGatewayRequest))
+		return srv.(VpnServiceServer).DeleteRemoteAccessVpn(ctx, req.(*DeleteRemoteAccessVpnRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VpnService_DeleteVpnConnection_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteVpnConnectionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VpnServiceServer).DeleteVpnConnection(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VpnService_DeleteVpnConnection_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VpnServiceServer).DeleteVpnConnection(ctx, req.(*DeleteVpnConnectionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VpnService_DeleteVpnCustomerGateway_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteVpnCustomerGatewayRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VpnServiceServer).DeleteVpnCustomerGateway(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VpnService_DeleteVpnCustomerGateway_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VpnServiceServer).DeleteVpnCustomerGateway(ctx, req.(*DeleteVpnCustomerGatewayRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VpnService_DeleteVpnGateway_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteVpnGatewayRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VpnServiceServer).DeleteVpnGateway(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VpnService_DeleteVpnGateway_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VpnServiceServer).DeleteVpnGateway(ctx, req.(*DeleteVpnGatewayRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VpnService_ListRemoteAccessVpns_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListRemoteAccessVpnsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VpnServiceServer).ListRemoteAccessVpns(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VpnService_ListRemoteAccessVpns_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VpnServiceServer).ListRemoteAccessVpns(ctx, req.(*ListRemoteAccessVpnsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VpnService_ListVpnConnections_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListVpnConnectionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VpnServiceServer).ListVpnConnections(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VpnService_ListVpnConnections_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VpnServiceServer).ListVpnConnections(ctx, req.(*ListVpnConnectionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VpnService_ListVpnCustomerGateways_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListVpnCustomerGatewaysRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VpnServiceServer).ListVpnCustomerGateways(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VpnService_ListVpnCustomerGateways_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VpnServiceServer).ListVpnCustomerGateways(ctx, req.(*ListVpnCustomerGatewaysRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -794,6 +686,114 @@ func _VpnService_ListVpnUsers_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _VpnService_RemoveVpnUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveVpnUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VpnServiceServer).RemoveVpnUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VpnService_RemoveVpnUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VpnServiceServer).RemoveVpnUser(ctx, req.(*RemoveVpnUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VpnService_ResetVpnConnection_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResetVpnConnectionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VpnServiceServer).ResetVpnConnection(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VpnService_ResetVpnConnection_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VpnServiceServer).ResetVpnConnection(ctx, req.(*ResetVpnConnectionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VpnService_UpdateRemoteAccessVpn_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateRemoteAccessVpnRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VpnServiceServer).UpdateRemoteAccessVpn(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VpnService_UpdateRemoteAccessVpn_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VpnServiceServer).UpdateRemoteAccessVpn(ctx, req.(*UpdateRemoteAccessVpnRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VpnService_UpdateVpnConnection_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateVpnConnectionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VpnServiceServer).UpdateVpnConnection(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VpnService_UpdateVpnConnection_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VpnServiceServer).UpdateVpnConnection(ctx, req.(*UpdateVpnConnectionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VpnService_UpdateVpnCustomerGateway_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateVpnCustomerGatewayRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VpnServiceServer).UpdateVpnCustomerGateway(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VpnService_UpdateVpnCustomerGateway_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VpnServiceServer).UpdateVpnCustomerGateway(ctx, req.(*UpdateVpnCustomerGatewayRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VpnService_UpdateVpnGateway_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateVpnGatewayRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VpnServiceServer).UpdateVpnGateway(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VpnService_UpdateVpnGateway_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VpnServiceServer).UpdateVpnGateway(ctx, req.(*UpdateVpnGatewayRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // VpnService_ServiceDesc is the grpc.ServiceDesc for VpnService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -802,56 +802,60 @@ var VpnService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*VpnServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "ListVpnCustomerGateways",
-			Handler:    _VpnService_ListVpnCustomerGateways_Handler,
-		},
-		{
-			MethodName: "ListVpnConnections",
-			Handler:    _VpnService_ListVpnConnections_Handler,
-		},
-		{
-			MethodName: "UpdateRemoteAccessVpn",
-			Handler:    _VpnService_UpdateRemoteAccessVpn_Handler,
-		},
-		{
-			MethodName: "CreateVpnCustomerGateway",
-			Handler:    _VpnService_CreateVpnCustomerGateway_Handler,
+			MethodName: "AddVpnUser",
+			Handler:    _VpnService_AddVpnUser_Handler,
 		},
 		{
 			MethodName: "CreateRemoteAccessVpn",
 			Handler:    _VpnService_CreateRemoteAccessVpn_Handler,
 		},
 		{
-			MethodName: "UpdateVpnCustomerGateway",
-			Handler:    _VpnService_UpdateVpnCustomerGateway_Handler,
+			MethodName: "CreateVpnConnection",
+			Handler:    _VpnService_CreateVpnConnection_Handler,
 		},
 		{
-			MethodName: "ListRemoteAccessVpns",
-			Handler:    _VpnService_ListRemoteAccessVpns_Handler,
+			MethodName: "CreateVpnCustomerGateway",
+			Handler:    _VpnService_CreateVpnCustomerGateway_Handler,
+		},
+		{
+			MethodName: "CreateVpnGateway",
+			Handler:    _VpnService_CreateVpnGateway_Handler,
 		},
 		{
 			MethodName: "DeleteRemoteAccessVpn",
 			Handler:    _VpnService_DeleteRemoteAccessVpn_Handler,
 		},
 		{
-			MethodName: "CreateVpnConnection",
-			Handler:    _VpnService_CreateVpnConnection_Handler,
+			MethodName: "DeleteVpnConnection",
+			Handler:    _VpnService_DeleteVpnConnection_Handler,
 		},
 		{
 			MethodName: "DeleteVpnCustomerGateway",
 			Handler:    _VpnService_DeleteVpnCustomerGateway_Handler,
 		},
 		{
-			MethodName: "UpdateVpnConnection",
-			Handler:    _VpnService_UpdateVpnConnection_Handler,
-		},
-		{
 			MethodName: "DeleteVpnGateway",
 			Handler:    _VpnService_DeleteVpnGateway_Handler,
 		},
 		{
-			MethodName: "DeleteVpnConnection",
-			Handler:    _VpnService_DeleteVpnConnection_Handler,
+			MethodName: "ListRemoteAccessVpns",
+			Handler:    _VpnService_ListRemoteAccessVpns_Handler,
+		},
+		{
+			MethodName: "ListVpnConnections",
+			Handler:    _VpnService_ListVpnConnections_Handler,
+		},
+		{
+			MethodName: "ListVpnCustomerGateways",
+			Handler:    _VpnService_ListVpnCustomerGateways_Handler,
+		},
+		{
+			MethodName: "ListVpnGateways",
+			Handler:    _VpnService_ListVpnGateways_Handler,
+		},
+		{
+			MethodName: "ListVpnUsers",
+			Handler:    _VpnService_ListVpnUsers_Handler,
 		},
 		{
 			MethodName: "RemoveVpnUser",
@@ -862,24 +866,20 @@ var VpnService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _VpnService_ResetVpnConnection_Handler,
 		},
 		{
-			MethodName: "AddVpnUser",
-			Handler:    _VpnService_AddVpnUser_Handler,
+			MethodName: "UpdateRemoteAccessVpn",
+			Handler:    _VpnService_UpdateRemoteAccessVpn_Handler,
 		},
 		{
-			MethodName: "CreateVpnGateway",
-			Handler:    _VpnService_CreateVpnGateway_Handler,
+			MethodName: "UpdateVpnConnection",
+			Handler:    _VpnService_UpdateVpnConnection_Handler,
+		},
+		{
+			MethodName: "UpdateVpnCustomerGateway",
+			Handler:    _VpnService_UpdateVpnCustomerGateway_Handler,
 		},
 		{
 			MethodName: "UpdateVpnGateway",
 			Handler:    _VpnService_UpdateVpnGateway_Handler,
-		},
-		{
-			MethodName: "ListVpnGateways",
-			Handler:    _VpnService_ListVpnGateways_Handler,
-		},
-		{
-			MethodName: "ListVpnUsers",
-			Handler:    _VpnService_ListVpnUsers_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -19,20 +19,20 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	HostService_PrepareForHostMaintenance_FullMethodName = "/cloudstack.management.host.v1.HostService/PrepareForHostMaintenance"
-	HostService_ListHosts_FullMethodName                 = "/cloudstack.management.host.v1.HostService/ListHosts"
-	HostService_CancelHostAsDegraded_FullMethodName      = "/cloudstack.management.host.v1.HostService/CancelHostAsDegraded"
-	HostService_ReleaseHostReservation_FullMethodName    = "/cloudstack.management.host.v1.HostService/ReleaseHostReservation"
-	HostService_DeleteHost_FullMethodName                = "/cloudstack.management.host.v1.HostService/DeleteHost"
-	HostService_UpdateHost_FullMethodName                = "/cloudstack.management.host.v1.HostService/UpdateHost"
-	HostService_ListHostTags_FullMethodName              = "/cloudstack.management.host.v1.HostService/ListHostTags"
-	HostService_AddSecondaryStorage_FullMethodName       = "/cloudstack.management.host.v1.HostService/AddSecondaryStorage"
-	HostService_FindHostsForMigration_FullMethodName     = "/cloudstack.management.host.v1.HostService/FindHostsForMigration"
 	HostService_AddHost_FullMethodName                   = "/cloudstack.management.host.v1.HostService/AddHost"
-	HostService_UpdateHostPassword_FullMethodName        = "/cloudstack.management.host.v1.HostService/UpdateHostPassword"
+	HostService_AddSecondaryStorage_FullMethodName       = "/cloudstack.management.host.v1.HostService/AddSecondaryStorage"
+	HostService_CancelHostAsDegraded_FullMethodName      = "/cloudstack.management.host.v1.HostService/CancelHostAsDegraded"
 	HostService_CancelHostMaintenance_FullMethodName     = "/cloudstack.management.host.v1.HostService/CancelHostMaintenance"
-	HostService_ReconnectHost_FullMethodName             = "/cloudstack.management.host.v1.HostService/ReconnectHost"
 	HostService_DeclareHostAsDegraded_FullMethodName     = "/cloudstack.management.host.v1.HostService/DeclareHostAsDegraded"
+	HostService_DeleteHost_FullMethodName                = "/cloudstack.management.host.v1.HostService/DeleteHost"
+	HostService_FindHostsForMigration_FullMethodName     = "/cloudstack.management.host.v1.HostService/FindHostsForMigration"
+	HostService_ListHostTags_FullMethodName              = "/cloudstack.management.host.v1.HostService/ListHostTags"
+	HostService_ListHosts_FullMethodName                 = "/cloudstack.management.host.v1.HostService/ListHosts"
+	HostService_PrepareForHostMaintenance_FullMethodName = "/cloudstack.management.host.v1.HostService/PrepareForHostMaintenance"
+	HostService_ReconnectHost_FullMethodName             = "/cloudstack.management.host.v1.HostService/ReconnectHost"
+	HostService_ReleaseHostReservation_FullMethodName    = "/cloudstack.management.host.v1.HostService/ReleaseHostReservation"
+	HostService_UpdateHost_FullMethodName                = "/cloudstack.management.host.v1.HostService/UpdateHost"
+	HostService_UpdateHostPassword_FullMethodName        = "/cloudstack.management.host.v1.HostService/UpdateHostPassword"
 )
 
 // HostServiceClient is the client API for HostService service.
@@ -41,34 +41,34 @@ const (
 //
 // HostService provides operations for managing Hosts
 type HostServiceClient interface {
-	// PrepareForHostMaintenance Prepares a host for maintenance.
-	PrepareForHostMaintenance(ctx context.Context, in *PrepareForHostMaintenanceRequest, opts ...grpc.CallOption) (*PrepareForHostMaintenanceResponse, error)
-	// ListHosts Lists hosts.
-	ListHosts(ctx context.Context, in *ListHostsRequest, opts ...grpc.CallOption) (*ListHostsResponse, error)
-	// CancelHostAsDegraded Cancel host status from 'Degraded'. Host will transit back to status 'Enabled'.
-	CancelHostAsDegraded(ctx context.Context, in *CancelHostAsDegradedRequest, opts ...grpc.CallOption) (*CancelHostAsDegradedResponse, error)
-	// ReleaseHostReservation Releases host reservation.
-	ReleaseHostReservation(ctx context.Context, in *ReleaseHostReservationRequest, opts ...grpc.CallOption) (*ReleaseHostReservationResponse, error)
-	// DeleteHost Deletes a host.
-	DeleteHost(ctx context.Context, in *DeleteHostRequest, opts ...grpc.CallOption) (*DeleteHostResponse, error)
-	// UpdateHost Updates a host.
-	UpdateHost(ctx context.Context, in *UpdateHostRequest, opts ...grpc.CallOption) (*UpdateHostResponse, error)
-	// ListHostTags Lists host tags
-	ListHostTags(ctx context.Context, in *ListHostTagsRequest, opts ...grpc.CallOption) (*ListHostTagsResponse, error)
-	// AddSecondaryStorage Adds secondary storage.
-	AddSecondaryStorage(ctx context.Context, in *AddSecondaryStorageRequest, opts ...grpc.CallOption) (*AddSecondaryStorageResponse, error)
-	// FindHostsForMigration Find hosts suitable for migrating a virtual machine.
-	FindHostsForMigration(ctx context.Context, in *FindHostsForMigrationRequest, opts ...grpc.CallOption) (*FindHostsForMigrationResponse, error)
 	// AddHost Adds a new host.
 	AddHost(ctx context.Context, in *AddHostRequest, opts ...grpc.CallOption) (*AddHostResponse, error)
-	// UpdateHostPassword Update password of a host/pool on management server.
-	UpdateHostPassword(ctx context.Context, in *UpdateHostPasswordRequest, opts ...grpc.CallOption) (*UpdateHostPasswordResponse, error)
+	// AddSecondaryStorage Adds secondary storage.
+	AddSecondaryStorage(ctx context.Context, in *AddSecondaryStorageRequest, opts ...grpc.CallOption) (*AddSecondaryStorageResponse, error)
+	// CancelHostAsDegraded Cancel host status from 'Degraded'. Host will transit back to status 'Enabled'.
+	CancelHostAsDegraded(ctx context.Context, in *CancelHostAsDegradedRequest, opts ...grpc.CallOption) (*CancelHostAsDegradedResponse, error)
 	// CancelHostMaintenance Cancels host maintenance.
 	CancelHostMaintenance(ctx context.Context, in *CancelHostMaintenanceRequest, opts ...grpc.CallOption) (*CancelHostMaintenanceResponse, error)
-	// ReconnectHost Reconnects a host.
-	ReconnectHost(ctx context.Context, in *ReconnectHostRequest, opts ...grpc.CallOption) (*ReconnectHostResponse, error)
 	// DeclareHostAsDegraded Declare host as 'Degraded'. Host must be on 'Disconnected' or 'Alert' state. The ADMIN must be sure that there are no VMs running on the respective host otherwise this command might corrupted VMs that were running on the 'Degraded' host.
 	DeclareHostAsDegraded(ctx context.Context, in *DeclareHostAsDegradedRequest, opts ...grpc.CallOption) (*DeclareHostAsDegradedResponse, error)
+	// DeleteHost Deletes a host.
+	DeleteHost(ctx context.Context, in *DeleteHostRequest, opts ...grpc.CallOption) (*DeleteHostResponse, error)
+	// FindHostsForMigration Find hosts suitable for migrating a virtual machine.
+	FindHostsForMigration(ctx context.Context, in *FindHostsForMigrationRequest, opts ...grpc.CallOption) (*FindHostsForMigrationResponse, error)
+	// ListHostTags Lists host tags
+	ListHostTags(ctx context.Context, in *ListHostTagsRequest, opts ...grpc.CallOption) (*ListHostTagsResponse, error)
+	// ListHosts Lists hosts.
+	ListHosts(ctx context.Context, in *ListHostsRequest, opts ...grpc.CallOption) (*ListHostsResponse, error)
+	// PrepareForHostMaintenance Prepares a host for maintenance.
+	PrepareForHostMaintenance(ctx context.Context, in *PrepareForHostMaintenanceRequest, opts ...grpc.CallOption) (*PrepareForHostMaintenanceResponse, error)
+	// ReconnectHost Reconnects a host.
+	ReconnectHost(ctx context.Context, in *ReconnectHostRequest, opts ...grpc.CallOption) (*ReconnectHostResponse, error)
+	// ReleaseHostReservation Releases host reservation.
+	ReleaseHostReservation(ctx context.Context, in *ReleaseHostReservationRequest, opts ...grpc.CallOption) (*ReleaseHostReservationResponse, error)
+	// UpdateHost Updates a host.
+	UpdateHost(ctx context.Context, in *UpdateHostRequest, opts ...grpc.CallOption) (*UpdateHostResponse, error)
+	// UpdateHostPassword Update password of a host/pool on management server.
+	UpdateHostPassword(ctx context.Context, in *UpdateHostPasswordRequest, opts ...grpc.CallOption) (*UpdateHostPasswordResponse, error)
 }
 
 type hostServiceClient struct {
@@ -79,70 +79,10 @@ func NewHostServiceClient(cc grpc.ClientConnInterface) HostServiceClient {
 	return &hostServiceClient{cc}
 }
 
-func (c *hostServiceClient) PrepareForHostMaintenance(ctx context.Context, in *PrepareForHostMaintenanceRequest, opts ...grpc.CallOption) (*PrepareForHostMaintenanceResponse, error) {
+func (c *hostServiceClient) AddHost(ctx context.Context, in *AddHostRequest, opts ...grpc.CallOption) (*AddHostResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(PrepareForHostMaintenanceResponse)
-	err := c.cc.Invoke(ctx, HostService_PrepareForHostMaintenance_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *hostServiceClient) ListHosts(ctx context.Context, in *ListHostsRequest, opts ...grpc.CallOption) (*ListHostsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListHostsResponse)
-	err := c.cc.Invoke(ctx, HostService_ListHosts_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *hostServiceClient) CancelHostAsDegraded(ctx context.Context, in *CancelHostAsDegradedRequest, opts ...grpc.CallOption) (*CancelHostAsDegradedResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CancelHostAsDegradedResponse)
-	err := c.cc.Invoke(ctx, HostService_CancelHostAsDegraded_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *hostServiceClient) ReleaseHostReservation(ctx context.Context, in *ReleaseHostReservationRequest, opts ...grpc.CallOption) (*ReleaseHostReservationResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ReleaseHostReservationResponse)
-	err := c.cc.Invoke(ctx, HostService_ReleaseHostReservation_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *hostServiceClient) DeleteHost(ctx context.Context, in *DeleteHostRequest, opts ...grpc.CallOption) (*DeleteHostResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteHostResponse)
-	err := c.cc.Invoke(ctx, HostService_DeleteHost_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *hostServiceClient) UpdateHost(ctx context.Context, in *UpdateHostRequest, opts ...grpc.CallOption) (*UpdateHostResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateHostResponse)
-	err := c.cc.Invoke(ctx, HostService_UpdateHost_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *hostServiceClient) ListHostTags(ctx context.Context, in *ListHostTagsRequest, opts ...grpc.CallOption) (*ListHostTagsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListHostTagsResponse)
-	err := c.cc.Invoke(ctx, HostService_ListHostTags_FullMethodName, in, out, cOpts...)
+	out := new(AddHostResponse)
+	err := c.cc.Invoke(ctx, HostService_AddHost_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -159,30 +99,10 @@ func (c *hostServiceClient) AddSecondaryStorage(ctx context.Context, in *AddSeco
 	return out, nil
 }
 
-func (c *hostServiceClient) FindHostsForMigration(ctx context.Context, in *FindHostsForMigrationRequest, opts ...grpc.CallOption) (*FindHostsForMigrationResponse, error) {
+func (c *hostServiceClient) CancelHostAsDegraded(ctx context.Context, in *CancelHostAsDegradedRequest, opts ...grpc.CallOption) (*CancelHostAsDegradedResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(FindHostsForMigrationResponse)
-	err := c.cc.Invoke(ctx, HostService_FindHostsForMigration_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *hostServiceClient) AddHost(ctx context.Context, in *AddHostRequest, opts ...grpc.CallOption) (*AddHostResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AddHostResponse)
-	err := c.cc.Invoke(ctx, HostService_AddHost_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *hostServiceClient) UpdateHostPassword(ctx context.Context, in *UpdateHostPasswordRequest, opts ...grpc.CallOption) (*UpdateHostPasswordResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateHostPasswordResponse)
-	err := c.cc.Invoke(ctx, HostService_UpdateHostPassword_FullMethodName, in, out, cOpts...)
+	out := new(CancelHostAsDegradedResponse)
+	err := c.cc.Invoke(ctx, HostService_CancelHostAsDegraded_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -199,6 +119,66 @@ func (c *hostServiceClient) CancelHostMaintenance(ctx context.Context, in *Cance
 	return out, nil
 }
 
+func (c *hostServiceClient) DeclareHostAsDegraded(ctx context.Context, in *DeclareHostAsDegradedRequest, opts ...grpc.CallOption) (*DeclareHostAsDegradedResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeclareHostAsDegradedResponse)
+	err := c.cc.Invoke(ctx, HostService_DeclareHostAsDegraded_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *hostServiceClient) DeleteHost(ctx context.Context, in *DeleteHostRequest, opts ...grpc.CallOption) (*DeleteHostResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteHostResponse)
+	err := c.cc.Invoke(ctx, HostService_DeleteHost_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *hostServiceClient) FindHostsForMigration(ctx context.Context, in *FindHostsForMigrationRequest, opts ...grpc.CallOption) (*FindHostsForMigrationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(FindHostsForMigrationResponse)
+	err := c.cc.Invoke(ctx, HostService_FindHostsForMigration_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *hostServiceClient) ListHostTags(ctx context.Context, in *ListHostTagsRequest, opts ...grpc.CallOption) (*ListHostTagsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListHostTagsResponse)
+	err := c.cc.Invoke(ctx, HostService_ListHostTags_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *hostServiceClient) ListHosts(ctx context.Context, in *ListHostsRequest, opts ...grpc.CallOption) (*ListHostsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListHostsResponse)
+	err := c.cc.Invoke(ctx, HostService_ListHosts_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *hostServiceClient) PrepareForHostMaintenance(ctx context.Context, in *PrepareForHostMaintenanceRequest, opts ...grpc.CallOption) (*PrepareForHostMaintenanceResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(PrepareForHostMaintenanceResponse)
+	err := c.cc.Invoke(ctx, HostService_PrepareForHostMaintenance_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *hostServiceClient) ReconnectHost(ctx context.Context, in *ReconnectHostRequest, opts ...grpc.CallOption) (*ReconnectHostResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ReconnectHostResponse)
@@ -209,10 +189,30 @@ func (c *hostServiceClient) ReconnectHost(ctx context.Context, in *ReconnectHost
 	return out, nil
 }
 
-func (c *hostServiceClient) DeclareHostAsDegraded(ctx context.Context, in *DeclareHostAsDegradedRequest, opts ...grpc.CallOption) (*DeclareHostAsDegradedResponse, error) {
+func (c *hostServiceClient) ReleaseHostReservation(ctx context.Context, in *ReleaseHostReservationRequest, opts ...grpc.CallOption) (*ReleaseHostReservationResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeclareHostAsDegradedResponse)
-	err := c.cc.Invoke(ctx, HostService_DeclareHostAsDegraded_FullMethodName, in, out, cOpts...)
+	out := new(ReleaseHostReservationResponse)
+	err := c.cc.Invoke(ctx, HostService_ReleaseHostReservation_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *hostServiceClient) UpdateHost(ctx context.Context, in *UpdateHostRequest, opts ...grpc.CallOption) (*UpdateHostResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateHostResponse)
+	err := c.cc.Invoke(ctx, HostService_UpdateHost_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *hostServiceClient) UpdateHostPassword(ctx context.Context, in *UpdateHostPasswordRequest, opts ...grpc.CallOption) (*UpdateHostPasswordResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateHostPasswordResponse)
+	err := c.cc.Invoke(ctx, HostService_UpdateHostPassword_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -225,34 +225,34 @@ func (c *hostServiceClient) DeclareHostAsDegraded(ctx context.Context, in *Decla
 //
 // HostService provides operations for managing Hosts
 type HostServiceServer interface {
-	// PrepareForHostMaintenance Prepares a host for maintenance.
-	PrepareForHostMaintenance(context.Context, *PrepareForHostMaintenanceRequest) (*PrepareForHostMaintenanceResponse, error)
-	// ListHosts Lists hosts.
-	ListHosts(context.Context, *ListHostsRequest) (*ListHostsResponse, error)
-	// CancelHostAsDegraded Cancel host status from 'Degraded'. Host will transit back to status 'Enabled'.
-	CancelHostAsDegraded(context.Context, *CancelHostAsDegradedRequest) (*CancelHostAsDegradedResponse, error)
-	// ReleaseHostReservation Releases host reservation.
-	ReleaseHostReservation(context.Context, *ReleaseHostReservationRequest) (*ReleaseHostReservationResponse, error)
-	// DeleteHost Deletes a host.
-	DeleteHost(context.Context, *DeleteHostRequest) (*DeleteHostResponse, error)
-	// UpdateHost Updates a host.
-	UpdateHost(context.Context, *UpdateHostRequest) (*UpdateHostResponse, error)
-	// ListHostTags Lists host tags
-	ListHostTags(context.Context, *ListHostTagsRequest) (*ListHostTagsResponse, error)
-	// AddSecondaryStorage Adds secondary storage.
-	AddSecondaryStorage(context.Context, *AddSecondaryStorageRequest) (*AddSecondaryStorageResponse, error)
-	// FindHostsForMigration Find hosts suitable for migrating a virtual machine.
-	FindHostsForMigration(context.Context, *FindHostsForMigrationRequest) (*FindHostsForMigrationResponse, error)
 	// AddHost Adds a new host.
 	AddHost(context.Context, *AddHostRequest) (*AddHostResponse, error)
-	// UpdateHostPassword Update password of a host/pool on management server.
-	UpdateHostPassword(context.Context, *UpdateHostPasswordRequest) (*UpdateHostPasswordResponse, error)
+	// AddSecondaryStorage Adds secondary storage.
+	AddSecondaryStorage(context.Context, *AddSecondaryStorageRequest) (*AddSecondaryStorageResponse, error)
+	// CancelHostAsDegraded Cancel host status from 'Degraded'. Host will transit back to status 'Enabled'.
+	CancelHostAsDegraded(context.Context, *CancelHostAsDegradedRequest) (*CancelHostAsDegradedResponse, error)
 	// CancelHostMaintenance Cancels host maintenance.
 	CancelHostMaintenance(context.Context, *CancelHostMaintenanceRequest) (*CancelHostMaintenanceResponse, error)
-	// ReconnectHost Reconnects a host.
-	ReconnectHost(context.Context, *ReconnectHostRequest) (*ReconnectHostResponse, error)
 	// DeclareHostAsDegraded Declare host as 'Degraded'. Host must be on 'Disconnected' or 'Alert' state. The ADMIN must be sure that there are no VMs running on the respective host otherwise this command might corrupted VMs that were running on the 'Degraded' host.
 	DeclareHostAsDegraded(context.Context, *DeclareHostAsDegradedRequest) (*DeclareHostAsDegradedResponse, error)
+	// DeleteHost Deletes a host.
+	DeleteHost(context.Context, *DeleteHostRequest) (*DeleteHostResponse, error)
+	// FindHostsForMigration Find hosts suitable for migrating a virtual machine.
+	FindHostsForMigration(context.Context, *FindHostsForMigrationRequest) (*FindHostsForMigrationResponse, error)
+	// ListHostTags Lists host tags
+	ListHostTags(context.Context, *ListHostTagsRequest) (*ListHostTagsResponse, error)
+	// ListHosts Lists hosts.
+	ListHosts(context.Context, *ListHostsRequest) (*ListHostsResponse, error)
+	// PrepareForHostMaintenance Prepares a host for maintenance.
+	PrepareForHostMaintenance(context.Context, *PrepareForHostMaintenanceRequest) (*PrepareForHostMaintenanceResponse, error)
+	// ReconnectHost Reconnects a host.
+	ReconnectHost(context.Context, *ReconnectHostRequest) (*ReconnectHostResponse, error)
+	// ReleaseHostReservation Releases host reservation.
+	ReleaseHostReservation(context.Context, *ReleaseHostReservationRequest) (*ReleaseHostReservationResponse, error)
+	// UpdateHost Updates a host.
+	UpdateHost(context.Context, *UpdateHostRequest) (*UpdateHostResponse, error)
+	// UpdateHostPassword Update password of a host/pool on management server.
+	UpdateHostPassword(context.Context, *UpdateHostPasswordRequest) (*UpdateHostPasswordResponse, error)
 	mustEmbedUnimplementedHostServiceServer()
 }
 
@@ -263,47 +263,47 @@ type HostServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedHostServiceServer struct{}
 
-func (UnimplementedHostServiceServer) PrepareForHostMaintenance(context.Context, *PrepareForHostMaintenanceRequest) (*PrepareForHostMaintenanceResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PrepareForHostMaintenance not implemented")
-}
-func (UnimplementedHostServiceServer) ListHosts(context.Context, *ListHostsRequest) (*ListHostsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListHosts not implemented")
-}
-func (UnimplementedHostServiceServer) CancelHostAsDegraded(context.Context, *CancelHostAsDegradedRequest) (*CancelHostAsDegradedResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CancelHostAsDegraded not implemented")
-}
-func (UnimplementedHostServiceServer) ReleaseHostReservation(context.Context, *ReleaseHostReservationRequest) (*ReleaseHostReservationResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ReleaseHostReservation not implemented")
-}
-func (UnimplementedHostServiceServer) DeleteHost(context.Context, *DeleteHostRequest) (*DeleteHostResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteHost not implemented")
-}
-func (UnimplementedHostServiceServer) UpdateHost(context.Context, *UpdateHostRequest) (*UpdateHostResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateHost not implemented")
-}
-func (UnimplementedHostServiceServer) ListHostTags(context.Context, *ListHostTagsRequest) (*ListHostTagsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListHostTags not implemented")
+func (UnimplementedHostServiceServer) AddHost(context.Context, *AddHostRequest) (*AddHostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddHost not implemented")
 }
 func (UnimplementedHostServiceServer) AddSecondaryStorage(context.Context, *AddSecondaryStorageRequest) (*AddSecondaryStorageResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddSecondaryStorage not implemented")
 }
-func (UnimplementedHostServiceServer) FindHostsForMigration(context.Context, *FindHostsForMigrationRequest) (*FindHostsForMigrationResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method FindHostsForMigration not implemented")
-}
-func (UnimplementedHostServiceServer) AddHost(context.Context, *AddHostRequest) (*AddHostResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddHost not implemented")
-}
-func (UnimplementedHostServiceServer) UpdateHostPassword(context.Context, *UpdateHostPasswordRequest) (*UpdateHostPasswordResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateHostPassword not implemented")
+func (UnimplementedHostServiceServer) CancelHostAsDegraded(context.Context, *CancelHostAsDegradedRequest) (*CancelHostAsDegradedResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CancelHostAsDegraded not implemented")
 }
 func (UnimplementedHostServiceServer) CancelHostMaintenance(context.Context, *CancelHostMaintenanceRequest) (*CancelHostMaintenanceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CancelHostMaintenance not implemented")
 }
+func (UnimplementedHostServiceServer) DeclareHostAsDegraded(context.Context, *DeclareHostAsDegradedRequest) (*DeclareHostAsDegradedResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeclareHostAsDegraded not implemented")
+}
+func (UnimplementedHostServiceServer) DeleteHost(context.Context, *DeleteHostRequest) (*DeleteHostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteHost not implemented")
+}
+func (UnimplementedHostServiceServer) FindHostsForMigration(context.Context, *FindHostsForMigrationRequest) (*FindHostsForMigrationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FindHostsForMigration not implemented")
+}
+func (UnimplementedHostServiceServer) ListHostTags(context.Context, *ListHostTagsRequest) (*ListHostTagsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListHostTags not implemented")
+}
+func (UnimplementedHostServiceServer) ListHosts(context.Context, *ListHostsRequest) (*ListHostsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListHosts not implemented")
+}
+func (UnimplementedHostServiceServer) PrepareForHostMaintenance(context.Context, *PrepareForHostMaintenanceRequest) (*PrepareForHostMaintenanceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PrepareForHostMaintenance not implemented")
+}
 func (UnimplementedHostServiceServer) ReconnectHost(context.Context, *ReconnectHostRequest) (*ReconnectHostResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ReconnectHost not implemented")
 }
-func (UnimplementedHostServiceServer) DeclareHostAsDegraded(context.Context, *DeclareHostAsDegradedRequest) (*DeclareHostAsDegradedResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeclareHostAsDegraded not implemented")
+func (UnimplementedHostServiceServer) ReleaseHostReservation(context.Context, *ReleaseHostReservationRequest) (*ReleaseHostReservationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReleaseHostReservation not implemented")
+}
+func (UnimplementedHostServiceServer) UpdateHost(context.Context, *UpdateHostRequest) (*UpdateHostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateHost not implemented")
+}
+func (UnimplementedHostServiceServer) UpdateHostPassword(context.Context, *UpdateHostPasswordRequest) (*UpdateHostPasswordResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateHostPassword not implemented")
 }
 func (UnimplementedHostServiceServer) mustEmbedUnimplementedHostServiceServer() {}
 func (UnimplementedHostServiceServer) testEmbeddedByValue()                     {}
@@ -326,128 +326,20 @@ func RegisterHostServiceServer(s grpc.ServiceRegistrar, srv HostServiceServer) {
 	s.RegisterService(&HostService_ServiceDesc, srv)
 }
 
-func _HostService_PrepareForHostMaintenance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PrepareForHostMaintenanceRequest)
+func _HostService_AddHost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddHostRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(HostServiceServer).PrepareForHostMaintenance(ctx, in)
+		return srv.(HostServiceServer).AddHost(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: HostService_PrepareForHostMaintenance_FullMethodName,
+		FullMethod: HostService_AddHost_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HostServiceServer).PrepareForHostMaintenance(ctx, req.(*PrepareForHostMaintenanceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _HostService_ListHosts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListHostsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(HostServiceServer).ListHosts(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: HostService_ListHosts_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HostServiceServer).ListHosts(ctx, req.(*ListHostsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _HostService_CancelHostAsDegraded_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CancelHostAsDegradedRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(HostServiceServer).CancelHostAsDegraded(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: HostService_CancelHostAsDegraded_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HostServiceServer).CancelHostAsDegraded(ctx, req.(*CancelHostAsDegradedRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _HostService_ReleaseHostReservation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ReleaseHostReservationRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(HostServiceServer).ReleaseHostReservation(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: HostService_ReleaseHostReservation_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HostServiceServer).ReleaseHostReservation(ctx, req.(*ReleaseHostReservationRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _HostService_DeleteHost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteHostRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(HostServiceServer).DeleteHost(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: HostService_DeleteHost_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HostServiceServer).DeleteHost(ctx, req.(*DeleteHostRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _HostService_UpdateHost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateHostRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(HostServiceServer).UpdateHost(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: HostService_UpdateHost_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HostServiceServer).UpdateHost(ctx, req.(*UpdateHostRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _HostService_ListHostTags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListHostTagsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(HostServiceServer).ListHostTags(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: HostService_ListHostTags_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HostServiceServer).ListHostTags(ctx, req.(*ListHostTagsRequest))
+		return srv.(HostServiceServer).AddHost(ctx, req.(*AddHostRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -470,56 +362,20 @@ func _HostService_AddSecondaryStorage_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
-func _HostService_FindHostsForMigration_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(FindHostsForMigrationRequest)
+func _HostService_CancelHostAsDegraded_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CancelHostAsDegradedRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(HostServiceServer).FindHostsForMigration(ctx, in)
+		return srv.(HostServiceServer).CancelHostAsDegraded(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: HostService_FindHostsForMigration_FullMethodName,
+		FullMethod: HostService_CancelHostAsDegraded_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HostServiceServer).FindHostsForMigration(ctx, req.(*FindHostsForMigrationRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _HostService_AddHost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddHostRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(HostServiceServer).AddHost(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: HostService_AddHost_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HostServiceServer).AddHost(ctx, req.(*AddHostRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _HostService_UpdateHostPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateHostPasswordRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(HostServiceServer).UpdateHostPassword(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: HostService_UpdateHostPassword_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HostServiceServer).UpdateHostPassword(ctx, req.(*UpdateHostPasswordRequest))
+		return srv.(HostServiceServer).CancelHostAsDegraded(ctx, req.(*CancelHostAsDegradedRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -542,24 +398,6 @@ func _HostService_CancelHostMaintenance_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
-func _HostService_ReconnectHost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ReconnectHostRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(HostServiceServer).ReconnectHost(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: HostService_ReconnectHost_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HostServiceServer).ReconnectHost(ctx, req.(*ReconnectHostRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _HostService_DeclareHostAsDegraded_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeclareHostAsDegradedRequest)
 	if err := dec(in); err != nil {
@@ -578,6 +416,168 @@ func _HostService_DeclareHostAsDegraded_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _HostService_DeleteHost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteHostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HostServiceServer).DeleteHost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: HostService_DeleteHost_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HostServiceServer).DeleteHost(ctx, req.(*DeleteHostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _HostService_FindHostsForMigration_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FindHostsForMigrationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HostServiceServer).FindHostsForMigration(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: HostService_FindHostsForMigration_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HostServiceServer).FindHostsForMigration(ctx, req.(*FindHostsForMigrationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _HostService_ListHostTags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListHostTagsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HostServiceServer).ListHostTags(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: HostService_ListHostTags_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HostServiceServer).ListHostTags(ctx, req.(*ListHostTagsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _HostService_ListHosts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListHostsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HostServiceServer).ListHosts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: HostService_ListHosts_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HostServiceServer).ListHosts(ctx, req.(*ListHostsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _HostService_PrepareForHostMaintenance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PrepareForHostMaintenanceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HostServiceServer).PrepareForHostMaintenance(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: HostService_PrepareForHostMaintenance_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HostServiceServer).PrepareForHostMaintenance(ctx, req.(*PrepareForHostMaintenanceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _HostService_ReconnectHost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReconnectHostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HostServiceServer).ReconnectHost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: HostService_ReconnectHost_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HostServiceServer).ReconnectHost(ctx, req.(*ReconnectHostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _HostService_ReleaseHostReservation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReleaseHostReservationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HostServiceServer).ReleaseHostReservation(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: HostService_ReleaseHostReservation_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HostServiceServer).ReleaseHostReservation(ctx, req.(*ReleaseHostReservationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _HostService_UpdateHost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateHostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HostServiceServer).UpdateHost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: HostService_UpdateHost_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HostServiceServer).UpdateHost(ctx, req.(*UpdateHostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _HostService_UpdateHostPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateHostPasswordRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HostServiceServer).UpdateHostPassword(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: HostService_UpdateHostPassword_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HostServiceServer).UpdateHostPassword(ctx, req.(*UpdateHostPasswordRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // HostService_ServiceDesc is the grpc.ServiceDesc for HostService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -586,60 +586,60 @@ var HostService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*HostServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "PrepareForHostMaintenance",
-			Handler:    _HostService_PrepareForHostMaintenance_Handler,
-		},
-		{
-			MethodName: "ListHosts",
-			Handler:    _HostService_ListHosts_Handler,
-		},
-		{
-			MethodName: "CancelHostAsDegraded",
-			Handler:    _HostService_CancelHostAsDegraded_Handler,
-		},
-		{
-			MethodName: "ReleaseHostReservation",
-			Handler:    _HostService_ReleaseHostReservation_Handler,
-		},
-		{
-			MethodName: "DeleteHost",
-			Handler:    _HostService_DeleteHost_Handler,
-		},
-		{
-			MethodName: "UpdateHost",
-			Handler:    _HostService_UpdateHost_Handler,
-		},
-		{
-			MethodName: "ListHostTags",
-			Handler:    _HostService_ListHostTags_Handler,
+			MethodName: "AddHost",
+			Handler:    _HostService_AddHost_Handler,
 		},
 		{
 			MethodName: "AddSecondaryStorage",
 			Handler:    _HostService_AddSecondaryStorage_Handler,
 		},
 		{
-			MethodName: "FindHostsForMigration",
-			Handler:    _HostService_FindHostsForMigration_Handler,
-		},
-		{
-			MethodName: "AddHost",
-			Handler:    _HostService_AddHost_Handler,
-		},
-		{
-			MethodName: "UpdateHostPassword",
-			Handler:    _HostService_UpdateHostPassword_Handler,
+			MethodName: "CancelHostAsDegraded",
+			Handler:    _HostService_CancelHostAsDegraded_Handler,
 		},
 		{
 			MethodName: "CancelHostMaintenance",
 			Handler:    _HostService_CancelHostMaintenance_Handler,
 		},
 		{
+			MethodName: "DeclareHostAsDegraded",
+			Handler:    _HostService_DeclareHostAsDegraded_Handler,
+		},
+		{
+			MethodName: "DeleteHost",
+			Handler:    _HostService_DeleteHost_Handler,
+		},
+		{
+			MethodName: "FindHostsForMigration",
+			Handler:    _HostService_FindHostsForMigration_Handler,
+		},
+		{
+			MethodName: "ListHostTags",
+			Handler:    _HostService_ListHostTags_Handler,
+		},
+		{
+			MethodName: "ListHosts",
+			Handler:    _HostService_ListHosts_Handler,
+		},
+		{
+			MethodName: "PrepareForHostMaintenance",
+			Handler:    _HostService_PrepareForHostMaintenance_Handler,
+		},
+		{
 			MethodName: "ReconnectHost",
 			Handler:    _HostService_ReconnectHost_Handler,
 		},
 		{
-			MethodName: "DeclareHostAsDegraded",
-			Handler:    _HostService_DeclareHostAsDegraded_Handler,
+			MethodName: "ReleaseHostReservation",
+			Handler:    _HostService_ReleaseHostReservation_Handler,
+		},
+		{
+			MethodName: "UpdateHost",
+			Handler:    _HostService_UpdateHost_Handler,
+		},
+		{
+			MethodName: "UpdateHostPassword",
+			Handler:    _HostService_UpdateHostPassword_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

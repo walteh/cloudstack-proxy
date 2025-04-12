@@ -24,591 +24,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// UpdateClusterRequest represents the parameters for updates an existing cluster
-type UpdateClusterRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the Cluster
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the cluster name
-	ClusterName *string `protobuf:"bytes,2,opt,name=cluster_name,json=clusterName" json:"cluster_name,omitempty"`
-	// hypervisor type of the cluster
-	Hypervisor *string `protobuf:"bytes,3,opt,name=hypervisor" json:"hypervisor,omitempty"`
-	// hypervisor type of the cluster
-	ClusterType *string `protobuf:"bytes,4,opt,name=cluster_type,json=clusterType" json:"cluster_type,omitempty"`
-	// Allocation state of this cluster for allocation of new resources
-	AllocationState *string `protobuf:"bytes,5,opt,name=allocation_state,json=allocationState" json:"allocation_state,omitempty"`
-	// whether this cluster is managed by cloudstack
-	ManagedState *string `protobuf:"bytes,6,opt,name=managed_state,json=managedState" json:"managed_state,omitempty"`
-	// the CPU arch of the cluster. Valid options are: x86_64, aarch64
-	Arch *string `protobuf:"bytes,7,opt,name=arch" json:"arch,omitempty"`
-	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateClusterRequest) Reset() {
-	*x = UpdateClusterRequest{}
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateClusterRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateClusterRequest) ProtoMessage() {}
-
-func (x *UpdateClusterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateClusterRequest.ProtoReflect.Descriptor instead.
-func (*UpdateClusterRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *UpdateClusterRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateClusterRequest) GetClusterName() string {
-	if x != nil && x.ClusterName != nil {
-		return *x.ClusterName
-	}
-	return ""
-}
-
-func (x *UpdateClusterRequest) GetHypervisor() string {
-	if x != nil && x.Hypervisor != nil {
-		return *x.Hypervisor
-	}
-	return ""
-}
-
-func (x *UpdateClusterRequest) GetClusterType() string {
-	if x != nil && x.ClusterType != nil {
-		return *x.ClusterType
-	}
-	return ""
-}
-
-func (x *UpdateClusterRequest) GetAllocationState() string {
-	if x != nil && x.AllocationState != nil {
-		return *x.AllocationState
-	}
-	return ""
-}
-
-func (x *UpdateClusterRequest) GetManagedState() string {
-	if x != nil && x.ManagedState != nil {
-		return *x.ManagedState
-	}
-	return ""
-}
-
-func (x *UpdateClusterRequest) GetArch() string {
-	if x != nil && x.Arch != nil {
-		return *x.Arch
-	}
-	return ""
-}
-
-func (x *UpdateClusterRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateClusterResponse represents the response from updates an existing cluster
-type UpdateClusterResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateClusterResponse) Reset() {
-	*x = UpdateClusterResponse{}
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateClusterResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateClusterResponse) ProtoMessage() {}
-
-func (x *UpdateClusterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateClusterResponse.ProtoReflect.Descriptor instead.
-func (*UpdateClusterResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *UpdateClusterResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListClustersRequest represents the parameters for lists clusters.
-type ListClustersRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// lists clusters by the cluster ID
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// lists clusters by the cluster name
-	ClusterName *string `protobuf:"bytes,2,opt,name=cluster_name,json=clusterName" json:"cluster_name,omitempty"`
-	// lists clusters by Pod ID
-	PodId *int64 `protobuf:"varint,3,opt,name=pod_id,json=podId" json:"pod_id,omitempty"`
-	// lists clusters by Zone ID
-	ZoneId *int64 `protobuf:"varint,4,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// lists clusters by hypervisor type
-	HypervisorType *string `protobuf:"bytes,5,opt,name=hypervisor_type,json=hypervisorType" json:"hypervisor_type,omitempty"`
-	// lists clusters by cluster type
-	ClusterType *string `protobuf:"bytes,6,opt,name=cluster_type,json=clusterType" json:"cluster_type,omitempty"`
-	// lists clusters by allocation state
-	AllocationState *string `protobuf:"bytes,7,opt,name=allocation_state,json=allocationState" json:"allocation_state,omitempty"`
-	// whether this cluster is managed by cloudstack
-	ManagedState *string `protobuf:"bytes,8,opt,name=managed_state,json=managedState" json:"managed_state,omitempty"`
-	// flag to display the capacity of the clusters
-	ShowCapacities *bool `protobuf:"varint,9,opt,name=show_capacities,json=showCapacities" json:"show_capacities,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,10,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,11,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,12,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,13,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListClustersRequest) Reset() {
-	*x = ListClustersRequest{}
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListClustersRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListClustersRequest) ProtoMessage() {}
-
-func (x *ListClustersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListClustersRequest.ProtoReflect.Descriptor instead.
-func (*ListClustersRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *ListClustersRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListClustersRequest) GetClusterName() string {
-	if x != nil && x.ClusterName != nil {
-		return *x.ClusterName
-	}
-	return ""
-}
-
-func (x *ListClustersRequest) GetPodId() int64 {
-	if x != nil && x.PodId != nil {
-		return *x.PodId
-	}
-	return 0
-}
-
-func (x *ListClustersRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ListClustersRequest) GetHypervisorType() string {
-	if x != nil && x.HypervisorType != nil {
-		return *x.HypervisorType
-	}
-	return ""
-}
-
-func (x *ListClustersRequest) GetClusterType() string {
-	if x != nil && x.ClusterType != nil {
-		return *x.ClusterType
-	}
-	return ""
-}
-
-func (x *ListClustersRequest) GetAllocationState() string {
-	if x != nil && x.AllocationState != nil {
-		return *x.AllocationState
-	}
-	return ""
-}
-
-func (x *ListClustersRequest) GetManagedState() string {
-	if x != nil && x.ManagedState != nil {
-		return *x.ManagedState
-	}
-	return ""
-}
-
-func (x *ListClustersRequest) GetShowCapacities() bool {
-	if x != nil && x.ShowCapacities != nil {
-		return *x.ShowCapacities
-	}
-	return false
-}
-
-func (x *ListClustersRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListClustersRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListClustersRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListClustersRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListClustersResponse represents the response from lists clusters.
-type ListClustersResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of Clusters
-	Items []*Cluster `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of Clusters
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListClustersResponse) Reset() {
-	*x = ListClustersResponse{}
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListClustersResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListClustersResponse) ProtoMessage() {}
-
-func (x *ListClustersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListClustersResponse.ProtoReflect.Descriptor instead.
-func (*ListClustersResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *ListClustersResponse) GetItems() []*Cluster {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListClustersResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// DeleteClusterRequest represents the parameters for deletes a cluster.
-type DeleteClusterRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the cluster ID
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteClusterRequest) Reset() {
-	*x = DeleteClusterRequest{}
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteClusterRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteClusterRequest) ProtoMessage() {}
-
-func (x *DeleteClusterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteClusterRequest.ProtoReflect.Descriptor instead.
-func (*DeleteClusterRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *DeleteClusterRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteClusterRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteClusterResponse represents the response from deletes a cluster.
-type DeleteClusterResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteClusterResponse) Reset() {
-	*x = DeleteClusterResponse{}
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteClusterResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteClusterResponse) ProtoMessage() {}
-
-func (x *DeleteClusterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteClusterResponse.ProtoReflect.Descriptor instead.
-func (*DeleteClusterResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *DeleteClusterResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ExecuteClusterDrsPlanRequest represents the parameters for execute drs for a cluster. if there is another plan in progress for the same cluster, this command will fail.
-type ExecuteClusterDrsPlanRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of cluster
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// Virtual Machine to destination host mapping. This parameter specifies the mapping between a vm and a host to migrate that VM. clusterid is required if this parameter is set.Format of this parameter: migrateto[vm-index].vm=<uuid>&migrateto[vm-index].host=<uuid> Where, [vm-index] indicates the index to identify the vm that you want to migrate, vm=<uuid> indicates the UUID of the vm that you want to migrate, and host=<uuid> indicates the UUID of the host where you want to migrate the vm. Example: migrateto[0].vm=<71f43cd6-69b0-4d3b-9fbc-67f50963d60b>&migrateto[0].host=<a382f181-3d2b-4413-b92d-b8931befa7e1>&migrateto[1].vm=<88de0173-55c0-4c1c-a269-83d0279eeedf>&migrateto[1].host=<95d6e97c-6766-4d67-9a30-c449c15011d1>&migrateto[2].vm=<1b331390-59f2-4796-9993-bf11c6e76225>&migrateto[2].host=<41fdb564-9d3b-447d-88ed-7628f7640cbc>
-	MigrateVmTo map[string]string `protobuf:"bytes,2,rep,name=migrate_vm_to,json=migrateVmTo" json:"migrate_vm_to,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ExecuteClusterDrsPlanRequest) Reset() {
-	*x = ExecuteClusterDrsPlanRequest{}
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ExecuteClusterDrsPlanRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ExecuteClusterDrsPlanRequest) ProtoMessage() {}
-
-func (x *ExecuteClusterDrsPlanRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ExecuteClusterDrsPlanRequest.ProtoReflect.Descriptor instead.
-func (*ExecuteClusterDrsPlanRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *ExecuteClusterDrsPlanRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ExecuteClusterDrsPlanRequest) GetMigrateVmTo() map[string]string {
-	if x != nil {
-		return x.MigrateVmTo
-	}
-	return nil
-}
-
-func (x *ExecuteClusterDrsPlanRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *ExecuteClusterDrsPlanRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *ExecuteClusterDrsPlanRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ExecuteClusterDrsPlanResponse represents the response from execute drs for a cluster. if there is another plan in progress for the same cluster, this command will fail.
-type ExecuteClusterDrsPlanResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ExecuteClusterDrsPlanResponse) Reset() {
-	*x = ExecuteClusterDrsPlanResponse{}
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ExecuteClusterDrsPlanResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ExecuteClusterDrsPlanResponse) ProtoMessage() {}
-
-func (x *ExecuteClusterDrsPlanResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ExecuteClusterDrsPlanResponse.ProtoReflect.Descriptor instead.
-func (*ExecuteClusterDrsPlanResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *ExecuteClusterDrsPlanResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
 // AddClusterRequest represents the parameters for adds a new cluster
 type AddClusterRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -659,7 +74,7 @@ type AddClusterRequest struct {
 
 func (x *AddClusterRequest) Reset() {
 	*x = AddClusterRequest{}
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[8]
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -671,7 +86,7 @@ func (x *AddClusterRequest) String() string {
 func (*AddClusterRequest) ProtoMessage() {}
 
 func (x *AddClusterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[8]
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -684,7 +99,7 @@ func (x *AddClusterRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddClusterRequest.ProtoReflect.Descriptor instead.
 func (*AddClusterRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{8}
+	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *AddClusterRequest) GetClusterName() string {
@@ -845,7 +260,7 @@ type AddClusterResponse struct {
 
 func (x *AddClusterResponse) Reset() {
 	*x = AddClusterResponse{}
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -857,7 +272,7 @@ func (x *AddClusterResponse) String() string {
 func (*AddClusterResponse) ProtoMessage() {}
 
 func (x *AddClusterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -870,10 +285,235 @@ func (x *AddClusterResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddClusterResponse.ProtoReflect.Descriptor instead.
 func (*AddClusterResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{9}
+	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *AddClusterResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteClusterRequest represents the parameters for deletes a cluster.
+type DeleteClusterRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the cluster ID
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteClusterRequest) Reset() {
+	*x = DeleteClusterRequest{}
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteClusterRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteClusterRequest) ProtoMessage() {}
+
+func (x *DeleteClusterRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteClusterRequest.ProtoReflect.Descriptor instead.
+func (*DeleteClusterRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *DeleteClusterRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteClusterRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteClusterResponse represents the response from deletes a cluster.
+type DeleteClusterResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteClusterResponse) Reset() {
+	*x = DeleteClusterResponse{}
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteClusterResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteClusterResponse) ProtoMessage() {}
+
+func (x *DeleteClusterResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteClusterResponse.ProtoReflect.Descriptor instead.
+func (*DeleteClusterResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *DeleteClusterResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ExecuteClusterDrsPlanRequest represents the parameters for execute drs for a cluster. if there is another plan in progress for the same cluster, this command will fail.
+type ExecuteClusterDrsPlanRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of cluster
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// Virtual Machine to destination host mapping. This parameter specifies the mapping between a vm and a host to migrate that VM. clusterid is required if this parameter is set.Format of this parameter: migrateto[vm-index].vm=<uuid>&migrateto[vm-index].host=<uuid> Where, [vm-index] indicates the index to identify the vm that you want to migrate, vm=<uuid> indicates the UUID of the vm that you want to migrate, and host=<uuid> indicates the UUID of the host where you want to migrate the vm. Example: migrateto[0].vm=<71f43cd6-69b0-4d3b-9fbc-67f50963d60b>&migrateto[0].host=<a382f181-3d2b-4413-b92d-b8931befa7e1>&migrateto[1].vm=<88de0173-55c0-4c1c-a269-83d0279eeedf>&migrateto[1].host=<95d6e97c-6766-4d67-9a30-c449c15011d1>&migrateto[2].vm=<1b331390-59f2-4796-9993-bf11c6e76225>&migrateto[2].host=<41fdb564-9d3b-447d-88ed-7628f7640cbc>
+	MigrateVmTo map[string]string `protobuf:"bytes,2,rep,name=migrate_vm_to,json=migrateVmTo" json:"migrate_vm_to,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ExecuteClusterDrsPlanRequest) Reset() {
+	*x = ExecuteClusterDrsPlanRequest{}
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ExecuteClusterDrsPlanRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExecuteClusterDrsPlanRequest) ProtoMessage() {}
+
+func (x *ExecuteClusterDrsPlanRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ExecuteClusterDrsPlanRequest.ProtoReflect.Descriptor instead.
+func (*ExecuteClusterDrsPlanRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *ExecuteClusterDrsPlanRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ExecuteClusterDrsPlanRequest) GetMigrateVmTo() map[string]string {
+	if x != nil {
+		return x.MigrateVmTo
+	}
+	return nil
+}
+
+func (x *ExecuteClusterDrsPlanRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *ExecuteClusterDrsPlanRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *ExecuteClusterDrsPlanRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ExecuteClusterDrsPlanResponse represents the response from execute drs for a cluster. if there is another plan in progress for the same cluster, this command will fail.
+type ExecuteClusterDrsPlanResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ExecuteClusterDrsPlanResponse) Reset() {
+	*x = ExecuteClusterDrsPlanResponse{}
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ExecuteClusterDrsPlanResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExecuteClusterDrsPlanResponse) ProtoMessage() {}
+
+func (x *ExecuteClusterDrsPlanResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ExecuteClusterDrsPlanResponse.ProtoReflect.Descriptor instead.
+func (*ExecuteClusterDrsPlanResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *ExecuteClusterDrsPlanResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -894,7 +534,7 @@ type GenerateClusterDrsPlanRequest struct {
 
 func (x *GenerateClusterDrsPlanRequest) Reset() {
 	*x = GenerateClusterDrsPlanRequest{}
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[10]
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -906,7 +546,7 @@ func (x *GenerateClusterDrsPlanRequest) String() string {
 func (*GenerateClusterDrsPlanRequest) ProtoMessage() {}
 
 func (x *GenerateClusterDrsPlanRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[10]
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -919,7 +559,7 @@ func (x *GenerateClusterDrsPlanRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GenerateClusterDrsPlanRequest.ProtoReflect.Descriptor instead.
 func (*GenerateClusterDrsPlanRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{10}
+	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *GenerateClusterDrsPlanRequest) GetId() int64 {
@@ -954,7 +594,7 @@ type GenerateClusterDrsPlanResponse struct {
 
 func (x *GenerateClusterDrsPlanResponse) Reset() {
 	*x = GenerateClusterDrsPlanResponse{}
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -966,7 +606,7 @@ func (x *GenerateClusterDrsPlanResponse) String() string {
 func (*GenerateClusterDrsPlanResponse) ProtoMessage() {}
 
 func (x *GenerateClusterDrsPlanResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -979,7 +619,7 @@ func (x *GenerateClusterDrsPlanResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GenerateClusterDrsPlanResponse.ProtoReflect.Descriptor instead.
 func (*GenerateClusterDrsPlanResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{11}
+	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *GenerateClusterDrsPlanResponse) GetResult() *Result {
@@ -1007,7 +647,7 @@ type ListClusterDrsPlanRequest struct {
 
 func (x *ListClusterDrsPlanRequest) Reset() {
 	*x = ListClusterDrsPlanRequest{}
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[12]
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1019,7 +659,7 @@ func (x *ListClusterDrsPlanRequest) String() string {
 func (*ListClusterDrsPlanRequest) ProtoMessage() {}
 
 func (x *ListClusterDrsPlanRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[12]
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1032,7 +672,7 @@ func (x *ListClusterDrsPlanRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListClusterDrsPlanRequest.ProtoReflect.Descriptor instead.
 func (*ListClusterDrsPlanRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{12}
+	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *ListClusterDrsPlanRequest) GetId() int64 {
@@ -1090,7 +730,7 @@ type ListClusterDrsPlanResponse struct {
 
 func (x *ListClusterDrsPlanResponse) Reset() {
 	*x = ListClusterDrsPlanResponse{}
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[13]
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1102,7 +742,7 @@ func (x *ListClusterDrsPlanResponse) String() string {
 func (*ListClusterDrsPlanResponse) ProtoMessage() {}
 
 func (x *ListClusterDrsPlanResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[13]
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1115,7 +755,7 @@ func (x *ListClusterDrsPlanResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListClusterDrsPlanResponse.ProtoReflect.Descriptor instead.
 func (*ListClusterDrsPlanResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{13}
+	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *ListClusterDrsPlanResponse) GetItems() []*ClusterDrsPlan {
@@ -1130,6 +770,366 @@ func (x *ListClusterDrsPlanResponse) GetTotalCount() int32 {
 		return *x.TotalCount
 	}
 	return 0
+}
+
+// ListClustersRequest represents the parameters for lists clusters.
+type ListClustersRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// lists clusters by the cluster ID
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// lists clusters by the cluster name
+	ClusterName *string `protobuf:"bytes,2,opt,name=cluster_name,json=clusterName" json:"cluster_name,omitempty"`
+	// lists clusters by Pod ID
+	PodId *int64 `protobuf:"varint,3,opt,name=pod_id,json=podId" json:"pod_id,omitempty"`
+	// lists clusters by Zone ID
+	ZoneId *int64 `protobuf:"varint,4,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// lists clusters by hypervisor type
+	HypervisorType *string `protobuf:"bytes,5,opt,name=hypervisor_type,json=hypervisorType" json:"hypervisor_type,omitempty"`
+	// lists clusters by cluster type
+	ClusterType *string `protobuf:"bytes,6,opt,name=cluster_type,json=clusterType" json:"cluster_type,omitempty"`
+	// lists clusters by allocation state
+	AllocationState *string `protobuf:"bytes,7,opt,name=allocation_state,json=allocationState" json:"allocation_state,omitempty"`
+	// whether this cluster is managed by cloudstack
+	ManagedState *string `protobuf:"bytes,8,opt,name=managed_state,json=managedState" json:"managed_state,omitempty"`
+	// flag to display the capacity of the clusters
+	ShowCapacities *bool `protobuf:"varint,9,opt,name=show_capacities,json=showCapacities" json:"show_capacities,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,10,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,11,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,12,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,13,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListClustersRequest) Reset() {
+	*x = ListClustersRequest{}
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListClustersRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListClustersRequest) ProtoMessage() {}
+
+func (x *ListClustersRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListClustersRequest.ProtoReflect.Descriptor instead.
+func (*ListClustersRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *ListClustersRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListClustersRequest) GetClusterName() string {
+	if x != nil && x.ClusterName != nil {
+		return *x.ClusterName
+	}
+	return ""
+}
+
+func (x *ListClustersRequest) GetPodId() int64 {
+	if x != nil && x.PodId != nil {
+		return *x.PodId
+	}
+	return 0
+}
+
+func (x *ListClustersRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ListClustersRequest) GetHypervisorType() string {
+	if x != nil && x.HypervisorType != nil {
+		return *x.HypervisorType
+	}
+	return ""
+}
+
+func (x *ListClustersRequest) GetClusterType() string {
+	if x != nil && x.ClusterType != nil {
+		return *x.ClusterType
+	}
+	return ""
+}
+
+func (x *ListClustersRequest) GetAllocationState() string {
+	if x != nil && x.AllocationState != nil {
+		return *x.AllocationState
+	}
+	return ""
+}
+
+func (x *ListClustersRequest) GetManagedState() string {
+	if x != nil && x.ManagedState != nil {
+		return *x.ManagedState
+	}
+	return ""
+}
+
+func (x *ListClustersRequest) GetShowCapacities() bool {
+	if x != nil && x.ShowCapacities != nil {
+		return *x.ShowCapacities
+	}
+	return false
+}
+
+func (x *ListClustersRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListClustersRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListClustersRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListClustersRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListClustersResponse represents the response from lists clusters.
+type ListClustersResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of Clusters
+	Items []*Cluster `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of Clusters
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListClustersResponse) Reset() {
+	*x = ListClustersResponse{}
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListClustersResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListClustersResponse) ProtoMessage() {}
+
+func (x *ListClustersResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListClustersResponse.ProtoReflect.Descriptor instead.
+func (*ListClustersResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *ListClustersResponse) GetItems() []*Cluster {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListClustersResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// UpdateClusterRequest represents the parameters for updates an existing cluster
+type UpdateClusterRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the Cluster
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the cluster name
+	ClusterName *string `protobuf:"bytes,2,opt,name=cluster_name,json=clusterName" json:"cluster_name,omitempty"`
+	// hypervisor type of the cluster
+	Hypervisor *string `protobuf:"bytes,3,opt,name=hypervisor" json:"hypervisor,omitempty"`
+	// hypervisor type of the cluster
+	ClusterType *string `protobuf:"bytes,4,opt,name=cluster_type,json=clusterType" json:"cluster_type,omitempty"`
+	// Allocation state of this cluster for allocation of new resources
+	AllocationState *string `protobuf:"bytes,5,opt,name=allocation_state,json=allocationState" json:"allocation_state,omitempty"`
+	// whether this cluster is managed by cloudstack
+	ManagedState *string `protobuf:"bytes,6,opt,name=managed_state,json=managedState" json:"managed_state,omitempty"`
+	// the CPU arch of the cluster. Valid options are: x86_64, aarch64
+	Arch *string `protobuf:"bytes,7,opt,name=arch" json:"arch,omitempty"`
+	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateClusterRequest) Reset() {
+	*x = UpdateClusterRequest{}
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateClusterRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateClusterRequest) ProtoMessage() {}
+
+func (x *UpdateClusterRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateClusterRequest.ProtoReflect.Descriptor instead.
+func (*UpdateClusterRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *UpdateClusterRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateClusterRequest) GetClusterName() string {
+	if x != nil && x.ClusterName != nil {
+		return *x.ClusterName
+	}
+	return ""
+}
+
+func (x *UpdateClusterRequest) GetHypervisor() string {
+	if x != nil && x.Hypervisor != nil {
+		return *x.Hypervisor
+	}
+	return ""
+}
+
+func (x *UpdateClusterRequest) GetClusterType() string {
+	if x != nil && x.ClusterType != nil {
+		return *x.ClusterType
+	}
+	return ""
+}
+
+func (x *UpdateClusterRequest) GetAllocationState() string {
+	if x != nil && x.AllocationState != nil {
+		return *x.AllocationState
+	}
+	return ""
+}
+
+func (x *UpdateClusterRequest) GetManagedState() string {
+	if x != nil && x.ManagedState != nil {
+		return *x.ManagedState
+	}
+	return ""
+}
+
+func (x *UpdateClusterRequest) GetArch() string {
+	if x != nil && x.Arch != nil {
+		return *x.Arch
+	}
+	return ""
+}
+
+func (x *UpdateClusterRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateClusterResponse represents the response from updates an existing cluster
+type UpdateClusterResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateClusterResponse) Reset() {
+	*x = UpdateClusterResponse{}
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateClusterResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateClusterResponse) ProtoMessage() {}
+
+func (x *UpdateClusterResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateClusterResponse.ProtoReflect.Descriptor instead.
+func (*UpdateClusterResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *UpdateClusterResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
 }
 
 // Cluster represents a Cluster Item
@@ -1351,151 +1351,6 @@ func (x *Success) GetDisplayText() string {
 	return ""
 }
 
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[17]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[17]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{17}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
 // Result represents a generic operation result
 type Result struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1515,7 +1370,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[18]
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1527,7 +1382,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[18]
+	mi := &file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1540,7 +1395,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{18}
+	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -1582,57 +1437,7 @@ var File_cloudstack_management_cluster_v1_cluster_gen_proto protoreflect.FileDes
 
 const file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDesc = "" +
 	"\n" +
-	"2cloudstack/management/cluster/v1/cluster.gen.proto\x12 cloudstack.management.cluster.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xa9\x02\n" +
-	"\x14UpdateClusterRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12-\n" +
-	"\fcluster_name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\vclusterName\x12\x1e\n" +
-	"\n" +
-	"hypervisor\x18\x03 \x01(\tR\n" +
-	"hypervisor\x12!\n" +
-	"\fcluster_type\x18\x04 \x01(\tR\vclusterType\x12)\n" +
-	"\x10allocation_state\x18\x05 \x01(\tR\x0fallocationState\x12#\n" +
-	"\rmanaged_state\x18\x06 \x01(\tR\fmanagedState\x12\x12\n" +
-	"\x04arch\x18\a \x01(\tR\x04arch\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\"Y\n" +
-	"\x15UpdateClusterResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.cluster.v1.ResultR\x06result\"\xc0\x03\n" +
-	"\x13ListClustersRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12-\n" +
-	"\fcluster_name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\vclusterName\x12\x15\n" +
-	"\x06pod_id\x18\x03 \x01(\x03R\x05podId\x12\x17\n" +
-	"\azone_id\x18\x04 \x01(\x03R\x06zoneId\x12'\n" +
-	"\x0fhypervisor_type\x18\x05 \x01(\tR\x0ehypervisorType\x12!\n" +
-	"\fcluster_type\x18\x06 \x01(\tR\vclusterType\x12)\n" +
-	"\x10allocation_state\x18\a \x01(\tR\x0fallocationState\x12#\n" +
-	"\rmanaged_state\x18\b \x01(\tR\fmanagedState\x12.\n" +
-	"\x0fshow_capacities\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\x0eshowCapacities\x12\x18\n" +
-	"\akeyword\x18\n" +
-	" \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\v \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\f \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\r \x01(\tR\fresponseType\"\x7f\n" +
-	"\x14ListClustersResponse\x12?\n" +
-	"\x05items\x18\x01 \x03(\v2).cloudstack.management.cluster.v1.ClusterR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"S\n" +
-	"\x14DeleteClusterRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"Y\n" +
-	"\x15DeleteClusterResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.cluster.v1.ResultR\x06result\"\xe8\x02\n" +
-	"\x1cExecuteClusterDrsPlanRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12s\n" +
-	"\rmigrate_vm_to\x18\x02 \x03(\v2O.cloudstack.management.cluster.v1.ExecuteClusterDrsPlanRequest.MigrateVmToEntryR\vmigrateVmTo\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\x1a>\n" +
-	"\x10MigrateVmToEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"a\n" +
-	"\x1dExecuteClusterDrsPlanResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.cluster.v1.ResultR\x06result\"\x84\a\n" +
+	"2cloudstack/management/cluster/v1/cluster.gen.proto\x12 cloudstack.management.cluster.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x84\a\n" +
 	"\x11AddClusterRequest\x120\n" +
 	"\fcluster_name\x18\x01 \x01(\tB\r\xbaH\n" +
 	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\vclusterName\x12\x1a\n" +
@@ -1664,6 +1469,22 @@ const file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDesc = "" +
 	"\aovm3vip\x18\x14 \x01(\tB\a\xbaH\x04r\x02x\x01R\aovm3vip\x12#\n" +
 	"\rresponse_type\x18\x15 \x01(\tR\fresponseType\"V\n" +
 	"\x12AddClusterResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.cluster.v1.ResultR\x06result\"S\n" +
+	"\x14DeleteClusterRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"Y\n" +
+	"\x15DeleteClusterResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.cluster.v1.ResultR\x06result\"\xe8\x02\n" +
+	"\x1cExecuteClusterDrsPlanRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12s\n" +
+	"\rmigrate_vm_to\x18\x02 \x03(\v2O.cloudstack.management.cluster.v1.ExecuteClusterDrsPlanRequest.MigrateVmToEntryR\vmigrateVmTo\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\x1a>\n" +
+	"\x10MigrateVmToEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"a\n" +
+	"\x1dExecuteClusterDrsPlanResponse\x12@\n" +
 	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.cluster.v1.ResultR\x06result\"|\n" +
 	"\x1dGenerateClusterDrsPlanRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1e\n" +
@@ -1684,7 +1505,41 @@ const file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDesc = "" +
 	"\x1aListClusterDrsPlanResponse\x12F\n" +
 	"\x05items\x18\x01 \x03(\v20.cloudstack.management.cluster.v1.ClusterDrsPlanR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x96\x01\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xc0\x03\n" +
+	"\x13ListClustersRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12-\n" +
+	"\fcluster_name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\vclusterName\x12\x15\n" +
+	"\x06pod_id\x18\x03 \x01(\x03R\x05podId\x12\x17\n" +
+	"\azone_id\x18\x04 \x01(\x03R\x06zoneId\x12'\n" +
+	"\x0fhypervisor_type\x18\x05 \x01(\tR\x0ehypervisorType\x12!\n" +
+	"\fcluster_type\x18\x06 \x01(\tR\vclusterType\x12)\n" +
+	"\x10allocation_state\x18\a \x01(\tR\x0fallocationState\x12#\n" +
+	"\rmanaged_state\x18\b \x01(\tR\fmanagedState\x12.\n" +
+	"\x0fshow_capacities\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\x0eshowCapacities\x12\x18\n" +
+	"\akeyword\x18\n" +
+	" \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\v \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\f \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\r \x01(\tR\fresponseType\"\x7f\n" +
+	"\x14ListClustersResponse\x12?\n" +
+	"\x05items\x18\x01 \x03(\v2).cloudstack.management.cluster.v1.ClusterR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xa9\x02\n" +
+	"\x14UpdateClusterRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12-\n" +
+	"\fcluster_name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\vclusterName\x12\x1e\n" +
+	"\n" +
+	"hypervisor\x18\x03 \x01(\tR\n" +
+	"hypervisor\x12!\n" +
+	"\fcluster_type\x18\x04 \x01(\tR\vclusterType\x12)\n" +
+	"\x10allocation_state\x18\x05 \x01(\tR\x0fallocationState\x12#\n" +
+	"\rmanaged_state\x18\x06 \x01(\tR\fmanagedState\x12\x12\n" +
+	"\x04arch\x18\a \x01(\tR\x04arch\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\"Y\n" +
+	"\x15UpdateClusterResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.cluster.v1.ResultR\x06result\"\x96\x01\n" +
 	"\aCluster\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
@@ -1699,42 +1554,23 @@ const file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDesc = "" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xdf\x03\n" +
-	"\x04Item\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12M\n" +
-	"\adetails\x18\f \x03(\v23.cloudstack.management.cluster.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xef\a\n" +
-	"\x0eClusterService\x12\x82\x01\n" +
-	"\rUpdateCluster\x126.cloudstack.management.cluster.v1.UpdateClusterRequest\x1a7.cloudstack.management.cluster.v1.UpdateClusterResponse\"\x00\x12\x7f\n" +
-	"\fListClusters\x125.cloudstack.management.cluster.v1.ListClustersRequest\x1a6.cloudstack.management.cluster.v1.ListClustersResponse\"\x00\x12\x82\x01\n" +
-	"\rDeleteCluster\x126.cloudstack.management.cluster.v1.DeleteClusterRequest\x1a7.cloudstack.management.cluster.v1.DeleteClusterResponse\"\x00\x12\x9a\x01\n" +
-	"\x15ExecuteClusterDrsPlan\x12>.cloudstack.management.cluster.v1.ExecuteClusterDrsPlanRequest\x1a?.cloudstack.management.cluster.v1.ExecuteClusterDrsPlanResponse\"\x00\x12y\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\xa4\b\n" +
+	"\x0eClusterService\x12\x80\x01\n" +
 	"\n" +
-	"AddCluster\x123.cloudstack.management.cluster.v1.AddClusterRequest\x1a4.cloudstack.management.cluster.v1.AddClusterResponse\"\x00\x12\x9d\x01\n" +
-	"\x16GenerateClusterDrsPlan\x12?.cloudstack.management.cluster.v1.GenerateClusterDrsPlanRequest\x1a@.cloudstack.management.cluster.v1.GenerateClusterDrsPlanResponse\"\x00\x12\x91\x01\n" +
-	"\x12ListClusterDrsPlan\x12;.cloudstack.management.cluster.v1.ListClusterDrsPlanRequest\x1a<.cloudstack.management.cluster.v1.ListClusterDrsPlanResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x01B\xba\x02\n" +
+	"AddCluster\x123.cloudstack.management.cluster.v1.AddClusterRequest\x1a4.cloudstack.management.cluster.v1.AddClusterResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x89\x01\n" +
+	"\rDeleteCluster\x126.cloudstack.management.cluster.v1.DeleteClusterRequest\x1a7.cloudstack.management.cluster.v1.DeleteClusterResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xa1\x01\n" +
+	"\x15ExecuteClusterDrsPlan\x12>.cloudstack.management.cluster.v1.ExecuteClusterDrsPlanRequest\x1a?.cloudstack.management.cluster.v1.ExecuteClusterDrsPlanResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xa4\x01\n" +
+	"\x16GenerateClusterDrsPlan\x12?.cloudstack.management.cluster.v1.GenerateClusterDrsPlanRequest\x1a@.cloudstack.management.cluster.v1.GenerateClusterDrsPlanResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x98\x01\n" +
+	"\x12ListClusterDrsPlan\x12;.cloudstack.management.cluster.v1.ListClusterDrsPlanRequest\x1a<.cloudstack.management.cluster.v1.ListClusterDrsPlanResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x86\x01\n" +
+	"\fListClusters\x125.cloudstack.management.cluster.v1.ListClustersRequest\x1a6.cloudstack.management.cluster.v1.ListClustersResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x89\x01\n" +
+	"\rUpdateCluster\x126.cloudstack.management.cluster.v1.UpdateClusterRequest\x1a7.cloudstack.management.cluster.v1.UpdateClusterResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\b\xc2>\x05\xc2>\x02\x01\x02B\xba\x02\n" +
 	"$com.cloudstack.management.cluster.v1B\x0fClusterGenProtoP\x01Z^github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/cluster/v1;clusterv1\xa2\x02\x03CMC\xaa\x02 Cloudstack.Management.Cluster.V1\xca\x02 Cloudstack\\Management\\Cluster\\V1\xe2\x02,Cloudstack\\Management\\Cluster\\V1\\GPBMetadata\xea\x02#Cloudstack::Management::Cluster::V1b\beditionsp\xe8\a"
 
 var (
@@ -1749,59 +1585,56 @@ func file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescGZIP() []byt
 	return file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDescData
 }
 
-var file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
+var file_cloudstack_management_cluster_v1_cluster_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
 var file_cloudstack_management_cluster_v1_cluster_gen_proto_goTypes = []any{
-	(*UpdateClusterRequest)(nil),           // 0: cloudstack.management.cluster.v1.UpdateClusterRequest
-	(*UpdateClusterResponse)(nil),          // 1: cloudstack.management.cluster.v1.UpdateClusterResponse
-	(*ListClustersRequest)(nil),            // 2: cloudstack.management.cluster.v1.ListClustersRequest
-	(*ListClustersResponse)(nil),           // 3: cloudstack.management.cluster.v1.ListClustersResponse
-	(*DeleteClusterRequest)(nil),           // 4: cloudstack.management.cluster.v1.DeleteClusterRequest
-	(*DeleteClusterResponse)(nil),          // 5: cloudstack.management.cluster.v1.DeleteClusterResponse
-	(*ExecuteClusterDrsPlanRequest)(nil),   // 6: cloudstack.management.cluster.v1.ExecuteClusterDrsPlanRequest
-	(*ExecuteClusterDrsPlanResponse)(nil),  // 7: cloudstack.management.cluster.v1.ExecuteClusterDrsPlanResponse
-	(*AddClusterRequest)(nil),              // 8: cloudstack.management.cluster.v1.AddClusterRequest
-	(*AddClusterResponse)(nil),             // 9: cloudstack.management.cluster.v1.AddClusterResponse
-	(*GenerateClusterDrsPlanRequest)(nil),  // 10: cloudstack.management.cluster.v1.GenerateClusterDrsPlanRequest
-	(*GenerateClusterDrsPlanResponse)(nil), // 11: cloudstack.management.cluster.v1.GenerateClusterDrsPlanResponse
-	(*ListClusterDrsPlanRequest)(nil),      // 12: cloudstack.management.cluster.v1.ListClusterDrsPlanRequest
-	(*ListClusterDrsPlanResponse)(nil),     // 13: cloudstack.management.cluster.v1.ListClusterDrsPlanResponse
+	(*AddClusterRequest)(nil),              // 0: cloudstack.management.cluster.v1.AddClusterRequest
+	(*AddClusterResponse)(nil),             // 1: cloudstack.management.cluster.v1.AddClusterResponse
+	(*DeleteClusterRequest)(nil),           // 2: cloudstack.management.cluster.v1.DeleteClusterRequest
+	(*DeleteClusterResponse)(nil),          // 3: cloudstack.management.cluster.v1.DeleteClusterResponse
+	(*ExecuteClusterDrsPlanRequest)(nil),   // 4: cloudstack.management.cluster.v1.ExecuteClusterDrsPlanRequest
+	(*ExecuteClusterDrsPlanResponse)(nil),  // 5: cloudstack.management.cluster.v1.ExecuteClusterDrsPlanResponse
+	(*GenerateClusterDrsPlanRequest)(nil),  // 6: cloudstack.management.cluster.v1.GenerateClusterDrsPlanRequest
+	(*GenerateClusterDrsPlanResponse)(nil), // 7: cloudstack.management.cluster.v1.GenerateClusterDrsPlanResponse
+	(*ListClusterDrsPlanRequest)(nil),      // 8: cloudstack.management.cluster.v1.ListClusterDrsPlanRequest
+	(*ListClusterDrsPlanResponse)(nil),     // 9: cloudstack.management.cluster.v1.ListClusterDrsPlanResponse
+	(*ListClustersRequest)(nil),            // 10: cloudstack.management.cluster.v1.ListClustersRequest
+	(*ListClustersResponse)(nil),           // 11: cloudstack.management.cluster.v1.ListClustersResponse
+	(*UpdateClusterRequest)(nil),           // 12: cloudstack.management.cluster.v1.UpdateClusterRequest
+	(*UpdateClusterResponse)(nil),          // 13: cloudstack.management.cluster.v1.UpdateClusterResponse
 	(*Cluster)(nil),                        // 14: cloudstack.management.cluster.v1.Cluster
 	(*ClusterDrsPlan)(nil),                 // 15: cloudstack.management.cluster.v1.ClusterDrsPlan
 	(*Success)(nil),                        // 16: cloudstack.management.cluster.v1.Success
-	(*Item)(nil),                           // 17: cloudstack.management.cluster.v1.Item
-	(*Result)(nil),                         // 18: cloudstack.management.cluster.v1.Result
-	nil,                                    // 19: cloudstack.management.cluster.v1.ExecuteClusterDrsPlanRequest.MigrateVmToEntry
-	nil,                                    // 20: cloudstack.management.cluster.v1.Item.DetailsEntry
+	(*Result)(nil),                         // 17: cloudstack.management.cluster.v1.Result
+	nil,                                    // 18: cloudstack.management.cluster.v1.ExecuteClusterDrsPlanRequest.MigrateVmToEntry
 }
 var file_cloudstack_management_cluster_v1_cluster_gen_proto_depIdxs = []int32{
-	18, // 0: cloudstack.management.cluster.v1.UpdateClusterResponse.result:type_name -> cloudstack.management.cluster.v1.Result
-	14, // 1: cloudstack.management.cluster.v1.ListClustersResponse.items:type_name -> cloudstack.management.cluster.v1.Cluster
-	18, // 2: cloudstack.management.cluster.v1.DeleteClusterResponse.result:type_name -> cloudstack.management.cluster.v1.Result
-	19, // 3: cloudstack.management.cluster.v1.ExecuteClusterDrsPlanRequest.migrate_vm_to:type_name -> cloudstack.management.cluster.v1.ExecuteClusterDrsPlanRequest.MigrateVmToEntry
-	18, // 4: cloudstack.management.cluster.v1.ExecuteClusterDrsPlanResponse.result:type_name -> cloudstack.management.cluster.v1.Result
-	18, // 5: cloudstack.management.cluster.v1.AddClusterResponse.result:type_name -> cloudstack.management.cluster.v1.Result
-	18, // 6: cloudstack.management.cluster.v1.GenerateClusterDrsPlanResponse.result:type_name -> cloudstack.management.cluster.v1.Result
-	15, // 7: cloudstack.management.cluster.v1.ListClusterDrsPlanResponse.items:type_name -> cloudstack.management.cluster.v1.ClusterDrsPlan
-	20, // 8: cloudstack.management.cluster.v1.Item.details:type_name -> cloudstack.management.cluster.v1.Item.DetailsEntry
-	0,  // 9: cloudstack.management.cluster.v1.ClusterService.UpdateCluster:input_type -> cloudstack.management.cluster.v1.UpdateClusterRequest
-	2,  // 10: cloudstack.management.cluster.v1.ClusterService.ListClusters:input_type -> cloudstack.management.cluster.v1.ListClustersRequest
-	4,  // 11: cloudstack.management.cluster.v1.ClusterService.DeleteCluster:input_type -> cloudstack.management.cluster.v1.DeleteClusterRequest
-	6,  // 12: cloudstack.management.cluster.v1.ClusterService.ExecuteClusterDrsPlan:input_type -> cloudstack.management.cluster.v1.ExecuteClusterDrsPlanRequest
-	8,  // 13: cloudstack.management.cluster.v1.ClusterService.AddCluster:input_type -> cloudstack.management.cluster.v1.AddClusterRequest
-	10, // 14: cloudstack.management.cluster.v1.ClusterService.GenerateClusterDrsPlan:input_type -> cloudstack.management.cluster.v1.GenerateClusterDrsPlanRequest
-	12, // 15: cloudstack.management.cluster.v1.ClusterService.ListClusterDrsPlan:input_type -> cloudstack.management.cluster.v1.ListClusterDrsPlanRequest
-	1,  // 16: cloudstack.management.cluster.v1.ClusterService.UpdateCluster:output_type -> cloudstack.management.cluster.v1.UpdateClusterResponse
-	3,  // 17: cloudstack.management.cluster.v1.ClusterService.ListClusters:output_type -> cloudstack.management.cluster.v1.ListClustersResponse
-	5,  // 18: cloudstack.management.cluster.v1.ClusterService.DeleteCluster:output_type -> cloudstack.management.cluster.v1.DeleteClusterResponse
-	7,  // 19: cloudstack.management.cluster.v1.ClusterService.ExecuteClusterDrsPlan:output_type -> cloudstack.management.cluster.v1.ExecuteClusterDrsPlanResponse
-	9,  // 20: cloudstack.management.cluster.v1.ClusterService.AddCluster:output_type -> cloudstack.management.cluster.v1.AddClusterResponse
-	11, // 21: cloudstack.management.cluster.v1.ClusterService.GenerateClusterDrsPlan:output_type -> cloudstack.management.cluster.v1.GenerateClusterDrsPlanResponse
-	13, // 22: cloudstack.management.cluster.v1.ClusterService.ListClusterDrsPlan:output_type -> cloudstack.management.cluster.v1.ListClusterDrsPlanResponse
-	16, // [16:23] is the sub-list for method output_type
-	9,  // [9:16] is the sub-list for method input_type
-	9,  // [9:9] is the sub-list for extension type_name
-	9,  // [9:9] is the sub-list for extension extendee
-	0,  // [0:9] is the sub-list for field type_name
+	17, // 0: cloudstack.management.cluster.v1.AddClusterResponse.result:type_name -> cloudstack.management.cluster.v1.Result
+	17, // 1: cloudstack.management.cluster.v1.DeleteClusterResponse.result:type_name -> cloudstack.management.cluster.v1.Result
+	18, // 2: cloudstack.management.cluster.v1.ExecuteClusterDrsPlanRequest.migrate_vm_to:type_name -> cloudstack.management.cluster.v1.ExecuteClusterDrsPlanRequest.MigrateVmToEntry
+	17, // 3: cloudstack.management.cluster.v1.ExecuteClusterDrsPlanResponse.result:type_name -> cloudstack.management.cluster.v1.Result
+	17, // 4: cloudstack.management.cluster.v1.GenerateClusterDrsPlanResponse.result:type_name -> cloudstack.management.cluster.v1.Result
+	15, // 5: cloudstack.management.cluster.v1.ListClusterDrsPlanResponse.items:type_name -> cloudstack.management.cluster.v1.ClusterDrsPlan
+	14, // 6: cloudstack.management.cluster.v1.ListClustersResponse.items:type_name -> cloudstack.management.cluster.v1.Cluster
+	17, // 7: cloudstack.management.cluster.v1.UpdateClusterResponse.result:type_name -> cloudstack.management.cluster.v1.Result
+	0,  // 8: cloudstack.management.cluster.v1.ClusterService.AddCluster:input_type -> cloudstack.management.cluster.v1.AddClusterRequest
+	2,  // 9: cloudstack.management.cluster.v1.ClusterService.DeleteCluster:input_type -> cloudstack.management.cluster.v1.DeleteClusterRequest
+	4,  // 10: cloudstack.management.cluster.v1.ClusterService.ExecuteClusterDrsPlan:input_type -> cloudstack.management.cluster.v1.ExecuteClusterDrsPlanRequest
+	6,  // 11: cloudstack.management.cluster.v1.ClusterService.GenerateClusterDrsPlan:input_type -> cloudstack.management.cluster.v1.GenerateClusterDrsPlanRequest
+	8,  // 12: cloudstack.management.cluster.v1.ClusterService.ListClusterDrsPlan:input_type -> cloudstack.management.cluster.v1.ListClusterDrsPlanRequest
+	10, // 13: cloudstack.management.cluster.v1.ClusterService.ListClusters:input_type -> cloudstack.management.cluster.v1.ListClustersRequest
+	12, // 14: cloudstack.management.cluster.v1.ClusterService.UpdateCluster:input_type -> cloudstack.management.cluster.v1.UpdateClusterRequest
+	1,  // 15: cloudstack.management.cluster.v1.ClusterService.AddCluster:output_type -> cloudstack.management.cluster.v1.AddClusterResponse
+	3,  // 16: cloudstack.management.cluster.v1.ClusterService.DeleteCluster:output_type -> cloudstack.management.cluster.v1.DeleteClusterResponse
+	5,  // 17: cloudstack.management.cluster.v1.ClusterService.ExecuteClusterDrsPlan:output_type -> cloudstack.management.cluster.v1.ExecuteClusterDrsPlanResponse
+	7,  // 18: cloudstack.management.cluster.v1.ClusterService.GenerateClusterDrsPlan:output_type -> cloudstack.management.cluster.v1.GenerateClusterDrsPlanResponse
+	9,  // 19: cloudstack.management.cluster.v1.ClusterService.ListClusterDrsPlan:output_type -> cloudstack.management.cluster.v1.ListClusterDrsPlanResponse
+	11, // 20: cloudstack.management.cluster.v1.ClusterService.ListClusters:output_type -> cloudstack.management.cluster.v1.ListClustersResponse
+	13, // 21: cloudstack.management.cluster.v1.ClusterService.UpdateCluster:output_type -> cloudstack.management.cluster.v1.UpdateClusterResponse
+	15, // [15:22] is the sub-list for method output_type
+	8,  // [8:15] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_cluster_v1_cluster_gen_proto_init() }
@@ -1815,7 +1648,7 @@ func file_cloudstack_management_cluster_v1_cluster_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDesc), len(file_cloudstack_management_cluster_v1_cluster_gen_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   21,
+			NumMessages:   19,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

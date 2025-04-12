@@ -19,15 +19,15 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	HaService_DisableHAForZone_FullMethodName    = "/cloudstack.management.ha.v1.HaService/DisableHAForZone"
-	HaService_EnableHAForHost_FullMethodName     = "/cloudstack.management.ha.v1.HaService/EnableHAForHost"
 	HaService_ConfigureHAForHost_FullMethodName  = "/cloudstack.management.ha.v1.HaService/ConfigureHAForHost"
 	HaService_DisableHAForCluster_FullMethodName = "/cloudstack.management.ha.v1.HaService/DisableHAForCluster"
-	HaService_EnableHAForZone_FullMethodName     = "/cloudstack.management.ha.v1.HaService/EnableHAForZone"
-	HaService_ListHostHAResources_FullMethodName = "/cloudstack.management.ha.v1.HaService/ListHostHAResources"
 	HaService_DisableHAForHost_FullMethodName    = "/cloudstack.management.ha.v1.HaService/DisableHAForHost"
-	HaService_ListHostHAProviders_FullMethodName = "/cloudstack.management.ha.v1.HaService/ListHostHAProviders"
+	HaService_DisableHAForZone_FullMethodName    = "/cloudstack.management.ha.v1.HaService/DisableHAForZone"
 	HaService_EnableHAForCluster_FullMethodName  = "/cloudstack.management.ha.v1.HaService/EnableHAForCluster"
+	HaService_EnableHAForHost_FullMethodName     = "/cloudstack.management.ha.v1.HaService/EnableHAForHost"
+	HaService_EnableHAForZone_FullMethodName     = "/cloudstack.management.ha.v1.HaService/EnableHAForZone"
+	HaService_ListHostHAProviders_FullMethodName = "/cloudstack.management.ha.v1.HaService/ListHostHAProviders"
+	HaService_ListHostHAResources_FullMethodName = "/cloudstack.management.ha.v1.HaService/ListHostHAResources"
 )
 
 // HaServiceClient is the client API for HaService service.
@@ -36,24 +36,24 @@ const (
 //
 // HaService provides operations for managing Has
 type HaServiceClient interface {
-	// DisableHAForZone Disables HA for a zone
-	DisableHAForZone(ctx context.Context, in *DisableHAForZoneRequest, opts ...grpc.CallOption) (*DisableHAForZoneResponse, error)
-	// EnableHAForHost Enables HA for a host
-	EnableHAForHost(ctx context.Context, in *EnableHAForHostRequest, opts ...grpc.CallOption) (*EnableHAForHostResponse, error)
 	// ConfigureHAForHost Configures HA for a host
 	ConfigureHAForHost(ctx context.Context, in *ConfigureHAForHostRequest, opts ...grpc.CallOption) (*ConfigureHAForHostResponse, error)
 	// DisableHAForCluster Disables HA cluster-wide
 	DisableHAForCluster(ctx context.Context, in *DisableHAForClusterRequest, opts ...grpc.CallOption) (*DisableHAForClusterResponse, error)
-	// EnableHAForZone Enables HA for a zone
-	EnableHAForZone(ctx context.Context, in *EnableHAForZoneRequest, opts ...grpc.CallOption) (*EnableHAForZoneResponse, error)
-	// ListHostHAResources Lists host HA resources
-	ListHostHAResources(ctx context.Context, in *ListHostHAResourcesRequest, opts ...grpc.CallOption) (*ListHostHAResourcesResponse, error)
 	// DisableHAForHost Disables HA for a host
 	DisableHAForHost(ctx context.Context, in *DisableHAForHostRequest, opts ...grpc.CallOption) (*DisableHAForHostResponse, error)
-	// ListHostHAProviders Lists HA providers
-	ListHostHAProviders(ctx context.Context, in *ListHostHAProvidersRequest, opts ...grpc.CallOption) (*ListHostHAProvidersResponse, error)
+	// DisableHAForZone Disables HA for a zone
+	DisableHAForZone(ctx context.Context, in *DisableHAForZoneRequest, opts ...grpc.CallOption) (*DisableHAForZoneResponse, error)
 	// EnableHAForCluster Enables HA cluster-wide
 	EnableHAForCluster(ctx context.Context, in *EnableHAForClusterRequest, opts ...grpc.CallOption) (*EnableHAForClusterResponse, error)
+	// EnableHAForHost Enables HA for a host
+	EnableHAForHost(ctx context.Context, in *EnableHAForHostRequest, opts ...grpc.CallOption) (*EnableHAForHostResponse, error)
+	// EnableHAForZone Enables HA for a zone
+	EnableHAForZone(ctx context.Context, in *EnableHAForZoneRequest, opts ...grpc.CallOption) (*EnableHAForZoneResponse, error)
+	// ListHostHAProviders Lists HA providers
+	ListHostHAProviders(ctx context.Context, in *ListHostHAProvidersRequest, opts ...grpc.CallOption) (*ListHostHAProvidersResponse, error)
+	// ListHostHAResources Lists host HA resources
+	ListHostHAResources(ctx context.Context, in *ListHostHAResourcesRequest, opts ...grpc.CallOption) (*ListHostHAResourcesResponse, error)
 }
 
 type haServiceClient struct {
@@ -62,26 +62,6 @@ type haServiceClient struct {
 
 func NewHaServiceClient(cc grpc.ClientConnInterface) HaServiceClient {
 	return &haServiceClient{cc}
-}
-
-func (c *haServiceClient) DisableHAForZone(ctx context.Context, in *DisableHAForZoneRequest, opts ...grpc.CallOption) (*DisableHAForZoneResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DisableHAForZoneResponse)
-	err := c.cc.Invoke(ctx, HaService_DisableHAForZone_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *haServiceClient) EnableHAForHost(ctx context.Context, in *EnableHAForHostRequest, opts ...grpc.CallOption) (*EnableHAForHostResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(EnableHAForHostResponse)
-	err := c.cc.Invoke(ctx, HaService_EnableHAForHost_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 func (c *haServiceClient) ConfigureHAForHost(ctx context.Context, in *ConfigureHAForHostRequest, opts ...grpc.CallOption) (*ConfigureHAForHostResponse, error) {
@@ -104,26 +84,6 @@ func (c *haServiceClient) DisableHAForCluster(ctx context.Context, in *DisableHA
 	return out, nil
 }
 
-func (c *haServiceClient) EnableHAForZone(ctx context.Context, in *EnableHAForZoneRequest, opts ...grpc.CallOption) (*EnableHAForZoneResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(EnableHAForZoneResponse)
-	err := c.cc.Invoke(ctx, HaService_EnableHAForZone_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *haServiceClient) ListHostHAResources(ctx context.Context, in *ListHostHAResourcesRequest, opts ...grpc.CallOption) (*ListHostHAResourcesResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListHostHAResourcesResponse)
-	err := c.cc.Invoke(ctx, HaService_ListHostHAResources_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *haServiceClient) DisableHAForHost(ctx context.Context, in *DisableHAForHostRequest, opts ...grpc.CallOption) (*DisableHAForHostResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DisableHAForHostResponse)
@@ -134,10 +94,10 @@ func (c *haServiceClient) DisableHAForHost(ctx context.Context, in *DisableHAFor
 	return out, nil
 }
 
-func (c *haServiceClient) ListHostHAProviders(ctx context.Context, in *ListHostHAProvidersRequest, opts ...grpc.CallOption) (*ListHostHAProvidersResponse, error) {
+func (c *haServiceClient) DisableHAForZone(ctx context.Context, in *DisableHAForZoneRequest, opts ...grpc.CallOption) (*DisableHAForZoneResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListHostHAProvidersResponse)
-	err := c.cc.Invoke(ctx, HaService_ListHostHAProviders_FullMethodName, in, out, cOpts...)
+	out := new(DisableHAForZoneResponse)
+	err := c.cc.Invoke(ctx, HaService_DisableHAForZone_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -154,30 +114,70 @@ func (c *haServiceClient) EnableHAForCluster(ctx context.Context, in *EnableHAFo
 	return out, nil
 }
 
+func (c *haServiceClient) EnableHAForHost(ctx context.Context, in *EnableHAForHostRequest, opts ...grpc.CallOption) (*EnableHAForHostResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(EnableHAForHostResponse)
+	err := c.cc.Invoke(ctx, HaService_EnableHAForHost_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *haServiceClient) EnableHAForZone(ctx context.Context, in *EnableHAForZoneRequest, opts ...grpc.CallOption) (*EnableHAForZoneResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(EnableHAForZoneResponse)
+	err := c.cc.Invoke(ctx, HaService_EnableHAForZone_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *haServiceClient) ListHostHAProviders(ctx context.Context, in *ListHostHAProvidersRequest, opts ...grpc.CallOption) (*ListHostHAProvidersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListHostHAProvidersResponse)
+	err := c.cc.Invoke(ctx, HaService_ListHostHAProviders_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *haServiceClient) ListHostHAResources(ctx context.Context, in *ListHostHAResourcesRequest, opts ...grpc.CallOption) (*ListHostHAResourcesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListHostHAResourcesResponse)
+	err := c.cc.Invoke(ctx, HaService_ListHostHAResources_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // HaServiceServer is the server API for HaService service.
 // All implementations must embed UnimplementedHaServiceServer
 // for forward compatibility.
 //
 // HaService provides operations for managing Has
 type HaServiceServer interface {
-	// DisableHAForZone Disables HA for a zone
-	DisableHAForZone(context.Context, *DisableHAForZoneRequest) (*DisableHAForZoneResponse, error)
-	// EnableHAForHost Enables HA for a host
-	EnableHAForHost(context.Context, *EnableHAForHostRequest) (*EnableHAForHostResponse, error)
 	// ConfigureHAForHost Configures HA for a host
 	ConfigureHAForHost(context.Context, *ConfigureHAForHostRequest) (*ConfigureHAForHostResponse, error)
 	// DisableHAForCluster Disables HA cluster-wide
 	DisableHAForCluster(context.Context, *DisableHAForClusterRequest) (*DisableHAForClusterResponse, error)
-	// EnableHAForZone Enables HA for a zone
-	EnableHAForZone(context.Context, *EnableHAForZoneRequest) (*EnableHAForZoneResponse, error)
-	// ListHostHAResources Lists host HA resources
-	ListHostHAResources(context.Context, *ListHostHAResourcesRequest) (*ListHostHAResourcesResponse, error)
 	// DisableHAForHost Disables HA for a host
 	DisableHAForHost(context.Context, *DisableHAForHostRequest) (*DisableHAForHostResponse, error)
-	// ListHostHAProviders Lists HA providers
-	ListHostHAProviders(context.Context, *ListHostHAProvidersRequest) (*ListHostHAProvidersResponse, error)
+	// DisableHAForZone Disables HA for a zone
+	DisableHAForZone(context.Context, *DisableHAForZoneRequest) (*DisableHAForZoneResponse, error)
 	// EnableHAForCluster Enables HA cluster-wide
 	EnableHAForCluster(context.Context, *EnableHAForClusterRequest) (*EnableHAForClusterResponse, error)
+	// EnableHAForHost Enables HA for a host
+	EnableHAForHost(context.Context, *EnableHAForHostRequest) (*EnableHAForHostResponse, error)
+	// EnableHAForZone Enables HA for a zone
+	EnableHAForZone(context.Context, *EnableHAForZoneRequest) (*EnableHAForZoneResponse, error)
+	// ListHostHAProviders Lists HA providers
+	ListHostHAProviders(context.Context, *ListHostHAProvidersRequest) (*ListHostHAProvidersResponse, error)
+	// ListHostHAResources Lists host HA resources
+	ListHostHAResources(context.Context, *ListHostHAResourcesRequest) (*ListHostHAResourcesResponse, error)
 	mustEmbedUnimplementedHaServiceServer()
 }
 
@@ -188,32 +188,32 @@ type HaServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedHaServiceServer struct{}
 
-func (UnimplementedHaServiceServer) DisableHAForZone(context.Context, *DisableHAForZoneRequest) (*DisableHAForZoneResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DisableHAForZone not implemented")
-}
-func (UnimplementedHaServiceServer) EnableHAForHost(context.Context, *EnableHAForHostRequest) (*EnableHAForHostResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method EnableHAForHost not implemented")
-}
 func (UnimplementedHaServiceServer) ConfigureHAForHost(context.Context, *ConfigureHAForHostRequest) (*ConfigureHAForHostResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ConfigureHAForHost not implemented")
 }
 func (UnimplementedHaServiceServer) DisableHAForCluster(context.Context, *DisableHAForClusterRequest) (*DisableHAForClusterResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DisableHAForCluster not implemented")
 }
-func (UnimplementedHaServiceServer) EnableHAForZone(context.Context, *EnableHAForZoneRequest) (*EnableHAForZoneResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method EnableHAForZone not implemented")
-}
-func (UnimplementedHaServiceServer) ListHostHAResources(context.Context, *ListHostHAResourcesRequest) (*ListHostHAResourcesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListHostHAResources not implemented")
-}
 func (UnimplementedHaServiceServer) DisableHAForHost(context.Context, *DisableHAForHostRequest) (*DisableHAForHostResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DisableHAForHost not implemented")
+}
+func (UnimplementedHaServiceServer) DisableHAForZone(context.Context, *DisableHAForZoneRequest) (*DisableHAForZoneResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DisableHAForZone not implemented")
+}
+func (UnimplementedHaServiceServer) EnableHAForCluster(context.Context, *EnableHAForClusterRequest) (*EnableHAForClusterResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EnableHAForCluster not implemented")
+}
+func (UnimplementedHaServiceServer) EnableHAForHost(context.Context, *EnableHAForHostRequest) (*EnableHAForHostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EnableHAForHost not implemented")
+}
+func (UnimplementedHaServiceServer) EnableHAForZone(context.Context, *EnableHAForZoneRequest) (*EnableHAForZoneResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EnableHAForZone not implemented")
 }
 func (UnimplementedHaServiceServer) ListHostHAProviders(context.Context, *ListHostHAProvidersRequest) (*ListHostHAProvidersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListHostHAProviders not implemented")
 }
-func (UnimplementedHaServiceServer) EnableHAForCluster(context.Context, *EnableHAForClusterRequest) (*EnableHAForClusterResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method EnableHAForCluster not implemented")
+func (UnimplementedHaServiceServer) ListHostHAResources(context.Context, *ListHostHAResourcesRequest) (*ListHostHAResourcesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListHostHAResources not implemented")
 }
 func (UnimplementedHaServiceServer) mustEmbedUnimplementedHaServiceServer() {}
 func (UnimplementedHaServiceServer) testEmbeddedByValue()                   {}
@@ -234,42 +234,6 @@ func RegisterHaServiceServer(s grpc.ServiceRegistrar, srv HaServiceServer) {
 		t.testEmbeddedByValue()
 	}
 	s.RegisterService(&HaService_ServiceDesc, srv)
-}
-
-func _HaService_DisableHAForZone_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DisableHAForZoneRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(HaServiceServer).DisableHAForZone(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: HaService_DisableHAForZone_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HaServiceServer).DisableHAForZone(ctx, req.(*DisableHAForZoneRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _HaService_EnableHAForHost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(EnableHAForHostRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(HaServiceServer).EnableHAForHost(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: HaService_EnableHAForHost_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HaServiceServer).EnableHAForHost(ctx, req.(*EnableHAForHostRequest))
-	}
-	return interceptor(ctx, in, info, handler)
 }
 
 func _HaService_ConfigureHAForHost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -308,42 +272,6 @@ func _HaService_DisableHAForCluster_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _HaService_EnableHAForZone_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(EnableHAForZoneRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(HaServiceServer).EnableHAForZone(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: HaService_EnableHAForZone_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HaServiceServer).EnableHAForZone(ctx, req.(*EnableHAForZoneRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _HaService_ListHostHAResources_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListHostHAResourcesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(HaServiceServer).ListHostHAResources(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: HaService_ListHostHAResources_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HaServiceServer).ListHostHAResources(ctx, req.(*ListHostHAResourcesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _HaService_DisableHAForHost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DisableHAForHostRequest)
 	if err := dec(in); err != nil {
@@ -362,20 +290,20 @@ func _HaService_DisableHAForHost_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
-func _HaService_ListHostHAProviders_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListHostHAProvidersRequest)
+func _HaService_DisableHAForZone_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DisableHAForZoneRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(HaServiceServer).ListHostHAProviders(ctx, in)
+		return srv.(HaServiceServer).DisableHAForZone(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: HaService_ListHostHAProviders_FullMethodName,
+		FullMethod: HaService_DisableHAForZone_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HaServiceServer).ListHostHAProviders(ctx, req.(*ListHostHAProvidersRequest))
+		return srv.(HaServiceServer).DisableHAForZone(ctx, req.(*DisableHAForZoneRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -398,6 +326,78 @@ func _HaService_EnableHAForCluster_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _HaService_EnableHAForHost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EnableHAForHostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HaServiceServer).EnableHAForHost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: HaService_EnableHAForHost_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HaServiceServer).EnableHAForHost(ctx, req.(*EnableHAForHostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _HaService_EnableHAForZone_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EnableHAForZoneRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HaServiceServer).EnableHAForZone(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: HaService_EnableHAForZone_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HaServiceServer).EnableHAForZone(ctx, req.(*EnableHAForZoneRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _HaService_ListHostHAProviders_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListHostHAProvidersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HaServiceServer).ListHostHAProviders(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: HaService_ListHostHAProviders_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HaServiceServer).ListHostHAProviders(ctx, req.(*ListHostHAProvidersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _HaService_ListHostHAResources_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListHostHAResourcesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HaServiceServer).ListHostHAResources(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: HaService_ListHostHAResources_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HaServiceServer).ListHostHAResources(ctx, req.(*ListHostHAResourcesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // HaService_ServiceDesc is the grpc.ServiceDesc for HaService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -405,14 +405,6 @@ var HaService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "cloudstack.management.ha.v1.HaService",
 	HandlerType: (*HaServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
-		{
-			MethodName: "DisableHAForZone",
-			Handler:    _HaService_DisableHAForZone_Handler,
-		},
-		{
-			MethodName: "EnableHAForHost",
-			Handler:    _HaService_EnableHAForHost_Handler,
-		},
 		{
 			MethodName: "ConfigureHAForHost",
 			Handler:    _HaService_ConfigureHAForHost_Handler,
@@ -422,24 +414,32 @@ var HaService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _HaService_DisableHAForCluster_Handler,
 		},
 		{
-			MethodName: "EnableHAForZone",
-			Handler:    _HaService_EnableHAForZone_Handler,
-		},
-		{
-			MethodName: "ListHostHAResources",
-			Handler:    _HaService_ListHostHAResources_Handler,
-		},
-		{
 			MethodName: "DisableHAForHost",
 			Handler:    _HaService_DisableHAForHost_Handler,
+		},
+		{
+			MethodName: "DisableHAForZone",
+			Handler:    _HaService_DisableHAForZone_Handler,
+		},
+		{
+			MethodName: "EnableHAForCluster",
+			Handler:    _HaService_EnableHAForCluster_Handler,
+		},
+		{
+			MethodName: "EnableHAForHost",
+			Handler:    _HaService_EnableHAForHost_Handler,
+		},
+		{
+			MethodName: "EnableHAForZone",
+			Handler:    _HaService_EnableHAForZone_Handler,
 		},
 		{
 			MethodName: "ListHostHAProviders",
 			Handler:    _HaService_ListHostHAProviders_Handler,
 		},
 		{
-			MethodName: "EnableHAForCluster",
-			Handler:    _HaService_EnableHAForCluster_Handler,
+			MethodName: "ListHostHAResources",
+			Handler:    _HaService_ListHostHAResources_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

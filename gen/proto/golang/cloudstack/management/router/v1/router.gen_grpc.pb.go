@@ -19,19 +19,19 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
+	RouterService_ConfigureOvsElement_FullMethodName           = "/cloudstack.management.router.v1.RouterService/ConfigureOvsElement"
+	RouterService_ConfigureVirtualRouterElement_FullMethodName = "/cloudstack.management.router.v1.RouterService/ConfigureVirtualRouterElement"
+	RouterService_CreateVirtualRouterElement_FullMethodName    = "/cloudstack.management.router.v1.RouterService/CreateVirtualRouterElement"
+	RouterService_DestroyRouter_FullMethodName                 = "/cloudstack.management.router.v1.RouterService/DestroyRouter"
+	RouterService_GetRouterHealthCheckResults_FullMethodName   = "/cloudstack.management.router.v1.RouterService/GetRouterHealthCheckResults"
 	RouterService_ListOvsElements_FullMethodName               = "/cloudstack.management.router.v1.RouterService/ListOvsElements"
+	RouterService_ListRouters_FullMethodName                   = "/cloudstack.management.router.v1.RouterService/ListRouters"
 	RouterService_ListVirtualRouterElements_FullMethodName     = "/cloudstack.management.router.v1.RouterService/ListVirtualRouterElements"
 	RouterService_RebootRouter_FullMethodName                  = "/cloudstack.management.router.v1.RouterService/RebootRouter"
-	RouterService_GetRouterHealthCheckResults_FullMethodName   = "/cloudstack.management.router.v1.RouterService/GetRouterHealthCheckResults"
-	RouterService_ConfigureVirtualRouterElement_FullMethodName = "/cloudstack.management.router.v1.RouterService/ConfigureVirtualRouterElement"
-	RouterService_UpgradeRouterTemplate_FullMethodName         = "/cloudstack.management.router.v1.RouterService/UpgradeRouterTemplate"
 	RouterService_StartRouter_FullMethodName                   = "/cloudstack.management.router.v1.RouterService/StartRouter"
-	RouterService_DestroyRouter_FullMethodName                 = "/cloudstack.management.router.v1.RouterService/DestroyRouter"
 	RouterService_StopRouter_FullMethodName                    = "/cloudstack.management.router.v1.RouterService/StopRouter"
-	RouterService_ListRouters_FullMethodName                   = "/cloudstack.management.router.v1.RouterService/ListRouters"
-	RouterService_ConfigureOvsElement_FullMethodName           = "/cloudstack.management.router.v1.RouterService/ConfigureOvsElement"
-	RouterService_CreateVirtualRouterElement_FullMethodName    = "/cloudstack.management.router.v1.RouterService/CreateVirtualRouterElement"
 	RouterService_UpgradeRouter_FullMethodName                 = "/cloudstack.management.router.v1.RouterService/UpgradeRouter"
+	RouterService_UpgradeRouterTemplate_FullMethodName         = "/cloudstack.management.router.v1.RouterService/UpgradeRouterTemplate"
 )
 
 // RouterServiceClient is the client API for RouterService service.
@@ -40,32 +40,32 @@ const (
 //
 // RouterService provides operations for managing Routers
 type RouterServiceClient interface {
+	// ConfigureOvsElement Configures an ovs element.
+	ConfigureOvsElement(ctx context.Context, in *ConfigureOvsElementRequest, opts ...grpc.CallOption) (*ConfigureOvsElementResponse, error)
+	// ConfigureVirtualRouterElement Configures a virtual router element.
+	ConfigureVirtualRouterElement(ctx context.Context, in *ConfigureVirtualRouterElementRequest, opts ...grpc.CallOption) (*ConfigureVirtualRouterElementResponse, error)
+	// CreateVirtualRouterElement Create a virtual router element.
+	CreateVirtualRouterElement(ctx context.Context, in *CreateVirtualRouterElementRequest, opts ...grpc.CallOption) (*CreateVirtualRouterElementResponse, error)
+	// DestroyRouter Destroys a router.
+	DestroyRouter(ctx context.Context, in *DestroyRouterRequest, opts ...grpc.CallOption) (*DestroyRouterResponse, error)
+	// GetRouterHealthCheckResults Starts a router.
+	GetRouterHealthCheckResults(ctx context.Context, in *GetRouterHealthCheckResultsRequest, opts ...grpc.CallOption) (*GetRouterHealthCheckResultsResponse, error)
 	// ListOvsElements Lists all available ovs elements.
 	ListOvsElements(ctx context.Context, in *ListOvsElementsRequest, opts ...grpc.CallOption) (*ListOvsElementsResponse, error)
+	// ListRouters List routers.
+	ListRouters(ctx context.Context, in *ListRoutersRequest, opts ...grpc.CallOption) (*ListRoutersResponse, error)
 	// ListVirtualRouterElements Lists all available virtual router elements.
 	ListVirtualRouterElements(ctx context.Context, in *ListVirtualRouterElementsRequest, opts ...grpc.CallOption) (*ListVirtualRouterElementsResponse, error)
 	// RebootRouter Starts a router.
 	RebootRouter(ctx context.Context, in *RebootRouterRequest, opts ...grpc.CallOption) (*RebootRouterResponse, error)
-	// GetRouterHealthCheckResults Starts a router.
-	GetRouterHealthCheckResults(ctx context.Context, in *GetRouterHealthCheckResultsRequest, opts ...grpc.CallOption) (*GetRouterHealthCheckResultsResponse, error)
-	// ConfigureVirtualRouterElement Configures a virtual router element.
-	ConfigureVirtualRouterElement(ctx context.Context, in *ConfigureVirtualRouterElementRequest, opts ...grpc.CallOption) (*ConfigureVirtualRouterElementResponse, error)
-	// UpgradeRouterTemplate Upgrades router to use newer template
-	UpgradeRouterTemplate(ctx context.Context, in *UpgradeRouterTemplateRequest, opts ...grpc.CallOption) (*UpgradeRouterTemplateResponse, error)
 	// StartRouter Starts a router.
 	StartRouter(ctx context.Context, in *StartRouterRequest, opts ...grpc.CallOption) (*StartRouterResponse, error)
-	// DestroyRouter Destroys a router.
-	DestroyRouter(ctx context.Context, in *DestroyRouterRequest, opts ...grpc.CallOption) (*DestroyRouterResponse, error)
 	// StopRouter Stops a router.
 	StopRouter(ctx context.Context, in *StopRouterRequest, opts ...grpc.CallOption) (*StopRouterResponse, error)
-	// ListRouters List routers.
-	ListRouters(ctx context.Context, in *ListRoutersRequest, opts ...grpc.CallOption) (*ListRoutersResponse, error)
-	// ConfigureOvsElement Configures an ovs element.
-	ConfigureOvsElement(ctx context.Context, in *ConfigureOvsElementRequest, opts ...grpc.CallOption) (*ConfigureOvsElementResponse, error)
-	// CreateVirtualRouterElement Create a virtual router element.
-	CreateVirtualRouterElement(ctx context.Context, in *CreateVirtualRouterElementRequest, opts ...grpc.CallOption) (*CreateVirtualRouterElementResponse, error)
 	// UpgradeRouter Upgrades domain router to a new service offering
 	UpgradeRouter(ctx context.Context, in *UpgradeRouterRequest, opts ...grpc.CallOption) (*UpgradeRouterResponse, error)
+	// UpgradeRouterTemplate Upgrades router to use newer template
+	UpgradeRouterTemplate(ctx context.Context, in *UpgradeRouterTemplateRequest, opts ...grpc.CallOption) (*UpgradeRouterTemplateResponse, error)
 }
 
 type routerServiceClient struct {
@@ -76,10 +76,70 @@ func NewRouterServiceClient(cc grpc.ClientConnInterface) RouterServiceClient {
 	return &routerServiceClient{cc}
 }
 
+func (c *routerServiceClient) ConfigureOvsElement(ctx context.Context, in *ConfigureOvsElementRequest, opts ...grpc.CallOption) (*ConfigureOvsElementResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ConfigureOvsElementResponse)
+	err := c.cc.Invoke(ctx, RouterService_ConfigureOvsElement_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *routerServiceClient) ConfigureVirtualRouterElement(ctx context.Context, in *ConfigureVirtualRouterElementRequest, opts ...grpc.CallOption) (*ConfigureVirtualRouterElementResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ConfigureVirtualRouterElementResponse)
+	err := c.cc.Invoke(ctx, RouterService_ConfigureVirtualRouterElement_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *routerServiceClient) CreateVirtualRouterElement(ctx context.Context, in *CreateVirtualRouterElementRequest, opts ...grpc.CallOption) (*CreateVirtualRouterElementResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateVirtualRouterElementResponse)
+	err := c.cc.Invoke(ctx, RouterService_CreateVirtualRouterElement_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *routerServiceClient) DestroyRouter(ctx context.Context, in *DestroyRouterRequest, opts ...grpc.CallOption) (*DestroyRouterResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DestroyRouterResponse)
+	err := c.cc.Invoke(ctx, RouterService_DestroyRouter_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *routerServiceClient) GetRouterHealthCheckResults(ctx context.Context, in *GetRouterHealthCheckResultsRequest, opts ...grpc.CallOption) (*GetRouterHealthCheckResultsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetRouterHealthCheckResultsResponse)
+	err := c.cc.Invoke(ctx, RouterService_GetRouterHealthCheckResults_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *routerServiceClient) ListOvsElements(ctx context.Context, in *ListOvsElementsRequest, opts ...grpc.CallOption) (*ListOvsElementsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListOvsElementsResponse)
 	err := c.cc.Invoke(ctx, RouterService_ListOvsElements_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *routerServiceClient) ListRouters(ctx context.Context, in *ListRoutersRequest, opts ...grpc.CallOption) (*ListRoutersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListRoutersResponse)
+	err := c.cc.Invoke(ctx, RouterService_ListRouters_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -106,50 +166,10 @@ func (c *routerServiceClient) RebootRouter(ctx context.Context, in *RebootRouter
 	return out, nil
 }
 
-func (c *routerServiceClient) GetRouterHealthCheckResults(ctx context.Context, in *GetRouterHealthCheckResultsRequest, opts ...grpc.CallOption) (*GetRouterHealthCheckResultsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetRouterHealthCheckResultsResponse)
-	err := c.cc.Invoke(ctx, RouterService_GetRouterHealthCheckResults_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *routerServiceClient) ConfigureVirtualRouterElement(ctx context.Context, in *ConfigureVirtualRouterElementRequest, opts ...grpc.CallOption) (*ConfigureVirtualRouterElementResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ConfigureVirtualRouterElementResponse)
-	err := c.cc.Invoke(ctx, RouterService_ConfigureVirtualRouterElement_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *routerServiceClient) UpgradeRouterTemplate(ctx context.Context, in *UpgradeRouterTemplateRequest, opts ...grpc.CallOption) (*UpgradeRouterTemplateResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpgradeRouterTemplateResponse)
-	err := c.cc.Invoke(ctx, RouterService_UpgradeRouterTemplate_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *routerServiceClient) StartRouter(ctx context.Context, in *StartRouterRequest, opts ...grpc.CallOption) (*StartRouterResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(StartRouterResponse)
 	err := c.cc.Invoke(ctx, RouterService_StartRouter_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *routerServiceClient) DestroyRouter(ctx context.Context, in *DestroyRouterRequest, opts ...grpc.CallOption) (*DestroyRouterResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DestroyRouterResponse)
-	err := c.cc.Invoke(ctx, RouterService_DestroyRouter_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -166,40 +186,20 @@ func (c *routerServiceClient) StopRouter(ctx context.Context, in *StopRouterRequ
 	return out, nil
 }
 
-func (c *routerServiceClient) ListRouters(ctx context.Context, in *ListRoutersRequest, opts ...grpc.CallOption) (*ListRoutersResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListRoutersResponse)
-	err := c.cc.Invoke(ctx, RouterService_ListRouters_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *routerServiceClient) ConfigureOvsElement(ctx context.Context, in *ConfigureOvsElementRequest, opts ...grpc.CallOption) (*ConfigureOvsElementResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ConfigureOvsElementResponse)
-	err := c.cc.Invoke(ctx, RouterService_ConfigureOvsElement_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *routerServiceClient) CreateVirtualRouterElement(ctx context.Context, in *CreateVirtualRouterElementRequest, opts ...grpc.CallOption) (*CreateVirtualRouterElementResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateVirtualRouterElementResponse)
-	err := c.cc.Invoke(ctx, RouterService_CreateVirtualRouterElement_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *routerServiceClient) UpgradeRouter(ctx context.Context, in *UpgradeRouterRequest, opts ...grpc.CallOption) (*UpgradeRouterResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(UpgradeRouterResponse)
 	err := c.cc.Invoke(ctx, RouterService_UpgradeRouter_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *routerServiceClient) UpgradeRouterTemplate(ctx context.Context, in *UpgradeRouterTemplateRequest, opts ...grpc.CallOption) (*UpgradeRouterTemplateResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpgradeRouterTemplateResponse)
+	err := c.cc.Invoke(ctx, RouterService_UpgradeRouterTemplate_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -212,32 +212,32 @@ func (c *routerServiceClient) UpgradeRouter(ctx context.Context, in *UpgradeRout
 //
 // RouterService provides operations for managing Routers
 type RouterServiceServer interface {
+	// ConfigureOvsElement Configures an ovs element.
+	ConfigureOvsElement(context.Context, *ConfigureOvsElementRequest) (*ConfigureOvsElementResponse, error)
+	// ConfigureVirtualRouterElement Configures a virtual router element.
+	ConfigureVirtualRouterElement(context.Context, *ConfigureVirtualRouterElementRequest) (*ConfigureVirtualRouterElementResponse, error)
+	// CreateVirtualRouterElement Create a virtual router element.
+	CreateVirtualRouterElement(context.Context, *CreateVirtualRouterElementRequest) (*CreateVirtualRouterElementResponse, error)
+	// DestroyRouter Destroys a router.
+	DestroyRouter(context.Context, *DestroyRouterRequest) (*DestroyRouterResponse, error)
+	// GetRouterHealthCheckResults Starts a router.
+	GetRouterHealthCheckResults(context.Context, *GetRouterHealthCheckResultsRequest) (*GetRouterHealthCheckResultsResponse, error)
 	// ListOvsElements Lists all available ovs elements.
 	ListOvsElements(context.Context, *ListOvsElementsRequest) (*ListOvsElementsResponse, error)
+	// ListRouters List routers.
+	ListRouters(context.Context, *ListRoutersRequest) (*ListRoutersResponse, error)
 	// ListVirtualRouterElements Lists all available virtual router elements.
 	ListVirtualRouterElements(context.Context, *ListVirtualRouterElementsRequest) (*ListVirtualRouterElementsResponse, error)
 	// RebootRouter Starts a router.
 	RebootRouter(context.Context, *RebootRouterRequest) (*RebootRouterResponse, error)
-	// GetRouterHealthCheckResults Starts a router.
-	GetRouterHealthCheckResults(context.Context, *GetRouterHealthCheckResultsRequest) (*GetRouterHealthCheckResultsResponse, error)
-	// ConfigureVirtualRouterElement Configures a virtual router element.
-	ConfigureVirtualRouterElement(context.Context, *ConfigureVirtualRouterElementRequest) (*ConfigureVirtualRouterElementResponse, error)
-	// UpgradeRouterTemplate Upgrades router to use newer template
-	UpgradeRouterTemplate(context.Context, *UpgradeRouterTemplateRequest) (*UpgradeRouterTemplateResponse, error)
 	// StartRouter Starts a router.
 	StartRouter(context.Context, *StartRouterRequest) (*StartRouterResponse, error)
-	// DestroyRouter Destroys a router.
-	DestroyRouter(context.Context, *DestroyRouterRequest) (*DestroyRouterResponse, error)
 	// StopRouter Stops a router.
 	StopRouter(context.Context, *StopRouterRequest) (*StopRouterResponse, error)
-	// ListRouters List routers.
-	ListRouters(context.Context, *ListRoutersRequest) (*ListRoutersResponse, error)
-	// ConfigureOvsElement Configures an ovs element.
-	ConfigureOvsElement(context.Context, *ConfigureOvsElementRequest) (*ConfigureOvsElementResponse, error)
-	// CreateVirtualRouterElement Create a virtual router element.
-	CreateVirtualRouterElement(context.Context, *CreateVirtualRouterElementRequest) (*CreateVirtualRouterElementResponse, error)
 	// UpgradeRouter Upgrades domain router to a new service offering
 	UpgradeRouter(context.Context, *UpgradeRouterRequest) (*UpgradeRouterResponse, error)
+	// UpgradeRouterTemplate Upgrades router to use newer template
+	UpgradeRouterTemplate(context.Context, *UpgradeRouterTemplateRequest) (*UpgradeRouterTemplateResponse, error)
 	mustEmbedUnimplementedRouterServiceServer()
 }
 
@@ -248,8 +248,26 @@ type RouterServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedRouterServiceServer struct{}
 
+func (UnimplementedRouterServiceServer) ConfigureOvsElement(context.Context, *ConfigureOvsElementRequest) (*ConfigureOvsElementResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ConfigureOvsElement not implemented")
+}
+func (UnimplementedRouterServiceServer) ConfigureVirtualRouterElement(context.Context, *ConfigureVirtualRouterElementRequest) (*ConfigureVirtualRouterElementResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ConfigureVirtualRouterElement not implemented")
+}
+func (UnimplementedRouterServiceServer) CreateVirtualRouterElement(context.Context, *CreateVirtualRouterElementRequest) (*CreateVirtualRouterElementResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateVirtualRouterElement not implemented")
+}
+func (UnimplementedRouterServiceServer) DestroyRouter(context.Context, *DestroyRouterRequest) (*DestroyRouterResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DestroyRouter not implemented")
+}
+func (UnimplementedRouterServiceServer) GetRouterHealthCheckResults(context.Context, *GetRouterHealthCheckResultsRequest) (*GetRouterHealthCheckResultsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRouterHealthCheckResults not implemented")
+}
 func (UnimplementedRouterServiceServer) ListOvsElements(context.Context, *ListOvsElementsRequest) (*ListOvsElementsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListOvsElements not implemented")
+}
+func (UnimplementedRouterServiceServer) ListRouters(context.Context, *ListRoutersRequest) (*ListRoutersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListRouters not implemented")
 }
 func (UnimplementedRouterServiceServer) ListVirtualRouterElements(context.Context, *ListVirtualRouterElementsRequest) (*ListVirtualRouterElementsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListVirtualRouterElements not implemented")
@@ -257,35 +275,17 @@ func (UnimplementedRouterServiceServer) ListVirtualRouterElements(context.Contex
 func (UnimplementedRouterServiceServer) RebootRouter(context.Context, *RebootRouterRequest) (*RebootRouterResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RebootRouter not implemented")
 }
-func (UnimplementedRouterServiceServer) GetRouterHealthCheckResults(context.Context, *GetRouterHealthCheckResultsRequest) (*GetRouterHealthCheckResultsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetRouterHealthCheckResults not implemented")
-}
-func (UnimplementedRouterServiceServer) ConfigureVirtualRouterElement(context.Context, *ConfigureVirtualRouterElementRequest) (*ConfigureVirtualRouterElementResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ConfigureVirtualRouterElement not implemented")
-}
-func (UnimplementedRouterServiceServer) UpgradeRouterTemplate(context.Context, *UpgradeRouterTemplateRequest) (*UpgradeRouterTemplateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpgradeRouterTemplate not implemented")
-}
 func (UnimplementedRouterServiceServer) StartRouter(context.Context, *StartRouterRequest) (*StartRouterResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StartRouter not implemented")
-}
-func (UnimplementedRouterServiceServer) DestroyRouter(context.Context, *DestroyRouterRequest) (*DestroyRouterResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DestroyRouter not implemented")
 }
 func (UnimplementedRouterServiceServer) StopRouter(context.Context, *StopRouterRequest) (*StopRouterResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StopRouter not implemented")
 }
-func (UnimplementedRouterServiceServer) ListRouters(context.Context, *ListRoutersRequest) (*ListRoutersResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListRouters not implemented")
-}
-func (UnimplementedRouterServiceServer) ConfigureOvsElement(context.Context, *ConfigureOvsElementRequest) (*ConfigureOvsElementResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ConfigureOvsElement not implemented")
-}
-func (UnimplementedRouterServiceServer) CreateVirtualRouterElement(context.Context, *CreateVirtualRouterElementRequest) (*CreateVirtualRouterElementResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateVirtualRouterElement not implemented")
-}
 func (UnimplementedRouterServiceServer) UpgradeRouter(context.Context, *UpgradeRouterRequest) (*UpgradeRouterResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpgradeRouter not implemented")
+}
+func (UnimplementedRouterServiceServer) UpgradeRouterTemplate(context.Context, *UpgradeRouterTemplateRequest) (*UpgradeRouterTemplateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpgradeRouterTemplate not implemented")
 }
 func (UnimplementedRouterServiceServer) mustEmbedUnimplementedRouterServiceServer() {}
 func (UnimplementedRouterServiceServer) testEmbeddedByValue()                       {}
@@ -308,6 +308,96 @@ func RegisterRouterServiceServer(s grpc.ServiceRegistrar, srv RouterServiceServe
 	s.RegisterService(&RouterService_ServiceDesc, srv)
 }
 
+func _RouterService_ConfigureOvsElement_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ConfigureOvsElementRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RouterServiceServer).ConfigureOvsElement(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RouterService_ConfigureOvsElement_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RouterServiceServer).ConfigureOvsElement(ctx, req.(*ConfigureOvsElementRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RouterService_ConfigureVirtualRouterElement_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ConfigureVirtualRouterElementRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RouterServiceServer).ConfigureVirtualRouterElement(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RouterService_ConfigureVirtualRouterElement_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RouterServiceServer).ConfigureVirtualRouterElement(ctx, req.(*ConfigureVirtualRouterElementRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RouterService_CreateVirtualRouterElement_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateVirtualRouterElementRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RouterServiceServer).CreateVirtualRouterElement(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RouterService_CreateVirtualRouterElement_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RouterServiceServer).CreateVirtualRouterElement(ctx, req.(*CreateVirtualRouterElementRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RouterService_DestroyRouter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DestroyRouterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RouterServiceServer).DestroyRouter(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RouterService_DestroyRouter_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RouterServiceServer).DestroyRouter(ctx, req.(*DestroyRouterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RouterService_GetRouterHealthCheckResults_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRouterHealthCheckResultsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RouterServiceServer).GetRouterHealthCheckResults(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RouterService_GetRouterHealthCheckResults_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RouterServiceServer).GetRouterHealthCheckResults(ctx, req.(*GetRouterHealthCheckResultsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RouterService_ListOvsElements_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListOvsElementsRequest)
 	if err := dec(in); err != nil {
@@ -322,6 +412,24 @@ func _RouterService_ListOvsElements_Handler(srv interface{}, ctx context.Context
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RouterServiceServer).ListOvsElements(ctx, req.(*ListOvsElementsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RouterService_ListRouters_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListRoutersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RouterServiceServer).ListRouters(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RouterService_ListRouters_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RouterServiceServer).ListRouters(ctx, req.(*ListRoutersRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -362,60 +470,6 @@ func _RouterService_RebootRouter_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RouterService_GetRouterHealthCheckResults_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetRouterHealthCheckResultsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RouterServiceServer).GetRouterHealthCheckResults(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RouterService_GetRouterHealthCheckResults_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RouterServiceServer).GetRouterHealthCheckResults(ctx, req.(*GetRouterHealthCheckResultsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RouterService_ConfigureVirtualRouterElement_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ConfigureVirtualRouterElementRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RouterServiceServer).ConfigureVirtualRouterElement(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RouterService_ConfigureVirtualRouterElement_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RouterServiceServer).ConfigureVirtualRouterElement(ctx, req.(*ConfigureVirtualRouterElementRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RouterService_UpgradeRouterTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpgradeRouterTemplateRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RouterServiceServer).UpgradeRouterTemplate(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RouterService_UpgradeRouterTemplate_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RouterServiceServer).UpgradeRouterTemplate(ctx, req.(*UpgradeRouterTemplateRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _RouterService_StartRouter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(StartRouterRequest)
 	if err := dec(in); err != nil {
@@ -430,24 +484,6 @@ func _RouterService_StartRouter_Handler(srv interface{}, ctx context.Context, de
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RouterServiceServer).StartRouter(ctx, req.(*StartRouterRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RouterService_DestroyRouter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DestroyRouterRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RouterServiceServer).DestroyRouter(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RouterService_DestroyRouter_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RouterServiceServer).DestroyRouter(ctx, req.(*DestroyRouterRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -470,60 +506,6 @@ func _RouterService_StopRouter_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RouterService_ListRouters_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListRoutersRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RouterServiceServer).ListRouters(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RouterService_ListRouters_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RouterServiceServer).ListRouters(ctx, req.(*ListRoutersRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RouterService_ConfigureOvsElement_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ConfigureOvsElementRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RouterServiceServer).ConfigureOvsElement(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RouterService_ConfigureOvsElement_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RouterServiceServer).ConfigureOvsElement(ctx, req.(*ConfigureOvsElementRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RouterService_CreateVirtualRouterElement_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateVirtualRouterElementRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RouterServiceServer).CreateVirtualRouterElement(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RouterService_CreateVirtualRouterElement_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RouterServiceServer).CreateVirtualRouterElement(ctx, req.(*CreateVirtualRouterElementRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _RouterService_UpgradeRouter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpgradeRouterRequest)
 	if err := dec(in); err != nil {
@@ -542,6 +524,24 @@ func _RouterService_UpgradeRouter_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RouterService_UpgradeRouterTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpgradeRouterTemplateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RouterServiceServer).UpgradeRouterTemplate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RouterService_UpgradeRouterTemplate_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RouterServiceServer).UpgradeRouterTemplate(ctx, req.(*UpgradeRouterTemplateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RouterService_ServiceDesc is the grpc.ServiceDesc for RouterService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -550,8 +550,32 @@ var RouterService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*RouterServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
+			MethodName: "ConfigureOvsElement",
+			Handler:    _RouterService_ConfigureOvsElement_Handler,
+		},
+		{
+			MethodName: "ConfigureVirtualRouterElement",
+			Handler:    _RouterService_ConfigureVirtualRouterElement_Handler,
+		},
+		{
+			MethodName: "CreateVirtualRouterElement",
+			Handler:    _RouterService_CreateVirtualRouterElement_Handler,
+		},
+		{
+			MethodName: "DestroyRouter",
+			Handler:    _RouterService_DestroyRouter_Handler,
+		},
+		{
+			MethodName: "GetRouterHealthCheckResults",
+			Handler:    _RouterService_GetRouterHealthCheckResults_Handler,
+		},
+		{
 			MethodName: "ListOvsElements",
 			Handler:    _RouterService_ListOvsElements_Handler,
+		},
+		{
+			MethodName: "ListRouters",
+			Handler:    _RouterService_ListRouters_Handler,
 		},
 		{
 			MethodName: "ListVirtualRouterElements",
@@ -562,44 +586,20 @@ var RouterService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RouterService_RebootRouter_Handler,
 		},
 		{
-			MethodName: "GetRouterHealthCheckResults",
-			Handler:    _RouterService_GetRouterHealthCheckResults_Handler,
-		},
-		{
-			MethodName: "ConfigureVirtualRouterElement",
-			Handler:    _RouterService_ConfigureVirtualRouterElement_Handler,
-		},
-		{
-			MethodName: "UpgradeRouterTemplate",
-			Handler:    _RouterService_UpgradeRouterTemplate_Handler,
-		},
-		{
 			MethodName: "StartRouter",
 			Handler:    _RouterService_StartRouter_Handler,
-		},
-		{
-			MethodName: "DestroyRouter",
-			Handler:    _RouterService_DestroyRouter_Handler,
 		},
 		{
 			MethodName: "StopRouter",
 			Handler:    _RouterService_StopRouter_Handler,
 		},
 		{
-			MethodName: "ListRouters",
-			Handler:    _RouterService_ListRouters_Handler,
-		},
-		{
-			MethodName: "ConfigureOvsElement",
-			Handler:    _RouterService_ConfigureOvsElement_Handler,
-		},
-		{
-			MethodName: "CreateVirtualRouterElement",
-			Handler:    _RouterService_CreateVirtualRouterElement_Handler,
-		},
-		{
 			MethodName: "UpgradeRouter",
 			Handler:    _RouterService_UpgradeRouter_Handler,
+		},
+		{
+			MethodName: "UpgradeRouterTemplate",
+			Handler:    _RouterService_UpgradeRouterTemplate_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

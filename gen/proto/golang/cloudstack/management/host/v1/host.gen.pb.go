@@ -73,8 +73,414 @@ func (AllocationStateType) EnumDescriptor() ([]byte, []int) {
 	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{0}
 }
 
-// PrepareForHostMaintenanceRequest represents the parameters for prepares a host for maintenance.
-type PrepareForHostMaintenanceRequest struct {
+// AddHostRequest represents the parameters for adds a new host.
+type AddHostRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the cluster ID for the host
+	ClusterId *int64 `protobuf:"varint,1,opt,name=cluster_id,json=clusterId" json:"cluster_id,omitempty"`
+	// the cluster name for the host
+	ClusterName *string `protobuf:"bytes,2,opt,name=cluster_name,json=clusterName" json:"cluster_name,omitempty"`
+	// the username for the host; required to be passed for hypervisors other than VMWare
+	Username *string `protobuf:"bytes,3,opt,name=username" json:"username,omitempty"`
+	// the password for the host; required to be passed for hypervisors other than VMWare
+	Password *string `protobuf:"bytes,4,opt,name=password" json:"password,omitempty"`
+	// the Pod ID for the host
+	PodId *int64 `protobuf:"varint,5,opt,name=pod_id,json=podId" json:"pod_id,omitempty"`
+	// the host URL
+	Url *string `protobuf:"bytes,6,opt,name=url" json:"url,omitempty"`
+	// the Zone ID for the host
+	ZoneId *int64 `protobuf:"varint,7,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// hypervisor type of the host
+	Hypervisor *string `protobuf:"bytes,8,opt,name=hypervisor" json:"hypervisor,omitempty"`
+	// Allocation state of this Host for allocation of new resources
+	AllocationState *string `protobuf:"bytes,9,opt,name=allocation_state,json=allocationState" json:"allocation_state,omitempty"`
+	// list of tags to be added to the host
+	HostTags []string `protobuf:"bytes,10,rep,name=host_tags,json=hostTags" json:"host_tags,omitempty"`
+	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddHostRequest) Reset() {
+	*x = AddHostRequest{}
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddHostRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddHostRequest) ProtoMessage() {}
+
+func (x *AddHostRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddHostRequest.ProtoReflect.Descriptor instead.
+func (*AddHostRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *AddHostRequest) GetClusterId() int64 {
+	if x != nil && x.ClusterId != nil {
+		return *x.ClusterId
+	}
+	return 0
+}
+
+func (x *AddHostRequest) GetClusterName() string {
+	if x != nil && x.ClusterName != nil {
+		return *x.ClusterName
+	}
+	return ""
+}
+
+func (x *AddHostRequest) GetUsername() string {
+	if x != nil && x.Username != nil {
+		return *x.Username
+	}
+	return ""
+}
+
+func (x *AddHostRequest) GetPassword() string {
+	if x != nil && x.Password != nil {
+		return *x.Password
+	}
+	return ""
+}
+
+func (x *AddHostRequest) GetPodId() int64 {
+	if x != nil && x.PodId != nil {
+		return *x.PodId
+	}
+	return 0
+}
+
+func (x *AddHostRequest) GetUrl() string {
+	if x != nil && x.Url != nil {
+		return *x.Url
+	}
+	return ""
+}
+
+func (x *AddHostRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *AddHostRequest) GetHypervisor() string {
+	if x != nil && x.Hypervisor != nil {
+		return *x.Hypervisor
+	}
+	return ""
+}
+
+func (x *AddHostRequest) GetAllocationState() string {
+	if x != nil && x.AllocationState != nil {
+		return *x.AllocationState
+	}
+	return ""
+}
+
+func (x *AddHostRequest) GetHostTags() []string {
+	if x != nil {
+		return x.HostTags
+	}
+	return nil
+}
+
+func (x *AddHostRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// AddHostResponse represents the response from adds a new host.
+type AddHostResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddHostResponse) Reset() {
+	*x = AddHostResponse{}
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddHostResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddHostResponse) ProtoMessage() {}
+
+func (x *AddHostResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddHostResponse.ProtoReflect.Descriptor instead.
+func (*AddHostResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *AddHostResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// AddSecondaryStorageRequest represents the parameters for adds secondary storage.
+type AddSecondaryStorageRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the URL for the secondary storage
+	Url *string `protobuf:"bytes,1,opt,name=url" json:"url,omitempty"`
+	// the Zone ID for the secondary storage
+	ZoneId *int64 `protobuf:"varint,2,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddSecondaryStorageRequest) Reset() {
+	*x = AddSecondaryStorageRequest{}
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddSecondaryStorageRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddSecondaryStorageRequest) ProtoMessage() {}
+
+func (x *AddSecondaryStorageRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddSecondaryStorageRequest.ProtoReflect.Descriptor instead.
+func (*AddSecondaryStorageRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *AddSecondaryStorageRequest) GetUrl() string {
+	if x != nil && x.Url != nil {
+		return *x.Url
+	}
+	return ""
+}
+
+func (x *AddSecondaryStorageRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *AddSecondaryStorageRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// AddSecondaryStorageResponse represents the response from adds secondary storage.
+type AddSecondaryStorageResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddSecondaryStorageResponse) Reset() {
+	*x = AddSecondaryStorageResponse{}
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddSecondaryStorageResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddSecondaryStorageResponse) ProtoMessage() {}
+
+func (x *AddSecondaryStorageResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddSecondaryStorageResponse.ProtoReflect.Descriptor instead.
+func (*AddSecondaryStorageResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *AddSecondaryStorageResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// CancelHostAsDegradedRequest represents the parameters for cancel host status from 'degraded'. host will transit back to status 'enabled'.
+type CancelHostAsDegradedRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// host ID
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CancelHostAsDegradedRequest) Reset() {
+	*x = CancelHostAsDegradedRequest{}
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CancelHostAsDegradedRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CancelHostAsDegradedRequest) ProtoMessage() {}
+
+func (x *CancelHostAsDegradedRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CancelHostAsDegradedRequest.ProtoReflect.Descriptor instead.
+func (*CancelHostAsDegradedRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *CancelHostAsDegradedRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *CancelHostAsDegradedRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CancelHostAsDegradedRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CancelHostAsDegradedRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CancelHostAsDegradedResponse represents the response from cancel host status from 'degraded'. host will transit back to status 'enabled'.
+type CancelHostAsDegradedResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CancelHostAsDegradedResponse) Reset() {
+	*x = CancelHostAsDegradedResponse{}
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CancelHostAsDegradedResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CancelHostAsDegradedResponse) ProtoMessage() {}
+
+func (x *CancelHostAsDegradedResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CancelHostAsDegradedResponse.ProtoReflect.Descriptor instead.
+func (*CancelHostAsDegradedResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *CancelHostAsDegradedResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// CancelHostMaintenanceRequest represents the parameters for cancels host maintenance.
+type CancelHostMaintenanceRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// the host ID
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
@@ -85,21 +491,21 @@ type PrepareForHostMaintenanceRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *PrepareForHostMaintenanceRequest) Reset() {
-	*x = PrepareForHostMaintenanceRequest{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[0]
+func (x *CancelHostMaintenanceRequest) Reset() {
+	*x = CancelHostMaintenanceRequest{}
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *PrepareForHostMaintenanceRequest) String() string {
+func (x *CancelHostMaintenanceRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*PrepareForHostMaintenanceRequest) ProtoMessage() {}
+func (*CancelHostMaintenanceRequest) ProtoMessage() {}
 
-func (x *PrepareForHostMaintenanceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[0]
+func (x *CancelHostMaintenanceRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -110,41 +516,41 @@ func (x *PrepareForHostMaintenanceRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use PrepareForHostMaintenanceRequest.ProtoReflect.Descriptor instead.
-func (*PrepareForHostMaintenanceRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{0}
+// Deprecated: Use CancelHostMaintenanceRequest.ProtoReflect.Descriptor instead.
+func (*CancelHostMaintenanceRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *PrepareForHostMaintenanceRequest) GetId() int64 {
+func (x *CancelHostMaintenanceRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *PrepareForHostMaintenanceRequest) GetStartEventId() int64 {
+func (x *CancelHostMaintenanceRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *PrepareForHostMaintenanceRequest) GetInjectedJobId() string {
+func (x *CancelHostMaintenanceRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *PrepareForHostMaintenanceRequest) GetResponseType() string {
+func (x *CancelHostMaintenanceRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// PrepareForHostMaintenanceResponse represents the response from prepares a host for maintenance.
-type PrepareForHostMaintenanceResponse struct {
+// CancelHostMaintenanceResponse represents the response from cancels host maintenance.
+type CancelHostMaintenanceResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -152,21 +558,21 @@ type PrepareForHostMaintenanceResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *PrepareForHostMaintenanceResponse) Reset() {
-	*x = PrepareForHostMaintenanceResponse{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[1]
+func (x *CancelHostMaintenanceResponse) Reset() {
+	*x = CancelHostMaintenanceResponse{}
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *PrepareForHostMaintenanceResponse) String() string {
+func (x *CancelHostMaintenanceResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*PrepareForHostMaintenanceResponse) ProtoMessage() {}
+func (*CancelHostMaintenanceResponse) ProtoMessage() {}
 
-func (x *PrepareForHostMaintenanceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[1]
+func (x *CancelHostMaintenanceResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -177,16 +583,500 @@ func (x *PrepareForHostMaintenanceResponse) ProtoReflect() protoreflect.Message 
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use PrepareForHostMaintenanceResponse.ProtoReflect.Descriptor instead.
-func (*PrepareForHostMaintenanceResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{1}
+// Deprecated: Use CancelHostMaintenanceResponse.ProtoReflect.Descriptor instead.
+func (*CancelHostMaintenanceResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *PrepareForHostMaintenanceResponse) GetResult() *Result {
+func (x *CancelHostMaintenanceResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
 	return nil
+}
+
+// DeclareHostAsDegradedRequest represents the parameters for declare host as 'degraded'. host must be on 'disconnected' or 'alert' state. the admin must be sure that there are no vms running on the respective host otherwise this command might corrupted vms that were running on the 'degraded' host.
+type DeclareHostAsDegradedRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// host ID
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeclareHostAsDegradedRequest) Reset() {
+	*x = DeclareHostAsDegradedRequest{}
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeclareHostAsDegradedRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeclareHostAsDegradedRequest) ProtoMessage() {}
+
+func (x *DeclareHostAsDegradedRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeclareHostAsDegradedRequest.ProtoReflect.Descriptor instead.
+func (*DeclareHostAsDegradedRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *DeclareHostAsDegradedRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeclareHostAsDegradedRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeclareHostAsDegradedRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeclareHostAsDegradedRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeclareHostAsDegradedResponse represents the response from declare host as 'degraded'. host must be on 'disconnected' or 'alert' state. the admin must be sure that there are no vms running on the respective host otherwise this command might corrupted vms that were running on the 'degraded' host.
+type DeclareHostAsDegradedResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeclareHostAsDegradedResponse) Reset() {
+	*x = DeclareHostAsDegradedResponse{}
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeclareHostAsDegradedResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeclareHostAsDegradedResponse) ProtoMessage() {}
+
+func (x *DeclareHostAsDegradedResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeclareHostAsDegradedResponse.ProtoReflect.Descriptor instead.
+func (*DeclareHostAsDegradedResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *DeclareHostAsDegradedResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteHostRequest represents the parameters for deletes a host.
+type DeleteHostRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the host ID
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// Force delete the host. All HA enabled vms running on the host will be put to HA; HA disabled ones will be stopped
+	Forced *bool `protobuf:"varint,2,opt,name=forced" json:"forced,omitempty"`
+	// Force destroy local storage on this host. All VMs created on this local storage will be destroyed
+	ForceDestroyLocalStorage *bool `protobuf:"varint,3,opt,name=force_destroy_local_storage,json=forceDestroyLocalStorage" json:"force_destroy_local_storage,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteHostRequest) Reset() {
+	*x = DeleteHostRequest{}
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteHostRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteHostRequest) ProtoMessage() {}
+
+func (x *DeleteHostRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteHostRequest.ProtoReflect.Descriptor instead.
+func (*DeleteHostRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *DeleteHostRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteHostRequest) GetForced() bool {
+	if x != nil && x.Forced != nil {
+		return *x.Forced
+	}
+	return false
+}
+
+func (x *DeleteHostRequest) GetForceDestroyLocalStorage() bool {
+	if x != nil && x.ForceDestroyLocalStorage != nil {
+		return *x.ForceDestroyLocalStorage
+	}
+	return false
+}
+
+func (x *DeleteHostRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteHostResponse represents the response from deletes a host.
+type DeleteHostResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteHostResponse) Reset() {
+	*x = DeleteHostResponse{}
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteHostResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteHostResponse) ProtoMessage() {}
+
+func (x *DeleteHostResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteHostResponse.ProtoReflect.Descriptor instead.
+func (*DeleteHostResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *DeleteHostResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// FindHostsForMigrationRequest represents the parameters for find hosts suitable for migrating a virtual machine.
+type FindHostsForMigrationRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// find hosts to which this VM can be migrated and flag the hosts with enough CPU/RAM to host the VM
+	VirtualMachineId *int64 `protobuf:"varint,1,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,2,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,3,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,4,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *FindHostsForMigrationRequest) Reset() {
+	*x = FindHostsForMigrationRequest{}
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *FindHostsForMigrationRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FindHostsForMigrationRequest) ProtoMessage() {}
+
+func (x *FindHostsForMigrationRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FindHostsForMigrationRequest.ProtoReflect.Descriptor instead.
+func (*FindHostsForMigrationRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *FindHostsForMigrationRequest) GetVirtualMachineId() int64 {
+	if x != nil && x.VirtualMachineId != nil {
+		return *x.VirtualMachineId
+	}
+	return 0
+}
+
+func (x *FindHostsForMigrationRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *FindHostsForMigrationRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *FindHostsForMigrationRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *FindHostsForMigrationRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// FindHostsForMigrationResponse represents the response from find hosts suitable for migrating a virtual machine.
+type FindHostsForMigrationResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *FindHostsForMigrationResponse) Reset() {
+	*x = FindHostsForMigrationResponse{}
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *FindHostsForMigrationResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FindHostsForMigrationResponse) ProtoMessage() {}
+
+func (x *FindHostsForMigrationResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FindHostsForMigrationResponse.ProtoReflect.Descriptor instead.
+func (*FindHostsForMigrationResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *FindHostsForMigrationResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListHostTagsRequest represents the parameters for lists host tags
+type ListHostTagsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,1,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,2,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListHostTagsRequest) Reset() {
+	*x = ListHostTagsRequest{}
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListHostTagsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListHostTagsRequest) ProtoMessage() {}
+
+func (x *ListHostTagsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListHostTagsRequest.ProtoReflect.Descriptor instead.
+func (*ListHostTagsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *ListHostTagsRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListHostTagsRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListHostTagsRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListHostTagsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListHostTagsResponse represents the response from lists host tags
+type ListHostTagsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of HostTags
+	Items []*HostTag `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of HostTags
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListHostTagsResponse) Reset() {
+	*x = ListHostTagsResponse{}
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListHostTagsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListHostTagsResponse) ProtoMessage() {}
+
+func (x *ListHostTagsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListHostTagsResponse.ProtoReflect.Descriptor instead.
+func (*ListHostTagsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *ListHostTagsResponse) GetItems() []*HostTag {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListHostTagsResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
 }
 
 // ListHostsRequest represents the parameters for lists hosts.
@@ -233,7 +1123,7 @@ type ListHostsRequest struct {
 
 func (x *ListHostsRequest) Reset() {
 	*x = ListHostsRequest{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -245,7 +1135,7 @@ func (x *ListHostsRequest) String() string {
 func (*ListHostsRequest) ProtoMessage() {}
 
 func (x *ListHostsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -258,7 +1148,7 @@ func (x *ListHostsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListHostsRequest.ProtoReflect.Descriptor instead.
 func (*ListHostsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{2}
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *ListHostsRequest) GetClusterId() int64 {
@@ -407,7 +1297,7 @@ type ListHostsResponse struct {
 
 func (x *ListHostsResponse) Reset() {
 	*x = ListHostsResponse{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -419,7 +1309,7 @@ func (x *ListHostsResponse) String() string {
 func (*ListHostsResponse) ProtoMessage() {}
 
 func (x *ListHostsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -432,7 +1322,7 @@ func (x *ListHostsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListHostsResponse.ProtoReflect.Descriptor instead.
 func (*ListHostsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{3}
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *ListHostsResponse) GetItems() []*Host {
@@ -449,10 +1339,10 @@ func (x *ListHostsResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// CancelHostAsDegradedRequest represents the parameters for cancel host status from 'degraded'. host will transit back to status 'enabled'.
-type CancelHostAsDegradedRequest struct {
+// PrepareForHostMaintenanceRequest represents the parameters for prepares a host for maintenance.
+type PrepareForHostMaintenanceRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// host ID
+	// the host ID
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
 	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
 	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
@@ -461,21 +1351,21 @@ type CancelHostAsDegradedRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CancelHostAsDegradedRequest) Reset() {
-	*x = CancelHostAsDegradedRequest{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[4]
+func (x *PrepareForHostMaintenanceRequest) Reset() {
+	*x = PrepareForHostMaintenanceRequest{}
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CancelHostAsDegradedRequest) String() string {
+func (x *PrepareForHostMaintenanceRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CancelHostAsDegradedRequest) ProtoMessage() {}
+func (*PrepareForHostMaintenanceRequest) ProtoMessage() {}
 
-func (x *CancelHostAsDegradedRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[4]
+func (x *PrepareForHostMaintenanceRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -486,41 +1376,41 @@ func (x *CancelHostAsDegradedRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CancelHostAsDegradedRequest.ProtoReflect.Descriptor instead.
-func (*CancelHostAsDegradedRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{4}
+// Deprecated: Use PrepareForHostMaintenanceRequest.ProtoReflect.Descriptor instead.
+func (*PrepareForHostMaintenanceRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{18}
 }
 
-func (x *CancelHostAsDegradedRequest) GetId() int64 {
+func (x *PrepareForHostMaintenanceRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *CancelHostAsDegradedRequest) GetStartEventId() int64 {
+func (x *PrepareForHostMaintenanceRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *CancelHostAsDegradedRequest) GetInjectedJobId() string {
+func (x *PrepareForHostMaintenanceRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *CancelHostAsDegradedRequest) GetResponseType() string {
+func (x *PrepareForHostMaintenanceRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// CancelHostAsDegradedResponse represents the response from cancel host status from 'degraded'. host will transit back to status 'enabled'.
-type CancelHostAsDegradedResponse struct {
+// PrepareForHostMaintenanceResponse represents the response from prepares a host for maintenance.
+type PrepareForHostMaintenanceResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -528,21 +1418,21 @@ type CancelHostAsDegradedResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CancelHostAsDegradedResponse) Reset() {
-	*x = CancelHostAsDegradedResponse{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[5]
+func (x *PrepareForHostMaintenanceResponse) Reset() {
+	*x = PrepareForHostMaintenanceResponse{}
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CancelHostAsDegradedResponse) String() string {
+func (x *PrepareForHostMaintenanceResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CancelHostAsDegradedResponse) ProtoMessage() {}
+func (*PrepareForHostMaintenanceResponse) ProtoMessage() {}
 
-func (x *CancelHostAsDegradedResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[5]
+func (x *PrepareForHostMaintenanceResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -553,12 +1443,128 @@ func (x *CancelHostAsDegradedResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CancelHostAsDegradedResponse.ProtoReflect.Descriptor instead.
-func (*CancelHostAsDegradedResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{5}
+// Deprecated: Use PrepareForHostMaintenanceResponse.ProtoReflect.Descriptor instead.
+func (*PrepareForHostMaintenanceResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{19}
 }
 
-func (x *CancelHostAsDegradedResponse) GetResult() *Result {
+func (x *PrepareForHostMaintenanceResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ReconnectHostRequest represents the parameters for reconnects a host.
+type ReconnectHostRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the host ID
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ReconnectHostRequest) Reset() {
+	*x = ReconnectHostRequest{}
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ReconnectHostRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ReconnectHostRequest) ProtoMessage() {}
+
+func (x *ReconnectHostRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ReconnectHostRequest.ProtoReflect.Descriptor instead.
+func (*ReconnectHostRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *ReconnectHostRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ReconnectHostRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *ReconnectHostRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *ReconnectHostRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ReconnectHostResponse represents the response from reconnects a host.
+type ReconnectHostResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ReconnectHostResponse) Reset() {
+	*x = ReconnectHostResponse{}
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ReconnectHostResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ReconnectHostResponse) ProtoMessage() {}
+
+func (x *ReconnectHostResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ReconnectHostResponse.ProtoReflect.Descriptor instead.
+func (*ReconnectHostResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *ReconnectHostResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -579,7 +1585,7 @@ type ReleaseHostReservationRequest struct {
 
 func (x *ReleaseHostReservationRequest) Reset() {
 	*x = ReleaseHostReservationRequest{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -591,7 +1597,7 @@ func (x *ReleaseHostReservationRequest) String() string {
 func (*ReleaseHostReservationRequest) ProtoMessage() {}
 
 func (x *ReleaseHostReservationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -604,7 +1610,7 @@ func (x *ReleaseHostReservationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReleaseHostReservationRequest.ProtoReflect.Descriptor instead.
 func (*ReleaseHostReservationRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{6}
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *ReleaseHostReservationRequest) GetId() int64 {
@@ -646,7 +1652,7 @@ type ReleaseHostReservationResponse struct {
 
 func (x *ReleaseHostReservationResponse) Reset() {
 	*x = ReleaseHostReservationResponse{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -658,7 +1664,7 @@ func (x *ReleaseHostReservationResponse) String() string {
 func (*ReleaseHostReservationResponse) ProtoMessage() {}
 
 func (x *ReleaseHostReservationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -671,128 +1677,10 @@ func (x *ReleaseHostReservationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReleaseHostReservationResponse.ProtoReflect.Descriptor instead.
 func (*ReleaseHostReservationResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{7}
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *ReleaseHostReservationResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteHostRequest represents the parameters for deletes a host.
-type DeleteHostRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the host ID
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// Force delete the host. All HA enabled vms running on the host will be put to HA; HA disabled ones will be stopped
-	Forced *bool `protobuf:"varint,2,opt,name=forced" json:"forced,omitempty"`
-	// Force destroy local storage on this host. All VMs created on this local storage will be destroyed
-	ForceDestroyLocalStorage *bool `protobuf:"varint,3,opt,name=force_destroy_local_storage,json=forceDestroyLocalStorage" json:"force_destroy_local_storage,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteHostRequest) Reset() {
-	*x = DeleteHostRequest{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteHostRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteHostRequest) ProtoMessage() {}
-
-func (x *DeleteHostRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteHostRequest.ProtoReflect.Descriptor instead.
-func (*DeleteHostRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *DeleteHostRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteHostRequest) GetForced() bool {
-	if x != nil && x.Forced != nil {
-		return *x.Forced
-	}
-	return false
-}
-
-func (x *DeleteHostRequest) GetForceDestroyLocalStorage() bool {
-	if x != nil && x.ForceDestroyLocalStorage != nil {
-		return *x.ForceDestroyLocalStorage
-	}
-	return false
-}
-
-func (x *DeleteHostRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteHostResponse represents the response from deletes a host.
-type DeleteHostResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteHostResponse) Reset() {
-	*x = DeleteHostResponse{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteHostResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteHostResponse) ProtoMessage() {}
-
-func (x *DeleteHostResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteHostResponse.ProtoReflect.Descriptor instead.
-func (*DeleteHostResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *DeleteHostResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -825,7 +1713,7 @@ type UpdateHostRequest struct {
 
 func (x *UpdateHostRequest) Reset() {
 	*x = UpdateHostRequest{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[10]
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -837,7 +1725,7 @@ func (x *UpdateHostRequest) String() string {
 func (*UpdateHostRequest) ProtoMessage() {}
 
 func (x *UpdateHostRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[10]
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -850,7 +1738,7 @@ func (x *UpdateHostRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateHostRequest.ProtoReflect.Descriptor instead.
 func (*UpdateHostRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{10}
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *UpdateHostRequest) GetId() int64 {
@@ -927,7 +1815,7 @@ type UpdateHostResponse struct {
 
 func (x *UpdateHostResponse) Reset() {
 	*x = UpdateHostResponse{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -939,7 +1827,7 @@ func (x *UpdateHostResponse) String() string {
 func (*UpdateHostResponse) ProtoMessage() {}
 
 func (x *UpdateHostResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -952,550 +1840,10 @@ func (x *UpdateHostResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateHostResponse.ProtoReflect.Descriptor instead.
 func (*UpdateHostResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{11}
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *UpdateHostResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListHostTagsRequest represents the parameters for lists host tags
-type ListHostTagsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,1,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,2,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListHostTagsRequest) Reset() {
-	*x = ListHostTagsRequest{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListHostTagsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListHostTagsRequest) ProtoMessage() {}
-
-func (x *ListHostTagsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListHostTagsRequest.ProtoReflect.Descriptor instead.
-func (*ListHostTagsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *ListHostTagsRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListHostTagsRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListHostTagsRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListHostTagsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListHostTagsResponse represents the response from lists host tags
-type ListHostTagsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of HostTags
-	Items []*HostTag `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of HostTags
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListHostTagsResponse) Reset() {
-	*x = ListHostTagsResponse{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListHostTagsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListHostTagsResponse) ProtoMessage() {}
-
-func (x *ListHostTagsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListHostTagsResponse.ProtoReflect.Descriptor instead.
-func (*ListHostTagsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *ListHostTagsResponse) GetItems() []*HostTag {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListHostTagsResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// AddSecondaryStorageRequest represents the parameters for adds secondary storage.
-type AddSecondaryStorageRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the URL for the secondary storage
-	Url *string `protobuf:"bytes,1,opt,name=url" json:"url,omitempty"`
-	// the Zone ID for the secondary storage
-	ZoneId *int64 `protobuf:"varint,2,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddSecondaryStorageRequest) Reset() {
-	*x = AddSecondaryStorageRequest{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddSecondaryStorageRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddSecondaryStorageRequest) ProtoMessage() {}
-
-func (x *AddSecondaryStorageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddSecondaryStorageRequest.ProtoReflect.Descriptor instead.
-func (*AddSecondaryStorageRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *AddSecondaryStorageRequest) GetUrl() string {
-	if x != nil && x.Url != nil {
-		return *x.Url
-	}
-	return ""
-}
-
-func (x *AddSecondaryStorageRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *AddSecondaryStorageRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// AddSecondaryStorageResponse represents the response from adds secondary storage.
-type AddSecondaryStorageResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddSecondaryStorageResponse) Reset() {
-	*x = AddSecondaryStorageResponse{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddSecondaryStorageResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddSecondaryStorageResponse) ProtoMessage() {}
-
-func (x *AddSecondaryStorageResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddSecondaryStorageResponse.ProtoReflect.Descriptor instead.
-func (*AddSecondaryStorageResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *AddSecondaryStorageResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// FindHostsForMigrationRequest represents the parameters for find hosts suitable for migrating a virtual machine.
-type FindHostsForMigrationRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// find hosts to which this VM can be migrated and flag the hosts with enough CPU/RAM to host the VM
-	VirtualMachineId *int64 `protobuf:"varint,1,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,2,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,3,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,4,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *FindHostsForMigrationRequest) Reset() {
-	*x = FindHostsForMigrationRequest{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[16]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *FindHostsForMigrationRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*FindHostsForMigrationRequest) ProtoMessage() {}
-
-func (x *FindHostsForMigrationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[16]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use FindHostsForMigrationRequest.ProtoReflect.Descriptor instead.
-func (*FindHostsForMigrationRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{16}
-}
-
-func (x *FindHostsForMigrationRequest) GetVirtualMachineId() int64 {
-	if x != nil && x.VirtualMachineId != nil {
-		return *x.VirtualMachineId
-	}
-	return 0
-}
-
-func (x *FindHostsForMigrationRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *FindHostsForMigrationRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *FindHostsForMigrationRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *FindHostsForMigrationRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// FindHostsForMigrationResponse represents the response from find hosts suitable for migrating a virtual machine.
-type FindHostsForMigrationResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *FindHostsForMigrationResponse) Reset() {
-	*x = FindHostsForMigrationResponse{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[17]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *FindHostsForMigrationResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*FindHostsForMigrationResponse) ProtoMessage() {}
-
-func (x *FindHostsForMigrationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[17]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use FindHostsForMigrationResponse.ProtoReflect.Descriptor instead.
-func (*FindHostsForMigrationResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{17}
-}
-
-func (x *FindHostsForMigrationResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// AddHostRequest represents the parameters for adds a new host.
-type AddHostRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the cluster ID for the host
-	ClusterId *int64 `protobuf:"varint,1,opt,name=cluster_id,json=clusterId" json:"cluster_id,omitempty"`
-	// the cluster name for the host
-	ClusterName *string `protobuf:"bytes,2,opt,name=cluster_name,json=clusterName" json:"cluster_name,omitempty"`
-	// the username for the host; required to be passed for hypervisors other than VMWare
-	Username *string `protobuf:"bytes,3,opt,name=username" json:"username,omitempty"`
-	// the password for the host; required to be passed for hypervisors other than VMWare
-	Password *string `protobuf:"bytes,4,opt,name=password" json:"password,omitempty"`
-	// the Pod ID for the host
-	PodId *int64 `protobuf:"varint,5,opt,name=pod_id,json=podId" json:"pod_id,omitempty"`
-	// the host URL
-	Url *string `protobuf:"bytes,6,opt,name=url" json:"url,omitempty"`
-	// the Zone ID for the host
-	ZoneId *int64 `protobuf:"varint,7,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// hypervisor type of the host
-	Hypervisor *string `protobuf:"bytes,8,opt,name=hypervisor" json:"hypervisor,omitempty"`
-	// Allocation state of this Host for allocation of new resources
-	AllocationState *string `protobuf:"bytes,9,opt,name=allocation_state,json=allocationState" json:"allocation_state,omitempty"`
-	// list of tags to be added to the host
-	HostTags []string `protobuf:"bytes,10,rep,name=host_tags,json=hostTags" json:"host_tags,omitempty"`
-	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddHostRequest) Reset() {
-	*x = AddHostRequest{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[18]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddHostRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddHostRequest) ProtoMessage() {}
-
-func (x *AddHostRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[18]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddHostRequest.ProtoReflect.Descriptor instead.
-func (*AddHostRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{18}
-}
-
-func (x *AddHostRequest) GetClusterId() int64 {
-	if x != nil && x.ClusterId != nil {
-		return *x.ClusterId
-	}
-	return 0
-}
-
-func (x *AddHostRequest) GetClusterName() string {
-	if x != nil && x.ClusterName != nil {
-		return *x.ClusterName
-	}
-	return ""
-}
-
-func (x *AddHostRequest) GetUsername() string {
-	if x != nil && x.Username != nil {
-		return *x.Username
-	}
-	return ""
-}
-
-func (x *AddHostRequest) GetPassword() string {
-	if x != nil && x.Password != nil {
-		return *x.Password
-	}
-	return ""
-}
-
-func (x *AddHostRequest) GetPodId() int64 {
-	if x != nil && x.PodId != nil {
-		return *x.PodId
-	}
-	return 0
-}
-
-func (x *AddHostRequest) GetUrl() string {
-	if x != nil && x.Url != nil {
-		return *x.Url
-	}
-	return ""
-}
-
-func (x *AddHostRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *AddHostRequest) GetHypervisor() string {
-	if x != nil && x.Hypervisor != nil {
-		return *x.Hypervisor
-	}
-	return ""
-}
-
-func (x *AddHostRequest) GetAllocationState() string {
-	if x != nil && x.AllocationState != nil {
-		return *x.AllocationState
-	}
-	return ""
-}
-
-func (x *AddHostRequest) GetHostTags() []string {
-	if x != nil {
-		return x.HostTags
-	}
-	return nil
-}
-
-func (x *AddHostRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// AddHostResponse represents the response from adds a new host.
-type AddHostResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddHostResponse) Reset() {
-	*x = AddHostResponse{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[19]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddHostResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddHostResponse) ProtoMessage() {}
-
-func (x *AddHostResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[19]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddHostResponse.ProtoReflect.Descriptor instead.
-func (*AddHostResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{19}
-}
-
-func (x *AddHostResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1522,7 +1870,7 @@ type UpdateHostPasswordRequest struct {
 
 func (x *UpdateHostPasswordRequest) Reset() {
 	*x = UpdateHostPasswordRequest{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[20]
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1534,7 +1882,7 @@ func (x *UpdateHostPasswordRequest) String() string {
 func (*UpdateHostPasswordRequest) ProtoMessage() {}
 
 func (x *UpdateHostPasswordRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[20]
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1547,7 +1895,7 @@ func (x *UpdateHostPasswordRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateHostPasswordRequest.ProtoReflect.Descriptor instead.
 func (*UpdateHostPasswordRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{20}
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *UpdateHostPasswordRequest) GetHostId() int64 {
@@ -1603,7 +1951,7 @@ type UpdateHostPasswordResponse struct {
 
 func (x *UpdateHostPasswordResponse) Reset() {
 	*x = UpdateHostPasswordResponse{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[21]
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1615,7 +1963,7 @@ func (x *UpdateHostPasswordResponse) String() string {
 func (*UpdateHostPasswordResponse) ProtoMessage() {}
 
 func (x *UpdateHostPasswordResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[21]
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1628,358 +1976,10 @@ func (x *UpdateHostPasswordResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateHostPasswordResponse.ProtoReflect.Descriptor instead.
 func (*UpdateHostPasswordResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{21}
-}
-
-func (x *UpdateHostPasswordResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// CancelHostMaintenanceRequest represents the parameters for cancels host maintenance.
-type CancelHostMaintenanceRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the host ID
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CancelHostMaintenanceRequest) Reset() {
-	*x = CancelHostMaintenanceRequest{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[22]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CancelHostMaintenanceRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CancelHostMaintenanceRequest) ProtoMessage() {}
-
-func (x *CancelHostMaintenanceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[22]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CancelHostMaintenanceRequest.ProtoReflect.Descriptor instead.
-func (*CancelHostMaintenanceRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{22}
-}
-
-func (x *CancelHostMaintenanceRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *CancelHostMaintenanceRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CancelHostMaintenanceRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CancelHostMaintenanceRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CancelHostMaintenanceResponse represents the response from cancels host maintenance.
-type CancelHostMaintenanceResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CancelHostMaintenanceResponse) Reset() {
-	*x = CancelHostMaintenanceResponse{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[23]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CancelHostMaintenanceResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CancelHostMaintenanceResponse) ProtoMessage() {}
-
-func (x *CancelHostMaintenanceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[23]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CancelHostMaintenanceResponse.ProtoReflect.Descriptor instead.
-func (*CancelHostMaintenanceResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{23}
-}
-
-func (x *CancelHostMaintenanceResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ReconnectHostRequest represents the parameters for reconnects a host.
-type ReconnectHostRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the host ID
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ReconnectHostRequest) Reset() {
-	*x = ReconnectHostRequest{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[24]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ReconnectHostRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ReconnectHostRequest) ProtoMessage() {}
-
-func (x *ReconnectHostRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[24]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ReconnectHostRequest.ProtoReflect.Descriptor instead.
-func (*ReconnectHostRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{24}
-}
-
-func (x *ReconnectHostRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ReconnectHostRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *ReconnectHostRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *ReconnectHostRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ReconnectHostResponse represents the response from reconnects a host.
-type ReconnectHostResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ReconnectHostResponse) Reset() {
-	*x = ReconnectHostResponse{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[25]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ReconnectHostResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ReconnectHostResponse) ProtoMessage() {}
-
-func (x *ReconnectHostResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[25]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ReconnectHostResponse.ProtoReflect.Descriptor instead.
-func (*ReconnectHostResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{25}
-}
-
-func (x *ReconnectHostResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeclareHostAsDegradedRequest represents the parameters for declare host as 'degraded'. host must be on 'disconnected' or 'alert' state. the admin must be sure that there are no vms running on the respective host otherwise this command might corrupted vms that were running on the 'degraded' host.
-type DeclareHostAsDegradedRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// host ID
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeclareHostAsDegradedRequest) Reset() {
-	*x = DeclareHostAsDegradedRequest{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[26]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeclareHostAsDegradedRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeclareHostAsDegradedRequest) ProtoMessage() {}
-
-func (x *DeclareHostAsDegradedRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[26]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeclareHostAsDegradedRequest.ProtoReflect.Descriptor instead.
-func (*DeclareHostAsDegradedRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{26}
-}
-
-func (x *DeclareHostAsDegradedRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeclareHostAsDegradedRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeclareHostAsDegradedRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeclareHostAsDegradedRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeclareHostAsDegradedResponse represents the response from declare host as 'degraded'. host must be on 'disconnected' or 'alert' state. the admin must be sure that there are no vms running on the respective host otherwise this command might corrupted vms that were running on the 'degraded' host.
-type DeclareHostAsDegradedResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeclareHostAsDegradedResponse) Reset() {
-	*x = DeclareHostAsDegradedResponse{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[27]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeclareHostAsDegradedResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeclareHostAsDegradedResponse) ProtoMessage() {}
-
-func (x *DeclareHostAsDegradedResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[27]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeclareHostAsDegradedResponse.ProtoReflect.Descriptor instead.
-func (*DeclareHostAsDegradedResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{27}
 }
 
-func (x *DeclareHostAsDegradedResponse) GetResult() *Result {
+func (x *UpdateHostPasswordResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -2205,151 +2205,6 @@ func (x *Success) GetDisplayText() string {
 	return ""
 }
 
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[31]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[31]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{31}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
 // Result represents a generic operation result
 type Result struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -2369,7 +2224,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[32]
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2381,7 +2236,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[32]
+	mi := &file_cloudstack_management_host_v1_host_gen_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2394,7 +2249,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{32}
+	return file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -2436,14 +2291,78 @@ var File_cloudstack_management_host_v1_host_gen_proto protoreflect.FileDescripto
 
 const file_cloudstack_management_host_v1_host_gen_proto_rawDesc = "" +
 	"\n" +
-	",cloudstack/management/host/v1/host.gen.proto\x12\x1dcloudstack.management.host.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xb7\x01\n" +
-	" PrepareForHostMaintenanceRequest\x12\x16\n" +
+	",cloudstack/management/host/v1/host.gen.proto\x12\x1dcloudstack.management.host.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x91\x03\n" +
+	"\x0eAddHostRequest\x12\x1d\n" +
+	"\n" +
+	"cluster_id\x18\x01 \x01(\x03R\tclusterId\x12-\n" +
+	"\fcluster_name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\vclusterName\x12&\n" +
+	"\busername\x18\x03 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\busername\x12\x1a\n" +
+	"\bpassword\x18\x04 \x01(\tR\bpassword\x12\x1d\n" +
+	"\x06pod_id\x18\x05 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05podId\x12\x18\n" +
+	"\x03url\x18\x06 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x03url\x12\x1f\n" +
+	"\azone_id\x18\a \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12&\n" +
+	"\n" +
+	"hypervisor\x18\b \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\n" +
+	"hypervisor\x12)\n" +
+	"\x10allocation_state\x18\t \x01(\tR\x0fallocationState\x12\x1b\n" +
+	"\thost_tags\x18\n" +
+	" \x03(\tR\bhostTags\x12#\n" +
+	"\rresponse_type\x18\v \x01(\tR\fresponseType\"P\n" +
+	"\x0fAddHostResponse\x12=\n" +
+	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.host.v1.ResultR\x06result\"t\n" +
+	"\x1aAddSecondaryStorageRequest\x12\x18\n" +
+	"\x03url\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x03url\x12\x17\n" +
+	"\azone_id\x18\x02 \x01(\x03R\x06zoneId\x12#\n" +
+	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"\\\n" +
+	"\x1bAddSecondaryStorageResponse\x12=\n" +
+	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.host.v1.ResultR\x06result\"\xb2\x01\n" +
+	"\x1bCancelHostAsDegradedRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
 	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
 	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"b\n" +
-	"!PrepareForHostMaintenanceResponse\x12=\n" +
-	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.host.v1.ResultR\x06result\"\xb4\x05\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"]\n" +
+	"\x1cCancelHostAsDegradedResponse\x12=\n" +
+	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.host.v1.ResultR\x06result\"\xb3\x01\n" +
+	"\x1cCancelHostMaintenanceRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"^\n" +
+	"\x1dCancelHostMaintenanceResponse\x12=\n" +
+	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.host.v1.ResultR\x06result\"\xb3\x01\n" +
+	"\x1cDeclareHostAsDegradedRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"^\n" +
+	"\x1dDeclareHostAsDegradedResponse\x12=\n" +
+	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.host.v1.ResultR\x06result\"\xb5\x01\n" +
+	"\x11DeleteHostRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1d\n" +
+	"\x06forced\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12D\n" +
+	"\x1bforce_destroy_local_storage\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\x18forceDestroyLocalStorage\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"S\n" +
+	"\x12DeleteHostResponse\x12=\n" +
+	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.host.v1.ResultR\x06result\"\xc4\x01\n" +
+	"\x1cFindHostsForMigrationRequest\x124\n" +
+	"\x12virtual_machine_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x10virtualMachineId\x12\x18\n" +
+	"\akeyword\x18\x02 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x03 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x04 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"^\n" +
+	"\x1dFindHostsForMigrationResponse\x12=\n" +
+	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.host.v1.ResultR\x06result\"\x85\x01\n" +
+	"\x13ListHostTagsRequest\x12\x18\n" +
+	"\akeyword\x18\x01 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x03 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"|\n" +
+	"\x14ListHostTagsResponse\x12<\n" +
+	"\x05items\x18\x01 \x03(\v2&.cloudstack.management.host.v1.HostTagR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xb4\x05\n" +
 	"\x10ListHostsRequest\x12\x1d\n" +
 	"\n" +
 	"cluster_id\x18\x01 \x01(\x03R\tclusterId\x12\x0e\n" +
@@ -2472,13 +2391,20 @@ const file_cloudstack_management_host_v1_host_gen_proto_rawDesc = "" +
 	"\x11ListHostsResponse\x129\n" +
 	"\x05items\x18\x01 \x03(\v2#.cloudstack.management.host.v1.HostR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xb2\x01\n" +
-	"\x1bCancelHostAsDegradedRequest\x12\x16\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xb7\x01\n" +
+	" PrepareForHostMaintenanceRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
 	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
 	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"]\n" +
-	"\x1cCancelHostAsDegradedResponse\x12=\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"b\n" +
+	"!PrepareForHostMaintenanceResponse\x12=\n" +
+	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.host.v1.ResultR\x06result\"\xab\x01\n" +
+	"\x14ReconnectHostRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"V\n" +
+	"\x15ReconnectHostResponse\x12=\n" +
 	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.host.v1.ResultR\x06result\"\xb4\x01\n" +
 	"\x1dReleaseHostReservationRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
@@ -2486,13 +2412,6 @@ const file_cloudstack_management_host_v1_host_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"_\n" +
 	"\x1eReleaseHostReservationResponse\x12=\n" +
-	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.host.v1.ResultR\x06result\"\xb5\x01\n" +
-	"\x11DeleteHostRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1d\n" +
-	"\x06forced\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12D\n" +
-	"\x1bforce_destroy_local_storage\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\x18forceDestroyLocalStorage\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"S\n" +
-	"\x12DeleteHostResponse\x12=\n" +
 	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.host.v1.ResultR\x06result\"\xba\x02\n" +
 	"\x11UpdateHostRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1e\n" +
@@ -2509,49 +2428,6 @@ const file_cloudstack_management_host_v1_host_gen_proto_rawDesc = "" +
 	"annotation\x12#\n" +
 	"\rresponse_type\x18\t \x01(\tR\fresponseType\"S\n" +
 	"\x12UpdateHostResponse\x12=\n" +
-	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.host.v1.ResultR\x06result\"\x85\x01\n" +
-	"\x13ListHostTagsRequest\x12\x18\n" +
-	"\akeyword\x18\x01 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x03 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"|\n" +
-	"\x14ListHostTagsResponse\x12<\n" +
-	"\x05items\x18\x01 \x03(\v2&.cloudstack.management.host.v1.HostTagR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"t\n" +
-	"\x1aAddSecondaryStorageRequest\x12\x18\n" +
-	"\x03url\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x03url\x12\x17\n" +
-	"\azone_id\x18\x02 \x01(\x03R\x06zoneId\x12#\n" +
-	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"\\\n" +
-	"\x1bAddSecondaryStorageResponse\x12=\n" +
-	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.host.v1.ResultR\x06result\"\xc4\x01\n" +
-	"\x1cFindHostsForMigrationRequest\x124\n" +
-	"\x12virtual_machine_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x10virtualMachineId\x12\x18\n" +
-	"\akeyword\x18\x02 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x03 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x04 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"^\n" +
-	"\x1dFindHostsForMigrationResponse\x12=\n" +
-	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.host.v1.ResultR\x06result\"\x91\x03\n" +
-	"\x0eAddHostRequest\x12\x1d\n" +
-	"\n" +
-	"cluster_id\x18\x01 \x01(\x03R\tclusterId\x12-\n" +
-	"\fcluster_name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\vclusterName\x12&\n" +
-	"\busername\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\busername\x12\x1a\n" +
-	"\bpassword\x18\x04 \x01(\tR\bpassword\x12\x1d\n" +
-	"\x06pod_id\x18\x05 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x05podId\x12\x18\n" +
-	"\x03url\x18\x06 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x03url\x12\x1f\n" +
-	"\azone_id\x18\a \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12&\n" +
-	"\n" +
-	"hypervisor\x18\b \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\n" +
-	"hypervisor\x12)\n" +
-	"\x10allocation_state\x18\t \x01(\tR\x0fallocationState\x12\x1b\n" +
-	"\thost_tags\x18\n" +
-	" \x03(\tR\bhostTags\x12#\n" +
-	"\rresponse_type\x18\v \x01(\tR\fresponseType\"P\n" +
-	"\x0fAddHostResponse\x12=\n" +
 	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.host.v1.ResultR\x06result\"\x81\x02\n" +
 	"\x19UpdateHostPasswordRequest\x12\x17\n" +
 	"\ahost_id\x18\x01 \x01(\x03R\x06hostId\x12\x1d\n" +
@@ -2563,27 +2439,6 @@ const file_cloudstack_management_host_v1_host_gen_proto_rawDesc = "" +
 	"\bpassword\x18\x05 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bpassword\x12#\n" +
 	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"[\n" +
 	"\x1aUpdateHostPasswordResponse\x12=\n" +
-	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.host.v1.ResultR\x06result\"\xb3\x01\n" +
-	"\x1cCancelHostMaintenanceRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"^\n" +
-	"\x1dCancelHostMaintenanceResponse\x12=\n" +
-	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.host.v1.ResultR\x06result\"\xab\x01\n" +
-	"\x14ReconnectHostRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"V\n" +
-	"\x15ReconnectHostResponse\x12=\n" +
-	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.host.v1.ResultR\x06result\"\xb3\x01\n" +
-	"\x1cDeclareHostAsDegradedRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"^\n" +
-	"\x1dDeclareHostAsDegradedResponse\x12=\n" +
 	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.host.v1.ResultR\x06result\"\x93\x01\n" +
 	"\x04Host\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
@@ -2599,26 +2454,7 @@ const file_cloudstack_management_host_v1_host_gen_proto_rawDesc = "" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xdc\x03\n" +
-	"\x04Item\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12J\n" +
-	"\adetails\x18\f \x03(\v20.cloudstack.management.host.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
@@ -2628,24 +2464,24 @@ const file_cloudstack_management_host_v1_host_gen_proto_rawDesc = "" +
 	"job_status\x18\x05 \x01(\tR\tjobStatus*a\n" +
 	"\x13AllocationStateType\x12%\n" +
 	"!ALLOCATION_STATE_TYPE_UNSPECIFIED\x10\x00\x12#\n" +
-	"\x1fALLOCATION_STATE_TYPE_V__ENABLE\x10\x012\x8b\x0f\n" +
-	"\vHostService\x12\xa0\x01\n" +
-	"\x19PrepareForHostMaintenance\x12?.cloudstack.management.host.v1.PrepareForHostMaintenanceRequest\x1a@.cloudstack.management.host.v1.PrepareForHostMaintenanceResponse\"\x00\x12p\n" +
-	"\tListHosts\x12/.cloudstack.management.host.v1.ListHostsRequest\x1a0.cloudstack.management.host.v1.ListHostsResponse\"\x00\x12\x91\x01\n" +
-	"\x14CancelHostAsDegraded\x12:.cloudstack.management.host.v1.CancelHostAsDegradedRequest\x1a;.cloudstack.management.host.v1.CancelHostAsDegradedResponse\"\x00\x12\x97\x01\n" +
-	"\x16ReleaseHostReservation\x12<.cloudstack.management.host.v1.ReleaseHostReservationRequest\x1a=.cloudstack.management.host.v1.ReleaseHostReservationResponse\"\x00\x12s\n" +
+	"\x1fALLOCATION_STATE_TYPE_V__ENABLE\x10\x012\xf1\x0f\n" +
+	"\vHostService\x12q\n" +
+	"\aAddHost\x12-.cloudstack.management.host.v1.AddHostRequest\x1a..cloudstack.management.host.v1.AddHostResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x95\x01\n" +
+	"\x13AddSecondaryStorage\x129.cloudstack.management.host.v1.AddSecondaryStorageRequest\x1a:.cloudstack.management.host.v1.AddSecondaryStorageResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x98\x01\n" +
+	"\x14CancelHostAsDegraded\x12:.cloudstack.management.host.v1.CancelHostAsDegradedRequest\x1a;.cloudstack.management.host.v1.CancelHostAsDegradedResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x9b\x01\n" +
+	"\x15CancelHostMaintenance\x12;.cloudstack.management.host.v1.CancelHostMaintenanceRequest\x1a<.cloudstack.management.host.v1.CancelHostMaintenanceResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x9b\x01\n" +
+	"\x15DeclareHostAsDegraded\x12;.cloudstack.management.host.v1.DeclareHostAsDegradedRequest\x1a<.cloudstack.management.host.v1.DeclareHostAsDegradedResponse\"\a\xc2>\x04\xc2>\x01\x02\x12z\n" +
 	"\n" +
-	"DeleteHost\x120.cloudstack.management.host.v1.DeleteHostRequest\x1a1.cloudstack.management.host.v1.DeleteHostResponse\"\x00\x12s\n" +
+	"DeleteHost\x120.cloudstack.management.host.v1.DeleteHostRequest\x1a1.cloudstack.management.host.v1.DeleteHostResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x9b\x01\n" +
+	"\x15FindHostsForMigration\x12;.cloudstack.management.host.v1.FindHostsForMigrationRequest\x1a<.cloudstack.management.host.v1.FindHostsForMigrationResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x80\x01\n" +
+	"\fListHostTags\x122.cloudstack.management.host.v1.ListHostTagsRequest\x1a3.cloudstack.management.host.v1.ListHostTagsResponse\"\a\xc2>\x04\xc2>\x01\x02\x12w\n" +
+	"\tListHosts\x12/.cloudstack.management.host.v1.ListHostsRequest\x1a0.cloudstack.management.host.v1.ListHostsResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xa7\x01\n" +
+	"\x19PrepareForHostMaintenance\x12?.cloudstack.management.host.v1.PrepareForHostMaintenanceRequest\x1a@.cloudstack.management.host.v1.PrepareForHostMaintenanceResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x83\x01\n" +
+	"\rReconnectHost\x123.cloudstack.management.host.v1.ReconnectHostRequest\x1a4.cloudstack.management.host.v1.ReconnectHostResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x9e\x01\n" +
+	"\x16ReleaseHostReservation\x12<.cloudstack.management.host.v1.ReleaseHostReservationRequest\x1a=.cloudstack.management.host.v1.ReleaseHostReservationResponse\"\a\xc2>\x04\xc2>\x01\x02\x12z\n" +
 	"\n" +
-	"UpdateHost\x120.cloudstack.management.host.v1.UpdateHostRequest\x1a1.cloudstack.management.host.v1.UpdateHostResponse\"\x00\x12y\n" +
-	"\fListHostTags\x122.cloudstack.management.host.v1.ListHostTagsRequest\x1a3.cloudstack.management.host.v1.ListHostTagsResponse\"\x00\x12\x8e\x01\n" +
-	"\x13AddSecondaryStorage\x129.cloudstack.management.host.v1.AddSecondaryStorageRequest\x1a:.cloudstack.management.host.v1.AddSecondaryStorageResponse\"\x00\x12\x94\x01\n" +
-	"\x15FindHostsForMigration\x12;.cloudstack.management.host.v1.FindHostsForMigrationRequest\x1a<.cloudstack.management.host.v1.FindHostsForMigrationResponse\"\x00\x12j\n" +
-	"\aAddHost\x12-.cloudstack.management.host.v1.AddHostRequest\x1a..cloudstack.management.host.v1.AddHostResponse\"\x00\x12\x8b\x01\n" +
-	"\x12UpdateHostPassword\x128.cloudstack.management.host.v1.UpdateHostPasswordRequest\x1a9.cloudstack.management.host.v1.UpdateHostPasswordResponse\"\x00\x12\x94\x01\n" +
-	"\x15CancelHostMaintenance\x12;.cloudstack.management.host.v1.CancelHostMaintenanceRequest\x1a<.cloudstack.management.host.v1.CancelHostMaintenanceResponse\"\x00\x12|\n" +
-	"\rReconnectHost\x123.cloudstack.management.host.v1.ReconnectHostRequest\x1a4.cloudstack.management.host.v1.ReconnectHostResponse\"\x00\x12\x94\x01\n" +
-	"\x15DeclareHostAsDegraded\x12;.cloudstack.management.host.v1.DeclareHostAsDegradedRequest\x1a<.cloudstack.management.host.v1.DeclareHostAsDegradedResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x01B\xa2\x02\n" +
+	"UpdateHost\x120.cloudstack.management.host.v1.UpdateHostRequest\x1a1.cloudstack.management.host.v1.UpdateHostResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x92\x01\n" +
+	"\x12UpdateHostPassword\x128.cloudstack.management.host.v1.UpdateHostPasswordRequest\x1a9.cloudstack.management.host.v1.UpdateHostPasswordResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\b\xc2>\x05\xc2>\x02\x01\x02B\xa2\x02\n" +
 	"!com.cloudstack.management.host.v1B\fHostGenProtoP\x01ZXgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/host/v1;hostv1\xa2\x02\x03CMH\xaa\x02\x1dCloudstack.Management.Host.V1\xca\x02\x1dCloudstack\\Management\\Host\\V1\xe2\x02)Cloudstack\\Management\\Host\\V1\\GPBMetadata\xea\x02 Cloudstack::Management::Host::V1b\beditionsp\xe8\a"
 
 var (
@@ -2661,93 +2497,90 @@ func file_cloudstack_management_host_v1_host_gen_proto_rawDescGZIP() []byte {
 }
 
 var file_cloudstack_management_host_v1_host_gen_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_cloudstack_management_host_v1_host_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 34)
+var file_cloudstack_management_host_v1_host_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 32)
 var file_cloudstack_management_host_v1_host_gen_proto_goTypes = []any{
 	(AllocationStateType)(0),                  // 0: cloudstack.management.host.v1.AllocationStateType
-	(*PrepareForHostMaintenanceRequest)(nil),  // 1: cloudstack.management.host.v1.PrepareForHostMaintenanceRequest
-	(*PrepareForHostMaintenanceResponse)(nil), // 2: cloudstack.management.host.v1.PrepareForHostMaintenanceResponse
-	(*ListHostsRequest)(nil),                  // 3: cloudstack.management.host.v1.ListHostsRequest
-	(*ListHostsResponse)(nil),                 // 4: cloudstack.management.host.v1.ListHostsResponse
+	(*AddHostRequest)(nil),                    // 1: cloudstack.management.host.v1.AddHostRequest
+	(*AddHostResponse)(nil),                   // 2: cloudstack.management.host.v1.AddHostResponse
+	(*AddSecondaryStorageRequest)(nil),        // 3: cloudstack.management.host.v1.AddSecondaryStorageRequest
+	(*AddSecondaryStorageResponse)(nil),       // 4: cloudstack.management.host.v1.AddSecondaryStorageResponse
 	(*CancelHostAsDegradedRequest)(nil),       // 5: cloudstack.management.host.v1.CancelHostAsDegradedRequest
 	(*CancelHostAsDegradedResponse)(nil),      // 6: cloudstack.management.host.v1.CancelHostAsDegradedResponse
-	(*ReleaseHostReservationRequest)(nil),     // 7: cloudstack.management.host.v1.ReleaseHostReservationRequest
-	(*ReleaseHostReservationResponse)(nil),    // 8: cloudstack.management.host.v1.ReleaseHostReservationResponse
-	(*DeleteHostRequest)(nil),                 // 9: cloudstack.management.host.v1.DeleteHostRequest
-	(*DeleteHostResponse)(nil),                // 10: cloudstack.management.host.v1.DeleteHostResponse
-	(*UpdateHostRequest)(nil),                 // 11: cloudstack.management.host.v1.UpdateHostRequest
-	(*UpdateHostResponse)(nil),                // 12: cloudstack.management.host.v1.UpdateHostResponse
-	(*ListHostTagsRequest)(nil),               // 13: cloudstack.management.host.v1.ListHostTagsRequest
-	(*ListHostTagsResponse)(nil),              // 14: cloudstack.management.host.v1.ListHostTagsResponse
-	(*AddSecondaryStorageRequest)(nil),        // 15: cloudstack.management.host.v1.AddSecondaryStorageRequest
-	(*AddSecondaryStorageResponse)(nil),       // 16: cloudstack.management.host.v1.AddSecondaryStorageResponse
-	(*FindHostsForMigrationRequest)(nil),      // 17: cloudstack.management.host.v1.FindHostsForMigrationRequest
-	(*FindHostsForMigrationResponse)(nil),     // 18: cloudstack.management.host.v1.FindHostsForMigrationResponse
-	(*AddHostRequest)(nil),                    // 19: cloudstack.management.host.v1.AddHostRequest
-	(*AddHostResponse)(nil),                   // 20: cloudstack.management.host.v1.AddHostResponse
-	(*UpdateHostPasswordRequest)(nil),         // 21: cloudstack.management.host.v1.UpdateHostPasswordRequest
-	(*UpdateHostPasswordResponse)(nil),        // 22: cloudstack.management.host.v1.UpdateHostPasswordResponse
-	(*CancelHostMaintenanceRequest)(nil),      // 23: cloudstack.management.host.v1.CancelHostMaintenanceRequest
-	(*CancelHostMaintenanceResponse)(nil),     // 24: cloudstack.management.host.v1.CancelHostMaintenanceResponse
-	(*ReconnectHostRequest)(nil),              // 25: cloudstack.management.host.v1.ReconnectHostRequest
-	(*ReconnectHostResponse)(nil),             // 26: cloudstack.management.host.v1.ReconnectHostResponse
-	(*DeclareHostAsDegradedRequest)(nil),      // 27: cloudstack.management.host.v1.DeclareHostAsDegradedRequest
-	(*DeclareHostAsDegradedResponse)(nil),     // 28: cloudstack.management.host.v1.DeclareHostAsDegradedResponse
+	(*CancelHostMaintenanceRequest)(nil),      // 7: cloudstack.management.host.v1.CancelHostMaintenanceRequest
+	(*CancelHostMaintenanceResponse)(nil),     // 8: cloudstack.management.host.v1.CancelHostMaintenanceResponse
+	(*DeclareHostAsDegradedRequest)(nil),      // 9: cloudstack.management.host.v1.DeclareHostAsDegradedRequest
+	(*DeclareHostAsDegradedResponse)(nil),     // 10: cloudstack.management.host.v1.DeclareHostAsDegradedResponse
+	(*DeleteHostRequest)(nil),                 // 11: cloudstack.management.host.v1.DeleteHostRequest
+	(*DeleteHostResponse)(nil),                // 12: cloudstack.management.host.v1.DeleteHostResponse
+	(*FindHostsForMigrationRequest)(nil),      // 13: cloudstack.management.host.v1.FindHostsForMigrationRequest
+	(*FindHostsForMigrationResponse)(nil),     // 14: cloudstack.management.host.v1.FindHostsForMigrationResponse
+	(*ListHostTagsRequest)(nil),               // 15: cloudstack.management.host.v1.ListHostTagsRequest
+	(*ListHostTagsResponse)(nil),              // 16: cloudstack.management.host.v1.ListHostTagsResponse
+	(*ListHostsRequest)(nil),                  // 17: cloudstack.management.host.v1.ListHostsRequest
+	(*ListHostsResponse)(nil),                 // 18: cloudstack.management.host.v1.ListHostsResponse
+	(*PrepareForHostMaintenanceRequest)(nil),  // 19: cloudstack.management.host.v1.PrepareForHostMaintenanceRequest
+	(*PrepareForHostMaintenanceResponse)(nil), // 20: cloudstack.management.host.v1.PrepareForHostMaintenanceResponse
+	(*ReconnectHostRequest)(nil),              // 21: cloudstack.management.host.v1.ReconnectHostRequest
+	(*ReconnectHostResponse)(nil),             // 22: cloudstack.management.host.v1.ReconnectHostResponse
+	(*ReleaseHostReservationRequest)(nil),     // 23: cloudstack.management.host.v1.ReleaseHostReservationRequest
+	(*ReleaseHostReservationResponse)(nil),    // 24: cloudstack.management.host.v1.ReleaseHostReservationResponse
+	(*UpdateHostRequest)(nil),                 // 25: cloudstack.management.host.v1.UpdateHostRequest
+	(*UpdateHostResponse)(nil),                // 26: cloudstack.management.host.v1.UpdateHostResponse
+	(*UpdateHostPasswordRequest)(nil),         // 27: cloudstack.management.host.v1.UpdateHostPasswordRequest
+	(*UpdateHostPasswordResponse)(nil),        // 28: cloudstack.management.host.v1.UpdateHostPasswordResponse
 	(*Host)(nil),                              // 29: cloudstack.management.host.v1.Host
 	(*HostTag)(nil),                           // 30: cloudstack.management.host.v1.HostTag
 	(*Success)(nil),                           // 31: cloudstack.management.host.v1.Success
-	(*Item)(nil),                              // 32: cloudstack.management.host.v1.Item
-	(*Result)(nil),                            // 33: cloudstack.management.host.v1.Result
-	nil,                                       // 34: cloudstack.management.host.v1.Item.DetailsEntry
+	(*Result)(nil),                            // 32: cloudstack.management.host.v1.Result
 }
 var file_cloudstack_management_host_v1_host_gen_proto_depIdxs = []int32{
-	33, // 0: cloudstack.management.host.v1.PrepareForHostMaintenanceResponse.result:type_name -> cloudstack.management.host.v1.Result
-	29, // 1: cloudstack.management.host.v1.ListHostsResponse.items:type_name -> cloudstack.management.host.v1.Host
-	33, // 2: cloudstack.management.host.v1.CancelHostAsDegradedResponse.result:type_name -> cloudstack.management.host.v1.Result
-	33, // 3: cloudstack.management.host.v1.ReleaseHostReservationResponse.result:type_name -> cloudstack.management.host.v1.Result
-	33, // 4: cloudstack.management.host.v1.DeleteHostResponse.result:type_name -> cloudstack.management.host.v1.Result
-	33, // 5: cloudstack.management.host.v1.UpdateHostResponse.result:type_name -> cloudstack.management.host.v1.Result
-	30, // 6: cloudstack.management.host.v1.ListHostTagsResponse.items:type_name -> cloudstack.management.host.v1.HostTag
-	33, // 7: cloudstack.management.host.v1.AddSecondaryStorageResponse.result:type_name -> cloudstack.management.host.v1.Result
-	33, // 8: cloudstack.management.host.v1.FindHostsForMigrationResponse.result:type_name -> cloudstack.management.host.v1.Result
-	33, // 9: cloudstack.management.host.v1.AddHostResponse.result:type_name -> cloudstack.management.host.v1.Result
-	33, // 10: cloudstack.management.host.v1.UpdateHostPasswordResponse.result:type_name -> cloudstack.management.host.v1.Result
-	33, // 11: cloudstack.management.host.v1.CancelHostMaintenanceResponse.result:type_name -> cloudstack.management.host.v1.Result
-	33, // 12: cloudstack.management.host.v1.ReconnectHostResponse.result:type_name -> cloudstack.management.host.v1.Result
-	33, // 13: cloudstack.management.host.v1.DeclareHostAsDegradedResponse.result:type_name -> cloudstack.management.host.v1.Result
-	34, // 14: cloudstack.management.host.v1.Item.details:type_name -> cloudstack.management.host.v1.Item.DetailsEntry
-	1,  // 15: cloudstack.management.host.v1.HostService.PrepareForHostMaintenance:input_type -> cloudstack.management.host.v1.PrepareForHostMaintenanceRequest
-	3,  // 16: cloudstack.management.host.v1.HostService.ListHosts:input_type -> cloudstack.management.host.v1.ListHostsRequest
-	5,  // 17: cloudstack.management.host.v1.HostService.CancelHostAsDegraded:input_type -> cloudstack.management.host.v1.CancelHostAsDegradedRequest
-	7,  // 18: cloudstack.management.host.v1.HostService.ReleaseHostReservation:input_type -> cloudstack.management.host.v1.ReleaseHostReservationRequest
-	9,  // 19: cloudstack.management.host.v1.HostService.DeleteHost:input_type -> cloudstack.management.host.v1.DeleteHostRequest
-	11, // 20: cloudstack.management.host.v1.HostService.UpdateHost:input_type -> cloudstack.management.host.v1.UpdateHostRequest
-	13, // 21: cloudstack.management.host.v1.HostService.ListHostTags:input_type -> cloudstack.management.host.v1.ListHostTagsRequest
-	15, // 22: cloudstack.management.host.v1.HostService.AddSecondaryStorage:input_type -> cloudstack.management.host.v1.AddSecondaryStorageRequest
-	17, // 23: cloudstack.management.host.v1.HostService.FindHostsForMigration:input_type -> cloudstack.management.host.v1.FindHostsForMigrationRequest
-	19, // 24: cloudstack.management.host.v1.HostService.AddHost:input_type -> cloudstack.management.host.v1.AddHostRequest
-	21, // 25: cloudstack.management.host.v1.HostService.UpdateHostPassword:input_type -> cloudstack.management.host.v1.UpdateHostPasswordRequest
-	23, // 26: cloudstack.management.host.v1.HostService.CancelHostMaintenance:input_type -> cloudstack.management.host.v1.CancelHostMaintenanceRequest
-	25, // 27: cloudstack.management.host.v1.HostService.ReconnectHost:input_type -> cloudstack.management.host.v1.ReconnectHostRequest
-	27, // 28: cloudstack.management.host.v1.HostService.DeclareHostAsDegraded:input_type -> cloudstack.management.host.v1.DeclareHostAsDegradedRequest
-	2,  // 29: cloudstack.management.host.v1.HostService.PrepareForHostMaintenance:output_type -> cloudstack.management.host.v1.PrepareForHostMaintenanceResponse
-	4,  // 30: cloudstack.management.host.v1.HostService.ListHosts:output_type -> cloudstack.management.host.v1.ListHostsResponse
-	6,  // 31: cloudstack.management.host.v1.HostService.CancelHostAsDegraded:output_type -> cloudstack.management.host.v1.CancelHostAsDegradedResponse
-	8,  // 32: cloudstack.management.host.v1.HostService.ReleaseHostReservation:output_type -> cloudstack.management.host.v1.ReleaseHostReservationResponse
-	10, // 33: cloudstack.management.host.v1.HostService.DeleteHost:output_type -> cloudstack.management.host.v1.DeleteHostResponse
-	12, // 34: cloudstack.management.host.v1.HostService.UpdateHost:output_type -> cloudstack.management.host.v1.UpdateHostResponse
-	14, // 35: cloudstack.management.host.v1.HostService.ListHostTags:output_type -> cloudstack.management.host.v1.ListHostTagsResponse
-	16, // 36: cloudstack.management.host.v1.HostService.AddSecondaryStorage:output_type -> cloudstack.management.host.v1.AddSecondaryStorageResponse
-	18, // 37: cloudstack.management.host.v1.HostService.FindHostsForMigration:output_type -> cloudstack.management.host.v1.FindHostsForMigrationResponse
-	20, // 38: cloudstack.management.host.v1.HostService.AddHost:output_type -> cloudstack.management.host.v1.AddHostResponse
-	22, // 39: cloudstack.management.host.v1.HostService.UpdateHostPassword:output_type -> cloudstack.management.host.v1.UpdateHostPasswordResponse
-	24, // 40: cloudstack.management.host.v1.HostService.CancelHostMaintenance:output_type -> cloudstack.management.host.v1.CancelHostMaintenanceResponse
-	26, // 41: cloudstack.management.host.v1.HostService.ReconnectHost:output_type -> cloudstack.management.host.v1.ReconnectHostResponse
-	28, // 42: cloudstack.management.host.v1.HostService.DeclareHostAsDegraded:output_type -> cloudstack.management.host.v1.DeclareHostAsDegradedResponse
-	29, // [29:43] is the sub-list for method output_type
-	15, // [15:29] is the sub-list for method input_type
-	15, // [15:15] is the sub-list for extension type_name
-	15, // [15:15] is the sub-list for extension extendee
-	0,  // [0:15] is the sub-list for field type_name
+	32, // 0: cloudstack.management.host.v1.AddHostResponse.result:type_name -> cloudstack.management.host.v1.Result
+	32, // 1: cloudstack.management.host.v1.AddSecondaryStorageResponse.result:type_name -> cloudstack.management.host.v1.Result
+	32, // 2: cloudstack.management.host.v1.CancelHostAsDegradedResponse.result:type_name -> cloudstack.management.host.v1.Result
+	32, // 3: cloudstack.management.host.v1.CancelHostMaintenanceResponse.result:type_name -> cloudstack.management.host.v1.Result
+	32, // 4: cloudstack.management.host.v1.DeclareHostAsDegradedResponse.result:type_name -> cloudstack.management.host.v1.Result
+	32, // 5: cloudstack.management.host.v1.DeleteHostResponse.result:type_name -> cloudstack.management.host.v1.Result
+	32, // 6: cloudstack.management.host.v1.FindHostsForMigrationResponse.result:type_name -> cloudstack.management.host.v1.Result
+	30, // 7: cloudstack.management.host.v1.ListHostTagsResponse.items:type_name -> cloudstack.management.host.v1.HostTag
+	29, // 8: cloudstack.management.host.v1.ListHostsResponse.items:type_name -> cloudstack.management.host.v1.Host
+	32, // 9: cloudstack.management.host.v1.PrepareForHostMaintenanceResponse.result:type_name -> cloudstack.management.host.v1.Result
+	32, // 10: cloudstack.management.host.v1.ReconnectHostResponse.result:type_name -> cloudstack.management.host.v1.Result
+	32, // 11: cloudstack.management.host.v1.ReleaseHostReservationResponse.result:type_name -> cloudstack.management.host.v1.Result
+	32, // 12: cloudstack.management.host.v1.UpdateHostResponse.result:type_name -> cloudstack.management.host.v1.Result
+	32, // 13: cloudstack.management.host.v1.UpdateHostPasswordResponse.result:type_name -> cloudstack.management.host.v1.Result
+	1,  // 14: cloudstack.management.host.v1.HostService.AddHost:input_type -> cloudstack.management.host.v1.AddHostRequest
+	3,  // 15: cloudstack.management.host.v1.HostService.AddSecondaryStorage:input_type -> cloudstack.management.host.v1.AddSecondaryStorageRequest
+	5,  // 16: cloudstack.management.host.v1.HostService.CancelHostAsDegraded:input_type -> cloudstack.management.host.v1.CancelHostAsDegradedRequest
+	7,  // 17: cloudstack.management.host.v1.HostService.CancelHostMaintenance:input_type -> cloudstack.management.host.v1.CancelHostMaintenanceRequest
+	9,  // 18: cloudstack.management.host.v1.HostService.DeclareHostAsDegraded:input_type -> cloudstack.management.host.v1.DeclareHostAsDegradedRequest
+	11, // 19: cloudstack.management.host.v1.HostService.DeleteHost:input_type -> cloudstack.management.host.v1.DeleteHostRequest
+	13, // 20: cloudstack.management.host.v1.HostService.FindHostsForMigration:input_type -> cloudstack.management.host.v1.FindHostsForMigrationRequest
+	15, // 21: cloudstack.management.host.v1.HostService.ListHostTags:input_type -> cloudstack.management.host.v1.ListHostTagsRequest
+	17, // 22: cloudstack.management.host.v1.HostService.ListHosts:input_type -> cloudstack.management.host.v1.ListHostsRequest
+	19, // 23: cloudstack.management.host.v1.HostService.PrepareForHostMaintenance:input_type -> cloudstack.management.host.v1.PrepareForHostMaintenanceRequest
+	21, // 24: cloudstack.management.host.v1.HostService.ReconnectHost:input_type -> cloudstack.management.host.v1.ReconnectHostRequest
+	23, // 25: cloudstack.management.host.v1.HostService.ReleaseHostReservation:input_type -> cloudstack.management.host.v1.ReleaseHostReservationRequest
+	25, // 26: cloudstack.management.host.v1.HostService.UpdateHost:input_type -> cloudstack.management.host.v1.UpdateHostRequest
+	27, // 27: cloudstack.management.host.v1.HostService.UpdateHostPassword:input_type -> cloudstack.management.host.v1.UpdateHostPasswordRequest
+	2,  // 28: cloudstack.management.host.v1.HostService.AddHost:output_type -> cloudstack.management.host.v1.AddHostResponse
+	4,  // 29: cloudstack.management.host.v1.HostService.AddSecondaryStorage:output_type -> cloudstack.management.host.v1.AddSecondaryStorageResponse
+	6,  // 30: cloudstack.management.host.v1.HostService.CancelHostAsDegraded:output_type -> cloudstack.management.host.v1.CancelHostAsDegradedResponse
+	8,  // 31: cloudstack.management.host.v1.HostService.CancelHostMaintenance:output_type -> cloudstack.management.host.v1.CancelHostMaintenanceResponse
+	10, // 32: cloudstack.management.host.v1.HostService.DeclareHostAsDegraded:output_type -> cloudstack.management.host.v1.DeclareHostAsDegradedResponse
+	12, // 33: cloudstack.management.host.v1.HostService.DeleteHost:output_type -> cloudstack.management.host.v1.DeleteHostResponse
+	14, // 34: cloudstack.management.host.v1.HostService.FindHostsForMigration:output_type -> cloudstack.management.host.v1.FindHostsForMigrationResponse
+	16, // 35: cloudstack.management.host.v1.HostService.ListHostTags:output_type -> cloudstack.management.host.v1.ListHostTagsResponse
+	18, // 36: cloudstack.management.host.v1.HostService.ListHosts:output_type -> cloudstack.management.host.v1.ListHostsResponse
+	20, // 37: cloudstack.management.host.v1.HostService.PrepareForHostMaintenance:output_type -> cloudstack.management.host.v1.PrepareForHostMaintenanceResponse
+	22, // 38: cloudstack.management.host.v1.HostService.ReconnectHost:output_type -> cloudstack.management.host.v1.ReconnectHostResponse
+	24, // 39: cloudstack.management.host.v1.HostService.ReleaseHostReservation:output_type -> cloudstack.management.host.v1.ReleaseHostReservationResponse
+	26, // 40: cloudstack.management.host.v1.HostService.UpdateHost:output_type -> cloudstack.management.host.v1.UpdateHostResponse
+	28, // 41: cloudstack.management.host.v1.HostService.UpdateHostPassword:output_type -> cloudstack.management.host.v1.UpdateHostPasswordResponse
+	28, // [28:42] is the sub-list for method output_type
+	14, // [14:28] is the sub-list for method input_type
+	14, // [14:14] is the sub-list for extension type_name
+	14, // [14:14] is the sub-list for extension extendee
+	0,  // [0:14] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_host_v1_host_gen_proto_init() }
@@ -2761,7 +2594,7 @@ func file_cloudstack_management_host_v1_host_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_host_v1_host_gen_proto_rawDesc), len(file_cloudstack_management_host_v1_host_gen_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   34,
+			NumMessages:   32,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

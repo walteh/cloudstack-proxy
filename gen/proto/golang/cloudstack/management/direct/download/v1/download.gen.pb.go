@@ -24,278 +24,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// RevokeTemplateDirectDownloadCertificateRequest represents the parameters for revoke a direct download certificate from hosts in a zone
-type RevokeTemplateDirectDownloadCertificateRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// id of the certificate
-	CertificateId *int64 `protobuf:"varint,1,opt,name=certificate_id,json=certificateId" json:"certificate_id,omitempty"`
-	// (optional) alias of the SSL certificate
-	CertificateAlias *string `protobuf:"bytes,2,opt,name=certificate_alias,json=certificateAlias" json:"certificate_alias,omitempty"`
-	// (optional) hypervisor type
-	Hypervisor *string `protobuf:"bytes,3,opt,name=hypervisor" json:"hypervisor,omitempty"`
-	// (optional) zone to revoke certificate
-	ZoneId *int64 `protobuf:"varint,4,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// (optional) the host ID to revoke certificate
-	HostId *int64 `protobuf:"varint,5,opt,name=host_id,json=hostId" json:"host_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RevokeTemplateDirectDownloadCertificateRequest) Reset() {
-	*x = RevokeTemplateDirectDownloadCertificateRequest{}
-	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RevokeTemplateDirectDownloadCertificateRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RevokeTemplateDirectDownloadCertificateRequest) ProtoMessage() {}
-
-func (x *RevokeTemplateDirectDownloadCertificateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RevokeTemplateDirectDownloadCertificateRequest.ProtoReflect.Descriptor instead.
-func (*RevokeTemplateDirectDownloadCertificateRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_direct_download_v1_download_gen_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *RevokeTemplateDirectDownloadCertificateRequest) GetCertificateId() int64 {
-	if x != nil && x.CertificateId != nil {
-		return *x.CertificateId
-	}
-	return 0
-}
-
-func (x *RevokeTemplateDirectDownloadCertificateRequest) GetCertificateAlias() string {
-	if x != nil && x.CertificateAlias != nil {
-		return *x.CertificateAlias
-	}
-	return ""
-}
-
-func (x *RevokeTemplateDirectDownloadCertificateRequest) GetHypervisor() string {
-	if x != nil && x.Hypervisor != nil {
-		return *x.Hypervisor
-	}
-	return ""
-}
-
-func (x *RevokeTemplateDirectDownloadCertificateRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *RevokeTemplateDirectDownloadCertificateRequest) GetHostId() int64 {
-	if x != nil && x.HostId != nil {
-		return *x.HostId
-	}
-	return 0
-}
-
-func (x *RevokeTemplateDirectDownloadCertificateRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// RevokeTemplateDirectDownloadCertificateResponse represents the response from revoke a direct download certificate from hosts in a zone
-type RevokeTemplateDirectDownloadCertificateResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RevokeTemplateDirectDownloadCertificateResponse) Reset() {
-	*x = RevokeTemplateDirectDownloadCertificateResponse{}
-	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RevokeTemplateDirectDownloadCertificateResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RevokeTemplateDirectDownloadCertificateResponse) ProtoMessage() {}
-
-func (x *RevokeTemplateDirectDownloadCertificateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RevokeTemplateDirectDownloadCertificateResponse.ProtoReflect.Descriptor instead.
-func (*RevokeTemplateDirectDownloadCertificateResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_direct_download_v1_download_gen_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *RevokeTemplateDirectDownloadCertificateResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UploadTemplateDirectDownloadCertificateRequest represents the parameters for upload a certificate for https direct template download on kvm hosts
-type UploadTemplateDirectDownloadCertificateRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// SSL certificate
-	Certificate *string `protobuf:"bytes,1,opt,name=certificate" json:"certificate,omitempty"`
-	// Name for the uploaded certificate
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// Hypervisor type
-	Hypervisor *string `protobuf:"bytes,3,opt,name=hypervisor" json:"hypervisor,omitempty"`
-	// Zone to upload certificate
-	ZoneId *int64 `protobuf:"varint,4,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// (optional) the host ID to upload certificate
-	HostId *int64 `protobuf:"varint,5,opt,name=host_id,json=hostId" json:"host_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UploadTemplateDirectDownloadCertificateRequest) Reset() {
-	*x = UploadTemplateDirectDownloadCertificateRequest{}
-	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UploadTemplateDirectDownloadCertificateRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UploadTemplateDirectDownloadCertificateRequest) ProtoMessage() {}
-
-func (x *UploadTemplateDirectDownloadCertificateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UploadTemplateDirectDownloadCertificateRequest.ProtoReflect.Descriptor instead.
-func (*UploadTemplateDirectDownloadCertificateRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_direct_download_v1_download_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *UploadTemplateDirectDownloadCertificateRequest) GetCertificate() string {
-	if x != nil && x.Certificate != nil {
-		return *x.Certificate
-	}
-	return ""
-}
-
-func (x *UploadTemplateDirectDownloadCertificateRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *UploadTemplateDirectDownloadCertificateRequest) GetHypervisor() string {
-	if x != nil && x.Hypervisor != nil {
-		return *x.Hypervisor
-	}
-	return ""
-}
-
-func (x *UploadTemplateDirectDownloadCertificateRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *UploadTemplateDirectDownloadCertificateRequest) GetHostId() int64 {
-	if x != nil && x.HostId != nil {
-		return *x.HostId
-	}
-	return 0
-}
-
-func (x *UploadTemplateDirectDownloadCertificateRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UploadTemplateDirectDownloadCertificateResponse represents the response from upload a certificate for https direct template download on kvm hosts
-type UploadTemplateDirectDownloadCertificateResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UploadTemplateDirectDownloadCertificateResponse) Reset() {
-	*x = UploadTemplateDirectDownloadCertificateResponse{}
-	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UploadTemplateDirectDownloadCertificateResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UploadTemplateDirectDownloadCertificateResponse) ProtoMessage() {}
-
-func (x *UploadTemplateDirectDownloadCertificateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UploadTemplateDirectDownloadCertificateResponse.ProtoReflect.Descriptor instead.
-func (*UploadTemplateDirectDownloadCertificateResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_direct_download_v1_download_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *UploadTemplateDirectDownloadCertificateResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
 // ListTemplateDirectDownloadCertificatesRequest represents the parameters for list the uploaded certificates for direct download templates
 type ListTemplateDirectDownloadCertificatesRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -316,7 +44,7 @@ type ListTemplateDirectDownloadCertificatesRequest struct {
 
 func (x *ListTemplateDirectDownloadCertificatesRequest) Reset() {
 	*x = ListTemplateDirectDownloadCertificatesRequest{}
-	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -328,7 +56,7 @@ func (x *ListTemplateDirectDownloadCertificatesRequest) String() string {
 func (*ListTemplateDirectDownloadCertificatesRequest) ProtoMessage() {}
 
 func (x *ListTemplateDirectDownloadCertificatesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -341,7 +69,7 @@ func (x *ListTemplateDirectDownloadCertificatesRequest) ProtoReflect() protorefl
 
 // Deprecated: Use ListTemplateDirectDownloadCertificatesRequest.ProtoReflect.Descriptor instead.
 func (*ListTemplateDirectDownloadCertificatesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_direct_download_v1_download_gen_proto_rawDescGZIP(), []int{4}
+	return file_cloudstack_management_direct_download_v1_download_gen_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *ListTemplateDirectDownloadCertificatesRequest) GetId() int64 {
@@ -406,7 +134,7 @@ type ListTemplateDirectDownloadCertificatesResponse struct {
 
 func (x *ListTemplateDirectDownloadCertificatesResponse) Reset() {
 	*x = ListTemplateDirectDownloadCertificatesResponse{}
-	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -418,7 +146,7 @@ func (x *ListTemplateDirectDownloadCertificatesResponse) String() string {
 func (*ListTemplateDirectDownloadCertificatesResponse) ProtoMessage() {}
 
 func (x *ListTemplateDirectDownloadCertificatesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -431,7 +159,7 @@ func (x *ListTemplateDirectDownloadCertificatesResponse) ProtoReflect() protoref
 
 // Deprecated: Use ListTemplateDirectDownloadCertificatesResponse.ProtoReflect.Descriptor instead.
 func (*ListTemplateDirectDownloadCertificatesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_direct_download_v1_download_gen_proto_rawDescGZIP(), []int{5}
+	return file_cloudstack_management_direct_download_v1_download_gen_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ListTemplateDirectDownloadCertificatesResponse) GetItems() []*DirectDownloadCertificate {
@@ -462,7 +190,7 @@ type ProvisionTemplateDirectDownloadCertificateRequest struct {
 
 func (x *ProvisionTemplateDirectDownloadCertificateRequest) Reset() {
 	*x = ProvisionTemplateDirectDownloadCertificateRequest{}
-	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -474,7 +202,7 @@ func (x *ProvisionTemplateDirectDownloadCertificateRequest) String() string {
 func (*ProvisionTemplateDirectDownloadCertificateRequest) ProtoMessage() {}
 
 func (x *ProvisionTemplateDirectDownloadCertificateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -487,7 +215,7 @@ func (x *ProvisionTemplateDirectDownloadCertificateRequest) ProtoReflect() proto
 
 // Deprecated: Use ProvisionTemplateDirectDownloadCertificateRequest.ProtoReflect.Descriptor instead.
 func (*ProvisionTemplateDirectDownloadCertificateRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_direct_download_v1_download_gen_proto_rawDescGZIP(), []int{6}
+	return file_cloudstack_management_direct_download_v1_download_gen_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ProvisionTemplateDirectDownloadCertificateRequest) GetId() int64 {
@@ -522,7 +250,7 @@ type ProvisionTemplateDirectDownloadCertificateResponse struct {
 
 func (x *ProvisionTemplateDirectDownloadCertificateResponse) Reset() {
 	*x = ProvisionTemplateDirectDownloadCertificateResponse{}
-	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -534,7 +262,7 @@ func (x *ProvisionTemplateDirectDownloadCertificateResponse) String() string {
 func (*ProvisionTemplateDirectDownloadCertificateResponse) ProtoMessage() {}
 
 func (x *ProvisionTemplateDirectDownloadCertificateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -547,10 +275,282 @@ func (x *ProvisionTemplateDirectDownloadCertificateResponse) ProtoReflect() prot
 
 // Deprecated: Use ProvisionTemplateDirectDownloadCertificateResponse.ProtoReflect.Descriptor instead.
 func (*ProvisionTemplateDirectDownloadCertificateResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_direct_download_v1_download_gen_proto_rawDescGZIP(), []int{7}
+	return file_cloudstack_management_direct_download_v1_download_gen_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ProvisionTemplateDirectDownloadCertificateResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// RevokeTemplateDirectDownloadCertificateRequest represents the parameters for revoke a direct download certificate from hosts in a zone
+type RevokeTemplateDirectDownloadCertificateRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// id of the certificate
+	CertificateId *int64 `protobuf:"varint,1,opt,name=certificate_id,json=certificateId" json:"certificate_id,omitempty"`
+	// (optional) alias of the SSL certificate
+	CertificateAlias *string `protobuf:"bytes,2,opt,name=certificate_alias,json=certificateAlias" json:"certificate_alias,omitempty"`
+	// (optional) hypervisor type
+	Hypervisor *string `protobuf:"bytes,3,opt,name=hypervisor" json:"hypervisor,omitempty"`
+	// (optional) zone to revoke certificate
+	ZoneId *int64 `protobuf:"varint,4,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// (optional) the host ID to revoke certificate
+	HostId *int64 `protobuf:"varint,5,opt,name=host_id,json=hostId" json:"host_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RevokeTemplateDirectDownloadCertificateRequest) Reset() {
+	*x = RevokeTemplateDirectDownloadCertificateRequest{}
+	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RevokeTemplateDirectDownloadCertificateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RevokeTemplateDirectDownloadCertificateRequest) ProtoMessage() {}
+
+func (x *RevokeTemplateDirectDownloadCertificateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RevokeTemplateDirectDownloadCertificateRequest.ProtoReflect.Descriptor instead.
+func (*RevokeTemplateDirectDownloadCertificateRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_direct_download_v1_download_gen_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *RevokeTemplateDirectDownloadCertificateRequest) GetCertificateId() int64 {
+	if x != nil && x.CertificateId != nil {
+		return *x.CertificateId
+	}
+	return 0
+}
+
+func (x *RevokeTemplateDirectDownloadCertificateRequest) GetCertificateAlias() string {
+	if x != nil && x.CertificateAlias != nil {
+		return *x.CertificateAlias
+	}
+	return ""
+}
+
+func (x *RevokeTemplateDirectDownloadCertificateRequest) GetHypervisor() string {
+	if x != nil && x.Hypervisor != nil {
+		return *x.Hypervisor
+	}
+	return ""
+}
+
+func (x *RevokeTemplateDirectDownloadCertificateRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *RevokeTemplateDirectDownloadCertificateRequest) GetHostId() int64 {
+	if x != nil && x.HostId != nil {
+		return *x.HostId
+	}
+	return 0
+}
+
+func (x *RevokeTemplateDirectDownloadCertificateRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// RevokeTemplateDirectDownloadCertificateResponse represents the response from revoke a direct download certificate from hosts in a zone
+type RevokeTemplateDirectDownloadCertificateResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RevokeTemplateDirectDownloadCertificateResponse) Reset() {
+	*x = RevokeTemplateDirectDownloadCertificateResponse{}
+	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RevokeTemplateDirectDownloadCertificateResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RevokeTemplateDirectDownloadCertificateResponse) ProtoMessage() {}
+
+func (x *RevokeTemplateDirectDownloadCertificateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RevokeTemplateDirectDownloadCertificateResponse.ProtoReflect.Descriptor instead.
+func (*RevokeTemplateDirectDownloadCertificateResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_direct_download_v1_download_gen_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *RevokeTemplateDirectDownloadCertificateResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UploadTemplateDirectDownloadCertificateRequest represents the parameters for upload a certificate for https direct template download on kvm hosts
+type UploadTemplateDirectDownloadCertificateRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// SSL certificate
+	Certificate *string `protobuf:"bytes,1,opt,name=certificate" json:"certificate,omitempty"`
+	// Name for the uploaded certificate
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// Hypervisor type
+	Hypervisor *string `protobuf:"bytes,3,opt,name=hypervisor" json:"hypervisor,omitempty"`
+	// Zone to upload certificate
+	ZoneId *int64 `protobuf:"varint,4,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// (optional) the host ID to upload certificate
+	HostId *int64 `protobuf:"varint,5,opt,name=host_id,json=hostId" json:"host_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UploadTemplateDirectDownloadCertificateRequest) Reset() {
+	*x = UploadTemplateDirectDownloadCertificateRequest{}
+	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UploadTemplateDirectDownloadCertificateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UploadTemplateDirectDownloadCertificateRequest) ProtoMessage() {}
+
+func (x *UploadTemplateDirectDownloadCertificateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UploadTemplateDirectDownloadCertificateRequest.ProtoReflect.Descriptor instead.
+func (*UploadTemplateDirectDownloadCertificateRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_direct_download_v1_download_gen_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *UploadTemplateDirectDownloadCertificateRequest) GetCertificate() string {
+	if x != nil && x.Certificate != nil {
+		return *x.Certificate
+	}
+	return ""
+}
+
+func (x *UploadTemplateDirectDownloadCertificateRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *UploadTemplateDirectDownloadCertificateRequest) GetHypervisor() string {
+	if x != nil && x.Hypervisor != nil {
+		return *x.Hypervisor
+	}
+	return ""
+}
+
+func (x *UploadTemplateDirectDownloadCertificateRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *UploadTemplateDirectDownloadCertificateRequest) GetHostId() int64 {
+	if x != nil && x.HostId != nil {
+		return *x.HostId
+	}
+	return 0
+}
+
+func (x *UploadTemplateDirectDownloadCertificateRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UploadTemplateDirectDownloadCertificateResponse represents the response from upload a certificate for https direct template download on kvm hosts
+type UploadTemplateDirectDownloadCertificateResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UploadTemplateDirectDownloadCertificateResponse) Reset() {
+	*x = UploadTemplateDirectDownloadCertificateResponse{}
+	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UploadTemplateDirectDownloadCertificateResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UploadTemplateDirectDownloadCertificateResponse) ProtoMessage() {}
+
+func (x *UploadTemplateDirectDownloadCertificateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UploadTemplateDirectDownloadCertificateResponse.ProtoReflect.Descriptor instead.
+func (*UploadTemplateDirectDownloadCertificateResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_direct_download_v1_download_gen_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *UploadTemplateDirectDownloadCertificateResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -694,151 +694,6 @@ func (x *Success) GetDisplayText() string {
 	return ""
 }
 
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_direct_download_v1_download_gen_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
 // Result represents a generic operation result
 type Result struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -858,7 +713,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -870,7 +725,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -883,7 +738,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_direct_download_v1_download_gen_proto_rawDescGZIP(), []int{11}
+	return file_cloudstack_management_direct_download_v1_download_gen_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -925,7 +780,26 @@ var File_cloudstack_management_direct_download_v1_download_gen_proto protoreflec
 
 const file_cloudstack_management_direct_download_v1_download_gen_proto_rawDesc = "" +
 	"\n" +
-	";cloudstack/management/direct/download/v1/download.gen.proto\x12(cloudstack.management.direct.download.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x8f\x02\n" +
+	";cloudstack/management/direct/download/v1/download.gen.proto\x12(cloudstack.management.direct.download.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xee\x01\n" +
+	"-ListTemplateDirectDownloadCertificatesRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x17\n" +
+	"\azone_id\x18\x02 \x01(\x03R\x06zoneId\x12$\n" +
+	"\n" +
+	"list_hosts\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\tlistHosts\x12\x18\n" +
+	"\akeyword\x18\x04 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x05 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x06 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"\xb3\x01\n" +
+	".ListTemplateDirectDownloadCertificatesResponse\x12Y\n" +
+	"\x05items\x18\x01 \x03(\v2C.cloudstack.management.direct.download.v1.DirectDownloadCertificateR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x91\x01\n" +
+	"1ProvisionTemplateDirectDownloadCertificateRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
+	"\ahost_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06hostId\x12#\n" +
+	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"~\n" +
+	"2ProvisionTemplateDirectDownloadCertificateResponse\x12H\n" +
+	"\x06result\x18\x01 \x01(\v20.cloudstack.management.direct.download.v1.ResultR\x06result\"\x8f\x02\n" +
 	".RevokeTemplateDirectDownloadCertificateRequest\x12%\n" +
 	"\x0ecertificate_id\x18\x01 \x01(\x03R\rcertificateId\x127\n" +
 	"\x11certificate_alias\x18\x02 \x01(\tB\n" +
@@ -949,25 +823,6 @@ const file_cloudstack_management_direct_download_v1_download_gen_proto_rawDesc =
 	"\ahost_id\x18\x05 \x01(\x03R\x06hostId\x12#\n" +
 	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"{\n" +
 	"/UploadTemplateDirectDownloadCertificateResponse\x12H\n" +
-	"\x06result\x18\x01 \x01(\v20.cloudstack.management.direct.download.v1.ResultR\x06result\"\xee\x01\n" +
-	"-ListTemplateDirectDownloadCertificatesRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x17\n" +
-	"\azone_id\x18\x02 \x01(\x03R\x06zoneId\x12$\n" +
-	"\n" +
-	"list_hosts\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\tlistHosts\x12\x18\n" +
-	"\akeyword\x18\x04 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x05 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x06 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"\xb3\x01\n" +
-	".ListTemplateDirectDownloadCertificatesResponse\x12Y\n" +
-	"\x05items\x18\x01 \x03(\v2C.cloudstack.management.direct.download.v1.DirectDownloadCertificateR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x91\x01\n" +
-	"1ProvisionTemplateDirectDownloadCertificateRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
-	"\ahost_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06hostId\x12#\n" +
-	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"~\n" +
-	"2ProvisionTemplateDirectDownloadCertificateResponse\x12H\n" +
 	"\x06result\x18\x01 \x01(\v20.cloudstack.management.direct.download.v1.ResultR\x06result\"\xa8\x01\n" +
 	"\x19DirectDownloadCertificate\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
@@ -977,38 +832,19 @@ const file_cloudstack_management_direct_download_v1_download_gen_proto_rawDesc =
 	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xe7\x03\n" +
-	"\x04Item\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12U\n" +
-	"\adetails\x18\f \x03(\v2;.cloudstack.management.direct.download.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xab\a\n" +
-	"\x0fDownloadService\x12\xe0\x01\n" +
-	"'RevokeTemplateDirectDownloadCertificate\x12X.cloudstack.management.direct.download.v1.RevokeTemplateDirectDownloadCertificateRequest\x1aY.cloudstack.management.direct.download.v1.RevokeTemplateDirectDownloadCertificateResponse\"\x00\x12\xe0\x01\n" +
-	"'UploadTemplateDirectDownloadCertificate\x12X.cloudstack.management.direct.download.v1.UploadTemplateDirectDownloadCertificateRequest\x1aY.cloudstack.management.direct.download.v1.UploadTemplateDirectDownloadCertificateResponse\"\x00\x12\xdd\x01\n" +
-	"&ListTemplateDirectDownloadCertificates\x12W.cloudstack.management.direct.download.v1.ListTemplateDirectDownloadCertificatesRequest\x1aX.cloudstack.management.direct.download.v1.ListTemplateDirectDownloadCertificatesResponse\"\x00\x12\xe9\x01\n" +
-	"*ProvisionTemplateDirectDownloadCertificate\x12[.cloudstack.management.direct.download.v1.ProvisionTemplateDirectDownloadCertificateRequest\x1a\\.cloudstack.management.direct.download.v1.ProvisionTemplateDirectDownloadCertificateResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xee\x02\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\xc8\a\n" +
+	"\x0fDownloadService\x12\xe4\x01\n" +
+	"&ListTemplateDirectDownloadCertificates\x12W.cloudstack.management.direct.download.v1.ListTemplateDirectDownloadCertificatesRequest\x1aX.cloudstack.management.direct.download.v1.ListTemplateDirectDownloadCertificatesResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xf0\x01\n" +
+	"*ProvisionTemplateDirectDownloadCertificate\x12[.cloudstack.management.direct.download.v1.ProvisionTemplateDirectDownloadCertificateRequest\x1a\\.cloudstack.management.direct.download.v1.ProvisionTemplateDirectDownloadCertificateResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xe7\x01\n" +
+	"'RevokeTemplateDirectDownloadCertificate\x12X.cloudstack.management.direct.download.v1.RevokeTemplateDirectDownloadCertificateRequest\x1aY.cloudstack.management.direct.download.v1.RevokeTemplateDirectDownloadCertificateResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xe7\x01\n" +
+	"'UploadTemplateDirectDownloadCertificate\x12X.cloudstack.management.direct.download.v1.UploadTemplateDirectDownloadCertificateRequest\x1aY.cloudstack.management.direct.download.v1.UploadTemplateDirectDownloadCertificateResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\a\xc2>\x04\xc2>\x01\x02B\xee\x02\n" +
 	",com.cloudstack.management.direct.download.v1B\x10DownloadGenProtoP\x01Zggithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/direct/download/v1;downloadv1\xa2\x02\x04CMDD\xaa\x02(Cloudstack.Management.Direct.Download.V1\xca\x02(Cloudstack\\Management\\Direct\\Download\\V1\xe2\x024Cloudstack\\Management\\Direct\\Download\\V1\\GPBMetadata\xea\x02,Cloudstack::Management::Direct::Download::V1b\beditionsp\xe8\a"
 
 var (
@@ -1023,41 +859,38 @@ func file_cloudstack_management_direct_download_v1_download_gen_proto_rawDescGZI
 	return file_cloudstack_management_direct_download_v1_download_gen_proto_rawDescData
 }
 
-var file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_cloudstack_management_direct_download_v1_download_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_cloudstack_management_direct_download_v1_download_gen_proto_goTypes = []any{
-	(*RevokeTemplateDirectDownloadCertificateRequest)(nil),     // 0: cloudstack.management.direct.download.v1.RevokeTemplateDirectDownloadCertificateRequest
-	(*RevokeTemplateDirectDownloadCertificateResponse)(nil),    // 1: cloudstack.management.direct.download.v1.RevokeTemplateDirectDownloadCertificateResponse
-	(*UploadTemplateDirectDownloadCertificateRequest)(nil),     // 2: cloudstack.management.direct.download.v1.UploadTemplateDirectDownloadCertificateRequest
-	(*UploadTemplateDirectDownloadCertificateResponse)(nil),    // 3: cloudstack.management.direct.download.v1.UploadTemplateDirectDownloadCertificateResponse
-	(*ListTemplateDirectDownloadCertificatesRequest)(nil),      // 4: cloudstack.management.direct.download.v1.ListTemplateDirectDownloadCertificatesRequest
-	(*ListTemplateDirectDownloadCertificatesResponse)(nil),     // 5: cloudstack.management.direct.download.v1.ListTemplateDirectDownloadCertificatesResponse
-	(*ProvisionTemplateDirectDownloadCertificateRequest)(nil),  // 6: cloudstack.management.direct.download.v1.ProvisionTemplateDirectDownloadCertificateRequest
-	(*ProvisionTemplateDirectDownloadCertificateResponse)(nil), // 7: cloudstack.management.direct.download.v1.ProvisionTemplateDirectDownloadCertificateResponse
+	(*ListTemplateDirectDownloadCertificatesRequest)(nil),      // 0: cloudstack.management.direct.download.v1.ListTemplateDirectDownloadCertificatesRequest
+	(*ListTemplateDirectDownloadCertificatesResponse)(nil),     // 1: cloudstack.management.direct.download.v1.ListTemplateDirectDownloadCertificatesResponse
+	(*ProvisionTemplateDirectDownloadCertificateRequest)(nil),  // 2: cloudstack.management.direct.download.v1.ProvisionTemplateDirectDownloadCertificateRequest
+	(*ProvisionTemplateDirectDownloadCertificateResponse)(nil), // 3: cloudstack.management.direct.download.v1.ProvisionTemplateDirectDownloadCertificateResponse
+	(*RevokeTemplateDirectDownloadCertificateRequest)(nil),     // 4: cloudstack.management.direct.download.v1.RevokeTemplateDirectDownloadCertificateRequest
+	(*RevokeTemplateDirectDownloadCertificateResponse)(nil),    // 5: cloudstack.management.direct.download.v1.RevokeTemplateDirectDownloadCertificateResponse
+	(*UploadTemplateDirectDownloadCertificateRequest)(nil),     // 6: cloudstack.management.direct.download.v1.UploadTemplateDirectDownloadCertificateRequest
+	(*UploadTemplateDirectDownloadCertificateResponse)(nil),    // 7: cloudstack.management.direct.download.v1.UploadTemplateDirectDownloadCertificateResponse
 	(*DirectDownloadCertificate)(nil),                          // 8: cloudstack.management.direct.download.v1.DirectDownloadCertificate
 	(*Success)(nil),                                            // 9: cloudstack.management.direct.download.v1.Success
-	(*Item)(nil),                                               // 10: cloudstack.management.direct.download.v1.Item
-	(*Result)(nil),                                             // 11: cloudstack.management.direct.download.v1.Result
-	nil,                                                        // 12: cloudstack.management.direct.download.v1.Item.DetailsEntry
+	(*Result)(nil),                                             // 10: cloudstack.management.direct.download.v1.Result
 }
 var file_cloudstack_management_direct_download_v1_download_gen_proto_depIdxs = []int32{
-	11, // 0: cloudstack.management.direct.download.v1.RevokeTemplateDirectDownloadCertificateResponse.result:type_name -> cloudstack.management.direct.download.v1.Result
-	11, // 1: cloudstack.management.direct.download.v1.UploadTemplateDirectDownloadCertificateResponse.result:type_name -> cloudstack.management.direct.download.v1.Result
-	8,  // 2: cloudstack.management.direct.download.v1.ListTemplateDirectDownloadCertificatesResponse.items:type_name -> cloudstack.management.direct.download.v1.DirectDownloadCertificate
-	11, // 3: cloudstack.management.direct.download.v1.ProvisionTemplateDirectDownloadCertificateResponse.result:type_name -> cloudstack.management.direct.download.v1.Result
-	12, // 4: cloudstack.management.direct.download.v1.Item.details:type_name -> cloudstack.management.direct.download.v1.Item.DetailsEntry
-	0,  // 5: cloudstack.management.direct.download.v1.DownloadService.RevokeTemplateDirectDownloadCertificate:input_type -> cloudstack.management.direct.download.v1.RevokeTemplateDirectDownloadCertificateRequest
-	2,  // 6: cloudstack.management.direct.download.v1.DownloadService.UploadTemplateDirectDownloadCertificate:input_type -> cloudstack.management.direct.download.v1.UploadTemplateDirectDownloadCertificateRequest
-	4,  // 7: cloudstack.management.direct.download.v1.DownloadService.ListTemplateDirectDownloadCertificates:input_type -> cloudstack.management.direct.download.v1.ListTemplateDirectDownloadCertificatesRequest
-	6,  // 8: cloudstack.management.direct.download.v1.DownloadService.ProvisionTemplateDirectDownloadCertificate:input_type -> cloudstack.management.direct.download.v1.ProvisionTemplateDirectDownloadCertificateRequest
-	1,  // 9: cloudstack.management.direct.download.v1.DownloadService.RevokeTemplateDirectDownloadCertificate:output_type -> cloudstack.management.direct.download.v1.RevokeTemplateDirectDownloadCertificateResponse
-	3,  // 10: cloudstack.management.direct.download.v1.DownloadService.UploadTemplateDirectDownloadCertificate:output_type -> cloudstack.management.direct.download.v1.UploadTemplateDirectDownloadCertificateResponse
-	5,  // 11: cloudstack.management.direct.download.v1.DownloadService.ListTemplateDirectDownloadCertificates:output_type -> cloudstack.management.direct.download.v1.ListTemplateDirectDownloadCertificatesResponse
-	7,  // 12: cloudstack.management.direct.download.v1.DownloadService.ProvisionTemplateDirectDownloadCertificate:output_type -> cloudstack.management.direct.download.v1.ProvisionTemplateDirectDownloadCertificateResponse
-	9,  // [9:13] is the sub-list for method output_type
-	5,  // [5:9] is the sub-list for method input_type
-	5,  // [5:5] is the sub-list for extension type_name
-	5,  // [5:5] is the sub-list for extension extendee
-	0,  // [0:5] is the sub-list for field type_name
+	8,  // 0: cloudstack.management.direct.download.v1.ListTemplateDirectDownloadCertificatesResponse.items:type_name -> cloudstack.management.direct.download.v1.DirectDownloadCertificate
+	10, // 1: cloudstack.management.direct.download.v1.ProvisionTemplateDirectDownloadCertificateResponse.result:type_name -> cloudstack.management.direct.download.v1.Result
+	10, // 2: cloudstack.management.direct.download.v1.RevokeTemplateDirectDownloadCertificateResponse.result:type_name -> cloudstack.management.direct.download.v1.Result
+	10, // 3: cloudstack.management.direct.download.v1.UploadTemplateDirectDownloadCertificateResponse.result:type_name -> cloudstack.management.direct.download.v1.Result
+	0,  // 4: cloudstack.management.direct.download.v1.DownloadService.ListTemplateDirectDownloadCertificates:input_type -> cloudstack.management.direct.download.v1.ListTemplateDirectDownloadCertificatesRequest
+	2,  // 5: cloudstack.management.direct.download.v1.DownloadService.ProvisionTemplateDirectDownloadCertificate:input_type -> cloudstack.management.direct.download.v1.ProvisionTemplateDirectDownloadCertificateRequest
+	4,  // 6: cloudstack.management.direct.download.v1.DownloadService.RevokeTemplateDirectDownloadCertificate:input_type -> cloudstack.management.direct.download.v1.RevokeTemplateDirectDownloadCertificateRequest
+	6,  // 7: cloudstack.management.direct.download.v1.DownloadService.UploadTemplateDirectDownloadCertificate:input_type -> cloudstack.management.direct.download.v1.UploadTemplateDirectDownloadCertificateRequest
+	1,  // 8: cloudstack.management.direct.download.v1.DownloadService.ListTemplateDirectDownloadCertificates:output_type -> cloudstack.management.direct.download.v1.ListTemplateDirectDownloadCertificatesResponse
+	3,  // 9: cloudstack.management.direct.download.v1.DownloadService.ProvisionTemplateDirectDownloadCertificate:output_type -> cloudstack.management.direct.download.v1.ProvisionTemplateDirectDownloadCertificateResponse
+	5,  // 10: cloudstack.management.direct.download.v1.DownloadService.RevokeTemplateDirectDownloadCertificate:output_type -> cloudstack.management.direct.download.v1.RevokeTemplateDirectDownloadCertificateResponse
+	7,  // 11: cloudstack.management.direct.download.v1.DownloadService.UploadTemplateDirectDownloadCertificate:output_type -> cloudstack.management.direct.download.v1.UploadTemplateDirectDownloadCertificateResponse
+	8,  // [8:12] is the sub-list for method output_type
+	4,  // [4:8] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_direct_download_v1_download_gen_proto_init() }
@@ -1071,7 +904,7 @@ func file_cloudstack_management_direct_download_v1_download_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_direct_download_v1_download_gen_proto_rawDesc), len(file_cloudstack_management_direct_download_v1_download_gen_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   13,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

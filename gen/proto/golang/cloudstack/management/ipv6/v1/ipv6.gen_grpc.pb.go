@@ -20,9 +20,9 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	Ipv6Service_CreateIpv6FirewallRule_FullMethodName = "/cloudstack.management.ipv6.v1.Ipv6Service/CreateIpv6FirewallRule"
+	Ipv6Service_DeleteIpv6FirewallRule_FullMethodName = "/cloudstack.management.ipv6.v1.Ipv6Service/DeleteIpv6FirewallRule"
 	Ipv6Service_ListIpv6FirewallRules_FullMethodName  = "/cloudstack.management.ipv6.v1.Ipv6Service/ListIpv6FirewallRules"
 	Ipv6Service_UpdateIpv6FirewallRule_FullMethodName = "/cloudstack.management.ipv6.v1.Ipv6Service/UpdateIpv6FirewallRule"
-	Ipv6Service_DeleteIpv6FirewallRule_FullMethodName = "/cloudstack.management.ipv6.v1.Ipv6Service/DeleteIpv6FirewallRule"
 )
 
 // Ipv6ServiceClient is the client API for Ipv6Service service.
@@ -33,12 +33,12 @@ const (
 type Ipv6ServiceClient interface {
 	// CreateIpv6FirewallRule Creates an Ipv6 firewall rule in the given network (the network must not belong to VPC)
 	CreateIpv6FirewallRule(ctx context.Context, in *CreateIpv6FirewallRuleRequest, opts ...grpc.CallOption) (*CreateIpv6FirewallRuleResponse, error)
+	// DeleteIpv6FirewallRule Deletes a IPv6 firewall rule
+	DeleteIpv6FirewallRule(ctx context.Context, in *DeleteIpv6FirewallRuleRequest, opts ...grpc.CallOption) (*DeleteIpv6FirewallRuleResponse, error)
 	// ListIpv6FirewallRules Lists all IPv6 firewall rules
 	ListIpv6FirewallRules(ctx context.Context, in *ListIpv6FirewallRulesRequest, opts ...grpc.CallOption) (*ListIpv6FirewallRulesResponse, error)
 	// UpdateIpv6FirewallRule Updates Ipv6 firewall rule with specified ID
 	UpdateIpv6FirewallRule(ctx context.Context, in *UpdateIpv6FirewallRuleRequest, opts ...grpc.CallOption) (*UpdateIpv6FirewallRuleResponse, error)
-	// DeleteIpv6FirewallRule Deletes a IPv6 firewall rule
-	DeleteIpv6FirewallRule(ctx context.Context, in *DeleteIpv6FirewallRuleRequest, opts ...grpc.CallOption) (*DeleteIpv6FirewallRuleResponse, error)
 }
 
 type ipv6ServiceClient struct {
@@ -53,6 +53,16 @@ func (c *ipv6ServiceClient) CreateIpv6FirewallRule(ctx context.Context, in *Crea
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreateIpv6FirewallRuleResponse)
 	err := c.cc.Invoke(ctx, Ipv6Service_CreateIpv6FirewallRule_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *ipv6ServiceClient) DeleteIpv6FirewallRule(ctx context.Context, in *DeleteIpv6FirewallRuleRequest, opts ...grpc.CallOption) (*DeleteIpv6FirewallRuleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteIpv6FirewallRuleResponse)
+	err := c.cc.Invoke(ctx, Ipv6Service_DeleteIpv6FirewallRule_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -79,16 +89,6 @@ func (c *ipv6ServiceClient) UpdateIpv6FirewallRule(ctx context.Context, in *Upda
 	return out, nil
 }
 
-func (c *ipv6ServiceClient) DeleteIpv6FirewallRule(ctx context.Context, in *DeleteIpv6FirewallRuleRequest, opts ...grpc.CallOption) (*DeleteIpv6FirewallRuleResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteIpv6FirewallRuleResponse)
-	err := c.cc.Invoke(ctx, Ipv6Service_DeleteIpv6FirewallRule_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // Ipv6ServiceServer is the server API for Ipv6Service service.
 // All implementations must embed UnimplementedIpv6ServiceServer
 // for forward compatibility.
@@ -97,12 +97,12 @@ func (c *ipv6ServiceClient) DeleteIpv6FirewallRule(ctx context.Context, in *Dele
 type Ipv6ServiceServer interface {
 	// CreateIpv6FirewallRule Creates an Ipv6 firewall rule in the given network (the network must not belong to VPC)
 	CreateIpv6FirewallRule(context.Context, *CreateIpv6FirewallRuleRequest) (*CreateIpv6FirewallRuleResponse, error)
+	// DeleteIpv6FirewallRule Deletes a IPv6 firewall rule
+	DeleteIpv6FirewallRule(context.Context, *DeleteIpv6FirewallRuleRequest) (*DeleteIpv6FirewallRuleResponse, error)
 	// ListIpv6FirewallRules Lists all IPv6 firewall rules
 	ListIpv6FirewallRules(context.Context, *ListIpv6FirewallRulesRequest) (*ListIpv6FirewallRulesResponse, error)
 	// UpdateIpv6FirewallRule Updates Ipv6 firewall rule with specified ID
 	UpdateIpv6FirewallRule(context.Context, *UpdateIpv6FirewallRuleRequest) (*UpdateIpv6FirewallRuleResponse, error)
-	// DeleteIpv6FirewallRule Deletes a IPv6 firewall rule
-	DeleteIpv6FirewallRule(context.Context, *DeleteIpv6FirewallRuleRequest) (*DeleteIpv6FirewallRuleResponse, error)
 	mustEmbedUnimplementedIpv6ServiceServer()
 }
 
@@ -116,14 +116,14 @@ type UnimplementedIpv6ServiceServer struct{}
 func (UnimplementedIpv6ServiceServer) CreateIpv6FirewallRule(context.Context, *CreateIpv6FirewallRuleRequest) (*CreateIpv6FirewallRuleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateIpv6FirewallRule not implemented")
 }
+func (UnimplementedIpv6ServiceServer) DeleteIpv6FirewallRule(context.Context, *DeleteIpv6FirewallRuleRequest) (*DeleteIpv6FirewallRuleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteIpv6FirewallRule not implemented")
+}
 func (UnimplementedIpv6ServiceServer) ListIpv6FirewallRules(context.Context, *ListIpv6FirewallRulesRequest) (*ListIpv6FirewallRulesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListIpv6FirewallRules not implemented")
 }
 func (UnimplementedIpv6ServiceServer) UpdateIpv6FirewallRule(context.Context, *UpdateIpv6FirewallRuleRequest) (*UpdateIpv6FirewallRuleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateIpv6FirewallRule not implemented")
-}
-func (UnimplementedIpv6ServiceServer) DeleteIpv6FirewallRule(context.Context, *DeleteIpv6FirewallRuleRequest) (*DeleteIpv6FirewallRuleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteIpv6FirewallRule not implemented")
 }
 func (UnimplementedIpv6ServiceServer) mustEmbedUnimplementedIpv6ServiceServer() {}
 func (UnimplementedIpv6ServiceServer) testEmbeddedByValue()                     {}
@@ -164,6 +164,24 @@ func _Ipv6Service_CreateIpv6FirewallRule_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Ipv6Service_DeleteIpv6FirewallRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteIpv6FirewallRuleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(Ipv6ServiceServer).DeleteIpv6FirewallRule(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Ipv6Service_DeleteIpv6FirewallRule_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(Ipv6ServiceServer).DeleteIpv6FirewallRule(ctx, req.(*DeleteIpv6FirewallRuleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Ipv6Service_ListIpv6FirewallRules_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListIpv6FirewallRulesRequest)
 	if err := dec(in); err != nil {
@@ -200,24 +218,6 @@ func _Ipv6Service_UpdateIpv6FirewallRule_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Ipv6Service_DeleteIpv6FirewallRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteIpv6FirewallRuleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(Ipv6ServiceServer).DeleteIpv6FirewallRule(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Ipv6Service_DeleteIpv6FirewallRule_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(Ipv6ServiceServer).DeleteIpv6FirewallRule(ctx, req.(*DeleteIpv6FirewallRuleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // Ipv6Service_ServiceDesc is the grpc.ServiceDesc for Ipv6Service service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -230,16 +230,16 @@ var Ipv6Service_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Ipv6Service_CreateIpv6FirewallRule_Handler,
 		},
 		{
+			MethodName: "DeleteIpv6FirewallRule",
+			Handler:    _Ipv6Service_DeleteIpv6FirewallRule_Handler,
+		},
+		{
 			MethodName: "ListIpv6FirewallRules",
 			Handler:    _Ipv6Service_ListIpv6FirewallRules_Handler,
 		},
 		{
 			MethodName: "UpdateIpv6FirewallRule",
 			Handler:    _Ipv6Service_UpdateIpv6FirewallRule_Handler,
-		},
-		{
-			MethodName: "DeleteIpv6FirewallRule",
-			Handler:    _Ipv6Service_DeleteIpv6FirewallRule_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

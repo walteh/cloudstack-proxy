@@ -30,35 +30,35 @@ type ProtocolType int32
 const (
 	// Default unspecified value
 	ProtocolType_PROTOCOL_TYPE_UNSPECIFIED ProtocolType = 0
-	// TCP value
-	ProtocolType_PROTOCOL_TYPE_TCP ProtocolType = 1
-	// UDP value
-	ProtocolType_PROTOCOL_TYPE_UDP ProtocolType = 2
+	// ALL value
+	ProtocolType_PROTOCOL_TYPE_ALL ProtocolType = 1
+	// ETC value
+	ProtocolType_PROTOCOL_TYPE_ETC ProtocolType = 2
 	// ICMP value
 	ProtocolType_PROTOCOL_TYPE_ICMP ProtocolType = 3
-	// ALL value
-	ProtocolType_PROTOCOL_TYPE_ALL ProtocolType = 4
-	// ETC value
-	ProtocolType_PROTOCOL_TYPE_ETC ProtocolType = 5
+	// TCP value
+	ProtocolType_PROTOCOL_TYPE_TCP ProtocolType = 4
+	// UDP value
+	ProtocolType_PROTOCOL_TYPE_UDP ProtocolType = 5
 )
 
 // Enum value maps for ProtocolType.
 var (
 	ProtocolType_name = map[int32]string{
 		0: "PROTOCOL_TYPE_UNSPECIFIED",
-		1: "PROTOCOL_TYPE_TCP",
-		2: "PROTOCOL_TYPE_UDP",
+		1: "PROTOCOL_TYPE_ALL",
+		2: "PROTOCOL_TYPE_ETC",
 		3: "PROTOCOL_TYPE_ICMP",
-		4: "PROTOCOL_TYPE_ALL",
-		5: "PROTOCOL_TYPE_ETC",
+		4: "PROTOCOL_TYPE_TCP",
+		5: "PROTOCOL_TYPE_UDP",
 	}
 	ProtocolType_value = map[string]int32{
 		"PROTOCOL_TYPE_UNSPECIFIED": 0,
-		"PROTOCOL_TYPE_TCP":         1,
-		"PROTOCOL_TYPE_UDP":         2,
+		"PROTOCOL_TYPE_ALL":         1,
+		"PROTOCOL_TYPE_ETC":         2,
 		"PROTOCOL_TYPE_ICMP":        3,
-		"PROTOCOL_TYPE_ALL":         4,
-		"PROTOCOL_TYPE_ETC":         5,
+		"PROTOCOL_TYPE_TCP":         4,
+		"PROTOCOL_TYPE_UDP":         5,
 	}
 )
 
@@ -87,6 +87,221 @@ func (x ProtocolType) Number() protoreflect.EnumNumber {
 // Deprecated: Use ProtocolType.Descriptor instead.
 func (ProtocolType) EnumDescriptor() ([]byte, []int) {
 	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{0}
+}
+
+// AuthorizeSecurityGroupEgressRequest represents the parameters for authorizes a particular egress rule for this security group
+type AuthorizeSecurityGroupEgressRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// TCP is default. UDP is the other supported protocol
+	Protocol *string `protobuf:"bytes,1,opt,name=protocol" json:"protocol,omitempty"`
+	// start port for this egress rule
+	StartPort *int32 `protobuf:"varint,2,opt,name=start_port,json=startPort" json:"start_port,omitempty"`
+	// end port for this egress rule
+	EndPort *int32 `protobuf:"varint,3,opt,name=end_port,json=endPort" json:"end_port,omitempty"`
+	// type of the icmp message being sent
+	IcmpType *int32 `protobuf:"varint,4,opt,name=icmp_type,json=icmpType" json:"icmp_type,omitempty"`
+	// error code for this icmp message
+	IcmpCode *int32 `protobuf:"varint,5,opt,name=icmp_code,json=icmpCode" json:"icmp_code,omitempty"`
+	// the cidr list associated. Multiple entries must be separated by a single comma character (,).
+	CidrList []string `protobuf:"bytes,6,rep,name=cidr_list,json=cidrList" json:"cidr_list,omitempty"`
+	// user to security group mapping
+	UserSecurityGroupList map[string]string `protobuf:"bytes,7,rep,name=user_security_group_list,json=userSecurityGroupList" json:"user_security_group_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// an optional domainId for the security group. If the account parameter is used, domainId must also be used.
+	DomainId *int64 `protobuf:"varint,8,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// an optional account for the security group. Must be used with domainId.
+	AccountName *string `protobuf:"bytes,9,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// an optional project of the security group
+	ProjectId *int64 `protobuf:"varint,10,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// The ID of the security group. Mutually exclusive with securityGroupName parameter
+	SecurityGroupId *int64 `protobuf:"varint,11,opt,name=security_group_id,json=securityGroupId" json:"security_group_id,omitempty"`
+	// The name of the security group. Mutually exclusive with securityGroupId parameter
+	SecurityGroupName *string `protobuf:"bytes,12,opt,name=security_group_name,json=securityGroupName" json:"security_group_name,omitempty"`
+	StartEventId *int64 `protobuf:"varint,13,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,14,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,15,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AuthorizeSecurityGroupEgressRequest) Reset() {
+	*x = AuthorizeSecurityGroupEgressRequest{}
+	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AuthorizeSecurityGroupEgressRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AuthorizeSecurityGroupEgressRequest) ProtoMessage() {}
+
+func (x *AuthorizeSecurityGroupEgressRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AuthorizeSecurityGroupEgressRequest.ProtoReflect.Descriptor instead.
+func (*AuthorizeSecurityGroupEgressRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *AuthorizeSecurityGroupEgressRequest) GetProtocol() string {
+	if x != nil && x.Protocol != nil {
+		return *x.Protocol
+	}
+	return ""
+}
+
+func (x *AuthorizeSecurityGroupEgressRequest) GetStartPort() int32 {
+	if x != nil && x.StartPort != nil {
+		return *x.StartPort
+	}
+	return 0
+}
+
+func (x *AuthorizeSecurityGroupEgressRequest) GetEndPort() int32 {
+	if x != nil && x.EndPort != nil {
+		return *x.EndPort
+	}
+	return 0
+}
+
+func (x *AuthorizeSecurityGroupEgressRequest) GetIcmpType() int32 {
+	if x != nil && x.IcmpType != nil {
+		return *x.IcmpType
+	}
+	return 0
+}
+
+func (x *AuthorizeSecurityGroupEgressRequest) GetIcmpCode() int32 {
+	if x != nil && x.IcmpCode != nil {
+		return *x.IcmpCode
+	}
+	return 0
+}
+
+func (x *AuthorizeSecurityGroupEgressRequest) GetCidrList() []string {
+	if x != nil {
+		return x.CidrList
+	}
+	return nil
+}
+
+func (x *AuthorizeSecurityGroupEgressRequest) GetUserSecurityGroupList() map[string]string {
+	if x != nil {
+		return x.UserSecurityGroupList
+	}
+	return nil
+}
+
+func (x *AuthorizeSecurityGroupEgressRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *AuthorizeSecurityGroupEgressRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *AuthorizeSecurityGroupEgressRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *AuthorizeSecurityGroupEgressRequest) GetSecurityGroupId() int64 {
+	if x != nil && x.SecurityGroupId != nil {
+		return *x.SecurityGroupId
+	}
+	return 0
+}
+
+func (x *AuthorizeSecurityGroupEgressRequest) GetSecurityGroupName() string {
+	if x != nil && x.SecurityGroupName != nil {
+		return *x.SecurityGroupName
+	}
+	return ""
+}
+
+func (x *AuthorizeSecurityGroupEgressRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *AuthorizeSecurityGroupEgressRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *AuthorizeSecurityGroupEgressRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// AuthorizeSecurityGroupEgressResponse represents the response from authorizes a particular egress rule for this security group
+type AuthorizeSecurityGroupEgressResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AuthorizeSecurityGroupEgressResponse) Reset() {
+	*x = AuthorizeSecurityGroupEgressResponse{}
+	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AuthorizeSecurityGroupEgressResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AuthorizeSecurityGroupEgressResponse) ProtoMessage() {}
+
+func (x *AuthorizeSecurityGroupEgressResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AuthorizeSecurityGroupEgressResponse.ProtoReflect.Descriptor instead.
+func (*AuthorizeSecurityGroupEgressResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *AuthorizeSecurityGroupEgressResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
 }
 
 // AuthorizeSecurityGroupIngressRequest represents the parameters for authorizes a particular ingress rule for this security group
@@ -125,7 +340,7 @@ type AuthorizeSecurityGroupIngressRequest struct {
 
 func (x *AuthorizeSecurityGroupIngressRequest) Reset() {
 	*x = AuthorizeSecurityGroupIngressRequest{}
-	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -137,7 +352,7 @@ func (x *AuthorizeSecurityGroupIngressRequest) String() string {
 func (*AuthorizeSecurityGroupIngressRequest) ProtoMessage() {}
 
 func (x *AuthorizeSecurityGroupIngressRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -150,7 +365,7 @@ func (x *AuthorizeSecurityGroupIngressRequest) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use AuthorizeSecurityGroupIngressRequest.ProtoReflect.Descriptor instead.
 func (*AuthorizeSecurityGroupIngressRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{0}
+	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *AuthorizeSecurityGroupIngressRequest) GetProtocol() string {
@@ -269,7 +484,7 @@ type AuthorizeSecurityGroupIngressResponse struct {
 
 func (x *AuthorizeSecurityGroupIngressResponse) Reset() {
 	*x = AuthorizeSecurityGroupIngressResponse{}
-	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -281,7 +496,7 @@ func (x *AuthorizeSecurityGroupIngressResponse) String() string {
 func (*AuthorizeSecurityGroupIngressResponse) ProtoMessage() {}
 
 func (x *AuthorizeSecurityGroupIngressResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -294,7 +509,7 @@ func (x *AuthorizeSecurityGroupIngressResponse) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use AuthorizeSecurityGroupIngressResponse.ProtoReflect.Descriptor instead.
 func (*AuthorizeSecurityGroupIngressResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{1}
+	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *AuthorizeSecurityGroupIngressResponse) GetResult() *Result {
@@ -304,33 +519,39 @@ func (x *AuthorizeSecurityGroupIngressResponse) GetResult() *Result {
 	return nil
 }
 
-// RevokeSecurityGroupEgressRequest represents the parameters for deletes a particular egress rule from this security group
-type RevokeSecurityGroupEgressRequest struct {
+// CreateSecurityGroupRequest represents the parameters for creates a security group
+type CreateSecurityGroupRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the egress rule
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// an optional account for the security group. Must be used with domainId.
+	AccountName *string `protobuf:"bytes,1,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// an optional domainId for the security group. If the account parameter is used, domainId must also be used.
+	DomainId *int64 `protobuf:"varint,2,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// the description of the security group
+	Description *string `protobuf:"bytes,3,opt,name=description" json:"description,omitempty"`
+	// name of the security group
+	SecurityGroupName *string `protobuf:"bytes,4,opt,name=security_group_name,json=securityGroupName" json:"security_group_name,omitempty"`
+	// Create security group for project
+	ProjectId *int64 `protobuf:"varint,5,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RevokeSecurityGroupEgressRequest) Reset() {
-	*x = RevokeSecurityGroupEgressRequest{}
-	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[2]
+func (x *CreateSecurityGroupRequest) Reset() {
+	*x = CreateSecurityGroupRequest{}
+	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RevokeSecurityGroupEgressRequest) String() string {
+func (x *CreateSecurityGroupRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RevokeSecurityGroupEgressRequest) ProtoMessage() {}
+func (*CreateSecurityGroupRequest) ProtoMessage() {}
 
-func (x *RevokeSecurityGroupEgressRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[2]
+func (x *CreateSecurityGroupRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -341,41 +562,55 @@ func (x *RevokeSecurityGroupEgressRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RevokeSecurityGroupEgressRequest.ProtoReflect.Descriptor instead.
-func (*RevokeSecurityGroupEgressRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{2}
+// Deprecated: Use CreateSecurityGroupRequest.ProtoReflect.Descriptor instead.
+func (*CreateSecurityGroupRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *RevokeSecurityGroupEgressRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *RevokeSecurityGroupEgressRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *RevokeSecurityGroupEgressRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
+func (x *CreateSecurityGroupRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
 	}
 	return ""
 }
 
-func (x *RevokeSecurityGroupEgressRequest) GetResponseType() string {
+func (x *CreateSecurityGroupRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *CreateSecurityGroupRequest) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *CreateSecurityGroupRequest) GetSecurityGroupName() string {
+	if x != nil && x.SecurityGroupName != nil {
+		return *x.SecurityGroupName
+	}
+	return ""
+}
+
+func (x *CreateSecurityGroupRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *CreateSecurityGroupRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// RevokeSecurityGroupEgressResponse represents the response from deletes a particular egress rule from this security group
-type RevokeSecurityGroupEgressResponse struct {
+// CreateSecurityGroupResponse represents the response from creates a security group
+type CreateSecurityGroupResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -383,21 +618,21 @@ type RevokeSecurityGroupEgressResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RevokeSecurityGroupEgressResponse) Reset() {
-	*x = RevokeSecurityGroupEgressResponse{}
-	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[3]
+func (x *CreateSecurityGroupResponse) Reset() {
+	*x = CreateSecurityGroupResponse{}
+	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RevokeSecurityGroupEgressResponse) String() string {
+func (x *CreateSecurityGroupResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RevokeSecurityGroupEgressResponse) ProtoMessage() {}
+func (*CreateSecurityGroupResponse) ProtoMessage() {}
 
-func (x *RevokeSecurityGroupEgressResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[3]
+func (x *CreateSecurityGroupResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -408,12 +643,148 @@ func (x *RevokeSecurityGroupEgressResponse) ProtoReflect() protoreflect.Message 
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RevokeSecurityGroupEgressResponse.ProtoReflect.Descriptor instead.
-func (*RevokeSecurityGroupEgressResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{3}
+// Deprecated: Use CreateSecurityGroupResponse.ProtoReflect.Descriptor instead.
+func (*CreateSecurityGroupResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *RevokeSecurityGroupEgressResponse) GetResult() *Result {
+func (x *CreateSecurityGroupResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteSecurityGroupRequest represents the parameters for deletes security group
+type DeleteSecurityGroupRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the account of the security group. Must be specified with domain ID
+	AccountName *string `protobuf:"bytes,1,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// the domain ID of account owning the security group
+	DomainId *int64 `protobuf:"varint,2,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// the project of the security group
+	ProjectId *int64 `protobuf:"varint,3,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// The ID of the security group. Mutually exclusive with name parameter
+	Id *int64 `protobuf:"varint,4,opt,name=id" json:"id,omitempty"`
+	// The ID of the security group. Mutually exclusive with id parameter
+	Name *string `protobuf:"bytes,5,opt,name=name" json:"name,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteSecurityGroupRequest) Reset() {
+	*x = DeleteSecurityGroupRequest{}
+	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteSecurityGroupRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteSecurityGroupRequest) ProtoMessage() {}
+
+func (x *DeleteSecurityGroupRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteSecurityGroupRequest.ProtoReflect.Descriptor instead.
+func (*DeleteSecurityGroupRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *DeleteSecurityGroupRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *DeleteSecurityGroupRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *DeleteSecurityGroupRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *DeleteSecurityGroupRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteSecurityGroupRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *DeleteSecurityGroupRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteSecurityGroupResponse represents the response from deletes security group
+type DeleteSecurityGroupResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteSecurityGroupResponse) Reset() {
+	*x = DeleteSecurityGroupResponse{}
+	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteSecurityGroupResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteSecurityGroupResponse) ProtoMessage() {}
+
+func (x *DeleteSecurityGroupResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteSecurityGroupResponse.ProtoReflect.Descriptor instead.
+func (*DeleteSecurityGroupResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *DeleteSecurityGroupResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -452,7 +823,7 @@ type ListSecurityGroupsRequest struct {
 
 func (x *ListSecurityGroupsRequest) Reset() {
 	*x = ListSecurityGroupsRequest{}
-	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -464,7 +835,7 @@ func (x *ListSecurityGroupsRequest) String() string {
 func (*ListSecurityGroupsRequest) ProtoMessage() {}
 
 func (x *ListSecurityGroupsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -477,7 +848,7 @@ func (x *ListSecurityGroupsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListSecurityGroupsRequest.ProtoReflect.Descriptor instead.
 func (*ListSecurityGroupsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{4}
+	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *ListSecurityGroupsRequest) GetSecurityGroupName() string {
@@ -584,7 +955,7 @@ type ListSecurityGroupsResponse struct {
 
 func (x *ListSecurityGroupsResponse) Reset() {
 	*x = ListSecurityGroupsResponse{}
-	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -596,7 +967,7 @@ func (x *ListSecurityGroupsResponse) String() string {
 func (*ListSecurityGroupsResponse) ProtoMessage() {}
 
 func (x *ListSecurityGroupsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -609,7 +980,7 @@ func (x *ListSecurityGroupsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListSecurityGroupsResponse.ProtoReflect.Descriptor instead.
 func (*ListSecurityGroupsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{5}
+	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *ListSecurityGroupsResponse) GetItems() []*SecurityGroup {
@@ -626,292 +997,32 @@ func (x *ListSecurityGroupsResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// CreateSecurityGroupRequest represents the parameters for creates a security group
-type CreateSecurityGroupRequest struct {
+// RevokeSecurityGroupEgressRequest represents the parameters for deletes a particular egress rule from this security group
+type RevokeSecurityGroupEgressRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// an optional account for the security group. Must be used with domainId.
-	AccountName *string `protobuf:"bytes,1,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// an optional domainId for the security group. If the account parameter is used, domainId must also be used.
-	DomainId *int64 `protobuf:"varint,2,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// the description of the security group
-	Description *string `protobuf:"bytes,3,opt,name=description" json:"description,omitempty"`
-	// name of the security group
-	SecurityGroupName *string `protobuf:"bytes,4,opt,name=security_group_name,json=securityGroupName" json:"security_group_name,omitempty"`
-	// Create security group for project
-	ProjectId *int64 `protobuf:"varint,5,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateSecurityGroupRequest) Reset() {
-	*x = CreateSecurityGroupRequest{}
-	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateSecurityGroupRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateSecurityGroupRequest) ProtoMessage() {}
-
-func (x *CreateSecurityGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateSecurityGroupRequest.ProtoReflect.Descriptor instead.
-func (*CreateSecurityGroupRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *CreateSecurityGroupRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *CreateSecurityGroupRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *CreateSecurityGroupRequest) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *CreateSecurityGroupRequest) GetSecurityGroupName() string {
-	if x != nil && x.SecurityGroupName != nil {
-		return *x.SecurityGroupName
-	}
-	return ""
-}
-
-func (x *CreateSecurityGroupRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *CreateSecurityGroupRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateSecurityGroupResponse represents the response from creates a security group
-type CreateSecurityGroupResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateSecurityGroupResponse) Reset() {
-	*x = CreateSecurityGroupResponse{}
-	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateSecurityGroupResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateSecurityGroupResponse) ProtoMessage() {}
-
-func (x *CreateSecurityGroupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateSecurityGroupResponse.ProtoReflect.Descriptor instead.
-func (*CreateSecurityGroupResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *CreateSecurityGroupResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateSecurityGroupRequest represents the parameters for updates a security group
-type UpdateSecurityGroupRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the security group.
+	// The ID of the egress rule
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// The new name of the security group.
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	CustomId *string `protobuf:"bytes,3,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
 	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateSecurityGroupRequest) Reset() {
-	*x = UpdateSecurityGroupRequest{}
-	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateSecurityGroupRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateSecurityGroupRequest) ProtoMessage() {}
-
-func (x *UpdateSecurityGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateSecurityGroupRequest.ProtoReflect.Descriptor instead.
-func (*UpdateSecurityGroupRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *UpdateSecurityGroupRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateSecurityGroupRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *UpdateSecurityGroupRequest) GetCustomId() string {
-	if x != nil && x.CustomId != nil {
-		return *x.CustomId
-	}
-	return ""
-}
-
-func (x *UpdateSecurityGroupRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateSecurityGroupResponse represents the response from updates a security group
-type UpdateSecurityGroupResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateSecurityGroupResponse) Reset() {
-	*x = UpdateSecurityGroupResponse{}
-	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateSecurityGroupResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateSecurityGroupResponse) ProtoMessage() {}
-
-func (x *UpdateSecurityGroupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateSecurityGroupResponse.ProtoReflect.Descriptor instead.
-func (*UpdateSecurityGroupResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *UpdateSecurityGroupResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteSecurityGroupRequest represents the parameters for deletes security group
-type DeleteSecurityGroupRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the account of the security group. Must be specified with domain ID
-	AccountName *string `protobuf:"bytes,1,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// the domain ID of account owning the security group
-	DomainId *int64 `protobuf:"varint,2,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// the project of the security group
-	ProjectId *int64 `protobuf:"varint,3,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The ID of the security group. Mutually exclusive with name parameter
-	Id *int64 `protobuf:"varint,4,opt,name=id" json:"id,omitempty"`
-	// The ID of the security group. Mutually exclusive with id parameter
-	Name *string `protobuf:"bytes,5,opt,name=name" json:"name,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteSecurityGroupRequest) Reset() {
-	*x = DeleteSecurityGroupRequest{}
+func (x *RevokeSecurityGroupEgressRequest) Reset() {
+	*x = RevokeSecurityGroupEgressRequest{}
 	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeleteSecurityGroupRequest) String() string {
+func (x *RevokeSecurityGroupEgressRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteSecurityGroupRequest) ProtoMessage() {}
+func (*RevokeSecurityGroupEgressRequest) ProtoMessage() {}
 
-func (x *DeleteSecurityGroupRequest) ProtoReflect() protoreflect.Message {
+func (x *RevokeSecurityGroupEgressRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -923,55 +1034,41 @@ func (x *DeleteSecurityGroupRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteSecurityGroupRequest.ProtoReflect.Descriptor instead.
-func (*DeleteSecurityGroupRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use RevokeSecurityGroupEgressRequest.ProtoReflect.Descriptor instead.
+func (*RevokeSecurityGroupEgressRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *DeleteSecurityGroupRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *DeleteSecurityGroupRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *DeleteSecurityGroupRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *DeleteSecurityGroupRequest) GetId() int64 {
+func (x *RevokeSecurityGroupEgressRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *DeleteSecurityGroupRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
+func (x *RevokeSecurityGroupEgressRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *RevokeSecurityGroupEgressRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *DeleteSecurityGroupRequest) GetResponseType() string {
+func (x *RevokeSecurityGroupEgressRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// DeleteSecurityGroupResponse represents the response from deletes security group
-type DeleteSecurityGroupResponse struct {
+// RevokeSecurityGroupEgressResponse represents the response from deletes a particular egress rule from this security group
+type RevokeSecurityGroupEgressResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -979,20 +1076,20 @@ type DeleteSecurityGroupResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeleteSecurityGroupResponse) Reset() {
-	*x = DeleteSecurityGroupResponse{}
+func (x *RevokeSecurityGroupEgressResponse) Reset() {
+	*x = RevokeSecurityGroupEgressResponse{}
 	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeleteSecurityGroupResponse) String() string {
+func (x *RevokeSecurityGroupEgressResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteSecurityGroupResponse) ProtoMessage() {}
+func (*RevokeSecurityGroupEgressResponse) ProtoMessage() {}
 
-func (x *DeleteSecurityGroupResponse) ProtoReflect() protoreflect.Message {
+func (x *RevokeSecurityGroupEgressResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1004,12 +1101,12 @@ func (x *DeleteSecurityGroupResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteSecurityGroupResponse.ProtoReflect.Descriptor instead.
-func (*DeleteSecurityGroupResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use RevokeSecurityGroupEgressResponse.ProtoReflect.Descriptor instead.
+func (*RevokeSecurityGroupEgressResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *DeleteSecurityGroupResponse) GetResult() *Result {
+func (x *RevokeSecurityGroupEgressResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1132,54 +1229,34 @@ func (x *RevokeSecurityGroupIngressResponse) GetResult() *Result {
 	return nil
 }
 
-// AuthorizeSecurityGroupEgressRequest represents the parameters for authorizes a particular egress rule for this security group
-type AuthorizeSecurityGroupEgressRequest struct {
+// UpdateSecurityGroupRequest represents the parameters for updates a security group
+type UpdateSecurityGroupRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// TCP is default. UDP is the other supported protocol
-	Protocol *string `protobuf:"bytes,1,opt,name=protocol" json:"protocol,omitempty"`
-	// start port for this egress rule
-	StartPort *int32 `protobuf:"varint,2,opt,name=start_port,json=startPort" json:"start_port,omitempty"`
-	// end port for this egress rule
-	EndPort *int32 `protobuf:"varint,3,opt,name=end_port,json=endPort" json:"end_port,omitempty"`
-	// type of the icmp message being sent
-	IcmpType *int32 `protobuf:"varint,4,opt,name=icmp_type,json=icmpType" json:"icmp_type,omitempty"`
-	// error code for this icmp message
-	IcmpCode *int32 `protobuf:"varint,5,opt,name=icmp_code,json=icmpCode" json:"icmp_code,omitempty"`
-	// the cidr list associated. Multiple entries must be separated by a single comma character (,).
-	CidrList []string `protobuf:"bytes,6,rep,name=cidr_list,json=cidrList" json:"cidr_list,omitempty"`
-	// user to security group mapping
-	UserSecurityGroupList map[string]string `protobuf:"bytes,7,rep,name=user_security_group_list,json=userSecurityGroupList" json:"user_security_group_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// an optional domainId for the security group. If the account parameter is used, domainId must also be used.
-	DomainId *int64 `protobuf:"varint,8,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// an optional account for the security group. Must be used with domainId.
-	AccountName *string `protobuf:"bytes,9,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// an optional project of the security group
-	ProjectId *int64 `protobuf:"varint,10,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The ID of the security group. Mutually exclusive with securityGroupName parameter
-	SecurityGroupId *int64 `protobuf:"varint,11,opt,name=security_group_id,json=securityGroupId" json:"security_group_id,omitempty"`
-	// The name of the security group. Mutually exclusive with securityGroupId parameter
-	SecurityGroupName *string `protobuf:"bytes,12,opt,name=security_group_name,json=securityGroupName" json:"security_group_name,omitempty"`
-	StartEventId *int64 `protobuf:"varint,13,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,14,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,15,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// The ID of the security group.
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// The new name of the security group.
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	CustomId *string `protobuf:"bytes,3,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AuthorizeSecurityGroupEgressRequest) Reset() {
-	*x = AuthorizeSecurityGroupEgressRequest{}
+func (x *UpdateSecurityGroupRequest) Reset() {
+	*x = UpdateSecurityGroupRequest{}
 	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *AuthorizeSecurityGroupEgressRequest) String() string {
+func (x *UpdateSecurityGroupRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AuthorizeSecurityGroupEgressRequest) ProtoMessage() {}
+func (*UpdateSecurityGroupRequest) ProtoMessage() {}
 
-func (x *AuthorizeSecurityGroupEgressRequest) ProtoReflect() protoreflect.Message {
+func (x *UpdateSecurityGroupRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1191,118 +1268,41 @@ func (x *AuthorizeSecurityGroupEgressRequest) ProtoReflect() protoreflect.Messag
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AuthorizeSecurityGroupEgressRequest.ProtoReflect.Descriptor instead.
-func (*AuthorizeSecurityGroupEgressRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateSecurityGroupRequest.ProtoReflect.Descriptor instead.
+func (*UpdateSecurityGroupRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{14}
 }
 
-func (x *AuthorizeSecurityGroupEgressRequest) GetProtocol() string {
-	if x != nil && x.Protocol != nil {
-		return *x.Protocol
+func (x *UpdateSecurityGroupRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateSecurityGroupRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
 	}
 	return ""
 }
 
-func (x *AuthorizeSecurityGroupEgressRequest) GetStartPort() int32 {
-	if x != nil && x.StartPort != nil {
-		return *x.StartPort
-	}
-	return 0
-}
-
-func (x *AuthorizeSecurityGroupEgressRequest) GetEndPort() int32 {
-	if x != nil && x.EndPort != nil {
-		return *x.EndPort
-	}
-	return 0
-}
-
-func (x *AuthorizeSecurityGroupEgressRequest) GetIcmpType() int32 {
-	if x != nil && x.IcmpType != nil {
-		return *x.IcmpType
-	}
-	return 0
-}
-
-func (x *AuthorizeSecurityGroupEgressRequest) GetIcmpCode() int32 {
-	if x != nil && x.IcmpCode != nil {
-		return *x.IcmpCode
-	}
-	return 0
-}
-
-func (x *AuthorizeSecurityGroupEgressRequest) GetCidrList() []string {
-	if x != nil {
-		return x.CidrList
-	}
-	return nil
-}
-
-func (x *AuthorizeSecurityGroupEgressRequest) GetUserSecurityGroupList() map[string]string {
-	if x != nil {
-		return x.UserSecurityGroupList
-	}
-	return nil
-}
-
-func (x *AuthorizeSecurityGroupEgressRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *AuthorizeSecurityGroupEgressRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
+func (x *UpdateSecurityGroupRequest) GetCustomId() string {
+	if x != nil && x.CustomId != nil {
+		return *x.CustomId
 	}
 	return ""
 }
 
-func (x *AuthorizeSecurityGroupEgressRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *AuthorizeSecurityGroupEgressRequest) GetSecurityGroupId() int64 {
-	if x != nil && x.SecurityGroupId != nil {
-		return *x.SecurityGroupId
-	}
-	return 0
-}
-
-func (x *AuthorizeSecurityGroupEgressRequest) GetSecurityGroupName() string {
-	if x != nil && x.SecurityGroupName != nil {
-		return *x.SecurityGroupName
-	}
-	return ""
-}
-
-func (x *AuthorizeSecurityGroupEgressRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *AuthorizeSecurityGroupEgressRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *AuthorizeSecurityGroupEgressRequest) GetResponseType() string {
+func (x *UpdateSecurityGroupRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// AuthorizeSecurityGroupEgressResponse represents the response from authorizes a particular egress rule for this security group
-type AuthorizeSecurityGroupEgressResponse struct {
+// UpdateSecurityGroupResponse represents the response from updates a security group
+type UpdateSecurityGroupResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -1310,20 +1310,20 @@ type AuthorizeSecurityGroupEgressResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AuthorizeSecurityGroupEgressResponse) Reset() {
-	*x = AuthorizeSecurityGroupEgressResponse{}
+func (x *UpdateSecurityGroupResponse) Reset() {
+	*x = UpdateSecurityGroupResponse{}
 	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *AuthorizeSecurityGroupEgressResponse) String() string {
+func (x *UpdateSecurityGroupResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AuthorizeSecurityGroupEgressResponse) ProtoMessage() {}
+func (*UpdateSecurityGroupResponse) ProtoMessage() {}
 
-func (x *AuthorizeSecurityGroupEgressResponse) ProtoReflect() protoreflect.Message {
+func (x *UpdateSecurityGroupResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1335,12 +1335,12 @@ func (x *AuthorizeSecurityGroupEgressResponse) ProtoReflect() protoreflect.Messa
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AuthorizeSecurityGroupEgressResponse.ProtoReflect.Descriptor instead.
-func (*AuthorizeSecurityGroupEgressResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateSecurityGroupResponse.ProtoReflect.Descriptor instead.
+func (*UpdateSecurityGroupResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{15}
 }
 
-func (x *AuthorizeSecurityGroupEgressResponse) GetResult() *Result {
+func (x *UpdateSecurityGroupResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1484,151 +1484,6 @@ func (x *Success) GetDisplayText() string {
 	return ""
 }
 
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[18]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[18]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{18}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
 // Result represents a generic operation result
 type Result struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1648,7 +1503,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[19]
+	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1660,7 +1515,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[19]
+	mi := &file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1673,7 +1528,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{19}
+	return file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -1715,7 +1570,32 @@ var File_cloudstack_management_securitygroup_v1_securitygroup_gen_proto protoref
 
 const file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDesc = "" +
 	"\n" +
-	">cloudstack/management/securitygroup/v1/securitygroup.gen.proto\x12&cloudstack.management.securitygroup.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x9e\x06\n" +
+	">cloudstack/management/securitygroup/v1/securitygroup.gen.proto\x12&cloudstack.management.securitygroup.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x9c\x06\n" +
+	"#AuthorizeSecurityGroupEgressRequest\x12\x1a\n" +
+	"\bprotocol\x18\x01 \x01(\tR\bprotocol\x12*\n" +
+	"\n" +
+	"start_port\x18\x02 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\tstartPort\x12&\n" +
+	"\bend_port\x18\x03 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\aendPort\x12\x1b\n" +
+	"\ticmp_type\x18\x04 \x01(\x05R\bicmpType\x12\x1b\n" +
+	"\ticmp_code\x18\x05 \x01(\x05R\bicmpCode\x12\x1b\n" +
+	"\tcidr_list\x18\x06 \x03(\tR\bcidrList\x12\x9f\x01\n" +
+	"\x18user_security_group_list\x18\a \x03(\v2f.cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupEgressRequest.UserSecurityGroupListEntryR\x15userSecurityGroupList\x12\x1b\n" +
+	"\tdomain_id\x18\b \x01(\x03R\bdomainId\x12!\n" +
+	"\faccount_name\x18\t \x01(\tR\vaccountName\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\n" +
+	" \x01(\x03R\tprojectId\x12*\n" +
+	"\x11security_group_id\x18\v \x01(\x03R\x0fsecurityGroupId\x12:\n" +
+	"\x13security_group_name\x18\f \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x11securityGroupName\x12$\n" +
+	"\x0estart_event_id\x18\r \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x0e \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x0f \x01(\tR\fresponseType\x1aH\n" +
+	"\x1aUserSecurityGroupListEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"n\n" +
+	"$AuthorizeSecurityGroupEgressResponse\x12F\n" +
+	"\x06result\x18\x01 \x01(\v2..cloudstack.management.securitygroup.v1.ResultR\x06result\"\x9e\x06\n" +
 	"$AuthorizeSecurityGroupIngressRequest\x12\x1a\n" +
 	"\bprotocol\x18\x01 \x01(\tR\bprotocol\x12*\n" +
 	"\n" +
@@ -1740,13 +1620,29 @@ const file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDes
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"o\n" +
 	"%AuthorizeSecurityGroupIngressResponse\x12F\n" +
-	"\x06result\x18\x01 \x01(\v2..cloudstack.management.securitygroup.v1.ResultR\x06result\"\xb7\x01\n" +
-	" RevokeSecurityGroupEgressRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"k\n" +
-	"!RevokeSecurityGroupEgressResponse\x12F\n" +
+	"\x06result\x18\x01 \x01(\v2..cloudstack.management.securitygroup.v1.ResultR\x06result\"\x8d\x02\n" +
+	"\x1aCreateSecurityGroupRequest\x12!\n" +
+	"\faccount_name\x18\x01 \x01(\tR\vaccountName\x12\x1b\n" +
+	"\tdomain_id\x18\x02 \x01(\x03R\bdomainId\x12,\n" +
+	"\vdescription\x18\x03 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12=\n" +
+	"\x13security_group_name\x18\x04 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x11securityGroupName\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x05 \x01(\x03R\tprojectId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"e\n" +
+	"\x1bCreateSecurityGroupResponse\x12F\n" +
+	"\x06result\x18\x01 \x01(\v2..cloudstack.management.securitygroup.v1.ResultR\x06result\"\xd0\x01\n" +
+	"\x1aDeleteSecurityGroupRequest\x12!\n" +
+	"\faccount_name\x18\x01 \x01(\tR\vaccountName\x12\x1b\n" +
+	"\tdomain_id\x18\x02 \x01(\x03R\bdomainId\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x03 \x01(\x03R\tprojectId\x12\x0e\n" +
+	"\x02id\x18\x04 \x01(\x03R\x02id\x12\x1e\n" +
+	"\x04name\x18\x05 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"e\n" +
+	"\x1bDeleteSecurityGroupResponse\x12F\n" +
 	"\x06result\x18\x01 \x01(\v2..cloudstack.management.securitygroup.v1.ResultR\x06result\"\xc5\x05\n" +
 	"\x19ListSecurityGroupsRequest\x12:\n" +
 	"\x13security_group_name\x18\x01 \x01(\tB\n" +
@@ -1772,18 +1668,20 @@ const file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDes
 	"\x1aListSecurityGroupsResponse\x12K\n" +
 	"\x05items\x18\x01 \x03(\v25.cloudstack.management.securitygroup.v1.SecurityGroupR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x8d\x02\n" +
-	"\x1aCreateSecurityGroupRequest\x12!\n" +
-	"\faccount_name\x18\x01 \x01(\tR\vaccountName\x12\x1b\n" +
-	"\tdomain_id\x18\x02 \x01(\x03R\bdomainId\x12,\n" +
-	"\vdescription\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12=\n" +
-	"\x13security_group_name\x18\x04 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x11securityGroupName\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x05 \x01(\x03R\tprojectId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"e\n" +
-	"\x1bCreateSecurityGroupResponse\x12F\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xb7\x01\n" +
+	" RevokeSecurityGroupEgressRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"k\n" +
+	"!RevokeSecurityGroupEgressResponse\x12F\n" +
+	"\x06result\x18\x01 \x01(\v2..cloudstack.management.securitygroup.v1.ResultR\x06result\"\xb8\x01\n" +
+	"!RevokeSecurityGroupIngressRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"l\n" +
+	"\"RevokeSecurityGroupIngressResponse\x12F\n" +
 	"\x06result\x18\x01 \x01(\v2..cloudstack.management.securitygroup.v1.ResultR\x06result\"\xa0\x01\n" +
 	"\x1aUpdateSecurityGroupRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1e\n" +
@@ -1792,49 +1690,6 @@ const file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDes
 	"\tcustom_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12#\n" +
 	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"e\n" +
 	"\x1bUpdateSecurityGroupResponse\x12F\n" +
-	"\x06result\x18\x01 \x01(\v2..cloudstack.management.securitygroup.v1.ResultR\x06result\"\xd0\x01\n" +
-	"\x1aDeleteSecurityGroupRequest\x12!\n" +
-	"\faccount_name\x18\x01 \x01(\tR\vaccountName\x12\x1b\n" +
-	"\tdomain_id\x18\x02 \x01(\x03R\bdomainId\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x03 \x01(\x03R\tprojectId\x12\x0e\n" +
-	"\x02id\x18\x04 \x01(\x03R\x02id\x12\x1e\n" +
-	"\x04name\x18\x05 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"e\n" +
-	"\x1bDeleteSecurityGroupResponse\x12F\n" +
-	"\x06result\x18\x01 \x01(\v2..cloudstack.management.securitygroup.v1.ResultR\x06result\"\xb8\x01\n" +
-	"!RevokeSecurityGroupIngressRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"l\n" +
-	"\"RevokeSecurityGroupIngressResponse\x12F\n" +
-	"\x06result\x18\x01 \x01(\v2..cloudstack.management.securitygroup.v1.ResultR\x06result\"\x9c\x06\n" +
-	"#AuthorizeSecurityGroupEgressRequest\x12\x1a\n" +
-	"\bprotocol\x18\x01 \x01(\tR\bprotocol\x12*\n" +
-	"\n" +
-	"start_port\x18\x02 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\tstartPort\x12&\n" +
-	"\bend_port\x18\x03 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\aendPort\x12\x1b\n" +
-	"\ticmp_type\x18\x04 \x01(\x05R\bicmpType\x12\x1b\n" +
-	"\ticmp_code\x18\x05 \x01(\x05R\bicmpCode\x12\x1b\n" +
-	"\tcidr_list\x18\x06 \x03(\tR\bcidrList\x12\x9f\x01\n" +
-	"\x18user_security_group_list\x18\a \x03(\v2f.cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupEgressRequest.UserSecurityGroupListEntryR\x15userSecurityGroupList\x12\x1b\n" +
-	"\tdomain_id\x18\b \x01(\x03R\bdomainId\x12!\n" +
-	"\faccount_name\x18\t \x01(\tR\vaccountName\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\n" +
-	" \x01(\x03R\tprojectId\x12*\n" +
-	"\x11security_group_id\x18\v \x01(\x03R\x0fsecurityGroupId\x12:\n" +
-	"\x13security_group_name\x18\f \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x11securityGroupName\x12$\n" +
-	"\x0estart_event_id\x18\r \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x0e \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x0f \x01(\tR\fresponseType\x1aH\n" +
-	"\x1aUserSecurityGroupListEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"n\n" +
-	"$AuthorizeSecurityGroupEgressResponse\x12F\n" +
 	"\x06result\x18\x01 \x01(\v2..cloudstack.management.securitygroup.v1.ResultR\x06result\"\x9c\x01\n" +
 	"\rSecurityGroup\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
@@ -1844,26 +1699,7 @@ const file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDes
 	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xe5\x03\n" +
-	"\x04Item\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12S\n" +
-	"\adetails\x18\f \x03(\v29.cloudstack.management.securitygroup.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
@@ -1873,20 +1709,20 @@ const file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDes
 	"job_status\x18\x05 \x01(\tR\tjobStatus*\xa1\x01\n" +
 	"\fProtocolType\x12\x1d\n" +
 	"\x19PROTOCOL_TYPE_UNSPECIFIED\x10\x00\x12\x15\n" +
-	"\x11PROTOCOL_TYPE_TCP\x10\x01\x12\x15\n" +
-	"\x11PROTOCOL_TYPE_UDP\x10\x02\x12\x16\n" +
+	"\x11PROTOCOL_TYPE_ALL\x10\x01\x12\x15\n" +
+	"\x11PROTOCOL_TYPE_ETC\x10\x02\x12\x16\n" +
 	"\x12PROTOCOL_TYPE_ICMP\x10\x03\x12\x15\n" +
-	"\x11PROTOCOL_TYPE_ALL\x10\x04\x12\x15\n" +
-	"\x11PROTOCOL_TYPE_ETC\x10\x052\x93\v\n" +
-	"\x14SecuritygroupService\x12\xbe\x01\n" +
-	"\x1dAuthorizeSecurityGroupIngress\x12L.cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupIngressRequest\x1aM.cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupIngressResponse\"\x00\x12\xb2\x01\n" +
-	"\x19RevokeSecurityGroupEgress\x12H.cloudstack.management.securitygroup.v1.RevokeSecurityGroupEgressRequest\x1aI.cloudstack.management.securitygroup.v1.RevokeSecurityGroupEgressResponse\"\x00\x12\x9d\x01\n" +
-	"\x12ListSecurityGroups\x12A.cloudstack.management.securitygroup.v1.ListSecurityGroupsRequest\x1aB.cloudstack.management.securitygroup.v1.ListSecurityGroupsResponse\"\x00\x12\xa0\x01\n" +
-	"\x13CreateSecurityGroup\x12B.cloudstack.management.securitygroup.v1.CreateSecurityGroupRequest\x1aC.cloudstack.management.securitygroup.v1.CreateSecurityGroupResponse\"\x00\x12\xa0\x01\n" +
-	"\x13UpdateSecurityGroup\x12B.cloudstack.management.securitygroup.v1.UpdateSecurityGroupRequest\x1aC.cloudstack.management.securitygroup.v1.UpdateSecurityGroupResponse\"\x00\x12\xa0\x01\n" +
-	"\x13DeleteSecurityGroup\x12B.cloudstack.management.securitygroup.v1.DeleteSecurityGroupRequest\x1aC.cloudstack.management.securitygroup.v1.DeleteSecurityGroupResponse\"\x00\x12\xb5\x01\n" +
-	"\x1aRevokeSecurityGroupIngress\x12I.cloudstack.management.securitygroup.v1.RevokeSecurityGroupIngressRequest\x1aJ.cloudstack.management.securitygroup.v1.RevokeSecurityGroupIngressResponse\"\x00\x12\xbb\x01\n" +
-	"\x1cAuthorizeSecurityGroupEgress\x12K.cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupEgressRequest\x1aL.cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupEgressResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xea\x02\n" +
+	"\x11PROTOCOL_TYPE_TCP\x10\x04\x12\x15\n" +
+	"\x11PROTOCOL_TYPE_UDP\x10\x052\xcc\v\n" +
+	"\x14SecuritygroupService\x12\xc2\x01\n" +
+	"\x1cAuthorizeSecurityGroupEgress\x12K.cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupEgressRequest\x1aL.cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupEgressResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xc5\x01\n" +
+	"\x1dAuthorizeSecurityGroupIngress\x12L.cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupIngressRequest\x1aM.cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupIngressResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xa7\x01\n" +
+	"\x13CreateSecurityGroup\x12B.cloudstack.management.securitygroup.v1.CreateSecurityGroupRequest\x1aC.cloudstack.management.securitygroup.v1.CreateSecurityGroupResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xa7\x01\n" +
+	"\x13DeleteSecurityGroup\x12B.cloudstack.management.securitygroup.v1.DeleteSecurityGroupRequest\x1aC.cloudstack.management.securitygroup.v1.DeleteSecurityGroupResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xa4\x01\n" +
+	"\x12ListSecurityGroups\x12A.cloudstack.management.securitygroup.v1.ListSecurityGroupsRequest\x1aB.cloudstack.management.securitygroup.v1.ListSecurityGroupsResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xb9\x01\n" +
+	"\x19RevokeSecurityGroupEgress\x12H.cloudstack.management.securitygroup.v1.RevokeSecurityGroupEgressRequest\x1aI.cloudstack.management.securitygroup.v1.RevokeSecurityGroupEgressResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xbc\x01\n" +
+	"\x1aRevokeSecurityGroupIngress\x12I.cloudstack.management.securitygroup.v1.RevokeSecurityGroupIngressRequest\x1aJ.cloudstack.management.securitygroup.v1.RevokeSecurityGroupIngressResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xa7\x01\n" +
+	"\x13UpdateSecurityGroup\x12B.cloudstack.management.securitygroup.v1.UpdateSecurityGroupRequest\x1aC.cloudstack.management.securitygroup.v1.UpdateSecurityGroupResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\a\xc2>\x04\xc2>\x01\x02B\xea\x02\n" +
 	"*com.cloudstack.management.securitygroup.v1B\x15SecuritygroupGenProtoP\x01Zjgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/securitygroup/v1;securitygroupv1\xa2\x02\x03CMS\xaa\x02&Cloudstack.Management.Securitygroup.V1\xca\x02&Cloudstack\\Management\\Securitygroup\\V1\xe2\x022Cloudstack\\Management\\Securitygroup\\V1\\GPBMetadata\xea\x02)Cloudstack::Management::Securitygroup::V1b\beditionsp\xe8\a"
 
 var (
@@ -1902,68 +1738,65 @@ func file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDesc
 }
 
 var file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 24)
+var file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 22)
 var file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_goTypes = []any{
 	(ProtocolType)(0), // 0: cloudstack.management.securitygroup.v1.ProtocolType
-	(*AuthorizeSecurityGroupIngressRequest)(nil),  // 1: cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupIngressRequest
-	(*AuthorizeSecurityGroupIngressResponse)(nil), // 2: cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupIngressResponse
-	(*RevokeSecurityGroupEgressRequest)(nil),      // 3: cloudstack.management.securitygroup.v1.RevokeSecurityGroupEgressRequest
-	(*RevokeSecurityGroupEgressResponse)(nil),     // 4: cloudstack.management.securitygroup.v1.RevokeSecurityGroupEgressResponse
-	(*ListSecurityGroupsRequest)(nil),             // 5: cloudstack.management.securitygroup.v1.ListSecurityGroupsRequest
-	(*ListSecurityGroupsResponse)(nil),            // 6: cloudstack.management.securitygroup.v1.ListSecurityGroupsResponse
-	(*CreateSecurityGroupRequest)(nil),            // 7: cloudstack.management.securitygroup.v1.CreateSecurityGroupRequest
-	(*CreateSecurityGroupResponse)(nil),           // 8: cloudstack.management.securitygroup.v1.CreateSecurityGroupResponse
-	(*UpdateSecurityGroupRequest)(nil),            // 9: cloudstack.management.securitygroup.v1.UpdateSecurityGroupRequest
-	(*UpdateSecurityGroupResponse)(nil),           // 10: cloudstack.management.securitygroup.v1.UpdateSecurityGroupResponse
-	(*DeleteSecurityGroupRequest)(nil),            // 11: cloudstack.management.securitygroup.v1.DeleteSecurityGroupRequest
-	(*DeleteSecurityGroupResponse)(nil),           // 12: cloudstack.management.securitygroup.v1.DeleteSecurityGroupResponse
+	(*AuthorizeSecurityGroupEgressRequest)(nil),   // 1: cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupEgressRequest
+	(*AuthorizeSecurityGroupEgressResponse)(nil),  // 2: cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupEgressResponse
+	(*AuthorizeSecurityGroupIngressRequest)(nil),  // 3: cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupIngressRequest
+	(*AuthorizeSecurityGroupIngressResponse)(nil), // 4: cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupIngressResponse
+	(*CreateSecurityGroupRequest)(nil),            // 5: cloudstack.management.securitygroup.v1.CreateSecurityGroupRequest
+	(*CreateSecurityGroupResponse)(nil),           // 6: cloudstack.management.securitygroup.v1.CreateSecurityGroupResponse
+	(*DeleteSecurityGroupRequest)(nil),            // 7: cloudstack.management.securitygroup.v1.DeleteSecurityGroupRequest
+	(*DeleteSecurityGroupResponse)(nil),           // 8: cloudstack.management.securitygroup.v1.DeleteSecurityGroupResponse
+	(*ListSecurityGroupsRequest)(nil),             // 9: cloudstack.management.securitygroup.v1.ListSecurityGroupsRequest
+	(*ListSecurityGroupsResponse)(nil),            // 10: cloudstack.management.securitygroup.v1.ListSecurityGroupsResponse
+	(*RevokeSecurityGroupEgressRequest)(nil),      // 11: cloudstack.management.securitygroup.v1.RevokeSecurityGroupEgressRequest
+	(*RevokeSecurityGroupEgressResponse)(nil),     // 12: cloudstack.management.securitygroup.v1.RevokeSecurityGroupEgressResponse
 	(*RevokeSecurityGroupIngressRequest)(nil),     // 13: cloudstack.management.securitygroup.v1.RevokeSecurityGroupIngressRequest
 	(*RevokeSecurityGroupIngressResponse)(nil),    // 14: cloudstack.management.securitygroup.v1.RevokeSecurityGroupIngressResponse
-	(*AuthorizeSecurityGroupEgressRequest)(nil),   // 15: cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupEgressRequest
-	(*AuthorizeSecurityGroupEgressResponse)(nil),  // 16: cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupEgressResponse
+	(*UpdateSecurityGroupRequest)(nil),            // 15: cloudstack.management.securitygroup.v1.UpdateSecurityGroupRequest
+	(*UpdateSecurityGroupResponse)(nil),           // 16: cloudstack.management.securitygroup.v1.UpdateSecurityGroupResponse
 	(*SecurityGroup)(nil),                         // 17: cloudstack.management.securitygroup.v1.SecurityGroup
 	(*Success)(nil),                               // 18: cloudstack.management.securitygroup.v1.Success
-	(*Item)(nil),                                  // 19: cloudstack.management.securitygroup.v1.Item
-	(*Result)(nil),                                // 20: cloudstack.management.securitygroup.v1.Result
+	(*Result)(nil),                                // 19: cloudstack.management.securitygroup.v1.Result
+	nil,                                           // 20: cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupEgressRequest.UserSecurityGroupListEntry
 	nil,                                           // 21: cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupIngressRequest.UserSecurityGroupListEntry
 	nil,                                           // 22: cloudstack.management.securitygroup.v1.ListSecurityGroupsRequest.TagsEntry
-	nil,                                           // 23: cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupEgressRequest.UserSecurityGroupListEntry
-	nil,                                           // 24: cloudstack.management.securitygroup.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_depIdxs = []int32{
-	21, // 0: cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupIngressRequest.user_security_group_list:type_name -> cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupIngressRequest.UserSecurityGroupListEntry
-	20, // 1: cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupIngressResponse.result:type_name -> cloudstack.management.securitygroup.v1.Result
-	20, // 2: cloudstack.management.securitygroup.v1.RevokeSecurityGroupEgressResponse.result:type_name -> cloudstack.management.securitygroup.v1.Result
-	22, // 3: cloudstack.management.securitygroup.v1.ListSecurityGroupsRequest.tags:type_name -> cloudstack.management.securitygroup.v1.ListSecurityGroupsRequest.TagsEntry
-	17, // 4: cloudstack.management.securitygroup.v1.ListSecurityGroupsResponse.items:type_name -> cloudstack.management.securitygroup.v1.SecurityGroup
-	20, // 5: cloudstack.management.securitygroup.v1.CreateSecurityGroupResponse.result:type_name -> cloudstack.management.securitygroup.v1.Result
-	20, // 6: cloudstack.management.securitygroup.v1.UpdateSecurityGroupResponse.result:type_name -> cloudstack.management.securitygroup.v1.Result
-	20, // 7: cloudstack.management.securitygroup.v1.DeleteSecurityGroupResponse.result:type_name -> cloudstack.management.securitygroup.v1.Result
-	20, // 8: cloudstack.management.securitygroup.v1.RevokeSecurityGroupIngressResponse.result:type_name -> cloudstack.management.securitygroup.v1.Result
-	23, // 9: cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupEgressRequest.user_security_group_list:type_name -> cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupEgressRequest.UserSecurityGroupListEntry
-	20, // 10: cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupEgressResponse.result:type_name -> cloudstack.management.securitygroup.v1.Result
-	24, // 11: cloudstack.management.securitygroup.v1.Item.details:type_name -> cloudstack.management.securitygroup.v1.Item.DetailsEntry
-	1,  // 12: cloudstack.management.securitygroup.v1.SecuritygroupService.AuthorizeSecurityGroupIngress:input_type -> cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupIngressRequest
-	3,  // 13: cloudstack.management.securitygroup.v1.SecuritygroupService.RevokeSecurityGroupEgress:input_type -> cloudstack.management.securitygroup.v1.RevokeSecurityGroupEgressRequest
-	5,  // 14: cloudstack.management.securitygroup.v1.SecuritygroupService.ListSecurityGroups:input_type -> cloudstack.management.securitygroup.v1.ListSecurityGroupsRequest
-	7,  // 15: cloudstack.management.securitygroup.v1.SecuritygroupService.CreateSecurityGroup:input_type -> cloudstack.management.securitygroup.v1.CreateSecurityGroupRequest
-	9,  // 16: cloudstack.management.securitygroup.v1.SecuritygroupService.UpdateSecurityGroup:input_type -> cloudstack.management.securitygroup.v1.UpdateSecurityGroupRequest
-	11, // 17: cloudstack.management.securitygroup.v1.SecuritygroupService.DeleteSecurityGroup:input_type -> cloudstack.management.securitygroup.v1.DeleteSecurityGroupRequest
-	13, // 18: cloudstack.management.securitygroup.v1.SecuritygroupService.RevokeSecurityGroupIngress:input_type -> cloudstack.management.securitygroup.v1.RevokeSecurityGroupIngressRequest
-	15, // 19: cloudstack.management.securitygroup.v1.SecuritygroupService.AuthorizeSecurityGroupEgress:input_type -> cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupEgressRequest
-	2,  // 20: cloudstack.management.securitygroup.v1.SecuritygroupService.AuthorizeSecurityGroupIngress:output_type -> cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupIngressResponse
-	4,  // 21: cloudstack.management.securitygroup.v1.SecuritygroupService.RevokeSecurityGroupEgress:output_type -> cloudstack.management.securitygroup.v1.RevokeSecurityGroupEgressResponse
-	6,  // 22: cloudstack.management.securitygroup.v1.SecuritygroupService.ListSecurityGroups:output_type -> cloudstack.management.securitygroup.v1.ListSecurityGroupsResponse
-	8,  // 23: cloudstack.management.securitygroup.v1.SecuritygroupService.CreateSecurityGroup:output_type -> cloudstack.management.securitygroup.v1.CreateSecurityGroupResponse
-	10, // 24: cloudstack.management.securitygroup.v1.SecuritygroupService.UpdateSecurityGroup:output_type -> cloudstack.management.securitygroup.v1.UpdateSecurityGroupResponse
-	12, // 25: cloudstack.management.securitygroup.v1.SecuritygroupService.DeleteSecurityGroup:output_type -> cloudstack.management.securitygroup.v1.DeleteSecurityGroupResponse
-	14, // 26: cloudstack.management.securitygroup.v1.SecuritygroupService.RevokeSecurityGroupIngress:output_type -> cloudstack.management.securitygroup.v1.RevokeSecurityGroupIngressResponse
-	16, // 27: cloudstack.management.securitygroup.v1.SecuritygroupService.AuthorizeSecurityGroupEgress:output_type -> cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupEgressResponse
-	20, // [20:28] is the sub-list for method output_type
-	12, // [12:20] is the sub-list for method input_type
-	12, // [12:12] is the sub-list for extension type_name
-	12, // [12:12] is the sub-list for extension extendee
-	0,  // [0:12] is the sub-list for field type_name
+	20, // 0: cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupEgressRequest.user_security_group_list:type_name -> cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupEgressRequest.UserSecurityGroupListEntry
+	19, // 1: cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupEgressResponse.result:type_name -> cloudstack.management.securitygroup.v1.Result
+	21, // 2: cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupIngressRequest.user_security_group_list:type_name -> cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupIngressRequest.UserSecurityGroupListEntry
+	19, // 3: cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupIngressResponse.result:type_name -> cloudstack.management.securitygroup.v1.Result
+	19, // 4: cloudstack.management.securitygroup.v1.CreateSecurityGroupResponse.result:type_name -> cloudstack.management.securitygroup.v1.Result
+	19, // 5: cloudstack.management.securitygroup.v1.DeleteSecurityGroupResponse.result:type_name -> cloudstack.management.securitygroup.v1.Result
+	22, // 6: cloudstack.management.securitygroup.v1.ListSecurityGroupsRequest.tags:type_name -> cloudstack.management.securitygroup.v1.ListSecurityGroupsRequest.TagsEntry
+	17, // 7: cloudstack.management.securitygroup.v1.ListSecurityGroupsResponse.items:type_name -> cloudstack.management.securitygroup.v1.SecurityGroup
+	19, // 8: cloudstack.management.securitygroup.v1.RevokeSecurityGroupEgressResponse.result:type_name -> cloudstack.management.securitygroup.v1.Result
+	19, // 9: cloudstack.management.securitygroup.v1.RevokeSecurityGroupIngressResponse.result:type_name -> cloudstack.management.securitygroup.v1.Result
+	19, // 10: cloudstack.management.securitygroup.v1.UpdateSecurityGroupResponse.result:type_name -> cloudstack.management.securitygroup.v1.Result
+	1,  // 11: cloudstack.management.securitygroup.v1.SecuritygroupService.AuthorizeSecurityGroupEgress:input_type -> cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupEgressRequest
+	3,  // 12: cloudstack.management.securitygroup.v1.SecuritygroupService.AuthorizeSecurityGroupIngress:input_type -> cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupIngressRequest
+	5,  // 13: cloudstack.management.securitygroup.v1.SecuritygroupService.CreateSecurityGroup:input_type -> cloudstack.management.securitygroup.v1.CreateSecurityGroupRequest
+	7,  // 14: cloudstack.management.securitygroup.v1.SecuritygroupService.DeleteSecurityGroup:input_type -> cloudstack.management.securitygroup.v1.DeleteSecurityGroupRequest
+	9,  // 15: cloudstack.management.securitygroup.v1.SecuritygroupService.ListSecurityGroups:input_type -> cloudstack.management.securitygroup.v1.ListSecurityGroupsRequest
+	11, // 16: cloudstack.management.securitygroup.v1.SecuritygroupService.RevokeSecurityGroupEgress:input_type -> cloudstack.management.securitygroup.v1.RevokeSecurityGroupEgressRequest
+	13, // 17: cloudstack.management.securitygroup.v1.SecuritygroupService.RevokeSecurityGroupIngress:input_type -> cloudstack.management.securitygroup.v1.RevokeSecurityGroupIngressRequest
+	15, // 18: cloudstack.management.securitygroup.v1.SecuritygroupService.UpdateSecurityGroup:input_type -> cloudstack.management.securitygroup.v1.UpdateSecurityGroupRequest
+	2,  // 19: cloudstack.management.securitygroup.v1.SecuritygroupService.AuthorizeSecurityGroupEgress:output_type -> cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupEgressResponse
+	4,  // 20: cloudstack.management.securitygroup.v1.SecuritygroupService.AuthorizeSecurityGroupIngress:output_type -> cloudstack.management.securitygroup.v1.AuthorizeSecurityGroupIngressResponse
+	6,  // 21: cloudstack.management.securitygroup.v1.SecuritygroupService.CreateSecurityGroup:output_type -> cloudstack.management.securitygroup.v1.CreateSecurityGroupResponse
+	8,  // 22: cloudstack.management.securitygroup.v1.SecuritygroupService.DeleteSecurityGroup:output_type -> cloudstack.management.securitygroup.v1.DeleteSecurityGroupResponse
+	10, // 23: cloudstack.management.securitygroup.v1.SecuritygroupService.ListSecurityGroups:output_type -> cloudstack.management.securitygroup.v1.ListSecurityGroupsResponse
+	12, // 24: cloudstack.management.securitygroup.v1.SecuritygroupService.RevokeSecurityGroupEgress:output_type -> cloudstack.management.securitygroup.v1.RevokeSecurityGroupEgressResponse
+	14, // 25: cloudstack.management.securitygroup.v1.SecuritygroupService.RevokeSecurityGroupIngress:output_type -> cloudstack.management.securitygroup.v1.RevokeSecurityGroupIngressResponse
+	16, // 26: cloudstack.management.securitygroup.v1.SecuritygroupService.UpdateSecurityGroup:output_type -> cloudstack.management.securitygroup.v1.UpdateSecurityGroupResponse
+	19, // [19:27] is the sub-list for method output_type
+	11, // [11:19] is the sub-list for method input_type
+	11, // [11:11] is the sub-list for extension type_name
+	11, // [11:11] is the sub-list for extension extendee
+	0,  // [0:11] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_init() }
@@ -1977,7 +1810,7 @@ func file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_init() 
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDesc), len(file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   24,
+			NumMessages:   22,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -24,238 +24,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// DisableHAForZoneRequest represents the parameters for disables ha for a zone
-type DisableHAForZoneRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the zone
-	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DisableHAForZoneRequest) Reset() {
-	*x = DisableHAForZoneRequest{}
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DisableHAForZoneRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DisableHAForZoneRequest) ProtoMessage() {}
-
-func (x *DisableHAForZoneRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DisableHAForZoneRequest.ProtoReflect.Descriptor instead.
-func (*DisableHAForZoneRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *DisableHAForZoneRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *DisableHAForZoneRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DisableHAForZoneRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DisableHAForZoneRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DisableHAForZoneResponse represents the response from disables ha for a zone
-type DisableHAForZoneResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DisableHAForZoneResponse) Reset() {
-	*x = DisableHAForZoneResponse{}
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DisableHAForZoneResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DisableHAForZoneResponse) ProtoMessage() {}
-
-func (x *DisableHAForZoneResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DisableHAForZoneResponse.ProtoReflect.Descriptor instead.
-func (*DisableHAForZoneResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *DisableHAForZoneResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// EnableHAForHostRequest represents the parameters for enables ha for a host
-type EnableHAForHostRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the host
-	HostId *int64 `protobuf:"varint,1,opt,name=host_id,json=hostId" json:"host_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *EnableHAForHostRequest) Reset() {
-	*x = EnableHAForHostRequest{}
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *EnableHAForHostRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*EnableHAForHostRequest) ProtoMessage() {}
-
-func (x *EnableHAForHostRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use EnableHAForHostRequest.ProtoReflect.Descriptor instead.
-func (*EnableHAForHostRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *EnableHAForHostRequest) GetHostId() int64 {
-	if x != nil && x.HostId != nil {
-		return *x.HostId
-	}
-	return 0
-}
-
-func (x *EnableHAForHostRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *EnableHAForHostRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *EnableHAForHostRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// EnableHAForHostResponse represents the response from enables ha for a host
-type EnableHAForHostResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *EnableHAForHostResponse) Reset() {
-	*x = EnableHAForHostResponse{}
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *EnableHAForHostResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*EnableHAForHostResponse) ProtoMessage() {}
-
-func (x *EnableHAForHostResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use EnableHAForHostResponse.ProtoReflect.Descriptor instead.
-func (*EnableHAForHostResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *EnableHAForHostResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
 // ConfigureHAForHostRequest represents the parameters for configures ha for a host
 type ConfigureHAForHostRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -272,7 +40,7 @@ type ConfigureHAForHostRequest struct {
 
 func (x *ConfigureHAForHostRequest) Reset() {
 	*x = ConfigureHAForHostRequest{}
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -284,7 +52,7 @@ func (x *ConfigureHAForHostRequest) String() string {
 func (*ConfigureHAForHostRequest) ProtoMessage() {}
 
 func (x *ConfigureHAForHostRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -297,7 +65,7 @@ func (x *ConfigureHAForHostRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigureHAForHostRequest.ProtoReflect.Descriptor instead.
 func (*ConfigureHAForHostRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{4}
+	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *ConfigureHAForHostRequest) GetHostId() int64 {
@@ -346,7 +114,7 @@ type ConfigureHAForHostResponse struct {
 
 func (x *ConfigureHAForHostResponse) Reset() {
 	*x = ConfigureHAForHostResponse{}
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -358,7 +126,7 @@ func (x *ConfigureHAForHostResponse) String() string {
 func (*ConfigureHAForHostResponse) ProtoMessage() {}
 
 func (x *ConfigureHAForHostResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -371,7 +139,7 @@ func (x *ConfigureHAForHostResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigureHAForHostResponse.ProtoReflect.Descriptor instead.
 func (*ConfigureHAForHostResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{5}
+	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ConfigureHAForHostResponse) GetResult() *Result {
@@ -395,7 +163,7 @@ type DisableHAForClusterRequest struct {
 
 func (x *DisableHAForClusterRequest) Reset() {
 	*x = DisableHAForClusterRequest{}
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -407,7 +175,7 @@ func (x *DisableHAForClusterRequest) String() string {
 func (*DisableHAForClusterRequest) ProtoMessage() {}
 
 func (x *DisableHAForClusterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -420,7 +188,7 @@ func (x *DisableHAForClusterRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DisableHAForClusterRequest.ProtoReflect.Descriptor instead.
 func (*DisableHAForClusterRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{6}
+	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *DisableHAForClusterRequest) GetClusterId() int64 {
@@ -462,7 +230,7 @@ type DisableHAForClusterResponse struct {
 
 func (x *DisableHAForClusterResponse) Reset() {
 	*x = DisableHAForClusterResponse{}
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -474,7 +242,7 @@ func (x *DisableHAForClusterResponse) String() string {
 func (*DisableHAForClusterResponse) ProtoMessage() {}
 
 func (x *DisableHAForClusterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -487,7 +255,7 @@ func (x *DisableHAForClusterResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DisableHAForClusterResponse.ProtoReflect.Descriptor instead.
 func (*DisableHAForClusterResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{7}
+	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *DisableHAForClusterResponse) GetResult() *Result {
@@ -495,231 +263,6 @@ func (x *DisableHAForClusterResponse) GetResult() *Result {
 		return x.Result
 	}
 	return nil
-}
-
-// EnableHAForZoneRequest represents the parameters for enables ha for a zone
-type EnableHAForZoneRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the zone
-	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *EnableHAForZoneRequest) Reset() {
-	*x = EnableHAForZoneRequest{}
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *EnableHAForZoneRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*EnableHAForZoneRequest) ProtoMessage() {}
-
-func (x *EnableHAForZoneRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use EnableHAForZoneRequest.ProtoReflect.Descriptor instead.
-func (*EnableHAForZoneRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *EnableHAForZoneRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *EnableHAForZoneRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *EnableHAForZoneRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *EnableHAForZoneRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// EnableHAForZoneResponse represents the response from enables ha for a zone
-type EnableHAForZoneResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *EnableHAForZoneResponse) Reset() {
-	*x = EnableHAForZoneResponse{}
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *EnableHAForZoneResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*EnableHAForZoneResponse) ProtoMessage() {}
-
-func (x *EnableHAForZoneResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use EnableHAForZoneResponse.ProtoReflect.Descriptor instead.
-func (*EnableHAForZoneResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *EnableHAForZoneResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListHostHAResourcesRequest represents the parameters for lists host ha resources
-type ListHostHAResourcesRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// List by host ID
-	HostId *int64 `protobuf:"varint,1,opt,name=host_id,json=hostId" json:"host_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListHostHAResourcesRequest) Reset() {
-	*x = ListHostHAResourcesRequest{}
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListHostHAResourcesRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListHostHAResourcesRequest) ProtoMessage() {}
-
-func (x *ListHostHAResourcesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListHostHAResourcesRequest.ProtoReflect.Descriptor instead.
-func (*ListHostHAResourcesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *ListHostHAResourcesRequest) GetHostId() int64 {
-	if x != nil && x.HostId != nil {
-		return *x.HostId
-	}
-	return 0
-}
-
-func (x *ListHostHAResourcesRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListHostHAResourcesResponse represents the response from lists host ha resources
-type ListHostHAResourcesResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of HostHAs
-	Items []*HostHA `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of HostHAs
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListHostHAResourcesResponse) Reset() {
-	*x = ListHostHAResourcesResponse{}
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListHostHAResourcesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListHostHAResourcesResponse) ProtoMessage() {}
-
-func (x *ListHostHAResourcesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListHostHAResourcesResponse.ProtoReflect.Descriptor instead.
-func (*ListHostHAResourcesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *ListHostHAResourcesResponse) GetItems() []*HostHA {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListHostHAResourcesResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
 }
 
 // DisableHAForHostRequest represents the parameters for disables ha for a host
@@ -736,7 +279,7 @@ type DisableHAForHostRequest struct {
 
 func (x *DisableHAForHostRequest) Reset() {
 	*x = DisableHAForHostRequest{}
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[12]
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -748,7 +291,7 @@ func (x *DisableHAForHostRequest) String() string {
 func (*DisableHAForHostRequest) ProtoMessage() {}
 
 func (x *DisableHAForHostRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[12]
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -761,7 +304,7 @@ func (x *DisableHAForHostRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DisableHAForHostRequest.ProtoReflect.Descriptor instead.
 func (*DisableHAForHostRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{12}
+	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *DisableHAForHostRequest) GetHostId() int64 {
@@ -803,7 +346,7 @@ type DisableHAForHostResponse struct {
 
 func (x *DisableHAForHostResponse) Reset() {
 	*x = DisableHAForHostResponse{}
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[13]
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -815,7 +358,7 @@ func (x *DisableHAForHostResponse) String() string {
 func (*DisableHAForHostResponse) ProtoMessage() {}
 
 func (x *DisableHAForHostResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[13]
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -828,10 +371,474 @@ func (x *DisableHAForHostResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DisableHAForHostResponse.ProtoReflect.Descriptor instead.
 func (*DisableHAForHostResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{13}
+	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *DisableHAForHostResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DisableHAForZoneRequest represents the parameters for disables ha for a zone
+type DisableHAForZoneRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of the zone
+	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DisableHAForZoneRequest) Reset() {
+	*x = DisableHAForZoneRequest{}
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DisableHAForZoneRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DisableHAForZoneRequest) ProtoMessage() {}
+
+func (x *DisableHAForZoneRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DisableHAForZoneRequest.ProtoReflect.Descriptor instead.
+func (*DisableHAForZoneRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *DisableHAForZoneRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *DisableHAForZoneRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DisableHAForZoneRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DisableHAForZoneRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DisableHAForZoneResponse represents the response from disables ha for a zone
+type DisableHAForZoneResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DisableHAForZoneResponse) Reset() {
+	*x = DisableHAForZoneResponse{}
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DisableHAForZoneResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DisableHAForZoneResponse) ProtoMessage() {}
+
+func (x *DisableHAForZoneResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DisableHAForZoneResponse.ProtoReflect.Descriptor instead.
+func (*DisableHAForZoneResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *DisableHAForZoneResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// EnableHAForClusterRequest represents the parameters for enables ha cluster-wide
+type EnableHAForClusterRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of the cluster
+	ClusterId *int64 `protobuf:"varint,1,opt,name=cluster_id,json=clusterId" json:"cluster_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EnableHAForClusterRequest) Reset() {
+	*x = EnableHAForClusterRequest{}
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EnableHAForClusterRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EnableHAForClusterRequest) ProtoMessage() {}
+
+func (x *EnableHAForClusterRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EnableHAForClusterRequest.ProtoReflect.Descriptor instead.
+func (*EnableHAForClusterRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *EnableHAForClusterRequest) GetClusterId() int64 {
+	if x != nil && x.ClusterId != nil {
+		return *x.ClusterId
+	}
+	return 0
+}
+
+func (x *EnableHAForClusterRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *EnableHAForClusterRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *EnableHAForClusterRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// EnableHAForClusterResponse represents the response from enables ha cluster-wide
+type EnableHAForClusterResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EnableHAForClusterResponse) Reset() {
+	*x = EnableHAForClusterResponse{}
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EnableHAForClusterResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EnableHAForClusterResponse) ProtoMessage() {}
+
+func (x *EnableHAForClusterResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EnableHAForClusterResponse.ProtoReflect.Descriptor instead.
+func (*EnableHAForClusterResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *EnableHAForClusterResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// EnableHAForHostRequest represents the parameters for enables ha for a host
+type EnableHAForHostRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of the host
+	HostId *int64 `protobuf:"varint,1,opt,name=host_id,json=hostId" json:"host_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EnableHAForHostRequest) Reset() {
+	*x = EnableHAForHostRequest{}
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EnableHAForHostRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EnableHAForHostRequest) ProtoMessage() {}
+
+func (x *EnableHAForHostRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EnableHAForHostRequest.ProtoReflect.Descriptor instead.
+func (*EnableHAForHostRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *EnableHAForHostRequest) GetHostId() int64 {
+	if x != nil && x.HostId != nil {
+		return *x.HostId
+	}
+	return 0
+}
+
+func (x *EnableHAForHostRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *EnableHAForHostRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *EnableHAForHostRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// EnableHAForHostResponse represents the response from enables ha for a host
+type EnableHAForHostResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EnableHAForHostResponse) Reset() {
+	*x = EnableHAForHostResponse{}
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EnableHAForHostResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EnableHAForHostResponse) ProtoMessage() {}
+
+func (x *EnableHAForHostResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EnableHAForHostResponse.ProtoReflect.Descriptor instead.
+func (*EnableHAForHostResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *EnableHAForHostResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// EnableHAForZoneRequest represents the parameters for enables ha for a zone
+type EnableHAForZoneRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of the zone
+	ZoneId *int64 `protobuf:"varint,1,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EnableHAForZoneRequest) Reset() {
+	*x = EnableHAForZoneRequest{}
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EnableHAForZoneRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EnableHAForZoneRequest) ProtoMessage() {}
+
+func (x *EnableHAForZoneRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EnableHAForZoneRequest.ProtoReflect.Descriptor instead.
+func (*EnableHAForZoneRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *EnableHAForZoneRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *EnableHAForZoneRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *EnableHAForZoneRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *EnableHAForZoneRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// EnableHAForZoneResponse represents the response from enables ha for a zone
+type EnableHAForZoneResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EnableHAForZoneResponse) Reset() {
+	*x = EnableHAForZoneResponse{}
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EnableHAForZoneResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EnableHAForZoneResponse) ProtoMessage() {}
+
+func (x *EnableHAForZoneResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EnableHAForZoneResponse.ProtoReflect.Descriptor instead.
+func (*EnableHAForZoneResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *EnableHAForZoneResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -947,32 +954,30 @@ func (x *ListHostHAProvidersResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// EnableHAForClusterRequest represents the parameters for enables ha cluster-wide
-type EnableHAForClusterRequest struct {
+// ListHostHAResourcesRequest represents the parameters for lists host ha resources
+type ListHostHAResourcesRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the cluster
-	ClusterId *int64 `protobuf:"varint,1,opt,name=cluster_id,json=clusterId" json:"cluster_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// List by host ID
+	HostId *int64 `protobuf:"varint,1,opt,name=host_id,json=hostId" json:"host_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *EnableHAForClusterRequest) Reset() {
-	*x = EnableHAForClusterRequest{}
+func (x *ListHostHAResourcesRequest) Reset() {
+	*x = ListHostHAResourcesRequest{}
 	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *EnableHAForClusterRequest) String() string {
+func (x *ListHostHAResourcesRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*EnableHAForClusterRequest) ProtoMessage() {}
+func (*ListHostHAResourcesRequest) ProtoMessage() {}
 
-func (x *EnableHAForClusterRequest) ProtoReflect() protoreflect.Message {
+func (x *ListHostHAResourcesRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -984,62 +989,50 @@ func (x *EnableHAForClusterRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use EnableHAForClusterRequest.ProtoReflect.Descriptor instead.
-func (*EnableHAForClusterRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListHostHAResourcesRequest.ProtoReflect.Descriptor instead.
+func (*ListHostHAResourcesRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{16}
 }
 
-func (x *EnableHAForClusterRequest) GetClusterId() int64 {
-	if x != nil && x.ClusterId != nil {
-		return *x.ClusterId
+func (x *ListHostHAResourcesRequest) GetHostId() int64 {
+	if x != nil && x.HostId != nil {
+		return *x.HostId
 	}
 	return 0
 }
 
-func (x *EnableHAForClusterRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *EnableHAForClusterRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *EnableHAForClusterRequest) GetResponseType() string {
+func (x *ListHostHAResourcesRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// EnableHAForClusterResponse represents the response from enables ha cluster-wide
-type EnableHAForClusterResponse struct {
+// ListHostHAResourcesResponse represents the response from lists host ha resources
+type ListHostHAResourcesResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	// The list of HostHAs
+	Items []*HostHA `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of HostHAs
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *EnableHAForClusterResponse) Reset() {
-	*x = EnableHAForClusterResponse{}
+func (x *ListHostHAResourcesResponse) Reset() {
+	*x = ListHostHAResourcesResponse{}
 	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *EnableHAForClusterResponse) String() string {
+func (x *ListHostHAResourcesResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*EnableHAForClusterResponse) ProtoMessage() {}
+func (*ListHostHAResourcesResponse) ProtoMessage() {}
 
-func (x *EnableHAForClusterResponse) ProtoReflect() protoreflect.Message {
+func (x *ListHostHAResourcesResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1051,16 +1044,23 @@ func (x *EnableHAForClusterResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use EnableHAForClusterResponse.ProtoReflect.Descriptor instead.
-func (*EnableHAForClusterResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListHostHAResourcesResponse.ProtoReflect.Descriptor instead.
+func (*ListHostHAResourcesResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{17}
 }
 
-func (x *EnableHAForClusterResponse) GetResult() *Result {
+func (x *ListHostHAResourcesResponse) GetItems() []*HostHA {
 	if x != nil {
-		return x.Result
+		return x.Items
 	}
 	return nil
+}
+
+func (x *ListHostHAResourcesResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
 }
 
 // HostHA represents a HostHA Item
@@ -1200,151 +1200,6 @@ func (x *Success) GetDisplayText() string {
 	return ""
 }
 
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[20]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[20]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{20}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
 // Result represents a generic operation result
 type Result struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1364,7 +1219,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[21]
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1376,7 +1231,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[21]
+	mi := &file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1389,7 +1244,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{21}
+	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -1431,21 +1286,7 @@ var File_cloudstack_management_ha_v1_ha_gen_proto protoreflect.FileDescriptor
 
 const file_cloudstack_management_ha_v1_ha_gen_proto_rawDesc = "" +
 	"\n" +
-	"(cloudstack/management/ha/v1/ha.gen.proto\x12\x1bcloudstack.management.ha.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xb7\x01\n" +
-	"\x17DisableHAForZoneRequest\x12\x1f\n" +
-	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"W\n" +
-	"\x18DisableHAForZoneResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.ha.v1.ResultR\x06result\"\xb6\x01\n" +
-	"\x16EnableHAForHostRequest\x12\x1f\n" +
-	"\ahost_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06hostId\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"V\n" +
-	"\x17EnableHAForHostResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.ha.v1.ResultR\x06result\"\xe7\x01\n" +
+	"(cloudstack/management/ha/v1/ha.gen.proto\x12\x1bcloudstack.management.ha.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xe7\x01\n" +
 	"\x19ConfigureHAForHostRequest\x12\x1f\n" +
 	"\ahost_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06hostId\x12,\n" +
 	"\vha_provider\x18\x02 \x01(\tB\v\xbaH\b\xc8\x01\x01r\x03\xb0\x01\x01R\n" +
@@ -1462,35 +1303,21 @@ const file_cloudstack_management_ha_v1_ha_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"Z\n" +
 	"\x1bDisableHAForClusterResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.ha.v1.ResultR\x06result\"\xb6\x01\n" +
-	"\x16EnableHAForZoneRequest\x12\x1f\n" +
-	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"V\n" +
-	"\x17EnableHAForZoneResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.ha.v1.ResultR\x06result\"Z\n" +
-	"\x1aListHostHAResourcesRequest\x12\x17\n" +
-	"\ahost_id\x18\x01 \x01(\x03R\x06hostId\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"\x80\x01\n" +
-	"\x1bListHostHAResourcesResponse\x129\n" +
-	"\x05items\x18\x01 \x03(\v2#.cloudstack.management.ha.v1.HostHAR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xb7\x01\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.ha.v1.ResultR\x06result\"\xb7\x01\n" +
 	"\x17DisableHAForHostRequest\x12\x1f\n" +
 	"\ahost_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06hostId\x12$\n" +
 	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
 	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"W\n" +
 	"\x18DisableHAForHostResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.ha.v1.ResultR\x06result\"r\n" +
-	"\x1aListHostHAProvidersRequest\x12/\n" +
-	"\x0fhypervisor_type\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x0ehypervisorType\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"\x80\x01\n" +
-	"\x1bListHostHAProvidersResponse\x129\n" +
-	"\x05items\x18\x01 \x03(\v2#.cloudstack.management.ha.v1.HostHAR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xbf\x01\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.ha.v1.ResultR\x06result\"\xb7\x01\n" +
+	"\x17DisableHAForZoneRequest\x12\x1f\n" +
+	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"W\n" +
+	"\x18DisableHAForZoneResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.ha.v1.ResultR\x06result\"\xbf\x01\n" +
 	"\x19EnableHAForClusterRequest\x12%\n" +
 	"\n" +
 	"cluster_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tclusterId\x12$\n" +
@@ -1498,7 +1325,35 @@ const file_cloudstack_management_ha_v1_ha_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"Y\n" +
 	"\x1aEnableHAForClusterResponse\x12;\n" +
-	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.ha.v1.ResultR\x06result\"\x95\x01\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.ha.v1.ResultR\x06result\"\xb6\x01\n" +
+	"\x16EnableHAForHostRequest\x12\x1f\n" +
+	"\ahost_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06hostId\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"V\n" +
+	"\x17EnableHAForHostResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.ha.v1.ResultR\x06result\"\xb6\x01\n" +
+	"\x16EnableHAForZoneRequest\x12\x1f\n" +
+	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"V\n" +
+	"\x17EnableHAForZoneResponse\x12;\n" +
+	"\x06result\x18\x01 \x01(\v2#.cloudstack.management.ha.v1.ResultR\x06result\"r\n" +
+	"\x1aListHostHAProvidersRequest\x12/\n" +
+	"\x0fhypervisor_type\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x0ehypervisorType\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"\x80\x01\n" +
+	"\x1bListHostHAProvidersResponse\x129\n" +
+	"\x05items\x18\x01 \x03(\v2#.cloudstack.management.ha.v1.HostHAR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"Z\n" +
+	"\x1aListHostHAResourcesRequest\x12\x17\n" +
+	"\ahost_id\x18\x01 \x01(\x03R\x06hostId\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"\x80\x01\n" +
+	"\x1bListHostHAResourcesResponse\x129\n" +
+	"\x05items\x18\x01 \x03(\v2#.cloudstack.management.ha.v1.HostHAR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x95\x01\n" +
 	"\x06HostHA\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
@@ -1507,43 +1362,25 @@ const file_cloudstack_management_ha_v1_ha_gen_proto_rawDesc = "" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xda\x03\n" +
-	"\x04Item\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12H\n" +
-	"\adetails\x18\f \x03(\v2..cloudstack.management.ha.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xd6\t\n" +
-	"\tHaService\x12\x81\x01\n" +
-	"\x10DisableHAForZone\x124.cloudstack.management.ha.v1.DisableHAForZoneRequest\x1a5.cloudstack.management.ha.v1.DisableHAForZoneResponse\"\x00\x12~\n" +
-	"\x0fEnableHAForHost\x123.cloudstack.management.ha.v1.EnableHAForHostRequest\x1a4.cloudstack.management.ha.v1.EnableHAForHostResponse\"\x00\x12\x87\x01\n" +
-	"\x12ConfigureHAForHost\x126.cloudstack.management.ha.v1.ConfigureHAForHostRequest\x1a7.cloudstack.management.ha.v1.ConfigureHAForHostResponse\"\x00\x12\x8a\x01\n" +
-	"\x13DisableHAForCluster\x127.cloudstack.management.ha.v1.DisableHAForClusterRequest\x1a8.cloudstack.management.ha.v1.DisableHAForClusterResponse\"\x00\x12~\n" +
-	"\x0fEnableHAForZone\x123.cloudstack.management.ha.v1.EnableHAForZoneRequest\x1a4.cloudstack.management.ha.v1.EnableHAForZoneResponse\"\x00\x12\x8a\x01\n" +
-	"\x13ListHostHAResources\x127.cloudstack.management.ha.v1.ListHostHAResourcesRequest\x1a8.cloudstack.management.ha.v1.ListHostHAResourcesResponse\"\x00\x12\x81\x01\n" +
-	"\x10DisableHAForHost\x124.cloudstack.management.ha.v1.DisableHAForHostRequest\x1a5.cloudstack.management.ha.v1.DisableHAForHostResponse\"\x00\x12\x8a\x01\n" +
-	"\x13ListHostHAProviders\x127.cloudstack.management.ha.v1.ListHostHAProvidersRequest\x1a8.cloudstack.management.ha.v1.ListHostHAProvidersResponse\"\x00\x12\x87\x01\n" +
-	"\x12EnableHAForCluster\x126.cloudstack.management.ha.v1.EnableHAForClusterRequest\x1a7.cloudstack.management.ha.v1.EnableHAForClusterResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\x92\x02\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\x98\n" +
+	"\n" +
+	"\tHaService\x12\x8e\x01\n" +
+	"\x12ConfigureHAForHost\x126.cloudstack.management.ha.v1.ConfigureHAForHostRequest\x1a7.cloudstack.management.ha.v1.ConfigureHAForHostResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x91\x01\n" +
+	"\x13DisableHAForCluster\x127.cloudstack.management.ha.v1.DisableHAForClusterRequest\x1a8.cloudstack.management.ha.v1.DisableHAForClusterResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x88\x01\n" +
+	"\x10DisableHAForHost\x124.cloudstack.management.ha.v1.DisableHAForHostRequest\x1a5.cloudstack.management.ha.v1.DisableHAForHostResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x88\x01\n" +
+	"\x10DisableHAForZone\x124.cloudstack.management.ha.v1.DisableHAForZoneRequest\x1a5.cloudstack.management.ha.v1.DisableHAForZoneResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x8e\x01\n" +
+	"\x12EnableHAForCluster\x126.cloudstack.management.ha.v1.EnableHAForClusterRequest\x1a7.cloudstack.management.ha.v1.EnableHAForClusterResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x85\x01\n" +
+	"\x0fEnableHAForHost\x123.cloudstack.management.ha.v1.EnableHAForHostRequest\x1a4.cloudstack.management.ha.v1.EnableHAForHostResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x85\x01\n" +
+	"\x0fEnableHAForZone\x123.cloudstack.management.ha.v1.EnableHAForZoneRequest\x1a4.cloudstack.management.ha.v1.EnableHAForZoneResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x91\x01\n" +
+	"\x13ListHostHAProviders\x127.cloudstack.management.ha.v1.ListHostHAProvidersRequest\x1a8.cloudstack.management.ha.v1.ListHostHAProvidersResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x91\x01\n" +
+	"\x13ListHostHAResources\x127.cloudstack.management.ha.v1.ListHostHAResourcesRequest\x1a8.cloudstack.management.ha.v1.ListHostHAResourcesResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\a\xc2>\x04\xc2>\x01\x02B\x92\x02\n" +
 	"\x1fcom.cloudstack.management.ha.v1B\n" +
 	"HaGenProtoP\x01ZTgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/ha/v1;hav1\xa2\x02\x03CMH\xaa\x02\x1bCloudstack.Management.Ha.V1\xca\x02\x1bCloudstack\\Management\\Ha\\V1\xe2\x02'Cloudstack\\Management\\Ha\\V1\\GPBMetadata\xea\x02\x1eCloudstack::Management::Ha::V1b\beditionsp\xe8\a"
 
@@ -1559,66 +1396,63 @@ func file_cloudstack_management_ha_v1_ha_gen_proto_rawDescGZIP() []byte {
 	return file_cloudstack_management_ha_v1_ha_gen_proto_rawDescData
 }
 
-var file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 23)
+var file_cloudstack_management_ha_v1_ha_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
 var file_cloudstack_management_ha_v1_ha_gen_proto_goTypes = []any{
-	(*DisableHAForZoneRequest)(nil),     // 0: cloudstack.management.ha.v1.DisableHAForZoneRequest
-	(*DisableHAForZoneResponse)(nil),    // 1: cloudstack.management.ha.v1.DisableHAForZoneResponse
-	(*EnableHAForHostRequest)(nil),      // 2: cloudstack.management.ha.v1.EnableHAForHostRequest
-	(*EnableHAForHostResponse)(nil),     // 3: cloudstack.management.ha.v1.EnableHAForHostResponse
-	(*ConfigureHAForHostRequest)(nil),   // 4: cloudstack.management.ha.v1.ConfigureHAForHostRequest
-	(*ConfigureHAForHostResponse)(nil),  // 5: cloudstack.management.ha.v1.ConfigureHAForHostResponse
-	(*DisableHAForClusterRequest)(nil),  // 6: cloudstack.management.ha.v1.DisableHAForClusterRequest
-	(*DisableHAForClusterResponse)(nil), // 7: cloudstack.management.ha.v1.DisableHAForClusterResponse
-	(*EnableHAForZoneRequest)(nil),      // 8: cloudstack.management.ha.v1.EnableHAForZoneRequest
-	(*EnableHAForZoneResponse)(nil),     // 9: cloudstack.management.ha.v1.EnableHAForZoneResponse
-	(*ListHostHAResourcesRequest)(nil),  // 10: cloudstack.management.ha.v1.ListHostHAResourcesRequest
-	(*ListHostHAResourcesResponse)(nil), // 11: cloudstack.management.ha.v1.ListHostHAResourcesResponse
-	(*DisableHAForHostRequest)(nil),     // 12: cloudstack.management.ha.v1.DisableHAForHostRequest
-	(*DisableHAForHostResponse)(nil),    // 13: cloudstack.management.ha.v1.DisableHAForHostResponse
+	(*ConfigureHAForHostRequest)(nil),   // 0: cloudstack.management.ha.v1.ConfigureHAForHostRequest
+	(*ConfigureHAForHostResponse)(nil),  // 1: cloudstack.management.ha.v1.ConfigureHAForHostResponse
+	(*DisableHAForClusterRequest)(nil),  // 2: cloudstack.management.ha.v1.DisableHAForClusterRequest
+	(*DisableHAForClusterResponse)(nil), // 3: cloudstack.management.ha.v1.DisableHAForClusterResponse
+	(*DisableHAForHostRequest)(nil),     // 4: cloudstack.management.ha.v1.DisableHAForHostRequest
+	(*DisableHAForHostResponse)(nil),    // 5: cloudstack.management.ha.v1.DisableHAForHostResponse
+	(*DisableHAForZoneRequest)(nil),     // 6: cloudstack.management.ha.v1.DisableHAForZoneRequest
+	(*DisableHAForZoneResponse)(nil),    // 7: cloudstack.management.ha.v1.DisableHAForZoneResponse
+	(*EnableHAForClusterRequest)(nil),   // 8: cloudstack.management.ha.v1.EnableHAForClusterRequest
+	(*EnableHAForClusterResponse)(nil),  // 9: cloudstack.management.ha.v1.EnableHAForClusterResponse
+	(*EnableHAForHostRequest)(nil),      // 10: cloudstack.management.ha.v1.EnableHAForHostRequest
+	(*EnableHAForHostResponse)(nil),     // 11: cloudstack.management.ha.v1.EnableHAForHostResponse
+	(*EnableHAForZoneRequest)(nil),      // 12: cloudstack.management.ha.v1.EnableHAForZoneRequest
+	(*EnableHAForZoneResponse)(nil),     // 13: cloudstack.management.ha.v1.EnableHAForZoneResponse
 	(*ListHostHAProvidersRequest)(nil),  // 14: cloudstack.management.ha.v1.ListHostHAProvidersRequest
 	(*ListHostHAProvidersResponse)(nil), // 15: cloudstack.management.ha.v1.ListHostHAProvidersResponse
-	(*EnableHAForClusterRequest)(nil),   // 16: cloudstack.management.ha.v1.EnableHAForClusterRequest
-	(*EnableHAForClusterResponse)(nil),  // 17: cloudstack.management.ha.v1.EnableHAForClusterResponse
+	(*ListHostHAResourcesRequest)(nil),  // 16: cloudstack.management.ha.v1.ListHostHAResourcesRequest
+	(*ListHostHAResourcesResponse)(nil), // 17: cloudstack.management.ha.v1.ListHostHAResourcesResponse
 	(*HostHA)(nil),                      // 18: cloudstack.management.ha.v1.HostHA
 	(*Success)(nil),                     // 19: cloudstack.management.ha.v1.Success
-	(*Item)(nil),                        // 20: cloudstack.management.ha.v1.Item
-	(*Result)(nil),                      // 21: cloudstack.management.ha.v1.Result
-	nil,                                 // 22: cloudstack.management.ha.v1.Item.DetailsEntry
+	(*Result)(nil),                      // 20: cloudstack.management.ha.v1.Result
 }
 var file_cloudstack_management_ha_v1_ha_gen_proto_depIdxs = []int32{
-	21, // 0: cloudstack.management.ha.v1.DisableHAForZoneResponse.result:type_name -> cloudstack.management.ha.v1.Result
-	21, // 1: cloudstack.management.ha.v1.EnableHAForHostResponse.result:type_name -> cloudstack.management.ha.v1.Result
-	21, // 2: cloudstack.management.ha.v1.ConfigureHAForHostResponse.result:type_name -> cloudstack.management.ha.v1.Result
-	21, // 3: cloudstack.management.ha.v1.DisableHAForClusterResponse.result:type_name -> cloudstack.management.ha.v1.Result
-	21, // 4: cloudstack.management.ha.v1.EnableHAForZoneResponse.result:type_name -> cloudstack.management.ha.v1.Result
-	18, // 5: cloudstack.management.ha.v1.ListHostHAResourcesResponse.items:type_name -> cloudstack.management.ha.v1.HostHA
-	21, // 6: cloudstack.management.ha.v1.DisableHAForHostResponse.result:type_name -> cloudstack.management.ha.v1.Result
+	20, // 0: cloudstack.management.ha.v1.ConfigureHAForHostResponse.result:type_name -> cloudstack.management.ha.v1.Result
+	20, // 1: cloudstack.management.ha.v1.DisableHAForClusterResponse.result:type_name -> cloudstack.management.ha.v1.Result
+	20, // 2: cloudstack.management.ha.v1.DisableHAForHostResponse.result:type_name -> cloudstack.management.ha.v1.Result
+	20, // 3: cloudstack.management.ha.v1.DisableHAForZoneResponse.result:type_name -> cloudstack.management.ha.v1.Result
+	20, // 4: cloudstack.management.ha.v1.EnableHAForClusterResponse.result:type_name -> cloudstack.management.ha.v1.Result
+	20, // 5: cloudstack.management.ha.v1.EnableHAForHostResponse.result:type_name -> cloudstack.management.ha.v1.Result
+	20, // 6: cloudstack.management.ha.v1.EnableHAForZoneResponse.result:type_name -> cloudstack.management.ha.v1.Result
 	18, // 7: cloudstack.management.ha.v1.ListHostHAProvidersResponse.items:type_name -> cloudstack.management.ha.v1.HostHA
-	21, // 8: cloudstack.management.ha.v1.EnableHAForClusterResponse.result:type_name -> cloudstack.management.ha.v1.Result
-	22, // 9: cloudstack.management.ha.v1.Item.details:type_name -> cloudstack.management.ha.v1.Item.DetailsEntry
-	0,  // 10: cloudstack.management.ha.v1.HaService.DisableHAForZone:input_type -> cloudstack.management.ha.v1.DisableHAForZoneRequest
-	2,  // 11: cloudstack.management.ha.v1.HaService.EnableHAForHost:input_type -> cloudstack.management.ha.v1.EnableHAForHostRequest
-	4,  // 12: cloudstack.management.ha.v1.HaService.ConfigureHAForHost:input_type -> cloudstack.management.ha.v1.ConfigureHAForHostRequest
-	6,  // 13: cloudstack.management.ha.v1.HaService.DisableHAForCluster:input_type -> cloudstack.management.ha.v1.DisableHAForClusterRequest
-	8,  // 14: cloudstack.management.ha.v1.HaService.EnableHAForZone:input_type -> cloudstack.management.ha.v1.EnableHAForZoneRequest
-	10, // 15: cloudstack.management.ha.v1.HaService.ListHostHAResources:input_type -> cloudstack.management.ha.v1.ListHostHAResourcesRequest
-	12, // 16: cloudstack.management.ha.v1.HaService.DisableHAForHost:input_type -> cloudstack.management.ha.v1.DisableHAForHostRequest
-	14, // 17: cloudstack.management.ha.v1.HaService.ListHostHAProviders:input_type -> cloudstack.management.ha.v1.ListHostHAProvidersRequest
-	16, // 18: cloudstack.management.ha.v1.HaService.EnableHAForCluster:input_type -> cloudstack.management.ha.v1.EnableHAForClusterRequest
-	1,  // 19: cloudstack.management.ha.v1.HaService.DisableHAForZone:output_type -> cloudstack.management.ha.v1.DisableHAForZoneResponse
-	3,  // 20: cloudstack.management.ha.v1.HaService.EnableHAForHost:output_type -> cloudstack.management.ha.v1.EnableHAForHostResponse
-	5,  // 21: cloudstack.management.ha.v1.HaService.ConfigureHAForHost:output_type -> cloudstack.management.ha.v1.ConfigureHAForHostResponse
-	7,  // 22: cloudstack.management.ha.v1.HaService.DisableHAForCluster:output_type -> cloudstack.management.ha.v1.DisableHAForClusterResponse
-	9,  // 23: cloudstack.management.ha.v1.HaService.EnableHAForZone:output_type -> cloudstack.management.ha.v1.EnableHAForZoneResponse
-	11, // 24: cloudstack.management.ha.v1.HaService.ListHostHAResources:output_type -> cloudstack.management.ha.v1.ListHostHAResourcesResponse
-	13, // 25: cloudstack.management.ha.v1.HaService.DisableHAForHost:output_type -> cloudstack.management.ha.v1.DisableHAForHostResponse
-	15, // 26: cloudstack.management.ha.v1.HaService.ListHostHAProviders:output_type -> cloudstack.management.ha.v1.ListHostHAProvidersResponse
-	17, // 27: cloudstack.management.ha.v1.HaService.EnableHAForCluster:output_type -> cloudstack.management.ha.v1.EnableHAForClusterResponse
-	19, // [19:28] is the sub-list for method output_type
-	10, // [10:19] is the sub-list for method input_type
-	10, // [10:10] is the sub-list for extension type_name
-	10, // [10:10] is the sub-list for extension extendee
-	0,  // [0:10] is the sub-list for field type_name
+	18, // 8: cloudstack.management.ha.v1.ListHostHAResourcesResponse.items:type_name -> cloudstack.management.ha.v1.HostHA
+	0,  // 9: cloudstack.management.ha.v1.HaService.ConfigureHAForHost:input_type -> cloudstack.management.ha.v1.ConfigureHAForHostRequest
+	2,  // 10: cloudstack.management.ha.v1.HaService.DisableHAForCluster:input_type -> cloudstack.management.ha.v1.DisableHAForClusterRequest
+	4,  // 11: cloudstack.management.ha.v1.HaService.DisableHAForHost:input_type -> cloudstack.management.ha.v1.DisableHAForHostRequest
+	6,  // 12: cloudstack.management.ha.v1.HaService.DisableHAForZone:input_type -> cloudstack.management.ha.v1.DisableHAForZoneRequest
+	8,  // 13: cloudstack.management.ha.v1.HaService.EnableHAForCluster:input_type -> cloudstack.management.ha.v1.EnableHAForClusterRequest
+	10, // 14: cloudstack.management.ha.v1.HaService.EnableHAForHost:input_type -> cloudstack.management.ha.v1.EnableHAForHostRequest
+	12, // 15: cloudstack.management.ha.v1.HaService.EnableHAForZone:input_type -> cloudstack.management.ha.v1.EnableHAForZoneRequest
+	14, // 16: cloudstack.management.ha.v1.HaService.ListHostHAProviders:input_type -> cloudstack.management.ha.v1.ListHostHAProvidersRequest
+	16, // 17: cloudstack.management.ha.v1.HaService.ListHostHAResources:input_type -> cloudstack.management.ha.v1.ListHostHAResourcesRequest
+	1,  // 18: cloudstack.management.ha.v1.HaService.ConfigureHAForHost:output_type -> cloudstack.management.ha.v1.ConfigureHAForHostResponse
+	3,  // 19: cloudstack.management.ha.v1.HaService.DisableHAForCluster:output_type -> cloudstack.management.ha.v1.DisableHAForClusterResponse
+	5,  // 20: cloudstack.management.ha.v1.HaService.DisableHAForHost:output_type -> cloudstack.management.ha.v1.DisableHAForHostResponse
+	7,  // 21: cloudstack.management.ha.v1.HaService.DisableHAForZone:output_type -> cloudstack.management.ha.v1.DisableHAForZoneResponse
+	9,  // 22: cloudstack.management.ha.v1.HaService.EnableHAForCluster:output_type -> cloudstack.management.ha.v1.EnableHAForClusterResponse
+	11, // 23: cloudstack.management.ha.v1.HaService.EnableHAForHost:output_type -> cloudstack.management.ha.v1.EnableHAForHostResponse
+	13, // 24: cloudstack.management.ha.v1.HaService.EnableHAForZone:output_type -> cloudstack.management.ha.v1.EnableHAForZoneResponse
+	15, // 25: cloudstack.management.ha.v1.HaService.ListHostHAProviders:output_type -> cloudstack.management.ha.v1.ListHostHAProvidersResponse
+	17, // 26: cloudstack.management.ha.v1.HaService.ListHostHAResources:output_type -> cloudstack.management.ha.v1.ListHostHAResourcesResponse
+	18, // [18:27] is the sub-list for method output_type
+	9,  // [9:18] is the sub-list for method input_type
+	9,  // [9:9] is the sub-list for extension type_name
+	9,  // [9:9] is the sub-list for extension extendee
+	0,  // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_ha_v1_ha_gen_proto_init() }
@@ -1632,7 +1466,7 @@ func file_cloudstack_management_ha_v1_ha_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_ha_v1_ha_gen_proto_rawDesc), len(file_cloudstack_management_ha_v1_ha_gen_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   23,
+			NumMessages:   21,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

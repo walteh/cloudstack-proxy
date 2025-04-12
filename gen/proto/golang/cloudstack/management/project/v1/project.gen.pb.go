@@ -24,6 +24,730 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// ActivateProjectRequest represents the parameters for activates a project
+type ActivateProjectRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// id of the project to be modified
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ActivateProjectRequest) Reset() {
+	*x = ActivateProjectRequest{}
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ActivateProjectRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ActivateProjectRequest) ProtoMessage() {}
+
+func (x *ActivateProjectRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ActivateProjectRequest.ProtoReflect.Descriptor instead.
+func (*ActivateProjectRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *ActivateProjectRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ActivateProjectRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *ActivateProjectRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *ActivateProjectRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ActivateProjectResponse represents the response from activates a project
+type ActivateProjectResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ActivateProjectResponse) Reset() {
+	*x = ActivateProjectResponse{}
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ActivateProjectResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ActivateProjectResponse) ProtoMessage() {}
+
+func (x *ActivateProjectResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ActivateProjectResponse.ProtoReflect.Descriptor instead.
+func (*ActivateProjectResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *ActivateProjectResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// CreateProjectRequest represents the parameters for creates a project
+type CreateProjectRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// account who will be Admin for the project
+	AccountName *string `protobuf:"bytes,1,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// user ID of the account to be assigned as owner of the project i.e., Project Admin
+	UserId *int64 `protobuf:"varint,2,opt,name=user_id,json=userId" json:"user_id,omitempty"`
+	// domain ID of the account owning a project
+	DomainId *int64 `protobuf:"varint,3,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// ID of the account owning a project
+	AccountId *int64 `protobuf:"varint,4,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
+	// name of the project
+	Name *string `protobuf:"bytes,5,opt,name=name" json:"name,omitempty"`
+	// The display text of the project, defaults to the 'name´.
+	DisplayText *string `protobuf:"bytes,6,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
+	StartEventId *int64 `protobuf:"varint,7,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,8,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateProjectRequest) Reset() {
+	*x = CreateProjectRequest{}
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateProjectRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateProjectRequest) ProtoMessage() {}
+
+func (x *CreateProjectRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateProjectRequest.ProtoReflect.Descriptor instead.
+func (*CreateProjectRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *CreateProjectRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *CreateProjectRequest) GetUserId() int64 {
+	if x != nil && x.UserId != nil {
+		return *x.UserId
+	}
+	return 0
+}
+
+func (x *CreateProjectRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *CreateProjectRequest) GetAccountId() int64 {
+	if x != nil && x.AccountId != nil {
+		return *x.AccountId
+	}
+	return 0
+}
+
+func (x *CreateProjectRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *CreateProjectRequest) GetDisplayText() string {
+	if x != nil && x.DisplayText != nil {
+		return *x.DisplayText
+	}
+	return ""
+}
+
+func (x *CreateProjectRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreateProjectRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CreateProjectRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateProjectResponse represents the response from creates a project
+type CreateProjectResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateProjectResponse) Reset() {
+	*x = CreateProjectResponse{}
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateProjectResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateProjectResponse) ProtoMessage() {}
+
+func (x *CreateProjectResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateProjectResponse.ProtoReflect.Descriptor instead.
+func (*CreateProjectResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *CreateProjectResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteProjectRequest represents the parameters for deletes a project
+type DeleteProjectRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// id of the project to be deleted
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// true if all project resources have to be cleaned up, false otherwise
+	Cleanup *bool `protobuf:"varint,2,opt,name=cleanup" json:"cleanup,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteProjectRequest) Reset() {
+	*x = DeleteProjectRequest{}
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteProjectRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteProjectRequest) ProtoMessage() {}
+
+func (x *DeleteProjectRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteProjectRequest.ProtoReflect.Descriptor instead.
+func (*DeleteProjectRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *DeleteProjectRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteProjectRequest) GetCleanup() bool {
+	if x != nil && x.Cleanup != nil {
+		return *x.Cleanup
+	}
+	return false
+}
+
+func (x *DeleteProjectRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeleteProjectRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeleteProjectRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteProjectResponse represents the response from deletes a project
+type DeleteProjectResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteProjectResponse) Reset() {
+	*x = DeleteProjectResponse{}
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteProjectResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteProjectResponse) ProtoMessage() {}
+
+func (x *DeleteProjectResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteProjectResponse.ProtoReflect.Descriptor instead.
+func (*DeleteProjectResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *DeleteProjectResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteProjectInvitationRequest represents the parameters for deletes project invitation
+type DeleteProjectInvitationRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// id of the invitation
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteProjectInvitationRequest) Reset() {
+	*x = DeleteProjectInvitationRequest{}
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteProjectInvitationRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteProjectInvitationRequest) ProtoMessage() {}
+
+func (x *DeleteProjectInvitationRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteProjectInvitationRequest.ProtoReflect.Descriptor instead.
+func (*DeleteProjectInvitationRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *DeleteProjectInvitationRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteProjectInvitationRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeleteProjectInvitationRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeleteProjectInvitationRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteProjectInvitationResponse represents the response from deletes project invitation
+type DeleteProjectInvitationResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteProjectInvitationResponse) Reset() {
+	*x = DeleteProjectInvitationResponse{}
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteProjectInvitationResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteProjectInvitationResponse) ProtoMessage() {}
+
+func (x *DeleteProjectInvitationResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteProjectInvitationResponse.ProtoReflect.Descriptor instead.
+func (*DeleteProjectInvitationResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *DeleteProjectInvitationResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ListProjectInvitationsRequest represents the parameters for lists project invitations and provides detailed information for listed invitations
+type ListProjectInvitationsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// list by project id
+	ProjectId *int64 `protobuf:"varint,1,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// if true, list only active invitations - having Pending state and ones that are not timed out yet
+	ActiveOnly *bool `protobuf:"varint,2,opt,name=active_only,json=activeOnly" json:"active_only,omitempty"`
+	// list invitations by state
+	State *string `protobuf:"bytes,3,opt,name=state" json:"state,omitempty"`
+	// list invitations by id
+	Id *int64 `protobuf:"varint,4,opt,name=id" json:"id,omitempty"`
+	// list invitation by user ID
+	UserId *int64 `protobuf:"varint,5,opt,name=user_id,json=userId" json:"user_id,omitempty"`
+	// list resources by account. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,6,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	ListAll *bool `protobuf:"varint,7,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
+	// list only resources belonging to the domain specified
+	DomainId *int64 `protobuf:"varint,8,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	Recursive *bool `protobuf:"varint,9,opt,name=recursive" json:"recursive,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,10,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,11,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,12,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,13,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListProjectInvitationsRequest) Reset() {
+	*x = ListProjectInvitationsRequest{}
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListProjectInvitationsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListProjectInvitationsRequest) ProtoMessage() {}
+
+func (x *ListProjectInvitationsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListProjectInvitationsRequest.ProtoReflect.Descriptor instead.
+func (*ListProjectInvitationsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *ListProjectInvitationsRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *ListProjectInvitationsRequest) GetActiveOnly() bool {
+	if x != nil && x.ActiveOnly != nil {
+		return *x.ActiveOnly
+	}
+	return false
+}
+
+func (x *ListProjectInvitationsRequest) GetState() string {
+	if x != nil && x.State != nil {
+		return *x.State
+	}
+	return ""
+}
+
+func (x *ListProjectInvitationsRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListProjectInvitationsRequest) GetUserId() int64 {
+	if x != nil && x.UserId != nil {
+		return *x.UserId
+	}
+	return 0
+}
+
+func (x *ListProjectInvitationsRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *ListProjectInvitationsRequest) GetListAll() bool {
+	if x != nil && x.ListAll != nil {
+		return *x.ListAll
+	}
+	return false
+}
+
+func (x *ListProjectInvitationsRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ListProjectInvitationsRequest) GetRecursive() bool {
+	if x != nil && x.Recursive != nil {
+		return *x.Recursive
+	}
+	return false
+}
+
+func (x *ListProjectInvitationsRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListProjectInvitationsRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListProjectInvitationsRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListProjectInvitationsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListProjectInvitationsResponse represents the response from lists project invitations and provides detailed information for listed invitations
+type ListProjectInvitationsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of ProjectInvitations
+	Items []*ProjectInvitation `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of ProjectInvitations
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListProjectInvitationsResponse) Reset() {
+	*x = ListProjectInvitationsResponse{}
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListProjectInvitationsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListProjectInvitationsResponse) ProtoMessage() {}
+
+func (x *ListProjectInvitationsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListProjectInvitationsResponse.ProtoReflect.Descriptor instead.
+func (*ListProjectInvitationsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *ListProjectInvitationsResponse) GetItems() []*ProjectInvitation {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListProjectInvitationsResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
 // ListProjectsRequest represents the parameters for lists projects and provides detailed information for listed projects
 type ListProjectsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -62,7 +786,7 @@ type ListProjectsRequest struct {
 
 func (x *ListProjectsRequest) Reset() {
 	*x = ListProjectsRequest{}
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -74,7 +798,7 @@ func (x *ListProjectsRequest) String() string {
 func (*ListProjectsRequest) ProtoMessage() {}
 
 func (x *ListProjectsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -87,7 +811,7 @@ func (x *ListProjectsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListProjectsRequest.ProtoReflect.Descriptor instead.
 func (*ListProjectsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{0}
+	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ListProjectsRequest) GetId() int64 {
@@ -215,7 +939,7 @@ type ListProjectsResponse struct {
 
 func (x *ListProjectsResponse) Reset() {
 	*x = ListProjectsResponse{}
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -227,7 +951,7 @@ func (x *ListProjectsResponse) String() string {
 func (*ListProjectsResponse) ProtoMessage() {}
 
 func (x *ListProjectsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -240,7 +964,7 @@ func (x *ListProjectsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListProjectsResponse.ProtoReflect.Descriptor instead.
 func (*ListProjectsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{1}
+	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *ListProjectsResponse) GetItems() []*Project {
@@ -255,721 +979,6 @@ func (x *ListProjectsResponse) GetTotalCount() int32 {
 		return *x.TotalCount
 	}
 	return 0
-}
-
-// DeleteProjectInvitationRequest represents the parameters for deletes project invitation
-type DeleteProjectInvitationRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// id of the invitation
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteProjectInvitationRequest) Reset() {
-	*x = DeleteProjectInvitationRequest{}
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteProjectInvitationRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteProjectInvitationRequest) ProtoMessage() {}
-
-func (x *DeleteProjectInvitationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteProjectInvitationRequest.ProtoReflect.Descriptor instead.
-func (*DeleteProjectInvitationRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *DeleteProjectInvitationRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteProjectInvitationRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteProjectInvitationRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteProjectInvitationRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteProjectInvitationResponse represents the response from deletes project invitation
-type DeleteProjectInvitationResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteProjectInvitationResponse) Reset() {
-	*x = DeleteProjectInvitationResponse{}
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteProjectInvitationResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteProjectInvitationResponse) ProtoMessage() {}
-
-func (x *DeleteProjectInvitationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteProjectInvitationResponse.ProtoReflect.Descriptor instead.
-func (*DeleteProjectInvitationResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *DeleteProjectInvitationResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListProjectInvitationsRequest represents the parameters for lists project invitations and provides detailed information for listed invitations
-type ListProjectInvitationsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// list by project id
-	ProjectId *int64 `protobuf:"varint,1,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// if true, list only active invitations - having Pending state and ones that are not timed out yet
-	ActiveOnly *bool `protobuf:"varint,2,opt,name=active_only,json=activeOnly" json:"active_only,omitempty"`
-	// list invitations by state
-	State *string `protobuf:"bytes,3,opt,name=state" json:"state,omitempty"`
-	// list invitations by id
-	Id *int64 `protobuf:"varint,4,opt,name=id" json:"id,omitempty"`
-	// list invitation by user ID
-	UserId *int64 `protobuf:"varint,5,opt,name=user_id,json=userId" json:"user_id,omitempty"`
-	// list resources by account. Must be used with the domainId parameter.
-	AccountName *string `protobuf:"bytes,6,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	ListAll *bool `protobuf:"varint,7,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
-	// list only resources belonging to the domain specified
-	DomainId *int64 `protobuf:"varint,8,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	Recursive *bool `protobuf:"varint,9,opt,name=recursive" json:"recursive,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,10,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,11,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,12,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,13,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListProjectInvitationsRequest) Reset() {
-	*x = ListProjectInvitationsRequest{}
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListProjectInvitationsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListProjectInvitationsRequest) ProtoMessage() {}
-
-func (x *ListProjectInvitationsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListProjectInvitationsRequest.ProtoReflect.Descriptor instead.
-func (*ListProjectInvitationsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *ListProjectInvitationsRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *ListProjectInvitationsRequest) GetActiveOnly() bool {
-	if x != nil && x.ActiveOnly != nil {
-		return *x.ActiveOnly
-	}
-	return false
-}
-
-func (x *ListProjectInvitationsRequest) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *ListProjectInvitationsRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListProjectInvitationsRequest) GetUserId() int64 {
-	if x != nil && x.UserId != nil {
-		return *x.UserId
-	}
-	return 0
-}
-
-func (x *ListProjectInvitationsRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *ListProjectInvitationsRequest) GetListAll() bool {
-	if x != nil && x.ListAll != nil {
-		return *x.ListAll
-	}
-	return false
-}
-
-func (x *ListProjectInvitationsRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ListProjectInvitationsRequest) GetRecursive() bool {
-	if x != nil && x.Recursive != nil {
-		return *x.Recursive
-	}
-	return false
-}
-
-func (x *ListProjectInvitationsRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListProjectInvitationsRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListProjectInvitationsRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListProjectInvitationsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListProjectInvitationsResponse represents the response from lists project invitations and provides detailed information for listed invitations
-type ListProjectInvitationsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of ProjectInvitations
-	Items []*ProjectInvitation `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of ProjectInvitations
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListProjectInvitationsResponse) Reset() {
-	*x = ListProjectInvitationsResponse{}
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListProjectInvitationsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListProjectInvitationsResponse) ProtoMessage() {}
-
-func (x *ListProjectInvitationsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListProjectInvitationsResponse.ProtoReflect.Descriptor instead.
-func (*ListProjectInvitationsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *ListProjectInvitationsResponse) GetItems() []*ProjectInvitation {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListProjectInvitationsResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// DeleteProjectRequest represents the parameters for deletes a project
-type DeleteProjectRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// id of the project to be deleted
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// true if all project resources have to be cleaned up, false otherwise
-	Cleanup *bool `protobuf:"varint,2,opt,name=cleanup" json:"cleanup,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteProjectRequest) Reset() {
-	*x = DeleteProjectRequest{}
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteProjectRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteProjectRequest) ProtoMessage() {}
-
-func (x *DeleteProjectRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteProjectRequest.ProtoReflect.Descriptor instead.
-func (*DeleteProjectRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *DeleteProjectRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteProjectRequest) GetCleanup() bool {
-	if x != nil && x.Cleanup != nil {
-		return *x.Cleanup
-	}
-	return false
-}
-
-func (x *DeleteProjectRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteProjectRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteProjectRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteProjectResponse represents the response from deletes a project
-type DeleteProjectResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteProjectResponse) Reset() {
-	*x = DeleteProjectResponse{}
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteProjectResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteProjectResponse) ProtoMessage() {}
-
-func (x *DeleteProjectResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteProjectResponse.ProtoReflect.Descriptor instead.
-func (*DeleteProjectResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *DeleteProjectResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateProjectInvitationRequest represents the parameters for accepts or declines project invitation
-type UpdateProjectInvitationRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// id of the project to join
-	ProjectId *int64 `protobuf:"varint,1,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// account that is joining the project
-	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// User UUID, required for adding account from external provisioning system
-	UserId *int64 `protobuf:"varint,3,opt,name=user_id,json=userId" json:"user_id,omitempty"`
-	// list invitations for specified account; this parameter has to be specified with domainId
-	Token *string `protobuf:"bytes,4,opt,name=token" json:"token,omitempty"`
-	// if true, accept the invitation, decline if false. True by default
-	Accept *bool `protobuf:"varint,5,opt,name=accept" json:"accept,omitempty"`
-	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateProjectInvitationRequest) Reset() {
-	*x = UpdateProjectInvitationRequest{}
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateProjectInvitationRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateProjectInvitationRequest) ProtoMessage() {}
-
-func (x *UpdateProjectInvitationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateProjectInvitationRequest.ProtoReflect.Descriptor instead.
-func (*UpdateProjectInvitationRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *UpdateProjectInvitationRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *UpdateProjectInvitationRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *UpdateProjectInvitationRequest) GetUserId() int64 {
-	if x != nil && x.UserId != nil {
-		return *x.UserId
-	}
-	return 0
-}
-
-func (x *UpdateProjectInvitationRequest) GetToken() string {
-	if x != nil && x.Token != nil {
-		return *x.Token
-	}
-	return ""
-}
-
-func (x *UpdateProjectInvitationRequest) GetAccept() bool {
-	if x != nil && x.Accept != nil {
-		return *x.Accept
-	}
-	return false
-}
-
-func (x *UpdateProjectInvitationRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *UpdateProjectInvitationRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *UpdateProjectInvitationRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateProjectInvitationResponse represents the response from accepts or declines project invitation
-type UpdateProjectInvitationResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateProjectInvitationResponse) Reset() {
-	*x = UpdateProjectInvitationResponse{}
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateProjectInvitationResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateProjectInvitationResponse) ProtoMessage() {}
-
-func (x *UpdateProjectInvitationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateProjectInvitationResponse.ProtoReflect.Descriptor instead.
-func (*UpdateProjectInvitationResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *UpdateProjectInvitationResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ActivateProjectRequest represents the parameters for activates a project
-type ActivateProjectRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// id of the project to be modified
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ActivateProjectRequest) Reset() {
-	*x = ActivateProjectRequest{}
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ActivateProjectRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ActivateProjectRequest) ProtoMessage() {}
-
-func (x *ActivateProjectRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ActivateProjectRequest.ProtoReflect.Descriptor instead.
-func (*ActivateProjectRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *ActivateProjectRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ActivateProjectRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *ActivateProjectRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *ActivateProjectRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ActivateProjectResponse represents the response from activates a project
-type ActivateProjectResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ActivateProjectResponse) Reset() {
-	*x = ActivateProjectResponse{}
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ActivateProjectResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ActivateProjectResponse) ProtoMessage() {}
-
-func (x *ActivateProjectResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ActivateProjectResponse.ProtoReflect.Descriptor instead.
-func (*ActivateProjectResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *ActivateProjectResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
 }
 
 // SuspendProjectRequest represents the parameters for suspends a project
@@ -1088,167 +1097,6 @@ func (x *SuspendProjectResponse) GetResult() *Result {
 	return nil
 }
 
-// CreateProjectRequest represents the parameters for creates a project
-type CreateProjectRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// account who will be Admin for the project
-	AccountName *string `protobuf:"bytes,1,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// user ID of the account to be assigned as owner of the project i.e., Project Admin
-	UserId *int64 `protobuf:"varint,2,opt,name=user_id,json=userId" json:"user_id,omitempty"`
-	// domain ID of the account owning a project
-	DomainId *int64 `protobuf:"varint,3,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// ID of the account owning a project
-	AccountId *int64 `protobuf:"varint,4,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// name of the project
-	Name *string `protobuf:"bytes,5,opt,name=name" json:"name,omitempty"`
-	// The display text of the project, defaults to the 'name´.
-	DisplayText *string `protobuf:"bytes,6,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
-	StartEventId *int64 `protobuf:"varint,7,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,8,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateProjectRequest) Reset() {
-	*x = CreateProjectRequest{}
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateProjectRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateProjectRequest) ProtoMessage() {}
-
-func (x *CreateProjectRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateProjectRequest.ProtoReflect.Descriptor instead.
-func (*CreateProjectRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *CreateProjectRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *CreateProjectRequest) GetUserId() int64 {
-	if x != nil && x.UserId != nil {
-		return *x.UserId
-	}
-	return 0
-}
-
-func (x *CreateProjectRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *CreateProjectRequest) GetAccountId() int64 {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return 0
-}
-
-func (x *CreateProjectRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *CreateProjectRequest) GetDisplayText() string {
-	if x != nil && x.DisplayText != nil {
-		return *x.DisplayText
-	}
-	return ""
-}
-
-func (x *CreateProjectRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CreateProjectRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CreateProjectRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateProjectResponse represents the response from creates a project
-type CreateProjectResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateProjectResponse) Reset() {
-	*x = CreateProjectResponse{}
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateProjectResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateProjectResponse) ProtoMessage() {}
-
-func (x *CreateProjectResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateProjectResponse.ProtoReflect.Descriptor instead.
-func (*CreateProjectResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *CreateProjectResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
 // UpdateProjectRequest represents the parameters for updates a project
 type UpdateProjectRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1275,7 +1123,7 @@ type UpdateProjectRequest struct {
 
 func (x *UpdateProjectRequest) Reset() {
 	*x = UpdateProjectRequest{}
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[16]
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1287,7 +1135,7 @@ func (x *UpdateProjectRequest) String() string {
 func (*UpdateProjectRequest) ProtoMessage() {}
 
 func (x *UpdateProjectRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[16]
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1300,7 +1148,7 @@ func (x *UpdateProjectRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateProjectRequest.ProtoReflect.Descriptor instead.
 func (*UpdateProjectRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{16}
+	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *UpdateProjectRequest) GetId() int64 {
@@ -1384,7 +1232,7 @@ type UpdateProjectResponse struct {
 
 func (x *UpdateProjectResponse) Reset() {
 	*x = UpdateProjectResponse{}
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[17]
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1396,7 +1244,7 @@ func (x *UpdateProjectResponse) String() string {
 func (*UpdateProjectResponse) ProtoMessage() {}
 
 func (x *UpdateProjectResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[17]
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1409,10 +1257,162 @@ func (x *UpdateProjectResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateProjectResponse.ProtoReflect.Descriptor instead.
 func (*UpdateProjectResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{17}
+	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *UpdateProjectResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UpdateProjectInvitationRequest represents the parameters for accepts or declines project invitation
+type UpdateProjectInvitationRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// id of the project to join
+	ProjectId *int64 `protobuf:"varint,1,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// account that is joining the project
+	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// User UUID, required for adding account from external provisioning system
+	UserId *int64 `protobuf:"varint,3,opt,name=user_id,json=userId" json:"user_id,omitempty"`
+	// list invitations for specified account; this parameter has to be specified with domainId
+	Token *string `protobuf:"bytes,4,opt,name=token" json:"token,omitempty"`
+	// if true, accept the invitation, decline if false. True by default
+	Accept *bool `protobuf:"varint,5,opt,name=accept" json:"accept,omitempty"`
+	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateProjectInvitationRequest) Reset() {
+	*x = UpdateProjectInvitationRequest{}
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateProjectInvitationRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateProjectInvitationRequest) ProtoMessage() {}
+
+func (x *UpdateProjectInvitationRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateProjectInvitationRequest.ProtoReflect.Descriptor instead.
+func (*UpdateProjectInvitationRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *UpdateProjectInvitationRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *UpdateProjectInvitationRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *UpdateProjectInvitationRequest) GetUserId() int64 {
+	if x != nil && x.UserId != nil {
+		return *x.UserId
+	}
+	return 0
+}
+
+func (x *UpdateProjectInvitationRequest) GetToken() string {
+	if x != nil && x.Token != nil {
+		return *x.Token
+	}
+	return ""
+}
+
+func (x *UpdateProjectInvitationRequest) GetAccept() bool {
+	if x != nil && x.Accept != nil {
+		return *x.Accept
+	}
+	return false
+}
+
+func (x *UpdateProjectInvitationRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *UpdateProjectInvitationRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *UpdateProjectInvitationRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateProjectInvitationResponse represents the response from accepts or declines project invitation
+type UpdateProjectInvitationResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateProjectInvitationResponse) Reset() {
+	*x = UpdateProjectInvitationResponse{}
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateProjectInvitationResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateProjectInvitationResponse) ProtoMessage() {}
+
+func (x *UpdateProjectInvitationResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateProjectInvitationResponse.ProtoReflect.Descriptor instead.
+func (*UpdateProjectInvitationResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *UpdateProjectInvitationResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1638,151 +1638,6 @@ func (x *Success) GetDisplayText() string {
 	return ""
 }
 
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[21]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[21]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{21}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
 // Result represents a generic operation result
 type Result struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1802,7 +1657,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[22]
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1814,7 +1669,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[22]
+	mi := &file_cloudstack_management_project_v1_project_gen_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1827,7 +1682,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{22}
+	return file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -1869,35 +1724,36 @@ var File_cloudstack_management_project_v1_project_gen_proto protoreflect.FileDes
 
 const file_cloudstack_management_project_v1_project_gen_proto_rawDesc = "" +
 	"\n" +
-	"2cloudstack/management/project/v1/project.gen.proto\x12 cloudstack.management.project.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xf2\x05\n" +
-	"\x13ListProjectsRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1e\n" +
-	"\x04name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12!\n" +
-	"\fdisplay_text\x18\x03 \x01(\tR\vdisplayText\x12\x14\n" +
-	"\x05state\x18\x04 \x01(\tR\x05state\x12S\n" +
-	"\x04tags\x18\x05 \x03(\v2?.cloudstack.management.project.v1.ListProjectsRequest.TagsEntryR\x04tags\x12&\n" +
-	"\busername\x18\x06 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\busername\x12!\n" +
-	"\fview_details\x18\a \x03(\tR\vviewDetails\x12\"\n" +
-	"\tshow_icon\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\bshowIcon\x12\xa0\x01\n" +
-	"\faccount_name\x18\t \x01(\tB}\xbaHz\xba\x01w\n" +
-	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
-	"\blist_all\x18\n" +
-	" \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
-	"\tdomain_id\x18\v \x01(\x03R\bdomainId\x12#\n" +
-	"\trecursive\x18\f \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
-	"\akeyword\x18\r \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x0e \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x0f \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x10 \x01(\tR\fresponseType\x1a7\n" +
-	"\tTagsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x7f\n" +
-	"\x14ListProjectsResponse\x12?\n" +
-	"\x05items\x18\x01 \x03(\v2).cloudstack.management.project.v1.ProjectR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xb5\x01\n" +
+	"2cloudstack/management/project/v1/project.gen.proto\x12 cloudstack.management.project.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xad\x01\n" +
+	"\x16ActivateProjectRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"[\n" +
+	"\x17ActivateProjectResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.project.v1.ResultR\x06result\"\xd1\x02\n" +
+	"\x14CreateProjectRequest\x12!\n" +
+	"\faccount_name\x18\x01 \x01(\tR\vaccountName\x12\x17\n" +
+	"\auser_id\x18\x02 \x01(\x03R\x06userId\x12\x1b\n" +
+	"\tdomain_id\x18\x03 \x01(\x03R\bdomainId\x12\x1d\n" +
+	"\n" +
+	"account_id\x18\x04 \x01(\x03R\taccountId\x12!\n" +
+	"\x04name\x18\x05 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12!\n" +
+	"\fdisplay_text\x18\x06 \x01(\tR\vdisplayText\x12$\n" +
+	"\x0estart_event_id\x18\a \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\t \x01(\tR\fresponseType\"Y\n" +
+	"\x15CreateProjectResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.project.v1.ResultR\x06result\"\xcc\x01\n" +
+	"\x14DeleteProjectRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
+	"\acleanup\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\acleanup\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"Y\n" +
+	"\x15DeleteProjectResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.project.v1.ResultR\x06result\"\xb5\x01\n" +
 	"\x1eDeleteProjectInvitationRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
 	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
@@ -1926,54 +1782,41 @@ const file_cloudstack_management_project_v1_project_gen_proto_rawDesc = "" +
 	"\x1eListProjectInvitationsResponse\x12I\n" +
 	"\x05items\x18\x01 \x03(\v23.cloudstack.management.project.v1.ProjectInvitationR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xcc\x01\n" +
-	"\x14DeleteProjectRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
-	"\acleanup\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\acleanup\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"Y\n" +
-	"\x15DeleteProjectResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.project.v1.ResultR\x06result\"\xb5\x02\n" +
-	"\x1eUpdateProjectInvitationRequest\x12%\n" +
-	"\n" +
-	"project_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tprojectId\x12!\n" +
-	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x17\n" +
-	"\auser_id\x18\x03 \x01(\x03R\x06userId\x12\x14\n" +
-	"\x05token\x18\x04 \x01(\tR\x05token\x12\x1d\n" +
-	"\x06accept\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06accept\x12$\n" +
-	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\"c\n" +
-	"\x1fUpdateProjectInvitationResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.project.v1.ResultR\x06result\"\xad\x01\n" +
-	"\x16ActivateProjectRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"[\n" +
-	"\x17ActivateProjectResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.project.v1.ResultR\x06result\"\xac\x01\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xf2\x05\n" +
+	"\x13ListProjectsRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1e\n" +
+	"\x04name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12!\n" +
+	"\fdisplay_text\x18\x03 \x01(\tR\vdisplayText\x12\x14\n" +
+	"\x05state\x18\x04 \x01(\tR\x05state\x12S\n" +
+	"\x04tags\x18\x05 \x03(\v2?.cloudstack.management.project.v1.ListProjectsRequest.TagsEntryR\x04tags\x12&\n" +
+	"\busername\x18\x06 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\busername\x12!\n" +
+	"\fview_details\x18\a \x03(\tR\vviewDetails\x12\"\n" +
+	"\tshow_icon\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\bshowIcon\x12\xa0\x01\n" +
+	"\faccount_name\x18\t \x01(\tB}\xbaHz\xba\x01w\n" +
+	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
+	"\blist_all\x18\n" +
+	" \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
+	"\tdomain_id\x18\v \x01(\x03R\bdomainId\x12#\n" +
+	"\trecursive\x18\f \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
+	"\akeyword\x18\r \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x0e \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x0f \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x10 \x01(\tR\fresponseType\x1a7\n" +
+	"\tTagsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x7f\n" +
+	"\x14ListProjectsResponse\x12?\n" +
+	"\x05items\x18\x01 \x03(\v2).cloudstack.management.project.v1.ProjectR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xac\x01\n" +
 	"\x15SuspendProjectRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
 	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
 	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"Z\n" +
 	"\x16SuspendProjectResponse\x12@\n" +
-	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.project.v1.ResultR\x06result\"\xd1\x02\n" +
-	"\x14CreateProjectRequest\x12!\n" +
-	"\faccount_name\x18\x01 \x01(\tR\vaccountName\x12\x17\n" +
-	"\auser_id\x18\x02 \x01(\x03R\x06userId\x12\x1b\n" +
-	"\tdomain_id\x18\x03 \x01(\x03R\bdomainId\x12\x1d\n" +
-	"\n" +
-	"account_id\x18\x04 \x01(\x03R\taccountId\x12!\n" +
-	"\x04name\x18\x05 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12!\n" +
-	"\fdisplay_text\x18\x06 \x01(\tR\vdisplayText\x12$\n" +
-	"\x0estart_event_id\x18\a \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\t \x01(\tR\fresponseType\"Y\n" +
-	"\x15CreateProjectResponse\x12@\n" +
 	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.project.v1.ResultR\x06result\"\xed\x02\n" +
 	"\x14UpdateProjectRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12!\n" +
@@ -1990,6 +1833,18 @@ const file_cloudstack_management_project_v1_project_gen_proto_rawDesc = "" +
 	"\rresponse_type\x18\n" +
 	" \x01(\tR\fresponseType\"Y\n" +
 	"\x15UpdateProjectResponse\x12@\n" +
+	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.project.v1.ResultR\x06result\"\xb5\x02\n" +
+	"\x1eUpdateProjectInvitationRequest\x12%\n" +
+	"\n" +
+	"project_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tprojectId\x12!\n" +
+	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x17\n" +
+	"\auser_id\x18\x03 \x01(\x03R\x06userId\x12\x14\n" +
+	"\x05token\x18\x04 \x01(\tR\x05token\x12\x1d\n" +
+	"\x06accept\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\x06accept\x12$\n" +
+	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\"c\n" +
+	"\x1fUpdateProjectInvitationResponse\x12@\n" +
 	"\x06result\x18\x01 \x01(\v2(.cloudstack.management.project.v1.ResultR\x06result\"\x96\x01\n" +
 	"\aProject\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
@@ -2005,44 +1860,25 @@ const file_cloudstack_management_project_v1_project_gen_proto_rawDesc = "" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xdf\x03\n" +
-	"\x04Item\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12M\n" +
-	"\adetails\x18\f \x03(\v23.cloudstack.management.project.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xa1\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\xe2\n" +
 	"\n" +
-	"\x0eProjectService\x12\x7f\n" +
-	"\fListProjects\x125.cloudstack.management.project.v1.ListProjectsRequest\x1a6.cloudstack.management.project.v1.ListProjectsResponse\"\x00\x12\xa0\x01\n" +
-	"\x17DeleteProjectInvitation\x12@.cloudstack.management.project.v1.DeleteProjectInvitationRequest\x1aA.cloudstack.management.project.v1.DeleteProjectInvitationResponse\"\x00\x12\x9d\x01\n" +
-	"\x16ListProjectInvitations\x12?.cloudstack.management.project.v1.ListProjectInvitationsRequest\x1a@.cloudstack.management.project.v1.ListProjectInvitationsResponse\"\x00\x12\x82\x01\n" +
-	"\rDeleteProject\x126.cloudstack.management.project.v1.DeleteProjectRequest\x1a7.cloudstack.management.project.v1.DeleteProjectResponse\"\x00\x12\xa0\x01\n" +
-	"\x17UpdateProjectInvitation\x12@.cloudstack.management.project.v1.UpdateProjectInvitationRequest\x1aA.cloudstack.management.project.v1.UpdateProjectInvitationResponse\"\x00\x12\x88\x01\n" +
-	"\x0fActivateProject\x128.cloudstack.management.project.v1.ActivateProjectRequest\x1a9.cloudstack.management.project.v1.ActivateProjectResponse\"\x00\x12\x85\x01\n" +
-	"\x0eSuspendProject\x127.cloudstack.management.project.v1.SuspendProjectRequest\x1a8.cloudstack.management.project.v1.SuspendProjectResponse\"\x00\x12\x82\x01\n" +
-	"\rCreateProject\x126.cloudstack.management.project.v1.CreateProjectRequest\x1a7.cloudstack.management.project.v1.CreateProjectResponse\"\x00\x12\x82\x01\n" +
-	"\rUpdateProject\x126.cloudstack.management.project.v1.UpdateProjectRequest\x1a7.cloudstack.management.project.v1.UpdateProjectResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xba\x02\n" +
+	"\x0eProjectService\x12\x8f\x01\n" +
+	"\x0fActivateProject\x128.cloudstack.management.project.v1.ActivateProjectRequest\x1a9.cloudstack.management.project.v1.ActivateProjectResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x89\x01\n" +
+	"\rCreateProject\x126.cloudstack.management.project.v1.CreateProjectRequest\x1a7.cloudstack.management.project.v1.CreateProjectResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x89\x01\n" +
+	"\rDeleteProject\x126.cloudstack.management.project.v1.DeleteProjectRequest\x1a7.cloudstack.management.project.v1.DeleteProjectResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xa7\x01\n" +
+	"\x17DeleteProjectInvitation\x12@.cloudstack.management.project.v1.DeleteProjectInvitationRequest\x1aA.cloudstack.management.project.v1.DeleteProjectInvitationResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xa4\x01\n" +
+	"\x16ListProjectInvitations\x12?.cloudstack.management.project.v1.ListProjectInvitationsRequest\x1a@.cloudstack.management.project.v1.ListProjectInvitationsResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x86\x01\n" +
+	"\fListProjects\x125.cloudstack.management.project.v1.ListProjectsRequest\x1a6.cloudstack.management.project.v1.ListProjectsResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x8c\x01\n" +
+	"\x0eSuspendProject\x127.cloudstack.management.project.v1.SuspendProjectRequest\x1a8.cloudstack.management.project.v1.SuspendProjectResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x89\x01\n" +
+	"\rUpdateProject\x126.cloudstack.management.project.v1.UpdateProjectRequest\x1a7.cloudstack.management.project.v1.UpdateProjectResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xa7\x01\n" +
+	"\x17UpdateProjectInvitation\x12@.cloudstack.management.project.v1.UpdateProjectInvitationRequest\x1aA.cloudstack.management.project.v1.UpdateProjectInvitationResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\a\xc2>\x04\xc2>\x01\x02B\xba\x02\n" +
 	"$com.cloudstack.management.project.v1B\x0fProjectGenProtoP\x01Z^github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/project/v1;projectv1\xa2\x02\x03CMP\xaa\x02 Cloudstack.Management.Project.V1\xca\x02 Cloudstack\\Management\\Project\\V1\xe2\x02,Cloudstack\\Management\\Project\\V1\\GPBMetadata\xea\x02#Cloudstack::Management::Project::V1b\beditionsp\xe8\a"
 
 var (
@@ -2057,69 +1893,66 @@ func file_cloudstack_management_project_v1_project_gen_proto_rawDescGZIP() []byt
 	return file_cloudstack_management_project_v1_project_gen_proto_rawDescData
 }
 
-var file_cloudstack_management_project_v1_project_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
+var file_cloudstack_management_project_v1_project_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 23)
 var file_cloudstack_management_project_v1_project_gen_proto_goTypes = []any{
-	(*ListProjectsRequest)(nil),             // 0: cloudstack.management.project.v1.ListProjectsRequest
-	(*ListProjectsResponse)(nil),            // 1: cloudstack.management.project.v1.ListProjectsResponse
-	(*DeleteProjectInvitationRequest)(nil),  // 2: cloudstack.management.project.v1.DeleteProjectInvitationRequest
-	(*DeleteProjectInvitationResponse)(nil), // 3: cloudstack.management.project.v1.DeleteProjectInvitationResponse
-	(*ListProjectInvitationsRequest)(nil),   // 4: cloudstack.management.project.v1.ListProjectInvitationsRequest
-	(*ListProjectInvitationsResponse)(nil),  // 5: cloudstack.management.project.v1.ListProjectInvitationsResponse
-	(*DeleteProjectRequest)(nil),            // 6: cloudstack.management.project.v1.DeleteProjectRequest
-	(*DeleteProjectResponse)(nil),           // 7: cloudstack.management.project.v1.DeleteProjectResponse
-	(*UpdateProjectInvitationRequest)(nil),  // 8: cloudstack.management.project.v1.UpdateProjectInvitationRequest
-	(*UpdateProjectInvitationResponse)(nil), // 9: cloudstack.management.project.v1.UpdateProjectInvitationResponse
-	(*ActivateProjectRequest)(nil),          // 10: cloudstack.management.project.v1.ActivateProjectRequest
-	(*ActivateProjectResponse)(nil),         // 11: cloudstack.management.project.v1.ActivateProjectResponse
+	(*ActivateProjectRequest)(nil),          // 0: cloudstack.management.project.v1.ActivateProjectRequest
+	(*ActivateProjectResponse)(nil),         // 1: cloudstack.management.project.v1.ActivateProjectResponse
+	(*CreateProjectRequest)(nil),            // 2: cloudstack.management.project.v1.CreateProjectRequest
+	(*CreateProjectResponse)(nil),           // 3: cloudstack.management.project.v1.CreateProjectResponse
+	(*DeleteProjectRequest)(nil),            // 4: cloudstack.management.project.v1.DeleteProjectRequest
+	(*DeleteProjectResponse)(nil),           // 5: cloudstack.management.project.v1.DeleteProjectResponse
+	(*DeleteProjectInvitationRequest)(nil),  // 6: cloudstack.management.project.v1.DeleteProjectInvitationRequest
+	(*DeleteProjectInvitationResponse)(nil), // 7: cloudstack.management.project.v1.DeleteProjectInvitationResponse
+	(*ListProjectInvitationsRequest)(nil),   // 8: cloudstack.management.project.v1.ListProjectInvitationsRequest
+	(*ListProjectInvitationsResponse)(nil),  // 9: cloudstack.management.project.v1.ListProjectInvitationsResponse
+	(*ListProjectsRequest)(nil),             // 10: cloudstack.management.project.v1.ListProjectsRequest
+	(*ListProjectsResponse)(nil),            // 11: cloudstack.management.project.v1.ListProjectsResponse
 	(*SuspendProjectRequest)(nil),           // 12: cloudstack.management.project.v1.SuspendProjectRequest
 	(*SuspendProjectResponse)(nil),          // 13: cloudstack.management.project.v1.SuspendProjectResponse
-	(*CreateProjectRequest)(nil),            // 14: cloudstack.management.project.v1.CreateProjectRequest
-	(*CreateProjectResponse)(nil),           // 15: cloudstack.management.project.v1.CreateProjectResponse
-	(*UpdateProjectRequest)(nil),            // 16: cloudstack.management.project.v1.UpdateProjectRequest
-	(*UpdateProjectResponse)(nil),           // 17: cloudstack.management.project.v1.UpdateProjectResponse
+	(*UpdateProjectRequest)(nil),            // 14: cloudstack.management.project.v1.UpdateProjectRequest
+	(*UpdateProjectResponse)(nil),           // 15: cloudstack.management.project.v1.UpdateProjectResponse
+	(*UpdateProjectInvitationRequest)(nil),  // 16: cloudstack.management.project.v1.UpdateProjectInvitationRequest
+	(*UpdateProjectInvitationResponse)(nil), // 17: cloudstack.management.project.v1.UpdateProjectInvitationResponse
 	(*Project)(nil),                         // 18: cloudstack.management.project.v1.Project
 	(*ProjectInvitation)(nil),               // 19: cloudstack.management.project.v1.ProjectInvitation
 	(*Success)(nil),                         // 20: cloudstack.management.project.v1.Success
-	(*Item)(nil),                            // 21: cloudstack.management.project.v1.Item
-	(*Result)(nil),                          // 22: cloudstack.management.project.v1.Result
-	nil,                                     // 23: cloudstack.management.project.v1.ListProjectsRequest.TagsEntry
-	nil,                                     // 24: cloudstack.management.project.v1.Item.DetailsEntry
+	(*Result)(nil),                          // 21: cloudstack.management.project.v1.Result
+	nil,                                     // 22: cloudstack.management.project.v1.ListProjectsRequest.TagsEntry
 }
 var file_cloudstack_management_project_v1_project_gen_proto_depIdxs = []int32{
-	23, // 0: cloudstack.management.project.v1.ListProjectsRequest.tags:type_name -> cloudstack.management.project.v1.ListProjectsRequest.TagsEntry
-	18, // 1: cloudstack.management.project.v1.ListProjectsResponse.items:type_name -> cloudstack.management.project.v1.Project
-	22, // 2: cloudstack.management.project.v1.DeleteProjectInvitationResponse.result:type_name -> cloudstack.management.project.v1.Result
-	19, // 3: cloudstack.management.project.v1.ListProjectInvitationsResponse.items:type_name -> cloudstack.management.project.v1.ProjectInvitation
-	22, // 4: cloudstack.management.project.v1.DeleteProjectResponse.result:type_name -> cloudstack.management.project.v1.Result
-	22, // 5: cloudstack.management.project.v1.UpdateProjectInvitationResponse.result:type_name -> cloudstack.management.project.v1.Result
-	22, // 6: cloudstack.management.project.v1.ActivateProjectResponse.result:type_name -> cloudstack.management.project.v1.Result
-	22, // 7: cloudstack.management.project.v1.SuspendProjectResponse.result:type_name -> cloudstack.management.project.v1.Result
-	22, // 8: cloudstack.management.project.v1.CreateProjectResponse.result:type_name -> cloudstack.management.project.v1.Result
-	22, // 9: cloudstack.management.project.v1.UpdateProjectResponse.result:type_name -> cloudstack.management.project.v1.Result
-	24, // 10: cloudstack.management.project.v1.Item.details:type_name -> cloudstack.management.project.v1.Item.DetailsEntry
-	0,  // 11: cloudstack.management.project.v1.ProjectService.ListProjects:input_type -> cloudstack.management.project.v1.ListProjectsRequest
-	2,  // 12: cloudstack.management.project.v1.ProjectService.DeleteProjectInvitation:input_type -> cloudstack.management.project.v1.DeleteProjectInvitationRequest
-	4,  // 13: cloudstack.management.project.v1.ProjectService.ListProjectInvitations:input_type -> cloudstack.management.project.v1.ListProjectInvitationsRequest
-	6,  // 14: cloudstack.management.project.v1.ProjectService.DeleteProject:input_type -> cloudstack.management.project.v1.DeleteProjectRequest
-	8,  // 15: cloudstack.management.project.v1.ProjectService.UpdateProjectInvitation:input_type -> cloudstack.management.project.v1.UpdateProjectInvitationRequest
-	10, // 16: cloudstack.management.project.v1.ProjectService.ActivateProject:input_type -> cloudstack.management.project.v1.ActivateProjectRequest
-	12, // 17: cloudstack.management.project.v1.ProjectService.SuspendProject:input_type -> cloudstack.management.project.v1.SuspendProjectRequest
-	14, // 18: cloudstack.management.project.v1.ProjectService.CreateProject:input_type -> cloudstack.management.project.v1.CreateProjectRequest
-	16, // 19: cloudstack.management.project.v1.ProjectService.UpdateProject:input_type -> cloudstack.management.project.v1.UpdateProjectRequest
-	1,  // 20: cloudstack.management.project.v1.ProjectService.ListProjects:output_type -> cloudstack.management.project.v1.ListProjectsResponse
-	3,  // 21: cloudstack.management.project.v1.ProjectService.DeleteProjectInvitation:output_type -> cloudstack.management.project.v1.DeleteProjectInvitationResponse
-	5,  // 22: cloudstack.management.project.v1.ProjectService.ListProjectInvitations:output_type -> cloudstack.management.project.v1.ListProjectInvitationsResponse
-	7,  // 23: cloudstack.management.project.v1.ProjectService.DeleteProject:output_type -> cloudstack.management.project.v1.DeleteProjectResponse
-	9,  // 24: cloudstack.management.project.v1.ProjectService.UpdateProjectInvitation:output_type -> cloudstack.management.project.v1.UpdateProjectInvitationResponse
-	11, // 25: cloudstack.management.project.v1.ProjectService.ActivateProject:output_type -> cloudstack.management.project.v1.ActivateProjectResponse
-	13, // 26: cloudstack.management.project.v1.ProjectService.SuspendProject:output_type -> cloudstack.management.project.v1.SuspendProjectResponse
-	15, // 27: cloudstack.management.project.v1.ProjectService.CreateProject:output_type -> cloudstack.management.project.v1.CreateProjectResponse
-	17, // 28: cloudstack.management.project.v1.ProjectService.UpdateProject:output_type -> cloudstack.management.project.v1.UpdateProjectResponse
-	20, // [20:29] is the sub-list for method output_type
-	11, // [11:20] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	21, // 0: cloudstack.management.project.v1.ActivateProjectResponse.result:type_name -> cloudstack.management.project.v1.Result
+	21, // 1: cloudstack.management.project.v1.CreateProjectResponse.result:type_name -> cloudstack.management.project.v1.Result
+	21, // 2: cloudstack.management.project.v1.DeleteProjectResponse.result:type_name -> cloudstack.management.project.v1.Result
+	21, // 3: cloudstack.management.project.v1.DeleteProjectInvitationResponse.result:type_name -> cloudstack.management.project.v1.Result
+	19, // 4: cloudstack.management.project.v1.ListProjectInvitationsResponse.items:type_name -> cloudstack.management.project.v1.ProjectInvitation
+	22, // 5: cloudstack.management.project.v1.ListProjectsRequest.tags:type_name -> cloudstack.management.project.v1.ListProjectsRequest.TagsEntry
+	18, // 6: cloudstack.management.project.v1.ListProjectsResponse.items:type_name -> cloudstack.management.project.v1.Project
+	21, // 7: cloudstack.management.project.v1.SuspendProjectResponse.result:type_name -> cloudstack.management.project.v1.Result
+	21, // 8: cloudstack.management.project.v1.UpdateProjectResponse.result:type_name -> cloudstack.management.project.v1.Result
+	21, // 9: cloudstack.management.project.v1.UpdateProjectInvitationResponse.result:type_name -> cloudstack.management.project.v1.Result
+	0,  // 10: cloudstack.management.project.v1.ProjectService.ActivateProject:input_type -> cloudstack.management.project.v1.ActivateProjectRequest
+	2,  // 11: cloudstack.management.project.v1.ProjectService.CreateProject:input_type -> cloudstack.management.project.v1.CreateProjectRequest
+	4,  // 12: cloudstack.management.project.v1.ProjectService.DeleteProject:input_type -> cloudstack.management.project.v1.DeleteProjectRequest
+	6,  // 13: cloudstack.management.project.v1.ProjectService.DeleteProjectInvitation:input_type -> cloudstack.management.project.v1.DeleteProjectInvitationRequest
+	8,  // 14: cloudstack.management.project.v1.ProjectService.ListProjectInvitations:input_type -> cloudstack.management.project.v1.ListProjectInvitationsRequest
+	10, // 15: cloudstack.management.project.v1.ProjectService.ListProjects:input_type -> cloudstack.management.project.v1.ListProjectsRequest
+	12, // 16: cloudstack.management.project.v1.ProjectService.SuspendProject:input_type -> cloudstack.management.project.v1.SuspendProjectRequest
+	14, // 17: cloudstack.management.project.v1.ProjectService.UpdateProject:input_type -> cloudstack.management.project.v1.UpdateProjectRequest
+	16, // 18: cloudstack.management.project.v1.ProjectService.UpdateProjectInvitation:input_type -> cloudstack.management.project.v1.UpdateProjectInvitationRequest
+	1,  // 19: cloudstack.management.project.v1.ProjectService.ActivateProject:output_type -> cloudstack.management.project.v1.ActivateProjectResponse
+	3,  // 20: cloudstack.management.project.v1.ProjectService.CreateProject:output_type -> cloudstack.management.project.v1.CreateProjectResponse
+	5,  // 21: cloudstack.management.project.v1.ProjectService.DeleteProject:output_type -> cloudstack.management.project.v1.DeleteProjectResponse
+	7,  // 22: cloudstack.management.project.v1.ProjectService.DeleteProjectInvitation:output_type -> cloudstack.management.project.v1.DeleteProjectInvitationResponse
+	9,  // 23: cloudstack.management.project.v1.ProjectService.ListProjectInvitations:output_type -> cloudstack.management.project.v1.ListProjectInvitationsResponse
+	11, // 24: cloudstack.management.project.v1.ProjectService.ListProjects:output_type -> cloudstack.management.project.v1.ListProjectsResponse
+	13, // 25: cloudstack.management.project.v1.ProjectService.SuspendProject:output_type -> cloudstack.management.project.v1.SuspendProjectResponse
+	15, // 26: cloudstack.management.project.v1.ProjectService.UpdateProject:output_type -> cloudstack.management.project.v1.UpdateProjectResponse
+	17, // 27: cloudstack.management.project.v1.ProjectService.UpdateProjectInvitation:output_type -> cloudstack.management.project.v1.UpdateProjectInvitationResponse
+	19, // [19:28] is the sub-list for method output_type
+	10, // [10:19] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_project_v1_project_gen_proto_init() }
@@ -2133,7 +1966,7 @@ func file_cloudstack_management_project_v1_project_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_project_v1_project_gen_proto_rawDesc), len(file_cloudstack_management_project_v1_project_gen_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   25,
+			NumMessages:   23,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

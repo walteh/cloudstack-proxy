@@ -19,27 +19,27 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AutoscaleService_CreateCondition_FullMethodName          = "/cloudstack.management.autoscale.v1.AutoscaleService/CreateCondition"
-	AutoscaleService_CreateAutoScaleVmGroup_FullMethodName   = "/cloudstack.management.autoscale.v1.AutoscaleService/CreateAutoScaleVmGroup"
-	AutoscaleService_ListAutoScalePolicies_FullMethodName    = "/cloudstack.management.autoscale.v1.AutoscaleService/ListAutoScalePolicies"
 	AutoscaleService_CreateAutoScalePolicy_FullMethodName    = "/cloudstack.management.autoscale.v1.AutoscaleService/CreateAutoScalePolicy"
-	AutoscaleService_DeleteCondition_FullMethodName          = "/cloudstack.management.autoscale.v1.AutoscaleService/DeleteCondition"
-	AutoscaleService_DeleteAutoScaleVmProfile_FullMethodName = "/cloudstack.management.autoscale.v1.AutoscaleService/DeleteAutoScaleVmProfile"
-	AutoscaleService_ListAutoScaleVmProfiles_FullMethodName  = "/cloudstack.management.autoscale.v1.AutoscaleService/ListAutoScaleVmProfiles"
-	AutoscaleService_UpdateAutoScalePolicy_FullMethodName    = "/cloudstack.management.autoscale.v1.AutoscaleService/UpdateAutoScalePolicy"
-	AutoscaleService_UpdateAutoScaleVmProfile_FullMethodName = "/cloudstack.management.autoscale.v1.AutoscaleService/UpdateAutoScaleVmProfile"
-	AutoscaleService_UpdateAutoScaleVmGroup_FullMethodName   = "/cloudstack.management.autoscale.v1.AutoscaleService/UpdateAutoScaleVmGroup"
-	AutoscaleService_EnableAutoScaleVmGroup_FullMethodName   = "/cloudstack.management.autoscale.v1.AutoscaleService/EnableAutoScaleVmGroup"
+	AutoscaleService_CreateAutoScaleVmGroup_FullMethodName   = "/cloudstack.management.autoscale.v1.AutoscaleService/CreateAutoScaleVmGroup"
 	AutoscaleService_CreateAutoScaleVmProfile_FullMethodName = "/cloudstack.management.autoscale.v1.AutoscaleService/CreateAutoScaleVmProfile"
-	AutoscaleService_DisableAutoScaleVmGroup_FullMethodName  = "/cloudstack.management.autoscale.v1.AutoscaleService/DisableAutoScaleVmGroup"
+	AutoscaleService_CreateCondition_FullMethodName          = "/cloudstack.management.autoscale.v1.AutoscaleService/CreateCondition"
 	AutoscaleService_CreateCounter_FullMethodName            = "/cloudstack.management.autoscale.v1.AutoscaleService/CreateCounter"
-	AutoscaleService_DeleteCounter_FullMethodName            = "/cloudstack.management.autoscale.v1.AutoscaleService/DeleteCounter"
-	AutoscaleService_ListConditions_FullMethodName           = "/cloudstack.management.autoscale.v1.AutoscaleService/ListConditions"
-	AutoscaleService_UpdateCondition_FullMethodName          = "/cloudstack.management.autoscale.v1.AutoscaleService/UpdateCondition"
-	AutoscaleService_ListCounters_FullMethodName             = "/cloudstack.management.autoscale.v1.AutoscaleService/ListCounters"
-	AutoscaleService_ListAutoScaleVmGroups_FullMethodName    = "/cloudstack.management.autoscale.v1.AutoscaleService/ListAutoScaleVmGroups"
 	AutoscaleService_DeleteAutoScalePolicy_FullMethodName    = "/cloudstack.management.autoscale.v1.AutoscaleService/DeleteAutoScalePolicy"
 	AutoscaleService_DeleteAutoScaleVmGroup_FullMethodName   = "/cloudstack.management.autoscale.v1.AutoscaleService/DeleteAutoScaleVmGroup"
+	AutoscaleService_DeleteAutoScaleVmProfile_FullMethodName = "/cloudstack.management.autoscale.v1.AutoscaleService/DeleteAutoScaleVmProfile"
+	AutoscaleService_DeleteCondition_FullMethodName          = "/cloudstack.management.autoscale.v1.AutoscaleService/DeleteCondition"
+	AutoscaleService_DeleteCounter_FullMethodName            = "/cloudstack.management.autoscale.v1.AutoscaleService/DeleteCounter"
+	AutoscaleService_DisableAutoScaleVmGroup_FullMethodName  = "/cloudstack.management.autoscale.v1.AutoscaleService/DisableAutoScaleVmGroup"
+	AutoscaleService_EnableAutoScaleVmGroup_FullMethodName   = "/cloudstack.management.autoscale.v1.AutoscaleService/EnableAutoScaleVmGroup"
+	AutoscaleService_ListAutoScalePolicies_FullMethodName    = "/cloudstack.management.autoscale.v1.AutoscaleService/ListAutoScalePolicies"
+	AutoscaleService_ListAutoScaleVmGroups_FullMethodName    = "/cloudstack.management.autoscale.v1.AutoscaleService/ListAutoScaleVmGroups"
+	AutoscaleService_ListAutoScaleVmProfiles_FullMethodName  = "/cloudstack.management.autoscale.v1.AutoscaleService/ListAutoScaleVmProfiles"
+	AutoscaleService_ListConditions_FullMethodName           = "/cloudstack.management.autoscale.v1.AutoscaleService/ListConditions"
+	AutoscaleService_ListCounters_FullMethodName             = "/cloudstack.management.autoscale.v1.AutoscaleService/ListCounters"
+	AutoscaleService_UpdateAutoScalePolicy_FullMethodName    = "/cloudstack.management.autoscale.v1.AutoscaleService/UpdateAutoScalePolicy"
+	AutoscaleService_UpdateAutoScaleVmGroup_FullMethodName   = "/cloudstack.management.autoscale.v1.AutoscaleService/UpdateAutoScaleVmGroup"
+	AutoscaleService_UpdateAutoScaleVmProfile_FullMethodName = "/cloudstack.management.autoscale.v1.AutoscaleService/UpdateAutoScaleVmProfile"
+	AutoscaleService_UpdateCondition_FullMethodName          = "/cloudstack.management.autoscale.v1.AutoscaleService/UpdateCondition"
 )
 
 // AutoscaleServiceClient is the client API for AutoscaleService service.
@@ -48,48 +48,48 @@ const (
 //
 // AutoscaleService provides operations for managing Autoscales
 type AutoscaleServiceClient interface {
-	// CreateCondition Creates a condition for VM auto scaling
-	CreateCondition(ctx context.Context, in *CreateConditionRequest, opts ...grpc.CallOption) (*CreateConditionResponse, error)
-	// CreateAutoScaleVmGroup Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
-	CreateAutoScaleVmGroup(ctx context.Context, in *CreateAutoScaleVmGroupRequest, opts ...grpc.CallOption) (*CreateAutoScaleVmGroupResponse, error)
-	// ListAutoScalePolicies Lists autoscale policies.
-	ListAutoScalePolicies(ctx context.Context, in *ListAutoScalePoliciesRequest, opts ...grpc.CallOption) (*ListAutoScalePoliciesResponse, error)
 	// CreateAutoScalePolicy Creates an autoscale policy for a provision or deprovision action, the action is taken when the all the conditions evaluates to true for the specified duration. The policy is in effect once it is attached to a autscale vm group.
 	CreateAutoScalePolicy(ctx context.Context, in *CreateAutoScalePolicyRequest, opts ...grpc.CallOption) (*CreateAutoScalePolicyResponse, error)
-	// DeleteCondition Removes a condition for VM auto scaling
-	DeleteCondition(ctx context.Context, in *DeleteConditionRequest, opts ...grpc.CallOption) (*DeleteConditionResponse, error)
-	// DeleteAutoScaleVmProfile Deletes a autoscale vm profile.
-	DeleteAutoScaleVmProfile(ctx context.Context, in *DeleteAutoScaleVmProfileRequest, opts ...grpc.CallOption) (*DeleteAutoScaleVmProfileResponse, error)
-	// ListAutoScaleVmProfiles Lists autoscale vm profiles.
-	ListAutoScaleVmProfiles(ctx context.Context, in *ListAutoScaleVmProfilesRequest, opts ...grpc.CallOption) (*ListAutoScaleVmProfilesResponse, error)
-	// UpdateAutoScalePolicy Updates an existing autoscale policy.
-	UpdateAutoScalePolicy(ctx context.Context, in *UpdateAutoScalePolicyRequest, opts ...grpc.CallOption) (*UpdateAutoScalePolicyResponse, error)
-	// UpdateAutoScaleVmProfile Updates an existing autoscale vm profile.
-	UpdateAutoScaleVmProfile(ctx context.Context, in *UpdateAutoScaleVmProfileRequest, opts ...grpc.CallOption) (*UpdateAutoScaleVmProfileResponse, error)
-	// UpdateAutoScaleVmGroup Updates an existing autoscale vm group.
-	UpdateAutoScaleVmGroup(ctx context.Context, in *UpdateAutoScaleVmGroupRequest, opts ...grpc.CallOption) (*UpdateAutoScaleVmGroupResponse, error)
-	// EnableAutoScaleVmGroup Enables an AutoScale Vm Group
-	EnableAutoScaleVmGroup(ctx context.Context, in *EnableAutoScaleVmGroupRequest, opts ...grpc.CallOption) (*EnableAutoScaleVmGroupResponse, error)
+	// CreateAutoScaleVmGroup Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
+	CreateAutoScaleVmGroup(ctx context.Context, in *CreateAutoScaleVmGroupRequest, opts ...grpc.CallOption) (*CreateAutoScaleVmGroupResponse, error)
 	// CreateAutoScaleVmProfile Creates a profile that contains information about the virtual machine which will be provisioned automatically by autoscale feature.
 	CreateAutoScaleVmProfile(ctx context.Context, in *CreateAutoScaleVmProfileRequest, opts ...grpc.CallOption) (*CreateAutoScaleVmProfileResponse, error)
-	// DisableAutoScaleVmGroup Disables an AutoScale Vm Group
-	DisableAutoScaleVmGroup(ctx context.Context, in *DisableAutoScaleVmGroupRequest, opts ...grpc.CallOption) (*DisableAutoScaleVmGroupResponse, error)
+	// CreateCondition Creates a condition for VM auto scaling
+	CreateCondition(ctx context.Context, in *CreateConditionRequest, opts ...grpc.CallOption) (*CreateConditionResponse, error)
 	// CreateCounter Adds metric counter for VM auto scaling
 	CreateCounter(ctx context.Context, in *CreateCounterRequest, opts ...grpc.CallOption) (*CreateCounterResponse, error)
-	// DeleteCounter Deletes a counter for VM auto scaling
-	DeleteCounter(ctx context.Context, in *DeleteCounterRequest, opts ...grpc.CallOption) (*DeleteCounterResponse, error)
-	// ListConditions List Conditions for VM auto scaling
-	ListConditions(ctx context.Context, in *ListConditionsRequest, opts ...grpc.CallOption) (*ListConditionsResponse, error)
-	// UpdateCondition Updates a condition for VM auto scaling
-	UpdateCondition(ctx context.Context, in *UpdateConditionRequest, opts ...grpc.CallOption) (*UpdateConditionResponse, error)
-	// ListCounters List the counters for VM auto scaling
-	ListCounters(ctx context.Context, in *ListCountersRequest, opts ...grpc.CallOption) (*ListCountersResponse, error)
-	// ListAutoScaleVmGroups Lists autoscale vm groups.
-	ListAutoScaleVmGroups(ctx context.Context, in *ListAutoScaleVmGroupsRequest, opts ...grpc.CallOption) (*ListAutoScaleVmGroupsResponse, error)
 	// DeleteAutoScalePolicy Deletes a autoscale policy.
 	DeleteAutoScalePolicy(ctx context.Context, in *DeleteAutoScalePolicyRequest, opts ...grpc.CallOption) (*DeleteAutoScalePolicyResponse, error)
 	// DeleteAutoScaleVmGroup Deletes a autoscale vm group.
 	DeleteAutoScaleVmGroup(ctx context.Context, in *DeleteAutoScaleVmGroupRequest, opts ...grpc.CallOption) (*DeleteAutoScaleVmGroupResponse, error)
+	// DeleteAutoScaleVmProfile Deletes a autoscale vm profile.
+	DeleteAutoScaleVmProfile(ctx context.Context, in *DeleteAutoScaleVmProfileRequest, opts ...grpc.CallOption) (*DeleteAutoScaleVmProfileResponse, error)
+	// DeleteCondition Removes a condition for VM auto scaling
+	DeleteCondition(ctx context.Context, in *DeleteConditionRequest, opts ...grpc.CallOption) (*DeleteConditionResponse, error)
+	// DeleteCounter Deletes a counter for VM auto scaling
+	DeleteCounter(ctx context.Context, in *DeleteCounterRequest, opts ...grpc.CallOption) (*DeleteCounterResponse, error)
+	// DisableAutoScaleVmGroup Disables an AutoScale Vm Group
+	DisableAutoScaleVmGroup(ctx context.Context, in *DisableAutoScaleVmGroupRequest, opts ...grpc.CallOption) (*DisableAutoScaleVmGroupResponse, error)
+	// EnableAutoScaleVmGroup Enables an AutoScale Vm Group
+	EnableAutoScaleVmGroup(ctx context.Context, in *EnableAutoScaleVmGroupRequest, opts ...grpc.CallOption) (*EnableAutoScaleVmGroupResponse, error)
+	// ListAutoScalePolicies Lists autoscale policies.
+	ListAutoScalePolicies(ctx context.Context, in *ListAutoScalePoliciesRequest, opts ...grpc.CallOption) (*ListAutoScalePoliciesResponse, error)
+	// ListAutoScaleVmGroups Lists autoscale vm groups.
+	ListAutoScaleVmGroups(ctx context.Context, in *ListAutoScaleVmGroupsRequest, opts ...grpc.CallOption) (*ListAutoScaleVmGroupsResponse, error)
+	// ListAutoScaleVmProfiles Lists autoscale vm profiles.
+	ListAutoScaleVmProfiles(ctx context.Context, in *ListAutoScaleVmProfilesRequest, opts ...grpc.CallOption) (*ListAutoScaleVmProfilesResponse, error)
+	// ListConditions List Conditions for VM auto scaling
+	ListConditions(ctx context.Context, in *ListConditionsRequest, opts ...grpc.CallOption) (*ListConditionsResponse, error)
+	// ListCounters List the counters for VM auto scaling
+	ListCounters(ctx context.Context, in *ListCountersRequest, opts ...grpc.CallOption) (*ListCountersResponse, error)
+	// UpdateAutoScalePolicy Updates an existing autoscale policy.
+	UpdateAutoScalePolicy(ctx context.Context, in *UpdateAutoScalePolicyRequest, opts ...grpc.CallOption) (*UpdateAutoScalePolicyResponse, error)
+	// UpdateAutoScaleVmGroup Updates an existing autoscale vm group.
+	UpdateAutoScaleVmGroup(ctx context.Context, in *UpdateAutoScaleVmGroupRequest, opts ...grpc.CallOption) (*UpdateAutoScaleVmGroupResponse, error)
+	// UpdateAutoScaleVmProfile Updates an existing autoscale vm profile.
+	UpdateAutoScaleVmProfile(ctx context.Context, in *UpdateAutoScaleVmProfileRequest, opts ...grpc.CallOption) (*UpdateAutoScaleVmProfileResponse, error)
+	// UpdateCondition Updates a condition for VM auto scaling
+	UpdateCondition(ctx context.Context, in *UpdateConditionRequest, opts ...grpc.CallOption) (*UpdateConditionResponse, error)
 }
 
 type autoscaleServiceClient struct {
@@ -100,10 +100,10 @@ func NewAutoscaleServiceClient(cc grpc.ClientConnInterface) AutoscaleServiceClie
 	return &autoscaleServiceClient{cc}
 }
 
-func (c *autoscaleServiceClient) CreateCondition(ctx context.Context, in *CreateConditionRequest, opts ...grpc.CallOption) (*CreateConditionResponse, error) {
+func (c *autoscaleServiceClient) CreateAutoScalePolicy(ctx context.Context, in *CreateAutoScalePolicyRequest, opts ...grpc.CallOption) (*CreateAutoScalePolicyResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateConditionResponse)
-	err := c.cc.Invoke(ctx, AutoscaleService_CreateCondition_FullMethodName, in, out, cOpts...)
+	out := new(CreateAutoScalePolicyResponse)
+	err := c.cc.Invoke(ctx, AutoscaleService_CreateAutoScalePolicy_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -120,96 +120,6 @@ func (c *autoscaleServiceClient) CreateAutoScaleVmGroup(ctx context.Context, in 
 	return out, nil
 }
 
-func (c *autoscaleServiceClient) ListAutoScalePolicies(ctx context.Context, in *ListAutoScalePoliciesRequest, opts ...grpc.CallOption) (*ListAutoScalePoliciesResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListAutoScalePoliciesResponse)
-	err := c.cc.Invoke(ctx, AutoscaleService_ListAutoScalePolicies_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *autoscaleServiceClient) CreateAutoScalePolicy(ctx context.Context, in *CreateAutoScalePolicyRequest, opts ...grpc.CallOption) (*CreateAutoScalePolicyResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateAutoScalePolicyResponse)
-	err := c.cc.Invoke(ctx, AutoscaleService_CreateAutoScalePolicy_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *autoscaleServiceClient) DeleteCondition(ctx context.Context, in *DeleteConditionRequest, opts ...grpc.CallOption) (*DeleteConditionResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteConditionResponse)
-	err := c.cc.Invoke(ctx, AutoscaleService_DeleteCondition_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *autoscaleServiceClient) DeleteAutoScaleVmProfile(ctx context.Context, in *DeleteAutoScaleVmProfileRequest, opts ...grpc.CallOption) (*DeleteAutoScaleVmProfileResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteAutoScaleVmProfileResponse)
-	err := c.cc.Invoke(ctx, AutoscaleService_DeleteAutoScaleVmProfile_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *autoscaleServiceClient) ListAutoScaleVmProfiles(ctx context.Context, in *ListAutoScaleVmProfilesRequest, opts ...grpc.CallOption) (*ListAutoScaleVmProfilesResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListAutoScaleVmProfilesResponse)
-	err := c.cc.Invoke(ctx, AutoscaleService_ListAutoScaleVmProfiles_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *autoscaleServiceClient) UpdateAutoScalePolicy(ctx context.Context, in *UpdateAutoScalePolicyRequest, opts ...grpc.CallOption) (*UpdateAutoScalePolicyResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateAutoScalePolicyResponse)
-	err := c.cc.Invoke(ctx, AutoscaleService_UpdateAutoScalePolicy_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *autoscaleServiceClient) UpdateAutoScaleVmProfile(ctx context.Context, in *UpdateAutoScaleVmProfileRequest, opts ...grpc.CallOption) (*UpdateAutoScaleVmProfileResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateAutoScaleVmProfileResponse)
-	err := c.cc.Invoke(ctx, AutoscaleService_UpdateAutoScaleVmProfile_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *autoscaleServiceClient) UpdateAutoScaleVmGroup(ctx context.Context, in *UpdateAutoScaleVmGroupRequest, opts ...grpc.CallOption) (*UpdateAutoScaleVmGroupResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateAutoScaleVmGroupResponse)
-	err := c.cc.Invoke(ctx, AutoscaleService_UpdateAutoScaleVmGroup_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *autoscaleServiceClient) EnableAutoScaleVmGroup(ctx context.Context, in *EnableAutoScaleVmGroupRequest, opts ...grpc.CallOption) (*EnableAutoScaleVmGroupResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(EnableAutoScaleVmGroupResponse)
-	err := c.cc.Invoke(ctx, AutoscaleService_EnableAutoScaleVmGroup_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *autoscaleServiceClient) CreateAutoScaleVmProfile(ctx context.Context, in *CreateAutoScaleVmProfileRequest, opts ...grpc.CallOption) (*CreateAutoScaleVmProfileResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreateAutoScaleVmProfileResponse)
@@ -220,10 +130,10 @@ func (c *autoscaleServiceClient) CreateAutoScaleVmProfile(ctx context.Context, i
 	return out, nil
 }
 
-func (c *autoscaleServiceClient) DisableAutoScaleVmGroup(ctx context.Context, in *DisableAutoScaleVmGroupRequest, opts ...grpc.CallOption) (*DisableAutoScaleVmGroupResponse, error) {
+func (c *autoscaleServiceClient) CreateCondition(ctx context.Context, in *CreateConditionRequest, opts ...grpc.CallOption) (*CreateConditionResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DisableAutoScaleVmGroupResponse)
-	err := c.cc.Invoke(ctx, AutoscaleService_DisableAutoScaleVmGroup_FullMethodName, in, out, cOpts...)
+	out := new(CreateConditionResponse)
+	err := c.cc.Invoke(ctx, AutoscaleService_CreateCondition_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -234,56 +144,6 @@ func (c *autoscaleServiceClient) CreateCounter(ctx context.Context, in *CreateCo
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreateCounterResponse)
 	err := c.cc.Invoke(ctx, AutoscaleService_CreateCounter_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *autoscaleServiceClient) DeleteCounter(ctx context.Context, in *DeleteCounterRequest, opts ...grpc.CallOption) (*DeleteCounterResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteCounterResponse)
-	err := c.cc.Invoke(ctx, AutoscaleService_DeleteCounter_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *autoscaleServiceClient) ListConditions(ctx context.Context, in *ListConditionsRequest, opts ...grpc.CallOption) (*ListConditionsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListConditionsResponse)
-	err := c.cc.Invoke(ctx, AutoscaleService_ListConditions_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *autoscaleServiceClient) UpdateCondition(ctx context.Context, in *UpdateConditionRequest, opts ...grpc.CallOption) (*UpdateConditionResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateConditionResponse)
-	err := c.cc.Invoke(ctx, AutoscaleService_UpdateCondition_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *autoscaleServiceClient) ListCounters(ctx context.Context, in *ListCountersRequest, opts ...grpc.CallOption) (*ListCountersResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListCountersResponse)
-	err := c.cc.Invoke(ctx, AutoscaleService_ListCounters_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *autoscaleServiceClient) ListAutoScaleVmGroups(ctx context.Context, in *ListAutoScaleVmGroupsRequest, opts ...grpc.CallOption) (*ListAutoScaleVmGroupsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListAutoScaleVmGroupsResponse)
-	err := c.cc.Invoke(ctx, AutoscaleService_ListAutoScaleVmGroups_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -310,54 +170,194 @@ func (c *autoscaleServiceClient) DeleteAutoScaleVmGroup(ctx context.Context, in 
 	return out, nil
 }
 
+func (c *autoscaleServiceClient) DeleteAutoScaleVmProfile(ctx context.Context, in *DeleteAutoScaleVmProfileRequest, opts ...grpc.CallOption) (*DeleteAutoScaleVmProfileResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteAutoScaleVmProfileResponse)
+	err := c.cc.Invoke(ctx, AutoscaleService_DeleteAutoScaleVmProfile_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *autoscaleServiceClient) DeleteCondition(ctx context.Context, in *DeleteConditionRequest, opts ...grpc.CallOption) (*DeleteConditionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteConditionResponse)
+	err := c.cc.Invoke(ctx, AutoscaleService_DeleteCondition_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *autoscaleServiceClient) DeleteCounter(ctx context.Context, in *DeleteCounterRequest, opts ...grpc.CallOption) (*DeleteCounterResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteCounterResponse)
+	err := c.cc.Invoke(ctx, AutoscaleService_DeleteCounter_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *autoscaleServiceClient) DisableAutoScaleVmGroup(ctx context.Context, in *DisableAutoScaleVmGroupRequest, opts ...grpc.CallOption) (*DisableAutoScaleVmGroupResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DisableAutoScaleVmGroupResponse)
+	err := c.cc.Invoke(ctx, AutoscaleService_DisableAutoScaleVmGroup_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *autoscaleServiceClient) EnableAutoScaleVmGroup(ctx context.Context, in *EnableAutoScaleVmGroupRequest, opts ...grpc.CallOption) (*EnableAutoScaleVmGroupResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(EnableAutoScaleVmGroupResponse)
+	err := c.cc.Invoke(ctx, AutoscaleService_EnableAutoScaleVmGroup_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *autoscaleServiceClient) ListAutoScalePolicies(ctx context.Context, in *ListAutoScalePoliciesRequest, opts ...grpc.CallOption) (*ListAutoScalePoliciesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListAutoScalePoliciesResponse)
+	err := c.cc.Invoke(ctx, AutoscaleService_ListAutoScalePolicies_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *autoscaleServiceClient) ListAutoScaleVmGroups(ctx context.Context, in *ListAutoScaleVmGroupsRequest, opts ...grpc.CallOption) (*ListAutoScaleVmGroupsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListAutoScaleVmGroupsResponse)
+	err := c.cc.Invoke(ctx, AutoscaleService_ListAutoScaleVmGroups_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *autoscaleServiceClient) ListAutoScaleVmProfiles(ctx context.Context, in *ListAutoScaleVmProfilesRequest, opts ...grpc.CallOption) (*ListAutoScaleVmProfilesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListAutoScaleVmProfilesResponse)
+	err := c.cc.Invoke(ctx, AutoscaleService_ListAutoScaleVmProfiles_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *autoscaleServiceClient) ListConditions(ctx context.Context, in *ListConditionsRequest, opts ...grpc.CallOption) (*ListConditionsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListConditionsResponse)
+	err := c.cc.Invoke(ctx, AutoscaleService_ListConditions_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *autoscaleServiceClient) ListCounters(ctx context.Context, in *ListCountersRequest, opts ...grpc.CallOption) (*ListCountersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListCountersResponse)
+	err := c.cc.Invoke(ctx, AutoscaleService_ListCounters_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *autoscaleServiceClient) UpdateAutoScalePolicy(ctx context.Context, in *UpdateAutoScalePolicyRequest, opts ...grpc.CallOption) (*UpdateAutoScalePolicyResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateAutoScalePolicyResponse)
+	err := c.cc.Invoke(ctx, AutoscaleService_UpdateAutoScalePolicy_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *autoscaleServiceClient) UpdateAutoScaleVmGroup(ctx context.Context, in *UpdateAutoScaleVmGroupRequest, opts ...grpc.CallOption) (*UpdateAutoScaleVmGroupResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateAutoScaleVmGroupResponse)
+	err := c.cc.Invoke(ctx, AutoscaleService_UpdateAutoScaleVmGroup_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *autoscaleServiceClient) UpdateAutoScaleVmProfile(ctx context.Context, in *UpdateAutoScaleVmProfileRequest, opts ...grpc.CallOption) (*UpdateAutoScaleVmProfileResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateAutoScaleVmProfileResponse)
+	err := c.cc.Invoke(ctx, AutoscaleService_UpdateAutoScaleVmProfile_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *autoscaleServiceClient) UpdateCondition(ctx context.Context, in *UpdateConditionRequest, opts ...grpc.CallOption) (*UpdateConditionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateConditionResponse)
+	err := c.cc.Invoke(ctx, AutoscaleService_UpdateCondition_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AutoscaleServiceServer is the server API for AutoscaleService service.
 // All implementations must embed UnimplementedAutoscaleServiceServer
 // for forward compatibility.
 //
 // AutoscaleService provides operations for managing Autoscales
 type AutoscaleServiceServer interface {
-	// CreateCondition Creates a condition for VM auto scaling
-	CreateCondition(context.Context, *CreateConditionRequest) (*CreateConditionResponse, error)
-	// CreateAutoScaleVmGroup Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
-	CreateAutoScaleVmGroup(context.Context, *CreateAutoScaleVmGroupRequest) (*CreateAutoScaleVmGroupResponse, error)
-	// ListAutoScalePolicies Lists autoscale policies.
-	ListAutoScalePolicies(context.Context, *ListAutoScalePoliciesRequest) (*ListAutoScalePoliciesResponse, error)
 	// CreateAutoScalePolicy Creates an autoscale policy for a provision or deprovision action, the action is taken when the all the conditions evaluates to true for the specified duration. The policy is in effect once it is attached to a autscale vm group.
 	CreateAutoScalePolicy(context.Context, *CreateAutoScalePolicyRequest) (*CreateAutoScalePolicyResponse, error)
-	// DeleteCondition Removes a condition for VM auto scaling
-	DeleteCondition(context.Context, *DeleteConditionRequest) (*DeleteConditionResponse, error)
-	// DeleteAutoScaleVmProfile Deletes a autoscale vm profile.
-	DeleteAutoScaleVmProfile(context.Context, *DeleteAutoScaleVmProfileRequest) (*DeleteAutoScaleVmProfileResponse, error)
-	// ListAutoScaleVmProfiles Lists autoscale vm profiles.
-	ListAutoScaleVmProfiles(context.Context, *ListAutoScaleVmProfilesRequest) (*ListAutoScaleVmProfilesResponse, error)
-	// UpdateAutoScalePolicy Updates an existing autoscale policy.
-	UpdateAutoScalePolicy(context.Context, *UpdateAutoScalePolicyRequest) (*UpdateAutoScalePolicyResponse, error)
-	// UpdateAutoScaleVmProfile Updates an existing autoscale vm profile.
-	UpdateAutoScaleVmProfile(context.Context, *UpdateAutoScaleVmProfileRequest) (*UpdateAutoScaleVmProfileResponse, error)
-	// UpdateAutoScaleVmGroup Updates an existing autoscale vm group.
-	UpdateAutoScaleVmGroup(context.Context, *UpdateAutoScaleVmGroupRequest) (*UpdateAutoScaleVmGroupResponse, error)
-	// EnableAutoScaleVmGroup Enables an AutoScale Vm Group
-	EnableAutoScaleVmGroup(context.Context, *EnableAutoScaleVmGroupRequest) (*EnableAutoScaleVmGroupResponse, error)
+	// CreateAutoScaleVmGroup Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
+	CreateAutoScaleVmGroup(context.Context, *CreateAutoScaleVmGroupRequest) (*CreateAutoScaleVmGroupResponse, error)
 	// CreateAutoScaleVmProfile Creates a profile that contains information about the virtual machine which will be provisioned automatically by autoscale feature.
 	CreateAutoScaleVmProfile(context.Context, *CreateAutoScaleVmProfileRequest) (*CreateAutoScaleVmProfileResponse, error)
-	// DisableAutoScaleVmGroup Disables an AutoScale Vm Group
-	DisableAutoScaleVmGroup(context.Context, *DisableAutoScaleVmGroupRequest) (*DisableAutoScaleVmGroupResponse, error)
+	// CreateCondition Creates a condition for VM auto scaling
+	CreateCondition(context.Context, *CreateConditionRequest) (*CreateConditionResponse, error)
 	// CreateCounter Adds metric counter for VM auto scaling
 	CreateCounter(context.Context, *CreateCounterRequest) (*CreateCounterResponse, error)
-	// DeleteCounter Deletes a counter for VM auto scaling
-	DeleteCounter(context.Context, *DeleteCounterRequest) (*DeleteCounterResponse, error)
-	// ListConditions List Conditions for VM auto scaling
-	ListConditions(context.Context, *ListConditionsRequest) (*ListConditionsResponse, error)
-	// UpdateCondition Updates a condition for VM auto scaling
-	UpdateCondition(context.Context, *UpdateConditionRequest) (*UpdateConditionResponse, error)
-	// ListCounters List the counters for VM auto scaling
-	ListCounters(context.Context, *ListCountersRequest) (*ListCountersResponse, error)
-	// ListAutoScaleVmGroups Lists autoscale vm groups.
-	ListAutoScaleVmGroups(context.Context, *ListAutoScaleVmGroupsRequest) (*ListAutoScaleVmGroupsResponse, error)
 	// DeleteAutoScalePolicy Deletes a autoscale policy.
 	DeleteAutoScalePolicy(context.Context, *DeleteAutoScalePolicyRequest) (*DeleteAutoScalePolicyResponse, error)
 	// DeleteAutoScaleVmGroup Deletes a autoscale vm group.
 	DeleteAutoScaleVmGroup(context.Context, *DeleteAutoScaleVmGroupRequest) (*DeleteAutoScaleVmGroupResponse, error)
+	// DeleteAutoScaleVmProfile Deletes a autoscale vm profile.
+	DeleteAutoScaleVmProfile(context.Context, *DeleteAutoScaleVmProfileRequest) (*DeleteAutoScaleVmProfileResponse, error)
+	// DeleteCondition Removes a condition for VM auto scaling
+	DeleteCondition(context.Context, *DeleteConditionRequest) (*DeleteConditionResponse, error)
+	// DeleteCounter Deletes a counter for VM auto scaling
+	DeleteCounter(context.Context, *DeleteCounterRequest) (*DeleteCounterResponse, error)
+	// DisableAutoScaleVmGroup Disables an AutoScale Vm Group
+	DisableAutoScaleVmGroup(context.Context, *DisableAutoScaleVmGroupRequest) (*DisableAutoScaleVmGroupResponse, error)
+	// EnableAutoScaleVmGroup Enables an AutoScale Vm Group
+	EnableAutoScaleVmGroup(context.Context, *EnableAutoScaleVmGroupRequest) (*EnableAutoScaleVmGroupResponse, error)
+	// ListAutoScalePolicies Lists autoscale policies.
+	ListAutoScalePolicies(context.Context, *ListAutoScalePoliciesRequest) (*ListAutoScalePoliciesResponse, error)
+	// ListAutoScaleVmGroups Lists autoscale vm groups.
+	ListAutoScaleVmGroups(context.Context, *ListAutoScaleVmGroupsRequest) (*ListAutoScaleVmGroupsResponse, error)
+	// ListAutoScaleVmProfiles Lists autoscale vm profiles.
+	ListAutoScaleVmProfiles(context.Context, *ListAutoScaleVmProfilesRequest) (*ListAutoScaleVmProfilesResponse, error)
+	// ListConditions List Conditions for VM auto scaling
+	ListConditions(context.Context, *ListConditionsRequest) (*ListConditionsResponse, error)
+	// ListCounters List the counters for VM auto scaling
+	ListCounters(context.Context, *ListCountersRequest) (*ListCountersResponse, error)
+	// UpdateAutoScalePolicy Updates an existing autoscale policy.
+	UpdateAutoScalePolicy(context.Context, *UpdateAutoScalePolicyRequest) (*UpdateAutoScalePolicyResponse, error)
+	// UpdateAutoScaleVmGroup Updates an existing autoscale vm group.
+	UpdateAutoScaleVmGroup(context.Context, *UpdateAutoScaleVmGroupRequest) (*UpdateAutoScaleVmGroupResponse, error)
+	// UpdateAutoScaleVmProfile Updates an existing autoscale vm profile.
+	UpdateAutoScaleVmProfile(context.Context, *UpdateAutoScaleVmProfileRequest) (*UpdateAutoScaleVmProfileResponse, error)
+	// UpdateCondition Updates a condition for VM auto scaling
+	UpdateCondition(context.Context, *UpdateConditionRequest) (*UpdateConditionResponse, error)
 	mustEmbedUnimplementedAutoscaleServiceServer()
 }
 
@@ -368,68 +368,68 @@ type AutoscaleServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedAutoscaleServiceServer struct{}
 
-func (UnimplementedAutoscaleServiceServer) CreateCondition(context.Context, *CreateConditionRequest) (*CreateConditionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateCondition not implemented")
+func (UnimplementedAutoscaleServiceServer) CreateAutoScalePolicy(context.Context, *CreateAutoScalePolicyRequest) (*CreateAutoScalePolicyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateAutoScalePolicy not implemented")
 }
 func (UnimplementedAutoscaleServiceServer) CreateAutoScaleVmGroup(context.Context, *CreateAutoScaleVmGroupRequest) (*CreateAutoScaleVmGroupResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateAutoScaleVmGroup not implemented")
 }
-func (UnimplementedAutoscaleServiceServer) ListAutoScalePolicies(context.Context, *ListAutoScalePoliciesRequest) (*ListAutoScalePoliciesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListAutoScalePolicies not implemented")
-}
-func (UnimplementedAutoscaleServiceServer) CreateAutoScalePolicy(context.Context, *CreateAutoScalePolicyRequest) (*CreateAutoScalePolicyResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateAutoScalePolicy not implemented")
-}
-func (UnimplementedAutoscaleServiceServer) DeleteCondition(context.Context, *DeleteConditionRequest) (*DeleteConditionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteCondition not implemented")
-}
-func (UnimplementedAutoscaleServiceServer) DeleteAutoScaleVmProfile(context.Context, *DeleteAutoScaleVmProfileRequest) (*DeleteAutoScaleVmProfileResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteAutoScaleVmProfile not implemented")
-}
-func (UnimplementedAutoscaleServiceServer) ListAutoScaleVmProfiles(context.Context, *ListAutoScaleVmProfilesRequest) (*ListAutoScaleVmProfilesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListAutoScaleVmProfiles not implemented")
-}
-func (UnimplementedAutoscaleServiceServer) UpdateAutoScalePolicy(context.Context, *UpdateAutoScalePolicyRequest) (*UpdateAutoScalePolicyResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateAutoScalePolicy not implemented")
-}
-func (UnimplementedAutoscaleServiceServer) UpdateAutoScaleVmProfile(context.Context, *UpdateAutoScaleVmProfileRequest) (*UpdateAutoScaleVmProfileResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateAutoScaleVmProfile not implemented")
-}
-func (UnimplementedAutoscaleServiceServer) UpdateAutoScaleVmGroup(context.Context, *UpdateAutoScaleVmGroupRequest) (*UpdateAutoScaleVmGroupResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateAutoScaleVmGroup not implemented")
-}
-func (UnimplementedAutoscaleServiceServer) EnableAutoScaleVmGroup(context.Context, *EnableAutoScaleVmGroupRequest) (*EnableAutoScaleVmGroupResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method EnableAutoScaleVmGroup not implemented")
-}
 func (UnimplementedAutoscaleServiceServer) CreateAutoScaleVmProfile(context.Context, *CreateAutoScaleVmProfileRequest) (*CreateAutoScaleVmProfileResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateAutoScaleVmProfile not implemented")
 }
-func (UnimplementedAutoscaleServiceServer) DisableAutoScaleVmGroup(context.Context, *DisableAutoScaleVmGroupRequest) (*DisableAutoScaleVmGroupResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DisableAutoScaleVmGroup not implemented")
+func (UnimplementedAutoscaleServiceServer) CreateCondition(context.Context, *CreateConditionRequest) (*CreateConditionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateCondition not implemented")
 }
 func (UnimplementedAutoscaleServiceServer) CreateCounter(context.Context, *CreateCounterRequest) (*CreateCounterResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateCounter not implemented")
-}
-func (UnimplementedAutoscaleServiceServer) DeleteCounter(context.Context, *DeleteCounterRequest) (*DeleteCounterResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteCounter not implemented")
-}
-func (UnimplementedAutoscaleServiceServer) ListConditions(context.Context, *ListConditionsRequest) (*ListConditionsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListConditions not implemented")
-}
-func (UnimplementedAutoscaleServiceServer) UpdateCondition(context.Context, *UpdateConditionRequest) (*UpdateConditionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateCondition not implemented")
-}
-func (UnimplementedAutoscaleServiceServer) ListCounters(context.Context, *ListCountersRequest) (*ListCountersResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListCounters not implemented")
-}
-func (UnimplementedAutoscaleServiceServer) ListAutoScaleVmGroups(context.Context, *ListAutoScaleVmGroupsRequest) (*ListAutoScaleVmGroupsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListAutoScaleVmGroups not implemented")
 }
 func (UnimplementedAutoscaleServiceServer) DeleteAutoScalePolicy(context.Context, *DeleteAutoScalePolicyRequest) (*DeleteAutoScalePolicyResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteAutoScalePolicy not implemented")
 }
 func (UnimplementedAutoscaleServiceServer) DeleteAutoScaleVmGroup(context.Context, *DeleteAutoScaleVmGroupRequest) (*DeleteAutoScaleVmGroupResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteAutoScaleVmGroup not implemented")
+}
+func (UnimplementedAutoscaleServiceServer) DeleteAutoScaleVmProfile(context.Context, *DeleteAutoScaleVmProfileRequest) (*DeleteAutoScaleVmProfileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteAutoScaleVmProfile not implemented")
+}
+func (UnimplementedAutoscaleServiceServer) DeleteCondition(context.Context, *DeleteConditionRequest) (*DeleteConditionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteCondition not implemented")
+}
+func (UnimplementedAutoscaleServiceServer) DeleteCounter(context.Context, *DeleteCounterRequest) (*DeleteCounterResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteCounter not implemented")
+}
+func (UnimplementedAutoscaleServiceServer) DisableAutoScaleVmGroup(context.Context, *DisableAutoScaleVmGroupRequest) (*DisableAutoScaleVmGroupResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DisableAutoScaleVmGroup not implemented")
+}
+func (UnimplementedAutoscaleServiceServer) EnableAutoScaleVmGroup(context.Context, *EnableAutoScaleVmGroupRequest) (*EnableAutoScaleVmGroupResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EnableAutoScaleVmGroup not implemented")
+}
+func (UnimplementedAutoscaleServiceServer) ListAutoScalePolicies(context.Context, *ListAutoScalePoliciesRequest) (*ListAutoScalePoliciesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListAutoScalePolicies not implemented")
+}
+func (UnimplementedAutoscaleServiceServer) ListAutoScaleVmGroups(context.Context, *ListAutoScaleVmGroupsRequest) (*ListAutoScaleVmGroupsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListAutoScaleVmGroups not implemented")
+}
+func (UnimplementedAutoscaleServiceServer) ListAutoScaleVmProfiles(context.Context, *ListAutoScaleVmProfilesRequest) (*ListAutoScaleVmProfilesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListAutoScaleVmProfiles not implemented")
+}
+func (UnimplementedAutoscaleServiceServer) ListConditions(context.Context, *ListConditionsRequest) (*ListConditionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListConditions not implemented")
+}
+func (UnimplementedAutoscaleServiceServer) ListCounters(context.Context, *ListCountersRequest) (*ListCountersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCounters not implemented")
+}
+func (UnimplementedAutoscaleServiceServer) UpdateAutoScalePolicy(context.Context, *UpdateAutoScalePolicyRequest) (*UpdateAutoScalePolicyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateAutoScalePolicy not implemented")
+}
+func (UnimplementedAutoscaleServiceServer) UpdateAutoScaleVmGroup(context.Context, *UpdateAutoScaleVmGroupRequest) (*UpdateAutoScaleVmGroupResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateAutoScaleVmGroup not implemented")
+}
+func (UnimplementedAutoscaleServiceServer) UpdateAutoScaleVmProfile(context.Context, *UpdateAutoScaleVmProfileRequest) (*UpdateAutoScaleVmProfileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateAutoScaleVmProfile not implemented")
+}
+func (UnimplementedAutoscaleServiceServer) UpdateCondition(context.Context, *UpdateConditionRequest) (*UpdateConditionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCondition not implemented")
 }
 func (UnimplementedAutoscaleServiceServer) mustEmbedUnimplementedAutoscaleServiceServer() {}
 func (UnimplementedAutoscaleServiceServer) testEmbeddedByValue()                          {}
@@ -452,20 +452,20 @@ func RegisterAutoscaleServiceServer(s grpc.ServiceRegistrar, srv AutoscaleServic
 	s.RegisterService(&AutoscaleService_ServiceDesc, srv)
 }
 
-func _AutoscaleService_CreateCondition_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateConditionRequest)
+func _AutoscaleService_CreateAutoScalePolicy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateAutoScalePolicyRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AutoscaleServiceServer).CreateCondition(ctx, in)
+		return srv.(AutoscaleServiceServer).CreateAutoScalePolicy(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: AutoscaleService_CreateCondition_FullMethodName,
+		FullMethod: AutoscaleService_CreateAutoScalePolicy_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AutoscaleServiceServer).CreateCondition(ctx, req.(*CreateConditionRequest))
+		return srv.(AutoscaleServiceServer).CreateAutoScalePolicy(ctx, req.(*CreateAutoScalePolicyRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -488,168 +488,6 @@ func _AutoscaleService_CreateAutoScaleVmGroup_Handler(srv interface{}, ctx conte
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AutoscaleService_ListAutoScalePolicies_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListAutoScalePoliciesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AutoscaleServiceServer).ListAutoScalePolicies(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AutoscaleService_ListAutoScalePolicies_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AutoscaleServiceServer).ListAutoScalePolicies(ctx, req.(*ListAutoScalePoliciesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AutoscaleService_CreateAutoScalePolicy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateAutoScalePolicyRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AutoscaleServiceServer).CreateAutoScalePolicy(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AutoscaleService_CreateAutoScalePolicy_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AutoscaleServiceServer).CreateAutoScalePolicy(ctx, req.(*CreateAutoScalePolicyRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AutoscaleService_DeleteCondition_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteConditionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AutoscaleServiceServer).DeleteCondition(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AutoscaleService_DeleteCondition_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AutoscaleServiceServer).DeleteCondition(ctx, req.(*DeleteConditionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AutoscaleService_DeleteAutoScaleVmProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteAutoScaleVmProfileRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AutoscaleServiceServer).DeleteAutoScaleVmProfile(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AutoscaleService_DeleteAutoScaleVmProfile_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AutoscaleServiceServer).DeleteAutoScaleVmProfile(ctx, req.(*DeleteAutoScaleVmProfileRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AutoscaleService_ListAutoScaleVmProfiles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListAutoScaleVmProfilesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AutoscaleServiceServer).ListAutoScaleVmProfiles(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AutoscaleService_ListAutoScaleVmProfiles_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AutoscaleServiceServer).ListAutoScaleVmProfiles(ctx, req.(*ListAutoScaleVmProfilesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AutoscaleService_UpdateAutoScalePolicy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateAutoScalePolicyRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AutoscaleServiceServer).UpdateAutoScalePolicy(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AutoscaleService_UpdateAutoScalePolicy_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AutoscaleServiceServer).UpdateAutoScalePolicy(ctx, req.(*UpdateAutoScalePolicyRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AutoscaleService_UpdateAutoScaleVmProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateAutoScaleVmProfileRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AutoscaleServiceServer).UpdateAutoScaleVmProfile(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AutoscaleService_UpdateAutoScaleVmProfile_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AutoscaleServiceServer).UpdateAutoScaleVmProfile(ctx, req.(*UpdateAutoScaleVmProfileRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AutoscaleService_UpdateAutoScaleVmGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateAutoScaleVmGroupRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AutoscaleServiceServer).UpdateAutoScaleVmGroup(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AutoscaleService_UpdateAutoScaleVmGroup_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AutoscaleServiceServer).UpdateAutoScaleVmGroup(ctx, req.(*UpdateAutoScaleVmGroupRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AutoscaleService_EnableAutoScaleVmGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(EnableAutoScaleVmGroupRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AutoscaleServiceServer).EnableAutoScaleVmGroup(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AutoscaleService_EnableAutoScaleVmGroup_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AutoscaleServiceServer).EnableAutoScaleVmGroup(ctx, req.(*EnableAutoScaleVmGroupRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _AutoscaleService_CreateAutoScaleVmProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateAutoScaleVmProfileRequest)
 	if err := dec(in); err != nil {
@@ -668,20 +506,20 @@ func _AutoscaleService_CreateAutoScaleVmProfile_Handler(srv interface{}, ctx con
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AutoscaleService_DisableAutoScaleVmGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DisableAutoScaleVmGroupRequest)
+func _AutoscaleService_CreateCondition_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateConditionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AutoscaleServiceServer).DisableAutoScaleVmGroup(ctx, in)
+		return srv.(AutoscaleServiceServer).CreateCondition(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: AutoscaleService_DisableAutoScaleVmGroup_FullMethodName,
+		FullMethod: AutoscaleService_CreateCondition_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AutoscaleServiceServer).DisableAutoScaleVmGroup(ctx, req.(*DisableAutoScaleVmGroupRequest))
+		return srv.(AutoscaleServiceServer).CreateCondition(ctx, req.(*CreateConditionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -700,96 +538,6 @@ func _AutoscaleService_CreateCounter_Handler(srv interface{}, ctx context.Contex
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AutoscaleServiceServer).CreateCounter(ctx, req.(*CreateCounterRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AutoscaleService_DeleteCounter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteCounterRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AutoscaleServiceServer).DeleteCounter(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AutoscaleService_DeleteCounter_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AutoscaleServiceServer).DeleteCounter(ctx, req.(*DeleteCounterRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AutoscaleService_ListConditions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListConditionsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AutoscaleServiceServer).ListConditions(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AutoscaleService_ListConditions_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AutoscaleServiceServer).ListConditions(ctx, req.(*ListConditionsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AutoscaleService_UpdateCondition_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateConditionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AutoscaleServiceServer).UpdateCondition(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AutoscaleService_UpdateCondition_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AutoscaleServiceServer).UpdateCondition(ctx, req.(*UpdateConditionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AutoscaleService_ListCounters_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListCountersRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AutoscaleServiceServer).ListCounters(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AutoscaleService_ListCounters_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AutoscaleServiceServer).ListCounters(ctx, req.(*ListCountersRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AutoscaleService_ListAutoScaleVmGroups_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListAutoScaleVmGroupsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AutoscaleServiceServer).ListAutoScaleVmGroups(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AutoscaleService_ListAutoScaleVmGroups_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AutoscaleServiceServer).ListAutoScaleVmGroups(ctx, req.(*ListAutoScaleVmGroupsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -830,6 +578,258 @@ func _AutoscaleService_DeleteAutoScaleVmGroup_Handler(srv interface{}, ctx conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AutoscaleService_DeleteAutoScaleVmProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteAutoScaleVmProfileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AutoscaleServiceServer).DeleteAutoScaleVmProfile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AutoscaleService_DeleteAutoScaleVmProfile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AutoscaleServiceServer).DeleteAutoScaleVmProfile(ctx, req.(*DeleteAutoScaleVmProfileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AutoscaleService_DeleteCondition_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteConditionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AutoscaleServiceServer).DeleteCondition(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AutoscaleService_DeleteCondition_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AutoscaleServiceServer).DeleteCondition(ctx, req.(*DeleteConditionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AutoscaleService_DeleteCounter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteCounterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AutoscaleServiceServer).DeleteCounter(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AutoscaleService_DeleteCounter_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AutoscaleServiceServer).DeleteCounter(ctx, req.(*DeleteCounterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AutoscaleService_DisableAutoScaleVmGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DisableAutoScaleVmGroupRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AutoscaleServiceServer).DisableAutoScaleVmGroup(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AutoscaleService_DisableAutoScaleVmGroup_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AutoscaleServiceServer).DisableAutoScaleVmGroup(ctx, req.(*DisableAutoScaleVmGroupRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AutoscaleService_EnableAutoScaleVmGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EnableAutoScaleVmGroupRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AutoscaleServiceServer).EnableAutoScaleVmGroup(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AutoscaleService_EnableAutoScaleVmGroup_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AutoscaleServiceServer).EnableAutoScaleVmGroup(ctx, req.(*EnableAutoScaleVmGroupRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AutoscaleService_ListAutoScalePolicies_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListAutoScalePoliciesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AutoscaleServiceServer).ListAutoScalePolicies(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AutoscaleService_ListAutoScalePolicies_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AutoscaleServiceServer).ListAutoScalePolicies(ctx, req.(*ListAutoScalePoliciesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AutoscaleService_ListAutoScaleVmGroups_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListAutoScaleVmGroupsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AutoscaleServiceServer).ListAutoScaleVmGroups(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AutoscaleService_ListAutoScaleVmGroups_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AutoscaleServiceServer).ListAutoScaleVmGroups(ctx, req.(*ListAutoScaleVmGroupsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AutoscaleService_ListAutoScaleVmProfiles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListAutoScaleVmProfilesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AutoscaleServiceServer).ListAutoScaleVmProfiles(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AutoscaleService_ListAutoScaleVmProfiles_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AutoscaleServiceServer).ListAutoScaleVmProfiles(ctx, req.(*ListAutoScaleVmProfilesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AutoscaleService_ListConditions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListConditionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AutoscaleServiceServer).ListConditions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AutoscaleService_ListConditions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AutoscaleServiceServer).ListConditions(ctx, req.(*ListConditionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AutoscaleService_ListCounters_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCountersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AutoscaleServiceServer).ListCounters(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AutoscaleService_ListCounters_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AutoscaleServiceServer).ListCounters(ctx, req.(*ListCountersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AutoscaleService_UpdateAutoScalePolicy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateAutoScalePolicyRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AutoscaleServiceServer).UpdateAutoScalePolicy(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AutoscaleService_UpdateAutoScalePolicy_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AutoscaleServiceServer).UpdateAutoScalePolicy(ctx, req.(*UpdateAutoScalePolicyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AutoscaleService_UpdateAutoScaleVmGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateAutoScaleVmGroupRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AutoscaleServiceServer).UpdateAutoScaleVmGroup(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AutoscaleService_UpdateAutoScaleVmGroup_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AutoscaleServiceServer).UpdateAutoScaleVmGroup(ctx, req.(*UpdateAutoScaleVmGroupRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AutoscaleService_UpdateAutoScaleVmProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateAutoScaleVmProfileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AutoscaleServiceServer).UpdateAutoScaleVmProfile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AutoscaleService_UpdateAutoScaleVmProfile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AutoscaleServiceServer).UpdateAutoScaleVmProfile(ctx, req.(*UpdateAutoScaleVmProfileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AutoscaleService_UpdateCondition_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateConditionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AutoscaleServiceServer).UpdateCondition(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AutoscaleService_UpdateCondition_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AutoscaleServiceServer).UpdateCondition(ctx, req.(*UpdateConditionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AutoscaleService_ServiceDesc is the grpc.ServiceDesc for AutoscaleService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -838,80 +838,24 @@ var AutoscaleService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*AutoscaleServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CreateCondition",
-			Handler:    _AutoscaleService_CreateCondition_Handler,
+			MethodName: "CreateAutoScalePolicy",
+			Handler:    _AutoscaleService_CreateAutoScalePolicy_Handler,
 		},
 		{
 			MethodName: "CreateAutoScaleVmGroup",
 			Handler:    _AutoscaleService_CreateAutoScaleVmGroup_Handler,
 		},
 		{
-			MethodName: "ListAutoScalePolicies",
-			Handler:    _AutoscaleService_ListAutoScalePolicies_Handler,
-		},
-		{
-			MethodName: "CreateAutoScalePolicy",
-			Handler:    _AutoscaleService_CreateAutoScalePolicy_Handler,
-		},
-		{
-			MethodName: "DeleteCondition",
-			Handler:    _AutoscaleService_DeleteCondition_Handler,
-		},
-		{
-			MethodName: "DeleteAutoScaleVmProfile",
-			Handler:    _AutoscaleService_DeleteAutoScaleVmProfile_Handler,
-		},
-		{
-			MethodName: "ListAutoScaleVmProfiles",
-			Handler:    _AutoscaleService_ListAutoScaleVmProfiles_Handler,
-		},
-		{
-			MethodName: "UpdateAutoScalePolicy",
-			Handler:    _AutoscaleService_UpdateAutoScalePolicy_Handler,
-		},
-		{
-			MethodName: "UpdateAutoScaleVmProfile",
-			Handler:    _AutoscaleService_UpdateAutoScaleVmProfile_Handler,
-		},
-		{
-			MethodName: "UpdateAutoScaleVmGroup",
-			Handler:    _AutoscaleService_UpdateAutoScaleVmGroup_Handler,
-		},
-		{
-			MethodName: "EnableAutoScaleVmGroup",
-			Handler:    _AutoscaleService_EnableAutoScaleVmGroup_Handler,
-		},
-		{
 			MethodName: "CreateAutoScaleVmProfile",
 			Handler:    _AutoscaleService_CreateAutoScaleVmProfile_Handler,
 		},
 		{
-			MethodName: "DisableAutoScaleVmGroup",
-			Handler:    _AutoscaleService_DisableAutoScaleVmGroup_Handler,
+			MethodName: "CreateCondition",
+			Handler:    _AutoscaleService_CreateCondition_Handler,
 		},
 		{
 			MethodName: "CreateCounter",
 			Handler:    _AutoscaleService_CreateCounter_Handler,
-		},
-		{
-			MethodName: "DeleteCounter",
-			Handler:    _AutoscaleService_DeleteCounter_Handler,
-		},
-		{
-			MethodName: "ListConditions",
-			Handler:    _AutoscaleService_ListConditions_Handler,
-		},
-		{
-			MethodName: "UpdateCondition",
-			Handler:    _AutoscaleService_UpdateCondition_Handler,
-		},
-		{
-			MethodName: "ListCounters",
-			Handler:    _AutoscaleService_ListCounters_Handler,
-		},
-		{
-			MethodName: "ListAutoScaleVmGroups",
-			Handler:    _AutoscaleService_ListAutoScaleVmGroups_Handler,
 		},
 		{
 			MethodName: "DeleteAutoScalePolicy",
@@ -920,6 +864,62 @@ var AutoscaleService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteAutoScaleVmGroup",
 			Handler:    _AutoscaleService_DeleteAutoScaleVmGroup_Handler,
+		},
+		{
+			MethodName: "DeleteAutoScaleVmProfile",
+			Handler:    _AutoscaleService_DeleteAutoScaleVmProfile_Handler,
+		},
+		{
+			MethodName: "DeleteCondition",
+			Handler:    _AutoscaleService_DeleteCondition_Handler,
+		},
+		{
+			MethodName: "DeleteCounter",
+			Handler:    _AutoscaleService_DeleteCounter_Handler,
+		},
+		{
+			MethodName: "DisableAutoScaleVmGroup",
+			Handler:    _AutoscaleService_DisableAutoScaleVmGroup_Handler,
+		},
+		{
+			MethodName: "EnableAutoScaleVmGroup",
+			Handler:    _AutoscaleService_EnableAutoScaleVmGroup_Handler,
+		},
+		{
+			MethodName: "ListAutoScalePolicies",
+			Handler:    _AutoscaleService_ListAutoScalePolicies_Handler,
+		},
+		{
+			MethodName: "ListAutoScaleVmGroups",
+			Handler:    _AutoscaleService_ListAutoScaleVmGroups_Handler,
+		},
+		{
+			MethodName: "ListAutoScaleVmProfiles",
+			Handler:    _AutoscaleService_ListAutoScaleVmProfiles_Handler,
+		},
+		{
+			MethodName: "ListConditions",
+			Handler:    _AutoscaleService_ListConditions_Handler,
+		},
+		{
+			MethodName: "ListCounters",
+			Handler:    _AutoscaleService_ListCounters_Handler,
+		},
+		{
+			MethodName: "UpdateAutoScalePolicy",
+			Handler:    _AutoscaleService_UpdateAutoScalePolicy_Handler,
+		},
+		{
+			MethodName: "UpdateAutoScaleVmGroup",
+			Handler:    _AutoscaleService_UpdateAutoScaleVmGroup_Handler,
+		},
+		{
+			MethodName: "UpdateAutoScaleVmProfile",
+			Handler:    _AutoscaleService_UpdateAutoScaleVmProfile_Handler,
+		},
+		{
+			MethodName: "UpdateCondition",
+			Handler:    _AutoscaleService_UpdateCondition_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

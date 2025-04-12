@@ -33,9 +33,9 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// AffinitygroupServiceUpdateVMAffinityGroupProcedure is the fully-qualified name of the
-	// AffinitygroupService's UpdateVMAffinityGroup RPC.
-	AffinitygroupServiceUpdateVMAffinityGroupProcedure = "/cloudstack.management.affinitygroup.v1.AffinitygroupService/UpdateVMAffinityGroup"
+	// AffinitygroupServiceCreateAffinityGroupProcedure is the fully-qualified name of the
+	// AffinitygroupService's CreateAffinityGroup RPC.
+	AffinitygroupServiceCreateAffinityGroupProcedure = "/cloudstack.management.affinitygroup.v1.AffinitygroupService/CreateAffinityGroup"
 	// AffinitygroupServiceDeleteAffinityGroupProcedure is the fully-qualified name of the
 	// AffinitygroupService's DeleteAffinityGroup RPC.
 	AffinitygroupServiceDeleteAffinityGroupProcedure = "/cloudstack.management.affinitygroup.v1.AffinitygroupService/DeleteAffinityGroup"
@@ -45,24 +45,29 @@ const (
 	// AffinitygroupServiceListAffinityGroupsProcedure is the fully-qualified name of the
 	// AffinitygroupService's ListAffinityGroups RPC.
 	AffinitygroupServiceListAffinityGroupsProcedure = "/cloudstack.management.affinitygroup.v1.AffinitygroupService/ListAffinityGroups"
-	// AffinitygroupServiceCreateAffinityGroupProcedure is the fully-qualified name of the
-	// AffinitygroupService's CreateAffinityGroup RPC.
-	AffinitygroupServiceCreateAffinityGroupProcedure = "/cloudstack.management.affinitygroup.v1.AffinitygroupService/CreateAffinityGroup"
+	// AffinitygroupServiceUpdateVMAffinityGroupProcedure is the fully-qualified name of the
+	// AffinitygroupService's UpdateVMAffinityGroup RPC.
+	AffinitygroupServiceUpdateVMAffinityGroupProcedure = "/cloudstack.management.affinitygroup.v1.AffinitygroupService/UpdateVMAffinityGroup"
+	// AffinitygroupServiceUpdateVMAffinityGroupCmdByAdminProcedure is the fully-qualified name of the
+	// AffinitygroupService's UpdateVMAffinityGroupCmdByAdmin RPC.
+	AffinitygroupServiceUpdateVMAffinityGroupCmdByAdminProcedure = "/cloudstack.management.affinitygroup.v1.AffinitygroupService/UpdateVMAffinityGroupCmdByAdmin"
 )
 
 // AffinitygroupServiceClient is a client for the
 // cloudstack.management.affinitygroup.v1.AffinitygroupService service.
 type AffinitygroupServiceClient interface {
-	// UpdateVMAffinityGroup Updates the affinity/anti-affinity group associations of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect.
-	UpdateVMAffinityGroup(context.Context, *connect.Request[v1.UpdateVMAffinityGroupRequest]) (*connect.Response[v1.UpdateVMAffinityGroupResponse], error)
+	// CreateAffinityGroup Creates an affinity/anti-affinity group
+	CreateAffinityGroup(context.Context, *connect.Request[v1.CreateAffinityGroupRequest]) (*connect.Response[v1.CreateAffinityGroupResponse], error)
 	// DeleteAffinityGroup Deletes affinity group
 	DeleteAffinityGroup(context.Context, *connect.Request[v1.DeleteAffinityGroupRequest]) (*connect.Response[v1.DeleteAffinityGroupResponse], error)
 	// ListAffinityGroupTypes Lists affinity group types available
 	ListAffinityGroupTypes(context.Context, *connect.Request[v1.ListAffinityGroupTypesRequest]) (*connect.Response[v1.ListAffinityGroupTypesResponse], error)
 	// ListAffinityGroups Lists affinity groups
 	ListAffinityGroups(context.Context, *connect.Request[v1.ListAffinityGroupsRequest]) (*connect.Response[v1.ListAffinityGroupsResponse], error)
-	// CreateAffinityGroup Creates an affinity/anti-affinity group
-	CreateAffinityGroup(context.Context, *connect.Request[v1.CreateAffinityGroupRequest]) (*connect.Response[v1.CreateAffinityGroupResponse], error)
+	// UpdateVMAffinityGroup Updates the affinity/anti-affinity group associations of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect.
+	UpdateVMAffinityGroup(context.Context, *connect.Request[v1.UpdateVMAffinityGroupRequest]) (*connect.Response[v1.UpdateVMAffinityGroupResponse], error)
+	// UpdateVMAffinityGroupCmdByAdmin Updates the affinity/anti-affinity group associations of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect.
+	UpdateVMAffinityGroupCmdByAdmin(context.Context, *connect.Request[v1.UpdateVMAffinityGroupCmdByAdminRequest]) (*connect.Response[v1.UpdateVMAffinityGroupCmdByAdminResponse], error)
 }
 
 // NewAffinitygroupServiceClient constructs a client for the
@@ -77,10 +82,10 @@ func NewAffinitygroupServiceClient(httpClient connect.HTTPClient, baseURL string
 	baseURL = strings.TrimRight(baseURL, "/")
 	affinitygroupServiceMethods := v1.File_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto.Services().ByName("AffinitygroupService").Methods()
 	return &affinitygroupServiceClient{
-		updateVMAffinityGroup: connect.NewClient[v1.UpdateVMAffinityGroupRequest, v1.UpdateVMAffinityGroupResponse](
+		createAffinityGroup: connect.NewClient[v1.CreateAffinityGroupRequest, v1.CreateAffinityGroupResponse](
 			httpClient,
-			baseURL+AffinitygroupServiceUpdateVMAffinityGroupProcedure,
-			connect.WithSchema(affinitygroupServiceMethods.ByName("UpdateVMAffinityGroup")),
+			baseURL+AffinitygroupServiceCreateAffinityGroupProcedure,
+			connect.WithSchema(affinitygroupServiceMethods.ByName("CreateAffinityGroup")),
 			connect.WithClientOptions(opts...),
 		),
 		deleteAffinityGroup: connect.NewClient[v1.DeleteAffinityGroupRequest, v1.DeleteAffinityGroupResponse](
@@ -101,10 +106,16 @@ func NewAffinitygroupServiceClient(httpClient connect.HTTPClient, baseURL string
 			connect.WithSchema(affinitygroupServiceMethods.ByName("ListAffinityGroups")),
 			connect.WithClientOptions(opts...),
 		),
-		createAffinityGroup: connect.NewClient[v1.CreateAffinityGroupRequest, v1.CreateAffinityGroupResponse](
+		updateVMAffinityGroup: connect.NewClient[v1.UpdateVMAffinityGroupRequest, v1.UpdateVMAffinityGroupResponse](
 			httpClient,
-			baseURL+AffinitygroupServiceCreateAffinityGroupProcedure,
-			connect.WithSchema(affinitygroupServiceMethods.ByName("CreateAffinityGroup")),
+			baseURL+AffinitygroupServiceUpdateVMAffinityGroupProcedure,
+			connect.WithSchema(affinitygroupServiceMethods.ByName("UpdateVMAffinityGroup")),
+			connect.WithClientOptions(opts...),
+		),
+		updateVMAffinityGroupCmdByAdmin: connect.NewClient[v1.UpdateVMAffinityGroupCmdByAdminRequest, v1.UpdateVMAffinityGroupCmdByAdminResponse](
+			httpClient,
+			baseURL+AffinitygroupServiceUpdateVMAffinityGroupCmdByAdminProcedure,
+			connect.WithSchema(affinitygroupServiceMethods.ByName("UpdateVMAffinityGroupCmdByAdmin")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -112,17 +123,18 @@ func NewAffinitygroupServiceClient(httpClient connect.HTTPClient, baseURL string
 
 // affinitygroupServiceClient implements AffinitygroupServiceClient.
 type affinitygroupServiceClient struct {
-	updateVMAffinityGroup  *connect.Client[v1.UpdateVMAffinityGroupRequest, v1.UpdateVMAffinityGroupResponse]
-	deleteAffinityGroup    *connect.Client[v1.DeleteAffinityGroupRequest, v1.DeleteAffinityGroupResponse]
-	listAffinityGroupTypes *connect.Client[v1.ListAffinityGroupTypesRequest, v1.ListAffinityGroupTypesResponse]
-	listAffinityGroups     *connect.Client[v1.ListAffinityGroupsRequest, v1.ListAffinityGroupsResponse]
-	createAffinityGroup    *connect.Client[v1.CreateAffinityGroupRequest, v1.CreateAffinityGroupResponse]
+	createAffinityGroup             *connect.Client[v1.CreateAffinityGroupRequest, v1.CreateAffinityGroupResponse]
+	deleteAffinityGroup             *connect.Client[v1.DeleteAffinityGroupRequest, v1.DeleteAffinityGroupResponse]
+	listAffinityGroupTypes          *connect.Client[v1.ListAffinityGroupTypesRequest, v1.ListAffinityGroupTypesResponse]
+	listAffinityGroups              *connect.Client[v1.ListAffinityGroupsRequest, v1.ListAffinityGroupsResponse]
+	updateVMAffinityGroup           *connect.Client[v1.UpdateVMAffinityGroupRequest, v1.UpdateVMAffinityGroupResponse]
+	updateVMAffinityGroupCmdByAdmin *connect.Client[v1.UpdateVMAffinityGroupCmdByAdminRequest, v1.UpdateVMAffinityGroupCmdByAdminResponse]
 }
 
-// UpdateVMAffinityGroup calls
-// cloudstack.management.affinitygroup.v1.AffinitygroupService.UpdateVMAffinityGroup.
-func (c *affinitygroupServiceClient) UpdateVMAffinityGroup(ctx context.Context, req *connect.Request[v1.UpdateVMAffinityGroupRequest]) (*connect.Response[v1.UpdateVMAffinityGroupResponse], error) {
-	return c.updateVMAffinityGroup.CallUnary(ctx, req)
+// CreateAffinityGroup calls
+// cloudstack.management.affinitygroup.v1.AffinitygroupService.CreateAffinityGroup.
+func (c *affinitygroupServiceClient) CreateAffinityGroup(ctx context.Context, req *connect.Request[v1.CreateAffinityGroupRequest]) (*connect.Response[v1.CreateAffinityGroupResponse], error) {
+	return c.createAffinityGroup.CallUnary(ctx, req)
 }
 
 // DeleteAffinityGroup calls
@@ -143,25 +155,33 @@ func (c *affinitygroupServiceClient) ListAffinityGroups(ctx context.Context, req
 	return c.listAffinityGroups.CallUnary(ctx, req)
 }
 
-// CreateAffinityGroup calls
-// cloudstack.management.affinitygroup.v1.AffinitygroupService.CreateAffinityGroup.
-func (c *affinitygroupServiceClient) CreateAffinityGroup(ctx context.Context, req *connect.Request[v1.CreateAffinityGroupRequest]) (*connect.Response[v1.CreateAffinityGroupResponse], error) {
-	return c.createAffinityGroup.CallUnary(ctx, req)
+// UpdateVMAffinityGroup calls
+// cloudstack.management.affinitygroup.v1.AffinitygroupService.UpdateVMAffinityGroup.
+func (c *affinitygroupServiceClient) UpdateVMAffinityGroup(ctx context.Context, req *connect.Request[v1.UpdateVMAffinityGroupRequest]) (*connect.Response[v1.UpdateVMAffinityGroupResponse], error) {
+	return c.updateVMAffinityGroup.CallUnary(ctx, req)
+}
+
+// UpdateVMAffinityGroupCmdByAdmin calls
+// cloudstack.management.affinitygroup.v1.AffinitygroupService.UpdateVMAffinityGroupCmdByAdmin.
+func (c *affinitygroupServiceClient) UpdateVMAffinityGroupCmdByAdmin(ctx context.Context, req *connect.Request[v1.UpdateVMAffinityGroupCmdByAdminRequest]) (*connect.Response[v1.UpdateVMAffinityGroupCmdByAdminResponse], error) {
+	return c.updateVMAffinityGroupCmdByAdmin.CallUnary(ctx, req)
 }
 
 // AffinitygroupServiceHandler is an implementation of the
 // cloudstack.management.affinitygroup.v1.AffinitygroupService service.
 type AffinitygroupServiceHandler interface {
-	// UpdateVMAffinityGroup Updates the affinity/anti-affinity group associations of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect.
-	UpdateVMAffinityGroup(context.Context, *connect.Request[v1.UpdateVMAffinityGroupRequest]) (*connect.Response[v1.UpdateVMAffinityGroupResponse], error)
+	// CreateAffinityGroup Creates an affinity/anti-affinity group
+	CreateAffinityGroup(context.Context, *connect.Request[v1.CreateAffinityGroupRequest]) (*connect.Response[v1.CreateAffinityGroupResponse], error)
 	// DeleteAffinityGroup Deletes affinity group
 	DeleteAffinityGroup(context.Context, *connect.Request[v1.DeleteAffinityGroupRequest]) (*connect.Response[v1.DeleteAffinityGroupResponse], error)
 	// ListAffinityGroupTypes Lists affinity group types available
 	ListAffinityGroupTypes(context.Context, *connect.Request[v1.ListAffinityGroupTypesRequest]) (*connect.Response[v1.ListAffinityGroupTypesResponse], error)
 	// ListAffinityGroups Lists affinity groups
 	ListAffinityGroups(context.Context, *connect.Request[v1.ListAffinityGroupsRequest]) (*connect.Response[v1.ListAffinityGroupsResponse], error)
-	// CreateAffinityGroup Creates an affinity/anti-affinity group
-	CreateAffinityGroup(context.Context, *connect.Request[v1.CreateAffinityGroupRequest]) (*connect.Response[v1.CreateAffinityGroupResponse], error)
+	// UpdateVMAffinityGroup Updates the affinity/anti-affinity group associations of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect.
+	UpdateVMAffinityGroup(context.Context, *connect.Request[v1.UpdateVMAffinityGroupRequest]) (*connect.Response[v1.UpdateVMAffinityGroupResponse], error)
+	// UpdateVMAffinityGroupCmdByAdmin Updates the affinity/anti-affinity group associations of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect.
+	UpdateVMAffinityGroupCmdByAdmin(context.Context, *connect.Request[v1.UpdateVMAffinityGroupCmdByAdminRequest]) (*connect.Response[v1.UpdateVMAffinityGroupCmdByAdminResponse], error)
 }
 
 // NewAffinitygroupServiceHandler builds an HTTP handler from the service implementation. It returns
@@ -171,10 +191,10 @@ type AffinitygroupServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewAffinitygroupServiceHandler(svc AffinitygroupServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	affinitygroupServiceMethods := v1.File_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto.Services().ByName("AffinitygroupService").Methods()
-	affinitygroupServiceUpdateVMAffinityGroupHandler := connect.NewUnaryHandler(
-		AffinitygroupServiceUpdateVMAffinityGroupProcedure,
-		svc.UpdateVMAffinityGroup,
-		connect.WithSchema(affinitygroupServiceMethods.ByName("UpdateVMAffinityGroup")),
+	affinitygroupServiceCreateAffinityGroupHandler := connect.NewUnaryHandler(
+		AffinitygroupServiceCreateAffinityGroupProcedure,
+		svc.CreateAffinityGroup,
+		connect.WithSchema(affinitygroupServiceMethods.ByName("CreateAffinityGroup")),
 		connect.WithHandlerOptions(opts...),
 	)
 	affinitygroupServiceDeleteAffinityGroupHandler := connect.NewUnaryHandler(
@@ -195,24 +215,32 @@ func NewAffinitygroupServiceHandler(svc AffinitygroupServiceHandler, opts ...con
 		connect.WithSchema(affinitygroupServiceMethods.ByName("ListAffinityGroups")),
 		connect.WithHandlerOptions(opts...),
 	)
-	affinitygroupServiceCreateAffinityGroupHandler := connect.NewUnaryHandler(
-		AffinitygroupServiceCreateAffinityGroupProcedure,
-		svc.CreateAffinityGroup,
-		connect.WithSchema(affinitygroupServiceMethods.ByName("CreateAffinityGroup")),
+	affinitygroupServiceUpdateVMAffinityGroupHandler := connect.NewUnaryHandler(
+		AffinitygroupServiceUpdateVMAffinityGroupProcedure,
+		svc.UpdateVMAffinityGroup,
+		connect.WithSchema(affinitygroupServiceMethods.ByName("UpdateVMAffinityGroup")),
+		connect.WithHandlerOptions(opts...),
+	)
+	affinitygroupServiceUpdateVMAffinityGroupCmdByAdminHandler := connect.NewUnaryHandler(
+		AffinitygroupServiceUpdateVMAffinityGroupCmdByAdminProcedure,
+		svc.UpdateVMAffinityGroupCmdByAdmin,
+		connect.WithSchema(affinitygroupServiceMethods.ByName("UpdateVMAffinityGroupCmdByAdmin")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/cloudstack.management.affinitygroup.v1.AffinitygroupService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case AffinitygroupServiceUpdateVMAffinityGroupProcedure:
-			affinitygroupServiceUpdateVMAffinityGroupHandler.ServeHTTP(w, r)
+		case AffinitygroupServiceCreateAffinityGroupProcedure:
+			affinitygroupServiceCreateAffinityGroupHandler.ServeHTTP(w, r)
 		case AffinitygroupServiceDeleteAffinityGroupProcedure:
 			affinitygroupServiceDeleteAffinityGroupHandler.ServeHTTP(w, r)
 		case AffinitygroupServiceListAffinityGroupTypesProcedure:
 			affinitygroupServiceListAffinityGroupTypesHandler.ServeHTTP(w, r)
 		case AffinitygroupServiceListAffinityGroupsProcedure:
 			affinitygroupServiceListAffinityGroupsHandler.ServeHTTP(w, r)
-		case AffinitygroupServiceCreateAffinityGroupProcedure:
-			affinitygroupServiceCreateAffinityGroupHandler.ServeHTTP(w, r)
+		case AffinitygroupServiceUpdateVMAffinityGroupProcedure:
+			affinitygroupServiceUpdateVMAffinityGroupHandler.ServeHTTP(w, r)
+		case AffinitygroupServiceUpdateVMAffinityGroupCmdByAdminProcedure:
+			affinitygroupServiceUpdateVMAffinityGroupCmdByAdminHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -222,8 +250,8 @@ func NewAffinitygroupServiceHandler(svc AffinitygroupServiceHandler, opts ...con
 // UnimplementedAffinitygroupServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedAffinitygroupServiceHandler struct{}
 
-func (UnimplementedAffinitygroupServiceHandler) UpdateVMAffinityGroup(context.Context, *connect.Request[v1.UpdateVMAffinityGroupRequest]) (*connect.Response[v1.UpdateVMAffinityGroupResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.affinitygroup.v1.AffinitygroupService.UpdateVMAffinityGroup is not implemented"))
+func (UnimplementedAffinitygroupServiceHandler) CreateAffinityGroup(context.Context, *connect.Request[v1.CreateAffinityGroupRequest]) (*connect.Response[v1.CreateAffinityGroupResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.affinitygroup.v1.AffinitygroupService.CreateAffinityGroup is not implemented"))
 }
 
 func (UnimplementedAffinitygroupServiceHandler) DeleteAffinityGroup(context.Context, *connect.Request[v1.DeleteAffinityGroupRequest]) (*connect.Response[v1.DeleteAffinityGroupResponse], error) {
@@ -238,6 +266,10 @@ func (UnimplementedAffinitygroupServiceHandler) ListAffinityGroups(context.Conte
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.affinitygroup.v1.AffinitygroupService.ListAffinityGroups is not implemented"))
 }
 
-func (UnimplementedAffinitygroupServiceHandler) CreateAffinityGroup(context.Context, *connect.Request[v1.CreateAffinityGroupRequest]) (*connect.Response[v1.CreateAffinityGroupResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.affinitygroup.v1.AffinitygroupService.CreateAffinityGroup is not implemented"))
+func (UnimplementedAffinitygroupServiceHandler) UpdateVMAffinityGroup(context.Context, *connect.Request[v1.UpdateVMAffinityGroupRequest]) (*connect.Response[v1.UpdateVMAffinityGroupResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.affinitygroup.v1.AffinitygroupService.UpdateVMAffinityGroup is not implemented"))
+}
+
+func (UnimplementedAffinitygroupServiceHandler) UpdateVMAffinityGroupCmdByAdmin(context.Context, *connect.Request[v1.UpdateVMAffinityGroupCmdByAdminRequest]) (*connect.Response[v1.UpdateVMAffinityGroupCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.affinitygroup.v1.AffinitygroupService.UpdateVMAffinityGroupCmdByAdmin is not implemented"))
 }

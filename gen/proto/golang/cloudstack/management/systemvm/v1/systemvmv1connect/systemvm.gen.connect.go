@@ -33,56 +33,56 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// SystemvmServiceUpgradeSystemVMProcedure is the fully-qualified name of the SystemvmService's
-	// UpgradeSystemVM RPC.
-	SystemvmServiceUpgradeSystemVMProcedure = "/cloudstack.management.systemvm.v1.SystemvmService/UpgradeSystemVM"
+	// SystemvmServiceDestroySystemVmProcedure is the fully-qualified name of the SystemvmService's
+	// DestroySystemVm RPC.
+	SystemvmServiceDestroySystemVmProcedure = "/cloudstack.management.systemvm.v1.SystemvmService/DestroySystemVm"
 	// SystemvmServiceListSystemVMsProcedure is the fully-qualified name of the SystemvmService's
 	// ListSystemVMs RPC.
 	SystemvmServiceListSystemVMsProcedure = "/cloudstack.management.systemvm.v1.SystemvmService/ListSystemVMs"
-	// SystemvmServiceStopSystemVmProcedure is the fully-qualified name of the SystemvmService's
-	// StopSystemVm RPC.
-	SystemvmServiceStopSystemVmProcedure = "/cloudstack.management.systemvm.v1.SystemvmService/StopSystemVm"
+	// SystemvmServiceMigrateSystemVMProcedure is the fully-qualified name of the SystemvmService's
+	// MigrateSystemVM RPC.
+	SystemvmServiceMigrateSystemVMProcedure = "/cloudstack.management.systemvm.v1.SystemvmService/MigrateSystemVM"
 	// SystemvmServicePatchSystemVMProcedure is the fully-qualified name of the SystemvmService's
 	// PatchSystemVM RPC.
 	SystemvmServicePatchSystemVMProcedure = "/cloudstack.management.systemvm.v1.SystemvmService/PatchSystemVM"
 	// SystemvmServiceRebootSystemVmProcedure is the fully-qualified name of the SystemvmService's
 	// RebootSystemVm RPC.
 	SystemvmServiceRebootSystemVmProcedure = "/cloudstack.management.systemvm.v1.SystemvmService/RebootSystemVm"
-	// SystemvmServiceStartSystemVMProcedure is the fully-qualified name of the SystemvmService's
-	// StartSystemVM RPC.
-	SystemvmServiceStartSystemVMProcedure = "/cloudstack.management.systemvm.v1.SystemvmService/StartSystemVM"
-	// SystemvmServiceDestroySystemVmProcedure is the fully-qualified name of the SystemvmService's
-	// DestroySystemVm RPC.
-	SystemvmServiceDestroySystemVmProcedure = "/cloudstack.management.systemvm.v1.SystemvmService/DestroySystemVm"
 	// SystemvmServiceScaleSystemVMProcedure is the fully-qualified name of the SystemvmService's
 	// ScaleSystemVM RPC.
 	SystemvmServiceScaleSystemVMProcedure = "/cloudstack.management.systemvm.v1.SystemvmService/ScaleSystemVM"
-	// SystemvmServiceMigrateSystemVMProcedure is the fully-qualified name of the SystemvmService's
-	// MigrateSystemVM RPC.
-	SystemvmServiceMigrateSystemVMProcedure = "/cloudstack.management.systemvm.v1.SystemvmService/MigrateSystemVM"
+	// SystemvmServiceStartSystemVMProcedure is the fully-qualified name of the SystemvmService's
+	// StartSystemVM RPC.
+	SystemvmServiceStartSystemVMProcedure = "/cloudstack.management.systemvm.v1.SystemvmService/StartSystemVM"
+	// SystemvmServiceStopSystemVmProcedure is the fully-qualified name of the SystemvmService's
+	// StopSystemVm RPC.
+	SystemvmServiceStopSystemVmProcedure = "/cloudstack.management.systemvm.v1.SystemvmService/StopSystemVm"
+	// SystemvmServiceUpgradeSystemVMProcedure is the fully-qualified name of the SystemvmService's
+	// UpgradeSystemVM RPC.
+	SystemvmServiceUpgradeSystemVMProcedure = "/cloudstack.management.systemvm.v1.SystemvmService/UpgradeSystemVM"
 )
 
 // SystemvmServiceClient is a client for the cloudstack.management.systemvm.v1.SystemvmService
 // service.
 type SystemvmServiceClient interface {
-	// UpgradeSystemVM Changes the service offering for a system vm (console proxy or secondary storage). The system vm must be in a "Stopped" state for this command to take effect.
-	UpgradeSystemVM(context.Context, *connect.Request[v1.UpgradeSystemVMRequest]) (*connect.Response[v1.UpgradeSystemVMResponse], error)
+	// DestroySystemVm Destroys a system virtual machine.
+	DestroySystemVm(context.Context, *connect.Request[v1.DestroySystemVmRequest]) (*connect.Response[v1.DestroySystemVmResponse], error)
 	// ListSystemVMs List system virtual machines.
 	ListSystemVMs(context.Context, *connect.Request[v1.ListSystemVMsRequest]) (*connect.Response[v1.ListSystemVMsResponse], error)
-	// StopSystemVm Stops a system VM.
-	StopSystemVm(context.Context, *connect.Request[v1.StopSystemVmRequest]) (*connect.Response[v1.StopSystemVmResponse], error)
+	// MigrateSystemVM Attempts Migration of a system virtual machine to the host specified.
+	MigrateSystemVM(context.Context, *connect.Request[v1.MigrateSystemVMRequest]) (*connect.Response[v1.MigrateSystemVMResponse], error)
 	// PatchSystemVM Attempts to live patch systemVMs - CPVM, SSVM
 	PatchSystemVM(context.Context, *connect.Request[v1.PatchSystemVMRequest]) (*connect.Response[v1.PatchSystemVMResponse], error)
 	// RebootSystemVm Reboots a system VM.
 	RebootSystemVm(context.Context, *connect.Request[v1.RebootSystemVmRequest]) (*connect.Response[v1.RebootSystemVmResponse], error)
-	// StartSystemVM Starts a system virtual machine.
-	StartSystemVM(context.Context, *connect.Request[v1.StartSystemVMRequest]) (*connect.Response[v1.StartSystemVMResponse], error)
-	// DestroySystemVm Destroys a system virtual machine.
-	DestroySystemVm(context.Context, *connect.Request[v1.DestroySystemVmRequest]) (*connect.Response[v1.DestroySystemVmResponse], error)
 	// ScaleSystemVM Scale the service offering for a system vm (console proxy or secondary storage). The system vm must be in a "Stopped" state for this command to take effect.
 	ScaleSystemVM(context.Context, *connect.Request[v1.ScaleSystemVMRequest]) (*connect.Response[v1.ScaleSystemVMResponse], error)
-	// MigrateSystemVM Attempts Migration of a system virtual machine to the host specified.
-	MigrateSystemVM(context.Context, *connect.Request[v1.MigrateSystemVMRequest]) (*connect.Response[v1.MigrateSystemVMResponse], error)
+	// StartSystemVM Starts a system virtual machine.
+	StartSystemVM(context.Context, *connect.Request[v1.StartSystemVMRequest]) (*connect.Response[v1.StartSystemVMResponse], error)
+	// StopSystemVm Stops a system VM.
+	StopSystemVm(context.Context, *connect.Request[v1.StopSystemVmRequest]) (*connect.Response[v1.StopSystemVmResponse], error)
+	// UpgradeSystemVM Changes the service offering for a system vm (console proxy or secondary storage). The system vm must be in a "Stopped" state for this command to take effect.
+	UpgradeSystemVM(context.Context, *connect.Request[v1.UpgradeSystemVMRequest]) (*connect.Response[v1.UpgradeSystemVMResponse], error)
 }
 
 // NewSystemvmServiceClient constructs a client for the
@@ -97,10 +97,10 @@ func NewSystemvmServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 	baseURL = strings.TrimRight(baseURL, "/")
 	systemvmServiceMethods := v1.File_cloudstack_management_systemvm_v1_systemvm_gen_proto.Services().ByName("SystemvmService").Methods()
 	return &systemvmServiceClient{
-		upgradeSystemVM: connect.NewClient[v1.UpgradeSystemVMRequest, v1.UpgradeSystemVMResponse](
+		destroySystemVm: connect.NewClient[v1.DestroySystemVmRequest, v1.DestroySystemVmResponse](
 			httpClient,
-			baseURL+SystemvmServiceUpgradeSystemVMProcedure,
-			connect.WithSchema(systemvmServiceMethods.ByName("UpgradeSystemVM")),
+			baseURL+SystemvmServiceDestroySystemVmProcedure,
+			connect.WithSchema(systemvmServiceMethods.ByName("DestroySystemVm")),
 			connect.WithClientOptions(opts...),
 		),
 		listSystemVMs: connect.NewClient[v1.ListSystemVMsRequest, v1.ListSystemVMsResponse](
@@ -109,10 +109,10 @@ func NewSystemvmServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(systemvmServiceMethods.ByName("ListSystemVMs")),
 			connect.WithClientOptions(opts...),
 		),
-		stopSystemVm: connect.NewClient[v1.StopSystemVmRequest, v1.StopSystemVmResponse](
+		migrateSystemVM: connect.NewClient[v1.MigrateSystemVMRequest, v1.MigrateSystemVMResponse](
 			httpClient,
-			baseURL+SystemvmServiceStopSystemVmProcedure,
-			connect.WithSchema(systemvmServiceMethods.ByName("StopSystemVm")),
+			baseURL+SystemvmServiceMigrateSystemVMProcedure,
+			connect.WithSchema(systemvmServiceMethods.ByName("MigrateSystemVM")),
 			connect.WithClientOptions(opts...),
 		),
 		patchSystemVM: connect.NewClient[v1.PatchSystemVMRequest, v1.PatchSystemVMResponse](
@@ -127,28 +127,28 @@ func NewSystemvmServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(systemvmServiceMethods.ByName("RebootSystemVm")),
 			connect.WithClientOptions(opts...),
 		),
-		startSystemVM: connect.NewClient[v1.StartSystemVMRequest, v1.StartSystemVMResponse](
-			httpClient,
-			baseURL+SystemvmServiceStartSystemVMProcedure,
-			connect.WithSchema(systemvmServiceMethods.ByName("StartSystemVM")),
-			connect.WithClientOptions(opts...),
-		),
-		destroySystemVm: connect.NewClient[v1.DestroySystemVmRequest, v1.DestroySystemVmResponse](
-			httpClient,
-			baseURL+SystemvmServiceDestroySystemVmProcedure,
-			connect.WithSchema(systemvmServiceMethods.ByName("DestroySystemVm")),
-			connect.WithClientOptions(opts...),
-		),
 		scaleSystemVM: connect.NewClient[v1.ScaleSystemVMRequest, v1.ScaleSystemVMResponse](
 			httpClient,
 			baseURL+SystemvmServiceScaleSystemVMProcedure,
 			connect.WithSchema(systemvmServiceMethods.ByName("ScaleSystemVM")),
 			connect.WithClientOptions(opts...),
 		),
-		migrateSystemVM: connect.NewClient[v1.MigrateSystemVMRequest, v1.MigrateSystemVMResponse](
+		startSystemVM: connect.NewClient[v1.StartSystemVMRequest, v1.StartSystemVMResponse](
 			httpClient,
-			baseURL+SystemvmServiceMigrateSystemVMProcedure,
-			connect.WithSchema(systemvmServiceMethods.ByName("MigrateSystemVM")),
+			baseURL+SystemvmServiceStartSystemVMProcedure,
+			connect.WithSchema(systemvmServiceMethods.ByName("StartSystemVM")),
+			connect.WithClientOptions(opts...),
+		),
+		stopSystemVm: connect.NewClient[v1.StopSystemVmRequest, v1.StopSystemVmResponse](
+			httpClient,
+			baseURL+SystemvmServiceStopSystemVmProcedure,
+			connect.WithSchema(systemvmServiceMethods.ByName("StopSystemVm")),
+			connect.WithClientOptions(opts...),
+		),
+		upgradeSystemVM: connect.NewClient[v1.UpgradeSystemVMRequest, v1.UpgradeSystemVMResponse](
+			httpClient,
+			baseURL+SystemvmServiceUpgradeSystemVMProcedure,
+			connect.WithSchema(systemvmServiceMethods.ByName("UpgradeSystemVM")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -156,20 +156,20 @@ func NewSystemvmServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 
 // systemvmServiceClient implements SystemvmServiceClient.
 type systemvmServiceClient struct {
-	upgradeSystemVM *connect.Client[v1.UpgradeSystemVMRequest, v1.UpgradeSystemVMResponse]
+	destroySystemVm *connect.Client[v1.DestroySystemVmRequest, v1.DestroySystemVmResponse]
 	listSystemVMs   *connect.Client[v1.ListSystemVMsRequest, v1.ListSystemVMsResponse]
-	stopSystemVm    *connect.Client[v1.StopSystemVmRequest, v1.StopSystemVmResponse]
+	migrateSystemVM *connect.Client[v1.MigrateSystemVMRequest, v1.MigrateSystemVMResponse]
 	patchSystemVM   *connect.Client[v1.PatchSystemVMRequest, v1.PatchSystemVMResponse]
 	rebootSystemVm  *connect.Client[v1.RebootSystemVmRequest, v1.RebootSystemVmResponse]
-	startSystemVM   *connect.Client[v1.StartSystemVMRequest, v1.StartSystemVMResponse]
-	destroySystemVm *connect.Client[v1.DestroySystemVmRequest, v1.DestroySystemVmResponse]
 	scaleSystemVM   *connect.Client[v1.ScaleSystemVMRequest, v1.ScaleSystemVMResponse]
-	migrateSystemVM *connect.Client[v1.MigrateSystemVMRequest, v1.MigrateSystemVMResponse]
+	startSystemVM   *connect.Client[v1.StartSystemVMRequest, v1.StartSystemVMResponse]
+	stopSystemVm    *connect.Client[v1.StopSystemVmRequest, v1.StopSystemVmResponse]
+	upgradeSystemVM *connect.Client[v1.UpgradeSystemVMRequest, v1.UpgradeSystemVMResponse]
 }
 
-// UpgradeSystemVM calls cloudstack.management.systemvm.v1.SystemvmService.UpgradeSystemVM.
-func (c *systemvmServiceClient) UpgradeSystemVM(ctx context.Context, req *connect.Request[v1.UpgradeSystemVMRequest]) (*connect.Response[v1.UpgradeSystemVMResponse], error) {
-	return c.upgradeSystemVM.CallUnary(ctx, req)
+// DestroySystemVm calls cloudstack.management.systemvm.v1.SystemvmService.DestroySystemVm.
+func (c *systemvmServiceClient) DestroySystemVm(ctx context.Context, req *connect.Request[v1.DestroySystemVmRequest]) (*connect.Response[v1.DestroySystemVmResponse], error) {
+	return c.destroySystemVm.CallUnary(ctx, req)
 }
 
 // ListSystemVMs calls cloudstack.management.systemvm.v1.SystemvmService.ListSystemVMs.
@@ -177,9 +177,9 @@ func (c *systemvmServiceClient) ListSystemVMs(ctx context.Context, req *connect.
 	return c.listSystemVMs.CallUnary(ctx, req)
 }
 
-// StopSystemVm calls cloudstack.management.systemvm.v1.SystemvmService.StopSystemVm.
-func (c *systemvmServiceClient) StopSystemVm(ctx context.Context, req *connect.Request[v1.StopSystemVmRequest]) (*connect.Response[v1.StopSystemVmResponse], error) {
-	return c.stopSystemVm.CallUnary(ctx, req)
+// MigrateSystemVM calls cloudstack.management.systemvm.v1.SystemvmService.MigrateSystemVM.
+func (c *systemvmServiceClient) MigrateSystemVM(ctx context.Context, req *connect.Request[v1.MigrateSystemVMRequest]) (*connect.Response[v1.MigrateSystemVMResponse], error) {
+	return c.migrateSystemVM.CallUnary(ctx, req)
 }
 
 // PatchSystemVM calls cloudstack.management.systemvm.v1.SystemvmService.PatchSystemVM.
@@ -192,47 +192,47 @@ func (c *systemvmServiceClient) RebootSystemVm(ctx context.Context, req *connect
 	return c.rebootSystemVm.CallUnary(ctx, req)
 }
 
-// StartSystemVM calls cloudstack.management.systemvm.v1.SystemvmService.StartSystemVM.
-func (c *systemvmServiceClient) StartSystemVM(ctx context.Context, req *connect.Request[v1.StartSystemVMRequest]) (*connect.Response[v1.StartSystemVMResponse], error) {
-	return c.startSystemVM.CallUnary(ctx, req)
-}
-
-// DestroySystemVm calls cloudstack.management.systemvm.v1.SystemvmService.DestroySystemVm.
-func (c *systemvmServiceClient) DestroySystemVm(ctx context.Context, req *connect.Request[v1.DestroySystemVmRequest]) (*connect.Response[v1.DestroySystemVmResponse], error) {
-	return c.destroySystemVm.CallUnary(ctx, req)
-}
-
 // ScaleSystemVM calls cloudstack.management.systemvm.v1.SystemvmService.ScaleSystemVM.
 func (c *systemvmServiceClient) ScaleSystemVM(ctx context.Context, req *connect.Request[v1.ScaleSystemVMRequest]) (*connect.Response[v1.ScaleSystemVMResponse], error) {
 	return c.scaleSystemVM.CallUnary(ctx, req)
 }
 
-// MigrateSystemVM calls cloudstack.management.systemvm.v1.SystemvmService.MigrateSystemVM.
-func (c *systemvmServiceClient) MigrateSystemVM(ctx context.Context, req *connect.Request[v1.MigrateSystemVMRequest]) (*connect.Response[v1.MigrateSystemVMResponse], error) {
-	return c.migrateSystemVM.CallUnary(ctx, req)
+// StartSystemVM calls cloudstack.management.systemvm.v1.SystemvmService.StartSystemVM.
+func (c *systemvmServiceClient) StartSystemVM(ctx context.Context, req *connect.Request[v1.StartSystemVMRequest]) (*connect.Response[v1.StartSystemVMResponse], error) {
+	return c.startSystemVM.CallUnary(ctx, req)
+}
+
+// StopSystemVm calls cloudstack.management.systemvm.v1.SystemvmService.StopSystemVm.
+func (c *systemvmServiceClient) StopSystemVm(ctx context.Context, req *connect.Request[v1.StopSystemVmRequest]) (*connect.Response[v1.StopSystemVmResponse], error) {
+	return c.stopSystemVm.CallUnary(ctx, req)
+}
+
+// UpgradeSystemVM calls cloudstack.management.systemvm.v1.SystemvmService.UpgradeSystemVM.
+func (c *systemvmServiceClient) UpgradeSystemVM(ctx context.Context, req *connect.Request[v1.UpgradeSystemVMRequest]) (*connect.Response[v1.UpgradeSystemVMResponse], error) {
+	return c.upgradeSystemVM.CallUnary(ctx, req)
 }
 
 // SystemvmServiceHandler is an implementation of the
 // cloudstack.management.systemvm.v1.SystemvmService service.
 type SystemvmServiceHandler interface {
-	// UpgradeSystemVM Changes the service offering for a system vm (console proxy or secondary storage). The system vm must be in a "Stopped" state for this command to take effect.
-	UpgradeSystemVM(context.Context, *connect.Request[v1.UpgradeSystemVMRequest]) (*connect.Response[v1.UpgradeSystemVMResponse], error)
+	// DestroySystemVm Destroys a system virtual machine.
+	DestroySystemVm(context.Context, *connect.Request[v1.DestroySystemVmRequest]) (*connect.Response[v1.DestroySystemVmResponse], error)
 	// ListSystemVMs List system virtual machines.
 	ListSystemVMs(context.Context, *connect.Request[v1.ListSystemVMsRequest]) (*connect.Response[v1.ListSystemVMsResponse], error)
-	// StopSystemVm Stops a system VM.
-	StopSystemVm(context.Context, *connect.Request[v1.StopSystemVmRequest]) (*connect.Response[v1.StopSystemVmResponse], error)
+	// MigrateSystemVM Attempts Migration of a system virtual machine to the host specified.
+	MigrateSystemVM(context.Context, *connect.Request[v1.MigrateSystemVMRequest]) (*connect.Response[v1.MigrateSystemVMResponse], error)
 	// PatchSystemVM Attempts to live patch systemVMs - CPVM, SSVM
 	PatchSystemVM(context.Context, *connect.Request[v1.PatchSystemVMRequest]) (*connect.Response[v1.PatchSystemVMResponse], error)
 	// RebootSystemVm Reboots a system VM.
 	RebootSystemVm(context.Context, *connect.Request[v1.RebootSystemVmRequest]) (*connect.Response[v1.RebootSystemVmResponse], error)
-	// StartSystemVM Starts a system virtual machine.
-	StartSystemVM(context.Context, *connect.Request[v1.StartSystemVMRequest]) (*connect.Response[v1.StartSystemVMResponse], error)
-	// DestroySystemVm Destroys a system virtual machine.
-	DestroySystemVm(context.Context, *connect.Request[v1.DestroySystemVmRequest]) (*connect.Response[v1.DestroySystemVmResponse], error)
 	// ScaleSystemVM Scale the service offering for a system vm (console proxy or secondary storage). The system vm must be in a "Stopped" state for this command to take effect.
 	ScaleSystemVM(context.Context, *connect.Request[v1.ScaleSystemVMRequest]) (*connect.Response[v1.ScaleSystemVMResponse], error)
-	// MigrateSystemVM Attempts Migration of a system virtual machine to the host specified.
-	MigrateSystemVM(context.Context, *connect.Request[v1.MigrateSystemVMRequest]) (*connect.Response[v1.MigrateSystemVMResponse], error)
+	// StartSystemVM Starts a system virtual machine.
+	StartSystemVM(context.Context, *connect.Request[v1.StartSystemVMRequest]) (*connect.Response[v1.StartSystemVMResponse], error)
+	// StopSystemVm Stops a system VM.
+	StopSystemVm(context.Context, *connect.Request[v1.StopSystemVmRequest]) (*connect.Response[v1.StopSystemVmResponse], error)
+	// UpgradeSystemVM Changes the service offering for a system vm (console proxy or secondary storage). The system vm must be in a "Stopped" state for this command to take effect.
+	UpgradeSystemVM(context.Context, *connect.Request[v1.UpgradeSystemVMRequest]) (*connect.Response[v1.UpgradeSystemVMResponse], error)
 }
 
 // NewSystemvmServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -242,10 +242,10 @@ type SystemvmServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewSystemvmServiceHandler(svc SystemvmServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	systemvmServiceMethods := v1.File_cloudstack_management_systemvm_v1_systemvm_gen_proto.Services().ByName("SystemvmService").Methods()
-	systemvmServiceUpgradeSystemVMHandler := connect.NewUnaryHandler(
-		SystemvmServiceUpgradeSystemVMProcedure,
-		svc.UpgradeSystemVM,
-		connect.WithSchema(systemvmServiceMethods.ByName("UpgradeSystemVM")),
+	systemvmServiceDestroySystemVmHandler := connect.NewUnaryHandler(
+		SystemvmServiceDestroySystemVmProcedure,
+		svc.DestroySystemVm,
+		connect.WithSchema(systemvmServiceMethods.ByName("DestroySystemVm")),
 		connect.WithHandlerOptions(opts...),
 	)
 	systemvmServiceListSystemVMsHandler := connect.NewUnaryHandler(
@@ -254,10 +254,10 @@ func NewSystemvmServiceHandler(svc SystemvmServiceHandler, opts ...connect.Handl
 		connect.WithSchema(systemvmServiceMethods.ByName("ListSystemVMs")),
 		connect.WithHandlerOptions(opts...),
 	)
-	systemvmServiceStopSystemVmHandler := connect.NewUnaryHandler(
-		SystemvmServiceStopSystemVmProcedure,
-		svc.StopSystemVm,
-		connect.WithSchema(systemvmServiceMethods.ByName("StopSystemVm")),
+	systemvmServiceMigrateSystemVMHandler := connect.NewUnaryHandler(
+		SystemvmServiceMigrateSystemVMProcedure,
+		svc.MigrateSystemVM,
+		connect.WithSchema(systemvmServiceMethods.ByName("MigrateSystemVM")),
 		connect.WithHandlerOptions(opts...),
 	)
 	systemvmServicePatchSystemVMHandler := connect.NewUnaryHandler(
@@ -272,50 +272,50 @@ func NewSystemvmServiceHandler(svc SystemvmServiceHandler, opts ...connect.Handl
 		connect.WithSchema(systemvmServiceMethods.ByName("RebootSystemVm")),
 		connect.WithHandlerOptions(opts...),
 	)
-	systemvmServiceStartSystemVMHandler := connect.NewUnaryHandler(
-		SystemvmServiceStartSystemVMProcedure,
-		svc.StartSystemVM,
-		connect.WithSchema(systemvmServiceMethods.ByName("StartSystemVM")),
-		connect.WithHandlerOptions(opts...),
-	)
-	systemvmServiceDestroySystemVmHandler := connect.NewUnaryHandler(
-		SystemvmServiceDestroySystemVmProcedure,
-		svc.DestroySystemVm,
-		connect.WithSchema(systemvmServiceMethods.ByName("DestroySystemVm")),
-		connect.WithHandlerOptions(opts...),
-	)
 	systemvmServiceScaleSystemVMHandler := connect.NewUnaryHandler(
 		SystemvmServiceScaleSystemVMProcedure,
 		svc.ScaleSystemVM,
 		connect.WithSchema(systemvmServiceMethods.ByName("ScaleSystemVM")),
 		connect.WithHandlerOptions(opts...),
 	)
-	systemvmServiceMigrateSystemVMHandler := connect.NewUnaryHandler(
-		SystemvmServiceMigrateSystemVMProcedure,
-		svc.MigrateSystemVM,
-		connect.WithSchema(systemvmServiceMethods.ByName("MigrateSystemVM")),
+	systemvmServiceStartSystemVMHandler := connect.NewUnaryHandler(
+		SystemvmServiceStartSystemVMProcedure,
+		svc.StartSystemVM,
+		connect.WithSchema(systemvmServiceMethods.ByName("StartSystemVM")),
+		connect.WithHandlerOptions(opts...),
+	)
+	systemvmServiceStopSystemVmHandler := connect.NewUnaryHandler(
+		SystemvmServiceStopSystemVmProcedure,
+		svc.StopSystemVm,
+		connect.WithSchema(systemvmServiceMethods.ByName("StopSystemVm")),
+		connect.WithHandlerOptions(opts...),
+	)
+	systemvmServiceUpgradeSystemVMHandler := connect.NewUnaryHandler(
+		SystemvmServiceUpgradeSystemVMProcedure,
+		svc.UpgradeSystemVM,
+		connect.WithSchema(systemvmServiceMethods.ByName("UpgradeSystemVM")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/cloudstack.management.systemvm.v1.SystemvmService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case SystemvmServiceUpgradeSystemVMProcedure:
-			systemvmServiceUpgradeSystemVMHandler.ServeHTTP(w, r)
+		case SystemvmServiceDestroySystemVmProcedure:
+			systemvmServiceDestroySystemVmHandler.ServeHTTP(w, r)
 		case SystemvmServiceListSystemVMsProcedure:
 			systemvmServiceListSystemVMsHandler.ServeHTTP(w, r)
-		case SystemvmServiceStopSystemVmProcedure:
-			systemvmServiceStopSystemVmHandler.ServeHTTP(w, r)
+		case SystemvmServiceMigrateSystemVMProcedure:
+			systemvmServiceMigrateSystemVMHandler.ServeHTTP(w, r)
 		case SystemvmServicePatchSystemVMProcedure:
 			systemvmServicePatchSystemVMHandler.ServeHTTP(w, r)
 		case SystemvmServiceRebootSystemVmProcedure:
 			systemvmServiceRebootSystemVmHandler.ServeHTTP(w, r)
-		case SystemvmServiceStartSystemVMProcedure:
-			systemvmServiceStartSystemVMHandler.ServeHTTP(w, r)
-		case SystemvmServiceDestroySystemVmProcedure:
-			systemvmServiceDestroySystemVmHandler.ServeHTTP(w, r)
 		case SystemvmServiceScaleSystemVMProcedure:
 			systemvmServiceScaleSystemVMHandler.ServeHTTP(w, r)
-		case SystemvmServiceMigrateSystemVMProcedure:
-			systemvmServiceMigrateSystemVMHandler.ServeHTTP(w, r)
+		case SystemvmServiceStartSystemVMProcedure:
+			systemvmServiceStartSystemVMHandler.ServeHTTP(w, r)
+		case SystemvmServiceStopSystemVmProcedure:
+			systemvmServiceStopSystemVmHandler.ServeHTTP(w, r)
+		case SystemvmServiceUpgradeSystemVMProcedure:
+			systemvmServiceUpgradeSystemVMHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -325,16 +325,16 @@ func NewSystemvmServiceHandler(svc SystemvmServiceHandler, opts ...connect.Handl
 // UnimplementedSystemvmServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedSystemvmServiceHandler struct{}
 
-func (UnimplementedSystemvmServiceHandler) UpgradeSystemVM(context.Context, *connect.Request[v1.UpgradeSystemVMRequest]) (*connect.Response[v1.UpgradeSystemVMResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.systemvm.v1.SystemvmService.UpgradeSystemVM is not implemented"))
+func (UnimplementedSystemvmServiceHandler) DestroySystemVm(context.Context, *connect.Request[v1.DestroySystemVmRequest]) (*connect.Response[v1.DestroySystemVmResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.systemvm.v1.SystemvmService.DestroySystemVm is not implemented"))
 }
 
 func (UnimplementedSystemvmServiceHandler) ListSystemVMs(context.Context, *connect.Request[v1.ListSystemVMsRequest]) (*connect.Response[v1.ListSystemVMsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.systemvm.v1.SystemvmService.ListSystemVMs is not implemented"))
 }
 
-func (UnimplementedSystemvmServiceHandler) StopSystemVm(context.Context, *connect.Request[v1.StopSystemVmRequest]) (*connect.Response[v1.StopSystemVmResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.systemvm.v1.SystemvmService.StopSystemVm is not implemented"))
+func (UnimplementedSystemvmServiceHandler) MigrateSystemVM(context.Context, *connect.Request[v1.MigrateSystemVMRequest]) (*connect.Response[v1.MigrateSystemVMResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.systemvm.v1.SystemvmService.MigrateSystemVM is not implemented"))
 }
 
 func (UnimplementedSystemvmServiceHandler) PatchSystemVM(context.Context, *connect.Request[v1.PatchSystemVMRequest]) (*connect.Response[v1.PatchSystemVMResponse], error) {
@@ -345,18 +345,18 @@ func (UnimplementedSystemvmServiceHandler) RebootSystemVm(context.Context, *conn
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.systemvm.v1.SystemvmService.RebootSystemVm is not implemented"))
 }
 
-func (UnimplementedSystemvmServiceHandler) StartSystemVM(context.Context, *connect.Request[v1.StartSystemVMRequest]) (*connect.Response[v1.StartSystemVMResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.systemvm.v1.SystemvmService.StartSystemVM is not implemented"))
-}
-
-func (UnimplementedSystemvmServiceHandler) DestroySystemVm(context.Context, *connect.Request[v1.DestroySystemVmRequest]) (*connect.Response[v1.DestroySystemVmResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.systemvm.v1.SystemvmService.DestroySystemVm is not implemented"))
-}
-
 func (UnimplementedSystemvmServiceHandler) ScaleSystemVM(context.Context, *connect.Request[v1.ScaleSystemVMRequest]) (*connect.Response[v1.ScaleSystemVMResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.systemvm.v1.SystemvmService.ScaleSystemVM is not implemented"))
 }
 
-func (UnimplementedSystemvmServiceHandler) MigrateSystemVM(context.Context, *connect.Request[v1.MigrateSystemVMRequest]) (*connect.Response[v1.MigrateSystemVMResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.systemvm.v1.SystemvmService.MigrateSystemVM is not implemented"))
+func (UnimplementedSystemvmServiceHandler) StartSystemVM(context.Context, *connect.Request[v1.StartSystemVMRequest]) (*connect.Response[v1.StartSystemVMResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.systemvm.v1.SystemvmService.StartSystemVM is not implemented"))
+}
+
+func (UnimplementedSystemvmServiceHandler) StopSystemVm(context.Context, *connect.Request[v1.StopSystemVmRequest]) (*connect.Response[v1.StopSystemVmResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.systemvm.v1.SystemvmService.StopSystemVm is not implemented"))
+}
+
+func (UnimplementedSystemvmServiceHandler) UpgradeSystemVM(context.Context, *connect.Request[v1.UpgradeSystemVMRequest]) (*connect.Response[v1.UpgradeSystemVMResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.systemvm.v1.SystemvmService.UpgradeSystemVM is not implemented"))
 }

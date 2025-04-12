@@ -718,14 +718,16 @@ message Success {
 	string display_text = 2;
 }
 
-// ProtocolType represents the possible values for the protocol for the port forwarding rule. Valid values are TCP or UDP.
+// ProtocolType represents the possible values for the protocol for the firewall rule. Valid values are TCP/UDP/ICMP.
 enum ProtocolType {
 	// Default unspecified value
 	PROTOCOL_TYPE_UNSPECIFIED = 0;
+	// ICMP value
+	PROTOCOL_TYPE_ICMP = 1;
 	// TCP value
-	PROTOCOL_TYPE_TCP = 1;
+	PROTOCOL_TYPE_TCP = 2;
 	// UDP value
-	PROTOCOL_TYPE_UDP = 2;
+	PROTOCOL_TYPE_UDP = 3;
 }
 
 // Result represents a generic operation result

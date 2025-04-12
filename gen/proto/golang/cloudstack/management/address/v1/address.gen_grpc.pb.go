@@ -19,18 +19,19 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AddressService_AssociateIPAddrCmdByAdmin_FullMethodName = "/cloudstack.management.address.v1.AddressService/AssociateIPAddrCmdByAdmin"
-	AddressService_AssociateIPAddr_FullMethodName           = "/cloudstack.management.address.v1.AddressService/AssociateIPAddr"
-	AddressService_ListPublicIpAddresses_FullMethodName     = "/cloudstack.management.address.v1.AddressService/ListPublicIpAddresses"
-	AddressService_AcquirePodIpCmdByAdmin_FullMethodName    = "/cloudstack.management.address.v1.AddressService/AcquirePodIpCmdByAdmin"
-	AddressService_RemoveQuarantinedIp_FullMethodName       = "/cloudstack.management.address.v1.AddressService/RemoveQuarantinedIp"
-	AddressService_UpdateQuarantinedIp_FullMethodName       = "/cloudstack.management.address.v1.AddressService/UpdateQuarantinedIp"
-	AddressService_ReleasePodIpCmdByAdmin_FullMethodName    = "/cloudstack.management.address.v1.AddressService/ReleasePodIpCmdByAdmin"
-	AddressService_UpdateIPAddr_FullMethodName              = "/cloudstack.management.address.v1.AddressService/UpdateIPAddr"
-	AddressService_ListQuarantinedIps_FullMethodName        = "/cloudstack.management.address.v1.AddressService/ListQuarantinedIps"
-	AddressService_ReserveIPAddr_FullMethodName             = "/cloudstack.management.address.v1.AddressService/ReserveIPAddr"
-	AddressService_DisassociateIPAddr_FullMethodName        = "/cloudstack.management.address.v1.AddressService/DisassociateIPAddr"
-	AddressService_ReleaseIPAddr_FullMethodName             = "/cloudstack.management.address.v1.AddressService/ReleaseIPAddr"
+	AddressService_AcquirePodIpCmdByAdmin_FullMethodName          = "/cloudstack.management.address.v1.AddressService/AcquirePodIpCmdByAdmin"
+	AddressService_AssociateIPAddr_FullMethodName                 = "/cloudstack.management.address.v1.AddressService/AssociateIPAddr"
+	AddressService_AssociateIPAddrCmdByAdmin_FullMethodName       = "/cloudstack.management.address.v1.AddressService/AssociateIPAddrCmdByAdmin"
+	AddressService_DisassociateIPAddr_FullMethodName              = "/cloudstack.management.address.v1.AddressService/DisassociateIPAddr"
+	AddressService_ListPublicIpAddresses_FullMethodName           = "/cloudstack.management.address.v1.AddressService/ListPublicIpAddresses"
+	AddressService_ListPublicIpAddressesCmdByAdmin_FullMethodName = "/cloudstack.management.address.v1.AddressService/ListPublicIpAddressesCmdByAdmin"
+	AddressService_ListQuarantinedIps_FullMethodName              = "/cloudstack.management.address.v1.AddressService/ListQuarantinedIps"
+	AddressService_ReleaseIPAddr_FullMethodName                   = "/cloudstack.management.address.v1.AddressService/ReleaseIPAddr"
+	AddressService_ReleasePodIpCmdByAdmin_FullMethodName          = "/cloudstack.management.address.v1.AddressService/ReleasePodIpCmdByAdmin"
+	AddressService_RemoveQuarantinedIp_FullMethodName             = "/cloudstack.management.address.v1.AddressService/RemoveQuarantinedIp"
+	AddressService_ReserveIPAddr_FullMethodName                   = "/cloudstack.management.address.v1.AddressService/ReserveIPAddr"
+	AddressService_UpdateIPAddr_FullMethodName                    = "/cloudstack.management.address.v1.AddressService/UpdateIPAddr"
+	AddressService_UpdateQuarantinedIp_FullMethodName             = "/cloudstack.management.address.v1.AddressService/UpdateQuarantinedIp"
 )
 
 // AddressServiceClient is the client API for AddressService service.
@@ -39,30 +40,32 @@ const (
 //
 // AddressService provides operations for managing Addresss
 type AddressServiceClient interface {
-	// AssociateIPAddrCmdByAdmin Acquires and associates a public IP to an account.
-	AssociateIPAddrCmdByAdmin(ctx context.Context, in *AssociateIPAddrCmdByAdminRequest, opts ...grpc.CallOption) (*AssociateIPAddrCmdByAdminResponse, error)
-	// AssociateIPAddr Acquires and associates a public IP to an account. Either of the parameters are required, i.e. either zoneId, or networkId, or vpcId
-	AssociateIPAddr(ctx context.Context, in *AssociateIPAddrRequest, opts ...grpc.CallOption) (*AssociateIPAddrResponse, error)
-	// ListPublicIpAddresses Lists all public IP addresses
-	ListPublicIpAddresses(ctx context.Context, in *ListPublicIpAddressesRequest, opts ...grpc.CallOption) (*ListPublicIpAddressesResponse, error)
 	// AcquirePodIpCmdByAdmin Allocates IP addresses in respective Pod of a Zone
 	AcquirePodIpCmdByAdmin(ctx context.Context, in *AcquirePodIpCmdByAdminRequest, opts ...grpc.CallOption) (*AcquirePodIpCmdByAdminResponse, error)
-	// RemoveQuarantinedIp Removes a public IP address from quarantine. Only IPs in active quarantine can be removed.
-	RemoveQuarantinedIp(ctx context.Context, in *RemoveQuarantinedIpRequest, opts ...grpc.CallOption) (*RemoveQuarantinedIpResponse, error)
-	// UpdateQuarantinedIp Updates the quarantine end date for the given public IP address.
-	UpdateQuarantinedIp(ctx context.Context, in *UpdateQuarantinedIpRequest, opts ...grpc.CallOption) (*UpdateQuarantinedIpResponse, error)
-	// ReleasePodIpCmdByAdmin Releases a Pod IP back to the Pod
-	ReleasePodIpCmdByAdmin(ctx context.Context, in *ReleasePodIpCmdByAdminRequest, opts ...grpc.CallOption) (*ReleasePodIpCmdByAdminResponse, error)
-	// UpdateIPAddr Updates an IP address
-	UpdateIPAddr(ctx context.Context, in *UpdateIPAddrRequest, opts ...grpc.CallOption) (*UpdateIPAddrResponse, error)
-	// ListQuarantinedIps List public IP addresses in quarantine.
-	ListQuarantinedIps(ctx context.Context, in *ListQuarantinedIpsRequest, opts ...grpc.CallOption) (*ListQuarantinedIpsResponse, error)
-	// ReserveIPAddr Reserve a public IP to an account.
-	ReserveIPAddr(ctx context.Context, in *ReserveIPAddrRequest, opts ...grpc.CallOption) (*ReserveIPAddrResponse, error)
+	// AssociateIPAddr Acquires and associates a public IP to an account. Either of the parameters are required, i.e. either zoneId, or networkId, or vpcId
+	AssociateIPAddr(ctx context.Context, in *AssociateIPAddrRequest, opts ...grpc.CallOption) (*AssociateIPAddrResponse, error)
+	// AssociateIPAddrCmdByAdmin Acquires and associates a public IP to an account.
+	AssociateIPAddrCmdByAdmin(ctx context.Context, in *AssociateIPAddrCmdByAdminRequest, opts ...grpc.CallOption) (*AssociateIPAddrCmdByAdminResponse, error)
 	// DisassociateIPAddr Disassociates an IP address from the account.
 	DisassociateIPAddr(ctx context.Context, in *DisassociateIPAddrRequest, opts ...grpc.CallOption) (*DisassociateIPAddrResponse, error)
+	// ListPublicIpAddresses Lists all public IP addresses
+	ListPublicIpAddresses(ctx context.Context, in *ListPublicIpAddressesRequest, opts ...grpc.CallOption) (*ListPublicIpAddressesResponse, error)
+	// ListPublicIpAddressesCmdByAdmin Lists all public ip addresses
+	ListPublicIpAddressesCmdByAdmin(ctx context.Context, in *ListPublicIpAddressesCmdByAdminRequest, opts ...grpc.CallOption) (*ListPublicIpAddressesCmdByAdminResponse, error)
+	// ListQuarantinedIps List public IP addresses in quarantine.
+	ListQuarantinedIps(ctx context.Context, in *ListQuarantinedIpsRequest, opts ...grpc.CallOption) (*ListQuarantinedIpsResponse, error)
 	// ReleaseIPAddr Releases an IP address from the account.
 	ReleaseIPAddr(ctx context.Context, in *ReleaseIPAddrRequest, opts ...grpc.CallOption) (*ReleaseIPAddrResponse, error)
+	// ReleasePodIpCmdByAdmin Releases a Pod IP back to the Pod
+	ReleasePodIpCmdByAdmin(ctx context.Context, in *ReleasePodIpCmdByAdminRequest, opts ...grpc.CallOption) (*ReleasePodIpCmdByAdminResponse, error)
+	// RemoveQuarantinedIp Removes a public IP address from quarantine. Only IPs in active quarantine can be removed.
+	RemoveQuarantinedIp(ctx context.Context, in *RemoveQuarantinedIpRequest, opts ...grpc.CallOption) (*RemoveQuarantinedIpResponse, error)
+	// ReserveIPAddr Reserve a public IP to an account.
+	ReserveIPAddr(ctx context.Context, in *ReserveIPAddrRequest, opts ...grpc.CallOption) (*ReserveIPAddrResponse, error)
+	// UpdateIPAddr Updates an IP address
+	UpdateIPAddr(ctx context.Context, in *UpdateIPAddrRequest, opts ...grpc.CallOption) (*UpdateIPAddrResponse, error)
+	// UpdateQuarantinedIp Updates the quarantine end date for the given public IP address.
+	UpdateQuarantinedIp(ctx context.Context, in *UpdateQuarantinedIpRequest, opts ...grpc.CallOption) (*UpdateQuarantinedIpResponse, error)
 }
 
 type addressServiceClient struct {
@@ -73,10 +76,10 @@ func NewAddressServiceClient(cc grpc.ClientConnInterface) AddressServiceClient {
 	return &addressServiceClient{cc}
 }
 
-func (c *addressServiceClient) AssociateIPAddrCmdByAdmin(ctx context.Context, in *AssociateIPAddrCmdByAdminRequest, opts ...grpc.CallOption) (*AssociateIPAddrCmdByAdminResponse, error) {
+func (c *addressServiceClient) AcquirePodIpCmdByAdmin(ctx context.Context, in *AcquirePodIpCmdByAdminRequest, opts ...grpc.CallOption) (*AcquirePodIpCmdByAdminResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AssociateIPAddrCmdByAdminResponse)
-	err := c.cc.Invoke(ctx, AddressService_AssociateIPAddrCmdByAdmin_FullMethodName, in, out, cOpts...)
+	out := new(AcquirePodIpCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, AddressService_AcquirePodIpCmdByAdmin_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -93,80 +96,10 @@ func (c *addressServiceClient) AssociateIPAddr(ctx context.Context, in *Associat
 	return out, nil
 }
 
-func (c *addressServiceClient) ListPublicIpAddresses(ctx context.Context, in *ListPublicIpAddressesRequest, opts ...grpc.CallOption) (*ListPublicIpAddressesResponse, error) {
+func (c *addressServiceClient) AssociateIPAddrCmdByAdmin(ctx context.Context, in *AssociateIPAddrCmdByAdminRequest, opts ...grpc.CallOption) (*AssociateIPAddrCmdByAdminResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListPublicIpAddressesResponse)
-	err := c.cc.Invoke(ctx, AddressService_ListPublicIpAddresses_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *addressServiceClient) AcquirePodIpCmdByAdmin(ctx context.Context, in *AcquirePodIpCmdByAdminRequest, opts ...grpc.CallOption) (*AcquirePodIpCmdByAdminResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AcquirePodIpCmdByAdminResponse)
-	err := c.cc.Invoke(ctx, AddressService_AcquirePodIpCmdByAdmin_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *addressServiceClient) RemoveQuarantinedIp(ctx context.Context, in *RemoveQuarantinedIpRequest, opts ...grpc.CallOption) (*RemoveQuarantinedIpResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RemoveQuarantinedIpResponse)
-	err := c.cc.Invoke(ctx, AddressService_RemoveQuarantinedIp_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *addressServiceClient) UpdateQuarantinedIp(ctx context.Context, in *UpdateQuarantinedIpRequest, opts ...grpc.CallOption) (*UpdateQuarantinedIpResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateQuarantinedIpResponse)
-	err := c.cc.Invoke(ctx, AddressService_UpdateQuarantinedIp_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *addressServiceClient) ReleasePodIpCmdByAdmin(ctx context.Context, in *ReleasePodIpCmdByAdminRequest, opts ...grpc.CallOption) (*ReleasePodIpCmdByAdminResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ReleasePodIpCmdByAdminResponse)
-	err := c.cc.Invoke(ctx, AddressService_ReleasePodIpCmdByAdmin_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *addressServiceClient) UpdateIPAddr(ctx context.Context, in *UpdateIPAddrRequest, opts ...grpc.CallOption) (*UpdateIPAddrResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateIPAddrResponse)
-	err := c.cc.Invoke(ctx, AddressService_UpdateIPAddr_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *addressServiceClient) ListQuarantinedIps(ctx context.Context, in *ListQuarantinedIpsRequest, opts ...grpc.CallOption) (*ListQuarantinedIpsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListQuarantinedIpsResponse)
-	err := c.cc.Invoke(ctx, AddressService_ListQuarantinedIps_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *addressServiceClient) ReserveIPAddr(ctx context.Context, in *ReserveIPAddrRequest, opts ...grpc.CallOption) (*ReserveIPAddrResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ReserveIPAddrResponse)
-	err := c.cc.Invoke(ctx, AddressService_ReserveIPAddr_FullMethodName, in, out, cOpts...)
+	out := new(AssociateIPAddrCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, AddressService_AssociateIPAddrCmdByAdmin_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -183,10 +116,90 @@ func (c *addressServiceClient) DisassociateIPAddr(ctx context.Context, in *Disas
 	return out, nil
 }
 
+func (c *addressServiceClient) ListPublicIpAddresses(ctx context.Context, in *ListPublicIpAddressesRequest, opts ...grpc.CallOption) (*ListPublicIpAddressesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListPublicIpAddressesResponse)
+	err := c.cc.Invoke(ctx, AddressService_ListPublicIpAddresses_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *addressServiceClient) ListPublicIpAddressesCmdByAdmin(ctx context.Context, in *ListPublicIpAddressesCmdByAdminRequest, opts ...grpc.CallOption) (*ListPublicIpAddressesCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListPublicIpAddressesCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, AddressService_ListPublicIpAddressesCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *addressServiceClient) ListQuarantinedIps(ctx context.Context, in *ListQuarantinedIpsRequest, opts ...grpc.CallOption) (*ListQuarantinedIpsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListQuarantinedIpsResponse)
+	err := c.cc.Invoke(ctx, AddressService_ListQuarantinedIps_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *addressServiceClient) ReleaseIPAddr(ctx context.Context, in *ReleaseIPAddrRequest, opts ...grpc.CallOption) (*ReleaseIPAddrResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ReleaseIPAddrResponse)
 	err := c.cc.Invoke(ctx, AddressService_ReleaseIPAddr_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *addressServiceClient) ReleasePodIpCmdByAdmin(ctx context.Context, in *ReleasePodIpCmdByAdminRequest, opts ...grpc.CallOption) (*ReleasePodIpCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ReleasePodIpCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, AddressService_ReleasePodIpCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *addressServiceClient) RemoveQuarantinedIp(ctx context.Context, in *RemoveQuarantinedIpRequest, opts ...grpc.CallOption) (*RemoveQuarantinedIpResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RemoveQuarantinedIpResponse)
+	err := c.cc.Invoke(ctx, AddressService_RemoveQuarantinedIp_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *addressServiceClient) ReserveIPAddr(ctx context.Context, in *ReserveIPAddrRequest, opts ...grpc.CallOption) (*ReserveIPAddrResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ReserveIPAddrResponse)
+	err := c.cc.Invoke(ctx, AddressService_ReserveIPAddr_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *addressServiceClient) UpdateIPAddr(ctx context.Context, in *UpdateIPAddrRequest, opts ...grpc.CallOption) (*UpdateIPAddrResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateIPAddrResponse)
+	err := c.cc.Invoke(ctx, AddressService_UpdateIPAddr_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *addressServiceClient) UpdateQuarantinedIp(ctx context.Context, in *UpdateQuarantinedIpRequest, opts ...grpc.CallOption) (*UpdateQuarantinedIpResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateQuarantinedIpResponse)
+	err := c.cc.Invoke(ctx, AddressService_UpdateQuarantinedIp_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -199,30 +212,32 @@ func (c *addressServiceClient) ReleaseIPAddr(ctx context.Context, in *ReleaseIPA
 //
 // AddressService provides operations for managing Addresss
 type AddressServiceServer interface {
-	// AssociateIPAddrCmdByAdmin Acquires and associates a public IP to an account.
-	AssociateIPAddrCmdByAdmin(context.Context, *AssociateIPAddrCmdByAdminRequest) (*AssociateIPAddrCmdByAdminResponse, error)
-	// AssociateIPAddr Acquires and associates a public IP to an account. Either of the parameters are required, i.e. either zoneId, or networkId, or vpcId
-	AssociateIPAddr(context.Context, *AssociateIPAddrRequest) (*AssociateIPAddrResponse, error)
-	// ListPublicIpAddresses Lists all public IP addresses
-	ListPublicIpAddresses(context.Context, *ListPublicIpAddressesRequest) (*ListPublicIpAddressesResponse, error)
 	// AcquirePodIpCmdByAdmin Allocates IP addresses in respective Pod of a Zone
 	AcquirePodIpCmdByAdmin(context.Context, *AcquirePodIpCmdByAdminRequest) (*AcquirePodIpCmdByAdminResponse, error)
-	// RemoveQuarantinedIp Removes a public IP address from quarantine. Only IPs in active quarantine can be removed.
-	RemoveQuarantinedIp(context.Context, *RemoveQuarantinedIpRequest) (*RemoveQuarantinedIpResponse, error)
-	// UpdateQuarantinedIp Updates the quarantine end date for the given public IP address.
-	UpdateQuarantinedIp(context.Context, *UpdateQuarantinedIpRequest) (*UpdateQuarantinedIpResponse, error)
-	// ReleasePodIpCmdByAdmin Releases a Pod IP back to the Pod
-	ReleasePodIpCmdByAdmin(context.Context, *ReleasePodIpCmdByAdminRequest) (*ReleasePodIpCmdByAdminResponse, error)
-	// UpdateIPAddr Updates an IP address
-	UpdateIPAddr(context.Context, *UpdateIPAddrRequest) (*UpdateIPAddrResponse, error)
-	// ListQuarantinedIps List public IP addresses in quarantine.
-	ListQuarantinedIps(context.Context, *ListQuarantinedIpsRequest) (*ListQuarantinedIpsResponse, error)
-	// ReserveIPAddr Reserve a public IP to an account.
-	ReserveIPAddr(context.Context, *ReserveIPAddrRequest) (*ReserveIPAddrResponse, error)
+	// AssociateIPAddr Acquires and associates a public IP to an account. Either of the parameters are required, i.e. either zoneId, or networkId, or vpcId
+	AssociateIPAddr(context.Context, *AssociateIPAddrRequest) (*AssociateIPAddrResponse, error)
+	// AssociateIPAddrCmdByAdmin Acquires and associates a public IP to an account.
+	AssociateIPAddrCmdByAdmin(context.Context, *AssociateIPAddrCmdByAdminRequest) (*AssociateIPAddrCmdByAdminResponse, error)
 	// DisassociateIPAddr Disassociates an IP address from the account.
 	DisassociateIPAddr(context.Context, *DisassociateIPAddrRequest) (*DisassociateIPAddrResponse, error)
+	// ListPublicIpAddresses Lists all public IP addresses
+	ListPublicIpAddresses(context.Context, *ListPublicIpAddressesRequest) (*ListPublicIpAddressesResponse, error)
+	// ListPublicIpAddressesCmdByAdmin Lists all public ip addresses
+	ListPublicIpAddressesCmdByAdmin(context.Context, *ListPublicIpAddressesCmdByAdminRequest) (*ListPublicIpAddressesCmdByAdminResponse, error)
+	// ListQuarantinedIps List public IP addresses in quarantine.
+	ListQuarantinedIps(context.Context, *ListQuarantinedIpsRequest) (*ListQuarantinedIpsResponse, error)
 	// ReleaseIPAddr Releases an IP address from the account.
 	ReleaseIPAddr(context.Context, *ReleaseIPAddrRequest) (*ReleaseIPAddrResponse, error)
+	// ReleasePodIpCmdByAdmin Releases a Pod IP back to the Pod
+	ReleasePodIpCmdByAdmin(context.Context, *ReleasePodIpCmdByAdminRequest) (*ReleasePodIpCmdByAdminResponse, error)
+	// RemoveQuarantinedIp Removes a public IP address from quarantine. Only IPs in active quarantine can be removed.
+	RemoveQuarantinedIp(context.Context, *RemoveQuarantinedIpRequest) (*RemoveQuarantinedIpResponse, error)
+	// ReserveIPAddr Reserve a public IP to an account.
+	ReserveIPAddr(context.Context, *ReserveIPAddrRequest) (*ReserveIPAddrResponse, error)
+	// UpdateIPAddr Updates an IP address
+	UpdateIPAddr(context.Context, *UpdateIPAddrRequest) (*UpdateIPAddrResponse, error)
+	// UpdateQuarantinedIp Updates the quarantine end date for the given public IP address.
+	UpdateQuarantinedIp(context.Context, *UpdateQuarantinedIpRequest) (*UpdateQuarantinedIpResponse, error)
 	mustEmbedUnimplementedAddressServiceServer()
 }
 
@@ -233,41 +248,44 @@ type AddressServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedAddressServiceServer struct{}
 
-func (UnimplementedAddressServiceServer) AssociateIPAddrCmdByAdmin(context.Context, *AssociateIPAddrCmdByAdminRequest) (*AssociateIPAddrCmdByAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AssociateIPAddrCmdByAdmin not implemented")
+func (UnimplementedAddressServiceServer) AcquirePodIpCmdByAdmin(context.Context, *AcquirePodIpCmdByAdminRequest) (*AcquirePodIpCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AcquirePodIpCmdByAdmin not implemented")
 }
 func (UnimplementedAddressServiceServer) AssociateIPAddr(context.Context, *AssociateIPAddrRequest) (*AssociateIPAddrResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AssociateIPAddr not implemented")
 }
-func (UnimplementedAddressServiceServer) ListPublicIpAddresses(context.Context, *ListPublicIpAddressesRequest) (*ListPublicIpAddressesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListPublicIpAddresses not implemented")
-}
-func (UnimplementedAddressServiceServer) AcquirePodIpCmdByAdmin(context.Context, *AcquirePodIpCmdByAdminRequest) (*AcquirePodIpCmdByAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AcquirePodIpCmdByAdmin not implemented")
-}
-func (UnimplementedAddressServiceServer) RemoveQuarantinedIp(context.Context, *RemoveQuarantinedIpRequest) (*RemoveQuarantinedIpResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RemoveQuarantinedIp not implemented")
-}
-func (UnimplementedAddressServiceServer) UpdateQuarantinedIp(context.Context, *UpdateQuarantinedIpRequest) (*UpdateQuarantinedIpResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateQuarantinedIp not implemented")
-}
-func (UnimplementedAddressServiceServer) ReleasePodIpCmdByAdmin(context.Context, *ReleasePodIpCmdByAdminRequest) (*ReleasePodIpCmdByAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ReleasePodIpCmdByAdmin not implemented")
-}
-func (UnimplementedAddressServiceServer) UpdateIPAddr(context.Context, *UpdateIPAddrRequest) (*UpdateIPAddrResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateIPAddr not implemented")
-}
-func (UnimplementedAddressServiceServer) ListQuarantinedIps(context.Context, *ListQuarantinedIpsRequest) (*ListQuarantinedIpsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListQuarantinedIps not implemented")
-}
-func (UnimplementedAddressServiceServer) ReserveIPAddr(context.Context, *ReserveIPAddrRequest) (*ReserveIPAddrResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ReserveIPAddr not implemented")
+func (UnimplementedAddressServiceServer) AssociateIPAddrCmdByAdmin(context.Context, *AssociateIPAddrCmdByAdminRequest) (*AssociateIPAddrCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AssociateIPAddrCmdByAdmin not implemented")
 }
 func (UnimplementedAddressServiceServer) DisassociateIPAddr(context.Context, *DisassociateIPAddrRequest) (*DisassociateIPAddrResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DisassociateIPAddr not implemented")
 }
+func (UnimplementedAddressServiceServer) ListPublicIpAddresses(context.Context, *ListPublicIpAddressesRequest) (*ListPublicIpAddressesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListPublicIpAddresses not implemented")
+}
+func (UnimplementedAddressServiceServer) ListPublicIpAddressesCmdByAdmin(context.Context, *ListPublicIpAddressesCmdByAdminRequest) (*ListPublicIpAddressesCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListPublicIpAddressesCmdByAdmin not implemented")
+}
+func (UnimplementedAddressServiceServer) ListQuarantinedIps(context.Context, *ListQuarantinedIpsRequest) (*ListQuarantinedIpsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListQuarantinedIps not implemented")
+}
 func (UnimplementedAddressServiceServer) ReleaseIPAddr(context.Context, *ReleaseIPAddrRequest) (*ReleaseIPAddrResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ReleaseIPAddr not implemented")
+}
+func (UnimplementedAddressServiceServer) ReleasePodIpCmdByAdmin(context.Context, *ReleasePodIpCmdByAdminRequest) (*ReleasePodIpCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReleasePodIpCmdByAdmin not implemented")
+}
+func (UnimplementedAddressServiceServer) RemoveQuarantinedIp(context.Context, *RemoveQuarantinedIpRequest) (*RemoveQuarantinedIpResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveQuarantinedIp not implemented")
+}
+func (UnimplementedAddressServiceServer) ReserveIPAddr(context.Context, *ReserveIPAddrRequest) (*ReserveIPAddrResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReserveIPAddr not implemented")
+}
+func (UnimplementedAddressServiceServer) UpdateIPAddr(context.Context, *UpdateIPAddrRequest) (*UpdateIPAddrResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateIPAddr not implemented")
+}
+func (UnimplementedAddressServiceServer) UpdateQuarantinedIp(context.Context, *UpdateQuarantinedIpRequest) (*UpdateQuarantinedIpResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateQuarantinedIp not implemented")
 }
 func (UnimplementedAddressServiceServer) mustEmbedUnimplementedAddressServiceServer() {}
 func (UnimplementedAddressServiceServer) testEmbeddedByValue()                        {}
@@ -290,20 +308,20 @@ func RegisterAddressServiceServer(s grpc.ServiceRegistrar, srv AddressServiceSer
 	s.RegisterService(&AddressService_ServiceDesc, srv)
 }
 
-func _AddressService_AssociateIPAddrCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AssociateIPAddrCmdByAdminRequest)
+func _AddressService_AcquirePodIpCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AcquirePodIpCmdByAdminRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AddressServiceServer).AssociateIPAddrCmdByAdmin(ctx, in)
+		return srv.(AddressServiceServer).AcquirePodIpCmdByAdmin(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: AddressService_AssociateIPAddrCmdByAdmin_FullMethodName,
+		FullMethod: AddressService_AcquirePodIpCmdByAdmin_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AddressServiceServer).AssociateIPAddrCmdByAdmin(ctx, req.(*AssociateIPAddrCmdByAdminRequest))
+		return srv.(AddressServiceServer).AcquirePodIpCmdByAdmin(ctx, req.(*AcquirePodIpCmdByAdminRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -326,146 +344,20 @@ func _AddressService_AssociateIPAddr_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AddressService_ListPublicIpAddresses_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListPublicIpAddressesRequest)
+func _AddressService_AssociateIPAddrCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AssociateIPAddrCmdByAdminRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AddressServiceServer).ListPublicIpAddresses(ctx, in)
+		return srv.(AddressServiceServer).AssociateIPAddrCmdByAdmin(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: AddressService_ListPublicIpAddresses_FullMethodName,
+		FullMethod: AddressService_AssociateIPAddrCmdByAdmin_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AddressServiceServer).ListPublicIpAddresses(ctx, req.(*ListPublicIpAddressesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AddressService_AcquirePodIpCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AcquirePodIpCmdByAdminRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AddressServiceServer).AcquirePodIpCmdByAdmin(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AddressService_AcquirePodIpCmdByAdmin_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AddressServiceServer).AcquirePodIpCmdByAdmin(ctx, req.(*AcquirePodIpCmdByAdminRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AddressService_RemoveQuarantinedIp_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RemoveQuarantinedIpRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AddressServiceServer).RemoveQuarantinedIp(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AddressService_RemoveQuarantinedIp_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AddressServiceServer).RemoveQuarantinedIp(ctx, req.(*RemoveQuarantinedIpRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AddressService_UpdateQuarantinedIp_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateQuarantinedIpRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AddressServiceServer).UpdateQuarantinedIp(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AddressService_UpdateQuarantinedIp_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AddressServiceServer).UpdateQuarantinedIp(ctx, req.(*UpdateQuarantinedIpRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AddressService_ReleasePodIpCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ReleasePodIpCmdByAdminRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AddressServiceServer).ReleasePodIpCmdByAdmin(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AddressService_ReleasePodIpCmdByAdmin_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AddressServiceServer).ReleasePodIpCmdByAdmin(ctx, req.(*ReleasePodIpCmdByAdminRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AddressService_UpdateIPAddr_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateIPAddrRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AddressServiceServer).UpdateIPAddr(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AddressService_UpdateIPAddr_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AddressServiceServer).UpdateIPAddr(ctx, req.(*UpdateIPAddrRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AddressService_ListQuarantinedIps_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListQuarantinedIpsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AddressServiceServer).ListQuarantinedIps(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AddressService_ListQuarantinedIps_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AddressServiceServer).ListQuarantinedIps(ctx, req.(*ListQuarantinedIpsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AddressService_ReserveIPAddr_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ReserveIPAddrRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AddressServiceServer).ReserveIPAddr(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AddressService_ReserveIPAddr_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AddressServiceServer).ReserveIPAddr(ctx, req.(*ReserveIPAddrRequest))
+		return srv.(AddressServiceServer).AssociateIPAddrCmdByAdmin(ctx, req.(*AssociateIPAddrCmdByAdminRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -488,6 +380,60 @@ func _AddressService_DisassociateIPAddr_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AddressService_ListPublicIpAddresses_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListPublicIpAddressesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AddressServiceServer).ListPublicIpAddresses(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AddressService_ListPublicIpAddresses_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AddressServiceServer).ListPublicIpAddresses(ctx, req.(*ListPublicIpAddressesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AddressService_ListPublicIpAddressesCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListPublicIpAddressesCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AddressServiceServer).ListPublicIpAddressesCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AddressService_ListPublicIpAddressesCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AddressServiceServer).ListPublicIpAddressesCmdByAdmin(ctx, req.(*ListPublicIpAddressesCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AddressService_ListQuarantinedIps_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListQuarantinedIpsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AddressServiceServer).ListQuarantinedIps(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AddressService_ListQuarantinedIps_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AddressServiceServer).ListQuarantinedIps(ctx, req.(*ListQuarantinedIpsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _AddressService_ReleaseIPAddr_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReleaseIPAddrRequest)
 	if err := dec(in); err != nil {
@@ -506,6 +452,96 @@ func _AddressService_ReleaseIPAddr_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AddressService_ReleasePodIpCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReleasePodIpCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AddressServiceServer).ReleasePodIpCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AddressService_ReleasePodIpCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AddressServiceServer).ReleasePodIpCmdByAdmin(ctx, req.(*ReleasePodIpCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AddressService_RemoveQuarantinedIp_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveQuarantinedIpRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AddressServiceServer).RemoveQuarantinedIp(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AddressService_RemoveQuarantinedIp_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AddressServiceServer).RemoveQuarantinedIp(ctx, req.(*RemoveQuarantinedIpRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AddressService_ReserveIPAddr_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReserveIPAddrRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AddressServiceServer).ReserveIPAddr(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AddressService_ReserveIPAddr_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AddressServiceServer).ReserveIPAddr(ctx, req.(*ReserveIPAddrRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AddressService_UpdateIPAddr_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateIPAddrRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AddressServiceServer).UpdateIPAddr(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AddressService_UpdateIPAddr_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AddressServiceServer).UpdateIPAddr(ctx, req.(*UpdateIPAddrRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AddressService_UpdateQuarantinedIp_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateQuarantinedIpRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AddressServiceServer).UpdateQuarantinedIp(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AddressService_UpdateQuarantinedIp_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AddressServiceServer).UpdateQuarantinedIp(ctx, req.(*UpdateQuarantinedIpRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AddressService_ServiceDesc is the grpc.ServiceDesc for AddressService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -514,52 +550,56 @@ var AddressService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*AddressServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "AssociateIPAddrCmdByAdmin",
-			Handler:    _AddressService_AssociateIPAddrCmdByAdmin_Handler,
+			MethodName: "AcquirePodIpCmdByAdmin",
+			Handler:    _AddressService_AcquirePodIpCmdByAdmin_Handler,
 		},
 		{
 			MethodName: "AssociateIPAddr",
 			Handler:    _AddressService_AssociateIPAddr_Handler,
 		},
 		{
-			MethodName: "ListPublicIpAddresses",
-			Handler:    _AddressService_ListPublicIpAddresses_Handler,
-		},
-		{
-			MethodName: "AcquirePodIpCmdByAdmin",
-			Handler:    _AddressService_AcquirePodIpCmdByAdmin_Handler,
-		},
-		{
-			MethodName: "RemoveQuarantinedIp",
-			Handler:    _AddressService_RemoveQuarantinedIp_Handler,
-		},
-		{
-			MethodName: "UpdateQuarantinedIp",
-			Handler:    _AddressService_UpdateQuarantinedIp_Handler,
-		},
-		{
-			MethodName: "ReleasePodIpCmdByAdmin",
-			Handler:    _AddressService_ReleasePodIpCmdByAdmin_Handler,
-		},
-		{
-			MethodName: "UpdateIPAddr",
-			Handler:    _AddressService_UpdateIPAddr_Handler,
-		},
-		{
-			MethodName: "ListQuarantinedIps",
-			Handler:    _AddressService_ListQuarantinedIps_Handler,
-		},
-		{
-			MethodName: "ReserveIPAddr",
-			Handler:    _AddressService_ReserveIPAddr_Handler,
+			MethodName: "AssociateIPAddrCmdByAdmin",
+			Handler:    _AddressService_AssociateIPAddrCmdByAdmin_Handler,
 		},
 		{
 			MethodName: "DisassociateIPAddr",
 			Handler:    _AddressService_DisassociateIPAddr_Handler,
 		},
 		{
+			MethodName: "ListPublicIpAddresses",
+			Handler:    _AddressService_ListPublicIpAddresses_Handler,
+		},
+		{
+			MethodName: "ListPublicIpAddressesCmdByAdmin",
+			Handler:    _AddressService_ListPublicIpAddressesCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "ListQuarantinedIps",
+			Handler:    _AddressService_ListQuarantinedIps_Handler,
+		},
+		{
 			MethodName: "ReleaseIPAddr",
 			Handler:    _AddressService_ReleaseIPAddr_Handler,
+		},
+		{
+			MethodName: "ReleasePodIpCmdByAdmin",
+			Handler:    _AddressService_ReleasePodIpCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "RemoveQuarantinedIp",
+			Handler:    _AddressService_RemoveQuarantinedIp_Handler,
+		},
+		{
+			MethodName: "ReserveIPAddr",
+			Handler:    _AddressService_ReserveIPAddr_Handler,
+		},
+		{
+			MethodName: "UpdateIPAddr",
+			Handler:    _AddressService_UpdateIPAddr_Handler,
+		},
+		{
+			MethodName: "UpdateQuarantinedIp",
+			Handler:    _AddressService_UpdateQuarantinedIp_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

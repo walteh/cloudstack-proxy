@@ -33,51 +33,51 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
+	// ProjectServiceCreateProjectRoleProcedure is the fully-qualified name of the ProjectService's
+	// CreateProjectRole RPC.
+	ProjectServiceCreateProjectRoleProcedure = "/cloudstack.management.acl.project.v1.ProjectService/CreateProjectRole"
 	// ProjectServiceCreateProjectRolePermissionProcedure is the fully-qualified name of the
 	// ProjectService's CreateProjectRolePermission RPC.
 	ProjectServiceCreateProjectRolePermissionProcedure = "/cloudstack.management.acl.project.v1.ProjectService/CreateProjectRolePermission"
 	// ProjectServiceDeleteProjectRoleProcedure is the fully-qualified name of the ProjectService's
 	// DeleteProjectRole RPC.
 	ProjectServiceDeleteProjectRoleProcedure = "/cloudstack.management.acl.project.v1.ProjectService/DeleteProjectRole"
-	// ProjectServiceListProjectRolePermissionsProcedure is the fully-qualified name of the
-	// ProjectService's ListProjectRolePermissions RPC.
-	ProjectServiceListProjectRolePermissionsProcedure = "/cloudstack.management.acl.project.v1.ProjectService/ListProjectRolePermissions"
 	// ProjectServiceDeleteProjectRolePermissionProcedure is the fully-qualified name of the
 	// ProjectService's DeleteProjectRolePermission RPC.
 	ProjectServiceDeleteProjectRolePermissionProcedure = "/cloudstack.management.acl.project.v1.ProjectService/DeleteProjectRolePermission"
-	// ProjectServiceUpdateProjectRolePermissionProcedure is the fully-qualified name of the
-	// ProjectService's UpdateProjectRolePermission RPC.
-	ProjectServiceUpdateProjectRolePermissionProcedure = "/cloudstack.management.acl.project.v1.ProjectService/UpdateProjectRolePermission"
-	// ProjectServiceUpdateProjectRoleProcedure is the fully-qualified name of the ProjectService's
-	// UpdateProjectRole RPC.
-	ProjectServiceUpdateProjectRoleProcedure = "/cloudstack.management.acl.project.v1.ProjectService/UpdateProjectRole"
+	// ProjectServiceListProjectRolePermissionsProcedure is the fully-qualified name of the
+	// ProjectService's ListProjectRolePermissions RPC.
+	ProjectServiceListProjectRolePermissionsProcedure = "/cloudstack.management.acl.project.v1.ProjectService/ListProjectRolePermissions"
 	// ProjectServiceListProjectRolesProcedure is the fully-qualified name of the ProjectService's
 	// ListProjectRoles RPC.
 	ProjectServiceListProjectRolesProcedure = "/cloudstack.management.acl.project.v1.ProjectService/ListProjectRoles"
-	// ProjectServiceCreateProjectRoleProcedure is the fully-qualified name of the ProjectService's
-	// CreateProjectRole RPC.
-	ProjectServiceCreateProjectRoleProcedure = "/cloudstack.management.acl.project.v1.ProjectService/CreateProjectRole"
+	// ProjectServiceUpdateProjectRoleProcedure is the fully-qualified name of the ProjectService's
+	// UpdateProjectRole RPC.
+	ProjectServiceUpdateProjectRoleProcedure = "/cloudstack.management.acl.project.v1.ProjectService/UpdateProjectRole"
+	// ProjectServiceUpdateProjectRolePermissionProcedure is the fully-qualified name of the
+	// ProjectService's UpdateProjectRolePermission RPC.
+	ProjectServiceUpdateProjectRolePermissionProcedure = "/cloudstack.management.acl.project.v1.ProjectService/UpdateProjectRolePermission"
 )
 
 // ProjectServiceClient is a client for the cloudstack.management.acl.project.v1.ProjectService
 // service.
 type ProjectServiceClient interface {
+	// CreateProjectRole Creates a Project role
+	CreateProjectRole(context.Context, *connect.Request[v1.CreateProjectRoleRequest]) (*connect.Response[v1.CreateProjectRoleResponse], error)
 	// CreateProjectRolePermission Adds API permissions to a project role
 	CreateProjectRolePermission(context.Context, *connect.Request[v1.CreateProjectRolePermissionRequest]) (*connect.Response[v1.CreateProjectRolePermissionResponse], error)
 	// DeleteProjectRole Delete Project roles in CloudStack
 	DeleteProjectRole(context.Context, *connect.Request[v1.DeleteProjectRoleRequest]) (*connect.Response[v1.DeleteProjectRoleResponse], error)
-	// ListProjectRolePermissions Lists a project's project role permissions
-	ListProjectRolePermissions(context.Context, *connect.Request[v1.ListProjectRolePermissionsRequest]) (*connect.Response[v1.ListProjectRolePermissionsResponse], error)
 	// DeleteProjectRolePermission Deletes a project role permission in the project
 	DeleteProjectRolePermission(context.Context, *connect.Request[v1.DeleteProjectRolePermissionRequest]) (*connect.Response[v1.DeleteProjectRolePermissionResponse], error)
-	// UpdateProjectRolePermission Updates a project role permission and/or order
-	UpdateProjectRolePermission(context.Context, *connect.Request[v1.UpdateProjectRolePermissionRequest]) (*connect.Response[v1.UpdateProjectRolePermissionResponse], error)
-	// UpdateProjectRole Creates a Project role
-	UpdateProjectRole(context.Context, *connect.Request[v1.UpdateProjectRoleRequest]) (*connect.Response[v1.UpdateProjectRoleResponse], error)
+	// ListProjectRolePermissions Lists a project's project role permissions
+	ListProjectRolePermissions(context.Context, *connect.Request[v1.ListProjectRolePermissionsRequest]) (*connect.Response[v1.ListProjectRolePermissionsResponse], error)
 	// ListProjectRoles Lists Project roles in CloudStack
 	ListProjectRoles(context.Context, *connect.Request[v1.ListProjectRolesRequest]) (*connect.Response[v1.ListProjectRolesResponse], error)
-	// CreateProjectRole Creates a Project role
-	CreateProjectRole(context.Context, *connect.Request[v1.CreateProjectRoleRequest]) (*connect.Response[v1.CreateProjectRoleResponse], error)
+	// UpdateProjectRole Creates a Project role
+	UpdateProjectRole(context.Context, *connect.Request[v1.UpdateProjectRoleRequest]) (*connect.Response[v1.UpdateProjectRoleResponse], error)
+	// UpdateProjectRolePermission Updates a project role permission and/or order
+	UpdateProjectRolePermission(context.Context, *connect.Request[v1.UpdateProjectRolePermissionRequest]) (*connect.Response[v1.UpdateProjectRolePermissionResponse], error)
 }
 
 // NewProjectServiceClient constructs a client for the
@@ -92,6 +92,12 @@ func NewProjectServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 	baseURL = strings.TrimRight(baseURL, "/")
 	projectServiceMethods := v1.File_cloudstack_management_acl_project_v1_project_gen_proto.Services().ByName("ProjectService").Methods()
 	return &projectServiceClient{
+		createProjectRole: connect.NewClient[v1.CreateProjectRoleRequest, v1.CreateProjectRoleResponse](
+			httpClient,
+			baseURL+ProjectServiceCreateProjectRoleProcedure,
+			connect.WithSchema(projectServiceMethods.ByName("CreateProjectRole")),
+			connect.WithClientOptions(opts...),
+		),
 		createProjectRolePermission: connect.NewClient[v1.CreateProjectRolePermissionRequest, v1.CreateProjectRolePermissionResponse](
 			httpClient,
 			baseURL+ProjectServiceCreateProjectRolePermissionProcedure,
@@ -104,28 +110,16 @@ func NewProjectServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(projectServiceMethods.ByName("DeleteProjectRole")),
 			connect.WithClientOptions(opts...),
 		),
-		listProjectRolePermissions: connect.NewClient[v1.ListProjectRolePermissionsRequest, v1.ListProjectRolePermissionsResponse](
-			httpClient,
-			baseURL+ProjectServiceListProjectRolePermissionsProcedure,
-			connect.WithSchema(projectServiceMethods.ByName("ListProjectRolePermissions")),
-			connect.WithClientOptions(opts...),
-		),
 		deleteProjectRolePermission: connect.NewClient[v1.DeleteProjectRolePermissionRequest, v1.DeleteProjectRolePermissionResponse](
 			httpClient,
 			baseURL+ProjectServiceDeleteProjectRolePermissionProcedure,
 			connect.WithSchema(projectServiceMethods.ByName("DeleteProjectRolePermission")),
 			connect.WithClientOptions(opts...),
 		),
-		updateProjectRolePermission: connect.NewClient[v1.UpdateProjectRolePermissionRequest, v1.UpdateProjectRolePermissionResponse](
+		listProjectRolePermissions: connect.NewClient[v1.ListProjectRolePermissionsRequest, v1.ListProjectRolePermissionsResponse](
 			httpClient,
-			baseURL+ProjectServiceUpdateProjectRolePermissionProcedure,
-			connect.WithSchema(projectServiceMethods.ByName("UpdateProjectRolePermission")),
-			connect.WithClientOptions(opts...),
-		),
-		updateProjectRole: connect.NewClient[v1.UpdateProjectRoleRequest, v1.UpdateProjectRoleResponse](
-			httpClient,
-			baseURL+ProjectServiceUpdateProjectRoleProcedure,
-			connect.WithSchema(projectServiceMethods.ByName("UpdateProjectRole")),
+			baseURL+ProjectServiceListProjectRolePermissionsProcedure,
+			connect.WithSchema(projectServiceMethods.ByName("ListProjectRolePermissions")),
 			connect.WithClientOptions(opts...),
 		),
 		listProjectRoles: connect.NewClient[v1.ListProjectRolesRequest, v1.ListProjectRolesResponse](
@@ -134,10 +128,16 @@ func NewProjectServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(projectServiceMethods.ByName("ListProjectRoles")),
 			connect.WithClientOptions(opts...),
 		),
-		createProjectRole: connect.NewClient[v1.CreateProjectRoleRequest, v1.CreateProjectRoleResponse](
+		updateProjectRole: connect.NewClient[v1.UpdateProjectRoleRequest, v1.UpdateProjectRoleResponse](
 			httpClient,
-			baseURL+ProjectServiceCreateProjectRoleProcedure,
-			connect.WithSchema(projectServiceMethods.ByName("CreateProjectRole")),
+			baseURL+ProjectServiceUpdateProjectRoleProcedure,
+			connect.WithSchema(projectServiceMethods.ByName("UpdateProjectRole")),
+			connect.WithClientOptions(opts...),
+		),
+		updateProjectRolePermission: connect.NewClient[v1.UpdateProjectRolePermissionRequest, v1.UpdateProjectRolePermissionResponse](
+			httpClient,
+			baseURL+ProjectServiceUpdateProjectRolePermissionProcedure,
+			connect.WithSchema(projectServiceMethods.ByName("UpdateProjectRolePermission")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -145,14 +145,19 @@ func NewProjectServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 
 // projectServiceClient implements ProjectServiceClient.
 type projectServiceClient struct {
+	createProjectRole           *connect.Client[v1.CreateProjectRoleRequest, v1.CreateProjectRoleResponse]
 	createProjectRolePermission *connect.Client[v1.CreateProjectRolePermissionRequest, v1.CreateProjectRolePermissionResponse]
 	deleteProjectRole           *connect.Client[v1.DeleteProjectRoleRequest, v1.DeleteProjectRoleResponse]
-	listProjectRolePermissions  *connect.Client[v1.ListProjectRolePermissionsRequest, v1.ListProjectRolePermissionsResponse]
 	deleteProjectRolePermission *connect.Client[v1.DeleteProjectRolePermissionRequest, v1.DeleteProjectRolePermissionResponse]
-	updateProjectRolePermission *connect.Client[v1.UpdateProjectRolePermissionRequest, v1.UpdateProjectRolePermissionResponse]
-	updateProjectRole           *connect.Client[v1.UpdateProjectRoleRequest, v1.UpdateProjectRoleResponse]
+	listProjectRolePermissions  *connect.Client[v1.ListProjectRolePermissionsRequest, v1.ListProjectRolePermissionsResponse]
 	listProjectRoles            *connect.Client[v1.ListProjectRolesRequest, v1.ListProjectRolesResponse]
-	createProjectRole           *connect.Client[v1.CreateProjectRoleRequest, v1.CreateProjectRoleResponse]
+	updateProjectRole           *connect.Client[v1.UpdateProjectRoleRequest, v1.UpdateProjectRoleResponse]
+	updateProjectRolePermission *connect.Client[v1.UpdateProjectRolePermissionRequest, v1.UpdateProjectRolePermissionResponse]
+}
+
+// CreateProjectRole calls cloudstack.management.acl.project.v1.ProjectService.CreateProjectRole.
+func (c *projectServiceClient) CreateProjectRole(ctx context.Context, req *connect.Request[v1.CreateProjectRoleRequest]) (*connect.Response[v1.CreateProjectRoleResponse], error) {
+	return c.createProjectRole.CallUnary(ctx, req)
 }
 
 // CreateProjectRolePermission calls
@@ -166,16 +171,26 @@ func (c *projectServiceClient) DeleteProjectRole(ctx context.Context, req *conne
 	return c.deleteProjectRole.CallUnary(ctx, req)
 }
 
+// DeleteProjectRolePermission calls
+// cloudstack.management.acl.project.v1.ProjectService.DeleteProjectRolePermission.
+func (c *projectServiceClient) DeleteProjectRolePermission(ctx context.Context, req *connect.Request[v1.DeleteProjectRolePermissionRequest]) (*connect.Response[v1.DeleteProjectRolePermissionResponse], error) {
+	return c.deleteProjectRolePermission.CallUnary(ctx, req)
+}
+
 // ListProjectRolePermissions calls
 // cloudstack.management.acl.project.v1.ProjectService.ListProjectRolePermissions.
 func (c *projectServiceClient) ListProjectRolePermissions(ctx context.Context, req *connect.Request[v1.ListProjectRolePermissionsRequest]) (*connect.Response[v1.ListProjectRolePermissionsResponse], error) {
 	return c.listProjectRolePermissions.CallUnary(ctx, req)
 }
 
-// DeleteProjectRolePermission calls
-// cloudstack.management.acl.project.v1.ProjectService.DeleteProjectRolePermission.
-func (c *projectServiceClient) DeleteProjectRolePermission(ctx context.Context, req *connect.Request[v1.DeleteProjectRolePermissionRequest]) (*connect.Response[v1.DeleteProjectRolePermissionResponse], error) {
-	return c.deleteProjectRolePermission.CallUnary(ctx, req)
+// ListProjectRoles calls cloudstack.management.acl.project.v1.ProjectService.ListProjectRoles.
+func (c *projectServiceClient) ListProjectRoles(ctx context.Context, req *connect.Request[v1.ListProjectRolesRequest]) (*connect.Response[v1.ListProjectRolesResponse], error) {
+	return c.listProjectRoles.CallUnary(ctx, req)
+}
+
+// UpdateProjectRole calls cloudstack.management.acl.project.v1.ProjectService.UpdateProjectRole.
+func (c *projectServiceClient) UpdateProjectRole(ctx context.Context, req *connect.Request[v1.UpdateProjectRoleRequest]) (*connect.Response[v1.UpdateProjectRoleResponse], error) {
+	return c.updateProjectRole.CallUnary(ctx, req)
 }
 
 // UpdateProjectRolePermission calls
@@ -184,40 +199,25 @@ func (c *projectServiceClient) UpdateProjectRolePermission(ctx context.Context, 
 	return c.updateProjectRolePermission.CallUnary(ctx, req)
 }
 
-// UpdateProjectRole calls cloudstack.management.acl.project.v1.ProjectService.UpdateProjectRole.
-func (c *projectServiceClient) UpdateProjectRole(ctx context.Context, req *connect.Request[v1.UpdateProjectRoleRequest]) (*connect.Response[v1.UpdateProjectRoleResponse], error) {
-	return c.updateProjectRole.CallUnary(ctx, req)
-}
-
-// ListProjectRoles calls cloudstack.management.acl.project.v1.ProjectService.ListProjectRoles.
-func (c *projectServiceClient) ListProjectRoles(ctx context.Context, req *connect.Request[v1.ListProjectRolesRequest]) (*connect.Response[v1.ListProjectRolesResponse], error) {
-	return c.listProjectRoles.CallUnary(ctx, req)
-}
-
-// CreateProjectRole calls cloudstack.management.acl.project.v1.ProjectService.CreateProjectRole.
-func (c *projectServiceClient) CreateProjectRole(ctx context.Context, req *connect.Request[v1.CreateProjectRoleRequest]) (*connect.Response[v1.CreateProjectRoleResponse], error) {
-	return c.createProjectRole.CallUnary(ctx, req)
-}
-
 // ProjectServiceHandler is an implementation of the
 // cloudstack.management.acl.project.v1.ProjectService service.
 type ProjectServiceHandler interface {
+	// CreateProjectRole Creates a Project role
+	CreateProjectRole(context.Context, *connect.Request[v1.CreateProjectRoleRequest]) (*connect.Response[v1.CreateProjectRoleResponse], error)
 	// CreateProjectRolePermission Adds API permissions to a project role
 	CreateProjectRolePermission(context.Context, *connect.Request[v1.CreateProjectRolePermissionRequest]) (*connect.Response[v1.CreateProjectRolePermissionResponse], error)
 	// DeleteProjectRole Delete Project roles in CloudStack
 	DeleteProjectRole(context.Context, *connect.Request[v1.DeleteProjectRoleRequest]) (*connect.Response[v1.DeleteProjectRoleResponse], error)
-	// ListProjectRolePermissions Lists a project's project role permissions
-	ListProjectRolePermissions(context.Context, *connect.Request[v1.ListProjectRolePermissionsRequest]) (*connect.Response[v1.ListProjectRolePermissionsResponse], error)
 	// DeleteProjectRolePermission Deletes a project role permission in the project
 	DeleteProjectRolePermission(context.Context, *connect.Request[v1.DeleteProjectRolePermissionRequest]) (*connect.Response[v1.DeleteProjectRolePermissionResponse], error)
-	// UpdateProjectRolePermission Updates a project role permission and/or order
-	UpdateProjectRolePermission(context.Context, *connect.Request[v1.UpdateProjectRolePermissionRequest]) (*connect.Response[v1.UpdateProjectRolePermissionResponse], error)
-	// UpdateProjectRole Creates a Project role
-	UpdateProjectRole(context.Context, *connect.Request[v1.UpdateProjectRoleRequest]) (*connect.Response[v1.UpdateProjectRoleResponse], error)
+	// ListProjectRolePermissions Lists a project's project role permissions
+	ListProjectRolePermissions(context.Context, *connect.Request[v1.ListProjectRolePermissionsRequest]) (*connect.Response[v1.ListProjectRolePermissionsResponse], error)
 	// ListProjectRoles Lists Project roles in CloudStack
 	ListProjectRoles(context.Context, *connect.Request[v1.ListProjectRolesRequest]) (*connect.Response[v1.ListProjectRolesResponse], error)
-	// CreateProjectRole Creates a Project role
-	CreateProjectRole(context.Context, *connect.Request[v1.CreateProjectRoleRequest]) (*connect.Response[v1.CreateProjectRoleResponse], error)
+	// UpdateProjectRole Creates a Project role
+	UpdateProjectRole(context.Context, *connect.Request[v1.UpdateProjectRoleRequest]) (*connect.Response[v1.UpdateProjectRoleResponse], error)
+	// UpdateProjectRolePermission Updates a project role permission and/or order
+	UpdateProjectRolePermission(context.Context, *connect.Request[v1.UpdateProjectRolePermissionRequest]) (*connect.Response[v1.UpdateProjectRolePermissionResponse], error)
 }
 
 // NewProjectServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -227,6 +227,12 @@ type ProjectServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewProjectServiceHandler(svc ProjectServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	projectServiceMethods := v1.File_cloudstack_management_acl_project_v1_project_gen_proto.Services().ByName("ProjectService").Methods()
+	projectServiceCreateProjectRoleHandler := connect.NewUnaryHandler(
+		ProjectServiceCreateProjectRoleProcedure,
+		svc.CreateProjectRole,
+		connect.WithSchema(projectServiceMethods.ByName("CreateProjectRole")),
+		connect.WithHandlerOptions(opts...),
+	)
 	projectServiceCreateProjectRolePermissionHandler := connect.NewUnaryHandler(
 		ProjectServiceCreateProjectRolePermissionProcedure,
 		svc.CreateProjectRolePermission,
@@ -239,28 +245,16 @@ func NewProjectServiceHandler(svc ProjectServiceHandler, opts ...connect.Handler
 		connect.WithSchema(projectServiceMethods.ByName("DeleteProjectRole")),
 		connect.WithHandlerOptions(opts...),
 	)
-	projectServiceListProjectRolePermissionsHandler := connect.NewUnaryHandler(
-		ProjectServiceListProjectRolePermissionsProcedure,
-		svc.ListProjectRolePermissions,
-		connect.WithSchema(projectServiceMethods.ByName("ListProjectRolePermissions")),
-		connect.WithHandlerOptions(opts...),
-	)
 	projectServiceDeleteProjectRolePermissionHandler := connect.NewUnaryHandler(
 		ProjectServiceDeleteProjectRolePermissionProcedure,
 		svc.DeleteProjectRolePermission,
 		connect.WithSchema(projectServiceMethods.ByName("DeleteProjectRolePermission")),
 		connect.WithHandlerOptions(opts...),
 	)
-	projectServiceUpdateProjectRolePermissionHandler := connect.NewUnaryHandler(
-		ProjectServiceUpdateProjectRolePermissionProcedure,
-		svc.UpdateProjectRolePermission,
-		connect.WithSchema(projectServiceMethods.ByName("UpdateProjectRolePermission")),
-		connect.WithHandlerOptions(opts...),
-	)
-	projectServiceUpdateProjectRoleHandler := connect.NewUnaryHandler(
-		ProjectServiceUpdateProjectRoleProcedure,
-		svc.UpdateProjectRole,
-		connect.WithSchema(projectServiceMethods.ByName("UpdateProjectRole")),
+	projectServiceListProjectRolePermissionsHandler := connect.NewUnaryHandler(
+		ProjectServiceListProjectRolePermissionsProcedure,
+		svc.ListProjectRolePermissions,
+		connect.WithSchema(projectServiceMethods.ByName("ListProjectRolePermissions")),
 		connect.WithHandlerOptions(opts...),
 	)
 	projectServiceListProjectRolesHandler := connect.NewUnaryHandler(
@@ -269,30 +263,36 @@ func NewProjectServiceHandler(svc ProjectServiceHandler, opts ...connect.Handler
 		connect.WithSchema(projectServiceMethods.ByName("ListProjectRoles")),
 		connect.WithHandlerOptions(opts...),
 	)
-	projectServiceCreateProjectRoleHandler := connect.NewUnaryHandler(
-		ProjectServiceCreateProjectRoleProcedure,
-		svc.CreateProjectRole,
-		connect.WithSchema(projectServiceMethods.ByName("CreateProjectRole")),
+	projectServiceUpdateProjectRoleHandler := connect.NewUnaryHandler(
+		ProjectServiceUpdateProjectRoleProcedure,
+		svc.UpdateProjectRole,
+		connect.WithSchema(projectServiceMethods.ByName("UpdateProjectRole")),
+		connect.WithHandlerOptions(opts...),
+	)
+	projectServiceUpdateProjectRolePermissionHandler := connect.NewUnaryHandler(
+		ProjectServiceUpdateProjectRolePermissionProcedure,
+		svc.UpdateProjectRolePermission,
+		connect.WithSchema(projectServiceMethods.ByName("UpdateProjectRolePermission")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/cloudstack.management.acl.project.v1.ProjectService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
+		case ProjectServiceCreateProjectRoleProcedure:
+			projectServiceCreateProjectRoleHandler.ServeHTTP(w, r)
 		case ProjectServiceCreateProjectRolePermissionProcedure:
 			projectServiceCreateProjectRolePermissionHandler.ServeHTTP(w, r)
 		case ProjectServiceDeleteProjectRoleProcedure:
 			projectServiceDeleteProjectRoleHandler.ServeHTTP(w, r)
-		case ProjectServiceListProjectRolePermissionsProcedure:
-			projectServiceListProjectRolePermissionsHandler.ServeHTTP(w, r)
 		case ProjectServiceDeleteProjectRolePermissionProcedure:
 			projectServiceDeleteProjectRolePermissionHandler.ServeHTTP(w, r)
-		case ProjectServiceUpdateProjectRolePermissionProcedure:
-			projectServiceUpdateProjectRolePermissionHandler.ServeHTTP(w, r)
-		case ProjectServiceUpdateProjectRoleProcedure:
-			projectServiceUpdateProjectRoleHandler.ServeHTTP(w, r)
+		case ProjectServiceListProjectRolePermissionsProcedure:
+			projectServiceListProjectRolePermissionsHandler.ServeHTTP(w, r)
 		case ProjectServiceListProjectRolesProcedure:
 			projectServiceListProjectRolesHandler.ServeHTTP(w, r)
-		case ProjectServiceCreateProjectRoleProcedure:
-			projectServiceCreateProjectRoleHandler.ServeHTTP(w, r)
+		case ProjectServiceUpdateProjectRoleProcedure:
+			projectServiceUpdateProjectRoleHandler.ServeHTTP(w, r)
+		case ProjectServiceUpdateProjectRolePermissionProcedure:
+			projectServiceUpdateProjectRolePermissionHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -302,6 +302,10 @@ func NewProjectServiceHandler(svc ProjectServiceHandler, opts ...connect.Handler
 // UnimplementedProjectServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedProjectServiceHandler struct{}
 
+func (UnimplementedProjectServiceHandler) CreateProjectRole(context.Context, *connect.Request[v1.CreateProjectRoleRequest]) (*connect.Response[v1.CreateProjectRoleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.acl.project.v1.ProjectService.CreateProjectRole is not implemented"))
+}
+
 func (UnimplementedProjectServiceHandler) CreateProjectRolePermission(context.Context, *connect.Request[v1.CreateProjectRolePermissionRequest]) (*connect.Response[v1.CreateProjectRolePermissionResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.acl.project.v1.ProjectService.CreateProjectRolePermission is not implemented"))
 }
@@ -310,26 +314,22 @@ func (UnimplementedProjectServiceHandler) DeleteProjectRole(context.Context, *co
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.acl.project.v1.ProjectService.DeleteProjectRole is not implemented"))
 }
 
-func (UnimplementedProjectServiceHandler) ListProjectRolePermissions(context.Context, *connect.Request[v1.ListProjectRolePermissionsRequest]) (*connect.Response[v1.ListProjectRolePermissionsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.acl.project.v1.ProjectService.ListProjectRolePermissions is not implemented"))
-}
-
 func (UnimplementedProjectServiceHandler) DeleteProjectRolePermission(context.Context, *connect.Request[v1.DeleteProjectRolePermissionRequest]) (*connect.Response[v1.DeleteProjectRolePermissionResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.acl.project.v1.ProjectService.DeleteProjectRolePermission is not implemented"))
 }
 
-func (UnimplementedProjectServiceHandler) UpdateProjectRolePermission(context.Context, *connect.Request[v1.UpdateProjectRolePermissionRequest]) (*connect.Response[v1.UpdateProjectRolePermissionResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.acl.project.v1.ProjectService.UpdateProjectRolePermission is not implemented"))
-}
-
-func (UnimplementedProjectServiceHandler) UpdateProjectRole(context.Context, *connect.Request[v1.UpdateProjectRoleRequest]) (*connect.Response[v1.UpdateProjectRoleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.acl.project.v1.ProjectService.UpdateProjectRole is not implemented"))
+func (UnimplementedProjectServiceHandler) ListProjectRolePermissions(context.Context, *connect.Request[v1.ListProjectRolePermissionsRequest]) (*connect.Response[v1.ListProjectRolePermissionsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.acl.project.v1.ProjectService.ListProjectRolePermissions is not implemented"))
 }
 
 func (UnimplementedProjectServiceHandler) ListProjectRoles(context.Context, *connect.Request[v1.ListProjectRolesRequest]) (*connect.Response[v1.ListProjectRolesResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.acl.project.v1.ProjectService.ListProjectRoles is not implemented"))
 }
 
-func (UnimplementedProjectServiceHandler) CreateProjectRole(context.Context, *connect.Request[v1.CreateProjectRoleRequest]) (*connect.Response[v1.CreateProjectRoleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.acl.project.v1.ProjectService.CreateProjectRole is not implemented"))
+func (UnimplementedProjectServiceHandler) UpdateProjectRole(context.Context, *connect.Request[v1.UpdateProjectRoleRequest]) (*connect.Response[v1.UpdateProjectRoleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.acl.project.v1.ProjectService.UpdateProjectRole is not implemented"))
+}
+
+func (UnimplementedProjectServiceHandler) UpdateProjectRolePermission(context.Context, *connect.Request[v1.UpdateProjectRolePermissionRequest]) (*connect.Response[v1.UpdateProjectRolePermissionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.acl.project.v1.ProjectService.UpdateProjectRolePermission is not implemented"))
 }

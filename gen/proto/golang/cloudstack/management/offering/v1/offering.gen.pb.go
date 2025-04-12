@@ -30,27 +30,27 @@ type ProvisioningType int32
 const (
 	// Default unspecified value
 	ProvisioningType_PROVISIONING_TYPE_UNSPECIFIED ProvisioningType = 0
-	// THIN value
-	ProvisioningType_PROVISIONING_TYPE_THIN ProvisioningType = 1
+	// FAT value
+	ProvisioningType_PROVISIONING_TYPE_FAT ProvisioningType = 1
 	// SPARSE value
 	ProvisioningType_PROVISIONING_TYPE_SPARSE ProvisioningType = 2
-	// FAT value
-	ProvisioningType_PROVISIONING_TYPE_FAT ProvisioningType = 3
+	// THIN value
+	ProvisioningType_PROVISIONING_TYPE_THIN ProvisioningType = 3
 )
 
 // Enum value maps for ProvisioningType.
 var (
 	ProvisioningType_name = map[int32]string{
 		0: "PROVISIONING_TYPE_UNSPECIFIED",
-		1: "PROVISIONING_TYPE_THIN",
+		1: "PROVISIONING_TYPE_FAT",
 		2: "PROVISIONING_TYPE_SPARSE",
-		3: "PROVISIONING_TYPE_FAT",
+		3: "PROVISIONING_TYPE_THIN",
 	}
 	ProvisioningType_value = map[string]int32{
 		"PROVISIONING_TYPE_UNSPECIFIED": 0,
-		"PROVISIONING_TYPE_THIN":        1,
+		"PROVISIONING_TYPE_FAT":         1,
 		"PROVISIONING_TYPE_SPARSE":      2,
-		"PROVISIONING_TYPE_FAT":         3,
+		"PROVISIONING_TYPE_THIN":        3,
 	}
 )
 
@@ -79,257 +79,6 @@ func (x ProvisioningType) Number() protoreflect.EnumNumber {
 // Deprecated: Use ProvisioningType.Descriptor instead.
 func (ProvisioningType) EnumDescriptor() ([]byte, []int) {
 	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{0}
-}
-
-// ListDiskOfferingsRequest represents the parameters for lists all available disk offerings.
-type ListDiskOfferingsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the disk offering
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// name of the disk offering
-	DiskOfferingName *string `protobuf:"bytes,2,opt,name=disk_offering_name,json=diskOfferingName" json:"disk_offering_name,omitempty"`
-	// id of zone disk offering is associated with
-	ZoneId *int64 `protobuf:"varint,3,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// The ID of the volume, tags of the volume are used to filter the offerings
-	VolumeId *int64 `protobuf:"varint,4,opt,name=volume_id,json=volumeId" json:"volume_id,omitempty"`
-	// The ID of the storage pool, tags of the storage pool are used to filter the offerings
-	StoragePoolId *int64 `protobuf:"varint,5,opt,name=storage_pool_id,json=storagePoolId" json:"storage_pool_id,omitempty"`
-	// listed offerings support disk encryption
-	Encrypt *bool `protobuf:"varint,6,opt,name=encrypt" json:"encrypt,omitempty"`
-	// the storage type of the service offering. Values are local and shared.
-	StorageType *string `protobuf:"bytes,7,opt,name=storage_type,json=storageType" json:"storage_type,omitempty"`
-	// Filter by state of the disk offering. Defaults to 'Active'. If set to 'all' shows both Active & Inactive offerings.
-	DiskOfferingState *string `protobuf:"bytes,8,opt,name=disk_offering_state,json=diskOfferingState" json:"disk_offering_state,omitempty"`
-	// The ID of a virtual machine. Pass this in if you want to see the suitable disk offering that can be used to create and add a disk to the virtual machine. Suitability is returned with suitableforvirtualmachine flag in the response
-	VirtualMachineId *int64 `protobuf:"varint,9,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
-	// list objects by project; if projectid=-1 lists All VMs
-	ProjectId *int64 `protobuf:"varint,10,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// list resources by account. Must be used with the domainId parameter.
-	AccountName *string `protobuf:"bytes,11,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	ListAll *bool `protobuf:"varint,12,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
-	// list only resources belonging to the domain specified
-	DomainId *int64 `protobuf:"varint,13,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	Recursive *bool `protobuf:"varint,14,opt,name=recursive" json:"recursive,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,15,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,16,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,17,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,18,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListDiskOfferingsRequest) Reset() {
-	*x = ListDiskOfferingsRequest{}
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListDiskOfferingsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListDiskOfferingsRequest) ProtoMessage() {}
-
-func (x *ListDiskOfferingsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListDiskOfferingsRequest.ProtoReflect.Descriptor instead.
-func (*ListDiskOfferingsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *ListDiskOfferingsRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListDiskOfferingsRequest) GetDiskOfferingName() string {
-	if x != nil && x.DiskOfferingName != nil {
-		return *x.DiskOfferingName
-	}
-	return ""
-}
-
-func (x *ListDiskOfferingsRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ListDiskOfferingsRequest) GetVolumeId() int64 {
-	if x != nil && x.VolumeId != nil {
-		return *x.VolumeId
-	}
-	return 0
-}
-
-func (x *ListDiskOfferingsRequest) GetStoragePoolId() int64 {
-	if x != nil && x.StoragePoolId != nil {
-		return *x.StoragePoolId
-	}
-	return 0
-}
-
-func (x *ListDiskOfferingsRequest) GetEncrypt() bool {
-	if x != nil && x.Encrypt != nil {
-		return *x.Encrypt
-	}
-	return false
-}
-
-func (x *ListDiskOfferingsRequest) GetStorageType() string {
-	if x != nil && x.StorageType != nil {
-		return *x.StorageType
-	}
-	return ""
-}
-
-func (x *ListDiskOfferingsRequest) GetDiskOfferingState() string {
-	if x != nil && x.DiskOfferingState != nil {
-		return *x.DiskOfferingState
-	}
-	return ""
-}
-
-func (x *ListDiskOfferingsRequest) GetVirtualMachineId() int64 {
-	if x != nil && x.VirtualMachineId != nil {
-		return *x.VirtualMachineId
-	}
-	return 0
-}
-
-func (x *ListDiskOfferingsRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *ListDiskOfferingsRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *ListDiskOfferingsRequest) GetListAll() bool {
-	if x != nil && x.ListAll != nil {
-		return *x.ListAll
-	}
-	return false
-}
-
-func (x *ListDiskOfferingsRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ListDiskOfferingsRequest) GetRecursive() bool {
-	if x != nil && x.Recursive != nil {
-		return *x.Recursive
-	}
-	return false
-}
-
-func (x *ListDiskOfferingsRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListDiskOfferingsRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListDiskOfferingsRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListDiskOfferingsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListDiskOfferingsResponse represents the response from lists all available disk offerings.
-type ListDiskOfferingsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of DiskOfferings
-	Items []*DiskOffering `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of DiskOfferings
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListDiskOfferingsResponse) Reset() {
-	*x = ListDiskOfferingsResponse{}
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListDiskOfferingsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListDiskOfferingsResponse) ProtoMessage() {}
-
-func (x *ListDiskOfferingsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListDiskOfferingsResponse.ProtoReflect.Descriptor instead.
-func (*ListDiskOfferingsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *ListDiskOfferingsResponse) GetItems() []*DiskOffering {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListDiskOfferingsResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
 }
 
 // CreateDiskOfferingRequest represents the parameters for creates a disk offering.
@@ -404,7 +153,7 @@ type CreateDiskOfferingRequest struct {
 
 func (x *CreateDiskOfferingRequest) Reset() {
 	*x = CreateDiskOfferingRequest{}
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -416,7 +165,7 @@ func (x *CreateDiskOfferingRequest) String() string {
 func (*CreateDiskOfferingRequest) ProtoMessage() {}
 
 func (x *CreateDiskOfferingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -429,7 +178,7 @@ func (x *CreateDiskOfferingRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateDiskOfferingRequest.ProtoReflect.Descriptor instead.
 func (*CreateDiskOfferingRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{2}
+	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *CreateDiskOfferingRequest) GetDiskSize() int64 {
@@ -667,7 +416,7 @@ type CreateDiskOfferingResponse struct {
 
 func (x *CreateDiskOfferingResponse) Reset() {
 	*x = CreateDiskOfferingResponse{}
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -679,7 +428,7 @@ func (x *CreateDiskOfferingResponse) String() string {
 func (*CreateDiskOfferingResponse) ProtoMessage() {}
 
 func (x *CreateDiskOfferingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -692,210 +441,10 @@ func (x *CreateDiskOfferingResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateDiskOfferingResponse.ProtoReflect.Descriptor instead.
 func (*CreateDiskOfferingResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{3}
+	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *CreateDiskOfferingResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteDiskOfferingRequest represents the parameters for updates a disk offering.
-type DeleteDiskOfferingRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the disk offering
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteDiskOfferingRequest) Reset() {
-	*x = DeleteDiskOfferingRequest{}
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteDiskOfferingRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteDiskOfferingRequest) ProtoMessage() {}
-
-func (x *DeleteDiskOfferingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteDiskOfferingRequest.ProtoReflect.Descriptor instead.
-func (*DeleteDiskOfferingRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *DeleteDiskOfferingRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteDiskOfferingRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteDiskOfferingResponse represents the response from updates a disk offering.
-type DeleteDiskOfferingResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteDiskOfferingResponse) Reset() {
-	*x = DeleteDiskOfferingResponse{}
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteDiskOfferingResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteDiskOfferingResponse) ProtoMessage() {}
-
-func (x *DeleteDiskOfferingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteDiskOfferingResponse.ProtoReflect.Descriptor instead.
-func (*DeleteDiskOfferingResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *DeleteDiskOfferingResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteServiceOfferingRequest represents the parameters for deletes a service offering.
-type DeleteServiceOfferingRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the service offering
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteServiceOfferingRequest) Reset() {
-	*x = DeleteServiceOfferingRequest{}
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteServiceOfferingRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteServiceOfferingRequest) ProtoMessage() {}
-
-func (x *DeleteServiceOfferingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteServiceOfferingRequest.ProtoReflect.Descriptor instead.
-func (*DeleteServiceOfferingRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *DeleteServiceOfferingRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteServiceOfferingRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteServiceOfferingResponse represents the response from deletes a service offering.
-type DeleteServiceOfferingResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteServiceOfferingResponse) Reset() {
-	*x = DeleteServiceOfferingResponse{}
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteServiceOfferingResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteServiceOfferingResponse) ProtoMessage() {}
-
-func (x *DeleteServiceOfferingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteServiceOfferingResponse.ProtoReflect.Descriptor instead.
-func (*DeleteServiceOfferingResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *DeleteServiceOfferingResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1009,7 +558,7 @@ type CreateServiceOfferingRequest struct {
 
 func (x *CreateServiceOfferingRequest) Reset() {
 	*x = CreateServiceOfferingRequest{}
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[8]
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1021,7 +570,7 @@ func (x *CreateServiceOfferingRequest) String() string {
 func (*CreateServiceOfferingRequest) ProtoMessage() {}
 
 func (x *CreateServiceOfferingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[8]
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1034,7 +583,7 @@ func (x *CreateServiceOfferingRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateServiceOfferingRequest.ProtoReflect.Descriptor instead.
 func (*CreateServiceOfferingRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{8}
+	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *CreateServiceOfferingRequest) GetCpuNumber() int32 {
@@ -1391,7 +940,7 @@ type CreateServiceOfferingResponse struct {
 
 func (x *CreateServiceOfferingResponse) Reset() {
 	*x = CreateServiceOfferingResponse{}
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1403,7 +952,7 @@ func (x *CreateServiceOfferingResponse) String() string {
 func (*CreateServiceOfferingResponse) ProtoMessage() {}
 
 func (x *CreateServiceOfferingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1416,10 +965,210 @@ func (x *CreateServiceOfferingResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateServiceOfferingResponse.ProtoReflect.Descriptor instead.
 func (*CreateServiceOfferingResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{9}
+	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *CreateServiceOfferingResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteDiskOfferingRequest represents the parameters for updates a disk offering.
+type DeleteDiskOfferingRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of the disk offering
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteDiskOfferingRequest) Reset() {
+	*x = DeleteDiskOfferingRequest{}
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteDiskOfferingRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteDiskOfferingRequest) ProtoMessage() {}
+
+func (x *DeleteDiskOfferingRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteDiskOfferingRequest.ProtoReflect.Descriptor instead.
+func (*DeleteDiskOfferingRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *DeleteDiskOfferingRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteDiskOfferingRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteDiskOfferingResponse represents the response from updates a disk offering.
+type DeleteDiskOfferingResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteDiskOfferingResponse) Reset() {
+	*x = DeleteDiskOfferingResponse{}
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteDiskOfferingResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteDiskOfferingResponse) ProtoMessage() {}
+
+func (x *DeleteDiskOfferingResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteDiskOfferingResponse.ProtoReflect.Descriptor instead.
+func (*DeleteDiskOfferingResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *DeleteDiskOfferingResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteServiceOfferingRequest represents the parameters for deletes a service offering.
+type DeleteServiceOfferingRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the service offering
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteServiceOfferingRequest) Reset() {
+	*x = DeleteServiceOfferingRequest{}
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteServiceOfferingRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteServiceOfferingRequest) ProtoMessage() {}
+
+func (x *DeleteServiceOfferingRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteServiceOfferingRequest.ProtoReflect.Descriptor instead.
+func (*DeleteServiceOfferingRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *DeleteServiceOfferingRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteServiceOfferingRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteServiceOfferingResponse represents the response from deletes a service offering.
+type DeleteServiceOfferingResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteServiceOfferingResponse) Reset() {
+	*x = DeleteServiceOfferingResponse{}
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteServiceOfferingResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteServiceOfferingResponse) ProtoMessage() {}
+
+func (x *DeleteServiceOfferingResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteServiceOfferingResponse.ProtoReflect.Descriptor instead.
+func (*DeleteServiceOfferingResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *DeleteServiceOfferingResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1438,7 +1187,7 @@ type IsAccountAllowedToCreateOfferingsWithTagsRequest struct {
 
 func (x *IsAccountAllowedToCreateOfferingsWithTagsRequest) Reset() {
 	*x = IsAccountAllowedToCreateOfferingsWithTagsRequest{}
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[10]
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1450,7 +1199,7 @@ func (x *IsAccountAllowedToCreateOfferingsWithTagsRequest) String() string {
 func (*IsAccountAllowedToCreateOfferingsWithTagsRequest) ProtoMessage() {}
 
 func (x *IsAccountAllowedToCreateOfferingsWithTagsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[10]
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1463,7 +1212,7 @@ func (x *IsAccountAllowedToCreateOfferingsWithTagsRequest) ProtoReflect() protor
 
 // Deprecated: Use IsAccountAllowedToCreateOfferingsWithTagsRequest.ProtoReflect.Descriptor instead.
 func (*IsAccountAllowedToCreateOfferingsWithTagsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{10}
+	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *IsAccountAllowedToCreateOfferingsWithTagsRequest) GetId() int64 {
@@ -1491,7 +1240,7 @@ type IsAccountAllowedToCreateOfferingsWithTagsResponse struct {
 
 func (x *IsAccountAllowedToCreateOfferingsWithTagsResponse) Reset() {
 	*x = IsAccountAllowedToCreateOfferingsWithTagsResponse{}
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1503,7 +1252,7 @@ func (x *IsAccountAllowedToCreateOfferingsWithTagsResponse) String() string {
 func (*IsAccountAllowedToCreateOfferingsWithTagsResponse) ProtoMessage() {}
 
 func (x *IsAccountAllowedToCreateOfferingsWithTagsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1516,7 +1265,7 @@ func (x *IsAccountAllowedToCreateOfferingsWithTagsResponse) ProtoReflect() proto
 
 // Deprecated: Use IsAccountAllowedToCreateOfferingsWithTagsResponse.ProtoReflect.Descriptor instead.
 func (*IsAccountAllowedToCreateOfferingsWithTagsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{11}
+	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *IsAccountAllowedToCreateOfferingsWithTagsResponse) GetResult() *Result {
@@ -1524,6 +1273,257 @@ func (x *IsAccountAllowedToCreateOfferingsWithTagsResponse) GetResult() *Result 
 		return x.Result
 	}
 	return nil
+}
+
+// ListDiskOfferingsRequest represents the parameters for lists all available disk offerings.
+type ListDiskOfferingsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of the disk offering
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// name of the disk offering
+	DiskOfferingName *string `protobuf:"bytes,2,opt,name=disk_offering_name,json=diskOfferingName" json:"disk_offering_name,omitempty"`
+	// id of zone disk offering is associated with
+	ZoneId *int64 `protobuf:"varint,3,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// The ID of the volume, tags of the volume are used to filter the offerings
+	VolumeId *int64 `protobuf:"varint,4,opt,name=volume_id,json=volumeId" json:"volume_id,omitempty"`
+	// The ID of the storage pool, tags of the storage pool are used to filter the offerings
+	StoragePoolId *int64 `protobuf:"varint,5,opt,name=storage_pool_id,json=storagePoolId" json:"storage_pool_id,omitempty"`
+	// listed offerings support disk encryption
+	Encrypt *bool `protobuf:"varint,6,opt,name=encrypt" json:"encrypt,omitempty"`
+	// the storage type of the service offering. Values are local and shared.
+	StorageType *string `protobuf:"bytes,7,opt,name=storage_type,json=storageType" json:"storage_type,omitempty"`
+	// Filter by state of the disk offering. Defaults to 'Active'. If set to 'all' shows both Active & Inactive offerings.
+	DiskOfferingState *string `protobuf:"bytes,8,opt,name=disk_offering_state,json=diskOfferingState" json:"disk_offering_state,omitempty"`
+	// The ID of a virtual machine. Pass this in if you want to see the suitable disk offering that can be used to create and add a disk to the virtual machine. Suitability is returned with suitableforvirtualmachine flag in the response
+	VirtualMachineId *int64 `protobuf:"varint,9,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
+	// list objects by project; if projectid=-1 lists All VMs
+	ProjectId *int64 `protobuf:"varint,10,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// list resources by account. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,11,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	ListAll *bool `protobuf:"varint,12,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
+	// list only resources belonging to the domain specified
+	DomainId *int64 `protobuf:"varint,13,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	Recursive *bool `protobuf:"varint,14,opt,name=recursive" json:"recursive,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,15,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,16,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,17,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,18,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListDiskOfferingsRequest) Reset() {
+	*x = ListDiskOfferingsRequest{}
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListDiskOfferingsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListDiskOfferingsRequest) ProtoMessage() {}
+
+func (x *ListDiskOfferingsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListDiskOfferingsRequest.ProtoReflect.Descriptor instead.
+func (*ListDiskOfferingsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *ListDiskOfferingsRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListDiskOfferingsRequest) GetDiskOfferingName() string {
+	if x != nil && x.DiskOfferingName != nil {
+		return *x.DiskOfferingName
+	}
+	return ""
+}
+
+func (x *ListDiskOfferingsRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ListDiskOfferingsRequest) GetVolumeId() int64 {
+	if x != nil && x.VolumeId != nil {
+		return *x.VolumeId
+	}
+	return 0
+}
+
+func (x *ListDiskOfferingsRequest) GetStoragePoolId() int64 {
+	if x != nil && x.StoragePoolId != nil {
+		return *x.StoragePoolId
+	}
+	return 0
+}
+
+func (x *ListDiskOfferingsRequest) GetEncrypt() bool {
+	if x != nil && x.Encrypt != nil {
+		return *x.Encrypt
+	}
+	return false
+}
+
+func (x *ListDiskOfferingsRequest) GetStorageType() string {
+	if x != nil && x.StorageType != nil {
+		return *x.StorageType
+	}
+	return ""
+}
+
+func (x *ListDiskOfferingsRequest) GetDiskOfferingState() string {
+	if x != nil && x.DiskOfferingState != nil {
+		return *x.DiskOfferingState
+	}
+	return ""
+}
+
+func (x *ListDiskOfferingsRequest) GetVirtualMachineId() int64 {
+	if x != nil && x.VirtualMachineId != nil {
+		return *x.VirtualMachineId
+	}
+	return 0
+}
+
+func (x *ListDiskOfferingsRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *ListDiskOfferingsRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *ListDiskOfferingsRequest) GetListAll() bool {
+	if x != nil && x.ListAll != nil {
+		return *x.ListAll
+	}
+	return false
+}
+
+func (x *ListDiskOfferingsRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ListDiskOfferingsRequest) GetRecursive() bool {
+	if x != nil && x.Recursive != nil {
+		return *x.Recursive
+	}
+	return false
+}
+
+func (x *ListDiskOfferingsRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListDiskOfferingsRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListDiskOfferingsRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListDiskOfferingsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListDiskOfferingsResponse represents the response from lists all available disk offerings.
+type ListDiskOfferingsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of DiskOfferings
+	Items []*DiskOffering `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of DiskOfferings
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListDiskOfferingsResponse) Reset() {
+	*x = ListDiskOfferingsResponse{}
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListDiskOfferingsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListDiskOfferingsResponse) ProtoMessage() {}
+
+func (x *ListDiskOfferingsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListDiskOfferingsResponse.ProtoReflect.Descriptor instead.
+func (*ListDiskOfferingsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *ListDiskOfferingsResponse) GetItems() []*DiskOffering {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListDiskOfferingsResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
 }
 
 // ListServiceOfferingsRequest represents the parameters for lists all available service offerings.
@@ -1813,187 +1813,6 @@ func (x *ListServiceOfferingsResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// UpdateServiceOfferingRequest represents the parameters for updates a service offering.
-type UpdateServiceOfferingRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the service offering to be updated
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the display text of the service offering to be updated
-	DisplayText *string `protobuf:"bytes,2,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
-	// the name of the service offering to be updated
-	ServiceOfferingName *string `protobuf:"bytes,3,opt,name=service_offering_name,json=serviceOfferingName" json:"service_offering_name,omitempty"`
-	// sort key of the service offering, integer
-	SortKey *int32 `protobuf:"varint,4,opt,name=sort_key,json=sortKey" json:"sort_key,omitempty"`
-	// the ID of the containing domain(s) as comma separated string, public for public offerings
-	DomainIds *string `protobuf:"bytes,5,opt,name=domain_ids,json=domainIds" json:"domain_ids,omitempty"`
-	// the ID of the containing zone(s) as comma separated string, all for all zones offerings
-	ZoneIds *string `protobuf:"bytes,6,opt,name=zone_ids,json=zoneIds" json:"zone_ids,omitempty"`
-	// comma-separated list of tags for the service offering, tags should match with existing storage pool tags
-	StorageTags *string `protobuf:"bytes,7,opt,name=storage_tags,json=storageTags" json:"storage_tags,omitempty"`
-	// the host tag for this service offering.
-	HostTags *string `protobuf:"bytes,8,opt,name=host_tags,json=hostTags" json:"host_tags,omitempty"`
-	// state of the service offering
-	ServiceOfferingState *string `protobuf:"bytes,9,opt,name=service_offering_state,json=serviceOfferingState" json:"service_offering_state,omitempty"`
-	// Whether to cleanup VM and its associated resource upon expunge
-	PurgeResources *bool `protobuf:"varint,10,opt,name=purge_resources,json=purgeResources" json:"purge_resources,omitempty"`
-	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateServiceOfferingRequest) Reset() {
-	*x = UpdateServiceOfferingRequest{}
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateServiceOfferingRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateServiceOfferingRequest) ProtoMessage() {}
-
-func (x *UpdateServiceOfferingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateServiceOfferingRequest.ProtoReflect.Descriptor instead.
-func (*UpdateServiceOfferingRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *UpdateServiceOfferingRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateServiceOfferingRequest) GetDisplayText() string {
-	if x != nil && x.DisplayText != nil {
-		return *x.DisplayText
-	}
-	return ""
-}
-
-func (x *UpdateServiceOfferingRequest) GetServiceOfferingName() string {
-	if x != nil && x.ServiceOfferingName != nil {
-		return *x.ServiceOfferingName
-	}
-	return ""
-}
-
-func (x *UpdateServiceOfferingRequest) GetSortKey() int32 {
-	if x != nil && x.SortKey != nil {
-		return *x.SortKey
-	}
-	return 0
-}
-
-func (x *UpdateServiceOfferingRequest) GetDomainIds() string {
-	if x != nil && x.DomainIds != nil {
-		return *x.DomainIds
-	}
-	return ""
-}
-
-func (x *UpdateServiceOfferingRequest) GetZoneIds() string {
-	if x != nil && x.ZoneIds != nil {
-		return *x.ZoneIds
-	}
-	return ""
-}
-
-func (x *UpdateServiceOfferingRequest) GetStorageTags() string {
-	if x != nil && x.StorageTags != nil {
-		return *x.StorageTags
-	}
-	return ""
-}
-
-func (x *UpdateServiceOfferingRequest) GetHostTags() string {
-	if x != nil && x.HostTags != nil {
-		return *x.HostTags
-	}
-	return ""
-}
-
-func (x *UpdateServiceOfferingRequest) GetServiceOfferingState() string {
-	if x != nil && x.ServiceOfferingState != nil {
-		return *x.ServiceOfferingState
-	}
-	return ""
-}
-
-func (x *UpdateServiceOfferingRequest) GetPurgeResources() bool {
-	if x != nil && x.PurgeResources != nil {
-		return *x.PurgeResources
-	}
-	return false
-}
-
-func (x *UpdateServiceOfferingRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateServiceOfferingResponse represents the response from updates a service offering.
-type UpdateServiceOfferingResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateServiceOfferingResponse) Reset() {
-	*x = UpdateServiceOfferingResponse{}
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateServiceOfferingResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateServiceOfferingResponse) ProtoMessage() {}
-
-func (x *UpdateServiceOfferingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateServiceOfferingResponse.ProtoReflect.Descriptor instead.
-func (*UpdateServiceOfferingResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *UpdateServiceOfferingResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
 // UpdateDiskOfferingRequest represents the parameters for updates a disk offering.
 type UpdateDiskOfferingRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -2048,7 +1867,7 @@ type UpdateDiskOfferingRequest struct {
 
 func (x *UpdateDiskOfferingRequest) Reset() {
 	*x = UpdateDiskOfferingRequest{}
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[16]
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2060,7 +1879,7 @@ func (x *UpdateDiskOfferingRequest) String() string {
 func (*UpdateDiskOfferingRequest) ProtoMessage() {}
 
 func (x *UpdateDiskOfferingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[16]
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2073,7 +1892,7 @@ func (x *UpdateDiskOfferingRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateDiskOfferingRequest.ProtoReflect.Descriptor instead.
 func (*UpdateDiskOfferingRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{16}
+	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *UpdateDiskOfferingRequest) GetDisplayText() string {
@@ -2248,7 +2067,7 @@ type UpdateDiskOfferingResponse struct {
 
 func (x *UpdateDiskOfferingResponse) Reset() {
 	*x = UpdateDiskOfferingResponse{}
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[17]
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2260,7 +2079,7 @@ func (x *UpdateDiskOfferingResponse) String() string {
 func (*UpdateDiskOfferingResponse) ProtoMessage() {}
 
 func (x *UpdateDiskOfferingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[17]
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2273,10 +2092,191 @@ func (x *UpdateDiskOfferingResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateDiskOfferingResponse.ProtoReflect.Descriptor instead.
 func (*UpdateDiskOfferingResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{17}
+	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *UpdateDiskOfferingResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UpdateServiceOfferingRequest represents the parameters for updates a service offering.
+type UpdateServiceOfferingRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the service offering to be updated
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the display text of the service offering to be updated
+	DisplayText *string `protobuf:"bytes,2,opt,name=display_text,json=displayText" json:"display_text,omitempty"`
+	// the name of the service offering to be updated
+	ServiceOfferingName *string `protobuf:"bytes,3,opt,name=service_offering_name,json=serviceOfferingName" json:"service_offering_name,omitempty"`
+	// sort key of the service offering, integer
+	SortKey *int32 `protobuf:"varint,4,opt,name=sort_key,json=sortKey" json:"sort_key,omitempty"`
+	// the ID of the containing domain(s) as comma separated string, public for public offerings
+	DomainIds *string `protobuf:"bytes,5,opt,name=domain_ids,json=domainIds" json:"domain_ids,omitempty"`
+	// the ID of the containing zone(s) as comma separated string, all for all zones offerings
+	ZoneIds *string `protobuf:"bytes,6,opt,name=zone_ids,json=zoneIds" json:"zone_ids,omitempty"`
+	// comma-separated list of tags for the service offering, tags should match with existing storage pool tags
+	StorageTags *string `protobuf:"bytes,7,opt,name=storage_tags,json=storageTags" json:"storage_tags,omitempty"`
+	// the host tag for this service offering.
+	HostTags *string `protobuf:"bytes,8,opt,name=host_tags,json=hostTags" json:"host_tags,omitempty"`
+	// state of the service offering
+	ServiceOfferingState *string `protobuf:"bytes,9,opt,name=service_offering_state,json=serviceOfferingState" json:"service_offering_state,omitempty"`
+	// Whether to cleanup VM and its associated resource upon expunge
+	PurgeResources *bool `protobuf:"varint,10,opt,name=purge_resources,json=purgeResources" json:"purge_resources,omitempty"`
+	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateServiceOfferingRequest) Reset() {
+	*x = UpdateServiceOfferingRequest{}
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateServiceOfferingRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateServiceOfferingRequest) ProtoMessage() {}
+
+func (x *UpdateServiceOfferingRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateServiceOfferingRequest.ProtoReflect.Descriptor instead.
+func (*UpdateServiceOfferingRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *UpdateServiceOfferingRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateServiceOfferingRequest) GetDisplayText() string {
+	if x != nil && x.DisplayText != nil {
+		return *x.DisplayText
+	}
+	return ""
+}
+
+func (x *UpdateServiceOfferingRequest) GetServiceOfferingName() string {
+	if x != nil && x.ServiceOfferingName != nil {
+		return *x.ServiceOfferingName
+	}
+	return ""
+}
+
+func (x *UpdateServiceOfferingRequest) GetSortKey() int32 {
+	if x != nil && x.SortKey != nil {
+		return *x.SortKey
+	}
+	return 0
+}
+
+func (x *UpdateServiceOfferingRequest) GetDomainIds() string {
+	if x != nil && x.DomainIds != nil {
+		return *x.DomainIds
+	}
+	return ""
+}
+
+func (x *UpdateServiceOfferingRequest) GetZoneIds() string {
+	if x != nil && x.ZoneIds != nil {
+		return *x.ZoneIds
+	}
+	return ""
+}
+
+func (x *UpdateServiceOfferingRequest) GetStorageTags() string {
+	if x != nil && x.StorageTags != nil {
+		return *x.StorageTags
+	}
+	return ""
+}
+
+func (x *UpdateServiceOfferingRequest) GetHostTags() string {
+	if x != nil && x.HostTags != nil {
+		return *x.HostTags
+	}
+	return ""
+}
+
+func (x *UpdateServiceOfferingRequest) GetServiceOfferingState() string {
+	if x != nil && x.ServiceOfferingState != nil {
+		return *x.ServiceOfferingState
+	}
+	return ""
+}
+
+func (x *UpdateServiceOfferingRequest) GetPurgeResources() bool {
+	if x != nil && x.PurgeResources != nil {
+		return *x.PurgeResources
+	}
+	return false
+}
+
+func (x *UpdateServiceOfferingRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateServiceOfferingResponse represents the response from updates a service offering.
+type UpdateServiceOfferingResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateServiceOfferingResponse) Reset() {
+	*x = UpdateServiceOfferingResponse{}
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateServiceOfferingResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateServiceOfferingResponse) ProtoMessage() {}
+
+func (x *UpdateServiceOfferingResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateServiceOfferingResponse.ProtoReflect.Descriptor instead.
+func (*UpdateServiceOfferingResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *UpdateServiceOfferingResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -2502,151 +2502,6 @@ func (x *Success) GetDisplayText() string {
 	return ""
 }
 
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[21]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[21]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{21}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
 // Result represents a generic operation result
 type Result struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -2666,7 +2521,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[22]
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2678,7 +2533,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[22]
+	mi := &file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2691,7 +2546,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{22}
+	return file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -2733,34 +2588,7 @@ var File_cloudstack_management_offering_v1_offering_gen_proto protoreflect.FileD
 
 const file_cloudstack_management_offering_v1_offering_gen_proto_rawDesc = "" +
 	"\n" +
-	"4cloudstack/management/offering/v1/offering.gen.proto\x12!cloudstack.management.offering.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xfa\x05\n" +
-	"\x18ListDiskOfferingsRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x128\n" +
-	"\x12disk_offering_name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x10diskOfferingName\x12\x17\n" +
-	"\azone_id\x18\x03 \x01(\x03R\x06zoneId\x12\x1b\n" +
-	"\tvolume_id\x18\x04 \x01(\x03R\bvolumeId\x12&\n" +
-	"\x0fstorage_pool_id\x18\x05 \x01(\x03R\rstoragePoolId\x12\x1f\n" +
-	"\aencrypt\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\aencrypt\x12!\n" +
-	"\fstorage_type\x18\a \x01(\tR\vstorageType\x12.\n" +
-	"\x13disk_offering_state\x18\b \x01(\tR\x11diskOfferingState\x12,\n" +
-	"\x12virtual_machine_id\x18\t \x01(\x03R\x10virtualMachineId\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\n" +
-	" \x01(\x03R\tprojectId\x12\xa0\x01\n" +
-	"\faccount_name\x18\v \x01(\tB}\xbaHz\xba\x01w\n" +
-	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
-	"\blist_all\x18\f \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
-	"\tdomain_id\x18\r \x01(\x03R\bdomainId\x12#\n" +
-	"\trecursive\x18\x0e \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
-	"\akeyword\x18\x0f \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x10 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x11 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x12 \x01(\tR\fresponseType\"\x8a\x01\n" +
-	"\x19ListDiskOfferingsResponse\x12E\n" +
-	"\x05items\x18\x01 \x03(\v2/.cloudstack.management.offering.v1.DiskOfferingR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xde\v\n" +
+	"4cloudstack/management/offering/v1/offering.gen.proto\x12!cloudstack.management.offering.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xde\v\n" +
 	"\x19CreateDiskOfferingRequest\x12\x1b\n" +
 	"\tdisk_size\x18\x01 \x01(\x03R\bdiskSize\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x122\n" +
@@ -2804,16 +2632,6 @@ const file_cloudstack_management_offering_v1_offering_gen_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"_\n" +
 	"\x1aCreateDiskOfferingResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.offering.v1.ResultR\x06result\"X\n" +
-	"\x19DeleteDiskOfferingRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"_\n" +
-	"\x1aDeleteDiskOfferingResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.offering.v1.ResultR\x06result\"[\n" +
-	"\x1cDeleteServiceOfferingRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"b\n" +
-	"\x1dDeleteServiceOfferingResponse\x12A\n" +
 	"\x06result\x18\x01 \x01(\v2).cloudstack.management.offering.v1.ResultR\x06result\"\xed\x10\n" +
 	"\x1cCreateServiceOfferingRequest\x12\x1d\n" +
 	"\n" +
@@ -2879,12 +2697,49 @@ const file_cloudstack_management_offering_v1_offering_gen_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"b\n" +
 	"\x1dCreateServiceOfferingResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.offering.v1.ResultR\x06result\"X\n" +
+	"\x19DeleteDiskOfferingRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"_\n" +
+	"\x1aDeleteDiskOfferingResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.offering.v1.ResultR\x06result\"[\n" +
+	"\x1cDeleteServiceOfferingRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"b\n" +
+	"\x1dDeleteServiceOfferingResponse\x12A\n" +
 	"\x06result\x18\x01 \x01(\v2).cloudstack.management.offering.v1.ResultR\x06result\"o\n" +
 	"0IsAccountAllowedToCreateOfferingsWithTagsRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
 	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"v\n" +
 	"1IsAccountAllowedToCreateOfferingsWithTagsResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.offering.v1.ResultR\x06result\"\x8c\a\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.offering.v1.ResultR\x06result\"\xfa\x05\n" +
+	"\x18ListDiskOfferingsRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x128\n" +
+	"\x12disk_offering_name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x10diskOfferingName\x12\x17\n" +
+	"\azone_id\x18\x03 \x01(\x03R\x06zoneId\x12\x1b\n" +
+	"\tvolume_id\x18\x04 \x01(\x03R\bvolumeId\x12&\n" +
+	"\x0fstorage_pool_id\x18\x05 \x01(\x03R\rstoragePoolId\x12\x1f\n" +
+	"\aencrypt\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\aencrypt\x12!\n" +
+	"\fstorage_type\x18\a \x01(\tR\vstorageType\x12.\n" +
+	"\x13disk_offering_state\x18\b \x01(\tR\x11diskOfferingState\x12,\n" +
+	"\x12virtual_machine_id\x18\t \x01(\x03R\x10virtualMachineId\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\n" +
+	" \x01(\x03R\tprojectId\x12\xa0\x01\n" +
+	"\faccount_name\x18\v \x01(\tB}\xbaHz\xba\x01w\n" +
+	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
+	"\blist_all\x18\f \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
+	"\tdomain_id\x18\r \x01(\x03R\bdomainId\x12#\n" +
+	"\trecursive\x18\x0e \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
+	"\akeyword\x18\x0f \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x10 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x11 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x12 \x01(\tR\fresponseType\"\x8a\x01\n" +
+	"\x19ListDiskOfferingsResponse\x12E\n" +
+	"\x05items\x18\x01 \x03(\v2/.cloudstack.management.offering.v1.DiskOfferingR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x8c\a\n" +
 	"\x1bListServiceOfferingsRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12>\n" +
 	"\x15service_offering_name\x18\x02 \x01(\tB\n" +
@@ -2917,24 +2772,7 @@ const file_cloudstack_management_offering_v1_offering_gen_proto_rawDesc = "" +
 	"\x1cListServiceOfferingsResponse\x12H\n" +
 	"\x05items\x18\x01 \x03(\v22.cloudstack.management.offering.v1.ServiceOfferingR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xcd\x03\n" +
-	"\x1cUpdateServiceOfferingRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12>\n" +
-	"\x15service_offering_name\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x13serviceOfferingName\x12\x19\n" +
-	"\bsort_key\x18\x04 \x01(\x05R\asortKey\x12'\n" +
-	"\n" +
-	"domain_ids\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tdomainIds\x12#\n" +
-	"\bzone_ids\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\azoneIds\x12!\n" +
-	"\fstorage_tags\x18\a \x01(\tR\vstorageTags\x12\x1b\n" +
-	"\thost_tags\x18\b \x01(\tR\bhostTags\x124\n" +
-	"\x16service_offering_state\x18\t \x01(\tR\x14serviceOfferingState\x12.\n" +
-	"\x0fpurge_resources\x18\n" +
-	" \x01(\bB\x05\xaa\x01\x02\b\x01R\x0epurgeResources\x12#\n" +
-	"\rresponse_type\x18\v \x01(\tR\fresponseType\"b\n" +
-	"\x1dUpdateServiceOfferingResponse\x12A\n" +
-	"\x06result\x18\x01 \x01(\v2).cloudstack.management.offering.v1.ResultR\x06result\"\xff\a\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xff\a\n" +
 	"\x19UpdateDiskOfferingRequest\x12!\n" +
 	"\fdisplay_text\x18\x01 \x01(\tR\vdisplayText\x12\x16\n" +
 	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x128\n" +
@@ -2964,6 +2802,23 @@ const file_cloudstack_management_offering_v1_offering_gen_proto_rawDesc = "" +
 	"\x13disk_offering_state\x18\x16 \x01(\tR\x11diskOfferingState\x12#\n" +
 	"\rresponse_type\x18\x17 \x01(\tR\fresponseType\"_\n" +
 	"\x1aUpdateDiskOfferingResponse\x12A\n" +
+	"\x06result\x18\x01 \x01(\v2).cloudstack.management.offering.v1.ResultR\x06result\"\xcd\x03\n" +
+	"\x1cUpdateServiceOfferingRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12!\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12>\n" +
+	"\x15service_offering_name\x18\x03 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x13serviceOfferingName\x12\x19\n" +
+	"\bsort_key\x18\x04 \x01(\x05R\asortKey\x12'\n" +
+	"\n" +
+	"domain_ids\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tdomainIds\x12#\n" +
+	"\bzone_ids\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\azoneIds\x12!\n" +
+	"\fstorage_tags\x18\a \x01(\tR\vstorageTags\x12\x1b\n" +
+	"\thost_tags\x18\b \x01(\tR\bhostTags\x124\n" +
+	"\x16service_offering_state\x18\t \x01(\tR\x14serviceOfferingState\x12.\n" +
+	"\x0fpurge_resources\x18\n" +
+	" \x01(\bB\x05\xaa\x01\x02\b\x01R\x0epurgeResources\x12#\n" +
+	"\rresponse_type\x18\v \x01(\tR\fresponseType\"b\n" +
+	"\x1dUpdateServiceOfferingResponse\x12A\n" +
 	"\x06result\x18\x01 \x01(\v2).cloudstack.management.offering.v1.ResultR\x06result\"\x9b\x01\n" +
 	"\fDiskOffering\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
@@ -2979,26 +2834,7 @@ const file_cloudstack_management_offering_v1_offering_gen_proto_rawDesc = "" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xe0\x03\n" +
-	"\x04Item\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12N\n" +
-	"\adetails\x18\f \x03(\v24.cloudstack.management.offering.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
@@ -3007,20 +2843,20 @@ const file_cloudstack_management_offering_v1_offering_gen_proto_rawDesc = "" +
 	"\n" +
 	"job_status\x18\x05 \x01(\tR\tjobStatus*\x8a\x01\n" +
 	"\x10ProvisioningType\x12!\n" +
-	"\x1dPROVISIONING_TYPE_UNSPECIFIED\x10\x00\x12\x1a\n" +
-	"\x16PROVISIONING_TYPE_THIN\x10\x01\x12\x1c\n" +
-	"\x18PROVISIONING_TYPE_SPARSE\x10\x02\x12\x19\n" +
-	"\x15PROVISIONING_TYPE_FAT\x10\x032\xc2\v\n" +
-	"\x0fOfferingService\x12\x90\x01\n" +
-	"\x11ListDiskOfferings\x12;.cloudstack.management.offering.v1.ListDiskOfferingsRequest\x1a<.cloudstack.management.offering.v1.ListDiskOfferingsResponse\"\x00\x12\x93\x01\n" +
-	"\x12CreateDiskOffering\x12<.cloudstack.management.offering.v1.CreateDiskOfferingRequest\x1a=.cloudstack.management.offering.v1.CreateDiskOfferingResponse\"\x00\x12\x93\x01\n" +
-	"\x12DeleteDiskOffering\x12<.cloudstack.management.offering.v1.DeleteDiskOfferingRequest\x1a=.cloudstack.management.offering.v1.DeleteDiskOfferingResponse\"\x00\x12\x9c\x01\n" +
-	"\x15DeleteServiceOffering\x12?.cloudstack.management.offering.v1.DeleteServiceOfferingRequest\x1a@.cloudstack.management.offering.v1.DeleteServiceOfferingResponse\"\x00\x12\x9c\x01\n" +
-	"\x15CreateServiceOffering\x12?.cloudstack.management.offering.v1.CreateServiceOfferingRequest\x1a@.cloudstack.management.offering.v1.CreateServiceOfferingResponse\"\x00\x12\xd8\x01\n" +
-	")IsAccountAllowedToCreateOfferingsWithTags\x12S.cloudstack.management.offering.v1.IsAccountAllowedToCreateOfferingsWithTagsRequest\x1aT.cloudstack.management.offering.v1.IsAccountAllowedToCreateOfferingsWithTagsResponse\"\x00\x12\x99\x01\n" +
-	"\x14ListServiceOfferings\x12>.cloudstack.management.offering.v1.ListServiceOfferingsRequest\x1a?.cloudstack.management.offering.v1.ListServiceOfferingsResponse\"\x00\x12\x9c\x01\n" +
-	"\x15UpdateServiceOffering\x12?.cloudstack.management.offering.v1.UpdateServiceOfferingRequest\x1a@.cloudstack.management.offering.v1.UpdateServiceOfferingResponse\"\x00\x12\x93\x01\n" +
-	"\x12UpdateDiskOffering\x12<.cloudstack.management.offering.v1.UpdateDiskOfferingRequest\x1a=.cloudstack.management.offering.v1.UpdateDiskOfferingResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xc2\x02\n" +
+	"\x1dPROVISIONING_TYPE_UNSPECIFIED\x10\x00\x12\x19\n" +
+	"\x15PROVISIONING_TYPE_FAT\x10\x01\x12\x1c\n" +
+	"\x18PROVISIONING_TYPE_SPARSE\x10\x02\x12\x1a\n" +
+	"\x16PROVISIONING_TYPE_THIN\x10\x032\x82\f\n" +
+	"\x0fOfferingService\x12\x9a\x01\n" +
+	"\x12CreateDiskOffering\x12<.cloudstack.management.offering.v1.CreateDiskOfferingRequest\x1a=.cloudstack.management.offering.v1.CreateDiskOfferingResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xa3\x01\n" +
+	"\x15CreateServiceOffering\x12?.cloudstack.management.offering.v1.CreateServiceOfferingRequest\x1a@.cloudstack.management.offering.v1.CreateServiceOfferingResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x9a\x01\n" +
+	"\x12DeleteDiskOffering\x12<.cloudstack.management.offering.v1.DeleteDiskOfferingRequest\x1a=.cloudstack.management.offering.v1.DeleteDiskOfferingResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xa3\x01\n" +
+	"\x15DeleteServiceOffering\x12?.cloudstack.management.offering.v1.DeleteServiceOfferingRequest\x1a@.cloudstack.management.offering.v1.DeleteServiceOfferingResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xdf\x01\n" +
+	")IsAccountAllowedToCreateOfferingsWithTags\x12S.cloudstack.management.offering.v1.IsAccountAllowedToCreateOfferingsWithTagsRequest\x1aT.cloudstack.management.offering.v1.IsAccountAllowedToCreateOfferingsWithTagsResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x97\x01\n" +
+	"\x11ListDiskOfferings\x12;.cloudstack.management.offering.v1.ListDiskOfferingsRequest\x1a<.cloudstack.management.offering.v1.ListDiskOfferingsResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xa0\x01\n" +
+	"\x14ListServiceOfferings\x12>.cloudstack.management.offering.v1.ListServiceOfferingsRequest\x1a?.cloudstack.management.offering.v1.ListServiceOfferingsResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x9a\x01\n" +
+	"\x12UpdateDiskOffering\x12<.cloudstack.management.offering.v1.UpdateDiskOfferingRequest\x1a=.cloudstack.management.offering.v1.UpdateDiskOfferingResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xa3\x01\n" +
+	"\x15UpdateServiceOffering\x12?.cloudstack.management.offering.v1.UpdateServiceOfferingRequest\x1a@.cloudstack.management.offering.v1.UpdateServiceOfferingResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\a\xc2>\x04\xc2>\x01\x02B\xc2\x02\n" +
 	"%com.cloudstack.management.offering.v1B\x10OfferingGenProtoP\x01Z`github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/offering/v1;offeringv1\xa2\x02\x03CMO\xaa\x02!Cloudstack.Management.Offering.V1\xca\x02!Cloudstack\\Management\\Offering\\V1\xe2\x02-Cloudstack\\Management\\Offering\\V1\\GPBMetadata\xea\x02$Cloudstack::Management::Offering::V1b\beditionsp\xe8\a"
 
 var (
@@ -3036,72 +2872,69 @@ func file_cloudstack_management_offering_v1_offering_gen_proto_rawDescGZIP() []b
 }
 
 var file_cloudstack_management_offering_v1_offering_gen_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 26)
+var file_cloudstack_management_offering_v1_offering_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 24)
 var file_cloudstack_management_offering_v1_offering_gen_proto_goTypes = []any{
 	(ProvisioningType)(0),                                     // 0: cloudstack.management.offering.v1.ProvisioningType
-	(*ListDiskOfferingsRequest)(nil),                          // 1: cloudstack.management.offering.v1.ListDiskOfferingsRequest
-	(*ListDiskOfferingsResponse)(nil),                         // 2: cloudstack.management.offering.v1.ListDiskOfferingsResponse
-	(*CreateDiskOfferingRequest)(nil),                         // 3: cloudstack.management.offering.v1.CreateDiskOfferingRequest
-	(*CreateDiskOfferingResponse)(nil),                        // 4: cloudstack.management.offering.v1.CreateDiskOfferingResponse
+	(*CreateDiskOfferingRequest)(nil),                         // 1: cloudstack.management.offering.v1.CreateDiskOfferingRequest
+	(*CreateDiskOfferingResponse)(nil),                        // 2: cloudstack.management.offering.v1.CreateDiskOfferingResponse
+	(*CreateServiceOfferingRequest)(nil),                      // 3: cloudstack.management.offering.v1.CreateServiceOfferingRequest
+	(*CreateServiceOfferingResponse)(nil),                     // 4: cloudstack.management.offering.v1.CreateServiceOfferingResponse
 	(*DeleteDiskOfferingRequest)(nil),                         // 5: cloudstack.management.offering.v1.DeleteDiskOfferingRequest
 	(*DeleteDiskOfferingResponse)(nil),                        // 6: cloudstack.management.offering.v1.DeleteDiskOfferingResponse
 	(*DeleteServiceOfferingRequest)(nil),                      // 7: cloudstack.management.offering.v1.DeleteServiceOfferingRequest
 	(*DeleteServiceOfferingResponse)(nil),                     // 8: cloudstack.management.offering.v1.DeleteServiceOfferingResponse
-	(*CreateServiceOfferingRequest)(nil),                      // 9: cloudstack.management.offering.v1.CreateServiceOfferingRequest
-	(*CreateServiceOfferingResponse)(nil),                     // 10: cloudstack.management.offering.v1.CreateServiceOfferingResponse
-	(*IsAccountAllowedToCreateOfferingsWithTagsRequest)(nil),  // 11: cloudstack.management.offering.v1.IsAccountAllowedToCreateOfferingsWithTagsRequest
-	(*IsAccountAllowedToCreateOfferingsWithTagsResponse)(nil), // 12: cloudstack.management.offering.v1.IsAccountAllowedToCreateOfferingsWithTagsResponse
+	(*IsAccountAllowedToCreateOfferingsWithTagsRequest)(nil),  // 9: cloudstack.management.offering.v1.IsAccountAllowedToCreateOfferingsWithTagsRequest
+	(*IsAccountAllowedToCreateOfferingsWithTagsResponse)(nil), // 10: cloudstack.management.offering.v1.IsAccountAllowedToCreateOfferingsWithTagsResponse
+	(*ListDiskOfferingsRequest)(nil),                          // 11: cloudstack.management.offering.v1.ListDiskOfferingsRequest
+	(*ListDiskOfferingsResponse)(nil),                         // 12: cloudstack.management.offering.v1.ListDiskOfferingsResponse
 	(*ListServiceOfferingsRequest)(nil),                       // 13: cloudstack.management.offering.v1.ListServiceOfferingsRequest
 	(*ListServiceOfferingsResponse)(nil),                      // 14: cloudstack.management.offering.v1.ListServiceOfferingsResponse
-	(*UpdateServiceOfferingRequest)(nil),                      // 15: cloudstack.management.offering.v1.UpdateServiceOfferingRequest
-	(*UpdateServiceOfferingResponse)(nil),                     // 16: cloudstack.management.offering.v1.UpdateServiceOfferingResponse
-	(*UpdateDiskOfferingRequest)(nil),                         // 17: cloudstack.management.offering.v1.UpdateDiskOfferingRequest
-	(*UpdateDiskOfferingResponse)(nil),                        // 18: cloudstack.management.offering.v1.UpdateDiskOfferingResponse
+	(*UpdateDiskOfferingRequest)(nil),                         // 15: cloudstack.management.offering.v1.UpdateDiskOfferingRequest
+	(*UpdateDiskOfferingResponse)(nil),                        // 16: cloudstack.management.offering.v1.UpdateDiskOfferingResponse
+	(*UpdateServiceOfferingRequest)(nil),                      // 17: cloudstack.management.offering.v1.UpdateServiceOfferingRequest
+	(*UpdateServiceOfferingResponse)(nil),                     // 18: cloudstack.management.offering.v1.UpdateServiceOfferingResponse
 	(*DiskOffering)(nil),                                      // 19: cloudstack.management.offering.v1.DiskOffering
 	(*ServiceOffering)(nil),                                   // 20: cloudstack.management.offering.v1.ServiceOffering
 	(*Success)(nil),                                           // 21: cloudstack.management.offering.v1.Success
-	(*Item)(nil),                                              // 22: cloudstack.management.offering.v1.Item
-	(*Result)(nil),                                            // 23: cloudstack.management.offering.v1.Result
-	nil,                                                       // 24: cloudstack.management.offering.v1.CreateDiskOfferingRequest.DetailsEntry
-	nil,                                                       // 25: cloudstack.management.offering.v1.CreateServiceOfferingRequest.DetailsEntry
-	nil,                                                       // 26: cloudstack.management.offering.v1.Item.DetailsEntry
+	(*Result)(nil),                                            // 22: cloudstack.management.offering.v1.Result
+	nil,                                                       // 23: cloudstack.management.offering.v1.CreateDiskOfferingRequest.DetailsEntry
+	nil,                                                       // 24: cloudstack.management.offering.v1.CreateServiceOfferingRequest.DetailsEntry
 }
 var file_cloudstack_management_offering_v1_offering_gen_proto_depIdxs = []int32{
-	19, // 0: cloudstack.management.offering.v1.ListDiskOfferingsResponse.items:type_name -> cloudstack.management.offering.v1.DiskOffering
-	24, // 1: cloudstack.management.offering.v1.CreateDiskOfferingRequest.details:type_name -> cloudstack.management.offering.v1.CreateDiskOfferingRequest.DetailsEntry
-	23, // 2: cloudstack.management.offering.v1.CreateDiskOfferingResponse.result:type_name -> cloudstack.management.offering.v1.Result
-	23, // 3: cloudstack.management.offering.v1.DeleteDiskOfferingResponse.result:type_name -> cloudstack.management.offering.v1.Result
-	23, // 4: cloudstack.management.offering.v1.DeleteServiceOfferingResponse.result:type_name -> cloudstack.management.offering.v1.Result
-	25, // 5: cloudstack.management.offering.v1.CreateServiceOfferingRequest.details:type_name -> cloudstack.management.offering.v1.CreateServiceOfferingRequest.DetailsEntry
-	23, // 6: cloudstack.management.offering.v1.CreateServiceOfferingResponse.result:type_name -> cloudstack.management.offering.v1.Result
-	23, // 7: cloudstack.management.offering.v1.IsAccountAllowedToCreateOfferingsWithTagsResponse.result:type_name -> cloudstack.management.offering.v1.Result
+	23, // 0: cloudstack.management.offering.v1.CreateDiskOfferingRequest.details:type_name -> cloudstack.management.offering.v1.CreateDiskOfferingRequest.DetailsEntry
+	22, // 1: cloudstack.management.offering.v1.CreateDiskOfferingResponse.result:type_name -> cloudstack.management.offering.v1.Result
+	24, // 2: cloudstack.management.offering.v1.CreateServiceOfferingRequest.details:type_name -> cloudstack.management.offering.v1.CreateServiceOfferingRequest.DetailsEntry
+	22, // 3: cloudstack.management.offering.v1.CreateServiceOfferingResponse.result:type_name -> cloudstack.management.offering.v1.Result
+	22, // 4: cloudstack.management.offering.v1.DeleteDiskOfferingResponse.result:type_name -> cloudstack.management.offering.v1.Result
+	22, // 5: cloudstack.management.offering.v1.DeleteServiceOfferingResponse.result:type_name -> cloudstack.management.offering.v1.Result
+	22, // 6: cloudstack.management.offering.v1.IsAccountAllowedToCreateOfferingsWithTagsResponse.result:type_name -> cloudstack.management.offering.v1.Result
+	19, // 7: cloudstack.management.offering.v1.ListDiskOfferingsResponse.items:type_name -> cloudstack.management.offering.v1.DiskOffering
 	20, // 8: cloudstack.management.offering.v1.ListServiceOfferingsResponse.items:type_name -> cloudstack.management.offering.v1.ServiceOffering
-	23, // 9: cloudstack.management.offering.v1.UpdateServiceOfferingResponse.result:type_name -> cloudstack.management.offering.v1.Result
-	23, // 10: cloudstack.management.offering.v1.UpdateDiskOfferingResponse.result:type_name -> cloudstack.management.offering.v1.Result
-	26, // 11: cloudstack.management.offering.v1.Item.details:type_name -> cloudstack.management.offering.v1.Item.DetailsEntry
-	1,  // 12: cloudstack.management.offering.v1.OfferingService.ListDiskOfferings:input_type -> cloudstack.management.offering.v1.ListDiskOfferingsRequest
-	3,  // 13: cloudstack.management.offering.v1.OfferingService.CreateDiskOffering:input_type -> cloudstack.management.offering.v1.CreateDiskOfferingRequest
-	5,  // 14: cloudstack.management.offering.v1.OfferingService.DeleteDiskOffering:input_type -> cloudstack.management.offering.v1.DeleteDiskOfferingRequest
-	7,  // 15: cloudstack.management.offering.v1.OfferingService.DeleteServiceOffering:input_type -> cloudstack.management.offering.v1.DeleteServiceOfferingRequest
-	9,  // 16: cloudstack.management.offering.v1.OfferingService.CreateServiceOffering:input_type -> cloudstack.management.offering.v1.CreateServiceOfferingRequest
-	11, // 17: cloudstack.management.offering.v1.OfferingService.IsAccountAllowedToCreateOfferingsWithTags:input_type -> cloudstack.management.offering.v1.IsAccountAllowedToCreateOfferingsWithTagsRequest
-	13, // 18: cloudstack.management.offering.v1.OfferingService.ListServiceOfferings:input_type -> cloudstack.management.offering.v1.ListServiceOfferingsRequest
-	15, // 19: cloudstack.management.offering.v1.OfferingService.UpdateServiceOffering:input_type -> cloudstack.management.offering.v1.UpdateServiceOfferingRequest
-	17, // 20: cloudstack.management.offering.v1.OfferingService.UpdateDiskOffering:input_type -> cloudstack.management.offering.v1.UpdateDiskOfferingRequest
-	2,  // 21: cloudstack.management.offering.v1.OfferingService.ListDiskOfferings:output_type -> cloudstack.management.offering.v1.ListDiskOfferingsResponse
-	4,  // 22: cloudstack.management.offering.v1.OfferingService.CreateDiskOffering:output_type -> cloudstack.management.offering.v1.CreateDiskOfferingResponse
-	6,  // 23: cloudstack.management.offering.v1.OfferingService.DeleteDiskOffering:output_type -> cloudstack.management.offering.v1.DeleteDiskOfferingResponse
-	8,  // 24: cloudstack.management.offering.v1.OfferingService.DeleteServiceOffering:output_type -> cloudstack.management.offering.v1.DeleteServiceOfferingResponse
-	10, // 25: cloudstack.management.offering.v1.OfferingService.CreateServiceOffering:output_type -> cloudstack.management.offering.v1.CreateServiceOfferingResponse
-	12, // 26: cloudstack.management.offering.v1.OfferingService.IsAccountAllowedToCreateOfferingsWithTags:output_type -> cloudstack.management.offering.v1.IsAccountAllowedToCreateOfferingsWithTagsResponse
-	14, // 27: cloudstack.management.offering.v1.OfferingService.ListServiceOfferings:output_type -> cloudstack.management.offering.v1.ListServiceOfferingsResponse
-	16, // 28: cloudstack.management.offering.v1.OfferingService.UpdateServiceOffering:output_type -> cloudstack.management.offering.v1.UpdateServiceOfferingResponse
-	18, // 29: cloudstack.management.offering.v1.OfferingService.UpdateDiskOffering:output_type -> cloudstack.management.offering.v1.UpdateDiskOfferingResponse
-	21, // [21:30] is the sub-list for method output_type
-	12, // [12:21] is the sub-list for method input_type
-	12, // [12:12] is the sub-list for extension type_name
-	12, // [12:12] is the sub-list for extension extendee
-	0,  // [0:12] is the sub-list for field type_name
+	22, // 9: cloudstack.management.offering.v1.UpdateDiskOfferingResponse.result:type_name -> cloudstack.management.offering.v1.Result
+	22, // 10: cloudstack.management.offering.v1.UpdateServiceOfferingResponse.result:type_name -> cloudstack.management.offering.v1.Result
+	1,  // 11: cloudstack.management.offering.v1.OfferingService.CreateDiskOffering:input_type -> cloudstack.management.offering.v1.CreateDiskOfferingRequest
+	3,  // 12: cloudstack.management.offering.v1.OfferingService.CreateServiceOffering:input_type -> cloudstack.management.offering.v1.CreateServiceOfferingRequest
+	5,  // 13: cloudstack.management.offering.v1.OfferingService.DeleteDiskOffering:input_type -> cloudstack.management.offering.v1.DeleteDiskOfferingRequest
+	7,  // 14: cloudstack.management.offering.v1.OfferingService.DeleteServiceOffering:input_type -> cloudstack.management.offering.v1.DeleteServiceOfferingRequest
+	9,  // 15: cloudstack.management.offering.v1.OfferingService.IsAccountAllowedToCreateOfferingsWithTags:input_type -> cloudstack.management.offering.v1.IsAccountAllowedToCreateOfferingsWithTagsRequest
+	11, // 16: cloudstack.management.offering.v1.OfferingService.ListDiskOfferings:input_type -> cloudstack.management.offering.v1.ListDiskOfferingsRequest
+	13, // 17: cloudstack.management.offering.v1.OfferingService.ListServiceOfferings:input_type -> cloudstack.management.offering.v1.ListServiceOfferingsRequest
+	15, // 18: cloudstack.management.offering.v1.OfferingService.UpdateDiskOffering:input_type -> cloudstack.management.offering.v1.UpdateDiskOfferingRequest
+	17, // 19: cloudstack.management.offering.v1.OfferingService.UpdateServiceOffering:input_type -> cloudstack.management.offering.v1.UpdateServiceOfferingRequest
+	2,  // 20: cloudstack.management.offering.v1.OfferingService.CreateDiskOffering:output_type -> cloudstack.management.offering.v1.CreateDiskOfferingResponse
+	4,  // 21: cloudstack.management.offering.v1.OfferingService.CreateServiceOffering:output_type -> cloudstack.management.offering.v1.CreateServiceOfferingResponse
+	6,  // 22: cloudstack.management.offering.v1.OfferingService.DeleteDiskOffering:output_type -> cloudstack.management.offering.v1.DeleteDiskOfferingResponse
+	8,  // 23: cloudstack.management.offering.v1.OfferingService.DeleteServiceOffering:output_type -> cloudstack.management.offering.v1.DeleteServiceOfferingResponse
+	10, // 24: cloudstack.management.offering.v1.OfferingService.IsAccountAllowedToCreateOfferingsWithTags:output_type -> cloudstack.management.offering.v1.IsAccountAllowedToCreateOfferingsWithTagsResponse
+	12, // 25: cloudstack.management.offering.v1.OfferingService.ListDiskOfferings:output_type -> cloudstack.management.offering.v1.ListDiskOfferingsResponse
+	14, // 26: cloudstack.management.offering.v1.OfferingService.ListServiceOfferings:output_type -> cloudstack.management.offering.v1.ListServiceOfferingsResponse
+	16, // 27: cloudstack.management.offering.v1.OfferingService.UpdateDiskOffering:output_type -> cloudstack.management.offering.v1.UpdateDiskOfferingResponse
+	18, // 28: cloudstack.management.offering.v1.OfferingService.UpdateServiceOffering:output_type -> cloudstack.management.offering.v1.UpdateServiceOfferingResponse
+	20, // [20:29] is the sub-list for method output_type
+	11, // [11:20] is the sub-list for method input_type
+	11, // [11:11] is the sub-list for extension type_name
+	11, // [11:11] is the sub-list for extension extendee
+	0,  // [0:11] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_offering_v1_offering_gen_proto_init() }
@@ -3115,7 +2948,7 @@ func file_cloudstack_management_offering_v1_offering_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_offering_v1_offering_gen_proto_rawDesc), len(file_cloudstack_management_offering_v1_offering_gen_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   26,
+			NumMessages:   24,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

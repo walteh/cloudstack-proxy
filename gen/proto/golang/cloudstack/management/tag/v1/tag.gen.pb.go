@@ -24,140 +24,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// DeleteTagsRequest represents the parameters for deleting resource tag(s)
-type DeleteTagsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Delete tags matching key/value pairs
-	Tag map[string]string `protobuf:"bytes,1,rep,name=tag" json:"tag,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// Delete tag by resource type
-	ResourceType *string `protobuf:"bytes,2,opt,name=resource_type,json=resourceType" json:"resource_type,omitempty"`
-	// Delete tags for resource id(s)
-	ResourceIds []string `protobuf:"bytes,3,rep,name=resource_ids,json=resourceIds" json:"resource_ids,omitempty"`
-	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteTagsRequest) Reset() {
-	*x = DeleteTagsRequest{}
-	mi := &file_cloudstack_management_tag_v1_tag_gen_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteTagsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteTagsRequest) ProtoMessage() {}
-
-func (x *DeleteTagsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_tag_v1_tag_gen_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteTagsRequest.ProtoReflect.Descriptor instead.
-func (*DeleteTagsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_tag_v1_tag_gen_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *DeleteTagsRequest) GetTag() map[string]string {
-	if x != nil {
-		return x.Tag
-	}
-	return nil
-}
-
-func (x *DeleteTagsRequest) GetResourceType() string {
-	if x != nil && x.ResourceType != nil {
-		return *x.ResourceType
-	}
-	return ""
-}
-
-func (x *DeleteTagsRequest) GetResourceIds() []string {
-	if x != nil {
-		return x.ResourceIds
-	}
-	return nil
-}
-
-func (x *DeleteTagsRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteTagsRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteTagsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteTagsResponse represents the response from deleting resource tag(s)
-type DeleteTagsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteTagsResponse) Reset() {
-	*x = DeleteTagsResponse{}
-	mi := &file_cloudstack_management_tag_v1_tag_gen_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteTagsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteTagsResponse) ProtoMessage() {}
-
-func (x *DeleteTagsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_tag_v1_tag_gen_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteTagsResponse.ProtoReflect.Descriptor instead.
-func (*DeleteTagsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_tag_v1_tag_gen_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *DeleteTagsResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
 // CreateTagsRequest represents the parameters for creates resource tag(s)
 type CreateTagsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -178,7 +44,7 @@ type CreateTagsRequest struct {
 
 func (x *CreateTagsRequest) Reset() {
 	*x = CreateTagsRequest{}
-	mi := &file_cloudstack_management_tag_v1_tag_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_tag_v1_tag_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -190,7 +56,7 @@ func (x *CreateTagsRequest) String() string {
 func (*CreateTagsRequest) ProtoMessage() {}
 
 func (x *CreateTagsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_tag_v1_tag_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_tag_v1_tag_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -203,7 +69,7 @@ func (x *CreateTagsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateTagsRequest.ProtoReflect.Descriptor instead.
 func (*CreateTagsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_tag_v1_tag_gen_proto_rawDescGZIP(), []int{2}
+	return file_cloudstack_management_tag_v1_tag_gen_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *CreateTagsRequest) GetTag() map[string]string {
@@ -266,7 +132,7 @@ type CreateTagsResponse struct {
 
 func (x *CreateTagsResponse) Reset() {
 	*x = CreateTagsResponse{}
-	mi := &file_cloudstack_management_tag_v1_tag_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_tag_v1_tag_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -278,7 +144,7 @@ func (x *CreateTagsResponse) String() string {
 func (*CreateTagsResponse) ProtoMessage() {}
 
 func (x *CreateTagsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_tag_v1_tag_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_tag_v1_tag_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -291,10 +157,144 @@ func (x *CreateTagsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateTagsResponse.ProtoReflect.Descriptor instead.
 func (*CreateTagsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_tag_v1_tag_gen_proto_rawDescGZIP(), []int{3}
+	return file_cloudstack_management_tag_v1_tag_gen_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *CreateTagsResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteTagsRequest represents the parameters for deleting resource tag(s)
+type DeleteTagsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Delete tags matching key/value pairs
+	Tag map[string]string `protobuf:"bytes,1,rep,name=tag" json:"tag,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// Delete tag by resource type
+	ResourceType *string `protobuf:"bytes,2,opt,name=resource_type,json=resourceType" json:"resource_type,omitempty"`
+	// Delete tags for resource id(s)
+	ResourceIds []string `protobuf:"bytes,3,rep,name=resource_ids,json=resourceIds" json:"resource_ids,omitempty"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteTagsRequest) Reset() {
+	*x = DeleteTagsRequest{}
+	mi := &file_cloudstack_management_tag_v1_tag_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteTagsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteTagsRequest) ProtoMessage() {}
+
+func (x *DeleteTagsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_tag_v1_tag_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteTagsRequest.ProtoReflect.Descriptor instead.
+func (*DeleteTagsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_tag_v1_tag_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *DeleteTagsRequest) GetTag() map[string]string {
+	if x != nil {
+		return x.Tag
+	}
+	return nil
+}
+
+func (x *DeleteTagsRequest) GetResourceType() string {
+	if x != nil && x.ResourceType != nil {
+		return *x.ResourceType
+	}
+	return ""
+}
+
+func (x *DeleteTagsRequest) GetResourceIds() []string {
+	if x != nil {
+		return x.ResourceIds
+	}
+	return nil
+}
+
+func (x *DeleteTagsRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeleteTagsRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeleteTagsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteTagsResponse represents the response from deleting resource tag(s)
+type DeleteTagsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteTagsResponse) Reset() {
+	*x = DeleteTagsResponse{}
+	mi := &file_cloudstack_management_tag_v1_tag_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteTagsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteTagsResponse) ProtoMessage() {}
+
+func (x *DeleteTagsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_tag_v1_tag_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteTagsResponse.ProtoReflect.Descriptor instead.
+func (*DeleteTagsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_tag_v1_tag_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *DeleteTagsResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -653,151 +653,6 @@ func (x *Success) GetDisplayText() string {
 	return ""
 }
 
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_tag_v1_tag_gen_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_tag_v1_tag_gen_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_tag_v1_tag_gen_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
 // Result represents a generic operation result
 type Result struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -817,7 +672,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_tag_v1_tag_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_tag_v1_tag_gen_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -829,7 +684,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_tag_v1_tag_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_tag_v1_tag_gen_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -842,7 +697,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_tag_v1_tag_gen_proto_rawDescGZIP(), []int{9}
+	return file_cloudstack_management_tag_v1_tag_gen_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -884,19 +739,7 @@ var File_cloudstack_management_tag_v1_tag_gen_proto protoreflect.FileDescriptor
 
 const file_cloudstack_management_tag_v1_tag_gen_proto_rawDesc = "" +
 	"\n" +
-	"*cloudstack/management/tag/v1/tag.gen.proto\x12\x1ccloudstack.management.tag.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xec\x02\n" +
-	"\x11DeleteTagsRequest\x12J\n" +
-	"\x03tag\x18\x01 \x03(\v28.cloudstack.management.tag.v1.DeleteTagsRequest.TagEntryR\x03tag\x12+\n" +
-	"\rresource_type\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\fresourceType\x12)\n" +
-	"\fresource_ids\x18\x03 \x03(\tB\x06\xbaH\x03\xc8\x01\x01R\vresourceIds\x12$\n" +
-	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\x1a6\n" +
-	"\bTagEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"R\n" +
-	"\x12DeleteTagsResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.tag.v1.ResultR\x06result\"\x90\x03\n" +
+	"*cloudstack/management/tag/v1/tag.gen.proto\x12\x1ccloudstack.management.tag.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x90\x03\n" +
 	"\x11CreateTagsRequest\x12R\n" +
 	"\x03tag\x18\x01 \x03(\v28.cloudstack.management.tag.v1.CreateTagsRequest.TagEntryB\x06\xbaH\x03\xc8\x01\x01R\x03tag\x12+\n" +
 	"\rresource_type\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\fresourceType\x12)\n" +
@@ -909,6 +752,18 @@ const file_cloudstack_management_tag_v1_tag_gen_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"R\n" +
 	"\x12CreateTagsResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.tag.v1.ResultR\x06result\"\xec\x02\n" +
+	"\x11DeleteTagsRequest\x12J\n" +
+	"\x03tag\x18\x01 \x03(\v28.cloudstack.management.tag.v1.DeleteTagsRequest.TagEntryR\x03tag\x12+\n" +
+	"\rresource_type\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\fresourceType\x12)\n" +
+	"\fresource_ids\x18\x03 \x03(\tB\x06\xbaH\x03\xc8\x01\x01R\vresourceIds\x12$\n" +
+	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\x1a6\n" +
+	"\bTagEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"R\n" +
+	"\x12DeleteTagsResponse\x12<\n" +
 	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.tag.v1.ResultR\x06result\"\xbb\x04\n" +
 	"\x0fListTagsRequest\x12#\n" +
 	"\rresource_type\x18\x01 \x01(\tR\fresourceType\x12)\n" +
@@ -941,40 +796,21 @@ const file_cloudstack_management_tag_v1_tag_gen_proto_rawDesc = "" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xdb\x03\n" +
-	"\x04Item\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12I\n" +
-	"\adetails\x18\f \x03(\v2/.cloudstack.management.tag.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xe7\x02\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\xfd\x02\n" +
 	"\n" +
-	"TagService\x12q\n" +
+	"TagService\x12x\n" +
 	"\n" +
-	"DeleteTags\x12/.cloudstack.management.tag.v1.DeleteTagsRequest\x1a0.cloudstack.management.tag.v1.DeleteTagsResponse\"\x00\x12q\n" +
+	"CreateTags\x12/.cloudstack.management.tag.v1.CreateTagsRequest\x1a0.cloudstack.management.tag.v1.CreateTagsResponse\"\a\xc2>\x04\xc2>\x01\x02\x12x\n" +
 	"\n" +
-	"CreateTags\x12/.cloudstack.management.tag.v1.CreateTagsRequest\x1a0.cloudstack.management.tag.v1.CreateTagsResponse\"\x00\x12k\n" +
-	"\bListTags\x12-.cloudstack.management.tag.v1.ListTagsRequest\x1a..cloudstack.management.tag.v1.ListTagsResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\x9a\x02\n" +
+	"DeleteTags\x12/.cloudstack.management.tag.v1.DeleteTagsRequest\x1a0.cloudstack.management.tag.v1.DeleteTagsResponse\"\a\xc2>\x04\xc2>\x01\x02\x12r\n" +
+	"\bListTags\x12-.cloudstack.management.tag.v1.ListTagsRequest\x1a..cloudstack.management.tag.v1.ListTagsResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\a\xc2>\x04\xc2>\x01\x02B\x9a\x02\n" +
 	" com.cloudstack.management.tag.v1B\vTagGenProtoP\x01ZVgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/tag/v1;tagv1\xa2\x02\x03CMT\xaa\x02\x1cCloudstack.Management.Tag.V1\xca\x02\x1cCloudstack\\Management\\Tag\\V1\xe2\x02(Cloudstack\\Management\\Tag\\V1\\GPBMetadata\xea\x02\x1fCloudstack::Management::Tag::V1b\beditionsp\xe8\a"
 
 var (
@@ -989,40 +825,37 @@ func file_cloudstack_management_tag_v1_tag_gen_proto_rawDescGZIP() []byte {
 	return file_cloudstack_management_tag_v1_tag_gen_proto_rawDescData
 }
 
-var file_cloudstack_management_tag_v1_tag_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_cloudstack_management_tag_v1_tag_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_cloudstack_management_tag_v1_tag_gen_proto_goTypes = []any{
-	(*DeleteTagsRequest)(nil),  // 0: cloudstack.management.tag.v1.DeleteTagsRequest
-	(*DeleteTagsResponse)(nil), // 1: cloudstack.management.tag.v1.DeleteTagsResponse
-	(*CreateTagsRequest)(nil),  // 2: cloudstack.management.tag.v1.CreateTagsRequest
-	(*CreateTagsResponse)(nil), // 3: cloudstack.management.tag.v1.CreateTagsResponse
+	(*CreateTagsRequest)(nil),  // 0: cloudstack.management.tag.v1.CreateTagsRequest
+	(*CreateTagsResponse)(nil), // 1: cloudstack.management.tag.v1.CreateTagsResponse
+	(*DeleteTagsRequest)(nil),  // 2: cloudstack.management.tag.v1.DeleteTagsRequest
+	(*DeleteTagsResponse)(nil), // 3: cloudstack.management.tag.v1.DeleteTagsResponse
 	(*ListTagsRequest)(nil),    // 4: cloudstack.management.tag.v1.ListTagsRequest
 	(*ListTagsResponse)(nil),   // 5: cloudstack.management.tag.v1.ListTagsResponse
 	(*ResourceTag)(nil),        // 6: cloudstack.management.tag.v1.ResourceTag
 	(*Success)(nil),            // 7: cloudstack.management.tag.v1.Success
-	(*Item)(nil),               // 8: cloudstack.management.tag.v1.Item
-	(*Result)(nil),             // 9: cloudstack.management.tag.v1.Result
+	(*Result)(nil),             // 8: cloudstack.management.tag.v1.Result
+	nil,                        // 9: cloudstack.management.tag.v1.CreateTagsRequest.TagEntry
 	nil,                        // 10: cloudstack.management.tag.v1.DeleteTagsRequest.TagEntry
-	nil,                        // 11: cloudstack.management.tag.v1.CreateTagsRequest.TagEntry
-	nil,                        // 12: cloudstack.management.tag.v1.Item.DetailsEntry
 }
 var file_cloudstack_management_tag_v1_tag_gen_proto_depIdxs = []int32{
-	10, // 0: cloudstack.management.tag.v1.DeleteTagsRequest.tag:type_name -> cloudstack.management.tag.v1.DeleteTagsRequest.TagEntry
-	9,  // 1: cloudstack.management.tag.v1.DeleteTagsResponse.result:type_name -> cloudstack.management.tag.v1.Result
-	11, // 2: cloudstack.management.tag.v1.CreateTagsRequest.tag:type_name -> cloudstack.management.tag.v1.CreateTagsRequest.TagEntry
-	9,  // 3: cloudstack.management.tag.v1.CreateTagsResponse.result:type_name -> cloudstack.management.tag.v1.Result
+	9,  // 0: cloudstack.management.tag.v1.CreateTagsRequest.tag:type_name -> cloudstack.management.tag.v1.CreateTagsRequest.TagEntry
+	8,  // 1: cloudstack.management.tag.v1.CreateTagsResponse.result:type_name -> cloudstack.management.tag.v1.Result
+	10, // 2: cloudstack.management.tag.v1.DeleteTagsRequest.tag:type_name -> cloudstack.management.tag.v1.DeleteTagsRequest.TagEntry
+	8,  // 3: cloudstack.management.tag.v1.DeleteTagsResponse.result:type_name -> cloudstack.management.tag.v1.Result
 	6,  // 4: cloudstack.management.tag.v1.ListTagsResponse.items:type_name -> cloudstack.management.tag.v1.ResourceTag
-	12, // 5: cloudstack.management.tag.v1.Item.details:type_name -> cloudstack.management.tag.v1.Item.DetailsEntry
-	0,  // 6: cloudstack.management.tag.v1.TagService.DeleteTags:input_type -> cloudstack.management.tag.v1.DeleteTagsRequest
-	2,  // 7: cloudstack.management.tag.v1.TagService.CreateTags:input_type -> cloudstack.management.tag.v1.CreateTagsRequest
-	4,  // 8: cloudstack.management.tag.v1.TagService.ListTags:input_type -> cloudstack.management.tag.v1.ListTagsRequest
-	1,  // 9: cloudstack.management.tag.v1.TagService.DeleteTags:output_type -> cloudstack.management.tag.v1.DeleteTagsResponse
-	3,  // 10: cloudstack.management.tag.v1.TagService.CreateTags:output_type -> cloudstack.management.tag.v1.CreateTagsResponse
-	5,  // 11: cloudstack.management.tag.v1.TagService.ListTags:output_type -> cloudstack.management.tag.v1.ListTagsResponse
-	9,  // [9:12] is the sub-list for method output_type
-	6,  // [6:9] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	0,  // 5: cloudstack.management.tag.v1.TagService.CreateTags:input_type -> cloudstack.management.tag.v1.CreateTagsRequest
+	2,  // 6: cloudstack.management.tag.v1.TagService.DeleteTags:input_type -> cloudstack.management.tag.v1.DeleteTagsRequest
+	4,  // 7: cloudstack.management.tag.v1.TagService.ListTags:input_type -> cloudstack.management.tag.v1.ListTagsRequest
+	1,  // 8: cloudstack.management.tag.v1.TagService.CreateTags:output_type -> cloudstack.management.tag.v1.CreateTagsResponse
+	3,  // 9: cloudstack.management.tag.v1.TagService.DeleteTags:output_type -> cloudstack.management.tag.v1.DeleteTagsResponse
+	5,  // 10: cloudstack.management.tag.v1.TagService.ListTags:output_type -> cloudstack.management.tag.v1.ListTagsResponse
+	8,  // [8:11] is the sub-list for method output_type
+	5,  // [5:8] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_tag_v1_tag_gen_proto_init() }
@@ -1036,7 +869,7 @@ func file_cloudstack_management_tag_v1_tag_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_tag_v1_tag_gen_proto_rawDesc), len(file_cloudstack_management_tag_v1_tag_gen_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   13,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

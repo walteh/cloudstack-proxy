@@ -19,13 +19,13 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ClusterService_UpdateCluster_FullMethodName          = "/cloudstack.management.cluster.v1.ClusterService/UpdateCluster"
-	ClusterService_ListClusters_FullMethodName           = "/cloudstack.management.cluster.v1.ClusterService/ListClusters"
+	ClusterService_AddCluster_FullMethodName             = "/cloudstack.management.cluster.v1.ClusterService/AddCluster"
 	ClusterService_DeleteCluster_FullMethodName          = "/cloudstack.management.cluster.v1.ClusterService/DeleteCluster"
 	ClusterService_ExecuteClusterDrsPlan_FullMethodName  = "/cloudstack.management.cluster.v1.ClusterService/ExecuteClusterDrsPlan"
-	ClusterService_AddCluster_FullMethodName             = "/cloudstack.management.cluster.v1.ClusterService/AddCluster"
 	ClusterService_GenerateClusterDrsPlan_FullMethodName = "/cloudstack.management.cluster.v1.ClusterService/GenerateClusterDrsPlan"
 	ClusterService_ListClusterDrsPlan_FullMethodName     = "/cloudstack.management.cluster.v1.ClusterService/ListClusterDrsPlan"
+	ClusterService_ListClusters_FullMethodName           = "/cloudstack.management.cluster.v1.ClusterService/ListClusters"
+	ClusterService_UpdateCluster_FullMethodName          = "/cloudstack.management.cluster.v1.ClusterService/UpdateCluster"
 )
 
 // ClusterServiceClient is the client API for ClusterService service.
@@ -34,20 +34,20 @@ const (
 //
 // ClusterService provides operations for managing Clusters
 type ClusterServiceClient interface {
-	// UpdateCluster Updates an existing cluster
-	UpdateCluster(ctx context.Context, in *UpdateClusterRequest, opts ...grpc.CallOption) (*UpdateClusterResponse, error)
-	// ListClusters Lists clusters.
-	ListClusters(ctx context.Context, in *ListClustersRequest, opts ...grpc.CallOption) (*ListClustersResponse, error)
+	// AddCluster Adds a new cluster
+	AddCluster(ctx context.Context, in *AddClusterRequest, opts ...grpc.CallOption) (*AddClusterResponse, error)
 	// DeleteCluster Deletes a cluster.
 	DeleteCluster(ctx context.Context, in *DeleteClusterRequest, opts ...grpc.CallOption) (*DeleteClusterResponse, error)
 	// ExecuteClusterDrsPlan Execute DRS for a cluster. If there is another plan in progress for the same cluster, this command will fail.
 	ExecuteClusterDrsPlan(ctx context.Context, in *ExecuteClusterDrsPlanRequest, opts ...grpc.CallOption) (*ExecuteClusterDrsPlanResponse, error)
-	// AddCluster Adds a new cluster
-	AddCluster(ctx context.Context, in *AddClusterRequest, opts ...grpc.CallOption) (*AddClusterResponse, error)
 	// GenerateClusterDrsPlan Generate DRS plan for a cluster
 	GenerateClusterDrsPlan(ctx context.Context, in *GenerateClusterDrsPlanRequest, opts ...grpc.CallOption) (*GenerateClusterDrsPlanResponse, error)
 	// ListClusterDrsPlan List DRS plans for a clusters
 	ListClusterDrsPlan(ctx context.Context, in *ListClusterDrsPlanRequest, opts ...grpc.CallOption) (*ListClusterDrsPlanResponse, error)
+	// ListClusters Lists clusters.
+	ListClusters(ctx context.Context, in *ListClustersRequest, opts ...grpc.CallOption) (*ListClustersResponse, error)
+	// UpdateCluster Updates an existing cluster
+	UpdateCluster(ctx context.Context, in *UpdateClusterRequest, opts ...grpc.CallOption) (*UpdateClusterResponse, error)
 }
 
 type clusterServiceClient struct {
@@ -58,20 +58,10 @@ func NewClusterServiceClient(cc grpc.ClientConnInterface) ClusterServiceClient {
 	return &clusterServiceClient{cc}
 }
 
-func (c *clusterServiceClient) UpdateCluster(ctx context.Context, in *UpdateClusterRequest, opts ...grpc.CallOption) (*UpdateClusterResponse, error) {
+func (c *clusterServiceClient) AddCluster(ctx context.Context, in *AddClusterRequest, opts ...grpc.CallOption) (*AddClusterResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateClusterResponse)
-	err := c.cc.Invoke(ctx, ClusterService_UpdateCluster_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *clusterServiceClient) ListClusters(ctx context.Context, in *ListClustersRequest, opts ...grpc.CallOption) (*ListClustersResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListClustersResponse)
-	err := c.cc.Invoke(ctx, ClusterService_ListClusters_FullMethodName, in, out, cOpts...)
+	out := new(AddClusterResponse)
+	err := c.cc.Invoke(ctx, ClusterService_AddCluster_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -98,16 +88,6 @@ func (c *clusterServiceClient) ExecuteClusterDrsPlan(ctx context.Context, in *Ex
 	return out, nil
 }
 
-func (c *clusterServiceClient) AddCluster(ctx context.Context, in *AddClusterRequest, opts ...grpc.CallOption) (*AddClusterResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AddClusterResponse)
-	err := c.cc.Invoke(ctx, ClusterService_AddCluster_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *clusterServiceClient) GenerateClusterDrsPlan(ctx context.Context, in *GenerateClusterDrsPlanRequest, opts ...grpc.CallOption) (*GenerateClusterDrsPlanResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GenerateClusterDrsPlanResponse)
@@ -128,26 +108,46 @@ func (c *clusterServiceClient) ListClusterDrsPlan(ctx context.Context, in *ListC
 	return out, nil
 }
 
+func (c *clusterServiceClient) ListClusters(ctx context.Context, in *ListClustersRequest, opts ...grpc.CallOption) (*ListClustersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListClustersResponse)
+	err := c.cc.Invoke(ctx, ClusterService_ListClusters_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *clusterServiceClient) UpdateCluster(ctx context.Context, in *UpdateClusterRequest, opts ...grpc.CallOption) (*UpdateClusterResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateClusterResponse)
+	err := c.cc.Invoke(ctx, ClusterService_UpdateCluster_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ClusterServiceServer is the server API for ClusterService service.
 // All implementations must embed UnimplementedClusterServiceServer
 // for forward compatibility.
 //
 // ClusterService provides operations for managing Clusters
 type ClusterServiceServer interface {
-	// UpdateCluster Updates an existing cluster
-	UpdateCluster(context.Context, *UpdateClusterRequest) (*UpdateClusterResponse, error)
-	// ListClusters Lists clusters.
-	ListClusters(context.Context, *ListClustersRequest) (*ListClustersResponse, error)
+	// AddCluster Adds a new cluster
+	AddCluster(context.Context, *AddClusterRequest) (*AddClusterResponse, error)
 	// DeleteCluster Deletes a cluster.
 	DeleteCluster(context.Context, *DeleteClusterRequest) (*DeleteClusterResponse, error)
 	// ExecuteClusterDrsPlan Execute DRS for a cluster. If there is another plan in progress for the same cluster, this command will fail.
 	ExecuteClusterDrsPlan(context.Context, *ExecuteClusterDrsPlanRequest) (*ExecuteClusterDrsPlanResponse, error)
-	// AddCluster Adds a new cluster
-	AddCluster(context.Context, *AddClusterRequest) (*AddClusterResponse, error)
 	// GenerateClusterDrsPlan Generate DRS plan for a cluster
 	GenerateClusterDrsPlan(context.Context, *GenerateClusterDrsPlanRequest) (*GenerateClusterDrsPlanResponse, error)
 	// ListClusterDrsPlan List DRS plans for a clusters
 	ListClusterDrsPlan(context.Context, *ListClusterDrsPlanRequest) (*ListClusterDrsPlanResponse, error)
+	// ListClusters Lists clusters.
+	ListClusters(context.Context, *ListClustersRequest) (*ListClustersResponse, error)
+	// UpdateCluster Updates an existing cluster
+	UpdateCluster(context.Context, *UpdateClusterRequest) (*UpdateClusterResponse, error)
 	mustEmbedUnimplementedClusterServiceServer()
 }
 
@@ -158,11 +158,8 @@ type ClusterServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedClusterServiceServer struct{}
 
-func (UnimplementedClusterServiceServer) UpdateCluster(context.Context, *UpdateClusterRequest) (*UpdateClusterResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateCluster not implemented")
-}
-func (UnimplementedClusterServiceServer) ListClusters(context.Context, *ListClustersRequest) (*ListClustersResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListClusters not implemented")
+func (UnimplementedClusterServiceServer) AddCluster(context.Context, *AddClusterRequest) (*AddClusterResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddCluster not implemented")
 }
 func (UnimplementedClusterServiceServer) DeleteCluster(context.Context, *DeleteClusterRequest) (*DeleteClusterResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteCluster not implemented")
@@ -170,14 +167,17 @@ func (UnimplementedClusterServiceServer) DeleteCluster(context.Context, *DeleteC
 func (UnimplementedClusterServiceServer) ExecuteClusterDrsPlan(context.Context, *ExecuteClusterDrsPlanRequest) (*ExecuteClusterDrsPlanResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ExecuteClusterDrsPlan not implemented")
 }
-func (UnimplementedClusterServiceServer) AddCluster(context.Context, *AddClusterRequest) (*AddClusterResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddCluster not implemented")
-}
 func (UnimplementedClusterServiceServer) GenerateClusterDrsPlan(context.Context, *GenerateClusterDrsPlanRequest) (*GenerateClusterDrsPlanResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GenerateClusterDrsPlan not implemented")
 }
 func (UnimplementedClusterServiceServer) ListClusterDrsPlan(context.Context, *ListClusterDrsPlanRequest) (*ListClusterDrsPlanResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListClusterDrsPlan not implemented")
+}
+func (UnimplementedClusterServiceServer) ListClusters(context.Context, *ListClustersRequest) (*ListClustersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListClusters not implemented")
+}
+func (UnimplementedClusterServiceServer) UpdateCluster(context.Context, *UpdateClusterRequest) (*UpdateClusterResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCluster not implemented")
 }
 func (UnimplementedClusterServiceServer) mustEmbedUnimplementedClusterServiceServer() {}
 func (UnimplementedClusterServiceServer) testEmbeddedByValue()                        {}
@@ -200,38 +200,20 @@ func RegisterClusterServiceServer(s grpc.ServiceRegistrar, srv ClusterServiceSer
 	s.RegisterService(&ClusterService_ServiceDesc, srv)
 }
 
-func _ClusterService_UpdateCluster_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateClusterRequest)
+func _ClusterService_AddCluster_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddClusterRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ClusterServiceServer).UpdateCluster(ctx, in)
+		return srv.(ClusterServiceServer).AddCluster(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ClusterService_UpdateCluster_FullMethodName,
+		FullMethod: ClusterService_AddCluster_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ClusterServiceServer).UpdateCluster(ctx, req.(*UpdateClusterRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ClusterService_ListClusters_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListClustersRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ClusterServiceServer).ListClusters(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ClusterService_ListClusters_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ClusterServiceServer).ListClusters(ctx, req.(*ListClustersRequest))
+		return srv.(ClusterServiceServer).AddCluster(ctx, req.(*AddClusterRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -272,24 +254,6 @@ func _ClusterService_ExecuteClusterDrsPlan_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ClusterService_AddCluster_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddClusterRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ClusterServiceServer).AddCluster(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ClusterService_AddCluster_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ClusterServiceServer).AddCluster(ctx, req.(*AddClusterRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _ClusterService_GenerateClusterDrsPlan_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GenerateClusterDrsPlanRequest)
 	if err := dec(in); err != nil {
@@ -326,6 +290,42 @@ func _ClusterService_ListClusterDrsPlan_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ClusterService_ListClusters_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListClustersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClusterServiceServer).ListClusters(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ClusterService_ListClusters_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClusterServiceServer).ListClusters(ctx, req.(*ListClustersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ClusterService_UpdateCluster_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateClusterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClusterServiceServer).UpdateCluster(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ClusterService_UpdateCluster_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClusterServiceServer).UpdateCluster(ctx, req.(*UpdateClusterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ClusterService_ServiceDesc is the grpc.ServiceDesc for ClusterService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -334,12 +334,8 @@ var ClusterService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*ClusterServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "UpdateCluster",
-			Handler:    _ClusterService_UpdateCluster_Handler,
-		},
-		{
-			MethodName: "ListClusters",
-			Handler:    _ClusterService_ListClusters_Handler,
+			MethodName: "AddCluster",
+			Handler:    _ClusterService_AddCluster_Handler,
 		},
 		{
 			MethodName: "DeleteCluster",
@@ -350,16 +346,20 @@ var ClusterService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ClusterService_ExecuteClusterDrsPlan_Handler,
 		},
 		{
-			MethodName: "AddCluster",
-			Handler:    _ClusterService_AddCluster_Handler,
-		},
-		{
 			MethodName: "GenerateClusterDrsPlan",
 			Handler:    _ClusterService_GenerateClusterDrsPlan_Handler,
 		},
 		{
 			MethodName: "ListClusterDrsPlan",
 			Handler:    _ClusterService_ListClusterDrsPlan_Handler,
+		},
+		{
+			MethodName: "ListClusters",
+			Handler:    _ClusterService_ListClusters_Handler,
+		},
+		{
+			MethodName: "UpdateCluster",
+			Handler:    _ClusterService_UpdateCluster_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

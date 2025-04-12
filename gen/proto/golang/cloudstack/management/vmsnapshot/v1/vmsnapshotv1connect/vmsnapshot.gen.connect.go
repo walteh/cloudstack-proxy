@@ -33,36 +33,36 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// VmsnapshotServiceListVMSnapshotProcedure is the fully-qualified name of the VmsnapshotService's
-	// ListVMSnapshot RPC.
-	VmsnapshotServiceListVMSnapshotProcedure = "/cloudstack.management.vmsnapshot.v1.VmsnapshotService/ListVMSnapshot"
-	// VmsnapshotServiceDeleteVMSnapshotProcedure is the fully-qualified name of the VmsnapshotService's
-	// DeleteVMSnapshot RPC.
-	VmsnapshotServiceDeleteVMSnapshotProcedure = "/cloudstack.management.vmsnapshot.v1.VmsnapshotService/DeleteVMSnapshot"
 	// VmsnapshotServiceCreateVMSnapshotProcedure is the fully-qualified name of the VmsnapshotService's
 	// CreateVMSnapshot RPC.
 	VmsnapshotServiceCreateVMSnapshotProcedure = "/cloudstack.management.vmsnapshot.v1.VmsnapshotService/CreateVMSnapshot"
-	// VmsnapshotServiceRevertToVMSnapshotCmdByAdminProcedure is the fully-qualified name of the
-	// VmsnapshotService's RevertToVMSnapshotCmdByAdmin RPC.
-	VmsnapshotServiceRevertToVMSnapshotCmdByAdminProcedure = "/cloudstack.management.vmsnapshot.v1.VmsnapshotService/RevertToVMSnapshotCmdByAdmin"
+	// VmsnapshotServiceDeleteVMSnapshotProcedure is the fully-qualified name of the VmsnapshotService's
+	// DeleteVMSnapshot RPC.
+	VmsnapshotServiceDeleteVMSnapshotProcedure = "/cloudstack.management.vmsnapshot.v1.VmsnapshotService/DeleteVMSnapshot"
+	// VmsnapshotServiceListVMSnapshotProcedure is the fully-qualified name of the VmsnapshotService's
+	// ListVMSnapshot RPC.
+	VmsnapshotServiceListVMSnapshotProcedure = "/cloudstack.management.vmsnapshot.v1.VmsnapshotService/ListVMSnapshot"
 	// VmsnapshotServiceRevertToVMSnapshotProcedure is the fully-qualified name of the
 	// VmsnapshotService's RevertToVMSnapshot RPC.
 	VmsnapshotServiceRevertToVMSnapshotProcedure = "/cloudstack.management.vmsnapshot.v1.VmsnapshotService/RevertToVMSnapshot"
+	// VmsnapshotServiceRevertToVMSnapshotCmdByAdminProcedure is the fully-qualified name of the
+	// VmsnapshotService's RevertToVMSnapshotCmdByAdmin RPC.
+	VmsnapshotServiceRevertToVMSnapshotCmdByAdminProcedure = "/cloudstack.management.vmsnapshot.v1.VmsnapshotService/RevertToVMSnapshotCmdByAdmin"
 )
 
 // VmsnapshotServiceClient is a client for the cloudstack.management.vmsnapshot.v1.VmsnapshotService
 // service.
 type VmsnapshotServiceClient interface {
-	// ListVMSnapshot List virtual machine snapshot by conditions
-	ListVMSnapshot(context.Context, *connect.Request[v1.ListVMSnapshotRequest]) (*connect.Response[v1.ListVMSnapshotResponse], error)
-	// DeleteVMSnapshot Deletes a vmsnapshot.
-	DeleteVMSnapshot(context.Context, *connect.Request[v1.DeleteVMSnapshotRequest]) (*connect.Response[v1.DeleteVMSnapshotResponse], error)
 	// CreateVMSnapshot Creates snapshot for a vm.
 	CreateVMSnapshot(context.Context, *connect.Request[v1.CreateVMSnapshotRequest]) (*connect.Response[v1.CreateVMSnapshotResponse], error)
-	// RevertToVMSnapshotCmdByAdmin Revert VM from a vmsnapshot.
-	RevertToVMSnapshotCmdByAdmin(context.Context, *connect.Request[v1.RevertToVMSnapshotCmdByAdminRequest]) (*connect.Response[v1.RevertToVMSnapshotCmdByAdminResponse], error)
+	// DeleteVMSnapshot Deletes a vmsnapshot.
+	DeleteVMSnapshot(context.Context, *connect.Request[v1.DeleteVMSnapshotRequest]) (*connect.Response[v1.DeleteVMSnapshotResponse], error)
+	// ListVMSnapshot List virtual machine snapshot by conditions
+	ListVMSnapshot(context.Context, *connect.Request[v1.ListVMSnapshotRequest]) (*connect.Response[v1.ListVMSnapshotResponse], error)
 	// RevertToVMSnapshot Revert VM from a vmsnapshot.
 	RevertToVMSnapshot(context.Context, *connect.Request[v1.RevertToVMSnapshotRequest]) (*connect.Response[v1.RevertToVMSnapshotResponse], error)
+	// RevertToVMSnapshotCmdByAdmin Revert VM from a vmsnapshot.
+	RevertToVMSnapshotCmdByAdmin(context.Context, *connect.Request[v1.RevertToVMSnapshotCmdByAdminRequest]) (*connect.Response[v1.RevertToVMSnapshotCmdByAdminResponse], error)
 }
 
 // NewVmsnapshotServiceClient constructs a client for the
@@ -77,10 +77,10 @@ func NewVmsnapshotServiceClient(httpClient connect.HTTPClient, baseURL string, o
 	baseURL = strings.TrimRight(baseURL, "/")
 	vmsnapshotServiceMethods := v1.File_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto.Services().ByName("VmsnapshotService").Methods()
 	return &vmsnapshotServiceClient{
-		listVMSnapshot: connect.NewClient[v1.ListVMSnapshotRequest, v1.ListVMSnapshotResponse](
+		createVMSnapshot: connect.NewClient[v1.CreateVMSnapshotRequest, v1.CreateVMSnapshotResponse](
 			httpClient,
-			baseURL+VmsnapshotServiceListVMSnapshotProcedure,
-			connect.WithSchema(vmsnapshotServiceMethods.ByName("ListVMSnapshot")),
+			baseURL+VmsnapshotServiceCreateVMSnapshotProcedure,
+			connect.WithSchema(vmsnapshotServiceMethods.ByName("CreateVMSnapshot")),
 			connect.WithClientOptions(opts...),
 		),
 		deleteVMSnapshot: connect.NewClient[v1.DeleteVMSnapshotRequest, v1.DeleteVMSnapshotResponse](
@@ -89,16 +89,10 @@ func NewVmsnapshotServiceClient(httpClient connect.HTTPClient, baseURL string, o
 			connect.WithSchema(vmsnapshotServiceMethods.ByName("DeleteVMSnapshot")),
 			connect.WithClientOptions(opts...),
 		),
-		createVMSnapshot: connect.NewClient[v1.CreateVMSnapshotRequest, v1.CreateVMSnapshotResponse](
+		listVMSnapshot: connect.NewClient[v1.ListVMSnapshotRequest, v1.ListVMSnapshotResponse](
 			httpClient,
-			baseURL+VmsnapshotServiceCreateVMSnapshotProcedure,
-			connect.WithSchema(vmsnapshotServiceMethods.ByName("CreateVMSnapshot")),
-			connect.WithClientOptions(opts...),
-		),
-		revertToVMSnapshotCmdByAdmin: connect.NewClient[v1.RevertToVMSnapshotCmdByAdminRequest, v1.RevertToVMSnapshotCmdByAdminResponse](
-			httpClient,
-			baseURL+VmsnapshotServiceRevertToVMSnapshotCmdByAdminProcedure,
-			connect.WithSchema(vmsnapshotServiceMethods.ByName("RevertToVMSnapshotCmdByAdmin")),
+			baseURL+VmsnapshotServiceListVMSnapshotProcedure,
+			connect.WithSchema(vmsnapshotServiceMethods.ByName("ListVMSnapshot")),
 			connect.WithClientOptions(opts...),
 		),
 		revertToVMSnapshot: connect.NewClient[v1.RevertToVMSnapshotRequest, v1.RevertToVMSnapshotResponse](
@@ -107,26 +101,22 @@ func NewVmsnapshotServiceClient(httpClient connect.HTTPClient, baseURL string, o
 			connect.WithSchema(vmsnapshotServiceMethods.ByName("RevertToVMSnapshot")),
 			connect.WithClientOptions(opts...),
 		),
+		revertToVMSnapshotCmdByAdmin: connect.NewClient[v1.RevertToVMSnapshotCmdByAdminRequest, v1.RevertToVMSnapshotCmdByAdminResponse](
+			httpClient,
+			baseURL+VmsnapshotServiceRevertToVMSnapshotCmdByAdminProcedure,
+			connect.WithSchema(vmsnapshotServiceMethods.ByName("RevertToVMSnapshotCmdByAdmin")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // vmsnapshotServiceClient implements VmsnapshotServiceClient.
 type vmsnapshotServiceClient struct {
-	listVMSnapshot               *connect.Client[v1.ListVMSnapshotRequest, v1.ListVMSnapshotResponse]
-	deleteVMSnapshot             *connect.Client[v1.DeleteVMSnapshotRequest, v1.DeleteVMSnapshotResponse]
 	createVMSnapshot             *connect.Client[v1.CreateVMSnapshotRequest, v1.CreateVMSnapshotResponse]
-	revertToVMSnapshotCmdByAdmin *connect.Client[v1.RevertToVMSnapshotCmdByAdminRequest, v1.RevertToVMSnapshotCmdByAdminResponse]
+	deleteVMSnapshot             *connect.Client[v1.DeleteVMSnapshotRequest, v1.DeleteVMSnapshotResponse]
+	listVMSnapshot               *connect.Client[v1.ListVMSnapshotRequest, v1.ListVMSnapshotResponse]
 	revertToVMSnapshot           *connect.Client[v1.RevertToVMSnapshotRequest, v1.RevertToVMSnapshotResponse]
-}
-
-// ListVMSnapshot calls cloudstack.management.vmsnapshot.v1.VmsnapshotService.ListVMSnapshot.
-func (c *vmsnapshotServiceClient) ListVMSnapshot(ctx context.Context, req *connect.Request[v1.ListVMSnapshotRequest]) (*connect.Response[v1.ListVMSnapshotResponse], error) {
-	return c.listVMSnapshot.CallUnary(ctx, req)
-}
-
-// DeleteVMSnapshot calls cloudstack.management.vmsnapshot.v1.VmsnapshotService.DeleteVMSnapshot.
-func (c *vmsnapshotServiceClient) DeleteVMSnapshot(ctx context.Context, req *connect.Request[v1.DeleteVMSnapshotRequest]) (*connect.Response[v1.DeleteVMSnapshotResponse], error) {
-	return c.deleteVMSnapshot.CallUnary(ctx, req)
+	revertToVMSnapshotCmdByAdmin *connect.Client[v1.RevertToVMSnapshotCmdByAdminRequest, v1.RevertToVMSnapshotCmdByAdminResponse]
 }
 
 // CreateVMSnapshot calls cloudstack.management.vmsnapshot.v1.VmsnapshotService.CreateVMSnapshot.
@@ -134,10 +124,14 @@ func (c *vmsnapshotServiceClient) CreateVMSnapshot(ctx context.Context, req *con
 	return c.createVMSnapshot.CallUnary(ctx, req)
 }
 
-// RevertToVMSnapshotCmdByAdmin calls
-// cloudstack.management.vmsnapshot.v1.VmsnapshotService.RevertToVMSnapshotCmdByAdmin.
-func (c *vmsnapshotServiceClient) RevertToVMSnapshotCmdByAdmin(ctx context.Context, req *connect.Request[v1.RevertToVMSnapshotCmdByAdminRequest]) (*connect.Response[v1.RevertToVMSnapshotCmdByAdminResponse], error) {
-	return c.revertToVMSnapshotCmdByAdmin.CallUnary(ctx, req)
+// DeleteVMSnapshot calls cloudstack.management.vmsnapshot.v1.VmsnapshotService.DeleteVMSnapshot.
+func (c *vmsnapshotServiceClient) DeleteVMSnapshot(ctx context.Context, req *connect.Request[v1.DeleteVMSnapshotRequest]) (*connect.Response[v1.DeleteVMSnapshotResponse], error) {
+	return c.deleteVMSnapshot.CallUnary(ctx, req)
+}
+
+// ListVMSnapshot calls cloudstack.management.vmsnapshot.v1.VmsnapshotService.ListVMSnapshot.
+func (c *vmsnapshotServiceClient) ListVMSnapshot(ctx context.Context, req *connect.Request[v1.ListVMSnapshotRequest]) (*connect.Response[v1.ListVMSnapshotResponse], error) {
+	return c.listVMSnapshot.CallUnary(ctx, req)
 }
 
 // RevertToVMSnapshot calls
@@ -146,19 +140,25 @@ func (c *vmsnapshotServiceClient) RevertToVMSnapshot(ctx context.Context, req *c
 	return c.revertToVMSnapshot.CallUnary(ctx, req)
 }
 
+// RevertToVMSnapshotCmdByAdmin calls
+// cloudstack.management.vmsnapshot.v1.VmsnapshotService.RevertToVMSnapshotCmdByAdmin.
+func (c *vmsnapshotServiceClient) RevertToVMSnapshotCmdByAdmin(ctx context.Context, req *connect.Request[v1.RevertToVMSnapshotCmdByAdminRequest]) (*connect.Response[v1.RevertToVMSnapshotCmdByAdminResponse], error) {
+	return c.revertToVMSnapshotCmdByAdmin.CallUnary(ctx, req)
+}
+
 // VmsnapshotServiceHandler is an implementation of the
 // cloudstack.management.vmsnapshot.v1.VmsnapshotService service.
 type VmsnapshotServiceHandler interface {
-	// ListVMSnapshot List virtual machine snapshot by conditions
-	ListVMSnapshot(context.Context, *connect.Request[v1.ListVMSnapshotRequest]) (*connect.Response[v1.ListVMSnapshotResponse], error)
-	// DeleteVMSnapshot Deletes a vmsnapshot.
-	DeleteVMSnapshot(context.Context, *connect.Request[v1.DeleteVMSnapshotRequest]) (*connect.Response[v1.DeleteVMSnapshotResponse], error)
 	// CreateVMSnapshot Creates snapshot for a vm.
 	CreateVMSnapshot(context.Context, *connect.Request[v1.CreateVMSnapshotRequest]) (*connect.Response[v1.CreateVMSnapshotResponse], error)
-	// RevertToVMSnapshotCmdByAdmin Revert VM from a vmsnapshot.
-	RevertToVMSnapshotCmdByAdmin(context.Context, *connect.Request[v1.RevertToVMSnapshotCmdByAdminRequest]) (*connect.Response[v1.RevertToVMSnapshotCmdByAdminResponse], error)
+	// DeleteVMSnapshot Deletes a vmsnapshot.
+	DeleteVMSnapshot(context.Context, *connect.Request[v1.DeleteVMSnapshotRequest]) (*connect.Response[v1.DeleteVMSnapshotResponse], error)
+	// ListVMSnapshot List virtual machine snapshot by conditions
+	ListVMSnapshot(context.Context, *connect.Request[v1.ListVMSnapshotRequest]) (*connect.Response[v1.ListVMSnapshotResponse], error)
 	// RevertToVMSnapshot Revert VM from a vmsnapshot.
 	RevertToVMSnapshot(context.Context, *connect.Request[v1.RevertToVMSnapshotRequest]) (*connect.Response[v1.RevertToVMSnapshotResponse], error)
+	// RevertToVMSnapshotCmdByAdmin Revert VM from a vmsnapshot.
+	RevertToVMSnapshotCmdByAdmin(context.Context, *connect.Request[v1.RevertToVMSnapshotCmdByAdminRequest]) (*connect.Response[v1.RevertToVMSnapshotCmdByAdminResponse], error)
 }
 
 // NewVmsnapshotServiceHandler builds an HTTP handler from the service implementation. It returns
@@ -168,10 +168,10 @@ type VmsnapshotServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewVmsnapshotServiceHandler(svc VmsnapshotServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	vmsnapshotServiceMethods := v1.File_cloudstack_management_vmsnapshot_v1_vmsnapshot_gen_proto.Services().ByName("VmsnapshotService").Methods()
-	vmsnapshotServiceListVMSnapshotHandler := connect.NewUnaryHandler(
-		VmsnapshotServiceListVMSnapshotProcedure,
-		svc.ListVMSnapshot,
-		connect.WithSchema(vmsnapshotServiceMethods.ByName("ListVMSnapshot")),
+	vmsnapshotServiceCreateVMSnapshotHandler := connect.NewUnaryHandler(
+		VmsnapshotServiceCreateVMSnapshotProcedure,
+		svc.CreateVMSnapshot,
+		connect.WithSchema(vmsnapshotServiceMethods.ByName("CreateVMSnapshot")),
 		connect.WithHandlerOptions(opts...),
 	)
 	vmsnapshotServiceDeleteVMSnapshotHandler := connect.NewUnaryHandler(
@@ -180,16 +180,10 @@ func NewVmsnapshotServiceHandler(svc VmsnapshotServiceHandler, opts ...connect.H
 		connect.WithSchema(vmsnapshotServiceMethods.ByName("DeleteVMSnapshot")),
 		connect.WithHandlerOptions(opts...),
 	)
-	vmsnapshotServiceCreateVMSnapshotHandler := connect.NewUnaryHandler(
-		VmsnapshotServiceCreateVMSnapshotProcedure,
-		svc.CreateVMSnapshot,
-		connect.WithSchema(vmsnapshotServiceMethods.ByName("CreateVMSnapshot")),
-		connect.WithHandlerOptions(opts...),
-	)
-	vmsnapshotServiceRevertToVMSnapshotCmdByAdminHandler := connect.NewUnaryHandler(
-		VmsnapshotServiceRevertToVMSnapshotCmdByAdminProcedure,
-		svc.RevertToVMSnapshotCmdByAdmin,
-		connect.WithSchema(vmsnapshotServiceMethods.ByName("RevertToVMSnapshotCmdByAdmin")),
+	vmsnapshotServiceListVMSnapshotHandler := connect.NewUnaryHandler(
+		VmsnapshotServiceListVMSnapshotProcedure,
+		svc.ListVMSnapshot,
+		connect.WithSchema(vmsnapshotServiceMethods.ByName("ListVMSnapshot")),
 		connect.WithHandlerOptions(opts...),
 	)
 	vmsnapshotServiceRevertToVMSnapshotHandler := connect.NewUnaryHandler(
@@ -198,18 +192,24 @@ func NewVmsnapshotServiceHandler(svc VmsnapshotServiceHandler, opts ...connect.H
 		connect.WithSchema(vmsnapshotServiceMethods.ByName("RevertToVMSnapshot")),
 		connect.WithHandlerOptions(opts...),
 	)
+	vmsnapshotServiceRevertToVMSnapshotCmdByAdminHandler := connect.NewUnaryHandler(
+		VmsnapshotServiceRevertToVMSnapshotCmdByAdminProcedure,
+		svc.RevertToVMSnapshotCmdByAdmin,
+		connect.WithSchema(vmsnapshotServiceMethods.ByName("RevertToVMSnapshotCmdByAdmin")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.vmsnapshot.v1.VmsnapshotService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case VmsnapshotServiceListVMSnapshotProcedure:
-			vmsnapshotServiceListVMSnapshotHandler.ServeHTTP(w, r)
-		case VmsnapshotServiceDeleteVMSnapshotProcedure:
-			vmsnapshotServiceDeleteVMSnapshotHandler.ServeHTTP(w, r)
 		case VmsnapshotServiceCreateVMSnapshotProcedure:
 			vmsnapshotServiceCreateVMSnapshotHandler.ServeHTTP(w, r)
-		case VmsnapshotServiceRevertToVMSnapshotCmdByAdminProcedure:
-			vmsnapshotServiceRevertToVMSnapshotCmdByAdminHandler.ServeHTTP(w, r)
+		case VmsnapshotServiceDeleteVMSnapshotProcedure:
+			vmsnapshotServiceDeleteVMSnapshotHandler.ServeHTTP(w, r)
+		case VmsnapshotServiceListVMSnapshotProcedure:
+			vmsnapshotServiceListVMSnapshotHandler.ServeHTTP(w, r)
 		case VmsnapshotServiceRevertToVMSnapshotProcedure:
 			vmsnapshotServiceRevertToVMSnapshotHandler.ServeHTTP(w, r)
+		case VmsnapshotServiceRevertToVMSnapshotCmdByAdminProcedure:
+			vmsnapshotServiceRevertToVMSnapshotCmdByAdminHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -219,22 +219,22 @@ func NewVmsnapshotServiceHandler(svc VmsnapshotServiceHandler, opts ...connect.H
 // UnimplementedVmsnapshotServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedVmsnapshotServiceHandler struct{}
 
-func (UnimplementedVmsnapshotServiceHandler) ListVMSnapshot(context.Context, *connect.Request[v1.ListVMSnapshotRequest]) (*connect.Response[v1.ListVMSnapshotResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vmsnapshot.v1.VmsnapshotService.ListVMSnapshot is not implemented"))
+func (UnimplementedVmsnapshotServiceHandler) CreateVMSnapshot(context.Context, *connect.Request[v1.CreateVMSnapshotRequest]) (*connect.Response[v1.CreateVMSnapshotResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vmsnapshot.v1.VmsnapshotService.CreateVMSnapshot is not implemented"))
 }
 
 func (UnimplementedVmsnapshotServiceHandler) DeleteVMSnapshot(context.Context, *connect.Request[v1.DeleteVMSnapshotRequest]) (*connect.Response[v1.DeleteVMSnapshotResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vmsnapshot.v1.VmsnapshotService.DeleteVMSnapshot is not implemented"))
 }
 
-func (UnimplementedVmsnapshotServiceHandler) CreateVMSnapshot(context.Context, *connect.Request[v1.CreateVMSnapshotRequest]) (*connect.Response[v1.CreateVMSnapshotResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vmsnapshot.v1.VmsnapshotService.CreateVMSnapshot is not implemented"))
-}
-
-func (UnimplementedVmsnapshotServiceHandler) RevertToVMSnapshotCmdByAdmin(context.Context, *connect.Request[v1.RevertToVMSnapshotCmdByAdminRequest]) (*connect.Response[v1.RevertToVMSnapshotCmdByAdminResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vmsnapshot.v1.VmsnapshotService.RevertToVMSnapshotCmdByAdmin is not implemented"))
+func (UnimplementedVmsnapshotServiceHandler) ListVMSnapshot(context.Context, *connect.Request[v1.ListVMSnapshotRequest]) (*connect.Response[v1.ListVMSnapshotResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vmsnapshot.v1.VmsnapshotService.ListVMSnapshot is not implemented"))
 }
 
 func (UnimplementedVmsnapshotServiceHandler) RevertToVMSnapshot(context.Context, *connect.Request[v1.RevertToVMSnapshotRequest]) (*connect.Response[v1.RevertToVMSnapshotResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vmsnapshot.v1.VmsnapshotService.RevertToVMSnapshot is not implemented"))
+}
+
+func (UnimplementedVmsnapshotServiceHandler) RevertToVMSnapshotCmdByAdmin(context.Context, *connect.Request[v1.RevertToVMSnapshotCmdByAdminRequest]) (*connect.Response[v1.RevertToVMSnapshotCmdByAdminResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.vmsnapshot.v1.VmsnapshotService.RevertToVMSnapshotCmdByAdmin is not implemented"))
 }

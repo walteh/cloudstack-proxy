@@ -19,51 +19,63 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	VmService_AssignVM_FullMethodName                             = "/cloudstack.management.vm.v1.VmService/AssignVM"
-	VmService_DeployVMCmdByAdmin_FullMethodName                   = "/cloudstack.management.vm.v1.VmService/DeployVMCmdByAdmin"
-	VmService_UpdateDefaultNicForVM_FullMethodName                = "/cloudstack.management.vm.v1.VmService/UpdateDefaultNicForVM"
-	VmService_ExpungeVM_FullMethodName                            = "/cloudstack.management.vm.v1.VmService/ExpungeVM"
-	VmService_UpgradeVM_FullMethodName                            = "/cloudstack.management.vm.v1.VmService/UpgradeVM"
-	VmService_DestroyVM_FullMethodName                            = "/cloudstack.management.vm.v1.VmService/DestroyVM"
-	VmService_RemoveNicFromVMCmdByAdmin_FullMethodName            = "/cloudstack.management.vm.v1.VmService/RemoveNicFromVMCmdByAdmin"
-	VmService_AddNicToVMCmdByAdmin_FullMethodName                 = "/cloudstack.management.vm.v1.VmService/AddNicToVMCmdByAdmin"
-	VmService_ListUnmanagedInstances_FullMethodName               = "/cloudstack.management.vm.v1.VmService/ListUnmanagedInstances"
-	VmService_UnmanageVMInstance_FullMethodName                   = "/cloudstack.management.vm.v1.VmService/UnmanageVMInstance"
-	VmService_ResetVMPassword_FullMethodName                      = "/cloudstack.management.vm.v1.VmService/ResetVMPassword"
-	VmService_DeployVnfApplianceCmdByAdmin_FullMethodName         = "/cloudstack.management.vm.v1.VmService/DeployVnfApplianceCmdByAdmin"
-	VmService_ListNics_FullMethodName                             = "/cloudstack.management.vm.v1.VmService/ListNics"
-	VmService_ListVMSchedule_FullMethodName                       = "/cloudstack.management.vm.v1.VmService/ListVMSchedule"
-	VmService_RestoreVM_FullMethodName                            = "/cloudstack.management.vm.v1.VmService/RestoreVM"
-	VmService_StartVM_FullMethodName                              = "/cloudstack.management.vm.v1.VmService/StartVM"
-	VmService_DeployVnfAppliance_FullMethodName                   = "/cloudstack.management.vm.v1.VmService/DeployVnfAppliance"
-	VmService_MigrateVM_FullMethodName                            = "/cloudstack.management.vm.v1.VmService/MigrateVM"
-	VmService_ListVnfAppliances_FullMethodName                    = "/cloudstack.management.vm.v1.VmService/ListVnfAppliances"
-	VmService_ListAffectedVmsForStorageScopeChange_FullMethodName = "/cloudstack.management.vm.v1.VmService/ListAffectedVmsForStorageScopeChange"
-	VmService_StopVMCmdByAdmin_FullMethodName                     = "/cloudstack.management.vm.v1.VmService/StopVMCmdByAdmin"
-	VmService_UpdateVmNicIp_FullMethodName                        = "/cloudstack.management.vm.v1.VmService/UpdateVmNicIp"
-	VmService_ImportUnmanagedInstance_FullMethodName              = "/cloudstack.management.vm.v1.VmService/ImportUnmanagedInstance"
-	VmService_DeleteVMSchedule_FullMethodName                     = "/cloudstack.management.vm.v1.VmService/DeleteVMSchedule"
-	VmService_ResetVMSSHKey_FullMethodName                        = "/cloudstack.management.vm.v1.VmService/ResetVMSSHKey"
-	VmService_GetVMPassword_FullMethodName                        = "/cloudstack.management.vm.v1.VmService/GetVMPassword"
-	VmService_ListVmsForImport_FullMethodName                     = "/cloudstack.management.vm.v1.VmService/ListVmsForImport"
-	VmService_DeployVM_FullMethodName                             = "/cloudstack.management.vm.v1.VmService/DeployVM"
-	VmService_ScaleVM_FullMethodName                              = "/cloudstack.management.vm.v1.VmService/ScaleVM"
-	VmService_UpdateVMCmdByAdmin_FullMethodName                   = "/cloudstack.management.vm.v1.VmService/UpdateVMCmdByAdmin"
-	VmService_ResetVMUserData_FullMethodName                      = "/cloudstack.management.vm.v1.VmService/ResetVMUserData"
-	VmService_CreateVMSchedule_FullMethodName                     = "/cloudstack.management.vm.v1.VmService/CreateVMSchedule"
-	VmService_RemoveNicFromVM_FullMethodName                      = "/cloudstack.management.vm.v1.VmService/RemoveNicFromVM"
-	VmService_ListVMs_FullMethodName                              = "/cloudstack.management.vm.v1.VmService/ListVMs"
-	VmService_RebootVM_FullMethodName                             = "/cloudstack.management.vm.v1.VmService/RebootVM"
-	VmService_ImportVm_FullMethodName                             = "/cloudstack.management.vm.v1.VmService/ImportVm"
 	VmService_AddIpToVmNic_FullMethodName                         = "/cloudstack.management.vm.v1.VmService/AddIpToVmNic"
-	VmService_GetVMUserData_FullMethodName                        = "/cloudstack.management.vm.v1.VmService/GetVMUserData"
-	VmService_UpdateVMSchedule_FullMethodName                     = "/cloudstack.management.vm.v1.VmService/UpdateVMSchedule"
-	VmService_MigrateVirtualMachineWithVolume_FullMethodName      = "/cloudstack.management.vm.v1.VmService/MigrateVirtualMachineWithVolume"
 	VmService_AddNicToVM_FullMethodName                           = "/cloudstack.management.vm.v1.VmService/AddNicToVM"
-	VmService_RemoveIpFromVmNic_FullMethodName                    = "/cloudstack.management.vm.v1.VmService/RemoveIpFromVmNic"
-	VmService_StopVM_FullMethodName                               = "/cloudstack.management.vm.v1.VmService/StopVM"
-	VmService_UpdateVM_FullMethodName                             = "/cloudstack.management.vm.v1.VmService/UpdateVM"
+	VmService_AddNicToVMCmdByAdmin_FullMethodName                 = "/cloudstack.management.vm.v1.VmService/AddNicToVMCmdByAdmin"
+	VmService_AssignVM_FullMethodName                             = "/cloudstack.management.vm.v1.VmService/AssignVM"
+	VmService_CreateVMSchedule_FullMethodName                     = "/cloudstack.management.vm.v1.VmService/CreateVMSchedule"
+	VmService_DeleteVMSchedule_FullMethodName                     = "/cloudstack.management.vm.v1.VmService/DeleteVMSchedule"
+	VmService_DeployVM_FullMethodName                             = "/cloudstack.management.vm.v1.VmService/DeployVM"
+	VmService_DeployVMCmdByAdmin_FullMethodName                   = "/cloudstack.management.vm.v1.VmService/DeployVMCmdByAdmin"
+	VmService_DeployVnfAppliance_FullMethodName                   = "/cloudstack.management.vm.v1.VmService/DeployVnfAppliance"
+	VmService_DeployVnfApplianceCmdByAdmin_FullMethodName         = "/cloudstack.management.vm.v1.VmService/DeployVnfApplianceCmdByAdmin"
+	VmService_DestroyVM_FullMethodName                            = "/cloudstack.management.vm.v1.VmService/DestroyVM"
+	VmService_DestroyVMCmdByAdmin_FullMethodName                  = "/cloudstack.management.vm.v1.VmService/DestroyVMCmdByAdmin"
+	VmService_ExpungeVM_FullMethodName                            = "/cloudstack.management.vm.v1.VmService/ExpungeVM"
+	VmService_GetVMPassword_FullMethodName                        = "/cloudstack.management.vm.v1.VmService/GetVMPassword"
+	VmService_GetVMUserData_FullMethodName                        = "/cloudstack.management.vm.v1.VmService/GetVMUserData"
+	VmService_ImportUnmanagedInstance_FullMethodName              = "/cloudstack.management.vm.v1.VmService/ImportUnmanagedInstance"
+	VmService_ImportVm_FullMethodName                             = "/cloudstack.management.vm.v1.VmService/ImportVm"
+	VmService_ListAffectedVmsForStorageScopeChange_FullMethodName = "/cloudstack.management.vm.v1.VmService/ListAffectedVmsForStorageScopeChange"
+	VmService_ListNics_FullMethodName                             = "/cloudstack.management.vm.v1.VmService/ListNics"
+	VmService_ListUnmanagedInstances_FullMethodName               = "/cloudstack.management.vm.v1.VmService/ListUnmanagedInstances"
+	VmService_ListVMSchedule_FullMethodName                       = "/cloudstack.management.vm.v1.VmService/ListVMSchedule"
+	VmService_ListVMs_FullMethodName                              = "/cloudstack.management.vm.v1.VmService/ListVMs"
+	VmService_ListVMsCmdByAdmin_FullMethodName                    = "/cloudstack.management.vm.v1.VmService/ListVMsCmdByAdmin"
+	VmService_ListVmsForImport_FullMethodName                     = "/cloudstack.management.vm.v1.VmService/ListVmsForImport"
+	VmService_ListVnfAppliances_FullMethodName                    = "/cloudstack.management.vm.v1.VmService/ListVnfAppliances"
+	VmService_ListVnfAppliancesCmdByAdmin_FullMethodName          = "/cloudstack.management.vm.v1.VmService/ListVnfAppliancesCmdByAdmin"
+	VmService_MigrateVM_FullMethodName                            = "/cloudstack.management.vm.v1.VmService/MigrateVM"
+	VmService_MigrateVirtualMachineWithVolume_FullMethodName      = "/cloudstack.management.vm.v1.VmService/MigrateVirtualMachineWithVolume"
+	VmService_RebootVM_FullMethodName                             = "/cloudstack.management.vm.v1.VmService/RebootVM"
+	VmService_RebootVMCmdByAdmin_FullMethodName                   = "/cloudstack.management.vm.v1.VmService/RebootVMCmdByAdmin"
 	VmService_RecoverVM_FullMethodName                            = "/cloudstack.management.vm.v1.VmService/RecoverVM"
+	VmService_RemoveIpFromVmNic_FullMethodName                    = "/cloudstack.management.vm.v1.VmService/RemoveIpFromVmNic"
+	VmService_RemoveNicFromVM_FullMethodName                      = "/cloudstack.management.vm.v1.VmService/RemoveNicFromVM"
+	VmService_RemoveNicFromVMCmdByAdmin_FullMethodName            = "/cloudstack.management.vm.v1.VmService/RemoveNicFromVMCmdByAdmin"
+	VmService_ResetVMPassword_FullMethodName                      = "/cloudstack.management.vm.v1.VmService/ResetVMPassword"
+	VmService_ResetVMPasswordCmdByAdmin_FullMethodName            = "/cloudstack.management.vm.v1.VmService/ResetVMPasswordCmdByAdmin"
+	VmService_ResetVMSSHKey_FullMethodName                        = "/cloudstack.management.vm.v1.VmService/ResetVMSSHKey"
+	VmService_ResetVMSSHKeyCmdByAdmin_FullMethodName              = "/cloudstack.management.vm.v1.VmService/ResetVMSSHKeyCmdByAdmin"
+	VmService_ResetVMUserData_FullMethodName                      = "/cloudstack.management.vm.v1.VmService/ResetVMUserData"
+	VmService_ResetVMUserDataCmdAdmin_FullMethodName              = "/cloudstack.management.vm.v1.VmService/ResetVMUserDataCmdAdmin"
+	VmService_RestoreVM_FullMethodName                            = "/cloudstack.management.vm.v1.VmService/RestoreVM"
+	VmService_RestoreVMCmdByAdmin_FullMethodName                  = "/cloudstack.management.vm.v1.VmService/RestoreVMCmdByAdmin"
+	VmService_ScaleVM_FullMethodName                              = "/cloudstack.management.vm.v1.VmService/ScaleVM"
+	VmService_ScaleVMCmdByAdmin_FullMethodName                    = "/cloudstack.management.vm.v1.VmService/ScaleVMCmdByAdmin"
+	VmService_StartVM_FullMethodName                              = "/cloudstack.management.vm.v1.VmService/StartVM"
+	VmService_StartVMCmdByAdmin_FullMethodName                    = "/cloudstack.management.vm.v1.VmService/StartVMCmdByAdmin"
+	VmService_StopVM_FullMethodName                               = "/cloudstack.management.vm.v1.VmService/StopVM"
+	VmService_StopVMCmdByAdmin_FullMethodName                     = "/cloudstack.management.vm.v1.VmService/StopVMCmdByAdmin"
+	VmService_UnmanageVMInstance_FullMethodName                   = "/cloudstack.management.vm.v1.VmService/UnmanageVMInstance"
+	VmService_UpdateDefaultNicForVM_FullMethodName                = "/cloudstack.management.vm.v1.VmService/UpdateDefaultNicForVM"
+	VmService_UpdateDefaultNicForVMCmdByAdmin_FullMethodName      = "/cloudstack.management.vm.v1.VmService/UpdateDefaultNicForVMCmdByAdmin"
+	VmService_UpdateVM_FullMethodName                             = "/cloudstack.management.vm.v1.VmService/UpdateVM"
+	VmService_UpdateVMCmdByAdmin_FullMethodName                   = "/cloudstack.management.vm.v1.VmService/UpdateVMCmdByAdmin"
+	VmService_UpdateVMSchedule_FullMethodName                     = "/cloudstack.management.vm.v1.VmService/UpdateVMSchedule"
+	VmService_UpdateVmNicIp_FullMethodName                        = "/cloudstack.management.vm.v1.VmService/UpdateVmNicIp"
+	VmService_UpgradeVM_FullMethodName                            = "/cloudstack.management.vm.v1.VmService/UpgradeVM"
+	VmService_UpgradeVMCmdByAdmin_FullMethodName                  = "/cloudstack.management.vm.v1.VmService/UpgradeVMCmdByAdmin"
 )
 
 // VmServiceClient is the client API for VmService service.
@@ -72,96 +84,120 @@ const (
 //
 // VmService provides operations for managing Vms
 type VmServiceClient interface {
-	// AssignVM Change ownership of a VM from one account to another. This API is available for Basic zones with security groups and Advanced zones with guest networks. A root administrator can reassign a VM from any account to any other account in any domain. A domain administrator can reassign a VM to any account in the same domain.
-	AssignVM(ctx context.Context, in *AssignVMRequest, opts ...grpc.CallOption) (*AssignVMResponse, error)
-	// DeployVMCmdByAdmin Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
-	DeployVMCmdByAdmin(ctx context.Context, in *DeployVMCmdByAdminRequest, opts ...grpc.CallOption) (*DeployVMCmdByAdminResponse, error)
-	// UpdateDefaultNicForVM Changes the default NIC on a VM
-	UpdateDefaultNicForVM(ctx context.Context, in *UpdateDefaultNicForVMRequest, opts ...grpc.CallOption) (*UpdateDefaultNicForVMResponse, error)
-	// ExpungeVM Expunge a virtual machine. Once expunged, it cannot be recoverd.
-	ExpungeVM(ctx context.Context, in *ExpungeVMRequest, opts ...grpc.CallOption) (*ExpungeVMResponse, error)
-	// UpgradeVM (This API is deprecated, use scaleVirtualMachine API)Changes the service offering for a virtual machine. The virtual machine must be in a "Stopped" state for this command to take effect.
-	UpgradeVM(ctx context.Context, in *UpgradeVMRequest, opts ...grpc.CallOption) (*UpgradeVMResponse, error)
-	// DestroyVM Destroys a virtual machine.
-	DestroyVM(ctx context.Context, in *DestroyVMRequest, opts ...grpc.CallOption) (*DestroyVMResponse, error)
-	// RemoveNicFromVMCmdByAdmin Removes VM from specified network by deleting a NIC
-	RemoveNicFromVMCmdByAdmin(ctx context.Context, in *RemoveNicFromVMCmdByAdminRequest, opts ...grpc.CallOption) (*RemoveNicFromVMCmdByAdminResponse, error)
-	// AddNicToVMCmdByAdmin Adds VM to specified network by creating a NIC
-	AddNicToVMCmdByAdmin(ctx context.Context, in *AddNicToVMCmdByAdminRequest, opts ...grpc.CallOption) (*AddNicToVMCmdByAdminResponse, error)
-	// ListUnmanagedInstances Lists unmanaged virtual machines for a given cluster.
-	ListUnmanagedInstances(ctx context.Context, in *ListUnmanagedInstancesRequest, opts ...grpc.CallOption) (*ListUnmanagedInstancesResponse, error)
-	// UnmanageVMInstance Unmanage a guest virtual machine.
-	UnmanageVMInstance(ctx context.Context, in *UnmanageVMInstanceRequest, opts ...grpc.CallOption) (*UnmanageVMInstanceResponse, error)
-	// ResetVMPassword Resets the password for virtual machine. The virtual machine must be in a "Stopped" state and the template must already support this feature for this command to take effect. [async]
-	ResetVMPassword(ctx context.Context, in *ResetVMPasswordRequest, opts ...grpc.CallOption) (*ResetVMPasswordResponse, error)
-	// DeployVnfApplianceCmdByAdmin Creates and automatically starts a VNF appliance based on a service offering, disk offering, and template.
-	DeployVnfApplianceCmdByAdmin(ctx context.Context, in *DeployVnfApplianceCmdByAdminRequest, opts ...grpc.CallOption) (*DeployVnfApplianceCmdByAdminResponse, error)
-	// ListNics list the vm nics  IP to NIC
-	ListNics(ctx context.Context, in *ListNicsRequest, opts ...grpc.CallOption) (*ListNicsResponse, error)
-	// ListVMSchedule List VM Schedules.
-	ListVMSchedule(ctx context.Context, in *ListVMScheduleRequest, opts ...grpc.CallOption) (*ListVMScheduleResponse, error)
-	// RestoreVM Restore a VM to original template/ISO or new template/ISO
-	RestoreVM(ctx context.Context, in *RestoreVMRequest, opts ...grpc.CallOption) (*RestoreVMResponse, error)
-	// StartVM Starts a virtual machine.
-	StartVM(ctx context.Context, in *StartVMRequest, opts ...grpc.CallOption) (*StartVMResponse, error)
-	// DeployVnfAppliance Creates and automatically starts a VNF appliance based on a service offering, disk offering, and template.
-	DeployVnfAppliance(ctx context.Context, in *DeployVnfApplianceRequest, opts ...grpc.CallOption) (*DeployVnfApplianceResponse, error)
-	// MigrateVM Attempts Migration of a VM to a different host or Root volume of the vm to a different storage pool
-	MigrateVM(ctx context.Context, in *MigrateVMRequest, opts ...grpc.CallOption) (*MigrateVMResponse, error)
-	// ListVnfAppliances List VNF appliance owned by the account.
-	ListVnfAppliances(ctx context.Context, in *ListVnfAppliancesRequest, opts ...grpc.CallOption) (*ListVnfAppliancesResponse, error)
-	// ListAffectedVmsForStorageScopeChange List user and system VMs that need to be stopped and destroyed respectively for changing the scope of the storage pool from Zone to Cluster.
-	ListAffectedVmsForStorageScopeChange(ctx context.Context, in *ListAffectedVmsForStorageScopeChangeRequest, opts ...grpc.CallOption) (*ListAffectedVmsForStorageScopeChangeResponse, error)
-	// StopVMCmdByAdmin Stops a virtual machine.
-	StopVMCmdByAdmin(ctx context.Context, in *StopVMCmdByAdminRequest, opts ...grpc.CallOption) (*StopVMCmdByAdminResponse, error)
-	// UpdateVmNicIp Update the default Ip of a VM Nic
-	UpdateVmNicIp(ctx context.Context, in *UpdateVmNicIpRequest, opts ...grpc.CallOption) (*UpdateVmNicIpResponse, error)
-	// ImportUnmanagedInstance Import unmanaged virtual machine from a given cluster.
-	ImportUnmanagedInstance(ctx context.Context, in *ImportUnmanagedInstanceRequest, opts ...grpc.CallOption) (*ImportUnmanagedInstanceResponse, error)
-	// DeleteVMSchedule Delete VM Schedule.
-	DeleteVMSchedule(ctx context.Context, in *DeleteVMScheduleRequest, opts ...grpc.CallOption) (*DeleteVMScheduleResponse, error)
-	// ResetVMSSHKey Resets the SSH Key for virtual machine. The virtual machine must be in a "Stopped" state. [async]
-	ResetVMSSHKey(ctx context.Context, in *ResetVMSSHKeyRequest, opts ...grpc.CallOption) (*ResetVMSSHKeyResponse, error)
-	// GetVMPassword Returns an encrypted password for the VM
-	GetVMPassword(ctx context.Context, in *GetVMPasswordRequest, opts ...grpc.CallOption) (*GetVMPasswordResponse, error)
-	// ListVmsForImport Lists virtual machines on a unmanaged host
-	ListVmsForImport(ctx context.Context, in *ListVmsForImportRequest, opts ...grpc.CallOption) (*ListVmsForImportResponse, error)
-	// DeployVM Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
-	DeployVM(ctx context.Context, in *DeployVMRequest, opts ...grpc.CallOption) (*DeployVMResponse, error)
-	// ScaleVM Scales the virtual machine to a new service offering. This command also considers the volume size in the service offering or disk offering linked to the new service offering and apply all characteristics to the root volume.
-	ScaleVM(ctx context.Context, in *ScaleVMRequest, opts ...grpc.CallOption) (*ScaleVMResponse, error)
-	// UpdateVMCmdByAdmin Updates properties of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect. UpdateVirtualMachine does not first check whether the VM is stopped. Therefore, stop the VM manually before issuing this call.
-	UpdateVMCmdByAdmin(ctx context.Context, in *UpdateVMCmdByAdminRequest, opts ...grpc.CallOption) (*UpdateVMCmdByAdminResponse, error)
-	// ResetVMUserData Resets the UserData for virtual machine. The virtual machine must be in a "Stopped" state.
-	ResetVMUserData(ctx context.Context, in *ResetVMUserDataRequest, opts ...grpc.CallOption) (*ResetVMUserDataResponse, error)
-	// CreateVMSchedule Create VM Schedule
-	CreateVMSchedule(ctx context.Context, in *CreateVMScheduleRequest, opts ...grpc.CallOption) (*CreateVMScheduleResponse, error)
-	// RemoveNicFromVM Removes VM from specified network by deleting a NIC
-	RemoveNicFromVM(ctx context.Context, in *RemoveNicFromVMRequest, opts ...grpc.CallOption) (*RemoveNicFromVMResponse, error)
-	// ListVMs List the virtual machines owned by the account.
-	ListVMs(ctx context.Context, in *ListVMsRequest, opts ...grpc.CallOption) (*ListVMsResponse, error)
-	// RebootVM Reboots a virtual machine.
-	RebootVM(ctx context.Context, in *RebootVMRequest, opts ...grpc.CallOption) (*RebootVMResponse, error)
-	// ImportVm Import virtual machine from a unmanaged host into CloudStack
-	ImportVm(ctx context.Context, in *ImportVmRequest, opts ...grpc.CallOption) (*ImportVmResponse, error)
 	// AddIpToVmNic Assigns secondary IP to NIC
 	AddIpToVmNic(ctx context.Context, in *AddIpToVmNicRequest, opts ...grpc.CallOption) (*AddIpToVmNicResponse, error)
-	// GetVMUserData Returns user data associated with the VM
-	GetVMUserData(ctx context.Context, in *GetVMUserDataRequest, opts ...grpc.CallOption) (*GetVMUserDataResponse, error)
-	// UpdateVMSchedule Update VM Schedule.
-	UpdateVMSchedule(ctx context.Context, in *UpdateVMScheduleRequest, opts ...grpc.CallOption) (*UpdateVMScheduleResponse, error)
-	// MigrateVirtualMachineWithVolume Attempts Migration of a VM with its volumes to a different host
-	MigrateVirtualMachineWithVolume(ctx context.Context, in *MigrateVirtualMachineWithVolumeRequest, opts ...grpc.CallOption) (*MigrateVirtualMachineWithVolumeResponse, error)
 	// AddNicToVM Adds VM to specified network by creating a NIC
 	AddNicToVM(ctx context.Context, in *AddNicToVMRequest, opts ...grpc.CallOption) (*AddNicToVMResponse, error)
-	// RemoveIpFromVmNic Removes secondary IP from the NIC.
-	RemoveIpFromVmNic(ctx context.Context, in *RemoveIpFromVmNicRequest, opts ...grpc.CallOption) (*RemoveIpFromVmNicResponse, error)
-	// StopVM Stops a virtual machine.
-	StopVM(ctx context.Context, in *StopVMRequest, opts ...grpc.CallOption) (*StopVMResponse, error)
-	// UpdateVM Updates properties of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect. UpdateVirtualMachine does not first check whether the VM is stopped. Therefore, stop the VM manually before issuing this call.
-	UpdateVM(ctx context.Context, in *UpdateVMRequest, opts ...grpc.CallOption) (*UpdateVMResponse, error)
+	// AddNicToVMCmdByAdmin Adds VM to specified network by creating a NIC
+	AddNicToVMCmdByAdmin(ctx context.Context, in *AddNicToVMCmdByAdminRequest, opts ...grpc.CallOption) (*AddNicToVMCmdByAdminResponse, error)
+	// AssignVM Change ownership of a VM from one account to another. This API is available for Basic zones with security groups and Advanced zones with guest networks. A root administrator can reassign a VM from any account to any other account in any domain. A domain administrator can reassign a VM to any account in the same domain.
+	AssignVM(ctx context.Context, in *AssignVMRequest, opts ...grpc.CallOption) (*AssignVMResponse, error)
+	// CreateVMSchedule Create VM Schedule
+	CreateVMSchedule(ctx context.Context, in *CreateVMScheduleRequest, opts ...grpc.CallOption) (*CreateVMScheduleResponse, error)
+	// DeleteVMSchedule Delete VM Schedule.
+	DeleteVMSchedule(ctx context.Context, in *DeleteVMScheduleRequest, opts ...grpc.CallOption) (*DeleteVMScheduleResponse, error)
+	// DeployVM Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
+	DeployVM(ctx context.Context, in *DeployVMRequest, opts ...grpc.CallOption) (*DeployVMResponse, error)
+	// DeployVMCmdByAdmin Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
+	DeployVMCmdByAdmin(ctx context.Context, in *DeployVMCmdByAdminRequest, opts ...grpc.CallOption) (*DeployVMCmdByAdminResponse, error)
+	// DeployVnfAppliance Creates and automatically starts a VNF appliance based on a service offering, disk offering, and template.
+	DeployVnfAppliance(ctx context.Context, in *DeployVnfApplianceRequest, opts ...grpc.CallOption) (*DeployVnfApplianceResponse, error)
+	// DeployVnfApplianceCmdByAdmin Creates and automatically starts a VNF appliance based on a service offering, disk offering, and template.
+	DeployVnfApplianceCmdByAdmin(ctx context.Context, in *DeployVnfApplianceCmdByAdminRequest, opts ...grpc.CallOption) (*DeployVnfApplianceCmdByAdminResponse, error)
+	// DestroyVM Destroys a virtual machine.
+	DestroyVM(ctx context.Context, in *DestroyVMRequest, opts ...grpc.CallOption) (*DestroyVMResponse, error)
+	// DestroyVMCmdByAdmin Destroys a virtual machine. Once destroyed, only the administrator can recover it.
+	DestroyVMCmdByAdmin(ctx context.Context, in *DestroyVMCmdByAdminRequest, opts ...grpc.CallOption) (*DestroyVMCmdByAdminResponse, error)
+	// ExpungeVM Expunge a virtual machine. Once expunged, it cannot be recoverd.
+	ExpungeVM(ctx context.Context, in *ExpungeVMRequest, opts ...grpc.CallOption) (*ExpungeVMResponse, error)
+	// GetVMPassword Returns an encrypted password for the VM
+	GetVMPassword(ctx context.Context, in *GetVMPasswordRequest, opts ...grpc.CallOption) (*GetVMPasswordResponse, error)
+	// GetVMUserData Returns user data associated with the VM
+	GetVMUserData(ctx context.Context, in *GetVMUserDataRequest, opts ...grpc.CallOption) (*GetVMUserDataResponse, error)
+	// ImportUnmanagedInstance Import unmanaged virtual machine from a given cluster.
+	ImportUnmanagedInstance(ctx context.Context, in *ImportUnmanagedInstanceRequest, opts ...grpc.CallOption) (*ImportUnmanagedInstanceResponse, error)
+	// ImportVm Import virtual machine from a unmanaged host into CloudStack
+	ImportVm(ctx context.Context, in *ImportVmRequest, opts ...grpc.CallOption) (*ImportVmResponse, error)
+	// ListAffectedVmsForStorageScopeChange List user and system VMs that need to be stopped and destroyed respectively for changing the scope of the storage pool from Zone to Cluster.
+	ListAffectedVmsForStorageScopeChange(ctx context.Context, in *ListAffectedVmsForStorageScopeChangeRequest, opts ...grpc.CallOption) (*ListAffectedVmsForStorageScopeChangeResponse, error)
+	// ListNics list the vm nics  IP to NIC
+	ListNics(ctx context.Context, in *ListNicsRequest, opts ...grpc.CallOption) (*ListNicsResponse, error)
+	// ListUnmanagedInstances Lists unmanaged virtual machines for a given cluster.
+	ListUnmanagedInstances(ctx context.Context, in *ListUnmanagedInstancesRequest, opts ...grpc.CallOption) (*ListUnmanagedInstancesResponse, error)
+	// ListVMSchedule List VM Schedules.
+	ListVMSchedule(ctx context.Context, in *ListVMScheduleRequest, opts ...grpc.CallOption) (*ListVMScheduleResponse, error)
+	// ListVMs List the virtual machines owned by the account.
+	ListVMs(ctx context.Context, in *ListVMsRequest, opts ...grpc.CallOption) (*ListVMsResponse, error)
+	// ListVMsCmdByAdmin List the virtual machines owned by the account.
+	ListVMsCmdByAdmin(ctx context.Context, in *ListVMsCmdByAdminRequest, opts ...grpc.CallOption) (*ListVMsCmdByAdminResponse, error)
+	// ListVmsForImport Lists virtual machines on a unmanaged host
+	ListVmsForImport(ctx context.Context, in *ListVmsForImportRequest, opts ...grpc.CallOption) (*ListVmsForImportResponse, error)
+	// ListVnfAppliances List VNF appliance owned by the account.
+	ListVnfAppliances(ctx context.Context, in *ListVnfAppliancesRequest, opts ...grpc.CallOption) (*ListVnfAppliancesResponse, error)
+	// ListVnfAppliancesCmdByAdmin List VNF appliance owned by the account.
+	ListVnfAppliancesCmdByAdmin(ctx context.Context, in *ListVnfAppliancesCmdByAdminRequest, opts ...grpc.CallOption) (*ListVnfAppliancesCmdByAdminResponse, error)
+	// MigrateVM Attempts Migration of a VM to a different host or Root volume of the vm to a different storage pool
+	MigrateVM(ctx context.Context, in *MigrateVMRequest, opts ...grpc.CallOption) (*MigrateVMResponse, error)
+	// MigrateVirtualMachineWithVolume Attempts Migration of a VM with its volumes to a different host
+	MigrateVirtualMachineWithVolume(ctx context.Context, in *MigrateVirtualMachineWithVolumeRequest, opts ...grpc.CallOption) (*MigrateVirtualMachineWithVolumeResponse, error)
+	// RebootVM Reboots a virtual machine.
+	RebootVM(ctx context.Context, in *RebootVMRequest, opts ...grpc.CallOption) (*RebootVMResponse, error)
+	// RebootVMCmdByAdmin Reboots a virtual machine.
+	RebootVMCmdByAdmin(ctx context.Context, in *RebootVMCmdByAdminRequest, opts ...grpc.CallOption) (*RebootVMCmdByAdminResponse, error)
 	// RecoverVM Recovers a virtual machine.
 	RecoverVM(ctx context.Context, in *RecoverVMRequest, opts ...grpc.CallOption) (*RecoverVMResponse, error)
+	// RemoveIpFromVmNic Removes secondary IP from the NIC.
+	RemoveIpFromVmNic(ctx context.Context, in *RemoveIpFromVmNicRequest, opts ...grpc.CallOption) (*RemoveIpFromVmNicResponse, error)
+	// RemoveNicFromVM Removes VM from specified network by deleting a NIC
+	RemoveNicFromVM(ctx context.Context, in *RemoveNicFromVMRequest, opts ...grpc.CallOption) (*RemoveNicFromVMResponse, error)
+	// RemoveNicFromVMCmdByAdmin Removes VM from specified network by deleting a NIC
+	RemoveNicFromVMCmdByAdmin(ctx context.Context, in *RemoveNicFromVMCmdByAdminRequest, opts ...grpc.CallOption) (*RemoveNicFromVMCmdByAdminResponse, error)
+	// ResetVMPassword Resets the password for virtual machine. The virtual machine must be in a "Stopped" state and the template must already support this feature for this command to take effect. [async]
+	ResetVMPassword(ctx context.Context, in *ResetVMPasswordRequest, opts ...grpc.CallOption) (*ResetVMPasswordResponse, error)
+	// ResetVMPasswordCmdByAdmin Resets the password for virtual machine. The virtual machine must be in a "Stopped" state and the template must already support this feature for this command to take effect. [async]
+	ResetVMPasswordCmdByAdmin(ctx context.Context, in *ResetVMPasswordCmdByAdminRequest, opts ...grpc.CallOption) (*ResetVMPasswordCmdByAdminResponse, error)
+	// ResetVMSSHKey Resets the SSH Key for virtual machine. The virtual machine must be in a "Stopped" state. [async]
+	ResetVMSSHKey(ctx context.Context, in *ResetVMSSHKeyRequest, opts ...grpc.CallOption) (*ResetVMSSHKeyResponse, error)
+	// ResetVMSSHKeyCmdByAdmin Resets the SSH Key for virtual machine. The virtual machine must be in a "Stopped" state. [async]
+	ResetVMSSHKeyCmdByAdmin(ctx context.Context, in *ResetVMSSHKeyCmdByAdminRequest, opts ...grpc.CallOption) (*ResetVMSSHKeyCmdByAdminResponse, error)
+	// ResetVMUserData Resets the UserData for virtual machine. The virtual machine must be in a "Stopped" state.
+	ResetVMUserData(ctx context.Context, in *ResetVMUserDataRequest, opts ...grpc.CallOption) (*ResetVMUserDataResponse, error)
+	// ResetVMUserDataCmdAdmin Resets the UserData for virtual machine. The virtual machine must be in a "Stopped" state. [async]
+	ResetVMUserDataCmdAdmin(ctx context.Context, in *ResetVMUserDataCmdAdminRequest, opts ...grpc.CallOption) (*ResetVMUserDataCmdAdminResponse, error)
+	// RestoreVM Restore a VM to original template/ISO or new template/ISO
+	RestoreVM(ctx context.Context, in *RestoreVMRequest, opts ...grpc.CallOption) (*RestoreVMResponse, error)
+	// RestoreVMCmdByAdmin Restore a VM to original template/ISO or new template/ISO
+	RestoreVMCmdByAdmin(ctx context.Context, in *RestoreVMCmdByAdminRequest, opts ...grpc.CallOption) (*RestoreVMCmdByAdminResponse, error)
+	// ScaleVM Scales the virtual machine to a new service offering. This command also considers the volume size in the service offering or disk offering linked to the new service offering and apply all characteristics to the root volume.
+	ScaleVM(ctx context.Context, in *ScaleVMRequest, opts ...grpc.CallOption) (*ScaleVMResponse, error)
+	// ScaleVMCmdByAdmin Scales the virtual machine to a new service offering. This command also considers the volume size in the service offering or disk offering linked to the new service offering and apply all characteristics to the root volume.
+	ScaleVMCmdByAdmin(ctx context.Context, in *ScaleVMCmdByAdminRequest, opts ...grpc.CallOption) (*ScaleVMCmdByAdminResponse, error)
+	// StartVM Starts a virtual machine.
+	StartVM(ctx context.Context, in *StartVMRequest, opts ...grpc.CallOption) (*StartVMResponse, error)
+	// StartVMCmdByAdmin Starts a virtual machine.
+	StartVMCmdByAdmin(ctx context.Context, in *StartVMCmdByAdminRequest, opts ...grpc.CallOption) (*StartVMCmdByAdminResponse, error)
+	// StopVM Stops a virtual machine.
+	StopVM(ctx context.Context, in *StopVMRequest, opts ...grpc.CallOption) (*StopVMResponse, error)
+	// StopVMCmdByAdmin Stops a virtual machine.
+	StopVMCmdByAdmin(ctx context.Context, in *StopVMCmdByAdminRequest, opts ...grpc.CallOption) (*StopVMCmdByAdminResponse, error)
+	// UnmanageVMInstance Unmanage a guest virtual machine.
+	UnmanageVMInstance(ctx context.Context, in *UnmanageVMInstanceRequest, opts ...grpc.CallOption) (*UnmanageVMInstanceResponse, error)
+	// UpdateDefaultNicForVM Changes the default NIC on a VM
+	UpdateDefaultNicForVM(ctx context.Context, in *UpdateDefaultNicForVMRequest, opts ...grpc.CallOption) (*UpdateDefaultNicForVMResponse, error)
+	// UpdateDefaultNicForVMCmdByAdmin Changes the default NIC on a VM
+	UpdateDefaultNicForVMCmdByAdmin(ctx context.Context, in *UpdateDefaultNicForVMCmdByAdminRequest, opts ...grpc.CallOption) (*UpdateDefaultNicForVMCmdByAdminResponse, error)
+	// UpdateVM Updates properties of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect. UpdateVirtualMachine does not first check whether the VM is stopped. Therefore, stop the VM manually before issuing this call.
+	UpdateVM(ctx context.Context, in *UpdateVMRequest, opts ...grpc.CallOption) (*UpdateVMResponse, error)
+	// UpdateVMCmdByAdmin Updates properties of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect. UpdateVirtualMachine does not first check whether the VM is stopped. Therefore, stop the VM manually before issuing this call.
+	UpdateVMCmdByAdmin(ctx context.Context, in *UpdateVMCmdByAdminRequest, opts ...grpc.CallOption) (*UpdateVMCmdByAdminResponse, error)
+	// UpdateVMSchedule Update VM Schedule.
+	UpdateVMSchedule(ctx context.Context, in *UpdateVMScheduleRequest, opts ...grpc.CallOption) (*UpdateVMScheduleResponse, error)
+	// UpdateVmNicIp Update the default Ip of a VM Nic
+	UpdateVmNicIp(ctx context.Context, in *UpdateVmNicIpRequest, opts ...grpc.CallOption) (*UpdateVmNicIpResponse, error)
+	// UpgradeVM (This API is deprecated, use scaleVirtualMachine API)Changes the service offering for a virtual machine. The virtual machine must be in a "Stopped" state for this command to take effect.
+	UpgradeVM(ctx context.Context, in *UpgradeVMRequest, opts ...grpc.CallOption) (*UpgradeVMResponse, error)
+	// UpgradeVMCmdByAdmin (This API is deprecated, use scaleVirtualMachine API)Changes the service offering for a virtual machine. The virtual machine must be in a "Stopped" state for this command to take effect.
+	UpgradeVMCmdByAdmin(ctx context.Context, in *UpgradeVMCmdByAdminRequest, opts ...grpc.CallOption) (*UpgradeVMCmdByAdminResponse, error)
 }
 
 type vmServiceClient struct {
@@ -172,400 +208,10 @@ func NewVmServiceClient(cc grpc.ClientConnInterface) VmServiceClient {
 	return &vmServiceClient{cc}
 }
 
-func (c *vmServiceClient) AssignVM(ctx context.Context, in *AssignVMRequest, opts ...grpc.CallOption) (*AssignVMResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AssignVMResponse)
-	err := c.cc.Invoke(ctx, VmService_AssignVM_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) DeployVMCmdByAdmin(ctx context.Context, in *DeployVMCmdByAdminRequest, opts ...grpc.CallOption) (*DeployVMCmdByAdminResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeployVMCmdByAdminResponse)
-	err := c.cc.Invoke(ctx, VmService_DeployVMCmdByAdmin_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) UpdateDefaultNicForVM(ctx context.Context, in *UpdateDefaultNicForVMRequest, opts ...grpc.CallOption) (*UpdateDefaultNicForVMResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateDefaultNicForVMResponse)
-	err := c.cc.Invoke(ctx, VmService_UpdateDefaultNicForVM_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) ExpungeVM(ctx context.Context, in *ExpungeVMRequest, opts ...grpc.CallOption) (*ExpungeVMResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ExpungeVMResponse)
-	err := c.cc.Invoke(ctx, VmService_ExpungeVM_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) UpgradeVM(ctx context.Context, in *UpgradeVMRequest, opts ...grpc.CallOption) (*UpgradeVMResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpgradeVMResponse)
-	err := c.cc.Invoke(ctx, VmService_UpgradeVM_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) DestroyVM(ctx context.Context, in *DestroyVMRequest, opts ...grpc.CallOption) (*DestroyVMResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DestroyVMResponse)
-	err := c.cc.Invoke(ctx, VmService_DestroyVM_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) RemoveNicFromVMCmdByAdmin(ctx context.Context, in *RemoveNicFromVMCmdByAdminRequest, opts ...grpc.CallOption) (*RemoveNicFromVMCmdByAdminResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RemoveNicFromVMCmdByAdminResponse)
-	err := c.cc.Invoke(ctx, VmService_RemoveNicFromVMCmdByAdmin_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) AddNicToVMCmdByAdmin(ctx context.Context, in *AddNicToVMCmdByAdminRequest, opts ...grpc.CallOption) (*AddNicToVMCmdByAdminResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AddNicToVMCmdByAdminResponse)
-	err := c.cc.Invoke(ctx, VmService_AddNicToVMCmdByAdmin_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) ListUnmanagedInstances(ctx context.Context, in *ListUnmanagedInstancesRequest, opts ...grpc.CallOption) (*ListUnmanagedInstancesResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListUnmanagedInstancesResponse)
-	err := c.cc.Invoke(ctx, VmService_ListUnmanagedInstances_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) UnmanageVMInstance(ctx context.Context, in *UnmanageVMInstanceRequest, opts ...grpc.CallOption) (*UnmanageVMInstanceResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UnmanageVMInstanceResponse)
-	err := c.cc.Invoke(ctx, VmService_UnmanageVMInstance_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) ResetVMPassword(ctx context.Context, in *ResetVMPasswordRequest, opts ...grpc.CallOption) (*ResetVMPasswordResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ResetVMPasswordResponse)
-	err := c.cc.Invoke(ctx, VmService_ResetVMPassword_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) DeployVnfApplianceCmdByAdmin(ctx context.Context, in *DeployVnfApplianceCmdByAdminRequest, opts ...grpc.CallOption) (*DeployVnfApplianceCmdByAdminResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeployVnfApplianceCmdByAdminResponse)
-	err := c.cc.Invoke(ctx, VmService_DeployVnfApplianceCmdByAdmin_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) ListNics(ctx context.Context, in *ListNicsRequest, opts ...grpc.CallOption) (*ListNicsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListNicsResponse)
-	err := c.cc.Invoke(ctx, VmService_ListNics_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) ListVMSchedule(ctx context.Context, in *ListVMScheduleRequest, opts ...grpc.CallOption) (*ListVMScheduleResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListVMScheduleResponse)
-	err := c.cc.Invoke(ctx, VmService_ListVMSchedule_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) RestoreVM(ctx context.Context, in *RestoreVMRequest, opts ...grpc.CallOption) (*RestoreVMResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RestoreVMResponse)
-	err := c.cc.Invoke(ctx, VmService_RestoreVM_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) StartVM(ctx context.Context, in *StartVMRequest, opts ...grpc.CallOption) (*StartVMResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(StartVMResponse)
-	err := c.cc.Invoke(ctx, VmService_StartVM_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) DeployVnfAppliance(ctx context.Context, in *DeployVnfApplianceRequest, opts ...grpc.CallOption) (*DeployVnfApplianceResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeployVnfApplianceResponse)
-	err := c.cc.Invoke(ctx, VmService_DeployVnfAppliance_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) MigrateVM(ctx context.Context, in *MigrateVMRequest, opts ...grpc.CallOption) (*MigrateVMResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(MigrateVMResponse)
-	err := c.cc.Invoke(ctx, VmService_MigrateVM_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) ListVnfAppliances(ctx context.Context, in *ListVnfAppliancesRequest, opts ...grpc.CallOption) (*ListVnfAppliancesResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListVnfAppliancesResponse)
-	err := c.cc.Invoke(ctx, VmService_ListVnfAppliances_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) ListAffectedVmsForStorageScopeChange(ctx context.Context, in *ListAffectedVmsForStorageScopeChangeRequest, opts ...grpc.CallOption) (*ListAffectedVmsForStorageScopeChangeResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListAffectedVmsForStorageScopeChangeResponse)
-	err := c.cc.Invoke(ctx, VmService_ListAffectedVmsForStorageScopeChange_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) StopVMCmdByAdmin(ctx context.Context, in *StopVMCmdByAdminRequest, opts ...grpc.CallOption) (*StopVMCmdByAdminResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(StopVMCmdByAdminResponse)
-	err := c.cc.Invoke(ctx, VmService_StopVMCmdByAdmin_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) UpdateVmNicIp(ctx context.Context, in *UpdateVmNicIpRequest, opts ...grpc.CallOption) (*UpdateVmNicIpResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateVmNicIpResponse)
-	err := c.cc.Invoke(ctx, VmService_UpdateVmNicIp_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) ImportUnmanagedInstance(ctx context.Context, in *ImportUnmanagedInstanceRequest, opts ...grpc.CallOption) (*ImportUnmanagedInstanceResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ImportUnmanagedInstanceResponse)
-	err := c.cc.Invoke(ctx, VmService_ImportUnmanagedInstance_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) DeleteVMSchedule(ctx context.Context, in *DeleteVMScheduleRequest, opts ...grpc.CallOption) (*DeleteVMScheduleResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteVMScheduleResponse)
-	err := c.cc.Invoke(ctx, VmService_DeleteVMSchedule_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) ResetVMSSHKey(ctx context.Context, in *ResetVMSSHKeyRequest, opts ...grpc.CallOption) (*ResetVMSSHKeyResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ResetVMSSHKeyResponse)
-	err := c.cc.Invoke(ctx, VmService_ResetVMSSHKey_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) GetVMPassword(ctx context.Context, in *GetVMPasswordRequest, opts ...grpc.CallOption) (*GetVMPasswordResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetVMPasswordResponse)
-	err := c.cc.Invoke(ctx, VmService_GetVMPassword_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) ListVmsForImport(ctx context.Context, in *ListVmsForImportRequest, opts ...grpc.CallOption) (*ListVmsForImportResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListVmsForImportResponse)
-	err := c.cc.Invoke(ctx, VmService_ListVmsForImport_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) DeployVM(ctx context.Context, in *DeployVMRequest, opts ...grpc.CallOption) (*DeployVMResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeployVMResponse)
-	err := c.cc.Invoke(ctx, VmService_DeployVM_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) ScaleVM(ctx context.Context, in *ScaleVMRequest, opts ...grpc.CallOption) (*ScaleVMResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ScaleVMResponse)
-	err := c.cc.Invoke(ctx, VmService_ScaleVM_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) UpdateVMCmdByAdmin(ctx context.Context, in *UpdateVMCmdByAdminRequest, opts ...grpc.CallOption) (*UpdateVMCmdByAdminResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateVMCmdByAdminResponse)
-	err := c.cc.Invoke(ctx, VmService_UpdateVMCmdByAdmin_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) ResetVMUserData(ctx context.Context, in *ResetVMUserDataRequest, opts ...grpc.CallOption) (*ResetVMUserDataResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ResetVMUserDataResponse)
-	err := c.cc.Invoke(ctx, VmService_ResetVMUserData_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) CreateVMSchedule(ctx context.Context, in *CreateVMScheduleRequest, opts ...grpc.CallOption) (*CreateVMScheduleResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateVMScheduleResponse)
-	err := c.cc.Invoke(ctx, VmService_CreateVMSchedule_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) RemoveNicFromVM(ctx context.Context, in *RemoveNicFromVMRequest, opts ...grpc.CallOption) (*RemoveNicFromVMResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RemoveNicFromVMResponse)
-	err := c.cc.Invoke(ctx, VmService_RemoveNicFromVM_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) ListVMs(ctx context.Context, in *ListVMsRequest, opts ...grpc.CallOption) (*ListVMsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListVMsResponse)
-	err := c.cc.Invoke(ctx, VmService_ListVMs_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) RebootVM(ctx context.Context, in *RebootVMRequest, opts ...grpc.CallOption) (*RebootVMResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RebootVMResponse)
-	err := c.cc.Invoke(ctx, VmService_RebootVM_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) ImportVm(ctx context.Context, in *ImportVmRequest, opts ...grpc.CallOption) (*ImportVmResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ImportVmResponse)
-	err := c.cc.Invoke(ctx, VmService_ImportVm_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *vmServiceClient) AddIpToVmNic(ctx context.Context, in *AddIpToVmNicRequest, opts ...grpc.CallOption) (*AddIpToVmNicResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(AddIpToVmNicResponse)
 	err := c.cc.Invoke(ctx, VmService_AddIpToVmNic_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) GetVMUserData(ctx context.Context, in *GetVMUserDataRequest, opts ...grpc.CallOption) (*GetVMUserDataResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetVMUserDataResponse)
-	err := c.cc.Invoke(ctx, VmService_GetVMUserData_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) UpdateVMSchedule(ctx context.Context, in *UpdateVMScheduleRequest, opts ...grpc.CallOption) (*UpdateVMScheduleResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateVMScheduleResponse)
-	err := c.cc.Invoke(ctx, VmService_UpdateVMSchedule_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *vmServiceClient) MigrateVirtualMachineWithVolume(ctx context.Context, in *MigrateVirtualMachineWithVolumeRequest, opts ...grpc.CallOption) (*MigrateVirtualMachineWithVolumeResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(MigrateVirtualMachineWithVolumeResponse)
-	err := c.cc.Invoke(ctx, VmService_MigrateVirtualMachineWithVolume_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -582,30 +228,280 @@ func (c *vmServiceClient) AddNicToVM(ctx context.Context, in *AddNicToVMRequest,
 	return out, nil
 }
 
-func (c *vmServiceClient) RemoveIpFromVmNic(ctx context.Context, in *RemoveIpFromVmNicRequest, opts ...grpc.CallOption) (*RemoveIpFromVmNicResponse, error) {
+func (c *vmServiceClient) AddNicToVMCmdByAdmin(ctx context.Context, in *AddNicToVMCmdByAdminRequest, opts ...grpc.CallOption) (*AddNicToVMCmdByAdminResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RemoveIpFromVmNicResponse)
-	err := c.cc.Invoke(ctx, VmService_RemoveIpFromVmNic_FullMethodName, in, out, cOpts...)
+	out := new(AddNicToVMCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VmService_AddNicToVMCmdByAdmin_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *vmServiceClient) StopVM(ctx context.Context, in *StopVMRequest, opts ...grpc.CallOption) (*StopVMResponse, error) {
+func (c *vmServiceClient) AssignVM(ctx context.Context, in *AssignVMRequest, opts ...grpc.CallOption) (*AssignVMResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(StopVMResponse)
-	err := c.cc.Invoke(ctx, VmService_StopVM_FullMethodName, in, out, cOpts...)
+	out := new(AssignVMResponse)
+	err := c.cc.Invoke(ctx, VmService_AssignVM_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *vmServiceClient) UpdateVM(ctx context.Context, in *UpdateVMRequest, opts ...grpc.CallOption) (*UpdateVMResponse, error) {
+func (c *vmServiceClient) CreateVMSchedule(ctx context.Context, in *CreateVMScheduleRequest, opts ...grpc.CallOption) (*CreateVMScheduleResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateVMResponse)
-	err := c.cc.Invoke(ctx, VmService_UpdateVM_FullMethodName, in, out, cOpts...)
+	out := new(CreateVMScheduleResponse)
+	err := c.cc.Invoke(ctx, VmService_CreateVMSchedule_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) DeleteVMSchedule(ctx context.Context, in *DeleteVMScheduleRequest, opts ...grpc.CallOption) (*DeleteVMScheduleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteVMScheduleResponse)
+	err := c.cc.Invoke(ctx, VmService_DeleteVMSchedule_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) DeployVM(ctx context.Context, in *DeployVMRequest, opts ...grpc.CallOption) (*DeployVMResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeployVMResponse)
+	err := c.cc.Invoke(ctx, VmService_DeployVM_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) DeployVMCmdByAdmin(ctx context.Context, in *DeployVMCmdByAdminRequest, opts ...grpc.CallOption) (*DeployVMCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeployVMCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VmService_DeployVMCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) DeployVnfAppliance(ctx context.Context, in *DeployVnfApplianceRequest, opts ...grpc.CallOption) (*DeployVnfApplianceResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeployVnfApplianceResponse)
+	err := c.cc.Invoke(ctx, VmService_DeployVnfAppliance_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) DeployVnfApplianceCmdByAdmin(ctx context.Context, in *DeployVnfApplianceCmdByAdminRequest, opts ...grpc.CallOption) (*DeployVnfApplianceCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeployVnfApplianceCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VmService_DeployVnfApplianceCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) DestroyVM(ctx context.Context, in *DestroyVMRequest, opts ...grpc.CallOption) (*DestroyVMResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DestroyVMResponse)
+	err := c.cc.Invoke(ctx, VmService_DestroyVM_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) DestroyVMCmdByAdmin(ctx context.Context, in *DestroyVMCmdByAdminRequest, opts ...grpc.CallOption) (*DestroyVMCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DestroyVMCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VmService_DestroyVMCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) ExpungeVM(ctx context.Context, in *ExpungeVMRequest, opts ...grpc.CallOption) (*ExpungeVMResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ExpungeVMResponse)
+	err := c.cc.Invoke(ctx, VmService_ExpungeVM_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) GetVMPassword(ctx context.Context, in *GetVMPasswordRequest, opts ...grpc.CallOption) (*GetVMPasswordResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetVMPasswordResponse)
+	err := c.cc.Invoke(ctx, VmService_GetVMPassword_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) GetVMUserData(ctx context.Context, in *GetVMUserDataRequest, opts ...grpc.CallOption) (*GetVMUserDataResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetVMUserDataResponse)
+	err := c.cc.Invoke(ctx, VmService_GetVMUserData_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) ImportUnmanagedInstance(ctx context.Context, in *ImportUnmanagedInstanceRequest, opts ...grpc.CallOption) (*ImportUnmanagedInstanceResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ImportUnmanagedInstanceResponse)
+	err := c.cc.Invoke(ctx, VmService_ImportUnmanagedInstance_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) ImportVm(ctx context.Context, in *ImportVmRequest, opts ...grpc.CallOption) (*ImportVmResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ImportVmResponse)
+	err := c.cc.Invoke(ctx, VmService_ImportVm_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) ListAffectedVmsForStorageScopeChange(ctx context.Context, in *ListAffectedVmsForStorageScopeChangeRequest, opts ...grpc.CallOption) (*ListAffectedVmsForStorageScopeChangeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListAffectedVmsForStorageScopeChangeResponse)
+	err := c.cc.Invoke(ctx, VmService_ListAffectedVmsForStorageScopeChange_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) ListNics(ctx context.Context, in *ListNicsRequest, opts ...grpc.CallOption) (*ListNicsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListNicsResponse)
+	err := c.cc.Invoke(ctx, VmService_ListNics_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) ListUnmanagedInstances(ctx context.Context, in *ListUnmanagedInstancesRequest, opts ...grpc.CallOption) (*ListUnmanagedInstancesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListUnmanagedInstancesResponse)
+	err := c.cc.Invoke(ctx, VmService_ListUnmanagedInstances_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) ListVMSchedule(ctx context.Context, in *ListVMScheduleRequest, opts ...grpc.CallOption) (*ListVMScheduleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListVMScheduleResponse)
+	err := c.cc.Invoke(ctx, VmService_ListVMSchedule_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) ListVMs(ctx context.Context, in *ListVMsRequest, opts ...grpc.CallOption) (*ListVMsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListVMsResponse)
+	err := c.cc.Invoke(ctx, VmService_ListVMs_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) ListVMsCmdByAdmin(ctx context.Context, in *ListVMsCmdByAdminRequest, opts ...grpc.CallOption) (*ListVMsCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListVMsCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VmService_ListVMsCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) ListVmsForImport(ctx context.Context, in *ListVmsForImportRequest, opts ...grpc.CallOption) (*ListVmsForImportResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListVmsForImportResponse)
+	err := c.cc.Invoke(ctx, VmService_ListVmsForImport_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) ListVnfAppliances(ctx context.Context, in *ListVnfAppliancesRequest, opts ...grpc.CallOption) (*ListVnfAppliancesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListVnfAppliancesResponse)
+	err := c.cc.Invoke(ctx, VmService_ListVnfAppliances_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) ListVnfAppliancesCmdByAdmin(ctx context.Context, in *ListVnfAppliancesCmdByAdminRequest, opts ...grpc.CallOption) (*ListVnfAppliancesCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListVnfAppliancesCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VmService_ListVnfAppliancesCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) MigrateVM(ctx context.Context, in *MigrateVMRequest, opts ...grpc.CallOption) (*MigrateVMResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(MigrateVMResponse)
+	err := c.cc.Invoke(ctx, VmService_MigrateVM_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) MigrateVirtualMachineWithVolume(ctx context.Context, in *MigrateVirtualMachineWithVolumeRequest, opts ...grpc.CallOption) (*MigrateVirtualMachineWithVolumeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(MigrateVirtualMachineWithVolumeResponse)
+	err := c.cc.Invoke(ctx, VmService_MigrateVirtualMachineWithVolume_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) RebootVM(ctx context.Context, in *RebootVMRequest, opts ...grpc.CallOption) (*RebootVMResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RebootVMResponse)
+	err := c.cc.Invoke(ctx, VmService_RebootVM_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) RebootVMCmdByAdmin(ctx context.Context, in *RebootVMCmdByAdminRequest, opts ...grpc.CallOption) (*RebootVMCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RebootVMCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VmService_RebootVMCmdByAdmin_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -622,102 +518,386 @@ func (c *vmServiceClient) RecoverVM(ctx context.Context, in *RecoverVMRequest, o
 	return out, nil
 }
 
+func (c *vmServiceClient) RemoveIpFromVmNic(ctx context.Context, in *RemoveIpFromVmNicRequest, opts ...grpc.CallOption) (*RemoveIpFromVmNicResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RemoveIpFromVmNicResponse)
+	err := c.cc.Invoke(ctx, VmService_RemoveIpFromVmNic_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) RemoveNicFromVM(ctx context.Context, in *RemoveNicFromVMRequest, opts ...grpc.CallOption) (*RemoveNicFromVMResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RemoveNicFromVMResponse)
+	err := c.cc.Invoke(ctx, VmService_RemoveNicFromVM_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) RemoveNicFromVMCmdByAdmin(ctx context.Context, in *RemoveNicFromVMCmdByAdminRequest, opts ...grpc.CallOption) (*RemoveNicFromVMCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RemoveNicFromVMCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VmService_RemoveNicFromVMCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) ResetVMPassword(ctx context.Context, in *ResetVMPasswordRequest, opts ...grpc.CallOption) (*ResetVMPasswordResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResetVMPasswordResponse)
+	err := c.cc.Invoke(ctx, VmService_ResetVMPassword_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) ResetVMPasswordCmdByAdmin(ctx context.Context, in *ResetVMPasswordCmdByAdminRequest, opts ...grpc.CallOption) (*ResetVMPasswordCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResetVMPasswordCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VmService_ResetVMPasswordCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) ResetVMSSHKey(ctx context.Context, in *ResetVMSSHKeyRequest, opts ...grpc.CallOption) (*ResetVMSSHKeyResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResetVMSSHKeyResponse)
+	err := c.cc.Invoke(ctx, VmService_ResetVMSSHKey_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) ResetVMSSHKeyCmdByAdmin(ctx context.Context, in *ResetVMSSHKeyCmdByAdminRequest, opts ...grpc.CallOption) (*ResetVMSSHKeyCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResetVMSSHKeyCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VmService_ResetVMSSHKeyCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) ResetVMUserData(ctx context.Context, in *ResetVMUserDataRequest, opts ...grpc.CallOption) (*ResetVMUserDataResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResetVMUserDataResponse)
+	err := c.cc.Invoke(ctx, VmService_ResetVMUserData_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) ResetVMUserDataCmdAdmin(ctx context.Context, in *ResetVMUserDataCmdAdminRequest, opts ...grpc.CallOption) (*ResetVMUserDataCmdAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResetVMUserDataCmdAdminResponse)
+	err := c.cc.Invoke(ctx, VmService_ResetVMUserDataCmdAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) RestoreVM(ctx context.Context, in *RestoreVMRequest, opts ...grpc.CallOption) (*RestoreVMResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RestoreVMResponse)
+	err := c.cc.Invoke(ctx, VmService_RestoreVM_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) RestoreVMCmdByAdmin(ctx context.Context, in *RestoreVMCmdByAdminRequest, opts ...grpc.CallOption) (*RestoreVMCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RestoreVMCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VmService_RestoreVMCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) ScaleVM(ctx context.Context, in *ScaleVMRequest, opts ...grpc.CallOption) (*ScaleVMResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ScaleVMResponse)
+	err := c.cc.Invoke(ctx, VmService_ScaleVM_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) ScaleVMCmdByAdmin(ctx context.Context, in *ScaleVMCmdByAdminRequest, opts ...grpc.CallOption) (*ScaleVMCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ScaleVMCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VmService_ScaleVMCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) StartVM(ctx context.Context, in *StartVMRequest, opts ...grpc.CallOption) (*StartVMResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(StartVMResponse)
+	err := c.cc.Invoke(ctx, VmService_StartVM_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) StartVMCmdByAdmin(ctx context.Context, in *StartVMCmdByAdminRequest, opts ...grpc.CallOption) (*StartVMCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(StartVMCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VmService_StartVMCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) StopVM(ctx context.Context, in *StopVMRequest, opts ...grpc.CallOption) (*StopVMResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(StopVMResponse)
+	err := c.cc.Invoke(ctx, VmService_StopVM_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) StopVMCmdByAdmin(ctx context.Context, in *StopVMCmdByAdminRequest, opts ...grpc.CallOption) (*StopVMCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(StopVMCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VmService_StopVMCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) UnmanageVMInstance(ctx context.Context, in *UnmanageVMInstanceRequest, opts ...grpc.CallOption) (*UnmanageVMInstanceResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UnmanageVMInstanceResponse)
+	err := c.cc.Invoke(ctx, VmService_UnmanageVMInstance_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) UpdateDefaultNicForVM(ctx context.Context, in *UpdateDefaultNicForVMRequest, opts ...grpc.CallOption) (*UpdateDefaultNicForVMResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateDefaultNicForVMResponse)
+	err := c.cc.Invoke(ctx, VmService_UpdateDefaultNicForVM_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) UpdateDefaultNicForVMCmdByAdmin(ctx context.Context, in *UpdateDefaultNicForVMCmdByAdminRequest, opts ...grpc.CallOption) (*UpdateDefaultNicForVMCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateDefaultNicForVMCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VmService_UpdateDefaultNicForVMCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) UpdateVM(ctx context.Context, in *UpdateVMRequest, opts ...grpc.CallOption) (*UpdateVMResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateVMResponse)
+	err := c.cc.Invoke(ctx, VmService_UpdateVM_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) UpdateVMCmdByAdmin(ctx context.Context, in *UpdateVMCmdByAdminRequest, opts ...grpc.CallOption) (*UpdateVMCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateVMCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VmService_UpdateVMCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) UpdateVMSchedule(ctx context.Context, in *UpdateVMScheduleRequest, opts ...grpc.CallOption) (*UpdateVMScheduleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateVMScheduleResponse)
+	err := c.cc.Invoke(ctx, VmService_UpdateVMSchedule_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) UpdateVmNicIp(ctx context.Context, in *UpdateVmNicIpRequest, opts ...grpc.CallOption) (*UpdateVmNicIpResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateVmNicIpResponse)
+	err := c.cc.Invoke(ctx, VmService_UpdateVmNicIp_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) UpgradeVM(ctx context.Context, in *UpgradeVMRequest, opts ...grpc.CallOption) (*UpgradeVMResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpgradeVMResponse)
+	err := c.cc.Invoke(ctx, VmService_UpgradeVM_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *vmServiceClient) UpgradeVMCmdByAdmin(ctx context.Context, in *UpgradeVMCmdByAdminRequest, opts ...grpc.CallOption) (*UpgradeVMCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpgradeVMCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, VmService_UpgradeVMCmdByAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // VmServiceServer is the server API for VmService service.
 // All implementations must embed UnimplementedVmServiceServer
 // for forward compatibility.
 //
 // VmService provides operations for managing Vms
 type VmServiceServer interface {
-	// AssignVM Change ownership of a VM from one account to another. This API is available for Basic zones with security groups and Advanced zones with guest networks. A root administrator can reassign a VM from any account to any other account in any domain. A domain administrator can reassign a VM to any account in the same domain.
-	AssignVM(context.Context, *AssignVMRequest) (*AssignVMResponse, error)
-	// DeployVMCmdByAdmin Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
-	DeployVMCmdByAdmin(context.Context, *DeployVMCmdByAdminRequest) (*DeployVMCmdByAdminResponse, error)
-	// UpdateDefaultNicForVM Changes the default NIC on a VM
-	UpdateDefaultNicForVM(context.Context, *UpdateDefaultNicForVMRequest) (*UpdateDefaultNicForVMResponse, error)
-	// ExpungeVM Expunge a virtual machine. Once expunged, it cannot be recoverd.
-	ExpungeVM(context.Context, *ExpungeVMRequest) (*ExpungeVMResponse, error)
-	// UpgradeVM (This API is deprecated, use scaleVirtualMachine API)Changes the service offering for a virtual machine. The virtual machine must be in a "Stopped" state for this command to take effect.
-	UpgradeVM(context.Context, *UpgradeVMRequest) (*UpgradeVMResponse, error)
-	// DestroyVM Destroys a virtual machine.
-	DestroyVM(context.Context, *DestroyVMRequest) (*DestroyVMResponse, error)
-	// RemoveNicFromVMCmdByAdmin Removes VM from specified network by deleting a NIC
-	RemoveNicFromVMCmdByAdmin(context.Context, *RemoveNicFromVMCmdByAdminRequest) (*RemoveNicFromVMCmdByAdminResponse, error)
-	// AddNicToVMCmdByAdmin Adds VM to specified network by creating a NIC
-	AddNicToVMCmdByAdmin(context.Context, *AddNicToVMCmdByAdminRequest) (*AddNicToVMCmdByAdminResponse, error)
-	// ListUnmanagedInstances Lists unmanaged virtual machines for a given cluster.
-	ListUnmanagedInstances(context.Context, *ListUnmanagedInstancesRequest) (*ListUnmanagedInstancesResponse, error)
-	// UnmanageVMInstance Unmanage a guest virtual machine.
-	UnmanageVMInstance(context.Context, *UnmanageVMInstanceRequest) (*UnmanageVMInstanceResponse, error)
-	// ResetVMPassword Resets the password for virtual machine. The virtual machine must be in a "Stopped" state and the template must already support this feature for this command to take effect. [async]
-	ResetVMPassword(context.Context, *ResetVMPasswordRequest) (*ResetVMPasswordResponse, error)
-	// DeployVnfApplianceCmdByAdmin Creates and automatically starts a VNF appliance based on a service offering, disk offering, and template.
-	DeployVnfApplianceCmdByAdmin(context.Context, *DeployVnfApplianceCmdByAdminRequest) (*DeployVnfApplianceCmdByAdminResponse, error)
-	// ListNics list the vm nics  IP to NIC
-	ListNics(context.Context, *ListNicsRequest) (*ListNicsResponse, error)
-	// ListVMSchedule List VM Schedules.
-	ListVMSchedule(context.Context, *ListVMScheduleRequest) (*ListVMScheduleResponse, error)
-	// RestoreVM Restore a VM to original template/ISO or new template/ISO
-	RestoreVM(context.Context, *RestoreVMRequest) (*RestoreVMResponse, error)
-	// StartVM Starts a virtual machine.
-	StartVM(context.Context, *StartVMRequest) (*StartVMResponse, error)
-	// DeployVnfAppliance Creates and automatically starts a VNF appliance based on a service offering, disk offering, and template.
-	DeployVnfAppliance(context.Context, *DeployVnfApplianceRequest) (*DeployVnfApplianceResponse, error)
-	// MigrateVM Attempts Migration of a VM to a different host or Root volume of the vm to a different storage pool
-	MigrateVM(context.Context, *MigrateVMRequest) (*MigrateVMResponse, error)
-	// ListVnfAppliances List VNF appliance owned by the account.
-	ListVnfAppliances(context.Context, *ListVnfAppliancesRequest) (*ListVnfAppliancesResponse, error)
-	// ListAffectedVmsForStorageScopeChange List user and system VMs that need to be stopped and destroyed respectively for changing the scope of the storage pool from Zone to Cluster.
-	ListAffectedVmsForStorageScopeChange(context.Context, *ListAffectedVmsForStorageScopeChangeRequest) (*ListAffectedVmsForStorageScopeChangeResponse, error)
-	// StopVMCmdByAdmin Stops a virtual machine.
-	StopVMCmdByAdmin(context.Context, *StopVMCmdByAdminRequest) (*StopVMCmdByAdminResponse, error)
-	// UpdateVmNicIp Update the default Ip of a VM Nic
-	UpdateVmNicIp(context.Context, *UpdateVmNicIpRequest) (*UpdateVmNicIpResponse, error)
-	// ImportUnmanagedInstance Import unmanaged virtual machine from a given cluster.
-	ImportUnmanagedInstance(context.Context, *ImportUnmanagedInstanceRequest) (*ImportUnmanagedInstanceResponse, error)
-	// DeleteVMSchedule Delete VM Schedule.
-	DeleteVMSchedule(context.Context, *DeleteVMScheduleRequest) (*DeleteVMScheduleResponse, error)
-	// ResetVMSSHKey Resets the SSH Key for virtual machine. The virtual machine must be in a "Stopped" state. [async]
-	ResetVMSSHKey(context.Context, *ResetVMSSHKeyRequest) (*ResetVMSSHKeyResponse, error)
-	// GetVMPassword Returns an encrypted password for the VM
-	GetVMPassword(context.Context, *GetVMPasswordRequest) (*GetVMPasswordResponse, error)
-	// ListVmsForImport Lists virtual machines on a unmanaged host
-	ListVmsForImport(context.Context, *ListVmsForImportRequest) (*ListVmsForImportResponse, error)
-	// DeployVM Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
-	DeployVM(context.Context, *DeployVMRequest) (*DeployVMResponse, error)
-	// ScaleVM Scales the virtual machine to a new service offering. This command also considers the volume size in the service offering or disk offering linked to the new service offering and apply all characteristics to the root volume.
-	ScaleVM(context.Context, *ScaleVMRequest) (*ScaleVMResponse, error)
-	// UpdateVMCmdByAdmin Updates properties of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect. UpdateVirtualMachine does not first check whether the VM is stopped. Therefore, stop the VM manually before issuing this call.
-	UpdateVMCmdByAdmin(context.Context, *UpdateVMCmdByAdminRequest) (*UpdateVMCmdByAdminResponse, error)
-	// ResetVMUserData Resets the UserData for virtual machine. The virtual machine must be in a "Stopped" state.
-	ResetVMUserData(context.Context, *ResetVMUserDataRequest) (*ResetVMUserDataResponse, error)
-	// CreateVMSchedule Create VM Schedule
-	CreateVMSchedule(context.Context, *CreateVMScheduleRequest) (*CreateVMScheduleResponse, error)
-	// RemoveNicFromVM Removes VM from specified network by deleting a NIC
-	RemoveNicFromVM(context.Context, *RemoveNicFromVMRequest) (*RemoveNicFromVMResponse, error)
-	// ListVMs List the virtual machines owned by the account.
-	ListVMs(context.Context, *ListVMsRequest) (*ListVMsResponse, error)
-	// RebootVM Reboots a virtual machine.
-	RebootVM(context.Context, *RebootVMRequest) (*RebootVMResponse, error)
-	// ImportVm Import virtual machine from a unmanaged host into CloudStack
-	ImportVm(context.Context, *ImportVmRequest) (*ImportVmResponse, error)
 	// AddIpToVmNic Assigns secondary IP to NIC
 	AddIpToVmNic(context.Context, *AddIpToVmNicRequest) (*AddIpToVmNicResponse, error)
-	// GetVMUserData Returns user data associated with the VM
-	GetVMUserData(context.Context, *GetVMUserDataRequest) (*GetVMUserDataResponse, error)
-	// UpdateVMSchedule Update VM Schedule.
-	UpdateVMSchedule(context.Context, *UpdateVMScheduleRequest) (*UpdateVMScheduleResponse, error)
-	// MigrateVirtualMachineWithVolume Attempts Migration of a VM with its volumes to a different host
-	MigrateVirtualMachineWithVolume(context.Context, *MigrateVirtualMachineWithVolumeRequest) (*MigrateVirtualMachineWithVolumeResponse, error)
 	// AddNicToVM Adds VM to specified network by creating a NIC
 	AddNicToVM(context.Context, *AddNicToVMRequest) (*AddNicToVMResponse, error)
-	// RemoveIpFromVmNic Removes secondary IP from the NIC.
-	RemoveIpFromVmNic(context.Context, *RemoveIpFromVmNicRequest) (*RemoveIpFromVmNicResponse, error)
-	// StopVM Stops a virtual machine.
-	StopVM(context.Context, *StopVMRequest) (*StopVMResponse, error)
-	// UpdateVM Updates properties of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect. UpdateVirtualMachine does not first check whether the VM is stopped. Therefore, stop the VM manually before issuing this call.
-	UpdateVM(context.Context, *UpdateVMRequest) (*UpdateVMResponse, error)
+	// AddNicToVMCmdByAdmin Adds VM to specified network by creating a NIC
+	AddNicToVMCmdByAdmin(context.Context, *AddNicToVMCmdByAdminRequest) (*AddNicToVMCmdByAdminResponse, error)
+	// AssignVM Change ownership of a VM from one account to another. This API is available for Basic zones with security groups and Advanced zones with guest networks. A root administrator can reassign a VM from any account to any other account in any domain. A domain administrator can reassign a VM to any account in the same domain.
+	AssignVM(context.Context, *AssignVMRequest) (*AssignVMResponse, error)
+	// CreateVMSchedule Create VM Schedule
+	CreateVMSchedule(context.Context, *CreateVMScheduleRequest) (*CreateVMScheduleResponse, error)
+	// DeleteVMSchedule Delete VM Schedule.
+	DeleteVMSchedule(context.Context, *DeleteVMScheduleRequest) (*DeleteVMScheduleResponse, error)
+	// DeployVM Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
+	DeployVM(context.Context, *DeployVMRequest) (*DeployVMResponse, error)
+	// DeployVMCmdByAdmin Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
+	DeployVMCmdByAdmin(context.Context, *DeployVMCmdByAdminRequest) (*DeployVMCmdByAdminResponse, error)
+	// DeployVnfAppliance Creates and automatically starts a VNF appliance based on a service offering, disk offering, and template.
+	DeployVnfAppliance(context.Context, *DeployVnfApplianceRequest) (*DeployVnfApplianceResponse, error)
+	// DeployVnfApplianceCmdByAdmin Creates and automatically starts a VNF appliance based on a service offering, disk offering, and template.
+	DeployVnfApplianceCmdByAdmin(context.Context, *DeployVnfApplianceCmdByAdminRequest) (*DeployVnfApplianceCmdByAdminResponse, error)
+	// DestroyVM Destroys a virtual machine.
+	DestroyVM(context.Context, *DestroyVMRequest) (*DestroyVMResponse, error)
+	// DestroyVMCmdByAdmin Destroys a virtual machine. Once destroyed, only the administrator can recover it.
+	DestroyVMCmdByAdmin(context.Context, *DestroyVMCmdByAdminRequest) (*DestroyVMCmdByAdminResponse, error)
+	// ExpungeVM Expunge a virtual machine. Once expunged, it cannot be recoverd.
+	ExpungeVM(context.Context, *ExpungeVMRequest) (*ExpungeVMResponse, error)
+	// GetVMPassword Returns an encrypted password for the VM
+	GetVMPassword(context.Context, *GetVMPasswordRequest) (*GetVMPasswordResponse, error)
+	// GetVMUserData Returns user data associated with the VM
+	GetVMUserData(context.Context, *GetVMUserDataRequest) (*GetVMUserDataResponse, error)
+	// ImportUnmanagedInstance Import unmanaged virtual machine from a given cluster.
+	ImportUnmanagedInstance(context.Context, *ImportUnmanagedInstanceRequest) (*ImportUnmanagedInstanceResponse, error)
+	// ImportVm Import virtual machine from a unmanaged host into CloudStack
+	ImportVm(context.Context, *ImportVmRequest) (*ImportVmResponse, error)
+	// ListAffectedVmsForStorageScopeChange List user and system VMs that need to be stopped and destroyed respectively for changing the scope of the storage pool from Zone to Cluster.
+	ListAffectedVmsForStorageScopeChange(context.Context, *ListAffectedVmsForStorageScopeChangeRequest) (*ListAffectedVmsForStorageScopeChangeResponse, error)
+	// ListNics list the vm nics  IP to NIC
+	ListNics(context.Context, *ListNicsRequest) (*ListNicsResponse, error)
+	// ListUnmanagedInstances Lists unmanaged virtual machines for a given cluster.
+	ListUnmanagedInstances(context.Context, *ListUnmanagedInstancesRequest) (*ListUnmanagedInstancesResponse, error)
+	// ListVMSchedule List VM Schedules.
+	ListVMSchedule(context.Context, *ListVMScheduleRequest) (*ListVMScheduleResponse, error)
+	// ListVMs List the virtual machines owned by the account.
+	ListVMs(context.Context, *ListVMsRequest) (*ListVMsResponse, error)
+	// ListVMsCmdByAdmin List the virtual machines owned by the account.
+	ListVMsCmdByAdmin(context.Context, *ListVMsCmdByAdminRequest) (*ListVMsCmdByAdminResponse, error)
+	// ListVmsForImport Lists virtual machines on a unmanaged host
+	ListVmsForImport(context.Context, *ListVmsForImportRequest) (*ListVmsForImportResponse, error)
+	// ListVnfAppliances List VNF appliance owned by the account.
+	ListVnfAppliances(context.Context, *ListVnfAppliancesRequest) (*ListVnfAppliancesResponse, error)
+	// ListVnfAppliancesCmdByAdmin List VNF appliance owned by the account.
+	ListVnfAppliancesCmdByAdmin(context.Context, *ListVnfAppliancesCmdByAdminRequest) (*ListVnfAppliancesCmdByAdminResponse, error)
+	// MigrateVM Attempts Migration of a VM to a different host or Root volume of the vm to a different storage pool
+	MigrateVM(context.Context, *MigrateVMRequest) (*MigrateVMResponse, error)
+	// MigrateVirtualMachineWithVolume Attempts Migration of a VM with its volumes to a different host
+	MigrateVirtualMachineWithVolume(context.Context, *MigrateVirtualMachineWithVolumeRequest) (*MigrateVirtualMachineWithVolumeResponse, error)
+	// RebootVM Reboots a virtual machine.
+	RebootVM(context.Context, *RebootVMRequest) (*RebootVMResponse, error)
+	// RebootVMCmdByAdmin Reboots a virtual machine.
+	RebootVMCmdByAdmin(context.Context, *RebootVMCmdByAdminRequest) (*RebootVMCmdByAdminResponse, error)
 	// RecoverVM Recovers a virtual machine.
 	RecoverVM(context.Context, *RecoverVMRequest) (*RecoverVMResponse, error)
+	// RemoveIpFromVmNic Removes secondary IP from the NIC.
+	RemoveIpFromVmNic(context.Context, *RemoveIpFromVmNicRequest) (*RemoveIpFromVmNicResponse, error)
+	// RemoveNicFromVM Removes VM from specified network by deleting a NIC
+	RemoveNicFromVM(context.Context, *RemoveNicFromVMRequest) (*RemoveNicFromVMResponse, error)
+	// RemoveNicFromVMCmdByAdmin Removes VM from specified network by deleting a NIC
+	RemoveNicFromVMCmdByAdmin(context.Context, *RemoveNicFromVMCmdByAdminRequest) (*RemoveNicFromVMCmdByAdminResponse, error)
+	// ResetVMPassword Resets the password for virtual machine. The virtual machine must be in a "Stopped" state and the template must already support this feature for this command to take effect. [async]
+	ResetVMPassword(context.Context, *ResetVMPasswordRequest) (*ResetVMPasswordResponse, error)
+	// ResetVMPasswordCmdByAdmin Resets the password for virtual machine. The virtual machine must be in a "Stopped" state and the template must already support this feature for this command to take effect. [async]
+	ResetVMPasswordCmdByAdmin(context.Context, *ResetVMPasswordCmdByAdminRequest) (*ResetVMPasswordCmdByAdminResponse, error)
+	// ResetVMSSHKey Resets the SSH Key for virtual machine. The virtual machine must be in a "Stopped" state. [async]
+	ResetVMSSHKey(context.Context, *ResetVMSSHKeyRequest) (*ResetVMSSHKeyResponse, error)
+	// ResetVMSSHKeyCmdByAdmin Resets the SSH Key for virtual machine. The virtual machine must be in a "Stopped" state. [async]
+	ResetVMSSHKeyCmdByAdmin(context.Context, *ResetVMSSHKeyCmdByAdminRequest) (*ResetVMSSHKeyCmdByAdminResponse, error)
+	// ResetVMUserData Resets the UserData for virtual machine. The virtual machine must be in a "Stopped" state.
+	ResetVMUserData(context.Context, *ResetVMUserDataRequest) (*ResetVMUserDataResponse, error)
+	// ResetVMUserDataCmdAdmin Resets the UserData for virtual machine. The virtual machine must be in a "Stopped" state. [async]
+	ResetVMUserDataCmdAdmin(context.Context, *ResetVMUserDataCmdAdminRequest) (*ResetVMUserDataCmdAdminResponse, error)
+	// RestoreVM Restore a VM to original template/ISO or new template/ISO
+	RestoreVM(context.Context, *RestoreVMRequest) (*RestoreVMResponse, error)
+	// RestoreVMCmdByAdmin Restore a VM to original template/ISO or new template/ISO
+	RestoreVMCmdByAdmin(context.Context, *RestoreVMCmdByAdminRequest) (*RestoreVMCmdByAdminResponse, error)
+	// ScaleVM Scales the virtual machine to a new service offering. This command also considers the volume size in the service offering or disk offering linked to the new service offering and apply all characteristics to the root volume.
+	ScaleVM(context.Context, *ScaleVMRequest) (*ScaleVMResponse, error)
+	// ScaleVMCmdByAdmin Scales the virtual machine to a new service offering. This command also considers the volume size in the service offering or disk offering linked to the new service offering and apply all characteristics to the root volume.
+	ScaleVMCmdByAdmin(context.Context, *ScaleVMCmdByAdminRequest) (*ScaleVMCmdByAdminResponse, error)
+	// StartVM Starts a virtual machine.
+	StartVM(context.Context, *StartVMRequest) (*StartVMResponse, error)
+	// StartVMCmdByAdmin Starts a virtual machine.
+	StartVMCmdByAdmin(context.Context, *StartVMCmdByAdminRequest) (*StartVMCmdByAdminResponse, error)
+	// StopVM Stops a virtual machine.
+	StopVM(context.Context, *StopVMRequest) (*StopVMResponse, error)
+	// StopVMCmdByAdmin Stops a virtual machine.
+	StopVMCmdByAdmin(context.Context, *StopVMCmdByAdminRequest) (*StopVMCmdByAdminResponse, error)
+	// UnmanageVMInstance Unmanage a guest virtual machine.
+	UnmanageVMInstance(context.Context, *UnmanageVMInstanceRequest) (*UnmanageVMInstanceResponse, error)
+	// UpdateDefaultNicForVM Changes the default NIC on a VM
+	UpdateDefaultNicForVM(context.Context, *UpdateDefaultNicForVMRequest) (*UpdateDefaultNicForVMResponse, error)
+	// UpdateDefaultNicForVMCmdByAdmin Changes the default NIC on a VM
+	UpdateDefaultNicForVMCmdByAdmin(context.Context, *UpdateDefaultNicForVMCmdByAdminRequest) (*UpdateDefaultNicForVMCmdByAdminResponse, error)
+	// UpdateVM Updates properties of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect. UpdateVirtualMachine does not first check whether the VM is stopped. Therefore, stop the VM manually before issuing this call.
+	UpdateVM(context.Context, *UpdateVMRequest) (*UpdateVMResponse, error)
+	// UpdateVMCmdByAdmin Updates properties of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect. UpdateVirtualMachine does not first check whether the VM is stopped. Therefore, stop the VM manually before issuing this call.
+	UpdateVMCmdByAdmin(context.Context, *UpdateVMCmdByAdminRequest) (*UpdateVMCmdByAdminResponse, error)
+	// UpdateVMSchedule Update VM Schedule.
+	UpdateVMSchedule(context.Context, *UpdateVMScheduleRequest) (*UpdateVMScheduleResponse, error)
+	// UpdateVmNicIp Update the default Ip of a VM Nic
+	UpdateVmNicIp(context.Context, *UpdateVmNicIpRequest) (*UpdateVmNicIpResponse, error)
+	// UpgradeVM (This API is deprecated, use scaleVirtualMachine API)Changes the service offering for a virtual machine. The virtual machine must be in a "Stopped" state for this command to take effect.
+	UpgradeVM(context.Context, *UpgradeVMRequest) (*UpgradeVMResponse, error)
+	// UpgradeVMCmdByAdmin (This API is deprecated, use scaleVirtualMachine API)Changes the service offering for a virtual machine. The virtual machine must be in a "Stopped" state for this command to take effect.
+	UpgradeVMCmdByAdmin(context.Context, *UpgradeVMCmdByAdminRequest) (*UpgradeVMCmdByAdminResponse, error)
 	mustEmbedUnimplementedVmServiceServer()
 }
 
@@ -728,140 +908,176 @@ type VmServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedVmServiceServer struct{}
 
-func (UnimplementedVmServiceServer) AssignVM(context.Context, *AssignVMRequest) (*AssignVMResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AssignVM not implemented")
-}
-func (UnimplementedVmServiceServer) DeployVMCmdByAdmin(context.Context, *DeployVMCmdByAdminRequest) (*DeployVMCmdByAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeployVMCmdByAdmin not implemented")
-}
-func (UnimplementedVmServiceServer) UpdateDefaultNicForVM(context.Context, *UpdateDefaultNicForVMRequest) (*UpdateDefaultNicForVMResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateDefaultNicForVM not implemented")
-}
-func (UnimplementedVmServiceServer) ExpungeVM(context.Context, *ExpungeVMRequest) (*ExpungeVMResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ExpungeVM not implemented")
-}
-func (UnimplementedVmServiceServer) UpgradeVM(context.Context, *UpgradeVMRequest) (*UpgradeVMResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpgradeVM not implemented")
-}
-func (UnimplementedVmServiceServer) DestroyVM(context.Context, *DestroyVMRequest) (*DestroyVMResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DestroyVM not implemented")
-}
-func (UnimplementedVmServiceServer) RemoveNicFromVMCmdByAdmin(context.Context, *RemoveNicFromVMCmdByAdminRequest) (*RemoveNicFromVMCmdByAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RemoveNicFromVMCmdByAdmin not implemented")
-}
-func (UnimplementedVmServiceServer) AddNicToVMCmdByAdmin(context.Context, *AddNicToVMCmdByAdminRequest) (*AddNicToVMCmdByAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddNicToVMCmdByAdmin not implemented")
-}
-func (UnimplementedVmServiceServer) ListUnmanagedInstances(context.Context, *ListUnmanagedInstancesRequest) (*ListUnmanagedInstancesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListUnmanagedInstances not implemented")
-}
-func (UnimplementedVmServiceServer) UnmanageVMInstance(context.Context, *UnmanageVMInstanceRequest) (*UnmanageVMInstanceResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UnmanageVMInstance not implemented")
-}
-func (UnimplementedVmServiceServer) ResetVMPassword(context.Context, *ResetVMPasswordRequest) (*ResetVMPasswordResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ResetVMPassword not implemented")
-}
-func (UnimplementedVmServiceServer) DeployVnfApplianceCmdByAdmin(context.Context, *DeployVnfApplianceCmdByAdminRequest) (*DeployVnfApplianceCmdByAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeployVnfApplianceCmdByAdmin not implemented")
-}
-func (UnimplementedVmServiceServer) ListNics(context.Context, *ListNicsRequest) (*ListNicsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListNics not implemented")
-}
-func (UnimplementedVmServiceServer) ListVMSchedule(context.Context, *ListVMScheduleRequest) (*ListVMScheduleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListVMSchedule not implemented")
-}
-func (UnimplementedVmServiceServer) RestoreVM(context.Context, *RestoreVMRequest) (*RestoreVMResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RestoreVM not implemented")
-}
-func (UnimplementedVmServiceServer) StartVM(context.Context, *StartVMRequest) (*StartVMResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method StartVM not implemented")
-}
-func (UnimplementedVmServiceServer) DeployVnfAppliance(context.Context, *DeployVnfApplianceRequest) (*DeployVnfApplianceResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeployVnfAppliance not implemented")
-}
-func (UnimplementedVmServiceServer) MigrateVM(context.Context, *MigrateVMRequest) (*MigrateVMResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MigrateVM not implemented")
-}
-func (UnimplementedVmServiceServer) ListVnfAppliances(context.Context, *ListVnfAppliancesRequest) (*ListVnfAppliancesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListVnfAppliances not implemented")
-}
-func (UnimplementedVmServiceServer) ListAffectedVmsForStorageScopeChange(context.Context, *ListAffectedVmsForStorageScopeChangeRequest) (*ListAffectedVmsForStorageScopeChangeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListAffectedVmsForStorageScopeChange not implemented")
-}
-func (UnimplementedVmServiceServer) StopVMCmdByAdmin(context.Context, *StopVMCmdByAdminRequest) (*StopVMCmdByAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method StopVMCmdByAdmin not implemented")
-}
-func (UnimplementedVmServiceServer) UpdateVmNicIp(context.Context, *UpdateVmNicIpRequest) (*UpdateVmNicIpResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateVmNicIp not implemented")
-}
-func (UnimplementedVmServiceServer) ImportUnmanagedInstance(context.Context, *ImportUnmanagedInstanceRequest) (*ImportUnmanagedInstanceResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ImportUnmanagedInstance not implemented")
-}
-func (UnimplementedVmServiceServer) DeleteVMSchedule(context.Context, *DeleteVMScheduleRequest) (*DeleteVMScheduleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteVMSchedule not implemented")
-}
-func (UnimplementedVmServiceServer) ResetVMSSHKey(context.Context, *ResetVMSSHKeyRequest) (*ResetVMSSHKeyResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ResetVMSSHKey not implemented")
-}
-func (UnimplementedVmServiceServer) GetVMPassword(context.Context, *GetVMPasswordRequest) (*GetVMPasswordResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetVMPassword not implemented")
-}
-func (UnimplementedVmServiceServer) ListVmsForImport(context.Context, *ListVmsForImportRequest) (*ListVmsForImportResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListVmsForImport not implemented")
-}
-func (UnimplementedVmServiceServer) DeployVM(context.Context, *DeployVMRequest) (*DeployVMResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeployVM not implemented")
-}
-func (UnimplementedVmServiceServer) ScaleVM(context.Context, *ScaleVMRequest) (*ScaleVMResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ScaleVM not implemented")
-}
-func (UnimplementedVmServiceServer) UpdateVMCmdByAdmin(context.Context, *UpdateVMCmdByAdminRequest) (*UpdateVMCmdByAdminResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateVMCmdByAdmin not implemented")
-}
-func (UnimplementedVmServiceServer) ResetVMUserData(context.Context, *ResetVMUserDataRequest) (*ResetVMUserDataResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ResetVMUserData not implemented")
-}
-func (UnimplementedVmServiceServer) CreateVMSchedule(context.Context, *CreateVMScheduleRequest) (*CreateVMScheduleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateVMSchedule not implemented")
-}
-func (UnimplementedVmServiceServer) RemoveNicFromVM(context.Context, *RemoveNicFromVMRequest) (*RemoveNicFromVMResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RemoveNicFromVM not implemented")
-}
-func (UnimplementedVmServiceServer) ListVMs(context.Context, *ListVMsRequest) (*ListVMsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListVMs not implemented")
-}
-func (UnimplementedVmServiceServer) RebootVM(context.Context, *RebootVMRequest) (*RebootVMResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RebootVM not implemented")
-}
-func (UnimplementedVmServiceServer) ImportVm(context.Context, *ImportVmRequest) (*ImportVmResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ImportVm not implemented")
-}
 func (UnimplementedVmServiceServer) AddIpToVmNic(context.Context, *AddIpToVmNicRequest) (*AddIpToVmNicResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddIpToVmNic not implemented")
-}
-func (UnimplementedVmServiceServer) GetVMUserData(context.Context, *GetVMUserDataRequest) (*GetVMUserDataResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetVMUserData not implemented")
-}
-func (UnimplementedVmServiceServer) UpdateVMSchedule(context.Context, *UpdateVMScheduleRequest) (*UpdateVMScheduleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateVMSchedule not implemented")
-}
-func (UnimplementedVmServiceServer) MigrateVirtualMachineWithVolume(context.Context, *MigrateVirtualMachineWithVolumeRequest) (*MigrateVirtualMachineWithVolumeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MigrateVirtualMachineWithVolume not implemented")
 }
 func (UnimplementedVmServiceServer) AddNicToVM(context.Context, *AddNicToVMRequest) (*AddNicToVMResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddNicToVM not implemented")
 }
+func (UnimplementedVmServiceServer) AddNicToVMCmdByAdmin(context.Context, *AddNicToVMCmdByAdminRequest) (*AddNicToVMCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddNicToVMCmdByAdmin not implemented")
+}
+func (UnimplementedVmServiceServer) AssignVM(context.Context, *AssignVMRequest) (*AssignVMResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AssignVM not implemented")
+}
+func (UnimplementedVmServiceServer) CreateVMSchedule(context.Context, *CreateVMScheduleRequest) (*CreateVMScheduleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateVMSchedule not implemented")
+}
+func (UnimplementedVmServiceServer) DeleteVMSchedule(context.Context, *DeleteVMScheduleRequest) (*DeleteVMScheduleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteVMSchedule not implemented")
+}
+func (UnimplementedVmServiceServer) DeployVM(context.Context, *DeployVMRequest) (*DeployVMResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeployVM not implemented")
+}
+func (UnimplementedVmServiceServer) DeployVMCmdByAdmin(context.Context, *DeployVMCmdByAdminRequest) (*DeployVMCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeployVMCmdByAdmin not implemented")
+}
+func (UnimplementedVmServiceServer) DeployVnfAppliance(context.Context, *DeployVnfApplianceRequest) (*DeployVnfApplianceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeployVnfAppliance not implemented")
+}
+func (UnimplementedVmServiceServer) DeployVnfApplianceCmdByAdmin(context.Context, *DeployVnfApplianceCmdByAdminRequest) (*DeployVnfApplianceCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeployVnfApplianceCmdByAdmin not implemented")
+}
+func (UnimplementedVmServiceServer) DestroyVM(context.Context, *DestroyVMRequest) (*DestroyVMResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DestroyVM not implemented")
+}
+func (UnimplementedVmServiceServer) DestroyVMCmdByAdmin(context.Context, *DestroyVMCmdByAdminRequest) (*DestroyVMCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DestroyVMCmdByAdmin not implemented")
+}
+func (UnimplementedVmServiceServer) ExpungeVM(context.Context, *ExpungeVMRequest) (*ExpungeVMResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ExpungeVM not implemented")
+}
+func (UnimplementedVmServiceServer) GetVMPassword(context.Context, *GetVMPasswordRequest) (*GetVMPasswordResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetVMPassword not implemented")
+}
+func (UnimplementedVmServiceServer) GetVMUserData(context.Context, *GetVMUserDataRequest) (*GetVMUserDataResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetVMUserData not implemented")
+}
+func (UnimplementedVmServiceServer) ImportUnmanagedInstance(context.Context, *ImportUnmanagedInstanceRequest) (*ImportUnmanagedInstanceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ImportUnmanagedInstance not implemented")
+}
+func (UnimplementedVmServiceServer) ImportVm(context.Context, *ImportVmRequest) (*ImportVmResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ImportVm not implemented")
+}
+func (UnimplementedVmServiceServer) ListAffectedVmsForStorageScopeChange(context.Context, *ListAffectedVmsForStorageScopeChangeRequest) (*ListAffectedVmsForStorageScopeChangeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListAffectedVmsForStorageScopeChange not implemented")
+}
+func (UnimplementedVmServiceServer) ListNics(context.Context, *ListNicsRequest) (*ListNicsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListNics not implemented")
+}
+func (UnimplementedVmServiceServer) ListUnmanagedInstances(context.Context, *ListUnmanagedInstancesRequest) (*ListUnmanagedInstancesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListUnmanagedInstances not implemented")
+}
+func (UnimplementedVmServiceServer) ListVMSchedule(context.Context, *ListVMScheduleRequest) (*ListVMScheduleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListVMSchedule not implemented")
+}
+func (UnimplementedVmServiceServer) ListVMs(context.Context, *ListVMsRequest) (*ListVMsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListVMs not implemented")
+}
+func (UnimplementedVmServiceServer) ListVMsCmdByAdmin(context.Context, *ListVMsCmdByAdminRequest) (*ListVMsCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListVMsCmdByAdmin not implemented")
+}
+func (UnimplementedVmServiceServer) ListVmsForImport(context.Context, *ListVmsForImportRequest) (*ListVmsForImportResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListVmsForImport not implemented")
+}
+func (UnimplementedVmServiceServer) ListVnfAppliances(context.Context, *ListVnfAppliancesRequest) (*ListVnfAppliancesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListVnfAppliances not implemented")
+}
+func (UnimplementedVmServiceServer) ListVnfAppliancesCmdByAdmin(context.Context, *ListVnfAppliancesCmdByAdminRequest) (*ListVnfAppliancesCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListVnfAppliancesCmdByAdmin not implemented")
+}
+func (UnimplementedVmServiceServer) MigrateVM(context.Context, *MigrateVMRequest) (*MigrateVMResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MigrateVM not implemented")
+}
+func (UnimplementedVmServiceServer) MigrateVirtualMachineWithVolume(context.Context, *MigrateVirtualMachineWithVolumeRequest) (*MigrateVirtualMachineWithVolumeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MigrateVirtualMachineWithVolume not implemented")
+}
+func (UnimplementedVmServiceServer) RebootVM(context.Context, *RebootVMRequest) (*RebootVMResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RebootVM not implemented")
+}
+func (UnimplementedVmServiceServer) RebootVMCmdByAdmin(context.Context, *RebootVMCmdByAdminRequest) (*RebootVMCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RebootVMCmdByAdmin not implemented")
+}
+func (UnimplementedVmServiceServer) RecoverVM(context.Context, *RecoverVMRequest) (*RecoverVMResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RecoverVM not implemented")
+}
 func (UnimplementedVmServiceServer) RemoveIpFromVmNic(context.Context, *RemoveIpFromVmNicRequest) (*RemoveIpFromVmNicResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoveIpFromVmNic not implemented")
+}
+func (UnimplementedVmServiceServer) RemoveNicFromVM(context.Context, *RemoveNicFromVMRequest) (*RemoveNicFromVMResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveNicFromVM not implemented")
+}
+func (UnimplementedVmServiceServer) RemoveNicFromVMCmdByAdmin(context.Context, *RemoveNicFromVMCmdByAdminRequest) (*RemoveNicFromVMCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveNicFromVMCmdByAdmin not implemented")
+}
+func (UnimplementedVmServiceServer) ResetVMPassword(context.Context, *ResetVMPasswordRequest) (*ResetVMPasswordResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResetVMPassword not implemented")
+}
+func (UnimplementedVmServiceServer) ResetVMPasswordCmdByAdmin(context.Context, *ResetVMPasswordCmdByAdminRequest) (*ResetVMPasswordCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResetVMPasswordCmdByAdmin not implemented")
+}
+func (UnimplementedVmServiceServer) ResetVMSSHKey(context.Context, *ResetVMSSHKeyRequest) (*ResetVMSSHKeyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResetVMSSHKey not implemented")
+}
+func (UnimplementedVmServiceServer) ResetVMSSHKeyCmdByAdmin(context.Context, *ResetVMSSHKeyCmdByAdminRequest) (*ResetVMSSHKeyCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResetVMSSHKeyCmdByAdmin not implemented")
+}
+func (UnimplementedVmServiceServer) ResetVMUserData(context.Context, *ResetVMUserDataRequest) (*ResetVMUserDataResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResetVMUserData not implemented")
+}
+func (UnimplementedVmServiceServer) ResetVMUserDataCmdAdmin(context.Context, *ResetVMUserDataCmdAdminRequest) (*ResetVMUserDataCmdAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResetVMUserDataCmdAdmin not implemented")
+}
+func (UnimplementedVmServiceServer) RestoreVM(context.Context, *RestoreVMRequest) (*RestoreVMResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RestoreVM not implemented")
+}
+func (UnimplementedVmServiceServer) RestoreVMCmdByAdmin(context.Context, *RestoreVMCmdByAdminRequest) (*RestoreVMCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RestoreVMCmdByAdmin not implemented")
+}
+func (UnimplementedVmServiceServer) ScaleVM(context.Context, *ScaleVMRequest) (*ScaleVMResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ScaleVM not implemented")
+}
+func (UnimplementedVmServiceServer) ScaleVMCmdByAdmin(context.Context, *ScaleVMCmdByAdminRequest) (*ScaleVMCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ScaleVMCmdByAdmin not implemented")
+}
+func (UnimplementedVmServiceServer) StartVM(context.Context, *StartVMRequest) (*StartVMResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StartVM not implemented")
+}
+func (UnimplementedVmServiceServer) StartVMCmdByAdmin(context.Context, *StartVMCmdByAdminRequest) (*StartVMCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StartVMCmdByAdmin not implemented")
 }
 func (UnimplementedVmServiceServer) StopVM(context.Context, *StopVMRequest) (*StopVMResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StopVM not implemented")
 }
+func (UnimplementedVmServiceServer) StopVMCmdByAdmin(context.Context, *StopVMCmdByAdminRequest) (*StopVMCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StopVMCmdByAdmin not implemented")
+}
+func (UnimplementedVmServiceServer) UnmanageVMInstance(context.Context, *UnmanageVMInstanceRequest) (*UnmanageVMInstanceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UnmanageVMInstance not implemented")
+}
+func (UnimplementedVmServiceServer) UpdateDefaultNicForVM(context.Context, *UpdateDefaultNicForVMRequest) (*UpdateDefaultNicForVMResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateDefaultNicForVM not implemented")
+}
+func (UnimplementedVmServiceServer) UpdateDefaultNicForVMCmdByAdmin(context.Context, *UpdateDefaultNicForVMCmdByAdminRequest) (*UpdateDefaultNicForVMCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateDefaultNicForVMCmdByAdmin not implemented")
+}
 func (UnimplementedVmServiceServer) UpdateVM(context.Context, *UpdateVMRequest) (*UpdateVMResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateVM not implemented")
 }
-func (UnimplementedVmServiceServer) RecoverVM(context.Context, *RecoverVMRequest) (*RecoverVMResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RecoverVM not implemented")
+func (UnimplementedVmServiceServer) UpdateVMCmdByAdmin(context.Context, *UpdateVMCmdByAdminRequest) (*UpdateVMCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateVMCmdByAdmin not implemented")
+}
+func (UnimplementedVmServiceServer) UpdateVMSchedule(context.Context, *UpdateVMScheduleRequest) (*UpdateVMScheduleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateVMSchedule not implemented")
+}
+func (UnimplementedVmServiceServer) UpdateVmNicIp(context.Context, *UpdateVmNicIpRequest) (*UpdateVmNicIpResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateVmNicIp not implemented")
+}
+func (UnimplementedVmServiceServer) UpgradeVM(context.Context, *UpgradeVMRequest) (*UpgradeVMResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpgradeVM not implemented")
+}
+func (UnimplementedVmServiceServer) UpgradeVMCmdByAdmin(context.Context, *UpgradeVMCmdByAdminRequest) (*UpgradeVMCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpgradeVMCmdByAdmin not implemented")
 }
 func (UnimplementedVmServiceServer) mustEmbedUnimplementedVmServiceServer() {}
 func (UnimplementedVmServiceServer) testEmbeddedByValue()                   {}
@@ -884,654 +1100,6 @@ func RegisterVmServiceServer(s grpc.ServiceRegistrar, srv VmServiceServer) {
 	s.RegisterService(&VmService_ServiceDesc, srv)
 }
 
-func _VmService_AssignVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AssignVMRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).AssignVM(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_AssignVM_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).AssignVM(ctx, req.(*AssignVMRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_DeployVMCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeployVMCmdByAdminRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).DeployVMCmdByAdmin(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_DeployVMCmdByAdmin_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).DeployVMCmdByAdmin(ctx, req.(*DeployVMCmdByAdminRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_UpdateDefaultNicForVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateDefaultNicForVMRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).UpdateDefaultNicForVM(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_UpdateDefaultNicForVM_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).UpdateDefaultNicForVM(ctx, req.(*UpdateDefaultNicForVMRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_ExpungeVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ExpungeVMRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).ExpungeVM(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_ExpungeVM_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).ExpungeVM(ctx, req.(*ExpungeVMRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_UpgradeVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpgradeVMRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).UpgradeVM(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_UpgradeVM_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).UpgradeVM(ctx, req.(*UpgradeVMRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_DestroyVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DestroyVMRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).DestroyVM(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_DestroyVM_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).DestroyVM(ctx, req.(*DestroyVMRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_RemoveNicFromVMCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RemoveNicFromVMCmdByAdminRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).RemoveNicFromVMCmdByAdmin(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_RemoveNicFromVMCmdByAdmin_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).RemoveNicFromVMCmdByAdmin(ctx, req.(*RemoveNicFromVMCmdByAdminRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_AddNicToVMCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddNicToVMCmdByAdminRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).AddNicToVMCmdByAdmin(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_AddNicToVMCmdByAdmin_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).AddNicToVMCmdByAdmin(ctx, req.(*AddNicToVMCmdByAdminRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_ListUnmanagedInstances_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListUnmanagedInstancesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).ListUnmanagedInstances(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_ListUnmanagedInstances_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).ListUnmanagedInstances(ctx, req.(*ListUnmanagedInstancesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_UnmanageVMInstance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UnmanageVMInstanceRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).UnmanageVMInstance(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_UnmanageVMInstance_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).UnmanageVMInstance(ctx, req.(*UnmanageVMInstanceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_ResetVMPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ResetVMPasswordRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).ResetVMPassword(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_ResetVMPassword_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).ResetVMPassword(ctx, req.(*ResetVMPasswordRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_DeployVnfApplianceCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeployVnfApplianceCmdByAdminRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).DeployVnfApplianceCmdByAdmin(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_DeployVnfApplianceCmdByAdmin_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).DeployVnfApplianceCmdByAdmin(ctx, req.(*DeployVnfApplianceCmdByAdminRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_ListNics_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListNicsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).ListNics(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_ListNics_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).ListNics(ctx, req.(*ListNicsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_ListVMSchedule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListVMScheduleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).ListVMSchedule(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_ListVMSchedule_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).ListVMSchedule(ctx, req.(*ListVMScheduleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_RestoreVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RestoreVMRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).RestoreVM(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_RestoreVM_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).RestoreVM(ctx, req.(*RestoreVMRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_StartVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(StartVMRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).StartVM(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_StartVM_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).StartVM(ctx, req.(*StartVMRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_DeployVnfAppliance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeployVnfApplianceRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).DeployVnfAppliance(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_DeployVnfAppliance_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).DeployVnfAppliance(ctx, req.(*DeployVnfApplianceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_MigrateVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MigrateVMRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).MigrateVM(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_MigrateVM_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).MigrateVM(ctx, req.(*MigrateVMRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_ListVnfAppliances_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListVnfAppliancesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).ListVnfAppliances(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_ListVnfAppliances_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).ListVnfAppliances(ctx, req.(*ListVnfAppliancesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_ListAffectedVmsForStorageScopeChange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListAffectedVmsForStorageScopeChangeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).ListAffectedVmsForStorageScopeChange(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_ListAffectedVmsForStorageScopeChange_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).ListAffectedVmsForStorageScopeChange(ctx, req.(*ListAffectedVmsForStorageScopeChangeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_StopVMCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(StopVMCmdByAdminRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).StopVMCmdByAdmin(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_StopVMCmdByAdmin_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).StopVMCmdByAdmin(ctx, req.(*StopVMCmdByAdminRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_UpdateVmNicIp_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateVmNicIpRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).UpdateVmNicIp(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_UpdateVmNicIp_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).UpdateVmNicIp(ctx, req.(*UpdateVmNicIpRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_ImportUnmanagedInstance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ImportUnmanagedInstanceRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).ImportUnmanagedInstance(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_ImportUnmanagedInstance_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).ImportUnmanagedInstance(ctx, req.(*ImportUnmanagedInstanceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_DeleteVMSchedule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteVMScheduleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).DeleteVMSchedule(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_DeleteVMSchedule_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).DeleteVMSchedule(ctx, req.(*DeleteVMScheduleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_ResetVMSSHKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ResetVMSSHKeyRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).ResetVMSSHKey(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_ResetVMSSHKey_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).ResetVMSSHKey(ctx, req.(*ResetVMSSHKeyRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_GetVMPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetVMPasswordRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).GetVMPassword(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_GetVMPassword_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).GetVMPassword(ctx, req.(*GetVMPasswordRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_ListVmsForImport_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListVmsForImportRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).ListVmsForImport(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_ListVmsForImport_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).ListVmsForImport(ctx, req.(*ListVmsForImportRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_DeployVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeployVMRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).DeployVM(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_DeployVM_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).DeployVM(ctx, req.(*DeployVMRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_ScaleVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ScaleVMRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).ScaleVM(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_ScaleVM_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).ScaleVM(ctx, req.(*ScaleVMRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_UpdateVMCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateVMCmdByAdminRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).UpdateVMCmdByAdmin(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_UpdateVMCmdByAdmin_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).UpdateVMCmdByAdmin(ctx, req.(*UpdateVMCmdByAdminRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_ResetVMUserData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ResetVMUserDataRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).ResetVMUserData(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_ResetVMUserData_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).ResetVMUserData(ctx, req.(*ResetVMUserDataRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_CreateVMSchedule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateVMScheduleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).CreateVMSchedule(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_CreateVMSchedule_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).CreateVMSchedule(ctx, req.(*CreateVMScheduleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_RemoveNicFromVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RemoveNicFromVMRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).RemoveNicFromVM(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_RemoveNicFromVM_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).RemoveNicFromVM(ctx, req.(*RemoveNicFromVMRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_ListVMs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListVMsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).ListVMs(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_ListVMs_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).ListVMs(ctx, req.(*ListVMsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_RebootVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RebootVMRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).RebootVM(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_RebootVM_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).RebootVM(ctx, req.(*RebootVMRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_ImportVm_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ImportVmRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).ImportVm(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_ImportVm_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).ImportVm(ctx, req.(*ImportVmRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _VmService_AddIpToVmNic_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(AddIpToVmNicRequest)
 	if err := dec(in); err != nil {
@@ -1546,60 +1114,6 @@ func _VmService_AddIpToVmNic_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(VmServiceServer).AddIpToVmNic(ctx, req.(*AddIpToVmNicRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_GetVMUserData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetVMUserDataRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).GetVMUserData(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_GetVMUserData_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).GetVMUserData(ctx, req.(*GetVMUserDataRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_UpdateVMSchedule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateVMScheduleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).UpdateVMSchedule(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_UpdateVMSchedule_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).UpdateVMSchedule(ctx, req.(*UpdateVMScheduleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VmService_MigrateVirtualMachineWithVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MigrateVirtualMachineWithVolumeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VmServiceServer).MigrateVirtualMachineWithVolume(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VmService_MigrateVirtualMachineWithVolume_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).MigrateVirtualMachineWithVolume(ctx, req.(*MigrateVirtualMachineWithVolumeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1622,56 +1136,506 @@ func _VmService_AddNicToVM_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
-func _VmService_RemoveIpFromVmNic_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RemoveIpFromVmNicRequest)
+func _VmService_AddNicToVMCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddNicToVMCmdByAdminRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VmServiceServer).RemoveIpFromVmNic(ctx, in)
+		return srv.(VmServiceServer).AddNicToVMCmdByAdmin(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: VmService_RemoveIpFromVmNic_FullMethodName,
+		FullMethod: VmService_AddNicToVMCmdByAdmin_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).RemoveIpFromVmNic(ctx, req.(*RemoveIpFromVmNicRequest))
+		return srv.(VmServiceServer).AddNicToVMCmdByAdmin(ctx, req.(*AddNicToVMCmdByAdminRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _VmService_StopVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(StopVMRequest)
+func _VmService_AssignVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AssignVMRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VmServiceServer).StopVM(ctx, in)
+		return srv.(VmServiceServer).AssignVM(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: VmService_StopVM_FullMethodName,
+		FullMethod: VmService_AssignVM_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).StopVM(ctx, req.(*StopVMRequest))
+		return srv.(VmServiceServer).AssignVM(ctx, req.(*AssignVMRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _VmService_UpdateVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateVMRequest)
+func _VmService_CreateVMSchedule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateVMScheduleRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VmServiceServer).UpdateVM(ctx, in)
+		return srv.(VmServiceServer).CreateVMSchedule(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: VmService_UpdateVM_FullMethodName,
+		FullMethod: VmService_CreateVMSchedule_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VmServiceServer).UpdateVM(ctx, req.(*UpdateVMRequest))
+		return srv.(VmServiceServer).CreateVMSchedule(ctx, req.(*CreateVMScheduleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_DeleteVMSchedule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteVMScheduleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).DeleteVMSchedule(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_DeleteVMSchedule_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).DeleteVMSchedule(ctx, req.(*DeleteVMScheduleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_DeployVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeployVMRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).DeployVM(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_DeployVM_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).DeployVM(ctx, req.(*DeployVMRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_DeployVMCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeployVMCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).DeployVMCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_DeployVMCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).DeployVMCmdByAdmin(ctx, req.(*DeployVMCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_DeployVnfAppliance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeployVnfApplianceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).DeployVnfAppliance(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_DeployVnfAppliance_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).DeployVnfAppliance(ctx, req.(*DeployVnfApplianceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_DeployVnfApplianceCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeployVnfApplianceCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).DeployVnfApplianceCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_DeployVnfApplianceCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).DeployVnfApplianceCmdByAdmin(ctx, req.(*DeployVnfApplianceCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_DestroyVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DestroyVMRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).DestroyVM(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_DestroyVM_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).DestroyVM(ctx, req.(*DestroyVMRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_DestroyVMCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DestroyVMCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).DestroyVMCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_DestroyVMCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).DestroyVMCmdByAdmin(ctx, req.(*DestroyVMCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_ExpungeVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ExpungeVMRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).ExpungeVM(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_ExpungeVM_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).ExpungeVM(ctx, req.(*ExpungeVMRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_GetVMPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetVMPasswordRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).GetVMPassword(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_GetVMPassword_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).GetVMPassword(ctx, req.(*GetVMPasswordRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_GetVMUserData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetVMUserDataRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).GetVMUserData(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_GetVMUserData_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).GetVMUserData(ctx, req.(*GetVMUserDataRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_ImportUnmanagedInstance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ImportUnmanagedInstanceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).ImportUnmanagedInstance(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_ImportUnmanagedInstance_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).ImportUnmanagedInstance(ctx, req.(*ImportUnmanagedInstanceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_ImportVm_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ImportVmRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).ImportVm(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_ImportVm_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).ImportVm(ctx, req.(*ImportVmRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_ListAffectedVmsForStorageScopeChange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListAffectedVmsForStorageScopeChangeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).ListAffectedVmsForStorageScopeChange(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_ListAffectedVmsForStorageScopeChange_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).ListAffectedVmsForStorageScopeChange(ctx, req.(*ListAffectedVmsForStorageScopeChangeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_ListNics_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListNicsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).ListNics(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_ListNics_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).ListNics(ctx, req.(*ListNicsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_ListUnmanagedInstances_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListUnmanagedInstancesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).ListUnmanagedInstances(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_ListUnmanagedInstances_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).ListUnmanagedInstances(ctx, req.(*ListUnmanagedInstancesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_ListVMSchedule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListVMScheduleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).ListVMSchedule(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_ListVMSchedule_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).ListVMSchedule(ctx, req.(*ListVMScheduleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_ListVMs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListVMsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).ListVMs(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_ListVMs_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).ListVMs(ctx, req.(*ListVMsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_ListVMsCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListVMsCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).ListVMsCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_ListVMsCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).ListVMsCmdByAdmin(ctx, req.(*ListVMsCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_ListVmsForImport_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListVmsForImportRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).ListVmsForImport(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_ListVmsForImport_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).ListVmsForImport(ctx, req.(*ListVmsForImportRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_ListVnfAppliances_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListVnfAppliancesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).ListVnfAppliances(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_ListVnfAppliances_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).ListVnfAppliances(ctx, req.(*ListVnfAppliancesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_ListVnfAppliancesCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListVnfAppliancesCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).ListVnfAppliancesCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_ListVnfAppliancesCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).ListVnfAppliancesCmdByAdmin(ctx, req.(*ListVnfAppliancesCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_MigrateVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MigrateVMRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).MigrateVM(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_MigrateVM_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).MigrateVM(ctx, req.(*MigrateVMRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_MigrateVirtualMachineWithVolume_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MigrateVirtualMachineWithVolumeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).MigrateVirtualMachineWithVolume(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_MigrateVirtualMachineWithVolume_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).MigrateVirtualMachineWithVolume(ctx, req.(*MigrateVirtualMachineWithVolumeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_RebootVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RebootVMRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).RebootVM(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_RebootVM_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).RebootVM(ctx, req.(*RebootVMRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_RebootVMCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RebootVMCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).RebootVMCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_RebootVMCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).RebootVMCmdByAdmin(ctx, req.(*RebootVMCmdByAdminRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1694,6 +1658,474 @@ func _VmService_RecoverVM_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
+func _VmService_RemoveIpFromVmNic_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveIpFromVmNicRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).RemoveIpFromVmNic(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_RemoveIpFromVmNic_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).RemoveIpFromVmNic(ctx, req.(*RemoveIpFromVmNicRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_RemoveNicFromVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveNicFromVMRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).RemoveNicFromVM(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_RemoveNicFromVM_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).RemoveNicFromVM(ctx, req.(*RemoveNicFromVMRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_RemoveNicFromVMCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveNicFromVMCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).RemoveNicFromVMCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_RemoveNicFromVMCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).RemoveNicFromVMCmdByAdmin(ctx, req.(*RemoveNicFromVMCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_ResetVMPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResetVMPasswordRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).ResetVMPassword(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_ResetVMPassword_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).ResetVMPassword(ctx, req.(*ResetVMPasswordRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_ResetVMPasswordCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResetVMPasswordCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).ResetVMPasswordCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_ResetVMPasswordCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).ResetVMPasswordCmdByAdmin(ctx, req.(*ResetVMPasswordCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_ResetVMSSHKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResetVMSSHKeyRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).ResetVMSSHKey(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_ResetVMSSHKey_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).ResetVMSSHKey(ctx, req.(*ResetVMSSHKeyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_ResetVMSSHKeyCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResetVMSSHKeyCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).ResetVMSSHKeyCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_ResetVMSSHKeyCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).ResetVMSSHKeyCmdByAdmin(ctx, req.(*ResetVMSSHKeyCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_ResetVMUserData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResetVMUserDataRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).ResetVMUserData(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_ResetVMUserData_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).ResetVMUserData(ctx, req.(*ResetVMUserDataRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_ResetVMUserDataCmdAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResetVMUserDataCmdAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).ResetVMUserDataCmdAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_ResetVMUserDataCmdAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).ResetVMUserDataCmdAdmin(ctx, req.(*ResetVMUserDataCmdAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_RestoreVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RestoreVMRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).RestoreVM(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_RestoreVM_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).RestoreVM(ctx, req.(*RestoreVMRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_RestoreVMCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RestoreVMCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).RestoreVMCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_RestoreVMCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).RestoreVMCmdByAdmin(ctx, req.(*RestoreVMCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_ScaleVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ScaleVMRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).ScaleVM(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_ScaleVM_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).ScaleVM(ctx, req.(*ScaleVMRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_ScaleVMCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ScaleVMCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).ScaleVMCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_ScaleVMCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).ScaleVMCmdByAdmin(ctx, req.(*ScaleVMCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_StartVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StartVMRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).StartVM(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_StartVM_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).StartVM(ctx, req.(*StartVMRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_StartVMCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StartVMCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).StartVMCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_StartVMCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).StartVMCmdByAdmin(ctx, req.(*StartVMCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_StopVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StopVMRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).StopVM(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_StopVM_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).StopVM(ctx, req.(*StopVMRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_StopVMCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StopVMCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).StopVMCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_StopVMCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).StopVMCmdByAdmin(ctx, req.(*StopVMCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_UnmanageVMInstance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UnmanageVMInstanceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).UnmanageVMInstance(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_UnmanageVMInstance_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).UnmanageVMInstance(ctx, req.(*UnmanageVMInstanceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_UpdateDefaultNicForVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateDefaultNicForVMRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).UpdateDefaultNicForVM(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_UpdateDefaultNicForVM_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).UpdateDefaultNicForVM(ctx, req.(*UpdateDefaultNicForVMRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_UpdateDefaultNicForVMCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateDefaultNicForVMCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).UpdateDefaultNicForVMCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_UpdateDefaultNicForVMCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).UpdateDefaultNicForVMCmdByAdmin(ctx, req.(*UpdateDefaultNicForVMCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_UpdateVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateVMRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).UpdateVM(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_UpdateVM_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).UpdateVM(ctx, req.(*UpdateVMRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_UpdateVMCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateVMCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).UpdateVMCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_UpdateVMCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).UpdateVMCmdByAdmin(ctx, req.(*UpdateVMCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_UpdateVMSchedule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateVMScheduleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).UpdateVMSchedule(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_UpdateVMSchedule_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).UpdateVMSchedule(ctx, req.(*UpdateVMScheduleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_UpdateVmNicIp_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateVmNicIpRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).UpdateVmNicIp(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_UpdateVmNicIp_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).UpdateVmNicIp(ctx, req.(*UpdateVmNicIpRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_UpgradeVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpgradeVMRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).UpgradeVM(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_UpgradeVM_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).UpgradeVM(ctx, req.(*UpgradeVMRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VmService_UpgradeVMCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpgradeVMCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VmServiceServer).UpgradeVMCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VmService_UpgradeVMCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VmServiceServer).UpgradeVMCmdByAdmin(ctx, req.(*UpgradeVMCmdByAdminRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // VmService_ServiceDesc is the grpc.ServiceDesc for VmService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -1702,184 +2134,232 @@ var VmService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*VmServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "AssignVM",
-			Handler:    _VmService_AssignVM_Handler,
-		},
-		{
-			MethodName: "DeployVMCmdByAdmin",
-			Handler:    _VmService_DeployVMCmdByAdmin_Handler,
-		},
-		{
-			MethodName: "UpdateDefaultNicForVM",
-			Handler:    _VmService_UpdateDefaultNicForVM_Handler,
-		},
-		{
-			MethodName: "ExpungeVM",
-			Handler:    _VmService_ExpungeVM_Handler,
-		},
-		{
-			MethodName: "UpgradeVM",
-			Handler:    _VmService_UpgradeVM_Handler,
-		},
-		{
-			MethodName: "DestroyVM",
-			Handler:    _VmService_DestroyVM_Handler,
-		},
-		{
-			MethodName: "RemoveNicFromVMCmdByAdmin",
-			Handler:    _VmService_RemoveNicFromVMCmdByAdmin_Handler,
-		},
-		{
-			MethodName: "AddNicToVMCmdByAdmin",
-			Handler:    _VmService_AddNicToVMCmdByAdmin_Handler,
-		},
-		{
-			MethodName: "ListUnmanagedInstances",
-			Handler:    _VmService_ListUnmanagedInstances_Handler,
-		},
-		{
-			MethodName: "UnmanageVMInstance",
-			Handler:    _VmService_UnmanageVMInstance_Handler,
-		},
-		{
-			MethodName: "ResetVMPassword",
-			Handler:    _VmService_ResetVMPassword_Handler,
-		},
-		{
-			MethodName: "DeployVnfApplianceCmdByAdmin",
-			Handler:    _VmService_DeployVnfApplianceCmdByAdmin_Handler,
-		},
-		{
-			MethodName: "ListNics",
-			Handler:    _VmService_ListNics_Handler,
-		},
-		{
-			MethodName: "ListVMSchedule",
-			Handler:    _VmService_ListVMSchedule_Handler,
-		},
-		{
-			MethodName: "RestoreVM",
-			Handler:    _VmService_RestoreVM_Handler,
-		},
-		{
-			MethodName: "StartVM",
-			Handler:    _VmService_StartVM_Handler,
-		},
-		{
-			MethodName: "DeployVnfAppliance",
-			Handler:    _VmService_DeployVnfAppliance_Handler,
-		},
-		{
-			MethodName: "MigrateVM",
-			Handler:    _VmService_MigrateVM_Handler,
-		},
-		{
-			MethodName: "ListVnfAppliances",
-			Handler:    _VmService_ListVnfAppliances_Handler,
-		},
-		{
-			MethodName: "ListAffectedVmsForStorageScopeChange",
-			Handler:    _VmService_ListAffectedVmsForStorageScopeChange_Handler,
-		},
-		{
-			MethodName: "StopVMCmdByAdmin",
-			Handler:    _VmService_StopVMCmdByAdmin_Handler,
-		},
-		{
-			MethodName: "UpdateVmNicIp",
-			Handler:    _VmService_UpdateVmNicIp_Handler,
-		},
-		{
-			MethodName: "ImportUnmanagedInstance",
-			Handler:    _VmService_ImportUnmanagedInstance_Handler,
-		},
-		{
-			MethodName: "DeleteVMSchedule",
-			Handler:    _VmService_DeleteVMSchedule_Handler,
-		},
-		{
-			MethodName: "ResetVMSSHKey",
-			Handler:    _VmService_ResetVMSSHKey_Handler,
-		},
-		{
-			MethodName: "GetVMPassword",
-			Handler:    _VmService_GetVMPassword_Handler,
-		},
-		{
-			MethodName: "ListVmsForImport",
-			Handler:    _VmService_ListVmsForImport_Handler,
-		},
-		{
-			MethodName: "DeployVM",
-			Handler:    _VmService_DeployVM_Handler,
-		},
-		{
-			MethodName: "ScaleVM",
-			Handler:    _VmService_ScaleVM_Handler,
-		},
-		{
-			MethodName: "UpdateVMCmdByAdmin",
-			Handler:    _VmService_UpdateVMCmdByAdmin_Handler,
-		},
-		{
-			MethodName: "ResetVMUserData",
-			Handler:    _VmService_ResetVMUserData_Handler,
-		},
-		{
-			MethodName: "CreateVMSchedule",
-			Handler:    _VmService_CreateVMSchedule_Handler,
-		},
-		{
-			MethodName: "RemoveNicFromVM",
-			Handler:    _VmService_RemoveNicFromVM_Handler,
-		},
-		{
-			MethodName: "ListVMs",
-			Handler:    _VmService_ListVMs_Handler,
-		},
-		{
-			MethodName: "RebootVM",
-			Handler:    _VmService_RebootVM_Handler,
-		},
-		{
-			MethodName: "ImportVm",
-			Handler:    _VmService_ImportVm_Handler,
-		},
-		{
 			MethodName: "AddIpToVmNic",
 			Handler:    _VmService_AddIpToVmNic_Handler,
-		},
-		{
-			MethodName: "GetVMUserData",
-			Handler:    _VmService_GetVMUserData_Handler,
-		},
-		{
-			MethodName: "UpdateVMSchedule",
-			Handler:    _VmService_UpdateVMSchedule_Handler,
-		},
-		{
-			MethodName: "MigrateVirtualMachineWithVolume",
-			Handler:    _VmService_MigrateVirtualMachineWithVolume_Handler,
 		},
 		{
 			MethodName: "AddNicToVM",
 			Handler:    _VmService_AddNicToVM_Handler,
 		},
 		{
+			MethodName: "AddNicToVMCmdByAdmin",
+			Handler:    _VmService_AddNicToVMCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "AssignVM",
+			Handler:    _VmService_AssignVM_Handler,
+		},
+		{
+			MethodName: "CreateVMSchedule",
+			Handler:    _VmService_CreateVMSchedule_Handler,
+		},
+		{
+			MethodName: "DeleteVMSchedule",
+			Handler:    _VmService_DeleteVMSchedule_Handler,
+		},
+		{
+			MethodName: "DeployVM",
+			Handler:    _VmService_DeployVM_Handler,
+		},
+		{
+			MethodName: "DeployVMCmdByAdmin",
+			Handler:    _VmService_DeployVMCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "DeployVnfAppliance",
+			Handler:    _VmService_DeployVnfAppliance_Handler,
+		},
+		{
+			MethodName: "DeployVnfApplianceCmdByAdmin",
+			Handler:    _VmService_DeployVnfApplianceCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "DestroyVM",
+			Handler:    _VmService_DestroyVM_Handler,
+		},
+		{
+			MethodName: "DestroyVMCmdByAdmin",
+			Handler:    _VmService_DestroyVMCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "ExpungeVM",
+			Handler:    _VmService_ExpungeVM_Handler,
+		},
+		{
+			MethodName: "GetVMPassword",
+			Handler:    _VmService_GetVMPassword_Handler,
+		},
+		{
+			MethodName: "GetVMUserData",
+			Handler:    _VmService_GetVMUserData_Handler,
+		},
+		{
+			MethodName: "ImportUnmanagedInstance",
+			Handler:    _VmService_ImportUnmanagedInstance_Handler,
+		},
+		{
+			MethodName: "ImportVm",
+			Handler:    _VmService_ImportVm_Handler,
+		},
+		{
+			MethodName: "ListAffectedVmsForStorageScopeChange",
+			Handler:    _VmService_ListAffectedVmsForStorageScopeChange_Handler,
+		},
+		{
+			MethodName: "ListNics",
+			Handler:    _VmService_ListNics_Handler,
+		},
+		{
+			MethodName: "ListUnmanagedInstances",
+			Handler:    _VmService_ListUnmanagedInstances_Handler,
+		},
+		{
+			MethodName: "ListVMSchedule",
+			Handler:    _VmService_ListVMSchedule_Handler,
+		},
+		{
+			MethodName: "ListVMs",
+			Handler:    _VmService_ListVMs_Handler,
+		},
+		{
+			MethodName: "ListVMsCmdByAdmin",
+			Handler:    _VmService_ListVMsCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "ListVmsForImport",
+			Handler:    _VmService_ListVmsForImport_Handler,
+		},
+		{
+			MethodName: "ListVnfAppliances",
+			Handler:    _VmService_ListVnfAppliances_Handler,
+		},
+		{
+			MethodName: "ListVnfAppliancesCmdByAdmin",
+			Handler:    _VmService_ListVnfAppliancesCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "MigrateVM",
+			Handler:    _VmService_MigrateVM_Handler,
+		},
+		{
+			MethodName: "MigrateVirtualMachineWithVolume",
+			Handler:    _VmService_MigrateVirtualMachineWithVolume_Handler,
+		},
+		{
+			MethodName: "RebootVM",
+			Handler:    _VmService_RebootVM_Handler,
+		},
+		{
+			MethodName: "RebootVMCmdByAdmin",
+			Handler:    _VmService_RebootVMCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "RecoverVM",
+			Handler:    _VmService_RecoverVM_Handler,
+		},
+		{
 			MethodName: "RemoveIpFromVmNic",
 			Handler:    _VmService_RemoveIpFromVmNic_Handler,
+		},
+		{
+			MethodName: "RemoveNicFromVM",
+			Handler:    _VmService_RemoveNicFromVM_Handler,
+		},
+		{
+			MethodName: "RemoveNicFromVMCmdByAdmin",
+			Handler:    _VmService_RemoveNicFromVMCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "ResetVMPassword",
+			Handler:    _VmService_ResetVMPassword_Handler,
+		},
+		{
+			MethodName: "ResetVMPasswordCmdByAdmin",
+			Handler:    _VmService_ResetVMPasswordCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "ResetVMSSHKey",
+			Handler:    _VmService_ResetVMSSHKey_Handler,
+		},
+		{
+			MethodName: "ResetVMSSHKeyCmdByAdmin",
+			Handler:    _VmService_ResetVMSSHKeyCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "ResetVMUserData",
+			Handler:    _VmService_ResetVMUserData_Handler,
+		},
+		{
+			MethodName: "ResetVMUserDataCmdAdmin",
+			Handler:    _VmService_ResetVMUserDataCmdAdmin_Handler,
+		},
+		{
+			MethodName: "RestoreVM",
+			Handler:    _VmService_RestoreVM_Handler,
+		},
+		{
+			MethodName: "RestoreVMCmdByAdmin",
+			Handler:    _VmService_RestoreVMCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "ScaleVM",
+			Handler:    _VmService_ScaleVM_Handler,
+		},
+		{
+			MethodName: "ScaleVMCmdByAdmin",
+			Handler:    _VmService_ScaleVMCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "StartVM",
+			Handler:    _VmService_StartVM_Handler,
+		},
+		{
+			MethodName: "StartVMCmdByAdmin",
+			Handler:    _VmService_StartVMCmdByAdmin_Handler,
 		},
 		{
 			MethodName: "StopVM",
 			Handler:    _VmService_StopVM_Handler,
 		},
 		{
+			MethodName: "StopVMCmdByAdmin",
+			Handler:    _VmService_StopVMCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "UnmanageVMInstance",
+			Handler:    _VmService_UnmanageVMInstance_Handler,
+		},
+		{
+			MethodName: "UpdateDefaultNicForVM",
+			Handler:    _VmService_UpdateDefaultNicForVM_Handler,
+		},
+		{
+			MethodName: "UpdateDefaultNicForVMCmdByAdmin",
+			Handler:    _VmService_UpdateDefaultNicForVMCmdByAdmin_Handler,
+		},
+		{
 			MethodName: "UpdateVM",
 			Handler:    _VmService_UpdateVM_Handler,
 		},
 		{
-			MethodName: "RecoverVM",
-			Handler:    _VmService_RecoverVM_Handler,
+			MethodName: "UpdateVMCmdByAdmin",
+			Handler:    _VmService_UpdateVMCmdByAdmin_Handler,
+		},
+		{
+			MethodName: "UpdateVMSchedule",
+			Handler:    _VmService_UpdateVMSchedule_Handler,
+		},
+		{
+			MethodName: "UpdateVmNicIp",
+			Handler:    _VmService_UpdateVmNicIp_Handler,
+		},
+		{
+			MethodName: "UpgradeVM",
+			Handler:    _VmService_UpgradeVM_Handler,
+		},
+		{
+			MethodName: "UpgradeVMCmdByAdmin",
+			Handler:    _VmService_UpgradeVMCmdByAdmin_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

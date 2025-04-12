@@ -24,6 +24,160 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// CreatePodRequest represents the parameters for creates a new pod.
+type CreatePodRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the name of the Pod
+	PodName *string `protobuf:"bytes,1,opt,name=pod_name,json=podName" json:"pod_name,omitempty"`
+	// the Zone ID in which the Pod will be created
+	ZoneId *int64 `protobuf:"varint,2,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// the starting IP address for the Pod
+	StartIp *string `protobuf:"bytes,3,opt,name=start_ip,json=startIp" json:"start_ip,omitempty"`
+	// the ending IP address for the Pod
+	EndIp *string `protobuf:"bytes,4,opt,name=end_ip,json=endIp" json:"end_ip,omitempty"`
+	// the netmask for the Pod
+	Netmask *string `protobuf:"bytes,5,opt,name=netmask" json:"netmask,omitempty"`
+	// the gateway for the Pod
+	Gateway *string `protobuf:"bytes,6,opt,name=gateway" json:"gateway,omitempty"`
+	// Allocation state of this Pod for allocation of new resources
+	AllocationState *string `protobuf:"bytes,7,opt,name=allocation_state,json=allocationState" json:"allocation_state,omitempty"`
+	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreatePodRequest) Reset() {
+	*x = CreatePodRequest{}
+	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreatePodRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreatePodRequest) ProtoMessage() {}
+
+func (x *CreatePodRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreatePodRequest.ProtoReflect.Descriptor instead.
+func (*CreatePodRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_pod_v1_pod_gen_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *CreatePodRequest) GetPodName() string {
+	if x != nil && x.PodName != nil {
+		return *x.PodName
+	}
+	return ""
+}
+
+func (x *CreatePodRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *CreatePodRequest) GetStartIp() string {
+	if x != nil && x.StartIp != nil {
+		return *x.StartIp
+	}
+	return ""
+}
+
+func (x *CreatePodRequest) GetEndIp() string {
+	if x != nil && x.EndIp != nil {
+		return *x.EndIp
+	}
+	return ""
+}
+
+func (x *CreatePodRequest) GetNetmask() string {
+	if x != nil && x.Netmask != nil {
+		return *x.Netmask
+	}
+	return ""
+}
+
+func (x *CreatePodRequest) GetGateway() string {
+	if x != nil && x.Gateway != nil {
+		return *x.Gateway
+	}
+	return ""
+}
+
+func (x *CreatePodRequest) GetAllocationState() string {
+	if x != nil && x.AllocationState != nil {
+		return *x.AllocationState
+	}
+	return ""
+}
+
+func (x *CreatePodRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreatePodResponse represents the response from creates a new pod.
+type CreatePodResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreatePodResponse) Reset() {
+	*x = CreatePodResponse{}
+	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreatePodResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreatePodResponse) ProtoMessage() {}
+
+func (x *CreatePodResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreatePodResponse.ProtoReflect.Descriptor instead.
+func (*CreatePodResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_pod_v1_pod_gen_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *CreatePodResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
 // DeletePodRequest represents the parameters for deletes a pod.
 type DeletePodRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -36,7 +190,7 @@ type DeletePodRequest struct {
 
 func (x *DeletePodRequest) Reset() {
 	*x = DeletePodRequest{}
-	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -48,7 +202,7 @@ func (x *DeletePodRequest) String() string {
 func (*DeletePodRequest) ProtoMessage() {}
 
 func (x *DeletePodRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -61,7 +215,7 @@ func (x *DeletePodRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeletePodRequest.ProtoReflect.Descriptor instead.
 func (*DeletePodRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_pod_v1_pod_gen_proto_rawDescGZIP(), []int{0}
+	return file_cloudstack_management_pod_v1_pod_gen_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *DeletePodRequest) GetId() int64 {
@@ -89,7 +243,7 @@ type DeletePodResponse struct {
 
 func (x *DeletePodResponse) Reset() {
 	*x = DeletePodResponse{}
-	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -101,7 +255,7 @@ func (x *DeletePodResponse) String() string {
 func (*DeletePodResponse) ProtoMessage() {}
 
 func (x *DeletePodResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -114,7 +268,7 @@ func (x *DeletePodResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeletePodResponse.ProtoReflect.Descriptor instead.
 func (*DeletePodResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_pod_v1_pod_gen_proto_rawDescGZIP(), []int{1}
+	return file_cloudstack_management_pod_v1_pod_gen_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *DeletePodResponse) GetResult() *Result {
@@ -148,7 +302,7 @@ type ListPodsByRequest struct {
 
 func (x *ListPodsByRequest) Reset() {
 	*x = ListPodsByRequest{}
-	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -160,7 +314,7 @@ func (x *ListPodsByRequest) String() string {
 func (*ListPodsByRequest) ProtoMessage() {}
 
 func (x *ListPodsByRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -173,7 +327,7 @@ func (x *ListPodsByRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPodsByRequest.ProtoReflect.Descriptor instead.
 func (*ListPodsByRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_pod_v1_pod_gen_proto_rawDescGZIP(), []int{2}
+	return file_cloudstack_management_pod_v1_pod_gen_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ListPodsByRequest) GetId() int64 {
@@ -252,7 +406,7 @@ type ListPodsByResponse struct {
 
 func (x *ListPodsByResponse) Reset() {
 	*x = ListPodsByResponse{}
-	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -264,7 +418,7 @@ func (x *ListPodsByResponse) String() string {
 func (*ListPodsByResponse) ProtoMessage() {}
 
 func (x *ListPodsByResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -277,7 +431,7 @@ func (x *ListPodsByResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPodsByResponse.ProtoReflect.Descriptor instead.
 func (*ListPodsByResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_pod_v1_pod_gen_proto_rawDescGZIP(), []int{3}
+	return file_cloudstack_management_pod_v1_pod_gen_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ListPodsByResponse) GetItems() []*Pod {
@@ -292,160 +446,6 @@ func (x *ListPodsByResponse) GetTotalCount() int32 {
 		return *x.TotalCount
 	}
 	return 0
-}
-
-// CreatePodRequest represents the parameters for creates a new pod.
-type CreatePodRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the name of the Pod
-	PodName *string `protobuf:"bytes,1,opt,name=pod_name,json=podName" json:"pod_name,omitempty"`
-	// the Zone ID in which the Pod will be created
-	ZoneId *int64 `protobuf:"varint,2,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// the starting IP address for the Pod
-	StartIp *string `protobuf:"bytes,3,opt,name=start_ip,json=startIp" json:"start_ip,omitempty"`
-	// the ending IP address for the Pod
-	EndIp *string `protobuf:"bytes,4,opt,name=end_ip,json=endIp" json:"end_ip,omitempty"`
-	// the netmask for the Pod
-	Netmask *string `protobuf:"bytes,5,opt,name=netmask" json:"netmask,omitempty"`
-	// the gateway for the Pod
-	Gateway *string `protobuf:"bytes,6,opt,name=gateway" json:"gateway,omitempty"`
-	// Allocation state of this Pod for allocation of new resources
-	AllocationState *string `protobuf:"bytes,7,opt,name=allocation_state,json=allocationState" json:"allocation_state,omitempty"`
-	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreatePodRequest) Reset() {
-	*x = CreatePodRequest{}
-	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreatePodRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreatePodRequest) ProtoMessage() {}
-
-func (x *CreatePodRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreatePodRequest.ProtoReflect.Descriptor instead.
-func (*CreatePodRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_pod_v1_pod_gen_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *CreatePodRequest) GetPodName() string {
-	if x != nil && x.PodName != nil {
-		return *x.PodName
-	}
-	return ""
-}
-
-func (x *CreatePodRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *CreatePodRequest) GetStartIp() string {
-	if x != nil && x.StartIp != nil {
-		return *x.StartIp
-	}
-	return ""
-}
-
-func (x *CreatePodRequest) GetEndIp() string {
-	if x != nil && x.EndIp != nil {
-		return *x.EndIp
-	}
-	return ""
-}
-
-func (x *CreatePodRequest) GetNetmask() string {
-	if x != nil && x.Netmask != nil {
-		return *x.Netmask
-	}
-	return ""
-}
-
-func (x *CreatePodRequest) GetGateway() string {
-	if x != nil && x.Gateway != nil {
-		return *x.Gateway
-	}
-	return ""
-}
-
-func (x *CreatePodRequest) GetAllocationState() string {
-	if x != nil && x.AllocationState != nil {
-		return *x.AllocationState
-	}
-	return ""
-}
-
-func (x *CreatePodRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreatePodResponse represents the response from creates a new pod.
-type CreatePodResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreatePodResponse) Reset() {
-	*x = CreatePodResponse{}
-	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreatePodResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreatePodResponse) ProtoMessage() {}
-
-func (x *CreatePodResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreatePodResponse.ProtoReflect.Descriptor instead.
-func (*CreatePodResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_pod_v1_pod_gen_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *CreatePodResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
 }
 
 // UpdatePodRequest represents the parameters for updates a pod.
@@ -739,151 +739,6 @@ func (x *Success) GetDisplayText() string {
 	return ""
 }
 
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_pod_v1_pod_gen_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
 // Result represents a generic operation result
 type Result struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -903,7 +758,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -915,7 +770,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -928,7 +783,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_pod_v1_pod_gen_proto_rawDescGZIP(), []int{11}
+	return file_cloudstack_management_pod_v1_pod_gen_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -970,7 +825,19 @@ var File_cloudstack_management_pod_v1_pod_gen_proto protoreflect.FileDescriptor
 
 const file_cloudstack_management_pod_v1_pod_gen_proto_rawDesc = "" +
 	"\n" +
-	"*cloudstack/management/pod/v1/pod.gen.proto\x12\x1ccloudstack.management.pod.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"O\n" +
+	"*cloudstack/management/pod/v1/pod.gen.proto\x12\x1ccloudstack.management.pod.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xae\x02\n" +
+	"\x10CreatePodRequest\x12(\n" +
+	"\bpod_name\x18\x01 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\apodName\x12\x1f\n" +
+	"\azone_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12\"\n" +
+	"\bstart_ip\x18\x03 \x01(\tB\a\xbaH\x04r\x02x\x01R\astartIp\x12\x1e\n" +
+	"\x06end_ip\x18\x04 \x01(\tB\a\xbaH\x04r\x02x\x01R\x05endIp\x12\x18\n" +
+	"\anetmask\x18\x05 \x01(\tR\anetmask\x12!\n" +
+	"\agateway\x18\x06 \x01(\tB\a\xbaH\x04r\x02x\x01R\agateway\x12)\n" +
+	"\x10allocation_state\x18\a \x01(\tR\x0fallocationState\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\"Q\n" +
+	"\x11CreatePodResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.pod.v1.ResultR\x06result\"O\n" +
 	"\x10DeletePodRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
 	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"Q\n" +
@@ -990,19 +857,7 @@ const file_cloudstack_management_pod_v1_pod_gen_proto_rawDesc = "" +
 	"\x12ListPodsByResponse\x127\n" +
 	"\x05items\x18\x01 \x03(\v2!.cloudstack.management.pod.v1.PodR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xae\x02\n" +
-	"\x10CreatePodRequest\x12(\n" +
-	"\bpod_name\x18\x01 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\apodName\x12\x1f\n" +
-	"\azone_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12\"\n" +
-	"\bstart_ip\x18\x03 \x01(\tB\a\xbaH\x04r\x02x\x01R\astartIp\x12\x1e\n" +
-	"\x06end_ip\x18\x04 \x01(\tB\a\xbaH\x04r\x02x\x01R\x05endIp\x12\x18\n" +
-	"\anetmask\x18\x05 \x01(\tR\anetmask\x12!\n" +
-	"\agateway\x18\x06 \x01(\tB\a\xbaH\x04r\x02x\x01R\agateway\x12)\n" +
-	"\x10allocation_state\x18\a \x01(\tR\x0fallocationState\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\"Q\n" +
-	"\x11CreatePodResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.pod.v1.ResultR\x06result\"\xa2\x02\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xa2\x02\n" +
 	"\x10UpdatePodRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12%\n" +
 	"\bpod_name\x18\x02 \x01(\tB\n" +
@@ -1023,40 +878,21 @@ const file_cloudstack_management_pod_v1_pod_gen_proto_rawDesc = "" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xdb\x03\n" +
-	"\x04Item\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12I\n" +
-	"\adetails\x18\f \x03(\v2/.cloudstack.management.pod.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xd7\x03\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\xf5\x03\n" +
 	"\n" +
-	"PodService\x12n\n" +
-	"\tDeletePod\x12..cloudstack.management.pod.v1.DeletePodRequest\x1a/.cloudstack.management.pod.v1.DeletePodResponse\"\x00\x12q\n" +
+	"PodService\x12u\n" +
+	"\tCreatePod\x12..cloudstack.management.pod.v1.CreatePodRequest\x1a/.cloudstack.management.pod.v1.CreatePodResponse\"\a\xc2>\x04\xc2>\x01\x02\x12u\n" +
+	"\tDeletePod\x12..cloudstack.management.pod.v1.DeletePodRequest\x1a/.cloudstack.management.pod.v1.DeletePodResponse\"\a\xc2>\x04\xc2>\x01\x02\x12x\n" +
 	"\n" +
-	"ListPodsBy\x12/.cloudstack.management.pod.v1.ListPodsByRequest\x1a0.cloudstack.management.pod.v1.ListPodsByResponse\"\x00\x12n\n" +
-	"\tCreatePod\x12..cloudstack.management.pod.v1.CreatePodRequest\x1a/.cloudstack.management.pod.v1.CreatePodResponse\"\x00\x12n\n" +
-	"\tUpdatePod\x12..cloudstack.management.pod.v1.UpdatePodRequest\x1a/.cloudstack.management.pod.v1.UpdatePodResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x01B\x9a\x02\n" +
+	"ListPodsBy\x12/.cloudstack.management.pod.v1.ListPodsByRequest\x1a0.cloudstack.management.pod.v1.ListPodsByResponse\"\a\xc2>\x04\xc2>\x01\x02\x12u\n" +
+	"\tUpdatePod\x12..cloudstack.management.pod.v1.UpdatePodRequest\x1a/.cloudstack.management.pod.v1.UpdatePodResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\b\xc2>\x05\xc2>\x02\x01\x02B\x9a\x02\n" +
 	" com.cloudstack.management.pod.v1B\vPodGenProtoP\x01ZVgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/pod/v1;podv1\xa2\x02\x03CMP\xaa\x02\x1cCloudstack.Management.Pod.V1\xca\x02\x1cCloudstack\\Management\\Pod\\V1\xe2\x02(Cloudstack\\Management\\Pod\\V1\\GPBMetadata\xea\x02\x1fCloudstack::Management::Pod::V1b\beditionsp\xe8\a"
 
 var (
@@ -1071,41 +907,38 @@ func file_cloudstack_management_pod_v1_pod_gen_proto_rawDescGZIP() []byte {
 	return file_cloudstack_management_pod_v1_pod_gen_proto_rawDescData
 }
 
-var file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_cloudstack_management_pod_v1_pod_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_cloudstack_management_pod_v1_pod_gen_proto_goTypes = []any{
-	(*DeletePodRequest)(nil),   // 0: cloudstack.management.pod.v1.DeletePodRequest
-	(*DeletePodResponse)(nil),  // 1: cloudstack.management.pod.v1.DeletePodResponse
-	(*ListPodsByRequest)(nil),  // 2: cloudstack.management.pod.v1.ListPodsByRequest
-	(*ListPodsByResponse)(nil), // 3: cloudstack.management.pod.v1.ListPodsByResponse
-	(*CreatePodRequest)(nil),   // 4: cloudstack.management.pod.v1.CreatePodRequest
-	(*CreatePodResponse)(nil),  // 5: cloudstack.management.pod.v1.CreatePodResponse
+	(*CreatePodRequest)(nil),   // 0: cloudstack.management.pod.v1.CreatePodRequest
+	(*CreatePodResponse)(nil),  // 1: cloudstack.management.pod.v1.CreatePodResponse
+	(*DeletePodRequest)(nil),   // 2: cloudstack.management.pod.v1.DeletePodRequest
+	(*DeletePodResponse)(nil),  // 3: cloudstack.management.pod.v1.DeletePodResponse
+	(*ListPodsByRequest)(nil),  // 4: cloudstack.management.pod.v1.ListPodsByRequest
+	(*ListPodsByResponse)(nil), // 5: cloudstack.management.pod.v1.ListPodsByResponse
 	(*UpdatePodRequest)(nil),   // 6: cloudstack.management.pod.v1.UpdatePodRequest
 	(*UpdatePodResponse)(nil),  // 7: cloudstack.management.pod.v1.UpdatePodResponse
 	(*Pod)(nil),                // 8: cloudstack.management.pod.v1.Pod
 	(*Success)(nil),            // 9: cloudstack.management.pod.v1.Success
-	(*Item)(nil),               // 10: cloudstack.management.pod.v1.Item
-	(*Result)(nil),             // 11: cloudstack.management.pod.v1.Result
-	nil,                        // 12: cloudstack.management.pod.v1.Item.DetailsEntry
+	(*Result)(nil),             // 10: cloudstack.management.pod.v1.Result
 }
 var file_cloudstack_management_pod_v1_pod_gen_proto_depIdxs = []int32{
-	11, // 0: cloudstack.management.pod.v1.DeletePodResponse.result:type_name -> cloudstack.management.pod.v1.Result
-	8,  // 1: cloudstack.management.pod.v1.ListPodsByResponse.items:type_name -> cloudstack.management.pod.v1.Pod
-	11, // 2: cloudstack.management.pod.v1.CreatePodResponse.result:type_name -> cloudstack.management.pod.v1.Result
-	11, // 3: cloudstack.management.pod.v1.UpdatePodResponse.result:type_name -> cloudstack.management.pod.v1.Result
-	12, // 4: cloudstack.management.pod.v1.Item.details:type_name -> cloudstack.management.pod.v1.Item.DetailsEntry
-	0,  // 5: cloudstack.management.pod.v1.PodService.DeletePod:input_type -> cloudstack.management.pod.v1.DeletePodRequest
-	2,  // 6: cloudstack.management.pod.v1.PodService.ListPodsBy:input_type -> cloudstack.management.pod.v1.ListPodsByRequest
-	4,  // 7: cloudstack.management.pod.v1.PodService.CreatePod:input_type -> cloudstack.management.pod.v1.CreatePodRequest
-	6,  // 8: cloudstack.management.pod.v1.PodService.UpdatePod:input_type -> cloudstack.management.pod.v1.UpdatePodRequest
-	1,  // 9: cloudstack.management.pod.v1.PodService.DeletePod:output_type -> cloudstack.management.pod.v1.DeletePodResponse
-	3,  // 10: cloudstack.management.pod.v1.PodService.ListPodsBy:output_type -> cloudstack.management.pod.v1.ListPodsByResponse
-	5,  // 11: cloudstack.management.pod.v1.PodService.CreatePod:output_type -> cloudstack.management.pod.v1.CreatePodResponse
-	7,  // 12: cloudstack.management.pod.v1.PodService.UpdatePod:output_type -> cloudstack.management.pod.v1.UpdatePodResponse
-	9,  // [9:13] is the sub-list for method output_type
-	5,  // [5:9] is the sub-list for method input_type
-	5,  // [5:5] is the sub-list for extension type_name
-	5,  // [5:5] is the sub-list for extension extendee
-	0,  // [0:5] is the sub-list for field type_name
+	10, // 0: cloudstack.management.pod.v1.CreatePodResponse.result:type_name -> cloudstack.management.pod.v1.Result
+	10, // 1: cloudstack.management.pod.v1.DeletePodResponse.result:type_name -> cloudstack.management.pod.v1.Result
+	8,  // 2: cloudstack.management.pod.v1.ListPodsByResponse.items:type_name -> cloudstack.management.pod.v1.Pod
+	10, // 3: cloudstack.management.pod.v1.UpdatePodResponse.result:type_name -> cloudstack.management.pod.v1.Result
+	0,  // 4: cloudstack.management.pod.v1.PodService.CreatePod:input_type -> cloudstack.management.pod.v1.CreatePodRequest
+	2,  // 5: cloudstack.management.pod.v1.PodService.DeletePod:input_type -> cloudstack.management.pod.v1.DeletePodRequest
+	4,  // 6: cloudstack.management.pod.v1.PodService.ListPodsBy:input_type -> cloudstack.management.pod.v1.ListPodsByRequest
+	6,  // 7: cloudstack.management.pod.v1.PodService.UpdatePod:input_type -> cloudstack.management.pod.v1.UpdatePodRequest
+	1,  // 8: cloudstack.management.pod.v1.PodService.CreatePod:output_type -> cloudstack.management.pod.v1.CreatePodResponse
+	3,  // 9: cloudstack.management.pod.v1.PodService.DeletePod:output_type -> cloudstack.management.pod.v1.DeletePodResponse
+	5,  // 10: cloudstack.management.pod.v1.PodService.ListPodsBy:output_type -> cloudstack.management.pod.v1.ListPodsByResponse
+	7,  // 11: cloudstack.management.pod.v1.PodService.UpdatePod:output_type -> cloudstack.management.pod.v1.UpdatePodResponse
+	8,  // [8:12] is the sub-list for method output_type
+	4,  // [4:8] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_pod_v1_pod_gen_proto_init() }
@@ -1119,7 +952,7 @@ func file_cloudstack_management_pod_v1_pod_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_pod_v1_pod_gen_proto_rawDesc), len(file_cloudstack_management_pod_v1_pod_gen_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   13,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

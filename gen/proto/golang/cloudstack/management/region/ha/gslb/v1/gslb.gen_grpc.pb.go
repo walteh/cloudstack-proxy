@@ -19,12 +19,12 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	GslbService_CreateGlobalLoadBalancerRule_FullMethodName     = "/cloudstack.management.region.ha.gslb.v1.GslbService/CreateGlobalLoadBalancerRule"
-	GslbService_ListGlobalLoadBalancerRule_FullMethodName       = "/cloudstack.management.region.ha.gslb.v1.GslbService/ListGlobalLoadBalancerRule"
-	GslbService_UpdateGlobalLoadBalancerRule_FullMethodName     = "/cloudstack.management.region.ha.gslb.v1.GslbService/UpdateGlobalLoadBalancerRule"
 	GslbService_AssignToGlobalLoadBalancerRule_FullMethodName   = "/cloudstack.management.region.ha.gslb.v1.GslbService/AssignToGlobalLoadBalancerRule"
+	GslbService_CreateGlobalLoadBalancerRule_FullMethodName     = "/cloudstack.management.region.ha.gslb.v1.GslbService/CreateGlobalLoadBalancerRule"
 	GslbService_DeleteGlobalLoadBalancerRule_FullMethodName     = "/cloudstack.management.region.ha.gslb.v1.GslbService/DeleteGlobalLoadBalancerRule"
+	GslbService_ListGlobalLoadBalancerRule_FullMethodName       = "/cloudstack.management.region.ha.gslb.v1.GslbService/ListGlobalLoadBalancerRule"
 	GslbService_RemoveFromGlobalLoadBalancerRule_FullMethodName = "/cloudstack.management.region.ha.gslb.v1.GslbService/RemoveFromGlobalLoadBalancerRule"
+	GslbService_UpdateGlobalLoadBalancerRule_FullMethodName     = "/cloudstack.management.region.ha.gslb.v1.GslbService/UpdateGlobalLoadBalancerRule"
 )
 
 // GslbServiceClient is the client API for GslbService service.
@@ -33,18 +33,18 @@ const (
 //
 // GslbService provides operations for managing Region.Ha.Gslbs
 type GslbServiceClient interface {
-	// CreateGlobalLoadBalancerRule Creates a global load balancer rule
-	CreateGlobalLoadBalancerRule(ctx context.Context, in *CreateGlobalLoadBalancerRuleRequest, opts ...grpc.CallOption) (*CreateGlobalLoadBalancerRuleResponse, error)
-	// ListGlobalLoadBalancerRule Lists load balancer rules.
-	ListGlobalLoadBalancerRule(ctx context.Context, in *ListGlobalLoadBalancerRuleRequest, opts ...grpc.CallOption) (*ListGlobalLoadBalancerRuleResponse, error)
-	// UpdateGlobalLoadBalancerRule update global load balancer rules.
-	UpdateGlobalLoadBalancerRule(ctx context.Context, in *UpdateGlobalLoadBalancerRuleRequest, opts ...grpc.CallOption) (*UpdateGlobalLoadBalancerRuleResponse, error)
 	// AssignToGlobalLoadBalancerRule Assign load balancer rule or list of load balancer rules to a global load balancer rules.
 	AssignToGlobalLoadBalancerRule(ctx context.Context, in *AssignToGlobalLoadBalancerRuleRequest, opts ...grpc.CallOption) (*AssignToGlobalLoadBalancerRuleResponse, error)
+	// CreateGlobalLoadBalancerRule Creates a global load balancer rule
+	CreateGlobalLoadBalancerRule(ctx context.Context, in *CreateGlobalLoadBalancerRuleRequest, opts ...grpc.CallOption) (*CreateGlobalLoadBalancerRuleResponse, error)
 	// DeleteGlobalLoadBalancerRule Deletes a global load balancer rule.
 	DeleteGlobalLoadBalancerRule(ctx context.Context, in *DeleteGlobalLoadBalancerRuleRequest, opts ...grpc.CallOption) (*DeleteGlobalLoadBalancerRuleResponse, error)
+	// ListGlobalLoadBalancerRule Lists load balancer rules.
+	ListGlobalLoadBalancerRule(ctx context.Context, in *ListGlobalLoadBalancerRuleRequest, opts ...grpc.CallOption) (*ListGlobalLoadBalancerRuleResponse, error)
 	// RemoveFromGlobalLoadBalancerRule Removes a load balancer rule association with global load balancer rule
 	RemoveFromGlobalLoadBalancerRule(ctx context.Context, in *RemoveFromGlobalLoadBalancerRuleRequest, opts ...grpc.CallOption) (*RemoveFromGlobalLoadBalancerRuleResponse, error)
+	// UpdateGlobalLoadBalancerRule update global load balancer rules.
+	UpdateGlobalLoadBalancerRule(ctx context.Context, in *UpdateGlobalLoadBalancerRuleRequest, opts ...grpc.CallOption) (*UpdateGlobalLoadBalancerRuleResponse, error)
 }
 
 type gslbServiceClient struct {
@@ -55,40 +55,20 @@ func NewGslbServiceClient(cc grpc.ClientConnInterface) GslbServiceClient {
 	return &gslbServiceClient{cc}
 }
 
-func (c *gslbServiceClient) CreateGlobalLoadBalancerRule(ctx context.Context, in *CreateGlobalLoadBalancerRuleRequest, opts ...grpc.CallOption) (*CreateGlobalLoadBalancerRuleResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateGlobalLoadBalancerRuleResponse)
-	err := c.cc.Invoke(ctx, GslbService_CreateGlobalLoadBalancerRule_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *gslbServiceClient) ListGlobalLoadBalancerRule(ctx context.Context, in *ListGlobalLoadBalancerRuleRequest, opts ...grpc.CallOption) (*ListGlobalLoadBalancerRuleResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListGlobalLoadBalancerRuleResponse)
-	err := c.cc.Invoke(ctx, GslbService_ListGlobalLoadBalancerRule_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *gslbServiceClient) UpdateGlobalLoadBalancerRule(ctx context.Context, in *UpdateGlobalLoadBalancerRuleRequest, opts ...grpc.CallOption) (*UpdateGlobalLoadBalancerRuleResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateGlobalLoadBalancerRuleResponse)
-	err := c.cc.Invoke(ctx, GslbService_UpdateGlobalLoadBalancerRule_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *gslbServiceClient) AssignToGlobalLoadBalancerRule(ctx context.Context, in *AssignToGlobalLoadBalancerRuleRequest, opts ...grpc.CallOption) (*AssignToGlobalLoadBalancerRuleResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(AssignToGlobalLoadBalancerRuleResponse)
 	err := c.cc.Invoke(ctx, GslbService_AssignToGlobalLoadBalancerRule_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *gslbServiceClient) CreateGlobalLoadBalancerRule(ctx context.Context, in *CreateGlobalLoadBalancerRuleRequest, opts ...grpc.CallOption) (*CreateGlobalLoadBalancerRuleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateGlobalLoadBalancerRuleResponse)
+	err := c.cc.Invoke(ctx, GslbService_CreateGlobalLoadBalancerRule_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -105,10 +85,30 @@ func (c *gslbServiceClient) DeleteGlobalLoadBalancerRule(ctx context.Context, in
 	return out, nil
 }
 
+func (c *gslbServiceClient) ListGlobalLoadBalancerRule(ctx context.Context, in *ListGlobalLoadBalancerRuleRequest, opts ...grpc.CallOption) (*ListGlobalLoadBalancerRuleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListGlobalLoadBalancerRuleResponse)
+	err := c.cc.Invoke(ctx, GslbService_ListGlobalLoadBalancerRule_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *gslbServiceClient) RemoveFromGlobalLoadBalancerRule(ctx context.Context, in *RemoveFromGlobalLoadBalancerRuleRequest, opts ...grpc.CallOption) (*RemoveFromGlobalLoadBalancerRuleResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(RemoveFromGlobalLoadBalancerRuleResponse)
 	err := c.cc.Invoke(ctx, GslbService_RemoveFromGlobalLoadBalancerRule_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *gslbServiceClient) UpdateGlobalLoadBalancerRule(ctx context.Context, in *UpdateGlobalLoadBalancerRuleRequest, opts ...grpc.CallOption) (*UpdateGlobalLoadBalancerRuleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateGlobalLoadBalancerRuleResponse)
+	err := c.cc.Invoke(ctx, GslbService_UpdateGlobalLoadBalancerRule_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -121,18 +121,18 @@ func (c *gslbServiceClient) RemoveFromGlobalLoadBalancerRule(ctx context.Context
 //
 // GslbService provides operations for managing Region.Ha.Gslbs
 type GslbServiceServer interface {
-	// CreateGlobalLoadBalancerRule Creates a global load balancer rule
-	CreateGlobalLoadBalancerRule(context.Context, *CreateGlobalLoadBalancerRuleRequest) (*CreateGlobalLoadBalancerRuleResponse, error)
-	// ListGlobalLoadBalancerRule Lists load balancer rules.
-	ListGlobalLoadBalancerRule(context.Context, *ListGlobalLoadBalancerRuleRequest) (*ListGlobalLoadBalancerRuleResponse, error)
-	// UpdateGlobalLoadBalancerRule update global load balancer rules.
-	UpdateGlobalLoadBalancerRule(context.Context, *UpdateGlobalLoadBalancerRuleRequest) (*UpdateGlobalLoadBalancerRuleResponse, error)
 	// AssignToGlobalLoadBalancerRule Assign load balancer rule or list of load balancer rules to a global load balancer rules.
 	AssignToGlobalLoadBalancerRule(context.Context, *AssignToGlobalLoadBalancerRuleRequest) (*AssignToGlobalLoadBalancerRuleResponse, error)
+	// CreateGlobalLoadBalancerRule Creates a global load balancer rule
+	CreateGlobalLoadBalancerRule(context.Context, *CreateGlobalLoadBalancerRuleRequest) (*CreateGlobalLoadBalancerRuleResponse, error)
 	// DeleteGlobalLoadBalancerRule Deletes a global load balancer rule.
 	DeleteGlobalLoadBalancerRule(context.Context, *DeleteGlobalLoadBalancerRuleRequest) (*DeleteGlobalLoadBalancerRuleResponse, error)
+	// ListGlobalLoadBalancerRule Lists load balancer rules.
+	ListGlobalLoadBalancerRule(context.Context, *ListGlobalLoadBalancerRuleRequest) (*ListGlobalLoadBalancerRuleResponse, error)
 	// RemoveFromGlobalLoadBalancerRule Removes a load balancer rule association with global load balancer rule
 	RemoveFromGlobalLoadBalancerRule(context.Context, *RemoveFromGlobalLoadBalancerRuleRequest) (*RemoveFromGlobalLoadBalancerRuleResponse, error)
+	// UpdateGlobalLoadBalancerRule update global load balancer rules.
+	UpdateGlobalLoadBalancerRule(context.Context, *UpdateGlobalLoadBalancerRuleRequest) (*UpdateGlobalLoadBalancerRuleResponse, error)
 	mustEmbedUnimplementedGslbServiceServer()
 }
 
@@ -143,23 +143,23 @@ type GslbServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedGslbServiceServer struct{}
 
-func (UnimplementedGslbServiceServer) CreateGlobalLoadBalancerRule(context.Context, *CreateGlobalLoadBalancerRuleRequest) (*CreateGlobalLoadBalancerRuleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateGlobalLoadBalancerRule not implemented")
-}
-func (UnimplementedGslbServiceServer) ListGlobalLoadBalancerRule(context.Context, *ListGlobalLoadBalancerRuleRequest) (*ListGlobalLoadBalancerRuleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListGlobalLoadBalancerRule not implemented")
-}
-func (UnimplementedGslbServiceServer) UpdateGlobalLoadBalancerRule(context.Context, *UpdateGlobalLoadBalancerRuleRequest) (*UpdateGlobalLoadBalancerRuleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateGlobalLoadBalancerRule not implemented")
-}
 func (UnimplementedGslbServiceServer) AssignToGlobalLoadBalancerRule(context.Context, *AssignToGlobalLoadBalancerRuleRequest) (*AssignToGlobalLoadBalancerRuleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AssignToGlobalLoadBalancerRule not implemented")
+}
+func (UnimplementedGslbServiceServer) CreateGlobalLoadBalancerRule(context.Context, *CreateGlobalLoadBalancerRuleRequest) (*CreateGlobalLoadBalancerRuleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateGlobalLoadBalancerRule not implemented")
 }
 func (UnimplementedGslbServiceServer) DeleteGlobalLoadBalancerRule(context.Context, *DeleteGlobalLoadBalancerRuleRequest) (*DeleteGlobalLoadBalancerRuleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteGlobalLoadBalancerRule not implemented")
 }
+func (UnimplementedGslbServiceServer) ListGlobalLoadBalancerRule(context.Context, *ListGlobalLoadBalancerRuleRequest) (*ListGlobalLoadBalancerRuleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListGlobalLoadBalancerRule not implemented")
+}
 func (UnimplementedGslbServiceServer) RemoveFromGlobalLoadBalancerRule(context.Context, *RemoveFromGlobalLoadBalancerRuleRequest) (*RemoveFromGlobalLoadBalancerRuleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoveFromGlobalLoadBalancerRule not implemented")
+}
+func (UnimplementedGslbServiceServer) UpdateGlobalLoadBalancerRule(context.Context, *UpdateGlobalLoadBalancerRuleRequest) (*UpdateGlobalLoadBalancerRuleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateGlobalLoadBalancerRule not implemented")
 }
 func (UnimplementedGslbServiceServer) mustEmbedUnimplementedGslbServiceServer() {}
 func (UnimplementedGslbServiceServer) testEmbeddedByValue()                     {}
@@ -182,60 +182,6 @@ func RegisterGslbServiceServer(s grpc.ServiceRegistrar, srv GslbServiceServer) {
 	s.RegisterService(&GslbService_ServiceDesc, srv)
 }
 
-func _GslbService_CreateGlobalLoadBalancerRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateGlobalLoadBalancerRuleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(GslbServiceServer).CreateGlobalLoadBalancerRule(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: GslbService_CreateGlobalLoadBalancerRule_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GslbServiceServer).CreateGlobalLoadBalancerRule(ctx, req.(*CreateGlobalLoadBalancerRuleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _GslbService_ListGlobalLoadBalancerRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListGlobalLoadBalancerRuleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(GslbServiceServer).ListGlobalLoadBalancerRule(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: GslbService_ListGlobalLoadBalancerRule_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GslbServiceServer).ListGlobalLoadBalancerRule(ctx, req.(*ListGlobalLoadBalancerRuleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _GslbService_UpdateGlobalLoadBalancerRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateGlobalLoadBalancerRuleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(GslbServiceServer).UpdateGlobalLoadBalancerRule(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: GslbService_UpdateGlobalLoadBalancerRule_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GslbServiceServer).UpdateGlobalLoadBalancerRule(ctx, req.(*UpdateGlobalLoadBalancerRuleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _GslbService_AssignToGlobalLoadBalancerRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(AssignToGlobalLoadBalancerRuleRequest)
 	if err := dec(in); err != nil {
@@ -250,6 +196,24 @@ func _GslbService_AssignToGlobalLoadBalancerRule_Handler(srv interface{}, ctx co
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(GslbServiceServer).AssignToGlobalLoadBalancerRule(ctx, req.(*AssignToGlobalLoadBalancerRuleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _GslbService_CreateGlobalLoadBalancerRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateGlobalLoadBalancerRuleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GslbServiceServer).CreateGlobalLoadBalancerRule(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: GslbService_CreateGlobalLoadBalancerRule_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GslbServiceServer).CreateGlobalLoadBalancerRule(ctx, req.(*CreateGlobalLoadBalancerRuleRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -272,6 +236,24 @@ func _GslbService_DeleteGlobalLoadBalancerRule_Handler(srv interface{}, ctx cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _GslbService_ListGlobalLoadBalancerRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListGlobalLoadBalancerRuleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GslbServiceServer).ListGlobalLoadBalancerRule(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: GslbService_ListGlobalLoadBalancerRule_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GslbServiceServer).ListGlobalLoadBalancerRule(ctx, req.(*ListGlobalLoadBalancerRuleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _GslbService_RemoveFromGlobalLoadBalancerRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RemoveFromGlobalLoadBalancerRuleRequest)
 	if err := dec(in); err != nil {
@@ -290,6 +272,24 @@ func _GslbService_RemoveFromGlobalLoadBalancerRule_Handler(srv interface{}, ctx 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _GslbService_UpdateGlobalLoadBalancerRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateGlobalLoadBalancerRuleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GslbServiceServer).UpdateGlobalLoadBalancerRule(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: GslbService_UpdateGlobalLoadBalancerRule_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GslbServiceServer).UpdateGlobalLoadBalancerRule(ctx, req.(*UpdateGlobalLoadBalancerRuleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // GslbService_ServiceDesc is the grpc.ServiceDesc for GslbService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -298,28 +298,28 @@ var GslbService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*GslbServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CreateGlobalLoadBalancerRule",
-			Handler:    _GslbService_CreateGlobalLoadBalancerRule_Handler,
-		},
-		{
-			MethodName: "ListGlobalLoadBalancerRule",
-			Handler:    _GslbService_ListGlobalLoadBalancerRule_Handler,
-		},
-		{
-			MethodName: "UpdateGlobalLoadBalancerRule",
-			Handler:    _GslbService_UpdateGlobalLoadBalancerRule_Handler,
-		},
-		{
 			MethodName: "AssignToGlobalLoadBalancerRule",
 			Handler:    _GslbService_AssignToGlobalLoadBalancerRule_Handler,
+		},
+		{
+			MethodName: "CreateGlobalLoadBalancerRule",
+			Handler:    _GslbService_CreateGlobalLoadBalancerRule_Handler,
 		},
 		{
 			MethodName: "DeleteGlobalLoadBalancerRule",
 			Handler:    _GslbService_DeleteGlobalLoadBalancerRule_Handler,
 		},
 		{
+			MethodName: "ListGlobalLoadBalancerRule",
+			Handler:    _GslbService_ListGlobalLoadBalancerRule_Handler,
+		},
+		{
 			MethodName: "RemoveFromGlobalLoadBalancerRule",
 			Handler:    _GslbService_RemoveFromGlobalLoadBalancerRule_Handler,
+		},
+		{
+			MethodName: "UpdateGlobalLoadBalancerRule",
+			Handler:    _GslbService_UpdateGlobalLoadBalancerRule_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

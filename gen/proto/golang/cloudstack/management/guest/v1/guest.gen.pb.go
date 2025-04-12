@@ -24,6 +24,158 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// AddGuestOsRequest represents the parameters for add a new guest os type
+type AddGuestOsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of Guest OS category
+	OsCategoryId *int64 `protobuf:"varint,1,opt,name=os_category_id,json=osCategoryId" json:"os_category_id,omitempty"`
+	// Unique display name for Guest OS
+	OsDisplayName *string `protobuf:"bytes,2,opt,name=os_display_name,json=osDisplayName" json:"os_display_name,omitempty"`
+	// Optional name for Guest OS
+	OsName *string `protobuf:"bytes,3,opt,name=os_name,json=osName" json:"os_name,omitempty"`
+	// Map of (key/value pairs)
+	Details map[string]string `protobuf:"bytes,4,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// whether this guest OS is available for end users
+	Display *bool `protobuf:"varint,5,opt,name=display" json:"display,omitempty"`
+	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddGuestOsRequest) Reset() {
+	*x = AddGuestOsRequest{}
+	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddGuestOsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddGuestOsRequest) ProtoMessage() {}
+
+func (x *AddGuestOsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddGuestOsRequest.ProtoReflect.Descriptor instead.
+func (*AddGuestOsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *AddGuestOsRequest) GetOsCategoryId() int64 {
+	if x != nil && x.OsCategoryId != nil {
+		return *x.OsCategoryId
+	}
+	return 0
+}
+
+func (x *AddGuestOsRequest) GetOsDisplayName() string {
+	if x != nil && x.OsDisplayName != nil {
+		return *x.OsDisplayName
+	}
+	return ""
+}
+
+func (x *AddGuestOsRequest) GetOsName() string {
+	if x != nil && x.OsName != nil {
+		return *x.OsName
+	}
+	return ""
+}
+
+func (x *AddGuestOsRequest) GetDetails() map[string]string {
+	if x != nil {
+		return x.Details
+	}
+	return nil
+}
+
+func (x *AddGuestOsRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *AddGuestOsRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *AddGuestOsRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *AddGuestOsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// AddGuestOsResponse represents the response from add a new guest os type
+type AddGuestOsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddGuestOsResponse) Reset() {
+	*x = AddGuestOsResponse{}
+	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddGuestOsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddGuestOsResponse) ProtoMessage() {}
+
+func (x *AddGuestOsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddGuestOsResponse.ProtoReflect.Descriptor instead.
+func (*AddGuestOsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *AddGuestOsResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
 // AddGuestOsMappingRequest represents the parameters for adds a guest os name to hypervisor os name mapping
 type AddGuestOsMappingRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -38,7 +190,7 @@ type AddGuestOsMappingRequest struct {
 	// OS name specific to the hypervisor
 	OsNameForHypervisor *string `protobuf:"bytes,5,opt,name=os_name_for_hypervisor,json=osNameForHypervisor" json:"os_name_for_hypervisor,omitempty"`
 	// When set to true, checks for the correct guest os mapping name in the provided hypervisor (supports VMware and XenServer only. At least one hypervisor host with the version specified must be available. Default version will not work.)
-	OsMappingCheckEnabled *bool `protobuf:"varint,6,opt,name=os_mapping_check_enabled,json=osMappingCheckEnabled" json:"os_mapping_check_enabled,omitempty"`
+	OsMappingCheckEnabled_ *bool `protobuf:"varint,6,opt,name=os_mapping_check_enabled_,json=osMappingCheckEnabled" json:"os_mapping_check_enabled_,omitempty"`
 	// Forces add user defined guest os mapping, overrides any existing user defined mapping
 	Forced *bool `protobuf:"varint,7,opt,name=forced" json:"forced,omitempty"`
 	StartEventId *int64 `protobuf:"varint,8,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
@@ -50,7 +202,7 @@ type AddGuestOsMappingRequest struct {
 
 func (x *AddGuestOsMappingRequest) Reset() {
 	*x = AddGuestOsMappingRequest{}
-	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -62,7 +214,7 @@ func (x *AddGuestOsMappingRequest) String() string {
 func (*AddGuestOsMappingRequest) ProtoMessage() {}
 
 func (x *AddGuestOsMappingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -75,7 +227,7 @@ func (x *AddGuestOsMappingRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddGuestOsMappingRequest.ProtoReflect.Descriptor instead.
 func (*AddGuestOsMappingRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{0}
+	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *AddGuestOsMappingRequest) GetOsTypeId() int64 {
@@ -113,9 +265,9 @@ func (x *AddGuestOsMappingRequest) GetOsNameForHypervisor() string {
 	return ""
 }
 
-func (x *AddGuestOsMappingRequest) GetOsMappingCheckEnabled() bool {
-	if x != nil && x.OsMappingCheckEnabled != nil {
-		return *x.OsMappingCheckEnabled
+func (x *AddGuestOsMappingRequest) GetOsMappingCheckEnabled_() bool {
+	if x != nil && x.OsMappingCheckEnabled_ != nil {
+		return *x.OsMappingCheckEnabled_
 	}
 	return false
 }
@@ -159,7 +311,7 @@ type AddGuestOsMappingResponse struct {
 
 func (x *AddGuestOsMappingResponse) Reset() {
 	*x = AddGuestOsMappingResponse{}
-	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -171,7 +323,7 @@ func (x *AddGuestOsMappingResponse) String() string {
 func (*AddGuestOsMappingResponse) ProtoMessage() {}
 
 func (x *AddGuestOsMappingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -184,7 +336,7 @@ func (x *AddGuestOsMappingResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddGuestOsMappingResponse.ProtoReflect.Descriptor instead.
 func (*AddGuestOsMappingResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{1}
+	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *AddGuestOsMappingResponse) GetResult() *Result {
@@ -194,148 +346,36 @@ func (x *AddGuestOsMappingResponse) GetResult() *Result {
 	return nil
 }
 
-// RemoveGuestOsMappingRequest represents the parameters for removes a guest os mapping.
-type RemoveGuestOsMappingRequest struct {
+// GetHypervisorGuestOsNamesRequest represents the parameters for gets the guest os names in the hypervisor
+type GetHypervisorGuestOsNamesRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the guest OS mapping
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// Hypervisor type. One of : VMware, XenServer
+	Hypervisor *string `protobuf:"bytes,1,opt,name=hypervisor" json:"hypervisor,omitempty"`
+	// Hypervisor version to get the guest os names (atleast one hypervisor host with the version specified must be available)
+	HypervisorVersion *string `protobuf:"bytes,2,opt,name=hypervisor_version,json=hypervisorVersion" json:"hypervisor_version,omitempty"`
+	// Keyword for guest os name
+	Keyword *string `protobuf:"bytes,3,opt,name=keyword" json:"keyword,omitempty"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RemoveGuestOsMappingRequest) Reset() {
-	*x = RemoveGuestOsMappingRequest{}
-	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RemoveGuestOsMappingRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RemoveGuestOsMappingRequest) ProtoMessage() {}
-
-func (x *RemoveGuestOsMappingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RemoveGuestOsMappingRequest.ProtoReflect.Descriptor instead.
-func (*RemoveGuestOsMappingRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *RemoveGuestOsMappingRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *RemoveGuestOsMappingRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *RemoveGuestOsMappingRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *RemoveGuestOsMappingRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// RemoveGuestOsMappingResponse represents the response from removes a guest os mapping.
-type RemoveGuestOsMappingResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RemoveGuestOsMappingResponse) Reset() {
-	*x = RemoveGuestOsMappingResponse{}
-	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RemoveGuestOsMappingResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RemoveGuestOsMappingResponse) ProtoMessage() {}
-
-func (x *RemoveGuestOsMappingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RemoveGuestOsMappingResponse.ProtoReflect.Descriptor instead.
-func (*RemoveGuestOsMappingResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *RemoveGuestOsMappingResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// RemoveGuestOsRequest represents the parameters for removes a guest os from listing.
-type RemoveGuestOsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the guest OS
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RemoveGuestOsRequest) Reset() {
-	*x = RemoveGuestOsRequest{}
+func (x *GetHypervisorGuestOsNamesRequest) Reset() {
+	*x = GetHypervisorGuestOsNamesRequest{}
 	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RemoveGuestOsRequest) String() string {
+func (x *GetHypervisorGuestOsNamesRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RemoveGuestOsRequest) ProtoMessage() {}
+func (*GetHypervisorGuestOsNamesRequest) ProtoMessage() {}
 
-func (x *RemoveGuestOsRequest) ProtoReflect() protoreflect.Message {
+func (x *GetHypervisorGuestOsNamesRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -347,41 +387,55 @@ func (x *RemoveGuestOsRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RemoveGuestOsRequest.ProtoReflect.Descriptor instead.
-func (*RemoveGuestOsRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetHypervisorGuestOsNamesRequest.ProtoReflect.Descriptor instead.
+func (*GetHypervisorGuestOsNamesRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *RemoveGuestOsRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *GetHypervisorGuestOsNamesRequest) GetHypervisor() string {
+	if x != nil && x.Hypervisor != nil {
+		return *x.Hypervisor
 	}
-	return 0
+	return ""
 }
 
-func (x *RemoveGuestOsRequest) GetStartEventId() int64 {
+func (x *GetHypervisorGuestOsNamesRequest) GetHypervisorVersion() string {
+	if x != nil && x.HypervisorVersion != nil {
+		return *x.HypervisorVersion
+	}
+	return ""
+}
+
+func (x *GetHypervisorGuestOsNamesRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *GetHypervisorGuestOsNamesRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *RemoveGuestOsRequest) GetInjectedJobId() string {
+func (x *GetHypervisorGuestOsNamesRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *RemoveGuestOsRequest) GetResponseType() string {
+func (x *GetHypervisorGuestOsNamesRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// RemoveGuestOsResponse represents the response from removes a guest os from listing.
-type RemoveGuestOsResponse struct {
+// GetHypervisorGuestOsNamesResponse represents the response from gets the guest os names in the hypervisor
+type GetHypervisorGuestOsNamesResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -389,20 +443,20 @@ type RemoveGuestOsResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RemoveGuestOsResponse) Reset() {
-	*x = RemoveGuestOsResponse{}
+func (x *GetHypervisorGuestOsNamesResponse) Reset() {
+	*x = GetHypervisorGuestOsNamesResponse{}
 	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RemoveGuestOsResponse) String() string {
+func (x *GetHypervisorGuestOsNamesResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RemoveGuestOsResponse) ProtoMessage() {}
+func (*GetHypervisorGuestOsNamesResponse) ProtoMessage() {}
 
-func (x *RemoveGuestOsResponse) ProtoReflect() protoreflect.Message {
+func (x *GetHypervisorGuestOsNamesResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -414,12 +468,12 @@ func (x *RemoveGuestOsResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RemoveGuestOsResponse.ProtoReflect.Descriptor instead.
-func (*RemoveGuestOsResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetHypervisorGuestOsNamesResponse.ProtoReflect.Descriptor instead.
+func (*GetHypervisorGuestOsNamesResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *RemoveGuestOsResponse) GetResult() *Result {
+func (x *GetHypervisorGuestOsNamesResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -587,6 +641,149 @@ func (x *ListGuestOsResponse) GetTotalCount() int32 {
 	return 0
 }
 
+// ListGuestOsCategoriesRequest represents the parameters for lists all supported os categories for this cloud.
+type ListGuestOsCategoriesRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// list Os category by id
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// list os category by name
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,3,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,4,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,5,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListGuestOsCategoriesRequest) Reset() {
+	*x = ListGuestOsCategoriesRequest{}
+	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListGuestOsCategoriesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListGuestOsCategoriesRequest) ProtoMessage() {}
+
+func (x *ListGuestOsCategoriesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListGuestOsCategoriesRequest.ProtoReflect.Descriptor instead.
+func (*ListGuestOsCategoriesRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *ListGuestOsCategoriesRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListGuestOsCategoriesRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *ListGuestOsCategoriesRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListGuestOsCategoriesRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListGuestOsCategoriesRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListGuestOsCategoriesRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListGuestOsCategoriesResponse represents the response from lists all supported os categories for this cloud.
+type ListGuestOsCategoriesResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of GuestOSCategorys
+	Items []*GuestOSCategory `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of GuestOSCategorys
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListGuestOsCategoriesResponse) Reset() {
+	*x = ListGuestOsCategoriesResponse{}
+	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListGuestOsCategoriesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListGuestOsCategoriesResponse) ProtoMessage() {}
+
+func (x *ListGuestOsCategoriesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListGuestOsCategoriesResponse.ProtoReflect.Descriptor instead.
+func (*ListGuestOsCategoriesResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *ListGuestOsCategoriesResponse) GetItems() []*GuestOSCategory {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListGuestOsCategoriesResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
 // ListGuestOsMappingRequest represents the parameters for lists all available os mappings for given hypervisor
 type ListGuestOsMappingRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -613,7 +810,7 @@ type ListGuestOsMappingRequest struct {
 
 func (x *ListGuestOsMappingRequest) Reset() {
 	*x = ListGuestOsMappingRequest{}
-	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[8]
+	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -625,7 +822,7 @@ func (x *ListGuestOsMappingRequest) String() string {
 func (*ListGuestOsMappingRequest) ProtoMessage() {}
 
 func (x *ListGuestOsMappingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[8]
+	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -638,7 +835,7 @@ func (x *ListGuestOsMappingRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListGuestOsMappingRequest.ProtoReflect.Descriptor instead.
 func (*ListGuestOsMappingRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{8}
+	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ListGuestOsMappingRequest) GetId() int64 {
@@ -724,7 +921,7 @@ type ListGuestOsMappingResponse struct {
 
 func (x *ListGuestOsMappingResponse) Reset() {
 	*x = ListGuestOsMappingResponse{}
-	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -736,7 +933,7 @@ func (x *ListGuestOsMappingResponse) String() string {
 func (*ListGuestOsMappingResponse) ProtoMessage() {}
 
 func (x *ListGuestOsMappingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -749,7 +946,7 @@ func (x *ListGuestOsMappingResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListGuestOsMappingResponse.ProtoReflect.Descriptor instead.
 func (*ListGuestOsMappingResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{9}
+	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *ListGuestOsMappingResponse) GetItems() []*GuestOsMapping {
@@ -766,188 +963,32 @@ func (x *ListGuestOsMappingResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// AddGuestOsRequest represents the parameters for add a new guest os type
-type AddGuestOsRequest struct {
+// RemoveGuestOsRequest represents the parameters for removes a guest os from listing.
+type RemoveGuestOsRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of Guest OS category
-	OsCategoryId *int64 `protobuf:"varint,1,opt,name=os_category_id,json=osCategoryId" json:"os_category_id,omitempty"`
-	// Unique display name for Guest OS
-	OsDisplayName *string `protobuf:"bytes,2,opt,name=os_display_name,json=osDisplayName" json:"os_display_name,omitempty"`
-	// Optional name for Guest OS
-	OsName *string `protobuf:"bytes,3,opt,name=os_name,json=osName" json:"os_name,omitempty"`
-	// Map of (key/value pairs)
-	Details map[string]string `protobuf:"bytes,4,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// whether this guest OS is available for end users
-	Display *bool `protobuf:"varint,5,opt,name=display" json:"display,omitempty"`
-	StartEventId *int64 `protobuf:"varint,6,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,7,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddGuestOsRequest) Reset() {
-	*x = AddGuestOsRequest{}
-	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddGuestOsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddGuestOsRequest) ProtoMessage() {}
-
-func (x *AddGuestOsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddGuestOsRequest.ProtoReflect.Descriptor instead.
-func (*AddGuestOsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *AddGuestOsRequest) GetOsCategoryId() int64 {
-	if x != nil && x.OsCategoryId != nil {
-		return *x.OsCategoryId
-	}
-	return 0
-}
-
-func (x *AddGuestOsRequest) GetOsDisplayName() string {
-	if x != nil && x.OsDisplayName != nil {
-		return *x.OsDisplayName
-	}
-	return ""
-}
-
-func (x *AddGuestOsRequest) GetOsName() string {
-	if x != nil && x.OsName != nil {
-		return *x.OsName
-	}
-	return ""
-}
-
-func (x *AddGuestOsRequest) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
-func (x *AddGuestOsRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *AddGuestOsRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *AddGuestOsRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *AddGuestOsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// AddGuestOsResponse represents the response from add a new guest os type
-type AddGuestOsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AddGuestOsResponse) Reset() {
-	*x = AddGuestOsResponse{}
-	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AddGuestOsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AddGuestOsResponse) ProtoMessage() {}
-
-func (x *AddGuestOsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AddGuestOsResponse.ProtoReflect.Descriptor instead.
-func (*AddGuestOsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *AddGuestOsResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateGuestOsMappingRequest represents the parameters for updates the information about guest os to hypervisor specific name mapping
-type UpdateGuestOsMappingRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the Guest OS to hypervisor name Mapping
+	// ID of the guest OS
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// Hypervisor specific name for this Guest OS
-	OsNameForHypervisor *string `protobuf:"bytes,2,opt,name=os_name_for_hypervisor,json=osNameForHypervisor" json:"os_name_for_hypervisor,omitempty"`
-	// When set to true, checks for the correct guest os mapping name in the provided hypervisor (supports VMware and XenServer only. At least one hypervisor host with the version specified must be available. Default version will not work.)
-	OsMappingCheckEnabled *bool `protobuf:"varint,3,opt,name=os_mapping_check_enabled,json=osMappingCheckEnabled" json:"os_mapping_check_enabled,omitempty"`
-	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateGuestOsMappingRequest) Reset() {
-	*x = UpdateGuestOsMappingRequest{}
+func (x *RemoveGuestOsRequest) Reset() {
+	*x = RemoveGuestOsRequest{}
 	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateGuestOsMappingRequest) String() string {
+func (x *RemoveGuestOsRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateGuestOsMappingRequest) ProtoMessage() {}
+func (*RemoveGuestOsRequest) ProtoMessage() {}
 
-func (x *UpdateGuestOsMappingRequest) ProtoReflect() protoreflect.Message {
+func (x *RemoveGuestOsRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -959,55 +1000,41 @@ func (x *UpdateGuestOsMappingRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateGuestOsMappingRequest.ProtoReflect.Descriptor instead.
-func (*UpdateGuestOsMappingRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use RemoveGuestOsRequest.ProtoReflect.Descriptor instead.
+func (*RemoveGuestOsRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{12}
 }
 
-func (x *UpdateGuestOsMappingRequest) GetId() int64 {
+func (x *RemoveGuestOsRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *UpdateGuestOsMappingRequest) GetOsNameForHypervisor() string {
-	if x != nil && x.OsNameForHypervisor != nil {
-		return *x.OsNameForHypervisor
-	}
-	return ""
-}
-
-func (x *UpdateGuestOsMappingRequest) GetOsMappingCheckEnabled() bool {
-	if x != nil && x.OsMappingCheckEnabled != nil {
-		return *x.OsMappingCheckEnabled
-	}
-	return false
-}
-
-func (x *UpdateGuestOsMappingRequest) GetStartEventId() int64 {
+func (x *RemoveGuestOsRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *UpdateGuestOsMappingRequest) GetInjectedJobId() string {
+func (x *RemoveGuestOsRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *UpdateGuestOsMappingRequest) GetResponseType() string {
+func (x *RemoveGuestOsRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// UpdateGuestOsMappingResponse represents the response from updates the information about guest os to hypervisor specific name mapping
-type UpdateGuestOsMappingResponse struct {
+// RemoveGuestOsResponse represents the response from removes a guest os from listing.
+type RemoveGuestOsResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -1015,20 +1042,20 @@ type UpdateGuestOsMappingResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateGuestOsMappingResponse) Reset() {
-	*x = UpdateGuestOsMappingResponse{}
+func (x *RemoveGuestOsResponse) Reset() {
+	*x = RemoveGuestOsResponse{}
 	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateGuestOsMappingResponse) String() string {
+func (x *RemoveGuestOsResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateGuestOsMappingResponse) ProtoMessage() {}
+func (*RemoveGuestOsResponse) ProtoMessage() {}
 
-func (x *UpdateGuestOsMappingResponse) ProtoReflect() protoreflect.Message {
+func (x *RemoveGuestOsResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1040,48 +1067,44 @@ func (x *UpdateGuestOsMappingResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateGuestOsMappingResponse.ProtoReflect.Descriptor instead.
-func (*UpdateGuestOsMappingResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use RemoveGuestOsResponse.ProtoReflect.Descriptor instead.
+func (*RemoveGuestOsResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{13}
 }
 
-func (x *UpdateGuestOsMappingResponse) GetResult() *Result {
+func (x *RemoveGuestOsResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
 	return nil
 }
 
-// ListGuestOsCategoriesRequest represents the parameters for lists all supported os categories for this cloud.
-type ListGuestOsCategoriesRequest struct {
+// RemoveGuestOsMappingRequest represents the parameters for removes a guest os mapping.
+type RemoveGuestOsMappingRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// list Os category by id
+	// ID of the guest OS mapping
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// list os category by name
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,3,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,4,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,5,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListGuestOsCategoriesRequest) Reset() {
-	*x = ListGuestOsCategoriesRequest{}
+func (x *RemoveGuestOsMappingRequest) Reset() {
+	*x = RemoveGuestOsMappingRequest{}
 	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListGuestOsCategoriesRequest) String() string {
+func (x *RemoveGuestOsMappingRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListGuestOsCategoriesRequest) ProtoMessage() {}
+func (*RemoveGuestOsMappingRequest) ProtoMessage() {}
 
-func (x *ListGuestOsCategoriesRequest) ProtoReflect() protoreflect.Message {
+func (x *RemoveGuestOsMappingRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1093,78 +1116,62 @@ func (x *ListGuestOsCategoriesRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListGuestOsCategoriesRequest.ProtoReflect.Descriptor instead.
-func (*ListGuestOsCategoriesRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use RemoveGuestOsMappingRequest.ProtoReflect.Descriptor instead.
+func (*RemoveGuestOsMappingRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{14}
 }
 
-func (x *ListGuestOsCategoriesRequest) GetId() int64 {
+func (x *RemoveGuestOsMappingRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *ListGuestOsCategoriesRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *ListGuestOsCategoriesRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListGuestOsCategoriesRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
+func (x *RemoveGuestOsMappingRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *ListGuestOsCategoriesRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
+func (x *RemoveGuestOsMappingRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
 	}
-	return 0
+	return ""
 }
 
-func (x *ListGuestOsCategoriesRequest) GetResponseType() string {
+func (x *RemoveGuestOsMappingRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// ListGuestOsCategoriesResponse represents the response from lists all supported os categories for this cloud.
-type ListGuestOsCategoriesResponse struct {
+// RemoveGuestOsMappingResponse represents the response from removes a guest os mapping.
+type RemoveGuestOsMappingResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of GuestOSCategorys
-	Items []*GuestOSCategory `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of GuestOSCategorys
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListGuestOsCategoriesResponse) Reset() {
-	*x = ListGuestOsCategoriesResponse{}
+func (x *RemoveGuestOsMappingResponse) Reset() {
+	*x = RemoveGuestOsMappingResponse{}
 	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListGuestOsCategoriesResponse) String() string {
+func (x *RemoveGuestOsMappingResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListGuestOsCategoriesResponse) ProtoMessage() {}
+func (*RemoveGuestOsMappingResponse) ProtoMessage() {}
 
-func (x *ListGuestOsCategoriesResponse) ProtoReflect() protoreflect.Message {
+func (x *RemoveGuestOsMappingResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1176,23 +1183,16 @@ func (x *ListGuestOsCategoriesResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListGuestOsCategoriesResponse.ProtoReflect.Descriptor instead.
-func (*ListGuestOsCategoriesResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use RemoveGuestOsMappingResponse.ProtoReflect.Descriptor instead.
+func (*RemoveGuestOsMappingResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{15}
 }
 
-func (x *ListGuestOsCategoriesResponse) GetItems() []*GuestOSCategory {
+func (x *RemoveGuestOsMappingResponse) GetResult() *Result {
 	if x != nil {
-		return x.Items
+		return x.Result
 	}
 	return nil
-}
-
-func (x *ListGuestOsCategoriesResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
 }
 
 // UpdateGuestOsRequest represents the parameters for updates the information about guest os
@@ -1338,15 +1338,15 @@ func (x *UpdateGuestOsResponse) GetResult() *Result {
 	return nil
 }
 
-// GetHypervisorGuestOsNamesRequest represents the parameters for gets the guest os names in the hypervisor
-type GetHypervisorGuestOsNamesRequest struct {
+// UpdateGuestOsMappingRequest represents the parameters for updates the information about guest os to hypervisor specific name mapping
+type UpdateGuestOsMappingRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Hypervisor type. One of : VMware, XenServer
-	Hypervisor *string `protobuf:"bytes,1,opt,name=hypervisor" json:"hypervisor,omitempty"`
-	// Hypervisor version to get the guest os names (atleast one hypervisor host with the version specified must be available)
-	HypervisorVersion *string `protobuf:"bytes,2,opt,name=hypervisor_version,json=hypervisorVersion" json:"hypervisor_version,omitempty"`
-	// Keyword for guest os name
-	Keyword *string `protobuf:"bytes,3,opt,name=keyword" json:"keyword,omitempty"`
+	// UUID of the Guest OS to hypervisor name Mapping
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// Hypervisor specific name for this Guest OS
+	OsNameForHypervisor *string `protobuf:"bytes,2,opt,name=os_name_for_hypervisor,json=osNameForHypervisor" json:"os_name_for_hypervisor,omitempty"`
+	// When set to true, checks for the correct guest os mapping name in the provided hypervisor (supports VMware and XenServer only. At least one hypervisor host with the version specified must be available. Default version will not work.)
+	OsMappingCheckEnabled_ *bool `protobuf:"varint,3,opt,name=os_mapping_check_enabled_,json=osMappingCheckEnabled" json:"os_mapping_check_enabled_,omitempty"`
 	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
 	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
 	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
@@ -1354,20 +1354,20 @@ type GetHypervisorGuestOsNamesRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetHypervisorGuestOsNamesRequest) Reset() {
-	*x = GetHypervisorGuestOsNamesRequest{}
+func (x *UpdateGuestOsMappingRequest) Reset() {
+	*x = UpdateGuestOsMappingRequest{}
 	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetHypervisorGuestOsNamesRequest) String() string {
+func (x *UpdateGuestOsMappingRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetHypervisorGuestOsNamesRequest) ProtoMessage() {}
+func (*UpdateGuestOsMappingRequest) ProtoMessage() {}
 
-func (x *GetHypervisorGuestOsNamesRequest) ProtoReflect() protoreflect.Message {
+func (x *UpdateGuestOsMappingRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1379,55 +1379,55 @@ func (x *GetHypervisorGuestOsNamesRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetHypervisorGuestOsNamesRequest.ProtoReflect.Descriptor instead.
-func (*GetHypervisorGuestOsNamesRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateGuestOsMappingRequest.ProtoReflect.Descriptor instead.
+func (*UpdateGuestOsMappingRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{18}
 }
 
-func (x *GetHypervisorGuestOsNamesRequest) GetHypervisor() string {
-	if x != nil && x.Hypervisor != nil {
-		return *x.Hypervisor
+func (x *UpdateGuestOsMappingRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateGuestOsMappingRequest) GetOsNameForHypervisor() string {
+	if x != nil && x.OsNameForHypervisor != nil {
+		return *x.OsNameForHypervisor
 	}
 	return ""
 }
 
-func (x *GetHypervisorGuestOsNamesRequest) GetHypervisorVersion() string {
-	if x != nil && x.HypervisorVersion != nil {
-		return *x.HypervisorVersion
+func (x *UpdateGuestOsMappingRequest) GetOsMappingCheckEnabled_() bool {
+	if x != nil && x.OsMappingCheckEnabled_ != nil {
+		return *x.OsMappingCheckEnabled_
 	}
-	return ""
+	return false
 }
 
-func (x *GetHypervisorGuestOsNamesRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *GetHypervisorGuestOsNamesRequest) GetStartEventId() int64 {
+func (x *UpdateGuestOsMappingRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *GetHypervisorGuestOsNamesRequest) GetInjectedJobId() string {
+func (x *UpdateGuestOsMappingRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *GetHypervisorGuestOsNamesRequest) GetResponseType() string {
+func (x *UpdateGuestOsMappingRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// GetHypervisorGuestOsNamesResponse represents the response from gets the guest os names in the hypervisor
-type GetHypervisorGuestOsNamesResponse struct {
+// UpdateGuestOsMappingResponse represents the response from updates the information about guest os to hypervisor specific name mapping
+type UpdateGuestOsMappingResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -1435,20 +1435,20 @@ type GetHypervisorGuestOsNamesResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetHypervisorGuestOsNamesResponse) Reset() {
-	*x = GetHypervisorGuestOsNamesResponse{}
+func (x *UpdateGuestOsMappingResponse) Reset() {
+	*x = UpdateGuestOsMappingResponse{}
 	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetHypervisorGuestOsNamesResponse) String() string {
+func (x *UpdateGuestOsMappingResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetHypervisorGuestOsNamesResponse) ProtoMessage() {}
+func (*UpdateGuestOsMappingResponse) ProtoMessage() {}
 
-func (x *GetHypervisorGuestOsNamesResponse) ProtoReflect() protoreflect.Message {
+func (x *UpdateGuestOsMappingResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1460,12 +1460,12 @@ func (x *GetHypervisorGuestOsNamesResponse) ProtoReflect() protoreflect.Message 
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetHypervisorGuestOsNamesResponse.ProtoReflect.Descriptor instead.
-func (*GetHypervisorGuestOsNamesResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateGuestOsMappingResponse.ProtoReflect.Descriptor instead.
+func (*UpdateGuestOsMappingResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{19}
 }
 
-func (x *GetHypervisorGuestOsNamesResponse) GetResult() *Result {
+func (x *UpdateGuestOsMappingResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1554,88 +1554,6 @@ func (x *GuestOS) GetCreated() string {
 	return ""
 }
 
-// GuestOsMapping represents a GuestOsMapping Item
-type GuestOsMapping struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the GuestOsMapping
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the GuestOsMapping
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the GuestOsMapping
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the GuestOsMapping
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GuestOsMapping) Reset() {
-	*x = GuestOsMapping{}
-	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[21]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GuestOsMapping) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GuestOsMapping) ProtoMessage() {}
-
-func (x *GuestOsMapping) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[21]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GuestOsMapping.ProtoReflect.Descriptor instead.
-func (*GuestOsMapping) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{21}
-}
-
-func (x *GuestOsMapping) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *GuestOsMapping) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *GuestOsMapping) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *GuestOsMapping) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *GuestOsMapping) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
 // GuestOSCategory represents a GuestOSCategory Item
 type GuestOSCategory struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1655,7 +1573,7 @@ type GuestOSCategory struct {
 
 func (x *GuestOSCategory) Reset() {
 	*x = GuestOSCategory{}
-	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[22]
+	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1667,7 +1585,7 @@ func (x *GuestOSCategory) String() string {
 func (*GuestOSCategory) ProtoMessage() {}
 
 func (x *GuestOSCategory) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[22]
+	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1680,7 +1598,7 @@ func (x *GuestOSCategory) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GuestOSCategory.ProtoReflect.Descriptor instead.
 func (*GuestOSCategory) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{22}
+	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *GuestOSCategory) GetId() string {
@@ -1712,6 +1630,88 @@ func (x *GuestOSCategory) GetDescription() string {
 }
 
 func (x *GuestOSCategory) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// GuestOsMapping represents a GuestOsMapping Item
+type GuestOsMapping struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the GuestOsMapping
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the GuestOsMapping
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the GuestOsMapping
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the GuestOsMapping
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GuestOsMapping) Reset() {
+	*x = GuestOsMapping{}
+	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GuestOsMapping) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GuestOsMapping) ProtoMessage() {}
+
+func (x *GuestOsMapping) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GuestOsMapping.ProtoReflect.Descriptor instead.
+func (*GuestOsMapping) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *GuestOsMapping) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *GuestOsMapping) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *GuestOsMapping) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *GuestOsMapping) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *GuestOsMapping) GetCreated() string {
 	if x != nil && x.Created != nil {
 		return *x.Created
 	}
@@ -1773,151 +1773,6 @@ func (x *Success) GetDisplayText() string {
 	return ""
 }
 
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[24]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[24]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{24}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
 // Result represents a generic operation result
 type Result struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1937,7 +1792,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[25]
+	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1949,7 +1804,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[25]
+	mi := &file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1962,7 +1817,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{25}
+	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -2004,7 +1859,23 @@ var File_cloudstack_management_guest_v1_guest_gen_proto protoreflect.FileDescrip
 
 const file_cloudstack_management_guest_v1_guest_gen_proto_rawDesc = "" +
 	"\n" +
-	".cloudstack/management/guest/v1/guest.gen.proto\x12\x1ecloudstack.management.guest.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xe3\x03\n" +
+	".cloudstack/management/guest/v1/guest.gen.proto\x12\x1ecloudstack.management.guest.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xd1\x03\n" +
+	"\x11AddGuestOsRequest\x12,\n" +
+	"\x0eos_category_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\fosCategoryId\x125\n" +
+	"\x0fos_display_name\x18\x02 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\rosDisplayName\x12#\n" +
+	"\aos_name\x18\x03 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x06osName\x12X\n" +
+	"\adetails\x18\x04 \x03(\v2>.cloudstack.management.guest.v1.AddGuestOsRequest.DetailsEntryR\adetails\x12\x1f\n" +
+	"\adisplay\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12$\n" +
+	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\x1a:\n" +
+	"\fDetailsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"T\n" +
+	"\x12AddGuestOsResponse\x12>\n" +
+	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.guest.v1.ResultR\x06result\"\xe4\x03\n" +
 	"\x18AddGuestOsMappingRequest\x12\x1c\n" +
 	"\n" +
 	"os_type_id\x18\x01 \x01(\x03R\bosTypeId\x12*\n" +
@@ -2015,28 +1886,25 @@ const file_cloudstack_management_guest_v1_guest_gen_proto_rawDesc = "" +
 	"hypervisor\x125\n" +
 	"\x12hypervisor_version\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x11hypervisorVersion\x12B\n" +
 	"\x16os_name_for_hypervisor\x18\x05 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x13osNameForHypervisor\x12>\n" +
-	"\x18os_mapping_check_enabled\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\x15osMappingCheckEnabled\x12\x1d\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x13osNameForHypervisor\x12?\n" +
+	"\x19os_mapping_check_enabled_\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\x15osMappingCheckEnabled\x12\x1d\n" +
 	"\x06forced\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\x06forced\x12$\n" +
 	"\x0estart_event_id\x18\b \x01(\x03R\fstartEventId\x120\n" +
 	"\x0finjected_job_id\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\n" +
 	" \x01(\tR\fresponseType\"[\n" +
 	"\x19AddGuestOsMappingResponse\x12>\n" +
-	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.guest.v1.ResultR\x06result\"\xb2\x01\n" +
-	"\x1bRemoveGuestOsMappingRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"^\n" +
-	"\x1cRemoveGuestOsMappingResponse\x12>\n" +
-	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.guest.v1.ResultR\x06result\"\xab\x01\n" +
-	"\x14RemoveGuestOsRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"W\n" +
-	"\x15RemoveGuestOsResponse\x12>\n" +
+	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.guest.v1.ResultR\x06result\"\x98\x02\n" +
+	" GetHypervisorGuestOsNamesRequest\x12&\n" +
+	"\n" +
+	"hypervisor\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\n" +
+	"hypervisor\x125\n" +
+	"\x12hypervisor_version\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x11hypervisorVersion\x12\x18\n" +
+	"\akeyword\x18\x03 \x01(\tR\akeyword\x12$\n" +
+	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"c\n" +
+	"!GetHypervisorGuestOsNamesResponse\x12>\n" +
 	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.guest.v1.ResultR\x06result\"\x89\x02\n" +
 	"\x12ListGuestOsRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12$\n" +
@@ -2050,6 +1918,18 @@ const file_cloudstack_management_guest_v1_guest_gen_proto_rawDesc = "" +
 	"\rresponse_type\x18\b \x01(\tR\fresponseType\"|\n" +
 	"\x13ListGuestOsResponse\x12=\n" +
 	"\x05items\x18\x01 \x03(\v2'.cloudstack.management.guest.v1.GuestOSR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xbe\x01\n" +
+	"\x1cListGuestOsCategoriesRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1e\n" +
+	"\x04name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12\x18\n" +
+	"\akeyword\x18\x03 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x04 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x05 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"\x8e\x01\n" +
+	"\x1dListGuestOsCategoriesResponse\x12E\n" +
+	"\x05items\x18\x01 \x03(\v2/.cloudstack.management.guest.v1.GuestOSCategoryR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
 	"totalCount:\x05\xbaH\x02\b\x00\"\xfd\x02\n" +
 	"\x19ListGuestOsMappingRequest\x12\x0e\n" +
@@ -2072,45 +1952,21 @@ const file_cloudstack_management_guest_v1_guest_gen_proto_rawDesc = "" +
 	"\x1aListGuestOsMappingResponse\x12D\n" +
 	"\x05items\x18\x01 \x03(\v2..cloudstack.management.guest.v1.GuestOsMappingR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xd1\x03\n" +
-	"\x11AddGuestOsRequest\x12,\n" +
-	"\x0eos_category_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\fosCategoryId\x125\n" +
-	"\x0fos_display_name\x18\x02 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\rosDisplayName\x12#\n" +
-	"\aos_name\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x06osName\x12X\n" +
-	"\adetails\x18\x04 \x03(\v2>.cloudstack.management.guest.v1.AddGuestOsRequest.DetailsEntryR\adetails\x12\x1f\n" +
-	"\adisplay\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12$\n" +
-	"\x0estart_event_id\x18\x06 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"T\n" +
-	"\x12AddGuestOsResponse\x12>\n" +
-	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.guest.v1.ResultR\x06result\"\xb6\x02\n" +
-	"\x1bUpdateGuestOsMappingRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12B\n" +
-	"\x16os_name_for_hypervisor\x18\x02 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x13osNameForHypervisor\x12>\n" +
-	"\x18os_mapping_check_enabled\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\x15osMappingCheckEnabled\x12$\n" +
-	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"^\n" +
-	"\x1cUpdateGuestOsMappingResponse\x12>\n" +
-	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.guest.v1.ResultR\x06result\"\xbe\x01\n" +
-	"\x1cListGuestOsCategoriesRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1e\n" +
-	"\x04name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x04name\x12\x18\n" +
-	"\akeyword\x18\x03 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x04 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x05 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"\x8e\x01\n" +
-	"\x1dListGuestOsCategoriesResponse\x12E\n" +
-	"\x05items\x18\x01 \x03(\v2/.cloudstack.management.guest.v1.GuestOSCategoryR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x9c\x03\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xab\x01\n" +
+	"\x14RemoveGuestOsRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"W\n" +
+	"\x15RemoveGuestOsResponse\x12>\n" +
+	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.guest.v1.ResultR\x06result\"\xb2\x01\n" +
+	"\x1bRemoveGuestOsMappingRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"^\n" +
+	"\x1cRemoveGuestOsMappingResponse\x12>\n" +
+	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.guest.v1.ResultR\x06result\"\x9c\x03\n" +
 	"\x14UpdateGuestOsRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x125\n" +
 	"\x0fos_display_name\x18\x02 \x01(\tB\r\xbaH\n" +
@@ -2124,25 +1980,18 @@ const file_cloudstack_management_guest_v1_guest_gen_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"W\n" +
 	"\x15UpdateGuestOsResponse\x12>\n" +
-	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.guest.v1.ResultR\x06result\"\x98\x02\n" +
-	" GetHypervisorGuestOsNamesRequest\x12&\n" +
-	"\n" +
-	"hypervisor\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\n" +
-	"hypervisor\x125\n" +
-	"\x12hypervisor_version\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x11hypervisorVersion\x12\x18\n" +
-	"\akeyword\x18\x03 \x01(\tR\akeyword\x12$\n" +
+	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.guest.v1.ResultR\x06result\"\xb7\x02\n" +
+	"\x1bUpdateGuestOsMappingRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12B\n" +
+	"\x16os_name_for_hypervisor\x18\x02 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x13osNameForHypervisor\x12?\n" +
+	"\x19os_mapping_check_enabled_\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\x15osMappingCheckEnabled\x12$\n" +
 	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
 	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"c\n" +
-	"!GetHypervisorGuestOsNamesResponse\x12>\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"^\n" +
+	"\x1cUpdateGuestOsMappingResponse\x12>\n" +
 	"\x06result\x18\x01 \x01(\v2&.cloudstack.management.guest.v1.ResultR\x06result\"\x96\x01\n" +
 	"\aGuestOS\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x9d\x01\n" +
-	"\x0eGuestOsMapping\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -2153,48 +2002,35 @@ const file_cloudstack_management_guest_v1_guest_gen_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
-	"\aSuccess\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xdd\x03\n" +
-	"\x04Item\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x9d\x01\n" +
+	"\x0eGuestOsMapping\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12K\n" +
-	"\adetails\x18\f \x03(\v21.cloudstack.management.guest.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
+	"\aSuccess\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\x8e\v\n" +
-	"\fGuestService\x12\x8a\x01\n" +
-	"\x11AddGuestOsMapping\x128.cloudstack.management.guest.v1.AddGuestOsMappingRequest\x1a9.cloudstack.management.guest.v1.AddGuestOsMappingResponse\"\x00\x12\x93\x01\n" +
-	"\x14RemoveGuestOsMapping\x12;.cloudstack.management.guest.v1.RemoveGuestOsMappingRequest\x1a<.cloudstack.management.guest.v1.RemoveGuestOsMappingResponse\"\x00\x12~\n" +
-	"\rRemoveGuestOs\x124.cloudstack.management.guest.v1.RemoveGuestOsRequest\x1a5.cloudstack.management.guest.v1.RemoveGuestOsResponse\"\x00\x12x\n" +
-	"\vListGuestOs\x122.cloudstack.management.guest.v1.ListGuestOsRequest\x1a3.cloudstack.management.guest.v1.ListGuestOsResponse\"\x00\x12\x8d\x01\n" +
-	"\x12ListGuestOsMapping\x129.cloudstack.management.guest.v1.ListGuestOsMappingRequest\x1a:.cloudstack.management.guest.v1.ListGuestOsMappingResponse\"\x00\x12u\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\xd7\v\n" +
+	"\fGuestService\x12|\n" +
 	"\n" +
-	"AddGuestOs\x121.cloudstack.management.guest.v1.AddGuestOsRequest\x1a2.cloudstack.management.guest.v1.AddGuestOsResponse\"\x00\x12\x93\x01\n" +
-	"\x14UpdateGuestOsMapping\x12;.cloudstack.management.guest.v1.UpdateGuestOsMappingRequest\x1a<.cloudstack.management.guest.v1.UpdateGuestOsMappingResponse\"\x00\x12\x96\x01\n" +
-	"\x15ListGuestOsCategories\x12<.cloudstack.management.guest.v1.ListGuestOsCategoriesRequest\x1a=.cloudstack.management.guest.v1.ListGuestOsCategoriesResponse\"\x00\x12~\n" +
-	"\rUpdateGuestOs\x124.cloudstack.management.guest.v1.UpdateGuestOsRequest\x1a5.cloudstack.management.guest.v1.UpdateGuestOsResponse\"\x00\x12\xa2\x01\n" +
-	"\x19GetHypervisorGuestOsNames\x12@.cloudstack.management.guest.v1.GetHypervisorGuestOsNamesRequest\x1aA.cloudstack.management.guest.v1.GetHypervisorGuestOsNamesResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xaa\x02\n" +
+	"AddGuestOs\x121.cloudstack.management.guest.v1.AddGuestOsRequest\x1a2.cloudstack.management.guest.v1.AddGuestOsResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x91\x01\n" +
+	"\x11AddGuestOsMapping\x128.cloudstack.management.guest.v1.AddGuestOsMappingRequest\x1a9.cloudstack.management.guest.v1.AddGuestOsMappingResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xa9\x01\n" +
+	"\x19GetHypervisorGuestOsNames\x12@.cloudstack.management.guest.v1.GetHypervisorGuestOsNamesRequest\x1aA.cloudstack.management.guest.v1.GetHypervisorGuestOsNamesResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x7f\n" +
+	"\vListGuestOs\x122.cloudstack.management.guest.v1.ListGuestOsRequest\x1a3.cloudstack.management.guest.v1.ListGuestOsResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x9d\x01\n" +
+	"\x15ListGuestOsCategories\x12<.cloudstack.management.guest.v1.ListGuestOsCategoriesRequest\x1a=.cloudstack.management.guest.v1.ListGuestOsCategoriesResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x94\x01\n" +
+	"\x12ListGuestOsMapping\x129.cloudstack.management.guest.v1.ListGuestOsMappingRequest\x1a:.cloudstack.management.guest.v1.ListGuestOsMappingResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x85\x01\n" +
+	"\rRemoveGuestOs\x124.cloudstack.management.guest.v1.RemoveGuestOsRequest\x1a5.cloudstack.management.guest.v1.RemoveGuestOsResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x9a\x01\n" +
+	"\x14RemoveGuestOsMapping\x12;.cloudstack.management.guest.v1.RemoveGuestOsMappingRequest\x1a<.cloudstack.management.guest.v1.RemoveGuestOsMappingResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x85\x01\n" +
+	"\rUpdateGuestOs\x124.cloudstack.management.guest.v1.UpdateGuestOsRequest\x1a5.cloudstack.management.guest.v1.UpdateGuestOsResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x9a\x01\n" +
+	"\x14UpdateGuestOsMapping\x12;.cloudstack.management.guest.v1.UpdateGuestOsMappingRequest\x1a<.cloudstack.management.guest.v1.UpdateGuestOsMappingResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\a\xc2>\x04\xc2>\x01\x02B\xaa\x02\n" +
 	"\"com.cloudstack.management.guest.v1B\rGuestGenProtoP\x01ZZgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/guest/v1;guestv1\xa2\x02\x03CMG\xaa\x02\x1eCloudstack.Management.Guest.V1\xca\x02\x1eCloudstack\\Management\\Guest\\V1\xe2\x02*Cloudstack\\Management\\Guest\\V1\\GPBMetadata\xea\x02!Cloudstack::Management::Guest::V1b\beditionsp\xe8\a"
 
 var (
@@ -2209,77 +2045,74 @@ func file_cloudstack_management_guest_v1_guest_gen_proto_rawDescGZIP() []byte {
 	return file_cloudstack_management_guest_v1_guest_gen_proto_rawDescData
 }
 
-var file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 29)
+var file_cloudstack_management_guest_v1_guest_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
 var file_cloudstack_management_guest_v1_guest_gen_proto_goTypes = []any{
-	(*AddGuestOsMappingRequest)(nil),          // 0: cloudstack.management.guest.v1.AddGuestOsMappingRequest
-	(*AddGuestOsMappingResponse)(nil),         // 1: cloudstack.management.guest.v1.AddGuestOsMappingResponse
-	(*RemoveGuestOsMappingRequest)(nil),       // 2: cloudstack.management.guest.v1.RemoveGuestOsMappingRequest
-	(*RemoveGuestOsMappingResponse)(nil),      // 3: cloudstack.management.guest.v1.RemoveGuestOsMappingResponse
-	(*RemoveGuestOsRequest)(nil),              // 4: cloudstack.management.guest.v1.RemoveGuestOsRequest
-	(*RemoveGuestOsResponse)(nil),             // 5: cloudstack.management.guest.v1.RemoveGuestOsResponse
+	(*AddGuestOsRequest)(nil),                 // 0: cloudstack.management.guest.v1.AddGuestOsRequest
+	(*AddGuestOsResponse)(nil),                // 1: cloudstack.management.guest.v1.AddGuestOsResponse
+	(*AddGuestOsMappingRequest)(nil),          // 2: cloudstack.management.guest.v1.AddGuestOsMappingRequest
+	(*AddGuestOsMappingResponse)(nil),         // 3: cloudstack.management.guest.v1.AddGuestOsMappingResponse
+	(*GetHypervisorGuestOsNamesRequest)(nil),  // 4: cloudstack.management.guest.v1.GetHypervisorGuestOsNamesRequest
+	(*GetHypervisorGuestOsNamesResponse)(nil), // 5: cloudstack.management.guest.v1.GetHypervisorGuestOsNamesResponse
 	(*ListGuestOsRequest)(nil),                // 6: cloudstack.management.guest.v1.ListGuestOsRequest
 	(*ListGuestOsResponse)(nil),               // 7: cloudstack.management.guest.v1.ListGuestOsResponse
-	(*ListGuestOsMappingRequest)(nil),         // 8: cloudstack.management.guest.v1.ListGuestOsMappingRequest
-	(*ListGuestOsMappingResponse)(nil),        // 9: cloudstack.management.guest.v1.ListGuestOsMappingResponse
-	(*AddGuestOsRequest)(nil),                 // 10: cloudstack.management.guest.v1.AddGuestOsRequest
-	(*AddGuestOsResponse)(nil),                // 11: cloudstack.management.guest.v1.AddGuestOsResponse
-	(*UpdateGuestOsMappingRequest)(nil),       // 12: cloudstack.management.guest.v1.UpdateGuestOsMappingRequest
-	(*UpdateGuestOsMappingResponse)(nil),      // 13: cloudstack.management.guest.v1.UpdateGuestOsMappingResponse
-	(*ListGuestOsCategoriesRequest)(nil),      // 14: cloudstack.management.guest.v1.ListGuestOsCategoriesRequest
-	(*ListGuestOsCategoriesResponse)(nil),     // 15: cloudstack.management.guest.v1.ListGuestOsCategoriesResponse
+	(*ListGuestOsCategoriesRequest)(nil),      // 8: cloudstack.management.guest.v1.ListGuestOsCategoriesRequest
+	(*ListGuestOsCategoriesResponse)(nil),     // 9: cloudstack.management.guest.v1.ListGuestOsCategoriesResponse
+	(*ListGuestOsMappingRequest)(nil),         // 10: cloudstack.management.guest.v1.ListGuestOsMappingRequest
+	(*ListGuestOsMappingResponse)(nil),        // 11: cloudstack.management.guest.v1.ListGuestOsMappingResponse
+	(*RemoveGuestOsRequest)(nil),              // 12: cloudstack.management.guest.v1.RemoveGuestOsRequest
+	(*RemoveGuestOsResponse)(nil),             // 13: cloudstack.management.guest.v1.RemoveGuestOsResponse
+	(*RemoveGuestOsMappingRequest)(nil),       // 14: cloudstack.management.guest.v1.RemoveGuestOsMappingRequest
+	(*RemoveGuestOsMappingResponse)(nil),      // 15: cloudstack.management.guest.v1.RemoveGuestOsMappingResponse
 	(*UpdateGuestOsRequest)(nil),              // 16: cloudstack.management.guest.v1.UpdateGuestOsRequest
 	(*UpdateGuestOsResponse)(nil),             // 17: cloudstack.management.guest.v1.UpdateGuestOsResponse
-	(*GetHypervisorGuestOsNamesRequest)(nil),  // 18: cloudstack.management.guest.v1.GetHypervisorGuestOsNamesRequest
-	(*GetHypervisorGuestOsNamesResponse)(nil), // 19: cloudstack.management.guest.v1.GetHypervisorGuestOsNamesResponse
+	(*UpdateGuestOsMappingRequest)(nil),       // 18: cloudstack.management.guest.v1.UpdateGuestOsMappingRequest
+	(*UpdateGuestOsMappingResponse)(nil),      // 19: cloudstack.management.guest.v1.UpdateGuestOsMappingResponse
 	(*GuestOS)(nil),                           // 20: cloudstack.management.guest.v1.GuestOS
-	(*GuestOsMapping)(nil),                    // 21: cloudstack.management.guest.v1.GuestOsMapping
-	(*GuestOSCategory)(nil),                   // 22: cloudstack.management.guest.v1.GuestOSCategory
+	(*GuestOSCategory)(nil),                   // 21: cloudstack.management.guest.v1.GuestOSCategory
+	(*GuestOsMapping)(nil),                    // 22: cloudstack.management.guest.v1.GuestOsMapping
 	(*Success)(nil),                           // 23: cloudstack.management.guest.v1.Success
-	(*Item)(nil),                              // 24: cloudstack.management.guest.v1.Item
-	(*Result)(nil),                            // 25: cloudstack.management.guest.v1.Result
-	nil,                                       // 26: cloudstack.management.guest.v1.AddGuestOsRequest.DetailsEntry
-	nil,                                       // 27: cloudstack.management.guest.v1.UpdateGuestOsRequest.DetailsEntry
-	nil,                                       // 28: cloudstack.management.guest.v1.Item.DetailsEntry
+	(*Result)(nil),                            // 24: cloudstack.management.guest.v1.Result
+	nil,                                       // 25: cloudstack.management.guest.v1.AddGuestOsRequest.DetailsEntry
+	nil,                                       // 26: cloudstack.management.guest.v1.UpdateGuestOsRequest.DetailsEntry
 }
 var file_cloudstack_management_guest_v1_guest_gen_proto_depIdxs = []int32{
-	25, // 0: cloudstack.management.guest.v1.AddGuestOsMappingResponse.result:type_name -> cloudstack.management.guest.v1.Result
-	25, // 1: cloudstack.management.guest.v1.RemoveGuestOsMappingResponse.result:type_name -> cloudstack.management.guest.v1.Result
-	25, // 2: cloudstack.management.guest.v1.RemoveGuestOsResponse.result:type_name -> cloudstack.management.guest.v1.Result
-	20, // 3: cloudstack.management.guest.v1.ListGuestOsResponse.items:type_name -> cloudstack.management.guest.v1.GuestOS
-	21, // 4: cloudstack.management.guest.v1.ListGuestOsMappingResponse.items:type_name -> cloudstack.management.guest.v1.GuestOsMapping
-	26, // 5: cloudstack.management.guest.v1.AddGuestOsRequest.details:type_name -> cloudstack.management.guest.v1.AddGuestOsRequest.DetailsEntry
-	25, // 6: cloudstack.management.guest.v1.AddGuestOsResponse.result:type_name -> cloudstack.management.guest.v1.Result
-	25, // 7: cloudstack.management.guest.v1.UpdateGuestOsMappingResponse.result:type_name -> cloudstack.management.guest.v1.Result
-	22, // 8: cloudstack.management.guest.v1.ListGuestOsCategoriesResponse.items:type_name -> cloudstack.management.guest.v1.GuestOSCategory
-	27, // 9: cloudstack.management.guest.v1.UpdateGuestOsRequest.details:type_name -> cloudstack.management.guest.v1.UpdateGuestOsRequest.DetailsEntry
-	25, // 10: cloudstack.management.guest.v1.UpdateGuestOsResponse.result:type_name -> cloudstack.management.guest.v1.Result
-	25, // 11: cloudstack.management.guest.v1.GetHypervisorGuestOsNamesResponse.result:type_name -> cloudstack.management.guest.v1.Result
-	28, // 12: cloudstack.management.guest.v1.Item.details:type_name -> cloudstack.management.guest.v1.Item.DetailsEntry
-	0,  // 13: cloudstack.management.guest.v1.GuestService.AddGuestOsMapping:input_type -> cloudstack.management.guest.v1.AddGuestOsMappingRequest
-	2,  // 14: cloudstack.management.guest.v1.GuestService.RemoveGuestOsMapping:input_type -> cloudstack.management.guest.v1.RemoveGuestOsMappingRequest
-	4,  // 15: cloudstack.management.guest.v1.GuestService.RemoveGuestOs:input_type -> cloudstack.management.guest.v1.RemoveGuestOsRequest
-	6,  // 16: cloudstack.management.guest.v1.GuestService.ListGuestOs:input_type -> cloudstack.management.guest.v1.ListGuestOsRequest
-	8,  // 17: cloudstack.management.guest.v1.GuestService.ListGuestOsMapping:input_type -> cloudstack.management.guest.v1.ListGuestOsMappingRequest
-	10, // 18: cloudstack.management.guest.v1.GuestService.AddGuestOs:input_type -> cloudstack.management.guest.v1.AddGuestOsRequest
-	12, // 19: cloudstack.management.guest.v1.GuestService.UpdateGuestOsMapping:input_type -> cloudstack.management.guest.v1.UpdateGuestOsMappingRequest
-	14, // 20: cloudstack.management.guest.v1.GuestService.ListGuestOsCategories:input_type -> cloudstack.management.guest.v1.ListGuestOsCategoriesRequest
-	16, // 21: cloudstack.management.guest.v1.GuestService.UpdateGuestOs:input_type -> cloudstack.management.guest.v1.UpdateGuestOsRequest
-	18, // 22: cloudstack.management.guest.v1.GuestService.GetHypervisorGuestOsNames:input_type -> cloudstack.management.guest.v1.GetHypervisorGuestOsNamesRequest
-	1,  // 23: cloudstack.management.guest.v1.GuestService.AddGuestOsMapping:output_type -> cloudstack.management.guest.v1.AddGuestOsMappingResponse
-	3,  // 24: cloudstack.management.guest.v1.GuestService.RemoveGuestOsMapping:output_type -> cloudstack.management.guest.v1.RemoveGuestOsMappingResponse
-	5,  // 25: cloudstack.management.guest.v1.GuestService.RemoveGuestOs:output_type -> cloudstack.management.guest.v1.RemoveGuestOsResponse
-	7,  // 26: cloudstack.management.guest.v1.GuestService.ListGuestOs:output_type -> cloudstack.management.guest.v1.ListGuestOsResponse
-	9,  // 27: cloudstack.management.guest.v1.GuestService.ListGuestOsMapping:output_type -> cloudstack.management.guest.v1.ListGuestOsMappingResponse
-	11, // 28: cloudstack.management.guest.v1.GuestService.AddGuestOs:output_type -> cloudstack.management.guest.v1.AddGuestOsResponse
-	13, // 29: cloudstack.management.guest.v1.GuestService.UpdateGuestOsMapping:output_type -> cloudstack.management.guest.v1.UpdateGuestOsMappingResponse
-	15, // 30: cloudstack.management.guest.v1.GuestService.ListGuestOsCategories:output_type -> cloudstack.management.guest.v1.ListGuestOsCategoriesResponse
-	17, // 31: cloudstack.management.guest.v1.GuestService.UpdateGuestOs:output_type -> cloudstack.management.guest.v1.UpdateGuestOsResponse
-	19, // 32: cloudstack.management.guest.v1.GuestService.GetHypervisorGuestOsNames:output_type -> cloudstack.management.guest.v1.GetHypervisorGuestOsNamesResponse
-	23, // [23:33] is the sub-list for method output_type
-	13, // [13:23] is the sub-list for method input_type
-	13, // [13:13] is the sub-list for extension type_name
-	13, // [13:13] is the sub-list for extension extendee
-	0,  // [0:13] is the sub-list for field type_name
+	25, // 0: cloudstack.management.guest.v1.AddGuestOsRequest.details:type_name -> cloudstack.management.guest.v1.AddGuestOsRequest.DetailsEntry
+	24, // 1: cloudstack.management.guest.v1.AddGuestOsResponse.result:type_name -> cloudstack.management.guest.v1.Result
+	24, // 2: cloudstack.management.guest.v1.AddGuestOsMappingResponse.result:type_name -> cloudstack.management.guest.v1.Result
+	24, // 3: cloudstack.management.guest.v1.GetHypervisorGuestOsNamesResponse.result:type_name -> cloudstack.management.guest.v1.Result
+	20, // 4: cloudstack.management.guest.v1.ListGuestOsResponse.items:type_name -> cloudstack.management.guest.v1.GuestOS
+	21, // 5: cloudstack.management.guest.v1.ListGuestOsCategoriesResponse.items:type_name -> cloudstack.management.guest.v1.GuestOSCategory
+	22, // 6: cloudstack.management.guest.v1.ListGuestOsMappingResponse.items:type_name -> cloudstack.management.guest.v1.GuestOsMapping
+	24, // 7: cloudstack.management.guest.v1.RemoveGuestOsResponse.result:type_name -> cloudstack.management.guest.v1.Result
+	24, // 8: cloudstack.management.guest.v1.RemoveGuestOsMappingResponse.result:type_name -> cloudstack.management.guest.v1.Result
+	26, // 9: cloudstack.management.guest.v1.UpdateGuestOsRequest.details:type_name -> cloudstack.management.guest.v1.UpdateGuestOsRequest.DetailsEntry
+	24, // 10: cloudstack.management.guest.v1.UpdateGuestOsResponse.result:type_name -> cloudstack.management.guest.v1.Result
+	24, // 11: cloudstack.management.guest.v1.UpdateGuestOsMappingResponse.result:type_name -> cloudstack.management.guest.v1.Result
+	0,  // 12: cloudstack.management.guest.v1.GuestService.AddGuestOs:input_type -> cloudstack.management.guest.v1.AddGuestOsRequest
+	2,  // 13: cloudstack.management.guest.v1.GuestService.AddGuestOsMapping:input_type -> cloudstack.management.guest.v1.AddGuestOsMappingRequest
+	4,  // 14: cloudstack.management.guest.v1.GuestService.GetHypervisorGuestOsNames:input_type -> cloudstack.management.guest.v1.GetHypervisorGuestOsNamesRequest
+	6,  // 15: cloudstack.management.guest.v1.GuestService.ListGuestOs:input_type -> cloudstack.management.guest.v1.ListGuestOsRequest
+	8,  // 16: cloudstack.management.guest.v1.GuestService.ListGuestOsCategories:input_type -> cloudstack.management.guest.v1.ListGuestOsCategoriesRequest
+	10, // 17: cloudstack.management.guest.v1.GuestService.ListGuestOsMapping:input_type -> cloudstack.management.guest.v1.ListGuestOsMappingRequest
+	12, // 18: cloudstack.management.guest.v1.GuestService.RemoveGuestOs:input_type -> cloudstack.management.guest.v1.RemoveGuestOsRequest
+	14, // 19: cloudstack.management.guest.v1.GuestService.RemoveGuestOsMapping:input_type -> cloudstack.management.guest.v1.RemoveGuestOsMappingRequest
+	16, // 20: cloudstack.management.guest.v1.GuestService.UpdateGuestOs:input_type -> cloudstack.management.guest.v1.UpdateGuestOsRequest
+	18, // 21: cloudstack.management.guest.v1.GuestService.UpdateGuestOsMapping:input_type -> cloudstack.management.guest.v1.UpdateGuestOsMappingRequest
+	1,  // 22: cloudstack.management.guest.v1.GuestService.AddGuestOs:output_type -> cloudstack.management.guest.v1.AddGuestOsResponse
+	3,  // 23: cloudstack.management.guest.v1.GuestService.AddGuestOsMapping:output_type -> cloudstack.management.guest.v1.AddGuestOsMappingResponse
+	5,  // 24: cloudstack.management.guest.v1.GuestService.GetHypervisorGuestOsNames:output_type -> cloudstack.management.guest.v1.GetHypervisorGuestOsNamesResponse
+	7,  // 25: cloudstack.management.guest.v1.GuestService.ListGuestOs:output_type -> cloudstack.management.guest.v1.ListGuestOsResponse
+	9,  // 26: cloudstack.management.guest.v1.GuestService.ListGuestOsCategories:output_type -> cloudstack.management.guest.v1.ListGuestOsCategoriesResponse
+	11, // 27: cloudstack.management.guest.v1.GuestService.ListGuestOsMapping:output_type -> cloudstack.management.guest.v1.ListGuestOsMappingResponse
+	13, // 28: cloudstack.management.guest.v1.GuestService.RemoveGuestOs:output_type -> cloudstack.management.guest.v1.RemoveGuestOsResponse
+	15, // 29: cloudstack.management.guest.v1.GuestService.RemoveGuestOsMapping:output_type -> cloudstack.management.guest.v1.RemoveGuestOsMappingResponse
+	17, // 30: cloudstack.management.guest.v1.GuestService.UpdateGuestOs:output_type -> cloudstack.management.guest.v1.UpdateGuestOsResponse
+	19, // 31: cloudstack.management.guest.v1.GuestService.UpdateGuestOsMapping:output_type -> cloudstack.management.guest.v1.UpdateGuestOsMappingResponse
+	22, // [22:32] is the sub-list for method output_type
+	12, // [12:22] is the sub-list for method input_type
+	12, // [12:12] is the sub-list for extension type_name
+	12, // [12:12] is the sub-list for extension extendee
+	0,  // [0:12] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_guest_v1_guest_gen_proto_init() }
@@ -2293,7 +2126,7 @@ func file_cloudstack_management_guest_v1_guest_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_guest_v1_guest_gen_proto_rawDesc), len(file_cloudstack_management_guest_v1_guest_gen_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   29,
+			NumMessages:   27,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

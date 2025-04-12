@@ -19,10 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	BucketService_DeleteBucket_FullMethodName = "/cloudstack.management.bucket.v1.BucketService/DeleteBucket"
 	BucketService_CreateBucket_FullMethodName = "/cloudstack.management.bucket.v1.BucketService/CreateBucket"
-	BucketService_UpdateBucket_FullMethodName = "/cloudstack.management.bucket.v1.BucketService/UpdateBucket"
+	BucketService_DeleteBucket_FullMethodName = "/cloudstack.management.bucket.v1.BucketService/DeleteBucket"
 	BucketService_ListBuckets_FullMethodName  = "/cloudstack.management.bucket.v1.BucketService/ListBuckets"
+	BucketService_UpdateBucket_FullMethodName = "/cloudstack.management.bucket.v1.BucketService/UpdateBucket"
 )
 
 // BucketServiceClient is the client API for BucketService service.
@@ -31,14 +31,14 @@ const (
 //
 // BucketService provides operations for managing Buckets
 type BucketServiceClient interface {
-	// DeleteBucket Deletes an empty Bucket.
-	DeleteBucket(ctx context.Context, in *DeleteBucketRequest, opts ...grpc.CallOption) (*DeleteBucketResponse, error)
 	// CreateBucket Creates a bucket in the specified object storage pool.
 	CreateBucket(ctx context.Context, in *CreateBucketRequest, opts ...grpc.CallOption) (*CreateBucketResponse, error)
-	// UpdateBucket Updates Bucket properties
-	UpdateBucket(ctx context.Context, in *UpdateBucketRequest, opts ...grpc.CallOption) (*UpdateBucketResponse, error)
+	// DeleteBucket Deletes an empty Bucket.
+	DeleteBucket(ctx context.Context, in *DeleteBucketRequest, opts ...grpc.CallOption) (*DeleteBucketResponse, error)
 	// ListBuckets Lists all Buckets.
 	ListBuckets(ctx context.Context, in *ListBucketsRequest, opts ...grpc.CallOption) (*ListBucketsResponse, error)
+	// UpdateBucket Updates Bucket properties
+	UpdateBucket(ctx context.Context, in *UpdateBucketRequest, opts ...grpc.CallOption) (*UpdateBucketResponse, error)
 }
 
 type bucketServiceClient struct {
@@ -47,16 +47,6 @@ type bucketServiceClient struct {
 
 func NewBucketServiceClient(cc grpc.ClientConnInterface) BucketServiceClient {
 	return &bucketServiceClient{cc}
-}
-
-func (c *bucketServiceClient) DeleteBucket(ctx context.Context, in *DeleteBucketRequest, opts ...grpc.CallOption) (*DeleteBucketResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteBucketResponse)
-	err := c.cc.Invoke(ctx, BucketService_DeleteBucket_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 func (c *bucketServiceClient) CreateBucket(ctx context.Context, in *CreateBucketRequest, opts ...grpc.CallOption) (*CreateBucketResponse, error) {
@@ -69,10 +59,10 @@ func (c *bucketServiceClient) CreateBucket(ctx context.Context, in *CreateBucket
 	return out, nil
 }
 
-func (c *bucketServiceClient) UpdateBucket(ctx context.Context, in *UpdateBucketRequest, opts ...grpc.CallOption) (*UpdateBucketResponse, error) {
+func (c *bucketServiceClient) DeleteBucket(ctx context.Context, in *DeleteBucketRequest, opts ...grpc.CallOption) (*DeleteBucketResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateBucketResponse)
-	err := c.cc.Invoke(ctx, BucketService_UpdateBucket_FullMethodName, in, out, cOpts...)
+	out := new(DeleteBucketResponse)
+	err := c.cc.Invoke(ctx, BucketService_DeleteBucket_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -89,20 +79,30 @@ func (c *bucketServiceClient) ListBuckets(ctx context.Context, in *ListBucketsRe
 	return out, nil
 }
 
+func (c *bucketServiceClient) UpdateBucket(ctx context.Context, in *UpdateBucketRequest, opts ...grpc.CallOption) (*UpdateBucketResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateBucketResponse)
+	err := c.cc.Invoke(ctx, BucketService_UpdateBucket_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // BucketServiceServer is the server API for BucketService service.
 // All implementations must embed UnimplementedBucketServiceServer
 // for forward compatibility.
 //
 // BucketService provides operations for managing Buckets
 type BucketServiceServer interface {
-	// DeleteBucket Deletes an empty Bucket.
-	DeleteBucket(context.Context, *DeleteBucketRequest) (*DeleteBucketResponse, error)
 	// CreateBucket Creates a bucket in the specified object storage pool.
 	CreateBucket(context.Context, *CreateBucketRequest) (*CreateBucketResponse, error)
-	// UpdateBucket Updates Bucket properties
-	UpdateBucket(context.Context, *UpdateBucketRequest) (*UpdateBucketResponse, error)
+	// DeleteBucket Deletes an empty Bucket.
+	DeleteBucket(context.Context, *DeleteBucketRequest) (*DeleteBucketResponse, error)
 	// ListBuckets Lists all Buckets.
 	ListBuckets(context.Context, *ListBucketsRequest) (*ListBucketsResponse, error)
+	// UpdateBucket Updates Bucket properties
+	UpdateBucket(context.Context, *UpdateBucketRequest) (*UpdateBucketResponse, error)
 	mustEmbedUnimplementedBucketServiceServer()
 }
 
@@ -113,17 +113,17 @@ type BucketServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedBucketServiceServer struct{}
 
-func (UnimplementedBucketServiceServer) DeleteBucket(context.Context, *DeleteBucketRequest) (*DeleteBucketResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteBucket not implemented")
-}
 func (UnimplementedBucketServiceServer) CreateBucket(context.Context, *CreateBucketRequest) (*CreateBucketResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateBucket not implemented")
 }
-func (UnimplementedBucketServiceServer) UpdateBucket(context.Context, *UpdateBucketRequest) (*UpdateBucketResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateBucket not implemented")
+func (UnimplementedBucketServiceServer) DeleteBucket(context.Context, *DeleteBucketRequest) (*DeleteBucketResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteBucket not implemented")
 }
 func (UnimplementedBucketServiceServer) ListBuckets(context.Context, *ListBucketsRequest) (*ListBucketsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListBuckets not implemented")
+}
+func (UnimplementedBucketServiceServer) UpdateBucket(context.Context, *UpdateBucketRequest) (*UpdateBucketResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateBucket not implemented")
 }
 func (UnimplementedBucketServiceServer) mustEmbedUnimplementedBucketServiceServer() {}
 func (UnimplementedBucketServiceServer) testEmbeddedByValue()                       {}
@@ -146,24 +146,6 @@ func RegisterBucketServiceServer(s grpc.ServiceRegistrar, srv BucketServiceServe
 	s.RegisterService(&BucketService_ServiceDesc, srv)
 }
 
-func _BucketService_DeleteBucket_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteBucketRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BucketServiceServer).DeleteBucket(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BucketService_DeleteBucket_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BucketServiceServer).DeleteBucket(ctx, req.(*DeleteBucketRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _BucketService_CreateBucket_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateBucketRequest)
 	if err := dec(in); err != nil {
@@ -182,20 +164,20 @@ func _BucketService_CreateBucket_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
-func _BucketService_UpdateBucket_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateBucketRequest)
+func _BucketService_DeleteBucket_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteBucketRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BucketServiceServer).UpdateBucket(ctx, in)
+		return srv.(BucketServiceServer).DeleteBucket(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: BucketService_UpdateBucket_FullMethodName,
+		FullMethod: BucketService_DeleteBucket_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BucketServiceServer).UpdateBucket(ctx, req.(*UpdateBucketRequest))
+		return srv.(BucketServiceServer).DeleteBucket(ctx, req.(*DeleteBucketRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -218,6 +200,24 @@ func _BucketService_ListBuckets_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _BucketService_UpdateBucket_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateBucketRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BucketServiceServer).UpdateBucket(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BucketService_UpdateBucket_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BucketServiceServer).UpdateBucket(ctx, req.(*UpdateBucketRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // BucketService_ServiceDesc is the grpc.ServiceDesc for BucketService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -226,20 +226,20 @@ var BucketService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*BucketServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "DeleteBucket",
-			Handler:    _BucketService_DeleteBucket_Handler,
-		},
-		{
 			MethodName: "CreateBucket",
 			Handler:    _BucketService_CreateBucket_Handler,
 		},
 		{
-			MethodName: "UpdateBucket",
-			Handler:    _BucketService_UpdateBucket_Handler,
+			MethodName: "DeleteBucket",
+			Handler:    _BucketService_DeleteBucket_Handler,
 		},
 		{
 			MethodName: "ListBuckets",
 			Handler:    _BucketService_ListBuckets_Handler,
+		},
+		{
+			MethodName: "UpdateBucket",
+			Handler:    _BucketService_UpdateBucket_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

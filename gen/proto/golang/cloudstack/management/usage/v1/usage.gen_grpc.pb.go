@@ -19,18 +19,18 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	UsageService_AddTrafficType_FullMethodName              = "/cloudstack.management.usage.v1.UsageService/AddTrafficType"
 	UsageService_AddTrafficMonitor_FullMethodName           = "/cloudstack.management.usage.v1.UsageService/AddTrafficMonitor"
-	UsageService_RemoveRawUsageRecords_FullMethodName       = "/cloudstack.management.usage.v1.UsageService/RemoveRawUsageRecords"
-	UsageService_ListUsageTypes_FullMethodName              = "/cloudstack.management.usage.v1.UsageService/ListUsageTypes"
-	UsageService_ListTrafficTypes_FullMethodName            = "/cloudstack.management.usage.v1.UsageService/ListTrafficTypes"
-	UsageService_UpdateTrafficType_FullMethodName           = "/cloudstack.management.usage.v1.UsageService/UpdateTrafficType"
+	UsageService_AddTrafficType_FullMethodName              = "/cloudstack.management.usage.v1.UsageService/AddTrafficType"
 	UsageService_DeleteTrafficMonitor_FullMethodName        = "/cloudstack.management.usage.v1.UsageService/DeleteTrafficMonitor"
-	UsageService_GenerateUsageRecords_FullMethodName        = "/cloudstack.management.usage.v1.UsageService/GenerateUsageRecords"
 	UsageService_DeleteTrafficType_FullMethodName           = "/cloudstack.management.usage.v1.UsageService/DeleteTrafficType"
+	UsageService_GenerateUsageRecords_FullMethodName        = "/cloudstack.management.usage.v1.UsageService/GenerateUsageRecords"
 	UsageService_ListTrafficMonitors_FullMethodName         = "/cloudstack.management.usage.v1.UsageService/ListTrafficMonitors"
-	UsageService_ListUsageRecords_FullMethodName            = "/cloudstack.management.usage.v1.UsageService/ListUsageRecords"
 	UsageService_ListTrafficTypeImplementors_FullMethodName = "/cloudstack.management.usage.v1.UsageService/ListTrafficTypeImplementors"
+	UsageService_ListTrafficTypes_FullMethodName            = "/cloudstack.management.usage.v1.UsageService/ListTrafficTypes"
+	UsageService_ListUsageRecords_FullMethodName            = "/cloudstack.management.usage.v1.UsageService/ListUsageRecords"
+	UsageService_ListUsageTypes_FullMethodName              = "/cloudstack.management.usage.v1.UsageService/ListUsageTypes"
+	UsageService_RemoveRawUsageRecords_FullMethodName       = "/cloudstack.management.usage.v1.UsageService/RemoveRawUsageRecords"
+	UsageService_UpdateTrafficType_FullMethodName           = "/cloudstack.management.usage.v1.UsageService/UpdateTrafficType"
 )
 
 // UsageServiceClient is the client API for UsageService service.
@@ -39,30 +39,30 @@ const (
 //
 // UsageService provides operations for managing Usages
 type UsageServiceClient interface {
-	// AddTrafficType Adds traffic type to a physical network
-	AddTrafficType(ctx context.Context, in *AddTrafficTypeRequest, opts ...grpc.CallOption) (*AddTrafficTypeResponse, error)
 	// AddTrafficMonitor Adds Traffic Monitor Host for Direct Network Usage
 	AddTrafficMonitor(ctx context.Context, in *AddTrafficMonitorRequest, opts ...grpc.CallOption) (*AddTrafficMonitorResponse, error)
-	// RemoveRawUsageRecords Safely removes raw records from cloud_usage table
-	RemoveRawUsageRecords(ctx context.Context, in *RemoveRawUsageRecordsRequest, opts ...grpc.CallOption) (*RemoveRawUsageRecordsResponse, error)
-	// ListUsageTypes List Usage Types
-	ListUsageTypes(ctx context.Context, in *ListUsageTypesRequest, opts ...grpc.CallOption) (*ListUsageTypesResponse, error)
-	// ListTrafficTypes Lists traffic types of a given physical network.
-	ListTrafficTypes(ctx context.Context, in *ListTrafficTypesRequest, opts ...grpc.CallOption) (*ListTrafficTypesResponse, error)
-	// UpdateTrafficType Updates traffic type of a physical network
-	UpdateTrafficType(ctx context.Context, in *UpdateTrafficTypeRequest, opts ...grpc.CallOption) (*UpdateTrafficTypeResponse, error)
+	// AddTrafficType Adds traffic type to a physical network
+	AddTrafficType(ctx context.Context, in *AddTrafficTypeRequest, opts ...grpc.CallOption) (*AddTrafficTypeResponse, error)
 	// DeleteTrafficMonitor Deletes an traffic monitor host.
 	DeleteTrafficMonitor(ctx context.Context, in *DeleteTrafficMonitorRequest, opts ...grpc.CallOption) (*DeleteTrafficMonitorResponse, error)
-	// GenerateUsageRecords Generates usage records. This will generate records only if there any records to be generated, i.e if the scheduled usage job was not run or failed
-	GenerateUsageRecords(ctx context.Context, in *GenerateUsageRecordsRequest, opts ...grpc.CallOption) (*GenerateUsageRecordsResponse, error)
 	// DeleteTrafficType Deletes traffic type of a physical network
 	DeleteTrafficType(ctx context.Context, in *DeleteTrafficTypeRequest, opts ...grpc.CallOption) (*DeleteTrafficTypeResponse, error)
+	// GenerateUsageRecords Generates usage records. This will generate records only if there any records to be generated, i.e if the scheduled usage job was not run or failed
+	GenerateUsageRecords(ctx context.Context, in *GenerateUsageRecordsRequest, opts ...grpc.CallOption) (*GenerateUsageRecordsResponse, error)
 	// ListTrafficMonitors List traffic monitor Hosts.
 	ListTrafficMonitors(ctx context.Context, in *ListTrafficMonitorsRequest, opts ...grpc.CallOption) (*ListTrafficMonitorsResponse, error)
-	// ListUsageRecords Lists usage records for accounts
-	ListUsageRecords(ctx context.Context, in *ListUsageRecordsRequest, opts ...grpc.CallOption) (*ListUsageRecordsResponse, error)
 	// ListTrafficTypeImplementors Lists implementors of implementor of a network traffic type or implementors of all network traffic types
 	ListTrafficTypeImplementors(ctx context.Context, in *ListTrafficTypeImplementorsRequest, opts ...grpc.CallOption) (*ListTrafficTypeImplementorsResponse, error)
+	// ListTrafficTypes Lists traffic types of a given physical network.
+	ListTrafficTypes(ctx context.Context, in *ListTrafficTypesRequest, opts ...grpc.CallOption) (*ListTrafficTypesResponse, error)
+	// ListUsageRecords Lists usage records for accounts
+	ListUsageRecords(ctx context.Context, in *ListUsageRecordsRequest, opts ...grpc.CallOption) (*ListUsageRecordsResponse, error)
+	// ListUsageTypes List Usage Types
+	ListUsageTypes(ctx context.Context, in *ListUsageTypesRequest, opts ...grpc.CallOption) (*ListUsageTypesResponse, error)
+	// RemoveRawUsageRecords Safely removes raw records from cloud_usage table
+	RemoveRawUsageRecords(ctx context.Context, in *RemoveRawUsageRecordsRequest, opts ...grpc.CallOption) (*RemoveRawUsageRecordsResponse, error)
+	// UpdateTrafficType Updates traffic type of a physical network
+	UpdateTrafficType(ctx context.Context, in *UpdateTrafficTypeRequest, opts ...grpc.CallOption) (*UpdateTrafficTypeResponse, error)
 }
 
 type usageServiceClient struct {
@@ -71,16 +71,6 @@ type usageServiceClient struct {
 
 func NewUsageServiceClient(cc grpc.ClientConnInterface) UsageServiceClient {
 	return &usageServiceClient{cc}
-}
-
-func (c *usageServiceClient) AddTrafficType(ctx context.Context, in *AddTrafficTypeRequest, opts ...grpc.CallOption) (*AddTrafficTypeResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AddTrafficTypeResponse)
-	err := c.cc.Invoke(ctx, UsageService_AddTrafficType_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 func (c *usageServiceClient) AddTrafficMonitor(ctx context.Context, in *AddTrafficMonitorRequest, opts ...grpc.CallOption) (*AddTrafficMonitorResponse, error) {
@@ -93,40 +83,10 @@ func (c *usageServiceClient) AddTrafficMonitor(ctx context.Context, in *AddTraff
 	return out, nil
 }
 
-func (c *usageServiceClient) RemoveRawUsageRecords(ctx context.Context, in *RemoveRawUsageRecordsRequest, opts ...grpc.CallOption) (*RemoveRawUsageRecordsResponse, error) {
+func (c *usageServiceClient) AddTrafficType(ctx context.Context, in *AddTrafficTypeRequest, opts ...grpc.CallOption) (*AddTrafficTypeResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RemoveRawUsageRecordsResponse)
-	err := c.cc.Invoke(ctx, UsageService_RemoveRawUsageRecords_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *usageServiceClient) ListUsageTypes(ctx context.Context, in *ListUsageTypesRequest, opts ...grpc.CallOption) (*ListUsageTypesResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListUsageTypesResponse)
-	err := c.cc.Invoke(ctx, UsageService_ListUsageTypes_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *usageServiceClient) ListTrafficTypes(ctx context.Context, in *ListTrafficTypesRequest, opts ...grpc.CallOption) (*ListTrafficTypesResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListTrafficTypesResponse)
-	err := c.cc.Invoke(ctx, UsageService_ListTrafficTypes_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *usageServiceClient) UpdateTrafficType(ctx context.Context, in *UpdateTrafficTypeRequest, opts ...grpc.CallOption) (*UpdateTrafficTypeResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateTrafficTypeResponse)
-	err := c.cc.Invoke(ctx, UsageService_UpdateTrafficType_FullMethodName, in, out, cOpts...)
+	out := new(AddTrafficTypeResponse)
+	err := c.cc.Invoke(ctx, UsageService_AddTrafficType_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -143,20 +103,20 @@ func (c *usageServiceClient) DeleteTrafficMonitor(ctx context.Context, in *Delet
 	return out, nil
 }
 
-func (c *usageServiceClient) GenerateUsageRecords(ctx context.Context, in *GenerateUsageRecordsRequest, opts ...grpc.CallOption) (*GenerateUsageRecordsResponse, error) {
+func (c *usageServiceClient) DeleteTrafficType(ctx context.Context, in *DeleteTrafficTypeRequest, opts ...grpc.CallOption) (*DeleteTrafficTypeResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GenerateUsageRecordsResponse)
-	err := c.cc.Invoke(ctx, UsageService_GenerateUsageRecords_FullMethodName, in, out, cOpts...)
+	out := new(DeleteTrafficTypeResponse)
+	err := c.cc.Invoke(ctx, UsageService_DeleteTrafficType_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *usageServiceClient) DeleteTrafficType(ctx context.Context, in *DeleteTrafficTypeRequest, opts ...grpc.CallOption) (*DeleteTrafficTypeResponse, error) {
+func (c *usageServiceClient) GenerateUsageRecords(ctx context.Context, in *GenerateUsageRecordsRequest, opts ...grpc.CallOption) (*GenerateUsageRecordsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteTrafficTypeResponse)
-	err := c.cc.Invoke(ctx, UsageService_DeleteTrafficType_FullMethodName, in, out, cOpts...)
+	out := new(GenerateUsageRecordsResponse)
+	err := c.cc.Invoke(ctx, UsageService_GenerateUsageRecords_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -173,6 +133,26 @@ func (c *usageServiceClient) ListTrafficMonitors(ctx context.Context, in *ListTr
 	return out, nil
 }
 
+func (c *usageServiceClient) ListTrafficTypeImplementors(ctx context.Context, in *ListTrafficTypeImplementorsRequest, opts ...grpc.CallOption) (*ListTrafficTypeImplementorsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListTrafficTypeImplementorsResponse)
+	err := c.cc.Invoke(ctx, UsageService_ListTrafficTypeImplementors_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *usageServiceClient) ListTrafficTypes(ctx context.Context, in *ListTrafficTypesRequest, opts ...grpc.CallOption) (*ListTrafficTypesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListTrafficTypesResponse)
+	err := c.cc.Invoke(ctx, UsageService_ListTrafficTypes_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *usageServiceClient) ListUsageRecords(ctx context.Context, in *ListUsageRecordsRequest, opts ...grpc.CallOption) (*ListUsageRecordsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListUsageRecordsResponse)
@@ -183,10 +163,30 @@ func (c *usageServiceClient) ListUsageRecords(ctx context.Context, in *ListUsage
 	return out, nil
 }
 
-func (c *usageServiceClient) ListTrafficTypeImplementors(ctx context.Context, in *ListTrafficTypeImplementorsRequest, opts ...grpc.CallOption) (*ListTrafficTypeImplementorsResponse, error) {
+func (c *usageServiceClient) ListUsageTypes(ctx context.Context, in *ListUsageTypesRequest, opts ...grpc.CallOption) (*ListUsageTypesResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListTrafficTypeImplementorsResponse)
-	err := c.cc.Invoke(ctx, UsageService_ListTrafficTypeImplementors_FullMethodName, in, out, cOpts...)
+	out := new(ListUsageTypesResponse)
+	err := c.cc.Invoke(ctx, UsageService_ListUsageTypes_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *usageServiceClient) RemoveRawUsageRecords(ctx context.Context, in *RemoveRawUsageRecordsRequest, opts ...grpc.CallOption) (*RemoveRawUsageRecordsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RemoveRawUsageRecordsResponse)
+	err := c.cc.Invoke(ctx, UsageService_RemoveRawUsageRecords_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *usageServiceClient) UpdateTrafficType(ctx context.Context, in *UpdateTrafficTypeRequest, opts ...grpc.CallOption) (*UpdateTrafficTypeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateTrafficTypeResponse)
+	err := c.cc.Invoke(ctx, UsageService_UpdateTrafficType_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -199,30 +199,30 @@ func (c *usageServiceClient) ListTrafficTypeImplementors(ctx context.Context, in
 //
 // UsageService provides operations for managing Usages
 type UsageServiceServer interface {
-	// AddTrafficType Adds traffic type to a physical network
-	AddTrafficType(context.Context, *AddTrafficTypeRequest) (*AddTrafficTypeResponse, error)
 	// AddTrafficMonitor Adds Traffic Monitor Host for Direct Network Usage
 	AddTrafficMonitor(context.Context, *AddTrafficMonitorRequest) (*AddTrafficMonitorResponse, error)
-	// RemoveRawUsageRecords Safely removes raw records from cloud_usage table
-	RemoveRawUsageRecords(context.Context, *RemoveRawUsageRecordsRequest) (*RemoveRawUsageRecordsResponse, error)
-	// ListUsageTypes List Usage Types
-	ListUsageTypes(context.Context, *ListUsageTypesRequest) (*ListUsageTypesResponse, error)
-	// ListTrafficTypes Lists traffic types of a given physical network.
-	ListTrafficTypes(context.Context, *ListTrafficTypesRequest) (*ListTrafficTypesResponse, error)
-	// UpdateTrafficType Updates traffic type of a physical network
-	UpdateTrafficType(context.Context, *UpdateTrafficTypeRequest) (*UpdateTrafficTypeResponse, error)
+	// AddTrafficType Adds traffic type to a physical network
+	AddTrafficType(context.Context, *AddTrafficTypeRequest) (*AddTrafficTypeResponse, error)
 	// DeleteTrafficMonitor Deletes an traffic monitor host.
 	DeleteTrafficMonitor(context.Context, *DeleteTrafficMonitorRequest) (*DeleteTrafficMonitorResponse, error)
-	// GenerateUsageRecords Generates usage records. This will generate records only if there any records to be generated, i.e if the scheduled usage job was not run or failed
-	GenerateUsageRecords(context.Context, *GenerateUsageRecordsRequest) (*GenerateUsageRecordsResponse, error)
 	// DeleteTrafficType Deletes traffic type of a physical network
 	DeleteTrafficType(context.Context, *DeleteTrafficTypeRequest) (*DeleteTrafficTypeResponse, error)
+	// GenerateUsageRecords Generates usage records. This will generate records only if there any records to be generated, i.e if the scheduled usage job was not run or failed
+	GenerateUsageRecords(context.Context, *GenerateUsageRecordsRequest) (*GenerateUsageRecordsResponse, error)
 	// ListTrafficMonitors List traffic monitor Hosts.
 	ListTrafficMonitors(context.Context, *ListTrafficMonitorsRequest) (*ListTrafficMonitorsResponse, error)
-	// ListUsageRecords Lists usage records for accounts
-	ListUsageRecords(context.Context, *ListUsageRecordsRequest) (*ListUsageRecordsResponse, error)
 	// ListTrafficTypeImplementors Lists implementors of implementor of a network traffic type or implementors of all network traffic types
 	ListTrafficTypeImplementors(context.Context, *ListTrafficTypeImplementorsRequest) (*ListTrafficTypeImplementorsResponse, error)
+	// ListTrafficTypes Lists traffic types of a given physical network.
+	ListTrafficTypes(context.Context, *ListTrafficTypesRequest) (*ListTrafficTypesResponse, error)
+	// ListUsageRecords Lists usage records for accounts
+	ListUsageRecords(context.Context, *ListUsageRecordsRequest) (*ListUsageRecordsResponse, error)
+	// ListUsageTypes List Usage Types
+	ListUsageTypes(context.Context, *ListUsageTypesRequest) (*ListUsageTypesResponse, error)
+	// RemoveRawUsageRecords Safely removes raw records from cloud_usage table
+	RemoveRawUsageRecords(context.Context, *RemoveRawUsageRecordsRequest) (*RemoveRawUsageRecordsResponse, error)
+	// UpdateTrafficType Updates traffic type of a physical network
+	UpdateTrafficType(context.Context, *UpdateTrafficTypeRequest) (*UpdateTrafficTypeResponse, error)
 	mustEmbedUnimplementedUsageServiceServer()
 }
 
@@ -233,41 +233,41 @@ type UsageServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedUsageServiceServer struct{}
 
-func (UnimplementedUsageServiceServer) AddTrafficType(context.Context, *AddTrafficTypeRequest) (*AddTrafficTypeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddTrafficType not implemented")
-}
 func (UnimplementedUsageServiceServer) AddTrafficMonitor(context.Context, *AddTrafficMonitorRequest) (*AddTrafficMonitorResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddTrafficMonitor not implemented")
 }
-func (UnimplementedUsageServiceServer) RemoveRawUsageRecords(context.Context, *RemoveRawUsageRecordsRequest) (*RemoveRawUsageRecordsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RemoveRawUsageRecords not implemented")
-}
-func (UnimplementedUsageServiceServer) ListUsageTypes(context.Context, *ListUsageTypesRequest) (*ListUsageTypesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListUsageTypes not implemented")
-}
-func (UnimplementedUsageServiceServer) ListTrafficTypes(context.Context, *ListTrafficTypesRequest) (*ListTrafficTypesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListTrafficTypes not implemented")
-}
-func (UnimplementedUsageServiceServer) UpdateTrafficType(context.Context, *UpdateTrafficTypeRequest) (*UpdateTrafficTypeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateTrafficType not implemented")
+func (UnimplementedUsageServiceServer) AddTrafficType(context.Context, *AddTrafficTypeRequest) (*AddTrafficTypeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddTrafficType not implemented")
 }
 func (UnimplementedUsageServiceServer) DeleteTrafficMonitor(context.Context, *DeleteTrafficMonitorRequest) (*DeleteTrafficMonitorResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteTrafficMonitor not implemented")
 }
-func (UnimplementedUsageServiceServer) GenerateUsageRecords(context.Context, *GenerateUsageRecordsRequest) (*GenerateUsageRecordsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GenerateUsageRecords not implemented")
-}
 func (UnimplementedUsageServiceServer) DeleteTrafficType(context.Context, *DeleteTrafficTypeRequest) (*DeleteTrafficTypeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteTrafficType not implemented")
+}
+func (UnimplementedUsageServiceServer) GenerateUsageRecords(context.Context, *GenerateUsageRecordsRequest) (*GenerateUsageRecordsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GenerateUsageRecords not implemented")
 }
 func (UnimplementedUsageServiceServer) ListTrafficMonitors(context.Context, *ListTrafficMonitorsRequest) (*ListTrafficMonitorsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListTrafficMonitors not implemented")
 }
+func (UnimplementedUsageServiceServer) ListTrafficTypeImplementors(context.Context, *ListTrafficTypeImplementorsRequest) (*ListTrafficTypeImplementorsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTrafficTypeImplementors not implemented")
+}
+func (UnimplementedUsageServiceServer) ListTrafficTypes(context.Context, *ListTrafficTypesRequest) (*ListTrafficTypesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTrafficTypes not implemented")
+}
 func (UnimplementedUsageServiceServer) ListUsageRecords(context.Context, *ListUsageRecordsRequest) (*ListUsageRecordsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListUsageRecords not implemented")
 }
-func (UnimplementedUsageServiceServer) ListTrafficTypeImplementors(context.Context, *ListTrafficTypeImplementorsRequest) (*ListTrafficTypeImplementorsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListTrafficTypeImplementors not implemented")
+func (UnimplementedUsageServiceServer) ListUsageTypes(context.Context, *ListUsageTypesRequest) (*ListUsageTypesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListUsageTypes not implemented")
+}
+func (UnimplementedUsageServiceServer) RemoveRawUsageRecords(context.Context, *RemoveRawUsageRecordsRequest) (*RemoveRawUsageRecordsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveRawUsageRecords not implemented")
+}
+func (UnimplementedUsageServiceServer) UpdateTrafficType(context.Context, *UpdateTrafficTypeRequest) (*UpdateTrafficTypeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateTrafficType not implemented")
 }
 func (UnimplementedUsageServiceServer) mustEmbedUnimplementedUsageServiceServer() {}
 func (UnimplementedUsageServiceServer) testEmbeddedByValue()                      {}
@@ -290,24 +290,6 @@ func RegisterUsageServiceServer(s grpc.ServiceRegistrar, srv UsageServiceServer)
 	s.RegisterService(&UsageService_ServiceDesc, srv)
 }
 
-func _UsageService_AddTrafficType_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddTrafficTypeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(UsageServiceServer).AddTrafficType(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: UsageService_AddTrafficType_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UsageServiceServer).AddTrafficType(ctx, req.(*AddTrafficTypeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _UsageService_AddTrafficMonitor_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(AddTrafficMonitorRequest)
 	if err := dec(in); err != nil {
@@ -326,74 +308,20 @@ func _UsageService_AddTrafficMonitor_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UsageService_RemoveRawUsageRecords_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RemoveRawUsageRecordsRequest)
+func _UsageService_AddTrafficType_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddTrafficTypeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UsageServiceServer).RemoveRawUsageRecords(ctx, in)
+		return srv.(UsageServiceServer).AddTrafficType(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: UsageService_RemoveRawUsageRecords_FullMethodName,
+		FullMethod: UsageService_AddTrafficType_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UsageServiceServer).RemoveRawUsageRecords(ctx, req.(*RemoveRawUsageRecordsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _UsageService_ListUsageTypes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListUsageTypesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(UsageServiceServer).ListUsageTypes(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: UsageService_ListUsageTypes_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UsageServiceServer).ListUsageTypes(ctx, req.(*ListUsageTypesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _UsageService_ListTrafficTypes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListTrafficTypesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(UsageServiceServer).ListTrafficTypes(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: UsageService_ListTrafficTypes_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UsageServiceServer).ListTrafficTypes(ctx, req.(*ListTrafficTypesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _UsageService_UpdateTrafficType_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateTrafficTypeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(UsageServiceServer).UpdateTrafficType(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: UsageService_UpdateTrafficType_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UsageServiceServer).UpdateTrafficType(ctx, req.(*UpdateTrafficTypeRequest))
+		return srv.(UsageServiceServer).AddTrafficType(ctx, req.(*AddTrafficTypeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -416,24 +344,6 @@ func _UsageService_DeleteTrafficMonitor_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UsageService_GenerateUsageRecords_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GenerateUsageRecordsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(UsageServiceServer).GenerateUsageRecords(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: UsageService_GenerateUsageRecords_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UsageServiceServer).GenerateUsageRecords(ctx, req.(*GenerateUsageRecordsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _UsageService_DeleteTrafficType_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteTrafficTypeRequest)
 	if err := dec(in); err != nil {
@@ -448,6 +358,24 @@ func _UsageService_DeleteTrafficType_Handler(srv interface{}, ctx context.Contex
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UsageServiceServer).DeleteTrafficType(ctx, req.(*DeleteTrafficTypeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UsageService_GenerateUsageRecords_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GenerateUsageRecordsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UsageServiceServer).GenerateUsageRecords(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UsageService_GenerateUsageRecords_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UsageServiceServer).GenerateUsageRecords(ctx, req.(*GenerateUsageRecordsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -470,24 +398,6 @@ func _UsageService_ListTrafficMonitors_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UsageService_ListUsageRecords_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListUsageRecordsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(UsageServiceServer).ListUsageRecords(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: UsageService_ListUsageRecords_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UsageServiceServer).ListUsageRecords(ctx, req.(*ListUsageRecordsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _UsageService_ListTrafficTypeImplementors_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListTrafficTypeImplementorsRequest)
 	if err := dec(in); err != nil {
@@ -506,6 +416,96 @@ func _UsageService_ListTrafficTypeImplementors_Handler(srv interface{}, ctx cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UsageService_ListTrafficTypes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListTrafficTypesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UsageServiceServer).ListTrafficTypes(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UsageService_ListTrafficTypes_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UsageServiceServer).ListTrafficTypes(ctx, req.(*ListTrafficTypesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UsageService_ListUsageRecords_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListUsageRecordsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UsageServiceServer).ListUsageRecords(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UsageService_ListUsageRecords_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UsageServiceServer).ListUsageRecords(ctx, req.(*ListUsageRecordsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UsageService_ListUsageTypes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListUsageTypesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UsageServiceServer).ListUsageTypes(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UsageService_ListUsageTypes_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UsageServiceServer).ListUsageTypes(ctx, req.(*ListUsageTypesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UsageService_RemoveRawUsageRecords_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveRawUsageRecordsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UsageServiceServer).RemoveRawUsageRecords(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UsageService_RemoveRawUsageRecords_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UsageServiceServer).RemoveRawUsageRecords(ctx, req.(*RemoveRawUsageRecordsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UsageService_UpdateTrafficType_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateTrafficTypeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UsageServiceServer).UpdateTrafficType(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UsageService_UpdateTrafficType_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UsageServiceServer).UpdateTrafficType(ctx, req.(*UpdateTrafficTypeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UsageService_ServiceDesc is the grpc.ServiceDesc for UsageService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -514,52 +514,52 @@ var UsageService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*UsageServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "AddTrafficType",
-			Handler:    _UsageService_AddTrafficType_Handler,
-		},
-		{
 			MethodName: "AddTrafficMonitor",
 			Handler:    _UsageService_AddTrafficMonitor_Handler,
 		},
 		{
-			MethodName: "RemoveRawUsageRecords",
-			Handler:    _UsageService_RemoveRawUsageRecords_Handler,
-		},
-		{
-			MethodName: "ListUsageTypes",
-			Handler:    _UsageService_ListUsageTypes_Handler,
-		},
-		{
-			MethodName: "ListTrafficTypes",
-			Handler:    _UsageService_ListTrafficTypes_Handler,
-		},
-		{
-			MethodName: "UpdateTrafficType",
-			Handler:    _UsageService_UpdateTrafficType_Handler,
+			MethodName: "AddTrafficType",
+			Handler:    _UsageService_AddTrafficType_Handler,
 		},
 		{
 			MethodName: "DeleteTrafficMonitor",
 			Handler:    _UsageService_DeleteTrafficMonitor_Handler,
 		},
 		{
-			MethodName: "GenerateUsageRecords",
-			Handler:    _UsageService_GenerateUsageRecords_Handler,
-		},
-		{
 			MethodName: "DeleteTrafficType",
 			Handler:    _UsageService_DeleteTrafficType_Handler,
+		},
+		{
+			MethodName: "GenerateUsageRecords",
+			Handler:    _UsageService_GenerateUsageRecords_Handler,
 		},
 		{
 			MethodName: "ListTrafficMonitors",
 			Handler:    _UsageService_ListTrafficMonitors_Handler,
 		},
 		{
+			MethodName: "ListTrafficTypeImplementors",
+			Handler:    _UsageService_ListTrafficTypeImplementors_Handler,
+		},
+		{
+			MethodName: "ListTrafficTypes",
+			Handler:    _UsageService_ListTrafficTypes_Handler,
+		},
+		{
 			MethodName: "ListUsageRecords",
 			Handler:    _UsageService_ListUsageRecords_Handler,
 		},
 		{
-			MethodName: "ListTrafficTypeImplementors",
-			Handler:    _UsageService_ListTrafficTypeImplementors_Handler,
+			MethodName: "ListUsageTypes",
+			Handler:    _UsageService_ListUsageTypes_Handler,
+		},
+		{
+			MethodName: "RemoveRawUsageRecords",
+			Handler:    _UsageService_RemoveRawUsageRecords_Handler,
+		},
+		{
+			MethodName: "UpdateTrafficType",
+			Handler:    _UsageService_UpdateTrafficType_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -19,10 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	RoutingService_ListRoutingFirewallRules_FullMethodName  = "/cloudstack.management.network.routing.v1.RoutingService/ListRoutingFirewallRules"
 	RoutingService_CreateRoutingFirewallRule_FullMethodName = "/cloudstack.management.network.routing.v1.RoutingService/CreateRoutingFirewallRule"
-	RoutingService_UpdateRoutingFirewallRule_FullMethodName = "/cloudstack.management.network.routing.v1.RoutingService/UpdateRoutingFirewallRule"
 	RoutingService_DeleteRoutingFirewallRule_FullMethodName = "/cloudstack.management.network.routing.v1.RoutingService/DeleteRoutingFirewallRule"
+	RoutingService_ListRoutingFirewallRules_FullMethodName  = "/cloudstack.management.network.routing.v1.RoutingService/ListRoutingFirewallRules"
+	RoutingService_UpdateRoutingFirewallRule_FullMethodName = "/cloudstack.management.network.routing.v1.RoutingService/UpdateRoutingFirewallRule"
 )
 
 // RoutingServiceClient is the client API for RoutingService service.
@@ -31,14 +31,14 @@ const (
 //
 // RoutingService provides operations for managing Network.Routings
 type RoutingServiceClient interface {
-	// ListRoutingFirewallRules Lists all Routing firewall rules
-	ListRoutingFirewallRules(ctx context.Context, in *ListRoutingFirewallRulesRequest, opts ...grpc.CallOption) (*ListRoutingFirewallRulesResponse, error)
 	// CreateRoutingFirewallRule Creates a routing firewall rule in the given network in ROUTED mode
 	CreateRoutingFirewallRule(ctx context.Context, in *CreateRoutingFirewallRuleRequest, opts ...grpc.CallOption) (*CreateRoutingFirewallRuleResponse, error)
-	// UpdateRoutingFirewallRule Updates Routing firewall rule with specified ID
-	UpdateRoutingFirewallRule(ctx context.Context, in *UpdateRoutingFirewallRuleRequest, opts ...grpc.CallOption) (*UpdateRoutingFirewallRuleResponse, error)
 	// DeleteRoutingFirewallRule Deletes a routing firewall rule
 	DeleteRoutingFirewallRule(ctx context.Context, in *DeleteRoutingFirewallRuleRequest, opts ...grpc.CallOption) (*DeleteRoutingFirewallRuleResponse, error)
+	// ListRoutingFirewallRules Lists all Routing firewall rules
+	ListRoutingFirewallRules(ctx context.Context, in *ListRoutingFirewallRulesRequest, opts ...grpc.CallOption) (*ListRoutingFirewallRulesResponse, error)
+	// UpdateRoutingFirewallRule Updates Routing firewall rule with specified ID
+	UpdateRoutingFirewallRule(ctx context.Context, in *UpdateRoutingFirewallRuleRequest, opts ...grpc.CallOption) (*UpdateRoutingFirewallRuleResponse, error)
 }
 
 type routingServiceClient struct {
@@ -49,30 +49,10 @@ func NewRoutingServiceClient(cc grpc.ClientConnInterface) RoutingServiceClient {
 	return &routingServiceClient{cc}
 }
 
-func (c *routingServiceClient) ListRoutingFirewallRules(ctx context.Context, in *ListRoutingFirewallRulesRequest, opts ...grpc.CallOption) (*ListRoutingFirewallRulesResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListRoutingFirewallRulesResponse)
-	err := c.cc.Invoke(ctx, RoutingService_ListRoutingFirewallRules_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *routingServiceClient) CreateRoutingFirewallRule(ctx context.Context, in *CreateRoutingFirewallRuleRequest, opts ...grpc.CallOption) (*CreateRoutingFirewallRuleResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreateRoutingFirewallRuleResponse)
 	err := c.cc.Invoke(ctx, RoutingService_CreateRoutingFirewallRule_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *routingServiceClient) UpdateRoutingFirewallRule(ctx context.Context, in *UpdateRoutingFirewallRuleRequest, opts ...grpc.CallOption) (*UpdateRoutingFirewallRuleResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateRoutingFirewallRuleResponse)
-	err := c.cc.Invoke(ctx, RoutingService_UpdateRoutingFirewallRule_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -89,20 +69,40 @@ func (c *routingServiceClient) DeleteRoutingFirewallRule(ctx context.Context, in
 	return out, nil
 }
 
+func (c *routingServiceClient) ListRoutingFirewallRules(ctx context.Context, in *ListRoutingFirewallRulesRequest, opts ...grpc.CallOption) (*ListRoutingFirewallRulesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListRoutingFirewallRulesResponse)
+	err := c.cc.Invoke(ctx, RoutingService_ListRoutingFirewallRules_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *routingServiceClient) UpdateRoutingFirewallRule(ctx context.Context, in *UpdateRoutingFirewallRuleRequest, opts ...grpc.CallOption) (*UpdateRoutingFirewallRuleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateRoutingFirewallRuleResponse)
+	err := c.cc.Invoke(ctx, RoutingService_UpdateRoutingFirewallRule_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RoutingServiceServer is the server API for RoutingService service.
 // All implementations must embed UnimplementedRoutingServiceServer
 // for forward compatibility.
 //
 // RoutingService provides operations for managing Network.Routings
 type RoutingServiceServer interface {
-	// ListRoutingFirewallRules Lists all Routing firewall rules
-	ListRoutingFirewallRules(context.Context, *ListRoutingFirewallRulesRequest) (*ListRoutingFirewallRulesResponse, error)
 	// CreateRoutingFirewallRule Creates a routing firewall rule in the given network in ROUTED mode
 	CreateRoutingFirewallRule(context.Context, *CreateRoutingFirewallRuleRequest) (*CreateRoutingFirewallRuleResponse, error)
-	// UpdateRoutingFirewallRule Updates Routing firewall rule with specified ID
-	UpdateRoutingFirewallRule(context.Context, *UpdateRoutingFirewallRuleRequest) (*UpdateRoutingFirewallRuleResponse, error)
 	// DeleteRoutingFirewallRule Deletes a routing firewall rule
 	DeleteRoutingFirewallRule(context.Context, *DeleteRoutingFirewallRuleRequest) (*DeleteRoutingFirewallRuleResponse, error)
+	// ListRoutingFirewallRules Lists all Routing firewall rules
+	ListRoutingFirewallRules(context.Context, *ListRoutingFirewallRulesRequest) (*ListRoutingFirewallRulesResponse, error)
+	// UpdateRoutingFirewallRule Updates Routing firewall rule with specified ID
+	UpdateRoutingFirewallRule(context.Context, *UpdateRoutingFirewallRuleRequest) (*UpdateRoutingFirewallRuleResponse, error)
 	mustEmbedUnimplementedRoutingServiceServer()
 }
 
@@ -113,17 +113,17 @@ type RoutingServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedRoutingServiceServer struct{}
 
-func (UnimplementedRoutingServiceServer) ListRoutingFirewallRules(context.Context, *ListRoutingFirewallRulesRequest) (*ListRoutingFirewallRulesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListRoutingFirewallRules not implemented")
-}
 func (UnimplementedRoutingServiceServer) CreateRoutingFirewallRule(context.Context, *CreateRoutingFirewallRuleRequest) (*CreateRoutingFirewallRuleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateRoutingFirewallRule not implemented")
 }
-func (UnimplementedRoutingServiceServer) UpdateRoutingFirewallRule(context.Context, *UpdateRoutingFirewallRuleRequest) (*UpdateRoutingFirewallRuleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateRoutingFirewallRule not implemented")
-}
 func (UnimplementedRoutingServiceServer) DeleteRoutingFirewallRule(context.Context, *DeleteRoutingFirewallRuleRequest) (*DeleteRoutingFirewallRuleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteRoutingFirewallRule not implemented")
+}
+func (UnimplementedRoutingServiceServer) ListRoutingFirewallRules(context.Context, *ListRoutingFirewallRulesRequest) (*ListRoutingFirewallRulesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListRoutingFirewallRules not implemented")
+}
+func (UnimplementedRoutingServiceServer) UpdateRoutingFirewallRule(context.Context, *UpdateRoutingFirewallRuleRequest) (*UpdateRoutingFirewallRuleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateRoutingFirewallRule not implemented")
 }
 func (UnimplementedRoutingServiceServer) mustEmbedUnimplementedRoutingServiceServer() {}
 func (UnimplementedRoutingServiceServer) testEmbeddedByValue()                        {}
@@ -146,24 +146,6 @@ func RegisterRoutingServiceServer(s grpc.ServiceRegistrar, srv RoutingServiceSer
 	s.RegisterService(&RoutingService_ServiceDesc, srv)
 }
 
-func _RoutingService_ListRoutingFirewallRules_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListRoutingFirewallRulesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RoutingServiceServer).ListRoutingFirewallRules(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RoutingService_ListRoutingFirewallRules_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RoutingServiceServer).ListRoutingFirewallRules(ctx, req.(*ListRoutingFirewallRulesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _RoutingService_CreateRoutingFirewallRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateRoutingFirewallRuleRequest)
 	if err := dec(in); err != nil {
@@ -178,24 +160,6 @@ func _RoutingService_CreateRoutingFirewallRule_Handler(srv interface{}, ctx cont
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RoutingServiceServer).CreateRoutingFirewallRule(ctx, req.(*CreateRoutingFirewallRuleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RoutingService_UpdateRoutingFirewallRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateRoutingFirewallRuleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RoutingServiceServer).UpdateRoutingFirewallRule(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RoutingService_UpdateRoutingFirewallRule_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RoutingServiceServer).UpdateRoutingFirewallRule(ctx, req.(*UpdateRoutingFirewallRuleRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -218,6 +182,42 @@ func _RoutingService_DeleteRoutingFirewallRule_Handler(srv interface{}, ctx cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RoutingService_ListRoutingFirewallRules_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListRoutingFirewallRulesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RoutingServiceServer).ListRoutingFirewallRules(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RoutingService_ListRoutingFirewallRules_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RoutingServiceServer).ListRoutingFirewallRules(ctx, req.(*ListRoutingFirewallRulesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RoutingService_UpdateRoutingFirewallRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateRoutingFirewallRuleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RoutingServiceServer).UpdateRoutingFirewallRule(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RoutingService_UpdateRoutingFirewallRule_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RoutingServiceServer).UpdateRoutingFirewallRule(ctx, req.(*UpdateRoutingFirewallRuleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RoutingService_ServiceDesc is the grpc.ServiceDesc for RoutingService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -226,20 +226,20 @@ var RoutingService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*RoutingServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "ListRoutingFirewallRules",
-			Handler:    _RoutingService_ListRoutingFirewallRules_Handler,
-		},
-		{
 			MethodName: "CreateRoutingFirewallRule",
 			Handler:    _RoutingService_CreateRoutingFirewallRule_Handler,
 		},
 		{
-			MethodName: "UpdateRoutingFirewallRule",
-			Handler:    _RoutingService_UpdateRoutingFirewallRule_Handler,
-		},
-		{
 			MethodName: "DeleteRoutingFirewallRule",
 			Handler:    _RoutingService_DeleteRoutingFirewallRule_Handler,
+		},
+		{
+			MethodName: "ListRoutingFirewallRules",
+			Handler:    _RoutingService_ListRoutingFirewallRules_Handler,
+		},
+		{
+			MethodName: "UpdateRoutingFirewallRule",
+			Handler:    _RoutingService_UpdateRoutingFirewallRule_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

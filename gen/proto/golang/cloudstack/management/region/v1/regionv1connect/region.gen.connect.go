@@ -33,44 +33,44 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// RegionServiceDeletePortableIpRangeProcedure is the fully-qualified name of the RegionService's
-	// DeletePortableIpRange RPC.
-	RegionServiceDeletePortableIpRangeProcedure = "/cloudstack.management.region.v1.RegionService/DeletePortableIpRange"
-	// RegionServiceRemoveRegionProcedure is the fully-qualified name of the RegionService's
-	// RemoveRegion RPC.
-	RegionServiceRemoveRegionProcedure = "/cloudstack.management.region.v1.RegionService/RemoveRegion"
+	// RegionServiceAddRegionProcedure is the fully-qualified name of the RegionService's AddRegion RPC.
+	RegionServiceAddRegionProcedure = "/cloudstack.management.region.v1.RegionService/AddRegion"
 	// RegionServiceCreatePortableIpRangeProcedure is the fully-qualified name of the RegionService's
 	// CreatePortableIpRange RPC.
 	RegionServiceCreatePortableIpRangeProcedure = "/cloudstack.management.region.v1.RegionService/CreatePortableIpRange"
-	// RegionServiceUpdateRegionProcedure is the fully-qualified name of the RegionService's
-	// UpdateRegion RPC.
-	RegionServiceUpdateRegionProcedure = "/cloudstack.management.region.v1.RegionService/UpdateRegion"
+	// RegionServiceDeletePortableIpRangeProcedure is the fully-qualified name of the RegionService's
+	// DeletePortableIpRange RPC.
+	RegionServiceDeletePortableIpRangeProcedure = "/cloudstack.management.region.v1.RegionService/DeletePortableIpRange"
 	// RegionServiceListPortableIpRangesProcedure is the fully-qualified name of the RegionService's
 	// ListPortableIpRanges RPC.
 	RegionServiceListPortableIpRangesProcedure = "/cloudstack.management.region.v1.RegionService/ListPortableIpRanges"
-	// RegionServiceAddRegionProcedure is the fully-qualified name of the RegionService's AddRegion RPC.
-	RegionServiceAddRegionProcedure = "/cloudstack.management.region.v1.RegionService/AddRegion"
 	// RegionServiceListRegionsProcedure is the fully-qualified name of the RegionService's ListRegions
 	// RPC.
 	RegionServiceListRegionsProcedure = "/cloudstack.management.region.v1.RegionService/ListRegions"
+	// RegionServiceRemoveRegionProcedure is the fully-qualified name of the RegionService's
+	// RemoveRegion RPC.
+	RegionServiceRemoveRegionProcedure = "/cloudstack.management.region.v1.RegionService/RemoveRegion"
+	// RegionServiceUpdateRegionProcedure is the fully-qualified name of the RegionService's
+	// UpdateRegion RPC.
+	RegionServiceUpdateRegionProcedure = "/cloudstack.management.region.v1.RegionService/UpdateRegion"
 )
 
 // RegionServiceClient is a client for the cloudstack.management.region.v1.RegionService service.
 type RegionServiceClient interface {
-	// DeletePortableIpRange deletes a range of portable public IP's associated with a region
-	DeletePortableIpRange(context.Context, *connect.Request[v1.DeletePortableIpRangeRequest]) (*connect.Response[v1.DeletePortableIpRangeResponse], error)
-	// RemoveRegion Removes specified region
-	RemoveRegion(context.Context, *connect.Request[v1.RemoveRegionRequest]) (*connect.Response[v1.RemoveRegionResponse], error)
-	// CreatePortableIpRange adds a range of portable public IP's to a region
-	CreatePortableIpRange(context.Context, *connect.Request[v1.CreatePortableIpRangeRequest]) (*connect.Response[v1.CreatePortableIpRangeResponse], error)
-	// UpdateRegion Updates a region
-	UpdateRegion(context.Context, *connect.Request[v1.UpdateRegionRequest]) (*connect.Response[v1.UpdateRegionResponse], error)
-	// ListPortableIpRanges list portable IP ranges
-	ListPortableIpRanges(context.Context, *connect.Request[v1.ListPortableIpRangesRequest]) (*connect.Response[v1.ListPortableIpRangesResponse], error)
 	// AddRegion Adds a Region
 	AddRegion(context.Context, *connect.Request[v1.AddRegionRequest]) (*connect.Response[v1.AddRegionResponse], error)
+	// CreatePortableIpRange adds a range of portable public IP's to a region
+	CreatePortableIpRange(context.Context, *connect.Request[v1.CreatePortableIpRangeRequest]) (*connect.Response[v1.CreatePortableIpRangeResponse], error)
+	// DeletePortableIpRange deletes a range of portable public IP's associated with a region
+	DeletePortableIpRange(context.Context, *connect.Request[v1.DeletePortableIpRangeRequest]) (*connect.Response[v1.DeletePortableIpRangeResponse], error)
+	// ListPortableIpRanges list portable IP ranges
+	ListPortableIpRanges(context.Context, *connect.Request[v1.ListPortableIpRangesRequest]) (*connect.Response[v1.ListPortableIpRangesResponse], error)
 	// ListRegions Lists Regions
 	ListRegions(context.Context, *connect.Request[v1.ListRegionsRequest]) (*connect.Response[v1.ListRegionsResponse], error)
+	// RemoveRegion Removes specified region
+	RemoveRegion(context.Context, *connect.Request[v1.RemoveRegionRequest]) (*connect.Response[v1.RemoveRegionResponse], error)
+	// UpdateRegion Updates a region
+	UpdateRegion(context.Context, *connect.Request[v1.UpdateRegionRequest]) (*connect.Response[v1.UpdateRegionResponse], error)
 }
 
 // NewRegionServiceClient constructs a client for the cloudstack.management.region.v1.RegionService
@@ -84,16 +84,10 @@ func NewRegionServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 	baseURL = strings.TrimRight(baseURL, "/")
 	regionServiceMethods := v1.File_cloudstack_management_region_v1_region_gen_proto.Services().ByName("RegionService").Methods()
 	return &regionServiceClient{
-		deletePortableIpRange: connect.NewClient[v1.DeletePortableIpRangeRequest, v1.DeletePortableIpRangeResponse](
+		addRegion: connect.NewClient[v1.AddRegionRequest, v1.AddRegionResponse](
 			httpClient,
-			baseURL+RegionServiceDeletePortableIpRangeProcedure,
-			connect.WithSchema(regionServiceMethods.ByName("DeletePortableIpRange")),
-			connect.WithClientOptions(opts...),
-		),
-		removeRegion: connect.NewClient[v1.RemoveRegionRequest, v1.RemoveRegionResponse](
-			httpClient,
-			baseURL+RegionServiceRemoveRegionProcedure,
-			connect.WithSchema(regionServiceMethods.ByName("RemoveRegion")),
+			baseURL+RegionServiceAddRegionProcedure,
+			connect.WithSchema(regionServiceMethods.ByName("AddRegion")),
 			connect.WithClientOptions(opts...),
 		),
 		createPortableIpRange: connect.NewClient[v1.CreatePortableIpRangeRequest, v1.CreatePortableIpRangeResponse](
@@ -102,10 +96,10 @@ func NewRegionServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			connect.WithSchema(regionServiceMethods.ByName("CreatePortableIpRange")),
 			connect.WithClientOptions(opts...),
 		),
-		updateRegion: connect.NewClient[v1.UpdateRegionRequest, v1.UpdateRegionResponse](
+		deletePortableIpRange: connect.NewClient[v1.DeletePortableIpRangeRequest, v1.DeletePortableIpRangeResponse](
 			httpClient,
-			baseURL+RegionServiceUpdateRegionProcedure,
-			connect.WithSchema(regionServiceMethods.ByName("UpdateRegion")),
+			baseURL+RegionServiceDeletePortableIpRangeProcedure,
+			connect.WithSchema(regionServiceMethods.ByName("DeletePortableIpRange")),
 			connect.WithClientOptions(opts...),
 		),
 		listPortableIpRanges: connect.NewClient[v1.ListPortableIpRangesRequest, v1.ListPortableIpRangesResponse](
@@ -114,16 +108,22 @@ func NewRegionServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			connect.WithSchema(regionServiceMethods.ByName("ListPortableIpRanges")),
 			connect.WithClientOptions(opts...),
 		),
-		addRegion: connect.NewClient[v1.AddRegionRequest, v1.AddRegionResponse](
-			httpClient,
-			baseURL+RegionServiceAddRegionProcedure,
-			connect.WithSchema(regionServiceMethods.ByName("AddRegion")),
-			connect.WithClientOptions(opts...),
-		),
 		listRegions: connect.NewClient[v1.ListRegionsRequest, v1.ListRegionsResponse](
 			httpClient,
 			baseURL+RegionServiceListRegionsProcedure,
 			connect.WithSchema(regionServiceMethods.ByName("ListRegions")),
+			connect.WithClientOptions(opts...),
+		),
+		removeRegion: connect.NewClient[v1.RemoveRegionRequest, v1.RemoveRegionResponse](
+			httpClient,
+			baseURL+RegionServiceRemoveRegionProcedure,
+			connect.WithSchema(regionServiceMethods.ByName("RemoveRegion")),
+			connect.WithClientOptions(opts...),
+		),
+		updateRegion: connect.NewClient[v1.UpdateRegionRequest, v1.UpdateRegionResponse](
+			httpClient,
+			baseURL+RegionServiceUpdateRegionProcedure,
+			connect.WithSchema(regionServiceMethods.ByName("UpdateRegion")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -131,38 +131,13 @@ func NewRegionServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 
 // regionServiceClient implements RegionServiceClient.
 type regionServiceClient struct {
-	deletePortableIpRange *connect.Client[v1.DeletePortableIpRangeRequest, v1.DeletePortableIpRangeResponse]
-	removeRegion          *connect.Client[v1.RemoveRegionRequest, v1.RemoveRegionResponse]
-	createPortableIpRange *connect.Client[v1.CreatePortableIpRangeRequest, v1.CreatePortableIpRangeResponse]
-	updateRegion          *connect.Client[v1.UpdateRegionRequest, v1.UpdateRegionResponse]
-	listPortableIpRanges  *connect.Client[v1.ListPortableIpRangesRequest, v1.ListPortableIpRangesResponse]
 	addRegion             *connect.Client[v1.AddRegionRequest, v1.AddRegionResponse]
+	createPortableIpRange *connect.Client[v1.CreatePortableIpRangeRequest, v1.CreatePortableIpRangeResponse]
+	deletePortableIpRange *connect.Client[v1.DeletePortableIpRangeRequest, v1.DeletePortableIpRangeResponse]
+	listPortableIpRanges  *connect.Client[v1.ListPortableIpRangesRequest, v1.ListPortableIpRangesResponse]
 	listRegions           *connect.Client[v1.ListRegionsRequest, v1.ListRegionsResponse]
-}
-
-// DeletePortableIpRange calls cloudstack.management.region.v1.RegionService.DeletePortableIpRange.
-func (c *regionServiceClient) DeletePortableIpRange(ctx context.Context, req *connect.Request[v1.DeletePortableIpRangeRequest]) (*connect.Response[v1.DeletePortableIpRangeResponse], error) {
-	return c.deletePortableIpRange.CallUnary(ctx, req)
-}
-
-// RemoveRegion calls cloudstack.management.region.v1.RegionService.RemoveRegion.
-func (c *regionServiceClient) RemoveRegion(ctx context.Context, req *connect.Request[v1.RemoveRegionRequest]) (*connect.Response[v1.RemoveRegionResponse], error) {
-	return c.removeRegion.CallUnary(ctx, req)
-}
-
-// CreatePortableIpRange calls cloudstack.management.region.v1.RegionService.CreatePortableIpRange.
-func (c *regionServiceClient) CreatePortableIpRange(ctx context.Context, req *connect.Request[v1.CreatePortableIpRangeRequest]) (*connect.Response[v1.CreatePortableIpRangeResponse], error) {
-	return c.createPortableIpRange.CallUnary(ctx, req)
-}
-
-// UpdateRegion calls cloudstack.management.region.v1.RegionService.UpdateRegion.
-func (c *regionServiceClient) UpdateRegion(ctx context.Context, req *connect.Request[v1.UpdateRegionRequest]) (*connect.Response[v1.UpdateRegionResponse], error) {
-	return c.updateRegion.CallUnary(ctx, req)
-}
-
-// ListPortableIpRanges calls cloudstack.management.region.v1.RegionService.ListPortableIpRanges.
-func (c *regionServiceClient) ListPortableIpRanges(ctx context.Context, req *connect.Request[v1.ListPortableIpRangesRequest]) (*connect.Response[v1.ListPortableIpRangesResponse], error) {
-	return c.listPortableIpRanges.CallUnary(ctx, req)
+	removeRegion          *connect.Client[v1.RemoveRegionRequest, v1.RemoveRegionResponse]
+	updateRegion          *connect.Client[v1.UpdateRegionRequest, v1.UpdateRegionResponse]
 }
 
 // AddRegion calls cloudstack.management.region.v1.RegionService.AddRegion.
@@ -170,28 +145,53 @@ func (c *regionServiceClient) AddRegion(ctx context.Context, req *connect.Reques
 	return c.addRegion.CallUnary(ctx, req)
 }
 
+// CreatePortableIpRange calls cloudstack.management.region.v1.RegionService.CreatePortableIpRange.
+func (c *regionServiceClient) CreatePortableIpRange(ctx context.Context, req *connect.Request[v1.CreatePortableIpRangeRequest]) (*connect.Response[v1.CreatePortableIpRangeResponse], error) {
+	return c.createPortableIpRange.CallUnary(ctx, req)
+}
+
+// DeletePortableIpRange calls cloudstack.management.region.v1.RegionService.DeletePortableIpRange.
+func (c *regionServiceClient) DeletePortableIpRange(ctx context.Context, req *connect.Request[v1.DeletePortableIpRangeRequest]) (*connect.Response[v1.DeletePortableIpRangeResponse], error) {
+	return c.deletePortableIpRange.CallUnary(ctx, req)
+}
+
+// ListPortableIpRanges calls cloudstack.management.region.v1.RegionService.ListPortableIpRanges.
+func (c *regionServiceClient) ListPortableIpRanges(ctx context.Context, req *connect.Request[v1.ListPortableIpRangesRequest]) (*connect.Response[v1.ListPortableIpRangesResponse], error) {
+	return c.listPortableIpRanges.CallUnary(ctx, req)
+}
+
 // ListRegions calls cloudstack.management.region.v1.RegionService.ListRegions.
 func (c *regionServiceClient) ListRegions(ctx context.Context, req *connect.Request[v1.ListRegionsRequest]) (*connect.Response[v1.ListRegionsResponse], error) {
 	return c.listRegions.CallUnary(ctx, req)
 }
 
+// RemoveRegion calls cloudstack.management.region.v1.RegionService.RemoveRegion.
+func (c *regionServiceClient) RemoveRegion(ctx context.Context, req *connect.Request[v1.RemoveRegionRequest]) (*connect.Response[v1.RemoveRegionResponse], error) {
+	return c.removeRegion.CallUnary(ctx, req)
+}
+
+// UpdateRegion calls cloudstack.management.region.v1.RegionService.UpdateRegion.
+func (c *regionServiceClient) UpdateRegion(ctx context.Context, req *connect.Request[v1.UpdateRegionRequest]) (*connect.Response[v1.UpdateRegionResponse], error) {
+	return c.updateRegion.CallUnary(ctx, req)
+}
+
 // RegionServiceHandler is an implementation of the cloudstack.management.region.v1.RegionService
 // service.
 type RegionServiceHandler interface {
-	// DeletePortableIpRange deletes a range of portable public IP's associated with a region
-	DeletePortableIpRange(context.Context, *connect.Request[v1.DeletePortableIpRangeRequest]) (*connect.Response[v1.DeletePortableIpRangeResponse], error)
-	// RemoveRegion Removes specified region
-	RemoveRegion(context.Context, *connect.Request[v1.RemoveRegionRequest]) (*connect.Response[v1.RemoveRegionResponse], error)
-	// CreatePortableIpRange adds a range of portable public IP's to a region
-	CreatePortableIpRange(context.Context, *connect.Request[v1.CreatePortableIpRangeRequest]) (*connect.Response[v1.CreatePortableIpRangeResponse], error)
-	// UpdateRegion Updates a region
-	UpdateRegion(context.Context, *connect.Request[v1.UpdateRegionRequest]) (*connect.Response[v1.UpdateRegionResponse], error)
-	// ListPortableIpRanges list portable IP ranges
-	ListPortableIpRanges(context.Context, *connect.Request[v1.ListPortableIpRangesRequest]) (*connect.Response[v1.ListPortableIpRangesResponse], error)
 	// AddRegion Adds a Region
 	AddRegion(context.Context, *connect.Request[v1.AddRegionRequest]) (*connect.Response[v1.AddRegionResponse], error)
+	// CreatePortableIpRange adds a range of portable public IP's to a region
+	CreatePortableIpRange(context.Context, *connect.Request[v1.CreatePortableIpRangeRequest]) (*connect.Response[v1.CreatePortableIpRangeResponse], error)
+	// DeletePortableIpRange deletes a range of portable public IP's associated with a region
+	DeletePortableIpRange(context.Context, *connect.Request[v1.DeletePortableIpRangeRequest]) (*connect.Response[v1.DeletePortableIpRangeResponse], error)
+	// ListPortableIpRanges list portable IP ranges
+	ListPortableIpRanges(context.Context, *connect.Request[v1.ListPortableIpRangesRequest]) (*connect.Response[v1.ListPortableIpRangesResponse], error)
 	// ListRegions Lists Regions
 	ListRegions(context.Context, *connect.Request[v1.ListRegionsRequest]) (*connect.Response[v1.ListRegionsResponse], error)
+	// RemoveRegion Removes specified region
+	RemoveRegion(context.Context, *connect.Request[v1.RemoveRegionRequest]) (*connect.Response[v1.RemoveRegionResponse], error)
+	// UpdateRegion Updates a region
+	UpdateRegion(context.Context, *connect.Request[v1.UpdateRegionRequest]) (*connect.Response[v1.UpdateRegionResponse], error)
 }
 
 // NewRegionServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -201,16 +201,10 @@ type RegionServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewRegionServiceHandler(svc RegionServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	regionServiceMethods := v1.File_cloudstack_management_region_v1_region_gen_proto.Services().ByName("RegionService").Methods()
-	regionServiceDeletePortableIpRangeHandler := connect.NewUnaryHandler(
-		RegionServiceDeletePortableIpRangeProcedure,
-		svc.DeletePortableIpRange,
-		connect.WithSchema(regionServiceMethods.ByName("DeletePortableIpRange")),
-		connect.WithHandlerOptions(opts...),
-	)
-	regionServiceRemoveRegionHandler := connect.NewUnaryHandler(
-		RegionServiceRemoveRegionProcedure,
-		svc.RemoveRegion,
-		connect.WithSchema(regionServiceMethods.ByName("RemoveRegion")),
+	regionServiceAddRegionHandler := connect.NewUnaryHandler(
+		RegionServiceAddRegionProcedure,
+		svc.AddRegion,
+		connect.WithSchema(regionServiceMethods.ByName("AddRegion")),
 		connect.WithHandlerOptions(opts...),
 	)
 	regionServiceCreatePortableIpRangeHandler := connect.NewUnaryHandler(
@@ -219,10 +213,10 @@ func NewRegionServiceHandler(svc RegionServiceHandler, opts ...connect.HandlerOp
 		connect.WithSchema(regionServiceMethods.ByName("CreatePortableIpRange")),
 		connect.WithHandlerOptions(opts...),
 	)
-	regionServiceUpdateRegionHandler := connect.NewUnaryHandler(
-		RegionServiceUpdateRegionProcedure,
-		svc.UpdateRegion,
-		connect.WithSchema(regionServiceMethods.ByName("UpdateRegion")),
+	regionServiceDeletePortableIpRangeHandler := connect.NewUnaryHandler(
+		RegionServiceDeletePortableIpRangeProcedure,
+		svc.DeletePortableIpRange,
+		connect.WithSchema(regionServiceMethods.ByName("DeletePortableIpRange")),
 		connect.WithHandlerOptions(opts...),
 	)
 	regionServiceListPortableIpRangesHandler := connect.NewUnaryHandler(
@@ -231,34 +225,40 @@ func NewRegionServiceHandler(svc RegionServiceHandler, opts ...connect.HandlerOp
 		connect.WithSchema(regionServiceMethods.ByName("ListPortableIpRanges")),
 		connect.WithHandlerOptions(opts...),
 	)
-	regionServiceAddRegionHandler := connect.NewUnaryHandler(
-		RegionServiceAddRegionProcedure,
-		svc.AddRegion,
-		connect.WithSchema(regionServiceMethods.ByName("AddRegion")),
-		connect.WithHandlerOptions(opts...),
-	)
 	regionServiceListRegionsHandler := connect.NewUnaryHandler(
 		RegionServiceListRegionsProcedure,
 		svc.ListRegions,
 		connect.WithSchema(regionServiceMethods.ByName("ListRegions")),
 		connect.WithHandlerOptions(opts...),
 	)
+	regionServiceRemoveRegionHandler := connect.NewUnaryHandler(
+		RegionServiceRemoveRegionProcedure,
+		svc.RemoveRegion,
+		connect.WithSchema(regionServiceMethods.ByName("RemoveRegion")),
+		connect.WithHandlerOptions(opts...),
+	)
+	regionServiceUpdateRegionHandler := connect.NewUnaryHandler(
+		RegionServiceUpdateRegionProcedure,
+		svc.UpdateRegion,
+		connect.WithSchema(regionServiceMethods.ByName("UpdateRegion")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.region.v1.RegionService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case RegionServiceDeletePortableIpRangeProcedure:
-			regionServiceDeletePortableIpRangeHandler.ServeHTTP(w, r)
-		case RegionServiceRemoveRegionProcedure:
-			regionServiceRemoveRegionHandler.ServeHTTP(w, r)
-		case RegionServiceCreatePortableIpRangeProcedure:
-			regionServiceCreatePortableIpRangeHandler.ServeHTTP(w, r)
-		case RegionServiceUpdateRegionProcedure:
-			regionServiceUpdateRegionHandler.ServeHTTP(w, r)
-		case RegionServiceListPortableIpRangesProcedure:
-			regionServiceListPortableIpRangesHandler.ServeHTTP(w, r)
 		case RegionServiceAddRegionProcedure:
 			regionServiceAddRegionHandler.ServeHTTP(w, r)
+		case RegionServiceCreatePortableIpRangeProcedure:
+			regionServiceCreatePortableIpRangeHandler.ServeHTTP(w, r)
+		case RegionServiceDeletePortableIpRangeProcedure:
+			regionServiceDeletePortableIpRangeHandler.ServeHTTP(w, r)
+		case RegionServiceListPortableIpRangesProcedure:
+			regionServiceListPortableIpRangesHandler.ServeHTTP(w, r)
 		case RegionServiceListRegionsProcedure:
 			regionServiceListRegionsHandler.ServeHTTP(w, r)
+		case RegionServiceRemoveRegionProcedure:
+			regionServiceRemoveRegionHandler.ServeHTTP(w, r)
+		case RegionServiceUpdateRegionProcedure:
+			regionServiceUpdateRegionHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -268,30 +268,30 @@ func NewRegionServiceHandler(svc RegionServiceHandler, opts ...connect.HandlerOp
 // UnimplementedRegionServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedRegionServiceHandler struct{}
 
-func (UnimplementedRegionServiceHandler) DeletePortableIpRange(context.Context, *connect.Request[v1.DeletePortableIpRangeRequest]) (*connect.Response[v1.DeletePortableIpRangeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.region.v1.RegionService.DeletePortableIpRange is not implemented"))
-}
-
-func (UnimplementedRegionServiceHandler) RemoveRegion(context.Context, *connect.Request[v1.RemoveRegionRequest]) (*connect.Response[v1.RemoveRegionResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.region.v1.RegionService.RemoveRegion is not implemented"))
+func (UnimplementedRegionServiceHandler) AddRegion(context.Context, *connect.Request[v1.AddRegionRequest]) (*connect.Response[v1.AddRegionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.region.v1.RegionService.AddRegion is not implemented"))
 }
 
 func (UnimplementedRegionServiceHandler) CreatePortableIpRange(context.Context, *connect.Request[v1.CreatePortableIpRangeRequest]) (*connect.Response[v1.CreatePortableIpRangeResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.region.v1.RegionService.CreatePortableIpRange is not implemented"))
 }
 
-func (UnimplementedRegionServiceHandler) UpdateRegion(context.Context, *connect.Request[v1.UpdateRegionRequest]) (*connect.Response[v1.UpdateRegionResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.region.v1.RegionService.UpdateRegion is not implemented"))
+func (UnimplementedRegionServiceHandler) DeletePortableIpRange(context.Context, *connect.Request[v1.DeletePortableIpRangeRequest]) (*connect.Response[v1.DeletePortableIpRangeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.region.v1.RegionService.DeletePortableIpRange is not implemented"))
 }
 
 func (UnimplementedRegionServiceHandler) ListPortableIpRanges(context.Context, *connect.Request[v1.ListPortableIpRangesRequest]) (*connect.Response[v1.ListPortableIpRangesResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.region.v1.RegionService.ListPortableIpRanges is not implemented"))
 }
 
-func (UnimplementedRegionServiceHandler) AddRegion(context.Context, *connect.Request[v1.AddRegionRequest]) (*connect.Response[v1.AddRegionResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.region.v1.RegionService.AddRegion is not implemented"))
-}
-
 func (UnimplementedRegionServiceHandler) ListRegions(context.Context, *connect.Request[v1.ListRegionsRequest]) (*connect.Response[v1.ListRegionsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.region.v1.RegionService.ListRegions is not implemented"))
+}
+
+func (UnimplementedRegionServiceHandler) RemoveRegion(context.Context, *connect.Request[v1.RemoveRegionRequest]) (*connect.Response[v1.RemoveRegionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.region.v1.RegionService.RemoveRegion is not implemented"))
+}
+
+func (UnimplementedRegionServiceHandler) UpdateRegion(context.Context, *connect.Request[v1.UpdateRegionRequest]) (*connect.Response[v1.UpdateRegionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.region.v1.RegionService.UpdateRegion is not implemented"))
 }

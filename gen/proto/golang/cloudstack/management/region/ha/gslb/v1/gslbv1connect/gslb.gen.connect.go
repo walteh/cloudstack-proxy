@@ -33,41 +33,41 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// GslbServiceCreateGlobalLoadBalancerRuleProcedure is the fully-qualified name of the GslbService's
-	// CreateGlobalLoadBalancerRule RPC.
-	GslbServiceCreateGlobalLoadBalancerRuleProcedure = "/cloudstack.management.region.ha.gslb.v1.GslbService/CreateGlobalLoadBalancerRule"
-	// GslbServiceListGlobalLoadBalancerRuleProcedure is the fully-qualified name of the GslbService's
-	// ListGlobalLoadBalancerRule RPC.
-	GslbServiceListGlobalLoadBalancerRuleProcedure = "/cloudstack.management.region.ha.gslb.v1.GslbService/ListGlobalLoadBalancerRule"
-	// GslbServiceUpdateGlobalLoadBalancerRuleProcedure is the fully-qualified name of the GslbService's
-	// UpdateGlobalLoadBalancerRule RPC.
-	GslbServiceUpdateGlobalLoadBalancerRuleProcedure = "/cloudstack.management.region.ha.gslb.v1.GslbService/UpdateGlobalLoadBalancerRule"
 	// GslbServiceAssignToGlobalLoadBalancerRuleProcedure is the fully-qualified name of the
 	// GslbService's AssignToGlobalLoadBalancerRule RPC.
 	GslbServiceAssignToGlobalLoadBalancerRuleProcedure = "/cloudstack.management.region.ha.gslb.v1.GslbService/AssignToGlobalLoadBalancerRule"
+	// GslbServiceCreateGlobalLoadBalancerRuleProcedure is the fully-qualified name of the GslbService's
+	// CreateGlobalLoadBalancerRule RPC.
+	GslbServiceCreateGlobalLoadBalancerRuleProcedure = "/cloudstack.management.region.ha.gslb.v1.GslbService/CreateGlobalLoadBalancerRule"
 	// GslbServiceDeleteGlobalLoadBalancerRuleProcedure is the fully-qualified name of the GslbService's
 	// DeleteGlobalLoadBalancerRule RPC.
 	GslbServiceDeleteGlobalLoadBalancerRuleProcedure = "/cloudstack.management.region.ha.gslb.v1.GslbService/DeleteGlobalLoadBalancerRule"
+	// GslbServiceListGlobalLoadBalancerRuleProcedure is the fully-qualified name of the GslbService's
+	// ListGlobalLoadBalancerRule RPC.
+	GslbServiceListGlobalLoadBalancerRuleProcedure = "/cloudstack.management.region.ha.gslb.v1.GslbService/ListGlobalLoadBalancerRule"
 	// GslbServiceRemoveFromGlobalLoadBalancerRuleProcedure is the fully-qualified name of the
 	// GslbService's RemoveFromGlobalLoadBalancerRule RPC.
 	GslbServiceRemoveFromGlobalLoadBalancerRuleProcedure = "/cloudstack.management.region.ha.gslb.v1.GslbService/RemoveFromGlobalLoadBalancerRule"
+	// GslbServiceUpdateGlobalLoadBalancerRuleProcedure is the fully-qualified name of the GslbService's
+	// UpdateGlobalLoadBalancerRule RPC.
+	GslbServiceUpdateGlobalLoadBalancerRuleProcedure = "/cloudstack.management.region.ha.gslb.v1.GslbService/UpdateGlobalLoadBalancerRule"
 )
 
 // GslbServiceClient is a client for the cloudstack.management.region.ha.gslb.v1.GslbService
 // service.
 type GslbServiceClient interface {
-	// CreateGlobalLoadBalancerRule Creates a global load balancer rule
-	CreateGlobalLoadBalancerRule(context.Context, *connect.Request[v1.CreateGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.CreateGlobalLoadBalancerRuleResponse], error)
-	// ListGlobalLoadBalancerRule Lists load balancer rules.
-	ListGlobalLoadBalancerRule(context.Context, *connect.Request[v1.ListGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.ListGlobalLoadBalancerRuleResponse], error)
-	// UpdateGlobalLoadBalancerRule update global load balancer rules.
-	UpdateGlobalLoadBalancerRule(context.Context, *connect.Request[v1.UpdateGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.UpdateGlobalLoadBalancerRuleResponse], error)
 	// AssignToGlobalLoadBalancerRule Assign load balancer rule or list of load balancer rules to a global load balancer rules.
 	AssignToGlobalLoadBalancerRule(context.Context, *connect.Request[v1.AssignToGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.AssignToGlobalLoadBalancerRuleResponse], error)
+	// CreateGlobalLoadBalancerRule Creates a global load balancer rule
+	CreateGlobalLoadBalancerRule(context.Context, *connect.Request[v1.CreateGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.CreateGlobalLoadBalancerRuleResponse], error)
 	// DeleteGlobalLoadBalancerRule Deletes a global load balancer rule.
 	DeleteGlobalLoadBalancerRule(context.Context, *connect.Request[v1.DeleteGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.DeleteGlobalLoadBalancerRuleResponse], error)
+	// ListGlobalLoadBalancerRule Lists load balancer rules.
+	ListGlobalLoadBalancerRule(context.Context, *connect.Request[v1.ListGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.ListGlobalLoadBalancerRuleResponse], error)
 	// RemoveFromGlobalLoadBalancerRule Removes a load balancer rule association with global load balancer rule
 	RemoveFromGlobalLoadBalancerRule(context.Context, *connect.Request[v1.RemoveFromGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.RemoveFromGlobalLoadBalancerRuleResponse], error)
+	// UpdateGlobalLoadBalancerRule update global load balancer rules.
+	UpdateGlobalLoadBalancerRule(context.Context, *connect.Request[v1.UpdateGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.UpdateGlobalLoadBalancerRuleResponse], error)
 }
 
 // NewGslbServiceClient constructs a client for the
@@ -82,28 +82,16 @@ func NewGslbServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 	baseURL = strings.TrimRight(baseURL, "/")
 	gslbServiceMethods := v1.File_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto.Services().ByName("GslbService").Methods()
 	return &gslbServiceClient{
-		createGlobalLoadBalancerRule: connect.NewClient[v1.CreateGlobalLoadBalancerRuleRequest, v1.CreateGlobalLoadBalancerRuleResponse](
-			httpClient,
-			baseURL+GslbServiceCreateGlobalLoadBalancerRuleProcedure,
-			connect.WithSchema(gslbServiceMethods.ByName("CreateGlobalLoadBalancerRule")),
-			connect.WithClientOptions(opts...),
-		),
-		listGlobalLoadBalancerRule: connect.NewClient[v1.ListGlobalLoadBalancerRuleRequest, v1.ListGlobalLoadBalancerRuleResponse](
-			httpClient,
-			baseURL+GslbServiceListGlobalLoadBalancerRuleProcedure,
-			connect.WithSchema(gslbServiceMethods.ByName("ListGlobalLoadBalancerRule")),
-			connect.WithClientOptions(opts...),
-		),
-		updateGlobalLoadBalancerRule: connect.NewClient[v1.UpdateGlobalLoadBalancerRuleRequest, v1.UpdateGlobalLoadBalancerRuleResponse](
-			httpClient,
-			baseURL+GslbServiceUpdateGlobalLoadBalancerRuleProcedure,
-			connect.WithSchema(gslbServiceMethods.ByName("UpdateGlobalLoadBalancerRule")),
-			connect.WithClientOptions(opts...),
-		),
 		assignToGlobalLoadBalancerRule: connect.NewClient[v1.AssignToGlobalLoadBalancerRuleRequest, v1.AssignToGlobalLoadBalancerRuleResponse](
 			httpClient,
 			baseURL+GslbServiceAssignToGlobalLoadBalancerRuleProcedure,
 			connect.WithSchema(gslbServiceMethods.ByName("AssignToGlobalLoadBalancerRule")),
+			connect.WithClientOptions(opts...),
+		),
+		createGlobalLoadBalancerRule: connect.NewClient[v1.CreateGlobalLoadBalancerRuleRequest, v1.CreateGlobalLoadBalancerRuleResponse](
+			httpClient,
+			baseURL+GslbServiceCreateGlobalLoadBalancerRuleProcedure,
+			connect.WithSchema(gslbServiceMethods.ByName("CreateGlobalLoadBalancerRule")),
 			connect.WithClientOptions(opts...),
 		),
 		deleteGlobalLoadBalancerRule: connect.NewClient[v1.DeleteGlobalLoadBalancerRuleRequest, v1.DeleteGlobalLoadBalancerRuleResponse](
@@ -112,10 +100,22 @@ func NewGslbServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithSchema(gslbServiceMethods.ByName("DeleteGlobalLoadBalancerRule")),
 			connect.WithClientOptions(opts...),
 		),
+		listGlobalLoadBalancerRule: connect.NewClient[v1.ListGlobalLoadBalancerRuleRequest, v1.ListGlobalLoadBalancerRuleResponse](
+			httpClient,
+			baseURL+GslbServiceListGlobalLoadBalancerRuleProcedure,
+			connect.WithSchema(gslbServiceMethods.ByName("ListGlobalLoadBalancerRule")),
+			connect.WithClientOptions(opts...),
+		),
 		removeFromGlobalLoadBalancerRule: connect.NewClient[v1.RemoveFromGlobalLoadBalancerRuleRequest, v1.RemoveFromGlobalLoadBalancerRuleResponse](
 			httpClient,
 			baseURL+GslbServiceRemoveFromGlobalLoadBalancerRuleProcedure,
 			connect.WithSchema(gslbServiceMethods.ByName("RemoveFromGlobalLoadBalancerRule")),
+			connect.WithClientOptions(opts...),
+		),
+		updateGlobalLoadBalancerRule: connect.NewClient[v1.UpdateGlobalLoadBalancerRuleRequest, v1.UpdateGlobalLoadBalancerRuleResponse](
+			httpClient,
+			baseURL+GslbServiceUpdateGlobalLoadBalancerRuleProcedure,
+			connect.WithSchema(gslbServiceMethods.ByName("UpdateGlobalLoadBalancerRule")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -123,30 +123,12 @@ func NewGslbServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 
 // gslbServiceClient implements GslbServiceClient.
 type gslbServiceClient struct {
-	createGlobalLoadBalancerRule     *connect.Client[v1.CreateGlobalLoadBalancerRuleRequest, v1.CreateGlobalLoadBalancerRuleResponse]
-	listGlobalLoadBalancerRule       *connect.Client[v1.ListGlobalLoadBalancerRuleRequest, v1.ListGlobalLoadBalancerRuleResponse]
-	updateGlobalLoadBalancerRule     *connect.Client[v1.UpdateGlobalLoadBalancerRuleRequest, v1.UpdateGlobalLoadBalancerRuleResponse]
 	assignToGlobalLoadBalancerRule   *connect.Client[v1.AssignToGlobalLoadBalancerRuleRequest, v1.AssignToGlobalLoadBalancerRuleResponse]
+	createGlobalLoadBalancerRule     *connect.Client[v1.CreateGlobalLoadBalancerRuleRequest, v1.CreateGlobalLoadBalancerRuleResponse]
 	deleteGlobalLoadBalancerRule     *connect.Client[v1.DeleteGlobalLoadBalancerRuleRequest, v1.DeleteGlobalLoadBalancerRuleResponse]
+	listGlobalLoadBalancerRule       *connect.Client[v1.ListGlobalLoadBalancerRuleRequest, v1.ListGlobalLoadBalancerRuleResponse]
 	removeFromGlobalLoadBalancerRule *connect.Client[v1.RemoveFromGlobalLoadBalancerRuleRequest, v1.RemoveFromGlobalLoadBalancerRuleResponse]
-}
-
-// CreateGlobalLoadBalancerRule calls
-// cloudstack.management.region.ha.gslb.v1.GslbService.CreateGlobalLoadBalancerRule.
-func (c *gslbServiceClient) CreateGlobalLoadBalancerRule(ctx context.Context, req *connect.Request[v1.CreateGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.CreateGlobalLoadBalancerRuleResponse], error) {
-	return c.createGlobalLoadBalancerRule.CallUnary(ctx, req)
-}
-
-// ListGlobalLoadBalancerRule calls
-// cloudstack.management.region.ha.gslb.v1.GslbService.ListGlobalLoadBalancerRule.
-func (c *gslbServiceClient) ListGlobalLoadBalancerRule(ctx context.Context, req *connect.Request[v1.ListGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.ListGlobalLoadBalancerRuleResponse], error) {
-	return c.listGlobalLoadBalancerRule.CallUnary(ctx, req)
-}
-
-// UpdateGlobalLoadBalancerRule calls
-// cloudstack.management.region.ha.gslb.v1.GslbService.UpdateGlobalLoadBalancerRule.
-func (c *gslbServiceClient) UpdateGlobalLoadBalancerRule(ctx context.Context, req *connect.Request[v1.UpdateGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.UpdateGlobalLoadBalancerRuleResponse], error) {
-	return c.updateGlobalLoadBalancerRule.CallUnary(ctx, req)
+	updateGlobalLoadBalancerRule     *connect.Client[v1.UpdateGlobalLoadBalancerRuleRequest, v1.UpdateGlobalLoadBalancerRuleResponse]
 }
 
 // AssignToGlobalLoadBalancerRule calls
@@ -155,10 +137,22 @@ func (c *gslbServiceClient) AssignToGlobalLoadBalancerRule(ctx context.Context, 
 	return c.assignToGlobalLoadBalancerRule.CallUnary(ctx, req)
 }
 
+// CreateGlobalLoadBalancerRule calls
+// cloudstack.management.region.ha.gslb.v1.GslbService.CreateGlobalLoadBalancerRule.
+func (c *gslbServiceClient) CreateGlobalLoadBalancerRule(ctx context.Context, req *connect.Request[v1.CreateGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.CreateGlobalLoadBalancerRuleResponse], error) {
+	return c.createGlobalLoadBalancerRule.CallUnary(ctx, req)
+}
+
 // DeleteGlobalLoadBalancerRule calls
 // cloudstack.management.region.ha.gslb.v1.GslbService.DeleteGlobalLoadBalancerRule.
 func (c *gslbServiceClient) DeleteGlobalLoadBalancerRule(ctx context.Context, req *connect.Request[v1.DeleteGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.DeleteGlobalLoadBalancerRuleResponse], error) {
 	return c.deleteGlobalLoadBalancerRule.CallUnary(ctx, req)
+}
+
+// ListGlobalLoadBalancerRule calls
+// cloudstack.management.region.ha.gslb.v1.GslbService.ListGlobalLoadBalancerRule.
+func (c *gslbServiceClient) ListGlobalLoadBalancerRule(ctx context.Context, req *connect.Request[v1.ListGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.ListGlobalLoadBalancerRuleResponse], error) {
+	return c.listGlobalLoadBalancerRule.CallUnary(ctx, req)
 }
 
 // RemoveFromGlobalLoadBalancerRule calls
@@ -167,21 +161,27 @@ func (c *gslbServiceClient) RemoveFromGlobalLoadBalancerRule(ctx context.Context
 	return c.removeFromGlobalLoadBalancerRule.CallUnary(ctx, req)
 }
 
+// UpdateGlobalLoadBalancerRule calls
+// cloudstack.management.region.ha.gslb.v1.GslbService.UpdateGlobalLoadBalancerRule.
+func (c *gslbServiceClient) UpdateGlobalLoadBalancerRule(ctx context.Context, req *connect.Request[v1.UpdateGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.UpdateGlobalLoadBalancerRuleResponse], error) {
+	return c.updateGlobalLoadBalancerRule.CallUnary(ctx, req)
+}
+
 // GslbServiceHandler is an implementation of the
 // cloudstack.management.region.ha.gslb.v1.GslbService service.
 type GslbServiceHandler interface {
-	// CreateGlobalLoadBalancerRule Creates a global load balancer rule
-	CreateGlobalLoadBalancerRule(context.Context, *connect.Request[v1.CreateGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.CreateGlobalLoadBalancerRuleResponse], error)
-	// ListGlobalLoadBalancerRule Lists load balancer rules.
-	ListGlobalLoadBalancerRule(context.Context, *connect.Request[v1.ListGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.ListGlobalLoadBalancerRuleResponse], error)
-	// UpdateGlobalLoadBalancerRule update global load balancer rules.
-	UpdateGlobalLoadBalancerRule(context.Context, *connect.Request[v1.UpdateGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.UpdateGlobalLoadBalancerRuleResponse], error)
 	// AssignToGlobalLoadBalancerRule Assign load balancer rule or list of load balancer rules to a global load balancer rules.
 	AssignToGlobalLoadBalancerRule(context.Context, *connect.Request[v1.AssignToGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.AssignToGlobalLoadBalancerRuleResponse], error)
+	// CreateGlobalLoadBalancerRule Creates a global load balancer rule
+	CreateGlobalLoadBalancerRule(context.Context, *connect.Request[v1.CreateGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.CreateGlobalLoadBalancerRuleResponse], error)
 	// DeleteGlobalLoadBalancerRule Deletes a global load balancer rule.
 	DeleteGlobalLoadBalancerRule(context.Context, *connect.Request[v1.DeleteGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.DeleteGlobalLoadBalancerRuleResponse], error)
+	// ListGlobalLoadBalancerRule Lists load balancer rules.
+	ListGlobalLoadBalancerRule(context.Context, *connect.Request[v1.ListGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.ListGlobalLoadBalancerRuleResponse], error)
 	// RemoveFromGlobalLoadBalancerRule Removes a load balancer rule association with global load balancer rule
 	RemoveFromGlobalLoadBalancerRule(context.Context, *connect.Request[v1.RemoveFromGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.RemoveFromGlobalLoadBalancerRuleResponse], error)
+	// UpdateGlobalLoadBalancerRule update global load balancer rules.
+	UpdateGlobalLoadBalancerRule(context.Context, *connect.Request[v1.UpdateGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.UpdateGlobalLoadBalancerRuleResponse], error)
 }
 
 // NewGslbServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -191,28 +191,16 @@ type GslbServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewGslbServiceHandler(svc GslbServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	gslbServiceMethods := v1.File_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto.Services().ByName("GslbService").Methods()
-	gslbServiceCreateGlobalLoadBalancerRuleHandler := connect.NewUnaryHandler(
-		GslbServiceCreateGlobalLoadBalancerRuleProcedure,
-		svc.CreateGlobalLoadBalancerRule,
-		connect.WithSchema(gslbServiceMethods.ByName("CreateGlobalLoadBalancerRule")),
-		connect.WithHandlerOptions(opts...),
-	)
-	gslbServiceListGlobalLoadBalancerRuleHandler := connect.NewUnaryHandler(
-		GslbServiceListGlobalLoadBalancerRuleProcedure,
-		svc.ListGlobalLoadBalancerRule,
-		connect.WithSchema(gslbServiceMethods.ByName("ListGlobalLoadBalancerRule")),
-		connect.WithHandlerOptions(opts...),
-	)
-	gslbServiceUpdateGlobalLoadBalancerRuleHandler := connect.NewUnaryHandler(
-		GslbServiceUpdateGlobalLoadBalancerRuleProcedure,
-		svc.UpdateGlobalLoadBalancerRule,
-		connect.WithSchema(gslbServiceMethods.ByName("UpdateGlobalLoadBalancerRule")),
-		connect.WithHandlerOptions(opts...),
-	)
 	gslbServiceAssignToGlobalLoadBalancerRuleHandler := connect.NewUnaryHandler(
 		GslbServiceAssignToGlobalLoadBalancerRuleProcedure,
 		svc.AssignToGlobalLoadBalancerRule,
 		connect.WithSchema(gslbServiceMethods.ByName("AssignToGlobalLoadBalancerRule")),
+		connect.WithHandlerOptions(opts...),
+	)
+	gslbServiceCreateGlobalLoadBalancerRuleHandler := connect.NewUnaryHandler(
+		GslbServiceCreateGlobalLoadBalancerRuleProcedure,
+		svc.CreateGlobalLoadBalancerRule,
+		connect.WithSchema(gslbServiceMethods.ByName("CreateGlobalLoadBalancerRule")),
 		connect.WithHandlerOptions(opts...),
 	)
 	gslbServiceDeleteGlobalLoadBalancerRuleHandler := connect.NewUnaryHandler(
@@ -221,26 +209,38 @@ func NewGslbServiceHandler(svc GslbServiceHandler, opts ...connect.HandlerOption
 		connect.WithSchema(gslbServiceMethods.ByName("DeleteGlobalLoadBalancerRule")),
 		connect.WithHandlerOptions(opts...),
 	)
+	gslbServiceListGlobalLoadBalancerRuleHandler := connect.NewUnaryHandler(
+		GslbServiceListGlobalLoadBalancerRuleProcedure,
+		svc.ListGlobalLoadBalancerRule,
+		connect.WithSchema(gslbServiceMethods.ByName("ListGlobalLoadBalancerRule")),
+		connect.WithHandlerOptions(opts...),
+	)
 	gslbServiceRemoveFromGlobalLoadBalancerRuleHandler := connect.NewUnaryHandler(
 		GslbServiceRemoveFromGlobalLoadBalancerRuleProcedure,
 		svc.RemoveFromGlobalLoadBalancerRule,
 		connect.WithSchema(gslbServiceMethods.ByName("RemoveFromGlobalLoadBalancerRule")),
 		connect.WithHandlerOptions(opts...),
 	)
+	gslbServiceUpdateGlobalLoadBalancerRuleHandler := connect.NewUnaryHandler(
+		GslbServiceUpdateGlobalLoadBalancerRuleProcedure,
+		svc.UpdateGlobalLoadBalancerRule,
+		connect.WithSchema(gslbServiceMethods.ByName("UpdateGlobalLoadBalancerRule")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.region.ha.gslb.v1.GslbService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case GslbServiceCreateGlobalLoadBalancerRuleProcedure:
-			gslbServiceCreateGlobalLoadBalancerRuleHandler.ServeHTTP(w, r)
-		case GslbServiceListGlobalLoadBalancerRuleProcedure:
-			gslbServiceListGlobalLoadBalancerRuleHandler.ServeHTTP(w, r)
-		case GslbServiceUpdateGlobalLoadBalancerRuleProcedure:
-			gslbServiceUpdateGlobalLoadBalancerRuleHandler.ServeHTTP(w, r)
 		case GslbServiceAssignToGlobalLoadBalancerRuleProcedure:
 			gslbServiceAssignToGlobalLoadBalancerRuleHandler.ServeHTTP(w, r)
+		case GslbServiceCreateGlobalLoadBalancerRuleProcedure:
+			gslbServiceCreateGlobalLoadBalancerRuleHandler.ServeHTTP(w, r)
 		case GslbServiceDeleteGlobalLoadBalancerRuleProcedure:
 			gslbServiceDeleteGlobalLoadBalancerRuleHandler.ServeHTTP(w, r)
+		case GslbServiceListGlobalLoadBalancerRuleProcedure:
+			gslbServiceListGlobalLoadBalancerRuleHandler.ServeHTTP(w, r)
 		case GslbServiceRemoveFromGlobalLoadBalancerRuleProcedure:
 			gslbServiceRemoveFromGlobalLoadBalancerRuleHandler.ServeHTTP(w, r)
+		case GslbServiceUpdateGlobalLoadBalancerRuleProcedure:
+			gslbServiceUpdateGlobalLoadBalancerRuleHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -250,26 +250,26 @@ func NewGslbServiceHandler(svc GslbServiceHandler, opts ...connect.HandlerOption
 // UnimplementedGslbServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedGslbServiceHandler struct{}
 
-func (UnimplementedGslbServiceHandler) CreateGlobalLoadBalancerRule(context.Context, *connect.Request[v1.CreateGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.CreateGlobalLoadBalancerRuleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.region.ha.gslb.v1.GslbService.CreateGlobalLoadBalancerRule is not implemented"))
-}
-
-func (UnimplementedGslbServiceHandler) ListGlobalLoadBalancerRule(context.Context, *connect.Request[v1.ListGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.ListGlobalLoadBalancerRuleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.region.ha.gslb.v1.GslbService.ListGlobalLoadBalancerRule is not implemented"))
-}
-
-func (UnimplementedGslbServiceHandler) UpdateGlobalLoadBalancerRule(context.Context, *connect.Request[v1.UpdateGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.UpdateGlobalLoadBalancerRuleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.region.ha.gslb.v1.GslbService.UpdateGlobalLoadBalancerRule is not implemented"))
-}
-
 func (UnimplementedGslbServiceHandler) AssignToGlobalLoadBalancerRule(context.Context, *connect.Request[v1.AssignToGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.AssignToGlobalLoadBalancerRuleResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.region.ha.gslb.v1.GslbService.AssignToGlobalLoadBalancerRule is not implemented"))
+}
+
+func (UnimplementedGslbServiceHandler) CreateGlobalLoadBalancerRule(context.Context, *connect.Request[v1.CreateGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.CreateGlobalLoadBalancerRuleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.region.ha.gslb.v1.GslbService.CreateGlobalLoadBalancerRule is not implemented"))
 }
 
 func (UnimplementedGslbServiceHandler) DeleteGlobalLoadBalancerRule(context.Context, *connect.Request[v1.DeleteGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.DeleteGlobalLoadBalancerRuleResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.region.ha.gslb.v1.GslbService.DeleteGlobalLoadBalancerRule is not implemented"))
 }
 
+func (UnimplementedGslbServiceHandler) ListGlobalLoadBalancerRule(context.Context, *connect.Request[v1.ListGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.ListGlobalLoadBalancerRuleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.region.ha.gslb.v1.GslbService.ListGlobalLoadBalancerRule is not implemented"))
+}
+
 func (UnimplementedGslbServiceHandler) RemoveFromGlobalLoadBalancerRule(context.Context, *connect.Request[v1.RemoveFromGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.RemoveFromGlobalLoadBalancerRuleResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.region.ha.gslb.v1.GslbService.RemoveFromGlobalLoadBalancerRule is not implemented"))
+}
+
+func (UnimplementedGslbServiceHandler) UpdateGlobalLoadBalancerRule(context.Context, *connect.Request[v1.UpdateGlobalLoadBalancerRuleRequest]) (*connect.Response[v1.UpdateGlobalLoadBalancerRuleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.region.ha.gslb.v1.GslbService.UpdateGlobalLoadBalancerRule is not implemented"))
 }

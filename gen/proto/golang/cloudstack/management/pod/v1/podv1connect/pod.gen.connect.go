@@ -33,24 +33,24 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
+	// PodServiceCreatePodProcedure is the fully-qualified name of the PodService's CreatePod RPC.
+	PodServiceCreatePodProcedure = "/cloudstack.management.pod.v1.PodService/CreatePod"
 	// PodServiceDeletePodProcedure is the fully-qualified name of the PodService's DeletePod RPC.
 	PodServiceDeletePodProcedure = "/cloudstack.management.pod.v1.PodService/DeletePod"
 	// PodServiceListPodsByProcedure is the fully-qualified name of the PodService's ListPodsBy RPC.
 	PodServiceListPodsByProcedure = "/cloudstack.management.pod.v1.PodService/ListPodsBy"
-	// PodServiceCreatePodProcedure is the fully-qualified name of the PodService's CreatePod RPC.
-	PodServiceCreatePodProcedure = "/cloudstack.management.pod.v1.PodService/CreatePod"
 	// PodServiceUpdatePodProcedure is the fully-qualified name of the PodService's UpdatePod RPC.
 	PodServiceUpdatePodProcedure = "/cloudstack.management.pod.v1.PodService/UpdatePod"
 )
 
 // PodServiceClient is a client for the cloudstack.management.pod.v1.PodService service.
 type PodServiceClient interface {
+	// CreatePod Creates a new Pod.
+	CreatePod(context.Context, *connect.Request[v1.CreatePodRequest]) (*connect.Response[v1.CreatePodResponse], error)
 	// DeletePod Deletes a Pod.
 	DeletePod(context.Context, *connect.Request[v1.DeletePodRequest]) (*connect.Response[v1.DeletePodResponse], error)
 	// ListPodsBy Lists all Pods.
 	ListPodsBy(context.Context, *connect.Request[v1.ListPodsByRequest]) (*connect.Response[v1.ListPodsByResponse], error)
-	// CreatePod Creates a new Pod.
-	CreatePod(context.Context, *connect.Request[v1.CreatePodRequest]) (*connect.Response[v1.CreatePodResponse], error)
 	// UpdatePod Updates a Pod.
 	UpdatePod(context.Context, *connect.Request[v1.UpdatePodRequest]) (*connect.Response[v1.UpdatePodResponse], error)
 }
@@ -66,6 +66,12 @@ func NewPodServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 	baseURL = strings.TrimRight(baseURL, "/")
 	podServiceMethods := v1.File_cloudstack_management_pod_v1_pod_gen_proto.Services().ByName("PodService").Methods()
 	return &podServiceClient{
+		createPod: connect.NewClient[v1.CreatePodRequest, v1.CreatePodResponse](
+			httpClient,
+			baseURL+PodServiceCreatePodProcedure,
+			connect.WithSchema(podServiceMethods.ByName("CreatePod")),
+			connect.WithClientOptions(opts...),
+		),
 		deletePod: connect.NewClient[v1.DeletePodRequest, v1.DeletePodResponse](
 			httpClient,
 			baseURL+PodServiceDeletePodProcedure,
@@ -76,12 +82,6 @@ func NewPodServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 			httpClient,
 			baseURL+PodServiceListPodsByProcedure,
 			connect.WithSchema(podServiceMethods.ByName("ListPodsBy")),
-			connect.WithClientOptions(opts...),
-		),
-		createPod: connect.NewClient[v1.CreatePodRequest, v1.CreatePodResponse](
-			httpClient,
-			baseURL+PodServiceCreatePodProcedure,
-			connect.WithSchema(podServiceMethods.ByName("CreatePod")),
 			connect.WithClientOptions(opts...),
 		),
 		updatePod: connect.NewClient[v1.UpdatePodRequest, v1.UpdatePodResponse](
@@ -95,10 +95,15 @@ func NewPodServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 
 // podServiceClient implements PodServiceClient.
 type podServiceClient struct {
+	createPod  *connect.Client[v1.CreatePodRequest, v1.CreatePodResponse]
 	deletePod  *connect.Client[v1.DeletePodRequest, v1.DeletePodResponse]
 	listPodsBy *connect.Client[v1.ListPodsByRequest, v1.ListPodsByResponse]
-	createPod  *connect.Client[v1.CreatePodRequest, v1.CreatePodResponse]
 	updatePod  *connect.Client[v1.UpdatePodRequest, v1.UpdatePodResponse]
+}
+
+// CreatePod calls cloudstack.management.pod.v1.PodService.CreatePod.
+func (c *podServiceClient) CreatePod(ctx context.Context, req *connect.Request[v1.CreatePodRequest]) (*connect.Response[v1.CreatePodResponse], error) {
+	return c.createPod.CallUnary(ctx, req)
 }
 
 // DeletePod calls cloudstack.management.pod.v1.PodService.DeletePod.
@@ -111,11 +116,6 @@ func (c *podServiceClient) ListPodsBy(ctx context.Context, req *connect.Request[
 	return c.listPodsBy.CallUnary(ctx, req)
 }
 
-// CreatePod calls cloudstack.management.pod.v1.PodService.CreatePod.
-func (c *podServiceClient) CreatePod(ctx context.Context, req *connect.Request[v1.CreatePodRequest]) (*connect.Response[v1.CreatePodResponse], error) {
-	return c.createPod.CallUnary(ctx, req)
-}
-
 // UpdatePod calls cloudstack.management.pod.v1.PodService.UpdatePod.
 func (c *podServiceClient) UpdatePod(ctx context.Context, req *connect.Request[v1.UpdatePodRequest]) (*connect.Response[v1.UpdatePodResponse], error) {
 	return c.updatePod.CallUnary(ctx, req)
@@ -123,12 +123,12 @@ func (c *podServiceClient) UpdatePod(ctx context.Context, req *connect.Request[v
 
 // PodServiceHandler is an implementation of the cloudstack.management.pod.v1.PodService service.
 type PodServiceHandler interface {
+	// CreatePod Creates a new Pod.
+	CreatePod(context.Context, *connect.Request[v1.CreatePodRequest]) (*connect.Response[v1.CreatePodResponse], error)
 	// DeletePod Deletes a Pod.
 	DeletePod(context.Context, *connect.Request[v1.DeletePodRequest]) (*connect.Response[v1.DeletePodResponse], error)
 	// ListPodsBy Lists all Pods.
 	ListPodsBy(context.Context, *connect.Request[v1.ListPodsByRequest]) (*connect.Response[v1.ListPodsByResponse], error)
-	// CreatePod Creates a new Pod.
-	CreatePod(context.Context, *connect.Request[v1.CreatePodRequest]) (*connect.Response[v1.CreatePodResponse], error)
 	// UpdatePod Updates a Pod.
 	UpdatePod(context.Context, *connect.Request[v1.UpdatePodRequest]) (*connect.Response[v1.UpdatePodResponse], error)
 }
@@ -140,6 +140,12 @@ type PodServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewPodServiceHandler(svc PodServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	podServiceMethods := v1.File_cloudstack_management_pod_v1_pod_gen_proto.Services().ByName("PodService").Methods()
+	podServiceCreatePodHandler := connect.NewUnaryHandler(
+		PodServiceCreatePodProcedure,
+		svc.CreatePod,
+		connect.WithSchema(podServiceMethods.ByName("CreatePod")),
+		connect.WithHandlerOptions(opts...),
+	)
 	podServiceDeletePodHandler := connect.NewUnaryHandler(
 		PodServiceDeletePodProcedure,
 		svc.DeletePod,
@@ -152,12 +158,6 @@ func NewPodServiceHandler(svc PodServiceHandler, opts ...connect.HandlerOption) 
 		connect.WithSchema(podServiceMethods.ByName("ListPodsBy")),
 		connect.WithHandlerOptions(opts...),
 	)
-	podServiceCreatePodHandler := connect.NewUnaryHandler(
-		PodServiceCreatePodProcedure,
-		svc.CreatePod,
-		connect.WithSchema(podServiceMethods.ByName("CreatePod")),
-		connect.WithHandlerOptions(opts...),
-	)
 	podServiceUpdatePodHandler := connect.NewUnaryHandler(
 		PodServiceUpdatePodProcedure,
 		svc.UpdatePod,
@@ -166,12 +166,12 @@ func NewPodServiceHandler(svc PodServiceHandler, opts ...connect.HandlerOption) 
 	)
 	return "/cloudstack.management.pod.v1.PodService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
+		case PodServiceCreatePodProcedure:
+			podServiceCreatePodHandler.ServeHTTP(w, r)
 		case PodServiceDeletePodProcedure:
 			podServiceDeletePodHandler.ServeHTTP(w, r)
 		case PodServiceListPodsByProcedure:
 			podServiceListPodsByHandler.ServeHTTP(w, r)
-		case PodServiceCreatePodProcedure:
-			podServiceCreatePodHandler.ServeHTTP(w, r)
 		case PodServiceUpdatePodProcedure:
 			podServiceUpdatePodHandler.ServeHTTP(w, r)
 		default:
@@ -183,16 +183,16 @@ func NewPodServiceHandler(svc PodServiceHandler, opts ...connect.HandlerOption) 
 // UnimplementedPodServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedPodServiceHandler struct{}
 
+func (UnimplementedPodServiceHandler) CreatePod(context.Context, *connect.Request[v1.CreatePodRequest]) (*connect.Response[v1.CreatePodResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.pod.v1.PodService.CreatePod is not implemented"))
+}
+
 func (UnimplementedPodServiceHandler) DeletePod(context.Context, *connect.Request[v1.DeletePodRequest]) (*connect.Response[v1.DeletePodResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.pod.v1.PodService.DeletePod is not implemented"))
 }
 
 func (UnimplementedPodServiceHandler) ListPodsBy(context.Context, *connect.Request[v1.ListPodsByRequest]) (*connect.Response[v1.ListPodsByResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.pod.v1.PodService.ListPodsBy is not implemented"))
-}
-
-func (UnimplementedPodServiceHandler) CreatePod(context.Context, *connect.Request[v1.CreatePodRequest]) (*connect.Response[v1.CreatePodResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.pod.v1.PodService.CreatePod is not implemented"))
 }
 
 func (UnimplementedPodServiceHandler) UpdatePod(context.Context, *connect.Request[v1.UpdatePodRequest]) (*connect.Response[v1.UpdatePodResponse], error) {

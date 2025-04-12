@@ -77,48 +77,42 @@ func (ProtocolType) EnumDescriptor() ([]byte, []int) {
 	return file_cloudstack_management_nat_v1_nat_gen_proto_rawDescGZIP(), []int{0}
 }
 
-// ListIpForwardingRulesRequest represents the parameters for list the ip forwarding rules
-type ListIpForwardingRulesRequest struct {
+// CreateIpForwardingRuleRequest represents the parameters for creates an ip forwarding rule
+type CreateIpForwardingRuleRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// list the rule belonging to this public IP address
-	PublicIpAddressId *int64 `protobuf:"varint,1,opt,name=public_ip_address_id,json=publicIpAddressId" json:"public_ip_address_id,omitempty"`
-	// Lists rule with the specified ID.
-	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	// Lists all rules applied to the specified VM.
-	VmId *int64 `protobuf:"varint,3,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
-	// list objects by project; if projectid=-1 lists All VMs
-	ProjectId *int64 `protobuf:"varint,4,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// list resources by account. Must be used with the domainId parameter.
-	AccountName *string `protobuf:"bytes,5,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	ListAll *bool `protobuf:"varint,6,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
-	// list only resources belonging to the domain specified
-	DomainId *int64 `protobuf:"varint,7,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	Recursive *bool `protobuf:"varint,8,opt,name=recursive" json:"recursive,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,9,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,10,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,11,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,12,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// the public IP address ID of the forwarding rule, already associated via associateIp
+	IpAddressId *int64 `protobuf:"varint,1,opt,name=ip_address_id,json=ipAddressId" json:"ip_address_id,omitempty"`
+	// the start port for the rule
+	StartPort *int32 `protobuf:"varint,2,opt,name=start_port,json=startPort" json:"start_port,omitempty"`
+	// the end port for the rule
+	EndPort *int32 `protobuf:"varint,3,opt,name=end_port,json=endPort" json:"end_port,omitempty"`
+	// the protocol for the rule. Valid values are TCP or UDP.
+	Protocol *string `protobuf:"bytes,4,opt,name=protocol" json:"protocol,omitempty"`
+	// if true, firewall rule for source/end public port is automatically created; if false - firewall rule has to be created explicitly. Has value true by default
+	OpenFirewall *bool `protobuf:"varint,5,opt,name=open_firewall,json=openFirewall" json:"open_firewall,omitempty"`
+	// the CIDR list to forward traffic from. Multiple entries must be separated by a single comma character (,). This parameter is deprecated. Do not use.
+	Cidrlist []string `protobuf:"bytes,6,rep,name=cidrlist" json:"cidrlist,omitempty"`
+	StartEventId *int64 `protobuf:"varint,7,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,8,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListIpForwardingRulesRequest) Reset() {
-	*x = ListIpForwardingRulesRequest{}
+func (x *CreateIpForwardingRuleRequest) Reset() {
+	*x = CreateIpForwardingRuleRequest{}
 	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListIpForwardingRulesRequest) String() string {
+func (x *CreateIpForwardingRuleRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListIpForwardingRulesRequest) ProtoMessage() {}
+func (*CreateIpForwardingRuleRequest) ProtoMessage() {}
 
-func (x *ListIpForwardingRulesRequest) ProtoReflect() protoreflect.Message {
+func (x *CreateIpForwardingRuleRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -130,120 +124,97 @@ func (x *ListIpForwardingRulesRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListIpForwardingRulesRequest.ProtoReflect.Descriptor instead.
-func (*ListIpForwardingRulesRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateIpForwardingRuleRequest.ProtoReflect.Descriptor instead.
+func (*CreateIpForwardingRuleRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_nat_v1_nat_gen_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *ListIpForwardingRulesRequest) GetPublicIpAddressId() int64 {
-	if x != nil && x.PublicIpAddressId != nil {
-		return *x.PublicIpAddressId
+func (x *CreateIpForwardingRuleRequest) GetIpAddressId() int64 {
+	if x != nil && x.IpAddressId != nil {
+		return *x.IpAddressId
 	}
 	return 0
 }
 
-func (x *ListIpForwardingRulesRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *CreateIpForwardingRuleRequest) GetStartPort() int32 {
+	if x != nil && x.StartPort != nil {
+		return *x.StartPort
 	}
 	return 0
 }
 
-func (x *ListIpForwardingRulesRequest) GetVmId() int64 {
-	if x != nil && x.VmId != nil {
-		return *x.VmId
+func (x *CreateIpForwardingRuleRequest) GetEndPort() int32 {
+	if x != nil && x.EndPort != nil {
+		return *x.EndPort
 	}
 	return 0
 }
 
-func (x *ListIpForwardingRulesRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *ListIpForwardingRulesRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
+func (x *CreateIpForwardingRuleRequest) GetProtocol() string {
+	if x != nil && x.Protocol != nil {
+		return *x.Protocol
 	}
 	return ""
 }
 
-func (x *ListIpForwardingRulesRequest) GetListAll() bool {
-	if x != nil && x.ListAll != nil {
-		return *x.ListAll
+func (x *CreateIpForwardingRuleRequest) GetOpenFirewall() bool {
+	if x != nil && x.OpenFirewall != nil {
+		return *x.OpenFirewall
 	}
 	return false
 }
 
-func (x *ListIpForwardingRulesRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
+func (x *CreateIpForwardingRuleRequest) GetCidrlist() []string {
+	if x != nil {
+		return x.Cidrlist
+	}
+	return nil
+}
+
+func (x *CreateIpForwardingRuleRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *ListIpForwardingRulesRequest) GetRecursive() bool {
-	if x != nil && x.Recursive != nil {
-		return *x.Recursive
-	}
-	return false
-}
-
-func (x *ListIpForwardingRulesRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
+func (x *CreateIpForwardingRuleRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *ListIpForwardingRulesRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListIpForwardingRulesRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListIpForwardingRulesRequest) GetResponseType() string {
+func (x *CreateIpForwardingRuleRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// ListIpForwardingRulesResponse represents the response from list the ip forwarding rules
-type ListIpForwardingRulesResponse struct {
+// CreateIpForwardingRuleResponse represents the response from creates an ip forwarding rule
+type CreateIpForwardingRuleResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of FirewallRules
-	Items []*FirewallRule `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of FirewallRules
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListIpForwardingRulesResponse) Reset() {
-	*x = ListIpForwardingRulesResponse{}
+func (x *CreateIpForwardingRuleResponse) Reset() {
+	*x = CreateIpForwardingRuleResponse{}
 	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListIpForwardingRulesResponse) String() string {
+func (x *CreateIpForwardingRuleResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListIpForwardingRulesResponse) ProtoMessage() {}
+func (*CreateIpForwardingRuleResponse) ProtoMessage() {}
 
-func (x *ListIpForwardingRulesResponse) ProtoReflect() protoreflect.Message {
+func (x *CreateIpForwardingRuleResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -255,23 +226,16 @@ func (x *ListIpForwardingRulesResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListIpForwardingRulesResponse.ProtoReflect.Descriptor instead.
-func (*ListIpForwardingRulesResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateIpForwardingRuleResponse.ProtoReflect.Descriptor instead.
+func (*CreateIpForwardingRuleResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_nat_v1_nat_gen_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *ListIpForwardingRulesResponse) GetItems() []*FirewallRule {
+func (x *CreateIpForwardingRuleResponse) GetResult() *Result {
 	if x != nil {
-		return x.Items
+		return x.Result
 	}
 	return nil
-}
-
-func (x *ListIpForwardingRulesResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
 }
 
 // DeleteIpForwardingRuleRequest represents the parameters for deletes an ip forwarding rule
@@ -506,167 +470,6 @@ func (x *DisableStaticNatResponse) GetResult() *Result {
 	return nil
 }
 
-// CreateIpForwardingRuleRequest represents the parameters for creates an ip forwarding rule
-type CreateIpForwardingRuleRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the public IP address ID of the forwarding rule, already associated via associateIp
-	IpAddressId *int64 `protobuf:"varint,1,opt,name=ip_address_id,json=ipAddressId" json:"ip_address_id,omitempty"`
-	// the start port for the rule
-	StartPort *int32 `protobuf:"varint,2,opt,name=start_port,json=startPort" json:"start_port,omitempty"`
-	// the end port for the rule
-	EndPort *int32 `protobuf:"varint,3,opt,name=end_port,json=endPort" json:"end_port,omitempty"`
-	// the protocol for the rule. Valid values are TCP or UDP.
-	Protocol *string `protobuf:"bytes,4,opt,name=protocol" json:"protocol,omitempty"`
-	// if true, firewall rule for source/end public port is automatically created; if false - firewall rule has to be created explicitly. Has value true by default
-	OpenFirewall *bool `protobuf:"varint,5,opt,name=open_firewall,json=openFirewall" json:"open_firewall,omitempty"`
-	// the CIDR list to forward traffic from. Multiple entries must be separated by a single comma character (,). This parameter is deprecated. Do not use.
-	Cidrlist []string `protobuf:"bytes,6,rep,name=cidrlist" json:"cidrlist,omitempty"`
-	StartEventId *int64 `protobuf:"varint,7,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,8,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateIpForwardingRuleRequest) Reset() {
-	*x = CreateIpForwardingRuleRequest{}
-	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateIpForwardingRuleRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateIpForwardingRuleRequest) ProtoMessage() {}
-
-func (x *CreateIpForwardingRuleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateIpForwardingRuleRequest.ProtoReflect.Descriptor instead.
-func (*CreateIpForwardingRuleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_nat_v1_nat_gen_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *CreateIpForwardingRuleRequest) GetIpAddressId() int64 {
-	if x != nil && x.IpAddressId != nil {
-		return *x.IpAddressId
-	}
-	return 0
-}
-
-func (x *CreateIpForwardingRuleRequest) GetStartPort() int32 {
-	if x != nil && x.StartPort != nil {
-		return *x.StartPort
-	}
-	return 0
-}
-
-func (x *CreateIpForwardingRuleRequest) GetEndPort() int32 {
-	if x != nil && x.EndPort != nil {
-		return *x.EndPort
-	}
-	return 0
-}
-
-func (x *CreateIpForwardingRuleRequest) GetProtocol() string {
-	if x != nil && x.Protocol != nil {
-		return *x.Protocol
-	}
-	return ""
-}
-
-func (x *CreateIpForwardingRuleRequest) GetOpenFirewall() bool {
-	if x != nil && x.OpenFirewall != nil {
-		return *x.OpenFirewall
-	}
-	return false
-}
-
-func (x *CreateIpForwardingRuleRequest) GetCidrlist() []string {
-	if x != nil {
-		return x.Cidrlist
-	}
-	return nil
-}
-
-func (x *CreateIpForwardingRuleRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CreateIpForwardingRuleRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CreateIpForwardingRuleRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateIpForwardingRuleResponse represents the response from creates an ip forwarding rule
-type CreateIpForwardingRuleResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateIpForwardingRuleResponse) Reset() {
-	*x = CreateIpForwardingRuleResponse{}
-	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateIpForwardingRuleResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateIpForwardingRuleResponse) ProtoMessage() {}
-
-func (x *CreateIpForwardingRuleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateIpForwardingRuleResponse.ProtoReflect.Descriptor instead.
-func (*CreateIpForwardingRuleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_nat_v1_nat_gen_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *CreateIpForwardingRuleResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
 // EnableStaticNatRequest represents the parameters for enables static nat for given ip address
 type EnableStaticNatRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -685,7 +488,7 @@ type EnableStaticNatRequest struct {
 
 func (x *EnableStaticNatRequest) Reset() {
 	*x = EnableStaticNatRequest{}
-	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[8]
+	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -697,7 +500,7 @@ func (x *EnableStaticNatRequest) String() string {
 func (*EnableStaticNatRequest) ProtoMessage() {}
 
 func (x *EnableStaticNatRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[8]
+	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -710,7 +513,7 @@ func (x *EnableStaticNatRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EnableStaticNatRequest.ProtoReflect.Descriptor instead.
 func (*EnableStaticNatRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_nat_v1_nat_gen_proto_rawDescGZIP(), []int{8}
+	return file_cloudstack_management_nat_v1_nat_gen_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *EnableStaticNatRequest) GetIpAddressId() int64 {
@@ -759,7 +562,7 @@ type EnableStaticNatResponse struct {
 
 func (x *EnableStaticNatResponse) Reset() {
 	*x = EnableStaticNatResponse{}
-	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -771,7 +574,7 @@ func (x *EnableStaticNatResponse) String() string {
 func (*EnableStaticNatResponse) ProtoMessage() {}
 
 func (x *EnableStaticNatResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[9]
+	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -784,7 +587,7 @@ func (x *EnableStaticNatResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EnableStaticNatResponse.ProtoReflect.Descriptor instead.
 func (*EnableStaticNatResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_nat_v1_nat_gen_proto_rawDescGZIP(), []int{9}
+	return file_cloudstack_management_nat_v1_nat_gen_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *EnableStaticNatResponse) GetResult() *Result {
@@ -792,6 +595,203 @@ func (x *EnableStaticNatResponse) GetResult() *Result {
 		return x.Result
 	}
 	return nil
+}
+
+// ListIpForwardingRulesRequest represents the parameters for list the ip forwarding rules
+type ListIpForwardingRulesRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// list the rule belonging to this public IP address
+	PublicIpAddressId *int64 `protobuf:"varint,1,opt,name=public_ip_address_id,json=publicIpAddressId" json:"public_ip_address_id,omitempty"`
+	// Lists rule with the specified ID.
+	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
+	// Lists all rules applied to the specified VM.
+	VmId *int64 `protobuf:"varint,3,opt,name=vm_id,json=vmId" json:"vm_id,omitempty"`
+	// list objects by project; if projectid=-1 lists All VMs
+	ProjectId *int64 `protobuf:"varint,4,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// list resources by account. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,5,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	ListAll *bool `protobuf:"varint,6,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
+	// list only resources belonging to the domain specified
+	DomainId *int64 `protobuf:"varint,7,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	Recursive *bool `protobuf:"varint,8,opt,name=recursive" json:"recursive,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,9,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,10,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,11,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,12,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListIpForwardingRulesRequest) Reset() {
+	*x = ListIpForwardingRulesRequest{}
+	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListIpForwardingRulesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListIpForwardingRulesRequest) ProtoMessage() {}
+
+func (x *ListIpForwardingRulesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListIpForwardingRulesRequest.ProtoReflect.Descriptor instead.
+func (*ListIpForwardingRulesRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_nat_v1_nat_gen_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *ListIpForwardingRulesRequest) GetPublicIpAddressId() int64 {
+	if x != nil && x.PublicIpAddressId != nil {
+		return *x.PublicIpAddressId
+	}
+	return 0
+}
+
+func (x *ListIpForwardingRulesRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListIpForwardingRulesRequest) GetVmId() int64 {
+	if x != nil && x.VmId != nil {
+		return *x.VmId
+	}
+	return 0
+}
+
+func (x *ListIpForwardingRulesRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *ListIpForwardingRulesRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *ListIpForwardingRulesRequest) GetListAll() bool {
+	if x != nil && x.ListAll != nil {
+		return *x.ListAll
+	}
+	return false
+}
+
+func (x *ListIpForwardingRulesRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ListIpForwardingRulesRequest) GetRecursive() bool {
+	if x != nil && x.Recursive != nil {
+		return *x.Recursive
+	}
+	return false
+}
+
+func (x *ListIpForwardingRulesRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListIpForwardingRulesRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListIpForwardingRulesRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListIpForwardingRulesRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListIpForwardingRulesResponse represents the response from list the ip forwarding rules
+type ListIpForwardingRulesResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of FirewallRules
+	Items []*FirewallRule `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of FirewallRules
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListIpForwardingRulesResponse) Reset() {
+	*x = ListIpForwardingRulesResponse{}
+	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListIpForwardingRulesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListIpForwardingRulesResponse) ProtoMessage() {}
+
+func (x *ListIpForwardingRulesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListIpForwardingRulesResponse.ProtoReflect.Descriptor instead.
+func (*ListIpForwardingRulesResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_nat_v1_nat_gen_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *ListIpForwardingRulesResponse) GetItems() []*FirewallRule {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListIpForwardingRulesResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
 }
 
 // FirewallRule represents a FirewallRule Item
@@ -931,151 +931,6 @@ func (x *Success) GetDisplayText() string {
 	return ""
 }
 
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_nat_v1_nat_gen_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
 // Result represents a generic operation result
 type Result struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1095,7 +950,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[13]
+	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1107,7 +962,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[13]
+	mi := &file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1120,7 +975,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_nat_v1_nat_gen_proto_rawDescGZIP(), []int{13}
+	return file_cloudstack_management_nat_v1_nat_gen_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -1162,7 +1017,43 @@ var File_cloudstack_management_nat_v1_nat_gen_proto protoreflect.FileDescriptor
 
 const file_cloudstack_management_nat_v1_nat_gen_proto_rawDesc = "" +
 	"\n" +
-	"*cloudstack/management/nat/v1/nat.gen.proto\x12\x1ccloudstack.management.nat.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x8a\x04\n" +
+	"*cloudstack/management/nat/v1/nat.gen.proto\x12\x1ccloudstack.management.nat.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x8b\x03\n" +
+	"\x1dCreateIpForwardingRuleRequest\x12*\n" +
+	"\rip_address_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\vipAddressId\x12-\n" +
+	"\n" +
+	"start_port\x18\x02 \x01(\x05B\x0e\xbaH\v\xc8\x01\x01\x1a\x06\x18\xff\xff\x03(\x01R\tstartPort\x12&\n" +
+	"\bend_port\x18\x03 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\aendPort\x12\"\n" +
+	"\bprotocol\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bprotocol\x12*\n" +
+	"\ropen_firewall\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\fopenFirewall\x12\x1a\n" +
+	"\bcidrlist\x18\x06 \x03(\tR\bcidrlist\x12$\n" +
+	"\x0estart_event_id\x18\a \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\t \x01(\tR\fresponseType\"^\n" +
+	"\x1eCreateIpForwardingRuleResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.nat.v1.ResultR\x06result\"\xb4\x01\n" +
+	"\x1dDeleteIpForwardingRuleRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"^\n" +
+	"\x1eDeleteIpForwardingRuleResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.nat.v1.ResultR\x06result\"\xc2\x01\n" +
+	"\x17DisableStaticNatRequest\x12*\n" +
+	"\rip_address_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\vipAddressId\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"X\n" +
+	"\x18DisableStaticNatResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.nat.v1.ResultR\x06result\"\xef\x01\n" +
+	"\x16EnableStaticNatRequest\x12*\n" +
+	"\rip_address_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\vipAddressId\x124\n" +
+	"\x12virtual_machine_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x10virtualMachineId\x12\x1d\n" +
+	"\n" +
+	"network_id\x18\x03 \x01(\x03R\tnetworkId\x12/\n" +
+	"\x0fvm_secondary_ip\x18\x04 \x01(\tB\a\xbaH\x04r\x02x\x01R\rvmSecondaryIp\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"W\n" +
+	"\x17EnableStaticNatResponse\x12<\n" +
+	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.nat.v1.ResultR\x06result\"\x8a\x04\n" +
 	"\x1cListIpForwardingRulesRequest\x12/\n" +
 	"\x14public_ip_address_id\x18\x01 \x01(\x03R\x11publicIpAddressId\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\x03R\x02id\x12\x13\n" +
@@ -1182,43 +1073,7 @@ const file_cloudstack_management_nat_v1_nat_gen_proto_rawDesc = "" +
 	"\x1dListIpForwardingRulesResponse\x12@\n" +
 	"\x05items\x18\x01 \x03(\v2*.cloudstack.management.nat.v1.FirewallRuleR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xb4\x01\n" +
-	"\x1dDeleteIpForwardingRuleRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"^\n" +
-	"\x1eDeleteIpForwardingRuleResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.nat.v1.ResultR\x06result\"\xc2\x01\n" +
-	"\x17DisableStaticNatRequest\x12*\n" +
-	"\rip_address_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\vipAddressId\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"X\n" +
-	"\x18DisableStaticNatResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.nat.v1.ResultR\x06result\"\x8b\x03\n" +
-	"\x1dCreateIpForwardingRuleRequest\x12*\n" +
-	"\rip_address_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\vipAddressId\x12-\n" +
-	"\n" +
-	"start_port\x18\x02 \x01(\x05B\x0e\xbaH\v\xc8\x01\x01\x1a\x06\x18\xff\xff\x03(\x01R\tstartPort\x12&\n" +
-	"\bend_port\x18\x03 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\aendPort\x12\"\n" +
-	"\bprotocol\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bprotocol\x12*\n" +
-	"\ropen_firewall\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\fopenFirewall\x12\x1a\n" +
-	"\bcidrlist\x18\x06 \x03(\tR\bcidrlist\x12$\n" +
-	"\x0estart_event_id\x18\a \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\t \x01(\tR\fresponseType\"^\n" +
-	"\x1eCreateIpForwardingRuleResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.nat.v1.ResultR\x06result\"\xef\x01\n" +
-	"\x16EnableStaticNatRequest\x12*\n" +
-	"\rip_address_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\vipAddressId\x124\n" +
-	"\x12virtual_machine_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x10virtualMachineId\x12\x1d\n" +
-	"\n" +
-	"network_id\x18\x03 \x01(\x03R\tnetworkId\x12/\n" +
-	"\x0fvm_secondary_ip\x18\x04 \x01(\tB\a\xbaH\x04r\x02x\x01R\rvmSecondaryIp\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"W\n" +
-	"\x17EnableStaticNatResponse\x12<\n" +
-	"\x06result\x18\x01 \x01(\v2$.cloudstack.management.nat.v1.ResultR\x06result\"\x9b\x01\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x9b\x01\n" +
 	"\fFirewallRule\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
@@ -1227,26 +1082,7 @@ const file_cloudstack_management_nat_v1_nat_gen_proto_rawDesc = "" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xdb\x03\n" +
-	"\x04Item\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12I\n" +
-	"\adetails\x18\f \x03(\v2/.cloudstack.management.nat.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
@@ -1257,14 +1093,14 @@ const file_cloudstack_management_nat_v1_nat_gen_proto_rawDesc = "" +
 	"\fProtocolType\x12\x1d\n" +
 	"\x19PROTOCOL_TYPE_UNSPECIFIED\x10\x00\x12\x15\n" +
 	"\x11PROTOCOL_TYPE_TCP\x10\x01\x12\x15\n" +
-	"\x11PROTOCOL_TYPE_UDP\x10\x022\xe2\x05\n" +
+	"\x11PROTOCOL_TYPE_UDP\x10\x022\x86\x06\n" +
 	"\n" +
-	"NatService\x12\x92\x01\n" +
-	"\x15ListIpForwardingRules\x12:.cloudstack.management.nat.v1.ListIpForwardingRulesRequest\x1a;.cloudstack.management.nat.v1.ListIpForwardingRulesResponse\"\x00\x12\x95\x01\n" +
-	"\x16DeleteIpForwardingRule\x12;.cloudstack.management.nat.v1.DeleteIpForwardingRuleRequest\x1a<.cloudstack.management.nat.v1.DeleteIpForwardingRuleResponse\"\x00\x12\x83\x01\n" +
-	"\x10DisableStaticNat\x125.cloudstack.management.nat.v1.DisableStaticNatRequest\x1a6.cloudstack.management.nat.v1.DisableStaticNatResponse\"\x00\x12\x95\x01\n" +
-	"\x16CreateIpForwardingRule\x12;.cloudstack.management.nat.v1.CreateIpForwardingRuleRequest\x1a<.cloudstack.management.nat.v1.CreateIpForwardingRuleResponse\"\x00\x12\x80\x01\n" +
-	"\x0fEnableStaticNat\x124.cloudstack.management.nat.v1.EnableStaticNatRequest\x1a5.cloudstack.management.nat.v1.EnableStaticNatResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\x9a\x02\n" +
+	"NatService\x12\x9c\x01\n" +
+	"\x16CreateIpForwardingRule\x12;.cloudstack.management.nat.v1.CreateIpForwardingRuleRequest\x1a<.cloudstack.management.nat.v1.CreateIpForwardingRuleResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x9c\x01\n" +
+	"\x16DeleteIpForwardingRule\x12;.cloudstack.management.nat.v1.DeleteIpForwardingRuleRequest\x1a<.cloudstack.management.nat.v1.DeleteIpForwardingRuleResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x8a\x01\n" +
+	"\x10DisableStaticNat\x125.cloudstack.management.nat.v1.DisableStaticNatRequest\x1a6.cloudstack.management.nat.v1.DisableStaticNatResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x87\x01\n" +
+	"\x0fEnableStaticNat\x124.cloudstack.management.nat.v1.EnableStaticNatRequest\x1a5.cloudstack.management.nat.v1.EnableStaticNatResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x99\x01\n" +
+	"\x15ListIpForwardingRules\x12:.cloudstack.management.nat.v1.ListIpForwardingRulesRequest\x1a;.cloudstack.management.nat.v1.ListIpForwardingRulesResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\a\xc2>\x04\xc2>\x01\x02B\x9a\x02\n" +
 	" com.cloudstack.management.nat.v1B\vNatGenProtoP\x01ZVgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/nat/v1;natv1\xa2\x02\x03CMN\xaa\x02\x1cCloudstack.Management.Nat.V1\xca\x02\x1cCloudstack\\Management\\Nat\\V1\xe2\x02(Cloudstack\\Management\\Nat\\V1\\GPBMetadata\xea\x02\x1fCloudstack::Management::Nat::V1b\beditionsp\xe8\a"
 
 var (
@@ -1280,47 +1116,44 @@ func file_cloudstack_management_nat_v1_nat_gen_proto_rawDescGZIP() []byte {
 }
 
 var file_cloudstack_management_nat_v1_nat_gen_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
+var file_cloudstack_management_nat_v1_nat_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_cloudstack_management_nat_v1_nat_gen_proto_goTypes = []any{
 	(ProtocolType)(0),                      // 0: cloudstack.management.nat.v1.ProtocolType
-	(*ListIpForwardingRulesRequest)(nil),   // 1: cloudstack.management.nat.v1.ListIpForwardingRulesRequest
-	(*ListIpForwardingRulesResponse)(nil),  // 2: cloudstack.management.nat.v1.ListIpForwardingRulesResponse
+	(*CreateIpForwardingRuleRequest)(nil),  // 1: cloudstack.management.nat.v1.CreateIpForwardingRuleRequest
+	(*CreateIpForwardingRuleResponse)(nil), // 2: cloudstack.management.nat.v1.CreateIpForwardingRuleResponse
 	(*DeleteIpForwardingRuleRequest)(nil),  // 3: cloudstack.management.nat.v1.DeleteIpForwardingRuleRequest
 	(*DeleteIpForwardingRuleResponse)(nil), // 4: cloudstack.management.nat.v1.DeleteIpForwardingRuleResponse
 	(*DisableStaticNatRequest)(nil),        // 5: cloudstack.management.nat.v1.DisableStaticNatRequest
 	(*DisableStaticNatResponse)(nil),       // 6: cloudstack.management.nat.v1.DisableStaticNatResponse
-	(*CreateIpForwardingRuleRequest)(nil),  // 7: cloudstack.management.nat.v1.CreateIpForwardingRuleRequest
-	(*CreateIpForwardingRuleResponse)(nil), // 8: cloudstack.management.nat.v1.CreateIpForwardingRuleResponse
-	(*EnableStaticNatRequest)(nil),         // 9: cloudstack.management.nat.v1.EnableStaticNatRequest
-	(*EnableStaticNatResponse)(nil),        // 10: cloudstack.management.nat.v1.EnableStaticNatResponse
+	(*EnableStaticNatRequest)(nil),         // 7: cloudstack.management.nat.v1.EnableStaticNatRequest
+	(*EnableStaticNatResponse)(nil),        // 8: cloudstack.management.nat.v1.EnableStaticNatResponse
+	(*ListIpForwardingRulesRequest)(nil),   // 9: cloudstack.management.nat.v1.ListIpForwardingRulesRequest
+	(*ListIpForwardingRulesResponse)(nil),  // 10: cloudstack.management.nat.v1.ListIpForwardingRulesResponse
 	(*FirewallRule)(nil),                   // 11: cloudstack.management.nat.v1.FirewallRule
 	(*Success)(nil),                        // 12: cloudstack.management.nat.v1.Success
-	(*Item)(nil),                           // 13: cloudstack.management.nat.v1.Item
-	(*Result)(nil),                         // 14: cloudstack.management.nat.v1.Result
-	nil,                                    // 15: cloudstack.management.nat.v1.Item.DetailsEntry
+	(*Result)(nil),                         // 13: cloudstack.management.nat.v1.Result
 }
 var file_cloudstack_management_nat_v1_nat_gen_proto_depIdxs = []int32{
-	11, // 0: cloudstack.management.nat.v1.ListIpForwardingRulesResponse.items:type_name -> cloudstack.management.nat.v1.FirewallRule
-	14, // 1: cloudstack.management.nat.v1.DeleteIpForwardingRuleResponse.result:type_name -> cloudstack.management.nat.v1.Result
-	14, // 2: cloudstack.management.nat.v1.DisableStaticNatResponse.result:type_name -> cloudstack.management.nat.v1.Result
-	14, // 3: cloudstack.management.nat.v1.CreateIpForwardingRuleResponse.result:type_name -> cloudstack.management.nat.v1.Result
-	14, // 4: cloudstack.management.nat.v1.EnableStaticNatResponse.result:type_name -> cloudstack.management.nat.v1.Result
-	15, // 5: cloudstack.management.nat.v1.Item.details:type_name -> cloudstack.management.nat.v1.Item.DetailsEntry
-	1,  // 6: cloudstack.management.nat.v1.NatService.ListIpForwardingRules:input_type -> cloudstack.management.nat.v1.ListIpForwardingRulesRequest
-	3,  // 7: cloudstack.management.nat.v1.NatService.DeleteIpForwardingRule:input_type -> cloudstack.management.nat.v1.DeleteIpForwardingRuleRequest
-	5,  // 8: cloudstack.management.nat.v1.NatService.DisableStaticNat:input_type -> cloudstack.management.nat.v1.DisableStaticNatRequest
-	7,  // 9: cloudstack.management.nat.v1.NatService.CreateIpForwardingRule:input_type -> cloudstack.management.nat.v1.CreateIpForwardingRuleRequest
-	9,  // 10: cloudstack.management.nat.v1.NatService.EnableStaticNat:input_type -> cloudstack.management.nat.v1.EnableStaticNatRequest
-	2,  // 11: cloudstack.management.nat.v1.NatService.ListIpForwardingRules:output_type -> cloudstack.management.nat.v1.ListIpForwardingRulesResponse
-	4,  // 12: cloudstack.management.nat.v1.NatService.DeleteIpForwardingRule:output_type -> cloudstack.management.nat.v1.DeleteIpForwardingRuleResponse
-	6,  // 13: cloudstack.management.nat.v1.NatService.DisableStaticNat:output_type -> cloudstack.management.nat.v1.DisableStaticNatResponse
-	8,  // 14: cloudstack.management.nat.v1.NatService.CreateIpForwardingRule:output_type -> cloudstack.management.nat.v1.CreateIpForwardingRuleResponse
-	10, // 15: cloudstack.management.nat.v1.NatService.EnableStaticNat:output_type -> cloudstack.management.nat.v1.EnableStaticNatResponse
-	11, // [11:16] is the sub-list for method output_type
-	6,  // [6:11] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	13, // 0: cloudstack.management.nat.v1.CreateIpForwardingRuleResponse.result:type_name -> cloudstack.management.nat.v1.Result
+	13, // 1: cloudstack.management.nat.v1.DeleteIpForwardingRuleResponse.result:type_name -> cloudstack.management.nat.v1.Result
+	13, // 2: cloudstack.management.nat.v1.DisableStaticNatResponse.result:type_name -> cloudstack.management.nat.v1.Result
+	13, // 3: cloudstack.management.nat.v1.EnableStaticNatResponse.result:type_name -> cloudstack.management.nat.v1.Result
+	11, // 4: cloudstack.management.nat.v1.ListIpForwardingRulesResponse.items:type_name -> cloudstack.management.nat.v1.FirewallRule
+	1,  // 5: cloudstack.management.nat.v1.NatService.CreateIpForwardingRule:input_type -> cloudstack.management.nat.v1.CreateIpForwardingRuleRequest
+	3,  // 6: cloudstack.management.nat.v1.NatService.DeleteIpForwardingRule:input_type -> cloudstack.management.nat.v1.DeleteIpForwardingRuleRequest
+	5,  // 7: cloudstack.management.nat.v1.NatService.DisableStaticNat:input_type -> cloudstack.management.nat.v1.DisableStaticNatRequest
+	7,  // 8: cloudstack.management.nat.v1.NatService.EnableStaticNat:input_type -> cloudstack.management.nat.v1.EnableStaticNatRequest
+	9,  // 9: cloudstack.management.nat.v1.NatService.ListIpForwardingRules:input_type -> cloudstack.management.nat.v1.ListIpForwardingRulesRequest
+	2,  // 10: cloudstack.management.nat.v1.NatService.CreateIpForwardingRule:output_type -> cloudstack.management.nat.v1.CreateIpForwardingRuleResponse
+	4,  // 11: cloudstack.management.nat.v1.NatService.DeleteIpForwardingRule:output_type -> cloudstack.management.nat.v1.DeleteIpForwardingRuleResponse
+	6,  // 12: cloudstack.management.nat.v1.NatService.DisableStaticNat:output_type -> cloudstack.management.nat.v1.DisableStaticNatResponse
+	8,  // 13: cloudstack.management.nat.v1.NatService.EnableStaticNat:output_type -> cloudstack.management.nat.v1.EnableStaticNatResponse
+	10, // 14: cloudstack.management.nat.v1.NatService.ListIpForwardingRules:output_type -> cloudstack.management.nat.v1.ListIpForwardingRulesResponse
+	10, // [10:15] is the sub-list for method output_type
+	5,  // [5:10] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_nat_v1_nat_gen_proto_init() }
@@ -1334,7 +1167,7 @@ func file_cloudstack_management_nat_v1_nat_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_nat_v1_nat_gen_proto_rawDesc), len(file_cloudstack_management_nat_v1_nat_gen_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   15,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

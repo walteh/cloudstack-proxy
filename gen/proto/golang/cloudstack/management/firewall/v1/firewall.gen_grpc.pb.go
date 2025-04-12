@@ -19,18 +19,18 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	FirewallService_DeleteEgressFirewallRule_FullMethodName = "/cloudstack.management.firewall.v1.FirewallService/DeleteEgressFirewallRule"
 	FirewallService_CreateEgressFirewallRule_FullMethodName = "/cloudstack.management.firewall.v1.FirewallService/CreateEgressFirewallRule"
-	FirewallService_UpdatePortForwardingRule_FullMethodName = "/cloudstack.management.firewall.v1.FirewallService/UpdatePortForwardingRule"
-	FirewallService_ListFirewallRules_FullMethodName        = "/cloudstack.management.firewall.v1.FirewallService/ListFirewallRules"
-	FirewallService_CreatePortForwardingRule_FullMethodName = "/cloudstack.management.firewall.v1.FirewallService/CreatePortForwardingRule"
-	FirewallService_DeleteFirewallRule_FullMethodName       = "/cloudstack.management.firewall.v1.FirewallService/DeleteFirewallRule"
-	FirewallService_UpdateEgressFirewallRule_FullMethodName = "/cloudstack.management.firewall.v1.FirewallService/UpdateEgressFirewallRule"
-	FirewallService_ListPortForwardingRules_FullMethodName  = "/cloudstack.management.firewall.v1.FirewallService/ListPortForwardingRules"
-	FirewallService_UpdateFirewallRule_FullMethodName       = "/cloudstack.management.firewall.v1.FirewallService/UpdateFirewallRule"
 	FirewallService_CreateFirewallRule_FullMethodName       = "/cloudstack.management.firewall.v1.FirewallService/CreateFirewallRule"
-	FirewallService_ListEgressFirewallRules_FullMethodName  = "/cloudstack.management.firewall.v1.FirewallService/ListEgressFirewallRules"
+	FirewallService_CreatePortForwardingRule_FullMethodName = "/cloudstack.management.firewall.v1.FirewallService/CreatePortForwardingRule"
+	FirewallService_DeleteEgressFirewallRule_FullMethodName = "/cloudstack.management.firewall.v1.FirewallService/DeleteEgressFirewallRule"
+	FirewallService_DeleteFirewallRule_FullMethodName       = "/cloudstack.management.firewall.v1.FirewallService/DeleteFirewallRule"
 	FirewallService_DeletePortForwardingRule_FullMethodName = "/cloudstack.management.firewall.v1.FirewallService/DeletePortForwardingRule"
+	FirewallService_ListEgressFirewallRules_FullMethodName  = "/cloudstack.management.firewall.v1.FirewallService/ListEgressFirewallRules"
+	FirewallService_ListFirewallRules_FullMethodName        = "/cloudstack.management.firewall.v1.FirewallService/ListFirewallRules"
+	FirewallService_ListPortForwardingRules_FullMethodName  = "/cloudstack.management.firewall.v1.FirewallService/ListPortForwardingRules"
+	FirewallService_UpdateEgressFirewallRule_FullMethodName = "/cloudstack.management.firewall.v1.FirewallService/UpdateEgressFirewallRule"
+	FirewallService_UpdateFirewallRule_FullMethodName       = "/cloudstack.management.firewall.v1.FirewallService/UpdateFirewallRule"
+	FirewallService_UpdatePortForwardingRule_FullMethodName = "/cloudstack.management.firewall.v1.FirewallService/UpdatePortForwardingRule"
 )
 
 // FirewallServiceClient is the client API for FirewallService service.
@@ -39,30 +39,30 @@ const (
 //
 // FirewallService provides operations for managing Firewalls
 type FirewallServiceClient interface {
-	// DeleteEgressFirewallRule Deletes an egress firewall rule
-	DeleteEgressFirewallRule(ctx context.Context, in *DeleteEgressFirewallRuleRequest, opts ...grpc.CallOption) (*DeleteEgressFirewallRuleResponse, error)
 	// CreateEgressFirewallRule Creates a egress firewall rule for a given network
 	CreateEgressFirewallRule(ctx context.Context, in *CreateEgressFirewallRuleRequest, opts ...grpc.CallOption) (*CreateEgressFirewallRuleResponse, error)
-	// UpdatePortForwardingRule Updates a port forwarding rule. Only the private port and the virtual machine can be updated.
-	UpdatePortForwardingRule(ctx context.Context, in *UpdatePortForwardingRuleRequest, opts ...grpc.CallOption) (*UpdatePortForwardingRuleResponse, error)
-	// ListFirewallRules Lists all firewall rules for an IP address.
-	ListFirewallRules(ctx context.Context, in *ListFirewallRulesRequest, opts ...grpc.CallOption) (*ListFirewallRulesResponse, error)
-	// CreatePortForwardingRule Creates a port forwarding rule
-	CreatePortForwardingRule(ctx context.Context, in *CreatePortForwardingRuleRequest, opts ...grpc.CallOption) (*CreatePortForwardingRuleResponse, error)
-	// DeleteFirewallRule Deletes a firewall rule
-	DeleteFirewallRule(ctx context.Context, in *DeleteFirewallRuleRequest, opts ...grpc.CallOption) (*DeleteFirewallRuleResponse, error)
-	// UpdateEgressFirewallRule Updates egress firewall rule
-	UpdateEgressFirewallRule(ctx context.Context, in *UpdateEgressFirewallRuleRequest, opts ...grpc.CallOption) (*UpdateEgressFirewallRuleResponse, error)
-	// ListPortForwardingRules Lists all port forwarding rules for an IP address.
-	ListPortForwardingRules(ctx context.Context, in *ListPortForwardingRulesRequest, opts ...grpc.CallOption) (*ListPortForwardingRulesResponse, error)
-	// UpdateFirewallRule Updates firewall rule
-	UpdateFirewallRule(ctx context.Context, in *UpdateFirewallRuleRequest, opts ...grpc.CallOption) (*UpdateFirewallRuleResponse, error)
 	// CreateFirewallRule Creates a firewall rule for a given IP address
 	CreateFirewallRule(ctx context.Context, in *CreateFirewallRuleRequest, opts ...grpc.CallOption) (*CreateFirewallRuleResponse, error)
-	// ListEgressFirewallRules Lists all egress firewall rules for network ID.
-	ListEgressFirewallRules(ctx context.Context, in *ListEgressFirewallRulesRequest, opts ...grpc.CallOption) (*ListEgressFirewallRulesResponse, error)
+	// CreatePortForwardingRule Creates a port forwarding rule
+	CreatePortForwardingRule(ctx context.Context, in *CreatePortForwardingRuleRequest, opts ...grpc.CallOption) (*CreatePortForwardingRuleResponse, error)
+	// DeleteEgressFirewallRule Deletes an egress firewall rule
+	DeleteEgressFirewallRule(ctx context.Context, in *DeleteEgressFirewallRuleRequest, opts ...grpc.CallOption) (*DeleteEgressFirewallRuleResponse, error)
+	// DeleteFirewallRule Deletes a firewall rule
+	DeleteFirewallRule(ctx context.Context, in *DeleteFirewallRuleRequest, opts ...grpc.CallOption) (*DeleteFirewallRuleResponse, error)
 	// DeletePortForwardingRule Deletes a port forwarding rule
 	DeletePortForwardingRule(ctx context.Context, in *DeletePortForwardingRuleRequest, opts ...grpc.CallOption) (*DeletePortForwardingRuleResponse, error)
+	// ListEgressFirewallRules Lists all egress firewall rules for network ID.
+	ListEgressFirewallRules(ctx context.Context, in *ListEgressFirewallRulesRequest, opts ...grpc.CallOption) (*ListEgressFirewallRulesResponse, error)
+	// ListFirewallRules Lists all firewall rules for an IP address.
+	ListFirewallRules(ctx context.Context, in *ListFirewallRulesRequest, opts ...grpc.CallOption) (*ListFirewallRulesResponse, error)
+	// ListPortForwardingRules Lists all port forwarding rules for an IP address.
+	ListPortForwardingRules(ctx context.Context, in *ListPortForwardingRulesRequest, opts ...grpc.CallOption) (*ListPortForwardingRulesResponse, error)
+	// UpdateEgressFirewallRule Updates egress firewall rule
+	UpdateEgressFirewallRule(ctx context.Context, in *UpdateEgressFirewallRuleRequest, opts ...grpc.CallOption) (*UpdateEgressFirewallRuleResponse, error)
+	// UpdateFirewallRule Updates firewall rule
+	UpdateFirewallRule(ctx context.Context, in *UpdateFirewallRuleRequest, opts ...grpc.CallOption) (*UpdateFirewallRuleResponse, error)
+	// UpdatePortForwardingRule Updates a port forwarding rule. Only the private port and the virtual machine can be updated.
+	UpdatePortForwardingRule(ctx context.Context, in *UpdatePortForwardingRuleRequest, opts ...grpc.CallOption) (*UpdatePortForwardingRuleResponse, error)
 }
 
 type firewallServiceClient struct {
@@ -73,90 +73,10 @@ func NewFirewallServiceClient(cc grpc.ClientConnInterface) FirewallServiceClient
 	return &firewallServiceClient{cc}
 }
 
-func (c *firewallServiceClient) DeleteEgressFirewallRule(ctx context.Context, in *DeleteEgressFirewallRuleRequest, opts ...grpc.CallOption) (*DeleteEgressFirewallRuleResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteEgressFirewallRuleResponse)
-	err := c.cc.Invoke(ctx, FirewallService_DeleteEgressFirewallRule_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *firewallServiceClient) CreateEgressFirewallRule(ctx context.Context, in *CreateEgressFirewallRuleRequest, opts ...grpc.CallOption) (*CreateEgressFirewallRuleResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreateEgressFirewallRuleResponse)
 	err := c.cc.Invoke(ctx, FirewallService_CreateEgressFirewallRule_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *firewallServiceClient) UpdatePortForwardingRule(ctx context.Context, in *UpdatePortForwardingRuleRequest, opts ...grpc.CallOption) (*UpdatePortForwardingRuleResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdatePortForwardingRuleResponse)
-	err := c.cc.Invoke(ctx, FirewallService_UpdatePortForwardingRule_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *firewallServiceClient) ListFirewallRules(ctx context.Context, in *ListFirewallRulesRequest, opts ...grpc.CallOption) (*ListFirewallRulesResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListFirewallRulesResponse)
-	err := c.cc.Invoke(ctx, FirewallService_ListFirewallRules_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *firewallServiceClient) CreatePortForwardingRule(ctx context.Context, in *CreatePortForwardingRuleRequest, opts ...grpc.CallOption) (*CreatePortForwardingRuleResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreatePortForwardingRuleResponse)
-	err := c.cc.Invoke(ctx, FirewallService_CreatePortForwardingRule_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *firewallServiceClient) DeleteFirewallRule(ctx context.Context, in *DeleteFirewallRuleRequest, opts ...grpc.CallOption) (*DeleteFirewallRuleResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteFirewallRuleResponse)
-	err := c.cc.Invoke(ctx, FirewallService_DeleteFirewallRule_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *firewallServiceClient) UpdateEgressFirewallRule(ctx context.Context, in *UpdateEgressFirewallRuleRequest, opts ...grpc.CallOption) (*UpdateEgressFirewallRuleResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateEgressFirewallRuleResponse)
-	err := c.cc.Invoke(ctx, FirewallService_UpdateEgressFirewallRule_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *firewallServiceClient) ListPortForwardingRules(ctx context.Context, in *ListPortForwardingRulesRequest, opts ...grpc.CallOption) (*ListPortForwardingRulesResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListPortForwardingRulesResponse)
-	err := c.cc.Invoke(ctx, FirewallService_ListPortForwardingRules_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *firewallServiceClient) UpdateFirewallRule(ctx context.Context, in *UpdateFirewallRuleRequest, opts ...grpc.CallOption) (*UpdateFirewallRuleResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateFirewallRuleResponse)
-	err := c.cc.Invoke(ctx, FirewallService_UpdateFirewallRule_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -173,10 +93,30 @@ func (c *firewallServiceClient) CreateFirewallRule(ctx context.Context, in *Crea
 	return out, nil
 }
 
-func (c *firewallServiceClient) ListEgressFirewallRules(ctx context.Context, in *ListEgressFirewallRulesRequest, opts ...grpc.CallOption) (*ListEgressFirewallRulesResponse, error) {
+func (c *firewallServiceClient) CreatePortForwardingRule(ctx context.Context, in *CreatePortForwardingRuleRequest, opts ...grpc.CallOption) (*CreatePortForwardingRuleResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListEgressFirewallRulesResponse)
-	err := c.cc.Invoke(ctx, FirewallService_ListEgressFirewallRules_FullMethodName, in, out, cOpts...)
+	out := new(CreatePortForwardingRuleResponse)
+	err := c.cc.Invoke(ctx, FirewallService_CreatePortForwardingRule_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *firewallServiceClient) DeleteEgressFirewallRule(ctx context.Context, in *DeleteEgressFirewallRuleRequest, opts ...grpc.CallOption) (*DeleteEgressFirewallRuleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteEgressFirewallRuleResponse)
+	err := c.cc.Invoke(ctx, FirewallService_DeleteEgressFirewallRule_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *firewallServiceClient) DeleteFirewallRule(ctx context.Context, in *DeleteFirewallRuleRequest, opts ...grpc.CallOption) (*DeleteFirewallRuleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteFirewallRuleResponse)
+	err := c.cc.Invoke(ctx, FirewallService_DeleteFirewallRule_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -193,36 +133,96 @@ func (c *firewallServiceClient) DeletePortForwardingRule(ctx context.Context, in
 	return out, nil
 }
 
+func (c *firewallServiceClient) ListEgressFirewallRules(ctx context.Context, in *ListEgressFirewallRulesRequest, opts ...grpc.CallOption) (*ListEgressFirewallRulesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListEgressFirewallRulesResponse)
+	err := c.cc.Invoke(ctx, FirewallService_ListEgressFirewallRules_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *firewallServiceClient) ListFirewallRules(ctx context.Context, in *ListFirewallRulesRequest, opts ...grpc.CallOption) (*ListFirewallRulesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListFirewallRulesResponse)
+	err := c.cc.Invoke(ctx, FirewallService_ListFirewallRules_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *firewallServiceClient) ListPortForwardingRules(ctx context.Context, in *ListPortForwardingRulesRequest, opts ...grpc.CallOption) (*ListPortForwardingRulesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListPortForwardingRulesResponse)
+	err := c.cc.Invoke(ctx, FirewallService_ListPortForwardingRules_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *firewallServiceClient) UpdateEgressFirewallRule(ctx context.Context, in *UpdateEgressFirewallRuleRequest, opts ...grpc.CallOption) (*UpdateEgressFirewallRuleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateEgressFirewallRuleResponse)
+	err := c.cc.Invoke(ctx, FirewallService_UpdateEgressFirewallRule_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *firewallServiceClient) UpdateFirewallRule(ctx context.Context, in *UpdateFirewallRuleRequest, opts ...grpc.CallOption) (*UpdateFirewallRuleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateFirewallRuleResponse)
+	err := c.cc.Invoke(ctx, FirewallService_UpdateFirewallRule_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *firewallServiceClient) UpdatePortForwardingRule(ctx context.Context, in *UpdatePortForwardingRuleRequest, opts ...grpc.CallOption) (*UpdatePortForwardingRuleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdatePortForwardingRuleResponse)
+	err := c.cc.Invoke(ctx, FirewallService_UpdatePortForwardingRule_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // FirewallServiceServer is the server API for FirewallService service.
 // All implementations must embed UnimplementedFirewallServiceServer
 // for forward compatibility.
 //
 // FirewallService provides operations for managing Firewalls
 type FirewallServiceServer interface {
-	// DeleteEgressFirewallRule Deletes an egress firewall rule
-	DeleteEgressFirewallRule(context.Context, *DeleteEgressFirewallRuleRequest) (*DeleteEgressFirewallRuleResponse, error)
 	// CreateEgressFirewallRule Creates a egress firewall rule for a given network
 	CreateEgressFirewallRule(context.Context, *CreateEgressFirewallRuleRequest) (*CreateEgressFirewallRuleResponse, error)
-	// UpdatePortForwardingRule Updates a port forwarding rule. Only the private port and the virtual machine can be updated.
-	UpdatePortForwardingRule(context.Context, *UpdatePortForwardingRuleRequest) (*UpdatePortForwardingRuleResponse, error)
-	// ListFirewallRules Lists all firewall rules for an IP address.
-	ListFirewallRules(context.Context, *ListFirewallRulesRequest) (*ListFirewallRulesResponse, error)
-	// CreatePortForwardingRule Creates a port forwarding rule
-	CreatePortForwardingRule(context.Context, *CreatePortForwardingRuleRequest) (*CreatePortForwardingRuleResponse, error)
-	// DeleteFirewallRule Deletes a firewall rule
-	DeleteFirewallRule(context.Context, *DeleteFirewallRuleRequest) (*DeleteFirewallRuleResponse, error)
-	// UpdateEgressFirewallRule Updates egress firewall rule
-	UpdateEgressFirewallRule(context.Context, *UpdateEgressFirewallRuleRequest) (*UpdateEgressFirewallRuleResponse, error)
-	// ListPortForwardingRules Lists all port forwarding rules for an IP address.
-	ListPortForwardingRules(context.Context, *ListPortForwardingRulesRequest) (*ListPortForwardingRulesResponse, error)
-	// UpdateFirewallRule Updates firewall rule
-	UpdateFirewallRule(context.Context, *UpdateFirewallRuleRequest) (*UpdateFirewallRuleResponse, error)
 	// CreateFirewallRule Creates a firewall rule for a given IP address
 	CreateFirewallRule(context.Context, *CreateFirewallRuleRequest) (*CreateFirewallRuleResponse, error)
-	// ListEgressFirewallRules Lists all egress firewall rules for network ID.
-	ListEgressFirewallRules(context.Context, *ListEgressFirewallRulesRequest) (*ListEgressFirewallRulesResponse, error)
+	// CreatePortForwardingRule Creates a port forwarding rule
+	CreatePortForwardingRule(context.Context, *CreatePortForwardingRuleRequest) (*CreatePortForwardingRuleResponse, error)
+	// DeleteEgressFirewallRule Deletes an egress firewall rule
+	DeleteEgressFirewallRule(context.Context, *DeleteEgressFirewallRuleRequest) (*DeleteEgressFirewallRuleResponse, error)
+	// DeleteFirewallRule Deletes a firewall rule
+	DeleteFirewallRule(context.Context, *DeleteFirewallRuleRequest) (*DeleteFirewallRuleResponse, error)
 	// DeletePortForwardingRule Deletes a port forwarding rule
 	DeletePortForwardingRule(context.Context, *DeletePortForwardingRuleRequest) (*DeletePortForwardingRuleResponse, error)
+	// ListEgressFirewallRules Lists all egress firewall rules for network ID.
+	ListEgressFirewallRules(context.Context, *ListEgressFirewallRulesRequest) (*ListEgressFirewallRulesResponse, error)
+	// ListFirewallRules Lists all firewall rules for an IP address.
+	ListFirewallRules(context.Context, *ListFirewallRulesRequest) (*ListFirewallRulesResponse, error)
+	// ListPortForwardingRules Lists all port forwarding rules for an IP address.
+	ListPortForwardingRules(context.Context, *ListPortForwardingRulesRequest) (*ListPortForwardingRulesResponse, error)
+	// UpdateEgressFirewallRule Updates egress firewall rule
+	UpdateEgressFirewallRule(context.Context, *UpdateEgressFirewallRuleRequest) (*UpdateEgressFirewallRuleResponse, error)
+	// UpdateFirewallRule Updates firewall rule
+	UpdateFirewallRule(context.Context, *UpdateFirewallRuleRequest) (*UpdateFirewallRuleResponse, error)
+	// UpdatePortForwardingRule Updates a port forwarding rule. Only the private port and the virtual machine can be updated.
+	UpdatePortForwardingRule(context.Context, *UpdatePortForwardingRuleRequest) (*UpdatePortForwardingRuleResponse, error)
 	mustEmbedUnimplementedFirewallServiceServer()
 }
 
@@ -233,41 +233,41 @@ type FirewallServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedFirewallServiceServer struct{}
 
-func (UnimplementedFirewallServiceServer) DeleteEgressFirewallRule(context.Context, *DeleteEgressFirewallRuleRequest) (*DeleteEgressFirewallRuleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteEgressFirewallRule not implemented")
-}
 func (UnimplementedFirewallServiceServer) CreateEgressFirewallRule(context.Context, *CreateEgressFirewallRuleRequest) (*CreateEgressFirewallRuleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateEgressFirewallRule not implemented")
-}
-func (UnimplementedFirewallServiceServer) UpdatePortForwardingRule(context.Context, *UpdatePortForwardingRuleRequest) (*UpdatePortForwardingRuleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdatePortForwardingRule not implemented")
-}
-func (UnimplementedFirewallServiceServer) ListFirewallRules(context.Context, *ListFirewallRulesRequest) (*ListFirewallRulesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListFirewallRules not implemented")
-}
-func (UnimplementedFirewallServiceServer) CreatePortForwardingRule(context.Context, *CreatePortForwardingRuleRequest) (*CreatePortForwardingRuleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreatePortForwardingRule not implemented")
-}
-func (UnimplementedFirewallServiceServer) DeleteFirewallRule(context.Context, *DeleteFirewallRuleRequest) (*DeleteFirewallRuleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteFirewallRule not implemented")
-}
-func (UnimplementedFirewallServiceServer) UpdateEgressFirewallRule(context.Context, *UpdateEgressFirewallRuleRequest) (*UpdateEgressFirewallRuleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateEgressFirewallRule not implemented")
-}
-func (UnimplementedFirewallServiceServer) ListPortForwardingRules(context.Context, *ListPortForwardingRulesRequest) (*ListPortForwardingRulesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListPortForwardingRules not implemented")
-}
-func (UnimplementedFirewallServiceServer) UpdateFirewallRule(context.Context, *UpdateFirewallRuleRequest) (*UpdateFirewallRuleResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateFirewallRule not implemented")
 }
 func (UnimplementedFirewallServiceServer) CreateFirewallRule(context.Context, *CreateFirewallRuleRequest) (*CreateFirewallRuleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateFirewallRule not implemented")
 }
-func (UnimplementedFirewallServiceServer) ListEgressFirewallRules(context.Context, *ListEgressFirewallRulesRequest) (*ListEgressFirewallRulesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListEgressFirewallRules not implemented")
+func (UnimplementedFirewallServiceServer) CreatePortForwardingRule(context.Context, *CreatePortForwardingRuleRequest) (*CreatePortForwardingRuleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreatePortForwardingRule not implemented")
+}
+func (UnimplementedFirewallServiceServer) DeleteEgressFirewallRule(context.Context, *DeleteEgressFirewallRuleRequest) (*DeleteEgressFirewallRuleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteEgressFirewallRule not implemented")
+}
+func (UnimplementedFirewallServiceServer) DeleteFirewallRule(context.Context, *DeleteFirewallRuleRequest) (*DeleteFirewallRuleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteFirewallRule not implemented")
 }
 func (UnimplementedFirewallServiceServer) DeletePortForwardingRule(context.Context, *DeletePortForwardingRuleRequest) (*DeletePortForwardingRuleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeletePortForwardingRule not implemented")
+}
+func (UnimplementedFirewallServiceServer) ListEgressFirewallRules(context.Context, *ListEgressFirewallRulesRequest) (*ListEgressFirewallRulesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListEgressFirewallRules not implemented")
+}
+func (UnimplementedFirewallServiceServer) ListFirewallRules(context.Context, *ListFirewallRulesRequest) (*ListFirewallRulesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListFirewallRules not implemented")
+}
+func (UnimplementedFirewallServiceServer) ListPortForwardingRules(context.Context, *ListPortForwardingRulesRequest) (*ListPortForwardingRulesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListPortForwardingRules not implemented")
+}
+func (UnimplementedFirewallServiceServer) UpdateEgressFirewallRule(context.Context, *UpdateEgressFirewallRuleRequest) (*UpdateEgressFirewallRuleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateEgressFirewallRule not implemented")
+}
+func (UnimplementedFirewallServiceServer) UpdateFirewallRule(context.Context, *UpdateFirewallRuleRequest) (*UpdateFirewallRuleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateFirewallRule not implemented")
+}
+func (UnimplementedFirewallServiceServer) UpdatePortForwardingRule(context.Context, *UpdatePortForwardingRuleRequest) (*UpdatePortForwardingRuleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePortForwardingRule not implemented")
 }
 func (UnimplementedFirewallServiceServer) mustEmbedUnimplementedFirewallServiceServer() {}
 func (UnimplementedFirewallServiceServer) testEmbeddedByValue()                         {}
@@ -290,24 +290,6 @@ func RegisterFirewallServiceServer(s grpc.ServiceRegistrar, srv FirewallServiceS
 	s.RegisterService(&FirewallService_ServiceDesc, srv)
 }
 
-func _FirewallService_DeleteEgressFirewallRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteEgressFirewallRuleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(FirewallServiceServer).DeleteEgressFirewallRule(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: FirewallService_DeleteEgressFirewallRule_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FirewallServiceServer).DeleteEgressFirewallRule(ctx, req.(*DeleteEgressFirewallRuleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _FirewallService_CreateEgressFirewallRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateEgressFirewallRuleRequest)
 	if err := dec(in); err != nil {
@@ -322,132 +304,6 @@ func _FirewallService_CreateEgressFirewallRule_Handler(srv interface{}, ctx cont
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(FirewallServiceServer).CreateEgressFirewallRule(ctx, req.(*CreateEgressFirewallRuleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _FirewallService_UpdatePortForwardingRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdatePortForwardingRuleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(FirewallServiceServer).UpdatePortForwardingRule(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: FirewallService_UpdatePortForwardingRule_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FirewallServiceServer).UpdatePortForwardingRule(ctx, req.(*UpdatePortForwardingRuleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _FirewallService_ListFirewallRules_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListFirewallRulesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(FirewallServiceServer).ListFirewallRules(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: FirewallService_ListFirewallRules_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FirewallServiceServer).ListFirewallRules(ctx, req.(*ListFirewallRulesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _FirewallService_CreatePortForwardingRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreatePortForwardingRuleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(FirewallServiceServer).CreatePortForwardingRule(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: FirewallService_CreatePortForwardingRule_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FirewallServiceServer).CreatePortForwardingRule(ctx, req.(*CreatePortForwardingRuleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _FirewallService_DeleteFirewallRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteFirewallRuleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(FirewallServiceServer).DeleteFirewallRule(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: FirewallService_DeleteFirewallRule_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FirewallServiceServer).DeleteFirewallRule(ctx, req.(*DeleteFirewallRuleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _FirewallService_UpdateEgressFirewallRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateEgressFirewallRuleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(FirewallServiceServer).UpdateEgressFirewallRule(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: FirewallService_UpdateEgressFirewallRule_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FirewallServiceServer).UpdateEgressFirewallRule(ctx, req.(*UpdateEgressFirewallRuleRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _FirewallService_ListPortForwardingRules_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListPortForwardingRulesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(FirewallServiceServer).ListPortForwardingRules(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: FirewallService_ListPortForwardingRules_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FirewallServiceServer).ListPortForwardingRules(ctx, req.(*ListPortForwardingRulesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _FirewallService_UpdateFirewallRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateFirewallRuleRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(FirewallServiceServer).UpdateFirewallRule(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: FirewallService_UpdateFirewallRule_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FirewallServiceServer).UpdateFirewallRule(ctx, req.(*UpdateFirewallRuleRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -470,20 +326,56 @@ func _FirewallService_CreateFirewallRule_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
-func _FirewallService_ListEgressFirewallRules_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListEgressFirewallRulesRequest)
+func _FirewallService_CreatePortForwardingRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreatePortForwardingRuleRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(FirewallServiceServer).ListEgressFirewallRules(ctx, in)
+		return srv.(FirewallServiceServer).CreatePortForwardingRule(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: FirewallService_ListEgressFirewallRules_FullMethodName,
+		FullMethod: FirewallService_CreatePortForwardingRule_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FirewallServiceServer).ListEgressFirewallRules(ctx, req.(*ListEgressFirewallRulesRequest))
+		return srv.(FirewallServiceServer).CreatePortForwardingRule(ctx, req.(*CreatePortForwardingRuleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FirewallService_DeleteEgressFirewallRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteEgressFirewallRuleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FirewallServiceServer).DeleteEgressFirewallRule(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FirewallService_DeleteEgressFirewallRule_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FirewallServiceServer).DeleteEgressFirewallRule(ctx, req.(*DeleteEgressFirewallRuleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FirewallService_DeleteFirewallRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteFirewallRuleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FirewallServiceServer).DeleteFirewallRule(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FirewallService_DeleteFirewallRule_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FirewallServiceServer).DeleteFirewallRule(ctx, req.(*DeleteFirewallRuleRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -506,6 +398,114 @@ func _FirewallService_DeletePortForwardingRule_Handler(srv interface{}, ctx cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _FirewallService_ListEgressFirewallRules_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListEgressFirewallRulesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FirewallServiceServer).ListEgressFirewallRules(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FirewallService_ListEgressFirewallRules_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FirewallServiceServer).ListEgressFirewallRules(ctx, req.(*ListEgressFirewallRulesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FirewallService_ListFirewallRules_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListFirewallRulesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FirewallServiceServer).ListFirewallRules(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FirewallService_ListFirewallRules_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FirewallServiceServer).ListFirewallRules(ctx, req.(*ListFirewallRulesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FirewallService_ListPortForwardingRules_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListPortForwardingRulesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FirewallServiceServer).ListPortForwardingRules(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FirewallService_ListPortForwardingRules_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FirewallServiceServer).ListPortForwardingRules(ctx, req.(*ListPortForwardingRulesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FirewallService_UpdateEgressFirewallRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateEgressFirewallRuleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FirewallServiceServer).UpdateEgressFirewallRule(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FirewallService_UpdateEgressFirewallRule_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FirewallServiceServer).UpdateEgressFirewallRule(ctx, req.(*UpdateEgressFirewallRuleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FirewallService_UpdateFirewallRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateFirewallRuleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FirewallServiceServer).UpdateFirewallRule(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FirewallService_UpdateFirewallRule_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FirewallServiceServer).UpdateFirewallRule(ctx, req.(*UpdateFirewallRuleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FirewallService_UpdatePortForwardingRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdatePortForwardingRuleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FirewallServiceServer).UpdatePortForwardingRule(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FirewallService_UpdatePortForwardingRule_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FirewallServiceServer).UpdatePortForwardingRule(ctx, req.(*UpdatePortForwardingRuleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // FirewallService_ServiceDesc is the grpc.ServiceDesc for FirewallService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -514,52 +514,52 @@ var FirewallService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*FirewallServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "DeleteEgressFirewallRule",
-			Handler:    _FirewallService_DeleteEgressFirewallRule_Handler,
-		},
-		{
 			MethodName: "CreateEgressFirewallRule",
 			Handler:    _FirewallService_CreateEgressFirewallRule_Handler,
-		},
-		{
-			MethodName: "UpdatePortForwardingRule",
-			Handler:    _FirewallService_UpdatePortForwardingRule_Handler,
-		},
-		{
-			MethodName: "ListFirewallRules",
-			Handler:    _FirewallService_ListFirewallRules_Handler,
-		},
-		{
-			MethodName: "CreatePortForwardingRule",
-			Handler:    _FirewallService_CreatePortForwardingRule_Handler,
-		},
-		{
-			MethodName: "DeleteFirewallRule",
-			Handler:    _FirewallService_DeleteFirewallRule_Handler,
-		},
-		{
-			MethodName: "UpdateEgressFirewallRule",
-			Handler:    _FirewallService_UpdateEgressFirewallRule_Handler,
-		},
-		{
-			MethodName: "ListPortForwardingRules",
-			Handler:    _FirewallService_ListPortForwardingRules_Handler,
-		},
-		{
-			MethodName: "UpdateFirewallRule",
-			Handler:    _FirewallService_UpdateFirewallRule_Handler,
 		},
 		{
 			MethodName: "CreateFirewallRule",
 			Handler:    _FirewallService_CreateFirewallRule_Handler,
 		},
 		{
-			MethodName: "ListEgressFirewallRules",
-			Handler:    _FirewallService_ListEgressFirewallRules_Handler,
+			MethodName: "CreatePortForwardingRule",
+			Handler:    _FirewallService_CreatePortForwardingRule_Handler,
+		},
+		{
+			MethodName: "DeleteEgressFirewallRule",
+			Handler:    _FirewallService_DeleteEgressFirewallRule_Handler,
+		},
+		{
+			MethodName: "DeleteFirewallRule",
+			Handler:    _FirewallService_DeleteFirewallRule_Handler,
 		},
 		{
 			MethodName: "DeletePortForwardingRule",
 			Handler:    _FirewallService_DeletePortForwardingRule_Handler,
+		},
+		{
+			MethodName: "ListEgressFirewallRules",
+			Handler:    _FirewallService_ListEgressFirewallRules_Handler,
+		},
+		{
+			MethodName: "ListFirewallRules",
+			Handler:    _FirewallService_ListFirewallRules_Handler,
+		},
+		{
+			MethodName: "ListPortForwardingRules",
+			Handler:    _FirewallService_ListPortForwardingRules_Handler,
+		},
+		{
+			MethodName: "UpdateEgressFirewallRule",
+			Handler:    _FirewallService_UpdateEgressFirewallRule_Handler,
+		},
+		{
+			MethodName: "UpdateFirewallRule",
+			Handler:    _FirewallService_UpdateFirewallRule_Handler,
+		},
+		{
+			MethodName: "UpdatePortForwardingRule",
+			Handler:    _FirewallService_UpdatePortForwardingRule_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

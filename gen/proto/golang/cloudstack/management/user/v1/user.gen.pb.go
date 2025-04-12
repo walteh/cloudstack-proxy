@@ -73,34 +73,46 @@ func (UserSourceType) EnumDescriptor() ([]byte, []int) {
 	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{0}
 }
 
-// MoveUserRequest represents the parameters for moves a user to another account in the same domain.
-type MoveUserRequest struct {
+// CreateUserRequest represents the parameters for creates a user for an account that already exists
+type CreateUserRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// id of the user to be moved.
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// Moves the user under the specified account. If no account name is specified, it is necessary to provide an account id.
-	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// Moves the user under the specified account. If no account id is specified, it is necessary to provide an account name.
-	AccountId *int64 `protobuf:"varint,3,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// Creates the user under the specified account. If no account is specified, the username will be used as the account name.
+	AccountName *string `protobuf:"bytes,1,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// Creates the user under the specified domain. Has to be accompanied with the account parameter
+	DomainId *int64 `protobuf:"varint,2,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// email
+	Email *string `protobuf:"bytes,3,opt,name=email" json:"email,omitempty"`
+	// firstname
+	Firstname *string `protobuf:"bytes,4,opt,name=firstname" json:"firstname,omitempty"`
+	// lastname
+	Lastname *string `protobuf:"bytes,5,opt,name=lastname" json:"lastname,omitempty"`
+	// Clear text password (Default hashed to SHA256SALT). If you wish to use any other hashing algorithm, you would need to write a custom authentication adapter See Docs section.
+	Password *string `protobuf:"bytes,6,opt,name=password" json:"password,omitempty"`
+	// Specifies a timezone for this command. For more information on the timezone parameter, see Time Zone Format.
+	Timezone *string `protobuf:"bytes,7,opt,name=timezone" json:"timezone,omitempty"`
+	// Unique username.
+	Username *string `protobuf:"bytes,8,opt,name=username" json:"username,omitempty"`
+	// User UUID, required for adding account from external provisioning system
+	UserUUId *string `protobuf:"bytes,9,opt,name=user_u_u_id,json=userUUId" json:"user_u_u_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *MoveUserRequest) Reset() {
-	*x = MoveUserRequest{}
+func (x *CreateUserRequest) Reset() {
+	*x = CreateUserRequest{}
 	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *MoveUserRequest) String() string {
+func (x *CreateUserRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MoveUserRequest) ProtoMessage() {}
+func (*CreateUserRequest) ProtoMessage() {}
 
-func (x *MoveUserRequest) ProtoReflect() protoreflect.Message {
+func (x *CreateUserRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -112,41 +124,83 @@ func (x *MoveUserRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use MoveUserRequest.ProtoReflect.Descriptor instead.
-func (*MoveUserRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateUserRequest.ProtoReflect.Descriptor instead.
+func (*CreateUserRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *MoveUserRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *MoveUserRequest) GetAccountName() string {
+func (x *CreateUserRequest) GetAccountName() string {
 	if x != nil && x.AccountName != nil {
 		return *x.AccountName
 	}
 	return ""
 }
 
-func (x *MoveUserRequest) GetAccountId() int64 {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
+func (x *CreateUserRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
 	}
 	return 0
 }
 
-func (x *MoveUserRequest) GetResponseType() string {
+func (x *CreateUserRequest) GetEmail() string {
+	if x != nil && x.Email != nil {
+		return *x.Email
+	}
+	return ""
+}
+
+func (x *CreateUserRequest) GetFirstname() string {
+	if x != nil && x.Firstname != nil {
+		return *x.Firstname
+	}
+	return ""
+}
+
+func (x *CreateUserRequest) GetLastname() string {
+	if x != nil && x.Lastname != nil {
+		return *x.Lastname
+	}
+	return ""
+}
+
+func (x *CreateUserRequest) GetPassword() string {
+	if x != nil && x.Password != nil {
+		return *x.Password
+	}
+	return ""
+}
+
+func (x *CreateUserRequest) GetTimezone() string {
+	if x != nil && x.Timezone != nil {
+		return *x.Timezone
+	}
+	return ""
+}
+
+func (x *CreateUserRequest) GetUsername() string {
+	if x != nil && x.Username != nil {
+		return *x.Username
+	}
+	return ""
+}
+
+func (x *CreateUserRequest) GetUserUUId() string {
+	if x != nil && x.UserUUId != nil {
+		return *x.UserUUId
+	}
+	return ""
+}
+
+func (x *CreateUserRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// MoveUserResponse represents the response from moves a user to another account in the same domain.
-type MoveUserResponse struct {
+// CreateUserResponse represents the response from creates a user for an account that already exists
+type CreateUserResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -154,20 +208,20 @@ type MoveUserResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *MoveUserResponse) Reset() {
-	*x = MoveUserResponse{}
+func (x *CreateUserResponse) Reset() {
+	*x = CreateUserResponse{}
 	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *MoveUserResponse) String() string {
+func (x *CreateUserResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MoveUserResponse) ProtoMessage() {}
+func (*CreateUserResponse) ProtoMessage() {}
 
-func (x *MoveUserResponse) ProtoReflect() protoreflect.Message {
+func (x *CreateUserResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -179,12 +233,112 @@ func (x *MoveUserResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use MoveUserResponse.ProtoReflect.Descriptor instead.
-func (*MoveUserResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateUserResponse.ProtoReflect.Descriptor instead.
+func (*CreateUserResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *MoveUserResponse) GetResult() *Result {
+func (x *CreateUserResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteUserRequest represents the parameters for deletes a user for an account
+type DeleteUserRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// id of the user to be deleted
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteUserRequest) Reset() {
+	*x = DeleteUserRequest{}
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteUserRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteUserRequest) ProtoMessage() {}
+
+func (x *DeleteUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteUserRequest.ProtoReflect.Descriptor instead.
+func (*DeleteUserRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *DeleteUserRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteUserRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteUserResponse represents the response from deletes a user for an account
+type DeleteUserResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteUserResponse) Reset() {
+	*x = DeleteUserResponse{}
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteUserResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteUserResponse) ProtoMessage() {}
+
+func (x *DeleteUserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteUserResponse.ProtoReflect.Descriptor instead.
+func (*DeleteUserResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *DeleteUserResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -205,7 +359,7 @@ type DisableUserRequest struct {
 
 func (x *DisableUserRequest) Reset() {
 	*x = DisableUserRequest{}
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -217,7 +371,7 @@ func (x *DisableUserRequest) String() string {
 func (*DisableUserRequest) ProtoMessage() {}
 
 func (x *DisableUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -230,7 +384,7 @@ func (x *DisableUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DisableUserRequest.ProtoReflect.Descriptor instead.
 func (*DisableUserRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{2}
+	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *DisableUserRequest) GetId() int64 {
@@ -272,7 +426,7 @@ type DisableUserResponse struct {
 
 func (x *DisableUserResponse) Reset() {
 	*x = DisableUserResponse{}
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -284,7 +438,7 @@ func (x *DisableUserResponse) String() string {
 func (*DisableUserResponse) ProtoMessage() {}
 
 func (x *DisableUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -297,7 +451,7 @@ func (x *DisableUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DisableUserResponse.ProtoReflect.Descriptor instead.
 func (*DisableUserResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{3}
+	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *DisableUserResponse) GetResult() *Result {
@@ -307,53 +461,31 @@ func (x *DisableUserResponse) GetResult() *Result {
 	return nil
 }
 
-// UpdateUserRequest represents the parameters for updates a user account
-type UpdateUserRequest struct {
+// EnableUserRequest represents the parameters for enables a user account
+type EnableUserRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The API key for the user. Must be specified with userSecretKey
-	ApiKey *string `protobuf:"bytes,1,opt,name=api_key,json=apiKey" json:"api_key,omitempty"`
-	// email
-	Email *string `protobuf:"bytes,2,opt,name=email" json:"email,omitempty"`
-	// first name
-	Firstname *string `protobuf:"bytes,3,opt,name=firstname" json:"firstname,omitempty"`
-	// User uuid
-	Id *int64 `protobuf:"varint,4,opt,name=id" json:"id,omitempty"`
-	// last name
-	Lastname *string `protobuf:"bytes,5,opt,name=lastname" json:"lastname,omitempty"`
-	// Clear text password (default hashed to SHA256SALT). If you wish to use any other hashing algorithm, you would need to write a custom authentication adapter. Can't be passed when command is executed via integration.api.port
-	Password *string `protobuf:"bytes,6,opt,name=password" json:"password,omitempty"`
-	// Current password that was being used by the user. You must inform the current password when updating the password.
-	CurrentPassword *string `protobuf:"bytes,7,opt,name=current_password,json=currentPassword" json:"current_password,omitempty"`
-	// The secret key for the user. Must be specified with userApiKey
-	SecretKey *string `protobuf:"bytes,8,opt,name=secret_key,json=secretKey" json:"secret_key,omitempty"`
-	// Determines if Api key access for this user is enabled, disabled or inherits the value from its parent, the owning account
-	ApiKeyAccess *string `protobuf:"bytes,9,opt,name=api_key_access,json=apiKeyAccess" json:"api_key_access,omitempty"`
-	// Specifies a timezone for this command. For more information on the timezone parameter, see Time Zone Format.
-	Timezone *string `protobuf:"bytes,10,opt,name=timezone" json:"timezone,omitempty"`
-	// Unique username
-	Username *string `protobuf:"bytes,11,opt,name=username" json:"username,omitempty"`
-	// Provide true to mandate the user to use two factor authentication has to be enabled.This parameter is only used to mandate 2FA, not to disable 2FA
-	Mandate2FA *bool `protobuf:"varint,12,opt,name=mandate2_f_a,json=mandate2FA" json:"mandate2_f_a,omitempty"`
-	ResponseType  *string `protobuf:"bytes,13,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// Enables user by user ID.
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateUserRequest) Reset() {
-	*x = UpdateUserRequest{}
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[4]
+func (x *EnableUserRequest) Reset() {
+	*x = EnableUserRequest{}
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateUserRequest) String() string {
+func (x *EnableUserRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateUserRequest) ProtoMessage() {}
+func (*EnableUserRequest) ProtoMessage() {}
 
-func (x *UpdateUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[4]
+func (x *EnableUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -364,104 +496,27 @@ func (x *UpdateUserRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateUserRequest.ProtoReflect.Descriptor instead.
-func (*UpdateUserRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{4}
+// Deprecated: Use EnableUserRequest.ProtoReflect.Descriptor instead.
+func (*EnableUserRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *UpdateUserRequest) GetApiKey() string {
-	if x != nil && x.ApiKey != nil {
-		return *x.ApiKey
-	}
-	return ""
-}
-
-func (x *UpdateUserRequest) GetEmail() string {
-	if x != nil && x.Email != nil {
-		return *x.Email
-	}
-	return ""
-}
-
-func (x *UpdateUserRequest) GetFirstname() string {
-	if x != nil && x.Firstname != nil {
-		return *x.Firstname
-	}
-	return ""
-}
-
-func (x *UpdateUserRequest) GetId() int64 {
+func (x *EnableUserRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *UpdateUserRequest) GetLastname() string {
-	if x != nil && x.Lastname != nil {
-		return *x.Lastname
-	}
-	return ""
-}
-
-func (x *UpdateUserRequest) GetPassword() string {
-	if x != nil && x.Password != nil {
-		return *x.Password
-	}
-	return ""
-}
-
-func (x *UpdateUserRequest) GetCurrentPassword() string {
-	if x != nil && x.CurrentPassword != nil {
-		return *x.CurrentPassword
-	}
-	return ""
-}
-
-func (x *UpdateUserRequest) GetSecretKey() string {
-	if x != nil && x.SecretKey != nil {
-		return *x.SecretKey
-	}
-	return ""
-}
-
-func (x *UpdateUserRequest) GetApiKeyAccess() string {
-	if x != nil && x.ApiKeyAccess != nil {
-		return *x.ApiKeyAccess
-	}
-	return ""
-}
-
-func (x *UpdateUserRequest) GetTimezone() string {
-	if x != nil && x.Timezone != nil {
-		return *x.Timezone
-	}
-	return ""
-}
-
-func (x *UpdateUserRequest) GetUsername() string {
-	if x != nil && x.Username != nil {
-		return *x.Username
-	}
-	return ""
-}
-
-func (x *UpdateUserRequest) GetMandate2FA() bool {
-	if x != nil && x.Mandate2FA != nil {
-		return *x.Mandate2FA
-	}
-	return false
-}
-
-func (x *UpdateUserRequest) GetResponseType() string {
+func (x *EnableUserRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// UpdateUserResponse represents the response from updates a user account
-type UpdateUserResponse struct {
+// EnableUserResponse represents the response from enables a user account
+type EnableUserResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -469,21 +524,21 @@ type UpdateUserResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateUserResponse) Reset() {
-	*x = UpdateUserResponse{}
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[5]
+func (x *EnableUserResponse) Reset() {
+	*x = EnableUserResponse{}
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateUserResponse) String() string {
+func (x *EnableUserResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateUserResponse) ProtoMessage() {}
+func (*EnableUserResponse) ProtoMessage() {}
 
-func (x *UpdateUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[5]
+func (x *EnableUserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -494,12 +549,12 @@ func (x *UpdateUserResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateUserResponse.ProtoReflect.Descriptor instead.
-func (*UpdateUserResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{5}
+// Deprecated: Use EnableUserResponse.ProtoReflect.Descriptor instead.
+func (*EnableUserResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *UpdateUserResponse) GetResult() *Result {
+func (x *EnableUserResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -518,7 +573,7 @@ type GetUserRequest struct {
 
 func (x *GetUserRequest) Reset() {
 	*x = GetUserRequest{}
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -530,7 +585,7 @@ func (x *GetUserRequest) String() string {
 func (*GetUserRequest) ProtoMessage() {}
 
 func (x *GetUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -543,7 +598,7 @@ func (x *GetUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserRequest.ProtoReflect.Descriptor instead.
 func (*GetUserRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{6}
+	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *GetUserRequest) GetApiKey() string {
@@ -571,7 +626,7 @@ type GetUserResponse struct {
 
 func (x *GetUserResponse) Reset() {
 	*x = GetUserResponse{}
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -583,7 +638,7 @@ func (x *GetUserResponse) String() string {
 func (*GetUserResponse) ProtoMessage() {}
 
 func (x *GetUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -596,110 +651,10 @@ func (x *GetUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserResponse.ProtoReflect.Descriptor instead.
 func (*GetUserResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *GetUserResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteUserRequest represents the parameters for deletes a user for an account
-type DeleteUserRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// id of the user to be deleted
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteUserRequest) Reset() {
-	*x = DeleteUserRequest{}
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteUserRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteUserRequest) ProtoMessage() {}
-
-func (x *DeleteUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteUserRequest.ProtoReflect.Descriptor instead.
-func (*DeleteUserRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *DeleteUserRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteUserRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteUserResponse represents the response from deletes a user for an account
-type DeleteUserResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteUserResponse) Reset() {
-	*x = DeleteUserResponse{}
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteUserResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteUserResponse) ProtoMessage() {}
-
-func (x *DeleteUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteUserResponse.ProtoReflect.Descriptor instead.
-func (*DeleteUserResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *DeleteUserResponse) GetResult() *Result {
+func (x *GetUserResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -806,106 +761,6 @@ func (x *GetUserKeysResponse) GetResult() *Result {
 	return nil
 }
 
-// EnableUserRequest represents the parameters for enables a user account
-type EnableUserRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Enables user by user ID.
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *EnableUserRequest) Reset() {
-	*x = EnableUserRequest{}
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *EnableUserRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*EnableUserRequest) ProtoMessage() {}
-
-func (x *EnableUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use EnableUserRequest.ProtoReflect.Descriptor instead.
-func (*EnableUserRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *EnableUserRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *EnableUserRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// EnableUserResponse represents the response from enables a user account
-type EnableUserResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *EnableUserResponse) Reset() {
-	*x = EnableUserResponse{}
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *EnableUserResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*EnableUserResponse) ProtoMessage() {}
-
-func (x *EnableUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use EnableUserResponse.ProtoReflect.Descriptor instead.
-func (*EnableUserResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *EnableUserResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
 // ListUsersRequest represents the parameters for lists user accounts
 type ListUsersRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -942,7 +797,7 @@ type ListUsersRequest struct {
 
 func (x *ListUsersRequest) Reset() {
 	*x = ListUsersRequest{}
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[14]
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -954,7 +809,7 @@ func (x *ListUsersRequest) String() string {
 func (*ListUsersRequest) ProtoMessage() {}
 
 func (x *ListUsersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[14]
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -967,7 +822,7 @@ func (x *ListUsersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUsersRequest.ProtoReflect.Descriptor instead.
 func (*ListUsersRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{14}
+	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *ListUsersRequest) GetAccountType() int32 {
@@ -1088,7 +943,7 @@ type ListUsersResponse struct {
 
 func (x *ListUsersResponse) Reset() {
 	*x = ListUsersResponse{}
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[15]
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1100,7 +955,7 @@ func (x *ListUsersResponse) String() string {
 func (*ListUsersResponse) ProtoMessage() {}
 
 func (x *ListUsersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[15]
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1113,7 +968,7 @@ func (x *ListUsersResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUsersResponse.ProtoReflect.Descriptor instead.
 func (*ListUsersResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{15}
+	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *ListUsersResponse) GetItems() []*User {
@@ -1130,47 +985,31 @@ func (x *ListUsersResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// CreateUserRequest represents the parameters for creates a user for an account that already exists
-type CreateUserRequest struct {
+// LockUserRequest represents the parameters for locks a user account
+type LockUserRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Creates the user under the specified account. If no account is specified, the username will be used as the account name.
-	AccountName *string `protobuf:"bytes,1,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// Creates the user under the specified domain. Has to be accompanied with the account parameter
-	DomainId *int64 `protobuf:"varint,2,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// email
-	Email *string `protobuf:"bytes,3,opt,name=email" json:"email,omitempty"`
-	// firstname
-	Firstname *string `protobuf:"bytes,4,opt,name=firstname" json:"firstname,omitempty"`
-	// lastname
-	Lastname *string `protobuf:"bytes,5,opt,name=lastname" json:"lastname,omitempty"`
-	// Clear text password (Default hashed to SHA256SALT). If you wish to use any other hashing algorithm, you would need to write a custom authentication adapter See Docs section.
-	Password *string `protobuf:"bytes,6,opt,name=password" json:"password,omitempty"`
-	// Specifies a timezone for this command. For more information on the timezone parameter, see Time Zone Format.
-	Timezone *string `protobuf:"bytes,7,opt,name=timezone" json:"timezone,omitempty"`
-	// Unique username.
-	Username *string `protobuf:"bytes,8,opt,name=username" json:"username,omitempty"`
-	// User UUID, required for adding account from external provisioning system
-	UserUUId *string `protobuf:"bytes,9,opt,name=user_u_u_id,json=userUUId" json:"user_u_u_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// Locks user by user ID.
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateUserRequest) Reset() {
-	*x = CreateUserRequest{}
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[16]
+func (x *LockUserRequest) Reset() {
+	*x = LockUserRequest{}
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateUserRequest) String() string {
+func (x *LockUserRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateUserRequest) ProtoMessage() {}
+func (*LockUserRequest) ProtoMessage() {}
 
-func (x *CreateUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[16]
+func (x *LockUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1181,83 +1020,27 @@ func (x *CreateUserRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateUserRequest.ProtoReflect.Descriptor instead.
-func (*CreateUserRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{16}
+// Deprecated: Use LockUserRequest.ProtoReflect.Descriptor instead.
+func (*LockUserRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{14}
 }
 
-func (x *CreateUserRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *CreateUserRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
+func (x *LockUserRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
 	}
 	return 0
 }
 
-func (x *CreateUserRequest) GetEmail() string {
-	if x != nil && x.Email != nil {
-		return *x.Email
-	}
-	return ""
-}
-
-func (x *CreateUserRequest) GetFirstname() string {
-	if x != nil && x.Firstname != nil {
-		return *x.Firstname
-	}
-	return ""
-}
-
-func (x *CreateUserRequest) GetLastname() string {
-	if x != nil && x.Lastname != nil {
-		return *x.Lastname
-	}
-	return ""
-}
-
-func (x *CreateUserRequest) GetPassword() string {
-	if x != nil && x.Password != nil {
-		return *x.Password
-	}
-	return ""
-}
-
-func (x *CreateUserRequest) GetTimezone() string {
-	if x != nil && x.Timezone != nil {
-		return *x.Timezone
-	}
-	return ""
-}
-
-func (x *CreateUserRequest) GetUsername() string {
-	if x != nil && x.Username != nil {
-		return *x.Username
-	}
-	return ""
-}
-
-func (x *CreateUserRequest) GetUserUUId() string {
-	if x != nil && x.UserUUId != nil {
-		return *x.UserUUId
-	}
-	return ""
-}
-
-func (x *CreateUserRequest) GetResponseType() string {
+func (x *LockUserRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// CreateUserResponse represents the response from creates a user for an account that already exists
-type CreateUserResponse struct {
+// LockUserResponse represents the response from locks a user account
+type LockUserResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -1265,20 +1048,138 @@ type CreateUserResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateUserResponse) Reset() {
-	*x = CreateUserResponse{}
+func (x *LockUserResponse) Reset() {
+	*x = LockUserResponse{}
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LockUserResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LockUserResponse) ProtoMessage() {}
+
+func (x *LockUserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LockUserResponse.ProtoReflect.Descriptor instead.
+func (*LockUserResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *LockUserResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// MoveUserRequest represents the parameters for moves a user to another account in the same domain.
+type MoveUserRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// id of the user to be moved.
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// Moves the user under the specified account. If no account name is specified, it is necessary to provide an account id.
+	AccountName *string `protobuf:"bytes,2,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// Moves the user under the specified account. If no account id is specified, it is necessary to provide an account name.
+	AccountId *int64 `protobuf:"varint,3,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MoveUserRequest) Reset() {
+	*x = MoveUserRequest{}
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MoveUserRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MoveUserRequest) ProtoMessage() {}
+
+func (x *MoveUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MoveUserRequest.ProtoReflect.Descriptor instead.
+func (*MoveUserRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *MoveUserRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *MoveUserRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *MoveUserRequest) GetAccountId() int64 {
+	if x != nil && x.AccountId != nil {
+		return *x.AccountId
+	}
+	return 0
+}
+
+func (x *MoveUserRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// MoveUserResponse represents the response from moves a user to another account in the same domain.
+type MoveUserResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MoveUserResponse) Reset() {
+	*x = MoveUserResponse{}
 	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateUserResponse) String() string {
+func (x *MoveUserResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateUserResponse) ProtoMessage() {}
+func (*MoveUserResponse) ProtoMessage() {}
 
-func (x *CreateUserResponse) ProtoReflect() protoreflect.Message {
+func (x *MoveUserResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1290,12 +1191,12 @@ func (x *CreateUserResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateUserResponse.ProtoReflect.Descriptor instead.
-func (*CreateUserResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use MoveUserResponse.ProtoReflect.Descriptor instead.
+func (*MoveUserResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{17}
 }
 
-func (x *CreateUserResponse) GetResult() *Result {
+func (x *MoveUserResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1402,30 +1303,52 @@ func (x *RegisterResponse) GetResult() *Result {
 	return nil
 }
 
-// LockUserRequest represents the parameters for locks a user account
-type LockUserRequest struct {
+// UpdateUserRequest represents the parameters for updates a user account
+type UpdateUserRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Locks user by user ID.
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// The API key for the user. Must be specified with userSecretKey
+	ApiKey *string `protobuf:"bytes,1,opt,name=api_key,json=apiKey" json:"api_key,omitempty"`
+	// email
+	Email *string `protobuf:"bytes,2,opt,name=email" json:"email,omitempty"`
+	// first name
+	Firstname *string `protobuf:"bytes,3,opt,name=firstname" json:"firstname,omitempty"`
+	// User uuid
+	Id *int64 `protobuf:"varint,4,opt,name=id" json:"id,omitempty"`
+	// last name
+	Lastname *string `protobuf:"bytes,5,opt,name=lastname" json:"lastname,omitempty"`
+	// Clear text password (default hashed to SHA256SALT). If you wish to use any other hashing algorithm, you would need to write a custom authentication adapter. Can't be passed when command is executed via integration.api.port
+	Password *string `protobuf:"bytes,6,opt,name=password" json:"password,omitempty"`
+	// Current password that was being used by the user. You must inform the current password when updating the password.
+	CurrentPassword *string `protobuf:"bytes,7,opt,name=current_password,json=currentPassword" json:"current_password,omitempty"`
+	// The secret key for the user. Must be specified with userApiKey
+	SecretKey *string `protobuf:"bytes,8,opt,name=secret_key,json=secretKey" json:"secret_key,omitempty"`
+	// Determines if Api key access for this user is enabled, disabled or inherits the value from its parent, the owning account
+	ApiKeyAccess *string `protobuf:"bytes,9,opt,name=api_key_access,json=apiKeyAccess" json:"api_key_access,omitempty"`
+	// Specifies a timezone for this command. For more information on the timezone parameter, see Time Zone Format.
+	Timezone *string `protobuf:"bytes,10,opt,name=timezone" json:"timezone,omitempty"`
+	// Unique username
+	Username *string `protobuf:"bytes,11,opt,name=username" json:"username,omitempty"`
+	// Provide true to mandate the user to use two factor authentication has to be enabled.This parameter is only used to mandate 2FA, not to disable 2FA
+	Mandate2FA *bool `protobuf:"varint,12,opt,name=mandate2_f_a,json=mandate2FA" json:"mandate2_f_a,omitempty"`
+	ResponseType  *string `protobuf:"bytes,13,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *LockUserRequest) Reset() {
-	*x = LockUserRequest{}
+func (x *UpdateUserRequest) Reset() {
+	*x = UpdateUserRequest{}
 	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *LockUserRequest) String() string {
+func (x *UpdateUserRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*LockUserRequest) ProtoMessage() {}
+func (*UpdateUserRequest) ProtoMessage() {}
 
-func (x *LockUserRequest) ProtoReflect() protoreflect.Message {
+func (x *UpdateUserRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1437,27 +1360,104 @@ func (x *LockUserRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use LockUserRequest.ProtoReflect.Descriptor instead.
-func (*LockUserRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateUserRequest.ProtoReflect.Descriptor instead.
+func (*UpdateUserRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{20}
 }
 
-func (x *LockUserRequest) GetId() int64 {
+func (x *UpdateUserRequest) GetApiKey() string {
+	if x != nil && x.ApiKey != nil {
+		return *x.ApiKey
+	}
+	return ""
+}
+
+func (x *UpdateUserRequest) GetEmail() string {
+	if x != nil && x.Email != nil {
+		return *x.Email
+	}
+	return ""
+}
+
+func (x *UpdateUserRequest) GetFirstname() string {
+	if x != nil && x.Firstname != nil {
+		return *x.Firstname
+	}
+	return ""
+}
+
+func (x *UpdateUserRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *LockUserRequest) GetResponseType() string {
+func (x *UpdateUserRequest) GetLastname() string {
+	if x != nil && x.Lastname != nil {
+		return *x.Lastname
+	}
+	return ""
+}
+
+func (x *UpdateUserRequest) GetPassword() string {
+	if x != nil && x.Password != nil {
+		return *x.Password
+	}
+	return ""
+}
+
+func (x *UpdateUserRequest) GetCurrentPassword() string {
+	if x != nil && x.CurrentPassword != nil {
+		return *x.CurrentPassword
+	}
+	return ""
+}
+
+func (x *UpdateUserRequest) GetSecretKey() string {
+	if x != nil && x.SecretKey != nil {
+		return *x.SecretKey
+	}
+	return ""
+}
+
+func (x *UpdateUserRequest) GetApiKeyAccess() string {
+	if x != nil && x.ApiKeyAccess != nil {
+		return *x.ApiKeyAccess
+	}
+	return ""
+}
+
+func (x *UpdateUserRequest) GetTimezone() string {
+	if x != nil && x.Timezone != nil {
+		return *x.Timezone
+	}
+	return ""
+}
+
+func (x *UpdateUserRequest) GetUsername() string {
+	if x != nil && x.Username != nil {
+		return *x.Username
+	}
+	return ""
+}
+
+func (x *UpdateUserRequest) GetMandate2FA() bool {
+	if x != nil && x.Mandate2FA != nil {
+		return *x.Mandate2FA
+	}
+	return false
+}
+
+func (x *UpdateUserRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// LockUserResponse represents the response from locks a user account
-type LockUserResponse struct {
+// UpdateUserResponse represents the response from updates a user account
+type UpdateUserResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -1465,20 +1465,20 @@ type LockUserResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *LockUserResponse) Reset() {
-	*x = LockUserResponse{}
+func (x *UpdateUserResponse) Reset() {
+	*x = UpdateUserResponse{}
 	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *LockUserResponse) String() string {
+func (x *UpdateUserResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*LockUserResponse) ProtoMessage() {}
+func (*UpdateUserResponse) ProtoMessage() {}
 
-func (x *LockUserResponse) ProtoReflect() protoreflect.Message {
+func (x *UpdateUserResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1490,12 +1490,12 @@ func (x *LockUserResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use LockUserResponse.ProtoReflect.Descriptor instead.
-func (*LockUserResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateUserResponse.ProtoReflect.Descriptor instead.
+func (*UpdateUserResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{21}
 }
 
-func (x *LockUserResponse) GetResult() *Result {
+func (x *UpdateUserResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1639,151 +1639,6 @@ func (x *Success) GetDisplayText() string {
 	return ""
 }
 
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[24]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[24]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{24}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
 // Result represents a generic operation result
 type Result struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1803,7 +1658,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[25]
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1815,7 +1670,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[25]
+	mi := &file_cloudstack_management_user_v1_user_gen_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1828,7 +1683,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{25}
+	return file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -1870,14 +1725,28 @@ var File_cloudstack_management_user_v1_user_gen_proto protoreflect.FileDescripto
 
 const file_cloudstack_management_user_v1_user_gen_proto_rawDesc = "" +
 	"\n" +
-	",cloudstack/management/user/v1/user.gen.proto\x12\x1dcloudstack.management.user.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x90\x01\n" +
-	"\x0fMoveUserRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12!\n" +
-	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x1d\n" +
-	"\n" +
-	"account_id\x18\x03 \x01(\x03R\taccountId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"Q\n" +
-	"\x10MoveUserResponse\x12=\n" +
+	",cloudstack/management/user/v1/user.gen.proto\x12\x1dcloudstack.management.user.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x8a\x03\n" +
+	"\x11CreateUserRequest\x12)\n" +
+	"\faccount_name\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\vaccountName\x12\x1b\n" +
+	"\tdomain_id\x18\x02 \x01(\x03R\bdomainId\x12\x1c\n" +
+	"\x05email\x18\x03 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x05email\x12+\n" +
+	"\tfirstname\x18\x04 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\tfirstname\x12)\n" +
+	"\blastname\x18\x05 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\blastname\x12\"\n" +
+	"\bpassword\x18\x06 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bpassword\x12\x1a\n" +
+	"\btimezone\x18\a \x01(\tR\btimezone\x12)\n" +
+	"\busername\x18\b \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\busername\x12'\n" +
+	"\vuser_u_u_id\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\buserUUId\x12#\n" +
+	"\rresponse_type\x18\n" +
+	" \x01(\tR\fresponseType\"S\n" +
+	"\x12CreateUserResponse\x12=\n" +
+	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.user.v1.ResultR\x06result\"P\n" +
+	"\x11DeleteUserRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"S\n" +
+	"\x12DeleteUserResponse\x12=\n" +
 	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.user.v1.ResultR\x06result\"\xa9\x01\n" +
 	"\x12DisableUserRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
@@ -1885,48 +1754,21 @@ const file_cloudstack_management_user_v1_user_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"T\n" +
 	"\x13DisableUserResponse\x12=\n" +
-	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.user.v1.ResultR\x06result\"\xca\x03\n" +
-	"\x11UpdateUserRequest\x12\x17\n" +
-	"\aapi_key\x18\x01 \x01(\tR\x06apiKey\x12\x14\n" +
-	"\x05email\x18\x02 \x01(\tR\x05email\x12(\n" +
-	"\tfirstname\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\tfirstname\x12\x16\n" +
-	"\x02id\x18\x04 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12&\n" +
-	"\blastname\x18\x05 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\blastname\x12\x1a\n" +
-	"\bpassword\x18\x06 \x01(\tR\bpassword\x12)\n" +
-	"\x10current_password\x18\a \x01(\tR\x0fcurrentPassword\x12\x1d\n" +
-	"\n" +
-	"secret_key\x18\b \x01(\tR\tsecretKey\x12$\n" +
-	"\x0eapi_key_access\x18\t \x01(\tR\fapiKeyAccess\x12\x1a\n" +
-	"\btimezone\x18\n" +
-	" \x01(\tR\btimezone\x12&\n" +
-	"\busername\x18\v \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\busername\x12'\n" +
-	"\fmandate2_f_a\x18\f \x01(\bB\x05\xaa\x01\x02\b\x01R\n" +
-	"mandate2FA\x12#\n" +
-	"\rresponse_type\x18\r \x01(\tR\fresponseType\"S\n" +
-	"\x12UpdateUserResponse\x12=\n" +
-	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.user.v1.ResultR\x06result\"V\n" +
-	"\x0eGetUserRequest\x12\x1f\n" +
-	"\aapi_key\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06apiKey\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"P\n" +
-	"\x0fGetUserResponse\x12=\n" +
-	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.user.v1.ResultR\x06result\"P\n" +
-	"\x11DeleteUserRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"S\n" +
-	"\x12DeleteUserResponse\x12=\n" +
-	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.user.v1.ResultR\x06result\"Q\n" +
-	"\x12GetUserKeysRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"T\n" +
-	"\x13GetUserKeysResponse\x12=\n" +
 	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.user.v1.ResultR\x06result\"P\n" +
 	"\x11EnableUserRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
 	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"S\n" +
 	"\x12EnableUserResponse\x12=\n" +
+	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.user.v1.ResultR\x06result\"V\n" +
+	"\x0eGetUserRequest\x12\x1f\n" +
+	"\aapi_key\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06apiKey\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"P\n" +
+	"\x0fGetUserResponse\x12=\n" +
+	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.user.v1.ResultR\x06result\"Q\n" +
+	"\x12GetUserKeysRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"T\n" +
+	"\x13GetUserKeysResponse\x12=\n" +
 	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.user.v1.ResultR\x06result\"\xe5\x04\n" +
 	"\x10ListUsersRequest\x12!\n" +
 	"\faccount_type\x18\x01 \x01(\x05R\vaccountType\x12\x0e\n" +
@@ -1951,33 +1793,46 @@ const file_cloudstack_management_user_v1_user_gen_proto_rawDesc = "" +
 	"\x11ListUsersResponse\x129\n" +
 	"\x05items\x18\x01 \x03(\v2#.cloudstack.management.user.v1.UserR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x8a\x03\n" +
-	"\x11CreateUserRequest\x12)\n" +
-	"\faccount_name\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\vaccountName\x12\x1b\n" +
-	"\tdomain_id\x18\x02 \x01(\x03R\bdomainId\x12\x1c\n" +
-	"\x05email\x18\x03 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x05email\x12+\n" +
-	"\tfirstname\x18\x04 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\tfirstname\x12)\n" +
-	"\blastname\x18\x05 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\blastname\x12\"\n" +
-	"\bpassword\x18\x06 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bpassword\x12\x1a\n" +
-	"\btimezone\x18\a \x01(\tR\btimezone\x12)\n" +
-	"\busername\x18\b \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\busername\x12'\n" +
-	"\vuser_u_u_id\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\buserUUId\x12#\n" +
-	"\rresponse_type\x18\n" +
-	" \x01(\tR\fresponseType\"S\n" +
-	"\x12CreateUserResponse\x12=\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"N\n" +
+	"\x0fLockUserRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"Q\n" +
+	"\x10LockUserResponse\x12=\n" +
+	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.user.v1.ResultR\x06result\"\x90\x01\n" +
+	"\x0fMoveUserRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12!\n" +
+	"\faccount_name\x18\x02 \x01(\tR\vaccountName\x12\x1d\n" +
+	"\n" +
+	"account_id\x18\x03 \x01(\x03R\taccountId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"Q\n" +
+	"\x10MoveUserResponse\x12=\n" +
 	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.user.v1.ResultR\x06result\"N\n" +
 	"\x0fRegisterRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
 	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"Q\n" +
 	"\x10RegisterResponse\x12=\n" +
-	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.user.v1.ResultR\x06result\"N\n" +
-	"\x0fLockUserRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"Q\n" +
-	"\x10LockUserResponse\x12=\n" +
+	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.user.v1.ResultR\x06result\"\xca\x03\n" +
+	"\x11UpdateUserRequest\x12\x17\n" +
+	"\aapi_key\x18\x01 \x01(\tR\x06apiKey\x12\x14\n" +
+	"\x05email\x18\x02 \x01(\tR\x05email\x12(\n" +
+	"\tfirstname\x18\x03 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\tfirstname\x12\x16\n" +
+	"\x02id\x18\x04 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12&\n" +
+	"\blastname\x18\x05 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\blastname\x12\x1a\n" +
+	"\bpassword\x18\x06 \x01(\tR\bpassword\x12)\n" +
+	"\x10current_password\x18\a \x01(\tR\x0fcurrentPassword\x12\x1d\n" +
+	"\n" +
+	"secret_key\x18\b \x01(\tR\tsecretKey\x12$\n" +
+	"\x0eapi_key_access\x18\t \x01(\tR\fapiKeyAccess\x12\x1a\n" +
+	"\btimezone\x18\n" +
+	" \x01(\tR\btimezone\x12&\n" +
+	"\busername\x18\v \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\busername\x12'\n" +
+	"\fmandate2_f_a\x18\f \x01(\bB\x05\xaa\x01\x02\b\x01R\n" +
+	"mandate2FA\x12#\n" +
+	"\rresponse_type\x18\r \x01(\tR\fresponseType\"S\n" +
+	"\x12UpdateUserResponse\x12=\n" +
 	"\x06result\x18\x01 \x01(\v2%.cloudstack.management.user.v1.ResultR\x06result\"\x93\x01\n" +
 	"\x04User\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
@@ -1987,26 +1842,7 @@ const file_cloudstack_management_user_v1_user_gen_proto_rawDesc = "" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xdc\x03\n" +
-	"\x04Item\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12J\n" +
-	"\adetails\x18\f \x03(\v20.cloudstack.management.user.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
@@ -2016,24 +1852,24 @@ const file_cloudstack_management_user_v1_user_gen_proto_rawDesc = "" +
 	"job_status\x18\x05 \x01(\tR\tjobStatus*M\n" +
 	"\x0eUserSourceType\x12 \n" +
 	"\x1cUSER_SOURCE_TYPE_UNSPECIFIED\x10\x00\x12\x19\n" +
-	"\x15USER_SOURCE_TYPE_LDAP\x10\x012\x84\n" +
+	"\x15USER_SOURCE_TYPE_LDAP\x10\x012\xd2\n" +
 	"\n" +
-	"\vUserService\x12m\n" +
-	"\bMoveUser\x12..cloudstack.management.user.v1.MoveUserRequest\x1a/.cloudstack.management.user.v1.MoveUserResponse\"\x00\x12v\n" +
-	"\vDisableUser\x121.cloudstack.management.user.v1.DisableUserRequest\x1a2.cloudstack.management.user.v1.DisableUserResponse\"\x00\x12s\n" +
+	"\vUserService\x12z\n" +
 	"\n" +
-	"UpdateUser\x120.cloudstack.management.user.v1.UpdateUserRequest\x1a1.cloudstack.management.user.v1.UpdateUserResponse\"\x00\x12j\n" +
-	"\aGetUser\x12-.cloudstack.management.user.v1.GetUserRequest\x1a..cloudstack.management.user.v1.GetUserResponse\"\x00\x12s\n" +
+	"CreateUser\x120.cloudstack.management.user.v1.CreateUserRequest\x1a1.cloudstack.management.user.v1.CreateUserResponse\"\a\xc2>\x04\xc2>\x01\x02\x12z\n" +
 	"\n" +
-	"DeleteUser\x120.cloudstack.management.user.v1.DeleteUserRequest\x1a1.cloudstack.management.user.v1.DeleteUserResponse\"\x00\x12v\n" +
-	"\vGetUserKeys\x121.cloudstack.management.user.v1.GetUserKeysRequest\x1a2.cloudstack.management.user.v1.GetUserKeysResponse\"\x00\x12s\n" +
+	"DeleteUser\x120.cloudstack.management.user.v1.DeleteUserRequest\x1a1.cloudstack.management.user.v1.DeleteUserResponse\"\a\xc2>\x04\xc2>\x01\x02\x12}\n" +
+	"\vDisableUser\x121.cloudstack.management.user.v1.DisableUserRequest\x1a2.cloudstack.management.user.v1.DisableUserResponse\"\a\xc2>\x04\xc2>\x01\x02\x12z\n" +
 	"\n" +
-	"EnableUser\x120.cloudstack.management.user.v1.EnableUserRequest\x1a1.cloudstack.management.user.v1.EnableUserResponse\"\x00\x12p\n" +
-	"\tListUsers\x12/.cloudstack.management.user.v1.ListUsersRequest\x1a0.cloudstack.management.user.v1.ListUsersResponse\"\x00\x12s\n" +
+	"EnableUser\x120.cloudstack.management.user.v1.EnableUserRequest\x1a1.cloudstack.management.user.v1.EnableUserResponse\"\a\xc2>\x04\xc2>\x01\x02\x12q\n" +
+	"\aGetUser\x12-.cloudstack.management.user.v1.GetUserRequest\x1a..cloudstack.management.user.v1.GetUserResponse\"\a\xc2>\x04\xc2>\x01\x02\x12}\n" +
+	"\vGetUserKeys\x121.cloudstack.management.user.v1.GetUserKeysRequest\x1a2.cloudstack.management.user.v1.GetUserKeysResponse\"\a\xc2>\x04\xc2>\x01\x02\x12w\n" +
+	"\tListUsers\x12/.cloudstack.management.user.v1.ListUsersRequest\x1a0.cloudstack.management.user.v1.ListUsersResponse\"\a\xc2>\x04\xc2>\x01\x02\x12t\n" +
+	"\bLockUser\x12..cloudstack.management.user.v1.LockUserRequest\x1a/.cloudstack.management.user.v1.LockUserResponse\"\a\xc2>\x04\xc2>\x01\x02\x12t\n" +
+	"\bMoveUser\x12..cloudstack.management.user.v1.MoveUserRequest\x1a/.cloudstack.management.user.v1.MoveUserResponse\"\a\xc2>\x04\xc2>\x01\x02\x12t\n" +
+	"\bRegister\x12..cloudstack.management.user.v1.RegisterRequest\x1a/.cloudstack.management.user.v1.RegisterResponse\"\a\xc2>\x04\xc2>\x01\x02\x12z\n" +
 	"\n" +
-	"CreateUser\x120.cloudstack.management.user.v1.CreateUserRequest\x1a1.cloudstack.management.user.v1.CreateUserResponse\"\x00\x12m\n" +
-	"\bRegister\x12..cloudstack.management.user.v1.RegisterRequest\x1a/.cloudstack.management.user.v1.RegisterResponse\"\x00\x12m\n" +
-	"\bLockUser\x12..cloudstack.management.user.v1.LockUserRequest\x1a/.cloudstack.management.user.v1.LockUserResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xa2\x02\n" +
+	"UpdateUser\x120.cloudstack.management.user.v1.UpdateUserRequest\x1a1.cloudstack.management.user.v1.UpdateUserResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\a\xc2>\x04\xc2>\x01\x02B\xa2\x02\n" +
 	"!com.cloudstack.management.user.v1B\fUserGenProtoP\x01ZXgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/user/v1;userv1\xa2\x02\x03CMU\xaa\x02\x1dCloudstack.Management.User.V1\xca\x02\x1dCloudstack\\Management\\User\\V1\xe2\x02)Cloudstack\\Management\\User\\V1\\GPBMetadata\xea\x02 Cloudstack::Management::User::V1b\beditionsp\xe8\a"
 
 var (
@@ -2049,77 +1885,74 @@ func file_cloudstack_management_user_v1_user_gen_proto_rawDescGZIP() []byte {
 }
 
 var file_cloudstack_management_user_v1_user_gen_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_cloudstack_management_user_v1_user_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
+var file_cloudstack_management_user_v1_user_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
 var file_cloudstack_management_user_v1_user_gen_proto_goTypes = []any{
 	(UserSourceType)(0),         // 0: cloudstack.management.user.v1.UserSourceType
-	(*MoveUserRequest)(nil),     // 1: cloudstack.management.user.v1.MoveUserRequest
-	(*MoveUserResponse)(nil),    // 2: cloudstack.management.user.v1.MoveUserResponse
-	(*DisableUserRequest)(nil),  // 3: cloudstack.management.user.v1.DisableUserRequest
-	(*DisableUserResponse)(nil), // 4: cloudstack.management.user.v1.DisableUserResponse
-	(*UpdateUserRequest)(nil),   // 5: cloudstack.management.user.v1.UpdateUserRequest
-	(*UpdateUserResponse)(nil),  // 6: cloudstack.management.user.v1.UpdateUserResponse
-	(*GetUserRequest)(nil),      // 7: cloudstack.management.user.v1.GetUserRequest
-	(*GetUserResponse)(nil),     // 8: cloudstack.management.user.v1.GetUserResponse
-	(*DeleteUserRequest)(nil),   // 9: cloudstack.management.user.v1.DeleteUserRequest
-	(*DeleteUserResponse)(nil),  // 10: cloudstack.management.user.v1.DeleteUserResponse
+	(*CreateUserRequest)(nil),   // 1: cloudstack.management.user.v1.CreateUserRequest
+	(*CreateUserResponse)(nil),  // 2: cloudstack.management.user.v1.CreateUserResponse
+	(*DeleteUserRequest)(nil),   // 3: cloudstack.management.user.v1.DeleteUserRequest
+	(*DeleteUserResponse)(nil),  // 4: cloudstack.management.user.v1.DeleteUserResponse
+	(*DisableUserRequest)(nil),  // 5: cloudstack.management.user.v1.DisableUserRequest
+	(*DisableUserResponse)(nil), // 6: cloudstack.management.user.v1.DisableUserResponse
+	(*EnableUserRequest)(nil),   // 7: cloudstack.management.user.v1.EnableUserRequest
+	(*EnableUserResponse)(nil),  // 8: cloudstack.management.user.v1.EnableUserResponse
+	(*GetUserRequest)(nil),      // 9: cloudstack.management.user.v1.GetUserRequest
+	(*GetUserResponse)(nil),     // 10: cloudstack.management.user.v1.GetUserResponse
 	(*GetUserKeysRequest)(nil),  // 11: cloudstack.management.user.v1.GetUserKeysRequest
 	(*GetUserKeysResponse)(nil), // 12: cloudstack.management.user.v1.GetUserKeysResponse
-	(*EnableUserRequest)(nil),   // 13: cloudstack.management.user.v1.EnableUserRequest
-	(*EnableUserResponse)(nil),  // 14: cloudstack.management.user.v1.EnableUserResponse
-	(*ListUsersRequest)(nil),    // 15: cloudstack.management.user.v1.ListUsersRequest
-	(*ListUsersResponse)(nil),   // 16: cloudstack.management.user.v1.ListUsersResponse
-	(*CreateUserRequest)(nil),   // 17: cloudstack.management.user.v1.CreateUserRequest
-	(*CreateUserResponse)(nil),  // 18: cloudstack.management.user.v1.CreateUserResponse
+	(*ListUsersRequest)(nil),    // 13: cloudstack.management.user.v1.ListUsersRequest
+	(*ListUsersResponse)(nil),   // 14: cloudstack.management.user.v1.ListUsersResponse
+	(*LockUserRequest)(nil),     // 15: cloudstack.management.user.v1.LockUserRequest
+	(*LockUserResponse)(nil),    // 16: cloudstack.management.user.v1.LockUserResponse
+	(*MoveUserRequest)(nil),     // 17: cloudstack.management.user.v1.MoveUserRequest
+	(*MoveUserResponse)(nil),    // 18: cloudstack.management.user.v1.MoveUserResponse
 	(*RegisterRequest)(nil),     // 19: cloudstack.management.user.v1.RegisterRequest
 	(*RegisterResponse)(nil),    // 20: cloudstack.management.user.v1.RegisterResponse
-	(*LockUserRequest)(nil),     // 21: cloudstack.management.user.v1.LockUserRequest
-	(*LockUserResponse)(nil),    // 22: cloudstack.management.user.v1.LockUserResponse
+	(*UpdateUserRequest)(nil),   // 21: cloudstack.management.user.v1.UpdateUserRequest
+	(*UpdateUserResponse)(nil),  // 22: cloudstack.management.user.v1.UpdateUserResponse
 	(*User)(nil),                // 23: cloudstack.management.user.v1.User
 	(*Success)(nil),             // 24: cloudstack.management.user.v1.Success
-	(*Item)(nil),                // 25: cloudstack.management.user.v1.Item
-	(*Result)(nil),              // 26: cloudstack.management.user.v1.Result
-	nil,                         // 27: cloudstack.management.user.v1.Item.DetailsEntry
+	(*Result)(nil),              // 25: cloudstack.management.user.v1.Result
 }
 var file_cloudstack_management_user_v1_user_gen_proto_depIdxs = []int32{
-	26, // 0: cloudstack.management.user.v1.MoveUserResponse.result:type_name -> cloudstack.management.user.v1.Result
-	26, // 1: cloudstack.management.user.v1.DisableUserResponse.result:type_name -> cloudstack.management.user.v1.Result
-	26, // 2: cloudstack.management.user.v1.UpdateUserResponse.result:type_name -> cloudstack.management.user.v1.Result
-	26, // 3: cloudstack.management.user.v1.GetUserResponse.result:type_name -> cloudstack.management.user.v1.Result
-	26, // 4: cloudstack.management.user.v1.DeleteUserResponse.result:type_name -> cloudstack.management.user.v1.Result
-	26, // 5: cloudstack.management.user.v1.GetUserKeysResponse.result:type_name -> cloudstack.management.user.v1.Result
-	26, // 6: cloudstack.management.user.v1.EnableUserResponse.result:type_name -> cloudstack.management.user.v1.Result
-	23, // 7: cloudstack.management.user.v1.ListUsersResponse.items:type_name -> cloudstack.management.user.v1.User
-	26, // 8: cloudstack.management.user.v1.CreateUserResponse.result:type_name -> cloudstack.management.user.v1.Result
-	26, // 9: cloudstack.management.user.v1.RegisterResponse.result:type_name -> cloudstack.management.user.v1.Result
-	26, // 10: cloudstack.management.user.v1.LockUserResponse.result:type_name -> cloudstack.management.user.v1.Result
-	27, // 11: cloudstack.management.user.v1.Item.details:type_name -> cloudstack.management.user.v1.Item.DetailsEntry
-	1,  // 12: cloudstack.management.user.v1.UserService.MoveUser:input_type -> cloudstack.management.user.v1.MoveUserRequest
-	3,  // 13: cloudstack.management.user.v1.UserService.DisableUser:input_type -> cloudstack.management.user.v1.DisableUserRequest
-	5,  // 14: cloudstack.management.user.v1.UserService.UpdateUser:input_type -> cloudstack.management.user.v1.UpdateUserRequest
-	7,  // 15: cloudstack.management.user.v1.UserService.GetUser:input_type -> cloudstack.management.user.v1.GetUserRequest
-	9,  // 16: cloudstack.management.user.v1.UserService.DeleteUser:input_type -> cloudstack.management.user.v1.DeleteUserRequest
-	11, // 17: cloudstack.management.user.v1.UserService.GetUserKeys:input_type -> cloudstack.management.user.v1.GetUserKeysRequest
-	13, // 18: cloudstack.management.user.v1.UserService.EnableUser:input_type -> cloudstack.management.user.v1.EnableUserRequest
-	15, // 19: cloudstack.management.user.v1.UserService.ListUsers:input_type -> cloudstack.management.user.v1.ListUsersRequest
-	17, // 20: cloudstack.management.user.v1.UserService.CreateUser:input_type -> cloudstack.management.user.v1.CreateUserRequest
-	19, // 21: cloudstack.management.user.v1.UserService.Register:input_type -> cloudstack.management.user.v1.RegisterRequest
-	21, // 22: cloudstack.management.user.v1.UserService.LockUser:input_type -> cloudstack.management.user.v1.LockUserRequest
-	2,  // 23: cloudstack.management.user.v1.UserService.MoveUser:output_type -> cloudstack.management.user.v1.MoveUserResponse
-	4,  // 24: cloudstack.management.user.v1.UserService.DisableUser:output_type -> cloudstack.management.user.v1.DisableUserResponse
-	6,  // 25: cloudstack.management.user.v1.UserService.UpdateUser:output_type -> cloudstack.management.user.v1.UpdateUserResponse
-	8,  // 26: cloudstack.management.user.v1.UserService.GetUser:output_type -> cloudstack.management.user.v1.GetUserResponse
-	10, // 27: cloudstack.management.user.v1.UserService.DeleteUser:output_type -> cloudstack.management.user.v1.DeleteUserResponse
-	12, // 28: cloudstack.management.user.v1.UserService.GetUserKeys:output_type -> cloudstack.management.user.v1.GetUserKeysResponse
-	14, // 29: cloudstack.management.user.v1.UserService.EnableUser:output_type -> cloudstack.management.user.v1.EnableUserResponse
-	16, // 30: cloudstack.management.user.v1.UserService.ListUsers:output_type -> cloudstack.management.user.v1.ListUsersResponse
-	18, // 31: cloudstack.management.user.v1.UserService.CreateUser:output_type -> cloudstack.management.user.v1.CreateUserResponse
-	20, // 32: cloudstack.management.user.v1.UserService.Register:output_type -> cloudstack.management.user.v1.RegisterResponse
-	22, // 33: cloudstack.management.user.v1.UserService.LockUser:output_type -> cloudstack.management.user.v1.LockUserResponse
-	23, // [23:34] is the sub-list for method output_type
-	12, // [12:23] is the sub-list for method input_type
-	12, // [12:12] is the sub-list for extension type_name
-	12, // [12:12] is the sub-list for extension extendee
-	0,  // [0:12] is the sub-list for field type_name
+	25, // 0: cloudstack.management.user.v1.CreateUserResponse.result:type_name -> cloudstack.management.user.v1.Result
+	25, // 1: cloudstack.management.user.v1.DeleteUserResponse.result:type_name -> cloudstack.management.user.v1.Result
+	25, // 2: cloudstack.management.user.v1.DisableUserResponse.result:type_name -> cloudstack.management.user.v1.Result
+	25, // 3: cloudstack.management.user.v1.EnableUserResponse.result:type_name -> cloudstack.management.user.v1.Result
+	25, // 4: cloudstack.management.user.v1.GetUserResponse.result:type_name -> cloudstack.management.user.v1.Result
+	25, // 5: cloudstack.management.user.v1.GetUserKeysResponse.result:type_name -> cloudstack.management.user.v1.Result
+	23, // 6: cloudstack.management.user.v1.ListUsersResponse.items:type_name -> cloudstack.management.user.v1.User
+	25, // 7: cloudstack.management.user.v1.LockUserResponse.result:type_name -> cloudstack.management.user.v1.Result
+	25, // 8: cloudstack.management.user.v1.MoveUserResponse.result:type_name -> cloudstack.management.user.v1.Result
+	25, // 9: cloudstack.management.user.v1.RegisterResponse.result:type_name -> cloudstack.management.user.v1.Result
+	25, // 10: cloudstack.management.user.v1.UpdateUserResponse.result:type_name -> cloudstack.management.user.v1.Result
+	1,  // 11: cloudstack.management.user.v1.UserService.CreateUser:input_type -> cloudstack.management.user.v1.CreateUserRequest
+	3,  // 12: cloudstack.management.user.v1.UserService.DeleteUser:input_type -> cloudstack.management.user.v1.DeleteUserRequest
+	5,  // 13: cloudstack.management.user.v1.UserService.DisableUser:input_type -> cloudstack.management.user.v1.DisableUserRequest
+	7,  // 14: cloudstack.management.user.v1.UserService.EnableUser:input_type -> cloudstack.management.user.v1.EnableUserRequest
+	9,  // 15: cloudstack.management.user.v1.UserService.GetUser:input_type -> cloudstack.management.user.v1.GetUserRequest
+	11, // 16: cloudstack.management.user.v1.UserService.GetUserKeys:input_type -> cloudstack.management.user.v1.GetUserKeysRequest
+	13, // 17: cloudstack.management.user.v1.UserService.ListUsers:input_type -> cloudstack.management.user.v1.ListUsersRequest
+	15, // 18: cloudstack.management.user.v1.UserService.LockUser:input_type -> cloudstack.management.user.v1.LockUserRequest
+	17, // 19: cloudstack.management.user.v1.UserService.MoveUser:input_type -> cloudstack.management.user.v1.MoveUserRequest
+	19, // 20: cloudstack.management.user.v1.UserService.Register:input_type -> cloudstack.management.user.v1.RegisterRequest
+	21, // 21: cloudstack.management.user.v1.UserService.UpdateUser:input_type -> cloudstack.management.user.v1.UpdateUserRequest
+	2,  // 22: cloudstack.management.user.v1.UserService.CreateUser:output_type -> cloudstack.management.user.v1.CreateUserResponse
+	4,  // 23: cloudstack.management.user.v1.UserService.DeleteUser:output_type -> cloudstack.management.user.v1.DeleteUserResponse
+	6,  // 24: cloudstack.management.user.v1.UserService.DisableUser:output_type -> cloudstack.management.user.v1.DisableUserResponse
+	8,  // 25: cloudstack.management.user.v1.UserService.EnableUser:output_type -> cloudstack.management.user.v1.EnableUserResponse
+	10, // 26: cloudstack.management.user.v1.UserService.GetUser:output_type -> cloudstack.management.user.v1.GetUserResponse
+	12, // 27: cloudstack.management.user.v1.UserService.GetUserKeys:output_type -> cloudstack.management.user.v1.GetUserKeysResponse
+	14, // 28: cloudstack.management.user.v1.UserService.ListUsers:output_type -> cloudstack.management.user.v1.ListUsersResponse
+	16, // 29: cloudstack.management.user.v1.UserService.LockUser:output_type -> cloudstack.management.user.v1.LockUserResponse
+	18, // 30: cloudstack.management.user.v1.UserService.MoveUser:output_type -> cloudstack.management.user.v1.MoveUserResponse
+	20, // 31: cloudstack.management.user.v1.UserService.Register:output_type -> cloudstack.management.user.v1.RegisterResponse
+	22, // 32: cloudstack.management.user.v1.UserService.UpdateUser:output_type -> cloudstack.management.user.v1.UpdateUserResponse
+	22, // [22:33] is the sub-list for method output_type
+	11, // [11:22] is the sub-list for method input_type
+	11, // [11:11] is the sub-list for extension type_name
+	11, // [11:11] is the sub-list for extension extendee
+	0,  // [0:11] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_user_v1_user_gen_proto_init() }
@@ -2133,7 +1966,7 @@ func file_cloudstack_management_user_v1_user_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_user_v1_user_gen_proto_rawDesc), len(file_cloudstack_management_user_v1_user_gen_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   27,
+			NumMessages:   25,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

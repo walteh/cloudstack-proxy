@@ -24,6 +24,131 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// AssignCertToLoadBalancerRequest represents the parameters for assigns a certificate to a load balancer rule
+type AssignCertToLoadBalancerRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the load balancer rule
+	LbRuleId *int64 `protobuf:"varint,1,opt,name=lb_rule_id,json=lbRuleId" json:"lb_rule_id,omitempty"`
+	// the ID of the certificate
+	CertId *int64 `protobuf:"varint,2,opt,name=cert_id,json=certId" json:"cert_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AssignCertToLoadBalancerRequest) Reset() {
+	*x = AssignCertToLoadBalancerRequest{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AssignCertToLoadBalancerRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AssignCertToLoadBalancerRequest) ProtoMessage() {}
+
+func (x *AssignCertToLoadBalancerRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AssignCertToLoadBalancerRequest.ProtoReflect.Descriptor instead.
+func (*AssignCertToLoadBalancerRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *AssignCertToLoadBalancerRequest) GetLbRuleId() int64 {
+	if x != nil && x.LbRuleId != nil {
+		return *x.LbRuleId
+	}
+	return 0
+}
+
+func (x *AssignCertToLoadBalancerRequest) GetCertId() int64 {
+	if x != nil && x.CertId != nil {
+		return *x.CertId
+	}
+	return 0
+}
+
+func (x *AssignCertToLoadBalancerRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *AssignCertToLoadBalancerRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *AssignCertToLoadBalancerRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// AssignCertToLoadBalancerResponse represents the response from assigns a certificate to a load balancer rule
+type AssignCertToLoadBalancerResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AssignCertToLoadBalancerResponse) Reset() {
+	*x = AssignCertToLoadBalancerResponse{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AssignCertToLoadBalancerResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AssignCertToLoadBalancerResponse) ProtoMessage() {}
+
+func (x *AssignCertToLoadBalancerResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AssignCertToLoadBalancerResponse.ProtoReflect.Descriptor instead.
+func (*AssignCertToLoadBalancerResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *AssignCertToLoadBalancerResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
 // AssignToLoadBalancerRuleRequest represents the parameters for assigns virtual machine or a list of virtual machines to a load balancer rule.
 type AssignToLoadBalancerRuleRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -32,7 +157,7 @@ type AssignToLoadBalancerRuleRequest struct {
 	// the list of IDs of the virtual machine that are being assigned to the load balancer rule(i.e. virtualMachineIds=1,2,3)
 	VirtualMachineIds []string `protobuf:"bytes,2,rep,name=virtual_machine_ids,json=virtualMachineIds" json:"virtual_machine_ids,omitempty"`
 	// VM ID and IP map, vmidipmap[0].vmid=1 vmidipmap[0].vmip=10.1.1.75
-	VmIdIpMap map[string]string `protobuf:"bytes,3,rep,name=vm_id_ip_map,json=vmIdIpMap" json:"vm_id_ip_map,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	VmIdIpMap_ map[string]string `protobuf:"bytes,3,rep,name=vm_id_ip_map_,json=vmIdIpMap" json:"vm_id_ip_map_,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
 	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
 	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
@@ -42,7 +167,7 @@ type AssignToLoadBalancerRuleRequest struct {
 
 func (x *AssignToLoadBalancerRuleRequest) Reset() {
 	*x = AssignToLoadBalancerRuleRequest{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -54,7 +179,7 @@ func (x *AssignToLoadBalancerRuleRequest) String() string {
 func (*AssignToLoadBalancerRuleRequest) ProtoMessage() {}
 
 func (x *AssignToLoadBalancerRuleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[0]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -67,7 +192,7 @@ func (x *AssignToLoadBalancerRuleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AssignToLoadBalancerRuleRequest.ProtoReflect.Descriptor instead.
 func (*AssignToLoadBalancerRuleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{0}
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *AssignToLoadBalancerRuleRequest) GetId() int64 {
@@ -84,9 +209,9 @@ func (x *AssignToLoadBalancerRuleRequest) GetVirtualMachineIds() []string {
 	return nil
 }
 
-func (x *AssignToLoadBalancerRuleRequest) GetVmIdIpMap() map[string]string {
+func (x *AssignToLoadBalancerRuleRequest) GetVmIdIpMap_() map[string]string {
 	if x != nil {
-		return x.VmIdIpMap
+		return x.VmIdIpMap_
 	}
 	return nil
 }
@@ -123,7 +248,7 @@ type AssignToLoadBalancerRuleResponse struct {
 
 func (x *AssignToLoadBalancerRuleResponse) Reset() {
 	*x = AssignToLoadBalancerRuleResponse{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -135,7 +260,7 @@ func (x *AssignToLoadBalancerRuleResponse) String() string {
 func (*AssignToLoadBalancerRuleResponse) ProtoMessage() {}
 
 func (x *AssignToLoadBalancerRuleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[1]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -148,7 +273,7 @@ func (x *AssignToLoadBalancerRuleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AssignToLoadBalancerRuleResponse.ProtoReflect.Descriptor instead.
 func (*AssignToLoadBalancerRuleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{1}
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *AssignToLoadBalancerRuleResponse) GetResult() *Result {
@@ -158,59 +283,51 @@ func (x *AssignToLoadBalancerRuleResponse) GetResult() *Result {
 	return nil
 }
 
-// ListLoadBalancerRulesRequest represents the parameters for lists load balancer rules.
-type ListLoadBalancerRulesRequest struct {
+// CreateApplicationLoadBalancerRequest represents the parameters for creates an internal load balancer
+type CreateApplicationLoadBalancerRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the load balancer rule
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the name of the load balancer rule
-	LoadBalancerRuleName *string `protobuf:"bytes,2,opt,name=load_balancer_rule_name,json=loadBalancerRuleName" json:"load_balancer_rule_name,omitempty"`
-	// the public IP address ID of the load balancer rule
-	PublicIpId *int64 `protobuf:"varint,3,opt,name=public_ip_id,json=publicIpId" json:"public_ip_id,omitempty"`
-	// the ID of the virtual machine of the load balancer rule
-	VirtualMachineId *int64 `protobuf:"varint,4,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
-	// the availability zone ID
-	ZoneId *int64 `protobuf:"varint,5,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// list by network ID the rule belongs to
-	NetworkId *int64 `protobuf:"varint,6,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
-	// list resources by display flag; only ROOT admin is eligible to pass this parameter
-	Display *bool `protobuf:"varint,7,opt,name=display" json:"display,omitempty"`
-	// List resources by tags (key/value pairs)
-	Tags map[string]string `protobuf:"bytes,8,rep,name=tags" json:"tags,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// list objects by project; if projectid=-1 lists All VMs
-	ProjectId *int64 `protobuf:"varint,9,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// list resources by account. Must be used with the domainId parameter.
-	AccountName *string `protobuf:"bytes,10,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	ListAll *bool `protobuf:"varint,11,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
-	// list only resources belonging to the domain specified
-	DomainId *int64 `protobuf:"varint,12,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	Recursive *bool `protobuf:"varint,13,opt,name=recursive" json:"recursive,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,14,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,15,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,16,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,17,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// name of the load balancer
+	LoadBalancerName *string `protobuf:"bytes,1,opt,name=load_balancer_name,json=loadBalancerName" json:"load_balancer_name,omitempty"`
+	// the description of the load balancer
+	Description *string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
+	// The guest network the load balancer will be created for
+	NetworkId *int64 `protobuf:"varint,3,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
+	// the source port the network traffic will be load balanced from
+	SourcePort *int32 `protobuf:"varint,4,opt,name=source_port,json=sourcePort" json:"source_port,omitempty"`
+	// load balancer algorithm (source, roundrobin, leastconn)
+	Algorithm *string `protobuf:"bytes,5,opt,name=algorithm" json:"algorithm,omitempty"`
+	// the TCP port of the virtual machine where the network traffic will be load balanced to
+	InstancePort *int32 `protobuf:"varint,6,opt,name=instance_port,json=instancePort" json:"instance_port,omitempty"`
+	// the source IP address the network traffic will be load balanced from
+	SourceIp *string `protobuf:"bytes,7,opt,name=source_ip,json=sourceIp" json:"source_ip,omitempty"`
+	// the network id of the source ip address
+	SourceIpNetworkId *int64 `protobuf:"varint,8,opt,name=source_ip_network_id,json=sourceIpNetworkId" json:"source_ip_network_id,omitempty"`
+	// the load balancer scheme. Supported value in this release is Internal
+	Scheme *string `protobuf:"bytes,9,opt,name=scheme" json:"scheme,omitempty"`
+	// an optional field, whether to the display the rule to the end user or not
+	Display *bool `protobuf:"varint,10,opt,name=display" json:"display,omitempty"`
+	StartEventId *int64 `protobuf:"varint,11,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,12,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,13,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListLoadBalancerRulesRequest) Reset() {
-	*x = ListLoadBalancerRulesRequest{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[2]
+func (x *CreateApplicationLoadBalancerRequest) Reset() {
+	*x = CreateApplicationLoadBalancerRequest{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListLoadBalancerRulesRequest) String() string {
+func (x *CreateApplicationLoadBalancerRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListLoadBalancerRulesRequest) ProtoMessage() {}
+func (*CreateApplicationLoadBalancerRequest) ProtoMessage() {}
 
-func (x *ListLoadBalancerRulesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[2]
+func (x *CreateApplicationLoadBalancerRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -221,257 +338,104 @@ func (x *ListLoadBalancerRulesRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListLoadBalancerRulesRequest.ProtoReflect.Descriptor instead.
-func (*ListLoadBalancerRulesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{2}
+// Deprecated: Use CreateApplicationLoadBalancerRequest.ProtoReflect.Descriptor instead.
+func (*CreateApplicationLoadBalancerRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *ListLoadBalancerRulesRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListLoadBalancerRulesRequest) GetLoadBalancerRuleName() string {
-	if x != nil && x.LoadBalancerRuleName != nil {
-		return *x.LoadBalancerRuleName
+func (x *CreateApplicationLoadBalancerRequest) GetLoadBalancerName() string {
+	if x != nil && x.LoadBalancerName != nil {
+		return *x.LoadBalancerName
 	}
 	return ""
 }
 
-func (x *ListLoadBalancerRulesRequest) GetPublicIpId() int64 {
-	if x != nil && x.PublicIpId != nil {
-		return *x.PublicIpId
+func (x *CreateApplicationLoadBalancerRequest) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
 	}
-	return 0
+	return ""
 }
 
-func (x *ListLoadBalancerRulesRequest) GetVirtualMachineId() int64 {
-	if x != nil && x.VirtualMachineId != nil {
-		return *x.VirtualMachineId
-	}
-	return 0
-}
-
-func (x *ListLoadBalancerRulesRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
-	}
-	return 0
-}
-
-func (x *ListLoadBalancerRulesRequest) GetNetworkId() int64 {
+func (x *CreateApplicationLoadBalancerRequest) GetNetworkId() int64 {
 	if x != nil && x.NetworkId != nil {
 		return *x.NetworkId
 	}
 	return 0
 }
 
-func (x *ListLoadBalancerRulesRequest) GetDisplay() bool {
+func (x *CreateApplicationLoadBalancerRequest) GetSourcePort() int32 {
+	if x != nil && x.SourcePort != nil {
+		return *x.SourcePort
+	}
+	return 0
+}
+
+func (x *CreateApplicationLoadBalancerRequest) GetAlgorithm() string {
+	if x != nil && x.Algorithm != nil {
+		return *x.Algorithm
+	}
+	return ""
+}
+
+func (x *CreateApplicationLoadBalancerRequest) GetInstancePort() int32 {
+	if x != nil && x.InstancePort != nil {
+		return *x.InstancePort
+	}
+	return 0
+}
+
+func (x *CreateApplicationLoadBalancerRequest) GetSourceIp() string {
+	if x != nil && x.SourceIp != nil {
+		return *x.SourceIp
+	}
+	return ""
+}
+
+func (x *CreateApplicationLoadBalancerRequest) GetSourceIpNetworkId() int64 {
+	if x != nil && x.SourceIpNetworkId != nil {
+		return *x.SourceIpNetworkId
+	}
+	return 0
+}
+
+func (x *CreateApplicationLoadBalancerRequest) GetScheme() string {
+	if x != nil && x.Scheme != nil {
+		return *x.Scheme
+	}
+	return ""
+}
+
+func (x *CreateApplicationLoadBalancerRequest) GetDisplay() bool {
 	if x != nil && x.Display != nil {
 		return *x.Display
 	}
 	return false
 }
 
-func (x *ListLoadBalancerRulesRequest) GetTags() map[string]string {
-	if x != nil {
-		return x.Tags
-	}
-	return nil
-}
-
-func (x *ListLoadBalancerRulesRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *ListLoadBalancerRulesRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *ListLoadBalancerRulesRequest) GetListAll() bool {
-	if x != nil && x.ListAll != nil {
-		return *x.ListAll
-	}
-	return false
-}
-
-func (x *ListLoadBalancerRulesRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *ListLoadBalancerRulesRequest) GetRecursive() bool {
-	if x != nil && x.Recursive != nil {
-		return *x.Recursive
-	}
-	return false
-}
-
-func (x *ListLoadBalancerRulesRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListLoadBalancerRulesRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListLoadBalancerRulesRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListLoadBalancerRulesRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListLoadBalancerRulesResponse represents the response from lists load balancer rules.
-type ListLoadBalancerRulesResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of LoadBalancers
-	Items []*LoadBalancer `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of LoadBalancers
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListLoadBalancerRulesResponse) Reset() {
-	*x = ListLoadBalancerRulesResponse{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListLoadBalancerRulesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListLoadBalancerRulesResponse) ProtoMessage() {}
-
-func (x *ListLoadBalancerRulesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListLoadBalancerRulesResponse.ProtoReflect.Descriptor instead.
-func (*ListLoadBalancerRulesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *ListLoadBalancerRulesResponse) GetItems() []*LoadBalancer {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListLoadBalancerRulesResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// DeleteLBStickinessPolicyRequest represents the parameters for deletes a load balancer stickiness policy.
-type DeleteLBStickinessPolicyRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the LB stickiness policy
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteLBStickinessPolicyRequest) Reset() {
-	*x = DeleteLBStickinessPolicyRequest{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteLBStickinessPolicyRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteLBStickinessPolicyRequest) ProtoMessage() {}
-
-func (x *DeleteLBStickinessPolicyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteLBStickinessPolicyRequest.ProtoReflect.Descriptor instead.
-func (*DeleteLBStickinessPolicyRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *DeleteLBStickinessPolicyRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteLBStickinessPolicyRequest) GetStartEventId() int64 {
+func (x *CreateApplicationLoadBalancerRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *DeleteLBStickinessPolicyRequest) GetInjectedJobId() string {
+func (x *CreateApplicationLoadBalancerRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *DeleteLBStickinessPolicyRequest) GetResponseType() string {
+func (x *CreateApplicationLoadBalancerRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// DeleteLBStickinessPolicyResponse represents the response from deletes a load balancer stickiness policy.
-type DeleteLBStickinessPolicyResponse struct {
+// CreateApplicationLoadBalancerResponse represents the response from creates an internal load balancer
+type CreateApplicationLoadBalancerResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -479,20 +443,20 @@ type DeleteLBStickinessPolicyResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeleteLBStickinessPolicyResponse) Reset() {
-	*x = DeleteLBStickinessPolicyResponse{}
+func (x *CreateApplicationLoadBalancerResponse) Reset() {
+	*x = CreateApplicationLoadBalancerResponse{}
 	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeleteLBStickinessPolicyResponse) String() string {
+func (x *CreateApplicationLoadBalancerResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteLBStickinessPolicyResponse) ProtoMessage() {}
+func (*CreateApplicationLoadBalancerResponse) ProtoMessage() {}
 
-func (x *DeleteLBStickinessPolicyResponse) ProtoReflect() protoreflect.Message {
+func (x *CreateApplicationLoadBalancerResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -504,12 +468,352 @@ func (x *DeleteLBStickinessPolicyResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteLBStickinessPolicyResponse.ProtoReflect.Descriptor instead.
-func (*DeleteLBStickinessPolicyResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateApplicationLoadBalancerResponse.ProtoReflect.Descriptor instead.
+func (*CreateApplicationLoadBalancerResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *DeleteLBStickinessPolicyResponse) GetResult() *Result {
+func (x *CreateApplicationLoadBalancerResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// CreateLBHealthCheckPolicyRequest represents the parameters for creates a load balancer health check policy
+type CreateLBHealthCheckPolicyRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the load balancer rule
+	LbRuleId *int64 `protobuf:"varint,1,opt,name=lb_rule_id,json=lbRuleId" json:"lb_rule_id,omitempty"`
+	// the description of the load balancer health check policy
+	Description *string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
+	// HTTP ping path
+	PingPath *string `protobuf:"bytes,3,opt,name=ping_path,json=pingPath" json:"ping_path,omitempty"`
+	// Time to wait when receiving a response from the health check (2sec - 60 sec)
+	ResponsTimeOut *int32 `protobuf:"varint,4,opt,name=respons_time_out,json=responsTimeOut" json:"respons_time_out,omitempty"`
+	// Amount of time between health checks (1 sec - 20940 sec)
+	HealthCheckInterval *int32 `protobuf:"varint,5,opt,name=health_check_interval,json=healthCheckInterval" json:"health_check_interval,omitempty"`
+	// Number of consecutive health check success before declaring an instance healthy
+	HealthyThreshold *int32 `protobuf:"varint,6,opt,name=healthy_threshold,json=healthyThreshold" json:"healthy_threshold,omitempty"`
+	// Number of consecutive health check failures before declaring an instance unhealthy
+	UnhealthyThreshold *int32 `protobuf:"varint,7,opt,name=unhealthy_threshold,json=unhealthyThreshold" json:"unhealthy_threshold,omitempty"`
+	// an optional field, whether to the display the rule to the end user or not
+	Display *bool `protobuf:"varint,8,opt,name=display" json:"display,omitempty"`
+	StartEventId *int64 `protobuf:"varint,9,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,10,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateLBHealthCheckPolicyRequest) Reset() {
+	*x = CreateLBHealthCheckPolicyRequest{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateLBHealthCheckPolicyRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateLBHealthCheckPolicyRequest) ProtoMessage() {}
+
+func (x *CreateLBHealthCheckPolicyRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateLBHealthCheckPolicyRequest.ProtoReflect.Descriptor instead.
+func (*CreateLBHealthCheckPolicyRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *CreateLBHealthCheckPolicyRequest) GetLbRuleId() int64 {
+	if x != nil && x.LbRuleId != nil {
+		return *x.LbRuleId
+	}
+	return 0
+}
+
+func (x *CreateLBHealthCheckPolicyRequest) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *CreateLBHealthCheckPolicyRequest) GetPingPath() string {
+	if x != nil && x.PingPath != nil {
+		return *x.PingPath
+	}
+	return ""
+}
+
+func (x *CreateLBHealthCheckPolicyRequest) GetResponsTimeOut() int32 {
+	if x != nil && x.ResponsTimeOut != nil {
+		return *x.ResponsTimeOut
+	}
+	return 0
+}
+
+func (x *CreateLBHealthCheckPolicyRequest) GetHealthCheckInterval() int32 {
+	if x != nil && x.HealthCheckInterval != nil {
+		return *x.HealthCheckInterval
+	}
+	return 0
+}
+
+func (x *CreateLBHealthCheckPolicyRequest) GetHealthyThreshold() int32 {
+	if x != nil && x.HealthyThreshold != nil {
+		return *x.HealthyThreshold
+	}
+	return 0
+}
+
+func (x *CreateLBHealthCheckPolicyRequest) GetUnhealthyThreshold() int32 {
+	if x != nil && x.UnhealthyThreshold != nil {
+		return *x.UnhealthyThreshold
+	}
+	return 0
+}
+
+func (x *CreateLBHealthCheckPolicyRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *CreateLBHealthCheckPolicyRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreateLBHealthCheckPolicyRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CreateLBHealthCheckPolicyRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateLBHealthCheckPolicyResponse represents the response from creates a load balancer health check policy
+type CreateLBHealthCheckPolicyResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateLBHealthCheckPolicyResponse) Reset() {
+	*x = CreateLBHealthCheckPolicyResponse{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateLBHealthCheckPolicyResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateLBHealthCheckPolicyResponse) ProtoMessage() {}
+
+func (x *CreateLBHealthCheckPolicyResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateLBHealthCheckPolicyResponse.ProtoReflect.Descriptor instead.
+func (*CreateLBHealthCheckPolicyResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *CreateLBHealthCheckPolicyResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// CreateLBStickinessPolicyRequest represents the parameters for creates a load balancer stickiness policy
+type CreateLBStickinessPolicyRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the load balancer rule
+	LbRuleId *int64 `protobuf:"varint,1,opt,name=lb_rule_id,json=lbRuleId" json:"lb_rule_id,omitempty"`
+	// the description of the load balancer stickiness policy
+	Description *string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
+	// name of the load balancer stickiness policy
+	LbStickinessPolicyName *string `protobuf:"bytes,3,opt,name=lb_stickiness_policy_name,json=lbStickinessPolicyName" json:"lb_stickiness_policy_name,omitempty"`
+	// name of the load balancer stickiness policy method, possible values are LbCookie, AppCookie, SourceBased
+	StickinessMethodName *string `protobuf:"bytes,4,opt,name=stickiness_method_name,json=stickinessMethodName" json:"stickiness_method_name,omitempty"`
+	// param list. Example: param[0].name=cookiename&param[0].value=LBCookie
+	ParamList map[string]string `protobuf:"bytes,5,rep,name=param_list,json=paramList" json:"param_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// an optional field, whether to the display the rule to the end user or not
+	Display *bool `protobuf:"varint,6,opt,name=display" json:"display,omitempty"`
+	StartEventId *int64 `protobuf:"varint,7,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,8,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateLBStickinessPolicyRequest) Reset() {
+	*x = CreateLBStickinessPolicyRequest{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateLBStickinessPolicyRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateLBStickinessPolicyRequest) ProtoMessage() {}
+
+func (x *CreateLBStickinessPolicyRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateLBStickinessPolicyRequest.ProtoReflect.Descriptor instead.
+func (*CreateLBStickinessPolicyRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *CreateLBStickinessPolicyRequest) GetLbRuleId() int64 {
+	if x != nil && x.LbRuleId != nil {
+		return *x.LbRuleId
+	}
+	return 0
+}
+
+func (x *CreateLBStickinessPolicyRequest) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *CreateLBStickinessPolicyRequest) GetLbStickinessPolicyName() string {
+	if x != nil && x.LbStickinessPolicyName != nil {
+		return *x.LbStickinessPolicyName
+	}
+	return ""
+}
+
+func (x *CreateLBStickinessPolicyRequest) GetStickinessMethodName() string {
+	if x != nil && x.StickinessMethodName != nil {
+		return *x.StickinessMethodName
+	}
+	return ""
+}
+
+func (x *CreateLBStickinessPolicyRequest) GetParamList() map[string]string {
+	if x != nil {
+		return x.ParamList
+	}
+	return nil
+}
+
+func (x *CreateLBStickinessPolicyRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *CreateLBStickinessPolicyRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *CreateLBStickinessPolicyRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *CreateLBStickinessPolicyRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// CreateLBStickinessPolicyResponse represents the response from creates a load balancer stickiness policy
+type CreateLBStickinessPolicyResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateLBStickinessPolicyResponse) Reset() {
+	*x = CreateLBStickinessPolicyResponse{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateLBStickinessPolicyResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateLBStickinessPolicyResponse) ProtoMessage() {}
+
+func (x *CreateLBStickinessPolicyResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateLBStickinessPolicyResponse.ProtoReflect.Descriptor instead.
+func (*CreateLBStickinessPolicyResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *CreateLBStickinessPolicyResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -556,7 +860,7 @@ type CreateLoadBalancerRuleRequest struct {
 
 func (x *CreateLoadBalancerRuleRequest) Reset() {
 	*x = CreateLoadBalancerRuleRequest{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -568,7 +872,7 @@ func (x *CreateLoadBalancerRuleRequest) String() string {
 func (*CreateLoadBalancerRuleRequest) ProtoMessage() {}
 
 func (x *CreateLoadBalancerRuleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -581,7 +885,7 @@ func (x *CreateLoadBalancerRuleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateLoadBalancerRuleRequest.ProtoReflect.Descriptor instead.
 func (*CreateLoadBalancerRuleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{6}
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *CreateLoadBalancerRuleRequest) GetAlgorithm() string {
@@ -714,7 +1018,7 @@ type CreateLoadBalancerRuleResponse struct {
 
 func (x *CreateLoadBalancerRuleResponse) Reset() {
 	*x = CreateLoadBalancerRuleResponse{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -726,7 +1030,7 @@ func (x *CreateLoadBalancerRuleResponse) String() string {
 func (*CreateLoadBalancerRuleResponse) ProtoMessage() {}
 
 func (x *CreateLoadBalancerRuleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -739,609 +1043,10 @@ func (x *CreateLoadBalancerRuleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateLoadBalancerRuleResponse.ProtoReflect.Descriptor instead.
 func (*CreateLoadBalancerRuleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *CreateLoadBalancerRuleResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListLoadBalancerRuleInstancesRequest represents the parameters for list all virtual machine instances that are assigned to a load balancer rule.
-type ListLoadBalancerRuleInstancesRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// true if listing all virtual machines currently applied to the load balancer rule; default is true
-	Applied *bool `protobuf:"varint,2,opt,name=applied" json:"applied,omitempty"`
-	// the ID of the load balancer rule
-	Id *int64 `protobuf:"varint,3,opt,name=id" json:"id,omitempty"`
-	// true if load balancer rule VM IP information to be included; default is false
-	IsListLbVmip *bool `protobuf:"varint,4,opt,name=is_list_lb_vmip,json=isListLbVmip" json:"is_list_lb_vmip,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,5,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,6,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,7,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListLoadBalancerRuleInstancesRequest) Reset() {
-	*x = ListLoadBalancerRuleInstancesRequest{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListLoadBalancerRuleInstancesRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListLoadBalancerRuleInstancesRequest) ProtoMessage() {}
-
-func (x *ListLoadBalancerRuleInstancesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListLoadBalancerRuleInstancesRequest.ProtoReflect.Descriptor instead.
-func (*ListLoadBalancerRuleInstancesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *ListLoadBalancerRuleInstancesRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
-	}
-	return false
-}
-
-func (x *ListLoadBalancerRuleInstancesRequest) GetApplied() bool {
-	if x != nil && x.Applied != nil {
-		return *x.Applied
-	}
-	return false
-}
-
-func (x *ListLoadBalancerRuleInstancesRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListLoadBalancerRuleInstancesRequest) GetIsListLbVmip() bool {
-	if x != nil && x.IsListLbVmip != nil {
-		return *x.IsListLbVmip
-	}
-	return false
-}
-
-func (x *ListLoadBalancerRuleInstancesRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListLoadBalancerRuleInstancesRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListLoadBalancerRuleInstancesRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListLoadBalancerRuleInstancesRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListLoadBalancerRuleInstancesResponse represents the response from list all virtual machine instances that are assigned to a load balancer rule.
-type ListLoadBalancerRuleInstancesResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of LoadBalancerRuleVmMaps
-	Items []*LoadBalancerRuleVmMap `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of LoadBalancerRuleVmMaps
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListLoadBalancerRuleInstancesResponse) Reset() {
-	*x = ListLoadBalancerRuleInstancesResponse{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListLoadBalancerRuleInstancesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListLoadBalancerRuleInstancesResponse) ProtoMessage() {}
-
-func (x *ListLoadBalancerRuleInstancesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListLoadBalancerRuleInstancesResponse.ProtoReflect.Descriptor instead.
-func (*ListLoadBalancerRuleInstancesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *ListLoadBalancerRuleInstancesResponse) GetItems() []*LoadBalancerRuleVmMap {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListLoadBalancerRuleInstancesResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// CreateApplicationLoadBalancerRequest represents the parameters for creates an internal load balancer
-type CreateApplicationLoadBalancerRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// name of the load balancer
-	LoadBalancerName *string `protobuf:"bytes,1,opt,name=load_balancer_name,json=loadBalancerName" json:"load_balancer_name,omitempty"`
-	// the description of the load balancer
-	Description *string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
-	// The guest network the load balancer will be created for
-	NetworkId *int64 `protobuf:"varint,3,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
-	// the source port the network traffic will be load balanced from
-	SourcePort *int32 `protobuf:"varint,4,opt,name=source_port,json=sourcePort" json:"source_port,omitempty"`
-	// load balancer algorithm (source, roundrobin, leastconn)
-	Algorithm *string `protobuf:"bytes,5,opt,name=algorithm" json:"algorithm,omitempty"`
-	// the TCP port of the virtual machine where the network traffic will be load balanced to
-	InstancePort *int32 `protobuf:"varint,6,opt,name=instance_port,json=instancePort" json:"instance_port,omitempty"`
-	// the source IP address the network traffic will be load balanced from
-	SourceIp *string `protobuf:"bytes,7,opt,name=source_ip,json=sourceIp" json:"source_ip,omitempty"`
-	// the network id of the source ip address
-	SourceIpNetworkId *int64 `protobuf:"varint,8,opt,name=source_ip_network_id,json=sourceIpNetworkId" json:"source_ip_network_id,omitempty"`
-	// the load balancer scheme. Supported value in this release is Internal
-	Scheme *string `protobuf:"bytes,9,opt,name=scheme" json:"scheme,omitempty"`
-	// an optional field, whether to the display the rule to the end user or not
-	Display *bool `protobuf:"varint,10,opt,name=display" json:"display,omitempty"`
-	StartEventId *int64 `protobuf:"varint,11,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,12,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,13,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateApplicationLoadBalancerRequest) Reset() {
-	*x = CreateApplicationLoadBalancerRequest{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateApplicationLoadBalancerRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateApplicationLoadBalancerRequest) ProtoMessage() {}
-
-func (x *CreateApplicationLoadBalancerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateApplicationLoadBalancerRequest.ProtoReflect.Descriptor instead.
-func (*CreateApplicationLoadBalancerRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *CreateApplicationLoadBalancerRequest) GetLoadBalancerName() string {
-	if x != nil && x.LoadBalancerName != nil {
-		return *x.LoadBalancerName
-	}
-	return ""
-}
-
-func (x *CreateApplicationLoadBalancerRequest) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *CreateApplicationLoadBalancerRequest) GetNetworkId() int64 {
-	if x != nil && x.NetworkId != nil {
-		return *x.NetworkId
-	}
-	return 0
-}
-
-func (x *CreateApplicationLoadBalancerRequest) GetSourcePort() int32 {
-	if x != nil && x.SourcePort != nil {
-		return *x.SourcePort
-	}
-	return 0
-}
-
-func (x *CreateApplicationLoadBalancerRequest) GetAlgorithm() string {
-	if x != nil && x.Algorithm != nil {
-		return *x.Algorithm
-	}
-	return ""
-}
-
-func (x *CreateApplicationLoadBalancerRequest) GetInstancePort() int32 {
-	if x != nil && x.InstancePort != nil {
-		return *x.InstancePort
-	}
-	return 0
-}
-
-func (x *CreateApplicationLoadBalancerRequest) GetSourceIp() string {
-	if x != nil && x.SourceIp != nil {
-		return *x.SourceIp
-	}
-	return ""
-}
-
-func (x *CreateApplicationLoadBalancerRequest) GetSourceIpNetworkId() int64 {
-	if x != nil && x.SourceIpNetworkId != nil {
-		return *x.SourceIpNetworkId
-	}
-	return 0
-}
-
-func (x *CreateApplicationLoadBalancerRequest) GetScheme() string {
-	if x != nil && x.Scheme != nil {
-		return *x.Scheme
-	}
-	return ""
-}
-
-func (x *CreateApplicationLoadBalancerRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *CreateApplicationLoadBalancerRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CreateApplicationLoadBalancerRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CreateApplicationLoadBalancerRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateApplicationLoadBalancerResponse represents the response from creates an internal load balancer
-type CreateApplicationLoadBalancerResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateApplicationLoadBalancerResponse) Reset() {
-	*x = CreateApplicationLoadBalancerResponse{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateApplicationLoadBalancerResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateApplicationLoadBalancerResponse) ProtoMessage() {}
-
-func (x *CreateApplicationLoadBalancerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateApplicationLoadBalancerResponse.ProtoReflect.Descriptor instead.
-func (*CreateApplicationLoadBalancerResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *CreateApplicationLoadBalancerResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteLoadBalancerRuleRequest represents the parameters for deletes a load balancer rule.
-type DeleteLoadBalancerRuleRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the load balancer rule
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteLoadBalancerRuleRequest) Reset() {
-	*x = DeleteLoadBalancerRuleRequest{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteLoadBalancerRuleRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteLoadBalancerRuleRequest) ProtoMessage() {}
-
-func (x *DeleteLoadBalancerRuleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteLoadBalancerRuleRequest.ProtoReflect.Descriptor instead.
-func (*DeleteLoadBalancerRuleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *DeleteLoadBalancerRuleRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteLoadBalancerRuleRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *DeleteLoadBalancerRuleRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *DeleteLoadBalancerRuleRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteLoadBalancerRuleResponse represents the response from deletes a load balancer rule.
-type DeleteLoadBalancerRuleResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteLoadBalancerRuleResponse) Reset() {
-	*x = DeleteLoadBalancerRuleResponse{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteLoadBalancerRuleResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteLoadBalancerRuleResponse) ProtoMessage() {}
-
-func (x *DeleteLoadBalancerRuleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteLoadBalancerRuleResponse.ProtoReflect.Descriptor instead.
-func (*DeleteLoadBalancerRuleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *DeleteLoadBalancerRuleResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// AssignCertToLoadBalancerRequest represents the parameters for assigns a certificate to a load balancer rule
-type AssignCertToLoadBalancerRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the load balancer rule
-	LbRuleId *int64 `protobuf:"varint,1,opt,name=lb_rule_id,json=lbRuleId" json:"lb_rule_id,omitempty"`
-	// the ID of the certificate
-	CertId *int64 `protobuf:"varint,2,opt,name=cert_id,json=certId" json:"cert_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,3,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,4,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AssignCertToLoadBalancerRequest) Reset() {
-	*x = AssignCertToLoadBalancerRequest{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AssignCertToLoadBalancerRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AssignCertToLoadBalancerRequest) ProtoMessage() {}
-
-func (x *AssignCertToLoadBalancerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AssignCertToLoadBalancerRequest.ProtoReflect.Descriptor instead.
-func (*AssignCertToLoadBalancerRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *AssignCertToLoadBalancerRequest) GetLbRuleId() int64 {
-	if x != nil && x.LbRuleId != nil {
-		return *x.LbRuleId
-	}
-	return 0
-}
-
-func (x *AssignCertToLoadBalancerRequest) GetCertId() int64 {
-	if x != nil && x.CertId != nil {
-		return *x.CertId
-	}
-	return 0
-}
-
-func (x *AssignCertToLoadBalancerRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *AssignCertToLoadBalancerRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *AssignCertToLoadBalancerRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// AssignCertToLoadBalancerResponse represents the response from assigns a certificate to a load balancer rule
-type AssignCertToLoadBalancerResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AssignCertToLoadBalancerResponse) Reset() {
-	*x = AssignCertToLoadBalancerResponse{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AssignCertToLoadBalancerResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AssignCertToLoadBalancerResponse) ProtoMessage() {}
-
-func (x *AssignCertToLoadBalancerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AssignCertToLoadBalancerResponse.ProtoReflect.Descriptor instead.
-func (*AssignCertToLoadBalancerResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *AssignCertToLoadBalancerResponse) GetResult() *Result {
+func (x *CreateLoadBalancerRuleResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -1362,7 +1067,7 @@ type DeleteApplicationLoadBalancerRequest struct {
 
 func (x *DeleteApplicationLoadBalancerRequest) Reset() {
 	*x = DeleteApplicationLoadBalancerRequest{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[16]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1374,7 +1079,7 @@ func (x *DeleteApplicationLoadBalancerRequest) String() string {
 func (*DeleteApplicationLoadBalancerRequest) ProtoMessage() {}
 
 func (x *DeleteApplicationLoadBalancerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[16]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1387,7 +1092,7 @@ func (x *DeleteApplicationLoadBalancerRequest) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use DeleteApplicationLoadBalancerRequest.ProtoReflect.Descriptor instead.
 func (*DeleteApplicationLoadBalancerRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{16}
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *DeleteApplicationLoadBalancerRequest) GetId() int64 {
@@ -1429,7 +1134,7 @@ type DeleteApplicationLoadBalancerResponse struct {
 
 func (x *DeleteApplicationLoadBalancerResponse) Reset() {
 	*x = DeleteApplicationLoadBalancerResponse{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[17]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1441,7 +1146,7 @@ func (x *DeleteApplicationLoadBalancerResponse) String() string {
 func (*DeleteApplicationLoadBalancerResponse) ProtoMessage() {}
 
 func (x *DeleteApplicationLoadBalancerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[17]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1454,7 +1159,7 @@ func (x *DeleteApplicationLoadBalancerResponse) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use DeleteApplicationLoadBalancerResponse.ProtoReflect.Descriptor instead.
 func (*DeleteApplicationLoadBalancerResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{17}
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *DeleteApplicationLoadBalancerResponse) GetResult() *Result {
@@ -1462,1011 +1167,6 @@ func (x *DeleteApplicationLoadBalancerResponse) GetResult() *Result {
 		return x.Result
 	}
 	return nil
-}
-
-// ListLBStickinessPoliciesRequest represents the parameters for lists load balancer stickiness policies.
-type ListLBStickinessPoliciesRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the load balancer rule
-	LbRuleId *int64 `protobuf:"varint,1,opt,name=lb_rule_id,json=lbRuleId" json:"lb_rule_id,omitempty"`
-	// the ID of the load balancer stickiness policy
-	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	// list resources by display flag; only ROOT admin is eligible to pass this parameter
-	Display *bool `protobuf:"varint,3,opt,name=display" json:"display,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,4,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,5,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,6,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListLBStickinessPoliciesRequest) Reset() {
-	*x = ListLBStickinessPoliciesRequest{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[18]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListLBStickinessPoliciesRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListLBStickinessPoliciesRequest) ProtoMessage() {}
-
-func (x *ListLBStickinessPoliciesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[18]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListLBStickinessPoliciesRequest.ProtoReflect.Descriptor instead.
-func (*ListLBStickinessPoliciesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{18}
-}
-
-func (x *ListLBStickinessPoliciesRequest) GetLbRuleId() int64 {
-	if x != nil && x.LbRuleId != nil {
-		return *x.LbRuleId
-	}
-	return 0
-}
-
-func (x *ListLBStickinessPoliciesRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *ListLBStickinessPoliciesRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *ListLBStickinessPoliciesRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
-	}
-	return ""
-}
-
-func (x *ListLBStickinessPoliciesRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListLBStickinessPoliciesRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListLBStickinessPoliciesRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListLBStickinessPoliciesResponse represents the response from lists load balancer stickiness policies.
-type ListLBStickinessPoliciesResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of LBStickinesss
-	Items []*LBStickiness `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of LBStickinesss
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListLBStickinessPoliciesResponse) Reset() {
-	*x = ListLBStickinessPoliciesResponse{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[19]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListLBStickinessPoliciesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListLBStickinessPoliciesResponse) ProtoMessage() {}
-
-func (x *ListLBStickinessPoliciesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[19]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListLBStickinessPoliciesResponse.ProtoReflect.Descriptor instead.
-func (*ListLBStickinessPoliciesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{19}
-}
-
-func (x *ListLBStickinessPoliciesResponse) GetItems() []*LBStickiness {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListLBStickinessPoliciesResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// CreateLBHealthCheckPolicyRequest represents the parameters for creates a load balancer health check policy
-type CreateLBHealthCheckPolicyRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the load balancer rule
-	LbRuleId *int64 `protobuf:"varint,1,opt,name=lb_rule_id,json=lbRuleId" json:"lb_rule_id,omitempty"`
-	// the description of the load balancer health check policy
-	Description *string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
-	// HTTP ping path
-	PingPath *string `protobuf:"bytes,3,opt,name=ping_path,json=pingPath" json:"ping_path,omitempty"`
-	// Time to wait when receiving a response from the health check (2sec - 60 sec)
-	ResponsTimeOut *int32 `protobuf:"varint,4,opt,name=respons_time_out,json=responsTimeOut" json:"respons_time_out,omitempty"`
-	// Amount of time between health checks (1 sec - 20940 sec)
-	HealthCheckInterval *int32 `protobuf:"varint,5,opt,name=health_check_interval,json=healthCheckInterval" json:"health_check_interval,omitempty"`
-	// Number of consecutive health check success before declaring an instance healthy
-	HealthyThreshold *int32 `protobuf:"varint,6,opt,name=healthy_threshold,json=healthyThreshold" json:"healthy_threshold,omitempty"`
-	// Number of consecutive health check failures before declaring an instance unhealthy
-	UnhealthyThreshold *int32 `protobuf:"varint,7,opt,name=unhealthy_threshold,json=unhealthyThreshold" json:"unhealthy_threshold,omitempty"`
-	// an optional field, whether to the display the rule to the end user or not
-	Display *bool `protobuf:"varint,8,opt,name=display" json:"display,omitempty"`
-	StartEventId *int64 `protobuf:"varint,9,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,10,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,11,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateLBHealthCheckPolicyRequest) Reset() {
-	*x = CreateLBHealthCheckPolicyRequest{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[20]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateLBHealthCheckPolicyRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateLBHealthCheckPolicyRequest) ProtoMessage() {}
-
-func (x *CreateLBHealthCheckPolicyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[20]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateLBHealthCheckPolicyRequest.ProtoReflect.Descriptor instead.
-func (*CreateLBHealthCheckPolicyRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{20}
-}
-
-func (x *CreateLBHealthCheckPolicyRequest) GetLbRuleId() int64 {
-	if x != nil && x.LbRuleId != nil {
-		return *x.LbRuleId
-	}
-	return 0
-}
-
-func (x *CreateLBHealthCheckPolicyRequest) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *CreateLBHealthCheckPolicyRequest) GetPingPath() string {
-	if x != nil && x.PingPath != nil {
-		return *x.PingPath
-	}
-	return ""
-}
-
-func (x *CreateLBHealthCheckPolicyRequest) GetResponsTimeOut() int32 {
-	if x != nil && x.ResponsTimeOut != nil {
-		return *x.ResponsTimeOut
-	}
-	return 0
-}
-
-func (x *CreateLBHealthCheckPolicyRequest) GetHealthCheckInterval() int32 {
-	if x != nil && x.HealthCheckInterval != nil {
-		return *x.HealthCheckInterval
-	}
-	return 0
-}
-
-func (x *CreateLBHealthCheckPolicyRequest) GetHealthyThreshold() int32 {
-	if x != nil && x.HealthyThreshold != nil {
-		return *x.HealthyThreshold
-	}
-	return 0
-}
-
-func (x *CreateLBHealthCheckPolicyRequest) GetUnhealthyThreshold() int32 {
-	if x != nil && x.UnhealthyThreshold != nil {
-		return *x.UnhealthyThreshold
-	}
-	return 0
-}
-
-func (x *CreateLBHealthCheckPolicyRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *CreateLBHealthCheckPolicyRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CreateLBHealthCheckPolicyRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CreateLBHealthCheckPolicyRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateLBHealthCheckPolicyResponse represents the response from creates a load balancer health check policy
-type CreateLBHealthCheckPolicyResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateLBHealthCheckPolicyResponse) Reset() {
-	*x = CreateLBHealthCheckPolicyResponse{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[21]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateLBHealthCheckPolicyResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateLBHealthCheckPolicyResponse) ProtoMessage() {}
-
-func (x *CreateLBHealthCheckPolicyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[21]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateLBHealthCheckPolicyResponse.ProtoReflect.Descriptor instead.
-func (*CreateLBHealthCheckPolicyResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{21}
-}
-
-func (x *CreateLBHealthCheckPolicyResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateLoadBalancerRuleRequest represents the parameters for updates load balancer
-type UpdateLoadBalancerRuleRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// load balancer algorithm (source, roundrobin, leastconn)
-	Algorithm *string `protobuf:"bytes,1,opt,name=algorithm" json:"algorithm,omitempty"`
-	// the description of the load balancer rule
-	Description *string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
-	// the ID of the load balancer rule to update
-	Id *int64 `protobuf:"varint,3,opt,name=id" json:"id,omitempty"`
-	// the name of the load balancer rule
-	LoadBalancerName *string `protobuf:"bytes,4,opt,name=load_balancer_name,json=loadBalancerName" json:"load_balancer_name,omitempty"`
-	// an optional field, whether to the display the rule to the end user or not
-	Display *bool `protobuf:"varint,5,opt,name=display" json:"display,omitempty"`
-	// The protocol for the LB
-	LbProtocol *string `protobuf:"bytes,6,opt,name=lb_protocol,json=lbProtocol" json:"lb_protocol,omitempty"`
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	CustomId *string `protobuf:"bytes,7,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,8,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,9,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateLoadBalancerRuleRequest) Reset() {
-	*x = UpdateLoadBalancerRuleRequest{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[22]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateLoadBalancerRuleRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateLoadBalancerRuleRequest) ProtoMessage() {}
-
-func (x *UpdateLoadBalancerRuleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[22]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateLoadBalancerRuleRequest.ProtoReflect.Descriptor instead.
-func (*UpdateLoadBalancerRuleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{22}
-}
-
-func (x *UpdateLoadBalancerRuleRequest) GetAlgorithm() string {
-	if x != nil && x.Algorithm != nil {
-		return *x.Algorithm
-	}
-	return ""
-}
-
-func (x *UpdateLoadBalancerRuleRequest) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *UpdateLoadBalancerRuleRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateLoadBalancerRuleRequest) GetLoadBalancerName() string {
-	if x != nil && x.LoadBalancerName != nil {
-		return *x.LoadBalancerName
-	}
-	return ""
-}
-
-func (x *UpdateLoadBalancerRuleRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *UpdateLoadBalancerRuleRequest) GetLbProtocol() string {
-	if x != nil && x.LbProtocol != nil {
-		return *x.LbProtocol
-	}
-	return ""
-}
-
-func (x *UpdateLoadBalancerRuleRequest) GetCustomId() string {
-	if x != nil && x.CustomId != nil {
-		return *x.CustomId
-	}
-	return ""
-}
-
-func (x *UpdateLoadBalancerRuleRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *UpdateLoadBalancerRuleRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *UpdateLoadBalancerRuleRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateLoadBalancerRuleResponse represents the response from updates load balancer
-type UpdateLoadBalancerRuleResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateLoadBalancerRuleResponse) Reset() {
-	*x = UpdateLoadBalancerRuleResponse{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[23]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateLoadBalancerRuleResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateLoadBalancerRuleResponse) ProtoMessage() {}
-
-func (x *UpdateLoadBalancerRuleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[23]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateLoadBalancerRuleResponse.ProtoReflect.Descriptor instead.
-func (*UpdateLoadBalancerRuleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{23}
-}
-
-func (x *UpdateLoadBalancerRuleResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateLBHealthCheckPolicyRequest represents the parameters for updates load balancer health check policy
-type UpdateLBHealthCheckPolicyRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of load balancer health check policy
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// an optional field, whether to the display the policy to the end user or not
-	Display *bool `protobuf:"varint,2,opt,name=display" json:"display,omitempty"`
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	CustomId *string `protobuf:"bytes,3,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateLBHealthCheckPolicyRequest) Reset() {
-	*x = UpdateLBHealthCheckPolicyRequest{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[24]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateLBHealthCheckPolicyRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateLBHealthCheckPolicyRequest) ProtoMessage() {}
-
-func (x *UpdateLBHealthCheckPolicyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[24]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateLBHealthCheckPolicyRequest.ProtoReflect.Descriptor instead.
-func (*UpdateLBHealthCheckPolicyRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{24}
-}
-
-func (x *UpdateLBHealthCheckPolicyRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateLBHealthCheckPolicyRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *UpdateLBHealthCheckPolicyRequest) GetCustomId() string {
-	if x != nil && x.CustomId != nil {
-		return *x.CustomId
-	}
-	return ""
-}
-
-func (x *UpdateLBHealthCheckPolicyRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *UpdateLBHealthCheckPolicyRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *UpdateLBHealthCheckPolicyRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateLBHealthCheckPolicyResponse represents the response from updates load balancer health check policy
-type UpdateLBHealthCheckPolicyResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateLBHealthCheckPolicyResponse) Reset() {
-	*x = UpdateLBHealthCheckPolicyResponse{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[25]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateLBHealthCheckPolicyResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateLBHealthCheckPolicyResponse) ProtoMessage() {}
-
-func (x *UpdateLBHealthCheckPolicyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[25]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateLBHealthCheckPolicyResponse.ProtoReflect.Descriptor instead.
-func (*UpdateLBHealthCheckPolicyResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{25}
-}
-
-func (x *UpdateLBHealthCheckPolicyResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// DeleteSslCertRequest represents the parameters for delete a certificate to cloudstack
-type DeleteSslCertRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of SSL certificate
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteSslCertRequest) Reset() {
-	*x = DeleteSslCertRequest{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[26]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteSslCertRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteSslCertRequest) ProtoMessage() {}
-
-func (x *DeleteSslCertRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[26]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteSslCertRequest.ProtoReflect.Descriptor instead.
-func (*DeleteSslCertRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{26}
-}
-
-func (x *DeleteSslCertRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteSslCertRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteSslCertResponse represents the response from delete a certificate to cloudstack
-type DeleteSslCertResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteSslCertResponse) Reset() {
-	*x = DeleteSslCertResponse{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[27]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteSslCertResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteSslCertResponse) ProtoMessage() {}
-
-func (x *DeleteSslCertResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[27]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteSslCertResponse.ProtoReflect.Descriptor instead.
-func (*DeleteSslCertResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{27}
-}
-
-func (x *DeleteSslCertResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// RemoveFromLoadBalancerRuleRequest represents the parameters for removes a virtual machine or a list of virtual machines from a load balancer rule.
-type RemoveFromLoadBalancerRuleRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the load balancer rule
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// the list of IDs of the virtual machines that are being removed from the load balancer rule (i.e. virtualMachineIds=1,2,3)
-	VirtualMachineIds []string `protobuf:"bytes,2,rep,name=virtual_machine_ids,json=virtualMachineIds" json:"virtual_machine_ids,omitempty"`
-	// VM ID and IP map, vmidipmap[0].vmid=1 vmidipmap[0].ip=10.1.1.75
-	VmIdIpMap map[string]string `protobuf:"bytes,3,rep,name=vm_id_ip_map,json=vmIdIpMap" json:"vm_id_ip_map,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RemoveFromLoadBalancerRuleRequest) Reset() {
-	*x = RemoveFromLoadBalancerRuleRequest{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[28]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RemoveFromLoadBalancerRuleRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RemoveFromLoadBalancerRuleRequest) ProtoMessage() {}
-
-func (x *RemoveFromLoadBalancerRuleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[28]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RemoveFromLoadBalancerRuleRequest.ProtoReflect.Descriptor instead.
-func (*RemoveFromLoadBalancerRuleRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{28}
-}
-
-func (x *RemoveFromLoadBalancerRuleRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *RemoveFromLoadBalancerRuleRequest) GetVirtualMachineIds() []string {
-	if x != nil {
-		return x.VirtualMachineIds
-	}
-	return nil
-}
-
-func (x *RemoveFromLoadBalancerRuleRequest) GetVmIdIpMap() map[string]string {
-	if x != nil {
-		return x.VmIdIpMap
-	}
-	return nil
-}
-
-func (x *RemoveFromLoadBalancerRuleRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *RemoveFromLoadBalancerRuleRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *RemoveFromLoadBalancerRuleRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// RemoveFromLoadBalancerRuleResponse represents the response from removes a virtual machine or a list of virtual machines from a load balancer rule.
-type RemoveFromLoadBalancerRuleResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RemoveFromLoadBalancerRuleResponse) Reset() {
-	*x = RemoveFromLoadBalancerRuleResponse{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[29]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RemoveFromLoadBalancerRuleResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RemoveFromLoadBalancerRuleResponse) ProtoMessage() {}
-
-func (x *RemoveFromLoadBalancerRuleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[29]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RemoveFromLoadBalancerRuleResponse.ProtoReflect.Descriptor instead.
-func (*RemoveFromLoadBalancerRuleResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{29}
-}
-
-func (x *RemoveFromLoadBalancerRuleResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListSslCertsRequest represents the parameters for lists ssl certificates
-type ListSslCertsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of SSL certificate
-	CertId *int64 `protobuf:"varint,1,opt,name=cert_id,json=certId" json:"cert_id,omitempty"`
-	// Account ID
-	AccountId *int64 `protobuf:"varint,2,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// Load balancer rule ID
-	LbId *int64 `protobuf:"varint,3,opt,name=lb_id,json=lbId" json:"lb_id,omitempty"`
-	// Project that owns the SSL certificate
-	ProjectId *int64 `protobuf:"varint,4,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListSslCertsRequest) Reset() {
-	*x = ListSslCertsRequest{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[30]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListSslCertsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListSslCertsRequest) ProtoMessage() {}
-
-func (x *ListSslCertsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[30]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListSslCertsRequest.ProtoReflect.Descriptor instead.
-func (*ListSslCertsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{30}
-}
-
-func (x *ListSslCertsRequest) GetCertId() int64 {
-	if x != nil && x.CertId != nil {
-		return *x.CertId
-	}
-	return 0
-}
-
-func (x *ListSslCertsRequest) GetAccountId() int64 {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return 0
-}
-
-func (x *ListSslCertsRequest) GetLbId() int64 {
-	if x != nil && x.LbId != nil {
-		return *x.LbId
-	}
-	return 0
-}
-
-func (x *ListSslCertsRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *ListSslCertsRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// ListSslCertsResponse represents the response from lists ssl certificates
-type ListSslCertsResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of SslCerts
-	Items []*SslCert `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of SslCerts
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListSslCertsResponse) Reset() {
-	*x = ListSslCertsResponse{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[31]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListSslCertsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListSslCertsResponse) ProtoMessage() {}
-
-func (x *ListSslCertsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[31]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListSslCertsResponse.ProtoReflect.Descriptor instead.
-func (*ListSslCertsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{31}
-}
-
-func (x *ListSslCertsResponse) GetItems() []*SslCert {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListSslCertsResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
 }
 
 // DeleteLBHealthCheckPolicyRequest represents the parameters for deletes a load balancer health check policy.
@@ -2483,7 +1183,7 @@ type DeleteLBHealthCheckPolicyRequest struct {
 
 func (x *DeleteLBHealthCheckPolicyRequest) Reset() {
 	*x = DeleteLBHealthCheckPolicyRequest{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[32]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2495,7 +1195,7 @@ func (x *DeleteLBHealthCheckPolicyRequest) String() string {
 func (*DeleteLBHealthCheckPolicyRequest) ProtoMessage() {}
 
 func (x *DeleteLBHealthCheckPolicyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[32]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2508,7 +1208,7 @@ func (x *DeleteLBHealthCheckPolicyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteLBHealthCheckPolicyRequest.ProtoReflect.Descriptor instead.
 func (*DeleteLBHealthCheckPolicyRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{32}
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *DeleteLBHealthCheckPolicyRequest) GetId() int64 {
@@ -2550,7 +1250,7 @@ type DeleteLBHealthCheckPolicyResponse struct {
 
 func (x *DeleteLBHealthCheckPolicyResponse) Reset() {
 	*x = DeleteLBHealthCheckPolicyResponse{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[33]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2562,7 +1262,7 @@ func (x *DeleteLBHealthCheckPolicyResponse) String() string {
 func (*DeleteLBHealthCheckPolicyResponse) ProtoMessage() {}
 
 func (x *DeleteLBHealthCheckPolicyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[33]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2575,7 +1275,7 @@ func (x *DeleteLBHealthCheckPolicyResponse) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use DeleteLBHealthCheckPolicyResponse.ProtoReflect.Descriptor instead.
 func (*DeleteLBHealthCheckPolicyResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{33}
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *DeleteLBHealthCheckPolicyResponse) GetResult() *Result {
@@ -2585,306 +1285,11 @@ func (x *DeleteLBHealthCheckPolicyResponse) GetResult() *Result {
 	return nil
 }
 
-// CreateLBStickinessPolicyRequest represents the parameters for creates a load balancer stickiness policy
-type CreateLBStickinessPolicyRequest struct {
+// DeleteLBStickinessPolicyRequest represents the parameters for deletes a load balancer stickiness policy.
+type DeleteLBStickinessPolicyRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the load balancer rule
-	LbRuleId *int64 `protobuf:"varint,1,opt,name=lb_rule_id,json=lbRuleId" json:"lb_rule_id,omitempty"`
-	// the description of the load balancer stickiness policy
-	Description *string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
-	// name of the load balancer stickiness policy
-	LbStickinessPolicyName *string `protobuf:"bytes,3,opt,name=lb_stickiness_policy_name,json=lbStickinessPolicyName" json:"lb_stickiness_policy_name,omitempty"`
-	// name of the load balancer stickiness policy method, possible values are LbCookie, AppCookie, SourceBased
-	StickinessMethodName *string `protobuf:"bytes,4,opt,name=stickiness_method_name,json=stickinessMethodName" json:"stickiness_method_name,omitempty"`
-	// param list. Example: param[0].name=cookiename&param[0].value=LBCookie
-	ParamList map[string]string `protobuf:"bytes,5,rep,name=param_list,json=paramList" json:"param_list,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// an optional field, whether to the display the rule to the end user or not
-	Display *bool `protobuf:"varint,6,opt,name=display" json:"display,omitempty"`
-	StartEventId *int64 `protobuf:"varint,7,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,8,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateLBStickinessPolicyRequest) Reset() {
-	*x = CreateLBStickinessPolicyRequest{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[34]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateLBStickinessPolicyRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateLBStickinessPolicyRequest) ProtoMessage() {}
-
-func (x *CreateLBStickinessPolicyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[34]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateLBStickinessPolicyRequest.ProtoReflect.Descriptor instead.
-func (*CreateLBStickinessPolicyRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{34}
-}
-
-func (x *CreateLBStickinessPolicyRequest) GetLbRuleId() int64 {
-	if x != nil && x.LbRuleId != nil {
-		return *x.LbRuleId
-	}
-	return 0
-}
-
-func (x *CreateLBStickinessPolicyRequest) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *CreateLBStickinessPolicyRequest) GetLbStickinessPolicyName() string {
-	if x != nil && x.LbStickinessPolicyName != nil {
-		return *x.LbStickinessPolicyName
-	}
-	return ""
-}
-
-func (x *CreateLBStickinessPolicyRequest) GetStickinessMethodName() string {
-	if x != nil && x.StickinessMethodName != nil {
-		return *x.StickinessMethodName
-	}
-	return ""
-}
-
-func (x *CreateLBStickinessPolicyRequest) GetParamList() map[string]string {
-	if x != nil {
-		return x.ParamList
-	}
-	return nil
-}
-
-func (x *CreateLBStickinessPolicyRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *CreateLBStickinessPolicyRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *CreateLBStickinessPolicyRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *CreateLBStickinessPolicyRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// CreateLBStickinessPolicyResponse represents the response from creates a load balancer stickiness policy
-type CreateLBStickinessPolicyResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateLBStickinessPolicyResponse) Reset() {
-	*x = CreateLBStickinessPolicyResponse{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[35]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateLBStickinessPolicyResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateLBStickinessPolicyResponse) ProtoMessage() {}
-
-func (x *CreateLBStickinessPolicyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[35]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateLBStickinessPolicyResponse.ProtoReflect.Descriptor instead.
-func (*CreateLBStickinessPolicyResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{35}
-}
-
-func (x *CreateLBStickinessPolicyResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// UpdateApplicationLoadBalancerRequest represents the parameters for updates an internal load balancer
-type UpdateApplicationLoadBalancerRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the load balancer
+	// the ID of the LB stickiness policy
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// an optional field, whether to the display the rule to the end user or not
-	Display *bool `protobuf:"varint,2,opt,name=display" json:"display,omitempty"`
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	CustomId *string `protobuf:"bytes,3,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
-	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateApplicationLoadBalancerRequest) Reset() {
-	*x = UpdateApplicationLoadBalancerRequest{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[36]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateApplicationLoadBalancerRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateApplicationLoadBalancerRequest) ProtoMessage() {}
-
-func (x *UpdateApplicationLoadBalancerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[36]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateApplicationLoadBalancerRequest.ProtoReflect.Descriptor instead.
-func (*UpdateApplicationLoadBalancerRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{36}
-}
-
-func (x *UpdateApplicationLoadBalancerRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *UpdateApplicationLoadBalancerRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *UpdateApplicationLoadBalancerRequest) GetCustomId() string {
-	if x != nil && x.CustomId != nil {
-		return *x.CustomId
-	}
-	return ""
-}
-
-func (x *UpdateApplicationLoadBalancerRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *UpdateApplicationLoadBalancerRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *UpdateApplicationLoadBalancerRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UpdateApplicationLoadBalancerResponse represents the response from updates an internal load balancer
-type UpdateApplicationLoadBalancerResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateApplicationLoadBalancerResponse) Reset() {
-	*x = UpdateApplicationLoadBalancerResponse{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[37]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateApplicationLoadBalancerResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateApplicationLoadBalancerResponse) ProtoMessage() {}
-
-func (x *UpdateApplicationLoadBalancerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[37]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateApplicationLoadBalancerResponse.ProtoReflect.Descriptor instead.
-func (*UpdateApplicationLoadBalancerResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{37}
-}
-
-func (x *UpdateApplicationLoadBalancerResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// RemoveCertFromLoadBalancerRequest represents the parameters for removes a certificate from a load balancer rule
-type RemoveCertFromLoadBalancerRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the load balancer rule
-	LbRuleId *int64 `protobuf:"varint,1,opt,name=lb_rule_id,json=lbRuleId" json:"lb_rule_id,omitempty"`
 	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
 	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
 	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
@@ -2892,21 +1297,21 @@ type RemoveCertFromLoadBalancerRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RemoveCertFromLoadBalancerRequest) Reset() {
-	*x = RemoveCertFromLoadBalancerRequest{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[38]
+func (x *DeleteLBStickinessPolicyRequest) Reset() {
+	*x = DeleteLBStickinessPolicyRequest{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RemoveCertFromLoadBalancerRequest) String() string {
+func (x *DeleteLBStickinessPolicyRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RemoveCertFromLoadBalancerRequest) ProtoMessage() {}
+func (*DeleteLBStickinessPolicyRequest) ProtoMessage() {}
 
-func (x *RemoveCertFromLoadBalancerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[38]
+func (x *DeleteLBStickinessPolicyRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2917,365 +1322,41 @@ func (x *RemoveCertFromLoadBalancerRequest) ProtoReflect() protoreflect.Message 
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RemoveCertFromLoadBalancerRequest.ProtoReflect.Descriptor instead.
-func (*RemoveCertFromLoadBalancerRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{38}
+// Deprecated: Use DeleteLBStickinessPolicyRequest.ProtoReflect.Descriptor instead.
+func (*DeleteLBStickinessPolicyRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{16}
 }
 
-func (x *RemoveCertFromLoadBalancerRequest) GetLbRuleId() int64 {
-	if x != nil && x.LbRuleId != nil {
-		return *x.LbRuleId
-	}
-	return 0
-}
-
-func (x *RemoveCertFromLoadBalancerRequest) GetStartEventId() int64 {
-	if x != nil && x.StartEventId != nil {
-		return *x.StartEventId
-	}
-	return 0
-}
-
-func (x *RemoveCertFromLoadBalancerRequest) GetInjectedJobId() string {
-	if x != nil && x.InjectedJobId != nil {
-		return *x.InjectedJobId
-	}
-	return ""
-}
-
-func (x *RemoveCertFromLoadBalancerRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// RemoveCertFromLoadBalancerResponse represents the response from removes a certificate from a load balancer rule
-type RemoveCertFromLoadBalancerResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RemoveCertFromLoadBalancerResponse) Reset() {
-	*x = RemoveCertFromLoadBalancerResponse{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[39]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RemoveCertFromLoadBalancerResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RemoveCertFromLoadBalancerResponse) ProtoMessage() {}
-
-func (x *RemoveCertFromLoadBalancerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[39]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RemoveCertFromLoadBalancerResponse.ProtoReflect.Descriptor instead.
-func (*RemoveCertFromLoadBalancerResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{39}
-}
-
-func (x *RemoveCertFromLoadBalancerResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// ListLBHealthCheckPoliciesRequest represents the parameters for lists load balancer health check policies.
-type ListLBHealthCheckPoliciesRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// the ID of the load balancer rule
-	LbRuleId *int64 `protobuf:"varint,1,opt,name=lb_rule_id,json=lbRuleId" json:"lb_rule_id,omitempty"`
-	// list resources by display flag; only ROOT admin is eligible to pass this parameter
-	Display *bool `protobuf:"varint,2,opt,name=display" json:"display,omitempty"`
-	// the ID of the health check policy
-	Id *int64 `protobuf:"varint,3,opt,name=id" json:"id,omitempty"`
-	// List by keyword
-	Keyword *string `protobuf:"bytes,4,opt,name=keyword" json:"keyword,omitempty"`
-	Page *int32 `protobuf:"varint,5,opt,name=page" json:"page,omitempty"`
-	PageSize *int32 `protobuf:"varint,6,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListLBHealthCheckPoliciesRequest) Reset() {
-	*x = ListLBHealthCheckPoliciesRequest{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[40]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListLBHealthCheckPoliciesRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListLBHealthCheckPoliciesRequest) ProtoMessage() {}
-
-func (x *ListLBHealthCheckPoliciesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[40]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListLBHealthCheckPoliciesRequest.ProtoReflect.Descriptor instead.
-func (*ListLBHealthCheckPoliciesRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{40}
-}
-
-func (x *ListLBHealthCheckPoliciesRequest) GetLbRuleId() int64 {
-	if x != nil && x.LbRuleId != nil {
-		return *x.LbRuleId
-	}
-	return 0
-}
-
-func (x *ListLBHealthCheckPoliciesRequest) GetDisplay() bool {
-	if x != nil && x.Display != nil {
-		return *x.Display
-	}
-	return false
-}
-
-func (x *ListLBHealthCheckPoliciesRequest) GetId() int64 {
+func (x *DeleteLBStickinessPolicyRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *ListLBHealthCheckPoliciesRequest) GetKeyword() string {
-	if x != nil && x.Keyword != nil {
-		return *x.Keyword
+func (x *DeleteLBStickinessPolicyRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeleteLBStickinessPolicyRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *ListLBHealthCheckPoliciesRequest) GetPage() int32 {
-	if x != nil && x.Page != nil {
-		return *x.Page
-	}
-	return 0
-}
-
-func (x *ListLBHealthCheckPoliciesRequest) GetPageSize() int32 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
-	}
-	return 0
-}
-
-func (x *ListLBHealthCheckPoliciesRequest) GetResponseType() string {
+func (x *DeleteLBStickinessPolicyRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// ListLBHealthCheckPoliciesResponse represents the response from lists load balancer health check policies.
-type ListLBHealthCheckPoliciesResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The list of LBHealthChecks
-	Items []*LBHealthCheck `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
-	// The total count of LBHealthChecks
-	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListLBHealthCheckPoliciesResponse) Reset() {
-	*x = ListLBHealthCheckPoliciesResponse{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[41]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListLBHealthCheckPoliciesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListLBHealthCheckPoliciesResponse) ProtoMessage() {}
-
-func (x *ListLBHealthCheckPoliciesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[41]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListLBHealthCheckPoliciesResponse.ProtoReflect.Descriptor instead.
-func (*ListLBHealthCheckPoliciesResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{41}
-}
-
-func (x *ListLBHealthCheckPoliciesResponse) GetItems() []*LBHealthCheck {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
-func (x *ListLBHealthCheckPoliciesResponse) GetTotalCount() int32 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
-	}
-	return 0
-}
-
-// UploadSslCertRequest represents the parameters for upload a certificate to cloudstack
-type UploadSslCertRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// SSL certificate
-	Cert *string `protobuf:"bytes,1,opt,name=cert" json:"cert,omitempty"`
-	// Private key
-	Key *string `protobuf:"bytes,2,opt,name=key" json:"key,omitempty"`
-	// Certificate chain of trust
-	Chain *string `protobuf:"bytes,3,opt,name=chain" json:"chain,omitempty"`
-	// Password for the private key
-	Password *string `protobuf:"bytes,4,opt,name=password" json:"password,omitempty"`
-	// account that will own the SSL certificate
-	AccountName *string `protobuf:"bytes,5,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// an optional project for the SSL certificate
-	ProjectId *int64 `protobuf:"varint,6,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// domain ID of the account owning the SSL certificate
-	DomainId *int64 `protobuf:"varint,7,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// Name for the uploaded certificate
-	Name *string `protobuf:"bytes,8,opt,name=name" json:"name,omitempty"`
-	// Enables revocation checking for certificates
-	EnabledRevocationCheck *bool `protobuf:"varint,9,opt,name=enabled_revocation_check,json=enabledRevocationCheck" json:"enabled_revocation_check,omitempty"`
-	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UploadSslCertRequest) Reset() {
-	*x = UploadSslCertRequest{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[42]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UploadSslCertRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UploadSslCertRequest) ProtoMessage() {}
-
-func (x *UploadSslCertRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[42]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UploadSslCertRequest.ProtoReflect.Descriptor instead.
-func (*UploadSslCertRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{42}
-}
-
-func (x *UploadSslCertRequest) GetCert() string {
-	if x != nil && x.Cert != nil {
-		return *x.Cert
-	}
-	return ""
-}
-
-func (x *UploadSslCertRequest) GetKey() string {
-	if x != nil && x.Key != nil {
-		return *x.Key
-	}
-	return ""
-}
-
-func (x *UploadSslCertRequest) GetChain() string {
-	if x != nil && x.Chain != nil {
-		return *x.Chain
-	}
-	return ""
-}
-
-func (x *UploadSslCertRequest) GetPassword() string {
-	if x != nil && x.Password != nil {
-		return *x.Password
-	}
-	return ""
-}
-
-func (x *UploadSslCertRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
-	}
-	return ""
-}
-
-func (x *UploadSslCertRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return 0
-}
-
-func (x *UploadSslCertRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *UploadSslCertRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *UploadSslCertRequest) GetEnabledRevocationCheck() bool {
-	if x != nil && x.EnabledRevocationCheck != nil {
-		return *x.EnabledRevocationCheck
-	}
-	return false
-}
-
-func (x *UploadSslCertRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// UploadSslCertResponse represents the response from upload a certificate to cloudstack
-type UploadSslCertResponse struct {
+// DeleteLBStickinessPolicyResponse represents the response from deletes a load balancer stickiness policy.
+type DeleteLBStickinessPolicyResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -3283,21 +1364,21 @@ type UploadSslCertResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UploadSslCertResponse) Reset() {
-	*x = UploadSslCertResponse{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[43]
+func (x *DeleteLBStickinessPolicyResponse) Reset() {
+	*x = DeleteLBStickinessPolicyResponse{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UploadSslCertResponse) String() string {
+func (x *DeleteLBStickinessPolicyResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UploadSslCertResponse) ProtoMessage() {}
+func (*DeleteLBStickinessPolicyResponse) ProtoMessage() {}
 
-func (x *UploadSslCertResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[43]
+func (x *DeleteLBStickinessPolicyResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3308,12 +1389,228 @@ func (x *UploadSslCertResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UploadSslCertResponse.ProtoReflect.Descriptor instead.
-func (*UploadSslCertResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{43}
+// Deprecated: Use DeleteLBStickinessPolicyResponse.ProtoReflect.Descriptor instead.
+func (*DeleteLBStickinessPolicyResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{17}
 }
 
-func (x *UploadSslCertResponse) GetResult() *Result {
+func (x *DeleteLBStickinessPolicyResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteLoadBalancerRuleRequest represents the parameters for deletes a load balancer rule.
+type DeleteLoadBalancerRuleRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the load balancer rule
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteLoadBalancerRuleRequest) Reset() {
+	*x = DeleteLoadBalancerRuleRequest{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteLoadBalancerRuleRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteLoadBalancerRuleRequest) ProtoMessage() {}
+
+func (x *DeleteLoadBalancerRuleRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteLoadBalancerRuleRequest.ProtoReflect.Descriptor instead.
+func (*DeleteLoadBalancerRuleRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *DeleteLoadBalancerRuleRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteLoadBalancerRuleRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *DeleteLoadBalancerRuleRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *DeleteLoadBalancerRuleRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteLoadBalancerRuleResponse represents the response from deletes a load balancer rule.
+type DeleteLoadBalancerRuleResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteLoadBalancerRuleResponse) Reset() {
+	*x = DeleteLoadBalancerRuleResponse{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteLoadBalancerRuleResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteLoadBalancerRuleResponse) ProtoMessage() {}
+
+func (x *DeleteLoadBalancerRuleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteLoadBalancerRuleResponse.ProtoReflect.Descriptor instead.
+func (*DeleteLoadBalancerRuleResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *DeleteLoadBalancerRuleResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// DeleteSslCertRequest represents the parameters for delete a certificate to cloudstack
+type DeleteSslCertRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Id of SSL certificate
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteSslCertRequest) Reset() {
+	*x = DeleteSslCertRequest{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteSslCertRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteSslCertRequest) ProtoMessage() {}
+
+func (x *DeleteSslCertRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteSslCertRequest.ProtoReflect.Descriptor instead.
+func (*DeleteSslCertRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *DeleteSslCertRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DeleteSslCertRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// DeleteSslCertResponse represents the response from delete a certificate to cloudstack
+type DeleteSslCertResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteSslCertResponse) Reset() {
+	*x = DeleteSslCertResponse{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteSslCertResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteSslCertResponse) ProtoMessage() {}
+
+func (x *DeleteSslCertResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteSslCertResponse.ProtoReflect.Descriptor instead.
+func (*DeleteSslCertResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *DeleteSslCertResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -3360,7 +1657,7 @@ type ListApplicationLoadBalancersRequest struct {
 
 func (x *ListApplicationLoadBalancersRequest) Reset() {
 	*x = ListApplicationLoadBalancersRequest{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[44]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3372,7 +1669,7 @@ func (x *ListApplicationLoadBalancersRequest) String() string {
 func (*ListApplicationLoadBalancersRequest) ProtoMessage() {}
 
 func (x *ListApplicationLoadBalancersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[44]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3385,7 +1682,7 @@ func (x *ListApplicationLoadBalancersRequest) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use ListApplicationLoadBalancersRequest.ProtoReflect.Descriptor instead.
 func (*ListApplicationLoadBalancersRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{44}
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *ListApplicationLoadBalancersRequest) GetId() int64 {
@@ -3520,7 +1817,7 @@ type ListApplicationLoadBalancersResponse struct {
 
 func (x *ListApplicationLoadBalancersResponse) Reset() {
 	*x = ListApplicationLoadBalancersResponse{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[45]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3532,7 +1829,7 @@ func (x *ListApplicationLoadBalancersResponse) String() string {
 func (*ListApplicationLoadBalancersResponse) ProtoMessage() {}
 
 func (x *ListApplicationLoadBalancersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[45]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3545,7 +1842,7 @@ func (x *ListApplicationLoadBalancersResponse) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use ListApplicationLoadBalancersResponse.ProtoReflect.Descriptor instead.
 func (*ListApplicationLoadBalancersResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{45}
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *ListApplicationLoadBalancersResponse) GetItems() []*ApplicationLoadBalancer {
@@ -3560,6 +1857,1519 @@ func (x *ListApplicationLoadBalancersResponse) GetTotalCount() int32 {
 		return *x.TotalCount
 	}
 	return 0
+}
+
+// ListLBHealthCheckPoliciesRequest represents the parameters for lists load balancer health check policies.
+type ListLBHealthCheckPoliciesRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the load balancer rule
+	LbRuleId *int64 `protobuf:"varint,1,opt,name=lb_rule_id,json=lbRuleId" json:"lb_rule_id,omitempty"`
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	Display *bool `protobuf:"varint,2,opt,name=display" json:"display,omitempty"`
+	// the ID of the health check policy
+	Id *int64 `protobuf:"varint,3,opt,name=id" json:"id,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,4,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,5,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,6,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListLBHealthCheckPoliciesRequest) Reset() {
+	*x = ListLBHealthCheckPoliciesRequest{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListLBHealthCheckPoliciesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListLBHealthCheckPoliciesRequest) ProtoMessage() {}
+
+func (x *ListLBHealthCheckPoliciesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListLBHealthCheckPoliciesRequest.ProtoReflect.Descriptor instead.
+func (*ListLBHealthCheckPoliciesRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *ListLBHealthCheckPoliciesRequest) GetLbRuleId() int64 {
+	if x != nil && x.LbRuleId != nil {
+		return *x.LbRuleId
+	}
+	return 0
+}
+
+func (x *ListLBHealthCheckPoliciesRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *ListLBHealthCheckPoliciesRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListLBHealthCheckPoliciesRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListLBHealthCheckPoliciesRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListLBHealthCheckPoliciesRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListLBHealthCheckPoliciesRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListLBHealthCheckPoliciesResponse represents the response from lists load balancer health check policies.
+type ListLBHealthCheckPoliciesResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of LBHealthChecks
+	Items []*LBHealthCheck `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of LBHealthChecks
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListLBHealthCheckPoliciesResponse) Reset() {
+	*x = ListLBHealthCheckPoliciesResponse{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListLBHealthCheckPoliciesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListLBHealthCheckPoliciesResponse) ProtoMessage() {}
+
+func (x *ListLBHealthCheckPoliciesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListLBHealthCheckPoliciesResponse.ProtoReflect.Descriptor instead.
+func (*ListLBHealthCheckPoliciesResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *ListLBHealthCheckPoliciesResponse) GetItems() []*LBHealthCheck {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListLBHealthCheckPoliciesResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// ListLBStickinessPoliciesRequest represents the parameters for lists load balancer stickiness policies.
+type ListLBStickinessPoliciesRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the load balancer rule
+	LbRuleId *int64 `protobuf:"varint,1,opt,name=lb_rule_id,json=lbRuleId" json:"lb_rule_id,omitempty"`
+	// the ID of the load balancer stickiness policy
+	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	Display *bool `protobuf:"varint,3,opt,name=display" json:"display,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,4,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,5,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,6,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListLBStickinessPoliciesRequest) Reset() {
+	*x = ListLBStickinessPoliciesRequest{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListLBStickinessPoliciesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListLBStickinessPoliciesRequest) ProtoMessage() {}
+
+func (x *ListLBStickinessPoliciesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListLBStickinessPoliciesRequest.ProtoReflect.Descriptor instead.
+func (*ListLBStickinessPoliciesRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{26}
+}
+
+func (x *ListLBStickinessPoliciesRequest) GetLbRuleId() int64 {
+	if x != nil && x.LbRuleId != nil {
+		return *x.LbRuleId
+	}
+	return 0
+}
+
+func (x *ListLBStickinessPoliciesRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListLBStickinessPoliciesRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *ListLBStickinessPoliciesRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListLBStickinessPoliciesRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListLBStickinessPoliciesRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListLBStickinessPoliciesRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListLBStickinessPoliciesResponse represents the response from lists load balancer stickiness policies.
+type ListLBStickinessPoliciesResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of LBStickinesss
+	Items []*LBStickiness `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of LBStickinesss
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListLBStickinessPoliciesResponse) Reset() {
+	*x = ListLBStickinessPoliciesResponse{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[27]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListLBStickinessPoliciesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListLBStickinessPoliciesResponse) ProtoMessage() {}
+
+func (x *ListLBStickinessPoliciesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[27]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListLBStickinessPoliciesResponse.ProtoReflect.Descriptor instead.
+func (*ListLBStickinessPoliciesResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{27}
+}
+
+func (x *ListLBStickinessPoliciesResponse) GetItems() []*LBStickiness {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListLBStickinessPoliciesResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// ListLoadBalancerRuleInstancesRequest represents the parameters for list all virtual machine instances that are assigned to a load balancer rule.
+type ListLoadBalancerRuleInstancesRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// true if listing all virtual machines currently applied to the load balancer rule; default is true
+	Applied *bool `protobuf:"varint,2,opt,name=applied" json:"applied,omitempty"`
+	// the ID of the load balancer rule
+	Id *int64 `protobuf:"varint,3,opt,name=id" json:"id,omitempty"`
+	// true if load balancer rule VM IP information to be included; default is false
+	IsListLbVmip *bool `protobuf:"varint,4,opt,name=is_list_lb_vmip,json=isListLbVmip" json:"is_list_lb_vmip,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,5,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,6,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,7,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,8,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListLoadBalancerRuleInstancesRequest) Reset() {
+	*x = ListLoadBalancerRuleInstancesRequest{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[28]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListLoadBalancerRuleInstancesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListLoadBalancerRuleInstancesRequest) ProtoMessage() {}
+
+func (x *ListLoadBalancerRuleInstancesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[28]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListLoadBalancerRuleInstancesRequest.ProtoReflect.Descriptor instead.
+func (*ListLoadBalancerRuleInstancesRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *ListLoadBalancerRuleInstancesRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
+	}
+	return false
+}
+
+func (x *ListLoadBalancerRuleInstancesRequest) GetApplied() bool {
+	if x != nil && x.Applied != nil {
+		return *x.Applied
+	}
+	return false
+}
+
+func (x *ListLoadBalancerRuleInstancesRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListLoadBalancerRuleInstancesRequest) GetIsListLbVmip() bool {
+	if x != nil && x.IsListLbVmip != nil {
+		return *x.IsListLbVmip
+	}
+	return false
+}
+
+func (x *ListLoadBalancerRuleInstancesRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListLoadBalancerRuleInstancesRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListLoadBalancerRuleInstancesRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListLoadBalancerRuleInstancesRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListLoadBalancerRuleInstancesResponse represents the response from list all virtual machine instances that are assigned to a load balancer rule.
+type ListLoadBalancerRuleInstancesResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of LoadBalancerRuleVmMaps
+	Items []*LoadBalancerRuleVmMap `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of LoadBalancerRuleVmMaps
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListLoadBalancerRuleInstancesResponse) Reset() {
+	*x = ListLoadBalancerRuleInstancesResponse{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListLoadBalancerRuleInstancesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListLoadBalancerRuleInstancesResponse) ProtoMessage() {}
+
+func (x *ListLoadBalancerRuleInstancesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListLoadBalancerRuleInstancesResponse.ProtoReflect.Descriptor instead.
+func (*ListLoadBalancerRuleInstancesResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{29}
+}
+
+func (x *ListLoadBalancerRuleInstancesResponse) GetItems() []*LoadBalancerRuleVmMap {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListLoadBalancerRuleInstancesResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// ListLoadBalancerRuleInstancesCmdByAdminRequest represents the parameters for list all virtual machine instances that are assigned to a load balancer rule.
+type ListLoadBalancerRuleInstancesCmdByAdminRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// true if listing all virtual machines currently applied to the load balancer rule; default is true
+	Applied *bool `protobuf:"varint,1,opt,name=applied" json:"applied,omitempty"`
+	// the ID of the load balancer rule
+	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
+	// true if load balancer rule VM IP information to be included; default is false
+	IsListLbVmip *bool `protobuf:"varint,3,opt,name=is_list_lb_vmip,json=isListLbVmip" json:"is_list_lb_vmip,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,4,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,5,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,6,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListLoadBalancerRuleInstancesCmdByAdminRequest) Reset() {
+	*x = ListLoadBalancerRuleInstancesCmdByAdminRequest{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[30]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListLoadBalancerRuleInstancesCmdByAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListLoadBalancerRuleInstancesCmdByAdminRequest) ProtoMessage() {}
+
+func (x *ListLoadBalancerRuleInstancesCmdByAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[30]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListLoadBalancerRuleInstancesCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*ListLoadBalancerRuleInstancesCmdByAdminRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{30}
+}
+
+func (x *ListLoadBalancerRuleInstancesCmdByAdminRequest) GetApplied() bool {
+	if x != nil && x.Applied != nil {
+		return *x.Applied
+	}
+	return false
+}
+
+func (x *ListLoadBalancerRuleInstancesCmdByAdminRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListLoadBalancerRuleInstancesCmdByAdminRequest) GetIsListLbVmip() bool {
+	if x != nil && x.IsListLbVmip != nil {
+		return *x.IsListLbVmip
+	}
+	return false
+}
+
+func (x *ListLoadBalancerRuleInstancesCmdByAdminRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListLoadBalancerRuleInstancesCmdByAdminRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListLoadBalancerRuleInstancesCmdByAdminRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListLoadBalancerRuleInstancesCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListLoadBalancerRuleInstancesCmdByAdminResponse represents the response from list all virtual machine instances that are assigned to a load balancer rule.
+type ListLoadBalancerRuleInstancesCmdByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of LoadBalancerRuleVmMaps
+	Items []*LoadBalancerRuleVmMap `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of LoadBalancerRuleVmMaps
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListLoadBalancerRuleInstancesCmdByAdminResponse) Reset() {
+	*x = ListLoadBalancerRuleInstancesCmdByAdminResponse{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[31]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListLoadBalancerRuleInstancesCmdByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListLoadBalancerRuleInstancesCmdByAdminResponse) ProtoMessage() {}
+
+func (x *ListLoadBalancerRuleInstancesCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[31]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListLoadBalancerRuleInstancesCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*ListLoadBalancerRuleInstancesCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{31}
+}
+
+func (x *ListLoadBalancerRuleInstancesCmdByAdminResponse) GetItems() []*LoadBalancerRuleVmMap {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListLoadBalancerRuleInstancesCmdByAdminResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// ListLoadBalancerRulesRequest represents the parameters for lists load balancer rules.
+type ListLoadBalancerRulesRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the load balancer rule
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the name of the load balancer rule
+	LoadBalancerRuleName *string `protobuf:"bytes,2,opt,name=load_balancer_rule_name,json=loadBalancerRuleName" json:"load_balancer_rule_name,omitempty"`
+	// the public IP address ID of the load balancer rule
+	PublicIpId *int64 `protobuf:"varint,3,opt,name=public_ip_id,json=publicIpId" json:"public_ip_id,omitempty"`
+	// the ID of the virtual machine of the load balancer rule
+	VirtualMachineId *int64 `protobuf:"varint,4,opt,name=virtual_machine_id,json=virtualMachineId" json:"virtual_machine_id,omitempty"`
+	// the availability zone ID
+	ZoneId *int64 `protobuf:"varint,5,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// list by network ID the rule belongs to
+	NetworkId *int64 `protobuf:"varint,6,opt,name=network_id,json=networkId" json:"network_id,omitempty"`
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	Display *bool `protobuf:"varint,7,opt,name=display" json:"display,omitempty"`
+	// List resources by tags (key/value pairs)
+	Tags map[string]string `protobuf:"bytes,8,rep,name=tags" json:"tags,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// list objects by project; if projectid=-1 lists All VMs
+	ProjectId *int64 `protobuf:"varint,9,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// list resources by account. Must be used with the domainId parameter.
+	AccountName *string `protobuf:"bytes,10,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	ListAll *bool `protobuf:"varint,11,opt,name=list_all,json=listAll" json:"list_all,omitempty"`
+	// list only resources belonging to the domain specified
+	DomainId *int64 `protobuf:"varint,12,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	Recursive *bool `protobuf:"varint,13,opt,name=recursive" json:"recursive,omitempty"`
+	// List by keyword
+	Keyword *string `protobuf:"bytes,14,opt,name=keyword" json:"keyword,omitempty"`
+	Page *int32 `protobuf:"varint,15,opt,name=page" json:"page,omitempty"`
+	PageSize *int32 `protobuf:"varint,16,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	ResponseType  *string `protobuf:"bytes,17,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListLoadBalancerRulesRequest) Reset() {
+	*x = ListLoadBalancerRulesRequest{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[32]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListLoadBalancerRulesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListLoadBalancerRulesRequest) ProtoMessage() {}
+
+func (x *ListLoadBalancerRulesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[32]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListLoadBalancerRulesRequest.ProtoReflect.Descriptor instead.
+func (*ListLoadBalancerRulesRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{32}
+}
+
+func (x *ListLoadBalancerRulesRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *ListLoadBalancerRulesRequest) GetLoadBalancerRuleName() string {
+	if x != nil && x.LoadBalancerRuleName != nil {
+		return *x.LoadBalancerRuleName
+	}
+	return ""
+}
+
+func (x *ListLoadBalancerRulesRequest) GetPublicIpId() int64 {
+	if x != nil && x.PublicIpId != nil {
+		return *x.PublicIpId
+	}
+	return 0
+}
+
+func (x *ListLoadBalancerRulesRequest) GetVirtualMachineId() int64 {
+	if x != nil && x.VirtualMachineId != nil {
+		return *x.VirtualMachineId
+	}
+	return 0
+}
+
+func (x *ListLoadBalancerRulesRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
+	}
+	return 0
+}
+
+func (x *ListLoadBalancerRulesRequest) GetNetworkId() int64 {
+	if x != nil && x.NetworkId != nil {
+		return *x.NetworkId
+	}
+	return 0
+}
+
+func (x *ListLoadBalancerRulesRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *ListLoadBalancerRulesRequest) GetTags() map[string]string {
+	if x != nil {
+		return x.Tags
+	}
+	return nil
+}
+
+func (x *ListLoadBalancerRulesRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *ListLoadBalancerRulesRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *ListLoadBalancerRulesRequest) GetListAll() bool {
+	if x != nil && x.ListAll != nil {
+		return *x.ListAll
+	}
+	return false
+}
+
+func (x *ListLoadBalancerRulesRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *ListLoadBalancerRulesRequest) GetRecursive() bool {
+	if x != nil && x.Recursive != nil {
+		return *x.Recursive
+	}
+	return false
+}
+
+func (x *ListLoadBalancerRulesRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListLoadBalancerRulesRequest) GetPage() int32 {
+	if x != nil && x.Page != nil {
+		return *x.Page
+	}
+	return 0
+}
+
+func (x *ListLoadBalancerRulesRequest) GetPageSize() int32 {
+	if x != nil && x.PageSize != nil {
+		return *x.PageSize
+	}
+	return 0
+}
+
+func (x *ListLoadBalancerRulesRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListLoadBalancerRulesResponse represents the response from lists load balancer rules.
+type ListLoadBalancerRulesResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of LoadBalancers
+	Items []*LoadBalancer `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of LoadBalancers
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListLoadBalancerRulesResponse) Reset() {
+	*x = ListLoadBalancerRulesResponse{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[33]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListLoadBalancerRulesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListLoadBalancerRulesResponse) ProtoMessage() {}
+
+func (x *ListLoadBalancerRulesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[33]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListLoadBalancerRulesResponse.ProtoReflect.Descriptor instead.
+func (*ListLoadBalancerRulesResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{33}
+}
+
+func (x *ListLoadBalancerRulesResponse) GetItems() []*LoadBalancer {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListLoadBalancerRulesResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// ListSslCertsRequest represents the parameters for lists ssl certificates
+type ListSslCertsRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of SSL certificate
+	CertId *int64 `protobuf:"varint,1,opt,name=cert_id,json=certId" json:"cert_id,omitempty"`
+	// Account ID
+	AccountId *int64 `protobuf:"varint,2,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
+	// Load balancer rule ID
+	LbId *int64 `protobuf:"varint,3,opt,name=lb_id,json=lbId" json:"lb_id,omitempty"`
+	// Project that owns the SSL certificate
+	ProjectId *int64 `protobuf:"varint,4,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,5,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListSslCertsRequest) Reset() {
+	*x = ListSslCertsRequest{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[34]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListSslCertsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListSslCertsRequest) ProtoMessage() {}
+
+func (x *ListSslCertsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[34]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListSslCertsRequest.ProtoReflect.Descriptor instead.
+func (*ListSslCertsRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{34}
+}
+
+func (x *ListSslCertsRequest) GetCertId() int64 {
+	if x != nil && x.CertId != nil {
+		return *x.CertId
+	}
+	return 0
+}
+
+func (x *ListSslCertsRequest) GetAccountId() int64 {
+	if x != nil && x.AccountId != nil {
+		return *x.AccountId
+	}
+	return 0
+}
+
+func (x *ListSslCertsRequest) GetLbId() int64 {
+	if x != nil && x.LbId != nil {
+		return *x.LbId
+	}
+	return 0
+}
+
+func (x *ListSslCertsRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *ListSslCertsRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// ListSslCertsResponse represents the response from lists ssl certificates
+type ListSslCertsResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of SslCerts
+	Items []*SslCert `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	// The total count of SslCerts
+	TotalCount    *int32 `protobuf:"varint,2,opt,name=total_count,json=totalCount" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListSslCertsResponse) Reset() {
+	*x = ListSslCertsResponse{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[35]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListSslCertsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListSslCertsResponse) ProtoMessage() {}
+
+func (x *ListSslCertsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[35]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListSslCertsResponse.ProtoReflect.Descriptor instead.
+func (*ListSslCertsResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{35}
+}
+
+func (x *ListSslCertsResponse) GetItems() []*SslCert {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListSslCertsResponse) GetTotalCount() int32 {
+	if x != nil && x.TotalCount != nil {
+		return *x.TotalCount
+	}
+	return 0
+}
+
+// RemoveCertFromLoadBalancerRequest represents the parameters for removes a certificate from a load balancer rule
+type RemoveCertFromLoadBalancerRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the load balancer rule
+	LbRuleId *int64 `protobuf:"varint,1,opt,name=lb_rule_id,json=lbRuleId" json:"lb_rule_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,2,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,3,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,4,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveCertFromLoadBalancerRequest) Reset() {
+	*x = RemoveCertFromLoadBalancerRequest{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[36]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveCertFromLoadBalancerRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveCertFromLoadBalancerRequest) ProtoMessage() {}
+
+func (x *RemoveCertFromLoadBalancerRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[36]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveCertFromLoadBalancerRequest.ProtoReflect.Descriptor instead.
+func (*RemoveCertFromLoadBalancerRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{36}
+}
+
+func (x *RemoveCertFromLoadBalancerRequest) GetLbRuleId() int64 {
+	if x != nil && x.LbRuleId != nil {
+		return *x.LbRuleId
+	}
+	return 0
+}
+
+func (x *RemoveCertFromLoadBalancerRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *RemoveCertFromLoadBalancerRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *RemoveCertFromLoadBalancerRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// RemoveCertFromLoadBalancerResponse represents the response from removes a certificate from a load balancer rule
+type RemoveCertFromLoadBalancerResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveCertFromLoadBalancerResponse) Reset() {
+	*x = RemoveCertFromLoadBalancerResponse{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[37]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveCertFromLoadBalancerResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveCertFromLoadBalancerResponse) ProtoMessage() {}
+
+func (x *RemoveCertFromLoadBalancerResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[37]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveCertFromLoadBalancerResponse.ProtoReflect.Descriptor instead.
+func (*RemoveCertFromLoadBalancerResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{37}
+}
+
+func (x *RemoveCertFromLoadBalancerResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// RemoveFromLoadBalancerRuleRequest represents the parameters for removes a virtual machine or a list of virtual machines from a load balancer rule.
+type RemoveFromLoadBalancerRuleRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the load balancer rule
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// the list of IDs of the virtual machines that are being removed from the load balancer rule (i.e. virtualMachineIds=1,2,3)
+	VirtualMachineIds []string `protobuf:"bytes,2,rep,name=virtual_machine_ids,json=virtualMachineIds" json:"virtual_machine_ids,omitempty"`
+	// VM ID and IP map, vmidipmap[0].vmid=1 vmidipmap[0].ip=10.1.1.75
+	VmIdIpMap_ map[string]string `protobuf:"bytes,3,rep,name=vm_id_ip_map_,json=vmIdIpMap" json:"vm_id_ip_map_,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveFromLoadBalancerRuleRequest) Reset() {
+	*x = RemoveFromLoadBalancerRuleRequest{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[38]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveFromLoadBalancerRuleRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveFromLoadBalancerRuleRequest) ProtoMessage() {}
+
+func (x *RemoveFromLoadBalancerRuleRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[38]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveFromLoadBalancerRuleRequest.ProtoReflect.Descriptor instead.
+func (*RemoveFromLoadBalancerRuleRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{38}
+}
+
+func (x *RemoveFromLoadBalancerRuleRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *RemoveFromLoadBalancerRuleRequest) GetVirtualMachineIds() []string {
+	if x != nil {
+		return x.VirtualMachineIds
+	}
+	return nil
+}
+
+func (x *RemoveFromLoadBalancerRuleRequest) GetVmIdIpMap_() map[string]string {
+	if x != nil {
+		return x.VmIdIpMap_
+	}
+	return nil
+}
+
+func (x *RemoveFromLoadBalancerRuleRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *RemoveFromLoadBalancerRuleRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *RemoveFromLoadBalancerRuleRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// RemoveFromLoadBalancerRuleResponse represents the response from removes a virtual machine or a list of virtual machines from a load balancer rule.
+type RemoveFromLoadBalancerRuleResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveFromLoadBalancerRuleResponse) Reset() {
+	*x = RemoveFromLoadBalancerRuleResponse{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[39]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveFromLoadBalancerRuleResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveFromLoadBalancerRuleResponse) ProtoMessage() {}
+
+func (x *RemoveFromLoadBalancerRuleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[39]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveFromLoadBalancerRuleResponse.ProtoReflect.Descriptor instead.
+func (*RemoveFromLoadBalancerRuleResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{39}
+}
+
+func (x *RemoveFromLoadBalancerRuleResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UpdateApplicationLoadBalancerRequest represents the parameters for updates an internal load balancer
+type UpdateApplicationLoadBalancerRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// the ID of the load balancer
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// an optional field, whether to the display the rule to the end user or not
+	Display *bool `protobuf:"varint,2,opt,name=display" json:"display,omitempty"`
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	CustomId *string `protobuf:"bytes,3,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateApplicationLoadBalancerRequest) Reset() {
+	*x = UpdateApplicationLoadBalancerRequest{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[40]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateApplicationLoadBalancerRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateApplicationLoadBalancerRequest) ProtoMessage() {}
+
+func (x *UpdateApplicationLoadBalancerRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[40]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateApplicationLoadBalancerRequest.ProtoReflect.Descriptor instead.
+func (*UpdateApplicationLoadBalancerRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{40}
+}
+
+func (x *UpdateApplicationLoadBalancerRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateApplicationLoadBalancerRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *UpdateApplicationLoadBalancerRequest) GetCustomId() string {
+	if x != nil && x.CustomId != nil {
+		return *x.CustomId
+	}
+	return ""
+}
+
+func (x *UpdateApplicationLoadBalancerRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *UpdateApplicationLoadBalancerRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *UpdateApplicationLoadBalancerRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateApplicationLoadBalancerResponse represents the response from updates an internal load balancer
+type UpdateApplicationLoadBalancerResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateApplicationLoadBalancerResponse) Reset() {
+	*x = UpdateApplicationLoadBalancerResponse{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[41]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateApplicationLoadBalancerResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateApplicationLoadBalancerResponse) ProtoMessage() {}
+
+func (x *UpdateApplicationLoadBalancerResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[41]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateApplicationLoadBalancerResponse.ProtoReflect.Descriptor instead.
+func (*UpdateApplicationLoadBalancerResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{41}
+}
+
+func (x *UpdateApplicationLoadBalancerResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UpdateLBHealthCheckPolicyRequest represents the parameters for updates load balancer health check policy
+type UpdateLBHealthCheckPolicyRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of load balancer health check policy
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// an optional field, whether to the display the policy to the end user or not
+	Display *bool `protobuf:"varint,2,opt,name=display" json:"display,omitempty"`
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	CustomId *string `protobuf:"bytes,3,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateLBHealthCheckPolicyRequest) Reset() {
+	*x = UpdateLBHealthCheckPolicyRequest{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[42]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateLBHealthCheckPolicyRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateLBHealthCheckPolicyRequest) ProtoMessage() {}
+
+func (x *UpdateLBHealthCheckPolicyRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[42]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateLBHealthCheckPolicyRequest.ProtoReflect.Descriptor instead.
+func (*UpdateLBHealthCheckPolicyRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{42}
+}
+
+func (x *UpdateLBHealthCheckPolicyRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateLBHealthCheckPolicyRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *UpdateLBHealthCheckPolicyRequest) GetCustomId() string {
+	if x != nil && x.CustomId != nil {
+		return *x.CustomId
+	}
+	return ""
+}
+
+func (x *UpdateLBHealthCheckPolicyRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *UpdateLBHealthCheckPolicyRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *UpdateLBHealthCheckPolicyRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateLBHealthCheckPolicyResponse represents the response from updates load balancer health check policy
+type UpdateLBHealthCheckPolicyResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateLBHealthCheckPolicyResponse) Reset() {
+	*x = UpdateLBHealthCheckPolicyResponse{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[43]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateLBHealthCheckPolicyResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateLBHealthCheckPolicyResponse) ProtoMessage() {}
+
+func (x *UpdateLBHealthCheckPolicyResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[43]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateLBHealthCheckPolicyResponse.ProtoReflect.Descriptor instead.
+func (*UpdateLBHealthCheckPolicyResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{43}
+}
+
+func (x *UpdateLBHealthCheckPolicyResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
 }
 
 // UpdateLBStickinessPolicyRequest represents the parameters for updates load balancer stickiness policy
@@ -3580,7 +3390,7 @@ type UpdateLBStickinessPolicyRequest struct {
 
 func (x *UpdateLBStickinessPolicyRequest) Reset() {
 	*x = UpdateLBStickinessPolicyRequest{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[46]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3592,7 +3402,7 @@ func (x *UpdateLBStickinessPolicyRequest) String() string {
 func (*UpdateLBStickinessPolicyRequest) ProtoMessage() {}
 
 func (x *UpdateLBStickinessPolicyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[46]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3605,7 +3415,7 @@ func (x *UpdateLBStickinessPolicyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateLBStickinessPolicyRequest.ProtoReflect.Descriptor instead.
 func (*UpdateLBStickinessPolicyRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{46}
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *UpdateLBStickinessPolicyRequest) GetId() int64 {
@@ -3661,7 +3471,7 @@ type UpdateLBStickinessPolicyResponse struct {
 
 func (x *UpdateLBStickinessPolicyResponse) Reset() {
 	*x = UpdateLBStickinessPolicyResponse{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[47]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3673,7 +3483,7 @@ func (x *UpdateLBStickinessPolicyResponse) String() string {
 func (*UpdateLBStickinessPolicyResponse) ProtoMessage() {}
 
 func (x *UpdateLBStickinessPolicyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[47]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3686,7 +3496,7 @@ func (x *UpdateLBStickinessPolicyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateLBStickinessPolicyResponse.ProtoReflect.Descriptor instead.
 func (*UpdateLBStickinessPolicyResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{47}
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *UpdateLBStickinessPolicyResponse) GetResult() *Result {
@@ -3694,6 +3504,594 @@ func (x *UpdateLBStickinessPolicyResponse) GetResult() *Result {
 		return x.Result
 	}
 	return nil
+}
+
+// UpdateLoadBalancerRuleRequest represents the parameters for updates load balancer
+type UpdateLoadBalancerRuleRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// load balancer algorithm (source, roundrobin, leastconn)
+	Algorithm *string `protobuf:"bytes,1,opt,name=algorithm" json:"algorithm,omitempty"`
+	// the description of the load balancer rule
+	Description *string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
+	// the ID of the load balancer rule to update
+	Id *int64 `protobuf:"varint,3,opt,name=id" json:"id,omitempty"`
+	// the name of the load balancer rule
+	LoadBalancerName *string `protobuf:"bytes,4,opt,name=load_balancer_name,json=loadBalancerName" json:"load_balancer_name,omitempty"`
+	// an optional field, whether to the display the rule to the end user or not
+	Display *bool `protobuf:"varint,5,opt,name=display" json:"display,omitempty"`
+	// The protocol for the LB
+	LbProtocol *string `protobuf:"bytes,6,opt,name=lb_protocol,json=lbProtocol" json:"lb_protocol,omitempty"`
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	CustomId *string `protobuf:"bytes,7,opt,name=custom_id,json=customId" json:"custom_id,omitempty"`
+	StartEventId *int64 `protobuf:"varint,8,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,9,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateLoadBalancerRuleRequest) Reset() {
+	*x = UpdateLoadBalancerRuleRequest{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[46]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateLoadBalancerRuleRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateLoadBalancerRuleRequest) ProtoMessage() {}
+
+func (x *UpdateLoadBalancerRuleRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[46]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateLoadBalancerRuleRequest.ProtoReflect.Descriptor instead.
+func (*UpdateLoadBalancerRuleRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{46}
+}
+
+func (x *UpdateLoadBalancerRuleRequest) GetAlgorithm() string {
+	if x != nil && x.Algorithm != nil {
+		return *x.Algorithm
+	}
+	return ""
+}
+
+func (x *UpdateLoadBalancerRuleRequest) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *UpdateLoadBalancerRuleRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateLoadBalancerRuleRequest) GetLoadBalancerName() string {
+	if x != nil && x.LoadBalancerName != nil {
+		return *x.LoadBalancerName
+	}
+	return ""
+}
+
+func (x *UpdateLoadBalancerRuleRequest) GetDisplay() bool {
+	if x != nil && x.Display != nil {
+		return *x.Display
+	}
+	return false
+}
+
+func (x *UpdateLoadBalancerRuleRequest) GetLbProtocol() string {
+	if x != nil && x.LbProtocol != nil {
+		return *x.LbProtocol
+	}
+	return ""
+}
+
+func (x *UpdateLoadBalancerRuleRequest) GetCustomId() string {
+	if x != nil && x.CustomId != nil {
+		return *x.CustomId
+	}
+	return ""
+}
+
+func (x *UpdateLoadBalancerRuleRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *UpdateLoadBalancerRuleRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
+	}
+	return ""
+}
+
+func (x *UpdateLoadBalancerRuleRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateLoadBalancerRuleResponse represents the response from updates load balancer
+type UpdateLoadBalancerRuleResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateLoadBalancerRuleResponse) Reset() {
+	*x = UpdateLoadBalancerRuleResponse{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[47]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateLoadBalancerRuleResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateLoadBalancerRuleResponse) ProtoMessage() {}
+
+func (x *UpdateLoadBalancerRuleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[47]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateLoadBalancerRuleResponse.ProtoReflect.Descriptor instead.
+func (*UpdateLoadBalancerRuleResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{47}
+}
+
+func (x *UpdateLoadBalancerRuleResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UploadSslCertRequest represents the parameters for upload a certificate to cloudstack
+type UploadSslCertRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// SSL certificate
+	Cert *string `protobuf:"bytes,1,opt,name=cert" json:"cert,omitempty"`
+	// Private key
+	Key *string `protobuf:"bytes,2,opt,name=key" json:"key,omitempty"`
+	// Certificate chain of trust
+	Chain *string `protobuf:"bytes,3,opt,name=chain" json:"chain,omitempty"`
+	// Password for the private key
+	Password *string `protobuf:"bytes,4,opt,name=password" json:"password,omitempty"`
+	// account that will own the SSL certificate
+	AccountName *string `protobuf:"bytes,5,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// an optional project for the SSL certificate
+	ProjectId *int64 `protobuf:"varint,6,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// domain ID of the account owning the SSL certificate
+	DomainId *int64 `protobuf:"varint,7,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// Name for the uploaded certificate
+	Name *string `protobuf:"bytes,8,opt,name=name" json:"name,omitempty"`
+	// Enables revocation checking for certificates
+	EnabledRevocationCheck *bool `protobuf:"varint,9,opt,name=enabled_revocation_check,json=enabledRevocationCheck" json:"enabled_revocation_check,omitempty"`
+	ResponseType  *string `protobuf:"bytes,10,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UploadSslCertRequest) Reset() {
+	*x = UploadSslCertRequest{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[48]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UploadSslCertRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UploadSslCertRequest) ProtoMessage() {}
+
+func (x *UploadSslCertRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[48]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UploadSslCertRequest.ProtoReflect.Descriptor instead.
+func (*UploadSslCertRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{48}
+}
+
+func (x *UploadSslCertRequest) GetCert() string {
+	if x != nil && x.Cert != nil {
+		return *x.Cert
+	}
+	return ""
+}
+
+func (x *UploadSslCertRequest) GetKey() string {
+	if x != nil && x.Key != nil {
+		return *x.Key
+	}
+	return ""
+}
+
+func (x *UploadSslCertRequest) GetChain() string {
+	if x != nil && x.Chain != nil {
+		return *x.Chain
+	}
+	return ""
+}
+
+func (x *UploadSslCertRequest) GetPassword() string {
+	if x != nil && x.Password != nil {
+		return *x.Password
+	}
+	return ""
+}
+
+func (x *UploadSslCertRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
+	}
+	return ""
+}
+
+func (x *UploadSslCertRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
+	}
+	return 0
+}
+
+func (x *UploadSslCertRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
+	}
+	return 0
+}
+
+func (x *UploadSslCertRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *UploadSslCertRequest) GetEnabledRevocationCheck() bool {
+	if x != nil && x.EnabledRevocationCheck != nil {
+		return *x.EnabledRevocationCheck
+	}
+	return false
+}
+
+func (x *UploadSslCertRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UploadSslCertResponse represents the response from upload a certificate to cloudstack
+type UploadSslCertResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UploadSslCertResponse) Reset() {
+	*x = UploadSslCertResponse{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[49]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UploadSslCertResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UploadSslCertResponse) ProtoMessage() {}
+
+func (x *UploadSslCertResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[49]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UploadSslCertResponse.ProtoReflect.Descriptor instead.
+func (*UploadSslCertResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{49}
+}
+
+func (x *UploadSslCertResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// ApplicationLoadBalancer represents a ApplicationLoadBalancer Item
+type ApplicationLoadBalancer struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the ApplicationLoadBalancer
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the ApplicationLoadBalancer
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the ApplicationLoadBalancer
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the ApplicationLoadBalancer
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ApplicationLoadBalancer) Reset() {
+	*x = ApplicationLoadBalancer{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[50]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ApplicationLoadBalancer) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ApplicationLoadBalancer) ProtoMessage() {}
+
+func (x *ApplicationLoadBalancer) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[50]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ApplicationLoadBalancer.ProtoReflect.Descriptor instead.
+func (*ApplicationLoadBalancer) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{50}
+}
+
+func (x *ApplicationLoadBalancer) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *ApplicationLoadBalancer) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *ApplicationLoadBalancer) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *ApplicationLoadBalancer) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *ApplicationLoadBalancer) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// LBHealthCheck represents a LBHealthCheck Item
+type LBHealthCheck struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the LBHealthCheck
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the LBHealthCheck
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the LBHealthCheck
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the LBHealthCheck
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *LBHealthCheck) Reset() {
+	*x = LBHealthCheck{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[51]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LBHealthCheck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LBHealthCheck) ProtoMessage() {}
+
+func (x *LBHealthCheck) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[51]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LBHealthCheck.ProtoReflect.Descriptor instead.
+func (*LBHealthCheck) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{51}
+}
+
+func (x *LBHealthCheck) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *LBHealthCheck) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *LBHealthCheck) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *LBHealthCheck) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *LBHealthCheck) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
+// LBStickiness represents a LBStickiness Item
+type LBStickiness struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the LBStickiness
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the LBStickiness
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the LBStickiness
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the LBStickiness
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *LBStickiness) Reset() {
+	*x = LBStickiness{}
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[52]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LBStickiness) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LBStickiness) ProtoMessage() {}
+
+func (x *LBStickiness) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[52]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LBStickiness.ProtoReflect.Descriptor instead.
+func (*LBStickiness) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{52}
+}
+
+func (x *LBStickiness) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *LBStickiness) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *LBStickiness) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *LBStickiness) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *LBStickiness) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
 }
 
 // LoadBalancer represents a LoadBalancer Item
@@ -3715,7 +4113,7 @@ type LoadBalancer struct {
 
 func (x *LoadBalancer) Reset() {
 	*x = LoadBalancer{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[48]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3727,7 +4125,7 @@ func (x *LoadBalancer) String() string {
 func (*LoadBalancer) ProtoMessage() {}
 
 func (x *LoadBalancer) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[48]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3740,7 +4138,7 @@ func (x *LoadBalancer) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoadBalancer.ProtoReflect.Descriptor instead.
 func (*LoadBalancer) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{48}
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *LoadBalancer) GetId() string {
@@ -3797,7 +4195,7 @@ type LoadBalancerRuleVmMap struct {
 
 func (x *LoadBalancerRuleVmMap) Reset() {
 	*x = LoadBalancerRuleVmMap{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[49]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3809,7 +4207,7 @@ func (x *LoadBalancerRuleVmMap) String() string {
 func (*LoadBalancerRuleVmMap) ProtoMessage() {}
 
 func (x *LoadBalancerRuleVmMap) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[49]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3822,7 +4220,7 @@ func (x *LoadBalancerRuleVmMap) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoadBalancerRuleVmMap.ProtoReflect.Descriptor instead.
 func (*LoadBalancerRuleVmMap) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{49}
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *LoadBalancerRuleVmMap) GetId() string {
@@ -3860,88 +4258,6 @@ func (x *LoadBalancerRuleVmMap) GetCreated() string {
 	return ""
 }
 
-// LBStickiness represents a LBStickiness Item
-type LBStickiness struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the LBStickiness
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the LBStickiness
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the LBStickiness
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the LBStickiness
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *LBStickiness) Reset() {
-	*x = LBStickiness{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[50]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *LBStickiness) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*LBStickiness) ProtoMessage() {}
-
-func (x *LBStickiness) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[50]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use LBStickiness.ProtoReflect.Descriptor instead.
-func (*LBStickiness) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{50}
-}
-
-func (x *LBStickiness) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *LBStickiness) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *LBStickiness) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *LBStickiness) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *LBStickiness) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
 // SslCert represents a SslCert Item
 type SslCert struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -3961,7 +4277,7 @@ type SslCert struct {
 
 func (x *SslCert) Reset() {
 	*x = SslCert{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[51]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3973,7 +4289,7 @@ func (x *SslCert) String() string {
 func (*SslCert) ProtoMessage() {}
 
 func (x *SslCert) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[51]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3986,7 +4302,7 @@ func (x *SslCert) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SslCert.ProtoReflect.Descriptor instead.
 func (*SslCert) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{51}
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *SslCert) GetId() string {
@@ -4024,170 +4340,6 @@ func (x *SslCert) GetCreated() string {
 	return ""
 }
 
-// LBHealthCheck represents a LBHealthCheck Item
-type LBHealthCheck struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the LBHealthCheck
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the LBHealthCheck
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the LBHealthCheck
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the LBHealthCheck
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *LBHealthCheck) Reset() {
-	*x = LBHealthCheck{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[52]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *LBHealthCheck) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*LBHealthCheck) ProtoMessage() {}
-
-func (x *LBHealthCheck) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[52]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use LBHealthCheck.ProtoReflect.Descriptor instead.
-func (*LBHealthCheck) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{52}
-}
-
-func (x *LBHealthCheck) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *LBHealthCheck) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *LBHealthCheck) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *LBHealthCheck) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *LBHealthCheck) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-// ApplicationLoadBalancer represents a ApplicationLoadBalancer Item
-type ApplicationLoadBalancer struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the ApplicationLoadBalancer
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the ApplicationLoadBalancer
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the ApplicationLoadBalancer
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the ApplicationLoadBalancer
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ApplicationLoadBalancer) Reset() {
-	*x = ApplicationLoadBalancer{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[53]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ApplicationLoadBalancer) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ApplicationLoadBalancer) ProtoMessage() {}
-
-func (x *ApplicationLoadBalancer) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[53]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ApplicationLoadBalancer.ProtoReflect.Descriptor instead.
-func (*ApplicationLoadBalancer) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{53}
-}
-
-func (x *ApplicationLoadBalancer) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *ApplicationLoadBalancer) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *ApplicationLoadBalancer) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *ApplicationLoadBalancer) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *ApplicationLoadBalancer) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
 // Success represents a Success Operation Response
 type Success struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -4201,7 +4353,7 @@ type Success struct {
 
 func (x *Success) Reset() {
 	*x = Success{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[54]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4213,7 +4365,7 @@ func (x *Success) String() string {
 func (*Success) ProtoMessage() {}
 
 func (x *Success) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[54]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4226,7 +4378,7 @@ func (x *Success) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Success.ProtoReflect.Descriptor instead.
 func (*Success) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{54}
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{56}
 }
 
 func (x *Success) GetSuccess() bool {
@@ -4241,151 +4393,6 @@ func (x *Success) GetDisplayText() string {
 		return *x.DisplayText
 	}
 	return ""
-}
-
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[55]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[55]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{55}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
 }
 
 // Result represents a generic operation result
@@ -4407,7 +4414,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[56]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[57]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4419,7 +4426,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[56]
+	mi := &file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes[57]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4432,7 +4439,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{56}
+	return file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZIP(), []int{57}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -4474,11 +4481,20 @@ var File_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto protorefle
 
 const file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDesc = "" +
 	"\n" +
-	"<cloudstack/management/loadbalancer/v1/loadbalancer.gen.proto\x12%cloudstack.management.loadbalancer.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x9c\x03\n" +
+	"<cloudstack/management/loadbalancer/v1/loadbalancer.gen.proto\x12%cloudstack.management.loadbalancer.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xe5\x01\n" +
+	"\x1fAssignCertToLoadBalancerRequest\x12$\n" +
+	"\n" +
+	"lb_rule_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\blbRuleId\x12\x1f\n" +
+	"\acert_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06certId\x12$\n" +
+	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"i\n" +
+	" AssignCertToLoadBalancerResponse\x12E\n" +
+	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\x9d\x03\n" +
 	"\x1fAssignToLoadBalancerRuleRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12.\n" +
-	"\x13virtual_machine_ids\x18\x02 \x03(\tR\x11virtualMachineIds\x12v\n" +
-	"\fvm_id_ip_map\x18\x03 \x03(\v2U.cloudstack.management.loadbalancer.v1.AssignToLoadBalancerRuleRequest.VmIdIpMapEntryR\tvmIdIpMap\x12$\n" +
+	"\x13virtual_machine_ids\x18\x02 \x03(\tR\x11virtualMachineIds\x12w\n" +
+	"\rvm_id_ip_map_\x18\x03 \x03(\v2U.cloudstack.management.loadbalancer.v1.AssignToLoadBalancerRuleRequest.VmIdIpMapEntryR\tvmIdIpMap\x12$\n" +
 	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
 	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\x1a<\n" +
@@ -4486,44 +4502,64 @@ const file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDesc 
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"i\n" +
 	" AssignToLoadBalancerRuleResponse\x12E\n" +
-	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\xcc\x06\n" +
-	"\x1cListLoadBalancerRulesRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12A\n" +
-	"\x17load_balancer_rule_name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x14loadBalancerRuleName\x12 \n" +
-	"\fpublic_ip_id\x18\x03 \x01(\x03R\n" +
-	"publicIpId\x12,\n" +
-	"\x12virtual_machine_id\x18\x04 \x01(\x03R\x10virtualMachineId\x12\x17\n" +
-	"\azone_id\x18\x05 \x01(\x03R\x06zoneId\x12\x1d\n" +
+	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\xe1\x04\n" +
+	"$CreateApplicationLoadBalancerRequest\x12;\n" +
+	"\x12load_balancer_name\x18\x01 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x10loadBalancerName\x12,\n" +
+	"\vdescription\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12%\n" +
 	"\n" +
-	"network_id\x18\x06 \x01(\x03R\tnetworkId\x12\x1f\n" +
-	"\adisplay\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12a\n" +
-	"\x04tags\x18\b \x03(\v2M.cloudstack.management.loadbalancer.v1.ListLoadBalancerRulesRequest.TagsEntryR\x04tags\x12\x1d\n" +
+	"network_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tnetworkId\x12/\n" +
+	"\vsource_port\x18\x04 \x01(\x05B\x0e\xbaH\v\xc8\x01\x01\x1a\x06\x18\xff\xff\x03(\x01R\n" +
+	"sourcePort\x12$\n" +
+	"\talgorithm\x18\x05 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\talgorithm\x123\n" +
+	"\rinstance_port\x18\x06 \x01(\x05B\x0e\xbaH\v\xc8\x01\x01\x1a\x06\x18\xff\xff\x03(\x01R\finstancePort\x12$\n" +
+	"\tsource_ip\x18\a \x01(\tB\a\xbaH\x04r\x02x\x01R\bsourceIp\x127\n" +
+	"\x14source_ip_network_id\x18\b \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11sourceIpNetworkId\x12\x1e\n" +
+	"\x06scheme\x18\t \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06scheme\x12\x1f\n" +
+	"\adisplay\x18\n" +
+	" \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12$\n" +
+	"\x0estart_event_id\x18\v \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\f \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\r \x01(\tR\fresponseType\"n\n" +
+	"%CreateApplicationLoadBalancerResponse\x12E\n" +
+	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\xed\x03\n" +
+	" CreateLBHealthCheckPolicyRequest\x12$\n" +
 	"\n" +
-	"project_id\x18\t \x01(\x03R\tprojectId\x12\xa0\x01\n" +
-	"\faccount_name\x18\n" +
-	" \x01(\tB}\xbaHz\xba\x01w\n" +
-	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
-	"\blist_all\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
-	"\tdomain_id\x18\f \x01(\x03R\bdomainId\x12#\n" +
-	"\trecursive\x18\r \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
-	"\akeyword\x18\x0e \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x0f \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x10 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\x11 \x01(\tR\fresponseType\x1a7\n" +
-	"\tTagsEntry\x12\x10\n" +
+	"lb_rule_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\blbRuleId\x12,\n" +
+	"\vdescription\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12\x1b\n" +
+	"\tping_path\x18\x03 \x01(\tR\bpingPath\x12(\n" +
+	"\x10respons_time_out\x18\x04 \x01(\x05R\x0eresponsTimeOut\x122\n" +
+	"\x15health_check_interval\x18\x05 \x01(\x05R\x13healthCheckInterval\x12+\n" +
+	"\x11healthy_threshold\x18\x06 \x01(\x05R\x10healthyThreshold\x12/\n" +
+	"\x13unhealthy_threshold\x18\a \x01(\x05R\x12unhealthyThreshold\x12\x1f\n" +
+	"\adisplay\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12$\n" +
+	"\x0estart_event_id\x18\t \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\n" +
+	" \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\v \x01(\tR\fresponseType\"j\n" +
+	"!CreateLBHealthCheckPolicyResponse\x12E\n" +
+	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\xd6\x04\n" +
+	"\x1fCreateLBStickinessPolicyRequest\x12$\n" +
+	"\n" +
+	"lb_rule_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\blbRuleId\x12,\n" +
+	"\vdescription\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12H\n" +
+	"\x19lb_stickiness_policy_name\x18\x03 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x16lbStickinessPolicyName\x12C\n" +
+	"\x16stickiness_method_name\x18\x04 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x14stickinessMethodName\x12t\n" +
+	"\n" +
+	"param_list\x18\x05 \x03(\v2U.cloudstack.management.loadbalancer.v1.CreateLBStickinessPolicyRequest.ParamListEntryR\tparamList\x12\x1f\n" +
+	"\adisplay\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12$\n" +
+	"\x0estart_event_id\x18\a \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\t \x01(\tR\fresponseType\x1a<\n" +
+	"\x0eParamListEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x92\x01\n" +
-	"\x1dListLoadBalancerRulesResponse\x12I\n" +
-	"\x05items\x18\x01 \x03(\v23.cloudstack.management.loadbalancer.v1.LoadBalancerR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xb6\x01\n" +
-	"\x1fDeleteLBStickinessPolicyRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"i\n" +
-	" DeleteLBStickinessPolicyResponse\x12E\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"i\n" +
+	" CreateLBStickinessPolicyResponse\x12E\n" +
 	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\xbe\x06\n" +
 	"\x1dCreateLoadBalancerRuleRequest\x12$\n" +
 	"\talgorithm\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\talgorithm\x12,\n" +
@@ -4552,57 +4588,6 @@ const file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDesc 
 	"\x0finjected_job_id\x18\x10 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x11 \x01(\tR\fresponseType\"g\n" +
 	"\x1eCreateLoadBalancerRuleResponse\x12E\n" +
-	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\x9f\x02\n" +
-	"$ListLoadBalancerRuleInstancesRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12\x1f\n" +
-	"\aapplied\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\aapplied\x12\x16\n" +
-	"\x02id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12,\n" +
-	"\x0fis_list_lb_vmip\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\fisListLbVmip\x12\x18\n" +
-	"\akeyword\x18\x05 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x06 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\a \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\b \x01(\tR\fresponseType\"\xa3\x01\n" +
-	"%ListLoadBalancerRuleInstancesResponse\x12R\n" +
-	"\x05items\x18\x01 \x03(\v2<.cloudstack.management.loadbalancer.v1.LoadBalancerRuleVmMapR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xe1\x04\n" +
-	"$CreateApplicationLoadBalancerRequest\x12;\n" +
-	"\x12load_balancer_name\x18\x01 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x10loadBalancerName\x12,\n" +
-	"\vdescription\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12%\n" +
-	"\n" +
-	"network_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\tnetworkId\x12/\n" +
-	"\vsource_port\x18\x04 \x01(\x05B\x0e\xbaH\v\xc8\x01\x01\x1a\x06\x18\xff\xff\x03(\x01R\n" +
-	"sourcePort\x12$\n" +
-	"\talgorithm\x18\x05 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\talgorithm\x123\n" +
-	"\rinstance_port\x18\x06 \x01(\x05B\x0e\xbaH\v\xc8\x01\x01\x1a\x06\x18\xff\xff\x03(\x01R\finstancePort\x12$\n" +
-	"\tsource_ip\x18\a \x01(\tB\a\xbaH\x04r\x02x\x01R\bsourceIp\x127\n" +
-	"\x14source_ip_network_id\x18\b \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x11sourceIpNetworkId\x12\x1e\n" +
-	"\x06scheme\x18\t \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06scheme\x12\x1f\n" +
-	"\adisplay\x18\n" +
-	" \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12$\n" +
-	"\x0estart_event_id\x18\v \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\f \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\r \x01(\tR\fresponseType\"n\n" +
-	"%CreateApplicationLoadBalancerResponse\x12E\n" +
-	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\xb4\x01\n" +
-	"\x1dDeleteLoadBalancerRuleRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
-	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"g\n" +
-	"\x1eDeleteLoadBalancerRuleResponse\x12E\n" +
-	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\xe5\x01\n" +
-	"\x1fAssignCertToLoadBalancerRequest\x12$\n" +
-	"\n" +
-	"lb_rule_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\blbRuleId\x12\x1f\n" +
-	"\acert_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06certId\x12$\n" +
-	"\x0estart_event_id\x18\x03 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"i\n" +
-	" AssignCertToLoadBalancerResponse\x12E\n" +
 	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\xbb\x01\n" +
 	"$DeleteApplicationLoadBalancerRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
@@ -4610,164 +4595,32 @@ const file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDesc 
 	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"n\n" +
 	"%DeleteApplicationLoadBalancerResponse\x12E\n" +
-	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\xe0\x01\n" +
-	"\x1fListLBStickinessPoliciesRequest\x12\x1c\n" +
-	"\n" +
-	"lb_rule_id\x18\x01 \x01(\x03R\blbRuleId\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\x03R\x02id\x12\x1f\n" +
-	"\adisplay\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x18\n" +
-	"\akeyword\x18\x04 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x05 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x06 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"\x95\x01\n" +
-	" ListLBStickinessPoliciesResponse\x12I\n" +
-	"\x05items\x18\x01 \x03(\v23.cloudstack.management.loadbalancer.v1.LBStickinessR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xed\x03\n" +
-	" CreateLBHealthCheckPolicyRequest\x12$\n" +
-	"\n" +
-	"lb_rule_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\blbRuleId\x12,\n" +
-	"\vdescription\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12\x1b\n" +
-	"\tping_path\x18\x03 \x01(\tR\bpingPath\x12(\n" +
-	"\x10respons_time_out\x18\x04 \x01(\x05R\x0eresponsTimeOut\x122\n" +
-	"\x15health_check_interval\x18\x05 \x01(\x05R\x13healthCheckInterval\x12+\n" +
-	"\x11healthy_threshold\x18\x06 \x01(\x05R\x10healthyThreshold\x12/\n" +
-	"\x13unhealthy_threshold\x18\a \x01(\x05R\x12unhealthyThreshold\x12\x1f\n" +
-	"\adisplay\x18\b \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12$\n" +
-	"\x0estart_event_id\x18\t \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\n" +
-	" \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\v \x01(\tR\fresponseType\"j\n" +
-	"!CreateLBHealthCheckPolicyResponse\x12E\n" +
-	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\xa3\x03\n" +
-	"\x1dUpdateLoadBalancerRuleRequest\x12\x1c\n" +
-	"\talgorithm\x18\x01 \x01(\tR\talgorithm\x12,\n" +
-	"\vdescription\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12\x16\n" +
-	"\x02id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x128\n" +
-	"\x12load_balancer_name\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x10loadBalancerName\x12\x1f\n" +
-	"\adisplay\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x1f\n" +
-	"\vlb_protocol\x18\x06 \x01(\tR\n" +
-	"lbProtocol\x12%\n" +
-	"\tcustom_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
-	"\x0estart_event_id\x18\b \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\n" +
-	" \x01(\tR\fresponseType\"g\n" +
-	"\x1eUpdateLoadBalancerRuleResponse\x12E\n" +
-	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\xff\x01\n" +
-	" UpdateLBHealthCheckPolicyRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
-	"\adisplay\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12%\n" +
-	"\tcustom_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
-	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"j\n" +
-	"!UpdateLBHealthCheckPolicyResponse\x12E\n" +
-	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"S\n" +
-	"\x14DeleteSslCertRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"^\n" +
-	"\x15DeleteSslCertResponse\x12E\n" +
-	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\xa0\x03\n" +
-	"!RemoveFromLoadBalancerRuleRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12.\n" +
-	"\x13virtual_machine_ids\x18\x02 \x03(\tR\x11virtualMachineIds\x12x\n" +
-	"\fvm_id_ip_map\x18\x03 \x03(\v2W.cloudstack.management.loadbalancer.v1.RemoveFromLoadBalancerRuleRequest.VmIdIpMapEntryR\tvmIdIpMap\x12$\n" +
-	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\x1a<\n" +
-	"\x0eVmIdIpMapEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"k\n" +
-	"\"RemoveFromLoadBalancerRuleResponse\x12E\n" +
-	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\xa6\x01\n" +
-	"\x13ListSslCertsRequest\x12\x17\n" +
-	"\acert_id\x18\x01 \x01(\x03R\x06certId\x12\x1d\n" +
-	"\n" +
-	"account_id\x18\x02 \x01(\x03R\taccountId\x12\x13\n" +
-	"\x05lb_id\x18\x03 \x01(\x03R\x04lbId\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x04 \x01(\x03R\tprojectId\x12#\n" +
-	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"\x84\x01\n" +
-	"\x14ListSslCertsResponse\x12D\n" +
-	"\x05items\x18\x01 \x03(\v2..cloudstack.management.loadbalancer.v1.SslCertR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xb7\x01\n" +
+	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\xb7\x01\n" +
 	" DeleteLBHealthCheckPolicyRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
 	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
 	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"j\n" +
 	"!DeleteLBHealthCheckPolicyResponse\x12E\n" +
-	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\xd6\x04\n" +
-	"\x1fCreateLBStickinessPolicyRequest\x12$\n" +
-	"\n" +
-	"lb_rule_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\blbRuleId\x12,\n" +
-	"\vdescription\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12H\n" +
-	"\x19lb_stickiness_policy_name\x18\x03 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x16lbStickinessPolicyName\x12C\n" +
-	"\x16stickiness_method_name\x18\x04 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x14stickinessMethodName\x12t\n" +
-	"\n" +
-	"param_list\x18\x05 \x03(\v2U.cloudstack.management.loadbalancer.v1.CreateLBStickinessPolicyRequest.ParamListEntryR\tparamList\x12\x1f\n" +
-	"\adisplay\x18\x06 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12$\n" +
-	"\x0estart_event_id\x18\a \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\t \x01(\tR\fresponseType\x1a<\n" +
-	"\x0eParamListEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"i\n" +
-	" CreateLBStickinessPolicyResponse\x12E\n" +
-	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\x83\x02\n" +
-	"$UpdateApplicationLoadBalancerRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
-	"\adisplay\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12%\n" +
-	"\tcustom_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
-	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"n\n" +
-	"%UpdateApplicationLoadBalancerResponse\x12E\n" +
-	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\xc6\x01\n" +
-	"!RemoveCertFromLoadBalancerRequest\x12$\n" +
-	"\n" +
-	"lb_rule_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\blbRuleId\x12$\n" +
+	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\xb6\x01\n" +
+	"\x1fDeleteLBStickinessPolicyRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
 	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
 	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"k\n" +
-	"\"RemoveCertFromLoadBalancerResponse\x12E\n" +
-	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\xe1\x01\n" +
-	" ListLBHealthCheckPoliciesRequest\x12\x1c\n" +
-	"\n" +
-	"lb_rule_id\x18\x01 \x01(\x03R\blbRuleId\x12\x1f\n" +
-	"\adisplay\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x0e\n" +
-	"\x02id\x18\x03 \x01(\x03R\x02id\x12\x18\n" +
-	"\akeyword\x18\x04 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04page\x18\x05 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x06 \x01(\x05R\bpageSize\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"\x97\x01\n" +
-	"!ListLBHealthCheckPoliciesResponse\x12J\n" +
-	"\x05items\x18\x01 \x03(\v24.cloudstack.management.loadbalancer.v1.LBHealthCheckR\x05items\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xe6\x02\n" +
-	"\x14UploadSslCertRequest\x12\x1a\n" +
-	"\x04cert\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04cert\x12\x18\n" +
-	"\x03key\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x03key\x12\x14\n" +
-	"\x05chain\x18\x03 \x01(\tR\x05chain\x12\x1a\n" +
-	"\bpassword\x18\x04 \x01(\tR\bpassword\x12!\n" +
-	"\faccount_name\x18\x05 \x01(\tR\vaccountName\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x06 \x01(\x03R\tprojectId\x12\x1b\n" +
-	"\tdomain_id\x18\a \x01(\x03R\bdomainId\x12!\n" +
-	"\x04name\x18\b \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12?\n" +
-	"\x18enabled_revocation_check\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\x16enabledRevocationCheck\x12#\n" +
-	"\rresponse_type\x18\n" +
-	" \x01(\tR\fresponseType\"^\n" +
-	"\x15UploadSslCertResponse\x12E\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"i\n" +
+	" DeleteLBStickinessPolicyResponse\x12E\n" +
+	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\xb4\x01\n" +
+	"\x1dDeleteLoadBalancerRuleRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"g\n" +
+	"\x1eDeleteLoadBalancerRuleResponse\x12E\n" +
+	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"S\n" +
+	"\x14DeleteSslCertRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"^\n" +
+	"\x15DeleteSslCertResponse\x12E\n" +
 	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\xd7\x06\n" +
 	"#ListApplicationLoadBalancersRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x128\n" +
@@ -4798,7 +4651,140 @@ const file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDesc 
 	"$ListApplicationLoadBalancersResponse\x12T\n" +
 	"\x05items\x18\x01 \x03(\v2>.cloudstack.management.loadbalancer.v1.ApplicationLoadBalancerR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\xfe\x01\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xe1\x01\n" +
+	" ListLBHealthCheckPoliciesRequest\x12\x1c\n" +
+	"\n" +
+	"lb_rule_id\x18\x01 \x01(\x03R\blbRuleId\x12\x1f\n" +
+	"\adisplay\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x0e\n" +
+	"\x02id\x18\x03 \x01(\x03R\x02id\x12\x18\n" +
+	"\akeyword\x18\x04 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x05 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x06 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"\x97\x01\n" +
+	"!ListLBHealthCheckPoliciesResponse\x12J\n" +
+	"\x05items\x18\x01 \x03(\v24.cloudstack.management.loadbalancer.v1.LBHealthCheckR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xe0\x01\n" +
+	"\x1fListLBStickinessPoliciesRequest\x12\x1c\n" +
+	"\n" +
+	"lb_rule_id\x18\x01 \x01(\x03R\blbRuleId\x12\x0e\n" +
+	"\x02id\x18\x02 \x01(\x03R\x02id\x12\x1f\n" +
+	"\adisplay\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x18\n" +
+	"\akeyword\x18\x04 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x05 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x06 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"\x95\x01\n" +
+	" ListLBStickinessPoliciesResponse\x12I\n" +
+	"\x05items\x18\x01 \x03(\v23.cloudstack.management.loadbalancer.v1.LBStickinessR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x9f\x02\n" +
+	"$ListLoadBalancerRuleInstancesRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x12\x1f\n" +
+	"\aapplied\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\aapplied\x12\x16\n" +
+	"\x02id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12,\n" +
+	"\x0fis_list_lb_vmip\x18\x04 \x01(\bB\x05\xaa\x01\x02\b\x01R\fisListLbVmip\x12\x18\n" +
+	"\akeyword\x18\x05 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x06 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\a \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\b \x01(\tR\fresponseType\"\xa3\x01\n" +
+	"%ListLoadBalancerRuleInstancesResponse\x12R\n" +
+	"\x05items\x18\x01 \x03(\v2<.cloudstack.management.loadbalancer.v1.LoadBalancerRuleVmMapR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\x87\x02\n" +
+	".ListLoadBalancerRuleInstancesCmdByAdminRequest\x12\x1f\n" +
+	"\aapplied\x18\x01 \x01(\bB\x05\xaa\x01\x02\b\x01R\aapplied\x12\x16\n" +
+	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12,\n" +
+	"\x0fis_list_lb_vmip\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\fisListLbVmip\x12\x18\n" +
+	"\akeyword\x18\x04 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x05 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x06 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"\xad\x01\n" +
+	"/ListLoadBalancerRuleInstancesCmdByAdminResponse\x12R\n" +
+	"\x05items\x18\x01 \x03(\v2<.cloudstack.management.loadbalancer.v1.LoadBalancerRuleVmMapR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xcc\x06\n" +
+	"\x1cListLoadBalancerRulesRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12A\n" +
+	"\x17load_balancer_rule_name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x14loadBalancerRuleName\x12 \n" +
+	"\fpublic_ip_id\x18\x03 \x01(\x03R\n" +
+	"publicIpId\x12,\n" +
+	"\x12virtual_machine_id\x18\x04 \x01(\x03R\x10virtualMachineId\x12\x17\n" +
+	"\azone_id\x18\x05 \x01(\x03R\x06zoneId\x12\x1d\n" +
+	"\n" +
+	"network_id\x18\x06 \x01(\x03R\tnetworkId\x12\x1f\n" +
+	"\adisplay\x18\a \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12a\n" +
+	"\x04tags\x18\b \x03(\v2M.cloudstack.management.loadbalancer.v1.ListLoadBalancerRulesRequest.TagsEntryR\x04tags\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\t \x01(\x03R\tprojectId\x12\xa0\x01\n" +
+	"\faccount_name\x18\n" +
+	" \x01(\tB}\xbaHz\xba\x01w\n" +
+	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12 \n" +
+	"\blist_all\x18\v \x01(\bB\x05\xaa\x01\x02\b\x01R\alistAll\x12\x1b\n" +
+	"\tdomain_id\x18\f \x01(\x03R\bdomainId\x12#\n" +
+	"\trecursive\x18\r \x01(\bB\x05\xaa\x01\x02\b\x01R\trecursive\x12\x18\n" +
+	"\akeyword\x18\x0e \x01(\tR\akeyword\x12\x12\n" +
+	"\x04page\x18\x0f \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x10 \x01(\x05R\bpageSize\x12#\n" +
+	"\rresponse_type\x18\x11 \x01(\tR\fresponseType\x1a7\n" +
+	"\tTagsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x92\x01\n" +
+	"\x1dListLoadBalancerRulesResponse\x12I\n" +
+	"\x05items\x18\x01 \x03(\v23.cloudstack.management.loadbalancer.v1.LoadBalancerR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xa6\x01\n" +
+	"\x13ListSslCertsRequest\x12\x17\n" +
+	"\acert_id\x18\x01 \x01(\x03R\x06certId\x12\x1d\n" +
+	"\n" +
+	"account_id\x18\x02 \x01(\x03R\taccountId\x12\x13\n" +
+	"\x05lb_id\x18\x03 \x01(\x03R\x04lbId\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x04 \x01(\x03R\tprojectId\x12#\n" +
+	"\rresponse_type\x18\x05 \x01(\tR\fresponseType\"\x84\x01\n" +
+	"\x14ListSslCertsResponse\x12D\n" +
+	"\x05items\x18\x01 \x03(\v2..cloudstack.management.loadbalancer.v1.SslCertR\x05items\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xc6\x01\n" +
+	"!RemoveCertFromLoadBalancerRequest\x12$\n" +
+	"\n" +
+	"lb_rule_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\blbRuleId\x12$\n" +
+	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x04 \x01(\tR\fresponseType\"k\n" +
+	"\"RemoveCertFromLoadBalancerResponse\x12E\n" +
+	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\xa1\x03\n" +
+	"!RemoveFromLoadBalancerRuleRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12.\n" +
+	"\x13virtual_machine_ids\x18\x02 \x03(\tR\x11virtualMachineIds\x12y\n" +
+	"\rvm_id_ip_map_\x18\x03 \x03(\v2W.cloudstack.management.loadbalancer.v1.RemoveFromLoadBalancerRuleRequest.VmIdIpMapEntryR\tvmIdIpMap\x12$\n" +
+	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\x1a<\n" +
+	"\x0eVmIdIpMapEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"k\n" +
+	"\"RemoveFromLoadBalancerRuleResponse\x12E\n" +
+	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\x83\x02\n" +
+	"$UpdateApplicationLoadBalancerRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
+	"\adisplay\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12%\n" +
+	"\tcustom_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
+	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"n\n" +
+	"%UpdateApplicationLoadBalancerResponse\x12E\n" +
+	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\xff\x01\n" +
+	" UpdateLBHealthCheckPolicyRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
+	"\adisplay\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12%\n" +
+	"\tcustom_id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
+	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"j\n" +
+	"!UpdateLBHealthCheckPolicyResponse\x12E\n" +
+	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\xfe\x01\n" +
 	"\x1fUpdateLBStickinessPolicyRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12\x1f\n" +
 	"\adisplay\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12%\n" +
@@ -4807,7 +4793,58 @@ const file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDesc 
 	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"i\n" +
 	" UpdateLBStickinessPolicyResponse\x12E\n" +
-	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\x9b\x01\n" +
+	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\xa3\x03\n" +
+	"\x1dUpdateLoadBalancerRuleRequest\x12\x1c\n" +
+	"\talgorithm\x18\x01 \x01(\tR\talgorithm\x12,\n" +
+	"\vdescription\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12\x16\n" +
+	"\x02id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x128\n" +
+	"\x12load_balancer_name\x18\x04 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\xff\x01R\x10loadBalancerName\x12\x1f\n" +
+	"\adisplay\x18\x05 \x01(\bB\x05\xaa\x01\x02\b\x01R\adisplay\x12\x1f\n" +
+	"\vlb_protocol\x18\x06 \x01(\tR\n" +
+	"lbProtocol\x12%\n" +
+	"\tcustom_id\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bcustomId\x12$\n" +
+	"\x0estart_event_id\x18\b \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\n" +
+	" \x01(\tR\fresponseType\"g\n" +
+	"\x1eUpdateLoadBalancerRuleResponse\x12E\n" +
+	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\xe6\x02\n" +
+	"\x14UploadSslCertRequest\x12\x1a\n" +
+	"\x04cert\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04cert\x12\x18\n" +
+	"\x03key\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x03key\x12\x14\n" +
+	"\x05chain\x18\x03 \x01(\tR\x05chain\x12\x1a\n" +
+	"\bpassword\x18\x04 \x01(\tR\bpassword\x12!\n" +
+	"\faccount_name\x18\x05 \x01(\tR\vaccountName\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x06 \x01(\x03R\tprojectId\x12\x1b\n" +
+	"\tdomain_id\x18\a \x01(\x03R\bdomainId\x12!\n" +
+	"\x04name\x18\b \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12?\n" +
+	"\x18enabled_revocation_check\x18\t \x01(\bB\x05\xaa\x01\x02\b\x01R\x16enabledRevocationCheck\x12#\n" +
+	"\rresponse_type\x18\n" +
+	" \x01(\tR\fresponseType\"^\n" +
+	"\x15UploadSslCertResponse\x12E\n" +
+	"\x06result\x18\x01 \x01(\v2-.cloudstack.management.loadbalancer.v1.ResultR\x06result\"\xa6\x01\n" +
+	"\x17ApplicationLoadBalancer\x12\x18\n" +
+	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
+	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
+	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x9c\x01\n" +
+	"\rLBHealthCheck\x12\x18\n" +
+	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
+	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
+	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x9b\x01\n" +
+	"\fLBStickiness\x12\x18\n" +
+	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
+	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
+	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\x9b\x01\n" +
 	"\fLoadBalancer\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
@@ -4819,26 +4856,8 @@ const file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDesc 
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x9b\x01\n" +
-	"\fLBStickiness\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"\x96\x01\n" +
 	"\aSslCert\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x9c\x01\n" +
-	"\rLBHealthCheck\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\xa6\x01\n" +
-	"\x17ApplicationLoadBalancer\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -4846,58 +4865,40 @@ const file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDesc 
 	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xe4\x03\n" +
-	"\x04Item\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12R\n" +
-	"\adetails\x18\f \x03(\v28.cloudstack.management.loadbalancer.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\x82!\n" +
-	"\x13LoadbalancerService\x12\xad\x01\n" +
-	"\x18AssignToLoadBalancerRule\x12F.cloudstack.management.loadbalancer.v1.AssignToLoadBalancerRuleRequest\x1aG.cloudstack.management.loadbalancer.v1.AssignToLoadBalancerRuleResponse\"\x00\x12\xa4\x01\n" +
-	"\x15ListLoadBalancerRules\x12C.cloudstack.management.loadbalancer.v1.ListLoadBalancerRulesRequest\x1aD.cloudstack.management.loadbalancer.v1.ListLoadBalancerRulesResponse\"\x00\x12\xad\x01\n" +
-	"\x18DeleteLBStickinessPolicy\x12F.cloudstack.management.loadbalancer.v1.DeleteLBStickinessPolicyRequest\x1aG.cloudstack.management.loadbalancer.v1.DeleteLBStickinessPolicyResponse\"\x00\x12\xa7\x01\n" +
-	"\x16CreateLoadBalancerRule\x12D.cloudstack.management.loadbalancer.v1.CreateLoadBalancerRuleRequest\x1aE.cloudstack.management.loadbalancer.v1.CreateLoadBalancerRuleResponse\"\x00\x12\xc2\x01\n" +
-	"\x1dListLoadBalancerRuleInstances\x12K.cloudstack.management.loadbalancer.v1.ListLoadBalancerRuleInstancesRequest\x1aL.cloudstack.management.loadbalancer.v1.ListLoadBalancerRuleInstancesResponse\"\x06\xc2>\x03\xc0>\x01\x12\xbc\x01\n" +
-	"\x1dCreateApplicationLoadBalancer\x12K.cloudstack.management.loadbalancer.v1.CreateApplicationLoadBalancerRequest\x1aL.cloudstack.management.loadbalancer.v1.CreateApplicationLoadBalancerResponse\"\x00\x12\xa7\x01\n" +
-	"\x16DeleteLoadBalancerRule\x12D.cloudstack.management.loadbalancer.v1.DeleteLoadBalancerRuleRequest\x1aE.cloudstack.management.loadbalancer.v1.DeleteLoadBalancerRuleResponse\"\x00\x12\xad\x01\n" +
-	"\x18AssignCertToLoadBalancer\x12F.cloudstack.management.loadbalancer.v1.AssignCertToLoadBalancerRequest\x1aG.cloudstack.management.loadbalancer.v1.AssignCertToLoadBalancerResponse\"\x00\x12\xbc\x01\n" +
-	"\x1dDeleteApplicationLoadBalancer\x12K.cloudstack.management.loadbalancer.v1.DeleteApplicationLoadBalancerRequest\x1aL.cloudstack.management.loadbalancer.v1.DeleteApplicationLoadBalancerResponse\"\x00\x12\xad\x01\n" +
-	"\x18ListLBStickinessPolicies\x12F.cloudstack.management.loadbalancer.v1.ListLBStickinessPoliciesRequest\x1aG.cloudstack.management.loadbalancer.v1.ListLBStickinessPoliciesResponse\"\x00\x12\xb0\x01\n" +
-	"\x19CreateLBHealthCheckPolicy\x12G.cloudstack.management.loadbalancer.v1.CreateLBHealthCheckPolicyRequest\x1aH.cloudstack.management.loadbalancer.v1.CreateLBHealthCheckPolicyResponse\"\x00\x12\xa7\x01\n" +
-	"\x16UpdateLoadBalancerRule\x12D.cloudstack.management.loadbalancer.v1.UpdateLoadBalancerRuleRequest\x1aE.cloudstack.management.loadbalancer.v1.UpdateLoadBalancerRuleResponse\"\x00\x12\xb0\x01\n" +
-	"\x19UpdateLBHealthCheckPolicy\x12G.cloudstack.management.loadbalancer.v1.UpdateLBHealthCheckPolicyRequest\x1aH.cloudstack.management.loadbalancer.v1.UpdateLBHealthCheckPolicyResponse\"\x00\x12\x8c\x01\n" +
-	"\rDeleteSslCert\x12;.cloudstack.management.loadbalancer.v1.DeleteSslCertRequest\x1a<.cloudstack.management.loadbalancer.v1.DeleteSslCertResponse\"\x00\x12\xb3\x01\n" +
-	"\x1aRemoveFromLoadBalancerRule\x12H.cloudstack.management.loadbalancer.v1.RemoveFromLoadBalancerRuleRequest\x1aI.cloudstack.management.loadbalancer.v1.RemoveFromLoadBalancerRuleResponse\"\x00\x12\x89\x01\n" +
-	"\fListSslCerts\x12:.cloudstack.management.loadbalancer.v1.ListSslCertsRequest\x1a;.cloudstack.management.loadbalancer.v1.ListSslCertsResponse\"\x00\x12\xb0\x01\n" +
-	"\x19DeleteLBHealthCheckPolicy\x12G.cloudstack.management.loadbalancer.v1.DeleteLBHealthCheckPolicyRequest\x1aH.cloudstack.management.loadbalancer.v1.DeleteLBHealthCheckPolicyResponse\"\x00\x12\xad\x01\n" +
-	"\x18CreateLBStickinessPolicy\x12F.cloudstack.management.loadbalancer.v1.CreateLBStickinessPolicyRequest\x1aG.cloudstack.management.loadbalancer.v1.CreateLBStickinessPolicyResponse\"\x00\x12\xbc\x01\n" +
-	"\x1dUpdateApplicationLoadBalancer\x12K.cloudstack.management.loadbalancer.v1.UpdateApplicationLoadBalancerRequest\x1aL.cloudstack.management.loadbalancer.v1.UpdateApplicationLoadBalancerResponse\"\x00\x12\xb3\x01\n" +
-	"\x1aRemoveCertFromLoadBalancer\x12H.cloudstack.management.loadbalancer.v1.RemoveCertFromLoadBalancerRequest\x1aI.cloudstack.management.loadbalancer.v1.RemoveCertFromLoadBalancerResponse\"\x00\x12\xb0\x01\n" +
-	"\x19ListLBHealthCheckPolicies\x12G.cloudstack.management.loadbalancer.v1.ListLBHealthCheckPoliciesRequest\x1aH.cloudstack.management.loadbalancer.v1.ListLBHealthCheckPoliciesResponse\"\x00\x12\x8c\x01\n" +
-	"\rUploadSslCert\x12;.cloudstack.management.loadbalancer.v1.UploadSslCertRequest\x1a<.cloudstack.management.loadbalancer.v1.UploadSslCertResponse\"\x00\x12\xb9\x01\n" +
-	"\x1cListApplicationLoadBalancers\x12J.cloudstack.management.loadbalancer.v1.ListApplicationLoadBalancersRequest\x1aK.cloudstack.management.loadbalancer.v1.ListApplicationLoadBalancersResponse\"\x00\x12\xad\x01\n" +
-	"\x18UpdateLBStickinessPolicy\x12F.cloudstack.management.loadbalancer.v1.UpdateLBStickinessPolicyRequest\x1aG.cloudstack.management.loadbalancer.v1.UpdateLBStickinessPolicyResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xe2\x02\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\x8a$\n" +
+	"\x13LoadbalancerService\x12\xb4\x01\n" +
+	"\x18AssignCertToLoadBalancer\x12F.cloudstack.management.loadbalancer.v1.AssignCertToLoadBalancerRequest\x1aG.cloudstack.management.loadbalancer.v1.AssignCertToLoadBalancerResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xb4\x01\n" +
+	"\x18AssignToLoadBalancerRule\x12F.cloudstack.management.loadbalancer.v1.AssignToLoadBalancerRuleRequest\x1aG.cloudstack.management.loadbalancer.v1.AssignToLoadBalancerRuleResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xc3\x01\n" +
+	"\x1dCreateApplicationLoadBalancer\x12K.cloudstack.management.loadbalancer.v1.CreateApplicationLoadBalancerRequest\x1aL.cloudstack.management.loadbalancer.v1.CreateApplicationLoadBalancerResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xb7\x01\n" +
+	"\x19CreateLBHealthCheckPolicy\x12G.cloudstack.management.loadbalancer.v1.CreateLBHealthCheckPolicyRequest\x1aH.cloudstack.management.loadbalancer.v1.CreateLBHealthCheckPolicyResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xb4\x01\n" +
+	"\x18CreateLBStickinessPolicy\x12F.cloudstack.management.loadbalancer.v1.CreateLBStickinessPolicyRequest\x1aG.cloudstack.management.loadbalancer.v1.CreateLBStickinessPolicyResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xae\x01\n" +
+	"\x16CreateLoadBalancerRule\x12D.cloudstack.management.loadbalancer.v1.CreateLoadBalancerRuleRequest\x1aE.cloudstack.management.loadbalancer.v1.CreateLoadBalancerRuleResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xc3\x01\n" +
+	"\x1dDeleteApplicationLoadBalancer\x12K.cloudstack.management.loadbalancer.v1.DeleteApplicationLoadBalancerRequest\x1aL.cloudstack.management.loadbalancer.v1.DeleteApplicationLoadBalancerResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xb7\x01\n" +
+	"\x19DeleteLBHealthCheckPolicy\x12G.cloudstack.management.loadbalancer.v1.DeleteLBHealthCheckPolicyRequest\x1aH.cloudstack.management.loadbalancer.v1.DeleteLBHealthCheckPolicyResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xb4\x01\n" +
+	"\x18DeleteLBStickinessPolicy\x12F.cloudstack.management.loadbalancer.v1.DeleteLBStickinessPolicyRequest\x1aG.cloudstack.management.loadbalancer.v1.DeleteLBStickinessPolicyResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xae\x01\n" +
+	"\x16DeleteLoadBalancerRule\x12D.cloudstack.management.loadbalancer.v1.DeleteLoadBalancerRuleRequest\x1aE.cloudstack.management.loadbalancer.v1.DeleteLoadBalancerRuleResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x93\x01\n" +
+	"\rDeleteSslCert\x12;.cloudstack.management.loadbalancer.v1.DeleteSslCertRequest\x1a<.cloudstack.management.loadbalancer.v1.DeleteSslCertResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xc0\x01\n" +
+	"\x1cListApplicationLoadBalancers\x12J.cloudstack.management.loadbalancer.v1.ListApplicationLoadBalancersRequest\x1aK.cloudstack.management.loadbalancer.v1.ListApplicationLoadBalancersResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xb7\x01\n" +
+	"\x19ListLBHealthCheckPolicies\x12G.cloudstack.management.loadbalancer.v1.ListLBHealthCheckPoliciesRequest\x1aH.cloudstack.management.loadbalancer.v1.ListLBHealthCheckPoliciesResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xb4\x01\n" +
+	"\x18ListLBStickinessPolicies\x12F.cloudstack.management.loadbalancer.v1.ListLBStickinessPoliciesRequest\x1aG.cloudstack.management.loadbalancer.v1.ListLBStickinessPoliciesResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xc4\x01\n" +
+	"\x1dListLoadBalancerRuleInstances\x12K.cloudstack.management.loadbalancer.v1.ListLoadBalancerRuleInstancesRequest\x1aL.cloudstack.management.loadbalancer.v1.ListLoadBalancerRuleInstancesResponse\"\b\xc2>\x05\xc2>\x02\x01\x02\x12\xe1\x01\n" +
+	"'ListLoadBalancerRuleInstancesCmdByAdmin\x12U.cloudstack.management.loadbalancer.v1.ListLoadBalancerRuleInstancesCmdByAdminRequest\x1aV.cloudstack.management.loadbalancer.v1.ListLoadBalancerRuleInstancesCmdByAdminResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xab\x01\n" +
+	"\x15ListLoadBalancerRules\x12C.cloudstack.management.loadbalancer.v1.ListLoadBalancerRulesRequest\x1aD.cloudstack.management.loadbalancer.v1.ListLoadBalancerRulesResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x90\x01\n" +
+	"\fListSslCerts\x12:.cloudstack.management.loadbalancer.v1.ListSslCertsRequest\x1a;.cloudstack.management.loadbalancer.v1.ListSslCertsResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xba\x01\n" +
+	"\x1aRemoveCertFromLoadBalancer\x12H.cloudstack.management.loadbalancer.v1.RemoveCertFromLoadBalancerRequest\x1aI.cloudstack.management.loadbalancer.v1.RemoveCertFromLoadBalancerResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xba\x01\n" +
+	"\x1aRemoveFromLoadBalancerRule\x12H.cloudstack.management.loadbalancer.v1.RemoveFromLoadBalancerRuleRequest\x1aI.cloudstack.management.loadbalancer.v1.RemoveFromLoadBalancerRuleResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xc3\x01\n" +
+	"\x1dUpdateApplicationLoadBalancer\x12K.cloudstack.management.loadbalancer.v1.UpdateApplicationLoadBalancerRequest\x1aL.cloudstack.management.loadbalancer.v1.UpdateApplicationLoadBalancerResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xb7\x01\n" +
+	"\x19UpdateLBHealthCheckPolicy\x12G.cloudstack.management.loadbalancer.v1.UpdateLBHealthCheckPolicyRequest\x1aH.cloudstack.management.loadbalancer.v1.UpdateLBHealthCheckPolicyResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xb4\x01\n" +
+	"\x18UpdateLBStickinessPolicy\x12F.cloudstack.management.loadbalancer.v1.UpdateLBStickinessPolicyRequest\x1aG.cloudstack.management.loadbalancer.v1.UpdateLBStickinessPolicyResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xae\x01\n" +
+	"\x16UpdateLoadBalancerRule\x12D.cloudstack.management.loadbalancer.v1.UpdateLoadBalancerRuleRequest\x1aE.cloudstack.management.loadbalancer.v1.UpdateLoadBalancerRuleResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x93\x01\n" +
+	"\rUploadSslCert\x12;.cloudstack.management.loadbalancer.v1.UploadSslCertRequest\x1a<.cloudstack.management.loadbalancer.v1.UploadSslCertResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\a\xc2>\x04\xc2>\x01\x02B\xe2\x02\n" +
 	")com.cloudstack.management.loadbalancer.v1B\x14LoadbalancerGenProtoP\x01Zhgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/loadbalancer/v1;loadbalancerv1\xa2\x02\x03CML\xaa\x02%Cloudstack.Management.Loadbalancer.V1\xca\x02%Cloudstack\\Management\\Loadbalancer\\V1\xe2\x021Cloudstack\\Management\\Loadbalancer\\V1\\GPBMetadata\xea\x02(Cloudstack::Management::Loadbalancer::V1b\beditionsp\xe8\a"
 
 var (
@@ -4914,151 +4915,153 @@ func file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDescGZ
 
 var file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 63)
 var file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_goTypes = []any{
-	(*AssignToLoadBalancerRuleRequest)(nil),       // 0: cloudstack.management.loadbalancer.v1.AssignToLoadBalancerRuleRequest
-	(*AssignToLoadBalancerRuleResponse)(nil),      // 1: cloudstack.management.loadbalancer.v1.AssignToLoadBalancerRuleResponse
-	(*ListLoadBalancerRulesRequest)(nil),          // 2: cloudstack.management.loadbalancer.v1.ListLoadBalancerRulesRequest
-	(*ListLoadBalancerRulesResponse)(nil),         // 3: cloudstack.management.loadbalancer.v1.ListLoadBalancerRulesResponse
-	(*DeleteLBStickinessPolicyRequest)(nil),       // 4: cloudstack.management.loadbalancer.v1.DeleteLBStickinessPolicyRequest
-	(*DeleteLBStickinessPolicyResponse)(nil),      // 5: cloudstack.management.loadbalancer.v1.DeleteLBStickinessPolicyResponse
-	(*CreateLoadBalancerRuleRequest)(nil),         // 6: cloudstack.management.loadbalancer.v1.CreateLoadBalancerRuleRequest
-	(*CreateLoadBalancerRuleResponse)(nil),        // 7: cloudstack.management.loadbalancer.v1.CreateLoadBalancerRuleResponse
-	(*ListLoadBalancerRuleInstancesRequest)(nil),  // 8: cloudstack.management.loadbalancer.v1.ListLoadBalancerRuleInstancesRequest
-	(*ListLoadBalancerRuleInstancesResponse)(nil), // 9: cloudstack.management.loadbalancer.v1.ListLoadBalancerRuleInstancesResponse
-	(*CreateApplicationLoadBalancerRequest)(nil),  // 10: cloudstack.management.loadbalancer.v1.CreateApplicationLoadBalancerRequest
-	(*CreateApplicationLoadBalancerResponse)(nil), // 11: cloudstack.management.loadbalancer.v1.CreateApplicationLoadBalancerResponse
-	(*DeleteLoadBalancerRuleRequest)(nil),         // 12: cloudstack.management.loadbalancer.v1.DeleteLoadBalancerRuleRequest
-	(*DeleteLoadBalancerRuleResponse)(nil),        // 13: cloudstack.management.loadbalancer.v1.DeleteLoadBalancerRuleResponse
-	(*AssignCertToLoadBalancerRequest)(nil),       // 14: cloudstack.management.loadbalancer.v1.AssignCertToLoadBalancerRequest
-	(*AssignCertToLoadBalancerResponse)(nil),      // 15: cloudstack.management.loadbalancer.v1.AssignCertToLoadBalancerResponse
-	(*DeleteApplicationLoadBalancerRequest)(nil),  // 16: cloudstack.management.loadbalancer.v1.DeleteApplicationLoadBalancerRequest
-	(*DeleteApplicationLoadBalancerResponse)(nil), // 17: cloudstack.management.loadbalancer.v1.DeleteApplicationLoadBalancerResponse
-	(*ListLBStickinessPoliciesRequest)(nil),       // 18: cloudstack.management.loadbalancer.v1.ListLBStickinessPoliciesRequest
-	(*ListLBStickinessPoliciesResponse)(nil),      // 19: cloudstack.management.loadbalancer.v1.ListLBStickinessPoliciesResponse
-	(*CreateLBHealthCheckPolicyRequest)(nil),      // 20: cloudstack.management.loadbalancer.v1.CreateLBHealthCheckPolicyRequest
-	(*CreateLBHealthCheckPolicyResponse)(nil),     // 21: cloudstack.management.loadbalancer.v1.CreateLBHealthCheckPolicyResponse
-	(*UpdateLoadBalancerRuleRequest)(nil),         // 22: cloudstack.management.loadbalancer.v1.UpdateLoadBalancerRuleRequest
-	(*UpdateLoadBalancerRuleResponse)(nil),        // 23: cloudstack.management.loadbalancer.v1.UpdateLoadBalancerRuleResponse
-	(*UpdateLBHealthCheckPolicyRequest)(nil),      // 24: cloudstack.management.loadbalancer.v1.UpdateLBHealthCheckPolicyRequest
-	(*UpdateLBHealthCheckPolicyResponse)(nil),     // 25: cloudstack.management.loadbalancer.v1.UpdateLBHealthCheckPolicyResponse
-	(*DeleteSslCertRequest)(nil),                  // 26: cloudstack.management.loadbalancer.v1.DeleteSslCertRequest
-	(*DeleteSslCertResponse)(nil),                 // 27: cloudstack.management.loadbalancer.v1.DeleteSslCertResponse
-	(*RemoveFromLoadBalancerRuleRequest)(nil),     // 28: cloudstack.management.loadbalancer.v1.RemoveFromLoadBalancerRuleRequest
-	(*RemoveFromLoadBalancerRuleResponse)(nil),    // 29: cloudstack.management.loadbalancer.v1.RemoveFromLoadBalancerRuleResponse
-	(*ListSslCertsRequest)(nil),                   // 30: cloudstack.management.loadbalancer.v1.ListSslCertsRequest
-	(*ListSslCertsResponse)(nil),                  // 31: cloudstack.management.loadbalancer.v1.ListSslCertsResponse
-	(*DeleteLBHealthCheckPolicyRequest)(nil),      // 32: cloudstack.management.loadbalancer.v1.DeleteLBHealthCheckPolicyRequest
-	(*DeleteLBHealthCheckPolicyResponse)(nil),     // 33: cloudstack.management.loadbalancer.v1.DeleteLBHealthCheckPolicyResponse
-	(*CreateLBStickinessPolicyRequest)(nil),       // 34: cloudstack.management.loadbalancer.v1.CreateLBStickinessPolicyRequest
-	(*CreateLBStickinessPolicyResponse)(nil),      // 35: cloudstack.management.loadbalancer.v1.CreateLBStickinessPolicyResponse
-	(*UpdateApplicationLoadBalancerRequest)(nil),  // 36: cloudstack.management.loadbalancer.v1.UpdateApplicationLoadBalancerRequest
-	(*UpdateApplicationLoadBalancerResponse)(nil), // 37: cloudstack.management.loadbalancer.v1.UpdateApplicationLoadBalancerResponse
-	(*RemoveCertFromLoadBalancerRequest)(nil),     // 38: cloudstack.management.loadbalancer.v1.RemoveCertFromLoadBalancerRequest
-	(*RemoveCertFromLoadBalancerResponse)(nil),    // 39: cloudstack.management.loadbalancer.v1.RemoveCertFromLoadBalancerResponse
-	(*ListLBHealthCheckPoliciesRequest)(nil),      // 40: cloudstack.management.loadbalancer.v1.ListLBHealthCheckPoliciesRequest
-	(*ListLBHealthCheckPoliciesResponse)(nil),     // 41: cloudstack.management.loadbalancer.v1.ListLBHealthCheckPoliciesResponse
-	(*UploadSslCertRequest)(nil),                  // 42: cloudstack.management.loadbalancer.v1.UploadSslCertRequest
-	(*UploadSslCertResponse)(nil),                 // 43: cloudstack.management.loadbalancer.v1.UploadSslCertResponse
-	(*ListApplicationLoadBalancersRequest)(nil),   // 44: cloudstack.management.loadbalancer.v1.ListApplicationLoadBalancersRequest
-	(*ListApplicationLoadBalancersResponse)(nil),  // 45: cloudstack.management.loadbalancer.v1.ListApplicationLoadBalancersResponse
-	(*UpdateLBStickinessPolicyRequest)(nil),       // 46: cloudstack.management.loadbalancer.v1.UpdateLBStickinessPolicyRequest
-	(*UpdateLBStickinessPolicyResponse)(nil),      // 47: cloudstack.management.loadbalancer.v1.UpdateLBStickinessPolicyResponse
-	(*LoadBalancer)(nil),                          // 48: cloudstack.management.loadbalancer.v1.LoadBalancer
-	(*LoadBalancerRuleVmMap)(nil),                 // 49: cloudstack.management.loadbalancer.v1.LoadBalancerRuleVmMap
-	(*LBStickiness)(nil),                          // 50: cloudstack.management.loadbalancer.v1.LBStickiness
-	(*SslCert)(nil),                               // 51: cloudstack.management.loadbalancer.v1.SslCert
-	(*LBHealthCheck)(nil),                         // 52: cloudstack.management.loadbalancer.v1.LBHealthCheck
-	(*ApplicationLoadBalancer)(nil),               // 53: cloudstack.management.loadbalancer.v1.ApplicationLoadBalancer
-	(*Success)(nil),                               // 54: cloudstack.management.loadbalancer.v1.Success
-	(*Item)(nil),                                  // 55: cloudstack.management.loadbalancer.v1.Item
-	(*Result)(nil),                                // 56: cloudstack.management.loadbalancer.v1.Result
-	nil,                                           // 57: cloudstack.management.loadbalancer.v1.AssignToLoadBalancerRuleRequest.VmIdIpMapEntry
-	nil,                                           // 58: cloudstack.management.loadbalancer.v1.ListLoadBalancerRulesRequest.TagsEntry
-	nil,                                           // 59: cloudstack.management.loadbalancer.v1.RemoveFromLoadBalancerRuleRequest.VmIdIpMapEntry
-	nil,                                           // 60: cloudstack.management.loadbalancer.v1.CreateLBStickinessPolicyRequest.ParamListEntry
-	nil,                                           // 61: cloudstack.management.loadbalancer.v1.ListApplicationLoadBalancersRequest.TagsEntry
-	nil,                                           // 62: cloudstack.management.loadbalancer.v1.Item.DetailsEntry
+	(*AssignCertToLoadBalancerRequest)(nil),                 // 0: cloudstack.management.loadbalancer.v1.AssignCertToLoadBalancerRequest
+	(*AssignCertToLoadBalancerResponse)(nil),                // 1: cloudstack.management.loadbalancer.v1.AssignCertToLoadBalancerResponse
+	(*AssignToLoadBalancerRuleRequest)(nil),                 // 2: cloudstack.management.loadbalancer.v1.AssignToLoadBalancerRuleRequest
+	(*AssignToLoadBalancerRuleResponse)(nil),                // 3: cloudstack.management.loadbalancer.v1.AssignToLoadBalancerRuleResponse
+	(*CreateApplicationLoadBalancerRequest)(nil),            // 4: cloudstack.management.loadbalancer.v1.CreateApplicationLoadBalancerRequest
+	(*CreateApplicationLoadBalancerResponse)(nil),           // 5: cloudstack.management.loadbalancer.v1.CreateApplicationLoadBalancerResponse
+	(*CreateLBHealthCheckPolicyRequest)(nil),                // 6: cloudstack.management.loadbalancer.v1.CreateLBHealthCheckPolicyRequest
+	(*CreateLBHealthCheckPolicyResponse)(nil),               // 7: cloudstack.management.loadbalancer.v1.CreateLBHealthCheckPolicyResponse
+	(*CreateLBStickinessPolicyRequest)(nil),                 // 8: cloudstack.management.loadbalancer.v1.CreateLBStickinessPolicyRequest
+	(*CreateLBStickinessPolicyResponse)(nil),                // 9: cloudstack.management.loadbalancer.v1.CreateLBStickinessPolicyResponse
+	(*CreateLoadBalancerRuleRequest)(nil),                   // 10: cloudstack.management.loadbalancer.v1.CreateLoadBalancerRuleRequest
+	(*CreateLoadBalancerRuleResponse)(nil),                  // 11: cloudstack.management.loadbalancer.v1.CreateLoadBalancerRuleResponse
+	(*DeleteApplicationLoadBalancerRequest)(nil),            // 12: cloudstack.management.loadbalancer.v1.DeleteApplicationLoadBalancerRequest
+	(*DeleteApplicationLoadBalancerResponse)(nil),           // 13: cloudstack.management.loadbalancer.v1.DeleteApplicationLoadBalancerResponse
+	(*DeleteLBHealthCheckPolicyRequest)(nil),                // 14: cloudstack.management.loadbalancer.v1.DeleteLBHealthCheckPolicyRequest
+	(*DeleteLBHealthCheckPolicyResponse)(nil),               // 15: cloudstack.management.loadbalancer.v1.DeleteLBHealthCheckPolicyResponse
+	(*DeleteLBStickinessPolicyRequest)(nil),                 // 16: cloudstack.management.loadbalancer.v1.DeleteLBStickinessPolicyRequest
+	(*DeleteLBStickinessPolicyResponse)(nil),                // 17: cloudstack.management.loadbalancer.v1.DeleteLBStickinessPolicyResponse
+	(*DeleteLoadBalancerRuleRequest)(nil),                   // 18: cloudstack.management.loadbalancer.v1.DeleteLoadBalancerRuleRequest
+	(*DeleteLoadBalancerRuleResponse)(nil),                  // 19: cloudstack.management.loadbalancer.v1.DeleteLoadBalancerRuleResponse
+	(*DeleteSslCertRequest)(nil),                            // 20: cloudstack.management.loadbalancer.v1.DeleteSslCertRequest
+	(*DeleteSslCertResponse)(nil),                           // 21: cloudstack.management.loadbalancer.v1.DeleteSslCertResponse
+	(*ListApplicationLoadBalancersRequest)(nil),             // 22: cloudstack.management.loadbalancer.v1.ListApplicationLoadBalancersRequest
+	(*ListApplicationLoadBalancersResponse)(nil),            // 23: cloudstack.management.loadbalancer.v1.ListApplicationLoadBalancersResponse
+	(*ListLBHealthCheckPoliciesRequest)(nil),                // 24: cloudstack.management.loadbalancer.v1.ListLBHealthCheckPoliciesRequest
+	(*ListLBHealthCheckPoliciesResponse)(nil),               // 25: cloudstack.management.loadbalancer.v1.ListLBHealthCheckPoliciesResponse
+	(*ListLBStickinessPoliciesRequest)(nil),                 // 26: cloudstack.management.loadbalancer.v1.ListLBStickinessPoliciesRequest
+	(*ListLBStickinessPoliciesResponse)(nil),                // 27: cloudstack.management.loadbalancer.v1.ListLBStickinessPoliciesResponse
+	(*ListLoadBalancerRuleInstancesRequest)(nil),            // 28: cloudstack.management.loadbalancer.v1.ListLoadBalancerRuleInstancesRequest
+	(*ListLoadBalancerRuleInstancesResponse)(nil),           // 29: cloudstack.management.loadbalancer.v1.ListLoadBalancerRuleInstancesResponse
+	(*ListLoadBalancerRuleInstancesCmdByAdminRequest)(nil),  // 30: cloudstack.management.loadbalancer.v1.ListLoadBalancerRuleInstancesCmdByAdminRequest
+	(*ListLoadBalancerRuleInstancesCmdByAdminResponse)(nil), // 31: cloudstack.management.loadbalancer.v1.ListLoadBalancerRuleInstancesCmdByAdminResponse
+	(*ListLoadBalancerRulesRequest)(nil),                    // 32: cloudstack.management.loadbalancer.v1.ListLoadBalancerRulesRequest
+	(*ListLoadBalancerRulesResponse)(nil),                   // 33: cloudstack.management.loadbalancer.v1.ListLoadBalancerRulesResponse
+	(*ListSslCertsRequest)(nil),                             // 34: cloudstack.management.loadbalancer.v1.ListSslCertsRequest
+	(*ListSslCertsResponse)(nil),                            // 35: cloudstack.management.loadbalancer.v1.ListSslCertsResponse
+	(*RemoveCertFromLoadBalancerRequest)(nil),               // 36: cloudstack.management.loadbalancer.v1.RemoveCertFromLoadBalancerRequest
+	(*RemoveCertFromLoadBalancerResponse)(nil),              // 37: cloudstack.management.loadbalancer.v1.RemoveCertFromLoadBalancerResponse
+	(*RemoveFromLoadBalancerRuleRequest)(nil),               // 38: cloudstack.management.loadbalancer.v1.RemoveFromLoadBalancerRuleRequest
+	(*RemoveFromLoadBalancerRuleResponse)(nil),              // 39: cloudstack.management.loadbalancer.v1.RemoveFromLoadBalancerRuleResponse
+	(*UpdateApplicationLoadBalancerRequest)(nil),            // 40: cloudstack.management.loadbalancer.v1.UpdateApplicationLoadBalancerRequest
+	(*UpdateApplicationLoadBalancerResponse)(nil),           // 41: cloudstack.management.loadbalancer.v1.UpdateApplicationLoadBalancerResponse
+	(*UpdateLBHealthCheckPolicyRequest)(nil),                // 42: cloudstack.management.loadbalancer.v1.UpdateLBHealthCheckPolicyRequest
+	(*UpdateLBHealthCheckPolicyResponse)(nil),               // 43: cloudstack.management.loadbalancer.v1.UpdateLBHealthCheckPolicyResponse
+	(*UpdateLBStickinessPolicyRequest)(nil),                 // 44: cloudstack.management.loadbalancer.v1.UpdateLBStickinessPolicyRequest
+	(*UpdateLBStickinessPolicyResponse)(nil),                // 45: cloudstack.management.loadbalancer.v1.UpdateLBStickinessPolicyResponse
+	(*UpdateLoadBalancerRuleRequest)(nil),                   // 46: cloudstack.management.loadbalancer.v1.UpdateLoadBalancerRuleRequest
+	(*UpdateLoadBalancerRuleResponse)(nil),                  // 47: cloudstack.management.loadbalancer.v1.UpdateLoadBalancerRuleResponse
+	(*UploadSslCertRequest)(nil),                            // 48: cloudstack.management.loadbalancer.v1.UploadSslCertRequest
+	(*UploadSslCertResponse)(nil),                           // 49: cloudstack.management.loadbalancer.v1.UploadSslCertResponse
+	(*ApplicationLoadBalancer)(nil),                         // 50: cloudstack.management.loadbalancer.v1.ApplicationLoadBalancer
+	(*LBHealthCheck)(nil),                                   // 51: cloudstack.management.loadbalancer.v1.LBHealthCheck
+	(*LBStickiness)(nil),                                    // 52: cloudstack.management.loadbalancer.v1.LBStickiness
+	(*LoadBalancer)(nil),                                    // 53: cloudstack.management.loadbalancer.v1.LoadBalancer
+	(*LoadBalancerRuleVmMap)(nil),                           // 54: cloudstack.management.loadbalancer.v1.LoadBalancerRuleVmMap
+	(*SslCert)(nil),                                         // 55: cloudstack.management.loadbalancer.v1.SslCert
+	(*Success)(nil),                                         // 56: cloudstack.management.loadbalancer.v1.Success
+	(*Result)(nil),                                          // 57: cloudstack.management.loadbalancer.v1.Result
+	nil,                                                     // 58: cloudstack.management.loadbalancer.v1.AssignToLoadBalancerRuleRequest.VmIdIpMapEntry
+	nil,                                                     // 59: cloudstack.management.loadbalancer.v1.CreateLBStickinessPolicyRequest.ParamListEntry
+	nil,                                                     // 60: cloudstack.management.loadbalancer.v1.ListApplicationLoadBalancersRequest.TagsEntry
+	nil,                                                     // 61: cloudstack.management.loadbalancer.v1.ListLoadBalancerRulesRequest.TagsEntry
+	nil,                                                     // 62: cloudstack.management.loadbalancer.v1.RemoveFromLoadBalancerRuleRequest.VmIdIpMapEntry
 }
 var file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_depIdxs = []int32{
-	57, // 0: cloudstack.management.loadbalancer.v1.AssignToLoadBalancerRuleRequest.vm_id_ip_map:type_name -> cloudstack.management.loadbalancer.v1.AssignToLoadBalancerRuleRequest.VmIdIpMapEntry
-	56, // 1: cloudstack.management.loadbalancer.v1.AssignToLoadBalancerRuleResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
-	58, // 2: cloudstack.management.loadbalancer.v1.ListLoadBalancerRulesRequest.tags:type_name -> cloudstack.management.loadbalancer.v1.ListLoadBalancerRulesRequest.TagsEntry
-	48, // 3: cloudstack.management.loadbalancer.v1.ListLoadBalancerRulesResponse.items:type_name -> cloudstack.management.loadbalancer.v1.LoadBalancer
-	56, // 4: cloudstack.management.loadbalancer.v1.DeleteLBStickinessPolicyResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
-	56, // 5: cloudstack.management.loadbalancer.v1.CreateLoadBalancerRuleResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
-	49, // 6: cloudstack.management.loadbalancer.v1.ListLoadBalancerRuleInstancesResponse.items:type_name -> cloudstack.management.loadbalancer.v1.LoadBalancerRuleVmMap
-	56, // 7: cloudstack.management.loadbalancer.v1.CreateApplicationLoadBalancerResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
-	56, // 8: cloudstack.management.loadbalancer.v1.DeleteLoadBalancerRuleResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
-	56, // 9: cloudstack.management.loadbalancer.v1.AssignCertToLoadBalancerResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
-	56, // 10: cloudstack.management.loadbalancer.v1.DeleteApplicationLoadBalancerResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
-	50, // 11: cloudstack.management.loadbalancer.v1.ListLBStickinessPoliciesResponse.items:type_name -> cloudstack.management.loadbalancer.v1.LBStickiness
-	56, // 12: cloudstack.management.loadbalancer.v1.CreateLBHealthCheckPolicyResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
-	56, // 13: cloudstack.management.loadbalancer.v1.UpdateLoadBalancerRuleResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
-	56, // 14: cloudstack.management.loadbalancer.v1.UpdateLBHealthCheckPolicyResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
-	56, // 15: cloudstack.management.loadbalancer.v1.DeleteSslCertResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
-	59, // 16: cloudstack.management.loadbalancer.v1.RemoveFromLoadBalancerRuleRequest.vm_id_ip_map:type_name -> cloudstack.management.loadbalancer.v1.RemoveFromLoadBalancerRuleRequest.VmIdIpMapEntry
-	56, // 17: cloudstack.management.loadbalancer.v1.RemoveFromLoadBalancerRuleResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
-	51, // 18: cloudstack.management.loadbalancer.v1.ListSslCertsResponse.items:type_name -> cloudstack.management.loadbalancer.v1.SslCert
-	56, // 19: cloudstack.management.loadbalancer.v1.DeleteLBHealthCheckPolicyResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
-	60, // 20: cloudstack.management.loadbalancer.v1.CreateLBStickinessPolicyRequest.param_list:type_name -> cloudstack.management.loadbalancer.v1.CreateLBStickinessPolicyRequest.ParamListEntry
-	56, // 21: cloudstack.management.loadbalancer.v1.CreateLBStickinessPolicyResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
-	56, // 22: cloudstack.management.loadbalancer.v1.UpdateApplicationLoadBalancerResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
-	56, // 23: cloudstack.management.loadbalancer.v1.RemoveCertFromLoadBalancerResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
-	52, // 24: cloudstack.management.loadbalancer.v1.ListLBHealthCheckPoliciesResponse.items:type_name -> cloudstack.management.loadbalancer.v1.LBHealthCheck
-	56, // 25: cloudstack.management.loadbalancer.v1.UploadSslCertResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
-	61, // 26: cloudstack.management.loadbalancer.v1.ListApplicationLoadBalancersRequest.tags:type_name -> cloudstack.management.loadbalancer.v1.ListApplicationLoadBalancersRequest.TagsEntry
-	53, // 27: cloudstack.management.loadbalancer.v1.ListApplicationLoadBalancersResponse.items:type_name -> cloudstack.management.loadbalancer.v1.ApplicationLoadBalancer
-	56, // 28: cloudstack.management.loadbalancer.v1.UpdateLBStickinessPolicyResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
-	62, // 29: cloudstack.management.loadbalancer.v1.Item.details:type_name -> cloudstack.management.loadbalancer.v1.Item.DetailsEntry
-	0,  // 30: cloudstack.management.loadbalancer.v1.LoadbalancerService.AssignToLoadBalancerRule:input_type -> cloudstack.management.loadbalancer.v1.AssignToLoadBalancerRuleRequest
-	2,  // 31: cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLoadBalancerRules:input_type -> cloudstack.management.loadbalancer.v1.ListLoadBalancerRulesRequest
-	4,  // 32: cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteLBStickinessPolicy:input_type -> cloudstack.management.loadbalancer.v1.DeleteLBStickinessPolicyRequest
-	6,  // 33: cloudstack.management.loadbalancer.v1.LoadbalancerService.CreateLoadBalancerRule:input_type -> cloudstack.management.loadbalancer.v1.CreateLoadBalancerRuleRequest
-	8,  // 34: cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLoadBalancerRuleInstances:input_type -> cloudstack.management.loadbalancer.v1.ListLoadBalancerRuleInstancesRequest
-	10, // 35: cloudstack.management.loadbalancer.v1.LoadbalancerService.CreateApplicationLoadBalancer:input_type -> cloudstack.management.loadbalancer.v1.CreateApplicationLoadBalancerRequest
-	12, // 36: cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteLoadBalancerRule:input_type -> cloudstack.management.loadbalancer.v1.DeleteLoadBalancerRuleRequest
-	14, // 37: cloudstack.management.loadbalancer.v1.LoadbalancerService.AssignCertToLoadBalancer:input_type -> cloudstack.management.loadbalancer.v1.AssignCertToLoadBalancerRequest
-	16, // 38: cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteApplicationLoadBalancer:input_type -> cloudstack.management.loadbalancer.v1.DeleteApplicationLoadBalancerRequest
-	18, // 39: cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLBStickinessPolicies:input_type -> cloudstack.management.loadbalancer.v1.ListLBStickinessPoliciesRequest
-	20, // 40: cloudstack.management.loadbalancer.v1.LoadbalancerService.CreateLBHealthCheckPolicy:input_type -> cloudstack.management.loadbalancer.v1.CreateLBHealthCheckPolicyRequest
-	22, // 41: cloudstack.management.loadbalancer.v1.LoadbalancerService.UpdateLoadBalancerRule:input_type -> cloudstack.management.loadbalancer.v1.UpdateLoadBalancerRuleRequest
-	24, // 42: cloudstack.management.loadbalancer.v1.LoadbalancerService.UpdateLBHealthCheckPolicy:input_type -> cloudstack.management.loadbalancer.v1.UpdateLBHealthCheckPolicyRequest
-	26, // 43: cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteSslCert:input_type -> cloudstack.management.loadbalancer.v1.DeleteSslCertRequest
-	28, // 44: cloudstack.management.loadbalancer.v1.LoadbalancerService.RemoveFromLoadBalancerRule:input_type -> cloudstack.management.loadbalancer.v1.RemoveFromLoadBalancerRuleRequest
-	30, // 45: cloudstack.management.loadbalancer.v1.LoadbalancerService.ListSslCerts:input_type -> cloudstack.management.loadbalancer.v1.ListSslCertsRequest
-	32, // 46: cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteLBHealthCheckPolicy:input_type -> cloudstack.management.loadbalancer.v1.DeleteLBHealthCheckPolicyRequest
-	34, // 47: cloudstack.management.loadbalancer.v1.LoadbalancerService.CreateLBStickinessPolicy:input_type -> cloudstack.management.loadbalancer.v1.CreateLBStickinessPolicyRequest
-	36, // 48: cloudstack.management.loadbalancer.v1.LoadbalancerService.UpdateApplicationLoadBalancer:input_type -> cloudstack.management.loadbalancer.v1.UpdateApplicationLoadBalancerRequest
-	38, // 49: cloudstack.management.loadbalancer.v1.LoadbalancerService.RemoveCertFromLoadBalancer:input_type -> cloudstack.management.loadbalancer.v1.RemoveCertFromLoadBalancerRequest
-	40, // 50: cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLBHealthCheckPolicies:input_type -> cloudstack.management.loadbalancer.v1.ListLBHealthCheckPoliciesRequest
-	42, // 51: cloudstack.management.loadbalancer.v1.LoadbalancerService.UploadSslCert:input_type -> cloudstack.management.loadbalancer.v1.UploadSslCertRequest
-	44, // 52: cloudstack.management.loadbalancer.v1.LoadbalancerService.ListApplicationLoadBalancers:input_type -> cloudstack.management.loadbalancer.v1.ListApplicationLoadBalancersRequest
-	46, // 53: cloudstack.management.loadbalancer.v1.LoadbalancerService.UpdateLBStickinessPolicy:input_type -> cloudstack.management.loadbalancer.v1.UpdateLBStickinessPolicyRequest
-	1,  // 54: cloudstack.management.loadbalancer.v1.LoadbalancerService.AssignToLoadBalancerRule:output_type -> cloudstack.management.loadbalancer.v1.AssignToLoadBalancerRuleResponse
-	3,  // 55: cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLoadBalancerRules:output_type -> cloudstack.management.loadbalancer.v1.ListLoadBalancerRulesResponse
-	5,  // 56: cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteLBStickinessPolicy:output_type -> cloudstack.management.loadbalancer.v1.DeleteLBStickinessPolicyResponse
-	7,  // 57: cloudstack.management.loadbalancer.v1.LoadbalancerService.CreateLoadBalancerRule:output_type -> cloudstack.management.loadbalancer.v1.CreateLoadBalancerRuleResponse
-	9,  // 58: cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLoadBalancerRuleInstances:output_type -> cloudstack.management.loadbalancer.v1.ListLoadBalancerRuleInstancesResponse
-	11, // 59: cloudstack.management.loadbalancer.v1.LoadbalancerService.CreateApplicationLoadBalancer:output_type -> cloudstack.management.loadbalancer.v1.CreateApplicationLoadBalancerResponse
-	13, // 60: cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteLoadBalancerRule:output_type -> cloudstack.management.loadbalancer.v1.DeleteLoadBalancerRuleResponse
-	15, // 61: cloudstack.management.loadbalancer.v1.LoadbalancerService.AssignCertToLoadBalancer:output_type -> cloudstack.management.loadbalancer.v1.AssignCertToLoadBalancerResponse
-	17, // 62: cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteApplicationLoadBalancer:output_type -> cloudstack.management.loadbalancer.v1.DeleteApplicationLoadBalancerResponse
-	19, // 63: cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLBStickinessPolicies:output_type -> cloudstack.management.loadbalancer.v1.ListLBStickinessPoliciesResponse
-	21, // 64: cloudstack.management.loadbalancer.v1.LoadbalancerService.CreateLBHealthCheckPolicy:output_type -> cloudstack.management.loadbalancer.v1.CreateLBHealthCheckPolicyResponse
-	23, // 65: cloudstack.management.loadbalancer.v1.LoadbalancerService.UpdateLoadBalancerRule:output_type -> cloudstack.management.loadbalancer.v1.UpdateLoadBalancerRuleResponse
-	25, // 66: cloudstack.management.loadbalancer.v1.LoadbalancerService.UpdateLBHealthCheckPolicy:output_type -> cloudstack.management.loadbalancer.v1.UpdateLBHealthCheckPolicyResponse
-	27, // 67: cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteSslCert:output_type -> cloudstack.management.loadbalancer.v1.DeleteSslCertResponse
-	29, // 68: cloudstack.management.loadbalancer.v1.LoadbalancerService.RemoveFromLoadBalancerRule:output_type -> cloudstack.management.loadbalancer.v1.RemoveFromLoadBalancerRuleResponse
-	31, // 69: cloudstack.management.loadbalancer.v1.LoadbalancerService.ListSslCerts:output_type -> cloudstack.management.loadbalancer.v1.ListSslCertsResponse
-	33, // 70: cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteLBHealthCheckPolicy:output_type -> cloudstack.management.loadbalancer.v1.DeleteLBHealthCheckPolicyResponse
-	35, // 71: cloudstack.management.loadbalancer.v1.LoadbalancerService.CreateLBStickinessPolicy:output_type -> cloudstack.management.loadbalancer.v1.CreateLBStickinessPolicyResponse
-	37, // 72: cloudstack.management.loadbalancer.v1.LoadbalancerService.UpdateApplicationLoadBalancer:output_type -> cloudstack.management.loadbalancer.v1.UpdateApplicationLoadBalancerResponse
-	39, // 73: cloudstack.management.loadbalancer.v1.LoadbalancerService.RemoveCertFromLoadBalancer:output_type -> cloudstack.management.loadbalancer.v1.RemoveCertFromLoadBalancerResponse
-	41, // 74: cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLBHealthCheckPolicies:output_type -> cloudstack.management.loadbalancer.v1.ListLBHealthCheckPoliciesResponse
-	43, // 75: cloudstack.management.loadbalancer.v1.LoadbalancerService.UploadSslCert:output_type -> cloudstack.management.loadbalancer.v1.UploadSslCertResponse
-	45, // 76: cloudstack.management.loadbalancer.v1.LoadbalancerService.ListApplicationLoadBalancers:output_type -> cloudstack.management.loadbalancer.v1.ListApplicationLoadBalancersResponse
-	47, // 77: cloudstack.management.loadbalancer.v1.LoadbalancerService.UpdateLBStickinessPolicy:output_type -> cloudstack.management.loadbalancer.v1.UpdateLBStickinessPolicyResponse
-	54, // [54:78] is the sub-list for method output_type
-	30, // [30:54] is the sub-list for method input_type
+	57, // 0: cloudstack.management.loadbalancer.v1.AssignCertToLoadBalancerResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
+	58, // 1: cloudstack.management.loadbalancer.v1.AssignToLoadBalancerRuleRequest.vm_id_ip_map_:type_name -> cloudstack.management.loadbalancer.v1.AssignToLoadBalancerRuleRequest.VmIdIpMapEntry
+	57, // 2: cloudstack.management.loadbalancer.v1.AssignToLoadBalancerRuleResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
+	57, // 3: cloudstack.management.loadbalancer.v1.CreateApplicationLoadBalancerResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
+	57, // 4: cloudstack.management.loadbalancer.v1.CreateLBHealthCheckPolicyResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
+	59, // 5: cloudstack.management.loadbalancer.v1.CreateLBStickinessPolicyRequest.param_list:type_name -> cloudstack.management.loadbalancer.v1.CreateLBStickinessPolicyRequest.ParamListEntry
+	57, // 6: cloudstack.management.loadbalancer.v1.CreateLBStickinessPolicyResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
+	57, // 7: cloudstack.management.loadbalancer.v1.CreateLoadBalancerRuleResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
+	57, // 8: cloudstack.management.loadbalancer.v1.DeleteApplicationLoadBalancerResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
+	57, // 9: cloudstack.management.loadbalancer.v1.DeleteLBHealthCheckPolicyResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
+	57, // 10: cloudstack.management.loadbalancer.v1.DeleteLBStickinessPolicyResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
+	57, // 11: cloudstack.management.loadbalancer.v1.DeleteLoadBalancerRuleResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
+	57, // 12: cloudstack.management.loadbalancer.v1.DeleteSslCertResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
+	60, // 13: cloudstack.management.loadbalancer.v1.ListApplicationLoadBalancersRequest.tags:type_name -> cloudstack.management.loadbalancer.v1.ListApplicationLoadBalancersRequest.TagsEntry
+	50, // 14: cloudstack.management.loadbalancer.v1.ListApplicationLoadBalancersResponse.items:type_name -> cloudstack.management.loadbalancer.v1.ApplicationLoadBalancer
+	51, // 15: cloudstack.management.loadbalancer.v1.ListLBHealthCheckPoliciesResponse.items:type_name -> cloudstack.management.loadbalancer.v1.LBHealthCheck
+	52, // 16: cloudstack.management.loadbalancer.v1.ListLBStickinessPoliciesResponse.items:type_name -> cloudstack.management.loadbalancer.v1.LBStickiness
+	54, // 17: cloudstack.management.loadbalancer.v1.ListLoadBalancerRuleInstancesResponse.items:type_name -> cloudstack.management.loadbalancer.v1.LoadBalancerRuleVmMap
+	54, // 18: cloudstack.management.loadbalancer.v1.ListLoadBalancerRuleInstancesCmdByAdminResponse.items:type_name -> cloudstack.management.loadbalancer.v1.LoadBalancerRuleVmMap
+	61, // 19: cloudstack.management.loadbalancer.v1.ListLoadBalancerRulesRequest.tags:type_name -> cloudstack.management.loadbalancer.v1.ListLoadBalancerRulesRequest.TagsEntry
+	53, // 20: cloudstack.management.loadbalancer.v1.ListLoadBalancerRulesResponse.items:type_name -> cloudstack.management.loadbalancer.v1.LoadBalancer
+	55, // 21: cloudstack.management.loadbalancer.v1.ListSslCertsResponse.items:type_name -> cloudstack.management.loadbalancer.v1.SslCert
+	57, // 22: cloudstack.management.loadbalancer.v1.RemoveCertFromLoadBalancerResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
+	62, // 23: cloudstack.management.loadbalancer.v1.RemoveFromLoadBalancerRuleRequest.vm_id_ip_map_:type_name -> cloudstack.management.loadbalancer.v1.RemoveFromLoadBalancerRuleRequest.VmIdIpMapEntry
+	57, // 24: cloudstack.management.loadbalancer.v1.RemoveFromLoadBalancerRuleResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
+	57, // 25: cloudstack.management.loadbalancer.v1.UpdateApplicationLoadBalancerResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
+	57, // 26: cloudstack.management.loadbalancer.v1.UpdateLBHealthCheckPolicyResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
+	57, // 27: cloudstack.management.loadbalancer.v1.UpdateLBStickinessPolicyResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
+	57, // 28: cloudstack.management.loadbalancer.v1.UpdateLoadBalancerRuleResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
+	57, // 29: cloudstack.management.loadbalancer.v1.UploadSslCertResponse.result:type_name -> cloudstack.management.loadbalancer.v1.Result
+	0,  // 30: cloudstack.management.loadbalancer.v1.LoadbalancerService.AssignCertToLoadBalancer:input_type -> cloudstack.management.loadbalancer.v1.AssignCertToLoadBalancerRequest
+	2,  // 31: cloudstack.management.loadbalancer.v1.LoadbalancerService.AssignToLoadBalancerRule:input_type -> cloudstack.management.loadbalancer.v1.AssignToLoadBalancerRuleRequest
+	4,  // 32: cloudstack.management.loadbalancer.v1.LoadbalancerService.CreateApplicationLoadBalancer:input_type -> cloudstack.management.loadbalancer.v1.CreateApplicationLoadBalancerRequest
+	6,  // 33: cloudstack.management.loadbalancer.v1.LoadbalancerService.CreateLBHealthCheckPolicy:input_type -> cloudstack.management.loadbalancer.v1.CreateLBHealthCheckPolicyRequest
+	8,  // 34: cloudstack.management.loadbalancer.v1.LoadbalancerService.CreateLBStickinessPolicy:input_type -> cloudstack.management.loadbalancer.v1.CreateLBStickinessPolicyRequest
+	10, // 35: cloudstack.management.loadbalancer.v1.LoadbalancerService.CreateLoadBalancerRule:input_type -> cloudstack.management.loadbalancer.v1.CreateLoadBalancerRuleRequest
+	12, // 36: cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteApplicationLoadBalancer:input_type -> cloudstack.management.loadbalancer.v1.DeleteApplicationLoadBalancerRequest
+	14, // 37: cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteLBHealthCheckPolicy:input_type -> cloudstack.management.loadbalancer.v1.DeleteLBHealthCheckPolicyRequest
+	16, // 38: cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteLBStickinessPolicy:input_type -> cloudstack.management.loadbalancer.v1.DeleteLBStickinessPolicyRequest
+	18, // 39: cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteLoadBalancerRule:input_type -> cloudstack.management.loadbalancer.v1.DeleteLoadBalancerRuleRequest
+	20, // 40: cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteSslCert:input_type -> cloudstack.management.loadbalancer.v1.DeleteSslCertRequest
+	22, // 41: cloudstack.management.loadbalancer.v1.LoadbalancerService.ListApplicationLoadBalancers:input_type -> cloudstack.management.loadbalancer.v1.ListApplicationLoadBalancersRequest
+	24, // 42: cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLBHealthCheckPolicies:input_type -> cloudstack.management.loadbalancer.v1.ListLBHealthCheckPoliciesRequest
+	26, // 43: cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLBStickinessPolicies:input_type -> cloudstack.management.loadbalancer.v1.ListLBStickinessPoliciesRequest
+	28, // 44: cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLoadBalancerRuleInstances:input_type -> cloudstack.management.loadbalancer.v1.ListLoadBalancerRuleInstancesRequest
+	30, // 45: cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLoadBalancerRuleInstancesCmdByAdmin:input_type -> cloudstack.management.loadbalancer.v1.ListLoadBalancerRuleInstancesCmdByAdminRequest
+	32, // 46: cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLoadBalancerRules:input_type -> cloudstack.management.loadbalancer.v1.ListLoadBalancerRulesRequest
+	34, // 47: cloudstack.management.loadbalancer.v1.LoadbalancerService.ListSslCerts:input_type -> cloudstack.management.loadbalancer.v1.ListSslCertsRequest
+	36, // 48: cloudstack.management.loadbalancer.v1.LoadbalancerService.RemoveCertFromLoadBalancer:input_type -> cloudstack.management.loadbalancer.v1.RemoveCertFromLoadBalancerRequest
+	38, // 49: cloudstack.management.loadbalancer.v1.LoadbalancerService.RemoveFromLoadBalancerRule:input_type -> cloudstack.management.loadbalancer.v1.RemoveFromLoadBalancerRuleRequest
+	40, // 50: cloudstack.management.loadbalancer.v1.LoadbalancerService.UpdateApplicationLoadBalancer:input_type -> cloudstack.management.loadbalancer.v1.UpdateApplicationLoadBalancerRequest
+	42, // 51: cloudstack.management.loadbalancer.v1.LoadbalancerService.UpdateLBHealthCheckPolicy:input_type -> cloudstack.management.loadbalancer.v1.UpdateLBHealthCheckPolicyRequest
+	44, // 52: cloudstack.management.loadbalancer.v1.LoadbalancerService.UpdateLBStickinessPolicy:input_type -> cloudstack.management.loadbalancer.v1.UpdateLBStickinessPolicyRequest
+	46, // 53: cloudstack.management.loadbalancer.v1.LoadbalancerService.UpdateLoadBalancerRule:input_type -> cloudstack.management.loadbalancer.v1.UpdateLoadBalancerRuleRequest
+	48, // 54: cloudstack.management.loadbalancer.v1.LoadbalancerService.UploadSslCert:input_type -> cloudstack.management.loadbalancer.v1.UploadSslCertRequest
+	1,  // 55: cloudstack.management.loadbalancer.v1.LoadbalancerService.AssignCertToLoadBalancer:output_type -> cloudstack.management.loadbalancer.v1.AssignCertToLoadBalancerResponse
+	3,  // 56: cloudstack.management.loadbalancer.v1.LoadbalancerService.AssignToLoadBalancerRule:output_type -> cloudstack.management.loadbalancer.v1.AssignToLoadBalancerRuleResponse
+	5,  // 57: cloudstack.management.loadbalancer.v1.LoadbalancerService.CreateApplicationLoadBalancer:output_type -> cloudstack.management.loadbalancer.v1.CreateApplicationLoadBalancerResponse
+	7,  // 58: cloudstack.management.loadbalancer.v1.LoadbalancerService.CreateLBHealthCheckPolicy:output_type -> cloudstack.management.loadbalancer.v1.CreateLBHealthCheckPolicyResponse
+	9,  // 59: cloudstack.management.loadbalancer.v1.LoadbalancerService.CreateLBStickinessPolicy:output_type -> cloudstack.management.loadbalancer.v1.CreateLBStickinessPolicyResponse
+	11, // 60: cloudstack.management.loadbalancer.v1.LoadbalancerService.CreateLoadBalancerRule:output_type -> cloudstack.management.loadbalancer.v1.CreateLoadBalancerRuleResponse
+	13, // 61: cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteApplicationLoadBalancer:output_type -> cloudstack.management.loadbalancer.v1.DeleteApplicationLoadBalancerResponse
+	15, // 62: cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteLBHealthCheckPolicy:output_type -> cloudstack.management.loadbalancer.v1.DeleteLBHealthCheckPolicyResponse
+	17, // 63: cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteLBStickinessPolicy:output_type -> cloudstack.management.loadbalancer.v1.DeleteLBStickinessPolicyResponse
+	19, // 64: cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteLoadBalancerRule:output_type -> cloudstack.management.loadbalancer.v1.DeleteLoadBalancerRuleResponse
+	21, // 65: cloudstack.management.loadbalancer.v1.LoadbalancerService.DeleteSslCert:output_type -> cloudstack.management.loadbalancer.v1.DeleteSslCertResponse
+	23, // 66: cloudstack.management.loadbalancer.v1.LoadbalancerService.ListApplicationLoadBalancers:output_type -> cloudstack.management.loadbalancer.v1.ListApplicationLoadBalancersResponse
+	25, // 67: cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLBHealthCheckPolicies:output_type -> cloudstack.management.loadbalancer.v1.ListLBHealthCheckPoliciesResponse
+	27, // 68: cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLBStickinessPolicies:output_type -> cloudstack.management.loadbalancer.v1.ListLBStickinessPoliciesResponse
+	29, // 69: cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLoadBalancerRuleInstances:output_type -> cloudstack.management.loadbalancer.v1.ListLoadBalancerRuleInstancesResponse
+	31, // 70: cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLoadBalancerRuleInstancesCmdByAdmin:output_type -> cloudstack.management.loadbalancer.v1.ListLoadBalancerRuleInstancesCmdByAdminResponse
+	33, // 71: cloudstack.management.loadbalancer.v1.LoadbalancerService.ListLoadBalancerRules:output_type -> cloudstack.management.loadbalancer.v1.ListLoadBalancerRulesResponse
+	35, // 72: cloudstack.management.loadbalancer.v1.LoadbalancerService.ListSslCerts:output_type -> cloudstack.management.loadbalancer.v1.ListSslCertsResponse
+	37, // 73: cloudstack.management.loadbalancer.v1.LoadbalancerService.RemoveCertFromLoadBalancer:output_type -> cloudstack.management.loadbalancer.v1.RemoveCertFromLoadBalancerResponse
+	39, // 74: cloudstack.management.loadbalancer.v1.LoadbalancerService.RemoveFromLoadBalancerRule:output_type -> cloudstack.management.loadbalancer.v1.RemoveFromLoadBalancerRuleResponse
+	41, // 75: cloudstack.management.loadbalancer.v1.LoadbalancerService.UpdateApplicationLoadBalancer:output_type -> cloudstack.management.loadbalancer.v1.UpdateApplicationLoadBalancerResponse
+	43, // 76: cloudstack.management.loadbalancer.v1.LoadbalancerService.UpdateLBHealthCheckPolicy:output_type -> cloudstack.management.loadbalancer.v1.UpdateLBHealthCheckPolicyResponse
+	45, // 77: cloudstack.management.loadbalancer.v1.LoadbalancerService.UpdateLBStickinessPolicy:output_type -> cloudstack.management.loadbalancer.v1.UpdateLBStickinessPolicyResponse
+	47, // 78: cloudstack.management.loadbalancer.v1.LoadbalancerService.UpdateLoadBalancerRule:output_type -> cloudstack.management.loadbalancer.v1.UpdateLoadBalancerRuleResponse
+	49, // 79: cloudstack.management.loadbalancer.v1.LoadbalancerService.UploadSslCert:output_type -> cloudstack.management.loadbalancer.v1.UploadSslCertResponse
+	55, // [55:80] is the sub-list for method output_type
+	30, // [30:55] is the sub-list for method input_type
 	30, // [30:30] is the sub-list for extension type_name
 	30, // [30:30] is the sub-list for extension extendee
 	0,  // [0:30] is the sub-list for field type_name

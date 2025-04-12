@@ -24,106 +24,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// DeleteBucketRequest represents the parameters for deletes an empty bucket.
-type DeleteBucketRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the Bucket
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteBucketRequest) Reset() {
-	*x = DeleteBucketRequest{}
-	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteBucketRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteBucketRequest) ProtoMessage() {}
-
-func (x *DeleteBucketRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteBucketRequest.ProtoReflect.Descriptor instead.
-func (*DeleteBucketRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *DeleteBucketRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *DeleteBucketRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// DeleteBucketResponse represents the response from deletes an empty bucket.
-type DeleteBucketResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteBucketResponse) Reset() {
-	*x = DeleteBucketResponse{}
-	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteBucketResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteBucketResponse) ProtoMessage() {}
-
-func (x *DeleteBucketResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteBucketResponse.ProtoReflect.Descriptor instead.
-func (*DeleteBucketResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *DeleteBucketResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
 // CreateBucketRequest represents the parameters for creates a bucket in the specified object storage pool.
 type CreateBucketRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -156,7 +56,7 @@ type CreateBucketRequest struct {
 
 func (x *CreateBucketRequest) Reset() {
 	*x = CreateBucketRequest{}
-	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -168,7 +68,7 @@ func (x *CreateBucketRequest) String() string {
 func (*CreateBucketRequest) ProtoMessage() {}
 
 func (x *CreateBucketRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[2]
+	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -181,7 +81,7 @@ func (x *CreateBucketRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateBucketRequest.ProtoReflect.Descriptor instead.
 func (*CreateBucketRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDescGZIP(), []int{2}
+	return file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *CreateBucketRequest) GetAccountName() string {
@@ -286,7 +186,7 @@ type CreateBucketResponse struct {
 
 func (x *CreateBucketResponse) Reset() {
 	*x = CreateBucketResponse{}
-	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -298,7 +198,7 @@ func (x *CreateBucketResponse) String() string {
 func (*CreateBucketResponse) ProtoMessage() {}
 
 func (x *CreateBucketResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[3]
+	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -311,7 +211,7 @@ func (x *CreateBucketResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateBucketResponse.ProtoReflect.Descriptor instead.
 func (*CreateBucketResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDescGZIP(), []int{3}
+	return file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *CreateBucketResponse) GetResult() *Result {
@@ -321,39 +221,31 @@ func (x *CreateBucketResponse) GetResult() *Result {
 	return nil
 }
 
-// UpdateBucketRequest represents the parameters for updates bucket properties
-type UpdateBucketRequest struct {
+// DeleteBucketRequest represents the parameters for deletes an empty bucket.
+type DeleteBucketRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The ID of the Bucket
 	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	// Enable/Disable Bucket Versioning
-	Versioning *bool `protobuf:"varint,2,opt,name=versioning" json:"versioning,omitempty"`
-	// Enable/Disable Bucket encryption
-	Encryption *bool `protobuf:"varint,3,opt,name=encryption" json:"encryption,omitempty"`
-	// Bucket Access Policy
-	Policy *string `protobuf:"bytes,4,opt,name=policy" json:"policy,omitempty"`
-	// Bucket Quota in GiB
-	Quota *int32 `protobuf:"varint,5,opt,name=quota" json:"quota,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateBucketRequest) Reset() {
-	*x = UpdateBucketRequest{}
-	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[4]
+func (x *DeleteBucketRequest) Reset() {
+	*x = DeleteBucketRequest{}
+	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateBucketRequest) String() string {
+func (x *DeleteBucketRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateBucketRequest) ProtoMessage() {}
+func (*DeleteBucketRequest) ProtoMessage() {}
 
-func (x *UpdateBucketRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[4]
+func (x *DeleteBucketRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -364,55 +256,27 @@ func (x *UpdateBucketRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateBucketRequest.ProtoReflect.Descriptor instead.
-func (*UpdateBucketRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDescGZIP(), []int{4}
+// Deprecated: Use DeleteBucketRequest.ProtoReflect.Descriptor instead.
+func (*DeleteBucketRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *UpdateBucketRequest) GetId() int64 {
+func (x *DeleteBucketRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
 	return 0
 }
 
-func (x *UpdateBucketRequest) GetVersioning() bool {
-	if x != nil && x.Versioning != nil {
-		return *x.Versioning
-	}
-	return false
-}
-
-func (x *UpdateBucketRequest) GetEncryption() bool {
-	if x != nil && x.Encryption != nil {
-		return *x.Encryption
-	}
-	return false
-}
-
-func (x *UpdateBucketRequest) GetPolicy() string {
-	if x != nil && x.Policy != nil {
-		return *x.Policy
-	}
-	return ""
-}
-
-func (x *UpdateBucketRequest) GetQuota() int32 {
-	if x != nil && x.Quota != nil {
-		return *x.Quota
-	}
-	return 0
-}
-
-func (x *UpdateBucketRequest) GetResponseType() string {
+func (x *DeleteBucketRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// UpdateBucketResponse represents the response from updates bucket properties
-type UpdateBucketResponse struct {
+// DeleteBucketResponse represents the response from deletes an empty bucket.
+type DeleteBucketResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -420,21 +284,21 @@ type UpdateBucketResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateBucketResponse) Reset() {
-	*x = UpdateBucketResponse{}
-	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[5]
+func (x *DeleteBucketResponse) Reset() {
+	*x = DeleteBucketResponse{}
+	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateBucketResponse) String() string {
+func (x *DeleteBucketResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateBucketResponse) ProtoMessage() {}
+func (*DeleteBucketResponse) ProtoMessage() {}
 
-func (x *UpdateBucketResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[5]
+func (x *DeleteBucketResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -445,12 +309,12 @@ func (x *UpdateBucketResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateBucketResponse.ProtoReflect.Descriptor instead.
-func (*UpdateBucketResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDescGZIP(), []int{5}
+// Deprecated: Use DeleteBucketResponse.ProtoReflect.Descriptor instead.
+func (*DeleteBucketResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *UpdateBucketResponse) GetResult() *Result {
+func (x *DeleteBucketResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -491,7 +355,7 @@ type ListBucketsRequest struct {
 
 func (x *ListBucketsRequest) Reset() {
 	*x = ListBucketsRequest{}
-	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -503,7 +367,7 @@ func (x *ListBucketsRequest) String() string {
 func (*ListBucketsRequest) ProtoMessage() {}
 
 func (x *ListBucketsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[6]
+	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -516,7 +380,7 @@ func (x *ListBucketsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListBucketsRequest.ProtoReflect.Descriptor instead.
 func (*ListBucketsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDescGZIP(), []int{6}
+	return file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ListBucketsRequest) GetId() int64 {
@@ -630,7 +494,7 @@ type ListBucketsResponse struct {
 
 func (x *ListBucketsResponse) Reset() {
 	*x = ListBucketsResponse{}
-	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -642,7 +506,7 @@ func (x *ListBucketsResponse) String() string {
 func (*ListBucketsResponse) ProtoMessage() {}
 
 func (x *ListBucketsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[7]
+	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -655,7 +519,7 @@ func (x *ListBucketsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListBucketsResponse.ProtoReflect.Descriptor instead.
 func (*ListBucketsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDescGZIP(), []int{7}
+	return file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ListBucketsResponse) GetItems() []*Bucket {
@@ -670,6 +534,142 @@ func (x *ListBucketsResponse) GetTotalCount() int32 {
 		return *x.TotalCount
 	}
 	return 0
+}
+
+// UpdateBucketRequest represents the parameters for updates bucket properties
+type UpdateBucketRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the Bucket
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// Enable/Disable Bucket Versioning
+	Versioning *bool `protobuf:"varint,2,opt,name=versioning" json:"versioning,omitempty"`
+	// Enable/Disable Bucket encryption
+	Encryption *bool `protobuf:"varint,3,opt,name=encryption" json:"encryption,omitempty"`
+	// Bucket Access Policy
+	Policy *string `protobuf:"bytes,4,opt,name=policy" json:"policy,omitempty"`
+	// Bucket Quota in GiB
+	Quota *int32 `protobuf:"varint,5,opt,name=quota" json:"quota,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateBucketRequest) Reset() {
+	*x = UpdateBucketRequest{}
+	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateBucketRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateBucketRequest) ProtoMessage() {}
+
+func (x *UpdateBucketRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateBucketRequest.ProtoReflect.Descriptor instead.
+func (*UpdateBucketRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *UpdateBucketRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateBucketRequest) GetVersioning() bool {
+	if x != nil && x.Versioning != nil {
+		return *x.Versioning
+	}
+	return false
+}
+
+func (x *UpdateBucketRequest) GetEncryption() bool {
+	if x != nil && x.Encryption != nil {
+		return *x.Encryption
+	}
+	return false
+}
+
+func (x *UpdateBucketRequest) GetPolicy() string {
+	if x != nil && x.Policy != nil {
+		return *x.Policy
+	}
+	return ""
+}
+
+func (x *UpdateBucketRequest) GetQuota() int32 {
+	if x != nil && x.Quota != nil {
+		return *x.Quota
+	}
+	return 0
+}
+
+func (x *UpdateBucketRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateBucketResponse represents the response from updates bucket properties
+type UpdateBucketResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateBucketResponse) Reset() {
+	*x = UpdateBucketResponse{}
+	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateBucketResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateBucketResponse) ProtoMessage() {}
+
+func (x *UpdateBucketResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateBucketResponse.ProtoReflect.Descriptor instead.
+func (*UpdateBucketResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *UpdateBucketResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
 }
 
 // Bucket represents a Bucket Item
@@ -809,151 +809,6 @@ func (x *Success) GetDisplayText() string {
 	return ""
 }
 
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
 // Result represents a generic operation result
 type Result struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -973,7 +828,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -985,7 +840,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -998,7 +853,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDescGZIP(), []int{11}
+	return file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -1040,12 +895,7 @@ var File_cloudstack_management_bucket_v1_bucket_gen_proto protoreflect.FileDescr
 
 const file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDesc = "" +
 	"\n" +
-	"0cloudstack/management/bucket/v1/bucket.gen.proto\x12\x1fcloudstack.management.bucket.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"R\n" +
-	"\x13DeleteBucketRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"W\n" +
-	"\x14DeleteBucketResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.bucket.v1.ResultR\x06result\"\x90\x05\n" +
+	"0cloudstack/management/bucket/v1/bucket.gen.proto\x12\x1fcloudstack.management.bucket.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x90\x05\n" +
 	"\x13CreateBucketRequest\x12\xa0\x01\n" +
 	"\faccount_name\x18\x01 \x01(\tB}\xbaHz\xba\x01w\n" +
 	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12\x1d\n" +
@@ -1070,19 +920,11 @@ const file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDesc = "" +
 	"\x0finjected_job_id\x18\f \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
 	"\rresponse_type\x18\r \x01(\tR\fresponseType\"W\n" +
 	"\x14CreateBucketResponse\x12?\n" +
-	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.bucket.v1.ResultR\x06result\"\xce\x01\n" +
-	"\x13UpdateBucketRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12%\n" +
-	"\n" +
-	"versioning\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\n" +
-	"versioning\x12%\n" +
-	"\n" +
-	"encryption\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\n" +
-	"encryption\x12\x16\n" +
-	"\x06policy\x18\x04 \x01(\tR\x06policy\x12\x14\n" +
-	"\x05quota\x18\x05 \x01(\x05R\x05quota\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"W\n" +
-	"\x14UpdateBucketResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.bucket.v1.ResultR\x06result\"R\n" +
+	"\x13DeleteBucketRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"W\n" +
+	"\x14DeleteBucketResponse\x12?\n" +
 	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.bucket.v1.ResultR\x06result\"\xb1\x05\n" +
 	"\x12ListBucketsRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x10\n" +
@@ -1110,7 +952,20 @@ const file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDesc = "" +
 	"\x13ListBucketsResponse\x12=\n" +
 	"\x05items\x18\x01 \x03(\v2'.cloudstack.management.bucket.v1.BucketR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x95\x01\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xce\x01\n" +
+	"\x13UpdateBucketRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12%\n" +
+	"\n" +
+	"versioning\x18\x02 \x01(\bB\x05\xaa\x01\x02\b\x01R\n" +
+	"versioning\x12%\n" +
+	"\n" +
+	"encryption\x18\x03 \x01(\bB\x05\xaa\x01\x02\b\x01R\n" +
+	"encryption\x12\x16\n" +
+	"\x06policy\x18\x04 \x01(\tR\x06policy\x12\x14\n" +
+	"\x05quota\x18\x05 \x01(\x05R\x05quota\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"W\n" +
+	"\x14UpdateBucketResponse\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2'.cloudstack.management.bucket.v1.ResultR\x06result\"\x95\x01\n" +
 	"\x06Bucket\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
@@ -1119,38 +974,19 @@ const file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDesc = "" +
 	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xde\x03\n" +
-	"\x04Item\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12L\n" +
-	"\adetails\x18\f \x03(\v22.cloudstack.management.bucket.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\x90\x04\n" +
-	"\rBucketService\x12}\n" +
-	"\fDeleteBucket\x124.cloudstack.management.bucket.v1.DeleteBucketRequest\x1a5.cloudstack.management.bucket.v1.DeleteBucketResponse\"\x00\x12}\n" +
-	"\fCreateBucket\x124.cloudstack.management.bucket.v1.CreateBucketRequest\x1a5.cloudstack.management.bucket.v1.CreateBucketResponse\"\x00\x12}\n" +
-	"\fUpdateBucket\x124.cloudstack.management.bucket.v1.UpdateBucketRequest\x1a5.cloudstack.management.bucket.v1.UpdateBucketResponse\"\x00\x12z\n" +
-	"\vListBuckets\x123.cloudstack.management.bucket.v1.ListBucketsRequest\x1a4.cloudstack.management.bucket.v1.ListBucketsResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xb2\x02\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\xb1\x04\n" +
+	"\rBucketService\x12\x84\x01\n" +
+	"\fCreateBucket\x124.cloudstack.management.bucket.v1.CreateBucketRequest\x1a5.cloudstack.management.bucket.v1.CreateBucketResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x84\x01\n" +
+	"\fDeleteBucket\x124.cloudstack.management.bucket.v1.DeleteBucketRequest\x1a5.cloudstack.management.bucket.v1.DeleteBucketResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x81\x01\n" +
+	"\vListBuckets\x123.cloudstack.management.bucket.v1.ListBucketsRequest\x1a4.cloudstack.management.bucket.v1.ListBucketsResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\x84\x01\n" +
+	"\fUpdateBucket\x124.cloudstack.management.bucket.v1.UpdateBucketRequest\x1a5.cloudstack.management.bucket.v1.UpdateBucketResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\a\xc2>\x04\xc2>\x01\x02B\xb2\x02\n" +
 	"#com.cloudstack.management.bucket.v1B\x0eBucketGenProtoP\x01Z\\github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/bucket/v1;bucketv1\xa2\x02\x03CMB\xaa\x02\x1fCloudstack.Management.Bucket.V1\xca\x02\x1fCloudstack\\Management\\Bucket\\V1\xe2\x02+Cloudstack\\Management\\Bucket\\V1\\GPBMetadata\xea\x02\"Cloudstack::Management::Bucket::V1b\beditionsp\xe8\a"
 
 var (
@@ -1165,43 +1001,40 @@ func file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDescGZIP() []byte 
 	return file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDescData
 }
 
-var file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
+var file_cloudstack_management_bucket_v1_bucket_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_cloudstack_management_bucket_v1_bucket_gen_proto_goTypes = []any{
-	(*DeleteBucketRequest)(nil),  // 0: cloudstack.management.bucket.v1.DeleteBucketRequest
-	(*DeleteBucketResponse)(nil), // 1: cloudstack.management.bucket.v1.DeleteBucketResponse
-	(*CreateBucketRequest)(nil),  // 2: cloudstack.management.bucket.v1.CreateBucketRequest
-	(*CreateBucketResponse)(nil), // 3: cloudstack.management.bucket.v1.CreateBucketResponse
-	(*UpdateBucketRequest)(nil),  // 4: cloudstack.management.bucket.v1.UpdateBucketRequest
-	(*UpdateBucketResponse)(nil), // 5: cloudstack.management.bucket.v1.UpdateBucketResponse
-	(*ListBucketsRequest)(nil),   // 6: cloudstack.management.bucket.v1.ListBucketsRequest
-	(*ListBucketsResponse)(nil),  // 7: cloudstack.management.bucket.v1.ListBucketsResponse
+	(*CreateBucketRequest)(nil),  // 0: cloudstack.management.bucket.v1.CreateBucketRequest
+	(*CreateBucketResponse)(nil), // 1: cloudstack.management.bucket.v1.CreateBucketResponse
+	(*DeleteBucketRequest)(nil),  // 2: cloudstack.management.bucket.v1.DeleteBucketRequest
+	(*DeleteBucketResponse)(nil), // 3: cloudstack.management.bucket.v1.DeleteBucketResponse
+	(*ListBucketsRequest)(nil),   // 4: cloudstack.management.bucket.v1.ListBucketsRequest
+	(*ListBucketsResponse)(nil),  // 5: cloudstack.management.bucket.v1.ListBucketsResponse
+	(*UpdateBucketRequest)(nil),  // 6: cloudstack.management.bucket.v1.UpdateBucketRequest
+	(*UpdateBucketResponse)(nil), // 7: cloudstack.management.bucket.v1.UpdateBucketResponse
 	(*Bucket)(nil),               // 8: cloudstack.management.bucket.v1.Bucket
 	(*Success)(nil),              // 9: cloudstack.management.bucket.v1.Success
-	(*Item)(nil),                 // 10: cloudstack.management.bucket.v1.Item
-	(*Result)(nil),               // 11: cloudstack.management.bucket.v1.Result
-	nil,                          // 12: cloudstack.management.bucket.v1.ListBucketsRequest.TagsEntry
-	nil,                          // 13: cloudstack.management.bucket.v1.Item.DetailsEntry
+	(*Result)(nil),               // 10: cloudstack.management.bucket.v1.Result
+	nil,                          // 11: cloudstack.management.bucket.v1.ListBucketsRequest.TagsEntry
 }
 var file_cloudstack_management_bucket_v1_bucket_gen_proto_depIdxs = []int32{
-	11, // 0: cloudstack.management.bucket.v1.DeleteBucketResponse.result:type_name -> cloudstack.management.bucket.v1.Result
-	11, // 1: cloudstack.management.bucket.v1.CreateBucketResponse.result:type_name -> cloudstack.management.bucket.v1.Result
-	11, // 2: cloudstack.management.bucket.v1.UpdateBucketResponse.result:type_name -> cloudstack.management.bucket.v1.Result
-	12, // 3: cloudstack.management.bucket.v1.ListBucketsRequest.tags:type_name -> cloudstack.management.bucket.v1.ListBucketsRequest.TagsEntry
-	8,  // 4: cloudstack.management.bucket.v1.ListBucketsResponse.items:type_name -> cloudstack.management.bucket.v1.Bucket
-	13, // 5: cloudstack.management.bucket.v1.Item.details:type_name -> cloudstack.management.bucket.v1.Item.DetailsEntry
-	0,  // 6: cloudstack.management.bucket.v1.BucketService.DeleteBucket:input_type -> cloudstack.management.bucket.v1.DeleteBucketRequest
-	2,  // 7: cloudstack.management.bucket.v1.BucketService.CreateBucket:input_type -> cloudstack.management.bucket.v1.CreateBucketRequest
-	4,  // 8: cloudstack.management.bucket.v1.BucketService.UpdateBucket:input_type -> cloudstack.management.bucket.v1.UpdateBucketRequest
-	6,  // 9: cloudstack.management.bucket.v1.BucketService.ListBuckets:input_type -> cloudstack.management.bucket.v1.ListBucketsRequest
-	1,  // 10: cloudstack.management.bucket.v1.BucketService.DeleteBucket:output_type -> cloudstack.management.bucket.v1.DeleteBucketResponse
-	3,  // 11: cloudstack.management.bucket.v1.BucketService.CreateBucket:output_type -> cloudstack.management.bucket.v1.CreateBucketResponse
-	5,  // 12: cloudstack.management.bucket.v1.BucketService.UpdateBucket:output_type -> cloudstack.management.bucket.v1.UpdateBucketResponse
-	7,  // 13: cloudstack.management.bucket.v1.BucketService.ListBuckets:output_type -> cloudstack.management.bucket.v1.ListBucketsResponse
-	10, // [10:14] is the sub-list for method output_type
-	6,  // [6:10] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	10, // 0: cloudstack.management.bucket.v1.CreateBucketResponse.result:type_name -> cloudstack.management.bucket.v1.Result
+	10, // 1: cloudstack.management.bucket.v1.DeleteBucketResponse.result:type_name -> cloudstack.management.bucket.v1.Result
+	11, // 2: cloudstack.management.bucket.v1.ListBucketsRequest.tags:type_name -> cloudstack.management.bucket.v1.ListBucketsRequest.TagsEntry
+	8,  // 3: cloudstack.management.bucket.v1.ListBucketsResponse.items:type_name -> cloudstack.management.bucket.v1.Bucket
+	10, // 4: cloudstack.management.bucket.v1.UpdateBucketResponse.result:type_name -> cloudstack.management.bucket.v1.Result
+	0,  // 5: cloudstack.management.bucket.v1.BucketService.CreateBucket:input_type -> cloudstack.management.bucket.v1.CreateBucketRequest
+	2,  // 6: cloudstack.management.bucket.v1.BucketService.DeleteBucket:input_type -> cloudstack.management.bucket.v1.DeleteBucketRequest
+	4,  // 7: cloudstack.management.bucket.v1.BucketService.ListBuckets:input_type -> cloudstack.management.bucket.v1.ListBucketsRequest
+	6,  // 8: cloudstack.management.bucket.v1.BucketService.UpdateBucket:input_type -> cloudstack.management.bucket.v1.UpdateBucketRequest
+	1,  // 9: cloudstack.management.bucket.v1.BucketService.CreateBucket:output_type -> cloudstack.management.bucket.v1.CreateBucketResponse
+	3,  // 10: cloudstack.management.bucket.v1.BucketService.DeleteBucket:output_type -> cloudstack.management.bucket.v1.DeleteBucketResponse
+	5,  // 11: cloudstack.management.bucket.v1.BucketService.ListBuckets:output_type -> cloudstack.management.bucket.v1.ListBucketsResponse
+	7,  // 12: cloudstack.management.bucket.v1.BucketService.UpdateBucket:output_type -> cloudstack.management.bucket.v1.UpdateBucketResponse
+	9,  // [9:13] is the sub-list for method output_type
+	5,  // [5:9] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_bucket_v1_bucket_gen_proto_init() }
@@ -1215,7 +1048,7 @@ func file_cloudstack_management_bucket_v1_bucket_gen_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDesc), len(file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   14,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

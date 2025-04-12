@@ -33,35 +33,35 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// CaServiceListCaCertificateProcedure is the fully-qualified name of the CaService's
-	// ListCaCertificate RPC.
-	CaServiceListCaCertificateProcedure = "/cloudstack.management.ca.v1.CaService/ListCaCertificate"
+	// CaServiceIssueCertificateProcedure is the fully-qualified name of the CaService's
+	// IssueCertificate RPC.
+	CaServiceIssueCertificateProcedure = "/cloudstack.management.ca.v1.CaService/IssueCertificate"
 	// CaServiceListCAProvidersProcedure is the fully-qualified name of the CaService's ListCAProviders
 	// RPC.
 	CaServiceListCAProvidersProcedure = "/cloudstack.management.ca.v1.CaService/ListCAProviders"
+	// CaServiceListCaCertificateProcedure is the fully-qualified name of the CaService's
+	// ListCaCertificate RPC.
+	CaServiceListCaCertificateProcedure = "/cloudstack.management.ca.v1.CaService/ListCaCertificate"
 	// CaServiceProvisionCertificateProcedure is the fully-qualified name of the CaService's
 	// ProvisionCertificate RPC.
 	CaServiceProvisionCertificateProcedure = "/cloudstack.management.ca.v1.CaService/ProvisionCertificate"
 	// CaServiceRevokeCertificateProcedure is the fully-qualified name of the CaService's
 	// RevokeCertificate RPC.
 	CaServiceRevokeCertificateProcedure = "/cloudstack.management.ca.v1.CaService/RevokeCertificate"
-	// CaServiceIssueCertificateProcedure is the fully-qualified name of the CaService's
-	// IssueCertificate RPC.
-	CaServiceIssueCertificateProcedure = "/cloudstack.management.ca.v1.CaService/IssueCertificate"
 )
 
 // CaServiceClient is a client for the cloudstack.management.ca.v1.CaService service.
 type CaServiceClient interface {
-	// ListCaCertificate Lists the CA public certificate(s) as support by the configured/provided CA plugin
-	ListCaCertificate(context.Context, *connect.Request[v1.ListCaCertificateRequest]) (*connect.Response[v1.ListCaCertificateResponse], error)
+	// IssueCertificate Issues a client certificate using configured or provided CA plugin
+	IssueCertificate(context.Context, *connect.Request[v1.IssueCertificateRequest]) (*connect.Response[v1.IssueCertificateResponse], error)
 	// ListCAProviders Lists available certificate authority providers in CloudStack
 	ListCAProviders(context.Context, *connect.Request[v1.ListCAProvidersRequest]) (*connect.Response[v1.ListCAProvidersResponse], error)
+	// ListCaCertificate Lists the CA public certificate(s) as support by the configured/provided CA plugin
+	ListCaCertificate(context.Context, *connect.Request[v1.ListCaCertificateRequest]) (*connect.Response[v1.ListCaCertificateResponse], error)
 	// ProvisionCertificate Issues and propagates client certificate on a connected host/agent using configured CA plugin
 	ProvisionCertificate(context.Context, *connect.Request[v1.ProvisionCertificateRequest]) (*connect.Response[v1.ProvisionCertificateResponse], error)
 	// RevokeCertificate Revokes certificate using configured CA plugin
 	RevokeCertificate(context.Context, *connect.Request[v1.RevokeCertificateRequest]) (*connect.Response[v1.RevokeCertificateResponse], error)
-	// IssueCertificate Issues a client certificate using configured or provided CA plugin
-	IssueCertificate(context.Context, *connect.Request[v1.IssueCertificateRequest]) (*connect.Response[v1.IssueCertificateResponse], error)
 }
 
 // NewCaServiceClient constructs a client for the cloudstack.management.ca.v1.CaService service. By
@@ -75,16 +75,22 @@ func NewCaServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...c
 	baseURL = strings.TrimRight(baseURL, "/")
 	caServiceMethods := v1.File_cloudstack_management_ca_v1_ca_gen_proto.Services().ByName("CaService").Methods()
 	return &caServiceClient{
-		listCaCertificate: connect.NewClient[v1.ListCaCertificateRequest, v1.ListCaCertificateResponse](
+		issueCertificate: connect.NewClient[v1.IssueCertificateRequest, v1.IssueCertificateResponse](
 			httpClient,
-			baseURL+CaServiceListCaCertificateProcedure,
-			connect.WithSchema(caServiceMethods.ByName("ListCaCertificate")),
+			baseURL+CaServiceIssueCertificateProcedure,
+			connect.WithSchema(caServiceMethods.ByName("IssueCertificate")),
 			connect.WithClientOptions(opts...),
 		),
 		listCAProviders: connect.NewClient[v1.ListCAProvidersRequest, v1.ListCAProvidersResponse](
 			httpClient,
 			baseURL+CaServiceListCAProvidersProcedure,
 			connect.WithSchema(caServiceMethods.ByName("ListCAProviders")),
+			connect.WithClientOptions(opts...),
+		),
+		listCaCertificate: connect.NewClient[v1.ListCaCertificateRequest, v1.ListCaCertificateResponse](
+			httpClient,
+			baseURL+CaServiceListCaCertificateProcedure,
+			connect.WithSchema(caServiceMethods.ByName("ListCaCertificate")),
 			connect.WithClientOptions(opts...),
 		),
 		provisionCertificate: connect.NewClient[v1.ProvisionCertificateRequest, v1.ProvisionCertificateResponse](
@@ -99,32 +105,31 @@ func NewCaServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...c
 			connect.WithSchema(caServiceMethods.ByName("RevokeCertificate")),
 			connect.WithClientOptions(opts...),
 		),
-		issueCertificate: connect.NewClient[v1.IssueCertificateRequest, v1.IssueCertificateResponse](
-			httpClient,
-			baseURL+CaServiceIssueCertificateProcedure,
-			connect.WithSchema(caServiceMethods.ByName("IssueCertificate")),
-			connect.WithClientOptions(opts...),
-		),
 	}
 }
 
 // caServiceClient implements CaServiceClient.
 type caServiceClient struct {
-	listCaCertificate    *connect.Client[v1.ListCaCertificateRequest, v1.ListCaCertificateResponse]
+	issueCertificate     *connect.Client[v1.IssueCertificateRequest, v1.IssueCertificateResponse]
 	listCAProviders      *connect.Client[v1.ListCAProvidersRequest, v1.ListCAProvidersResponse]
+	listCaCertificate    *connect.Client[v1.ListCaCertificateRequest, v1.ListCaCertificateResponse]
 	provisionCertificate *connect.Client[v1.ProvisionCertificateRequest, v1.ProvisionCertificateResponse]
 	revokeCertificate    *connect.Client[v1.RevokeCertificateRequest, v1.RevokeCertificateResponse]
-	issueCertificate     *connect.Client[v1.IssueCertificateRequest, v1.IssueCertificateResponse]
 }
 
-// ListCaCertificate calls cloudstack.management.ca.v1.CaService.ListCaCertificate.
-func (c *caServiceClient) ListCaCertificate(ctx context.Context, req *connect.Request[v1.ListCaCertificateRequest]) (*connect.Response[v1.ListCaCertificateResponse], error) {
-	return c.listCaCertificate.CallUnary(ctx, req)
+// IssueCertificate calls cloudstack.management.ca.v1.CaService.IssueCertificate.
+func (c *caServiceClient) IssueCertificate(ctx context.Context, req *connect.Request[v1.IssueCertificateRequest]) (*connect.Response[v1.IssueCertificateResponse], error) {
+	return c.issueCertificate.CallUnary(ctx, req)
 }
 
 // ListCAProviders calls cloudstack.management.ca.v1.CaService.ListCAProviders.
 func (c *caServiceClient) ListCAProviders(ctx context.Context, req *connect.Request[v1.ListCAProvidersRequest]) (*connect.Response[v1.ListCAProvidersResponse], error) {
 	return c.listCAProviders.CallUnary(ctx, req)
+}
+
+// ListCaCertificate calls cloudstack.management.ca.v1.CaService.ListCaCertificate.
+func (c *caServiceClient) ListCaCertificate(ctx context.Context, req *connect.Request[v1.ListCaCertificateRequest]) (*connect.Response[v1.ListCaCertificateResponse], error) {
+	return c.listCaCertificate.CallUnary(ctx, req)
 }
 
 // ProvisionCertificate calls cloudstack.management.ca.v1.CaService.ProvisionCertificate.
@@ -137,23 +142,18 @@ func (c *caServiceClient) RevokeCertificate(ctx context.Context, req *connect.Re
 	return c.revokeCertificate.CallUnary(ctx, req)
 }
 
-// IssueCertificate calls cloudstack.management.ca.v1.CaService.IssueCertificate.
-func (c *caServiceClient) IssueCertificate(ctx context.Context, req *connect.Request[v1.IssueCertificateRequest]) (*connect.Response[v1.IssueCertificateResponse], error) {
-	return c.issueCertificate.CallUnary(ctx, req)
-}
-
 // CaServiceHandler is an implementation of the cloudstack.management.ca.v1.CaService service.
 type CaServiceHandler interface {
-	// ListCaCertificate Lists the CA public certificate(s) as support by the configured/provided CA plugin
-	ListCaCertificate(context.Context, *connect.Request[v1.ListCaCertificateRequest]) (*connect.Response[v1.ListCaCertificateResponse], error)
+	// IssueCertificate Issues a client certificate using configured or provided CA plugin
+	IssueCertificate(context.Context, *connect.Request[v1.IssueCertificateRequest]) (*connect.Response[v1.IssueCertificateResponse], error)
 	// ListCAProviders Lists available certificate authority providers in CloudStack
 	ListCAProviders(context.Context, *connect.Request[v1.ListCAProvidersRequest]) (*connect.Response[v1.ListCAProvidersResponse], error)
+	// ListCaCertificate Lists the CA public certificate(s) as support by the configured/provided CA plugin
+	ListCaCertificate(context.Context, *connect.Request[v1.ListCaCertificateRequest]) (*connect.Response[v1.ListCaCertificateResponse], error)
 	// ProvisionCertificate Issues and propagates client certificate on a connected host/agent using configured CA plugin
 	ProvisionCertificate(context.Context, *connect.Request[v1.ProvisionCertificateRequest]) (*connect.Response[v1.ProvisionCertificateResponse], error)
 	// RevokeCertificate Revokes certificate using configured CA plugin
 	RevokeCertificate(context.Context, *connect.Request[v1.RevokeCertificateRequest]) (*connect.Response[v1.RevokeCertificateResponse], error)
-	// IssueCertificate Issues a client certificate using configured or provided CA plugin
-	IssueCertificate(context.Context, *connect.Request[v1.IssueCertificateRequest]) (*connect.Response[v1.IssueCertificateResponse], error)
 }
 
 // NewCaServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -163,16 +163,22 @@ type CaServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewCaServiceHandler(svc CaServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	caServiceMethods := v1.File_cloudstack_management_ca_v1_ca_gen_proto.Services().ByName("CaService").Methods()
-	caServiceListCaCertificateHandler := connect.NewUnaryHandler(
-		CaServiceListCaCertificateProcedure,
-		svc.ListCaCertificate,
-		connect.WithSchema(caServiceMethods.ByName("ListCaCertificate")),
+	caServiceIssueCertificateHandler := connect.NewUnaryHandler(
+		CaServiceIssueCertificateProcedure,
+		svc.IssueCertificate,
+		connect.WithSchema(caServiceMethods.ByName("IssueCertificate")),
 		connect.WithHandlerOptions(opts...),
 	)
 	caServiceListCAProvidersHandler := connect.NewUnaryHandler(
 		CaServiceListCAProvidersProcedure,
 		svc.ListCAProviders,
 		connect.WithSchema(caServiceMethods.ByName("ListCAProviders")),
+		connect.WithHandlerOptions(opts...),
+	)
+	caServiceListCaCertificateHandler := connect.NewUnaryHandler(
+		CaServiceListCaCertificateProcedure,
+		svc.ListCaCertificate,
+		connect.WithSchema(caServiceMethods.ByName("ListCaCertificate")),
 		connect.WithHandlerOptions(opts...),
 	)
 	caServiceProvisionCertificateHandler := connect.NewUnaryHandler(
@@ -187,24 +193,18 @@ func NewCaServiceHandler(svc CaServiceHandler, opts ...connect.HandlerOption) (s
 		connect.WithSchema(caServiceMethods.ByName("RevokeCertificate")),
 		connect.WithHandlerOptions(opts...),
 	)
-	caServiceIssueCertificateHandler := connect.NewUnaryHandler(
-		CaServiceIssueCertificateProcedure,
-		svc.IssueCertificate,
-		connect.WithSchema(caServiceMethods.ByName("IssueCertificate")),
-		connect.WithHandlerOptions(opts...),
-	)
 	return "/cloudstack.management.ca.v1.CaService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case CaServiceListCaCertificateProcedure:
-			caServiceListCaCertificateHandler.ServeHTTP(w, r)
+		case CaServiceIssueCertificateProcedure:
+			caServiceIssueCertificateHandler.ServeHTTP(w, r)
 		case CaServiceListCAProvidersProcedure:
 			caServiceListCAProvidersHandler.ServeHTTP(w, r)
+		case CaServiceListCaCertificateProcedure:
+			caServiceListCaCertificateHandler.ServeHTTP(w, r)
 		case CaServiceProvisionCertificateProcedure:
 			caServiceProvisionCertificateHandler.ServeHTTP(w, r)
 		case CaServiceRevokeCertificateProcedure:
 			caServiceRevokeCertificateHandler.ServeHTTP(w, r)
-		case CaServiceIssueCertificateProcedure:
-			caServiceIssueCertificateHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -214,12 +214,16 @@ func NewCaServiceHandler(svc CaServiceHandler, opts ...connect.HandlerOption) (s
 // UnimplementedCaServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedCaServiceHandler struct{}
 
-func (UnimplementedCaServiceHandler) ListCaCertificate(context.Context, *connect.Request[v1.ListCaCertificateRequest]) (*connect.Response[v1.ListCaCertificateResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ca.v1.CaService.ListCaCertificate is not implemented"))
+func (UnimplementedCaServiceHandler) IssueCertificate(context.Context, *connect.Request[v1.IssueCertificateRequest]) (*connect.Response[v1.IssueCertificateResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ca.v1.CaService.IssueCertificate is not implemented"))
 }
 
 func (UnimplementedCaServiceHandler) ListCAProviders(context.Context, *connect.Request[v1.ListCAProvidersRequest]) (*connect.Response[v1.ListCAProvidersResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ca.v1.CaService.ListCAProviders is not implemented"))
+}
+
+func (UnimplementedCaServiceHandler) ListCaCertificate(context.Context, *connect.Request[v1.ListCaCertificateRequest]) (*connect.Response[v1.ListCaCertificateResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ca.v1.CaService.ListCaCertificate is not implemented"))
 }
 
 func (UnimplementedCaServiceHandler) ProvisionCertificate(context.Context, *connect.Request[v1.ProvisionCertificateRequest]) (*connect.Response[v1.ProvisionCertificateResponse], error) {
@@ -228,8 +232,4 @@ func (UnimplementedCaServiceHandler) ProvisionCertificate(context.Context, *conn
 
 func (UnimplementedCaServiceHandler) RevokeCertificate(context.Context, *connect.Request[v1.RevokeCertificateRequest]) (*connect.Response[v1.RevokeCertificateResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ca.v1.CaService.RevokeCertificate is not implemented"))
-}
-
-func (UnimplementedCaServiceHandler) IssueCertificate(context.Context, *connect.Request[v1.IssueCertificateRequest]) (*connect.Response[v1.IssueCertificateResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.ca.v1.CaService.IssueCertificate is not implemented"))
 }

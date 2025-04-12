@@ -24,38 +24,42 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// UpdateVMAffinityGroupRequest represents the parameters for updates the affinity/anti-affinity group associations of a virtual machine. the vm has to be stopped and restarted for the new properties to take effect.
-type UpdateVMAffinityGroupRequest struct {
+// CreateAffinityGroupRequest represents the parameters for creates an affinity/anti-affinity group
+type CreateAffinityGroupRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Whether to run this operation as an administrator
-	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
-	// The ID of the virtual machine
-	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	// comma separated list of affinity groups id that are going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupnames parameter
-	AffinityGroupIdList []string `protobuf:"bytes,3,rep,name=affinity_group_id_list,json=affinityGroupIdList" json:"affinity_group_id_list,omitempty"`
-	// comma separated list of affinity groups names that are going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupids parameter
-	AffinityGroupNameList []string `protobuf:"bytes,4,rep,name=affinity_group_name_list,json=affinityGroupNameList" json:"affinity_group_name_list,omitempty"`
-	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// an account for the affinity group. Must be used with domainId.
+	AccountName *string `protobuf:"bytes,1,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
+	// domainId of the account owning the affinity group
+	DomainId *int64 `protobuf:"varint,2,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
+	// create affinity group for project
+	ProjectId *int64 `protobuf:"varint,3,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	// optional description of the affinity group
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// name of the affinity group
+	AffinityGroupName *string `protobuf:"bytes,5,opt,name=affinity_group_name,json=affinityGroupName" json:"affinity_group_name,omitempty"`
+	// Type of the affinity group from the available affinity/anti-affinity group types
+	AffinityGroupType *string `protobuf:"bytes,6,opt,name=affinity_group_type,json=affinityGroupType" json:"affinity_group_type,omitempty"`
+	StartEventId *int64 `protobuf:"varint,7,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,8,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateVMAffinityGroupRequest) Reset() {
-	*x = UpdateVMAffinityGroupRequest{}
+func (x *CreateAffinityGroupRequest) Reset() {
+	*x = CreateAffinityGroupRequest{}
 	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateVMAffinityGroupRequest) String() string {
+func (x *CreateAffinityGroupRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateVMAffinityGroupRequest) ProtoMessage() {}
+func (*CreateAffinityGroupRequest) ProtoMessage() {}
 
-func (x *UpdateVMAffinityGroupRequest) ProtoReflect() protoreflect.Message {
+func (x *CreateAffinityGroupRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -67,62 +71,76 @@ func (x *UpdateVMAffinityGroupRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateVMAffinityGroupRequest.ProtoReflect.Descriptor instead.
-func (*UpdateVMAffinityGroupRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateAffinityGroupRequest.ProtoReflect.Descriptor instead.
+func (*CreateAffinityGroupRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *UpdateVMAffinityGroupRequest) GetRunAsAdmin() bool {
-	if x != nil && x.RunAsAdmin != nil {
-		return *x.RunAsAdmin
+func (x *CreateAffinityGroupRequest) GetAccountName() string {
+	if x != nil && x.AccountName != nil {
+		return *x.AccountName
 	}
-	return false
+	return ""
 }
 
-func (x *UpdateVMAffinityGroupRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *CreateAffinityGroupRequest) GetDomainId() int64 {
+	if x != nil && x.DomainId != nil {
+		return *x.DomainId
 	}
 	return 0
 }
 
-func (x *UpdateVMAffinityGroupRequest) GetAffinityGroupIdList() []string {
-	if x != nil {
-		return x.AffinityGroupIdList
+func (x *CreateAffinityGroupRequest) GetProjectId() int64 {
+	if x != nil && x.ProjectId != nil {
+		return *x.ProjectId
 	}
-	return nil
+	return 0
 }
 
-func (x *UpdateVMAffinityGroupRequest) GetAffinityGroupNameList() []string {
-	if x != nil {
-		return x.AffinityGroupNameList
+func (x *CreateAffinityGroupRequest) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
 	}
-	return nil
+	return ""
 }
 
-func (x *UpdateVMAffinityGroupRequest) GetStartEventId() int64 {
+func (x *CreateAffinityGroupRequest) GetAffinityGroupName() string {
+	if x != nil && x.AffinityGroupName != nil {
+		return *x.AffinityGroupName
+	}
+	return ""
+}
+
+func (x *CreateAffinityGroupRequest) GetAffinityGroupType() string {
+	if x != nil && x.AffinityGroupType != nil {
+		return *x.AffinityGroupType
+	}
+	return ""
+}
+
+func (x *CreateAffinityGroupRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *UpdateVMAffinityGroupRequest) GetInjectedJobId() string {
+func (x *CreateAffinityGroupRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *UpdateVMAffinityGroupRequest) GetResponseType() string {
+func (x *CreateAffinityGroupRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// UpdateVMAffinityGroupResponse represents the response from updates the affinity/anti-affinity group associations of a virtual machine. the vm has to be stopped and restarted for the new properties to take effect.
-type UpdateVMAffinityGroupResponse struct {
+// CreateAffinityGroupResponse represents the response from creates an affinity/anti-affinity group
+type CreateAffinityGroupResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -130,20 +148,20 @@ type UpdateVMAffinityGroupResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateVMAffinityGroupResponse) Reset() {
-	*x = UpdateVMAffinityGroupResponse{}
+func (x *CreateAffinityGroupResponse) Reset() {
+	*x = CreateAffinityGroupResponse{}
 	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateVMAffinityGroupResponse) String() string {
+func (x *CreateAffinityGroupResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateVMAffinityGroupResponse) ProtoMessage() {}
+func (*CreateAffinityGroupResponse) ProtoMessage() {}
 
-func (x *UpdateVMAffinityGroupResponse) ProtoReflect() protoreflect.Message {
+func (x *CreateAffinityGroupResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -155,12 +173,12 @@ func (x *UpdateVMAffinityGroupResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateVMAffinityGroupResponse.ProtoReflect.Descriptor instead.
-func (*UpdateVMAffinityGroupResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateAffinityGroupResponse.ProtoReflect.Descriptor instead.
+func (*CreateAffinityGroupResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *UpdateVMAffinityGroupResponse) GetResult() *Result {
+func (x *CreateAffinityGroupResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -650,42 +668,38 @@ func (x *ListAffinityGroupsResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// CreateAffinityGroupRequest represents the parameters for creates an affinity/anti-affinity group
-type CreateAffinityGroupRequest struct {
+// UpdateVMAffinityGroupRequest represents the parameters for updates the affinity/anti-affinity group associations of a virtual machine. the vm has to be stopped and restarted for the new properties to take effect.
+type UpdateVMAffinityGroupRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// an account for the affinity group. Must be used with domainId.
-	AccountName *string `protobuf:"bytes,1,opt,name=account_name,json=accountName" json:"account_name,omitempty"`
-	// domainId of the account owning the affinity group
-	DomainId *int64 `protobuf:"varint,2,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// create affinity group for project
-	ProjectId *int64 `protobuf:"varint,3,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// optional description of the affinity group
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// name of the affinity group
-	AffinityGroupName *string `protobuf:"bytes,5,opt,name=affinity_group_name,json=affinityGroupName" json:"affinity_group_name,omitempty"`
-	// Type of the affinity group from the available affinity/anti-affinity group types
-	AffinityGroupType *string `protobuf:"bytes,6,opt,name=affinity_group_type,json=affinityGroupType" json:"affinity_group_type,omitempty"`
-	StartEventId *int64 `protobuf:"varint,7,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
-	InjectedJobId *string `protobuf:"bytes,8,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,9,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// Whether to run this operation as an administrator
+	RunAsAdmin *bool `protobuf:"varint,1,opt,name=run_as_admin,json=runAsAdmin" json:"run_as_admin,omitempty"`
+	// The ID of the virtual machine
+	Id *int64 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
+	// comma separated list of affinity groups id that are going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupnames parameter
+	AffinityGroupIdList []string `protobuf:"bytes,3,rep,name=affinity_group_id_list,json=affinityGroupIdList" json:"affinity_group_id_list,omitempty"`
+	// comma separated list of affinity groups names that are going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupids parameter
+	AffinityGroupNameList []string `protobuf:"bytes,4,rep,name=affinity_group_name_list,json=affinityGroupNameList" json:"affinity_group_name_list,omitempty"`
+	StartEventId *int64 `protobuf:"varint,5,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,6,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,7,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateAffinityGroupRequest) Reset() {
-	*x = CreateAffinityGroupRequest{}
+func (x *UpdateVMAffinityGroupRequest) Reset() {
+	*x = UpdateVMAffinityGroupRequest{}
 	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateAffinityGroupRequest) String() string {
+func (x *UpdateVMAffinityGroupRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateAffinityGroupRequest) ProtoMessage() {}
+func (*UpdateVMAffinityGroupRequest) ProtoMessage() {}
 
-func (x *CreateAffinityGroupRequest) ProtoReflect() protoreflect.Message {
+func (x *UpdateVMAffinityGroupRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -697,76 +711,62 @@ func (x *CreateAffinityGroupRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateAffinityGroupRequest.ProtoReflect.Descriptor instead.
-func (*CreateAffinityGroupRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateVMAffinityGroupRequest.ProtoReflect.Descriptor instead.
+func (*UpdateVMAffinityGroupRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *CreateAffinityGroupRequest) GetAccountName() string {
-	if x != nil && x.AccountName != nil {
-		return *x.AccountName
+func (x *UpdateVMAffinityGroupRequest) GetRunAsAdmin() bool {
+	if x != nil && x.RunAsAdmin != nil {
+		return *x.RunAsAdmin
 	}
-	return ""
+	return false
 }
 
-func (x *CreateAffinityGroupRequest) GetDomainId() int64 {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return 0
-}
-
-func (x *CreateAffinityGroupRequest) GetProjectId() int64 {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
+func (x *UpdateVMAffinityGroupRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
 	}
 	return 0
 }
 
-func (x *CreateAffinityGroupRequest) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
+func (x *UpdateVMAffinityGroupRequest) GetAffinityGroupIdList() []string {
+	if x != nil {
+		return x.AffinityGroupIdList
 	}
-	return ""
+	return nil
 }
 
-func (x *CreateAffinityGroupRequest) GetAffinityGroupName() string {
-	if x != nil && x.AffinityGroupName != nil {
-		return *x.AffinityGroupName
+func (x *UpdateVMAffinityGroupRequest) GetAffinityGroupNameList() []string {
+	if x != nil {
+		return x.AffinityGroupNameList
 	}
-	return ""
+	return nil
 }
 
-func (x *CreateAffinityGroupRequest) GetAffinityGroupType() string {
-	if x != nil && x.AffinityGroupType != nil {
-		return *x.AffinityGroupType
-	}
-	return ""
-}
-
-func (x *CreateAffinityGroupRequest) GetStartEventId() int64 {
+func (x *UpdateVMAffinityGroupRequest) GetStartEventId() int64 {
 	if x != nil && x.StartEventId != nil {
 		return *x.StartEventId
 	}
 	return 0
 }
 
-func (x *CreateAffinityGroupRequest) GetInjectedJobId() string {
+func (x *UpdateVMAffinityGroupRequest) GetInjectedJobId() string {
 	if x != nil && x.InjectedJobId != nil {
 		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *CreateAffinityGroupRequest) GetResponseType() string {
+func (x *UpdateVMAffinityGroupRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// CreateAffinityGroupResponse represents the response from creates an affinity/anti-affinity group
-type CreateAffinityGroupResponse struct {
+// UpdateVMAffinityGroupResponse represents the response from updates the affinity/anti-affinity group associations of a virtual machine. the vm has to be stopped and restarted for the new properties to take effect.
+type UpdateVMAffinityGroupResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -774,20 +774,20 @@ type CreateAffinityGroupResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateAffinityGroupResponse) Reset() {
-	*x = CreateAffinityGroupResponse{}
+func (x *UpdateVMAffinityGroupResponse) Reset() {
+	*x = UpdateVMAffinityGroupResponse{}
 	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateAffinityGroupResponse) String() string {
+func (x *UpdateVMAffinityGroupResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateAffinityGroupResponse) ProtoMessage() {}
+func (*UpdateVMAffinityGroupResponse) ProtoMessage() {}
 
-func (x *CreateAffinityGroupResponse) ProtoReflect() protoreflect.Message {
+func (x *UpdateVMAffinityGroupResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -799,49 +799,48 @@ func (x *CreateAffinityGroupResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateAffinityGroupResponse.ProtoReflect.Descriptor instead.
-func (*CreateAffinityGroupResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateVMAffinityGroupResponse.ProtoReflect.Descriptor instead.
+func (*UpdateVMAffinityGroupResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *CreateAffinityGroupResponse) GetResult() *Result {
+func (x *UpdateVMAffinityGroupResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
 	return nil
 }
 
-// AffinityGroupType represents a AffinityGroupType Item
-type AffinityGroupType struct {
+// UpdateVMAffinityGroupCmdByAdminRequest represents the parameters for updates the affinity/anti-affinity group associations of a virtual machine. the vm has to be stopped and restarted for the new properties to take effect.
+type UpdateVMAffinityGroupCmdByAdminRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the AffinityGroupType
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the AffinityGroupType
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the AffinityGroupType
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the AffinityGroupType
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The date this entity was created
-	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	// The ID of the virtual machine
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// comma separated list of affinity groups id that are going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupnames parameter
+	AffinityGroupIdList []string `protobuf:"bytes,2,rep,name=affinity_group_id_list,json=affinityGroupIdList" json:"affinity_group_id_list,omitempty"`
+	// comma separated list of affinity groups names that are going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupids parameter
+	AffinityGroupNameList []string `protobuf:"bytes,3,rep,name=affinity_group_name_list,json=affinityGroupNameList" json:"affinity_group_name_list,omitempty"`
+	StartEventId *int64 `protobuf:"varint,4,opt,name=start_event_id,json=startEventId" json:"start_event_id,omitempty"`
+	InjectedJobId *string `protobuf:"bytes,5,opt,name=injected_job_id,json=injectedJobId" json:"injected_job_id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AffinityGroupType) Reset() {
-	*x = AffinityGroupType{}
+func (x *UpdateVMAffinityGroupCmdByAdminRequest) Reset() {
+	*x = UpdateVMAffinityGroupCmdByAdminRequest{}
 	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *AffinityGroupType) String() string {
+func (x *UpdateVMAffinityGroupCmdByAdminRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AffinityGroupType) ProtoMessage() {}
+func (*UpdateVMAffinityGroupCmdByAdminRequest) ProtoMessage() {}
 
-func (x *AffinityGroupType) ProtoReflect() protoreflect.Message {
+func (x *UpdateVMAffinityGroupCmdByAdminRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -853,44 +852,97 @@ func (x *AffinityGroupType) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AffinityGroupType.ProtoReflect.Descriptor instead.
-func (*AffinityGroupType) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateVMAffinityGroupCmdByAdminRequest.ProtoReflect.Descriptor instead.
+func (*UpdateVMAffinityGroupCmdByAdminRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *AffinityGroupType) GetId() string {
+func (x *UpdateVMAffinityGroupCmdByAdminRequest) GetId() int64 {
 	if x != nil && x.Id != nil {
 		return *x.Id
 	}
-	return ""
+	return 0
 }
 
-func (x *AffinityGroupType) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
+func (x *UpdateVMAffinityGroupCmdByAdminRequest) GetAffinityGroupIdList() []string {
+	if x != nil {
+		return x.AffinityGroupIdList
+	}
+	return nil
+}
+
+func (x *UpdateVMAffinityGroupCmdByAdminRequest) GetAffinityGroupNameList() []string {
+	if x != nil {
+		return x.AffinityGroupNameList
+	}
+	return nil
+}
+
+func (x *UpdateVMAffinityGroupCmdByAdminRequest) GetStartEventId() int64 {
+	if x != nil && x.StartEventId != nil {
+		return *x.StartEventId
+	}
+	return 0
+}
+
+func (x *UpdateVMAffinityGroupCmdByAdminRequest) GetInjectedJobId() string {
+	if x != nil && x.InjectedJobId != nil {
+		return *x.InjectedJobId
 	}
 	return ""
 }
 
-func (x *AffinityGroupType) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
+func (x *UpdateVMAffinityGroupCmdByAdminRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
 	}
 	return ""
 }
 
-func (x *AffinityGroupType) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
+// UpdateVMAffinityGroupCmdByAdminResponse represents the response from updates the affinity/anti-affinity group associations of a virtual machine. the vm has to be stopped and restarted for the new properties to take effect.
+type UpdateVMAffinityGroupCmdByAdminResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AffinityGroupType) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
+func (x *UpdateVMAffinityGroupCmdByAdminResponse) Reset() {
+	*x = UpdateVMAffinityGroupCmdByAdminResponse{}
+	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateVMAffinityGroupCmdByAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateVMAffinityGroupCmdByAdminResponse) ProtoMessage() {}
+
+func (x *UpdateVMAffinityGroupCmdByAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
 	}
-	return ""
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateVMAffinityGroupCmdByAdminResponse.ProtoReflect.Descriptor instead.
+func (*UpdateVMAffinityGroupCmdByAdminResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *UpdateVMAffinityGroupCmdByAdminResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
 }
 
 // AffinityGroup represents a AffinityGroup Item
@@ -912,7 +964,7 @@ type AffinityGroup struct {
 
 func (x *AffinityGroup) Reset() {
 	*x = AffinityGroup{}
-	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -924,7 +976,7 @@ func (x *AffinityGroup) String() string {
 func (*AffinityGroup) ProtoMessage() {}
 
 func (x *AffinityGroup) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -937,7 +989,7 @@ func (x *AffinityGroup) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AffinityGroup.ProtoReflect.Descriptor instead.
 func (*AffinityGroup) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_rawDescGZIP(), []int{11}
+	return file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *AffinityGroup) GetId() string {
@@ -975,6 +1027,88 @@ func (x *AffinityGroup) GetCreated() string {
 	return ""
 }
 
+// AffinityGroupType represents a AffinityGroupType Item
+type AffinityGroupType struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The ID of the AffinityGroupType
+	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	// The name of the AffinityGroupType
+	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// The display name of the AffinityGroupType
+	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	// The description of the AffinityGroupType
+	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
+	// The date this entity was created
+	Created       *string `protobuf:"bytes,5,opt,name=created" json:"created,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AffinityGroupType) Reset() {
+	*x = AffinityGroupType{}
+	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AffinityGroupType) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AffinityGroupType) ProtoMessage() {}
+
+func (x *AffinityGroupType) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AffinityGroupType.ProtoReflect.Descriptor instead.
+func (*AffinityGroupType) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *AffinityGroupType) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+func (x *AffinityGroupType) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *AffinityGroupType) GetDisplayName() string {
+	if x != nil && x.DisplayName != nil {
+		return *x.DisplayName
+	}
+	return ""
+}
+
+func (x *AffinityGroupType) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *AffinityGroupType) GetCreated() string {
+	if x != nil && x.Created != nil {
+		return *x.Created
+	}
+	return ""
+}
+
 // Success represents a Success Operation Response
 type Success struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -988,7 +1122,7 @@ type Success struct {
 
 func (x *Success) Reset() {
 	*x = Success{}
-	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[12]
+	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1000,7 +1134,7 @@ func (x *Success) String() string {
 func (*Success) ProtoMessage() {}
 
 func (x *Success) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[12]
+	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1013,7 +1147,7 @@ func (x *Success) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Success.ProtoReflect.Descriptor instead.
 func (*Success) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_rawDescGZIP(), []int{12}
+	return file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *Success) GetSuccess() bool {
@@ -1028,151 +1162,6 @@ func (x *Success) GetDisplayText() string {
 		return *x.DisplayText
 	}
 	return ""
-}
-
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
 }
 
 // Result represents a generic operation result
@@ -1194,7 +1183,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[14]
+	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1206,7 +1195,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[14]
+	mi := &file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1219,7 +1208,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_rawDescGZIP(), []int{14}
+	return file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -1261,17 +1250,21 @@ var File_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto protoref
 
 const file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_rawDesc = "" +
 	"\n" +
-	">cloudstack/management/affinitygroup/v1/affinitygroup.gen.proto\x12&cloudstack.management.affinitygroup.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xc3\x02\n" +
-	"\x1cUpdateVMAffinityGroupRequest\x12 \n" +
-	"\frun_as_admin\x18\x01 \x01(\bR\n" +
-	"runAsAdmin\x12\x16\n" +
-	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x123\n" +
-	"\x16affinity_group_id_list\x18\x03 \x03(\tR\x13affinityGroupIdList\x127\n" +
-	"\x18affinity_group_name_list\x18\x04 \x03(\tR\x15affinityGroupNameList\x12$\n" +
-	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\a \x01(\tR\fresponseType\"g\n" +
-	"\x1dUpdateVMAffinityGroupResponse\x12F\n" +
+	">cloudstack/management/affinitygroup/v1/affinitygroup.gen.proto\x12&cloudstack.management.affinitygroup.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x9d\x03\n" +
+	"\x1aCreateAffinityGroupRequest\x12!\n" +
+	"\faccount_name\x18\x01 \x01(\tR\vaccountName\x12\x1b\n" +
+	"\tdomain_id\x18\x02 \x01(\x03R\bdomainId\x12\x1d\n" +
+	"\n" +
+	"project_id\x18\x03 \x01(\x03R\tprojectId\x12,\n" +
+	"\vdescription\x18\x04 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12=\n" +
+	"\x13affinity_group_name\x18\x05 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x11affinityGroupName\x126\n" +
+	"\x13affinity_group_type\x18\x06 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x11affinityGroupType\x12$\n" +
+	"\x0estart_event_id\x18\a \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\t \x01(\tR\fresponseType\"e\n" +
+	"\x1bCreateAffinityGroupResponse\x12F\n" +
 	"\x06result\x18\x01 \x01(\v2..cloudstack.management.affinitygroup.v1.ResultR\x06result\"\xa8\x02\n" +
 	"\x1aDeleteAffinityGroupRequest\x12!\n" +
 	"\faccount_name\x18\x01 \x01(\tR\vaccountName\x12\x1b\n" +
@@ -1316,29 +1309,34 @@ const file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_rawDes
 	"\x1aListAffinityGroupsResponse\x12K\n" +
 	"\x05items\x18\x01 \x03(\v25.cloudstack.management.affinitygroup.v1.AffinityGroupR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x9d\x03\n" +
-	"\x1aCreateAffinityGroupRequest\x12!\n" +
-	"\faccount_name\x18\x01 \x01(\tR\vaccountName\x12\x1b\n" +
-	"\tdomain_id\x18\x02 \x01(\x03R\bdomainId\x12\x1d\n" +
-	"\n" +
-	"project_id\x18\x03 \x01(\x03R\tprojectId\x12,\n" +
-	"\vdescription\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\x80\bR\vdescription\x12=\n" +
-	"\x13affinity_group_name\x18\x05 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x11affinityGroupName\x126\n" +
-	"\x13affinity_group_type\x18\x06 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x11affinityGroupType\x12$\n" +
-	"\x0estart_event_id\x18\a \x01(\x03R\fstartEventId\x120\n" +
-	"\x0finjected_job_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
-	"\rresponse_type\x18\t \x01(\tR\fresponseType\"e\n" +
-	"\x1bCreateAffinityGroupResponse\x12F\n" +
-	"\x06result\x18\x01 \x01(\v2..cloudstack.management.affinitygroup.v1.ResultR\x06result\"\xa0\x01\n" +
-	"\x11AffinityGroupType\x12\x18\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"\xc3\x02\n" +
+	"\x1cUpdateVMAffinityGroupRequest\x12 \n" +
+	"\frun_as_admin\x18\x01 \x01(\bR\n" +
+	"runAsAdmin\x12\x16\n" +
+	"\x02id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x123\n" +
+	"\x16affinity_group_id_list\x18\x03 \x03(\tR\x13affinityGroupIdList\x127\n" +
+	"\x18affinity_group_name_list\x18\x04 \x03(\tR\x15affinityGroupNameList\x12$\n" +
+	"\x0estart_event_id\x18\x05 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\a \x01(\tR\fresponseType\"g\n" +
+	"\x1dUpdateVMAffinityGroupResponse\x12F\n" +
+	"\x06result\x18\x01 \x01(\v2..cloudstack.management.affinitygroup.v1.ResultR\x06result\"\xab\x02\n" +
+	"&UpdateVMAffinityGroupCmdByAdminRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x123\n" +
+	"\x16affinity_group_id_list\x18\x02 \x03(\tR\x13affinityGroupIdList\x127\n" +
+	"\x18affinity_group_name_list\x18\x03 \x03(\tR\x15affinityGroupNameList\x12$\n" +
+	"\x0estart_event_id\x18\x04 \x01(\x03R\fstartEventId\x120\n" +
+	"\x0finjected_job_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\rinjectedJobId\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"q\n" +
+	"'UpdateVMAffinityGroupCmdByAdminResponse\x12F\n" +
+	"\x06result\x18\x01 \x01(\v2..cloudstack.management.affinitygroup.v1.ResultR\x06result\"\x9c\x01\n" +
+	"\rAffinityGroup\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x18\n" +
-	"\acreated\x18\x05 \x01(\tR\acreated\"\x9c\x01\n" +
-	"\rAffinityGroup\x12\x18\n" +
+	"\acreated\x18\x05 \x01(\tR\acreated\"\xa0\x01\n" +
+	"\x11AffinityGroupType\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
@@ -1346,39 +1344,21 @@ const file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_rawDes
 	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xe5\x03\n" +
-	"\x04Item\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12S\n" +
-	"\adetails\x18\f \x03(\v29.cloudstack.management.affinitygroup.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xdf\x06\n" +
-	"\x14AffinitygroupService\x12\xac\x01\n" +
-	"\x15UpdateVMAffinityGroup\x12D.cloudstack.management.affinitygroup.v1.UpdateVMAffinityGroupRequest\x1aE.cloudstack.management.affinitygroup.v1.UpdateVMAffinityGroupResponse\"\x06\xc2>\x03\xc0>\x01\x12\xa0\x01\n" +
-	"\x13DeleteAffinityGroup\x12B.cloudstack.management.affinitygroup.v1.DeleteAffinityGroupRequest\x1aC.cloudstack.management.affinitygroup.v1.DeleteAffinityGroupResponse\"\x00\x12\xa9\x01\n" +
-	"\x16ListAffinityGroupTypes\x12E.cloudstack.management.affinitygroup.v1.ListAffinityGroupTypesRequest\x1aF.cloudstack.management.affinitygroup.v1.ListAffinityGroupTypesResponse\"\x00\x12\x9d\x01\n" +
-	"\x12ListAffinityGroups\x12A.cloudstack.management.affinitygroup.v1.ListAffinityGroupsRequest\x1aB.cloudstack.management.affinitygroup.v1.ListAffinityGroupsResponse\"\x00\x12\xa0\x01\n" +
-	"\x13CreateAffinityGroup\x12B.cloudstack.management.affinitygroup.v1.CreateAffinityGroupRequest\x1aC.cloudstack.management.affinitygroup.v1.CreateAffinityGroupResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\xea\x02\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\xcc\b\n" +
+	"\x14AffinitygroupService\x12\xa7\x01\n" +
+	"\x13CreateAffinityGroup\x12B.cloudstack.management.affinitygroup.v1.CreateAffinityGroupRequest\x1aC.cloudstack.management.affinitygroup.v1.CreateAffinityGroupResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xa7\x01\n" +
+	"\x13DeleteAffinityGroup\x12B.cloudstack.management.affinitygroup.v1.DeleteAffinityGroupRequest\x1aC.cloudstack.management.affinitygroup.v1.DeleteAffinityGroupResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xb0\x01\n" +
+	"\x16ListAffinityGroupTypes\x12E.cloudstack.management.affinitygroup.v1.ListAffinityGroupTypesRequest\x1aF.cloudstack.management.affinitygroup.v1.ListAffinityGroupTypesResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xa4\x01\n" +
+	"\x12ListAffinityGroups\x12A.cloudstack.management.affinitygroup.v1.ListAffinityGroupsRequest\x1aB.cloudstack.management.affinitygroup.v1.ListAffinityGroupsResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xae\x01\n" +
+	"\x15UpdateVMAffinityGroup\x12D.cloudstack.management.affinitygroup.v1.UpdateVMAffinityGroupRequest\x1aE.cloudstack.management.affinitygroup.v1.UpdateVMAffinityGroupResponse\"\b\xc2>\x05\xc2>\x02\x01\x02\x12\xcb\x01\n" +
+	"\x1fUpdateVMAffinityGroupCmdByAdmin\x12N.cloudstack.management.affinitygroup.v1.UpdateVMAffinityGroupCmdByAdminRequest\x1aO.cloudstack.management.affinitygroup.v1.UpdateVMAffinityGroupCmdByAdminResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\a\xc2>\x04\xc2>\x01\x02B\xea\x02\n" +
 	"*com.cloudstack.management.affinitygroup.v1B\x15AffinitygroupGenProtoP\x01Zjgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/affinitygroup/v1;affinitygroupv1\xa2\x02\x03CMA\xaa\x02&Cloudstack.Management.Affinitygroup.V1\xca\x02&Cloudstack\\Management\\Affinitygroup\\V1\xe2\x022Cloudstack\\Management\\Affinitygroup\\V1\\GPBMetadata\xea\x02)Cloudstack::Management::Affinitygroup::V1b\beditionsp\xe8\a"
 
 var (
@@ -1395,42 +1375,44 @@ func file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_rawDesc
 
 var file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
 var file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_goTypes = []any{
-	(*UpdateVMAffinityGroupRequest)(nil),   // 0: cloudstack.management.affinitygroup.v1.UpdateVMAffinityGroupRequest
-	(*UpdateVMAffinityGroupResponse)(nil),  // 1: cloudstack.management.affinitygroup.v1.UpdateVMAffinityGroupResponse
-	(*DeleteAffinityGroupRequest)(nil),     // 2: cloudstack.management.affinitygroup.v1.DeleteAffinityGroupRequest
-	(*DeleteAffinityGroupResponse)(nil),    // 3: cloudstack.management.affinitygroup.v1.DeleteAffinityGroupResponse
-	(*ListAffinityGroupTypesRequest)(nil),  // 4: cloudstack.management.affinitygroup.v1.ListAffinityGroupTypesRequest
-	(*ListAffinityGroupTypesResponse)(nil), // 5: cloudstack.management.affinitygroup.v1.ListAffinityGroupTypesResponse
-	(*ListAffinityGroupsRequest)(nil),      // 6: cloudstack.management.affinitygroup.v1.ListAffinityGroupsRequest
-	(*ListAffinityGroupsResponse)(nil),     // 7: cloudstack.management.affinitygroup.v1.ListAffinityGroupsResponse
-	(*CreateAffinityGroupRequest)(nil),     // 8: cloudstack.management.affinitygroup.v1.CreateAffinityGroupRequest
-	(*CreateAffinityGroupResponse)(nil),    // 9: cloudstack.management.affinitygroup.v1.CreateAffinityGroupResponse
-	(*AffinityGroupType)(nil),              // 10: cloudstack.management.affinitygroup.v1.AffinityGroupType
-	(*AffinityGroup)(nil),                  // 11: cloudstack.management.affinitygroup.v1.AffinityGroup
-	(*Success)(nil),                        // 12: cloudstack.management.affinitygroup.v1.Success
-	(*Item)(nil),                           // 13: cloudstack.management.affinitygroup.v1.Item
-	(*Result)(nil),                         // 14: cloudstack.management.affinitygroup.v1.Result
-	nil,                                    // 15: cloudstack.management.affinitygroup.v1.Item.DetailsEntry
+	(*CreateAffinityGroupRequest)(nil),              // 0: cloudstack.management.affinitygroup.v1.CreateAffinityGroupRequest
+	(*CreateAffinityGroupResponse)(nil),             // 1: cloudstack.management.affinitygroup.v1.CreateAffinityGroupResponse
+	(*DeleteAffinityGroupRequest)(nil),              // 2: cloudstack.management.affinitygroup.v1.DeleteAffinityGroupRequest
+	(*DeleteAffinityGroupResponse)(nil),             // 3: cloudstack.management.affinitygroup.v1.DeleteAffinityGroupResponse
+	(*ListAffinityGroupTypesRequest)(nil),           // 4: cloudstack.management.affinitygroup.v1.ListAffinityGroupTypesRequest
+	(*ListAffinityGroupTypesResponse)(nil),          // 5: cloudstack.management.affinitygroup.v1.ListAffinityGroupTypesResponse
+	(*ListAffinityGroupsRequest)(nil),               // 6: cloudstack.management.affinitygroup.v1.ListAffinityGroupsRequest
+	(*ListAffinityGroupsResponse)(nil),              // 7: cloudstack.management.affinitygroup.v1.ListAffinityGroupsResponse
+	(*UpdateVMAffinityGroupRequest)(nil),            // 8: cloudstack.management.affinitygroup.v1.UpdateVMAffinityGroupRequest
+	(*UpdateVMAffinityGroupResponse)(nil),           // 9: cloudstack.management.affinitygroup.v1.UpdateVMAffinityGroupResponse
+	(*UpdateVMAffinityGroupCmdByAdminRequest)(nil),  // 10: cloudstack.management.affinitygroup.v1.UpdateVMAffinityGroupCmdByAdminRequest
+	(*UpdateVMAffinityGroupCmdByAdminResponse)(nil), // 11: cloudstack.management.affinitygroup.v1.UpdateVMAffinityGroupCmdByAdminResponse
+	(*AffinityGroup)(nil),                           // 12: cloudstack.management.affinitygroup.v1.AffinityGroup
+	(*AffinityGroupType)(nil),                       // 13: cloudstack.management.affinitygroup.v1.AffinityGroupType
+	(*Success)(nil),                                 // 14: cloudstack.management.affinitygroup.v1.Success
+	(*Result)(nil),                                  // 15: cloudstack.management.affinitygroup.v1.Result
 }
 var file_cloudstack_management_affinitygroup_v1_affinitygroup_gen_proto_depIdxs = []int32{
-	14, // 0: cloudstack.management.affinitygroup.v1.UpdateVMAffinityGroupResponse.result:type_name -> cloudstack.management.affinitygroup.v1.Result
-	14, // 1: cloudstack.management.affinitygroup.v1.DeleteAffinityGroupResponse.result:type_name -> cloudstack.management.affinitygroup.v1.Result
-	10, // 2: cloudstack.management.affinitygroup.v1.ListAffinityGroupTypesResponse.items:type_name -> cloudstack.management.affinitygroup.v1.AffinityGroupType
-	11, // 3: cloudstack.management.affinitygroup.v1.ListAffinityGroupsResponse.items:type_name -> cloudstack.management.affinitygroup.v1.AffinityGroup
-	14, // 4: cloudstack.management.affinitygroup.v1.CreateAffinityGroupResponse.result:type_name -> cloudstack.management.affinitygroup.v1.Result
-	15, // 5: cloudstack.management.affinitygroup.v1.Item.details:type_name -> cloudstack.management.affinitygroup.v1.Item.DetailsEntry
-	0,  // 6: cloudstack.management.affinitygroup.v1.AffinitygroupService.UpdateVMAffinityGroup:input_type -> cloudstack.management.affinitygroup.v1.UpdateVMAffinityGroupRequest
+	15, // 0: cloudstack.management.affinitygroup.v1.CreateAffinityGroupResponse.result:type_name -> cloudstack.management.affinitygroup.v1.Result
+	15, // 1: cloudstack.management.affinitygroup.v1.DeleteAffinityGroupResponse.result:type_name -> cloudstack.management.affinitygroup.v1.Result
+	13, // 2: cloudstack.management.affinitygroup.v1.ListAffinityGroupTypesResponse.items:type_name -> cloudstack.management.affinitygroup.v1.AffinityGroupType
+	12, // 3: cloudstack.management.affinitygroup.v1.ListAffinityGroupsResponse.items:type_name -> cloudstack.management.affinitygroup.v1.AffinityGroup
+	15, // 4: cloudstack.management.affinitygroup.v1.UpdateVMAffinityGroupResponse.result:type_name -> cloudstack.management.affinitygroup.v1.Result
+	15, // 5: cloudstack.management.affinitygroup.v1.UpdateVMAffinityGroupCmdByAdminResponse.result:type_name -> cloudstack.management.affinitygroup.v1.Result
+	0,  // 6: cloudstack.management.affinitygroup.v1.AffinitygroupService.CreateAffinityGroup:input_type -> cloudstack.management.affinitygroup.v1.CreateAffinityGroupRequest
 	2,  // 7: cloudstack.management.affinitygroup.v1.AffinitygroupService.DeleteAffinityGroup:input_type -> cloudstack.management.affinitygroup.v1.DeleteAffinityGroupRequest
 	4,  // 8: cloudstack.management.affinitygroup.v1.AffinitygroupService.ListAffinityGroupTypes:input_type -> cloudstack.management.affinitygroup.v1.ListAffinityGroupTypesRequest
 	6,  // 9: cloudstack.management.affinitygroup.v1.AffinitygroupService.ListAffinityGroups:input_type -> cloudstack.management.affinitygroup.v1.ListAffinityGroupsRequest
-	8,  // 10: cloudstack.management.affinitygroup.v1.AffinitygroupService.CreateAffinityGroup:input_type -> cloudstack.management.affinitygroup.v1.CreateAffinityGroupRequest
-	1,  // 11: cloudstack.management.affinitygroup.v1.AffinitygroupService.UpdateVMAffinityGroup:output_type -> cloudstack.management.affinitygroup.v1.UpdateVMAffinityGroupResponse
-	3,  // 12: cloudstack.management.affinitygroup.v1.AffinitygroupService.DeleteAffinityGroup:output_type -> cloudstack.management.affinitygroup.v1.DeleteAffinityGroupResponse
-	5,  // 13: cloudstack.management.affinitygroup.v1.AffinitygroupService.ListAffinityGroupTypes:output_type -> cloudstack.management.affinitygroup.v1.ListAffinityGroupTypesResponse
-	7,  // 14: cloudstack.management.affinitygroup.v1.AffinitygroupService.ListAffinityGroups:output_type -> cloudstack.management.affinitygroup.v1.ListAffinityGroupsResponse
-	9,  // 15: cloudstack.management.affinitygroup.v1.AffinitygroupService.CreateAffinityGroup:output_type -> cloudstack.management.affinitygroup.v1.CreateAffinityGroupResponse
-	11, // [11:16] is the sub-list for method output_type
-	6,  // [6:11] is the sub-list for method input_type
+	8,  // 10: cloudstack.management.affinitygroup.v1.AffinitygroupService.UpdateVMAffinityGroup:input_type -> cloudstack.management.affinitygroup.v1.UpdateVMAffinityGroupRequest
+	10, // 11: cloudstack.management.affinitygroup.v1.AffinitygroupService.UpdateVMAffinityGroupCmdByAdmin:input_type -> cloudstack.management.affinitygroup.v1.UpdateVMAffinityGroupCmdByAdminRequest
+	1,  // 12: cloudstack.management.affinitygroup.v1.AffinitygroupService.CreateAffinityGroup:output_type -> cloudstack.management.affinitygroup.v1.CreateAffinityGroupResponse
+	3,  // 13: cloudstack.management.affinitygroup.v1.AffinitygroupService.DeleteAffinityGroup:output_type -> cloudstack.management.affinitygroup.v1.DeleteAffinityGroupResponse
+	5,  // 14: cloudstack.management.affinitygroup.v1.AffinitygroupService.ListAffinityGroupTypes:output_type -> cloudstack.management.affinitygroup.v1.ListAffinityGroupTypesResponse
+	7,  // 15: cloudstack.management.affinitygroup.v1.AffinitygroupService.ListAffinityGroups:output_type -> cloudstack.management.affinitygroup.v1.ListAffinityGroupsResponse
+	9,  // 16: cloudstack.management.affinitygroup.v1.AffinitygroupService.UpdateVMAffinityGroup:output_type -> cloudstack.management.affinitygroup.v1.UpdateVMAffinityGroupResponse
+	11, // 17: cloudstack.management.affinitygroup.v1.AffinitygroupService.UpdateVMAffinityGroupCmdByAdmin:output_type -> cloudstack.management.affinitygroup.v1.UpdateVMAffinityGroupCmdByAdminResponse
+	12, // [12:18] is the sub-list for method output_type
+	6,  // [6:12] is the sub-list for method input_type
 	6,  // [6:6] is the sub-list for extension type_name
 	6,  // [6:6] is the sub-list for extension extendee
 	0,  // [0:6] is the sub-list for field type_name

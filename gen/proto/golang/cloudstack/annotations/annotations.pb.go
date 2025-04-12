@@ -10,7 +10,6 @@ import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	descriptorpb "google.golang.org/protobuf/types/descriptorpb"
-	_ "google.golang.org/protobuf/types/known/anypb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -26,22 +25,22 @@ const (
 type Enum_Scope int32
 
 const (
-	Enum_Scope_UNSPECIFIED Enum_Scope = 0
-	Enum_Scope_ADMIN       Enum_Scope = 1
-	Enum_Scope_USER        Enum_Scope = 2
+	Enum_SCOPE_UNSPECIFIED Enum_Scope = 0
+	Enum_SCOPE_ADMIN       Enum_Scope = 1
+	Enum_SCOPE_USER        Enum_Scope = 2
 )
 
 // Enum value maps for Enum_Scope.
 var (
 	Enum_Scope_name = map[int32]string{
-		0: "Scope_UNSPECIFIED",
-		1: "Scope_ADMIN",
-		2: "Scope_USER",
+		0: "SCOPE_UNSPECIFIED",
+		1: "SCOPE_ADMIN",
+		2: "SCOPE_USER",
 	}
 	Enum_Scope_value = map[string]int32{
-		"Scope_UNSPECIFIED": 0,
-		"Scope_ADMIN":       1,
-		"Scope_USER":        2,
+		"SCOPE_UNSPECIFIED": 0,
+		"SCOPE_ADMIN":       1,
+		"SCOPE_USER":        2,
 	}
 )
 
@@ -109,10 +108,11 @@ func (*Enum) Descriptor() ([]byte, []int) {
 }
 
 type FieldOptions struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Scope         *Enum_Scope            `protobuf:"varint,1000,opt,name=scope,enum=cloudstack.annotations.Enum_Scope" json:"scope,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Scope          []Enum_Scope           `protobuf:"varint,1000,rep,packed,name=scope,enum=cloudstack.annotations.Enum_Scope" json:"scope,omitempty"`
+	CloudstackName *string                `protobuf:"bytes,1001,opt,name=cloudstack_name,json=cloudstackName" json:"cloudstack_name,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *FieldOptions) Reset() {
@@ -145,18 +145,26 @@ func (*FieldOptions) Descriptor() ([]byte, []int) {
 	return file_cloudstack_annotations_annotations_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *FieldOptions) GetScope() Enum_Scope {
-	if x != nil && x.Scope != nil {
-		return *x.Scope
+func (x *FieldOptions) GetScope() []Enum_Scope {
+	if x != nil {
+		return x.Scope
 	}
-	return Enum_Scope_UNSPECIFIED
+	return nil
+}
+
+func (x *FieldOptions) GetCloudstackName() string {
+	if x != nil && x.CloudstackName != nil {
+		return *x.CloudstackName
+	}
+	return ""
 }
 
 type MessageOptions struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Scope         *Enum_Scope            `protobuf:"varint,1000,opt,name=scope,enum=cloudstack.annotations.Enum_Scope" json:"scope,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Scope          []Enum_Scope           `protobuf:"varint,1000,rep,packed,name=scope,enum=cloudstack.annotations.Enum_Scope" json:"scope,omitempty"`
+	CloudstackName *string                `protobuf:"bytes,1001,opt,name=cloudstack_name,json=cloudstackName" json:"cloudstack_name,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *MessageOptions) Reset() {
@@ -189,18 +197,26 @@ func (*MessageOptions) Descriptor() ([]byte, []int) {
 	return file_cloudstack_annotations_annotations_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *MessageOptions) GetScope() Enum_Scope {
-	if x != nil && x.Scope != nil {
-		return *x.Scope
+func (x *MessageOptions) GetScope() []Enum_Scope {
+	if x != nil {
+		return x.Scope
 	}
-	return Enum_Scope_UNSPECIFIED
+	return nil
+}
+
+func (x *MessageOptions) GetCloudstackName() string {
+	if x != nil && x.CloudstackName != nil {
+		return *x.CloudstackName
+	}
+	return ""
 }
 
 type ServiceOptions struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Scope         *Enum_Scope            `protobuf:"varint,1000,opt,name=scope,enum=cloudstack.annotations.Enum_Scope" json:"scope,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Scope          []Enum_Scope           `protobuf:"varint,1000,rep,packed,name=scope,enum=cloudstack.annotations.Enum_Scope" json:"scope,omitempty"`
+	CloudstackName *string                `protobuf:"bytes,1001,opt,name=cloudstack_name,json=cloudstackName" json:"cloudstack_name,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *ServiceOptions) Reset() {
@@ -233,18 +249,26 @@ func (*ServiceOptions) Descriptor() ([]byte, []int) {
 	return file_cloudstack_annotations_annotations_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ServiceOptions) GetScope() Enum_Scope {
-	if x != nil && x.Scope != nil {
-		return *x.Scope
+func (x *ServiceOptions) GetScope() []Enum_Scope {
+	if x != nil {
+		return x.Scope
 	}
-	return Enum_Scope_UNSPECIFIED
+	return nil
+}
+
+func (x *ServiceOptions) GetCloudstackName() string {
+	if x != nil && x.CloudstackName != nil {
+		return *x.CloudstackName
+	}
+	return ""
 }
 
 type MethodOptions struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Scope         *Enum_Scope            `protobuf:"varint,1000,opt,name=scope,enum=cloudstack.annotations.Enum_Scope" json:"scope,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Scope          []Enum_Scope           `protobuf:"varint,1000,rep,packed,name=scope,enum=cloudstack.annotations.Enum_Scope" json:"scope,omitempty"`
+	CloudstackName *string                `protobuf:"bytes,1001,opt,name=cloudstack_name,json=cloudstackName" json:"cloudstack_name,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *MethodOptions) Reset() {
@@ -277,11 +301,18 @@ func (*MethodOptions) Descriptor() ([]byte, []int) {
 	return file_cloudstack_annotations_annotations_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *MethodOptions) GetScope() Enum_Scope {
-	if x != nil && x.Scope != nil {
-		return *x.Scope
+func (x *MethodOptions) GetScope() []Enum_Scope {
+	if x != nil {
+		return x.Scope
 	}
-	return Enum_Scope_UNSPECIFIED
+	return nil
+}
+
+func (x *MethodOptions) GetCloudstackName() string {
+	if x != nil && x.CloudstackName != nil {
+		return *x.CloudstackName
+	}
+	return ""
 }
 
 var file_cloudstack_annotations_annotations_proto_extTypes = []protoimpl.ExtensionInfo{
@@ -347,21 +378,25 @@ var File_cloudstack_annotations_annotations_proto protoreflect.FileDescriptor
 
 const file_cloudstack_annotations_annotations_proto_rawDesc = "" +
 	"\n" +
-	"(cloudstack/annotations/annotations.proto\x12\x16cloudstack.annotations\x1a\x19google/protobuf/any.proto\x1a google/protobuf/descriptor.proto\"G\n" +
+	"(cloudstack/annotations/annotations.proto\x12\x16cloudstack.annotations\x1a google/protobuf/descriptor.proto\"G\n" +
 	"\x04Enum\"?\n" +
 	"\x05Scope\x12\x15\n" +
-	"\x11Scope_UNSPECIFIED\x10\x00\x12\x0f\n" +
-	"\vScope_ADMIN\x10\x01\x12\x0e\n" +
+	"\x11SCOPE_UNSPECIFIED\x10\x00\x12\x0f\n" +
+	"\vSCOPE_ADMIN\x10\x01\x12\x0e\n" +
 	"\n" +
-	"Scope_USER\x10\x02\"I\n" +
+	"SCOPE_USER\x10\x02\"s\n" +
 	"\fFieldOptions\x129\n" +
-	"\x05scope\x18\xe8\a \x01(\x0e2\".cloudstack.annotations.Enum.ScopeR\x05scope\"K\n" +
+	"\x05scope\x18\xe8\a \x03(\x0e2\".cloudstack.annotations.Enum.ScopeR\x05scope\x12(\n" +
+	"\x0fcloudstack_name\x18\xe9\a \x01(\tR\x0ecloudstackName\"u\n" +
 	"\x0eMessageOptions\x129\n" +
-	"\x05scope\x18\xe8\a \x01(\x0e2\".cloudstack.annotations.Enum.ScopeR\x05scope\"K\n" +
+	"\x05scope\x18\xe8\a \x03(\x0e2\".cloudstack.annotations.Enum.ScopeR\x05scope\x12(\n" +
+	"\x0fcloudstack_name\x18\xe9\a \x01(\tR\x0ecloudstackName\"u\n" +
 	"\x0eServiceOptions\x129\n" +
-	"\x05scope\x18\xe8\a \x01(\x0e2\".cloudstack.annotations.Enum.ScopeR\x05scope\"J\n" +
+	"\x05scope\x18\xe8\a \x03(\x0e2\".cloudstack.annotations.Enum.ScopeR\x05scope\x12(\n" +
+	"\x0fcloudstack_name\x18\xe9\a \x01(\tR\x0ecloudstackName\"t\n" +
 	"\rMethodOptions\x129\n" +
-	"\x05scope\x18\xe8\a \x01(\x0e2\".cloudstack.annotations.Enum.ScopeR\x05scope:Z\n" +
+	"\x05scope\x18\xe8\a \x03(\x0e2\".cloudstack.annotations.Enum.ScopeR\x05scope\x12(\n" +
+	"\x0fcloudstack_name\x18\xe9\a \x01(\tR\x0ecloudstackName:Z\n" +
 	"\x05field\x12\x1d.google.protobuf.FieldOptions\x18\xe8\a \x01(\v2$.cloudstack.annotations.FieldOptionsR\x05field:b\n" +
 	"\amessage\x12\x1f.google.protobuf.MessageOptions\x18\xe8\a \x01(\v2&.cloudstack.annotations.MessageOptionsR\amessage:b\n" +
 	"\aservice\x12\x1f.google.protobuf.ServiceOptions\x18\xe8\a \x01(\v2&.cloudstack.annotations.ServiceOptionsR\aservice:^\n" +

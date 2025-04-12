@@ -24,32 +24,38 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// UpdateSecondaryStorageSelectorRequest represents the parameters for updates an existing secondary storage selector.
-type UpdateSecondaryStorageSelectorRequest struct {
+// CreateSecondaryStorageSelectorRequest represents the parameters for creates a secondary storage selector, described by the heuristic rule.
+type CreateSecondaryStorageSelectorRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The unique identifier of the secondary storage selector.
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// The name identifying the heuristic rule.
+	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	// The description of the heuristic rule.
+	Description *string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
+	// The zone in which the heuristic rule will be applied.
+	ZoneId *int64 `protobuf:"varint,3,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
+	// The resource type directed to a specific secondary storage by the selector. Valid options are: ISO, SNAPSHOT, TEMPLATE and VOLUME.
+	Type *string `protobuf:"bytes,4,opt,name=type" json:"type,omitempty"`
 	// The heuristic rule, in JavaScript language. It is required that it returns the UUID of a secondary storage pool. An example of a rule is `if (snapshot.hypervisorType === 'KVM') { '7832f261-c602-4e8e-8580-2496ffbbc45d'; }` would allocate all snapshots with the KVM hypervisor to the specified secondary storage UUID.
-	HeuristicRule *string `protobuf:"bytes,2,opt,name=heuristic_rule,json=heuristicRule" json:"heuristic_rule,omitempty"`
-	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	HeuristicRule *string `protobuf:"bytes,5,opt,name=heuristic_rule,json=heuristicRule" json:"heuristic_rule,omitempty"`
+	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateSecondaryStorageSelectorRequest) Reset() {
-	*x = UpdateSecondaryStorageSelectorRequest{}
+func (x *CreateSecondaryStorageSelectorRequest) Reset() {
+	*x = CreateSecondaryStorageSelectorRequest{}
 	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateSecondaryStorageSelectorRequest) String() string {
+func (x *CreateSecondaryStorageSelectorRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateSecondaryStorageSelectorRequest) ProtoMessage() {}
+func (*CreateSecondaryStorageSelectorRequest) ProtoMessage() {}
 
-func (x *UpdateSecondaryStorageSelectorRequest) ProtoReflect() protoreflect.Message {
+func (x *CreateSecondaryStorageSelectorRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -61,34 +67,55 @@ func (x *UpdateSecondaryStorageSelectorRequest) ProtoReflect() protoreflect.Mess
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateSecondaryStorageSelectorRequest.ProtoReflect.Descriptor instead.
-func (*UpdateSecondaryStorageSelectorRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateSecondaryStorageSelectorRequest.ProtoReflect.Descriptor instead.
+func (*CreateSecondaryStorageSelectorRequest) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *UpdateSecondaryStorageSelectorRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
+func (x *CreateSecondaryStorageSelectorRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *CreateSecondaryStorageSelectorRequest) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *CreateSecondaryStorageSelectorRequest) GetZoneId() int64 {
+	if x != nil && x.ZoneId != nil {
+		return *x.ZoneId
 	}
 	return 0
 }
 
-func (x *UpdateSecondaryStorageSelectorRequest) GetHeuristicRule() string {
+func (x *CreateSecondaryStorageSelectorRequest) GetType() string {
+	if x != nil && x.Type != nil {
+		return *x.Type
+	}
+	return ""
+}
+
+func (x *CreateSecondaryStorageSelectorRequest) GetHeuristicRule() string {
 	if x != nil && x.HeuristicRule != nil {
 		return *x.HeuristicRule
 	}
 	return ""
 }
 
-func (x *UpdateSecondaryStorageSelectorRequest) GetResponseType() string {
+func (x *CreateSecondaryStorageSelectorRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// UpdateSecondaryStorageSelectorResponse represents the response from updates an existing secondary storage selector.
-type UpdateSecondaryStorageSelectorResponse struct {
+// CreateSecondaryStorageSelectorResponse represents the response from creates a secondary storage selector, described by the heuristic rule.
+type CreateSecondaryStorageSelectorResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -96,20 +123,20 @@ type UpdateSecondaryStorageSelectorResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateSecondaryStorageSelectorResponse) Reset() {
-	*x = UpdateSecondaryStorageSelectorResponse{}
+func (x *CreateSecondaryStorageSelectorResponse) Reset() {
+	*x = CreateSecondaryStorageSelectorResponse{}
 	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateSecondaryStorageSelectorResponse) String() string {
+func (x *CreateSecondaryStorageSelectorResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateSecondaryStorageSelectorResponse) ProtoMessage() {}
+func (*CreateSecondaryStorageSelectorResponse) ProtoMessage() {}
 
-func (x *UpdateSecondaryStorageSelectorResponse) ProtoReflect() protoreflect.Message {
+func (x *CreateSecondaryStorageSelectorResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -121,112 +148,12 @@ func (x *UpdateSecondaryStorageSelectorResponse) ProtoReflect() protoreflect.Mes
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateSecondaryStorageSelectorResponse.ProtoReflect.Descriptor instead.
-func (*UpdateSecondaryStorageSelectorResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateSecondaryStorageSelectorResponse.ProtoReflect.Descriptor instead.
+func (*CreateSecondaryStorageSelectorResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *UpdateSecondaryStorageSelectorResponse) GetResult() *Result {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-// RemoveSecondaryStorageSelectorRequest represents the parameters for removes an existing secondary storage selector.
-type RemoveSecondaryStorageSelectorRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The unique identifier of the secondary storage selector to be removed.
-	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RemoveSecondaryStorageSelectorRequest) Reset() {
-	*x = RemoveSecondaryStorageSelectorRequest{}
-	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RemoveSecondaryStorageSelectorRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RemoveSecondaryStorageSelectorRequest) ProtoMessage() {}
-
-func (x *RemoveSecondaryStorageSelectorRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RemoveSecondaryStorageSelectorRequest.ProtoReflect.Descriptor instead.
-func (*RemoveSecondaryStorageSelectorRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *RemoveSecondaryStorageSelectorRequest) GetId() int64 {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return 0
-}
-
-func (x *RemoveSecondaryStorageSelectorRequest) GetResponseType() string {
-	if x != nil && x.ResponseType != nil {
-		return *x.ResponseType
-	}
-	return ""
-}
-
-// RemoveSecondaryStorageSelectorResponse represents the response from removes an existing secondary storage selector.
-type RemoveSecondaryStorageSelectorResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The Result
-	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RemoveSecondaryStorageSelectorResponse) Reset() {
-	*x = RemoveSecondaryStorageSelectorResponse{}
-	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RemoveSecondaryStorageSelectorResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RemoveSecondaryStorageSelectorResponse) ProtoMessage() {}
-
-func (x *RemoveSecondaryStorageSelectorResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RemoveSecondaryStorageSelectorResponse.ProtoReflect.Descriptor instead.
-func (*RemoveSecondaryStorageSelectorResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *RemoveSecondaryStorageSelectorResponse) GetResult() *Result {
+func (x *CreateSecondaryStorageSelectorResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -253,7 +180,7 @@ type ListSecondaryStorageSelectorsRequest struct {
 
 func (x *ListSecondaryStorageSelectorsRequest) Reset() {
 	*x = ListSecondaryStorageSelectorsRequest{}
-	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -265,7 +192,7 @@ func (x *ListSecondaryStorageSelectorsRequest) String() string {
 func (*ListSecondaryStorageSelectorsRequest) ProtoMessage() {}
 
 func (x *ListSecondaryStorageSelectorsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[4]
+	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -278,7 +205,7 @@ func (x *ListSecondaryStorageSelectorsRequest) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use ListSecondaryStorageSelectorsRequest.ProtoReflect.Descriptor instead.
 func (*ListSecondaryStorageSelectorsRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_rawDescGZIP(), []int{4}
+	return file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ListSecondaryStorageSelectorsRequest) GetZoneId() int64 {
@@ -343,7 +270,7 @@ type ListSecondaryStorageSelectorsResponse struct {
 
 func (x *ListSecondaryStorageSelectorsResponse) Reset() {
 	*x = ListSecondaryStorageSelectorsResponse{}
-	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -355,7 +282,7 @@ func (x *ListSecondaryStorageSelectorsResponse) String() string {
 func (*ListSecondaryStorageSelectorsResponse) ProtoMessage() {}
 
 func (x *ListSecondaryStorageSelectorsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[5]
+	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -368,7 +295,7 @@ func (x *ListSecondaryStorageSelectorsResponse) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use ListSecondaryStorageSelectorsResponse.ProtoReflect.Descriptor instead.
 func (*ListSecondaryStorageSelectorsResponse) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_rawDescGZIP(), []int{5}
+	return file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ListSecondaryStorageSelectorsResponse) GetItems() []*SecondaryStorageHeuristics {
@@ -385,39 +312,31 @@ func (x *ListSecondaryStorageSelectorsResponse) GetTotalCount() int32 {
 	return 0
 }
 
-// CreateSecondaryStorageSelectorRequest represents the parameters for creates a secondary storage selector, described by the heuristic rule.
-type CreateSecondaryStorageSelectorRequest struct {
+// RemoveSecondaryStorageSelectorRequest represents the parameters for removes an existing secondary storage selector.
+type RemoveSecondaryStorageSelectorRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The name identifying the heuristic rule.
-	Name *string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
-	// The description of the heuristic rule.
-	Description *string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
-	// The zone in which the heuristic rule will be applied.
-	ZoneId *int64 `protobuf:"varint,3,opt,name=zone_id,json=zoneId" json:"zone_id,omitempty"`
-	// The resource type directed to a specific secondary storage by the selector. Valid options are: ISO, SNAPSHOT, TEMPLATE and VOLUME.
-	Type *string `protobuf:"bytes,4,opt,name=type" json:"type,omitempty"`
-	// The heuristic rule, in JavaScript language. It is required that it returns the UUID of a secondary storage pool. An example of a rule is `if (snapshot.hypervisorType === 'KVM') { '7832f261-c602-4e8e-8580-2496ffbbc45d'; }` would allocate all snapshots with the KVM hypervisor to the specified secondary storage UUID.
-	HeuristicRule *string `protobuf:"bytes,5,opt,name=heuristic_rule,json=heuristicRule" json:"heuristic_rule,omitempty"`
-	ResponseType  *string `protobuf:"bytes,6,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	// The unique identifier of the secondary storage selector to be removed.
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	ResponseType  *string `protobuf:"bytes,2,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateSecondaryStorageSelectorRequest) Reset() {
-	*x = CreateSecondaryStorageSelectorRequest{}
-	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[6]
+func (x *RemoveSecondaryStorageSelectorRequest) Reset() {
+	*x = RemoveSecondaryStorageSelectorRequest{}
+	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateSecondaryStorageSelectorRequest) String() string {
+func (x *RemoveSecondaryStorageSelectorRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateSecondaryStorageSelectorRequest) ProtoMessage() {}
+func (*RemoveSecondaryStorageSelectorRequest) ProtoMessage() {}
 
-func (x *CreateSecondaryStorageSelectorRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[6]
+func (x *RemoveSecondaryStorageSelectorRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -428,55 +347,27 @@ func (x *CreateSecondaryStorageSelectorRequest) ProtoReflect() protoreflect.Mess
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateSecondaryStorageSelectorRequest.ProtoReflect.Descriptor instead.
-func (*CreateSecondaryStorageSelectorRequest) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_rawDescGZIP(), []int{6}
+// Deprecated: Use RemoveSecondaryStorageSelectorRequest.ProtoReflect.Descriptor instead.
+func (*RemoveSecondaryStorageSelectorRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *CreateSecondaryStorageSelectorRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *CreateSecondaryStorageSelectorRequest) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *CreateSecondaryStorageSelectorRequest) GetZoneId() int64 {
-	if x != nil && x.ZoneId != nil {
-		return *x.ZoneId
+func (x *RemoveSecondaryStorageSelectorRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
 	}
 	return 0
 }
 
-func (x *CreateSecondaryStorageSelectorRequest) GetType() string {
-	if x != nil && x.Type != nil {
-		return *x.Type
-	}
-	return ""
-}
-
-func (x *CreateSecondaryStorageSelectorRequest) GetHeuristicRule() string {
-	if x != nil && x.HeuristicRule != nil {
-		return *x.HeuristicRule
-	}
-	return ""
-}
-
-func (x *CreateSecondaryStorageSelectorRequest) GetResponseType() string {
+func (x *RemoveSecondaryStorageSelectorRequest) GetResponseType() string {
 	if x != nil && x.ResponseType != nil {
 		return *x.ResponseType
 	}
 	return ""
 }
 
-// CreateSecondaryStorageSelectorResponse represents the response from creates a secondary storage selector, described by the heuristic rule.
-type CreateSecondaryStorageSelectorResponse struct {
+// RemoveSecondaryStorageSelectorResponse represents the response from removes an existing secondary storage selector.
+type RemoveSecondaryStorageSelectorResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The Result
 	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
@@ -484,20 +375,129 @@ type CreateSecondaryStorageSelectorResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateSecondaryStorageSelectorResponse) Reset() {
-	*x = CreateSecondaryStorageSelectorResponse{}
+func (x *RemoveSecondaryStorageSelectorResponse) Reset() {
+	*x = RemoveSecondaryStorageSelectorResponse{}
+	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveSecondaryStorageSelectorResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveSecondaryStorageSelectorResponse) ProtoMessage() {}
+
+func (x *RemoveSecondaryStorageSelectorResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveSecondaryStorageSelectorResponse.ProtoReflect.Descriptor instead.
+func (*RemoveSecondaryStorageSelectorResponse) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *RemoveSecondaryStorageSelectorResponse) GetResult() *Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+// UpdateSecondaryStorageSelectorRequest represents the parameters for updates an existing secondary storage selector.
+type UpdateSecondaryStorageSelectorRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The unique identifier of the secondary storage selector.
+	Id *int64 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	// The heuristic rule, in JavaScript language. It is required that it returns the UUID of a secondary storage pool. An example of a rule is `if (snapshot.hypervisorType === 'KVM') { '7832f261-c602-4e8e-8580-2496ffbbc45d'; }` would allocate all snapshots with the KVM hypervisor to the specified secondary storage UUID.
+	HeuristicRule *string `protobuf:"bytes,2,opt,name=heuristic_rule,json=heuristicRule" json:"heuristic_rule,omitempty"`
+	ResponseType  *string `protobuf:"bytes,3,opt,name=response_type,json=responseType" json:"response_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateSecondaryStorageSelectorRequest) Reset() {
+	*x = UpdateSecondaryStorageSelectorRequest{}
+	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateSecondaryStorageSelectorRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateSecondaryStorageSelectorRequest) ProtoMessage() {}
+
+func (x *UpdateSecondaryStorageSelectorRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateSecondaryStorageSelectorRequest.ProtoReflect.Descriptor instead.
+func (*UpdateSecondaryStorageSelectorRequest) Descriptor() ([]byte, []int) {
+	return file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *UpdateSecondaryStorageSelectorRequest) GetId() int64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *UpdateSecondaryStorageSelectorRequest) GetHeuristicRule() string {
+	if x != nil && x.HeuristicRule != nil {
+		return *x.HeuristicRule
+	}
+	return ""
+}
+
+func (x *UpdateSecondaryStorageSelectorRequest) GetResponseType() string {
+	if x != nil && x.ResponseType != nil {
+		return *x.ResponseType
+	}
+	return ""
+}
+
+// UpdateSecondaryStorageSelectorResponse represents the response from updates an existing secondary storage selector.
+type UpdateSecondaryStorageSelectorResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The Result
+	Result        *Result `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateSecondaryStorageSelectorResponse) Reset() {
+	*x = UpdateSecondaryStorageSelectorResponse{}
 	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateSecondaryStorageSelectorResponse) String() string {
+func (x *UpdateSecondaryStorageSelectorResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateSecondaryStorageSelectorResponse) ProtoMessage() {}
+func (*UpdateSecondaryStorageSelectorResponse) ProtoMessage() {}
 
-func (x *CreateSecondaryStorageSelectorResponse) ProtoReflect() protoreflect.Message {
+func (x *UpdateSecondaryStorageSelectorResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -509,12 +509,12 @@ func (x *CreateSecondaryStorageSelectorResponse) ProtoReflect() protoreflect.Mes
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateSecondaryStorageSelectorResponse.ProtoReflect.Descriptor instead.
-func (*CreateSecondaryStorageSelectorResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateSecondaryStorageSelectorResponse.ProtoReflect.Descriptor instead.
+func (*UpdateSecondaryStorageSelectorResponse) Descriptor() ([]byte, []int) {
 	return file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *CreateSecondaryStorageSelectorResponse) GetResult() *Result {
+func (x *UpdateSecondaryStorageSelectorResponse) GetResult() *Result {
 	if x != nil {
 		return x.Result
 	}
@@ -658,151 +658,6 @@ func (x *Success) GetDisplayText() string {
 	return ""
 }
 
-// Item represents a generic item in a list response
-type Item struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the item
-	Id *string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The name of the item
-	Name *string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	// The display name of the item
-	DisplayName *string `protobuf:"bytes,3,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	// The description of the item
-	Description *string `protobuf:"bytes,4,opt,name=description" json:"description,omitempty"`
-	// The account ID the item belongs to
-	AccountId *string `protobuf:"bytes,5,opt,name=account_id,json=accountId" json:"account_id,omitempty"`
-	// The domain ID the item belongs to
-	DomainId *string `protobuf:"bytes,6,opt,name=domain_id,json=domainId" json:"domain_id,omitempty"`
-	// The domain name the item belongs to
-	Domain *string `protobuf:"bytes,7,opt,name=domain" json:"domain,omitempty"`
-	// The project ID the item belongs to
-	ProjectId *string `protobuf:"bytes,8,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	// The project name the item belongs to
-	Project *string `protobuf:"bytes,9,opt,name=project" json:"project,omitempty"`
-	// The date the item was created
-	Created *string `protobuf:"bytes,10,opt,name=created" json:"created,omitempty"`
-	// The state of the item
-	State *string `protobuf:"bytes,11,opt,name=state" json:"state,omitempty"`
-	// Additional fields returned by the API
-	Details       map[string]string `protobuf:"bytes,12,rep,name=details" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Item) Reset() {
-	*x = Item{}
-	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Item) ProtoMessage() {}
-
-func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Item.ProtoReflect.Descriptor instead.
-func (*Item) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *Item) GetId() string {
-	if x != nil && x.Id != nil {
-		return *x.Id
-	}
-	return ""
-}
-
-func (x *Item) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *Item) GetDisplayName() string {
-	if x != nil && x.DisplayName != nil {
-		return *x.DisplayName
-	}
-	return ""
-}
-
-func (x *Item) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *Item) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
-	}
-	return ""
-}
-
-func (x *Item) GetDomainId() string {
-	if x != nil && x.DomainId != nil {
-		return *x.DomainId
-	}
-	return ""
-}
-
-func (x *Item) GetDomain() string {
-	if x != nil && x.Domain != nil {
-		return *x.Domain
-	}
-	return ""
-}
-
-func (x *Item) GetProjectId() string {
-	if x != nil && x.ProjectId != nil {
-		return *x.ProjectId
-	}
-	return ""
-}
-
-func (x *Item) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
-	}
-	return ""
-}
-
-func (x *Item) GetCreated() string {
-	if x != nil && x.Created != nil {
-		return *x.Created
-	}
-	return ""
-}
-
-func (x *Item) GetState() string {
-	if x != nil && x.State != nil {
-		return *x.State
-	}
-	return ""
-}
-
-func (x *Item) GetDetails() map[string]string {
-	if x != nil {
-		return x.Details
-	}
-	return nil
-}
-
 // Result represents a generic operation result
 type Result struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -822,7 +677,7 @@ type Result struct {
 
 func (x *Result) Reset() {
 	*x = Result{}
-	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -834,7 +689,7 @@ func (x *Result) String() string {
 func (*Result) ProtoMessage() {}
 
 func (x *Result) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[11]
+	mi := &file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -847,7 +702,7 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Result.ProtoReflect.Descriptor instead.
 func (*Result) Descriptor() ([]byte, []int) {
-	return file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_rawDescGZIP(), []int{11}
+	return file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *Result) GetSuccess() bool {
@@ -889,17 +744,17 @@ var File_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto protor
 
 const file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_rawDesc = "" +
 	"\n" +
-	"@cloudstack/management/storage/heuristics/v1/heuristics.gen.proto\x12+cloudstack.management.storage.heuristics.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x93\x01\n" +
-	"%UpdateSecondaryStorageSelectorRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12-\n" +
-	"\x0eheuristic_rule\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\rheuristicRule\x12#\n" +
-	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"u\n" +
-	"&UpdateSecondaryStorageSelectorResponse\x12K\n" +
-	"\x06result\x18\x01 \x01(\v23.cloudstack.management.storage.heuristics.v1.ResultR\x06result\"d\n" +
-	"%RemoveSecondaryStorageSelectorRequest\x12\x16\n" +
-	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
-	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"u\n" +
-	"&RemoveSecondaryStorageSelectorResponse\x12K\n" +
+	"@cloudstack/management/storage/heuristics/v1/heuristics.gen.proto\x12+cloudstack.management.storage.heuristics.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x8c\x02\n" +
+	"%CreateSecondaryStorageSelectorRequest\x12!\n" +
+	"\x04name\x18\x01 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12/\n" +
+	"\vdescription\x18\x02 \x01(\tB\r\xbaH\n" +
+	"\xc8\x01\x01r\x05\x10\x01\x18\x80\bR\vdescription\x12\x1f\n" +
+	"\azone_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12\x1a\n" +
+	"\x04type\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04type\x12-\n" +
+	"\x0eheuristic_rule\x18\x05 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\rheuristicRule\x12#\n" +
+	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"u\n" +
+	"&CreateSecondaryStorageSelectorResponse\x12K\n" +
 	"\x06result\x18\x01 \x01(\v23.cloudstack.management.storage.heuristics.v1.ResultR\x06result\"\xf5\x01\n" +
 	"$ListSecondaryStorageSelectorsRequest\x12\x1f\n" +
 	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12\x12\n" +
@@ -912,17 +767,17 @@ const file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_rawD
 	"%ListSecondaryStorageSelectorsResponse\x12]\n" +
 	"\x05items\x18\x01 \x03(\v2G.cloudstack.management.storage.heuristics.v1.SecondaryStorageHeuristicsR\x05items\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount:\x05\xbaH\x02\b\x00\"\x8c\x02\n" +
-	"%CreateSecondaryStorageSelectorRequest\x12!\n" +
-	"\x04name\x18\x01 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12/\n" +
-	"\vdescription\x18\x02 \x01(\tB\r\xbaH\n" +
-	"\xc8\x01\x01r\x05\x10\x01\x18\x80\bR\vdescription\x12\x1f\n" +
-	"\azone_id\x18\x03 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12\x1a\n" +
-	"\x04type\x18\x04 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04type\x12-\n" +
-	"\x0eheuristic_rule\x18\x05 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\rheuristicRule\x12#\n" +
-	"\rresponse_type\x18\x06 \x01(\tR\fresponseType\"u\n" +
-	"&CreateSecondaryStorageSelectorResponse\x12K\n" +
+	"totalCount:\x05\xbaH\x02\b\x00\"d\n" +
+	"%RemoveSecondaryStorageSelectorRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12#\n" +
+	"\rresponse_type\x18\x02 \x01(\tR\fresponseType\"u\n" +
+	"&RemoveSecondaryStorageSelectorResponse\x12K\n" +
+	"\x06result\x18\x01 \x01(\v23.cloudstack.management.storage.heuristics.v1.ResultR\x06result\"\x93\x01\n" +
+	"%UpdateSecondaryStorageSelectorRequest\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12-\n" +
+	"\x0eheuristic_rule\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\rheuristicRule\x12#\n" +
+	"\rresponse_type\x18\x03 \x01(\tR\fresponseType\"u\n" +
+	"&UpdateSecondaryStorageSelectorResponse\x12K\n" +
 	"\x06result\x18\x01 \x01(\v23.cloudstack.management.storage.heuristics.v1.ResultR\x06result\"\xa9\x01\n" +
 	"\x1aSecondaryStorageHeuristics\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
@@ -932,38 +787,19 @@ const file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_rawD
 	"\acreated\x18\x05 \x01(\tR\acreated\"F\n" +
 	"\aSuccess\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
-	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\xea\x03\n" +
-	"\x04Item\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12'\n" +
-	"\n" +
-	"account_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\taccountId\x12%\n" +
-	"\tdomain_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\bdomainId\x12\x16\n" +
-	"\x06domain\x18\a \x01(\tR\x06domain\x12'\n" +
-	"\n" +
-	"project_id\x18\b \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\tprojectId\x12\x18\n" +
-	"\aproject\x18\t \x01(\tR\aproject\x12\x18\n" +
-	"\acreated\x18\n" +
-	" \x01(\tR\acreated\x12\x14\n" +
-	"\x05state\x18\v \x01(\tR\x05state\x12X\n" +
-	"\adetails\x18\f \x03(\v2>.cloudstack.management.storage.heuristics.v1.Item.DetailsEntryR\adetails\x1a:\n" +
-	"\fDetailsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x9f\x01\n" +
+	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\"\x9f\x01\n" +
 	"\x06Result\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x12\x18\n" +
 	"\x02id\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12\x1f\n" +
 	"\x06job_id\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05jobId\x12\x1d\n" +
 	"\n" +
-	"job_status\x18\x05 \x01(\tR\tjobStatus2\xd0\x06\n" +
-	"\x11HeuristicsService\x12\xcb\x01\n" +
-	"\x1eUpdateSecondaryStorageSelector\x12R.cloudstack.management.storage.heuristics.v1.UpdateSecondaryStorageSelectorRequest\x1aS.cloudstack.management.storage.heuristics.v1.UpdateSecondaryStorageSelectorResponse\"\x00\x12\xcb\x01\n" +
-	"\x1eRemoveSecondaryStorageSelector\x12R.cloudstack.management.storage.heuristics.v1.RemoveSecondaryStorageSelectorRequest\x1aS.cloudstack.management.storage.heuristics.v1.RemoveSecondaryStorageSelectorResponse\"\x00\x12\xc8\x01\n" +
-	"\x1dListSecondaryStorageSelectors\x12Q.cloudstack.management.storage.heuristics.v1.ListSecondaryStorageSelectorsRequest\x1aR.cloudstack.management.storage.heuristics.v1.ListSecondaryStorageSelectorsResponse\"\x00\x12\xcb\x01\n" +
-	"\x1eCreateSecondaryStorageSelector\x12R.cloudstack.management.storage.heuristics.v1.CreateSecondaryStorageSelectorRequest\x1aS.cloudstack.management.storage.heuristics.v1.CreateSecondaryStorageSelectorResponse\"\x00\x1a\x06\xc2>\x03\xc0>\x02B\x84\x03\n" +
+	"job_status\x18\x05 \x01(\tR\tjobStatus2\xed\x06\n" +
+	"\x11HeuristicsService\x12\xd2\x01\n" +
+	"\x1eCreateSecondaryStorageSelector\x12R.cloudstack.management.storage.heuristics.v1.CreateSecondaryStorageSelectorRequest\x1aS.cloudstack.management.storage.heuristics.v1.CreateSecondaryStorageSelectorResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xcf\x01\n" +
+	"\x1dListSecondaryStorageSelectors\x12Q.cloudstack.management.storage.heuristics.v1.ListSecondaryStorageSelectorsRequest\x1aR.cloudstack.management.storage.heuristics.v1.ListSecondaryStorageSelectorsResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xd2\x01\n" +
+	"\x1eRemoveSecondaryStorageSelector\x12R.cloudstack.management.storage.heuristics.v1.RemoveSecondaryStorageSelectorRequest\x1aS.cloudstack.management.storage.heuristics.v1.RemoveSecondaryStorageSelectorResponse\"\a\xc2>\x04\xc2>\x01\x02\x12\xd2\x01\n" +
+	"\x1eUpdateSecondaryStorageSelector\x12R.cloudstack.management.storage.heuristics.v1.UpdateSecondaryStorageSelectorRequest\x1aS.cloudstack.management.storage.heuristics.v1.UpdateSecondaryStorageSelectorResponse\"\a\xc2>\x04\xc2>\x01\x02\x1a\a\xc2>\x04\xc2>\x01\x02B\x84\x03\n" +
 	"/com.cloudstack.management.storage.heuristics.v1B\x12HeuristicsGenProtoP\x01Zlgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/management/storage/heuristics/v1;heuristicsv1\xa2\x02\x04CMSH\xaa\x02+Cloudstack.Management.Storage.Heuristics.V1\xca\x02+Cloudstack\\Management\\Storage\\Heuristics\\V1\xe2\x027Cloudstack\\Management\\Storage\\Heuristics\\V1\\GPBMetadata\xea\x02/Cloudstack::Management::Storage::Heuristics::V1b\beditionsp\xe8\a"
 
 var (
@@ -978,41 +814,38 @@ func file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_rawDe
 	return file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_rawDescData
 }
 
-var file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_goTypes = []any{
-	(*UpdateSecondaryStorageSelectorRequest)(nil),  // 0: cloudstack.management.storage.heuristics.v1.UpdateSecondaryStorageSelectorRequest
-	(*UpdateSecondaryStorageSelectorResponse)(nil), // 1: cloudstack.management.storage.heuristics.v1.UpdateSecondaryStorageSelectorResponse
-	(*RemoveSecondaryStorageSelectorRequest)(nil),  // 2: cloudstack.management.storage.heuristics.v1.RemoveSecondaryStorageSelectorRequest
-	(*RemoveSecondaryStorageSelectorResponse)(nil), // 3: cloudstack.management.storage.heuristics.v1.RemoveSecondaryStorageSelectorResponse
-	(*ListSecondaryStorageSelectorsRequest)(nil),   // 4: cloudstack.management.storage.heuristics.v1.ListSecondaryStorageSelectorsRequest
-	(*ListSecondaryStorageSelectorsResponse)(nil),  // 5: cloudstack.management.storage.heuristics.v1.ListSecondaryStorageSelectorsResponse
-	(*CreateSecondaryStorageSelectorRequest)(nil),  // 6: cloudstack.management.storage.heuristics.v1.CreateSecondaryStorageSelectorRequest
-	(*CreateSecondaryStorageSelectorResponse)(nil), // 7: cloudstack.management.storage.heuristics.v1.CreateSecondaryStorageSelectorResponse
+	(*CreateSecondaryStorageSelectorRequest)(nil),  // 0: cloudstack.management.storage.heuristics.v1.CreateSecondaryStorageSelectorRequest
+	(*CreateSecondaryStorageSelectorResponse)(nil), // 1: cloudstack.management.storage.heuristics.v1.CreateSecondaryStorageSelectorResponse
+	(*ListSecondaryStorageSelectorsRequest)(nil),   // 2: cloudstack.management.storage.heuristics.v1.ListSecondaryStorageSelectorsRequest
+	(*ListSecondaryStorageSelectorsResponse)(nil),  // 3: cloudstack.management.storage.heuristics.v1.ListSecondaryStorageSelectorsResponse
+	(*RemoveSecondaryStorageSelectorRequest)(nil),  // 4: cloudstack.management.storage.heuristics.v1.RemoveSecondaryStorageSelectorRequest
+	(*RemoveSecondaryStorageSelectorResponse)(nil), // 5: cloudstack.management.storage.heuristics.v1.RemoveSecondaryStorageSelectorResponse
+	(*UpdateSecondaryStorageSelectorRequest)(nil),  // 6: cloudstack.management.storage.heuristics.v1.UpdateSecondaryStorageSelectorRequest
+	(*UpdateSecondaryStorageSelectorResponse)(nil), // 7: cloudstack.management.storage.heuristics.v1.UpdateSecondaryStorageSelectorResponse
 	(*SecondaryStorageHeuristics)(nil),             // 8: cloudstack.management.storage.heuristics.v1.SecondaryStorageHeuristics
 	(*Success)(nil),                                // 9: cloudstack.management.storage.heuristics.v1.Success
-	(*Item)(nil),                                   // 10: cloudstack.management.storage.heuristics.v1.Item
-	(*Result)(nil),                                 // 11: cloudstack.management.storage.heuristics.v1.Result
-	nil,                                            // 12: cloudstack.management.storage.heuristics.v1.Item.DetailsEntry
+	(*Result)(nil),                                 // 10: cloudstack.management.storage.heuristics.v1.Result
 }
 var file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_depIdxs = []int32{
-	11, // 0: cloudstack.management.storage.heuristics.v1.UpdateSecondaryStorageSelectorResponse.result:type_name -> cloudstack.management.storage.heuristics.v1.Result
-	11, // 1: cloudstack.management.storage.heuristics.v1.RemoveSecondaryStorageSelectorResponse.result:type_name -> cloudstack.management.storage.heuristics.v1.Result
-	8,  // 2: cloudstack.management.storage.heuristics.v1.ListSecondaryStorageSelectorsResponse.items:type_name -> cloudstack.management.storage.heuristics.v1.SecondaryStorageHeuristics
-	11, // 3: cloudstack.management.storage.heuristics.v1.CreateSecondaryStorageSelectorResponse.result:type_name -> cloudstack.management.storage.heuristics.v1.Result
-	12, // 4: cloudstack.management.storage.heuristics.v1.Item.details:type_name -> cloudstack.management.storage.heuristics.v1.Item.DetailsEntry
-	0,  // 5: cloudstack.management.storage.heuristics.v1.HeuristicsService.UpdateSecondaryStorageSelector:input_type -> cloudstack.management.storage.heuristics.v1.UpdateSecondaryStorageSelectorRequest
-	2,  // 6: cloudstack.management.storage.heuristics.v1.HeuristicsService.RemoveSecondaryStorageSelector:input_type -> cloudstack.management.storage.heuristics.v1.RemoveSecondaryStorageSelectorRequest
-	4,  // 7: cloudstack.management.storage.heuristics.v1.HeuristicsService.ListSecondaryStorageSelectors:input_type -> cloudstack.management.storage.heuristics.v1.ListSecondaryStorageSelectorsRequest
-	6,  // 8: cloudstack.management.storage.heuristics.v1.HeuristicsService.CreateSecondaryStorageSelector:input_type -> cloudstack.management.storage.heuristics.v1.CreateSecondaryStorageSelectorRequest
-	1,  // 9: cloudstack.management.storage.heuristics.v1.HeuristicsService.UpdateSecondaryStorageSelector:output_type -> cloudstack.management.storage.heuristics.v1.UpdateSecondaryStorageSelectorResponse
-	3,  // 10: cloudstack.management.storage.heuristics.v1.HeuristicsService.RemoveSecondaryStorageSelector:output_type -> cloudstack.management.storage.heuristics.v1.RemoveSecondaryStorageSelectorResponse
-	5,  // 11: cloudstack.management.storage.heuristics.v1.HeuristicsService.ListSecondaryStorageSelectors:output_type -> cloudstack.management.storage.heuristics.v1.ListSecondaryStorageSelectorsResponse
-	7,  // 12: cloudstack.management.storage.heuristics.v1.HeuristicsService.CreateSecondaryStorageSelector:output_type -> cloudstack.management.storage.heuristics.v1.CreateSecondaryStorageSelectorResponse
-	9,  // [9:13] is the sub-list for method output_type
-	5,  // [5:9] is the sub-list for method input_type
-	5,  // [5:5] is the sub-list for extension type_name
-	5,  // [5:5] is the sub-list for extension extendee
-	0,  // [0:5] is the sub-list for field type_name
+	10, // 0: cloudstack.management.storage.heuristics.v1.CreateSecondaryStorageSelectorResponse.result:type_name -> cloudstack.management.storage.heuristics.v1.Result
+	8,  // 1: cloudstack.management.storage.heuristics.v1.ListSecondaryStorageSelectorsResponse.items:type_name -> cloudstack.management.storage.heuristics.v1.SecondaryStorageHeuristics
+	10, // 2: cloudstack.management.storage.heuristics.v1.RemoveSecondaryStorageSelectorResponse.result:type_name -> cloudstack.management.storage.heuristics.v1.Result
+	10, // 3: cloudstack.management.storage.heuristics.v1.UpdateSecondaryStorageSelectorResponse.result:type_name -> cloudstack.management.storage.heuristics.v1.Result
+	0,  // 4: cloudstack.management.storage.heuristics.v1.HeuristicsService.CreateSecondaryStorageSelector:input_type -> cloudstack.management.storage.heuristics.v1.CreateSecondaryStorageSelectorRequest
+	2,  // 5: cloudstack.management.storage.heuristics.v1.HeuristicsService.ListSecondaryStorageSelectors:input_type -> cloudstack.management.storage.heuristics.v1.ListSecondaryStorageSelectorsRequest
+	4,  // 6: cloudstack.management.storage.heuristics.v1.HeuristicsService.RemoveSecondaryStorageSelector:input_type -> cloudstack.management.storage.heuristics.v1.RemoveSecondaryStorageSelectorRequest
+	6,  // 7: cloudstack.management.storage.heuristics.v1.HeuristicsService.UpdateSecondaryStorageSelector:input_type -> cloudstack.management.storage.heuristics.v1.UpdateSecondaryStorageSelectorRequest
+	1,  // 8: cloudstack.management.storage.heuristics.v1.HeuristicsService.CreateSecondaryStorageSelector:output_type -> cloudstack.management.storage.heuristics.v1.CreateSecondaryStorageSelectorResponse
+	3,  // 9: cloudstack.management.storage.heuristics.v1.HeuristicsService.ListSecondaryStorageSelectors:output_type -> cloudstack.management.storage.heuristics.v1.ListSecondaryStorageSelectorsResponse
+	5,  // 10: cloudstack.management.storage.heuristics.v1.HeuristicsService.RemoveSecondaryStorageSelector:output_type -> cloudstack.management.storage.heuristics.v1.RemoveSecondaryStorageSelectorResponse
+	7,  // 11: cloudstack.management.storage.heuristics.v1.HeuristicsService.UpdateSecondaryStorageSelector:output_type -> cloudstack.management.storage.heuristics.v1.UpdateSecondaryStorageSelectorResponse
+	8,  // [8:12] is the sub-list for method output_type
+	4,  // [4:8] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_init() }
@@ -1026,7 +859,7 @@ func file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_init(
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_rawDesc), len(file_cloudstack_management_storage_heuristics_v1_heuristics_gen_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   13,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

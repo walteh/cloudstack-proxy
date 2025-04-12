@@ -19,36 +19,36 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	StorageService_MigrateResourcesToAnotherSecondaryStorage_FullMethodName = "/cloudstack.management.storage.v1.StorageService/MigrateResourcesToAnotherSecondaryStorage"
+	StorageService_AddImageStore_FullMethodName                             = "/cloudstack.management.storage.v1.StorageService/AddImageStore"
+	StorageService_AddImageStoreS3CMD_FullMethodName                        = "/cloudstack.management.storage.v1.StorageService/AddImageStoreS3CMD"
+	StorageService_AddObjectStoragePool_FullMethodName                      = "/cloudstack.management.storage.v1.StorageService/AddObjectStoragePool"
+	StorageService_CancelPrimaryStorageMaintenance_FullMethodName           = "/cloudstack.management.storage.v1.StorageService/CancelPrimaryStorageMaintenance"
+	StorageService_ChangeStoragePoolScope_FullMethodName                    = "/cloudstack.management.storage.v1.StorageService/ChangeStoragePoolScope"
+	StorageService_CreateSecondaryStagingStore_FullMethodName               = "/cloudstack.management.storage.v1.StorageService/CreateSecondaryStagingStore"
+	StorageService_CreateStoragePool_FullMethodName                         = "/cloudstack.management.storage.v1.StorageService/CreateStoragePool"
+	StorageService_DeleteImageStore_FullMethodName                          = "/cloudstack.management.storage.v1.StorageService/DeleteImageStore"
+	StorageService_DeleteObjectStoragePool_FullMethodName                   = "/cloudstack.management.storage.v1.StorageService/DeleteObjectStoragePool"
 	StorageService_DeletePool_FullMethodName                                = "/cloudstack.management.storage.v1.StorageService/DeletePool"
-	StorageService_SyncStoragePool_FullMethodName                           = "/cloudstack.management.storage.v1.StorageService/SyncStoragePool"
-	StorageService_UpdateStoragePool_FullMethodName                         = "/cloudstack.management.storage.v1.StorageService/UpdateStoragePool"
-	StorageService_ListSecondaryStagingStores_FullMethodName                = "/cloudstack.management.storage.v1.StorageService/ListSecondaryStagingStores"
-	StorageService_MigrateSecondaryStorageData_FullMethodName               = "/cloudstack.management.storage.v1.StorageService/MigrateSecondaryStorageData"
-	StorageService_UpdateCloudToUseObjectStore_FullMethodName               = "/cloudstack.management.storage.v1.StorageService/UpdateCloudToUseObjectStore"
+	StorageService_DeleteSecondaryStagingStore_FullMethodName               = "/cloudstack.management.storage.v1.StorageService/DeleteSecondaryStagingStore"
 	StorageService_DownloadImageStoreObject_FullMethodName                  = "/cloudstack.management.storage.v1.StorageService/DownloadImageStoreObject"
 	StorageService_FindStoragePoolsForMigration_FullMethodName              = "/cloudstack.management.storage.v1.StorageService/FindStoragePoolsForMigration"
-	StorageService_AddImageStore_FullMethodName                             = "/cloudstack.management.storage.v1.StorageService/AddImageStore"
-	StorageService_CancelPrimaryStorageMaintenance_FullMethodName           = "/cloudstack.management.storage.v1.StorageService/CancelPrimaryStorageMaintenance"
 	StorageService_ListImageStoreObjects_FullMethodName                     = "/cloudstack.management.storage.v1.StorageService/ListImageStoreObjects"
-	StorageService_ListStorageProviders_FullMethodName                      = "/cloudstack.management.storage.v1.StorageService/ListStorageProviders"
 	StorageService_ListImageStores_FullMethodName                           = "/cloudstack.management.storage.v1.StorageService/ListImageStores"
-	StorageService_AddImageStoreS3CMD_FullMethodName                        = "/cloudstack.management.storage.v1.StorageService/AddImageStoreS3CMD"
-	StorageService_DeleteObjectStoragePool_FullMethodName                   = "/cloudstack.management.storage.v1.StorageService/DeleteObjectStoragePool"
-	StorageService_UpdateStorageCapabilities_FullMethodName                 = "/cloudstack.management.storage.v1.StorageService/UpdateStorageCapabilities"
-	StorageService_ListStoragePoolObjects_FullMethodName                    = "/cloudstack.management.storage.v1.StorageService/ListStoragePoolObjects"
-	StorageService_UpdateObjectStoragePool_FullMethodName                   = "/cloudstack.management.storage.v1.StorageService/UpdateObjectStoragePool"
-	StorageService_CreateSecondaryStagingStore_FullMethodName               = "/cloudstack.management.storage.v1.StorageService/CreateSecondaryStagingStore"
-	StorageService_ListStorageTags_FullMethodName                           = "/cloudstack.management.storage.v1.StorageService/ListStorageTags"
 	StorageService_ListObjectStoragePools_FullMethodName                    = "/cloudstack.management.storage.v1.StorageService/ListObjectStoragePools"
-	StorageService_DeleteImageStore_FullMethodName                          = "/cloudstack.management.storage.v1.StorageService/DeleteImageStore"
-	StorageService_CreateStoragePool_FullMethodName                         = "/cloudstack.management.storage.v1.StorageService/CreateStoragePool"
-	StorageService_DeleteSecondaryStagingStore_FullMethodName               = "/cloudstack.management.storage.v1.StorageService/DeleteSecondaryStagingStore"
-	StorageService_AddObjectStoragePool_FullMethodName                      = "/cloudstack.management.storage.v1.StorageService/AddObjectStoragePool"
-	StorageService_ChangeStoragePoolScope_FullMethodName                    = "/cloudstack.management.storage.v1.StorageService/ChangeStoragePoolScope"
+	StorageService_ListSecondaryStagingStores_FullMethodName                = "/cloudstack.management.storage.v1.StorageService/ListSecondaryStagingStores"
+	StorageService_ListStoragePoolObjects_FullMethodName                    = "/cloudstack.management.storage.v1.StorageService/ListStoragePoolObjects"
 	StorageService_ListStoragePools_FullMethodName                          = "/cloudstack.management.storage.v1.StorageService/ListStoragePools"
-	StorageService_UpdateImageStore_FullMethodName                          = "/cloudstack.management.storage.v1.StorageService/UpdateImageStore"
+	StorageService_ListStorageProviders_FullMethodName                      = "/cloudstack.management.storage.v1.StorageService/ListStorageProviders"
+	StorageService_ListStorageTags_FullMethodName                           = "/cloudstack.management.storage.v1.StorageService/ListStorageTags"
+	StorageService_MigrateResourcesToAnotherSecondaryStorage_FullMethodName = "/cloudstack.management.storage.v1.StorageService/MigrateResourcesToAnotherSecondaryStorage"
+	StorageService_MigrateSecondaryStorageData_FullMethodName               = "/cloudstack.management.storage.v1.StorageService/MigrateSecondaryStorageData"
 	StorageService_PreparePrimaryStorageForMaintenance_FullMethodName       = "/cloudstack.management.storage.v1.StorageService/PreparePrimaryStorageForMaintenance"
+	StorageService_SyncStoragePool_FullMethodName                           = "/cloudstack.management.storage.v1.StorageService/SyncStoragePool"
+	StorageService_UpdateCloudToUseObjectStore_FullMethodName               = "/cloudstack.management.storage.v1.StorageService/UpdateCloudToUseObjectStore"
+	StorageService_UpdateImageStore_FullMethodName                          = "/cloudstack.management.storage.v1.StorageService/UpdateImageStore"
+	StorageService_UpdateObjectStoragePool_FullMethodName                   = "/cloudstack.management.storage.v1.StorageService/UpdateObjectStoragePool"
+	StorageService_UpdateStorageCapabilities_FullMethodName                 = "/cloudstack.management.storage.v1.StorageService/UpdateStorageCapabilities"
+	StorageService_UpdateStoragePool_FullMethodName                         = "/cloudstack.management.storage.v1.StorageService/UpdateStoragePool"
 )
 
 // StorageServiceClient is the client API for StorageService service.
@@ -57,66 +57,66 @@ const (
 //
 // StorageService provides operations for managing Storages
 type StorageServiceClient interface {
-	// MigrateResourcesToAnotherSecondaryStorage migrates resources from one secondary storage to destination image store
-	MigrateResourcesToAnotherSecondaryStorage(ctx context.Context, in *MigrateResourcesToAnotherSecondaryStorageRequest, opts ...grpc.CallOption) (*MigrateResourcesToAnotherSecondaryStorageResponse, error)
+	// AddImageStore Adds backup image store.
+	AddImageStore(ctx context.Context, in *AddImageStoreRequest, opts ...grpc.CallOption) (*AddImageStoreResponse, error)
+	// AddImageStoreS3CMD Adds S3 Image Store
+	AddImageStoreS3CMD(ctx context.Context, in *AddImageStoreS3CMDRequest, opts ...grpc.CallOption) (*AddImageStoreS3CMDResponse, error)
+	// AddObjectStoragePool Adds a object storage pool
+	AddObjectStoragePool(ctx context.Context, in *AddObjectStoragePoolRequest, opts ...grpc.CallOption) (*AddObjectStoragePoolResponse, error)
+	// CancelPrimaryStorageMaintenance Cancels maintenance for primary storage
+	CancelPrimaryStorageMaintenance(ctx context.Context, in *CancelPrimaryStorageMaintenanceRequest, opts ...grpc.CallOption) (*CancelPrimaryStorageMaintenanceResponse, error)
+	// ChangeStoragePoolScope Changes the scope of a storage pool when the pool is in Disabled state.This feature is officially tested and supported for Hypervisors: KVM and VMware, Protocols: NFS and Ceph, and Storage Provider: DefaultPrimary. There might be extra steps involved to make this work for other hypervisors and storage options.
+	ChangeStoragePoolScope(ctx context.Context, in *ChangeStoragePoolScopeRequest, opts ...grpc.CallOption) (*ChangeStoragePoolScopeResponse, error)
+	// CreateSecondaryStagingStore create secondary staging store.
+	CreateSecondaryStagingStore(ctx context.Context, in *CreateSecondaryStagingStoreRequest, opts ...grpc.CallOption) (*CreateSecondaryStagingStoreResponse, error)
+	// CreateStoragePool Creates a storage pool.
+	CreateStoragePool(ctx context.Context, in *CreateStoragePoolRequest, opts ...grpc.CallOption) (*CreateStoragePoolResponse, error)
+	// DeleteImageStore Deletes an image store or Secondary Storage.
+	DeleteImageStore(ctx context.Context, in *DeleteImageStoreRequest, opts ...grpc.CallOption) (*DeleteImageStoreResponse, error)
+	// DeleteObjectStoragePool Deletes an Object Storage Pool
+	DeleteObjectStoragePool(ctx context.Context, in *DeleteObjectStoragePoolRequest, opts ...grpc.CallOption) (*DeleteObjectStoragePoolResponse, error)
 	// DeletePool Deletes a storage pool.
 	DeletePool(ctx context.Context, in *DeletePoolRequest, opts ...grpc.CallOption) (*DeletePoolResponse, error)
-	// SyncStoragePool Sync storage pool with management server (currently supported for Datastore Cluster in VMware and syncs the datastores in it)
-	SyncStoragePool(ctx context.Context, in *SyncStoragePoolRequest, opts ...grpc.CallOption) (*SyncStoragePoolResponse, error)
-	// UpdateStoragePool Updates a storage pool.
-	UpdateStoragePool(ctx context.Context, in *UpdateStoragePoolRequest, opts ...grpc.CallOption) (*UpdateStoragePoolResponse, error)
-	// ListSecondaryStagingStores Lists secondary staging stores.
-	ListSecondaryStagingStores(ctx context.Context, in *ListSecondaryStagingStoresRequest, opts ...grpc.CallOption) (*ListSecondaryStagingStoresResponse, error)
-	// MigrateSecondaryStorageData migrates data objects from one secondary storage to destination image store(s)
-	MigrateSecondaryStorageData(ctx context.Context, in *MigrateSecondaryStorageDataRequest, opts ...grpc.CallOption) (*MigrateSecondaryStorageDataResponse, error)
-	// UpdateCloudToUseObjectStore Migrate current NFS secondary storages to use object store.
-	UpdateCloudToUseObjectStore(ctx context.Context, in *UpdateCloudToUseObjectStoreRequest, opts ...grpc.CallOption) (*UpdateCloudToUseObjectStoreResponse, error)
+	// DeleteSecondaryStagingStore Deletes a secondary staging store .
+	DeleteSecondaryStagingStore(ctx context.Context, in *DeleteSecondaryStagingStoreRequest, opts ...grpc.CallOption) (*DeleteSecondaryStagingStoreResponse, error)
 	// DownloadImageStoreObject Download object at a specified path on an image store.
 	DownloadImageStoreObject(ctx context.Context, in *DownloadImageStoreObjectRequest, opts ...grpc.CallOption) (*DownloadImageStoreObjectResponse, error)
 	// FindStoragePoolsForMigration Lists storage pools available for migration of a volume.
 	FindStoragePoolsForMigration(ctx context.Context, in *FindStoragePoolsForMigrationRequest, opts ...grpc.CallOption) (*FindStoragePoolsForMigrationResponse, error)
-	// AddImageStore Adds backup image store.
-	AddImageStore(ctx context.Context, in *AddImageStoreRequest, opts ...grpc.CallOption) (*AddImageStoreResponse, error)
-	// CancelPrimaryStorageMaintenance Cancels maintenance for primary storage
-	CancelPrimaryStorageMaintenance(ctx context.Context, in *CancelPrimaryStorageMaintenanceRequest, opts ...grpc.CallOption) (*CancelPrimaryStorageMaintenanceResponse, error)
 	// ListImageStoreObjects Lists objects at specified path on an image store.
 	ListImageStoreObjects(ctx context.Context, in *ListImageStoreObjectsRequest, opts ...grpc.CallOption) (*ListImageStoreObjectsResponse, error)
-	// ListStorageProviders Lists storage providers.
-	ListStorageProviders(ctx context.Context, in *ListStorageProvidersRequest, opts ...grpc.CallOption) (*ListStorageProvidersResponse, error)
 	// ListImageStores Lists image stores.
 	ListImageStores(ctx context.Context, in *ListImageStoresRequest, opts ...grpc.CallOption) (*ListImageStoresResponse, error)
-	// AddImageStoreS3CMD Adds S3 Image Store
-	AddImageStoreS3CMD(ctx context.Context, in *AddImageStoreS3CMDRequest, opts ...grpc.CallOption) (*AddImageStoreS3CMDResponse, error)
-	// DeleteObjectStoragePool Deletes an Object Storage Pool
-	DeleteObjectStoragePool(ctx context.Context, in *DeleteObjectStoragePoolRequest, opts ...grpc.CallOption) (*DeleteObjectStoragePoolResponse, error)
-	// UpdateStorageCapabilities Syncs capabilities of storage pools
-	UpdateStorageCapabilities(ctx context.Context, in *UpdateStorageCapabilitiesRequest, opts ...grpc.CallOption) (*UpdateStorageCapabilitiesResponse, error)
-	// ListStoragePoolObjects Lists objects at specified path on a storage pool.
-	ListStoragePoolObjects(ctx context.Context, in *ListStoragePoolObjectsRequest, opts ...grpc.CallOption) (*ListStoragePoolObjectsResponse, error)
-	// UpdateObjectStoragePool Updates object storage pool
-	UpdateObjectStoragePool(ctx context.Context, in *UpdateObjectStoragePoolRequest, opts ...grpc.CallOption) (*UpdateObjectStoragePoolResponse, error)
-	// CreateSecondaryStagingStore create secondary staging store.
-	CreateSecondaryStagingStore(ctx context.Context, in *CreateSecondaryStagingStoreRequest, opts ...grpc.CallOption) (*CreateSecondaryStagingStoreResponse, error)
-	// ListStorageTags Lists storage tags
-	ListStorageTags(ctx context.Context, in *ListStorageTagsRequest, opts ...grpc.CallOption) (*ListStorageTagsResponse, error)
 	// ListObjectStoragePools Lists object storage pools.
 	ListObjectStoragePools(ctx context.Context, in *ListObjectStoragePoolsRequest, opts ...grpc.CallOption) (*ListObjectStoragePoolsResponse, error)
-	// DeleteImageStore Deletes an image store or Secondary Storage.
-	DeleteImageStore(ctx context.Context, in *DeleteImageStoreRequest, opts ...grpc.CallOption) (*DeleteImageStoreResponse, error)
-	// CreateStoragePool Creates a storage pool.
-	CreateStoragePool(ctx context.Context, in *CreateStoragePoolRequest, opts ...grpc.CallOption) (*CreateStoragePoolResponse, error)
-	// DeleteSecondaryStagingStore Deletes a secondary staging store .
-	DeleteSecondaryStagingStore(ctx context.Context, in *DeleteSecondaryStagingStoreRequest, opts ...grpc.CallOption) (*DeleteSecondaryStagingStoreResponse, error)
-	// AddObjectStoragePool Adds a object storage pool
-	AddObjectStoragePool(ctx context.Context, in *AddObjectStoragePoolRequest, opts ...grpc.CallOption) (*AddObjectStoragePoolResponse, error)
-	// ChangeStoragePoolScope Changes the scope of a storage pool when the pool is in Disabled state.This feature is officially tested and supported for Hypervisors: KVM and VMware, Protocols: NFS and Ceph, and Storage Provider: DefaultPrimary. There might be extra steps involved to make this work for other hypervisors and storage options.
-	ChangeStoragePoolScope(ctx context.Context, in *ChangeStoragePoolScopeRequest, opts ...grpc.CallOption) (*ChangeStoragePoolScopeResponse, error)
+	// ListSecondaryStagingStores Lists secondary staging stores.
+	ListSecondaryStagingStores(ctx context.Context, in *ListSecondaryStagingStoresRequest, opts ...grpc.CallOption) (*ListSecondaryStagingStoresResponse, error)
+	// ListStoragePoolObjects Lists objects at specified path on a storage pool.
+	ListStoragePoolObjects(ctx context.Context, in *ListStoragePoolObjectsRequest, opts ...grpc.CallOption) (*ListStoragePoolObjectsResponse, error)
 	// ListStoragePools Lists storage pools.
 	ListStoragePools(ctx context.Context, in *ListStoragePoolsRequest, opts ...grpc.CallOption) (*ListStoragePoolsResponse, error)
-	// UpdateImageStore Updates image store read-only status
-	UpdateImageStore(ctx context.Context, in *UpdateImageStoreRequest, opts ...grpc.CallOption) (*UpdateImageStoreResponse, error)
+	// ListStorageProviders Lists storage providers.
+	ListStorageProviders(ctx context.Context, in *ListStorageProvidersRequest, opts ...grpc.CallOption) (*ListStorageProvidersResponse, error)
+	// ListStorageTags Lists storage tags
+	ListStorageTags(ctx context.Context, in *ListStorageTagsRequest, opts ...grpc.CallOption) (*ListStorageTagsResponse, error)
+	// MigrateResourcesToAnotherSecondaryStorage migrates resources from one secondary storage to destination image store
+	MigrateResourcesToAnotherSecondaryStorage(ctx context.Context, in *MigrateResourcesToAnotherSecondaryStorageRequest, opts ...grpc.CallOption) (*MigrateResourcesToAnotherSecondaryStorageResponse, error)
+	// MigrateSecondaryStorageData migrates data objects from one secondary storage to destination image store(s)
+	MigrateSecondaryStorageData(ctx context.Context, in *MigrateSecondaryStorageDataRequest, opts ...grpc.CallOption) (*MigrateSecondaryStorageDataResponse, error)
 	// PreparePrimaryStorageForMaintenance Puts storage pool into maintenance state
 	PreparePrimaryStorageForMaintenance(ctx context.Context, in *PreparePrimaryStorageForMaintenanceRequest, opts ...grpc.CallOption) (*PreparePrimaryStorageForMaintenanceResponse, error)
+	// SyncStoragePool Sync storage pool with management server (currently supported for Datastore Cluster in VMware and syncs the datastores in it)
+	SyncStoragePool(ctx context.Context, in *SyncStoragePoolRequest, opts ...grpc.CallOption) (*SyncStoragePoolResponse, error)
+	// UpdateCloudToUseObjectStore Migrate current NFS secondary storages to use object store.
+	UpdateCloudToUseObjectStore(ctx context.Context, in *UpdateCloudToUseObjectStoreRequest, opts ...grpc.CallOption) (*UpdateCloudToUseObjectStoreResponse, error)
+	// UpdateImageStore Updates image store read-only status
+	UpdateImageStore(ctx context.Context, in *UpdateImageStoreRequest, opts ...grpc.CallOption) (*UpdateImageStoreResponse, error)
+	// UpdateObjectStoragePool Updates object storage pool
+	UpdateObjectStoragePool(ctx context.Context, in *UpdateObjectStoragePoolRequest, opts ...grpc.CallOption) (*UpdateObjectStoragePoolResponse, error)
+	// UpdateStorageCapabilities Syncs capabilities of storage pools
+	UpdateStorageCapabilities(ctx context.Context, in *UpdateStorageCapabilitiesRequest, opts ...grpc.CallOption) (*UpdateStorageCapabilitiesResponse, error)
+	// UpdateStoragePool Updates a storage pool.
+	UpdateStoragePool(ctx context.Context, in *UpdateStoragePoolRequest, opts ...grpc.CallOption) (*UpdateStoragePoolResponse, error)
 }
 
 type storageServiceClient struct {
@@ -127,10 +127,90 @@ func NewStorageServiceClient(cc grpc.ClientConnInterface) StorageServiceClient {
 	return &storageServiceClient{cc}
 }
 
-func (c *storageServiceClient) MigrateResourcesToAnotherSecondaryStorage(ctx context.Context, in *MigrateResourcesToAnotherSecondaryStorageRequest, opts ...grpc.CallOption) (*MigrateResourcesToAnotherSecondaryStorageResponse, error) {
+func (c *storageServiceClient) AddImageStore(ctx context.Context, in *AddImageStoreRequest, opts ...grpc.CallOption) (*AddImageStoreResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(MigrateResourcesToAnotherSecondaryStorageResponse)
-	err := c.cc.Invoke(ctx, StorageService_MigrateResourcesToAnotherSecondaryStorage_FullMethodName, in, out, cOpts...)
+	out := new(AddImageStoreResponse)
+	err := c.cc.Invoke(ctx, StorageService_AddImageStore_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *storageServiceClient) AddImageStoreS3CMD(ctx context.Context, in *AddImageStoreS3CMDRequest, opts ...grpc.CallOption) (*AddImageStoreS3CMDResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AddImageStoreS3CMDResponse)
+	err := c.cc.Invoke(ctx, StorageService_AddImageStoreS3CMD_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *storageServiceClient) AddObjectStoragePool(ctx context.Context, in *AddObjectStoragePoolRequest, opts ...grpc.CallOption) (*AddObjectStoragePoolResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AddObjectStoragePoolResponse)
+	err := c.cc.Invoke(ctx, StorageService_AddObjectStoragePool_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *storageServiceClient) CancelPrimaryStorageMaintenance(ctx context.Context, in *CancelPrimaryStorageMaintenanceRequest, opts ...grpc.CallOption) (*CancelPrimaryStorageMaintenanceResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CancelPrimaryStorageMaintenanceResponse)
+	err := c.cc.Invoke(ctx, StorageService_CancelPrimaryStorageMaintenance_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *storageServiceClient) ChangeStoragePoolScope(ctx context.Context, in *ChangeStoragePoolScopeRequest, opts ...grpc.CallOption) (*ChangeStoragePoolScopeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ChangeStoragePoolScopeResponse)
+	err := c.cc.Invoke(ctx, StorageService_ChangeStoragePoolScope_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *storageServiceClient) CreateSecondaryStagingStore(ctx context.Context, in *CreateSecondaryStagingStoreRequest, opts ...grpc.CallOption) (*CreateSecondaryStagingStoreResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateSecondaryStagingStoreResponse)
+	err := c.cc.Invoke(ctx, StorageService_CreateSecondaryStagingStore_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *storageServiceClient) CreateStoragePool(ctx context.Context, in *CreateStoragePoolRequest, opts ...grpc.CallOption) (*CreateStoragePoolResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateStoragePoolResponse)
+	err := c.cc.Invoke(ctx, StorageService_CreateStoragePool_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *storageServiceClient) DeleteImageStore(ctx context.Context, in *DeleteImageStoreRequest, opts ...grpc.CallOption) (*DeleteImageStoreResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteImageStoreResponse)
+	err := c.cc.Invoke(ctx, StorageService_DeleteImageStore_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *storageServiceClient) DeleteObjectStoragePool(ctx context.Context, in *DeleteObjectStoragePoolRequest, opts ...grpc.CallOption) (*DeleteObjectStoragePoolResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteObjectStoragePoolResponse)
+	err := c.cc.Invoke(ctx, StorageService_DeleteObjectStoragePool_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -147,50 +227,10 @@ func (c *storageServiceClient) DeletePool(ctx context.Context, in *DeletePoolReq
 	return out, nil
 }
 
-func (c *storageServiceClient) SyncStoragePool(ctx context.Context, in *SyncStoragePoolRequest, opts ...grpc.CallOption) (*SyncStoragePoolResponse, error) {
+func (c *storageServiceClient) DeleteSecondaryStagingStore(ctx context.Context, in *DeleteSecondaryStagingStoreRequest, opts ...grpc.CallOption) (*DeleteSecondaryStagingStoreResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(SyncStoragePoolResponse)
-	err := c.cc.Invoke(ctx, StorageService_SyncStoragePool_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *storageServiceClient) UpdateStoragePool(ctx context.Context, in *UpdateStoragePoolRequest, opts ...grpc.CallOption) (*UpdateStoragePoolResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateStoragePoolResponse)
-	err := c.cc.Invoke(ctx, StorageService_UpdateStoragePool_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *storageServiceClient) ListSecondaryStagingStores(ctx context.Context, in *ListSecondaryStagingStoresRequest, opts ...grpc.CallOption) (*ListSecondaryStagingStoresResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListSecondaryStagingStoresResponse)
-	err := c.cc.Invoke(ctx, StorageService_ListSecondaryStagingStores_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *storageServiceClient) MigrateSecondaryStorageData(ctx context.Context, in *MigrateSecondaryStorageDataRequest, opts ...grpc.CallOption) (*MigrateSecondaryStorageDataResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(MigrateSecondaryStorageDataResponse)
-	err := c.cc.Invoke(ctx, StorageService_MigrateSecondaryStorageData_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *storageServiceClient) UpdateCloudToUseObjectStore(ctx context.Context, in *UpdateCloudToUseObjectStoreRequest, opts ...grpc.CallOption) (*UpdateCloudToUseObjectStoreResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateCloudToUseObjectStoreResponse)
-	err := c.cc.Invoke(ctx, StorageService_UpdateCloudToUseObjectStore_FullMethodName, in, out, cOpts...)
+	out := new(DeleteSecondaryStagingStoreResponse)
+	err := c.cc.Invoke(ctx, StorageService_DeleteSecondaryStagingStore_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -217,40 +257,10 @@ func (c *storageServiceClient) FindStoragePoolsForMigration(ctx context.Context,
 	return out, nil
 }
 
-func (c *storageServiceClient) AddImageStore(ctx context.Context, in *AddImageStoreRequest, opts ...grpc.CallOption) (*AddImageStoreResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AddImageStoreResponse)
-	err := c.cc.Invoke(ctx, StorageService_AddImageStore_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *storageServiceClient) CancelPrimaryStorageMaintenance(ctx context.Context, in *CancelPrimaryStorageMaintenanceRequest, opts ...grpc.CallOption) (*CancelPrimaryStorageMaintenanceResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CancelPrimaryStorageMaintenanceResponse)
-	err := c.cc.Invoke(ctx, StorageService_CancelPrimaryStorageMaintenance_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *storageServiceClient) ListImageStoreObjects(ctx context.Context, in *ListImageStoreObjectsRequest, opts ...grpc.CallOption) (*ListImageStoreObjectsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListImageStoreObjectsResponse)
 	err := c.cc.Invoke(ctx, StorageService_ListImageStoreObjects_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *storageServiceClient) ListStorageProviders(ctx context.Context, in *ListStorageProvidersRequest, opts ...grpc.CallOption) (*ListStorageProvidersResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListStorageProvidersResponse)
-	err := c.cc.Invoke(ctx, StorageService_ListStorageProviders_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -267,30 +277,20 @@ func (c *storageServiceClient) ListImageStores(ctx context.Context, in *ListImag
 	return out, nil
 }
 
-func (c *storageServiceClient) AddImageStoreS3CMD(ctx context.Context, in *AddImageStoreS3CMDRequest, opts ...grpc.CallOption) (*AddImageStoreS3CMDResponse, error) {
+func (c *storageServiceClient) ListObjectStoragePools(ctx context.Context, in *ListObjectStoragePoolsRequest, opts ...grpc.CallOption) (*ListObjectStoragePoolsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AddImageStoreS3CMDResponse)
-	err := c.cc.Invoke(ctx, StorageService_AddImageStoreS3CMD_FullMethodName, in, out, cOpts...)
+	out := new(ListObjectStoragePoolsResponse)
+	err := c.cc.Invoke(ctx, StorageService_ListObjectStoragePools_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *storageServiceClient) DeleteObjectStoragePool(ctx context.Context, in *DeleteObjectStoragePoolRequest, opts ...grpc.CallOption) (*DeleteObjectStoragePoolResponse, error) {
+func (c *storageServiceClient) ListSecondaryStagingStores(ctx context.Context, in *ListSecondaryStagingStoresRequest, opts ...grpc.CallOption) (*ListSecondaryStagingStoresResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteObjectStoragePoolResponse)
-	err := c.cc.Invoke(ctx, StorageService_DeleteObjectStoragePool_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *storageServiceClient) UpdateStorageCapabilities(ctx context.Context, in *UpdateStorageCapabilitiesRequest, opts ...grpc.CallOption) (*UpdateStorageCapabilitiesResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateStorageCapabilitiesResponse)
-	err := c.cc.Invoke(ctx, StorageService_UpdateStorageCapabilities_FullMethodName, in, out, cOpts...)
+	out := new(ListSecondaryStagingStoresResponse)
+	err := c.cc.Invoke(ctx, StorageService_ListSecondaryStagingStores_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -307,20 +307,20 @@ func (c *storageServiceClient) ListStoragePoolObjects(ctx context.Context, in *L
 	return out, nil
 }
 
-func (c *storageServiceClient) UpdateObjectStoragePool(ctx context.Context, in *UpdateObjectStoragePoolRequest, opts ...grpc.CallOption) (*UpdateObjectStoragePoolResponse, error) {
+func (c *storageServiceClient) ListStoragePools(ctx context.Context, in *ListStoragePoolsRequest, opts ...grpc.CallOption) (*ListStoragePoolsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateObjectStoragePoolResponse)
-	err := c.cc.Invoke(ctx, StorageService_UpdateObjectStoragePool_FullMethodName, in, out, cOpts...)
+	out := new(ListStoragePoolsResponse)
+	err := c.cc.Invoke(ctx, StorageService_ListStoragePools_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *storageServiceClient) CreateSecondaryStagingStore(ctx context.Context, in *CreateSecondaryStagingStoreRequest, opts ...grpc.CallOption) (*CreateSecondaryStagingStoreResponse, error) {
+func (c *storageServiceClient) ListStorageProviders(ctx context.Context, in *ListStorageProvidersRequest, opts ...grpc.CallOption) (*ListStorageProvidersResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateSecondaryStagingStoreResponse)
-	err := c.cc.Invoke(ctx, StorageService_CreateSecondaryStagingStore_FullMethodName, in, out, cOpts...)
+	out := new(ListStorageProvidersResponse)
+	err := c.cc.Invoke(ctx, StorageService_ListStorageProviders_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -337,80 +337,20 @@ func (c *storageServiceClient) ListStorageTags(ctx context.Context, in *ListStor
 	return out, nil
 }
 
-func (c *storageServiceClient) ListObjectStoragePools(ctx context.Context, in *ListObjectStoragePoolsRequest, opts ...grpc.CallOption) (*ListObjectStoragePoolsResponse, error) {
+func (c *storageServiceClient) MigrateResourcesToAnotherSecondaryStorage(ctx context.Context, in *MigrateResourcesToAnotherSecondaryStorageRequest, opts ...grpc.CallOption) (*MigrateResourcesToAnotherSecondaryStorageResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListObjectStoragePoolsResponse)
-	err := c.cc.Invoke(ctx, StorageService_ListObjectStoragePools_FullMethodName, in, out, cOpts...)
+	out := new(MigrateResourcesToAnotherSecondaryStorageResponse)
+	err := c.cc.Invoke(ctx, StorageService_MigrateResourcesToAnotherSecondaryStorage_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *storageServiceClient) DeleteImageStore(ctx context.Context, in *DeleteImageStoreRequest, opts ...grpc.CallOption) (*DeleteImageStoreResponse, error) {
+func (c *storageServiceClient) MigrateSecondaryStorageData(ctx context.Context, in *MigrateSecondaryStorageDataRequest, opts ...grpc.CallOption) (*MigrateSecondaryStorageDataResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteImageStoreResponse)
-	err := c.cc.Invoke(ctx, StorageService_DeleteImageStore_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *storageServiceClient) CreateStoragePool(ctx context.Context, in *CreateStoragePoolRequest, opts ...grpc.CallOption) (*CreateStoragePoolResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateStoragePoolResponse)
-	err := c.cc.Invoke(ctx, StorageService_CreateStoragePool_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *storageServiceClient) DeleteSecondaryStagingStore(ctx context.Context, in *DeleteSecondaryStagingStoreRequest, opts ...grpc.CallOption) (*DeleteSecondaryStagingStoreResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteSecondaryStagingStoreResponse)
-	err := c.cc.Invoke(ctx, StorageService_DeleteSecondaryStagingStore_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *storageServiceClient) AddObjectStoragePool(ctx context.Context, in *AddObjectStoragePoolRequest, opts ...grpc.CallOption) (*AddObjectStoragePoolResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AddObjectStoragePoolResponse)
-	err := c.cc.Invoke(ctx, StorageService_AddObjectStoragePool_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *storageServiceClient) ChangeStoragePoolScope(ctx context.Context, in *ChangeStoragePoolScopeRequest, opts ...grpc.CallOption) (*ChangeStoragePoolScopeResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ChangeStoragePoolScopeResponse)
-	err := c.cc.Invoke(ctx, StorageService_ChangeStoragePoolScope_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *storageServiceClient) ListStoragePools(ctx context.Context, in *ListStoragePoolsRequest, opts ...grpc.CallOption) (*ListStoragePoolsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListStoragePoolsResponse)
-	err := c.cc.Invoke(ctx, StorageService_ListStoragePools_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *storageServiceClient) UpdateImageStore(ctx context.Context, in *UpdateImageStoreRequest, opts ...grpc.CallOption) (*UpdateImageStoreResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateImageStoreResponse)
-	err := c.cc.Invoke(ctx, StorageService_UpdateImageStore_FullMethodName, in, out, cOpts...)
+	out := new(MigrateSecondaryStorageDataResponse)
+	err := c.cc.Invoke(ctx, StorageService_MigrateSecondaryStorageData_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -427,72 +367,132 @@ func (c *storageServiceClient) PreparePrimaryStorageForMaintenance(ctx context.C
 	return out, nil
 }
 
+func (c *storageServiceClient) SyncStoragePool(ctx context.Context, in *SyncStoragePoolRequest, opts ...grpc.CallOption) (*SyncStoragePoolResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SyncStoragePoolResponse)
+	err := c.cc.Invoke(ctx, StorageService_SyncStoragePool_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *storageServiceClient) UpdateCloudToUseObjectStore(ctx context.Context, in *UpdateCloudToUseObjectStoreRequest, opts ...grpc.CallOption) (*UpdateCloudToUseObjectStoreResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateCloudToUseObjectStoreResponse)
+	err := c.cc.Invoke(ctx, StorageService_UpdateCloudToUseObjectStore_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *storageServiceClient) UpdateImageStore(ctx context.Context, in *UpdateImageStoreRequest, opts ...grpc.CallOption) (*UpdateImageStoreResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateImageStoreResponse)
+	err := c.cc.Invoke(ctx, StorageService_UpdateImageStore_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *storageServiceClient) UpdateObjectStoragePool(ctx context.Context, in *UpdateObjectStoragePoolRequest, opts ...grpc.CallOption) (*UpdateObjectStoragePoolResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateObjectStoragePoolResponse)
+	err := c.cc.Invoke(ctx, StorageService_UpdateObjectStoragePool_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *storageServiceClient) UpdateStorageCapabilities(ctx context.Context, in *UpdateStorageCapabilitiesRequest, opts ...grpc.CallOption) (*UpdateStorageCapabilitiesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateStorageCapabilitiesResponse)
+	err := c.cc.Invoke(ctx, StorageService_UpdateStorageCapabilities_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *storageServiceClient) UpdateStoragePool(ctx context.Context, in *UpdateStoragePoolRequest, opts ...grpc.CallOption) (*UpdateStoragePoolResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateStoragePoolResponse)
+	err := c.cc.Invoke(ctx, StorageService_UpdateStoragePool_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // StorageServiceServer is the server API for StorageService service.
 // All implementations must embed UnimplementedStorageServiceServer
 // for forward compatibility.
 //
 // StorageService provides operations for managing Storages
 type StorageServiceServer interface {
-	// MigrateResourcesToAnotherSecondaryStorage migrates resources from one secondary storage to destination image store
-	MigrateResourcesToAnotherSecondaryStorage(context.Context, *MigrateResourcesToAnotherSecondaryStorageRequest) (*MigrateResourcesToAnotherSecondaryStorageResponse, error)
+	// AddImageStore Adds backup image store.
+	AddImageStore(context.Context, *AddImageStoreRequest) (*AddImageStoreResponse, error)
+	// AddImageStoreS3CMD Adds S3 Image Store
+	AddImageStoreS3CMD(context.Context, *AddImageStoreS3CMDRequest) (*AddImageStoreS3CMDResponse, error)
+	// AddObjectStoragePool Adds a object storage pool
+	AddObjectStoragePool(context.Context, *AddObjectStoragePoolRequest) (*AddObjectStoragePoolResponse, error)
+	// CancelPrimaryStorageMaintenance Cancels maintenance for primary storage
+	CancelPrimaryStorageMaintenance(context.Context, *CancelPrimaryStorageMaintenanceRequest) (*CancelPrimaryStorageMaintenanceResponse, error)
+	// ChangeStoragePoolScope Changes the scope of a storage pool when the pool is in Disabled state.This feature is officially tested and supported for Hypervisors: KVM and VMware, Protocols: NFS and Ceph, and Storage Provider: DefaultPrimary. There might be extra steps involved to make this work for other hypervisors and storage options.
+	ChangeStoragePoolScope(context.Context, *ChangeStoragePoolScopeRequest) (*ChangeStoragePoolScopeResponse, error)
+	// CreateSecondaryStagingStore create secondary staging store.
+	CreateSecondaryStagingStore(context.Context, *CreateSecondaryStagingStoreRequest) (*CreateSecondaryStagingStoreResponse, error)
+	// CreateStoragePool Creates a storage pool.
+	CreateStoragePool(context.Context, *CreateStoragePoolRequest) (*CreateStoragePoolResponse, error)
+	// DeleteImageStore Deletes an image store or Secondary Storage.
+	DeleteImageStore(context.Context, *DeleteImageStoreRequest) (*DeleteImageStoreResponse, error)
+	// DeleteObjectStoragePool Deletes an Object Storage Pool
+	DeleteObjectStoragePool(context.Context, *DeleteObjectStoragePoolRequest) (*DeleteObjectStoragePoolResponse, error)
 	// DeletePool Deletes a storage pool.
 	DeletePool(context.Context, *DeletePoolRequest) (*DeletePoolResponse, error)
-	// SyncStoragePool Sync storage pool with management server (currently supported for Datastore Cluster in VMware and syncs the datastores in it)
-	SyncStoragePool(context.Context, *SyncStoragePoolRequest) (*SyncStoragePoolResponse, error)
-	// UpdateStoragePool Updates a storage pool.
-	UpdateStoragePool(context.Context, *UpdateStoragePoolRequest) (*UpdateStoragePoolResponse, error)
-	// ListSecondaryStagingStores Lists secondary staging stores.
-	ListSecondaryStagingStores(context.Context, *ListSecondaryStagingStoresRequest) (*ListSecondaryStagingStoresResponse, error)
-	// MigrateSecondaryStorageData migrates data objects from one secondary storage to destination image store(s)
-	MigrateSecondaryStorageData(context.Context, *MigrateSecondaryStorageDataRequest) (*MigrateSecondaryStorageDataResponse, error)
-	// UpdateCloudToUseObjectStore Migrate current NFS secondary storages to use object store.
-	UpdateCloudToUseObjectStore(context.Context, *UpdateCloudToUseObjectStoreRequest) (*UpdateCloudToUseObjectStoreResponse, error)
+	// DeleteSecondaryStagingStore Deletes a secondary staging store .
+	DeleteSecondaryStagingStore(context.Context, *DeleteSecondaryStagingStoreRequest) (*DeleteSecondaryStagingStoreResponse, error)
 	// DownloadImageStoreObject Download object at a specified path on an image store.
 	DownloadImageStoreObject(context.Context, *DownloadImageStoreObjectRequest) (*DownloadImageStoreObjectResponse, error)
 	// FindStoragePoolsForMigration Lists storage pools available for migration of a volume.
 	FindStoragePoolsForMigration(context.Context, *FindStoragePoolsForMigrationRequest) (*FindStoragePoolsForMigrationResponse, error)
-	// AddImageStore Adds backup image store.
-	AddImageStore(context.Context, *AddImageStoreRequest) (*AddImageStoreResponse, error)
-	// CancelPrimaryStorageMaintenance Cancels maintenance for primary storage
-	CancelPrimaryStorageMaintenance(context.Context, *CancelPrimaryStorageMaintenanceRequest) (*CancelPrimaryStorageMaintenanceResponse, error)
 	// ListImageStoreObjects Lists objects at specified path on an image store.
 	ListImageStoreObjects(context.Context, *ListImageStoreObjectsRequest) (*ListImageStoreObjectsResponse, error)
-	// ListStorageProviders Lists storage providers.
-	ListStorageProviders(context.Context, *ListStorageProvidersRequest) (*ListStorageProvidersResponse, error)
 	// ListImageStores Lists image stores.
 	ListImageStores(context.Context, *ListImageStoresRequest) (*ListImageStoresResponse, error)
-	// AddImageStoreS3CMD Adds S3 Image Store
-	AddImageStoreS3CMD(context.Context, *AddImageStoreS3CMDRequest) (*AddImageStoreS3CMDResponse, error)
-	// DeleteObjectStoragePool Deletes an Object Storage Pool
-	DeleteObjectStoragePool(context.Context, *DeleteObjectStoragePoolRequest) (*DeleteObjectStoragePoolResponse, error)
-	// UpdateStorageCapabilities Syncs capabilities of storage pools
-	UpdateStorageCapabilities(context.Context, *UpdateStorageCapabilitiesRequest) (*UpdateStorageCapabilitiesResponse, error)
-	// ListStoragePoolObjects Lists objects at specified path on a storage pool.
-	ListStoragePoolObjects(context.Context, *ListStoragePoolObjectsRequest) (*ListStoragePoolObjectsResponse, error)
-	// UpdateObjectStoragePool Updates object storage pool
-	UpdateObjectStoragePool(context.Context, *UpdateObjectStoragePoolRequest) (*UpdateObjectStoragePoolResponse, error)
-	// CreateSecondaryStagingStore create secondary staging store.
-	CreateSecondaryStagingStore(context.Context, *CreateSecondaryStagingStoreRequest) (*CreateSecondaryStagingStoreResponse, error)
-	// ListStorageTags Lists storage tags
-	ListStorageTags(context.Context, *ListStorageTagsRequest) (*ListStorageTagsResponse, error)
 	// ListObjectStoragePools Lists object storage pools.
 	ListObjectStoragePools(context.Context, *ListObjectStoragePoolsRequest) (*ListObjectStoragePoolsResponse, error)
-	// DeleteImageStore Deletes an image store or Secondary Storage.
-	DeleteImageStore(context.Context, *DeleteImageStoreRequest) (*DeleteImageStoreResponse, error)
-	// CreateStoragePool Creates a storage pool.
-	CreateStoragePool(context.Context, *CreateStoragePoolRequest) (*CreateStoragePoolResponse, error)
-	// DeleteSecondaryStagingStore Deletes a secondary staging store .
-	DeleteSecondaryStagingStore(context.Context, *DeleteSecondaryStagingStoreRequest) (*DeleteSecondaryStagingStoreResponse, error)
-	// AddObjectStoragePool Adds a object storage pool
-	AddObjectStoragePool(context.Context, *AddObjectStoragePoolRequest) (*AddObjectStoragePoolResponse, error)
-	// ChangeStoragePoolScope Changes the scope of a storage pool when the pool is in Disabled state.This feature is officially tested and supported for Hypervisors: KVM and VMware, Protocols: NFS and Ceph, and Storage Provider: DefaultPrimary. There might be extra steps involved to make this work for other hypervisors and storage options.
-	ChangeStoragePoolScope(context.Context, *ChangeStoragePoolScopeRequest) (*ChangeStoragePoolScopeResponse, error)
+	// ListSecondaryStagingStores Lists secondary staging stores.
+	ListSecondaryStagingStores(context.Context, *ListSecondaryStagingStoresRequest) (*ListSecondaryStagingStoresResponse, error)
+	// ListStoragePoolObjects Lists objects at specified path on a storage pool.
+	ListStoragePoolObjects(context.Context, *ListStoragePoolObjectsRequest) (*ListStoragePoolObjectsResponse, error)
 	// ListStoragePools Lists storage pools.
 	ListStoragePools(context.Context, *ListStoragePoolsRequest) (*ListStoragePoolsResponse, error)
-	// UpdateImageStore Updates image store read-only status
-	UpdateImageStore(context.Context, *UpdateImageStoreRequest) (*UpdateImageStoreResponse, error)
+	// ListStorageProviders Lists storage providers.
+	ListStorageProviders(context.Context, *ListStorageProvidersRequest) (*ListStorageProvidersResponse, error)
+	// ListStorageTags Lists storage tags
+	ListStorageTags(context.Context, *ListStorageTagsRequest) (*ListStorageTagsResponse, error)
+	// MigrateResourcesToAnotherSecondaryStorage migrates resources from one secondary storage to destination image store
+	MigrateResourcesToAnotherSecondaryStorage(context.Context, *MigrateResourcesToAnotherSecondaryStorageRequest) (*MigrateResourcesToAnotherSecondaryStorageResponse, error)
+	// MigrateSecondaryStorageData migrates data objects from one secondary storage to destination image store(s)
+	MigrateSecondaryStorageData(context.Context, *MigrateSecondaryStorageDataRequest) (*MigrateSecondaryStorageDataResponse, error)
 	// PreparePrimaryStorageForMaintenance Puts storage pool into maintenance state
 	PreparePrimaryStorageForMaintenance(context.Context, *PreparePrimaryStorageForMaintenanceRequest) (*PreparePrimaryStorageForMaintenanceResponse, error)
+	// SyncStoragePool Sync storage pool with management server (currently supported for Datastore Cluster in VMware and syncs the datastores in it)
+	SyncStoragePool(context.Context, *SyncStoragePoolRequest) (*SyncStoragePoolResponse, error)
+	// UpdateCloudToUseObjectStore Migrate current NFS secondary storages to use object store.
+	UpdateCloudToUseObjectStore(context.Context, *UpdateCloudToUseObjectStoreRequest) (*UpdateCloudToUseObjectStoreResponse, error)
+	// UpdateImageStore Updates image store read-only status
+	UpdateImageStore(context.Context, *UpdateImageStoreRequest) (*UpdateImageStoreResponse, error)
+	// UpdateObjectStoragePool Updates object storage pool
+	UpdateObjectStoragePool(context.Context, *UpdateObjectStoragePoolRequest) (*UpdateObjectStoragePoolResponse, error)
+	// UpdateStorageCapabilities Syncs capabilities of storage pools
+	UpdateStorageCapabilities(context.Context, *UpdateStorageCapabilitiesRequest) (*UpdateStorageCapabilitiesResponse, error)
+	// UpdateStoragePool Updates a storage pool.
+	UpdateStoragePool(context.Context, *UpdateStoragePoolRequest) (*UpdateStoragePoolResponse, error)
 	mustEmbedUnimplementedStorageServiceServer()
 }
 
@@ -503,26 +503,38 @@ type StorageServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedStorageServiceServer struct{}
 
-func (UnimplementedStorageServiceServer) MigrateResourcesToAnotherSecondaryStorage(context.Context, *MigrateResourcesToAnotherSecondaryStorageRequest) (*MigrateResourcesToAnotherSecondaryStorageResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MigrateResourcesToAnotherSecondaryStorage not implemented")
+func (UnimplementedStorageServiceServer) AddImageStore(context.Context, *AddImageStoreRequest) (*AddImageStoreResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddImageStore not implemented")
+}
+func (UnimplementedStorageServiceServer) AddImageStoreS3CMD(context.Context, *AddImageStoreS3CMDRequest) (*AddImageStoreS3CMDResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddImageStoreS3CMD not implemented")
+}
+func (UnimplementedStorageServiceServer) AddObjectStoragePool(context.Context, *AddObjectStoragePoolRequest) (*AddObjectStoragePoolResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddObjectStoragePool not implemented")
+}
+func (UnimplementedStorageServiceServer) CancelPrimaryStorageMaintenance(context.Context, *CancelPrimaryStorageMaintenanceRequest) (*CancelPrimaryStorageMaintenanceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CancelPrimaryStorageMaintenance not implemented")
+}
+func (UnimplementedStorageServiceServer) ChangeStoragePoolScope(context.Context, *ChangeStoragePoolScopeRequest) (*ChangeStoragePoolScopeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChangeStoragePoolScope not implemented")
+}
+func (UnimplementedStorageServiceServer) CreateSecondaryStagingStore(context.Context, *CreateSecondaryStagingStoreRequest) (*CreateSecondaryStagingStoreResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateSecondaryStagingStore not implemented")
+}
+func (UnimplementedStorageServiceServer) CreateStoragePool(context.Context, *CreateStoragePoolRequest) (*CreateStoragePoolResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateStoragePool not implemented")
+}
+func (UnimplementedStorageServiceServer) DeleteImageStore(context.Context, *DeleteImageStoreRequest) (*DeleteImageStoreResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteImageStore not implemented")
+}
+func (UnimplementedStorageServiceServer) DeleteObjectStoragePool(context.Context, *DeleteObjectStoragePoolRequest) (*DeleteObjectStoragePoolResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteObjectStoragePool not implemented")
 }
 func (UnimplementedStorageServiceServer) DeletePool(context.Context, *DeletePoolRequest) (*DeletePoolResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeletePool not implemented")
 }
-func (UnimplementedStorageServiceServer) SyncStoragePool(context.Context, *SyncStoragePoolRequest) (*SyncStoragePoolResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SyncStoragePool not implemented")
-}
-func (UnimplementedStorageServiceServer) UpdateStoragePool(context.Context, *UpdateStoragePoolRequest) (*UpdateStoragePoolResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateStoragePool not implemented")
-}
-func (UnimplementedStorageServiceServer) ListSecondaryStagingStores(context.Context, *ListSecondaryStagingStoresRequest) (*ListSecondaryStagingStoresResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListSecondaryStagingStores not implemented")
-}
-func (UnimplementedStorageServiceServer) MigrateSecondaryStorageData(context.Context, *MigrateSecondaryStorageDataRequest) (*MigrateSecondaryStorageDataResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MigrateSecondaryStorageData not implemented")
-}
-func (UnimplementedStorageServiceServer) UpdateCloudToUseObjectStore(context.Context, *UpdateCloudToUseObjectStoreRequest) (*UpdateCloudToUseObjectStoreResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateCloudToUseObjectStore not implemented")
+func (UnimplementedStorageServiceServer) DeleteSecondaryStagingStore(context.Context, *DeleteSecondaryStagingStoreRequest) (*DeleteSecondaryStagingStoreResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteSecondaryStagingStore not implemented")
 }
 func (UnimplementedStorageServiceServer) DownloadImageStoreObject(context.Context, *DownloadImageStoreObjectRequest) (*DownloadImageStoreObjectResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DownloadImageStoreObject not implemented")
@@ -530,68 +542,56 @@ func (UnimplementedStorageServiceServer) DownloadImageStoreObject(context.Contex
 func (UnimplementedStorageServiceServer) FindStoragePoolsForMigration(context.Context, *FindStoragePoolsForMigrationRequest) (*FindStoragePoolsForMigrationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FindStoragePoolsForMigration not implemented")
 }
-func (UnimplementedStorageServiceServer) AddImageStore(context.Context, *AddImageStoreRequest) (*AddImageStoreResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddImageStore not implemented")
-}
-func (UnimplementedStorageServiceServer) CancelPrimaryStorageMaintenance(context.Context, *CancelPrimaryStorageMaintenanceRequest) (*CancelPrimaryStorageMaintenanceResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CancelPrimaryStorageMaintenance not implemented")
-}
 func (UnimplementedStorageServiceServer) ListImageStoreObjects(context.Context, *ListImageStoreObjectsRequest) (*ListImageStoreObjectsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListImageStoreObjects not implemented")
-}
-func (UnimplementedStorageServiceServer) ListStorageProviders(context.Context, *ListStorageProvidersRequest) (*ListStorageProvidersResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListStorageProviders not implemented")
 }
 func (UnimplementedStorageServiceServer) ListImageStores(context.Context, *ListImageStoresRequest) (*ListImageStoresResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListImageStores not implemented")
 }
-func (UnimplementedStorageServiceServer) AddImageStoreS3CMD(context.Context, *AddImageStoreS3CMDRequest) (*AddImageStoreS3CMDResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddImageStoreS3CMD not implemented")
+func (UnimplementedStorageServiceServer) ListObjectStoragePools(context.Context, *ListObjectStoragePoolsRequest) (*ListObjectStoragePoolsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListObjectStoragePools not implemented")
 }
-func (UnimplementedStorageServiceServer) DeleteObjectStoragePool(context.Context, *DeleteObjectStoragePoolRequest) (*DeleteObjectStoragePoolResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteObjectStoragePool not implemented")
-}
-func (UnimplementedStorageServiceServer) UpdateStorageCapabilities(context.Context, *UpdateStorageCapabilitiesRequest) (*UpdateStorageCapabilitiesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateStorageCapabilities not implemented")
+func (UnimplementedStorageServiceServer) ListSecondaryStagingStores(context.Context, *ListSecondaryStagingStoresRequest) (*ListSecondaryStagingStoresResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListSecondaryStagingStores not implemented")
 }
 func (UnimplementedStorageServiceServer) ListStoragePoolObjects(context.Context, *ListStoragePoolObjectsRequest) (*ListStoragePoolObjectsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListStoragePoolObjects not implemented")
 }
-func (UnimplementedStorageServiceServer) UpdateObjectStoragePool(context.Context, *UpdateObjectStoragePoolRequest) (*UpdateObjectStoragePoolResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateObjectStoragePool not implemented")
+func (UnimplementedStorageServiceServer) ListStoragePools(context.Context, *ListStoragePoolsRequest) (*ListStoragePoolsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListStoragePools not implemented")
 }
-func (UnimplementedStorageServiceServer) CreateSecondaryStagingStore(context.Context, *CreateSecondaryStagingStoreRequest) (*CreateSecondaryStagingStoreResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateSecondaryStagingStore not implemented")
+func (UnimplementedStorageServiceServer) ListStorageProviders(context.Context, *ListStorageProvidersRequest) (*ListStorageProvidersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListStorageProviders not implemented")
 }
 func (UnimplementedStorageServiceServer) ListStorageTags(context.Context, *ListStorageTagsRequest) (*ListStorageTagsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListStorageTags not implemented")
 }
-func (UnimplementedStorageServiceServer) ListObjectStoragePools(context.Context, *ListObjectStoragePoolsRequest) (*ListObjectStoragePoolsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListObjectStoragePools not implemented")
+func (UnimplementedStorageServiceServer) MigrateResourcesToAnotherSecondaryStorage(context.Context, *MigrateResourcesToAnotherSecondaryStorageRequest) (*MigrateResourcesToAnotherSecondaryStorageResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MigrateResourcesToAnotherSecondaryStorage not implemented")
 }
-func (UnimplementedStorageServiceServer) DeleteImageStore(context.Context, *DeleteImageStoreRequest) (*DeleteImageStoreResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteImageStore not implemented")
+func (UnimplementedStorageServiceServer) MigrateSecondaryStorageData(context.Context, *MigrateSecondaryStorageDataRequest) (*MigrateSecondaryStorageDataResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MigrateSecondaryStorageData not implemented")
 }
-func (UnimplementedStorageServiceServer) CreateStoragePool(context.Context, *CreateStoragePoolRequest) (*CreateStoragePoolResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateStoragePool not implemented")
+func (UnimplementedStorageServiceServer) PreparePrimaryStorageForMaintenance(context.Context, *PreparePrimaryStorageForMaintenanceRequest) (*PreparePrimaryStorageForMaintenanceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PreparePrimaryStorageForMaintenance not implemented")
 }
-func (UnimplementedStorageServiceServer) DeleteSecondaryStagingStore(context.Context, *DeleteSecondaryStagingStoreRequest) (*DeleteSecondaryStagingStoreResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteSecondaryStagingStore not implemented")
+func (UnimplementedStorageServiceServer) SyncStoragePool(context.Context, *SyncStoragePoolRequest) (*SyncStoragePoolResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SyncStoragePool not implemented")
 }
-func (UnimplementedStorageServiceServer) AddObjectStoragePool(context.Context, *AddObjectStoragePoolRequest) (*AddObjectStoragePoolResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddObjectStoragePool not implemented")
-}
-func (UnimplementedStorageServiceServer) ChangeStoragePoolScope(context.Context, *ChangeStoragePoolScopeRequest) (*ChangeStoragePoolScopeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ChangeStoragePoolScope not implemented")
-}
-func (UnimplementedStorageServiceServer) ListStoragePools(context.Context, *ListStoragePoolsRequest) (*ListStoragePoolsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListStoragePools not implemented")
+func (UnimplementedStorageServiceServer) UpdateCloudToUseObjectStore(context.Context, *UpdateCloudToUseObjectStoreRequest) (*UpdateCloudToUseObjectStoreResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCloudToUseObjectStore not implemented")
 }
 func (UnimplementedStorageServiceServer) UpdateImageStore(context.Context, *UpdateImageStoreRequest) (*UpdateImageStoreResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateImageStore not implemented")
 }
-func (UnimplementedStorageServiceServer) PreparePrimaryStorageForMaintenance(context.Context, *PreparePrimaryStorageForMaintenanceRequest) (*PreparePrimaryStorageForMaintenanceResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PreparePrimaryStorageForMaintenance not implemented")
+func (UnimplementedStorageServiceServer) UpdateObjectStoragePool(context.Context, *UpdateObjectStoragePoolRequest) (*UpdateObjectStoragePoolResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateObjectStoragePool not implemented")
+}
+func (UnimplementedStorageServiceServer) UpdateStorageCapabilities(context.Context, *UpdateStorageCapabilitiesRequest) (*UpdateStorageCapabilitiesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateStorageCapabilities not implemented")
+}
+func (UnimplementedStorageServiceServer) UpdateStoragePool(context.Context, *UpdateStoragePoolRequest) (*UpdateStoragePoolResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateStoragePool not implemented")
 }
 func (UnimplementedStorageServiceServer) mustEmbedUnimplementedStorageServiceServer() {}
 func (UnimplementedStorageServiceServer) testEmbeddedByValue()                        {}
@@ -614,20 +614,164 @@ func RegisterStorageServiceServer(s grpc.ServiceRegistrar, srv StorageServiceSer
 	s.RegisterService(&StorageService_ServiceDesc, srv)
 }
 
-func _StorageService_MigrateResourcesToAnotherSecondaryStorage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MigrateResourcesToAnotherSecondaryStorageRequest)
+func _StorageService_AddImageStore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddImageStoreRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StorageServiceServer).MigrateResourcesToAnotherSecondaryStorage(ctx, in)
+		return srv.(StorageServiceServer).AddImageStore(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: StorageService_MigrateResourcesToAnotherSecondaryStorage_FullMethodName,
+		FullMethod: StorageService_AddImageStore_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StorageServiceServer).MigrateResourcesToAnotherSecondaryStorage(ctx, req.(*MigrateResourcesToAnotherSecondaryStorageRequest))
+		return srv.(StorageServiceServer).AddImageStore(ctx, req.(*AddImageStoreRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StorageService_AddImageStoreS3CMD_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddImageStoreS3CMDRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StorageServiceServer).AddImageStoreS3CMD(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StorageService_AddImageStoreS3CMD_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StorageServiceServer).AddImageStoreS3CMD(ctx, req.(*AddImageStoreS3CMDRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StorageService_AddObjectStoragePool_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddObjectStoragePoolRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StorageServiceServer).AddObjectStoragePool(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StorageService_AddObjectStoragePool_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StorageServiceServer).AddObjectStoragePool(ctx, req.(*AddObjectStoragePoolRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StorageService_CancelPrimaryStorageMaintenance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CancelPrimaryStorageMaintenanceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StorageServiceServer).CancelPrimaryStorageMaintenance(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StorageService_CancelPrimaryStorageMaintenance_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StorageServiceServer).CancelPrimaryStorageMaintenance(ctx, req.(*CancelPrimaryStorageMaintenanceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StorageService_ChangeStoragePoolScope_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ChangeStoragePoolScopeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StorageServiceServer).ChangeStoragePoolScope(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StorageService_ChangeStoragePoolScope_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StorageServiceServer).ChangeStoragePoolScope(ctx, req.(*ChangeStoragePoolScopeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StorageService_CreateSecondaryStagingStore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateSecondaryStagingStoreRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StorageServiceServer).CreateSecondaryStagingStore(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StorageService_CreateSecondaryStagingStore_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StorageServiceServer).CreateSecondaryStagingStore(ctx, req.(*CreateSecondaryStagingStoreRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StorageService_CreateStoragePool_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateStoragePoolRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StorageServiceServer).CreateStoragePool(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StorageService_CreateStoragePool_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StorageServiceServer).CreateStoragePool(ctx, req.(*CreateStoragePoolRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StorageService_DeleteImageStore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteImageStoreRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StorageServiceServer).DeleteImageStore(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StorageService_DeleteImageStore_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StorageServiceServer).DeleteImageStore(ctx, req.(*DeleteImageStoreRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StorageService_DeleteObjectStoragePool_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteObjectStoragePoolRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StorageServiceServer).DeleteObjectStoragePool(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StorageService_DeleteObjectStoragePool_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StorageServiceServer).DeleteObjectStoragePool(ctx, req.(*DeleteObjectStoragePoolRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -650,92 +794,20 @@ func _StorageService_DeletePool_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
-func _StorageService_SyncStoragePool_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SyncStoragePoolRequest)
+func _StorageService_DeleteSecondaryStagingStore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteSecondaryStagingStoreRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StorageServiceServer).SyncStoragePool(ctx, in)
+		return srv.(StorageServiceServer).DeleteSecondaryStagingStore(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: StorageService_SyncStoragePool_FullMethodName,
+		FullMethod: StorageService_DeleteSecondaryStagingStore_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StorageServiceServer).SyncStoragePool(ctx, req.(*SyncStoragePoolRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _StorageService_UpdateStoragePool_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateStoragePoolRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(StorageServiceServer).UpdateStoragePool(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: StorageService_UpdateStoragePool_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StorageServiceServer).UpdateStoragePool(ctx, req.(*UpdateStoragePoolRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _StorageService_ListSecondaryStagingStores_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListSecondaryStagingStoresRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(StorageServiceServer).ListSecondaryStagingStores(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: StorageService_ListSecondaryStagingStores_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StorageServiceServer).ListSecondaryStagingStores(ctx, req.(*ListSecondaryStagingStoresRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _StorageService_MigrateSecondaryStorageData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MigrateSecondaryStorageDataRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(StorageServiceServer).MigrateSecondaryStorageData(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: StorageService_MigrateSecondaryStorageData_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StorageServiceServer).MigrateSecondaryStorageData(ctx, req.(*MigrateSecondaryStorageDataRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _StorageService_UpdateCloudToUseObjectStore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateCloudToUseObjectStoreRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(StorageServiceServer).UpdateCloudToUseObjectStore(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: StorageService_UpdateCloudToUseObjectStore_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StorageServiceServer).UpdateCloudToUseObjectStore(ctx, req.(*UpdateCloudToUseObjectStoreRequest))
+		return srv.(StorageServiceServer).DeleteSecondaryStagingStore(ctx, req.(*DeleteSecondaryStagingStoreRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -776,42 +848,6 @@ func _StorageService_FindStoragePoolsForMigration_Handler(srv interface{}, ctx c
 	return interceptor(ctx, in, info, handler)
 }
 
-func _StorageService_AddImageStore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddImageStoreRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(StorageServiceServer).AddImageStore(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: StorageService_AddImageStore_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StorageServiceServer).AddImageStore(ctx, req.(*AddImageStoreRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _StorageService_CancelPrimaryStorageMaintenance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CancelPrimaryStorageMaintenanceRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(StorageServiceServer).CancelPrimaryStorageMaintenance(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: StorageService_CancelPrimaryStorageMaintenance_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StorageServiceServer).CancelPrimaryStorageMaintenance(ctx, req.(*CancelPrimaryStorageMaintenanceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _StorageService_ListImageStoreObjects_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListImageStoreObjectsRequest)
 	if err := dec(in); err != nil {
@@ -826,24 +862,6 @@ func _StorageService_ListImageStoreObjects_Handler(srv interface{}, ctx context.
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(StorageServiceServer).ListImageStoreObjects(ctx, req.(*ListImageStoreObjectsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _StorageService_ListStorageProviders_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListStorageProvidersRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(StorageServiceServer).ListStorageProviders(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: StorageService_ListStorageProviders_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StorageServiceServer).ListStorageProviders(ctx, req.(*ListStorageProvidersRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -866,56 +884,38 @@ func _StorageService_ListImageStores_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
-func _StorageService_AddImageStoreS3CMD_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddImageStoreS3CMDRequest)
+func _StorageService_ListObjectStoragePools_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListObjectStoragePoolsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StorageServiceServer).AddImageStoreS3CMD(ctx, in)
+		return srv.(StorageServiceServer).ListObjectStoragePools(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: StorageService_AddImageStoreS3CMD_FullMethodName,
+		FullMethod: StorageService_ListObjectStoragePools_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StorageServiceServer).AddImageStoreS3CMD(ctx, req.(*AddImageStoreS3CMDRequest))
+		return srv.(StorageServiceServer).ListObjectStoragePools(ctx, req.(*ListObjectStoragePoolsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _StorageService_DeleteObjectStoragePool_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteObjectStoragePoolRequest)
+func _StorageService_ListSecondaryStagingStores_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListSecondaryStagingStoresRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StorageServiceServer).DeleteObjectStoragePool(ctx, in)
+		return srv.(StorageServiceServer).ListSecondaryStagingStores(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: StorageService_DeleteObjectStoragePool_FullMethodName,
+		FullMethod: StorageService_ListSecondaryStagingStores_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StorageServiceServer).DeleteObjectStoragePool(ctx, req.(*DeleteObjectStoragePoolRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _StorageService_UpdateStorageCapabilities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateStorageCapabilitiesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(StorageServiceServer).UpdateStorageCapabilities(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: StorageService_UpdateStorageCapabilities_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StorageServiceServer).UpdateStorageCapabilities(ctx, req.(*UpdateStorageCapabilitiesRequest))
+		return srv.(StorageServiceServer).ListSecondaryStagingStores(ctx, req.(*ListSecondaryStagingStoresRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -938,38 +938,38 @@ func _StorageService_ListStoragePoolObjects_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _StorageService_UpdateObjectStoragePool_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateObjectStoragePoolRequest)
+func _StorageService_ListStoragePools_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListStoragePoolsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StorageServiceServer).UpdateObjectStoragePool(ctx, in)
+		return srv.(StorageServiceServer).ListStoragePools(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: StorageService_UpdateObjectStoragePool_FullMethodName,
+		FullMethod: StorageService_ListStoragePools_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StorageServiceServer).UpdateObjectStoragePool(ctx, req.(*UpdateObjectStoragePoolRequest))
+		return srv.(StorageServiceServer).ListStoragePools(ctx, req.(*ListStoragePoolsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _StorageService_CreateSecondaryStagingStore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateSecondaryStagingStoreRequest)
+func _StorageService_ListStorageProviders_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListStorageProvidersRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StorageServiceServer).CreateSecondaryStagingStore(ctx, in)
+		return srv.(StorageServiceServer).ListStorageProviders(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: StorageService_CreateSecondaryStagingStore_FullMethodName,
+		FullMethod: StorageService_ListStorageProviders_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StorageServiceServer).CreateSecondaryStagingStore(ctx, req.(*CreateSecondaryStagingStoreRequest))
+		return srv.(StorageServiceServer).ListStorageProviders(ctx, req.(*ListStorageProvidersRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -992,146 +992,38 @@ func _StorageService_ListStorageTags_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
-func _StorageService_ListObjectStoragePools_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListObjectStoragePoolsRequest)
+func _StorageService_MigrateResourcesToAnotherSecondaryStorage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MigrateResourcesToAnotherSecondaryStorageRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StorageServiceServer).ListObjectStoragePools(ctx, in)
+		return srv.(StorageServiceServer).MigrateResourcesToAnotherSecondaryStorage(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: StorageService_ListObjectStoragePools_FullMethodName,
+		FullMethod: StorageService_MigrateResourcesToAnotherSecondaryStorage_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StorageServiceServer).ListObjectStoragePools(ctx, req.(*ListObjectStoragePoolsRequest))
+		return srv.(StorageServiceServer).MigrateResourcesToAnotherSecondaryStorage(ctx, req.(*MigrateResourcesToAnotherSecondaryStorageRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _StorageService_DeleteImageStore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteImageStoreRequest)
+func _StorageService_MigrateSecondaryStorageData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MigrateSecondaryStorageDataRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StorageServiceServer).DeleteImageStore(ctx, in)
+		return srv.(StorageServiceServer).MigrateSecondaryStorageData(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: StorageService_DeleteImageStore_FullMethodName,
+		FullMethod: StorageService_MigrateSecondaryStorageData_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StorageServiceServer).DeleteImageStore(ctx, req.(*DeleteImageStoreRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _StorageService_CreateStoragePool_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateStoragePoolRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(StorageServiceServer).CreateStoragePool(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: StorageService_CreateStoragePool_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StorageServiceServer).CreateStoragePool(ctx, req.(*CreateStoragePoolRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _StorageService_DeleteSecondaryStagingStore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteSecondaryStagingStoreRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(StorageServiceServer).DeleteSecondaryStagingStore(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: StorageService_DeleteSecondaryStagingStore_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StorageServiceServer).DeleteSecondaryStagingStore(ctx, req.(*DeleteSecondaryStagingStoreRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _StorageService_AddObjectStoragePool_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddObjectStoragePoolRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(StorageServiceServer).AddObjectStoragePool(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: StorageService_AddObjectStoragePool_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StorageServiceServer).AddObjectStoragePool(ctx, req.(*AddObjectStoragePoolRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _StorageService_ChangeStoragePoolScope_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ChangeStoragePoolScopeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(StorageServiceServer).ChangeStoragePoolScope(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: StorageService_ChangeStoragePoolScope_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StorageServiceServer).ChangeStoragePoolScope(ctx, req.(*ChangeStoragePoolScopeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _StorageService_ListStoragePools_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListStoragePoolsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(StorageServiceServer).ListStoragePools(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: StorageService_ListStoragePools_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StorageServiceServer).ListStoragePools(ctx, req.(*ListStoragePoolsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _StorageService_UpdateImageStore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateImageStoreRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(StorageServiceServer).UpdateImageStore(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: StorageService_UpdateImageStore_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StorageServiceServer).UpdateImageStore(ctx, req.(*UpdateImageStoreRequest))
+		return srv.(StorageServiceServer).MigrateSecondaryStorageData(ctx, req.(*MigrateSecondaryStorageDataRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1154,6 +1046,114 @@ func _StorageService_PreparePrimaryStorageForMaintenance_Handler(srv interface{}
 	return interceptor(ctx, in, info, handler)
 }
 
+func _StorageService_SyncStoragePool_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SyncStoragePoolRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StorageServiceServer).SyncStoragePool(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StorageService_SyncStoragePool_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StorageServiceServer).SyncStoragePool(ctx, req.(*SyncStoragePoolRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StorageService_UpdateCloudToUseObjectStore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateCloudToUseObjectStoreRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StorageServiceServer).UpdateCloudToUseObjectStore(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StorageService_UpdateCloudToUseObjectStore_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StorageServiceServer).UpdateCloudToUseObjectStore(ctx, req.(*UpdateCloudToUseObjectStoreRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StorageService_UpdateImageStore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateImageStoreRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StorageServiceServer).UpdateImageStore(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StorageService_UpdateImageStore_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StorageServiceServer).UpdateImageStore(ctx, req.(*UpdateImageStoreRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StorageService_UpdateObjectStoragePool_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateObjectStoragePoolRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StorageServiceServer).UpdateObjectStoragePool(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StorageService_UpdateObjectStoragePool_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StorageServiceServer).UpdateObjectStoragePool(ctx, req.(*UpdateObjectStoragePoolRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StorageService_UpdateStorageCapabilities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateStorageCapabilitiesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StorageServiceServer).UpdateStorageCapabilities(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StorageService_UpdateStorageCapabilities_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StorageServiceServer).UpdateStorageCapabilities(ctx, req.(*UpdateStorageCapabilitiesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StorageService_UpdateStoragePool_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateStoragePoolRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StorageServiceServer).UpdateStoragePool(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StorageService_UpdateStoragePool_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StorageServiceServer).UpdateStoragePool(ctx, req.(*UpdateStoragePoolRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // StorageService_ServiceDesc is the grpc.ServiceDesc for StorageService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -1162,32 +1162,48 @@ var StorageService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*StorageServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "MigrateResourcesToAnotherSecondaryStorage",
-			Handler:    _StorageService_MigrateResourcesToAnotherSecondaryStorage_Handler,
+			MethodName: "AddImageStore",
+			Handler:    _StorageService_AddImageStore_Handler,
+		},
+		{
+			MethodName: "AddImageStoreS3CMD",
+			Handler:    _StorageService_AddImageStoreS3CMD_Handler,
+		},
+		{
+			MethodName: "AddObjectStoragePool",
+			Handler:    _StorageService_AddObjectStoragePool_Handler,
+		},
+		{
+			MethodName: "CancelPrimaryStorageMaintenance",
+			Handler:    _StorageService_CancelPrimaryStorageMaintenance_Handler,
+		},
+		{
+			MethodName: "ChangeStoragePoolScope",
+			Handler:    _StorageService_ChangeStoragePoolScope_Handler,
+		},
+		{
+			MethodName: "CreateSecondaryStagingStore",
+			Handler:    _StorageService_CreateSecondaryStagingStore_Handler,
+		},
+		{
+			MethodName: "CreateStoragePool",
+			Handler:    _StorageService_CreateStoragePool_Handler,
+		},
+		{
+			MethodName: "DeleteImageStore",
+			Handler:    _StorageService_DeleteImageStore_Handler,
+		},
+		{
+			MethodName: "DeleteObjectStoragePool",
+			Handler:    _StorageService_DeleteObjectStoragePool_Handler,
 		},
 		{
 			MethodName: "DeletePool",
 			Handler:    _StorageService_DeletePool_Handler,
 		},
 		{
-			MethodName: "SyncStoragePool",
-			Handler:    _StorageService_SyncStoragePool_Handler,
-		},
-		{
-			MethodName: "UpdateStoragePool",
-			Handler:    _StorageService_UpdateStoragePool_Handler,
-		},
-		{
-			MethodName: "ListSecondaryStagingStores",
-			Handler:    _StorageService_ListSecondaryStagingStores_Handler,
-		},
-		{
-			MethodName: "MigrateSecondaryStorageData",
-			Handler:    _StorageService_MigrateSecondaryStorageData_Handler,
-		},
-		{
-			MethodName: "UpdateCloudToUseObjectStore",
-			Handler:    _StorageService_UpdateCloudToUseObjectStore_Handler,
+			MethodName: "DeleteSecondaryStagingStore",
+			Handler:    _StorageService_DeleteSecondaryStagingStore_Handler,
 		},
 		{
 			MethodName: "DownloadImageStoreObject",
@@ -1198,88 +1214,72 @@ var StorageService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _StorageService_FindStoragePoolsForMigration_Handler,
 		},
 		{
-			MethodName: "AddImageStore",
-			Handler:    _StorageService_AddImageStore_Handler,
-		},
-		{
-			MethodName: "CancelPrimaryStorageMaintenance",
-			Handler:    _StorageService_CancelPrimaryStorageMaintenance_Handler,
-		},
-		{
 			MethodName: "ListImageStoreObjects",
 			Handler:    _StorageService_ListImageStoreObjects_Handler,
-		},
-		{
-			MethodName: "ListStorageProviders",
-			Handler:    _StorageService_ListStorageProviders_Handler,
 		},
 		{
 			MethodName: "ListImageStores",
 			Handler:    _StorageService_ListImageStores_Handler,
 		},
 		{
-			MethodName: "AddImageStoreS3CMD",
-			Handler:    _StorageService_AddImageStoreS3CMD_Handler,
+			MethodName: "ListObjectStoragePools",
+			Handler:    _StorageService_ListObjectStoragePools_Handler,
 		},
 		{
-			MethodName: "DeleteObjectStoragePool",
-			Handler:    _StorageService_DeleteObjectStoragePool_Handler,
-		},
-		{
-			MethodName: "UpdateStorageCapabilities",
-			Handler:    _StorageService_UpdateStorageCapabilities_Handler,
+			MethodName: "ListSecondaryStagingStores",
+			Handler:    _StorageService_ListSecondaryStagingStores_Handler,
 		},
 		{
 			MethodName: "ListStoragePoolObjects",
 			Handler:    _StorageService_ListStoragePoolObjects_Handler,
 		},
 		{
-			MethodName: "UpdateObjectStoragePool",
-			Handler:    _StorageService_UpdateObjectStoragePool_Handler,
+			MethodName: "ListStoragePools",
+			Handler:    _StorageService_ListStoragePools_Handler,
 		},
 		{
-			MethodName: "CreateSecondaryStagingStore",
-			Handler:    _StorageService_CreateSecondaryStagingStore_Handler,
+			MethodName: "ListStorageProviders",
+			Handler:    _StorageService_ListStorageProviders_Handler,
 		},
 		{
 			MethodName: "ListStorageTags",
 			Handler:    _StorageService_ListStorageTags_Handler,
 		},
 		{
-			MethodName: "ListObjectStoragePools",
-			Handler:    _StorageService_ListObjectStoragePools_Handler,
+			MethodName: "MigrateResourcesToAnotherSecondaryStorage",
+			Handler:    _StorageService_MigrateResourcesToAnotherSecondaryStorage_Handler,
 		},
 		{
-			MethodName: "DeleteImageStore",
-			Handler:    _StorageService_DeleteImageStore_Handler,
+			MethodName: "MigrateSecondaryStorageData",
+			Handler:    _StorageService_MigrateSecondaryStorageData_Handler,
 		},
 		{
-			MethodName: "CreateStoragePool",
-			Handler:    _StorageService_CreateStoragePool_Handler,
+			MethodName: "PreparePrimaryStorageForMaintenance",
+			Handler:    _StorageService_PreparePrimaryStorageForMaintenance_Handler,
 		},
 		{
-			MethodName: "DeleteSecondaryStagingStore",
-			Handler:    _StorageService_DeleteSecondaryStagingStore_Handler,
+			MethodName: "SyncStoragePool",
+			Handler:    _StorageService_SyncStoragePool_Handler,
 		},
 		{
-			MethodName: "AddObjectStoragePool",
-			Handler:    _StorageService_AddObjectStoragePool_Handler,
-		},
-		{
-			MethodName: "ChangeStoragePoolScope",
-			Handler:    _StorageService_ChangeStoragePoolScope_Handler,
-		},
-		{
-			MethodName: "ListStoragePools",
-			Handler:    _StorageService_ListStoragePools_Handler,
+			MethodName: "UpdateCloudToUseObjectStore",
+			Handler:    _StorageService_UpdateCloudToUseObjectStore_Handler,
 		},
 		{
 			MethodName: "UpdateImageStore",
 			Handler:    _StorageService_UpdateImageStore_Handler,
 		},
 		{
-			MethodName: "PreparePrimaryStorageForMaintenance",
-			Handler:    _StorageService_PreparePrimaryStorageForMaintenance_Handler,
+			MethodName: "UpdateObjectStoragePool",
+			Handler:    _StorageService_UpdateObjectStoragePool_Handler,
+		},
+		{
+			MethodName: "UpdateStorageCapabilities",
+			Handler:    _StorageService_UpdateStorageCapabilities_Handler,
+		},
+		{
+			MethodName: "UpdateStoragePool",
+			Handler:    _StorageService_UpdateStoragePool_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

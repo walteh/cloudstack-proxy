@@ -33,70 +33,70 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// UsageServiceAddTrafficTypeProcedure is the fully-qualified name of the UsageService's
-	// AddTrafficType RPC.
-	UsageServiceAddTrafficTypeProcedure = "/cloudstack.management.usage.v1.UsageService/AddTrafficType"
 	// UsageServiceAddTrafficMonitorProcedure is the fully-qualified name of the UsageService's
 	// AddTrafficMonitor RPC.
 	UsageServiceAddTrafficMonitorProcedure = "/cloudstack.management.usage.v1.UsageService/AddTrafficMonitor"
-	// UsageServiceRemoveRawUsageRecordsProcedure is the fully-qualified name of the UsageService's
-	// RemoveRawUsageRecords RPC.
-	UsageServiceRemoveRawUsageRecordsProcedure = "/cloudstack.management.usage.v1.UsageService/RemoveRawUsageRecords"
-	// UsageServiceListUsageTypesProcedure is the fully-qualified name of the UsageService's
-	// ListUsageTypes RPC.
-	UsageServiceListUsageTypesProcedure = "/cloudstack.management.usage.v1.UsageService/ListUsageTypes"
-	// UsageServiceListTrafficTypesProcedure is the fully-qualified name of the UsageService's
-	// ListTrafficTypes RPC.
-	UsageServiceListTrafficTypesProcedure = "/cloudstack.management.usage.v1.UsageService/ListTrafficTypes"
-	// UsageServiceUpdateTrafficTypeProcedure is the fully-qualified name of the UsageService's
-	// UpdateTrafficType RPC.
-	UsageServiceUpdateTrafficTypeProcedure = "/cloudstack.management.usage.v1.UsageService/UpdateTrafficType"
+	// UsageServiceAddTrafficTypeProcedure is the fully-qualified name of the UsageService's
+	// AddTrafficType RPC.
+	UsageServiceAddTrafficTypeProcedure = "/cloudstack.management.usage.v1.UsageService/AddTrafficType"
 	// UsageServiceDeleteTrafficMonitorProcedure is the fully-qualified name of the UsageService's
 	// DeleteTrafficMonitor RPC.
 	UsageServiceDeleteTrafficMonitorProcedure = "/cloudstack.management.usage.v1.UsageService/DeleteTrafficMonitor"
-	// UsageServiceGenerateUsageRecordsProcedure is the fully-qualified name of the UsageService's
-	// GenerateUsageRecords RPC.
-	UsageServiceGenerateUsageRecordsProcedure = "/cloudstack.management.usage.v1.UsageService/GenerateUsageRecords"
 	// UsageServiceDeleteTrafficTypeProcedure is the fully-qualified name of the UsageService's
 	// DeleteTrafficType RPC.
 	UsageServiceDeleteTrafficTypeProcedure = "/cloudstack.management.usage.v1.UsageService/DeleteTrafficType"
+	// UsageServiceGenerateUsageRecordsProcedure is the fully-qualified name of the UsageService's
+	// GenerateUsageRecords RPC.
+	UsageServiceGenerateUsageRecordsProcedure = "/cloudstack.management.usage.v1.UsageService/GenerateUsageRecords"
 	// UsageServiceListTrafficMonitorsProcedure is the fully-qualified name of the UsageService's
 	// ListTrafficMonitors RPC.
 	UsageServiceListTrafficMonitorsProcedure = "/cloudstack.management.usage.v1.UsageService/ListTrafficMonitors"
-	// UsageServiceListUsageRecordsProcedure is the fully-qualified name of the UsageService's
-	// ListUsageRecords RPC.
-	UsageServiceListUsageRecordsProcedure = "/cloudstack.management.usage.v1.UsageService/ListUsageRecords"
 	// UsageServiceListTrafficTypeImplementorsProcedure is the fully-qualified name of the
 	// UsageService's ListTrafficTypeImplementors RPC.
 	UsageServiceListTrafficTypeImplementorsProcedure = "/cloudstack.management.usage.v1.UsageService/ListTrafficTypeImplementors"
+	// UsageServiceListTrafficTypesProcedure is the fully-qualified name of the UsageService's
+	// ListTrafficTypes RPC.
+	UsageServiceListTrafficTypesProcedure = "/cloudstack.management.usage.v1.UsageService/ListTrafficTypes"
+	// UsageServiceListUsageRecordsProcedure is the fully-qualified name of the UsageService's
+	// ListUsageRecords RPC.
+	UsageServiceListUsageRecordsProcedure = "/cloudstack.management.usage.v1.UsageService/ListUsageRecords"
+	// UsageServiceListUsageTypesProcedure is the fully-qualified name of the UsageService's
+	// ListUsageTypes RPC.
+	UsageServiceListUsageTypesProcedure = "/cloudstack.management.usage.v1.UsageService/ListUsageTypes"
+	// UsageServiceRemoveRawUsageRecordsProcedure is the fully-qualified name of the UsageService's
+	// RemoveRawUsageRecords RPC.
+	UsageServiceRemoveRawUsageRecordsProcedure = "/cloudstack.management.usage.v1.UsageService/RemoveRawUsageRecords"
+	// UsageServiceUpdateTrafficTypeProcedure is the fully-qualified name of the UsageService's
+	// UpdateTrafficType RPC.
+	UsageServiceUpdateTrafficTypeProcedure = "/cloudstack.management.usage.v1.UsageService/UpdateTrafficType"
 )
 
 // UsageServiceClient is a client for the cloudstack.management.usage.v1.UsageService service.
 type UsageServiceClient interface {
-	// AddTrafficType Adds traffic type to a physical network
-	AddTrafficType(context.Context, *connect.Request[v1.AddTrafficTypeRequest]) (*connect.Response[v1.AddTrafficTypeResponse], error)
 	// AddTrafficMonitor Adds Traffic Monitor Host for Direct Network Usage
 	AddTrafficMonitor(context.Context, *connect.Request[v1.AddTrafficMonitorRequest]) (*connect.Response[v1.AddTrafficMonitorResponse], error)
-	// RemoveRawUsageRecords Safely removes raw records from cloud_usage table
-	RemoveRawUsageRecords(context.Context, *connect.Request[v1.RemoveRawUsageRecordsRequest]) (*connect.Response[v1.RemoveRawUsageRecordsResponse], error)
-	// ListUsageTypes List Usage Types
-	ListUsageTypes(context.Context, *connect.Request[v1.ListUsageTypesRequest]) (*connect.Response[v1.ListUsageTypesResponse], error)
-	// ListTrafficTypes Lists traffic types of a given physical network.
-	ListTrafficTypes(context.Context, *connect.Request[v1.ListTrafficTypesRequest]) (*connect.Response[v1.ListTrafficTypesResponse], error)
-	// UpdateTrafficType Updates traffic type of a physical network
-	UpdateTrafficType(context.Context, *connect.Request[v1.UpdateTrafficTypeRequest]) (*connect.Response[v1.UpdateTrafficTypeResponse], error)
+	// AddTrafficType Adds traffic type to a physical network
+	AddTrafficType(context.Context, *connect.Request[v1.AddTrafficTypeRequest]) (*connect.Response[v1.AddTrafficTypeResponse], error)
 	// DeleteTrafficMonitor Deletes an traffic monitor host.
 	DeleteTrafficMonitor(context.Context, *connect.Request[v1.DeleteTrafficMonitorRequest]) (*connect.Response[v1.DeleteTrafficMonitorResponse], error)
-	// GenerateUsageRecords Generates usage records. This will generate records only if there any records to be generated, i.e if the scheduled usage job was not run or failed
-	GenerateUsageRecords(context.Context, *connect.Request[v1.GenerateUsageRecordsRequest]) (*connect.Response[v1.GenerateUsageRecordsResponse], error)
 	// DeleteTrafficType Deletes traffic type of a physical network
 	DeleteTrafficType(context.Context, *connect.Request[v1.DeleteTrafficTypeRequest]) (*connect.Response[v1.DeleteTrafficTypeResponse], error)
+	// GenerateUsageRecords Generates usage records. This will generate records only if there any records to be generated, i.e if the scheduled usage job was not run or failed
+	GenerateUsageRecords(context.Context, *connect.Request[v1.GenerateUsageRecordsRequest]) (*connect.Response[v1.GenerateUsageRecordsResponse], error)
 	// ListTrafficMonitors List traffic monitor Hosts.
 	ListTrafficMonitors(context.Context, *connect.Request[v1.ListTrafficMonitorsRequest]) (*connect.Response[v1.ListTrafficMonitorsResponse], error)
-	// ListUsageRecords Lists usage records for accounts
-	ListUsageRecords(context.Context, *connect.Request[v1.ListUsageRecordsRequest]) (*connect.Response[v1.ListUsageRecordsResponse], error)
 	// ListTrafficTypeImplementors Lists implementors of implementor of a network traffic type or implementors of all network traffic types
 	ListTrafficTypeImplementors(context.Context, *connect.Request[v1.ListTrafficTypeImplementorsRequest]) (*connect.Response[v1.ListTrafficTypeImplementorsResponse], error)
+	// ListTrafficTypes Lists traffic types of a given physical network.
+	ListTrafficTypes(context.Context, *connect.Request[v1.ListTrafficTypesRequest]) (*connect.Response[v1.ListTrafficTypesResponse], error)
+	// ListUsageRecords Lists usage records for accounts
+	ListUsageRecords(context.Context, *connect.Request[v1.ListUsageRecordsRequest]) (*connect.Response[v1.ListUsageRecordsResponse], error)
+	// ListUsageTypes List Usage Types
+	ListUsageTypes(context.Context, *connect.Request[v1.ListUsageTypesRequest]) (*connect.Response[v1.ListUsageTypesResponse], error)
+	// RemoveRawUsageRecords Safely removes raw records from cloud_usage table
+	RemoveRawUsageRecords(context.Context, *connect.Request[v1.RemoveRawUsageRecordsRequest]) (*connect.Response[v1.RemoveRawUsageRecordsResponse], error)
+	// UpdateTrafficType Updates traffic type of a physical network
+	UpdateTrafficType(context.Context, *connect.Request[v1.UpdateTrafficTypeRequest]) (*connect.Response[v1.UpdateTrafficTypeResponse], error)
 }
 
 // NewUsageServiceClient constructs a client for the cloudstack.management.usage.v1.UsageService
@@ -110,40 +110,16 @@ func NewUsageServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 	baseURL = strings.TrimRight(baseURL, "/")
 	usageServiceMethods := v1.File_cloudstack_management_usage_v1_usage_gen_proto.Services().ByName("UsageService").Methods()
 	return &usageServiceClient{
-		addTrafficType: connect.NewClient[v1.AddTrafficTypeRequest, v1.AddTrafficTypeResponse](
-			httpClient,
-			baseURL+UsageServiceAddTrafficTypeProcedure,
-			connect.WithSchema(usageServiceMethods.ByName("AddTrafficType")),
-			connect.WithClientOptions(opts...),
-		),
 		addTrafficMonitor: connect.NewClient[v1.AddTrafficMonitorRequest, v1.AddTrafficMonitorResponse](
 			httpClient,
 			baseURL+UsageServiceAddTrafficMonitorProcedure,
 			connect.WithSchema(usageServiceMethods.ByName("AddTrafficMonitor")),
 			connect.WithClientOptions(opts...),
 		),
-		removeRawUsageRecords: connect.NewClient[v1.RemoveRawUsageRecordsRequest, v1.RemoveRawUsageRecordsResponse](
+		addTrafficType: connect.NewClient[v1.AddTrafficTypeRequest, v1.AddTrafficTypeResponse](
 			httpClient,
-			baseURL+UsageServiceRemoveRawUsageRecordsProcedure,
-			connect.WithSchema(usageServiceMethods.ByName("RemoveRawUsageRecords")),
-			connect.WithClientOptions(opts...),
-		),
-		listUsageTypes: connect.NewClient[v1.ListUsageTypesRequest, v1.ListUsageTypesResponse](
-			httpClient,
-			baseURL+UsageServiceListUsageTypesProcedure,
-			connect.WithSchema(usageServiceMethods.ByName("ListUsageTypes")),
-			connect.WithClientOptions(opts...),
-		),
-		listTrafficTypes: connect.NewClient[v1.ListTrafficTypesRequest, v1.ListTrafficTypesResponse](
-			httpClient,
-			baseURL+UsageServiceListTrafficTypesProcedure,
-			connect.WithSchema(usageServiceMethods.ByName("ListTrafficTypes")),
-			connect.WithClientOptions(opts...),
-		),
-		updateTrafficType: connect.NewClient[v1.UpdateTrafficTypeRequest, v1.UpdateTrafficTypeResponse](
-			httpClient,
-			baseURL+UsageServiceUpdateTrafficTypeProcedure,
-			connect.WithSchema(usageServiceMethods.ByName("UpdateTrafficType")),
+			baseURL+UsageServiceAddTrafficTypeProcedure,
+			connect.WithSchema(usageServiceMethods.ByName("AddTrafficType")),
 			connect.WithClientOptions(opts...),
 		),
 		deleteTrafficMonitor: connect.NewClient[v1.DeleteTrafficMonitorRequest, v1.DeleteTrafficMonitorResponse](
@@ -152,16 +128,16 @@ func NewUsageServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 			connect.WithSchema(usageServiceMethods.ByName("DeleteTrafficMonitor")),
 			connect.WithClientOptions(opts...),
 		),
-		generateUsageRecords: connect.NewClient[v1.GenerateUsageRecordsRequest, v1.GenerateUsageRecordsResponse](
-			httpClient,
-			baseURL+UsageServiceGenerateUsageRecordsProcedure,
-			connect.WithSchema(usageServiceMethods.ByName("GenerateUsageRecords")),
-			connect.WithClientOptions(opts...),
-		),
 		deleteTrafficType: connect.NewClient[v1.DeleteTrafficTypeRequest, v1.DeleteTrafficTypeResponse](
 			httpClient,
 			baseURL+UsageServiceDeleteTrafficTypeProcedure,
 			connect.WithSchema(usageServiceMethods.ByName("DeleteTrafficType")),
+			connect.WithClientOptions(opts...),
+		),
+		generateUsageRecords: connect.NewClient[v1.GenerateUsageRecordsRequest, v1.GenerateUsageRecordsResponse](
+			httpClient,
+			baseURL+UsageServiceGenerateUsageRecordsProcedure,
+			connect.WithSchema(usageServiceMethods.ByName("GenerateUsageRecords")),
 			connect.WithClientOptions(opts...),
 		),
 		listTrafficMonitors: connect.NewClient[v1.ListTrafficMonitorsRequest, v1.ListTrafficMonitorsResponse](
@@ -170,16 +146,40 @@ func NewUsageServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 			connect.WithSchema(usageServiceMethods.ByName("ListTrafficMonitors")),
 			connect.WithClientOptions(opts...),
 		),
+		listTrafficTypeImplementors: connect.NewClient[v1.ListTrafficTypeImplementorsRequest, v1.ListTrafficTypeImplementorsResponse](
+			httpClient,
+			baseURL+UsageServiceListTrafficTypeImplementorsProcedure,
+			connect.WithSchema(usageServiceMethods.ByName("ListTrafficTypeImplementors")),
+			connect.WithClientOptions(opts...),
+		),
+		listTrafficTypes: connect.NewClient[v1.ListTrafficTypesRequest, v1.ListTrafficTypesResponse](
+			httpClient,
+			baseURL+UsageServiceListTrafficTypesProcedure,
+			connect.WithSchema(usageServiceMethods.ByName("ListTrafficTypes")),
+			connect.WithClientOptions(opts...),
+		),
 		listUsageRecords: connect.NewClient[v1.ListUsageRecordsRequest, v1.ListUsageRecordsResponse](
 			httpClient,
 			baseURL+UsageServiceListUsageRecordsProcedure,
 			connect.WithSchema(usageServiceMethods.ByName("ListUsageRecords")),
 			connect.WithClientOptions(opts...),
 		),
-		listTrafficTypeImplementors: connect.NewClient[v1.ListTrafficTypeImplementorsRequest, v1.ListTrafficTypeImplementorsResponse](
+		listUsageTypes: connect.NewClient[v1.ListUsageTypesRequest, v1.ListUsageTypesResponse](
 			httpClient,
-			baseURL+UsageServiceListTrafficTypeImplementorsProcedure,
-			connect.WithSchema(usageServiceMethods.ByName("ListTrafficTypeImplementors")),
+			baseURL+UsageServiceListUsageTypesProcedure,
+			connect.WithSchema(usageServiceMethods.ByName("ListUsageTypes")),
+			connect.WithClientOptions(opts...),
+		),
+		removeRawUsageRecords: connect.NewClient[v1.RemoveRawUsageRecordsRequest, v1.RemoveRawUsageRecordsResponse](
+			httpClient,
+			baseURL+UsageServiceRemoveRawUsageRecordsProcedure,
+			connect.WithSchema(usageServiceMethods.ByName("RemoveRawUsageRecords")),
+			connect.WithClientOptions(opts...),
+		),
+		updateTrafficType: connect.NewClient[v1.UpdateTrafficTypeRequest, v1.UpdateTrafficTypeResponse](
+			httpClient,
+			baseURL+UsageServiceUpdateTrafficTypeProcedure,
+			connect.WithSchema(usageServiceMethods.ByName("UpdateTrafficType")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -187,23 +187,18 @@ func NewUsageServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 
 // usageServiceClient implements UsageServiceClient.
 type usageServiceClient struct {
-	addTrafficType              *connect.Client[v1.AddTrafficTypeRequest, v1.AddTrafficTypeResponse]
 	addTrafficMonitor           *connect.Client[v1.AddTrafficMonitorRequest, v1.AddTrafficMonitorResponse]
-	removeRawUsageRecords       *connect.Client[v1.RemoveRawUsageRecordsRequest, v1.RemoveRawUsageRecordsResponse]
-	listUsageTypes              *connect.Client[v1.ListUsageTypesRequest, v1.ListUsageTypesResponse]
-	listTrafficTypes            *connect.Client[v1.ListTrafficTypesRequest, v1.ListTrafficTypesResponse]
-	updateTrafficType           *connect.Client[v1.UpdateTrafficTypeRequest, v1.UpdateTrafficTypeResponse]
+	addTrafficType              *connect.Client[v1.AddTrafficTypeRequest, v1.AddTrafficTypeResponse]
 	deleteTrafficMonitor        *connect.Client[v1.DeleteTrafficMonitorRequest, v1.DeleteTrafficMonitorResponse]
-	generateUsageRecords        *connect.Client[v1.GenerateUsageRecordsRequest, v1.GenerateUsageRecordsResponse]
 	deleteTrafficType           *connect.Client[v1.DeleteTrafficTypeRequest, v1.DeleteTrafficTypeResponse]
+	generateUsageRecords        *connect.Client[v1.GenerateUsageRecordsRequest, v1.GenerateUsageRecordsResponse]
 	listTrafficMonitors         *connect.Client[v1.ListTrafficMonitorsRequest, v1.ListTrafficMonitorsResponse]
-	listUsageRecords            *connect.Client[v1.ListUsageRecordsRequest, v1.ListUsageRecordsResponse]
 	listTrafficTypeImplementors *connect.Client[v1.ListTrafficTypeImplementorsRequest, v1.ListTrafficTypeImplementorsResponse]
-}
-
-// AddTrafficType calls cloudstack.management.usage.v1.UsageService.AddTrafficType.
-func (c *usageServiceClient) AddTrafficType(ctx context.Context, req *connect.Request[v1.AddTrafficTypeRequest]) (*connect.Response[v1.AddTrafficTypeResponse], error) {
-	return c.addTrafficType.CallUnary(ctx, req)
+	listTrafficTypes            *connect.Client[v1.ListTrafficTypesRequest, v1.ListTrafficTypesResponse]
+	listUsageRecords            *connect.Client[v1.ListUsageRecordsRequest, v1.ListUsageRecordsResponse]
+	listUsageTypes              *connect.Client[v1.ListUsageTypesRequest, v1.ListUsageTypesResponse]
+	removeRawUsageRecords       *connect.Client[v1.RemoveRawUsageRecordsRequest, v1.RemoveRawUsageRecordsResponse]
+	updateTrafficType           *connect.Client[v1.UpdateTrafficTypeRequest, v1.UpdateTrafficTypeResponse]
 }
 
 // AddTrafficMonitor calls cloudstack.management.usage.v1.UsageService.AddTrafficMonitor.
@@ -211,24 +206,9 @@ func (c *usageServiceClient) AddTrafficMonitor(ctx context.Context, req *connect
 	return c.addTrafficMonitor.CallUnary(ctx, req)
 }
 
-// RemoveRawUsageRecords calls cloudstack.management.usage.v1.UsageService.RemoveRawUsageRecords.
-func (c *usageServiceClient) RemoveRawUsageRecords(ctx context.Context, req *connect.Request[v1.RemoveRawUsageRecordsRequest]) (*connect.Response[v1.RemoveRawUsageRecordsResponse], error) {
-	return c.removeRawUsageRecords.CallUnary(ctx, req)
-}
-
-// ListUsageTypes calls cloudstack.management.usage.v1.UsageService.ListUsageTypes.
-func (c *usageServiceClient) ListUsageTypes(ctx context.Context, req *connect.Request[v1.ListUsageTypesRequest]) (*connect.Response[v1.ListUsageTypesResponse], error) {
-	return c.listUsageTypes.CallUnary(ctx, req)
-}
-
-// ListTrafficTypes calls cloudstack.management.usage.v1.UsageService.ListTrafficTypes.
-func (c *usageServiceClient) ListTrafficTypes(ctx context.Context, req *connect.Request[v1.ListTrafficTypesRequest]) (*connect.Response[v1.ListTrafficTypesResponse], error) {
-	return c.listTrafficTypes.CallUnary(ctx, req)
-}
-
-// UpdateTrafficType calls cloudstack.management.usage.v1.UsageService.UpdateTrafficType.
-func (c *usageServiceClient) UpdateTrafficType(ctx context.Context, req *connect.Request[v1.UpdateTrafficTypeRequest]) (*connect.Response[v1.UpdateTrafficTypeResponse], error) {
-	return c.updateTrafficType.CallUnary(ctx, req)
+// AddTrafficType calls cloudstack.management.usage.v1.UsageService.AddTrafficType.
+func (c *usageServiceClient) AddTrafficType(ctx context.Context, req *connect.Request[v1.AddTrafficTypeRequest]) (*connect.Response[v1.AddTrafficTypeResponse], error) {
+	return c.addTrafficType.CallUnary(ctx, req)
 }
 
 // DeleteTrafficMonitor calls cloudstack.management.usage.v1.UsageService.DeleteTrafficMonitor.
@@ -236,24 +216,19 @@ func (c *usageServiceClient) DeleteTrafficMonitor(ctx context.Context, req *conn
 	return c.deleteTrafficMonitor.CallUnary(ctx, req)
 }
 
-// GenerateUsageRecords calls cloudstack.management.usage.v1.UsageService.GenerateUsageRecords.
-func (c *usageServiceClient) GenerateUsageRecords(ctx context.Context, req *connect.Request[v1.GenerateUsageRecordsRequest]) (*connect.Response[v1.GenerateUsageRecordsResponse], error) {
-	return c.generateUsageRecords.CallUnary(ctx, req)
-}
-
 // DeleteTrafficType calls cloudstack.management.usage.v1.UsageService.DeleteTrafficType.
 func (c *usageServiceClient) DeleteTrafficType(ctx context.Context, req *connect.Request[v1.DeleteTrafficTypeRequest]) (*connect.Response[v1.DeleteTrafficTypeResponse], error) {
 	return c.deleteTrafficType.CallUnary(ctx, req)
 }
 
+// GenerateUsageRecords calls cloudstack.management.usage.v1.UsageService.GenerateUsageRecords.
+func (c *usageServiceClient) GenerateUsageRecords(ctx context.Context, req *connect.Request[v1.GenerateUsageRecordsRequest]) (*connect.Response[v1.GenerateUsageRecordsResponse], error) {
+	return c.generateUsageRecords.CallUnary(ctx, req)
+}
+
 // ListTrafficMonitors calls cloudstack.management.usage.v1.UsageService.ListTrafficMonitors.
 func (c *usageServiceClient) ListTrafficMonitors(ctx context.Context, req *connect.Request[v1.ListTrafficMonitorsRequest]) (*connect.Response[v1.ListTrafficMonitorsResponse], error) {
 	return c.listTrafficMonitors.CallUnary(ctx, req)
-}
-
-// ListUsageRecords calls cloudstack.management.usage.v1.UsageService.ListUsageRecords.
-func (c *usageServiceClient) ListUsageRecords(ctx context.Context, req *connect.Request[v1.ListUsageRecordsRequest]) (*connect.Response[v1.ListUsageRecordsResponse], error) {
-	return c.listUsageRecords.CallUnary(ctx, req)
 }
 
 // ListTrafficTypeImplementors calls
@@ -262,33 +237,58 @@ func (c *usageServiceClient) ListTrafficTypeImplementors(ctx context.Context, re
 	return c.listTrafficTypeImplementors.CallUnary(ctx, req)
 }
 
+// ListTrafficTypes calls cloudstack.management.usage.v1.UsageService.ListTrafficTypes.
+func (c *usageServiceClient) ListTrafficTypes(ctx context.Context, req *connect.Request[v1.ListTrafficTypesRequest]) (*connect.Response[v1.ListTrafficTypesResponse], error) {
+	return c.listTrafficTypes.CallUnary(ctx, req)
+}
+
+// ListUsageRecords calls cloudstack.management.usage.v1.UsageService.ListUsageRecords.
+func (c *usageServiceClient) ListUsageRecords(ctx context.Context, req *connect.Request[v1.ListUsageRecordsRequest]) (*connect.Response[v1.ListUsageRecordsResponse], error) {
+	return c.listUsageRecords.CallUnary(ctx, req)
+}
+
+// ListUsageTypes calls cloudstack.management.usage.v1.UsageService.ListUsageTypes.
+func (c *usageServiceClient) ListUsageTypes(ctx context.Context, req *connect.Request[v1.ListUsageTypesRequest]) (*connect.Response[v1.ListUsageTypesResponse], error) {
+	return c.listUsageTypes.CallUnary(ctx, req)
+}
+
+// RemoveRawUsageRecords calls cloudstack.management.usage.v1.UsageService.RemoveRawUsageRecords.
+func (c *usageServiceClient) RemoveRawUsageRecords(ctx context.Context, req *connect.Request[v1.RemoveRawUsageRecordsRequest]) (*connect.Response[v1.RemoveRawUsageRecordsResponse], error) {
+	return c.removeRawUsageRecords.CallUnary(ctx, req)
+}
+
+// UpdateTrafficType calls cloudstack.management.usage.v1.UsageService.UpdateTrafficType.
+func (c *usageServiceClient) UpdateTrafficType(ctx context.Context, req *connect.Request[v1.UpdateTrafficTypeRequest]) (*connect.Response[v1.UpdateTrafficTypeResponse], error) {
+	return c.updateTrafficType.CallUnary(ctx, req)
+}
+
 // UsageServiceHandler is an implementation of the cloudstack.management.usage.v1.UsageService
 // service.
 type UsageServiceHandler interface {
-	// AddTrafficType Adds traffic type to a physical network
-	AddTrafficType(context.Context, *connect.Request[v1.AddTrafficTypeRequest]) (*connect.Response[v1.AddTrafficTypeResponse], error)
 	// AddTrafficMonitor Adds Traffic Monitor Host for Direct Network Usage
 	AddTrafficMonitor(context.Context, *connect.Request[v1.AddTrafficMonitorRequest]) (*connect.Response[v1.AddTrafficMonitorResponse], error)
-	// RemoveRawUsageRecords Safely removes raw records from cloud_usage table
-	RemoveRawUsageRecords(context.Context, *connect.Request[v1.RemoveRawUsageRecordsRequest]) (*connect.Response[v1.RemoveRawUsageRecordsResponse], error)
-	// ListUsageTypes List Usage Types
-	ListUsageTypes(context.Context, *connect.Request[v1.ListUsageTypesRequest]) (*connect.Response[v1.ListUsageTypesResponse], error)
-	// ListTrafficTypes Lists traffic types of a given physical network.
-	ListTrafficTypes(context.Context, *connect.Request[v1.ListTrafficTypesRequest]) (*connect.Response[v1.ListTrafficTypesResponse], error)
-	// UpdateTrafficType Updates traffic type of a physical network
-	UpdateTrafficType(context.Context, *connect.Request[v1.UpdateTrafficTypeRequest]) (*connect.Response[v1.UpdateTrafficTypeResponse], error)
+	// AddTrafficType Adds traffic type to a physical network
+	AddTrafficType(context.Context, *connect.Request[v1.AddTrafficTypeRequest]) (*connect.Response[v1.AddTrafficTypeResponse], error)
 	// DeleteTrafficMonitor Deletes an traffic monitor host.
 	DeleteTrafficMonitor(context.Context, *connect.Request[v1.DeleteTrafficMonitorRequest]) (*connect.Response[v1.DeleteTrafficMonitorResponse], error)
-	// GenerateUsageRecords Generates usage records. This will generate records only if there any records to be generated, i.e if the scheduled usage job was not run or failed
-	GenerateUsageRecords(context.Context, *connect.Request[v1.GenerateUsageRecordsRequest]) (*connect.Response[v1.GenerateUsageRecordsResponse], error)
 	// DeleteTrafficType Deletes traffic type of a physical network
 	DeleteTrafficType(context.Context, *connect.Request[v1.DeleteTrafficTypeRequest]) (*connect.Response[v1.DeleteTrafficTypeResponse], error)
+	// GenerateUsageRecords Generates usage records. This will generate records only if there any records to be generated, i.e if the scheduled usage job was not run or failed
+	GenerateUsageRecords(context.Context, *connect.Request[v1.GenerateUsageRecordsRequest]) (*connect.Response[v1.GenerateUsageRecordsResponse], error)
 	// ListTrafficMonitors List traffic monitor Hosts.
 	ListTrafficMonitors(context.Context, *connect.Request[v1.ListTrafficMonitorsRequest]) (*connect.Response[v1.ListTrafficMonitorsResponse], error)
-	// ListUsageRecords Lists usage records for accounts
-	ListUsageRecords(context.Context, *connect.Request[v1.ListUsageRecordsRequest]) (*connect.Response[v1.ListUsageRecordsResponse], error)
 	// ListTrafficTypeImplementors Lists implementors of implementor of a network traffic type or implementors of all network traffic types
 	ListTrafficTypeImplementors(context.Context, *connect.Request[v1.ListTrafficTypeImplementorsRequest]) (*connect.Response[v1.ListTrafficTypeImplementorsResponse], error)
+	// ListTrafficTypes Lists traffic types of a given physical network.
+	ListTrafficTypes(context.Context, *connect.Request[v1.ListTrafficTypesRequest]) (*connect.Response[v1.ListTrafficTypesResponse], error)
+	// ListUsageRecords Lists usage records for accounts
+	ListUsageRecords(context.Context, *connect.Request[v1.ListUsageRecordsRequest]) (*connect.Response[v1.ListUsageRecordsResponse], error)
+	// ListUsageTypes List Usage Types
+	ListUsageTypes(context.Context, *connect.Request[v1.ListUsageTypesRequest]) (*connect.Response[v1.ListUsageTypesResponse], error)
+	// RemoveRawUsageRecords Safely removes raw records from cloud_usage table
+	RemoveRawUsageRecords(context.Context, *connect.Request[v1.RemoveRawUsageRecordsRequest]) (*connect.Response[v1.RemoveRawUsageRecordsResponse], error)
+	// UpdateTrafficType Updates traffic type of a physical network
+	UpdateTrafficType(context.Context, *connect.Request[v1.UpdateTrafficTypeRequest]) (*connect.Response[v1.UpdateTrafficTypeResponse], error)
 }
 
 // NewUsageServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -298,40 +298,16 @@ type UsageServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewUsageServiceHandler(svc UsageServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	usageServiceMethods := v1.File_cloudstack_management_usage_v1_usage_gen_proto.Services().ByName("UsageService").Methods()
-	usageServiceAddTrafficTypeHandler := connect.NewUnaryHandler(
-		UsageServiceAddTrafficTypeProcedure,
-		svc.AddTrafficType,
-		connect.WithSchema(usageServiceMethods.ByName("AddTrafficType")),
-		connect.WithHandlerOptions(opts...),
-	)
 	usageServiceAddTrafficMonitorHandler := connect.NewUnaryHandler(
 		UsageServiceAddTrafficMonitorProcedure,
 		svc.AddTrafficMonitor,
 		connect.WithSchema(usageServiceMethods.ByName("AddTrafficMonitor")),
 		connect.WithHandlerOptions(opts...),
 	)
-	usageServiceRemoveRawUsageRecordsHandler := connect.NewUnaryHandler(
-		UsageServiceRemoveRawUsageRecordsProcedure,
-		svc.RemoveRawUsageRecords,
-		connect.WithSchema(usageServiceMethods.ByName("RemoveRawUsageRecords")),
-		connect.WithHandlerOptions(opts...),
-	)
-	usageServiceListUsageTypesHandler := connect.NewUnaryHandler(
-		UsageServiceListUsageTypesProcedure,
-		svc.ListUsageTypes,
-		connect.WithSchema(usageServiceMethods.ByName("ListUsageTypes")),
-		connect.WithHandlerOptions(opts...),
-	)
-	usageServiceListTrafficTypesHandler := connect.NewUnaryHandler(
-		UsageServiceListTrafficTypesProcedure,
-		svc.ListTrafficTypes,
-		connect.WithSchema(usageServiceMethods.ByName("ListTrafficTypes")),
-		connect.WithHandlerOptions(opts...),
-	)
-	usageServiceUpdateTrafficTypeHandler := connect.NewUnaryHandler(
-		UsageServiceUpdateTrafficTypeProcedure,
-		svc.UpdateTrafficType,
-		connect.WithSchema(usageServiceMethods.ByName("UpdateTrafficType")),
+	usageServiceAddTrafficTypeHandler := connect.NewUnaryHandler(
+		UsageServiceAddTrafficTypeProcedure,
+		svc.AddTrafficType,
+		connect.WithSchema(usageServiceMethods.ByName("AddTrafficType")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usageServiceDeleteTrafficMonitorHandler := connect.NewUnaryHandler(
@@ -340,16 +316,16 @@ func NewUsageServiceHandler(svc UsageServiceHandler, opts ...connect.HandlerOpti
 		connect.WithSchema(usageServiceMethods.ByName("DeleteTrafficMonitor")),
 		connect.WithHandlerOptions(opts...),
 	)
-	usageServiceGenerateUsageRecordsHandler := connect.NewUnaryHandler(
-		UsageServiceGenerateUsageRecordsProcedure,
-		svc.GenerateUsageRecords,
-		connect.WithSchema(usageServiceMethods.ByName("GenerateUsageRecords")),
-		connect.WithHandlerOptions(opts...),
-	)
 	usageServiceDeleteTrafficTypeHandler := connect.NewUnaryHandler(
 		UsageServiceDeleteTrafficTypeProcedure,
 		svc.DeleteTrafficType,
 		connect.WithSchema(usageServiceMethods.ByName("DeleteTrafficType")),
+		connect.WithHandlerOptions(opts...),
+	)
+	usageServiceGenerateUsageRecordsHandler := connect.NewUnaryHandler(
+		UsageServiceGenerateUsageRecordsProcedure,
+		svc.GenerateUsageRecords,
+		connect.WithSchema(usageServiceMethods.ByName("GenerateUsageRecords")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usageServiceListTrafficMonitorsHandler := connect.NewUnaryHandler(
@@ -358,44 +334,68 @@ func NewUsageServiceHandler(svc UsageServiceHandler, opts ...connect.HandlerOpti
 		connect.WithSchema(usageServiceMethods.ByName("ListTrafficMonitors")),
 		connect.WithHandlerOptions(opts...),
 	)
-	usageServiceListUsageRecordsHandler := connect.NewUnaryHandler(
-		UsageServiceListUsageRecordsProcedure,
-		svc.ListUsageRecords,
-		connect.WithSchema(usageServiceMethods.ByName("ListUsageRecords")),
-		connect.WithHandlerOptions(opts...),
-	)
 	usageServiceListTrafficTypeImplementorsHandler := connect.NewUnaryHandler(
 		UsageServiceListTrafficTypeImplementorsProcedure,
 		svc.ListTrafficTypeImplementors,
 		connect.WithSchema(usageServiceMethods.ByName("ListTrafficTypeImplementors")),
 		connect.WithHandlerOptions(opts...),
 	)
+	usageServiceListTrafficTypesHandler := connect.NewUnaryHandler(
+		UsageServiceListTrafficTypesProcedure,
+		svc.ListTrafficTypes,
+		connect.WithSchema(usageServiceMethods.ByName("ListTrafficTypes")),
+		connect.WithHandlerOptions(opts...),
+	)
+	usageServiceListUsageRecordsHandler := connect.NewUnaryHandler(
+		UsageServiceListUsageRecordsProcedure,
+		svc.ListUsageRecords,
+		connect.WithSchema(usageServiceMethods.ByName("ListUsageRecords")),
+		connect.WithHandlerOptions(opts...),
+	)
+	usageServiceListUsageTypesHandler := connect.NewUnaryHandler(
+		UsageServiceListUsageTypesProcedure,
+		svc.ListUsageTypes,
+		connect.WithSchema(usageServiceMethods.ByName("ListUsageTypes")),
+		connect.WithHandlerOptions(opts...),
+	)
+	usageServiceRemoveRawUsageRecordsHandler := connect.NewUnaryHandler(
+		UsageServiceRemoveRawUsageRecordsProcedure,
+		svc.RemoveRawUsageRecords,
+		connect.WithSchema(usageServiceMethods.ByName("RemoveRawUsageRecords")),
+		connect.WithHandlerOptions(opts...),
+	)
+	usageServiceUpdateTrafficTypeHandler := connect.NewUnaryHandler(
+		UsageServiceUpdateTrafficTypeProcedure,
+		svc.UpdateTrafficType,
+		connect.WithSchema(usageServiceMethods.ByName("UpdateTrafficType")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cloudstack.management.usage.v1.UsageService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case UsageServiceAddTrafficTypeProcedure:
-			usageServiceAddTrafficTypeHandler.ServeHTTP(w, r)
 		case UsageServiceAddTrafficMonitorProcedure:
 			usageServiceAddTrafficMonitorHandler.ServeHTTP(w, r)
-		case UsageServiceRemoveRawUsageRecordsProcedure:
-			usageServiceRemoveRawUsageRecordsHandler.ServeHTTP(w, r)
-		case UsageServiceListUsageTypesProcedure:
-			usageServiceListUsageTypesHandler.ServeHTTP(w, r)
-		case UsageServiceListTrafficTypesProcedure:
-			usageServiceListTrafficTypesHandler.ServeHTTP(w, r)
-		case UsageServiceUpdateTrafficTypeProcedure:
-			usageServiceUpdateTrafficTypeHandler.ServeHTTP(w, r)
+		case UsageServiceAddTrafficTypeProcedure:
+			usageServiceAddTrafficTypeHandler.ServeHTTP(w, r)
 		case UsageServiceDeleteTrafficMonitorProcedure:
 			usageServiceDeleteTrafficMonitorHandler.ServeHTTP(w, r)
-		case UsageServiceGenerateUsageRecordsProcedure:
-			usageServiceGenerateUsageRecordsHandler.ServeHTTP(w, r)
 		case UsageServiceDeleteTrafficTypeProcedure:
 			usageServiceDeleteTrafficTypeHandler.ServeHTTP(w, r)
+		case UsageServiceGenerateUsageRecordsProcedure:
+			usageServiceGenerateUsageRecordsHandler.ServeHTTP(w, r)
 		case UsageServiceListTrafficMonitorsProcedure:
 			usageServiceListTrafficMonitorsHandler.ServeHTTP(w, r)
-		case UsageServiceListUsageRecordsProcedure:
-			usageServiceListUsageRecordsHandler.ServeHTTP(w, r)
 		case UsageServiceListTrafficTypeImplementorsProcedure:
 			usageServiceListTrafficTypeImplementorsHandler.ServeHTTP(w, r)
+		case UsageServiceListTrafficTypesProcedure:
+			usageServiceListTrafficTypesHandler.ServeHTTP(w, r)
+		case UsageServiceListUsageRecordsProcedure:
+			usageServiceListUsageRecordsHandler.ServeHTTP(w, r)
+		case UsageServiceListUsageTypesProcedure:
+			usageServiceListUsageTypesHandler.ServeHTTP(w, r)
+		case UsageServiceRemoveRawUsageRecordsProcedure:
+			usageServiceRemoveRawUsageRecordsHandler.ServeHTTP(w, r)
+		case UsageServiceUpdateTrafficTypeProcedure:
+			usageServiceUpdateTrafficTypeHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -405,50 +405,50 @@ func NewUsageServiceHandler(svc UsageServiceHandler, opts ...connect.HandlerOpti
 // UnimplementedUsageServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedUsageServiceHandler struct{}
 
-func (UnimplementedUsageServiceHandler) AddTrafficType(context.Context, *connect.Request[v1.AddTrafficTypeRequest]) (*connect.Response[v1.AddTrafficTypeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.usage.v1.UsageService.AddTrafficType is not implemented"))
-}
-
 func (UnimplementedUsageServiceHandler) AddTrafficMonitor(context.Context, *connect.Request[v1.AddTrafficMonitorRequest]) (*connect.Response[v1.AddTrafficMonitorResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.usage.v1.UsageService.AddTrafficMonitor is not implemented"))
 }
 
-func (UnimplementedUsageServiceHandler) RemoveRawUsageRecords(context.Context, *connect.Request[v1.RemoveRawUsageRecordsRequest]) (*connect.Response[v1.RemoveRawUsageRecordsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.usage.v1.UsageService.RemoveRawUsageRecords is not implemented"))
-}
-
-func (UnimplementedUsageServiceHandler) ListUsageTypes(context.Context, *connect.Request[v1.ListUsageTypesRequest]) (*connect.Response[v1.ListUsageTypesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.usage.v1.UsageService.ListUsageTypes is not implemented"))
-}
-
-func (UnimplementedUsageServiceHandler) ListTrafficTypes(context.Context, *connect.Request[v1.ListTrafficTypesRequest]) (*connect.Response[v1.ListTrafficTypesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.usage.v1.UsageService.ListTrafficTypes is not implemented"))
-}
-
-func (UnimplementedUsageServiceHandler) UpdateTrafficType(context.Context, *connect.Request[v1.UpdateTrafficTypeRequest]) (*connect.Response[v1.UpdateTrafficTypeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.usage.v1.UsageService.UpdateTrafficType is not implemented"))
+func (UnimplementedUsageServiceHandler) AddTrafficType(context.Context, *connect.Request[v1.AddTrafficTypeRequest]) (*connect.Response[v1.AddTrafficTypeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.usage.v1.UsageService.AddTrafficType is not implemented"))
 }
 
 func (UnimplementedUsageServiceHandler) DeleteTrafficMonitor(context.Context, *connect.Request[v1.DeleteTrafficMonitorRequest]) (*connect.Response[v1.DeleteTrafficMonitorResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.usage.v1.UsageService.DeleteTrafficMonitor is not implemented"))
 }
 
-func (UnimplementedUsageServiceHandler) GenerateUsageRecords(context.Context, *connect.Request[v1.GenerateUsageRecordsRequest]) (*connect.Response[v1.GenerateUsageRecordsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.usage.v1.UsageService.GenerateUsageRecords is not implemented"))
-}
-
 func (UnimplementedUsageServiceHandler) DeleteTrafficType(context.Context, *connect.Request[v1.DeleteTrafficTypeRequest]) (*connect.Response[v1.DeleteTrafficTypeResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.usage.v1.UsageService.DeleteTrafficType is not implemented"))
+}
+
+func (UnimplementedUsageServiceHandler) GenerateUsageRecords(context.Context, *connect.Request[v1.GenerateUsageRecordsRequest]) (*connect.Response[v1.GenerateUsageRecordsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.usage.v1.UsageService.GenerateUsageRecords is not implemented"))
 }
 
 func (UnimplementedUsageServiceHandler) ListTrafficMonitors(context.Context, *connect.Request[v1.ListTrafficMonitorsRequest]) (*connect.Response[v1.ListTrafficMonitorsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.usage.v1.UsageService.ListTrafficMonitors is not implemented"))
 }
 
+func (UnimplementedUsageServiceHandler) ListTrafficTypeImplementors(context.Context, *connect.Request[v1.ListTrafficTypeImplementorsRequest]) (*connect.Response[v1.ListTrafficTypeImplementorsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.usage.v1.UsageService.ListTrafficTypeImplementors is not implemented"))
+}
+
+func (UnimplementedUsageServiceHandler) ListTrafficTypes(context.Context, *connect.Request[v1.ListTrafficTypesRequest]) (*connect.Response[v1.ListTrafficTypesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.usage.v1.UsageService.ListTrafficTypes is not implemented"))
+}
+
 func (UnimplementedUsageServiceHandler) ListUsageRecords(context.Context, *connect.Request[v1.ListUsageRecordsRequest]) (*connect.Response[v1.ListUsageRecordsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.usage.v1.UsageService.ListUsageRecords is not implemented"))
 }
 
-func (UnimplementedUsageServiceHandler) ListTrafficTypeImplementors(context.Context, *connect.Request[v1.ListTrafficTypeImplementorsRequest]) (*connect.Response[v1.ListTrafficTypeImplementorsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.usage.v1.UsageService.ListTrafficTypeImplementors is not implemented"))
+func (UnimplementedUsageServiceHandler) ListUsageTypes(context.Context, *connect.Request[v1.ListUsageTypesRequest]) (*connect.Response[v1.ListUsageTypesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.usage.v1.UsageService.ListUsageTypes is not implemented"))
+}
+
+func (UnimplementedUsageServiceHandler) RemoveRawUsageRecords(context.Context, *connect.Request[v1.RemoveRawUsageRecordsRequest]) (*connect.Response[v1.RemoveRawUsageRecordsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.usage.v1.UsageService.RemoveRawUsageRecords is not implemented"))
+}
+
+func (UnimplementedUsageServiceHandler) UpdateTrafficType(context.Context, *connect.Request[v1.UpdateTrafficTypeRequest]) (*connect.Response[v1.UpdateTrafficTypeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cloudstack.management.usage.v1.UsageService.UpdateTrafficType is not implemented"))
 }

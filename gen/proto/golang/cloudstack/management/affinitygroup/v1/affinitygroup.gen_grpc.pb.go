@@ -19,11 +19,12 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AffinitygroupService_UpdateVMAffinityGroup_FullMethodName  = "/cloudstack.management.affinitygroup.v1.AffinitygroupService/UpdateVMAffinityGroup"
-	AffinitygroupService_DeleteAffinityGroup_FullMethodName    = "/cloudstack.management.affinitygroup.v1.AffinitygroupService/DeleteAffinityGroup"
-	AffinitygroupService_ListAffinityGroupTypes_FullMethodName = "/cloudstack.management.affinitygroup.v1.AffinitygroupService/ListAffinityGroupTypes"
-	AffinitygroupService_ListAffinityGroups_FullMethodName     = "/cloudstack.management.affinitygroup.v1.AffinitygroupService/ListAffinityGroups"
-	AffinitygroupService_CreateAffinityGroup_FullMethodName    = "/cloudstack.management.affinitygroup.v1.AffinitygroupService/CreateAffinityGroup"
+	AffinitygroupService_CreateAffinityGroup_FullMethodName             = "/cloudstack.management.affinitygroup.v1.AffinitygroupService/CreateAffinityGroup"
+	AffinitygroupService_DeleteAffinityGroup_FullMethodName             = "/cloudstack.management.affinitygroup.v1.AffinitygroupService/DeleteAffinityGroup"
+	AffinitygroupService_ListAffinityGroupTypes_FullMethodName          = "/cloudstack.management.affinitygroup.v1.AffinitygroupService/ListAffinityGroupTypes"
+	AffinitygroupService_ListAffinityGroups_FullMethodName              = "/cloudstack.management.affinitygroup.v1.AffinitygroupService/ListAffinityGroups"
+	AffinitygroupService_UpdateVMAffinityGroup_FullMethodName           = "/cloudstack.management.affinitygroup.v1.AffinitygroupService/UpdateVMAffinityGroup"
+	AffinitygroupService_UpdateVMAffinityGroupCmdByAdmin_FullMethodName = "/cloudstack.management.affinitygroup.v1.AffinitygroupService/UpdateVMAffinityGroupCmdByAdmin"
 )
 
 // AffinitygroupServiceClient is the client API for AffinitygroupService service.
@@ -32,16 +33,18 @@ const (
 //
 // AffinitygroupService provides operations for managing Affinitygroups
 type AffinitygroupServiceClient interface {
-	// UpdateVMAffinityGroup Updates the affinity/anti-affinity group associations of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect.
-	UpdateVMAffinityGroup(ctx context.Context, in *UpdateVMAffinityGroupRequest, opts ...grpc.CallOption) (*UpdateVMAffinityGroupResponse, error)
+	// CreateAffinityGroup Creates an affinity/anti-affinity group
+	CreateAffinityGroup(ctx context.Context, in *CreateAffinityGroupRequest, opts ...grpc.CallOption) (*CreateAffinityGroupResponse, error)
 	// DeleteAffinityGroup Deletes affinity group
 	DeleteAffinityGroup(ctx context.Context, in *DeleteAffinityGroupRequest, opts ...grpc.CallOption) (*DeleteAffinityGroupResponse, error)
 	// ListAffinityGroupTypes Lists affinity group types available
 	ListAffinityGroupTypes(ctx context.Context, in *ListAffinityGroupTypesRequest, opts ...grpc.CallOption) (*ListAffinityGroupTypesResponse, error)
 	// ListAffinityGroups Lists affinity groups
 	ListAffinityGroups(ctx context.Context, in *ListAffinityGroupsRequest, opts ...grpc.CallOption) (*ListAffinityGroupsResponse, error)
-	// CreateAffinityGroup Creates an affinity/anti-affinity group
-	CreateAffinityGroup(ctx context.Context, in *CreateAffinityGroupRequest, opts ...grpc.CallOption) (*CreateAffinityGroupResponse, error)
+	// UpdateVMAffinityGroup Updates the affinity/anti-affinity group associations of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect.
+	UpdateVMAffinityGroup(ctx context.Context, in *UpdateVMAffinityGroupRequest, opts ...grpc.CallOption) (*UpdateVMAffinityGroupResponse, error)
+	// UpdateVMAffinityGroupCmdByAdmin Updates the affinity/anti-affinity group associations of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect.
+	UpdateVMAffinityGroupCmdByAdmin(ctx context.Context, in *UpdateVMAffinityGroupCmdByAdminRequest, opts ...grpc.CallOption) (*UpdateVMAffinityGroupCmdByAdminResponse, error)
 }
 
 type affinitygroupServiceClient struct {
@@ -52,10 +55,10 @@ func NewAffinitygroupServiceClient(cc grpc.ClientConnInterface) AffinitygroupSer
 	return &affinitygroupServiceClient{cc}
 }
 
-func (c *affinitygroupServiceClient) UpdateVMAffinityGroup(ctx context.Context, in *UpdateVMAffinityGroupRequest, opts ...grpc.CallOption) (*UpdateVMAffinityGroupResponse, error) {
+func (c *affinitygroupServiceClient) CreateAffinityGroup(ctx context.Context, in *CreateAffinityGroupRequest, opts ...grpc.CallOption) (*CreateAffinityGroupResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateVMAffinityGroupResponse)
-	err := c.cc.Invoke(ctx, AffinitygroupService_UpdateVMAffinityGroup_FullMethodName, in, out, cOpts...)
+	out := new(CreateAffinityGroupResponse)
+	err := c.cc.Invoke(ctx, AffinitygroupService_CreateAffinityGroup_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -92,10 +95,20 @@ func (c *affinitygroupServiceClient) ListAffinityGroups(ctx context.Context, in 
 	return out, nil
 }
 
-func (c *affinitygroupServiceClient) CreateAffinityGroup(ctx context.Context, in *CreateAffinityGroupRequest, opts ...grpc.CallOption) (*CreateAffinityGroupResponse, error) {
+func (c *affinitygroupServiceClient) UpdateVMAffinityGroup(ctx context.Context, in *UpdateVMAffinityGroupRequest, opts ...grpc.CallOption) (*UpdateVMAffinityGroupResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateAffinityGroupResponse)
-	err := c.cc.Invoke(ctx, AffinitygroupService_CreateAffinityGroup_FullMethodName, in, out, cOpts...)
+	out := new(UpdateVMAffinityGroupResponse)
+	err := c.cc.Invoke(ctx, AffinitygroupService_UpdateVMAffinityGroup_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *affinitygroupServiceClient) UpdateVMAffinityGroupCmdByAdmin(ctx context.Context, in *UpdateVMAffinityGroupCmdByAdminRequest, opts ...grpc.CallOption) (*UpdateVMAffinityGroupCmdByAdminResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateVMAffinityGroupCmdByAdminResponse)
+	err := c.cc.Invoke(ctx, AffinitygroupService_UpdateVMAffinityGroupCmdByAdmin_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -108,16 +121,18 @@ func (c *affinitygroupServiceClient) CreateAffinityGroup(ctx context.Context, in
 //
 // AffinitygroupService provides operations for managing Affinitygroups
 type AffinitygroupServiceServer interface {
-	// UpdateVMAffinityGroup Updates the affinity/anti-affinity group associations of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect.
-	UpdateVMAffinityGroup(context.Context, *UpdateVMAffinityGroupRequest) (*UpdateVMAffinityGroupResponse, error)
+	// CreateAffinityGroup Creates an affinity/anti-affinity group
+	CreateAffinityGroup(context.Context, *CreateAffinityGroupRequest) (*CreateAffinityGroupResponse, error)
 	// DeleteAffinityGroup Deletes affinity group
 	DeleteAffinityGroup(context.Context, *DeleteAffinityGroupRequest) (*DeleteAffinityGroupResponse, error)
 	// ListAffinityGroupTypes Lists affinity group types available
 	ListAffinityGroupTypes(context.Context, *ListAffinityGroupTypesRequest) (*ListAffinityGroupTypesResponse, error)
 	// ListAffinityGroups Lists affinity groups
 	ListAffinityGroups(context.Context, *ListAffinityGroupsRequest) (*ListAffinityGroupsResponse, error)
-	// CreateAffinityGroup Creates an affinity/anti-affinity group
-	CreateAffinityGroup(context.Context, *CreateAffinityGroupRequest) (*CreateAffinityGroupResponse, error)
+	// UpdateVMAffinityGroup Updates the affinity/anti-affinity group associations of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect.
+	UpdateVMAffinityGroup(context.Context, *UpdateVMAffinityGroupRequest) (*UpdateVMAffinityGroupResponse, error)
+	// UpdateVMAffinityGroupCmdByAdmin Updates the affinity/anti-affinity group associations of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect.
+	UpdateVMAffinityGroupCmdByAdmin(context.Context, *UpdateVMAffinityGroupCmdByAdminRequest) (*UpdateVMAffinityGroupCmdByAdminResponse, error)
 	mustEmbedUnimplementedAffinitygroupServiceServer()
 }
 
@@ -128,8 +143,8 @@ type AffinitygroupServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedAffinitygroupServiceServer struct{}
 
-func (UnimplementedAffinitygroupServiceServer) UpdateVMAffinityGroup(context.Context, *UpdateVMAffinityGroupRequest) (*UpdateVMAffinityGroupResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateVMAffinityGroup not implemented")
+func (UnimplementedAffinitygroupServiceServer) CreateAffinityGroup(context.Context, *CreateAffinityGroupRequest) (*CreateAffinityGroupResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateAffinityGroup not implemented")
 }
 func (UnimplementedAffinitygroupServiceServer) DeleteAffinityGroup(context.Context, *DeleteAffinityGroupRequest) (*DeleteAffinityGroupResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteAffinityGroup not implemented")
@@ -140,8 +155,11 @@ func (UnimplementedAffinitygroupServiceServer) ListAffinityGroupTypes(context.Co
 func (UnimplementedAffinitygroupServiceServer) ListAffinityGroups(context.Context, *ListAffinityGroupsRequest) (*ListAffinityGroupsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListAffinityGroups not implemented")
 }
-func (UnimplementedAffinitygroupServiceServer) CreateAffinityGroup(context.Context, *CreateAffinityGroupRequest) (*CreateAffinityGroupResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateAffinityGroup not implemented")
+func (UnimplementedAffinitygroupServiceServer) UpdateVMAffinityGroup(context.Context, *UpdateVMAffinityGroupRequest) (*UpdateVMAffinityGroupResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateVMAffinityGroup not implemented")
+}
+func (UnimplementedAffinitygroupServiceServer) UpdateVMAffinityGroupCmdByAdmin(context.Context, *UpdateVMAffinityGroupCmdByAdminRequest) (*UpdateVMAffinityGroupCmdByAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateVMAffinityGroupCmdByAdmin not implemented")
 }
 func (UnimplementedAffinitygroupServiceServer) mustEmbedUnimplementedAffinitygroupServiceServer() {}
 func (UnimplementedAffinitygroupServiceServer) testEmbeddedByValue()                              {}
@@ -164,20 +182,20 @@ func RegisterAffinitygroupServiceServer(s grpc.ServiceRegistrar, srv Affinitygro
 	s.RegisterService(&AffinitygroupService_ServiceDesc, srv)
 }
 
-func _AffinitygroupService_UpdateVMAffinityGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateVMAffinityGroupRequest)
+func _AffinitygroupService_CreateAffinityGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateAffinityGroupRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AffinitygroupServiceServer).UpdateVMAffinityGroup(ctx, in)
+		return srv.(AffinitygroupServiceServer).CreateAffinityGroup(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: AffinitygroupService_UpdateVMAffinityGroup_FullMethodName,
+		FullMethod: AffinitygroupService_CreateAffinityGroup_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AffinitygroupServiceServer).UpdateVMAffinityGroup(ctx, req.(*UpdateVMAffinityGroupRequest))
+		return srv.(AffinitygroupServiceServer).CreateAffinityGroup(ctx, req.(*CreateAffinityGroupRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -236,20 +254,38 @@ func _AffinitygroupService_ListAffinityGroups_Handler(srv interface{}, ctx conte
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AffinitygroupService_CreateAffinityGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateAffinityGroupRequest)
+func _AffinitygroupService_UpdateVMAffinityGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateVMAffinityGroupRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AffinitygroupServiceServer).CreateAffinityGroup(ctx, in)
+		return srv.(AffinitygroupServiceServer).UpdateVMAffinityGroup(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: AffinitygroupService_CreateAffinityGroup_FullMethodName,
+		FullMethod: AffinitygroupService_UpdateVMAffinityGroup_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AffinitygroupServiceServer).CreateAffinityGroup(ctx, req.(*CreateAffinityGroupRequest))
+		return srv.(AffinitygroupServiceServer).UpdateVMAffinityGroup(ctx, req.(*UpdateVMAffinityGroupRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AffinitygroupService_UpdateVMAffinityGroupCmdByAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateVMAffinityGroupCmdByAdminRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AffinitygroupServiceServer).UpdateVMAffinityGroupCmdByAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AffinitygroupService_UpdateVMAffinityGroupCmdByAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AffinitygroupServiceServer).UpdateVMAffinityGroupCmdByAdmin(ctx, req.(*UpdateVMAffinityGroupCmdByAdminRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -262,8 +298,8 @@ var AffinitygroupService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*AffinitygroupServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "UpdateVMAffinityGroup",
-			Handler:    _AffinitygroupService_UpdateVMAffinityGroup_Handler,
+			MethodName: "CreateAffinityGroup",
+			Handler:    _AffinitygroupService_CreateAffinityGroup_Handler,
 		},
 		{
 			MethodName: "DeleteAffinityGroup",
@@ -278,8 +314,12 @@ var AffinitygroupService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _AffinitygroupService_ListAffinityGroups_Handler,
 		},
 		{
-			MethodName: "CreateAffinityGroup",
-			Handler:    _AffinitygroupService_CreateAffinityGroup_Handler,
+			MethodName: "UpdateVMAffinityGroup",
+			Handler:    _AffinitygroupService_UpdateVMAffinityGroup_Handler,
+		},
+		{
+			MethodName: "UpdateVMAffinityGroupCmdByAdmin",
+			Handler:    _AffinitygroupService_UpdateVMAffinityGroupCmdByAdmin_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
