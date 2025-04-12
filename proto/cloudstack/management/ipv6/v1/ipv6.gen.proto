@@ -10,146 +10,17 @@ import "google/protobuf/descriptor.proto";
 service Ipv6Service {
 	option (annotations.service).scope = Scope_USER;
 
-	// CreateIpv6FirewallRule Creates an Ipv6 firewall rule in the given network (the network must not belong to VPC)
-	rpc CreateIpv6FirewallRule(CreateIpv6FirewallRuleRequest) returns (CreateIpv6FirewallRuleResponse) {}
-
-	// ListIpv6FirewallRules Lists all IPv6 firewall rules
-	rpc ListIpv6FirewallRules(ListIpv6FirewallRulesRequest) returns (ListIpv6FirewallRulesResponse) {}
-
 	// UpdateIpv6FirewallRule Updates Ipv6 firewall rule with specified ID
 	rpc UpdateIpv6FirewallRule(UpdateIpv6FirewallRuleRequest) returns (UpdateIpv6FirewallRuleResponse) {}
 
 	// DeleteIpv6FirewallRule Deletes a IPv6 firewall rule
 	rpc DeleteIpv6FirewallRule(DeleteIpv6FirewallRuleRequest) returns (DeleteIpv6FirewallRuleResponse) {}
-}
 
-// CreateIpv6FirewallRuleRequest represents the parameters for creates an ipv6 firewall rule in the given network (the network must not belong to vpc)
-message CreateIpv6FirewallRuleRequest {
-	// the protocol for the Ipv6 firewall rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number
-	string protocol = 1 [
-		(validate.field).required = true
-	];
+	// ListIpv6FirewallRules Lists all IPv6 firewall rules
+	rpc ListIpv6FirewallRules(ListIpv6FirewallRulesRequest) returns (ListIpv6FirewallRulesResponse) {}
 
-	// the starting port of Ipv6 firewall rule
-	int32 public_start_port = 2 [
-		(validate.field).int32.gte = 1,
-		(validate.field).int32.lte = 65535
-	];
-
-	// the ending port of Ipv6 firewall rule
-	int32 public_end_port = 3 [
-		(validate.field).int32.gte = 1,
-		(validate.field).int32.lte = 65535
-	];
-
-	// the source CIDR list to allow traffic from. Multiple entries must be separated by a single comma character (,).
-	repeated string source_cidr_list = 4;
-
-	// the destination CIDR list to allow traffic to. Multiple entries must be separated by a single comma character (,).
-	repeated string destination_cidrlist = 5;
-
-	// type of the ICMP message being sent
-	int32 icmp_type = 6;
-
-	// error code for this ICMP message
-	int32 icmp_code = 7;
-
-	// The network of the VM the Ipv6 firewall rule will be created for
-	int64 network_id = 8 [
-		(validate.field).required = true
-	];
-
-	// the traffic type for the Ipv6 firewall rule, can be ingress or egress, defaulted to ingress if not specified
-	string traffic_type = 9;
-
-	// an optional field, whether to the display the rule to the end user or not
-	bool display = 10 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	int64 start_event_id = 11;
-
-	//
-	string injected_job_id = 12 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 13;
-}
-
-// CreateIpv6FirewallRuleResponse represents the response from creates an ipv6 firewall rule in the given network (the network must not belong to vpc)
-message CreateIpv6FirewallRuleResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListIpv6FirewallRulesRequest represents the parameters for lists all ipv6 firewall rules
-message ListIpv6FirewallRulesRequest {
-	// Lists ipv6 firewall rule with the specified ID
-	int64 id = 1;
-
-	// list ipv6 firewall rules by network ID
-	int64 network_id = 2;
-
-	// list ipv6 firewall rules by traffic type - ingress or egress
-	string traffic_type = 3;
-
-	// list resources by display flag; only ROOT admin is eligible to pass this parameter
-	bool display = 4 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List resources by tags (key/value pairs)
-	map<string, string> tags = 5;
-
-	// list objects by project; if projectid=-1 lists All VMs
-	int64 project_id = 6;
-
-	// list resources by account. Must be used with the domainId parameter.
-	string account_name = 7 [
-		(validate.field).cel = {
-			id:         "account_name_with_domain_id",
-			expression: "!has(account_name) || has(domain_id)",
-			message:    "account_name must be used with domain_id parameter"
-		}
-	];
-
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	bool list_all = 8 [
-		features.field_presence = EXPLICIT
-	];
-
-	// list only resources belonging to the domain specified
-	int64 domain_id = 9;
-
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	bool recursive = 10 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List by keyword
-	string keyword = 11;
-
-	//
-	int32 page = 12;
-
-	//
-	int32 page_size = 13;
-
-	//
-	string response_type = 14;
-}
-
-// ListIpv6FirewallRulesResponse represents the response from lists all ipv6 firewall rules
-message ListIpv6FirewallRulesResponse {
-	option (validate.message).disabled = false;
-	// The list of FirewallRules
-	repeated FirewallRule items = 1;
-
-	// The total count of FirewallRules
-	int32 total_count = 2;
+	// CreateIpv6FirewallRule Creates an Ipv6 firewall rule in the given network (the network must not belong to VPC)
+	rpc CreateIpv6FirewallRule(CreateIpv6FirewallRuleRequest) returns (CreateIpv6FirewallRuleResponse) {}
 }
 
 // UpdateIpv6FirewallRuleRequest represents the parameters for updates ipv6 firewall rule with specified id
@@ -239,6 +110,135 @@ message DeleteIpv6FirewallRuleResponse {
 	Result result = 1;
 }
 
+// ListIpv6FirewallRulesRequest represents the parameters for lists all ipv6 firewall rules
+message ListIpv6FirewallRulesRequest {
+	// Lists ipv6 firewall rule with the specified ID
+	int64 id = 1;
+
+	// list ipv6 firewall rules by network ID
+	int64 network_id = 2;
+
+	// list ipv6 firewall rules by traffic type - ingress or egress
+	string traffic_type = 3;
+
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	bool display = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List resources by tags (key/value pairs)
+	map<string, string> tags = 5;
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 6;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 7 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 8 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 9;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 11;
+
+	//
+	int32 page = 12;
+
+	//
+	int32 page_size = 13;
+
+	//
+	string response_type = 14;
+}
+
+// ListIpv6FirewallRulesResponse represents the response from lists all ipv6 firewall rules
+message ListIpv6FirewallRulesResponse {
+	option (validate.message).disabled = false;
+	// The list of FirewallRules
+	repeated FirewallRule items = 1;
+
+	// The total count of FirewallRules
+	int32 total_count = 2;
+}
+
+// CreateIpv6FirewallRuleRequest represents the parameters for creates an ipv6 firewall rule in the given network (the network must not belong to vpc)
+message CreateIpv6FirewallRuleRequest {
+	// the protocol for the Ipv6 firewall rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number
+	string protocol = 1 [
+		(validate.field).required = true
+	];
+
+	// the starting port of Ipv6 firewall rule
+	int32 public_start_port = 2 [
+		(validate.field).int32.gte = 1,
+		(validate.field).int32.lte = 65535
+	];
+
+	// the ending port of Ipv6 firewall rule
+	int32 public_end_port = 3 [
+		(validate.field).int32.gte = 1,
+		(validate.field).int32.lte = 65535
+	];
+
+	// the source CIDR list to allow traffic from. Multiple entries must be separated by a single comma character (,).
+	repeated string source_cidr_list = 4;
+
+	// the destination CIDR list to allow traffic to. Multiple entries must be separated by a single comma character (,).
+	repeated string destination_cidrlist = 5;
+
+	// type of the ICMP message being sent
+	int32 icmp_type = 6;
+
+	// error code for this ICMP message
+	int32 icmp_code = 7;
+
+	// The network of the VM the Ipv6 firewall rule will be created for
+	int64 network_id = 8 [
+		(validate.field).required = true
+	];
+
+	// the traffic type for the Ipv6 firewall rule, can be ingress or egress, defaulted to ingress if not specified
+	string traffic_type = 9;
+
+	// an optional field, whether to the display the rule to the end user or not
+	bool display = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 11;
+
+	//
+	string injected_job_id = 12 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 13;
+}
+
+// CreateIpv6FirewallRuleResponse represents the response from creates an ipv6 firewall rule in the given network (the network must not belong to vpc)
+message CreateIpv6FirewallRuleResponse {
+	// The Result
+	Result result = 1;
+}
+
 // FirewallRule represents a FirewallRule Item
 message FirewallRule {
 	// The ID of the FirewallRule
@@ -275,53 +275,6 @@ enum ProtocolType {
 	PROTOCOL_TYPE_ICMP = 3;
 	// ALL value
 	PROTOCOL_TYPE_ALL = 4;
-}
-
-// Item represents a generic item in a list response
-message Item {
-	// The ID of the item
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-
-	// The name of the item
-	string name = 2;
-
-	// The display name of the item
-	string display_name = 3;
-
-	// The description of the item
-	string description = 4;
-
-	// The account ID the item belongs to
-	string account_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain ID the item belongs to
-	string domain_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain name the item belongs to
-	string domain = 7;
-
-	// The project ID the item belongs to
-	string project_id = 8 [
-		(validate.field).string.uuid = true
-	];
-
-	// The project name the item belongs to
-	string project = 9;
-
-	// The date the item was created
-	string created = 10;
-
-	// The state of the item
-	string state = 11;
-
-	// Additional fields returned by the API
-	map<string, string> details = 12;
 }
 
 // Result represents a generic operation result

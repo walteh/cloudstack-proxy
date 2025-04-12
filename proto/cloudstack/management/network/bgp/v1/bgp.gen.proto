@@ -10,29 +10,107 @@ import "google/protobuf/descriptor.proto";
 service BgpService {
 	option (annotations.service).scope = Scope_USER;
 
+	// ReleaseDedicatedBgpPeer Releases an existing dedicated Bgp Peer.
+	rpc ReleaseDedicatedBgpPeer(ReleaseDedicatedBgpPeerRequest) returns (ReleaseDedicatedBgpPeerResponse) {}
+
+	// DeleteBgpPeer Deletes an existing Bgp Peer.
+	rpc DeleteBgpPeer(DeleteBgpPeerRequest) returns (DeleteBgpPeerResponse) {}
+
+	// ChangeBgpPeersForVpc Change the BGP peers for a VPC.
+	rpc ChangeBgpPeersForVpc(ChangeBgpPeersForVpcRequest) returns (ChangeBgpPeersForVpcResponse) {}
+
 	// DedicateBgpPeer Dedicates an existing Bgp Peer to an account or a domain.
 	rpc DedicateBgpPeer(DedicateBgpPeerRequest) returns (DedicateBgpPeerResponse) {}
+
+	// CreateBgpPeer Creates a Bgp Peer for a zone.
+	rpc CreateBgpPeer(CreateBgpPeerRequest) returns (CreateBgpPeerResponse) {}
+
+	// UpdateBgpPeer Updates an existing Bgp Peer.
+	rpc UpdateBgpPeer(UpdateBgpPeerRequest) returns (UpdateBgpPeerResponse) {}
 
 	// ListBgpPeers Lists Bgp Peers.
 	rpc ListBgpPeers(ListBgpPeersRequest) returns (ListBgpPeersResponse) {}
 
 	// ChangeBgpPeersForNetwork Change the BGP peers for a network.
 	rpc ChangeBgpPeersForNetwork(ChangeBgpPeersForNetworkRequest) returns (ChangeBgpPeersForNetworkResponse) {}
+}
 
-	// UpdateBgpPeer Updates an existing Bgp Peer.
-	rpc UpdateBgpPeer(UpdateBgpPeerRequest) returns (UpdateBgpPeerResponse) {}
+// ReleaseDedicatedBgpPeerRequest represents the parameters for releases an existing dedicated bgp peer.
+message ReleaseDedicatedBgpPeerRequest {
+	// Id of the Bgp Peer
+	int64 id = 1 [
+		(validate.field).required = true
+	];
 
-	// DeleteBgpPeer Deletes an existing Bgp Peer.
-	rpc DeleteBgpPeer(DeleteBgpPeerRequest) returns (DeleteBgpPeerResponse) {}
+	//
+	int64 start_event_id = 2;
 
-	// ReleaseDedicatedBgpPeer Releases an existing dedicated Bgp Peer.
-	rpc ReleaseDedicatedBgpPeer(ReleaseDedicatedBgpPeerRequest) returns (ReleaseDedicatedBgpPeerResponse) {}
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
 
-	// ChangeBgpPeersForVpc Change the BGP peers for a VPC.
-	rpc ChangeBgpPeersForVpc(ChangeBgpPeersForVpcRequest) returns (ChangeBgpPeersForVpcResponse) {}
+	//
+	string response_type = 4;
+}
 
-	// CreateBgpPeer Creates a Bgp Peer for a zone.
-	rpc CreateBgpPeer(CreateBgpPeerRequest) returns (CreateBgpPeerResponse) {}
+// ReleaseDedicatedBgpPeerResponse represents the response from releases an existing dedicated bgp peer.
+message ReleaseDedicatedBgpPeerResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteBgpPeerRequest represents the parameters for deletes an existing bgp peer.
+message DeleteBgpPeerRequest {
+	// Id of the Bgp Peer
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteBgpPeerResponse represents the response from deletes an existing bgp peer.
+message DeleteBgpPeerResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ChangeBgpPeersForVpcRequest represents the parameters for change the bgp peers for a vpc.
+message ChangeBgpPeersForVpcRequest {
+	// UUID of the VPC which the Bgp Peers are associated to.
+	int64 vpc_id = 1 [
+		(validate.field).required = true
+	];
+
+	// Ids of the Bgp Peer. If it is empty, all BGP peers will be unlinked.
+	repeated string bgp_peer_ids = 2;
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// ChangeBgpPeersForVpcResponse represents the response from change the bgp peers for a vpc.
+message ChangeBgpPeersForVpcResponse {
+	// The Result
+	Result result = 1;
 }
 
 // DedicateBgpPeerRequest represents the parameters for dedicates an existing bgp peer to an account or a domain.
@@ -65,6 +143,110 @@ message DedicateBgpPeerRequest {
 
 // DedicateBgpPeerResponse represents the response from dedicates an existing bgp peer to an account or a domain.
 message DedicateBgpPeerResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateBgpPeerRequest represents the parameters for creates a bgp peer for a zone.
+message CreateBgpPeerRequest {
+	// UUID of the zone which the Bgp Peer belongs to.
+	int64 zone_id = 1 [
+		(validate.field).required = true
+	];
+
+	// The IPv4 address of the Bgp Peer.
+	string ip4_address = 2 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// The IPv6 address of the Bgp Peer.
+	string ip6_address = 3 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// The AS number of the Bgp Peer.
+	int64 as_number = 4 [
+		(validate.field).required = true
+	];
+
+	// The password of the Bgp Peer.
+	string password = 5;
+
+	// account who will own the Bgp Peer
+	string account_name = 6;
+
+	// project who will own the Bgp Peer
+	int64 project_id = 7;
+
+	// domain ID of the account owning the Bgp Peer
+	int64 domain_id = 8;
+
+	// BGP peer details in key/value pairs.
+	map<string, string> details = 9;
+
+	//
+	int64 start_event_id = 10;
+
+	//
+	string injected_job_id = 11 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 12;
+}
+
+// CreateBgpPeerResponse represents the response from creates a bgp peer for a zone.
+message CreateBgpPeerResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateBgpPeerRequest represents the parameters for updates an existing bgp peer.
+message UpdateBgpPeerRequest {
+	// Id of the Bgp Peer
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// The IPv4 address of the Bgp Peer.
+	string ip4_address = 2 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// The IPv6 address of the Bgp Peer.
+	string ip6_address = 3 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// The AS number of the Bgp Peer.
+	int64 as_number = 4;
+
+	// The password of the Bgp Peer.
+	string password = 5;
+
+	// BGP peer details in key/value pairs.
+	map<string, string> details = 6;
+
+	// optional boolean field, which indicates if details should be cleaned up or not (if set to true, details are removed for this resource; if false or not set, no action)
+	bool cleanup_details = 7 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 8;
+
+	//
+	string injected_job_id = 9 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 10;
+}
+
+// UpdateBgpPeerResponse represents the response from updates an existing bgp peer.
+message UpdateBgpPeerResponse {
 	// The Result
 	Result result = 1;
 }
@@ -151,188 +333,6 @@ message ChangeBgpPeersForNetworkResponse {
 	Result result = 1;
 }
 
-// UpdateBgpPeerRequest represents the parameters for updates an existing bgp peer.
-message UpdateBgpPeerRequest {
-	// Id of the Bgp Peer
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// The IPv4 address of the Bgp Peer.
-	string ip4_address = 2 [
-		(validate.field).string.ipv4 = true
-	];
-
-	// The IPv6 address of the Bgp Peer.
-	string ip6_address = 3 [
-		(validate.field).string.ipv4 = true
-	];
-
-	// The AS number of the Bgp Peer.
-	int64 as_number = 4;
-
-	// The password of the Bgp Peer.
-	string password = 5;
-
-	// BGP peer details in key/value pairs.
-	map<string, string> details = 6;
-
-	// optional boolean field, which indicates if details should be cleaned up or not (if set to true, details are removed for this resource; if false or not set, no action)
-	bool cleanup_details = 7 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	int64 start_event_id = 8;
-
-	//
-	string injected_job_id = 9 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 10;
-}
-
-// UpdateBgpPeerResponse represents the response from updates an existing bgp peer.
-message UpdateBgpPeerResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeleteBgpPeerRequest represents the parameters for deletes an existing bgp peer.
-message DeleteBgpPeerRequest {
-	// Id of the Bgp Peer
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DeleteBgpPeerResponse represents the response from deletes an existing bgp peer.
-message DeleteBgpPeerResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ReleaseDedicatedBgpPeerRequest represents the parameters for releases an existing dedicated bgp peer.
-message ReleaseDedicatedBgpPeerRequest {
-	// Id of the Bgp Peer
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// ReleaseDedicatedBgpPeerResponse represents the response from releases an existing dedicated bgp peer.
-message ReleaseDedicatedBgpPeerResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ChangeBgpPeersForVpcRequest represents the parameters for change the bgp peers for a vpc.
-message ChangeBgpPeersForVpcRequest {
-	// UUID of the VPC which the Bgp Peers are associated to.
-	int64 vpc_id = 1 [
-		(validate.field).required = true
-	];
-
-	// Ids of the Bgp Peer. If it is empty, all BGP peers will be unlinked.
-	repeated string bgp_peer_ids = 2;
-
-	//
-	int64 start_event_id = 3;
-
-	//
-	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 5;
-}
-
-// ChangeBgpPeersForVpcResponse represents the response from change the bgp peers for a vpc.
-message ChangeBgpPeersForVpcResponse {
-	// The Result
-	Result result = 1;
-}
-
-// CreateBgpPeerRequest represents the parameters for creates a bgp peer for a zone.
-message CreateBgpPeerRequest {
-	// UUID of the zone which the Bgp Peer belongs to.
-	int64 zone_id = 1 [
-		(validate.field).required = true
-	];
-
-	// The IPv4 address of the Bgp Peer.
-	string ip4_address = 2 [
-		(validate.field).string.ipv4 = true
-	];
-
-	// The IPv6 address of the Bgp Peer.
-	string ip6_address = 3 [
-		(validate.field).string.ipv4 = true
-	];
-
-	// The AS number of the Bgp Peer.
-	int64 as_number = 4 [
-		(validate.field).required = true
-	];
-
-	// The password of the Bgp Peer.
-	string password = 5;
-
-	// account who will own the Bgp Peer
-	string account_name = 6;
-
-	// project who will own the Bgp Peer
-	int64 project_id = 7;
-
-	// domain ID of the account owning the Bgp Peer
-	int64 domain_id = 8;
-
-	// BGP peer details in key/value pairs.
-	map<string, string> details = 9;
-
-	//
-	int64 start_event_id = 10;
-
-	//
-	string injected_job_id = 11 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 12;
-}
-
-// CreateBgpPeerResponse represents the response from creates a bgp peer for a zone.
-message CreateBgpPeerResponse {
-	// The Result
-	Result result = 1;
-}
-
 // BgpPeer represents a BgpPeer Item
 message BgpPeer {
 	// The ID of the BgpPeer
@@ -355,53 +355,6 @@ message Success {
 	bool success = 1;
 	// any text associated with the success or failure
 	string display_text = 2;
-}
-
-// Item represents a generic item in a list response
-message Item {
-	// The ID of the item
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-
-	// The name of the item
-	string name = 2;
-
-	// The display name of the item
-	string display_name = 3;
-
-	// The description of the item
-	string description = 4;
-
-	// The account ID the item belongs to
-	string account_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain ID the item belongs to
-	string domain_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain name the item belongs to
-	string domain = 7;
-
-	// The project ID the item belongs to
-	string project_id = 8 [
-		(validate.field).string.uuid = true
-	];
-
-	// The project name the item belongs to
-	string project = 9;
-
-	// The date the item was created
-	string created = 10;
-
-	// The state of the item
-	string state = 11;
-
-	// Additional fields returned by the API
-	map<string, string> details = 12;
 }
 
 // Result represents a generic operation result

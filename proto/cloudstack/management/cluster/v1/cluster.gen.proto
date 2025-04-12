@@ -10,121 +10,26 @@ import "google/protobuf/descriptor.proto";
 service ClusterService {
 	option (annotations.service).scope = Scope_ADMIN;
 
-	// UpdateCluster Updates an existing cluster
-	rpc UpdateCluster(UpdateClusterRequest) returns (UpdateClusterResponse) {}
-
-	// ListClusters Lists clusters.
-	rpc ListClusters(ListClustersRequest) returns (ListClustersResponse) {}
-
 	// DeleteCluster Deletes a cluster.
 	rpc DeleteCluster(DeleteClusterRequest) returns (DeleteClusterResponse) {}
 
 	// ExecuteClusterDrsPlan Execute DRS for a cluster. If there is another plan in progress for the same cluster, this command will fail.
 	rpc ExecuteClusterDrsPlan(ExecuteClusterDrsPlanRequest) returns (ExecuteClusterDrsPlanResponse) {}
 
-	// AddCluster Adds a new cluster
-	rpc AddCluster(AddClusterRequest) returns (AddClusterResponse) {}
-
 	// GenerateClusterDrsPlan Generate DRS plan for a cluster
 	rpc GenerateClusterDrsPlan(GenerateClusterDrsPlanRequest) returns (GenerateClusterDrsPlanResponse) {}
 
+	// AddCluster Adds a new cluster
+	rpc AddCluster(AddClusterRequest) returns (AddClusterResponse) {}
+
 	// ListClusterDrsPlan List DRS plans for a clusters
 	rpc ListClusterDrsPlan(ListClusterDrsPlanRequest) returns (ListClusterDrsPlanResponse) {}
-}
 
-// UpdateClusterRequest represents the parameters for updates an existing cluster
-message UpdateClusterRequest {
-	// the ID of the Cluster
-	int64 id = 1 [
-		(validate.field).required = true
-	];
+	// UpdateCluster Updates an existing cluster
+	rpc UpdateCluster(UpdateClusterRequest) returns (UpdateClusterResponse) {}
 
-	// the cluster name
-	string cluster_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// hypervisor type of the cluster
-	string hypervisor = 3;
-
-	// hypervisor type of the cluster
-	string cluster_type = 4;
-
-	// Allocation state of this cluster for allocation of new resources
-	string allocation_state = 5;
-
-	// whether this cluster is managed by cloudstack
-	string managed_state = 6;
-
-	// the CPU arch of the cluster. Valid options are: x86_64, aarch64
-	string arch = 7;
-
-	//
-	string response_type = 8;
-}
-
-// UpdateClusterResponse represents the response from updates an existing cluster
-message UpdateClusterResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListClustersRequest represents the parameters for lists clusters.
-message ListClustersRequest {
-	// lists clusters by the cluster ID
-	int64 id = 1;
-
-	// lists clusters by the cluster name
-	string cluster_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// lists clusters by Pod ID
-	int64 pod_id = 3;
-
-	// lists clusters by Zone ID
-	int64 zone_id = 4;
-
-	// lists clusters by hypervisor type
-	string hypervisor_type = 5;
-
-	// lists clusters by cluster type
-	string cluster_type = 6;
-
-	// lists clusters by allocation state
-	string allocation_state = 7;
-
-	// whether this cluster is managed by cloudstack
-	string managed_state = 8;
-
-	// flag to display the capacity of the clusters
-	bool show_capacities = 9 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List by keyword
-	string keyword = 10;
-
-	//
-	int32 page = 11;
-
-	//
-	int32 page_size = 12;
-
-	//
-	string response_type = 13;
-}
-
-// ListClustersResponse represents the response from lists clusters.
-message ListClustersResponse {
-	option (validate.message).disabled = false;
-	// The list of Clusters
-	repeated Cluster items = 1;
-
-	// The total count of Clusters
-	int32 total_count = 2;
+	// ListClusters Lists clusters.
+	rpc ListClusters(ListClustersRequest) returns (ListClustersResponse) {}
 }
 
 // DeleteClusterRequest represents the parameters for deletes a cluster.
@@ -168,6 +73,26 @@ message ExecuteClusterDrsPlanRequest {
 
 // ExecuteClusterDrsPlanResponse represents the response from execute drs for a cluster. if there is another plan in progress for the same cluster, this command will fail.
 message ExecuteClusterDrsPlanResponse {
+	// The Result
+	Result result = 1;
+}
+
+// GenerateClusterDrsPlanRequest represents the parameters for generate drs plan for a cluster
+message GenerateClusterDrsPlanRequest {
+	// the ID of the Cluster
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// Maximum number of VMs to migrate for a DRS execution. Defaults to value of cluster's drs.vm.migrations setting
+	int32 migrations = 2;
+
+	//
+	string response_type = 3;
+}
+
+// GenerateClusterDrsPlanResponse represents the response from generate drs plan for a cluster
+message GenerateClusterDrsPlanResponse {
 	// The Result
 	Result result = 1;
 }
@@ -272,26 +197,6 @@ message AddClusterResponse {
 	Result result = 1;
 }
 
-// GenerateClusterDrsPlanRequest represents the parameters for generate drs plan for a cluster
-message GenerateClusterDrsPlanRequest {
-	// the ID of the Cluster
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// Maximum number of VMs to migrate for a DRS execution. Defaults to value of cluster's drs.vm.migrations setting
-	int32 migrations = 2;
-
-	//
-	string response_type = 3;
-}
-
-// GenerateClusterDrsPlanResponse represents the response from generate drs plan for a cluster
-message GenerateClusterDrsPlanResponse {
-	// The Result
-	Result result = 1;
-}
-
 // ListClusterDrsPlanRequest represents the parameters for list drs plans for a clusters
 message ListClusterDrsPlanRequest {
 	// ID of the drs plan
@@ -323,20 +228,99 @@ message ListClusterDrsPlanResponse {
 	int32 total_count = 2;
 }
 
-// Cluster represents a Cluster Item
-message Cluster {
-	// The ID of the Cluster
-	string id = 1 [
-		(validate.field).string.uuid = true
+// UpdateClusterRequest represents the parameters for updates an existing cluster
+message UpdateClusterRequest {
+	// the ID of the Cluster
+	int64 id = 1 [
+		(validate.field).required = true
 	];
-	// The name of the Cluster
-	string name = 2;
-	// The display name of the Cluster
-	string display_name = 3;
-	// The description of the Cluster
-	string description = 4;
-	// The date this entity was created
-	string created = 5;
+
+	// the cluster name
+	string cluster_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// hypervisor type of the cluster
+	string hypervisor = 3;
+
+	// hypervisor type of the cluster
+	string cluster_type = 4;
+
+	// Allocation state of this cluster for allocation of new resources
+	string allocation_state = 5;
+
+	// whether this cluster is managed by cloudstack
+	string managed_state = 6;
+
+	// the CPU arch of the cluster. Valid options are: x86_64, aarch64
+	string arch = 7;
+
+	//
+	string response_type = 8;
+}
+
+// UpdateClusterResponse represents the response from updates an existing cluster
+message UpdateClusterResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListClustersRequest represents the parameters for lists clusters.
+message ListClustersRequest {
+	// lists clusters by the cluster ID
+	int64 id = 1;
+
+	// lists clusters by the cluster name
+	string cluster_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// lists clusters by Pod ID
+	int64 pod_id = 3;
+
+	// lists clusters by Zone ID
+	int64 zone_id = 4;
+
+	// lists clusters by hypervisor type
+	string hypervisor_type = 5;
+
+	// lists clusters by cluster type
+	string cluster_type = 6;
+
+	// lists clusters by allocation state
+	string allocation_state = 7;
+
+	// whether this cluster is managed by cloudstack
+	string managed_state = 8;
+
+	// flag to display the capacity of the clusters
+	bool show_capacities = 9 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 10;
+
+	//
+	int32 page = 11;
+
+	//
+	int32 page_size = 12;
+
+	//
+	string response_type = 13;
+}
+
+// ListClustersResponse represents the response from lists clusters.
+message ListClustersResponse {
+	option (validate.message).disabled = false;
+	// The list of Clusters
+	repeated Cluster items = 1;
+
+	// The total count of Clusters
+	int32 total_count = 2;
 }
 
 // ClusterDrsPlan represents a ClusterDrsPlan Item
@@ -355,59 +339,28 @@ message ClusterDrsPlan {
 	string created = 5;
 }
 
+// Cluster represents a Cluster Item
+message Cluster {
+	// The ID of the Cluster
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the Cluster
+	string name = 2;
+	// The display name of the Cluster
+	string display_name = 3;
+	// The description of the Cluster
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
 // Success represents a Success Operation Response
 message Success {
 	// true if operation is executed successfully
 	bool success = 1;
 	// any text associated with the success or failure
 	string display_text = 2;
-}
-
-// Item represents a generic item in a list response
-message Item {
-	// The ID of the item
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-
-	// The name of the item
-	string name = 2;
-
-	// The display name of the item
-	string display_name = 3;
-
-	// The description of the item
-	string description = 4;
-
-	// The account ID the item belongs to
-	string account_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain ID the item belongs to
-	string domain_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain name the item belongs to
-	string domain = 7;
-
-	// The project ID the item belongs to
-	string project_id = 8 [
-		(validate.field).string.uuid = true
-	];
-
-	// The project name the item belongs to
-	string project = 9;
-
-	// The date the item was created
-	string created = 10;
-
-	// The state of the item
-	string state = 11;
-
-	// Additional fields returned by the API
-	map<string, string> details = 12;
 }
 
 // Result represents a generic operation result

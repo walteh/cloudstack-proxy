@@ -98,53 +98,6 @@ message Success {
 	string display_text = 2;
 }
 
-// Item represents a generic item in a list response
-message Item {
-	// The ID of the item
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-
-	// The name of the item
-	string name = 2;
-
-	// The display name of the item
-	string display_name = 3;
-
-	// The description of the item
-	string description = 4;
-
-	// The account ID the item belongs to
-	string account_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain ID the item belongs to
-	string domain_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain name the item belongs to
-	string domain = 7;
-
-	// The project ID the item belongs to
-	string project_id = 8 [
-		(validate.field).string.uuid = true
-	];
-
-	// The project name the item belongs to
-	string project = 9;
-
-	// The date the item was created
-	string created = 10;
-
-	// The state of the item
-	string state = 11;
-
-	// Additional fields returned by the API
-	map<string, string> details = 12;
-}
-
 // Result represents a generic operation result
 message Result {
 	// Whether the operation was successful

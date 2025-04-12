@@ -10,25 +10,46 @@ import "google/protobuf/descriptor.proto";
 service IsoService {
 	option (annotations.service).scope = Scope_USER;
 
-	// GetUploadParamsForIso upload an existing ISO into the CloudStack cloud.
-	rpc GetUploadParamsForIso(GetUploadParamsForIsoRequest) returns (GetUploadParamsForIsoResponse) {}
-
-	// DetachIsoCmdByAdmin Detaches any ISO file (if any) currently attached to a virtual machine.
-	rpc DetachIsoCmdByAdmin(DetachIsoCmdByAdminRequest) returns (DetachIsoCmdByAdminResponse) {}
-
-	// UpdateIsoCmdByAdmin Updates an ISO file.
-	rpc UpdateIsoCmdByAdmin(UpdateIsoCmdByAdminRequest) returns (UpdateIsoCmdByAdminResponse) {}
-
-	// AttachIso Attaches an ISO to a virtual machine.
-	rpc AttachIso(AttachIsoRequest) returns (AttachIsoResponse) {
+	// UpdateIso Updates an ISO file.
+	rpc UpdateIso(UpdateIsoRequest) returns (UpdateIsoResponse) {
 		option (annotations.method).scope = Scope_ADMIN;
 	}
 
 	// ListIsosCmdByAdmin Lists all available ISO files.
 	rpc ListIsosCmdByAdmin(ListIsosCmdByAdminRequest) returns (ListIsosCmdByAdminResponse) {}
 
+	// DetachIsoCmdByAdmin Detaches any ISO file (if any) currently attached to a virtual machine.
+	rpc DetachIsoCmdByAdmin(DetachIsoCmdByAdminRequest) returns (DetachIsoCmdByAdminResponse) {}
+
 	// ListIsos Lists all available ISO files.
 	rpc ListIsos(ListIsosRequest) returns (ListIsosResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
+
+	// RegisterIsoCmdByAdmin Registers an existing ISO into the CloudStack Cloud.
+	rpc RegisterIsoCmdByAdmin(RegisterIsoCmdByAdminRequest) returns (RegisterIsoCmdByAdminResponse) {}
+
+	// CopyIso Copies an ISO from one zone to another.
+	rpc CopyIso(CopyIsoRequest) returns (CopyIsoResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
+
+	// ExtractIso Extracts an ISO
+	rpc ExtractIso(ExtractIsoRequest) returns (ExtractIsoResponse) {}
+
+	// UpdateIsoPermissions Updates ISO permissions
+	rpc UpdateIsoPermissions(UpdateIsoPermissionsRequest) returns (UpdateIsoPermissionsResponse) {}
+
+	// ListIsoPermissions List ISO visibility and all accounts that have permissions to view this ISO.
+	rpc ListIsoPermissions(ListIsoPermissionsRequest) returns (ListIsoPermissionsResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
+
+	// AttachIsoCmdByAdmin Attaches an ISO to a virtual machine.
+	rpc AttachIsoCmdByAdmin(AttachIsoCmdByAdminRequest) returns (AttachIsoCmdByAdminResponse) {}
+
+	// DetachIso Detaches any ISO file (if any) currently attached to a virtual machine.
+	rpc DetachIso(DetachIsoRequest) returns (DetachIsoResponse) {
 		option (annotations.method).scope = Scope_ADMIN;
 	}
 
@@ -37,250 +58,77 @@ service IsoService {
 		option (annotations.method).scope = Scope_ADMIN;
 	}
 
-	// UpdateIso Updates an ISO file.
-	rpc UpdateIso(UpdateIsoRequest) returns (UpdateIsoResponse) {
-		option (annotations.method).scope = Scope_ADMIN;
-	}
-
-	// ExtractIso Extracts an ISO
-	rpc ExtractIso(ExtractIsoRequest) returns (ExtractIsoResponse) {}
-
-	// DetachIso Detaches any ISO file (if any) currently attached to a virtual machine.
-	rpc DetachIso(DetachIsoRequest) returns (DetachIsoResponse) {
-		option (annotations.method).scope = Scope_ADMIN;
-	}
-
 	// DeleteIso Deletes an ISO file.
 	rpc DeleteIso(DeleteIsoRequest) returns (DeleteIsoResponse) {}
 
-	// ListIsoPermissionsCmdByAdmin List iso visibility and all accounts that have permissions to view this iso.
-	rpc ListIsoPermissionsCmdByAdmin(ListIsoPermissionsCmdByAdminRequest) returns (ListIsoPermissionsCmdByAdminResponse) {}
-
-	// CopyIsoCmdByAdmin Copies an iso from one zone to another.
-	rpc CopyIsoCmdByAdmin(CopyIsoCmdByAdminRequest) returns (CopyIsoCmdByAdminResponse) {}
-
-	// ListIsoPermissions List ISO visibility and all accounts that have permissions to view this ISO.
-	rpc ListIsoPermissions(ListIsoPermissionsRequest) returns (ListIsoPermissionsResponse) {
+	// AttachIso Attaches an ISO to a virtual machine.
+	rpc AttachIso(AttachIsoRequest) returns (AttachIsoResponse) {
 		option (annotations.method).scope = Scope_ADMIN;
 	}
 
-	// UpdateIsoPermissions Updates ISO permissions
-	rpc UpdateIsoPermissions(UpdateIsoPermissionsRequest) returns (UpdateIsoPermissionsResponse) {}
-
-	// CopyIso Copies an ISO from one zone to another.
-	rpc CopyIso(CopyIsoRequest) returns (CopyIsoResponse) {
-		option (annotations.method).scope = Scope_ADMIN;
-	}
+	// GetUploadParamsForIso upload an existing ISO into the CloudStack cloud.
+	rpc GetUploadParamsForIso(GetUploadParamsForIsoRequest) returns (GetUploadParamsForIsoResponse) {}
 }
 
-// GetUploadParamsForIsoRequest represents the parameters for upload an existing iso into the cloudstack cloud.
-message GetUploadParamsForIsoRequest {
-	// true if this ISO is bootable. If not passed explicitly its assumed to be true
-	bool bootable = 1 [
-		features.field_presence = EXPLICIT
-	];
-
-	// the display text of the ISO. This is usually used for display purposes.
-	string display_text = 2;
-
-	// true if you want this ISO to be featured
-	bool featured = 3 [
-		features.field_presence = EXPLICIT
-	];
-
-	// true if you want to register the ISO to be publicly available to all users, false otherwise.
-	bool public_iso = 4 [
-		features.field_presence = EXPLICIT
-	];
-
-	// true if the ISO or its derivatives are extractable; default is false
-	bool extractable = 5 [
-		features.field_presence = EXPLICIT
-	];
-
-	// the ID of the OS type that best represents the OS of this ISO. If the ISO is bootable this parameter needs to be passed
-	int64 os_type_id = 6;
-
-	// the name of the volume/template/iso
-	string name = 7 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// the format for the volume/template/iso. Possible values include QCOW2, OVA, and VHD.
-	string format = 8 [
-		(validate.field).required = true
-	];
-
-	// the ID of the zone the volume/template/iso is to be hosted on
-	int64 zone_id = 9 [
-		(validate.field).required = true
-	];
-
-	/*
-	 * the checksum value of this volume/template/iso The parameter containing the checksum will be considered a MD5sum if it is not prefixed
-	 * and just a plain ascii/utf8 representation of a hexadecimal string. If it is required to
-	 * use another algorithm the hexadecimal string is to be prefixed with a string of the form,
-	 * "{<algorithm>}", not including the double quotes. In this <algorithm> is the exact string
-	 * representing the java supported algorithm, i.e. MD5 or SHA-256. Note that java does not
-	 * contain an algorithm called SHA256 or one called sha-256, only SHA-256.
-	 */
-	string checksum = 10;
-
-	// an optional accountName. Must be used with domainId.
-	string account_name = 11;
-
-	// an optional domainId. If the account parameter is used, domainId must also be used.
-	int64 domain_id = 12;
-
-	// Upload volume/template/iso for the project
-	int64 project_id = 13;
-
-	//
-	string response_type = 14;
-}
-
-// GetUploadParamsForIsoResponse represents the response from upload an existing iso into the cloudstack cloud.
-message GetUploadParamsForIsoResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DetachIsoCmdByAdminRequest represents the parameters for detaches any iso file (if any) currently attached to a virtual machine.
-message DetachIsoCmdByAdminRequest {
-	// The ID of the virtual machine
-	int64 virtual_machine_id = 1 [
-		(validate.field).required = true
-	];
-
-	// If true, ejects the ISO before detaching on VMware. Default: false
-	bool forced = 2 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	int64 start_event_id = 3;
-
-	//
-	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 5;
-}
-
-// DetachIsoCmdByAdminResponse represents the response from detaches any iso file (if any) currently attached to a virtual machine.
-message DetachIsoCmdByAdminResponse {
-	// The Result
-	Result result = 1;
-}
-
-// UpdateIsoCmdByAdminRequest represents the parameters for updates an iso file.
-message UpdateIsoCmdByAdminRequest {
-	// true if image is bootable, false otherwise; available only for updateIso API
-	bool bootable = 1 [
-		features.field_presence = EXPLICIT
-	];
-
-	// true if the template requires HVM, false otherwise; available only for updateTemplate API
-	bool requires_hvm = 2 [
-		features.field_presence = EXPLICIT
-	];
-
-	// the display text of the image
-	string display_text = 3;
-
-	// the ID of the image file
-	int64 id = 4 [
-		(validate.field).required = true
-	];
-
-	// the name of the image file
-	string template_name = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// the ID of the OS type that best represents the OS of this image.
-	int64 os_type_id = 6;
-
-	// the format for the image
-	string format = 7;
-
-	// true if the image supports the password reset feature; default is false
-	bool password_enabled = 8 [
-		features.field_presence = EXPLICIT
-	];
-
-	// true if the template supports the sshkey upload feature; default is false
-	bool ssh_key_enabled = 9 [
-		features.field_presence = EXPLICIT
-	];
-
-	// sort key of the template, integer
-	int32 sort_key = 10;
-
-	// true if template/ISO contains XS/VMWare tools inorder to support dynamic scaling of VM cpu/memory
-	bool is_dynamically_scalable = 11 [
-		features.field_presence = EXPLICIT
-	];
-
-	// true if the template type is routing i.e., if template is used to deploy router
-	bool is_routing_type = 12 [
-		features.field_presence = EXPLICIT
-	];
-
-	// Details in key/value pairs using format details[i].keyname=keyvalue. Example: details[0].hypervisortoolsversion=xenserver61
-	map<string, string> details = 13;
-
-	// optional boolean field, which indicates if details should be cleaned up or not (if set to true, details removed for this resource, details field ignored; if false or not set, no action)
-	bool cleanup_details = 14 [
-		features.field_presence = EXPLICIT
-	];
-
-	// the CPU arch of the template/ISO. Valid options are: x86_64, aarch64
-	string arch = 15;
-
-	//
-	string response_type = 16;
-}
-
-// UpdateIsoCmdByAdminResponse represents the response from updates an iso file.
-message UpdateIsoCmdByAdminResponse {
-	// The Result
-	Result result = 1;
-}
-
-// AttachIsoRequest represents the parameters for attaches an iso to a virtual machine.
-message AttachIsoRequest {
+// UpdateIsoRequest represents the parameters for updates an iso file.
+message UpdateIsoRequest {
 	// Whether to run this operation as an administrator
 	bool run_as_admin = 1;
-	// the ID of the ISO file
-	int64 id = 2 [
-		(validate.field).required = true
-	];
-	// the ID of the virtual machine
-	int64 virtual_machine_id = 3 [
-		(validate.field).required = true
-	];
-	// If true, ejects existing ISO before attaching on VMware. Default: false
-	bool forced = 4 [
+	// true if image is bootable, false otherwise; available only for updateIso API
+	bool bootable = 2 [
 		features.field_presence = EXPLICIT
 	];
-	//
-	int64 start_event_id = 5;
-	//
-	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+	// true if the template requires HVM, false otherwise; available only for updateTemplate API
+	bool requires_hvm = 3 [
+		features.field_presence = EXPLICIT
 	];
+	// the display text of the image
+	string display_text = 4;
+	// the ID of the image file
+	int64 id = 5 [
+		(validate.field).required = true
+	];
+	// the name of the image file
+	string template_name = 6 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+	// the ID of the OS type that best represents the OS of this image.
+	int64 os_type_id = 7;
+	// the format for the image
+	string format = 8;
+	// true if the image supports the password reset feature; default is false
+	bool password_enabled = 9 [
+		features.field_presence = EXPLICIT
+	];
+	// true if the template supports the sshkey upload feature; default is false
+	bool ssh_key_enabled = 10 [
+		features.field_presence = EXPLICIT
+	];
+	// sort key of the template, integer
+	int32 sort_key = 11;
+	// true if template/ISO contains XS/VMWare tools inorder to support dynamic scaling of VM cpu/memory
+	bool is_dynamically_scalable = 12 [
+		features.field_presence = EXPLICIT
+	];
+	// true if the template type is routing i.e., if template is used to deploy router
+	bool is_routing_type = 13 [
+		features.field_presence = EXPLICIT
+	];
+	// Details in key/value pairs using format details[i].keyname=keyvalue. Example: details[0].hypervisortoolsversion=xenserver61
+	map<string, string> details = 14;
+	// optional boolean field, which indicates if details should be cleaned up or not (if set to true, details removed for this resource, details field ignored; if false or not set, no action)
+	bool cleanup_details = 15 [
+		features.field_presence = EXPLICIT
+	];
+	// the CPU arch of the template/ISO. Valid options are: x86_64, aarch64
+	string arch = 16;
 	//
-	string response_type = 7;
+	string response_type = 17;
 }
 
-// AttachIsoResponse represents the response from attaches an iso to a virtual machine.
-message AttachIsoResponse {
+// UpdateIsoResponse represents the response from updates an iso file.
+message UpdateIsoResponse {
 	// The Result
 	Result result = 1;
 }
@@ -395,6 +243,36 @@ message ListIsosCmdByAdminResponse {
 	int32 total_count = 2;
 }
 
+// DetachIsoCmdByAdminRequest represents the parameters for detaches any iso file (if any) currently attached to a virtual machine.
+message DetachIsoCmdByAdminRequest {
+	// The ID of the virtual machine
+	int64 virtual_machine_id = 1 [
+		(validate.field).required = true
+	];
+
+	// If true, ejects the ISO before detaching on VMware. Default: false
+	bool forced = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// DetachIsoCmdByAdminResponse represents the response from detaches any iso file (if any) currently attached to a virtual machine.
+message DetachIsoCmdByAdminResponse {
+	// The Result
+	Result result = 1;
+}
+
 // ListIsosRequest represents the parameters for lists all available iso files.
 message ListIsosRequest {
 	// Whether to run this operation as an administrator
@@ -480,6 +358,295 @@ message ListIsosResponse {
 	int32 total_count = 2;
 }
 
+// RegisterIsoCmdByAdminRequest represents the parameters for registers an existing iso into the cloudstack cloud.
+message RegisterIsoCmdByAdminRequest {
+	// true if this ISO is bootable. If not passed explicitly its assumed to be true
+	bool bootable = 1 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the display text of the ISO, defaults to the 'name'
+	string display_text = 2;
+
+	// true if you want this ISO to be featured
+	bool featured = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if you want to register the ISO to be publicly available to all users, false otherwise.
+	bool public_iso = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if the ISO or its derivatives are extractable; default is false
+	bool extractable = 5 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the name of the ISO
+	string iso_name = 6 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the ID of the OS type that best represents the OS of this ISO. If the ISO is bootable this parameter needs to be passed
+	int64 os_type_id = 7;
+
+	// the URL to where the ISO is currently being hosted
+	string url = 8 [
+		(validate.field).required = true
+	];
+
+	// the ID of the zone you wish to register the ISO to.
+	int64 zone_id = 9 [
+		(validate.field).required = true
+	];
+
+	// an optional domainId. If the account parameter is used, domainId must also be used.
+	int64 domain_id = 10;
+
+	// an optional account name. Must be used with domainId.
+	string account_name = 11;
+
+	/*
+	 * the checksum value of this ISO. The parameter containing the checksum will be considered a MD5sum if it is not prefixed
+	 * and just a plain ascii/utf8 representation of a hexadecimal string. If it is required to
+	 * use another algorithm the hexadecimal string is to be prefixed with a string of the form,
+	 * "{<algorithm>}", not including the double quotes. In this <algorithm> is the exact string
+	 * representing the java supported algorithm, i.e. MD5 or SHA-256. Note that java does not
+	 * contain an algorithm called SHA256 or one called sha-256, only SHA-256.
+	 */
+	string checksum = 12;
+
+	// Register ISO for the project
+	int64 project_id = 13;
+
+	// Image store UUID
+	string image_store_uuid = 14 [
+		(validate.field).string.uuid = true
+	];
+
+	// true if ISO contains XS/VMWare tools inorder to support dynamic scaling of VM CPU/memory
+	bool is_dynamically_scalable = 15 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if ISO should bypass Secondary Storage and be downloaded to Primary Storage on deployment
+	bool direct_download = 16 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if password reset feature is supported; default is false
+	bool password_enabled = 17 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the CPU arch of the ISO. Valid options are: x86_64, aarch64
+	string arch = 18;
+
+	//
+	string response_type = 19;
+}
+
+// RegisterIsoCmdByAdminResponse represents the response from registers an existing iso into the cloudstack cloud.
+message RegisterIsoCmdByAdminResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CopyIsoRequest represents the parameters for copies an iso from one zone to another.
+message CopyIsoRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// ID of the zone the template is being copied to.
+	int64 dest_zone_id = 2;
+	// Template ID.
+	int64 id = 3 [
+		(validate.field).required = true
+	];
+	// ID of the zone the template is currently hosted on. If not specified and template is cross-zone, then we will sync this template to region wide image store.
+	int64 source_zone_id = 4;
+	// A list of IDs of the zones that the template needs to be copied to.Specify this list if the template needs to copied to multiple zones in one go. Do not specify destzoneid and destzoneids together, however one of them is required.
+	repeated string dest_zone_ids = 5;
+	//
+	int64 start_event_id = 6;
+	//
+	string injected_job_id = 7 [
+		(validate.field).string.uuid = true
+	];
+	//
+	string response_type = 8;
+}
+
+// CopyIsoResponse represents the response from copies an iso from one zone to another.
+message CopyIsoResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ExtractIsoRequest represents the parameters for extracts an iso
+message ExtractIsoRequest {
+	// the ID of the ISO file
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// the URL to which the ISO would be extracted
+	string url = 2;
+
+	// the ID of the zone where the ISO is originally located
+	int64 zone_id = 3;
+
+	// the mode of extraction - HTTP_DOWNLOAD or FTP_UPLOAD
+	string mode = 4 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 5;
+
+	//
+	string injected_job_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 7;
+}
+
+// ExtractIsoResponse represents the response from extracts an iso
+message ExtractIsoResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateIsoPermissionsRequest represents the parameters for updates iso permissions
+message UpdateIsoPermissionsRequest {
+	// a comma delimited list of accounts within caller's domain. If specified, "op" parameter has to be passed in.
+	repeated string account_names = 1;
+
+	// the template ID
+	int64 id = 2 [
+		(validate.field).required = true
+	];
+
+	// true for featured template/iso, false otherwise
+	bool featured = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true for public template/iso, false for private templates/isos
+	bool is_public = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// true if the template/iso is extractable, false other wise. Can be set only by root admin
+	bool is_extractable = 5 [
+		features.field_presence = EXPLICIT
+	];
+
+	// permission operator (add, remove, reset)
+	string operation = 6;
+
+	// a comma delimited list of projects. If specified, "op" parameter has to be passed in.
+	repeated string project_ids = 7;
+
+	//
+	string response_type = 8;
+}
+
+// UpdateIsoPermissionsResponse represents the response from updates iso permissions
+message UpdateIsoPermissionsResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListIsoPermissionsRequest represents the parameters for list iso visibility and all accounts that have permissions to view this iso.
+message ListIsoPermissionsRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// the template ID
+	int64 id = 2 [
+		(validate.field).required = true
+	];
+	//
+	string response_type = 3;
+}
+
+// ListIsoPermissionsResponse represents the response from list iso visibility and all accounts that have permissions to view this iso.
+message ListIsoPermissionsResponse {
+	option (validate.message).disabled = false;
+	// The list of TemplatePermissionss
+	repeated TemplatePermissions items = 1;
+
+	// The total count of TemplatePermissionss
+	int32 total_count = 2;
+}
+
+// AttachIsoCmdByAdminRequest represents the parameters for attaches an iso to a virtual machine.
+message AttachIsoCmdByAdminRequest {
+	// the ID of the ISO file
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// the ID of the virtual machine
+	int64 virtual_machine_id = 2 [
+		(validate.field).required = true
+	];
+
+	// If true, ejects existing ISO before attaching on VMware. Default: false
+	bool forced = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// AttachIsoCmdByAdminResponse represents the response from attaches an iso to a virtual machine.
+message AttachIsoCmdByAdminResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DetachIsoRequest represents the parameters for detaches any iso file (if any) currently attached to a virtual machine.
+message DetachIsoRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// The ID of the virtual machine
+	int64 virtual_machine_id = 2 [
+		(validate.field).required = true
+	];
+	// If true, ejects the ISO before detaching on VMware. Default: false
+	bool forced = 3 [
+		features.field_presence = EXPLICIT
+	];
+	//
+	int64 start_event_id = 4;
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+	//
+	string response_type = 6;
+}
+
+// DetachIsoResponse represents the response from detaches any iso file (if any) currently attached to a virtual machine.
+message DetachIsoResponse {
+	// The Result
+	Result result = 1;
+}
+
 // RegisterIsoRequest represents the parameters for registers an existing iso into the cloudstack cloud.
 message RegisterIsoRequest {
 	// Whether to run this operation as an administrator
@@ -561,133 +728,6 @@ message RegisterIsoResponse {
 	Result result = 1;
 }
 
-// UpdateIsoRequest represents the parameters for updates an iso file.
-message UpdateIsoRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// true if image is bootable, false otherwise; available only for updateIso API
-	bool bootable = 2 [
-		features.field_presence = EXPLICIT
-	];
-	// true if the template requires HVM, false otherwise; available only for updateTemplate API
-	bool requires_hvm = 3 [
-		features.field_presence = EXPLICIT
-	];
-	// the display text of the image
-	string display_text = 4;
-	// the ID of the image file
-	int64 id = 5 [
-		(validate.field).required = true
-	];
-	// the name of the image file
-	string template_name = 6 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-	// the ID of the OS type that best represents the OS of this image.
-	int64 os_type_id = 7;
-	// the format for the image
-	string format = 8;
-	// true if the image supports the password reset feature; default is false
-	bool password_enabled = 9 [
-		features.field_presence = EXPLICIT
-	];
-	// true if the template supports the sshkey upload feature; default is false
-	bool ssh_key_enabled = 10 [
-		features.field_presence = EXPLICIT
-	];
-	// sort key of the template, integer
-	int32 sort_key = 11;
-	// true if template/ISO contains XS/VMWare tools inorder to support dynamic scaling of VM cpu/memory
-	bool is_dynamically_scalable = 12 [
-		features.field_presence = EXPLICIT
-	];
-	// true if the template type is routing i.e., if template is used to deploy router
-	bool is_routing_type = 13 [
-		features.field_presence = EXPLICIT
-	];
-	// Details in key/value pairs using format details[i].keyname=keyvalue. Example: details[0].hypervisortoolsversion=xenserver61
-	map<string, string> details = 14;
-	// optional boolean field, which indicates if details should be cleaned up or not (if set to true, details removed for this resource, details field ignored; if false or not set, no action)
-	bool cleanup_details = 15 [
-		features.field_presence = EXPLICIT
-	];
-	// the CPU arch of the template/ISO. Valid options are: x86_64, aarch64
-	string arch = 16;
-	//
-	string response_type = 17;
-}
-
-// UpdateIsoResponse represents the response from updates an iso file.
-message UpdateIsoResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ExtractIsoRequest represents the parameters for extracts an iso
-message ExtractIsoRequest {
-	// the ID of the ISO file
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// the URL to which the ISO would be extracted
-	string url = 2;
-
-	// the ID of the zone where the ISO is originally located
-	int64 zone_id = 3;
-
-	// the mode of extraction - HTTP_DOWNLOAD or FTP_UPLOAD
-	string mode = 4 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 5;
-
-	//
-	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 7;
-}
-
-// ExtractIsoResponse represents the response from extracts an iso
-message ExtractIsoResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DetachIsoRequest represents the parameters for detaches any iso file (if any) currently attached to a virtual machine.
-message DetachIsoRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// The ID of the virtual machine
-	int64 virtual_machine_id = 2 [
-		(validate.field).required = true
-	];
-	// If true, ejects the ISO before detaching on VMware. Default: false
-	bool forced = 3 [
-		features.field_presence = EXPLICIT
-	];
-	//
-	int64 start_event_id = 4;
-	//
-	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
-	];
-	//
-	string response_type = 6;
-}
-
-// DetachIsoResponse represents the response from detaches any iso file (if any) currently attached to a virtual machine.
-message DetachIsoResponse {
-	// The Result
-	Result result = 1;
-}
-
 // DeleteIsoRequest represents the parameters for deletes an iso file.
 message DeleteIsoRequest {
 	// the ID of the ISO file
@@ -716,150 +756,108 @@ message DeleteIsoResponse {
 	Result result = 1;
 }
 
-// ListIsoPermissionsCmdByAdminRequest represents the parameters for list iso visibility and all accounts that have permissions to view this iso.
-message ListIsoPermissionsCmdByAdminRequest {
-	// the template ID
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// ListIsoPermissionsCmdByAdminResponse represents the response from list iso visibility and all accounts that have permissions to view this iso.
-message ListIsoPermissionsCmdByAdminResponse {
-	option (validate.message).disabled = false;
-	// The list of TemplatePermissionss
-	repeated TemplatePermissions items = 1;
-
-	// The total count of TemplatePermissionss
-	int32 total_count = 2;
-}
-
-// CopyIsoCmdByAdminRequest represents the parameters for copies an iso from one zone to another.
-message CopyIsoCmdByAdminRequest {
-	// ID of the zone the template is being copied to.
-	int64 dest_zone_id = 1;
-
-	// Template ID.
+// AttachIsoRequest represents the parameters for attaches an iso to a virtual machine.
+message AttachIsoRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// the ID of the ISO file
 	int64 id = 2 [
 		(validate.field).required = true
 	];
-
-	// ID of the zone the template is currently hosted on. If not specified and template is cross-zone, then we will sync this template to region wide image store.
-	int64 source_zone_id = 3;
-
-	// A list of IDs of the zones that the template needs to be copied to.Specify this list if the template needs to copied to multiple zones in one go. Do not specify destzoneid and destzoneids together, however one of them is required.
-	repeated string dest_zone_ids = 4;
-
+	// the ID of the virtual machine
+	int64 virtual_machine_id = 3 [
+		(validate.field).required = true
+	];
+	// If true, ejects existing ISO before attaching on VMware. Default: false
+	bool forced = 4 [
+		features.field_presence = EXPLICIT
+	];
 	//
 	int64 start_event_id = 5;
-
 	//
 	string injected_job_id = 6 [
 		(validate.field).string.uuid = true
 	];
-
 	//
 	string response_type = 7;
 }
 
-// CopyIsoCmdByAdminResponse represents the response from copies an iso from one zone to another.
-message CopyIsoCmdByAdminResponse {
+// AttachIsoResponse represents the response from attaches an iso to a virtual machine.
+message AttachIsoResponse {
 	// The Result
 	Result result = 1;
 }
 
-// ListIsoPermissionsRequest represents the parameters for list iso visibility and all accounts that have permissions to view this iso.
-message ListIsoPermissionsRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// the template ID
-	int64 id = 2 [
-		(validate.field).required = true
-	];
-	//
-	string response_type = 3;
-}
-
-// ListIsoPermissionsResponse represents the response from list iso visibility and all accounts that have permissions to view this iso.
-message ListIsoPermissionsResponse {
-	option (validate.message).disabled = false;
-	// The list of TemplatePermissionss
-	repeated TemplatePermissions items = 1;
-
-	// The total count of TemplatePermissionss
-	int32 total_count = 2;
-}
-
-// UpdateIsoPermissionsRequest represents the parameters for updates iso permissions
-message UpdateIsoPermissionsRequest {
-	// a comma delimited list of accounts within caller's domain. If specified, "op" parameter has to be passed in.
-	repeated string account_names = 1;
-
-	// the template ID
-	int64 id = 2 [
-		(validate.field).required = true
+// GetUploadParamsForIsoRequest represents the parameters for upload an existing iso into the cloudstack cloud.
+message GetUploadParamsForIsoRequest {
+	// true if this ISO is bootable. If not passed explicitly its assumed to be true
+	bool bootable = 1 [
+		features.field_presence = EXPLICIT
 	];
 
-	// true for featured template/iso, false otherwise
+	// the display text of the ISO. This is usually used for display purposes.
+	string display_text = 2;
+
+	// true if you want this ISO to be featured
 	bool featured = 3 [
 		features.field_presence = EXPLICIT
 	];
 
-	// true for public template/iso, false for private templates/isos
-	bool is_public = 4 [
+	// true if you want to register the ISO to be publicly available to all users, false otherwise.
+	bool public_iso = 4 [
 		features.field_presence = EXPLICIT
 	];
 
-	// true if the template/iso is extractable, false other wise. Can be set only by root admin
-	bool is_extractable = 5 [
+	// true if the ISO or its derivatives are extractable; default is false
+	bool extractable = 5 [
 		features.field_presence = EXPLICIT
 	];
 
-	// permission operator (add, remove, reset)
-	string operation = 6;
+	// the ID of the OS type that best represents the OS of this ISO. If the ISO is bootable this parameter needs to be passed
+	int64 os_type_id = 6;
 
-	// a comma delimited list of projects. If specified, "op" parameter has to be passed in.
-	repeated string project_ids = 7;
+	// the name of the volume/template/iso
+	string name = 7 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
 
-	//
-	string response_type = 8;
-}
-
-// UpdateIsoPermissionsResponse represents the response from updates iso permissions
-message UpdateIsoPermissionsResponse {
-	// The Result
-	Result result = 1;
-}
-
-// CopyIsoRequest represents the parameters for copies an iso from one zone to another.
-message CopyIsoRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// ID of the zone the template is being copied to.
-	int64 dest_zone_id = 2;
-	// Template ID.
-	int64 id = 3 [
+	// the format for the volume/template/iso. Possible values include QCOW2, OVA, and VHD.
+	string format = 8 [
 		(validate.field).required = true
 	];
-	// ID of the zone the template is currently hosted on. If not specified and template is cross-zone, then we will sync this template to region wide image store.
-	int64 source_zone_id = 4;
-	// A list of IDs of the zones that the template needs to be copied to.Specify this list if the template needs to copied to multiple zones in one go. Do not specify destzoneid and destzoneids together, however one of them is required.
-	repeated string dest_zone_ids = 5;
-	//
-	int64 start_event_id = 6;
-	//
-	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
+
+	// the ID of the zone the volume/template/iso is to be hosted on
+	int64 zone_id = 9 [
+		(validate.field).required = true
 	];
+
+	/*
+	 * the checksum value of this volume/template/iso The parameter containing the checksum will be considered a MD5sum if it is not prefixed
+	 * and just a plain ascii/utf8 representation of a hexadecimal string. If it is required to
+	 * use another algorithm the hexadecimal string is to be prefixed with a string of the form,
+	 * "{<algorithm>}", not including the double quotes. In this <algorithm> is the exact string
+	 * representing the java supported algorithm, i.e. MD5 or SHA-256. Note that java does not
+	 * contain an algorithm called SHA256 or one called sha-256, only SHA-256.
+	 */
+	string checksum = 10;
+
+	// an optional accountName. Must be used with domainId.
+	string account_name = 11;
+
+	// an optional domainId. If the account parameter is used, domainId must also be used.
+	int64 domain_id = 12;
+
+	// Upload volume/template/iso for the project
+	int64 project_id = 13;
+
 	//
-	string response_type = 8;
+	string response_type = 14;
 }
 
-// CopyIsoResponse represents the response from copies an iso from one zone to another.
-message CopyIsoResponse {
+// GetUploadParamsForIsoResponse represents the response from upload an existing iso into the cloudstack cloud.
+message GetUploadParamsForIsoResponse {
 	// The Result
 	Result result = 1;
 }
@@ -902,53 +900,6 @@ message Success {
 	bool success = 1;
 	// any text associated with the success or failure
 	string display_text = 2;
-}
-
-// Item represents a generic item in a list response
-message Item {
-	// The ID of the item
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-
-	// The name of the item
-	string name = 2;
-
-	// The display name of the item
-	string display_name = 3;
-
-	// The description of the item
-	string description = 4;
-
-	// The account ID the item belongs to
-	string account_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain ID the item belongs to
-	string domain_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain name the item belongs to
-	string domain = 7;
-
-	// The project ID the item belongs to
-	string project_id = 8 [
-		(validate.field).string.uuid = true
-	];
-
-	// The project name the item belongs to
-	string project = 9;
-
-	// The date the item was created
-	string created = 10;
-
-	// The state of the item
-	string state = 11;
-
-	// Additional fields returned by the API
-	map<string, string> details = 12;
 }
 
 // Result represents a generic operation result

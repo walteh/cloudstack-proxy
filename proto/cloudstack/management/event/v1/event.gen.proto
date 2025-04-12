@@ -10,57 +10,17 @@ import "google/protobuf/descriptor.proto";
 service EventService {
 	option (annotations.service).scope = Scope_USER;
 
-	// ArchiveEvents Archive one or more events.
-	rpc ArchiveEvents(ArchiveEventsRequest) returns (ArchiveEventsResponse) {}
-
-	// ListEventTypes List Event Types
-	rpc ListEventTypes(ListEventTypesRequest) returns (ListEventTypesResponse) {}
-
 	// DeleteEvents Delete one or more events.
 	rpc DeleteEvents(DeleteEventsRequest) returns (DeleteEventsResponse) {}
 
 	// ListEvents A command to list events.
 	rpc ListEvents(ListEventsRequest) returns (ListEventsResponse) {}
-}
 
-// ArchiveEventsRequest represents the parameters for archive one or more events.
-message ArchiveEventsRequest {
-	// the IDs of the events
-	repeated string ids = 1;
+	// ArchiveEvents Archive one or more events.
+	rpc ArchiveEvents(ArchiveEventsRequest) returns (ArchiveEventsResponse) {}
 
-	// end date range to archive events (including) this date (use format "yyyy-MM-dd" or the new format "yyyy-MM-ddThh:mm:ss")
-	string end_date = 2;
-
-	// start date range to archive events (including) this date (use format "yyyy-MM-dd" or the new format "yyyy-MM-ddThh:mm:ss")
-	string start_date = 3;
-
-	// archive by event type
-	string type = 4;
-
-	//
-	string response_type = 5;
-}
-
-// ArchiveEventsResponse represents the response from archive one or more events.
-message ArchiveEventsResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListEventTypesRequest represents the parameters for list event types
-message ListEventTypesRequest {
-	//
-	string response_type = 1;
-}
-
-// ListEventTypesResponse represents the response from list event types
-message ListEventTypesResponse {
-	option (validate.message).disabled = false;
-	// The list of EventTypes
-	repeated EventType items = 1;
-
-	// The total count of EventTypes
-	int32 total_count = 2;
+	// ListEventTypes List Event Types
+	rpc ListEventTypes(ListEventTypesRequest) returns (ListEventTypesResponse) {}
 }
 
 // DeleteEventsRequest represents the parameters for delete one or more events.
@@ -174,20 +134,44 @@ message ListEventsResponse {
 	int32 total_count = 2;
 }
 
-// EventType represents a EventType Item
-message EventType {
-	// The ID of the EventType
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-	// The name of the EventType
-	string name = 2;
-	// The display name of the EventType
-	string display_name = 3;
-	// The description of the EventType
-	string description = 4;
-	// The date this entity was created
-	string created = 5;
+// ArchiveEventsRequest represents the parameters for archive one or more events.
+message ArchiveEventsRequest {
+	// the IDs of the events
+	repeated string ids = 1;
+
+	// end date range to archive events (including) this date (use format "yyyy-MM-dd" or the new format "yyyy-MM-ddThh:mm:ss")
+	string end_date = 2;
+
+	// start date range to archive events (including) this date (use format "yyyy-MM-dd" or the new format "yyyy-MM-ddThh:mm:ss")
+	string start_date = 3;
+
+	// archive by event type
+	string type = 4;
+
+	//
+	string response_type = 5;
+}
+
+// ArchiveEventsResponse represents the response from archive one or more events.
+message ArchiveEventsResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListEventTypesRequest represents the parameters for list event types
+message ListEventTypesRequest {
+	//
+	string response_type = 1;
+}
+
+// ListEventTypesResponse represents the response from list event types
+message ListEventTypesResponse {
+	option (validate.message).disabled = false;
+	// The list of EventTypes
+	repeated EventType items = 1;
+
+	// The total count of EventTypes
+	int32 total_count = 2;
 }
 
 // Event represents a Event Item
@@ -206,59 +190,28 @@ message Event {
 	string created = 5;
 }
 
+// EventType represents a EventType Item
+message EventType {
+	// The ID of the EventType
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the EventType
+	string name = 2;
+	// The display name of the EventType
+	string display_name = 3;
+	// The description of the EventType
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
 // Success represents a Success Operation Response
 message Success {
 	// true if operation is executed successfully
 	bool success = 1;
 	// any text associated with the success or failure
 	string display_text = 2;
-}
-
-// Item represents a generic item in a list response
-message Item {
-	// The ID of the item
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-
-	// The name of the item
-	string name = 2;
-
-	// The display name of the item
-	string display_name = 3;
-
-	// The description of the item
-	string description = 4;
-
-	// The account ID the item belongs to
-	string account_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain ID the item belongs to
-	string domain_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain name the item belongs to
-	string domain = 7;
-
-	// The project ID the item belongs to
-	string project_id = 8 [
-		(validate.field).string.uuid = true
-	];
-
-	// The project name the item belongs to
-	string project = 9;
-
-	// The date the item was created
-	string created = 10;
-
-	// The state of the item
-	string state = 11;
-
-	// Additional fields returned by the API
-	map<string, string> details = 12;
 }
 
 // Result represents a generic operation result

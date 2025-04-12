@@ -10,22 +10,143 @@ import "google/protobuf/descriptor.proto";
 service VmsnapshotService {
 	option (annotations.service).scope = Scope_USER;
 
-	// ListVMSnapshot List virtual machine snapshot by conditions
-	rpc ListVMSnapshot(ListVMSnapshotRequest) returns (ListVMSnapshotResponse) {}
-
-	// DeleteVMSnapshot Deletes a vmsnapshot.
-	rpc DeleteVMSnapshot(DeleteVMSnapshotRequest) returns (DeleteVMSnapshotResponse) {}
+	// RevertToVMSnapshotCmdByAdmin Revert VM from a vmsnapshot.
+	rpc RevertToVMSnapshotCmdByAdmin(RevertToVMSnapshotCmdByAdminRequest) returns (RevertToVMSnapshotCmdByAdminResponse) {}
 
 	// CreateVMSnapshot Creates snapshot for a vm.
 	rpc CreateVMSnapshot(CreateVMSnapshotRequest) returns (CreateVMSnapshotResponse) {}
-
-	// RevertToVMSnapshotCmdByAdmin Revert VM from a vmsnapshot.
-	rpc RevertToVMSnapshotCmdByAdmin(RevertToVMSnapshotCmdByAdminRequest) returns (RevertToVMSnapshotCmdByAdminResponse) {}
 
 	// RevertToVMSnapshot Revert VM from a vmsnapshot.
 	rpc RevertToVMSnapshot(RevertToVMSnapshotRequest) returns (RevertToVMSnapshotResponse) {
 		option (annotations.method).scope = Scope_ADMIN;
 	}
+
+	// DeleteVMSnapshot Deletes a vmsnapshot.
+	rpc DeleteVMSnapshot(DeleteVMSnapshotRequest) returns (DeleteVMSnapshotResponse) {}
+
+	// ListVMSnapshot List virtual machine snapshot by conditions
+	rpc ListVMSnapshot(ListVMSnapshotRequest) returns (ListVMSnapshotResponse) {}
+}
+
+// RevertToVMSnapshotCmdByAdminRequest represents the parameters for revert vm from a vmsnapshot.
+message RevertToVMSnapshotCmdByAdminRequest {
+	// The ID of the vm snapshot
+	int64 vm_snap_shot_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// RevertToVMSnapshotCmdByAdminResponse represents the response from revert vm from a vmsnapshot.
+message RevertToVMSnapshotCmdByAdminResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateVMSnapshotRequest represents the parameters for creates snapshot for a vm.
+message CreateVMSnapshotRequest {
+	// The ID of the vm
+	int64 vm_id = 1 [
+		(validate.field).required = true
+	];
+
+	// The description of the snapshot
+	string description = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 1024
+	];
+
+	// The display name of the snapshot
+	string display_name = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// snapshot memory if true
+	bool snapshot_memory = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// quiesce vm if true
+	bool quiescevm = 5 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 6;
+
+	//
+	string injected_job_id = 7 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 8;
+}
+
+// CreateVMSnapshotResponse represents the response from creates snapshot for a vm.
+message CreateVMSnapshotResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RevertToVMSnapshotRequest represents the parameters for revert vm from a vmsnapshot.
+message RevertToVMSnapshotRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// The ID of the vm snapshot
+	int64 vm_snap_shot_id = 2 [
+		(validate.field).required = true
+	];
+	//
+	int64 start_event_id = 3;
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+	//
+	string response_type = 5;
+}
+
+// RevertToVMSnapshotResponse represents the response from revert vm from a vmsnapshot.
+message RevertToVMSnapshotResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteVMSnapshotRequest represents the parameters for deletes a vmsnapshot.
+message DeleteVMSnapshotRequest {
+	// The ID of the VM snapshot
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteVMSnapshotResponse represents the response from deletes a vmsnapshot.
+message DeleteVMSnapshotResponse {
+	// The Result
+	Result result = 1;
 }
 
 // ListVMSnapshotRequest represents the parameters for list virtual machine snapshot by conditions
@@ -99,127 +220,6 @@ message ListVMSnapshotResponse {
 	int32 total_count = 2;
 }
 
-// DeleteVMSnapshotRequest represents the parameters for deletes a vmsnapshot.
-message DeleteVMSnapshotRequest {
-	// The ID of the VM snapshot
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DeleteVMSnapshotResponse represents the response from deletes a vmsnapshot.
-message DeleteVMSnapshotResponse {
-	// The Result
-	Result result = 1;
-}
-
-// CreateVMSnapshotRequest represents the parameters for creates snapshot for a vm.
-message CreateVMSnapshotRequest {
-	// The ID of the vm
-	int64 vm_id = 1 [
-		(validate.field).required = true
-	];
-
-	// The description of the snapshot
-	string description = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
-	];
-
-	// The display name of the snapshot
-	string display_name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// snapshot memory if true
-	bool snapshot_memory = 4 [
-		features.field_presence = EXPLICIT
-	];
-
-	// quiesce vm if true
-	bool quiescevm = 5 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	int64 start_event_id = 6;
-
-	//
-	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 8;
-}
-
-// CreateVMSnapshotResponse represents the response from creates snapshot for a vm.
-message CreateVMSnapshotResponse {
-	// The Result
-	Result result = 1;
-}
-
-// RevertToVMSnapshotCmdByAdminRequest represents the parameters for revert vm from a vmsnapshot.
-message RevertToVMSnapshotCmdByAdminRequest {
-	// The ID of the vm snapshot
-	int64 vm_snap_shot_id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// RevertToVMSnapshotCmdByAdminResponse represents the response from revert vm from a vmsnapshot.
-message RevertToVMSnapshotCmdByAdminResponse {
-	// The Result
-	Result result = 1;
-}
-
-// RevertToVMSnapshotRequest represents the parameters for revert vm from a vmsnapshot.
-message RevertToVMSnapshotRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// The ID of the vm snapshot
-	int64 vm_snap_shot_id = 2 [
-		(validate.field).required = true
-	];
-	//
-	int64 start_event_id = 3;
-	//
-	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
-	];
-	//
-	string response_type = 5;
-}
-
-// RevertToVMSnapshotResponse represents the response from revert vm from a vmsnapshot.
-message RevertToVMSnapshotResponse {
-	// The Result
-	Result result = 1;
-}
-
 // VMSnapshot represents a VMSnapshot Item
 message VMSnapshot {
 	// The ID of the VMSnapshot
@@ -242,53 +242,6 @@ message Success {
 	bool success = 1;
 	// any text associated with the success or failure
 	string display_text = 2;
-}
-
-// Item represents a generic item in a list response
-message Item {
-	// The ID of the item
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-
-	// The name of the item
-	string name = 2;
-
-	// The display name of the item
-	string display_name = 3;
-
-	// The description of the item
-	string description = 4;
-
-	// The account ID the item belongs to
-	string account_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain ID the item belongs to
-	string domain_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain name the item belongs to
-	string domain = 7;
-
-	// The project ID the item belongs to
-	string project_id = 8 [
-		(validate.field).string.uuid = true
-	];
-
-	// The project name the item belongs to
-	string project = 9;
-
-	// The date the item was created
-	string created = 10;
-
-	// The state of the item
-	string state = 11;
-
-	// Additional fields returned by the API
-	map<string, string> details = 12;
 }
 
 // Result represents a generic operation result

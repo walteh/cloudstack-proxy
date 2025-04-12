@@ -10,20 +10,47 @@ import "google/protobuf/descriptor.proto";
 service BgpService {
 	option (annotations.service).scope = Scope_USER;
 
+	// CreateASNRange Creates a range of Autonomous Systems for BGP Dynamic Routing
+	rpc CreateASNRange(CreateASNRangeRequest) returns (CreateASNRangeResponse) {}
+
 	// ListASNRanges List Autonomous Systems Number Ranges
 	rpc ListASNRanges(ListASNRangesRequest) returns (ListASNRangesResponse) {}
 
 	// ReleaseASNumber Releases an AS Number back to the pool
 	rpc ReleaseASNumber(ReleaseASNumberRequest) returns (ReleaseASNumberResponse) {}
 
-	// ListASNumbers List Autonomous Systems Numbers
-	rpc ListASNumbers(ListASNumbersRequest) returns (ListASNumbersResponse) {}
-
-	// CreateASNRange Creates a range of Autonomous Systems for BGP Dynamic Routing
-	rpc CreateASNRange(CreateASNRangeRequest) returns (CreateASNRangeResponse) {}
-
 	// DeleteASNRange deletes a range of Autonomous Systems for BGP Dynamic Routing
 	rpc DeleteASNRange(DeleteASNRangeRequest) returns (DeleteASNRangeResponse) {}
+
+	// ListASNumbers List Autonomous Systems Numbers
+	rpc ListASNumbers(ListASNumbersRequest) returns (ListASNumbersResponse) {}
+}
+
+// CreateASNRangeRequest represents the parameters for creates a range of autonomous systems for bgp dynamic routing
+message CreateASNRangeRequest {
+	// the zone ID
+	int64 zone_id = 1 [
+		(validate.field).required = true
+	];
+
+	// the start AS Number
+	int64 start_a_s_number = 2 [
+		(validate.field).required = true
+	];
+
+	// the end AS Number
+	int64 end_a_s_number = 3 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// CreateASNRangeResponse represents the response from creates a range of autonomous systems for bgp dynamic routing
+message CreateASNRangeResponse {
+	// The Result
+	Result result = 1;
 }
 
 // ListASNRangesRequest represents the parameters for list autonomous systems number ranges
@@ -72,6 +99,23 @@ message ReleaseASNumberRequest {
 
 // ReleaseASNumberResponse represents the response from releases an as number back to the pool
 message ReleaseASNumberResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteASNRangeRequest represents the parameters for deletes a range of autonomous systems for bgp dynamic routing
+message DeleteASNRangeRequest {
+	// ID of the AS range
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteASNRangeResponse represents the response from deletes a range of autonomous systems for bgp dynamic routing
+message DeleteASNRangeResponse {
 	// The Result
 	Result result = 1;
 }
@@ -127,50 +171,6 @@ message ListASNumbersResponse {
 	int32 total_count = 2;
 }
 
-// CreateASNRangeRequest represents the parameters for creates a range of autonomous systems for bgp dynamic routing
-message CreateASNRangeRequest {
-	// the zone ID
-	int64 zone_id = 1 [
-		(validate.field).required = true
-	];
-
-	// the start AS Number
-	int64 start_a_s_number = 2 [
-		(validate.field).required = true
-	];
-
-	// the end AS Number
-	int64 end_a_s_number = 3 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// CreateASNRangeResponse represents the response from creates a range of autonomous systems for bgp dynamic routing
-message CreateASNRangeResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeleteASNRangeRequest represents the parameters for deletes a range of autonomous systems for bgp dynamic routing
-message DeleteASNRangeRequest {
-	// ID of the AS range
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// DeleteASNRangeResponse represents the response from deletes a range of autonomous systems for bgp dynamic routing
-message DeleteASNRangeResponse {
-	// The Result
-	Result result = 1;
-}
-
 // ASNRange represents a ASNRange Item
 message ASNRange {
 	// The ID of the ASNRange
@@ -209,53 +209,6 @@ message Success {
 	bool success = 1;
 	// any text associated with the success or failure
 	string display_text = 2;
-}
-
-// Item represents a generic item in a list response
-message Item {
-	// The ID of the item
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-
-	// The name of the item
-	string name = 2;
-
-	// The display name of the item
-	string display_name = 3;
-
-	// The description of the item
-	string description = 4;
-
-	// The account ID the item belongs to
-	string account_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain ID the item belongs to
-	string domain_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain name the item belongs to
-	string domain = 7;
-
-	// The project ID the item belongs to
-	string project_id = 8 [
-		(validate.field).string.uuid = true
-	];
-
-	// The project name the item belongs to
-	string project = 9;
-
-	// The date the item was created
-	string created = 10;
-
-	// The state of the item
-	string state = 11;
-
-	// Additional fields returned by the API
-	map<string, string> details = 12;
 }
 
 // Result represents a generic operation result

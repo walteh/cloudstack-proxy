@@ -2,31 +2,34 @@ edition = "2023";
 
 package cloudstack.annotations;
 
-import "google/protobuf/any.proto";
 import "google/protobuf/descriptor.proto";
 
 message Enum {
 	enum Scope {
-		Scope_UNSPECIFIED = 0;
-		Scope_ADMIN       = 1;
-		Scope_USER        = 2;
+		SCOPE_UNSPECIFIED = 0;
+		SCOPE_ADMIN       = 1;
+		SCOPE_USER        = 2;
 	}
 }
 
 message FieldOptions {
-	Enum.Scope scope = 1000;
+	repeated Enum.Scope scope           = 1000;
+	string              cloudstack_name = 1001;
 }
 
 message MessageOptions {
-	Enum.Scope scope = 1000;
+	repeated Enum.Scope scope           = 1000;
+	string              cloudstack_name = 1001;
 }
 
 message ServiceOptions {
-	Enum.Scope scope = 1000;
+	repeated Enum.Scope scope           = 1000;
+	string              cloudstack_name = 1001;
 }
 
 message MethodOptions {
-	Enum.Scope scope = 1000;
+	repeated Enum.Scope scope           = 1000;
+	string              cloudstack_name = 1001;
 }
 
 extend google.protobuf.FieldOptions {

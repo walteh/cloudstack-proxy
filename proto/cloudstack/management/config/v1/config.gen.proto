@@ -10,17 +10,17 @@ import "google/protobuf/descriptor.proto";
 service ConfigService {
 	option (annotations.service).scope = Scope_USER;
 
-	// UpdateHypervisorCapabilities Updates a hypervisor capabilities.
-	rpc UpdateHypervisorCapabilities(UpdateHypervisorCapabilitiesRequest) returns (UpdateHypervisorCapabilitiesResponse) {}
+	// ResetCfg Resets a configuration. The configuration will be set to default value for global setting, and removed from account_details or domain_details for Account/Domain settings
+	rpc ResetCfg(ResetCfgRequest) returns (ResetCfgResponse) {}
 
-	// ListDeploymentPlanners Lists all DeploymentPlanners available.
-	rpc ListDeploymentPlanners(ListDeploymentPlannersRequest) returns (ListDeploymentPlannersResponse) {}
+	// ListHypervisorCapabilities Lists all hypervisor capabilities.
+	rpc ListHypervisorCapabilities(ListHypervisorCapabilitiesRequest) returns (ListHypervisorCapabilitiesResponse) {}
 
 	// UpdateCfg Updates a configuration.
 	rpc UpdateCfg(UpdateCfgRequest) returns (UpdateCfgResponse) {}
 
-	// ListCfgsBy Lists all configurations.
-	rpc ListCfgsBy(ListCfgsByRequest) returns (ListCfgsByResponse) {}
+	// ListDeploymentPlanners Lists all DeploymentPlanners available.
+	rpc ListDeploymentPlanners(ListDeploymentPlannersRequest) returns (ListDeploymentPlannersResponse) {}
 
 	// ListCfgGroupsBy Lists all configuration groups (primarily used for UI).
 	rpc ListCfgGroupsBy(ListCfgGroupsByRequest) returns (ListCfgGroupsByResponse) {}
@@ -28,226 +28,11 @@ service ConfigService {
 	// ListCapabilities Lists capabilities
 	rpc ListCapabilities(ListCapabilitiesRequest) returns (ListCapabilitiesResponse) {}
 
-	// ResetCfg Resets a configuration. The configuration will be set to default value for global setting, and removed from account_details or domain_details for Account/Domain settings
-	rpc ResetCfg(ResetCfgRequest) returns (ResetCfgResponse) {}
+	// ListCfgsBy Lists all configurations.
+	rpc ListCfgsBy(ListCfgsByRequest) returns (ListCfgsByResponse) {}
 
-	// ListHypervisorCapabilities Lists all hypervisor capabilities.
-	rpc ListHypervisorCapabilities(ListHypervisorCapabilitiesRequest) returns (ListHypervisorCapabilitiesResponse) {}
-}
-
-// UpdateHypervisorCapabilitiesRequest represents the parameters for updates a hypervisor capabilities.
-message UpdateHypervisorCapabilitiesRequest {
-	// ID of the hypervisor capability
-	int64 id = 1;
-
-	// the hypervisor for which the hypervisor capabilities are to be updated
-	string hypervisor = 2;
-
-	// the hypervisor version for which the hypervisor capabilities are to be updated
-	string hypervisor_version = 3;
-
-	// set true to enable security group for this hypervisor.
-	bool security_group_enabled = 4 [
-		features.field_presence = EXPLICIT
-	];
-
-	// the max number of Guest VMs per host for this hypervisor.
-	int64 max_guests_limit = 5;
-
-	// the maximum number of Data Volumes that can be attached to a VM for this hypervisor.
-	int32 max_data_volumes_limit = 6;
-
-	// set true to enable storage motion support for this hypervisor
-	bool storage_motion_supported = 7 [
-		features.field_presence = EXPLICIT
-	];
-
-	// the maximum number of the hypervisor hosts per cluster
-	int32 max_hosts_per_cluster_limit = 8;
-
-	// set true to enable VM snapshots for this hypervisor
-	bool vm_snapshot_enabled = 9 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	string response_type = 10;
-}
-
-// UpdateHypervisorCapabilitiesResponse represents the response from updates a hypervisor capabilities.
-message UpdateHypervisorCapabilitiesResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListDeploymentPlannersRequest represents the parameters for lists all deploymentplanners available.
-message ListDeploymentPlannersRequest {
-	// List by keyword
-	string keyword = 1;
-
-	//
-	int32 page = 2;
-
-	//
-	int32 page_size = 3;
-
-	//
-	string response_type = 4;
-}
-
-// ListDeploymentPlannersResponse represents the response from lists all deploymentplanners available.
-message ListDeploymentPlannersResponse {
-	option (validate.message).disabled = false;
-	// The list of DeploymentPlannerss
-	repeated DeploymentPlanners items = 1;
-
-	// The total count of DeploymentPlannerss
-	int32 total_count = 2;
-}
-
-// UpdateCfgRequest represents the parameters for updates a configuration.
-message UpdateCfgRequest {
-	// the name of the configuration
-	string cfg_name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// the value of the configuration
-	string value = 2;
-
-	// the ID of the Zone to update the parameter value for corresponding zone
-	int64 zone_id = 3;
-
-	// the ID of the Cluster to update the parameter value for corresponding cluster
-	int64 cluster_id = 4;
-
-	// the ID of the Storage pool to update the parameter value for corresponding storage pool
-	int64 storage_pool_id = 5;
-
-	// the ID of the Account to update the parameter value for corresponding account
-	int64 account_id = 6;
-
-	// the ID of the Domain to update the parameter value for corresponding domain
-	int64 domain_id = 7;
-
-	// the ID of the Image Store to update the parameter value for corresponding image store
-	int64 image_store_id = 8;
-
-	//
-	string response_type = 9;
-}
-
-// UpdateCfgResponse represents the response from updates a configuration.
-message UpdateCfgResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListCfgsByRequest represents the parameters for lists all configurations.
-message ListCfgsByRequest {
-	// lists configurations by category
-	string category = 1;
-
-	// lists configuration by name
-	string config_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// the ID of the Zone to update the parameter value for corresponding zone
-	int64 zone_id = 3;
-
-	// the ID of the Cluster to update the parameter value for corresponding cluster
-	int64 cluster_id = 4;
-
-	// the ID of the Storage pool to update the parameter value for corresponding storage pool
-	int64 storage_pool_id = 5;
-
-	// the ID of the Account to update the parameter value for corresponding account
-	int64 account_id = 6;
-
-	// the ID of the Domain to update the parameter value for corresponding domain
-	int64 domain_id = 7;
-
-	// the ID of the Image Store to update the parameter value for corresponding image store
-	int64 image_store_id = 8;
-
-	// lists configuration by group name (primarily used for UI)
-	string group_name = 9;
-
-	// lists configuration by subgroup name (primarily used for UI)
-	string sub_group_name = 10;
-
-	// lists configuration by parent name (primarily used for UI)
-	string parent_name = 11;
-
-	// List by keyword
-	string keyword = 12;
-
-	//
-	int32 page = 13;
-
-	//
-	int32 page_size = 14;
-
-	//
-	string response_type = 15;
-}
-
-// ListCfgsByResponse represents the response from lists all configurations.
-message ListCfgsByResponse {
-	option (validate.message).disabled = false;
-	// The list of Configurations
-	repeated Configuration items = 1;
-
-	// The total count of Configurations
-	int32 total_count = 2;
-}
-
-// ListCfgGroupsByRequest represents the parameters for lists all configuration groups (primarily used for ui).
-message ListCfgGroupsByRequest {
-	// lists configuration group by group name
-	string group_name = 1;
-
-	// List by keyword
-	string keyword = 2;
-
-	//
-	int32 page = 3;
-
-	//
-	int32 page_size = 4;
-
-	//
-	string response_type = 5;
-}
-
-// ListCfgGroupsByResponse represents the response from lists all configuration groups (primarily used for ui).
-message ListCfgGroupsByResponse {
-	option (validate.message).disabled = false;
-	// The list of ConfigurationGroups
-	repeated ConfigurationGroup items = 1;
-
-	// The total count of ConfigurationGroups
-	int32 total_count = 2;
-}
-
-// ListCapabilitiesRequest represents the parameters for lists capabilities
-message ListCapabilitiesRequest {
-	//
-	string response_type = 1;
-}
-
-// ListCapabilitiesResponse represents the response from lists capabilities
-message ListCapabilitiesResponse {
-	option (validate.message).disabled = false;
-	// The list of Capabilitiess
-	repeated Capabilities items = 1;
-
-	// The total count of Capabilitiess
-	int32 total_count = 2;
+	// UpdateHypervisorCapabilities Updates a hypervisor capabilities.
+	rpc UpdateHypervisorCapabilities(UpdateHypervisorCapabilitiesRequest) returns (UpdateHypervisorCapabilitiesResponse) {}
 }
 
 // ResetCfgRequest represents the parameters for resets a configuration. the configuration will be set to default value for global setting, and removed from account_details or domain_details for account/domain settings
@@ -318,6 +103,237 @@ message ListHypervisorCapabilitiesResponse {
 	int32 total_count = 2;
 }
 
+// UpdateCfgRequest represents the parameters for updates a configuration.
+message UpdateCfgRequest {
+	// the name of the configuration
+	string cfg_name = 1 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the value of the configuration
+	string value = 2;
+
+	// the ID of the Zone to update the parameter value for corresponding zone
+	int64 zone_id = 3;
+
+	// the ID of the Cluster to update the parameter value for corresponding cluster
+	int64 cluster_id = 4;
+
+	// the ID of the Storage pool to update the parameter value for corresponding storage pool
+	int64 storage_pool_id = 5;
+
+	// the ID of the Account to update the parameter value for corresponding account
+	int64 account_id = 6;
+
+	// the ID of the Domain to update the parameter value for corresponding domain
+	int64 domain_id = 7;
+
+	// the ID of the Image Store to update the parameter value for corresponding image store
+	int64 image_store_id = 8;
+
+	//
+	string response_type = 9;
+}
+
+// UpdateCfgResponse represents the response from updates a configuration.
+message UpdateCfgResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListDeploymentPlannersRequest represents the parameters for lists all deploymentplanners available.
+message ListDeploymentPlannersRequest {
+	// List by keyword
+	string keyword = 1;
+
+	//
+	int32 page = 2;
+
+	//
+	int32 page_size = 3;
+
+	//
+	string response_type = 4;
+}
+
+// ListDeploymentPlannersResponse represents the response from lists all deploymentplanners available.
+message ListDeploymentPlannersResponse {
+	option (validate.message).disabled = false;
+	// The list of DeploymentPlannerss
+	repeated DeploymentPlanners items = 1;
+
+	// The total count of DeploymentPlannerss
+	int32 total_count = 2;
+}
+
+// ListCfgGroupsByRequest represents the parameters for lists all configuration groups (primarily used for ui).
+message ListCfgGroupsByRequest {
+	// lists configuration group by group name
+	string group_name = 1;
+
+	// List by keyword
+	string keyword = 2;
+
+	//
+	int32 page = 3;
+
+	//
+	int32 page_size = 4;
+
+	//
+	string response_type = 5;
+}
+
+// ListCfgGroupsByResponse represents the response from lists all configuration groups (primarily used for ui).
+message ListCfgGroupsByResponse {
+	option (validate.message).disabled = false;
+	// The list of ConfigurationGroups
+	repeated ConfigurationGroup items = 1;
+
+	// The total count of ConfigurationGroups
+	int32 total_count = 2;
+}
+
+// ListCapabilitiesRequest represents the parameters for lists capabilities
+message ListCapabilitiesRequest {
+	//
+	string response_type = 1;
+}
+
+// ListCapabilitiesResponse represents the response from lists capabilities
+message ListCapabilitiesResponse {
+	option (validate.message).disabled = false;
+	// The list of Capabilitiess
+	repeated Capabilities items = 1;
+
+	// The total count of Capabilitiess
+	int32 total_count = 2;
+}
+
+// ListCfgsByRequest represents the parameters for lists all configurations.
+message ListCfgsByRequest {
+	// lists configurations by category
+	string category = 1;
+
+	// lists configuration by name
+	string config_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the ID of the Zone to update the parameter value for corresponding zone
+	int64 zone_id = 3;
+
+	// the ID of the Cluster to update the parameter value for corresponding cluster
+	int64 cluster_id = 4;
+
+	// the ID of the Storage pool to update the parameter value for corresponding storage pool
+	int64 storage_pool_id = 5;
+
+	// the ID of the Account to update the parameter value for corresponding account
+	int64 account_id = 6;
+
+	// the ID of the Domain to update the parameter value for corresponding domain
+	int64 domain_id = 7;
+
+	// the ID of the Image Store to update the parameter value for corresponding image store
+	int64 image_store_id = 8;
+
+	// lists configuration by group name (primarily used for UI)
+	string group_name = 9;
+
+	// lists configuration by subgroup name (primarily used for UI)
+	string sub_group_name = 10;
+
+	// lists configuration by parent name (primarily used for UI)
+	string parent_name = 11;
+
+	// List by keyword
+	string keyword = 12;
+
+	//
+	int32 page = 13;
+
+	//
+	int32 page_size = 14;
+
+	//
+	string response_type = 15;
+}
+
+// ListCfgsByResponse represents the response from lists all configurations.
+message ListCfgsByResponse {
+	option (validate.message).disabled = false;
+	// The list of Configurations
+	repeated Configuration items = 1;
+
+	// The total count of Configurations
+	int32 total_count = 2;
+}
+
+// UpdateHypervisorCapabilitiesRequest represents the parameters for updates a hypervisor capabilities.
+message UpdateHypervisorCapabilitiesRequest {
+	// ID of the hypervisor capability
+	int64 id = 1;
+
+	// the hypervisor for which the hypervisor capabilities are to be updated
+	string hypervisor = 2;
+
+	// the hypervisor version for which the hypervisor capabilities are to be updated
+	string hypervisor_version = 3;
+
+	// set true to enable security group for this hypervisor.
+	bool security_group_enabled = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the max number of Guest VMs per host for this hypervisor.
+	int64 max_guests_limit = 5;
+
+	// the maximum number of Data Volumes that can be attached to a VM for this hypervisor.
+	int32 max_data_volumes_limit = 6;
+
+	// set true to enable storage motion support for this hypervisor
+	bool storage_motion_supported = 7 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the maximum number of the hypervisor hosts per cluster
+	int32 max_hosts_per_cluster_limit = 8;
+
+	// set true to enable VM snapshots for this hypervisor
+	bool vm_snapshot_enabled = 9 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	string response_type = 10;
+}
+
+// UpdateHypervisorCapabilitiesResponse represents the response from updates a hypervisor capabilities.
+message UpdateHypervisorCapabilitiesResponse {
+	// The Result
+	Result result = 1;
+}
+
+// HypervisorCapabilities represents a HypervisorCapabilities Item
+message HypervisorCapabilities {
+	// The ID of the HypervisorCapabilities
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the HypervisorCapabilities
+	string name = 2;
+	// The display name of the HypervisorCapabilities
+	string display_name = 3;
+	// The description of the HypervisorCapabilities
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
 // DeploymentPlanners represents a DeploymentPlanners Item
 message DeploymentPlanners {
 	// The ID of the DeploymentPlanners
@@ -329,22 +345,6 @@ message DeploymentPlanners {
 	// The display name of the DeploymentPlanners
 	string display_name = 3;
 	// The description of the DeploymentPlanners
-	string description = 4;
-	// The date this entity was created
-	string created = 5;
-}
-
-// Configuration represents a Configuration Item
-message Configuration {
-	// The ID of the Configuration
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-	// The name of the Configuration
-	string name = 2;
-	// The display name of the Configuration
-	string display_name = 3;
-	// The description of the Configuration
 	string description = 4;
 	// The date this entity was created
 	string created = 5;
@@ -382,17 +382,17 @@ message Capabilities {
 	string created = 5;
 }
 
-// HypervisorCapabilities represents a HypervisorCapabilities Item
-message HypervisorCapabilities {
-	// The ID of the HypervisorCapabilities
+// Configuration represents a Configuration Item
+message Configuration {
+	// The ID of the Configuration
 	string id = 1 [
 		(validate.field).string.uuid = true
 	];
-	// The name of the HypervisorCapabilities
+	// The name of the Configuration
 	string name = 2;
-	// The display name of the HypervisorCapabilities
+	// The display name of the Configuration
 	string display_name = 3;
-	// The description of the HypervisorCapabilities
+	// The description of the Configuration
 	string description = 4;
 	// The date this entity was created
 	string created = 5;
@@ -404,53 +404,6 @@ message Success {
 	bool success = 1;
 	// any text associated with the success or failure
 	string display_text = 2;
-}
-
-// Item represents a generic item in a list response
-message Item {
-	// The ID of the item
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-
-	// The name of the item
-	string name = 2;
-
-	// The display name of the item
-	string display_name = 3;
-
-	// The description of the item
-	string description = 4;
-
-	// The account ID the item belongs to
-	string account_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain ID the item belongs to
-	string domain_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain name the item belongs to
-	string domain = 7;
-
-	// The project ID the item belongs to
-	string project_id = 8 [
-		(validate.field).string.uuid = true
-	];
-
-	// The project name the item belongs to
-	string project = 9;
-
-	// The date the item was created
-	string created = 10;
-
-	// The state of the item
-	string state = 11;
-
-	// Additional fields returned by the API
-	map<string, string> details = 12;
 }
 
 // Result represents a generic operation result

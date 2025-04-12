@@ -10,38 +10,38 @@ import "google/protobuf/descriptor.proto";
 service HaService {
 	option (annotations.service).scope = Scope_USER;
 
-	// DisableHAForZone Disables HA for a zone
-	rpc DisableHAForZone(DisableHAForZoneRequest) returns (DisableHAForZoneResponse) {}
-
-	// EnableHAForHost Enables HA for a host
-	rpc EnableHAForHost(EnableHAForHostRequest) returns (EnableHAForHostResponse) {}
-
-	// ConfigureHAForHost Configures HA for a host
-	rpc ConfigureHAForHost(ConfigureHAForHostRequest) returns (ConfigureHAForHostResponse) {}
-
-	// DisableHAForCluster Disables HA cluster-wide
-	rpc DisableHAForCluster(DisableHAForClusterRequest) returns (DisableHAForClusterResponse) {}
-
-	// EnableHAForZone Enables HA for a zone
-	rpc EnableHAForZone(EnableHAForZoneRequest) returns (EnableHAForZoneResponse) {}
+	// EnableHAForCluster Enables HA cluster-wide
+	rpc EnableHAForCluster(EnableHAForClusterRequest) returns (EnableHAForClusterResponse) {}
 
 	// ListHostHAResources Lists host HA resources
 	rpc ListHostHAResources(ListHostHAResourcesRequest) returns (ListHostHAResourcesResponse) {}
 
-	// DisableHAForHost Disables HA for a host
-	rpc DisableHAForHost(DisableHAForHostRequest) returns (DisableHAForHostResponse) {}
+	// DisableHAForCluster Disables HA cluster-wide
+	rpc DisableHAForCluster(DisableHAForClusterRequest) returns (DisableHAForClusterResponse) {}
+
+	// ConfigureHAForHost Configures HA for a host
+	rpc ConfigureHAForHost(ConfigureHAForHostRequest) returns (ConfigureHAForHostResponse) {}
+
+	// EnableHAForHost Enables HA for a host
+	rpc EnableHAForHost(EnableHAForHostRequest) returns (EnableHAForHostResponse) {}
+
+	// EnableHAForZone Enables HA for a zone
+	rpc EnableHAForZone(EnableHAForZoneRequest) returns (EnableHAForZoneResponse) {}
+
+	// DisableHAForZone Disables HA for a zone
+	rpc DisableHAForZone(DisableHAForZoneRequest) returns (DisableHAForZoneResponse) {}
 
 	// ListHostHAProviders Lists HA providers
 	rpc ListHostHAProviders(ListHostHAProvidersRequest) returns (ListHostHAProvidersResponse) {}
 
-	// EnableHAForCluster Enables HA cluster-wide
-	rpc EnableHAForCluster(EnableHAForClusterRequest) returns (EnableHAForClusterResponse) {}
+	// DisableHAForHost Disables HA for a host
+	rpc DisableHAForHost(DisableHAForHostRequest) returns (DisableHAForHostResponse) {}
 }
 
-// DisableHAForZoneRequest represents the parameters for disables ha for a zone
-message DisableHAForZoneRequest {
-	// ID of the zone
-	int64 zone_id = 1 [
+// EnableHAForClusterRequest represents the parameters for enables ha cluster-wide
+message EnableHAForClusterRequest {
+	// ID of the cluster
+	int64 cluster_id = 1 [
 		(validate.field).required = true
 	];
 
@@ -57,16 +57,35 @@ message DisableHAForZoneRequest {
 	string response_type = 4;
 }
 
-// DisableHAForZoneResponse represents the response from disables ha for a zone
-message DisableHAForZoneResponse {
+// EnableHAForClusterResponse represents the response from enables ha cluster-wide
+message EnableHAForClusterResponse {
 	// The Result
 	Result result = 1;
 }
 
-// EnableHAForHostRequest represents the parameters for enables ha for a host
-message EnableHAForHostRequest {
-	// ID of the host
-	int64 host_id = 1 [
+// ListHostHAResourcesRequest represents the parameters for lists host ha resources
+message ListHostHAResourcesRequest {
+	// List by host ID
+	int64 host_id = 1;
+
+	//
+	string response_type = 2;
+}
+
+// ListHostHAResourcesResponse represents the response from lists host ha resources
+message ListHostHAResourcesResponse {
+	option (validate.message).disabled = false;
+	// The list of HostHAs
+	repeated HostHA items = 1;
+
+	// The total count of HostHAs
+	int32 total_count = 2;
+}
+
+// DisableHAForClusterRequest represents the parameters for disables ha cluster-wide
+message DisableHAForClusterRequest {
+	// ID of the cluster
+	int64 cluster_id = 1 [
 		(validate.field).required = true
 	];
 
@@ -82,8 +101,8 @@ message EnableHAForHostRequest {
 	string response_type = 4;
 }
 
-// EnableHAForHostResponse represents the response from enables ha for a host
-message EnableHAForHostResponse {
+// DisableHAForClusterResponse represents the response from disables ha cluster-wide
+message DisableHAForClusterResponse {
 	// The Result
 	Result result = 1;
 }
@@ -119,10 +138,10 @@ message ConfigureHAForHostResponse {
 	Result result = 1;
 }
 
-// DisableHAForClusterRequest represents the parameters for disables ha cluster-wide
-message DisableHAForClusterRequest {
-	// ID of the cluster
-	int64 cluster_id = 1 [
+// EnableHAForHostRequest represents the parameters for enables ha for a host
+message EnableHAForHostRequest {
+	// ID of the host
+	int64 host_id = 1 [
 		(validate.field).required = true
 	];
 
@@ -138,8 +157,8 @@ message DisableHAForClusterRequest {
 	string response_type = 4;
 }
 
-// DisableHAForClusterResponse represents the response from disables ha cluster-wide
-message DisableHAForClusterResponse {
+// EnableHAForHostResponse represents the response from enables ha for a host
+message EnableHAForHostResponse {
 	// The Result
 	Result result = 1;
 }
@@ -169,17 +188,44 @@ message EnableHAForZoneResponse {
 	Result result = 1;
 }
 
-// ListHostHAResourcesRequest represents the parameters for lists host ha resources
-message ListHostHAResourcesRequest {
-	// List by host ID
-	int64 host_id = 1;
+// DisableHAForZoneRequest represents the parameters for disables ha for a zone
+message DisableHAForZoneRequest {
+	// ID of the zone
+	int64 zone_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DisableHAForZoneResponse represents the response from disables ha for a zone
+message DisableHAForZoneResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListHostHAProvidersRequest represents the parameters for lists ha providers
+message ListHostHAProvidersRequest {
+	// Hypervisor type of the resource
+	string hypervisor_type = 1 [
+		(validate.field).required = true
+	];
 
 	//
 	string response_type = 2;
 }
 
-// ListHostHAResourcesResponse represents the response from lists host ha resources
-message ListHostHAResourcesResponse {
+// ListHostHAProvidersResponse represents the response from lists ha providers
+message ListHostHAProvidersResponse {
 	option (validate.message).disabled = false;
 	// The list of HostHAs
 	repeated HostHA items = 1;
@@ -213,52 +259,6 @@ message DisableHAForHostResponse {
 	Result result = 1;
 }
 
-// ListHostHAProvidersRequest represents the parameters for lists ha providers
-message ListHostHAProvidersRequest {
-	// Hypervisor type of the resource
-	string hypervisor_type = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// ListHostHAProvidersResponse represents the response from lists ha providers
-message ListHostHAProvidersResponse {
-	option (validate.message).disabled = false;
-	// The list of HostHAs
-	repeated HostHA items = 1;
-
-	// The total count of HostHAs
-	int32 total_count = 2;
-}
-
-// EnableHAForClusterRequest represents the parameters for enables ha cluster-wide
-message EnableHAForClusterRequest {
-	// ID of the cluster
-	int64 cluster_id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// EnableHAForClusterResponse represents the response from enables ha cluster-wide
-message EnableHAForClusterResponse {
-	// The Result
-	Result result = 1;
-}
-
 // HostHA represents a HostHA Item
 message HostHA {
 	// The ID of the HostHA
@@ -281,53 +281,6 @@ message Success {
 	bool success = 1;
 	// any text associated with the success or failure
 	string display_text = 2;
-}
-
-// Item represents a generic item in a list response
-message Item {
-	// The ID of the item
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-
-	// The name of the item
-	string name = 2;
-
-	// The display name of the item
-	string display_name = 3;
-
-	// The description of the item
-	string description = 4;
-
-	// The account ID the item belongs to
-	string account_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain ID the item belongs to
-	string domain_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain name the item belongs to
-	string domain = 7;
-
-	// The project ID the item belongs to
-	string project_id = 8 [
-		(validate.field).string.uuid = true
-	];
-
-	// The project name the item belongs to
-	string project = 9;
-
-	// The date the item was created
-	string created = 10;
-
-	// The state of the item
-	string state = 11;
-
-	// Additional fields returned by the API
-	map<string, string> details = 12;
 }
 
 // Result represents a generic operation result

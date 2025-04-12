@@ -10,11 +10,28 @@ import "google/protobuf/descriptor.proto";
 service JobService {
 	option (annotations.service).scope = Scope_USER;
 
-	// ListAsyncJobs Lists all pending asynchronous jobs for the account.
-	rpc ListAsyncJobs(ListAsyncJobsRequest) returns (ListAsyncJobsResponse) {}
-
 	// QueryAsyncJobResult Retrieves the current status of asynchronous job.
 	rpc QueryAsyncJobResult(QueryAsyncJobResultRequest) returns (QueryAsyncJobResultResponse) {}
+
+	// ListAsyncJobs Lists all pending asynchronous jobs for the account.
+	rpc ListAsyncJobs(ListAsyncJobsRequest) returns (ListAsyncJobsResponse) {}
+}
+
+// QueryAsyncJobResultRequest represents the parameters for retrieves the current status of asynchronous job.
+message QueryAsyncJobResultRequest {
+	// the ID of the asynchronous job
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// QueryAsyncJobResultResponse represents the response from retrieves the current status of asynchronous job.
+message QueryAsyncJobResultResponse {
+	// The Result
+	Result result = 1;
 }
 
 // ListAsyncJobsRequest represents the parameters for lists all pending asynchronous jobs for the account.
@@ -70,23 +87,6 @@ message ListAsyncJobsResponse {
 	int32 total_count = 2;
 }
 
-// QueryAsyncJobResultRequest represents the parameters for retrieves the current status of asynchronous job.
-message QueryAsyncJobResultRequest {
-	// the ID of the asynchronous job
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// QueryAsyncJobResultResponse represents the response from retrieves the current status of asynchronous job.
-message QueryAsyncJobResultResponse {
-	// The Result
-	Result result = 1;
-}
-
 // AsyncJob represents a AsyncJob Item
 message AsyncJob {
 	// The ID of the AsyncJob
@@ -109,53 +109,6 @@ message Success {
 	bool success = 1;
 	// any text associated with the success or failure
 	string display_text = 2;
-}
-
-// Item represents a generic item in a list response
-message Item {
-	// The ID of the item
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-
-	// The name of the item
-	string name = 2;
-
-	// The display name of the item
-	string display_name = 3;
-
-	// The description of the item
-	string description = 4;
-
-	// The account ID the item belongs to
-	string account_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain ID the item belongs to
-	string domain_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain name the item belongs to
-	string domain = 7;
-
-	// The project ID the item belongs to
-	string project_id = 8 [
-		(validate.field).string.uuid = true
-	];
-
-	// The project name the item belongs to
-	string project = 9;
-
-	// The date the item was created
-	string created = 10;
-
-	// The state of the item
-	string state = 11;
-
-	// Additional fields returned by the API
-	map<string, string> details = 12;
 }
 
 // Result represents a generic operation result

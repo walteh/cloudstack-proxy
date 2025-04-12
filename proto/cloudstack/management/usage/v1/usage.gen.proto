@@ -10,8 +10,26 @@ import "google/protobuf/descriptor.proto";
 service UsageService {
 	option (annotations.service).scope = Scope_USER;
 
+	// ListTrafficMonitors List traffic monitor Hosts.
+	rpc ListTrafficMonitors(ListTrafficMonitorsRequest) returns (ListTrafficMonitorsResponse) {}
+
+	// UpdateTrafficType Updates traffic type of a physical network
+	rpc UpdateTrafficType(UpdateTrafficTypeRequest) returns (UpdateTrafficTypeResponse) {}
+
+	// ListTrafficTypes Lists traffic types of a given physical network.
+	rpc ListTrafficTypes(ListTrafficTypesRequest) returns (ListTrafficTypesResponse) {}
+
+	// ListTrafficTypeImplementors Lists implementors of implementor of a network traffic type or implementors of all network traffic types
+	rpc ListTrafficTypeImplementors(ListTrafficTypeImplementorsRequest) returns (ListTrafficTypeImplementorsResponse) {}
+
+	// GenerateUsageRecords Generates usage records. This will generate records only if there any records to be generated, i.e if the scheduled usage job was not run or failed
+	rpc GenerateUsageRecords(GenerateUsageRecordsRequest) returns (GenerateUsageRecordsResponse) {}
+
 	// AddTrafficType Adds traffic type to a physical network
 	rpc AddTrafficType(AddTrafficTypeRequest) returns (AddTrafficTypeResponse) {}
+
+	// ListUsageRecords Lists usage records for accounts
+	rpc ListUsageRecords(ListUsageRecordsRequest) returns (ListUsageRecordsResponse) {}
 
 	// AddTrafficMonitor Adds Traffic Monitor Host for Direct Network Usage
 	rpc AddTrafficMonitor(AddTrafficMonitorRequest) returns (AddTrafficMonitorResponse) {}
@@ -19,32 +37,163 @@ service UsageService {
 	// RemoveRawUsageRecords Safely removes raw records from cloud_usage table
 	rpc RemoveRawUsageRecords(RemoveRawUsageRecordsRequest) returns (RemoveRawUsageRecordsResponse) {}
 
-	// ListUsageTypes List Usage Types
-	rpc ListUsageTypes(ListUsageTypesRequest) returns (ListUsageTypesResponse) {}
-
-	// ListTrafficTypes Lists traffic types of a given physical network.
-	rpc ListTrafficTypes(ListTrafficTypesRequest) returns (ListTrafficTypesResponse) {}
-
-	// UpdateTrafficType Updates traffic type of a physical network
-	rpc UpdateTrafficType(UpdateTrafficTypeRequest) returns (UpdateTrafficTypeResponse) {}
-
 	// DeleteTrafficMonitor Deletes an traffic monitor host.
 	rpc DeleteTrafficMonitor(DeleteTrafficMonitorRequest) returns (DeleteTrafficMonitorResponse) {}
-
-	// GenerateUsageRecords Generates usage records. This will generate records only if there any records to be generated, i.e if the scheduled usage job was not run or failed
-	rpc GenerateUsageRecords(GenerateUsageRecordsRequest) returns (GenerateUsageRecordsResponse) {}
 
 	// DeleteTrafficType Deletes traffic type of a physical network
 	rpc DeleteTrafficType(DeleteTrafficTypeRequest) returns (DeleteTrafficTypeResponse) {}
 
-	// ListTrafficMonitors List traffic monitor Hosts.
-	rpc ListTrafficMonitors(ListTrafficMonitorsRequest) returns (ListTrafficMonitorsResponse) {}
+	// ListUsageTypes List Usage Types
+	rpc ListUsageTypes(ListUsageTypesRequest) returns (ListUsageTypesResponse) {}
+}
 
-	// ListUsageRecords Lists usage records for accounts
-	rpc ListUsageRecords(ListUsageRecordsRequest) returns (ListUsageRecordsResponse) {}
+// ListTrafficMonitorsRequest represents the parameters for list traffic monitor hosts.
+message ListTrafficMonitorsRequest {
+	// zone Id
+	int64 zone_id = 1 [
+		(validate.field).required = true
+	];
 
-	// ListTrafficTypeImplementors Lists implementors of implementor of a network traffic type or implementors of all network traffic types
-	rpc ListTrafficTypeImplementors(ListTrafficTypeImplementorsRequest) returns (ListTrafficTypeImplementorsResponse) {}
+	// List by keyword
+	string keyword = 2;
+
+	//
+	int32 page = 3;
+
+	//
+	int32 page_size = 4;
+
+	//
+	string response_type = 5;
+}
+
+// ListTrafficMonitorsResponse represents the response from list traffic monitor hosts.
+message ListTrafficMonitorsResponse {
+	option (validate.message).disabled = false;
+	// The list of TrafficMonitors
+	repeated TrafficMonitor items = 1;
+
+	// The total count of TrafficMonitors
+	int32 total_count = 2;
+}
+
+// UpdateTrafficTypeRequest represents the parameters for updates traffic type of a physical network
+message UpdateTrafficTypeRequest {
+	// traffic type id
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// The network name label of the physical device dedicated to this traffic on a XenServer host
+	string xen_label = 2;
+
+	// The network name label of the physical device dedicated to this traffic on a KVM host
+	string kvm_label = 3;
+
+	// The network name label of the physical device dedicated to this traffic on a VMware host
+	string vmware_label = 4;
+
+	// The network name label of the physical device dedicated to this traffic on a Hyperv host
+	string hyperv_label = 5;
+
+	// The network name of the physical device dedicated to this traffic on an OVM3 host
+	string ovm3_label = 6;
+
+	//
+	int64 start_event_id = 7;
+
+	//
+	string injected_job_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 9;
+}
+
+// UpdateTrafficTypeResponse represents the response from updates traffic type of a physical network
+message UpdateTrafficTypeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListTrafficTypesRequest represents the parameters for lists traffic types of a given physical network.
+message ListTrafficTypesRequest {
+	// the Physical Network ID
+	int64 physical_network_id = 1 [
+		(validate.field).required = true
+	];
+
+	// List by keyword
+	string keyword = 2;
+
+	//
+	int32 page = 3;
+
+	//
+	int32 page_size = 4;
+
+	//
+	string response_type = 5;
+}
+
+// ListTrafficTypesResponse represents the response from lists traffic types of a given physical network.
+message ListTrafficTypesResponse {
+	option (validate.message).disabled = false;
+	// The list of Providers
+	repeated Provider items = 1;
+
+	// The total count of Providers
+	int32 total_count = 2;
+}
+
+// ListTrafficTypeImplementorsRequest represents the parameters for lists implementors of implementor of a network traffic type or implementors of all network traffic types
+message ListTrafficTypeImplementorsRequest {
+	// Optional. The network traffic type, if specified, return its implementor. Otherwise, return all traffic types with their implementor
+	string traffic_type = 1;
+
+	// List by keyword
+	string keyword = 2;
+
+	//
+	int32 page = 3;
+
+	//
+	int32 page_size = 4;
+
+	//
+	string response_type = 5;
+}
+
+// ListTrafficTypeImplementorsResponse represents the response from lists implementors of implementor of a network traffic type or implementors of all network traffic types
+message ListTrafficTypeImplementorsResponse {
+	option (validate.message).disabled = false;
+	// The list of TrafficTypeImplementors
+	repeated TrafficTypeImplementor items = 1;
+
+	// The total count of TrafficTypeImplementors
+	int32 total_count = 2;
+}
+
+// GenerateUsageRecordsRequest represents the parameters for generates usage records. this will generate records only if there any records to be generated, i.e if the scheduled usage job was not run or failed
+message GenerateUsageRecordsRequest {
+	// List events for the specified domain.
+	int64 domain_id = 1;
+
+	// End date range for usage record query. Use yyyy-MM-dd as the date format, e.g. startDate=2009-06-03.
+	string end_date = 2;
+
+	// Start date range for usage record query. Use yyyy-MM-dd as the date format, e.g. startDate=2009-06-01.
+	string start_date = 3;
+
+	//
+	string response_type = 4;
+}
+
+// GenerateUsageRecordsResponse represents the response from generates usage records. this will generate records only if there any records to be generated, i.e if the scheduled usage job was not run or failed
+message GenerateUsageRecordsResponse {
+	// The Result
+	Result result = 1;
 }
 
 // AddTrafficTypeRequest represents the parameters for adds traffic type to a physical network
@@ -96,230 +245,6 @@ message AddTrafficTypeRequest {
 message AddTrafficTypeResponse {
 	// The Result
 	Result result = 1;
-}
-
-// AddTrafficMonitorRequest represents the parameters for adds traffic monitor host for direct network usage
-message AddTrafficMonitorRequest {
-	// Zone in which to add the external firewall appliance.
-	int64 zone_id = 1 [
-		(validate.field).required = true
-	];
-
-	// URL of the traffic monitor Host
-	string url = 2 [
-		(validate.field).required = true
-	];
-
-	// Traffic going into the listed zones will be metered
-	string incl_zones = 3;
-
-	// Traffic going into the listed zones will not be metered
-	string excl_zones = 4;
-
-	//
-	string response_type = 5;
-}
-
-// AddTrafficMonitorResponse represents the response from adds traffic monitor host for direct network usage
-message AddTrafficMonitorResponse {
-	// The Result
-	Result result = 1;
-}
-
-// RemoveRawUsageRecordsRequest represents the parameters for safely removes raw records from cloud_usage table
-message RemoveRawUsageRecordsRequest {
-	// Specify the number of days (greater than zero) to remove records that are older than those number of days from today. For example, specifying 10 would result in removing all the records created before 10 days from today
-	int32 interval = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// RemoveRawUsageRecordsResponse represents the response from safely removes raw records from cloud_usage table
-message RemoveRawUsageRecordsResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListUsageTypesRequest represents the parameters for list usage types
-message ListUsageTypesRequest {
-	//
-	string response_type = 1;
-}
-
-// ListUsageTypesResponse represents the response from list usage types
-message ListUsageTypesResponse {
-	option (validate.message).disabled = false;
-	// The list of UsageTypes
-	repeated UsageType items = 1;
-
-	// The total count of UsageTypes
-	int32 total_count = 2;
-}
-
-// ListTrafficTypesRequest represents the parameters for lists traffic types of a given physical network.
-message ListTrafficTypesRequest {
-	// the Physical Network ID
-	int64 physical_network_id = 1 [
-		(validate.field).required = true
-	];
-
-	// List by keyword
-	string keyword = 2;
-
-	//
-	int32 page = 3;
-
-	//
-	int32 page_size = 4;
-
-	//
-	string response_type = 5;
-}
-
-// ListTrafficTypesResponse represents the response from lists traffic types of a given physical network.
-message ListTrafficTypesResponse {
-	option (validate.message).disabled = false;
-	// The list of Providers
-	repeated Provider items = 1;
-
-	// The total count of Providers
-	int32 total_count = 2;
-}
-
-// UpdateTrafficTypeRequest represents the parameters for updates traffic type of a physical network
-message UpdateTrafficTypeRequest {
-	// traffic type id
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// The network name label of the physical device dedicated to this traffic on a XenServer host
-	string xen_label = 2;
-
-	// The network name label of the physical device dedicated to this traffic on a KVM host
-	string kvm_label = 3;
-
-	// The network name label of the physical device dedicated to this traffic on a VMware host
-	string vmware_label = 4;
-
-	// The network name label of the physical device dedicated to this traffic on a Hyperv host
-	string hyperv_label = 5;
-
-	// The network name of the physical device dedicated to this traffic on an OVM3 host
-	string ovm3_label = 6;
-
-	//
-	int64 start_event_id = 7;
-
-	//
-	string injected_job_id = 8 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 9;
-}
-
-// UpdateTrafficTypeResponse represents the response from updates traffic type of a physical network
-message UpdateTrafficTypeResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeleteTrafficMonitorRequest represents the parameters for deletes an traffic monitor host.
-message DeleteTrafficMonitorRequest {
-	// Id of the Traffic Monitor Host.
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// DeleteTrafficMonitorResponse represents the response from deletes an traffic monitor host.
-message DeleteTrafficMonitorResponse {
-	// The Result
-	Result result = 1;
-}
-
-// GenerateUsageRecordsRequest represents the parameters for generates usage records. this will generate records only if there any records to be generated, i.e if the scheduled usage job was not run or failed
-message GenerateUsageRecordsRequest {
-	// List events for the specified domain.
-	int64 domain_id = 1;
-
-	// End date range for usage record query. Use yyyy-MM-dd as the date format, e.g. startDate=2009-06-03.
-	string end_date = 2;
-
-	// Start date range for usage record query. Use yyyy-MM-dd as the date format, e.g. startDate=2009-06-01.
-	string start_date = 3;
-
-	//
-	string response_type = 4;
-}
-
-// GenerateUsageRecordsResponse represents the response from generates usage records. this will generate records only if there any records to be generated, i.e if the scheduled usage job was not run or failed
-message GenerateUsageRecordsResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeleteTrafficTypeRequest represents the parameters for deletes traffic type of a physical network
-message DeleteTrafficTypeRequest {
-	// traffic type id
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DeleteTrafficTypeResponse represents the response from deletes traffic type of a physical network
-message DeleteTrafficTypeResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListTrafficMonitorsRequest represents the parameters for list traffic monitor hosts.
-message ListTrafficMonitorsRequest {
-	// zone Id
-	int64 zone_id = 1 [
-		(validate.field).required = true
-	];
-
-	// List by keyword
-	string keyword = 2;
-
-	//
-	int32 page = 3;
-
-	//
-	int32 page_size = 4;
-
-	//
-	string response_type = 5;
-}
-
-// ListTrafficMonitorsResponse represents the response from list traffic monitor hosts.
-message ListTrafficMonitorsResponse {
-	option (validate.message).disabled = false;
-	// The list of TrafficMonitors
-	repeated TrafficMonitor items = 1;
-
-	// The total count of TrafficMonitors
-	int32 total_count = 2;
 }
 
 // ListUsageRecordsRequest represents the parameters for lists usage records for accounts
@@ -392,45 +317,120 @@ message ListUsageRecordsResponse {
 	int32 total_count = 2;
 }
 
-// ListTrafficTypeImplementorsRequest represents the parameters for lists implementors of implementor of a network traffic type or implementors of all network traffic types
-message ListTrafficTypeImplementorsRequest {
-	// Optional. The network traffic type, if specified, return its implementor. Otherwise, return all traffic types with their implementor
-	string traffic_type = 1;
+// AddTrafficMonitorRequest represents the parameters for adds traffic monitor host for direct network usage
+message AddTrafficMonitorRequest {
+	// Zone in which to add the external firewall appliance.
+	int64 zone_id = 1 [
+		(validate.field).required = true
+	];
 
-	// List by keyword
-	string keyword = 2;
+	// URL of the traffic monitor Host
+	string url = 2 [
+		(validate.field).required = true
+	];
 
-	//
-	int32 page = 3;
+	// Traffic going into the listed zones will be metered
+	string incl_zones = 3;
 
-	//
-	int32 page_size = 4;
+	// Traffic going into the listed zones will not be metered
+	string excl_zones = 4;
 
 	//
 	string response_type = 5;
 }
 
-// ListTrafficTypeImplementorsResponse represents the response from lists implementors of implementor of a network traffic type or implementors of all network traffic types
-message ListTrafficTypeImplementorsResponse {
-	option (validate.message).disabled = false;
-	// The list of TrafficTypeImplementors
-	repeated TrafficTypeImplementor items = 1;
+// AddTrafficMonitorResponse represents the response from adds traffic monitor host for direct network usage
+message AddTrafficMonitorResponse {
+	// The Result
+	Result result = 1;
+}
 
-	// The total count of TrafficTypeImplementors
+// RemoveRawUsageRecordsRequest represents the parameters for safely removes raw records from cloud_usage table
+message RemoveRawUsageRecordsRequest {
+	// Specify the number of days (greater than zero) to remove records that are older than those number of days from today. For example, specifying 10 would result in removing all the records created before 10 days from today
+	int32 interval = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// RemoveRawUsageRecordsResponse represents the response from safely removes raw records from cloud_usage table
+message RemoveRawUsageRecordsResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteTrafficMonitorRequest represents the parameters for deletes an traffic monitor host.
+message DeleteTrafficMonitorRequest {
+	// Id of the Traffic Monitor Host.
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteTrafficMonitorResponse represents the response from deletes an traffic monitor host.
+message DeleteTrafficMonitorResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteTrafficTypeRequest represents the parameters for deletes traffic type of a physical network
+message DeleteTrafficTypeRequest {
+	// traffic type id
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteTrafficTypeResponse represents the response from deletes traffic type of a physical network
+message DeleteTrafficTypeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListUsageTypesRequest represents the parameters for list usage types
+message ListUsageTypesRequest {
+	//
+	string response_type = 1;
+}
+
+// ListUsageTypesResponse represents the response from list usage types
+message ListUsageTypesResponse {
+	option (validate.message).disabled = false;
+	// The list of UsageTypes
+	repeated UsageType items = 1;
+
+	// The total count of UsageTypes
 	int32 total_count = 2;
 }
 
-// UsageType represents a UsageType Item
-message UsageType {
-	// The ID of the UsageType
+// TrafficMonitor represents a TrafficMonitor Item
+message TrafficMonitor {
+	// The ID of the TrafficMonitor
 	string id = 1 [
 		(validate.field).string.uuid = true
 	];
-	// The name of the UsageType
+	// The name of the TrafficMonitor
 	string name = 2;
-	// The display name of the UsageType
+	// The display name of the TrafficMonitor
 	string display_name = 3;
-	// The description of the UsageType
+	// The description of the TrafficMonitor
 	string description = 4;
 	// The date this entity was created
 	string created = 5;
@@ -452,17 +452,17 @@ message Provider {
 	string created = 5;
 }
 
-// TrafficMonitor represents a TrafficMonitor Item
-message TrafficMonitor {
-	// The ID of the TrafficMonitor
+// TrafficTypeImplementor represents a TrafficTypeImplementor Item
+message TrafficTypeImplementor {
+	// The ID of the TrafficTypeImplementor
 	string id = 1 [
 		(validate.field).string.uuid = true
 	];
-	// The name of the TrafficMonitor
+	// The name of the TrafficTypeImplementor
 	string name = 2;
-	// The display name of the TrafficMonitor
+	// The display name of the TrafficTypeImplementor
 	string display_name = 3;
-	// The description of the TrafficMonitor
+	// The description of the TrafficTypeImplementor
 	string description = 4;
 	// The date this entity was created
 	string created = 5;
@@ -484,17 +484,17 @@ message UsageRecord {
 	string created = 5;
 }
 
-// TrafficTypeImplementor represents a TrafficTypeImplementor Item
-message TrafficTypeImplementor {
-	// The ID of the TrafficTypeImplementor
+// UsageType represents a UsageType Item
+message UsageType {
+	// The ID of the UsageType
 	string id = 1 [
 		(validate.field).string.uuid = true
 	];
-	// The name of the TrafficTypeImplementor
+	// The name of the UsageType
 	string name = 2;
-	// The display name of the TrafficTypeImplementor
+	// The display name of the UsageType
 	string display_name = 3;
-	// The description of the TrafficTypeImplementor
+	// The description of the UsageType
 	string description = 4;
 	// The date this entity was created
 	string created = 5;
@@ -506,53 +506,6 @@ message Success {
 	bool success = 1;
 	// any text associated with the success or failure
 	string display_text = 2;
-}
-
-// Item represents a generic item in a list response
-message Item {
-	// The ID of the item
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-
-	// The name of the item
-	string name = 2;
-
-	// The display name of the item
-	string display_name = 3;
-
-	// The description of the item
-	string description = 4;
-
-	// The account ID the item belongs to
-	string account_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain ID the item belongs to
-	string domain_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain name the item belongs to
-	string domain = 7;
-
-	// The project ID the item belongs to
-	string project_id = 8 [
-		(validate.field).string.uuid = true
-	];
-
-	// The project name the item belongs to
-	string project = 9;
-
-	// The date the item was created
-	string created = 10;
-
-	// The state of the item
-	string state = 11;
-
-	// Additional fields returned by the API
-	map<string, string> details = 12;
 }
 
 // Result represents a generic operation result

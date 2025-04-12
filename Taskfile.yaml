@@ -114,8 +114,8 @@ tasks:
         vars:
             FORMAT: "{{ .FORMAT | default true }}"
         cmds:
-          - cmd: rm -rf tmp/proto
-          - cmd: cp -r proto tmp/proto
+          - cmd: rm -rf proto/cloudstack/management
+          - cmd: mkdir -p proto/cloudstack/management
           - cmd: |-
                 go run ./cmd/csp-protobuf-generator \
                  --metadata-dir=./gen/cloudstack-metadata \

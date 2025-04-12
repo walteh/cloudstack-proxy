@@ -10,107 +10,38 @@ import "google/protobuf/descriptor.proto";
 service AclService {
 	option (annotations.service).scope = Scope_USER;
 
-	// CreateRolePermission Adds an API permission to a role
-	rpc CreateRolePermission(CreateRolePermissionRequest) returns (CreateRolePermissionResponse) {}
-
-	// CreateRole Creates a role
-	rpc CreateRole(CreateRoleRequest) returns (CreateRoleResponse) {}
-
 	// DeleteRolePermission Deletes a role permission
 	rpc DeleteRolePermission(DeleteRolePermissionRequest) returns (DeleteRolePermissionResponse) {}
-
-	// UpdateRolePermission Updates a role permission order
-	rpc UpdateRolePermission(UpdateRolePermissionRequest) returns (UpdateRolePermissionResponse) {}
 
 	// DeleteRole Deletes a role
 	rpc DeleteRole(DeleteRoleRequest) returns (DeleteRoleResponse) {}
 
-	// DisableRole Disables a role
-	rpc DisableRole(DisableRoleRequest) returns (DisableRoleResponse) {}
+	// UpdateRolePermission Updates a role permission order
+	rpc UpdateRolePermission(UpdateRolePermissionRequest) returns (UpdateRolePermissionResponse) {}
 
 	// EnableRole Enables a role
 	rpc EnableRole(EnableRoleRequest) returns (EnableRoleResponse) {}
 
-	// ListRoles Lists dynamic roles in CloudStack
-	rpc ListRoles(ListRolesRequest) returns (ListRolesResponse) {}
+	// DisableRole Disables a role
+	rpc DisableRole(DisableRoleRequest) returns (DisableRoleResponse) {}
 
 	// ImportRole Imports a role based on provided map of rule permissions
 	rpc ImportRole(ImportRoleRequest) returns (ImportRoleResponse) {}
 
+	// ListRolePermissions Lists role permissions
+	rpc ListRolePermissions(ListRolePermissionsRequest) returns (ListRolePermissionsResponse) {}
+
+	// CreateRole Creates a role
+	rpc CreateRole(CreateRoleRequest) returns (CreateRoleResponse) {}
+
+	// CreateRolePermission Adds an API permission to a role
+	rpc CreateRolePermission(CreateRolePermissionRequest) returns (CreateRolePermissionResponse) {}
+
 	// UpdateRole Updates a role
 	rpc UpdateRole(UpdateRoleRequest) returns (UpdateRoleResponse) {}
 
-	// ListRolePermissions Lists role permissions
-	rpc ListRolePermissions(ListRolePermissionsRequest) returns (ListRolePermissionsResponse) {}
-}
-
-// CreateRolePermissionRequest represents the parameters for adds an api permission to a role
-message CreateRolePermissionRequest {
-	// ID of the role
-	int64 role_id = 1 [
-		(validate.field).required = true
-	];
-
-	// The API name or wildcard rule such as list*
-	string rule = 2 [
-		(validate.field).required = true
-	];
-
-	// The rule permission, allow or deny. Default: deny.
-	string permission = 3 [
-		(validate.field).required = true
-	];
-
-	// The description of the role permission
-	string description = 4 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
-	];
-
-	//
-	string response_type = 5;
-}
-
-// CreateRolePermissionResponse represents the response from adds an api permission to a role
-message CreateRolePermissionResponse {
-	// The Result
-	Result result = 1;
-}
-
-// CreateRoleRequest represents the parameters for creates a role
-message CreateRoleRequest {
-	// Creates a role with this unique name
-	string role_name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// ID of the role to be cloned from. Either roleid or type must be passed in
-	int64 role_id = 2;
-
-	// Indicates whether the role will be visible to all users (public) or only to root admins (private). Default is true.
-	bool public_role = 3 [
-		features.field_presence = EXPLICIT
-	];
-
-	// The type of the role, valid options are: Admin, ResourceAdmin, DomainAdmin, User
-	string role_type = 4;
-
-	// The description of the role
-	string role_description = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
-	];
-
-	//
-	string response_type = 6;
-}
-
-// CreateRoleResponse represents the response from creates a role
-message CreateRoleResponse {
-	// The Result
-	Result result = 1;
+	// ListRoles Lists dynamic roles in CloudStack
+	rpc ListRoles(ListRolesRequest) returns (ListRolesResponse) {}
 }
 
 // DeleteRolePermissionRequest represents the parameters for deletes a role permission
@@ -126,6 +57,23 @@ message DeleteRolePermissionRequest {
 
 // DeleteRolePermissionResponse represents the response from deletes a role permission
 message DeleteRolePermissionResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteRoleRequest represents the parameters for deletes a role
+message DeleteRoleRequest {
+	// ID of the role
+	int64 role_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteRoleResponse represents the response from deletes a role
+message DeleteRoleResponse {
 	// The Result
 	Result result = 1;
 }
@@ -156,8 +104,8 @@ message UpdateRolePermissionResponse {
 	Result result = 1;
 }
 
-// DeleteRoleRequest represents the parameters for deletes a role
-message DeleteRoleRequest {
+// EnableRoleRequest represents the parameters for enables a role
+message EnableRoleRequest {
 	// ID of the role
 	int64 role_id = 1 [
 		(validate.field).required = true
@@ -167,8 +115,8 @@ message DeleteRoleRequest {
 	string response_type = 2;
 }
 
-// DeleteRoleResponse represents the response from deletes a role
-message DeleteRoleResponse {
+// EnableRoleResponse represents the response from enables a role
+message EnableRoleResponse {
 	// The Result
 	Result result = 1;
 }
@@ -188,63 +136,6 @@ message DisableRoleRequest {
 message DisableRoleResponse {
 	// The Result
 	Result result = 1;
-}
-
-// EnableRoleRequest represents the parameters for enables a role
-message EnableRoleRequest {
-	// ID of the role
-	int64 role_id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// EnableRoleResponse represents the response from enables a role
-message EnableRoleResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListRolesRequest represents the parameters for lists dynamic roles in cloudstack
-message ListRolesRequest {
-	// List role by role ID.
-	int64 id = 1;
-
-	// List role by role name.
-	string role_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// List role by role type, valid options are: Admin, ResourceAdmin, DomainAdmin, User.
-	string role_type = 3;
-
-	// List role by role type status, valid options are: enabled, disabled
-	string role_state = 4;
-
-	// List by keyword
-	string keyword = 5;
-
-	//
-	int32 page = 6;
-
-	//
-	int32 page_size = 7;
-
-	//
-	string response_type = 8;
-}
-
-// ListRolesResponse represents the response from lists dynamic roles in cloudstack
-message ListRolesResponse {
-	option (validate.message).disabled = false;
-	// The list of Roles
-	repeated Role items = 1;
-
-	// The total count of Roles
-	int32 total_count = 2;
 }
 
 // ImportRoleRequest represents the parameters for imports a role based on provided map of rule permissions
@@ -290,6 +181,94 @@ message ImportRoleResponse {
 	Result result = 1;
 }
 
+// ListRolePermissionsRequest represents the parameters for lists role permissions
+message ListRolePermissionsRequest {
+	// ID of the role
+	int64 role_id = 1;
+
+	//
+	string response_type = 2;
+}
+
+// ListRolePermissionsResponse represents the response from lists role permissions
+message ListRolePermissionsResponse {
+	option (validate.message).disabled = false;
+	// The list of RolePermissions
+	repeated RolePermission items = 1;
+
+	// The total count of RolePermissions
+	int32 total_count = 2;
+}
+
+// CreateRoleRequest represents the parameters for creates a role
+message CreateRoleRequest {
+	// Creates a role with this unique name
+	string role_name = 1 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// ID of the role to be cloned from. Either roleid or type must be passed in
+	int64 role_id = 2;
+
+	// Indicates whether the role will be visible to all users (public) or only to root admins (private). Default is true.
+	bool public_role = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// The type of the role, valid options are: Admin, ResourceAdmin, DomainAdmin, User
+	string role_type = 4;
+
+	// The description of the role
+	string role_description = 5 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 1024
+	];
+
+	//
+	string response_type = 6;
+}
+
+// CreateRoleResponse represents the response from creates a role
+message CreateRoleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateRolePermissionRequest represents the parameters for adds an api permission to a role
+message CreateRolePermissionRequest {
+	// ID of the role
+	int64 role_id = 1 [
+		(validate.field).required = true
+	];
+
+	// The API name or wildcard rule such as list*
+	string rule = 2 [
+		(validate.field).required = true
+	];
+
+	// The rule permission, allow or deny. Default: deny.
+	string permission = 3 [
+		(validate.field).required = true
+	];
+
+	// The description of the role permission
+	string description = 4 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 1024
+	];
+
+	//
+	string response_type = 5;
+}
+
+// CreateRolePermissionResponse represents the response from adds an api permission to a role
+message CreateRolePermissionResponse {
+	// The Result
+	Result result = 1;
+}
+
 // UpdateRoleRequest represents the parameters for updates a role
 message UpdateRoleRequest {
 	// ID of the role
@@ -327,39 +306,44 @@ message UpdateRoleResponse {
 	Result result = 1;
 }
 
-// ListRolePermissionsRequest represents the parameters for lists role permissions
-message ListRolePermissionsRequest {
-	// ID of the role
-	int64 role_id = 1;
+// ListRolesRequest represents the parameters for lists dynamic roles in cloudstack
+message ListRolesRequest {
+	// List role by role ID.
+	int64 id = 1;
+
+	// List role by role name.
+	string role_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// List role by role type, valid options are: Admin, ResourceAdmin, DomainAdmin, User.
+	string role_type = 3;
+
+	// List role by role type status, valid options are: enabled, disabled
+	string role_state = 4;
+
+	// List by keyword
+	string keyword = 5;
 
 	//
-	string response_type = 2;
+	int32 page = 6;
+
+	//
+	int32 page_size = 7;
+
+	//
+	string response_type = 8;
 }
 
-// ListRolePermissionsResponse represents the response from lists role permissions
-message ListRolePermissionsResponse {
+// ListRolesResponse represents the response from lists dynamic roles in cloudstack
+message ListRolesResponse {
 	option (validate.message).disabled = false;
-	// The list of RolePermissions
-	repeated RolePermission items = 1;
+	// The list of Roles
+	repeated Role items = 1;
 
-	// The total count of RolePermissions
+	// The total count of Roles
 	int32 total_count = 2;
-}
-
-// Role represents a Role Item
-message Role {
-	// The ID of the Role
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-	// The name of the Role
-	string name = 2;
-	// The display name of the Role
-	string display_name = 3;
-	// The description of the Role
-	string description = 4;
-	// The date this entity was created
-	string created = 5;
 }
 
 // RolePermission represents a RolePermission Item
@@ -373,6 +357,22 @@ message RolePermission {
 	// The display name of the RolePermission
 	string display_name = 3;
 	// The description of the RolePermission
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Role represents a Role Item
+message Role {
+	// The ID of the Role
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the Role
+	string name = 2;
+	// The display name of the Role
+	string display_name = 3;
+	// The description of the Role
 	string description = 4;
 	// The date this entity was created
 	string created = 5;
@@ -394,53 +394,6 @@ enum RulePermissionType {
 	RULE_PERMISSION_TYPE_ALLOW = 1;
 	// DENY value
 	RULE_PERMISSION_TYPE_DENY = 2;
-}
-
-// Item represents a generic item in a list response
-message Item {
-	// The ID of the item
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-
-	// The name of the item
-	string name = 2;
-
-	// The display name of the item
-	string display_name = 3;
-
-	// The description of the item
-	string description = 4;
-
-	// The account ID the item belongs to
-	string account_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain ID the item belongs to
-	string domain_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain name the item belongs to
-	string domain = 7;
-
-	// The project ID the item belongs to
-	string project_id = 8 [
-		(validate.field).string.uuid = true
-	];
-
-	// The project name the item belongs to
-	string project = 9;
-
-	// The date the item was created
-	string created = 10;
-
-	// The state of the item
-	string state = 11;
-
-	// Additional fields returned by the API
-	map<string, string> details = 12;
 }
 
 // Result represents a generic operation result

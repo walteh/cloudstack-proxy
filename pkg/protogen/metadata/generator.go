@@ -3,6 +3,7 @@ package metadata
 import (
 	"bytes"
 	"context"
+	_ "embed"
 	"fmt"
 	"io"
 	"os"
@@ -219,155 +220,12 @@ func getBaseCommandName(name string) string {
 	return name
 }
 
+//go:embed templates/proto.tmpl
+var protoTmpl string
+
 // writeProtoFile writes a protobuf file with the given service and message definitions
 func (g *ProtoGenerator) writeProtoFile(filePath, serviceName string, commands []CommandMetadata, responses []ResponseMetadata, packagePath string) error {
 	// Template for the protobuf file
-	const protoTmpl = `edition = "2023";
-
-package cloudstack.management.{{ .PackagePath }}.v1;
-
-import "cloudstack/validate/validate.proto";
-import "google/protobuf/descriptor.proto";
-import "cloudstack/annotations/annotations.proto";
-
-// {{ .ServiceName }} provides operations for managing {{ .PackagePath | title }}s
-service {{ .ServiceName }} {
-{{- if hasAdminService . }}
-	option (annotations.service).scope = Scope_ADMIN;
-{{- else }}
-	option (annotations.service).scope = Scope_USER;
-{{- end }}
-{{- range .Commands }}
-	{{ formatDescription (printf "%s %s" .SimpleName .Description) }}
-	rpc {{ .SimpleName }}({{ .SimpleName }}Request) returns ({{ .SimpleName }}Response) {
-	{{- if .HasAdminVariant }}
-		option (annotations.method).scope = Scope_ADMIN;
-	{{- end }}
-	}
-{{- end }}
-}
-
-{{ range .Commands }}
-// {{ .SimpleName }}Request represents the parameters for {{ .Description | lower }}
-message {{ .SimpleName }}Request {
-{{- if hasAdminVariant . }}
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-
-{{- range $index, $param := .Parameters }}
-	{{ formatDescription $param.Description }}
-	{{ javaTypeToProto $param.JavaType }} {{ $param.FieldName | toSnakeCase }} = {{ add $index 2 }}{{ getValidationRules $param $.Parameters }};
-{{- end }}
-{{- else }}
-{{- range $index, $param := .Parameters }}
-	{{ formatDescription $param.Description }}
-	{{ javaTypeToProto $param.JavaType }} {{ $param.FieldName | toSnakeCase }} = {{ add $index 1 }}{{ getValidationRules $param $.Parameters }};
-{{ end }}
-{{- end }}
-}
-
-// {{ .SimpleName }}Response represents the response from {{ .Description | lower }}
-message {{ .SimpleName }}Response {
-{{- if .ResponseList }}
-	option (validate.message).disabled = false;
-	// The list of {{ .ResponseItemName }}s
-	repeated {{ if eq .ResponseItemName "Item" }}Item{{ else }}{{ .ResponseItemName }}{{ end }} items = 1;
-
-	// The total count of {{ .ResponseItemName }}s
-	int32 total_count = 2;
-{{- else if .ResponseItemName }}
-	// The Result
-	Result result = 1;
-{{- else }}
-	// Whether the operation was successful
-	bool success = 1;
-	
-	// Any text associated with the success or failure
-	string display_text = 2;
-{{- end }}
-}
-{{ end }}
-
-{{ range .Responses }}
-// {{ .MessageName }} represents a {{ .Description | title }}
-message {{ .MessageName }} {
-{{- range $index, $field := .Fields }}
-	{{ formatDescription $field.Description }}
-	{{ javaTypeToProto $field.JavaType }} {{ $field.FieldName | toSnakeCase }} = {{ add $index 1 }}{{ getFieldValidation $field }};
-{{- end }}
-}
-{{ end }}
-
-{{ range .Enums }}
-// {{ .Name }} represents the possible values for {{ .Description }}
-enum {{ $x := .Name }}{{ $x }} {
-	// Default unspecified value
-	{{ $x | toSnakeCase | toAllCaps }}_UNSPECIFIED = 0;
-	
-{{- range $index, $value := .Values }}
-	// {{ $value.Description }}
-	{{ $x | toSnakeCase | toAllCaps }}_{{ $value.Name }} = {{ add $index 1 }};
-{{- end }}
-}
-{{ end }}
-
-// Item represents a generic item in a list response
-message Item {
-	// The ID of the item
-	string id = 1 [(validate.field).string.uuid = true];
-	
-	// The name of the item
-	string name = 2;
-	
-	// The display name of the item
-	string display_name = 3;
-	
-	// The description of the item
-	string description = 4;
-	
-	// The account ID the item belongs to
-	string account_id = 5 [(validate.field).string.uuid = true];
-	
-	// The domain ID the item belongs to
-	string domain_id = 6 [(validate.field).string.uuid = true];
-	
-	// The domain name the item belongs to
-	string domain = 7;
-	
-	// The project ID the item belongs to
-	string project_id = 8 [(validate.field).string.uuid = true];
-	
-	// The project name the item belongs to
-	string project = 9;
-	
-	// The date the item was created
-	string created = 10;
-	
-	// The state of the item
-	string state = 11;
-	
-	// Additional fields returned by the API
-	map<string, string> details = 12;
-}
-
-// Result represents a generic operation result
-message Result {
-	// Whether the operation was successful
-	bool success = 1;
-	
-	// Any text associated with the success or failure
-	string display_text = 2;
-	
-	// The ID of the resource affected by the operation
-	string id = 3 [(validate.field).string.uuid = true];
-	
-	// The job ID for an async operation
-	string job_id = 4 [(validate.field).string.uuid = true];
-	
-	// The status of the job
-	string job_status = 5;
-}
-`
 
 	// Format the category name for the template
 	category := filepath.Base(filepath.Dir(filepath.Dir(filePath)))

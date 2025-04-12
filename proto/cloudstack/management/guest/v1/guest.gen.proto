@@ -10,20 +10,11 @@ import "google/protobuf/descriptor.proto";
 service GuestService {
 	option (annotations.service).scope = Scope_USER;
 
-	// AddGuestOsMapping Adds a guest OS name to hypervisor OS name mapping
-	rpc AddGuestOsMapping(AddGuestOsMappingRequest) returns (AddGuestOsMappingResponse) {}
-
 	// RemoveGuestOsMapping Removes a Guest OS Mapping.
 	rpc RemoveGuestOsMapping(RemoveGuestOsMappingRequest) returns (RemoveGuestOsMappingResponse) {}
 
-	// RemoveGuestOs Removes a Guest OS from listing.
-	rpc RemoveGuestOs(RemoveGuestOsRequest) returns (RemoveGuestOsResponse) {}
-
-	// ListGuestOs Lists all supported OS types for this cloud.
-	rpc ListGuestOs(ListGuestOsRequest) returns (ListGuestOsResponse) {}
-
-	// ListGuestOsMapping Lists all available OS mappings for given hypervisor
-	rpc ListGuestOsMapping(ListGuestOsMappingRequest) returns (ListGuestOsMappingResponse) {}
+	// AddGuestOsMapping Adds a guest OS name to hypervisor OS name mapping
+	rpc AddGuestOsMapping(AddGuestOsMappingRequest) returns (AddGuestOsMappingResponse) {}
 
 	// AddGuestOs Add a new guest OS type
 	rpc AddGuestOs(AddGuestOsRequest) returns (AddGuestOsResponse) {}
@@ -31,14 +22,48 @@ service GuestService {
 	// UpdateGuestOsMapping Updates the information about Guest OS to Hypervisor specific name mapping
 	rpc UpdateGuestOsMapping(UpdateGuestOsMappingRequest) returns (UpdateGuestOsMappingResponse) {}
 
-	// ListGuestOsCategories Lists all supported OS categories for this cloud.
-	rpc ListGuestOsCategories(ListGuestOsCategoriesRequest) returns (ListGuestOsCategoriesResponse) {}
+	// GetHypervisorGuestOsNames Gets the guest OS names in the hypervisor
+	rpc GetHypervisorGuestOsNames(GetHypervisorGuestOsNamesRequest) returns (GetHypervisorGuestOsNamesResponse) {}
+
+	// RemoveGuestOs Removes a Guest OS from listing.
+	rpc RemoveGuestOs(RemoveGuestOsRequest) returns (RemoveGuestOsResponse) {}
+
+	// ListGuestOs Lists all supported OS types for this cloud.
+	rpc ListGuestOs(ListGuestOsRequest) returns (ListGuestOsResponse) {}
 
 	// UpdateGuestOs Updates the information about Guest OS
 	rpc UpdateGuestOs(UpdateGuestOsRequest) returns (UpdateGuestOsResponse) {}
 
-	// GetHypervisorGuestOsNames Gets the guest OS names in the hypervisor
-	rpc GetHypervisorGuestOsNames(GetHypervisorGuestOsNamesRequest) returns (GetHypervisorGuestOsNamesResponse) {}
+	// ListGuestOsMapping Lists all available OS mappings for given hypervisor
+	rpc ListGuestOsMapping(ListGuestOsMappingRequest) returns (ListGuestOsMappingResponse) {}
+
+	// ListGuestOsCategories Lists all supported OS categories for this cloud.
+	rpc ListGuestOsCategories(ListGuestOsCategoriesRequest) returns (ListGuestOsCategoriesResponse) {}
+}
+
+// RemoveGuestOsMappingRequest represents the parameters for removes a guest os mapping.
+message RemoveGuestOsMappingRequest {
+	// ID of the guest OS mapping
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// RemoveGuestOsMappingResponse represents the response from removes a guest os mapping.
+message RemoveGuestOsMappingResponse {
+	// The Result
+	Result result = 1;
 }
 
 // AddGuestOsMappingRequest represents the parameters for adds a guest os name to hypervisor os name mapping
@@ -95,147 +120,6 @@ message AddGuestOsMappingRequest {
 message AddGuestOsMappingResponse {
 	// The Result
 	Result result = 1;
-}
-
-// RemoveGuestOsMappingRequest represents the parameters for removes a guest os mapping.
-message RemoveGuestOsMappingRequest {
-	// ID of the guest OS mapping
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// RemoveGuestOsMappingResponse represents the response from removes a guest os mapping.
-message RemoveGuestOsMappingResponse {
-	// The Result
-	Result result = 1;
-}
-
-// RemoveGuestOsRequest represents the parameters for removes a guest os from listing.
-message RemoveGuestOsRequest {
-	// ID of the guest OS
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// RemoveGuestOsResponse represents the response from removes a guest os from listing.
-message RemoveGuestOsResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListGuestOsRequest represents the parameters for lists all supported os types for this cloud.
-message ListGuestOsRequest {
-	// list by Os type Id
-	int64 id = 1;
-
-	// list by Os Category id
-	int64 os_category_id = 2;
-
-	// list os by description
-	string description = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
-	];
-
-	// list resources by display flag; only ROOT admin is eligible to pass this parameter
-	bool display = 4 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List by keyword
-	string keyword = 5;
-
-	//
-	int32 page = 6;
-
-	//
-	int32 page_size = 7;
-
-	//
-	string response_type = 8;
-}
-
-// ListGuestOsResponse represents the response from lists all supported os types for this cloud.
-message ListGuestOsResponse {
-	option (validate.message).disabled = false;
-	// The list of GuestOSs
-	repeated GuestOS items = 1;
-
-	// The total count of GuestOSs
-	int32 total_count = 2;
-}
-
-// ListGuestOsMappingRequest represents the parameters for lists all available os mappings for given hypervisor
-message ListGuestOsMappingRequest {
-	// list mapping by its UUID
-	int64 id = 1;
-
-	// list mapping by Guest OS Type UUID
-	int64 os_type_id = 2;
-
-	// list Guest OS mapping by OS display name
-	string os_display_name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// list Guest OS mapping by OS mapping name with hypervisor
-	string os_name_for_hypervisor = 4 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// list Guest OS mapping by hypervisor
-	string hypervisor = 5;
-
-	// list Guest OS mapping by hypervisor version. Must be used with hypervisor parameter
-	string hypervisor_version = 6;
-
-	// List by keyword
-	string keyword = 7;
-
-	//
-	int32 page = 8;
-
-	//
-	int32 page_size = 9;
-
-	//
-	string response_type = 10;
-}
-
-// ListGuestOsMappingResponse represents the response from lists all available os mappings for given hypervisor
-message ListGuestOsMappingResponse {
-	option (validate.message).disabled = false;
-	// The list of GuestOsMappings
-	repeated GuestOsMapping items = 1;
-
-	// The total count of GuestOsMappings
-	int32 total_count = 2;
 }
 
 // AddGuestOsRequest represents the parameters for add a new guest os type
@@ -321,37 +205,103 @@ message UpdateGuestOsMappingResponse {
 	Result result = 1;
 }
 
-// ListGuestOsCategoriesRequest represents the parameters for lists all supported os categories for this cloud.
-message ListGuestOsCategoriesRequest {
-	// list Os category by id
-	int64 id = 1;
-
-	// list os category by name
-	string name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+// GetHypervisorGuestOsNamesRequest represents the parameters for gets the guest os names in the hypervisor
+message GetHypervisorGuestOsNamesRequest {
+	// Hypervisor type. One of : VMware, XenServer
+	string hypervisor = 1 [
+		(validate.field).required = true
 	];
 
-	// List by keyword
+	// Hypervisor version to get the guest os names (atleast one hypervisor host with the version specified must be available)
+	string hypervisor_version = 2 [
+		(validate.field).required = true
+	];
+
+	// Keyword for guest os name
 	string keyword = 3;
 
 	//
-	int32 page = 4;
+	int64 start_event_id = 4;
 
 	//
-	int32 page_size = 5;
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
 
 	//
 	string response_type = 6;
 }
 
-// ListGuestOsCategoriesResponse represents the response from lists all supported os categories for this cloud.
-message ListGuestOsCategoriesResponse {
-	option (validate.message).disabled = false;
-	// The list of GuestOSCategorys
-	repeated GuestOSCategory items = 1;
+// GetHypervisorGuestOsNamesResponse represents the response from gets the guest os names in the hypervisor
+message GetHypervisorGuestOsNamesResponse {
+	// The Result
+	Result result = 1;
+}
 
-	// The total count of GuestOSCategorys
+// RemoveGuestOsRequest represents the parameters for removes a guest os from listing.
+message RemoveGuestOsRequest {
+	// ID of the guest OS
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// RemoveGuestOsResponse represents the response from removes a guest os from listing.
+message RemoveGuestOsResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListGuestOsRequest represents the parameters for lists all supported os types for this cloud.
+message ListGuestOsRequest {
+	// list by Os type Id
+	int64 id = 1;
+
+	// list by Os Category id
+	int64 os_category_id = 2;
+
+	// list os by description
+	string description = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 1024
+	];
+
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	bool display = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 5;
+
+	//
+	int32 page = 6;
+
+	//
+	int32 page_size = 7;
+
+	//
+	string response_type = 8;
+}
+
+// ListGuestOsResponse represents the response from lists all supported os types for this cloud.
+message ListGuestOsResponse {
+	option (validate.message).disabled = false;
+	// The list of GuestOSs
+	repeated GuestOS items = 1;
+
+	// The total count of GuestOSs
 	int32 total_count = 2;
 }
 
@@ -395,37 +345,87 @@ message UpdateGuestOsResponse {
 	Result result = 1;
 }
 
-// GetHypervisorGuestOsNamesRequest represents the parameters for gets the guest os names in the hypervisor
-message GetHypervisorGuestOsNamesRequest {
-	// Hypervisor type. One of : VMware, XenServer
-	string hypervisor = 1 [
-		(validate.field).required = true
+// ListGuestOsMappingRequest represents the parameters for lists all available os mappings for given hypervisor
+message ListGuestOsMappingRequest {
+	// list mapping by its UUID
+	int64 id = 1;
+
+	// list mapping by Guest OS Type UUID
+	int64 os_type_id = 2;
+
+	// list Guest OS mapping by OS display name
+	string os_display_name = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
 	];
 
-	// Hypervisor version to get the guest os names (atleast one hypervisor host with the version specified must be available)
-	string hypervisor_version = 2 [
-		(validate.field).required = true
+	// list Guest OS mapping by OS mapping name with hypervisor
+	string os_name_for_hypervisor = 4 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
 	];
 
-	// Keyword for guest os name
+	// list Guest OS mapping by hypervisor
+	string hypervisor = 5;
+
+	// list Guest OS mapping by hypervisor version. Must be used with hypervisor parameter
+	string hypervisor_version = 6;
+
+	// List by keyword
+	string keyword = 7;
+
+	//
+	int32 page = 8;
+
+	//
+	int32 page_size = 9;
+
+	//
+	string response_type = 10;
+}
+
+// ListGuestOsMappingResponse represents the response from lists all available os mappings for given hypervisor
+message ListGuestOsMappingResponse {
+	option (validate.message).disabled = false;
+	// The list of GuestOsMappings
+	repeated GuestOsMapping items = 1;
+
+	// The total count of GuestOsMappings
+	int32 total_count = 2;
+}
+
+// ListGuestOsCategoriesRequest represents the parameters for lists all supported os categories for this cloud.
+message ListGuestOsCategoriesRequest {
+	// list Os category by id
+	int64 id = 1;
+
+	// list os category by name
+	string name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// List by keyword
 	string keyword = 3;
 
 	//
-	int64 start_event_id = 4;
+	int32 page = 4;
 
 	//
-	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
-	];
+	int32 page_size = 5;
 
 	//
 	string response_type = 6;
 }
 
-// GetHypervisorGuestOsNamesResponse represents the response from gets the guest os names in the hypervisor
-message GetHypervisorGuestOsNamesResponse {
-	// The Result
-	Result result = 1;
+// ListGuestOsCategoriesResponse represents the response from lists all supported os categories for this cloud.
+message ListGuestOsCategoriesResponse {
+	option (validate.message).disabled = false;
+	// The list of GuestOSCategorys
+	repeated GuestOSCategory items = 1;
+
+	// The total count of GuestOSCategorys
+	int32 total_count = 2;
 }
 
 // GuestOS represents a GuestOS Item
@@ -482,53 +482,6 @@ message Success {
 	bool success = 1;
 	// any text associated with the success or failure
 	string display_text = 2;
-}
-
-// Item represents a generic item in a list response
-message Item {
-	// The ID of the item
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-
-	// The name of the item
-	string name = 2;
-
-	// The display name of the item
-	string display_name = 3;
-
-	// The description of the item
-	string description = 4;
-
-	// The account ID the item belongs to
-	string account_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain ID the item belongs to
-	string domain_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain name the item belongs to
-	string domain = 7;
-
-	// The project ID the item belongs to
-	string project_id = 8 [
-		(validate.field).string.uuid = true
-	];
-
-	// The project name the item belongs to
-	string project = 9;
-
-	// The date the item was created
-	string created = 10;
-
-	// The state of the item
-	string state = 11;
-
-	// Additional fields returned by the API
-	map<string, string> details = 12;
 }
 
 // Result represents a generic operation result

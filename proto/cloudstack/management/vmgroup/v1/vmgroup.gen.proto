@@ -10,32 +10,43 @@ import "google/protobuf/descriptor.proto";
 service VmgroupService {
 	option (annotations.service).scope = Scope_USER;
 
-	// DeleteVMGroup Deletes a vm group
-	rpc DeleteVMGroup(DeleteVMGroupRequest) returns (DeleteVMGroupResponse) {}
+	// CreateVMGroup Creates a vm group
+	rpc CreateVMGroup(CreateVMGroupRequest) returns (CreateVMGroupResponse) {}
 
 	// UpdateVMGroup Updates a vm group
 	rpc UpdateVMGroup(UpdateVMGroupRequest) returns (UpdateVMGroupResponse) {}
 
-	// CreateVMGroup Creates a vm group
-	rpc CreateVMGroup(CreateVMGroupRequest) returns (CreateVMGroupResponse) {}
+	// DeleteVMGroup Deletes a vm group
+	rpc DeleteVMGroup(DeleteVMGroupRequest) returns (DeleteVMGroupResponse) {}
 
 	// ListVMGroups Lists vm groups
 	rpc ListVMGroups(ListVMGroupsRequest) returns (ListVMGroupsResponse) {}
 }
 
-// DeleteVMGroupRequest represents the parameters for deletes a vm group
-message DeleteVMGroupRequest {
-	// the ID of the instance group
-	int64 id = 1 [
-		(validate.field).required = true
+// CreateVMGroupRequest represents the parameters for creates a vm group
+message CreateVMGroupRequest {
+	// the name of the instance group
+	string group_name = 1 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
 	];
 
+	// the account of the instance group. The account parameter must be used with the domainId parameter.
+	string account_name = 2;
+
+	// the domain ID of account owning the instance group
+	int64 domain_id = 3;
+
+	// The project of the instance group
+	int64 project_id = 4;
+
 	//
-	string response_type = 2;
+	string response_type = 5;
 }
 
-// DeleteVMGroupResponse represents the response from deletes a vm group
-message DeleteVMGroupResponse {
+// CreateVMGroupResponse represents the response from creates a vm group
+message CreateVMGroupResponse {
 	// The Result
 	Result result = 1;
 }
@@ -63,30 +74,19 @@ message UpdateVMGroupResponse {
 	Result result = 1;
 }
 
-// CreateVMGroupRequest represents the parameters for creates a vm group
-message CreateVMGroupRequest {
-	// the name of the instance group
-	string group_name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+// DeleteVMGroupRequest represents the parameters for deletes a vm group
+message DeleteVMGroupRequest {
+	// the ID of the instance group
+	int64 id = 1 [
+		(validate.field).required = true
 	];
 
-	// the account of the instance group. The account parameter must be used with the domainId parameter.
-	string account_name = 2;
-
-	// the domain ID of account owning the instance group
-	int64 domain_id = 3;
-
-	// The project of the instance group
-	int64 project_id = 4;
-
 	//
-	string response_type = 5;
+	string response_type = 2;
 }
 
-// CreateVMGroupResponse represents the response from creates a vm group
-message CreateVMGroupResponse {
+// DeleteVMGroupResponse represents the response from deletes a vm group
+message DeleteVMGroupResponse {
 	// The Result
 	Result result = 1;
 }
@@ -172,53 +172,6 @@ message Success {
 	bool success = 1;
 	// any text associated with the success or failure
 	string display_text = 2;
-}
-
-// Item represents a generic item in a list response
-message Item {
-	// The ID of the item
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-
-	// The name of the item
-	string name = 2;
-
-	// The display name of the item
-	string display_name = 3;
-
-	// The description of the item
-	string description = 4;
-
-	// The account ID the item belongs to
-	string account_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain ID the item belongs to
-	string domain_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain name the item belongs to
-	string domain = 7;
-
-	// The project ID the item belongs to
-	string project_id = 8 [
-		(validate.field).string.uuid = true
-	];
-
-	// The project name the item belongs to
-	string project = 9;
-
-	// The date the item was created
-	string created = 10;
-
-	// The state of the item
-	string state = 11;
-
-	// Additional fields returned by the API
-	map<string, string> details = 12;
 }
 
 // Result represents a generic operation result

@@ -10,8 +10,11 @@ import "google/protobuf/descriptor.proto";
 service CaService {
 	option (annotations.service).scope = Scope_USER;
 
-	// ListCaCertificate Lists the CA public certificate(s) as support by the configured/provided CA plugin
-	rpc ListCaCertificate(ListCaCertificateRequest) returns (ListCaCertificateResponse) {}
+	// RevokeCertificate Revokes certificate using configured CA plugin
+	rpc RevokeCertificate(RevokeCertificateRequest) returns (RevokeCertificateResponse) {}
+
+	// IssueCertificate Issues a client certificate using configured or provided CA plugin
+	rpc IssueCertificate(IssueCertificateRequest) returns (IssueCertificateResponse) {}
 
 	// ListCAProviders Lists available certificate authority providers in CloudStack
 	rpc ListCAProviders(ListCAProvidersRequest) returns (ListCAProvidersResponse) {}
@@ -19,89 +22,8 @@ service CaService {
 	// ProvisionCertificate Issues and propagates client certificate on a connected host/agent using configured CA plugin
 	rpc ProvisionCertificate(ProvisionCertificateRequest) returns (ProvisionCertificateResponse) {}
 
-	// RevokeCertificate Revokes certificate using configured CA plugin
-	rpc RevokeCertificate(RevokeCertificateRequest) returns (RevokeCertificateResponse) {}
-
-	// IssueCertificate Issues a client certificate using configured or provided CA plugin
-	rpc IssueCertificate(IssueCertificateRequest) returns (IssueCertificateResponse) {}
-}
-
-// ListCaCertificateRequest represents the parameters for lists the ca public certificate(s) as support by the configured/provided ca plugin
-message ListCaCertificateRequest {
-	// Name of the CA service provider, otherwise the default configured provider plugin will be used
-	string provider = 1 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// ListCaCertificateResponse represents the response from lists the ca public certificate(s) as support by the configured/provided ca plugin
-message ListCaCertificateResponse {
-	option (validate.message).disabled = false;
-	// The list of Certificates
-	repeated Certificate items = 1;
-
-	// The total count of Certificates
-	int32 total_count = 2;
-}
-
-// ListCAProvidersRequest represents the parameters for lists available certificate authority providers in cloudstack
-message ListCAProvidersRequest {
-	// List CA service provider by name
-	string name = 1 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	//
-	string response_type = 2;
-}
-
-// ListCAProvidersResponse represents the response from lists available certificate authority providers in cloudstack
-message ListCAProvidersResponse {
-	option (validate.message).disabled = false;
-	// The list of CAProviders
-	repeated CAProvider items = 1;
-
-	// The total count of CAProviders
-	int32 total_count = 2;
-}
-
-// ProvisionCertificateRequest represents the parameters for issues and propagates client certificate on a connected host/agent using configured ca plugin
-message ProvisionCertificateRequest {
-	// The host/agent uuid to which the certificate has to be provisioned (issued and propagated)
-	int64 host_id = 1 [
-		(validate.field).required = true
-	];
-
-	// Whether to attempt reconnection with host/agent after successful deployment of certificate. When option is not provided, configured global setting is used
-	bool reconnect = 2 [
-		features.field_presence = EXPLICIT
-	];
-
-	// Name of the CA service provider, otherwise the default configured provider plugin will be used
-	string provider = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	int64 start_event_id = 4;
-
-	//
-	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 6;
-}
-
-// ProvisionCertificateResponse represents the response from issues and propagates client certificate on a connected host/agent using configured ca plugin
-message ProvisionCertificateResponse {
-	// The Result
-	Result result = 1;
+	// ListCaCertificate Lists the CA public certificate(s) as support by the configured/provided CA plugin
+	rpc ListCaCertificate(ListCaCertificateRequest) returns (ListCaCertificateResponse) {}
 }
 
 // RevokeCertificateRequest represents the parameters for revokes certificate using configured ca plugin
@@ -176,20 +98,82 @@ message IssueCertificateResponse {
 	Result result = 1;
 }
 
-// Certificate represents a Certificate Item
-message Certificate {
-	// The ID of the Certificate
-	string id = 1 [
+// ListCAProvidersRequest represents the parameters for lists available certificate authority providers in cloudstack
+message ListCAProvidersRequest {
+	// List CA service provider by name
+	string name = 1 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	//
+	string response_type = 2;
+}
+
+// ListCAProvidersResponse represents the response from lists available certificate authority providers in cloudstack
+message ListCAProvidersResponse {
+	option (validate.message).disabled = false;
+	// The list of CAProviders
+	repeated CAProvider items = 1;
+
+	// The total count of CAProviders
+	int32 total_count = 2;
+}
+
+// ProvisionCertificateRequest represents the parameters for issues and propagates client certificate on a connected host/agent using configured ca plugin
+message ProvisionCertificateRequest {
+	// The host/agent uuid to which the certificate has to be provisioned (issued and propagated)
+	int64 host_id = 1 [
+		(validate.field).required = true
+	];
+
+	// Whether to attempt reconnection with host/agent after successful deployment of certificate. When option is not provided, configured global setting is used
+	bool reconnect = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Name of the CA service provider, otherwise the default configured provider plugin will be used
+	string provider = 3 [
 		(validate.field).string.uuid = true
 	];
-	// The name of the Certificate
-	string name = 2;
-	// The display name of the Certificate
-	string display_name = 3;
-	// The description of the Certificate
-	string description = 4;
-	// The date this entity was created
-	string created = 5;
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// ProvisionCertificateResponse represents the response from issues and propagates client certificate on a connected host/agent using configured ca plugin
+message ProvisionCertificateResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListCaCertificateRequest represents the parameters for lists the ca public certificate(s) as support by the configured/provided ca plugin
+message ListCaCertificateRequest {
+	// Name of the CA service provider, otherwise the default configured provider plugin will be used
+	string provider = 1 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// ListCaCertificateResponse represents the response from lists the ca public certificate(s) as support by the configured/provided ca plugin
+message ListCaCertificateResponse {
+	option (validate.message).disabled = false;
+	// The list of Certificates
+	repeated Certificate items = 1;
+
+	// The total count of Certificates
+	int32 total_count = 2;
 }
 
 // CAProvider represents a CAProvider Item
@@ -208,59 +192,28 @@ message CAProvider {
 	string created = 5;
 }
 
+// Certificate represents a Certificate Item
+message Certificate {
+	// The ID of the Certificate
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the Certificate
+	string name = 2;
+	// The display name of the Certificate
+	string display_name = 3;
+	// The description of the Certificate
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
 // Success represents a Success Operation Response
 message Success {
 	// true if operation is executed successfully
 	bool success = 1;
 	// any text associated with the success or failure
 	string display_text = 2;
-}
-
-// Item represents a generic item in a list response
-message Item {
-	// The ID of the item
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-
-	// The name of the item
-	string name = 2;
-
-	// The display name of the item
-	string display_name = 3;
-
-	// The description of the item
-	string description = 4;
-
-	// The account ID the item belongs to
-	string account_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain ID the item belongs to
-	string domain_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain name the item belongs to
-	string domain = 7;
-
-	// The project ID the item belongs to
-	string project_id = 8 [
-		(validate.field).string.uuid = true
-	];
-
-	// The project name the item belongs to
-	string project = 9;
-
-	// The date the item was created
-	string created = 10;
-
-	// The state of the item
-	string state = 11;
-
-	// Additional fields returned by the API
-	map<string, string> details = 12;
 }
 
 // Result represents a generic operation result

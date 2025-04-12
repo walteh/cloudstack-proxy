@@ -10,20 +10,101 @@ import "google/protobuf/descriptor.proto";
 service NatService {
 	option (annotations.service).scope = Scope_USER;
 
-	// ListIpForwardingRules List the IP forwarding rules
-	rpc ListIpForwardingRules(ListIpForwardingRulesRequest) returns (ListIpForwardingRulesResponse) {}
-
-	// DeleteIpForwardingRule Deletes an IP forwarding rule
-	rpc DeleteIpForwardingRule(DeleteIpForwardingRuleRequest) returns (DeleteIpForwardingRuleResponse) {}
-
-	// DisableStaticNat Disables static rule for given IP address
-	rpc DisableStaticNat(DisableStaticNatRequest) returns (DisableStaticNatResponse) {}
+	// EnableStaticNat Enables static NAT for given IP address
+	rpc EnableStaticNat(EnableStaticNatRequest) returns (EnableStaticNatResponse) {}
 
 	// CreateIpForwardingRule Creates an IP forwarding rule
 	rpc CreateIpForwardingRule(CreateIpForwardingRuleRequest) returns (CreateIpForwardingRuleResponse) {}
 
-	// EnableStaticNat Enables static NAT for given IP address
-	rpc EnableStaticNat(EnableStaticNatRequest) returns (EnableStaticNatResponse) {}
+	// ListIpForwardingRules List the IP forwarding rules
+	rpc ListIpForwardingRules(ListIpForwardingRulesRequest) returns (ListIpForwardingRulesResponse) {}
+
+	// DisableStaticNat Disables static rule for given IP address
+	rpc DisableStaticNat(DisableStaticNatRequest) returns (DisableStaticNatResponse) {}
+
+	// DeleteIpForwardingRule Deletes an IP forwarding rule
+	rpc DeleteIpForwardingRule(DeleteIpForwardingRuleRequest) returns (DeleteIpForwardingRuleResponse) {}
+}
+
+// EnableStaticNatRequest represents the parameters for enables static nat for given ip address
+message EnableStaticNatRequest {
+	// the public IP address ID for which static NAT feature is being enabled
+	int64 ip_address_id = 1 [
+		(validate.field).required = true
+	];
+
+	// the ID of the virtual machine for enabling static NAT feature
+	int64 virtual_machine_id = 2 [
+		(validate.field).required = true
+	];
+
+	// The network of the VM the static NAT will be enabled for. Required when public IP address is not associated with any guest network yet (VPC case)
+	int64 network_id = 3;
+
+	// VM guest NIC secondary IP address for the port forwarding rule
+	string vm_secondary_ip = 4 [
+		(validate.field).string.ipv4 = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// EnableStaticNatResponse represents the response from enables static nat for given ip address
+message EnableStaticNatResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateIpForwardingRuleRequest represents the parameters for creates an ip forwarding rule
+message CreateIpForwardingRuleRequest {
+	// the public IP address ID of the forwarding rule, already associated via associateIp
+	int64 ip_address_id = 1 [
+		(validate.field).required = true
+	];
+
+	// the start port for the rule
+	int32 start_port = 2 [
+		(validate.field).required  = true,
+		(validate.field).int32.gte = 1,
+		(validate.field).int32.lte = 65535
+	];
+
+	// the end port for the rule
+	int32 end_port = 3 [
+		(validate.field).int32.gte = 1,
+		(validate.field).int32.lte = 65535
+	];
+
+	// the protocol for the rule. Valid values are TCP or UDP.
+	string protocol = 4 [
+		(validate.field).required = true
+	];
+
+	// if true, firewall rule for source/end public port is automatically created; if false - firewall rule has to be created explicitly. Has value true by default
+	bool open_firewall = 5 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the CIDR list to forward traffic from. Multiple entries must be separated by a single comma character (,). This parameter is deprecated. Do not use.
+	repeated string cidrlist = 6;
+
+	//
+	int64 start_event_id = 7;
+
+	//
+	string injected_job_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 9;
+}
+
+// CreateIpForwardingRuleResponse represents the response from creates an ip forwarding rule
+message CreateIpForwardingRuleResponse {
+	// The Result
+	Result result = 1;
 }
 
 // ListIpForwardingRulesRequest represents the parameters for list the ip forwarding rules
@@ -85,31 +166,6 @@ message ListIpForwardingRulesResponse {
 	int32 total_count = 2;
 }
 
-// DeleteIpForwardingRuleRequest represents the parameters for deletes an ip forwarding rule
-message DeleteIpForwardingRuleRequest {
-	// the ID of the forwarding rule
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DeleteIpForwardingRuleResponse represents the response from deletes an ip forwarding rule
-message DeleteIpForwardingRuleResponse {
-	// The Result
-	Result result = 1;
-}
-
 // DisableStaticNatRequest represents the parameters for disables static rule for given ip address
 message DisableStaticNatRequest {
 	// the public IP address ID for which static NAT feature is being disabled
@@ -135,83 +191,27 @@ message DisableStaticNatResponse {
 	Result result = 1;
 }
 
-// CreateIpForwardingRuleRequest represents the parameters for creates an ip forwarding rule
-message CreateIpForwardingRuleRequest {
-	// the public IP address ID of the forwarding rule, already associated via associateIp
-	int64 ip_address_id = 1 [
+// DeleteIpForwardingRuleRequest represents the parameters for deletes an ip forwarding rule
+message DeleteIpForwardingRuleRequest {
+	// the ID of the forwarding rule
+	int64 id = 1 [
 		(validate.field).required = true
 	];
 
-	// the start port for the rule
-	int32 start_port = 2 [
-		(validate.field).required  = true,
-		(validate.field).int32.gte = 1,
-		(validate.field).int32.lte = 65535
-	];
-
-	// the end port for the rule
-	int32 end_port = 3 [
-		(validate.field).int32.gte = 1,
-		(validate.field).int32.lte = 65535
-	];
-
-	// the protocol for the rule. Valid values are TCP or UDP.
-	string protocol = 4 [
-		(validate.field).required = true
-	];
-
-	// if true, firewall rule for source/end public port is automatically created; if false - firewall rule has to be created explicitly. Has value true by default
-	bool open_firewall = 5 [
-		features.field_presence = EXPLICIT
-	];
-
-	// the CIDR list to forward traffic from. Multiple entries must be separated by a single comma character (,). This parameter is deprecated. Do not use.
-	repeated string cidrlist = 6;
+	//
+	int64 start_event_id = 2;
 
 	//
-	int64 start_event_id = 7;
-
-	//
-	string injected_job_id = 8 [
+	string injected_job_id = 3 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	string response_type = 9;
+	string response_type = 4;
 }
 
-// CreateIpForwardingRuleResponse represents the response from creates an ip forwarding rule
-message CreateIpForwardingRuleResponse {
-	// The Result
-	Result result = 1;
-}
-
-// EnableStaticNatRequest represents the parameters for enables static nat for given ip address
-message EnableStaticNatRequest {
-	// the public IP address ID for which static NAT feature is being enabled
-	int64 ip_address_id = 1 [
-		(validate.field).required = true
-	];
-
-	// the ID of the virtual machine for enabling static NAT feature
-	int64 virtual_machine_id = 2 [
-		(validate.field).required = true
-	];
-
-	// The network of the VM the static NAT will be enabled for. Required when public IP address is not associated with any guest network yet (VPC case)
-	int64 network_id = 3;
-
-	// VM guest NIC secondary IP address for the port forwarding rule
-	string vm_secondary_ip = 4 [
-		(validate.field).string.ipv4 = true
-	];
-
-	//
-	string response_type = 5;
-}
-
-// EnableStaticNatResponse represents the response from enables static nat for given ip address
-message EnableStaticNatResponse {
+// DeleteIpForwardingRuleResponse represents the response from deletes an ip forwarding rule
+message DeleteIpForwardingRuleResponse {
 	// The Result
 	Result result = 1;
 }
@@ -248,53 +248,6 @@ enum ProtocolType {
 	PROTOCOL_TYPE_TCP = 1;
 	// UDP value
 	PROTOCOL_TYPE_UDP = 2;
-}
-
-// Item represents a generic item in a list response
-message Item {
-	// The ID of the item
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-
-	// The name of the item
-	string name = 2;
-
-	// The display name of the item
-	string display_name = 3;
-
-	// The description of the item
-	string description = 4;
-
-	// The account ID the item belongs to
-	string account_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain ID the item belongs to
-	string domain_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain name the item belongs to
-	string domain = 7;
-
-	// The project ID the item belongs to
-	string project_id = 8 [
-		(validate.field).string.uuid = true
-	];
-
-	// The project name the item belongs to
-	string project = 9;
-
-	// The date the item was created
-	string created = 10;
-
-	// The state of the item
-	string state = 11;
-
-	// Additional fields returned by the API
-	map<string, string> details = 12;
 }
 
 // Result represents a generic operation result

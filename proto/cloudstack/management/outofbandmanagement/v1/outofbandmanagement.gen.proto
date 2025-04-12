@@ -10,32 +10,76 @@ import "google/protobuf/descriptor.proto";
 service OutofbandmanagementService {
 	option (annotations.service).scope = Scope_USER;
 
+	// ConfigureOutOfBandManagement Configures a host's out-of-band management interface
+	rpc ConfigureOutOfBandManagement(ConfigureOutOfBandManagementRequest) returns (ConfigureOutOfBandManagementResponse) {}
+
 	// EnableOutOfBandManagementForZone Enables out-of-band management for a zone
 	rpc EnableOutOfBandManagementForZone(EnableOutOfBandManagementForZoneRequest) returns (EnableOutOfBandManagementForZoneResponse) {}
 
 	// IssueOutOfBandManagementPowerAction Initiates the specified power action to the host's out-of-band management interface
 	rpc IssueOutOfBandManagementPowerAction(IssueOutOfBandManagementPowerActionRequest) returns (IssueOutOfBandManagementPowerActionResponse) {}
 
-	// DisableOutOfBandManagementForHost Disables out-of-band management for a host
-	rpc DisableOutOfBandManagementForHost(DisableOutOfBandManagementForHostRequest) returns (DisableOutOfBandManagementForHostResponse) {}
-
-	// ConfigureOutOfBandManagement Configures a host's out-of-band management interface
-	rpc ConfigureOutOfBandManagement(ConfigureOutOfBandManagementRequest) returns (ConfigureOutOfBandManagementResponse) {}
-
-	// EnableOutOfBandManagementForCluster Enables out-of-band management for a cluster
-	rpc EnableOutOfBandManagementForCluster(EnableOutOfBandManagementForClusterRequest) returns (EnableOutOfBandManagementForClusterResponse) {}
+	// DisableOutOfBandManagementForZone Disables out-of-band management for a zone
+	rpc DisableOutOfBandManagementForZone(DisableOutOfBandManagementForZoneRequest) returns (DisableOutOfBandManagementForZoneResponse) {}
 
 	// ChangeOutOfBandManagementPassword Changes out-of-band management interface password on the host and updates the interface configuration in CloudStack if the operation succeeds, else reverts the old password
 	rpc ChangeOutOfBandManagementPassword(ChangeOutOfBandManagementPasswordRequest) returns (ChangeOutOfBandManagementPasswordResponse) {}
 
+	// EnableOutOfBandManagementForHost Enables out-of-band management for a host
+	rpc EnableOutOfBandManagementForHost(EnableOutOfBandManagementForHostRequest) returns (EnableOutOfBandManagementForHostResponse) {}
+
 	// DisableOutOfBandManagementForCluster Disables out-of-band management for a cluster
 	rpc DisableOutOfBandManagementForCluster(DisableOutOfBandManagementForClusterRequest) returns (DisableOutOfBandManagementForClusterResponse) {}
 
-	// DisableOutOfBandManagementForZone Disables out-of-band management for a zone
-	rpc DisableOutOfBandManagementForZone(DisableOutOfBandManagementForZoneRequest) returns (DisableOutOfBandManagementForZoneResponse) {}
+	// DisableOutOfBandManagementForHost Disables out-of-band management for a host
+	rpc DisableOutOfBandManagementForHost(DisableOutOfBandManagementForHostRequest) returns (DisableOutOfBandManagementForHostResponse) {}
 
-	// EnableOutOfBandManagementForHost Enables out-of-band management for a host
-	rpc EnableOutOfBandManagementForHost(EnableOutOfBandManagementForHostRequest) returns (EnableOutOfBandManagementForHostResponse) {}
+	// EnableOutOfBandManagementForCluster Enables out-of-band management for a cluster
+	rpc EnableOutOfBandManagementForCluster(EnableOutOfBandManagementForClusterRequest) returns (EnableOutOfBandManagementForClusterResponse) {}
+}
+
+// ConfigureOutOfBandManagementRequest represents the parameters for configures a host's out-of-band management interface
+message ConfigureOutOfBandManagementRequest {
+	// the ID of the host
+	int64 host_id = 1 [
+		(validate.field).required = true
+	];
+
+	// the host management interface driver, for example: ipmitool
+	string driver = 2 [
+		(validate.field).required = true
+	];
+
+	// the host management interface IP address
+	string address = 3 [
+		(validate.field).required = true
+	];
+
+	// the host management interface port
+	string port = 4 [
+		(validate.field).required = true
+	];
+
+	// the host management interface user
+	string username = 5 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the host management interface password
+	string password = 6 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 7;
+}
+
+// ConfigureOutOfBandManagementResponse represents the response from configures a host's out-of-band management interface
+message ConfigureOutOfBandManagementResponse {
+	// The Result
+	Result result = 1;
 }
 
 // EnableOutOfBandManagementForZoneRequest represents the parameters for enables out-of-band management for a zone
@@ -96,10 +140,10 @@ message IssueOutOfBandManagementPowerActionResponse {
 	Result result = 1;
 }
 
-// DisableOutOfBandManagementForHostRequest represents the parameters for disables out-of-band management for a host
-message DisableOutOfBandManagementForHostRequest {
-	// the ID of the host
-	int64 host_id = 1 [
+// DisableOutOfBandManagementForZoneRequest represents the parameters for disables out-of-band management for a zone
+message DisableOutOfBandManagementForZoneRequest {
+	// the ID of the zone
+	int64 zone_id = 1 [
 		(validate.field).required = true
 	];
 
@@ -115,77 +159,8 @@ message DisableOutOfBandManagementForHostRequest {
 	string response_type = 4;
 }
 
-// DisableOutOfBandManagementForHostResponse represents the response from disables out-of-band management for a host
-message DisableOutOfBandManagementForHostResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ConfigureOutOfBandManagementRequest represents the parameters for configures a host's out-of-band management interface
-message ConfigureOutOfBandManagementRequest {
-	// the ID of the host
-	int64 host_id = 1 [
-		(validate.field).required = true
-	];
-
-	// the host management interface driver, for example: ipmitool
-	string driver = 2 [
-		(validate.field).required = true
-	];
-
-	// the host management interface IP address
-	string address = 3 [
-		(validate.field).required = true
-	];
-
-	// the host management interface port
-	string port = 4 [
-		(validate.field).required = true
-	];
-
-	// the host management interface user
-	string username = 5 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// the host management interface password
-	string password = 6 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 7;
-}
-
-// ConfigureOutOfBandManagementResponse represents the response from configures a host's out-of-band management interface
-message ConfigureOutOfBandManagementResponse {
-	// The Result
-	Result result = 1;
-}
-
-// EnableOutOfBandManagementForClusterRequest represents the parameters for enables out-of-band management for a cluster
-message EnableOutOfBandManagementForClusterRequest {
-	// the ID of the cluster
-	int64 cluster_id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// EnableOutOfBandManagementForClusterResponse represents the response from enables out-of-band management for a cluster
-message EnableOutOfBandManagementForClusterResponse {
+// DisableOutOfBandManagementForZoneResponse represents the response from disables out-of-band management for a zone
+message DisableOutOfBandManagementForZoneResponse {
 	// The Result
 	Result result = 1;
 }
@@ -218,56 +193,6 @@ message ChangeOutOfBandManagementPasswordResponse {
 	Result result = 1;
 }
 
-// DisableOutOfBandManagementForClusterRequest represents the parameters for disables out-of-band management for a cluster
-message DisableOutOfBandManagementForClusterRequest {
-	// the ID of the cluster
-	int64 cluster_id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DisableOutOfBandManagementForClusterResponse represents the response from disables out-of-band management for a cluster
-message DisableOutOfBandManagementForClusterResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DisableOutOfBandManagementForZoneRequest represents the parameters for disables out-of-band management for a zone
-message DisableOutOfBandManagementForZoneRequest {
-	// the ID of the zone
-	int64 zone_id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DisableOutOfBandManagementForZoneResponse represents the response from disables out-of-band management for a zone
-message DisableOutOfBandManagementForZoneResponse {
-	// The Result
-	Result result = 1;
-}
-
 // EnableOutOfBandManagementForHostRequest represents the parameters for enables out-of-band management for a host
 message EnableOutOfBandManagementForHostRequest {
 	// the ID of the host
@@ -293,59 +218,87 @@ message EnableOutOfBandManagementForHostResponse {
 	Result result = 1;
 }
 
+// DisableOutOfBandManagementForClusterRequest represents the parameters for disables out-of-band management for a cluster
+message DisableOutOfBandManagementForClusterRequest {
+	// the ID of the cluster
+	int64 cluster_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DisableOutOfBandManagementForClusterResponse represents the response from disables out-of-band management for a cluster
+message DisableOutOfBandManagementForClusterResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DisableOutOfBandManagementForHostRequest represents the parameters for disables out-of-band management for a host
+message DisableOutOfBandManagementForHostRequest {
+	// the ID of the host
+	int64 host_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DisableOutOfBandManagementForHostResponse represents the response from disables out-of-band management for a host
+message DisableOutOfBandManagementForHostResponse {
+	// The Result
+	Result result = 1;
+}
+
+// EnableOutOfBandManagementForClusterRequest represents the parameters for enables out-of-band management for a cluster
+message EnableOutOfBandManagementForClusterRequest {
+	// the ID of the cluster
+	int64 cluster_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// EnableOutOfBandManagementForClusterResponse represents the response from enables out-of-band management for a cluster
+message EnableOutOfBandManagementForClusterResponse {
+	// The Result
+	Result result = 1;
+}
+
 // Success represents a Success Operation Response
 message Success {
 	// true if operation is executed successfully
 	bool success = 1;
 	// any text associated with the success or failure
 	string display_text = 2;
-}
-
-// Item represents a generic item in a list response
-message Item {
-	// The ID of the item
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-
-	// The name of the item
-	string name = 2;
-
-	// The display name of the item
-	string display_name = 3;
-
-	// The description of the item
-	string description = 4;
-
-	// The account ID the item belongs to
-	string account_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain ID the item belongs to
-	string domain_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain name the item belongs to
-	string domain = 7;
-
-	// The project ID the item belongs to
-	string project_id = 8 [
-		(validate.field).string.uuid = true
-	];
-
-	// The project name the item belongs to
-	string project = 9;
-
-	// The date the item was created
-	string created = 10;
-
-	// The state of the item
-	string state = 11;
-
-	// Additional fields returned by the API
-	map<string, string> details = 12;
 }
 
 // Result represents a generic operation result

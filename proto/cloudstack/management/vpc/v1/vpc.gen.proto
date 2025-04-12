@@ -10,141 +10,203 @@ import "google/protobuf/descriptor.proto";
 service VpcService {
 	option (annotations.service).scope = Scope_USER;
 
-	// UpdateVPC Updates a VPC
-	rpc UpdateVPC(UpdateVPCRequest) returns (UpdateVPCResponse) {
-		option (annotations.method).scope = Scope_ADMIN;
-	}
-
-	// CreateStaticRoute Creates a static route
-	rpc CreateStaticRoute(CreateStaticRouteRequest) returns (CreateStaticRouteResponse) {}
-
-	// CreateVPCOffering Creates VPC offering
-	rpc CreateVPCOffering(CreateVPCOfferingRequest) returns (CreateVPCOfferingResponse) {}
-
-	// ListVPCsCmdByAdmin Lists VPCs
-	rpc ListVPCsCmdByAdmin(ListVPCsCmdByAdminRequest) returns (ListVPCsCmdByAdminResponse) {}
-
-	// ListVPCOfferings Lists VPC offerings
-	rpc ListVPCOfferings(ListVPCOfferingsRequest) returns (ListVPCOfferingsResponse) {}
+	// ListPrivateGatewaysCmdByAdmin List private gateways
+	rpc ListPrivateGatewaysCmdByAdmin(ListPrivateGatewaysCmdByAdminRequest) returns (ListPrivateGatewaysCmdByAdminResponse) {}
 
 	// CreatePrivateGatewayByAdmin Creates a private gateway
 	rpc CreatePrivateGatewayByAdmin(CreatePrivateGatewayByAdminRequest) returns (CreatePrivateGatewayByAdminResponse) {}
 
-	// CreatePrivateGateway Creates a private gateway
-	rpc CreatePrivateGateway(CreatePrivateGatewayRequest) returns (CreatePrivateGatewayResponse) {}
-
-	// DeleteStaticRoute Deletes a static route
-	rpc DeleteStaticRoute(DeleteStaticRouteRequest) returns (DeleteStaticRouteResponse) {}
-
-	// DeleteVPCOffering Deletes VPC offering
-	rpc DeleteVPCOffering(DeleteVPCOfferingRequest) returns (DeleteVPCOfferingResponse) {}
-
-	// CreateVPCCmdByAdmin Creates a VPC
-	rpc CreateVPCCmdByAdmin(CreateVPCCmdByAdminRequest) returns (CreateVPCCmdByAdminResponse) {}
-
-	// RestartVPC Restarts a VPC
-	rpc RestartVPC(RestartVPCRequest) returns (RestartVPCResponse) {}
-
-	// DeletePrivateGateway Deletes a Private gateway
-	rpc DeletePrivateGateway(DeletePrivateGatewayRequest) returns (DeletePrivateGatewayResponse) {}
-
-	// ListPrivateGatewaysCmdByAdmin List private gateways
-	rpc ListPrivateGatewaysCmdByAdmin(ListPrivateGatewaysCmdByAdminRequest) returns (ListPrivateGatewaysCmdByAdminResponse) {}
-
-	// ListPrivateGateways List private gateways
-	rpc ListPrivateGateways(ListPrivateGatewaysRequest) returns (ListPrivateGatewaysResponse) {}
-
-	// DeleteVPC Deletes a VPC
-	rpc DeleteVPC(DeleteVPCRequest) returns (DeleteVPCResponse) {}
+	// CreateVPCOffering Creates VPC offering
+	rpc CreateVPCOffering(CreateVPCOfferingRequest) returns (CreateVPCOfferingResponse) {}
 
 	// UpdateVPCOffering Updates VPC offering
 	rpc UpdateVPCOffering(UpdateVPCOfferingRequest) returns (UpdateVPCOfferingResponse) {}
 
-	// ListVPCs Lists VPCs
-	rpc ListVPCs(ListVPCsRequest) returns (ListVPCsResponse) {
-		option (annotations.method).scope = Scope_ADMIN;
-	}
+	// DeleteVPC Deletes a VPC
+	rpc DeleteVPC(DeleteVPCRequest) returns (DeleteVPCResponse) {}
+
+	// CreateVPCCmdByAdmin Creates a VPC
+	rpc CreateVPCCmdByAdmin(CreateVPCCmdByAdminRequest) returns (CreateVPCCmdByAdminResponse) {}
+
+	// CreateStaticRoute Creates a static route
+	rpc CreateStaticRoute(CreateStaticRouteRequest) returns (CreateStaticRouteResponse) {}
+
+	// DeleteVPCOffering Deletes VPC offering
+	rpc DeleteVPCOffering(DeleteVPCOfferingRequest) returns (DeleteVPCOfferingResponse) {}
+
+	// ListVPCOfferings Lists VPC offerings
+	rpc ListVPCOfferings(ListVPCOfferingsRequest) returns (ListVPCOfferingsResponse) {}
+
+	// ListStaticRoutes Lists all static routes
+	rpc ListStaticRoutes(ListStaticRoutesRequest) returns (ListStaticRoutesResponse) {}
+
+	// UpdateVPCCmdByAdmin Updates a VPC
+	rpc UpdateVPCCmdByAdmin(UpdateVPCCmdByAdminRequest) returns (UpdateVPCCmdByAdminResponse) {}
 
 	// CreateVPC Creates a VPC
 	rpc CreateVPC(CreateVPCRequest) returns (CreateVPCResponse) {
 		option (annotations.method).scope = Scope_ADMIN;
 	}
 
-	// ListStaticRoutes Lists all static routes
-	rpc ListStaticRoutes(ListStaticRoutesRequest) returns (ListStaticRoutesResponse) {}
+	// UpdateVPC Updates a VPC
+	rpc UpdateVPC(UpdateVPCRequest) returns (UpdateVPCResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
+
+	// ListVPCsCmdByAdmin Lists VPCs
+	rpc ListVPCsCmdByAdmin(ListVPCsCmdByAdminRequest) returns (ListVPCsCmdByAdminResponse) {}
+
+	// DeletePrivateGateway Deletes a Private gateway
+	rpc DeletePrivateGateway(DeletePrivateGatewayRequest) returns (DeletePrivateGatewayResponse) {}
+
+	// ListPrivateGateways List private gateways
+	rpc ListPrivateGateways(ListPrivateGatewaysRequest) returns (ListPrivateGatewaysResponse) {}
+
+	// CreatePrivateGateway Creates a private gateway
+	rpc CreatePrivateGateway(CreatePrivateGatewayRequest) returns (CreatePrivateGatewayResponse) {}
+
+	// ListVPCs Lists VPCs
+	rpc ListVPCs(ListVPCsRequest) returns (ListVPCsResponse) {
+		option (annotations.method).scope = Scope_ADMIN;
+	}
+
+	// DeleteStaticRoute Deletes a static route
+	rpc DeleteStaticRoute(DeleteStaticRouteRequest) returns (DeleteStaticRouteResponse) {}
+
+	// RestartVPC Restarts a VPC
+	rpc RestartVPC(RestartVPCRequest) returns (RestartVPCResponse) {}
 }
 
-// UpdateVPCRequest represents the parameters for updates a vpc
-message UpdateVPCRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// the id of the VPC
-	int64 id = 2 [
-		(validate.field).required = true
-	];
-	// the name of the VPC
-	string vpc_name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-	// the display text of the VPC
-	string display_text = 4;
-	// an optional field, whether to the display the vpc to the end user or not
-	bool display = 5 [
-		features.field_presence = EXPLICIT
-	];
-	// MTU to be configured on the network VR's public facing interfaces
-	int32 public_mtu = 6;
-	// IPV4 address to be assigned to the public interface of the network router. This address must already be acquired for this VPC
-	string source_nat_i_p = 7 [
+// ListPrivateGatewaysCmdByAdminRequest represents the parameters for list private gateways
+message ListPrivateGatewaysCmdByAdminRequest {
+	// list private gateway by id
+	int64 id = 1;
+
+	// list gateways by ip address
+	string ip_address = 2 [
 		(validate.field).string.ipv4 = true
 	];
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	string custom_id = 8 [
-		(validate.field).string.uuid = true
+
+	// list gateways by vlan
+	string vlan = 3;
+
+	// list gateways by vpc
+	int64 vpc_id = 4;
+
+	// list gateways by state
+	string state = 5;
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 6;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 7 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
 	];
-	//
-	int64 start_event_id = 9;
-	//
-	string injected_job_id = 10 [
-		(validate.field).string.uuid = true
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 8 [
+		features.field_presence = EXPLICIT
 	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 9;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 11;
+
 	//
-	string response_type = 11;
+	int32 page = 12;
+
+	//
+	int32 page_size = 13;
+
+	//
+	string response_type = 14;
 }
 
-// UpdateVPCResponse represents the response from updates a vpc
-message UpdateVPCResponse {
-	// The Result
-	Result result = 1;
+// ListPrivateGatewaysCmdByAdminResponse represents the response from list private gateways
+message ListPrivateGatewaysCmdByAdminResponse {
+	option (validate.message).disabled = false;
+	// The list of PrivateGateways
+	repeated PrivateGateway items = 1;
+
+	// The total count of PrivateGateways
+	int32 total_count = 2;
 }
 
-// CreateStaticRouteRequest represents the parameters for creates a static route
-message CreateStaticRouteRequest {
-	// the gateway id we are creating static route for
-	int64 gateway_id = 1 [
+// CreatePrivateGatewayByAdminRequest represents the parameters for creates a private gateway
+message CreatePrivateGatewayByAdminRequest {
+	// the Physical Network ID the network belongs to
+	int64 physical_network_id = 1;
+
+	// the network implementation uri for the private gateway
+	string broadcast_uri = 2;
+
+	// when true bypasses VLAN id/range overlap check during private gateway creation
+	bool bypass_vlan_overlap_check = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the gateway of the Private gateway
+	string gateway = 4 [
+		(validate.field).required    = true,
+		(validate.field).string.ipv4 = true
+	];
+
+	// the netmask of the Private gateway
+	string netmask = 5 [
 		(validate.field).required = true
 	];
 
-	// static route cidr
-	string cidr = 2 [
+	// the IP address of the Private gateaway
+	string ip_address = 6 [
+		(validate.field).required    = true,
+		(validate.field).string.ipv4 = true
+	];
+
+	// the uuid of the network offering to use for the private gateways network connection
+	int64 network_offering_id = 7;
+
+	// the VPC network belongs to
+	int64 vpc_id = 8 [
 		(validate.field).required = true
 	];
 
-	//
-	int64 start_event_id = 3;
+	// source NAT supported value. Default value false. If 'true' source NAT is enabled on the private gateway 'false': sourcenat is not supported
+	bool is_source_nat = 9 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the ID of the network ACL
+	int64 acl_id = 10;
+
+	// The isolated network this private gateway is associated to.
+	int64 associated_network_id = 11;
 
 	//
-	string injected_job_id = 4 [
+	int64 start_event_id = 12;
+
+	//
+	string injected_job_id = 13 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	string response_type = 5;
+	string response_type = 14;
 }
 
-// CreateStaticRouteResponse represents the response from creates a static route
-message CreateStaticRouteResponse {
+// CreatePrivateGatewayByAdminResponse represents the response from creates a private gateway
+message CreatePrivateGatewayByAdminResponse {
 	// The Result
 	Result result = 1;
 }
@@ -226,281 +288,59 @@ message CreateVPCOfferingResponse {
 	Result result = 1;
 }
 
-// ListVPCsCmdByAdminRequest represents the parameters for lists vpcs
-message ListVPCsCmdByAdminRequest {
-	// list VPC by id
-	int64 id = 1;
-
-	// list by zone
-	int64 zone_id = 2;
-
-	// list by name of the VPC
-	string vpc_name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+// UpdateVPCOfferingRequest represents the parameters for updates vpc offering
+message UpdateVPCOfferingRequest {
+	// the id of the VPC offering
+	int64 id = 1 [
+		(validate.field).required = true
 	];
 
-	// List by display text of the VPC
-	string display_text = 4;
-
-	// list by cidr of the VPC. All VPC guest networks' cidrs should be within this CIDR
-	string cidr = 5;
-
-	// list by ID of the VPC offering
-	int64 vpc_off_id = 6;
-
-	// list VPC supporting certain services
-	repeated string supported_services = 7;
-
-	// list VPCs by state
-	string state = 8;
-
-	// list VPCs by restartRequired option
-	bool restart_required = 9 [
-		features.field_presence = EXPLICIT
-	];
-
-	// list resources by display flag; only ROOT admin is eligible to pass this parameter
-	bool display = 10 [
-		features.field_presence = EXPLICIT
-	];
-
-	// flag to display the resource icon for VPCs
-	bool show_icon = 11 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List resources by tags (key/value pairs)
-	map<string, string> tags = 12;
-
-	// list objects by project; if projectid=-1 lists All VMs
-	int64 project_id = 13;
-
-	// list resources by account. Must be used with the domainId parameter.
-	string account_name = 14 [
-		(validate.field).cel = {
-			id:         "account_name_with_domain_id",
-			expression: "!has(account_name) || has(domain_id)",
-			message:    "account_name must be used with domain_id parameter"
-		}
-	];
-
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	bool list_all = 15 [
-		features.field_presence = EXPLICIT
-	];
-
-	// list only resources belonging to the domain specified
-	int64 domain_id = 16;
-
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	bool recursive = 17 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List by keyword
-	string keyword = 18;
-
-	//
-	int32 page = 19;
-
-	//
-	int32 page_size = 20;
-
-	//
-	string response_type = 21;
-}
-
-// ListVPCsCmdByAdminResponse represents the response from lists vpcs
-message ListVPCsCmdByAdminResponse {
-	option (validate.message).disabled = false;
-	// The list of Vpcs
-	repeated Vpc items = 1;
-
-	// The total count of Vpcs
-	int32 total_count = 2;
-}
-
-// ListVPCOfferingsRequest represents the parameters for lists vpc offerings
-message ListVPCOfferingsRequest {
-	// list VPC offerings by id
-	int64 id = 1;
-
-	// list VPC offerings by name
+	// the name of the VPC offering
 	string vpc_off_name = 2 [
 		(validate.field).string.min_len = 1,
 		(validate.field).string.max_len = 255
 	];
 
-	// list VPC offerings by display text
+	// the display text of the VPC offering
 	string display_text = 3;
 
-	// true if need to list only default VPC offerings. Default value is false
-	bool is_default = 4 [
-		features.field_presence = EXPLICIT
+	// update state for the VPC offering; supported states - Enabled/Disabled
+	string state = 4;
+
+	// the ID of the containing domain(s) as comma separated string, public for public offerings
+	string domain_ids = 5 [
+		(validate.field).string.uuid = true
 	];
 
-	// list VPC offerings supporting certain services
-	repeated string supported_services = 5;
+	// the ID of the containing zone(s) as comma separated string, all for all zones offerings
+	string zone_ids = 6 [
+		(validate.field).string.uuid = true
+	];
 
-	// list VPC offerings by state
-	string state = 6;
-
-	// list VPC offerings available for VPC creation in specific domain
-	int64 domain_id = 7;
-
-	// id of zone VPC offering is associated with
-	int64 zone_id = 8;
-
-	// List by keyword
-	string keyword = 9;
+	// sort key of the VPC offering, integer
+	int32 sort_key = 7;
 
 	//
-	int32 page = 10;
+	int64 start_event_id = 8;
 
 	//
-	int32 page_size = 11;
-
-	//
-	string response_type = 12;
-}
-
-// ListVPCOfferingsResponse represents the response from lists vpc offerings
-message ListVPCOfferingsResponse {
-	option (validate.message).disabled = false;
-	// The list of VpcOfferings
-	repeated VpcOffering items = 1;
-
-	// The total count of VpcOfferings
-	int32 total_count = 2;
-}
-
-// CreatePrivateGatewayByAdminRequest represents the parameters for creates a private gateway
-message CreatePrivateGatewayByAdminRequest {
-	// the Physical Network ID the network belongs to
-	int64 physical_network_id = 1;
-
-	// the network implementation uri for the private gateway
-	string broadcast_uri = 2;
-
-	// when true bypasses VLAN id/range overlap check during private gateway creation
-	bool bypass_vlan_overlap_check = 3 [
-		features.field_presence = EXPLICIT
-	];
-
-	// the gateway of the Private gateway
-	string gateway = 4 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
-	];
-
-	// the netmask of the Private gateway
-	string netmask = 5 [
-		(validate.field).required = true
-	];
-
-	// the IP address of the Private gateaway
-	string ip_address = 6 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
-	];
-
-	// the uuid of the network offering to use for the private gateways network connection
-	int64 network_offering_id = 7;
-
-	// the VPC network belongs to
-	int64 vpc_id = 8 [
-		(validate.field).required = true
-	];
-
-	// source NAT supported value. Default value false. If 'true' source NAT is enabled on the private gateway 'false': sourcenat is not supported
-	bool is_source_nat = 9 [
-		features.field_presence = EXPLICIT
-	];
-
-	// the ID of the network ACL
-	int64 acl_id = 10;
-
-	// The isolated network this private gateway is associated to.
-	int64 associated_network_id = 11;
-
-	//
-	int64 start_event_id = 12;
-
-	//
-	string injected_job_id = 13 [
+	string injected_job_id = 9 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	string response_type = 14;
+	string response_type = 10;
 }
 
-// CreatePrivateGatewayByAdminResponse represents the response from creates a private gateway
-message CreatePrivateGatewayByAdminResponse {
+// UpdateVPCOfferingResponse represents the response from updates vpc offering
+message UpdateVPCOfferingResponse {
 	// The Result
 	Result result = 1;
 }
 
-// CreatePrivateGatewayRequest represents the parameters for creates a private gateway
-message CreatePrivateGatewayRequest {
-	// the gateway of the Private gateway
-	string gateway = 1 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
-	];
-
-	// the netmask of the Private gateway
-	string netmask = 2 [
-		(validate.field).required = true
-	];
-
-	// the IP address of the Private gateaway
-	string ip_address = 3 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
-	];
-
-	// the uuid of the network offering to use for the private gateways network connection
-	int64 network_offering_id = 4;
-
-	// the VPC network belongs to
-	int64 vpc_id = 5 [
-		(validate.field).required = true
-	];
-
-	// source NAT supported value. Default value false. If 'true' source NAT is enabled on the private gateway 'false': sourcenat is not supported
-	bool is_source_nat = 6 [
-		features.field_presence = EXPLICIT
-	];
-
-	// the ID of the network ACL
-	int64 acl_id = 7;
-
-	// The isolated network this private gateway is associated to.
-	int64 associated_network_id = 8;
-
-	//
-	int64 start_event_id = 9;
-
-	//
-	string injected_job_id = 10 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 11;
-}
-
-// CreatePrivateGatewayResponse represents the response from creates a private gateway
-message CreatePrivateGatewayResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeleteStaticRouteRequest represents the parameters for deletes a static route
-message DeleteStaticRouteRequest {
-	// the ID of the static route
+// DeleteVPCRequest represents the parameters for deletes a vpc
+message DeleteVPCRequest {
+	// the ID of the VPC
 	int64 id = 1 [
 		(validate.field).required = true
 	];
@@ -517,33 +357,8 @@ message DeleteStaticRouteRequest {
 	string response_type = 4;
 }
 
-// DeleteStaticRouteResponse represents the response from deletes a static route
-message DeleteStaticRouteResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeleteVPCOfferingRequest represents the parameters for deletes vpc offering
-message DeleteVPCOfferingRequest {
-	// the ID of the VPC offering
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DeleteVPCOfferingResponse represents the response from deletes vpc offering
-message DeleteVPCOfferingResponse {
+// DeleteVPCResponse represents the response from deletes a vpc
+message DeleteVPCResponse {
 	// The Result
 	Result result = 1;
 }
@@ -655,49 +470,39 @@ message CreateVPCCmdByAdminResponse {
 	Result result = 1;
 }
 
-// RestartVPCRequest represents the parameters for restarts a vpc
-message RestartVPCRequest {
-	// the id of the VPC
-	int64 id = 1 [
+// CreateStaticRouteRequest represents the parameters for creates a static route
+message CreateStaticRouteRequest {
+	// the gateway id we are creating static route for
+	int64 gateway_id = 1 [
 		(validate.field).required = true
 	];
 
-	// If cleanup old network elements
-	bool cleanup = 2 [
-		features.field_presence = EXPLICIT
-	];
-
-	// Turn a single VPC into a redundant one.
-	bool makeredundant = 3 [
-		features.field_presence = EXPLICIT
-	];
-
-	// Live patches the router software before restarting it. This parameter will only work when 'cleanup' is false.
-	bool live_patch = 4 [
-		features.field_presence = EXPLICIT
+	// static route cidr
+	string cidr = 2 [
+		(validate.field).required = true
 	];
 
 	//
-	int64 start_event_id = 5;
+	int64 start_event_id = 3;
 
 	//
-	string injected_job_id = 6 [
+	string injected_job_id = 4 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	string response_type = 7;
+	string response_type = 5;
 }
 
-// RestartVPCResponse represents the response from restarts a vpc
-message RestartVPCResponse {
+// CreateStaticRouteResponse represents the response from creates a static route
+message CreateStaticRouteResponse {
 	// The Result
 	Result result = 1;
 }
 
-// DeletePrivateGatewayRequest represents the parameters for deletes a private gateway
-message DeletePrivateGatewayRequest {
-	// the ID of the private gateway
+// DeleteVPCOfferingRequest represents the parameters for deletes vpc offering
+message DeleteVPCOfferingRequest {
+	// the ID of the VPC offering
 	int64 id = 1 [
 		(validate.field).required = true
 	];
@@ -714,202 +519,164 @@ message DeletePrivateGatewayRequest {
 	string response_type = 4;
 }
 
-// DeletePrivateGatewayResponse represents the response from deletes a private gateway
-message DeletePrivateGatewayResponse {
+// DeleteVPCOfferingResponse represents the response from deletes vpc offering
+message DeleteVPCOfferingResponse {
 	// The Result
 	Result result = 1;
 }
 
-// ListPrivateGatewaysCmdByAdminRequest represents the parameters for list private gateways
-message ListPrivateGatewaysCmdByAdminRequest {
-	// list private gateway by id
+// ListVPCOfferingsRequest represents the parameters for lists vpc offerings
+message ListVPCOfferingsRequest {
+	// list VPC offerings by id
 	int64 id = 1;
 
-	// list gateways by ip address
-	string ip_address = 2 [
-		(validate.field).string.ipv4 = true
-	];
-
-	// list gateways by vlan
-	string vlan = 3;
-
-	// list gateways by vpc
-	int64 vpc_id = 4;
-
-	// list gateways by state
-	string state = 5;
-
-	// list objects by project; if projectid=-1 lists All VMs
-	int64 project_id = 6;
-
-	// list resources by account. Must be used with the domainId parameter.
-	string account_name = 7 [
-		(validate.field).cel = {
-			id:         "account_name_with_domain_id",
-			expression: "!has(account_name) || has(domain_id)",
-			message:    "account_name must be used with domain_id parameter"
-		}
-	];
-
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	bool list_all = 8 [
-		features.field_presence = EXPLICIT
-	];
-
-	// list only resources belonging to the domain specified
-	int64 domain_id = 9;
-
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	bool recursive = 10 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List by keyword
-	string keyword = 11;
-
-	//
-	int32 page = 12;
-
-	//
-	int32 page_size = 13;
-
-	//
-	string response_type = 14;
-}
-
-// ListPrivateGatewaysCmdByAdminResponse represents the response from list private gateways
-message ListPrivateGatewaysCmdByAdminResponse {
-	option (validate.message).disabled = false;
-	// The list of PrivateGateways
-	repeated PrivateGateway items = 1;
-
-	// The total count of PrivateGateways
-	int32 total_count = 2;
-}
-
-// ListPrivateGatewaysRequest represents the parameters for list private gateways
-message ListPrivateGatewaysRequest {
-	// list private gateway by id
-	int64 id = 1;
-
-	// list gateways by ip address
-	string ip_address = 2 [
-		(validate.field).string.ipv4 = true
-	];
-
-	// list gateways by vlan
-	string vlan = 3;
-
-	// list gateways by vpc
-	int64 vpc_id = 4;
-
-	// list gateways by state
-	string state = 5;
-
-	// list objects by project; if projectid=-1 lists All VMs
-	int64 project_id = 6;
-
-	// list resources by account. Must be used with the domainId parameter.
-	string account_name = 7 [
-		(validate.field).cel = {
-			id:         "account_name_with_domain_id",
-			expression: "!has(account_name) || has(domain_id)",
-			message:    "account_name must be used with domain_id parameter"
-		}
-	];
-
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	bool list_all = 8 [
-		features.field_presence = EXPLICIT
-	];
-
-	// list only resources belonging to the domain specified
-	int64 domain_id = 9;
-
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	bool recursive = 10 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List by keyword
-	string keyword = 11;
-
-	//
-	int32 page = 12;
-
-	//
-	int32 page_size = 13;
-
-	//
-	string response_type = 14;
-}
-
-// ListPrivateGatewaysResponse represents the response from list private gateways
-message ListPrivateGatewaysResponse {
-	option (validate.message).disabled = false;
-	// The list of PrivateGateways
-	repeated PrivateGateway items = 1;
-
-	// The total count of PrivateGateways
-	int32 total_count = 2;
-}
-
-// DeleteVPCRequest represents the parameters for deletes a vpc
-message DeleteVPCRequest {
-	// the ID of the VPC
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DeleteVPCResponse represents the response from deletes a vpc
-message DeleteVPCResponse {
-	// The Result
-	Result result = 1;
-}
-
-// UpdateVPCOfferingRequest represents the parameters for updates vpc offering
-message UpdateVPCOfferingRequest {
-	// the id of the VPC offering
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// the name of the VPC offering
+	// list VPC offerings by name
 	string vpc_off_name = 2 [
 		(validate.field).string.min_len = 1,
 		(validate.field).string.max_len = 255
 	];
 
-	// the display text of the VPC offering
+	// list VPC offerings by display text
 	string display_text = 3;
 
-	// update state for the VPC offering; supported states - Enabled/Disabled
+	// true if need to list only default VPC offerings. Default value is false
+	bool is_default = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list VPC offerings supporting certain services
+	repeated string supported_services = 5;
+
+	// list VPC offerings by state
+	string state = 6;
+
+	// list VPC offerings available for VPC creation in specific domain
+	int64 domain_id = 7;
+
+	// id of zone VPC offering is associated with
+	int64 zone_id = 8;
+
+	// List by keyword
+	string keyword = 9;
+
+	//
+	int32 page = 10;
+
+	//
+	int32 page_size = 11;
+
+	//
+	string response_type = 12;
+}
+
+// ListVPCOfferingsResponse represents the response from lists vpc offerings
+message ListVPCOfferingsResponse {
+	option (validate.message).disabled = false;
+	// The list of VpcOfferings
+	repeated VpcOffering items = 1;
+
+	// The total count of VpcOfferings
+	int32 total_count = 2;
+}
+
+// ListStaticRoutesRequest represents the parameters for lists all static routes
+message ListStaticRoutesRequest {
+	// list static route by id
+	int64 id = 1;
+
+	// list static routes by vpc id
+	int64 vpc_id = 2;
+
+	// list static routes by gateway id
+	int64 gateway_id = 3;
+
+	// list static routes by state
 	string state = 4;
 
-	// the ID of the containing domain(s) as comma separated string, public for public offerings
-	string domain_ids = 5 [
-		(validate.field).string.uuid = true
+	// List resources by tags (key/value pairs)
+	map<string, string> tags = 5;
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 6;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 7 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
 	];
 
-	// the ID of the containing zone(s) as comma separated string, all for all zones offerings
-	string zone_ids = 6 [
-		(validate.field).string.uuid = true
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 8 [
+		features.field_presence = EXPLICIT
 	];
 
-	// sort key of the VPC offering, integer
-	int32 sort_key = 7;
+	// list only resources belonging to the domain specified
+	int64 domain_id = 9;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 11;
+
+	//
+	int32 page = 12;
+
+	//
+	int32 page_size = 13;
+
+	//
+	string response_type = 14;
+}
+
+// ListStaticRoutesResponse represents the response from lists all static routes
+message ListStaticRoutesResponse {
+	option (validate.message).disabled = false;
+	// The list of StaticRoutes
+	repeated StaticRoute items = 1;
+
+	// The total count of StaticRoutes
+	int32 total_count = 2;
+}
+
+// UpdateVPCCmdByAdminRequest represents the parameters for updates a vpc
+message UpdateVPCCmdByAdminRequest {
+	// the id of the VPC
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// the name of the VPC
+	string vpc_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the display text of the VPC
+	string display_text = 3;
+
+	// an optional field, whether to the display the vpc to the end user or not
+	bool display = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// MTU to be configured on the network VR's public facing interfaces
+	int32 public_mtu = 5;
+
+	// IPV4 address to be assigned to the public interface of the network router. This address must already be acquired for this VPC
+	string source_nat_i_p = 6 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 7 [
+		(validate.field).string.uuid = true
+	];
 
 	//
 	int64 start_event_id = 8;
@@ -923,87 +690,10 @@ message UpdateVPCOfferingRequest {
 	string response_type = 10;
 }
 
-// UpdateVPCOfferingResponse represents the response from updates vpc offering
-message UpdateVPCOfferingResponse {
+// UpdateVPCCmdByAdminResponse represents the response from updates a vpc
+message UpdateVPCCmdByAdminResponse {
 	// The Result
 	Result result = 1;
-}
-
-// ListVPCsRequest represents the parameters for lists vpcs
-message ListVPCsRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// list VPC by id
-	int64 id = 2;
-	// list by zone
-	int64 zone_id = 3;
-	// list by name of the VPC
-	string vpc_name = 4 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-	// List by display text of the VPC
-	string display_text = 5;
-	// list by cidr of the VPC. All VPC guest networks' cidrs should be within this CIDR
-	string cidr = 6;
-	// list by ID of the VPC offering
-	int64 vpc_off_id = 7;
-	// list VPC supporting certain services
-	repeated string supported_services = 8;
-	// list VPCs by state
-	string state = 9;
-	// list VPCs by restartRequired option
-	bool restart_required = 10 [
-		features.field_presence = EXPLICIT
-	];
-	// list resources by display flag; only ROOT admin is eligible to pass this parameter
-	bool display = 11 [
-		features.field_presence = EXPLICIT
-	];
-	// flag to display the resource icon for VPCs
-	bool show_icon = 12 [
-		features.field_presence = EXPLICIT
-	];
-	// List resources by tags (key/value pairs)
-	map<string, string> tags = 13;
-	// list objects by project; if projectid=-1 lists All VMs
-	int64 project_id = 14;
-	// list resources by account. Must be used with the domainId parameter.
-	string account_name = 15 [
-		(validate.field).cel = {
-			id:         "account_name_with_domain_id",
-			expression: "!has(account_name) || has(domain_id)",
-			message:    "account_name must be used with domain_id parameter"
-		}
-	];
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	bool list_all = 16 [
-		features.field_presence = EXPLICIT
-	];
-	// list only resources belonging to the domain specified
-	int64 domain_id = 17;
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	bool recursive = 18 [
-		features.field_presence = EXPLICIT
-	];
-	// List by keyword
-	string keyword = 19;
-	//
-	int32 page = 20;
-	//
-	int32 page_size = 21;
-	//
-	string response_type = 22;
-}
-
-// ListVPCsResponse represents the response from lists vpcs
-message ListVPCsResponse {
-	option (validate.message).disabled = false;
-	// The list of Vpcs
-	repeated Vpc items = 1;
-
-	// The total count of Vpcs
-	int32 total_count = 2;
 }
 
 // CreateVPCRequest represents the parameters for creates a vpc
@@ -1091,22 +781,189 @@ message CreateVPCResponse {
 	Result result = 1;
 }
 
-// ListStaticRoutesRequest represents the parameters for lists all static routes
-message ListStaticRoutesRequest {
-	// list static route by id
+// UpdateVPCRequest represents the parameters for updates a vpc
+message UpdateVPCRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// the id of the VPC
+	int64 id = 2 [
+		(validate.field).required = true
+	];
+	// the name of the VPC
+	string vpc_name = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+	// the display text of the VPC
+	string display_text = 4;
+	// an optional field, whether to the display the vpc to the end user or not
+	bool display = 5 [
+		features.field_presence = EXPLICIT
+	];
+	// MTU to be configured on the network VR's public facing interfaces
+	int32 public_mtu = 6;
+	// IPV4 address to be assigned to the public interface of the network router. This address must already be acquired for this VPC
+	string source_nat_i_p = 7 [
+		(validate.field).string.ipv4 = true
+	];
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 8 [
+		(validate.field).string.uuid = true
+	];
+	//
+	int64 start_event_id = 9;
+	//
+	string injected_job_id = 10 [
+		(validate.field).string.uuid = true
+	];
+	//
+	string response_type = 11;
+}
+
+// UpdateVPCResponse represents the response from updates a vpc
+message UpdateVPCResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListVPCsCmdByAdminRequest represents the parameters for lists vpcs
+message ListVPCsCmdByAdminRequest {
+	// list VPC by id
 	int64 id = 1;
 
-	// list static routes by vpc id
-	int64 vpc_id = 2;
+	// list by zone
+	int64 zone_id = 2;
 
-	// list static routes by gateway id
-	int64 gateway_id = 3;
+	// list by name of the VPC
+	string vpc_name = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
 
-	// list static routes by state
-	string state = 4;
+	// List by display text of the VPC
+	string display_text = 4;
+
+	// list by cidr of the VPC. All VPC guest networks' cidrs should be within this CIDR
+	string cidr = 5;
+
+	// list by ID of the VPC offering
+	int64 vpc_off_id = 6;
+
+	// list VPC supporting certain services
+	repeated string supported_services = 7;
+
+	// list VPCs by state
+	string state = 8;
+
+	// list VPCs by restartRequired option
+	bool restart_required = 9 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	bool display = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	// flag to display the resource icon for VPCs
+	bool show_icon = 11 [
+		features.field_presence = EXPLICIT
+	];
 
 	// List resources by tags (key/value pairs)
-	map<string, string> tags = 5;
+	map<string, string> tags = 12;
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 13;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 14 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 15 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 16;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 17 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 18;
+
+	//
+	int32 page = 19;
+
+	//
+	int32 page_size = 20;
+
+	//
+	string response_type = 21;
+}
+
+// ListVPCsCmdByAdminResponse represents the response from lists vpcs
+message ListVPCsCmdByAdminResponse {
+	option (validate.message).disabled = false;
+	// The list of Vpcs
+	repeated Vpc items = 1;
+
+	// The total count of Vpcs
+	int32 total_count = 2;
+}
+
+// DeletePrivateGatewayRequest represents the parameters for deletes a private gateway
+message DeletePrivateGatewayRequest {
+	// the ID of the private gateway
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeletePrivateGatewayResponse represents the response from deletes a private gateway
+message DeletePrivateGatewayResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListPrivateGatewaysRequest represents the parameters for list private gateways
+message ListPrivateGatewaysRequest {
+	// list private gateway by id
+	int64 id = 1;
+
+	// list gateways by ip address
+	string ip_address = 2 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// list gateways by vlan
+	string vlan = 3;
+
+	// list gateways by vpc
+	int64 vpc_id = 4;
+
+	// list gateways by state
+	string state = 5;
 
 	// list objects by project; if projectid=-1 lists All VMs
 	int64 project_id = 6;
@@ -1146,27 +1003,225 @@ message ListStaticRoutesRequest {
 	string response_type = 14;
 }
 
-// ListStaticRoutesResponse represents the response from lists all static routes
-message ListStaticRoutesResponse {
+// ListPrivateGatewaysResponse represents the response from list private gateways
+message ListPrivateGatewaysResponse {
 	option (validate.message).disabled = false;
-	// The list of StaticRoutes
-	repeated StaticRoute items = 1;
+	// The list of PrivateGateways
+	repeated PrivateGateway items = 1;
 
-	// The total count of StaticRoutes
+	// The total count of PrivateGateways
 	int32 total_count = 2;
 }
 
-// Vpc represents a Vpc Item
-message Vpc {
-	// The ID of the Vpc
+// CreatePrivateGatewayRequest represents the parameters for creates a private gateway
+message CreatePrivateGatewayRequest {
+	// the gateway of the Private gateway
+	string gateway = 1 [
+		(validate.field).required    = true,
+		(validate.field).string.ipv4 = true
+	];
+
+	// the netmask of the Private gateway
+	string netmask = 2 [
+		(validate.field).required = true
+	];
+
+	// the IP address of the Private gateaway
+	string ip_address = 3 [
+		(validate.field).required    = true,
+		(validate.field).string.ipv4 = true
+	];
+
+	// the uuid of the network offering to use for the private gateways network connection
+	int64 network_offering_id = 4;
+
+	// the VPC network belongs to
+	int64 vpc_id = 5 [
+		(validate.field).required = true
+	];
+
+	// source NAT supported value. Default value false. If 'true' source NAT is enabled on the private gateway 'false': sourcenat is not supported
+	bool is_source_nat = 6 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the ID of the network ACL
+	int64 acl_id = 7;
+
+	// The isolated network this private gateway is associated to.
+	int64 associated_network_id = 8;
+
+	//
+	int64 start_event_id = 9;
+
+	//
+	string injected_job_id = 10 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 11;
+}
+
+// CreatePrivateGatewayResponse represents the response from creates a private gateway
+message CreatePrivateGatewayResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListVPCsRequest represents the parameters for lists vpcs
+message ListVPCsRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// list VPC by id
+	int64 id = 2;
+	// list by zone
+	int64 zone_id = 3;
+	// list by name of the VPC
+	string vpc_name = 4 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+	// List by display text of the VPC
+	string display_text = 5;
+	// list by cidr of the VPC. All VPC guest networks' cidrs should be within this CIDR
+	string cidr = 6;
+	// list by ID of the VPC offering
+	int64 vpc_off_id = 7;
+	// list VPC supporting certain services
+	repeated string supported_services = 8;
+	// list VPCs by state
+	string state = 9;
+	// list VPCs by restartRequired option
+	bool restart_required = 10 [
+		features.field_presence = EXPLICIT
+	];
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	bool display = 11 [
+		features.field_presence = EXPLICIT
+	];
+	// flag to display the resource icon for VPCs
+	bool show_icon = 12 [
+		features.field_presence = EXPLICIT
+	];
+	// List resources by tags (key/value pairs)
+	map<string, string> tags = 13;
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 14;
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 15 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 16 [
+		features.field_presence = EXPLICIT
+	];
+	// list only resources belonging to the domain specified
+	int64 domain_id = 17;
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 18 [
+		features.field_presence = EXPLICIT
+	];
+	// List by keyword
+	string keyword = 19;
+	//
+	int32 page = 20;
+	//
+	int32 page_size = 21;
+	//
+	string response_type = 22;
+}
+
+// ListVPCsResponse represents the response from lists vpcs
+message ListVPCsResponse {
+	option (validate.message).disabled = false;
+	// The list of Vpcs
+	repeated Vpc items = 1;
+
+	// The total count of Vpcs
+	int32 total_count = 2;
+}
+
+// DeleteStaticRouteRequest represents the parameters for deletes a static route
+message DeleteStaticRouteRequest {
+	// the ID of the static route
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteStaticRouteResponse represents the response from deletes a static route
+message DeleteStaticRouteResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RestartVPCRequest represents the parameters for restarts a vpc
+message RestartVPCRequest {
+	// the id of the VPC
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// If cleanup old network elements
+	bool cleanup = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Turn a single VPC into a redundant one.
+	bool makeredundant = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Live patches the router software before restarting it. This parameter will only work when 'cleanup' is false.
+	bool live_patch = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 5;
+
+	//
+	string injected_job_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 7;
+}
+
+// RestartVPCResponse represents the response from restarts a vpc
+message RestartVPCResponse {
+	// The Result
+	Result result = 1;
+}
+
+// PrivateGateway represents a PrivateGateway Item
+message PrivateGateway {
+	// The ID of the PrivateGateway
 	string id = 1 [
 		(validate.field).string.uuid = true
 	];
-	// The name of the Vpc
+	// The name of the PrivateGateway
 	string name = 2;
-	// The display name of the Vpc
+	// The display name of the PrivateGateway
 	string display_name = 3;
-	// The description of the Vpc
+	// The description of the PrivateGateway
 	string description = 4;
 	// The date this entity was created
 	string created = 5;
@@ -1188,22 +1243,6 @@ message VpcOffering {
 	string created = 5;
 }
 
-// PrivateGateway represents a PrivateGateway Item
-message PrivateGateway {
-	// The ID of the PrivateGateway
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-	// The name of the PrivateGateway
-	string name = 2;
-	// The display name of the PrivateGateway
-	string display_name = 3;
-	// The description of the PrivateGateway
-	string description = 4;
-	// The date this entity was created
-	string created = 5;
-}
-
 // StaticRoute represents a StaticRoute Item
 message StaticRoute {
 	// The ID of the StaticRoute
@@ -1220,59 +1259,28 @@ message StaticRoute {
 	string created = 5;
 }
 
+// Vpc represents a Vpc Item
+message Vpc {
+	// The ID of the Vpc
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the Vpc
+	string name = 2;
+	// The display name of the Vpc
+	string display_name = 3;
+	// The description of the Vpc
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
 // Success represents a Success Operation Response
 message Success {
 	// true if operation is executed successfully
 	bool success = 1;
 	// any text associated with the success or failure
 	string display_text = 2;
-}
-
-// Item represents a generic item in a list response
-message Item {
-	// The ID of the item
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-
-	// The name of the item
-	string name = 2;
-
-	// The display name of the item
-	string display_name = 3;
-
-	// The description of the item
-	string description = 4;
-
-	// The account ID the item belongs to
-	string account_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain ID the item belongs to
-	string domain_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	// The domain name the item belongs to
-	string domain = 7;
-
-	// The project ID the item belongs to
-	string project_id = 8 [
-		(validate.field).string.uuid = true
-	];
-
-	// The project name the item belongs to
-	string project = 9;
-
-	// The date the item was created
-	string created = 10;
-
-	// The state of the item
-	string state = 11;
-
-	// Additional fields returned by the API
-	map<string, string> details = 12;
 }
 
 // Result represents a generic operation result
