@@ -10,13 +10,8 @@ import "google/protobuf/descriptor.proto";
 service InternallbService {
 	option (annotations.service).scope = SCOPE_USER;
 
-	// StopInternalLBVM Stops an Internal LB vm.
-	rpc StopInternalLBVM(StopInternalLBVMRequest) returns (StopInternalLBVMResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// StartInternalLBVM Starts an existing internal lb vm.
-	rpc StartInternalLBVM(StartInternalLBVMRequest) returns (StartInternalLBVMResponse) {
+	// ConfigureInternalLoadBalancerElement Configures an Internal Load Balancer element.
+	rpc ConfigureInternalLoadBalancerElement(ConfigureInternalLoadBalancerElementRequest) returns (ConfigureInternalLoadBalancerElementResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -25,8 +20,8 @@ service InternallbService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// ConfigureInternalLoadBalancerElement Configures an Internal Load Balancer element.
-	rpc ConfigureInternalLoadBalancerElement(ConfigureInternalLoadBalancerElementRequest) returns (ConfigureInternalLoadBalancerElementResponse) {
+	// ListInternalLBVMs List internal LB VMs.
+	rpc ListInternalLBVMs(ListInternalLBVMsRequest) returns (ListInternalLBVMsResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -35,90 +30,15 @@ service InternallbService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// ListInternalLBVMs List internal LB VMs.
-	rpc ListInternalLBVMs(ListInternalLBVMsRequest) returns (ListInternalLBVMsResponse) {
+	// StartInternalLBVM Starts an existing internal lb vm.
+	rpc StartInternalLBVM(StartInternalLBVMRequest) returns (StartInternalLBVMResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
-}
 
-// StopInternalLBVMRequest represents the parameters for stops an internal lb vm.
-message StopInternalLBVMRequest {
-	// the ID of the internal lb vm
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// Force stop the VM (vm is marked as Stopped even when command fails to be send to the backend, otherwise a force poweroff is attempted). To be used if the caller knows the VM is stopped and should be marked as such.
-	bool forced = 2 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	int64 start_event_id = 3;
-
-	//
-	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 5;
-}
-
-// StopInternalLBVMResponse represents the response from stops an internal lb vm.
-message StopInternalLBVMResponse {
-	// The Result
-	Result result = 1;
-}
-
-// StartInternalLBVMRequest represents the parameters for starts an existing internal lb vm.
-message StartInternalLBVMRequest {
-	// the ID of the internal lb vm
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// StartInternalLBVMResponse represents the response from starts an existing internal lb vm.
-message StartInternalLBVMResponse {
-	// The Result
-	Result result = 1;
-}
-
-// CreateInternalLoadBalancerElementRequest represents the parameters for create an internal load balancer element.
-message CreateInternalLoadBalancerElementRequest {
-	// the network service provider ID of the internal load balancer element
-	int64 nsp_id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// CreateInternalLoadBalancerElementResponse represents the response from create an internal load balancer element.
-message CreateInternalLoadBalancerElementResponse {
-	// The Result
-	Result result = 1;
+	// StopInternalLBVM Stops an Internal LB vm.
+	rpc StopInternalLBVM(StopInternalLBVMRequest) returns (StopInternalLBVMResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
 // ConfigureInternalLoadBalancerElementRequest represents the parameters for configures an internal load balancer element.
@@ -152,40 +72,29 @@ message ConfigureInternalLoadBalancerElementResponse {
 	Result result = 1;
 }
 
-// ListInternalLoadBalancerElementsRequest represents the parameters for lists all available internal load balancer elements.
-message ListInternalLoadBalancerElementsRequest {
-	// list internal load balancer elements by id
-	int64 id = 1;
-
-	// list internal load balancer elements by network service provider id
-	int64 nsp_id = 2;
-
-	// list internal load balancer elements by enabled state
-	bool enabled = 3 [
-		features.field_presence = EXPLICIT
+// CreateInternalLoadBalancerElementRequest represents the parameters for create an internal load balancer element.
+message CreateInternalLoadBalancerElementRequest {
+	// the network service provider ID of the internal load balancer element
+	int64 nsp_id = 1 [
+		(validate.field).required = true
 	];
 
-	// List by keyword
-	string keyword = 4;
+	//
+	int64 start_event_id = 2;
 
 	//
-	int32 page = 5;
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
 
 	//
-	int32 page_size = 6;
-
-	//
-	string response_type = 7;
+	string response_type = 4;
 }
 
-// ListInternalLoadBalancerElementsResponse represents the response from lists all available internal load balancer elements.
-message ListInternalLoadBalancerElementsResponse {
-	option (validate.message).disabled = false;
-	// The list of InternalLoadBalancerElements
-	repeated InternalLoadBalancerElement items = 1;
-
-	// The total count of InternalLoadBalancerElements
-	int32 total_count = 2;
+// CreateInternalLoadBalancerElementResponse represents the response from create an internal load balancer element.
+message CreateInternalLoadBalancerElementResponse {
+	// The Result
+	Result result = 1;
 }
 
 // ListInternalLBVMsRequest represents the parameters for list internal lb vms.
@@ -275,20 +184,95 @@ message ListInternalLBVMsResponse {
 	int32 total_count = 2;
 }
 
-// InternalLoadBalancerElement represents a InternalLoadBalancerElement Item
-message InternalLoadBalancerElement {
-	// The ID of the InternalLoadBalancerElement
-	string id = 1 [
+// ListInternalLoadBalancerElementsRequest represents the parameters for lists all available internal load balancer elements.
+message ListInternalLoadBalancerElementsRequest {
+	// list internal load balancer elements by id
+	int64 id = 1;
+
+	// list internal load balancer elements by network service provider id
+	int64 nsp_id = 2;
+
+	// list internal load balancer elements by enabled state
+	bool enabled = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 4;
+
+	//
+	int32 page = 5;
+
+	//
+	int32 page_size = 6;
+
+	//
+	string response_type = 7;
+}
+
+// ListInternalLoadBalancerElementsResponse represents the response from lists all available internal load balancer elements.
+message ListInternalLoadBalancerElementsResponse {
+	option (validate.message).disabled = false;
+	// The list of InternalLoadBalancerElements
+	repeated InternalLoadBalancerElement items = 1;
+
+	// The total count of InternalLoadBalancerElements
+	int32 total_count = 2;
+}
+
+// StartInternalLBVMRequest represents the parameters for starts an existing internal lb vm.
+message StartInternalLBVMRequest {
+	// the ID of the internal lb vm
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
 		(validate.field).string.uuid = true
 	];
-	// The name of the InternalLoadBalancerElement
-	string name = 2;
-	// The display name of the InternalLoadBalancerElement
-	string display_name = 3;
-	// The description of the InternalLoadBalancerElement
-	string description = 4;
-	// The date this entity was created
-	string created = 5;
+
+	//
+	string response_type = 4;
+}
+
+// StartInternalLBVMResponse represents the response from starts an existing internal lb vm.
+message StartInternalLBVMResponse {
+	// The Result
+	Result result = 1;
+}
+
+// StopInternalLBVMRequest represents the parameters for stops an internal lb vm.
+message StopInternalLBVMRequest {
+	// the ID of the internal lb vm
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// Force stop the VM (vm is marked as Stopped even when command fails to be send to the backend, otherwise a force poweroff is attempted). To be used if the caller knows the VM is stopped and should be marked as such.
+	bool forced = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// StopInternalLBVMResponse represents the response from stops an internal lb vm.
+message StopInternalLBVMResponse {
+	// The Result
+	Result result = 1;
 }
 
 // DomainRouter represents a DomainRouter Item
@@ -302,6 +286,22 @@ message DomainRouter {
 	// The display name of the DomainRouter
 	string display_name = 3;
 	// The description of the DomainRouter
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// InternalLoadBalancerElement represents a InternalLoadBalancerElement Item
+message InternalLoadBalancerElement {
+	// The ID of the InternalLoadBalancerElement
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the InternalLoadBalancerElement
+	string name = 2;
+	// The display name of the InternalLoadBalancerElement
+	string display_name = 3;
+	// The description of the InternalLoadBalancerElement
 	string description = 4;
 	// The date this entity was created
 	string created = 5;

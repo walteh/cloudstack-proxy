@@ -10,8 +10,8 @@ import "google/protobuf/descriptor.proto";
 service IconService {
 	option (annotations.service).scope = SCOPE_USER;
 
-	// UploadResourceIcon Uploads an icon for the specified resource(s)
-	rpc UploadResourceIcon(UploadResourceIconRequest) returns (UploadResourceIconResponse) {
+	// DeleteResourceIcon deletes the resource icon from the specified resource(s)
+	rpc DeleteResourceIcon(DeleteResourceIconRequest) returns (DeleteResourceIconResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -20,14 +20,14 @@ service IconService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// DeleteResourceIcon deletes the resource icon from the specified resource(s)
-	rpc DeleteResourceIcon(DeleteResourceIconRequest) returns (DeleteResourceIconResponse) {
+	// UploadResourceIcon Uploads an icon for the specified resource(s)
+	rpc UploadResourceIcon(UploadResourceIconRequest) returns (UploadResourceIconResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 }
 
-// UploadResourceIconRequest represents the parameters for uploads an icon for the specified resource(s)
-message UploadResourceIconRequest {
+// DeleteResourceIconRequest represents the parameters for deletes the resource icon from the specified resource(s)
+message DeleteResourceIconRequest {
 	// list of resources to upload the icon/image for
 	repeated string resource_ids = 1 [
 		(validate.field).required = true
@@ -38,17 +38,12 @@ message UploadResourceIconRequest {
 		(validate.field).required = true
 	];
 
-	// Base64 string representation of the resource icon/image
-	string image = 3 [
-		(validate.field).required = true
-	];
-
 	//
-	string response_type = 4;
+	string response_type = 3;
 }
 
-// UploadResourceIconResponse represents the response from uploads an icon for the specified resource(s)
-message UploadResourceIconResponse {
+// DeleteResourceIconResponse represents the response from deletes the resource icon from the specified resource(s)
+message DeleteResourceIconResponse {
 	// The Result
 	Result result = 1;
 }
@@ -79,8 +74,8 @@ message ListResourceIconResponse {
 	int32 total_count = 2;
 }
 
-// DeleteResourceIconRequest represents the parameters for deletes the resource icon from the specified resource(s)
-message DeleteResourceIconRequest {
+// UploadResourceIconRequest represents the parameters for uploads an icon for the specified resource(s)
+message UploadResourceIconRequest {
 	// list of resources to upload the icon/image for
 	repeated string resource_ids = 1 [
 		(validate.field).required = true
@@ -91,12 +86,17 @@ message DeleteResourceIconRequest {
 		(validate.field).required = true
 	];
 
+	// Base64 string representation of the resource icon/image
+	string image = 3 [
+		(validate.field).required = true
+	];
+
 	//
-	string response_type = 3;
+	string response_type = 4;
 }
 
-// DeleteResourceIconResponse represents the response from deletes the resource icon from the specified resource(s)
-message DeleteResourceIconResponse {
+// UploadResourceIconResponse represents the response from uploads an icon for the specified resource(s)
+message UploadResourceIconResponse {
 	// The Result
 	Result result = 1;
 }

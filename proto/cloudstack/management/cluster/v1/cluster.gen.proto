@@ -21,18 +21,18 @@ service ClusterService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
+	// ExecuteClusterDrsPlan Execute DRS for a cluster. If there is another plan in progress for the same cluster, this command will fail.
+	rpc ExecuteClusterDrsPlan(ExecuteClusterDrsPlanRequest) returns (ExecuteClusterDrsPlanResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
 	// GenerateClusterDrsPlan Generate DRS plan for a cluster
 	rpc GenerateClusterDrsPlan(GenerateClusterDrsPlanRequest) returns (GenerateClusterDrsPlanResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// UpdateCluster Updates an existing cluster
-	rpc UpdateCluster(UpdateClusterRequest) returns (UpdateClusterResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// ExecuteClusterDrsPlan Execute DRS for a cluster. If there is another plan in progress for the same cluster, this command will fail.
-	rpc ExecuteClusterDrsPlan(ExecuteClusterDrsPlanRequest) returns (ExecuteClusterDrsPlanResponse) {
+	// ListClusterDrsPlan List DRS plans for a clusters
+	rpc ListClusterDrsPlan(ListClusterDrsPlanRequest) returns (ListClusterDrsPlanResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -41,8 +41,8 @@ service ClusterService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// ListClusterDrsPlan List DRS plans for a clusters
-	rpc ListClusterDrsPlan(ListClusterDrsPlanRequest) returns (ListClusterDrsPlanResponse) {
+	// UpdateCluster Updates an existing cluster
+	rpc UpdateCluster(UpdateClusterRequest) returns (UpdateClusterResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 }
@@ -164,64 +164,6 @@ message DeleteClusterResponse {
 	Result result = 1;
 }
 
-// GenerateClusterDrsPlanRequest represents the parameters for generate drs plan for a cluster
-message GenerateClusterDrsPlanRequest {
-	// the ID of the Cluster
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// Maximum number of VMs to migrate for a DRS execution. Defaults to value of cluster's drs.vm.migrations setting
-	int32 migrations = 2;
-
-	//
-	string response_type = 3;
-}
-
-// GenerateClusterDrsPlanResponse represents the response from generate drs plan for a cluster
-message GenerateClusterDrsPlanResponse {
-	// The Result
-	Result result = 1;
-}
-
-// UpdateClusterRequest represents the parameters for updates an existing cluster
-message UpdateClusterRequest {
-	// the ID of the Cluster
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// the cluster name
-	string cluster_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// hypervisor type of the cluster
-	string hypervisor = 3;
-
-	// hypervisor type of the cluster
-	string cluster_type = 4;
-
-	// Allocation state of this cluster for allocation of new resources
-	string allocation_state = 5;
-
-	// whether this cluster is managed by cloudstack
-	string managed_state = 6;
-
-	// the CPU arch of the cluster. Valid options are: x86_64, aarch64
-	string arch = 7;
-
-	//
-	string response_type = 8;
-}
-
-// UpdateClusterResponse represents the response from updates an existing cluster
-message UpdateClusterResponse {
-	// The Result
-	Result result = 1;
-}
-
 // ExecuteClusterDrsPlanRequest represents the parameters for execute drs for a cluster. if there is another plan in progress for the same cluster, this command will fail.
 message ExecuteClusterDrsPlanRequest {
 	// ID of cluster
@@ -248,6 +190,57 @@ message ExecuteClusterDrsPlanRequest {
 message ExecuteClusterDrsPlanResponse {
 	// The Result
 	Result result = 1;
+}
+
+// GenerateClusterDrsPlanRequest represents the parameters for generate drs plan for a cluster
+message GenerateClusterDrsPlanRequest {
+	// the ID of the Cluster
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// Maximum number of VMs to migrate for a DRS execution. Defaults to value of cluster's drs.vm.migrations setting
+	int32 migrations = 2;
+
+	//
+	string response_type = 3;
+}
+
+// GenerateClusterDrsPlanResponse represents the response from generate drs plan for a cluster
+message GenerateClusterDrsPlanResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListClusterDrsPlanRequest represents the parameters for list drs plans for a clusters
+message ListClusterDrsPlanRequest {
+	// ID of the drs plan
+	int64 id = 1;
+
+	// ID of the cluster
+	int64 cluster_id = 2;
+
+	// List by keyword
+	string keyword = 3;
+
+	//
+	int32 page = 4;
+
+	//
+	int32 page_size = 5;
+
+	//
+	string response_type = 6;
+}
+
+// ListClusterDrsPlanResponse represents the response from list drs plans for a clusters
+message ListClusterDrsPlanResponse {
+	option (validate.message).disabled = false;
+	// The list of ClusterDrsPlans
+	repeated ClusterDrsPlan items = 1;
+
+	// The total count of ClusterDrsPlans
+	int32 total_count = 2;
 }
 
 // ListClustersRequest represents the parameters for lists clusters.
@@ -307,35 +300,42 @@ message ListClustersResponse {
 	int32 total_count = 2;
 }
 
-// ListClusterDrsPlanRequest represents the parameters for list drs plans for a clusters
-message ListClusterDrsPlanRequest {
-	// ID of the drs plan
-	int64 id = 1;
+// UpdateClusterRequest represents the parameters for updates an existing cluster
+message UpdateClusterRequest {
+	// the ID of the Cluster
+	int64 id = 1 [
+		(validate.field).required = true
+	];
 
-	// ID of the cluster
-	int64 cluster_id = 2;
+	// the cluster name
+	string cluster_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
 
-	// List by keyword
-	string keyword = 3;
+	// hypervisor type of the cluster
+	string hypervisor = 3;
+
+	// hypervisor type of the cluster
+	string cluster_type = 4;
+
+	// Allocation state of this cluster for allocation of new resources
+	string allocation_state = 5;
+
+	// whether this cluster is managed by cloudstack
+	string managed_state = 6;
+
+	// the CPU arch of the cluster. Valid options are: x86_64, aarch64
+	string arch = 7;
 
 	//
-	int32 page = 4;
-
-	//
-	int32 page_size = 5;
-
-	//
-	string response_type = 6;
+	string response_type = 8;
 }
 
-// ListClusterDrsPlanResponse represents the response from list drs plans for a clusters
-message ListClusterDrsPlanResponse {
-	option (validate.message).disabled = false;
-	// The list of ClusterDrsPlans
-	repeated ClusterDrsPlan items = 1;
-
-	// The total count of ClusterDrsPlans
-	int32 total_count = 2;
+// UpdateClusterResponse represents the response from updates an existing cluster
+message UpdateClusterResponse {
+	// The Result
+	Result result = 1;
 }
 
 // Cluster represents a Cluster Item

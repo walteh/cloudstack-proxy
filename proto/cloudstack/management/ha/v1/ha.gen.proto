@@ -10,13 +10,13 @@ import "google/protobuf/descriptor.proto";
 service HaService {
 	option (annotations.service).scope = SCOPE_USER;
 
-	// DisableHAForZone Disables HA for a zone
-	rpc DisableHAForZone(DisableHAForZoneRequest) returns (DisableHAForZoneResponse) {
+	// ConfigureHAForHost Configures HA for a host
+	rpc ConfigureHAForHost(ConfigureHAForHostRequest) returns (ConfigureHAForHostResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// EnableHAForHost Enables HA for a host
-	rpc EnableHAForHost(EnableHAForHostRequest) returns (EnableHAForHostResponse) {
+	// DisableHAForCluster Disables HA cluster-wide
+	rpc DisableHAForCluster(DisableHAForClusterRequest) returns (DisableHAForClusterResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -25,8 +25,23 @@ service HaService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// ConfigureHAForHost Configures HA for a host
-	rpc ConfigureHAForHost(ConfigureHAForHostRequest) returns (ConfigureHAForHostResponse) {
+	// DisableHAForZone Disables HA for a zone
+	rpc DisableHAForZone(DisableHAForZoneRequest) returns (DisableHAForZoneResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// EnableHAForCluster Enables HA cluster-wide
+	rpc EnableHAForCluster(EnableHAForClusterRequest) returns (EnableHAForClusterResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// EnableHAForHost Enables HA for a host
+	rpc EnableHAForHost(EnableHAForHostRequest) returns (EnableHAForHostResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// EnableHAForZone Enables HA for a zone
+	rpc EnableHAForZone(EnableHAForZoneRequest) returns (EnableHAForZoneResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -39,96 +54,6 @@ service HaService {
 	rpc ListHostHAResources(ListHostHAResourcesRequest) returns (ListHostHAResourcesResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
-
-	// EnableHAForCluster Enables HA cluster-wide
-	rpc EnableHAForCluster(EnableHAForClusterRequest) returns (EnableHAForClusterResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// DisableHAForCluster Disables HA cluster-wide
-	rpc DisableHAForCluster(DisableHAForClusterRequest) returns (DisableHAForClusterResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// EnableHAForZone Enables HA for a zone
-	rpc EnableHAForZone(EnableHAForZoneRequest) returns (EnableHAForZoneResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-}
-
-// DisableHAForZoneRequest represents the parameters for disables ha for a zone
-message DisableHAForZoneRequest {
-	// ID of the zone
-	int64 zone_id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DisableHAForZoneResponse represents the response from disables ha for a zone
-message DisableHAForZoneResponse {
-	// The Result
-	Result result = 1;
-}
-
-// EnableHAForHostRequest represents the parameters for enables ha for a host
-message EnableHAForHostRequest {
-	// ID of the host
-	int64 host_id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// EnableHAForHostResponse represents the response from enables ha for a host
-message EnableHAForHostResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DisableHAForHostRequest represents the parameters for disables ha for a host
-message DisableHAForHostRequest {
-	// ID of the host
-	int64 host_id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DisableHAForHostResponse represents the response from disables ha for a host
-message DisableHAForHostResponse {
-	// The Result
-	Result result = 1;
 }
 
 // ConfigureHAForHostRequest represents the parameters for configures ha for a host
@@ -158,6 +83,156 @@ message ConfigureHAForHostRequest {
 
 // ConfigureHAForHostResponse represents the response from configures ha for a host
 message ConfigureHAForHostResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DisableHAForClusterRequest represents the parameters for disables ha cluster-wide
+message DisableHAForClusterRequest {
+	// ID of the cluster
+	int64 cluster_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DisableHAForClusterResponse represents the response from disables ha cluster-wide
+message DisableHAForClusterResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DisableHAForHostRequest represents the parameters for disables ha for a host
+message DisableHAForHostRequest {
+	// ID of the host
+	int64 host_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DisableHAForHostResponse represents the response from disables ha for a host
+message DisableHAForHostResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DisableHAForZoneRequest represents the parameters for disables ha for a zone
+message DisableHAForZoneRequest {
+	// ID of the zone
+	int64 zone_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DisableHAForZoneResponse represents the response from disables ha for a zone
+message DisableHAForZoneResponse {
+	// The Result
+	Result result = 1;
+}
+
+// EnableHAForClusterRequest represents the parameters for enables ha cluster-wide
+message EnableHAForClusterRequest {
+	// ID of the cluster
+	int64 cluster_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// EnableHAForClusterResponse represents the response from enables ha cluster-wide
+message EnableHAForClusterResponse {
+	// The Result
+	Result result = 1;
+}
+
+// EnableHAForHostRequest represents the parameters for enables ha for a host
+message EnableHAForHostRequest {
+	// ID of the host
+	int64 host_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// EnableHAForHostResponse represents the response from enables ha for a host
+message EnableHAForHostResponse {
+	// The Result
+	Result result = 1;
+}
+
+// EnableHAForZoneRequest represents the parameters for enables ha for a zone
+message EnableHAForZoneRequest {
+	// ID of the zone
+	int64 zone_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// EnableHAForZoneResponse represents the response from enables ha for a zone
+message EnableHAForZoneResponse {
 	// The Result
 	Result result = 1;
 }
@@ -200,81 +275,6 @@ message ListHostHAResourcesResponse {
 
 	// The total count of HostHAs
 	int32 total_count = 2;
-}
-
-// EnableHAForClusterRequest represents the parameters for enables ha cluster-wide
-message EnableHAForClusterRequest {
-	// ID of the cluster
-	int64 cluster_id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// EnableHAForClusterResponse represents the response from enables ha cluster-wide
-message EnableHAForClusterResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DisableHAForClusterRequest represents the parameters for disables ha cluster-wide
-message DisableHAForClusterRequest {
-	// ID of the cluster
-	int64 cluster_id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DisableHAForClusterResponse represents the response from disables ha cluster-wide
-message DisableHAForClusterResponse {
-	// The Result
-	Result result = 1;
-}
-
-// EnableHAForZoneRequest represents the parameters for enables ha for a zone
-message EnableHAForZoneRequest {
-	// ID of the zone
-	int64 zone_id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// EnableHAForZoneResponse represents the response from enables ha for a zone
-message EnableHAForZoneResponse {
-	// The Result
-	Result result = 1;
 }
 
 // HostHA represents a HostHA Item

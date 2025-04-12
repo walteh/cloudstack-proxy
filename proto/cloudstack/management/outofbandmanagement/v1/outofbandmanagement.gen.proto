@@ -10,8 +10,8 @@ import "google/protobuf/descriptor.proto";
 service OutofbandmanagementService {
 	option (annotations.service).scope = SCOPE_USER;
 
-	// IssueOutOfBandManagementPowerAction Initiates the specified power action to the host's out-of-band management interface
-	rpc IssueOutOfBandManagementPowerAction(IssueOutOfBandManagementPowerActionRequest) returns (IssueOutOfBandManagementPowerActionResponse) {
+	// ChangeOutOfBandManagementPassword Changes out-of-band management interface password on the host and updates the interface configuration in CloudStack if the operation succeeds, else reverts the old password
+	rpc ChangeOutOfBandManagementPassword(ChangeOutOfBandManagementPasswordRequest) returns (ChangeOutOfBandManagementPasswordResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -20,28 +20,13 @@ service OutofbandmanagementService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// ChangeOutOfBandManagementPassword Changes out-of-band management interface password on the host and updates the interface configuration in CloudStack if the operation succeeds, else reverts the old password
-	rpc ChangeOutOfBandManagementPassword(ChangeOutOfBandManagementPasswordRequest) returns (ChangeOutOfBandManagementPasswordResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// EnableOutOfBandManagementForZone Enables out-of-band management for a zone
-	rpc EnableOutOfBandManagementForZone(EnableOutOfBandManagementForZoneRequest) returns (EnableOutOfBandManagementForZoneResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// EnableOutOfBandManagementForCluster Enables out-of-band management for a cluster
-	rpc EnableOutOfBandManagementForCluster(EnableOutOfBandManagementForClusterRequest) returns (EnableOutOfBandManagementForClusterResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
 	// DisableOutOfBandManagementForCluster Disables out-of-band management for a cluster
 	rpc DisableOutOfBandManagementForCluster(DisableOutOfBandManagementForClusterRequest) returns (DisableOutOfBandManagementForClusterResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// EnableOutOfBandManagementForHost Enables out-of-band management for a host
-	rpc EnableOutOfBandManagementForHost(EnableOutOfBandManagementForHostRequest) returns (EnableOutOfBandManagementForHostResponse) {
+	// DisableOutOfBandManagementForHost Disables out-of-band management for a host
+	rpc DisableOutOfBandManagementForHost(DisableOutOfBandManagementForHostRequest) returns (DisableOutOfBandManagementForHostResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -50,41 +35,51 @@ service OutofbandmanagementService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// DisableOutOfBandManagementForHost Disables out-of-band management for a host
-	rpc DisableOutOfBandManagementForHost(DisableOutOfBandManagementForHostRequest) returns (DisableOutOfBandManagementForHostResponse) {
+	// EnableOutOfBandManagementForCluster Enables out-of-band management for a cluster
+	rpc EnableOutOfBandManagementForCluster(EnableOutOfBandManagementForClusterRequest) returns (EnableOutOfBandManagementForClusterResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// EnableOutOfBandManagementForHost Enables out-of-band management for a host
+	rpc EnableOutOfBandManagementForHost(EnableOutOfBandManagementForHostRequest) returns (EnableOutOfBandManagementForHostResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// EnableOutOfBandManagementForZone Enables out-of-band management for a zone
+	rpc EnableOutOfBandManagementForZone(EnableOutOfBandManagementForZoneRequest) returns (EnableOutOfBandManagementForZoneResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// IssueOutOfBandManagementPowerAction Initiates the specified power action to the host's out-of-band management interface
+	rpc IssueOutOfBandManagementPowerAction(IssueOutOfBandManagementPowerActionRequest) returns (IssueOutOfBandManagementPowerActionResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 }
 
-// IssueOutOfBandManagementPowerActionRequest represents the parameters for initiates the specified power action to the host's out-of-band management interface
-message IssueOutOfBandManagementPowerActionRequest {
+// ChangeOutOfBandManagementPasswordRequest represents the parameters for changes out-of-band management interface password on the host and updates the interface configuration in cloudstack if the operation succeeds, else reverts the old password
+message ChangeOutOfBandManagementPasswordRequest {
 	// the ID of the host
 	int64 host_id = 1 [
 		(validate.field).required = true
 	];
 
-	// optional operation timeout in seconds that overrides the global or cluster-level out-of-band management timeout setting
-	int64 action_timeout = 2;
-
-	// out-of-band management power actions, valid actions are: ON, OFF, CYCLE, RESET, SOFT, STATUS
-	string power_action = 3 [
-		(validate.field).required = true
-	];
+	// the new host management interface password of maximum length 16, if none is provided a random password would be used
+	string password = 2;
 
 	//
-	int64 start_event_id = 4;
+	int64 start_event_id = 3;
 
 	//
-	string injected_job_id = 5 [
+	string injected_job_id = 4 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	string response_type = 6;
+	string response_type = 5;
 }
 
-// IssueOutOfBandManagementPowerActionResponse represents the response from initiates the specified power action to the host's out-of-band management interface
-message IssueOutOfBandManagementPowerActionResponse {
+// ChangeOutOfBandManagementPasswordResponse represents the response from changes out-of-band management interface password on the host and updates the interface configuration in cloudstack if the operation succeeds, else reverts the old password
+message ChangeOutOfBandManagementPasswordResponse {
 	// The Result
 	Result result = 1;
 }
@@ -133,84 +128,6 @@ message ConfigureOutOfBandManagementResponse {
 	Result result = 1;
 }
 
-// ChangeOutOfBandManagementPasswordRequest represents the parameters for changes out-of-band management interface password on the host and updates the interface configuration in cloudstack if the operation succeeds, else reverts the old password
-message ChangeOutOfBandManagementPasswordRequest {
-	// the ID of the host
-	int64 host_id = 1 [
-		(validate.field).required = true
-	];
-
-	// the new host management interface password of maximum length 16, if none is provided a random password would be used
-	string password = 2;
-
-	//
-	int64 start_event_id = 3;
-
-	//
-	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 5;
-}
-
-// ChangeOutOfBandManagementPasswordResponse represents the response from changes out-of-band management interface password on the host and updates the interface configuration in cloudstack if the operation succeeds, else reverts the old password
-message ChangeOutOfBandManagementPasswordResponse {
-	// The Result
-	Result result = 1;
-}
-
-// EnableOutOfBandManagementForZoneRequest represents the parameters for enables out-of-band management for a zone
-message EnableOutOfBandManagementForZoneRequest {
-	// the ID of the zone
-	int64 zone_id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// EnableOutOfBandManagementForZoneResponse represents the response from enables out-of-band management for a zone
-message EnableOutOfBandManagementForZoneResponse {
-	// The Result
-	Result result = 1;
-}
-
-// EnableOutOfBandManagementForClusterRequest represents the parameters for enables out-of-band management for a cluster
-message EnableOutOfBandManagementForClusterRequest {
-	// the ID of the cluster
-	int64 cluster_id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// EnableOutOfBandManagementForClusterResponse represents the response from enables out-of-band management for a cluster
-message EnableOutOfBandManagementForClusterResponse {
-	// The Result
-	Result result = 1;
-}
-
 // DisableOutOfBandManagementForClusterRequest represents the parameters for disables out-of-band management for a cluster
 message DisableOutOfBandManagementForClusterRequest {
 	// the ID of the cluster
@@ -236,8 +153,8 @@ message DisableOutOfBandManagementForClusterResponse {
 	Result result = 1;
 }
 
-// EnableOutOfBandManagementForHostRequest represents the parameters for enables out-of-band management for a host
-message EnableOutOfBandManagementForHostRequest {
+// DisableOutOfBandManagementForHostRequest represents the parameters for disables out-of-band management for a host
+message DisableOutOfBandManagementForHostRequest {
 	// the ID of the host
 	int64 host_id = 1 [
 		(validate.field).required = true
@@ -255,8 +172,8 @@ message EnableOutOfBandManagementForHostRequest {
 	string response_type = 4;
 }
 
-// EnableOutOfBandManagementForHostResponse represents the response from enables out-of-band management for a host
-message EnableOutOfBandManagementForHostResponse {
+// DisableOutOfBandManagementForHostResponse represents the response from disables out-of-band management for a host
+message DisableOutOfBandManagementForHostResponse {
 	// The Result
 	Result result = 1;
 }
@@ -286,8 +203,33 @@ message DisableOutOfBandManagementForZoneResponse {
 	Result result = 1;
 }
 
-// DisableOutOfBandManagementForHostRequest represents the parameters for disables out-of-band management for a host
-message DisableOutOfBandManagementForHostRequest {
+// EnableOutOfBandManagementForClusterRequest represents the parameters for enables out-of-band management for a cluster
+message EnableOutOfBandManagementForClusterRequest {
+	// the ID of the cluster
+	int64 cluster_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// EnableOutOfBandManagementForClusterResponse represents the response from enables out-of-band management for a cluster
+message EnableOutOfBandManagementForClusterResponse {
+	// The Result
+	Result result = 1;
+}
+
+// EnableOutOfBandManagementForHostRequest represents the parameters for enables out-of-band management for a host
+message EnableOutOfBandManagementForHostRequest {
 	// the ID of the host
 	int64 host_id = 1 [
 		(validate.field).required = true
@@ -305,8 +247,66 @@ message DisableOutOfBandManagementForHostRequest {
 	string response_type = 4;
 }
 
-// DisableOutOfBandManagementForHostResponse represents the response from disables out-of-band management for a host
-message DisableOutOfBandManagementForHostResponse {
+// EnableOutOfBandManagementForHostResponse represents the response from enables out-of-band management for a host
+message EnableOutOfBandManagementForHostResponse {
+	// The Result
+	Result result = 1;
+}
+
+// EnableOutOfBandManagementForZoneRequest represents the parameters for enables out-of-band management for a zone
+message EnableOutOfBandManagementForZoneRequest {
+	// the ID of the zone
+	int64 zone_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// EnableOutOfBandManagementForZoneResponse represents the response from enables out-of-band management for a zone
+message EnableOutOfBandManagementForZoneResponse {
+	// The Result
+	Result result = 1;
+}
+
+// IssueOutOfBandManagementPowerActionRequest represents the parameters for initiates the specified power action to the host's out-of-band management interface
+message IssueOutOfBandManagementPowerActionRequest {
+	// the ID of the host
+	int64 host_id = 1 [
+		(validate.field).required = true
+	];
+
+	// optional operation timeout in seconds that overrides the global or cluster-level out-of-band management timeout setting
+	int64 action_timeout = 2;
+
+	// out-of-band management power actions, valid actions are: ON, OFF, CYCLE, RESET, SOFT, STATUS
+	string power_action = 3 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// IssueOutOfBandManagementPowerActionResponse represents the response from initiates the specified power action to the host's out-of-band management interface
+message IssueOutOfBandManagementPowerActionResponse {
 	// The Result
 	Result result = 1;
 }

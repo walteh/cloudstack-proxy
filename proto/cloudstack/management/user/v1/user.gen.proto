@@ -10,31 +10,6 @@ import "google/protobuf/descriptor.proto";
 service UserService {
 	option (annotations.service).scope = SCOPE_USER;
 
-	// UpdateUser Updates a user account
-	rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// LockUser Locks a user account
-	rpc LockUser(LockUserRequest) returns (LockUserResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// EnableUser Enables a user account
-	rpc EnableUser(EnableUserRequest) returns (EnableUserResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// ListUsers Lists user accounts
-	rpc ListUsers(ListUsersRequest) returns (ListUsersResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// MoveUser Moves a user to another account in the same domain.
-	rpc MoveUser(MoveUserRequest) returns (MoveUserResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
 	// CreateUser Creates a user for an account that already exists
 	rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {
 		option (annotations.method).scope = SCOPE_USER;
@@ -45,8 +20,38 @@ service UserService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
+	// DisableUser Disables a user account
+	rpc DisableUser(DisableUserRequest) returns (DisableUserResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// EnableUser Enables a user account
+	rpc EnableUser(EnableUserRequest) returns (EnableUserResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// GetUser Find user account by API key
+	rpc GetUser(GetUserRequest) returns (GetUserResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
 	// GetUserKeys This command allows the user to query the seceret and API keys for the account
 	rpc GetUserKeys(GetUserKeysRequest) returns (GetUserKeysResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListUsers Lists user accounts
+	rpc ListUsers(ListUsersRequest) returns (ListUsersResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// LockUser Locks a user account
+	rpc LockUser(LockUserRequest) returns (LockUserResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// MoveUser Moves a user to another account in the same domain.
+	rpc MoveUser(MoveUserRequest) returns (MoveUserResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -55,206 +60,10 @@ service UserService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// DisableUser Disables a user account
-	rpc DisableUser(DisableUserRequest) returns (DisableUserResponse) {
+	// UpdateUser Updates a user account
+	rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
-
-	// GetUser Find user account by API key
-	rpc GetUser(GetUserRequest) returns (GetUserResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-}
-
-// UpdateUserRequest represents the parameters for updates a user account
-message UpdateUserRequest {
-	// The API key for the user. Must be specified with userSecretKey
-	string api_key = 1;
-
-	// email
-	string email = 2;
-
-	// first name
-	string firstname = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// User uuid
-	int64 id = 4 [
-		(validate.field).required = true
-	];
-
-	// last name
-	string lastname = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// Clear text password (default hashed to SHA256SALT). If you wish to use any other hashing algorithm, you would need to write a custom authentication adapter. Can't be passed when command is executed via integration.api.port
-	string password = 6;
-
-	// Current password that was being used by the user. You must inform the current password when updating the password.
-	string current_password = 7;
-
-	// The secret key for the user. Must be specified with userApiKey
-	string secret_key = 8;
-
-	// Determines if Api key access for this user is enabled, disabled or inherits the value from its parent, the owning account
-	string api_key_access = 9;
-
-	// Specifies a timezone for this command. For more information on the timezone parameter, see Time Zone Format.
-	string timezone = 10;
-
-	// Unique username
-	string username = 11 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// Provide true to mandate the user to use two factor authentication has to be enabled.This parameter is only used to mandate 2FA, not to disable 2FA
-	bool mandate2_f_a = 12 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	string response_type = 13;
-}
-
-// UpdateUserResponse represents the response from updates a user account
-message UpdateUserResponse {
-	// The Result
-	Result result = 1;
-}
-
-// LockUserRequest represents the parameters for locks a user account
-message LockUserRequest {
-	// Locks user by user ID.
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// LockUserResponse represents the response from locks a user account
-message LockUserResponse {
-	// The Result
-	Result result = 1;
-}
-
-// EnableUserRequest represents the parameters for enables a user account
-message EnableUserRequest {
-	// Enables user by user ID.
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// EnableUserResponse represents the response from enables a user account
-message EnableUserResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListUsersRequest represents the parameters for lists user accounts
-message ListUsersRequest {
-	// List users by account type. Valid types include admin, domain-admin, read-only-admin, or user.
-	int32 account_type = 1;
-
-	// List user by ID.
-	int64 id = 2;
-
-	// List users by state of the user account.
-	string state = 3;
-
-	// List user by the username
-	string username = 4 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// List users by the Api key access value
-	string api_key_access = 5;
-
-	// flag to display the resource icon for users
-	bool show_icon = 6 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List users by their authentication source. Valid values are: native, ldap, saml2 and saml2disabled.
-	string user_source = 7;
-
-	// list resources by account. Must be used with the domainId parameter.
-	string account_name = 8 [
-		(validate.field).cel = {
-			id:         "account_name_with_domain_id",
-			expression: "!has(account_name) || has(domain_id)",
-			message:    "account_name must be used with domain_id parameter"
-		}
-	];
-
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	bool list_all = 9 [
-		features.field_presence = EXPLICIT
-	];
-
-	// list only resources belonging to the domain specified
-	int64 domain_id = 10;
-
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	bool recursive = 11 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List by keyword
-	string keyword = 12;
-
-	//
-	int32 page = 13;
-
-	//
-	int32 page_size = 14;
-
-	//
-	string response_type = 15;
-}
-
-// ListUsersResponse represents the response from lists user accounts
-message ListUsersResponse {
-	option (validate.message).disabled = false;
-	// The list of Users
-	repeated User items = 1;
-
-	// The total count of Users
-	int32 total_count = 2;
-}
-
-// MoveUserRequest represents the parameters for moves a user to another account in the same domain.
-message MoveUserRequest {
-	// id of the user to be moved.
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// Moves the user under the specified account. If no account name is specified, it is necessary to provide an account id.
-	string account_name = 2;
-
-	// Moves the user under the specified account. If no account id is specified, it is necessary to provide an account name.
-	int64 account_id = 3;
-
-	//
-	string response_type = 4;
-}
-
-// MoveUserResponse represents the response from moves a user to another account in the same domain.
-message MoveUserResponse {
-	// The Result
-	Result result = 1;
 }
 
 // CreateUserRequest represents the parameters for creates a user for an account that already exists
@@ -333,40 +142,6 @@ message DeleteUserResponse {
 	Result result = 1;
 }
 
-// GetUserKeysRequest represents the parameters for this command allows the user to query the seceret and api keys for the account
-message GetUserKeysRequest {
-	// ID of the user whose keys are required
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// GetUserKeysResponse represents the response from this command allows the user to query the seceret and api keys for the account
-message GetUserKeysResponse {
-	// The Result
-	Result result = 1;
-}
-
-// RegisterRequest represents the parameters for this command allows a user to register for the developer api, returning a secret key and an api key. this request is made through the integration api port, so it is a privileged command and must be made on behalf of a user. it is up to the implementer just how the username and password are entered, and then how that translates to an integration api request. both secret key and api key should be returned to the user
-message RegisterRequest {
-	// User id
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// RegisterResponse represents the response from this command allows a user to register for the developer api, returning a secret key and an api key. this request is made through the integration api port, so it is a privileged command and must be made on behalf of a user. it is up to the implementer just how the username and password are entered, and then how that translates to an integration api request. both secret key and api key should be returned to the user
-message RegisterResponse {
-	// The Result
-	Result result = 1;
-}
-
 // DisableUserRequest represents the parameters for disables a user account
 message DisableUserRequest {
 	// Disables user by user ID.
@@ -392,6 +167,23 @@ message DisableUserResponse {
 	Result result = 1;
 }
 
+// EnableUserRequest represents the parameters for enables a user account
+message EnableUserRequest {
+	// Enables user by user ID.
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// EnableUserResponse represents the response from enables a user account
+message EnableUserResponse {
+	// The Result
+	Result result = 1;
+}
+
 // GetUserRequest represents the parameters for find user account by api key
 message GetUserRequest {
 	// API key of the user
@@ -405,6 +197,214 @@ message GetUserRequest {
 
 // GetUserResponse represents the response from find user account by api key
 message GetUserResponse {
+	// The Result
+	Result result = 1;
+}
+
+// GetUserKeysRequest represents the parameters for this command allows the user to query the seceret and api keys for the account
+message GetUserKeysRequest {
+	// ID of the user whose keys are required
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// GetUserKeysResponse represents the response from this command allows the user to query the seceret and api keys for the account
+message GetUserKeysResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListUsersRequest represents the parameters for lists user accounts
+message ListUsersRequest {
+	// List users by account type. Valid types include admin, domain-admin, read-only-admin, or user.
+	int32 account_type = 1;
+
+	// List user by ID.
+	int64 id = 2;
+
+	// List users by state of the user account.
+	string state = 3;
+
+	// List user by the username
+	string username = 4 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// List users by the Api key access value
+	string api_key_access = 5;
+
+	// flag to display the resource icon for users
+	bool show_icon = 6 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List users by their authentication source. Valid values are: native, ldap, saml2 and saml2disabled.
+	string user_source = 7;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 8 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 9 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 10;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 11 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 12;
+
+	//
+	int32 page = 13;
+
+	//
+	int32 page_size = 14;
+
+	//
+	string response_type = 15;
+}
+
+// ListUsersResponse represents the response from lists user accounts
+message ListUsersResponse {
+	option (validate.message).disabled = false;
+	// The list of Users
+	repeated User items = 1;
+
+	// The total count of Users
+	int32 total_count = 2;
+}
+
+// LockUserRequest represents the parameters for locks a user account
+message LockUserRequest {
+	// Locks user by user ID.
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// LockUserResponse represents the response from locks a user account
+message LockUserResponse {
+	// The Result
+	Result result = 1;
+}
+
+// MoveUserRequest represents the parameters for moves a user to another account in the same domain.
+message MoveUserRequest {
+	// id of the user to be moved.
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// Moves the user under the specified account. If no account name is specified, it is necessary to provide an account id.
+	string account_name = 2;
+
+	// Moves the user under the specified account. If no account id is specified, it is necessary to provide an account name.
+	int64 account_id = 3;
+
+	//
+	string response_type = 4;
+}
+
+// MoveUserResponse represents the response from moves a user to another account in the same domain.
+message MoveUserResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RegisterRequest represents the parameters for this command allows a user to register for the developer api, returning a secret key and an api key. this request is made through the integration api port, so it is a privileged command and must be made on behalf of a user. it is up to the implementer just how the username and password are entered, and then how that translates to an integration api request. both secret key and api key should be returned to the user
+message RegisterRequest {
+	// User id
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// RegisterResponse represents the response from this command allows a user to register for the developer api, returning a secret key and an api key. this request is made through the integration api port, so it is a privileged command and must be made on behalf of a user. it is up to the implementer just how the username and password are entered, and then how that translates to an integration api request. both secret key and api key should be returned to the user
+message RegisterResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateUserRequest represents the parameters for updates a user account
+message UpdateUserRequest {
+	// The API key for the user. Must be specified with userSecretKey
+	string api_key = 1;
+
+	// email
+	string email = 2;
+
+	// first name
+	string firstname = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// User uuid
+	int64 id = 4 [
+		(validate.field).required = true
+	];
+
+	// last name
+	string lastname = 5 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// Clear text password (default hashed to SHA256SALT). If you wish to use any other hashing algorithm, you would need to write a custom authentication adapter. Can't be passed when command is executed via integration.api.port
+	string password = 6;
+
+	// Current password that was being used by the user. You must inform the current password when updating the password.
+	string current_password = 7;
+
+	// The secret key for the user. Must be specified with userApiKey
+	string secret_key = 8;
+
+	// Determines if Api key access for this user is enabled, disabled or inherits the value from its parent, the owning account
+	string api_key_access = 9;
+
+	// Specifies a timezone for this command. For more information on the timezone parameter, see Time Zone Format.
+	string timezone = 10;
+
+	// Unique username
+	string username = 11 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// Provide true to mandate the user to use two factor authentication has to be enabled.This parameter is only used to mandate 2FA, not to disable 2FA
+	bool mandate2_f_a = 12 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	string response_type = 13;
+}
+
+// UpdateUserResponse represents the response from updates a user account
+message UpdateUserResponse {
 	// The Result
 	Result result = 1;
 }

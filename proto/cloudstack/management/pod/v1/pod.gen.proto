@@ -11,8 +11,8 @@ service PodService {
 	option (annotations.service).scope = SCOPE_ADMIN;
 	option (annotations.service).scope = SCOPE_USER;
 
-	// UpdatePod Updates a Pod.
-	rpc UpdatePod(UpdatePodRequest) returns (UpdatePodResponse) {
+	// CreatePod Creates a new Pod.
+	rpc CreatePod(CreatePodRequest) returns (CreatePodResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -21,76 +21,15 @@ service PodService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// CreatePod Creates a new Pod.
-	rpc CreatePod(CreatePodRequest) returns (CreatePodResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
 	// ListPodsBy Lists all Pods.
 	rpc ListPodsBy(ListPodsByRequest) returns (ListPodsByResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
-}
 
-// UpdatePodRequest represents the parameters for updates a pod.
-message UpdatePodRequest {
-	// the ID of the Pod
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// the name of the Pod
-	string pod_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// the starting IP address for the Pod
-	string start_ip = 3 [
-		(validate.field).string.ipv4 = true
-	];
-
-	// the ending IP address for the Pod
-	string end_ip = 4 [
-		(validate.field).string.ipv4 = true
-	];
-
-	// the netmask of the Pod
-	string netmask = 5;
-
-	// the gateway for the Pod
-	string gateway = 6 [
-		(validate.field).string.ipv4 = true
-	];
-
-	// Allocation state of this cluster for allocation of new resources
-	string allocation_state = 7;
-
-	//
-	string response_type = 8;
-}
-
-// UpdatePodResponse represents the response from updates a pod.
-message UpdatePodResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeletePodRequest represents the parameters for deletes a pod.
-message DeletePodRequest {
-	// the ID of the Pod
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// DeletePodResponse represents the response from deletes a pod.
-message DeletePodResponse {
-	// The Result
-	Result result = 1;
+	// UpdatePod Updates a Pod.
+	rpc UpdatePod(UpdatePodRequest) returns (UpdatePodResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
 // CreatePodRequest represents the parameters for creates a new pod.
@@ -138,6 +77,23 @@ message CreatePodResponse {
 	Result result = 1;
 }
 
+// DeletePodRequest represents the parameters for deletes a pod.
+message DeletePodRequest {
+	// the ID of the Pod
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeletePodResponse represents the response from deletes a pod.
+message DeletePodResponse {
+	// The Result
+	Result result = 1;
+}
+
 // ListPodsByRequest represents the parameters for lists all pods.
 message ListPodsByRequest {
 	// list Pods by ID
@@ -181,6 +137,50 @@ message ListPodsByResponse {
 
 	// The total count of Pods
 	int32 total_count = 2;
+}
+
+// UpdatePodRequest represents the parameters for updates a pod.
+message UpdatePodRequest {
+	// the ID of the Pod
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// the name of the Pod
+	string pod_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the starting IP address for the Pod
+	string start_ip = 3 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the ending IP address for the Pod
+	string end_ip = 4 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// the netmask of the Pod
+	string netmask = 5;
+
+	// the gateway for the Pod
+	string gateway = 6 [
+		(validate.field).string.ipv4 = true
+	];
+
+	// Allocation state of this cluster for allocation of new resources
+	string allocation_state = 7;
+
+	//
+	string response_type = 8;
+}
+
+// UpdatePodResponse represents the response from updates a pod.
+message UpdatePodResponse {
+	// The Result
+	Result result = 1;
 }
 
 // Pod represents a Pod Item

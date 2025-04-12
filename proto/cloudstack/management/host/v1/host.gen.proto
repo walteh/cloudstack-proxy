@@ -11,43 +11,13 @@ service HostService {
 	option (annotations.service).scope = SCOPE_ADMIN;
 	option (annotations.service).scope = SCOPE_USER;
 
-	// ListHostTags Lists host tags
-	rpc ListHostTags(ListHostTagsRequest) returns (ListHostTagsResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// AddSecondaryStorage Adds secondary storage.
-	rpc AddSecondaryStorage(AddSecondaryStorageRequest) returns (AddSecondaryStorageResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// ListHosts Lists hosts.
-	rpc ListHosts(ListHostsRequest) returns (ListHostsResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
 	// AddHost Adds a new host.
 	rpc AddHost(AddHostRequest) returns (AddHostResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// ReconnectHost Reconnects a host.
-	rpc ReconnectHost(ReconnectHostRequest) returns (ReconnectHostResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// FindHostsForMigration Find hosts suitable for migrating a virtual machine.
-	rpc FindHostsForMigration(FindHostsForMigrationRequest) returns (FindHostsForMigrationResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// UpdateHost Updates a host.
-	rpc UpdateHost(UpdateHostRequest) returns (UpdateHostResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// DeleteHost Deletes a host.
-	rpc DeleteHost(DeleteHostRequest) returns (DeleteHostResponse) {
+	// AddSecondaryStorage Adds secondary storage.
+	rpc AddSecondaryStorage(AddSecondaryStorageRequest) returns (AddSecondaryStorageResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -61,13 +31,28 @@ service HostService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// ReleaseHostReservation Releases host reservation.
-	rpc ReleaseHostReservation(ReleaseHostReservationRequest) returns (ReleaseHostReservationResponse) {
+	// DeclareHostAsDegraded Declare host as 'Degraded'. Host must be on 'Disconnected' or 'Alert' state. The ADMIN must be sure that there are no VMs running on the respective host otherwise this command might corrupted VMs that were running on the 'Degraded' host.
+	rpc DeclareHostAsDegraded(DeclareHostAsDegradedRequest) returns (DeclareHostAsDegradedResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// UpdateHostPassword Update password of a host/pool on management server.
-	rpc UpdateHostPassword(UpdateHostPasswordRequest) returns (UpdateHostPasswordResponse) {
+	// DeleteHost Deletes a host.
+	rpc DeleteHost(DeleteHostRequest) returns (DeleteHostResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// FindHostsForMigration Find hosts suitable for migrating a virtual machine.
+	rpc FindHostsForMigration(FindHostsForMigrationRequest) returns (FindHostsForMigrationResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListHostTags Lists host tags
+	rpc ListHostTags(ListHostTagsRequest) returns (ListHostTagsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListHosts Lists hosts.
+	rpc ListHosts(ListHostsRequest) returns (ListHostsResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -76,10 +61,229 @@ service HostService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// DeclareHostAsDegraded Declare host as 'Degraded'. Host must be on 'Disconnected' or 'Alert' state. The ADMIN must be sure that there are no VMs running on the respective host otherwise this command might corrupted VMs that were running on the 'Degraded' host.
-	rpc DeclareHostAsDegraded(DeclareHostAsDegradedRequest) returns (DeclareHostAsDegradedResponse) {
+	// ReconnectHost Reconnects a host.
+	rpc ReconnectHost(ReconnectHostRequest) returns (ReconnectHostResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
+
+	// ReleaseHostReservation Releases host reservation.
+	rpc ReleaseHostReservation(ReleaseHostReservationRequest) returns (ReleaseHostReservationResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// UpdateHost Updates a host.
+	rpc UpdateHost(UpdateHostRequest) returns (UpdateHostResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// UpdateHostPassword Update password of a host/pool on management server.
+	rpc UpdateHostPassword(UpdateHostPasswordRequest) returns (UpdateHostPasswordResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+}
+
+// AddHostRequest represents the parameters for adds a new host.
+message AddHostRequest {
+	// the cluster ID for the host
+	int64 cluster_id = 1;
+
+	// the cluster name for the host
+	string cluster_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the username for the host; required to be passed for hypervisors other than VMWare
+	string username = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the password for the host; required to be passed for hypervisors other than VMWare
+	string password = 4;
+
+	// the Pod ID for the host
+	int64 pod_id = 5 [
+		(validate.field).required = true
+	];
+
+	// the host URL
+	string url = 6 [
+		(validate.field).required = true
+	];
+
+	// the Zone ID for the host
+	int64 zone_id = 7 [
+		(validate.field).required = true
+	];
+
+	// hypervisor type of the host
+	string hypervisor = 8 [
+		(validate.field).required = true
+	];
+
+	// Allocation state of this Host for allocation of new resources
+	string allocation_state = 9;
+
+	// list of tags to be added to the host
+	repeated string host_tags = 10;
+
+	//
+	string response_type = 11;
+}
+
+// AddHostResponse represents the response from adds a new host.
+message AddHostResponse {
+	// The Result
+	Result result = 1;
+}
+
+// AddSecondaryStorageRequest represents the parameters for adds secondary storage.
+message AddSecondaryStorageRequest {
+	// the URL for the secondary storage
+	string url = 1 [
+		(validate.field).required = true
+	];
+
+	// the Zone ID for the secondary storage
+	int64 zone_id = 2;
+
+	//
+	string response_type = 3;
+}
+
+// AddSecondaryStorageResponse represents the response from adds secondary storage.
+message AddSecondaryStorageResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CancelHostAsDegradedRequest represents the parameters for cancel host status from 'degraded'. host will transit back to status 'enabled'.
+message CancelHostAsDegradedRequest {
+	// host ID
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// CancelHostAsDegradedResponse represents the response from cancel host status from 'degraded'. host will transit back to status 'enabled'.
+message CancelHostAsDegradedResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CancelHostMaintenanceRequest represents the parameters for cancels host maintenance.
+message CancelHostMaintenanceRequest {
+	// the host ID
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// CancelHostMaintenanceResponse represents the response from cancels host maintenance.
+message CancelHostMaintenanceResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeclareHostAsDegradedRequest represents the parameters for declare host as 'degraded'. host must be on 'disconnected' or 'alert' state. the admin must be sure that there are no vms running on the respective host otherwise this command might corrupted vms that were running on the 'degraded' host.
+message DeclareHostAsDegradedRequest {
+	// host ID
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeclareHostAsDegradedResponse represents the response from declare host as 'degraded'. host must be on 'disconnected' or 'alert' state. the admin must be sure that there are no vms running on the respective host otherwise this command might corrupted vms that were running on the 'degraded' host.
+message DeclareHostAsDegradedResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteHostRequest represents the parameters for deletes a host.
+message DeleteHostRequest {
+	// the host ID
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// Force delete the host. All HA enabled vms running on the host will be put to HA; HA disabled ones will be stopped
+	bool forced = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Force destroy local storage on this host. All VMs created on this local storage will be destroyed
+	bool force_destroy_local_storage = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteHostResponse represents the response from deletes a host.
+message DeleteHostResponse {
+	// The Result
+	Result result = 1;
+}
+
+// FindHostsForMigrationRequest represents the parameters for find hosts suitable for migrating a virtual machine.
+message FindHostsForMigrationRequest {
+	// find hosts to which this VM can be migrated and flag the hosts with enough CPU/RAM to host the VM
+	int64 virtual_machine_id = 1 [
+		(validate.field).required = true
+	];
+
+	// List by keyword
+	string keyword = 2;
+
+	//
+	int32 page = 3;
+
+	//
+	int32 page_size = 4;
+
+	//
+	string response_type = 5;
+}
+
+// FindHostsForMigrationResponse represents the response from find hosts suitable for migrating a virtual machine.
+message FindHostsForMigrationResponse {
+	// The Result
+	Result result = 1;
 }
 
 // ListHostTagsRequest represents the parameters for lists host tags
@@ -105,26 +309,6 @@ message ListHostTagsResponse {
 
 	// The total count of HostTags
 	int32 total_count = 2;
-}
-
-// AddSecondaryStorageRequest represents the parameters for adds secondary storage.
-message AddSecondaryStorageRequest {
-	// the URL for the secondary storage
-	string url = 1 [
-		(validate.field).required = true
-	];
-
-	// the Zone ID for the secondary storage
-	int64 zone_id = 2;
-
-	//
-	string response_type = 3;
-}
-
-// AddSecondaryStorageResponse represents the response from adds secondary storage.
-message AddSecondaryStorageResponse {
-	// The Result
-	Result result = 1;
 }
 
 // ListHostsRequest represents the parameters for lists hosts.
@@ -204,58 +388,27 @@ message ListHostsResponse {
 	int32 total_count = 2;
 }
 
-// AddHostRequest represents the parameters for adds a new host.
-message AddHostRequest {
-	// the cluster ID for the host
-	int64 cluster_id = 1;
-
-	// the cluster name for the host
-	string cluster_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// the username for the host; required to be passed for hypervisors other than VMWare
-	string username = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// the password for the host; required to be passed for hypervisors other than VMWare
-	string password = 4;
-
-	// the Pod ID for the host
-	int64 pod_id = 5 [
+// PrepareForHostMaintenanceRequest represents the parameters for prepares a host for maintenance.
+message PrepareForHostMaintenanceRequest {
+	// the host ID
+	int64 id = 1 [
 		(validate.field).required = true
 	];
-
-	// the host URL
-	string url = 6 [
-		(validate.field).required = true
-	];
-
-	// the Zone ID for the host
-	int64 zone_id = 7 [
-		(validate.field).required = true
-	];
-
-	// hypervisor type of the host
-	string hypervisor = 8 [
-		(validate.field).required = true
-	];
-
-	// Allocation state of this Host for allocation of new resources
-	string allocation_state = 9;
-
-	// list of tags to be added to the host
-	repeated string host_tags = 10;
 
 	//
-	string response_type = 11;
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
 }
 
-// AddHostResponse represents the response from adds a new host.
-message AddHostResponse {
+// PrepareForHostMaintenanceResponse represents the response from prepares a host for maintenance.
+message PrepareForHostMaintenanceResponse {
 	// The Result
 	Result result = 1;
 }
@@ -285,28 +438,27 @@ message ReconnectHostResponse {
 	Result result = 1;
 }
 
-// FindHostsForMigrationRequest represents the parameters for find hosts suitable for migrating a virtual machine.
-message FindHostsForMigrationRequest {
-	// find hosts to which this VM can be migrated and flag the hosts with enough CPU/RAM to host the VM
-	int64 virtual_machine_id = 1 [
+// ReleaseHostReservationRequest represents the parameters for releases host reservation.
+message ReleaseHostReservationRequest {
+	// the host ID
+	int64 id = 1 [
 		(validate.field).required = true
 	];
 
-	// List by keyword
-	string keyword = 2;
+	//
+	int64 start_event_id = 2;
 
 	//
-	int32 page = 3;
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
 
 	//
-	int32 page_size = 4;
-
-	//
-	string response_type = 5;
+	string response_type = 4;
 }
 
-// FindHostsForMigrationResponse represents the response from find hosts suitable for migrating a virtual machine.
-message FindHostsForMigrationResponse {
+// ReleaseHostReservationResponse represents the response from releases host reservation.
+message ReleaseHostReservationResponse {
 	// The Result
 	Result result = 1;
 }
@@ -354,108 +506,6 @@ message UpdateHostResponse {
 	Result result = 1;
 }
 
-// DeleteHostRequest represents the parameters for deletes a host.
-message DeleteHostRequest {
-	// the host ID
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// Force delete the host. All HA enabled vms running on the host will be put to HA; HA disabled ones will be stopped
-	bool forced = 2 [
-		features.field_presence = EXPLICIT
-	];
-
-	// Force destroy local storage on this host. All VMs created on this local storage will be destroyed
-	bool force_destroy_local_storage = 3 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DeleteHostResponse represents the response from deletes a host.
-message DeleteHostResponse {
-	// The Result
-	Result result = 1;
-}
-
-// CancelHostAsDegradedRequest represents the parameters for cancel host status from 'degraded'. host will transit back to status 'enabled'.
-message CancelHostAsDegradedRequest {
-	// host ID
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// CancelHostAsDegradedResponse represents the response from cancel host status from 'degraded'. host will transit back to status 'enabled'.
-message CancelHostAsDegradedResponse {
-	// The Result
-	Result result = 1;
-}
-
-// CancelHostMaintenanceRequest represents the parameters for cancels host maintenance.
-message CancelHostMaintenanceRequest {
-	// the host ID
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// CancelHostMaintenanceResponse represents the response from cancels host maintenance.
-message CancelHostMaintenanceResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ReleaseHostReservationRequest represents the parameters for releases host reservation.
-message ReleaseHostReservationRequest {
-	// the host ID
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// ReleaseHostReservationResponse represents the response from releases host reservation.
-message ReleaseHostReservationResponse {
-	// The Result
-	Result result = 1;
-}
-
 // UpdateHostPasswordRequest represents the parameters for update password of a host/pool on management server.
 message UpdateHostPasswordRequest {
 	// the host ID
@@ -491,54 +541,20 @@ message UpdateHostPasswordResponse {
 	Result result = 1;
 }
 
-// PrepareForHostMaintenanceRequest represents the parameters for prepares a host for maintenance.
-message PrepareForHostMaintenanceRequest {
-	// the host ID
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
+// Host represents a Host Item
+message Host {
+	// The ID of the Host
+	string id = 1 [
 		(validate.field).string.uuid = true
 	];
-
-	//
-	string response_type = 4;
-}
-
-// PrepareForHostMaintenanceResponse represents the response from prepares a host for maintenance.
-message PrepareForHostMaintenanceResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeclareHostAsDegradedRequest represents the parameters for declare host as 'degraded'. host must be on 'disconnected' or 'alert' state. the admin must be sure that there are no vms running on the respective host otherwise this command might corrupted vms that were running on the 'degraded' host.
-message DeclareHostAsDegradedRequest {
-	// host ID
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DeclareHostAsDegradedResponse represents the response from declare host as 'degraded'. host must be on 'disconnected' or 'alert' state. the admin must be sure that there are no vms running on the respective host otherwise this command might corrupted vms that were running on the 'degraded' host.
-message DeclareHostAsDegradedResponse {
-	// The Result
-	Result result = 1;
+	// The name of the Host
+	string name = 2;
+	// The display name of the Host
+	string display_name = 3;
+	// The description of the Host
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
 }
 
 // HostTag represents a HostTag Item
@@ -552,22 +568,6 @@ message HostTag {
 	// The display name of the HostTag
 	string display_name = 3;
 	// The description of the HostTag
-	string description = 4;
-	// The date this entity was created
-	string created = 5;
-}
-
-// Host represents a Host Item
-message Host {
-	// The ID of the Host
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-	// The name of the Host
-	string name = 2;
-	// The display name of the Host
-	string display_name = 3;
-	// The description of the Host
 	string description = 4;
 	// The date this entity was created
 	string created = 5;

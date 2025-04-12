@@ -10,13 +10,8 @@ import "google/protobuf/descriptor.proto";
 service GslbService {
 	option (annotations.service).scope = SCOPE_USER;
 
-	// RemoveFromGlobalLoadBalancerRule Removes a load balancer rule association with global load balancer rule
-	rpc RemoveFromGlobalLoadBalancerRule(RemoveFromGlobalLoadBalancerRuleRequest) returns (RemoveFromGlobalLoadBalancerRuleResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// ListGlobalLoadBalancerRule Lists load balancer rules.
-	rpc ListGlobalLoadBalancerRule(ListGlobalLoadBalancerRuleRequest) returns (ListGlobalLoadBalancerRuleResponse) {
+	// AssignToGlobalLoadBalancerRule Assign load balancer rule or list of load balancer rules to a global load balancer rules.
+	rpc AssignToGlobalLoadBalancerRule(AssignToGlobalLoadBalancerRuleRequest) returns (AssignToGlobalLoadBalancerRuleResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -30,20 +25,25 @@ service GslbService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
+	// ListGlobalLoadBalancerRule Lists load balancer rules.
+	rpc ListGlobalLoadBalancerRule(ListGlobalLoadBalancerRuleRequest) returns (ListGlobalLoadBalancerRuleResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// RemoveFromGlobalLoadBalancerRule Removes a load balancer rule association with global load balancer rule
+	rpc RemoveFromGlobalLoadBalancerRule(RemoveFromGlobalLoadBalancerRuleRequest) returns (RemoveFromGlobalLoadBalancerRuleResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
 	// UpdateGlobalLoadBalancerRule update global load balancer rules.
 	rpc UpdateGlobalLoadBalancerRule(UpdateGlobalLoadBalancerRuleRequest) returns (UpdateGlobalLoadBalancerRuleResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
-
-	// AssignToGlobalLoadBalancerRule Assign load balancer rule or list of load balancer rules to a global load balancer rules.
-	rpc AssignToGlobalLoadBalancerRule(AssignToGlobalLoadBalancerRuleRequest) returns (AssignToGlobalLoadBalancerRuleResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
 }
 
-// RemoveFromGlobalLoadBalancerRuleRequest represents the parameters for removes a load balancer rule association with global load balancer rule
-message RemoveFromGlobalLoadBalancerRuleRequest {
-	// The ID of the load balancer rule
+// AssignToGlobalLoadBalancerRuleRequest represents the parameters for assign load balancer rule or list of load balancer rules to a global load balancer rules.
+message AssignToGlobalLoadBalancerRuleRequest {
+	// the ID of the global load balancer rule
 	int64 id = 1 [
 		(validate.field).required = true
 	];
@@ -53,81 +53,25 @@ message RemoveFromGlobalLoadBalancerRuleRequest {
 		(validate.field).required = true
 	];
 
-	//
-	int64 start_event_id = 3;
+	// Map of LB rule id's and corresponding weights (between 1-100) in the GSLB rule, if not specified weight of a LB rule is defaulted to 1. Specified as 'gslblbruleweightsmap[0].loadbalancerid=UUID&gslblbruleweightsmap[0].weight=10'
+	map<string, string> gslb_lb_rule_wieght_map_ = 3;
 
 	//
-	string injected_job_id = 4 [
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	string response_type = 5;
+	string response_type = 6;
 }
 
-// RemoveFromGlobalLoadBalancerRuleResponse represents the response from removes a load balancer rule association with global load balancer rule
-message RemoveFromGlobalLoadBalancerRuleResponse {
+// AssignToGlobalLoadBalancerRuleResponse represents the response from assign load balancer rule or list of load balancer rules to a global load balancer rules.
+message AssignToGlobalLoadBalancerRuleResponse {
 	// The Result
 	Result result = 1;
-}
-
-// ListGlobalLoadBalancerRuleRequest represents the parameters for lists load balancer rules.
-message ListGlobalLoadBalancerRuleRequest {
-	// the ID of the global load balancer rule
-	int64 id = 1;
-
-	// region ID
-	int32 region_id = 2;
-
-	// List resources by tags (key/value pairs)
-	map<string, string> tags = 3;
-
-	// list objects by project; if projectid=-1 lists All VMs
-	int64 project_id = 4;
-
-	// list resources by account. Must be used with the domainId parameter.
-	string account_name = 5 [
-		(validate.field).cel = {
-			id:         "account_name_with_domain_id",
-			expression: "!has(account_name) || has(domain_id)",
-			message:    "account_name must be used with domain_id parameter"
-		}
-	];
-
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	bool list_all = 6 [
-		features.field_presence = EXPLICIT
-	];
-
-	// list only resources belonging to the domain specified
-	int64 domain_id = 7;
-
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	bool recursive = 8 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List by keyword
-	string keyword = 9;
-
-	//
-	int32 page = 10;
-
-	//
-	int32 page_size = 11;
-
-	//
-	string response_type = 12;
-}
-
-// ListGlobalLoadBalancerRuleResponse represents the response from lists load balancer rules.
-message ListGlobalLoadBalancerRuleResponse {
-	option (validate.message).disabled = false;
-	// The list of GlobalLoadBalancers
-	repeated GlobalLoadBalancer items = 1;
-
-	// The total count of GlobalLoadBalancers
-	int32 total_count = 2;
 }
 
 // CreateGlobalLoadBalancerRuleRequest represents the parameters for creates a global load balancer rule
@@ -226,6 +170,95 @@ message DeleteGlobalLoadBalancerRuleResponse {
 	Result result = 1;
 }
 
+// ListGlobalLoadBalancerRuleRequest represents the parameters for lists load balancer rules.
+message ListGlobalLoadBalancerRuleRequest {
+	// the ID of the global load balancer rule
+	int64 id = 1;
+
+	// region ID
+	int32 region_id = 2;
+
+	// List resources by tags (key/value pairs)
+	map<string, string> tags = 3;
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 4;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 5 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 6 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 7;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 8 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 9;
+
+	//
+	int32 page = 10;
+
+	//
+	int32 page_size = 11;
+
+	//
+	string response_type = 12;
+}
+
+// ListGlobalLoadBalancerRuleResponse represents the response from lists load balancer rules.
+message ListGlobalLoadBalancerRuleResponse {
+	option (validate.message).disabled = false;
+	// The list of GlobalLoadBalancers
+	repeated GlobalLoadBalancer items = 1;
+
+	// The total count of GlobalLoadBalancers
+	int32 total_count = 2;
+}
+
+// RemoveFromGlobalLoadBalancerRuleRequest represents the parameters for removes a load balancer rule association with global load balancer rule
+message RemoveFromGlobalLoadBalancerRuleRequest {
+	// The ID of the load balancer rule
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// the list load balancer rules that will be assigned to global load balancer rule
+	repeated string load_balancer_rules_ids = 2 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// RemoveFromGlobalLoadBalancerRuleResponse represents the response from removes a load balancer rule association with global load balancer rule
+message RemoveFromGlobalLoadBalancerRuleResponse {
+	// The Result
+	Result result = 1;
+}
+
 // UpdateGlobalLoadBalancerRuleRequest represents the parameters for update global load balancer rules.
 message UpdateGlobalLoadBalancerRuleRequest {
 	// the ID of the global load balancer rule
@@ -262,39 +295,6 @@ message UpdateGlobalLoadBalancerRuleRequest {
 
 // UpdateGlobalLoadBalancerRuleResponse represents the response from update global load balancer rules.
 message UpdateGlobalLoadBalancerRuleResponse {
-	// The Result
-	Result result = 1;
-}
-
-// AssignToGlobalLoadBalancerRuleRequest represents the parameters for assign load balancer rule or list of load balancer rules to a global load balancer rules.
-message AssignToGlobalLoadBalancerRuleRequest {
-	// the ID of the global load balancer rule
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// the list load balancer rules that will be assigned to global load balancer rule
-	repeated string load_balancer_rules_ids = 2 [
-		(validate.field).required = true
-	];
-
-	// Map of LB rule id's and corresponding weights (between 1-100) in the GSLB rule, if not specified weight of a LB rule is defaulted to 1. Specified as 'gslblbruleweightsmap[0].loadbalancerid=UUID&gslblbruleweightsmap[0].weight=10'
-	map<string, string> gslb_lb_rule_wieght_map = 3;
-
-	//
-	int64 start_event_id = 4;
-
-	//
-	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 6;
-}
-
-// AssignToGlobalLoadBalancerRuleResponse represents the response from assign load balancer rule or list of load balancer rules to a global load balancer rules.
-message AssignToGlobalLoadBalancerRuleResponse {
 	// The Result
 	Result result = 1;
 }

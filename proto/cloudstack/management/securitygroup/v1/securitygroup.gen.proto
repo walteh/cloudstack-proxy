@@ -10,8 +10,8 @@ import "google/protobuf/descriptor.proto";
 service SecuritygroupService {
 	option (annotations.service).scope = SCOPE_USER;
 
-	// RevokeSecurityGroupEgress Deletes a particular egress rule from this security group
-	rpc RevokeSecurityGroupEgress(RevokeSecurityGroupEgressRequest) returns (RevokeSecurityGroupEgressResponse) {
+	// AuthorizeSecurityGroupEgress Authorizes a particular egress rule for this security group
+	rpc AuthorizeSecurityGroupEgress(AuthorizeSecurityGroupEgressRequest) returns (AuthorizeSecurityGroupEgressResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -20,8 +20,8 @@ service SecuritygroupService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// UpdateSecurityGroup Updates a security group
-	rpc UpdateSecurityGroup(UpdateSecurityGroupRequest) returns (UpdateSecurityGroupResponse) {
+	// CreateSecurityGroup Creates a security group
+	rpc CreateSecurityGroup(CreateSecurityGroupRequest) returns (CreateSecurityGroupResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -30,18 +30,13 @@ service SecuritygroupService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// CreateSecurityGroup Creates a security group
-	rpc CreateSecurityGroup(CreateSecurityGroupRequest) returns (CreateSecurityGroupResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// AuthorizeSecurityGroupEgress Authorizes a particular egress rule for this security group
-	rpc AuthorizeSecurityGroupEgress(AuthorizeSecurityGroupEgressRequest) returns (AuthorizeSecurityGroupEgressResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
 	// ListSecurityGroups Lists security groups
 	rpc ListSecurityGroups(ListSecurityGroupsRequest) returns (ListSecurityGroupsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// RevokeSecurityGroupEgress Deletes a particular egress rule from this security group
+	rpc RevokeSecurityGroupEgress(RevokeSecurityGroupEgressRequest) returns (RevokeSecurityGroupEgressResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -49,29 +44,74 @@ service SecuritygroupService {
 	rpc RevokeSecurityGroupIngress(RevokeSecurityGroupIngressRequest) returns (RevokeSecurityGroupIngressResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
+
+	// UpdateSecurityGroup Updates a security group
+	rpc UpdateSecurityGroup(UpdateSecurityGroupRequest) returns (UpdateSecurityGroupResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
-// RevokeSecurityGroupEgressRequest represents the parameters for deletes a particular egress rule from this security group
-message RevokeSecurityGroupEgressRequest {
-	// The ID of the egress rule
-	int64 id = 1 [
-		(validate.field).required = true
+// AuthorizeSecurityGroupEgressRequest represents the parameters for authorizes a particular egress rule for this security group
+message AuthorizeSecurityGroupEgressRequest {
+	// TCP is default. UDP is the other supported protocol
+	string protocol = 1;
+
+	// start port for this egress rule
+	int32 start_port = 2 [
+		(validate.field).int32.gte = 1,
+		(validate.field).int32.lte = 65535
+	];
+
+	// end port for this egress rule
+	int32 end_port = 3 [
+		(validate.field).int32.gte = 1,
+		(validate.field).int32.lte = 65535
+	];
+
+	// type of the icmp message being sent
+	int32 icmp_type = 4;
+
+	// error code for this icmp message
+	int32 icmp_code = 5;
+
+	// the cidr list associated. Multiple entries must be separated by a single comma character (,).
+	repeated string cidr_list = 6;
+
+	// user to security group mapping
+	map<string, string> user_security_group_list = 7;
+
+	// an optional domainId for the security group. If the account parameter is used, domainId must also be used.
+	int64 domain_id = 8;
+
+	// an optional account for the security group. Must be used with domainId.
+	string account_name = 9;
+
+	// an optional project of the security group
+	int64 project_id = 10;
+
+	// The ID of the security group. Mutually exclusive with securityGroupName parameter
+	int64 security_group_id = 11;
+
+	// The name of the security group. Mutually exclusive with securityGroupId parameter
+	string security_group_name = 12 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
 	];
 
 	//
-	int64 start_event_id = 2;
+	int64 start_event_id = 13;
 
 	//
-	string injected_job_id = 3 [
+	string injected_job_id = 14 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	string response_type = 4;
+	string response_type = 15;
 }
 
-// RevokeSecurityGroupEgressResponse represents the response from deletes a particular egress rule from this security group
-message RevokeSecurityGroupEgressResponse {
+// AuthorizeSecurityGroupEgressResponse represents the response from authorizes a particular egress rule for this security group
+message AuthorizeSecurityGroupEgressResponse {
 	// The Result
 	Result result = 1;
 }
@@ -141,64 +181,6 @@ message AuthorizeSecurityGroupIngressResponse {
 	Result result = 1;
 }
 
-// UpdateSecurityGroupRequest represents the parameters for updates a security group
-message UpdateSecurityGroupRequest {
-	// The ID of the security group.
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// The new name of the security group.
-	string name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	string custom_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// UpdateSecurityGroupResponse represents the response from updates a security group
-message UpdateSecurityGroupResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeleteSecurityGroupRequest represents the parameters for deletes security group
-message DeleteSecurityGroupRequest {
-	// the account of the security group. Must be specified with domain ID
-	string account_name = 1;
-
-	// the domain ID of account owning the security group
-	int64 domain_id = 2;
-
-	// the project of the security group
-	int64 project_id = 3;
-
-	// The ID of the security group. Mutually exclusive with name parameter
-	int64 id = 4;
-
-	// The ID of the security group. Mutually exclusive with id parameter
-	string name = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	//
-	string response_type = 6;
-}
-
-// DeleteSecurityGroupResponse represents the response from deletes security group
-message DeleteSecurityGroupResponse {
-	// The Result
-	Result result = 1;
-}
-
 // CreateSecurityGroupRequest represents the parameters for creates a security group
 message CreateSecurityGroupRequest {
 	// an optional account for the security group. Must be used with domainId.
@@ -233,67 +215,32 @@ message CreateSecurityGroupResponse {
 	Result result = 1;
 }
 
-// AuthorizeSecurityGroupEgressRequest represents the parameters for authorizes a particular egress rule for this security group
-message AuthorizeSecurityGroupEgressRequest {
-	// TCP is default. UDP is the other supported protocol
-	string protocol = 1;
+// DeleteSecurityGroupRequest represents the parameters for deletes security group
+message DeleteSecurityGroupRequest {
+	// the account of the security group. Must be specified with domain ID
+	string account_name = 1;
 
-	// start port for this egress rule
-	int32 start_port = 2 [
-		(validate.field).int32.gte = 1,
-		(validate.field).int32.lte = 65535
-	];
+	// the domain ID of account owning the security group
+	int64 domain_id = 2;
 
-	// end port for this egress rule
-	int32 end_port = 3 [
-		(validate.field).int32.gte = 1,
-		(validate.field).int32.lte = 65535
-	];
+	// the project of the security group
+	int64 project_id = 3;
 
-	// type of the icmp message being sent
-	int32 icmp_type = 4;
+	// The ID of the security group. Mutually exclusive with name parameter
+	int64 id = 4;
 
-	// error code for this icmp message
-	int32 icmp_code = 5;
-
-	// the cidr list associated. Multiple entries must be separated by a single comma character (,).
-	repeated string cidr_list = 6;
-
-	// user to security group mapping
-	map<string, string> user_security_group_list = 7;
-
-	// an optional domainId for the security group. If the account parameter is used, domainId must also be used.
-	int64 domain_id = 8;
-
-	// an optional account for the security group. Must be used with domainId.
-	string account_name = 9;
-
-	// an optional project of the security group
-	int64 project_id = 10;
-
-	// The ID of the security group. Mutually exclusive with securityGroupName parameter
-	int64 security_group_id = 11;
-
-	// The name of the security group. Mutually exclusive with securityGroupId parameter
-	string security_group_name = 12 [
+	// The ID of the security group. Mutually exclusive with id parameter
+	string name = 5 [
 		(validate.field).string.min_len = 1,
 		(validate.field).string.max_len = 255
 	];
 
 	//
-	int64 start_event_id = 13;
-
-	//
-	string injected_job_id = 14 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 15;
+	string response_type = 6;
 }
 
-// AuthorizeSecurityGroupEgressResponse represents the response from authorizes a particular egress rule for this security group
-message AuthorizeSecurityGroupEgressResponse {
+// DeleteSecurityGroupResponse represents the response from deletes security group
+message DeleteSecurityGroupResponse {
 	// The Result
 	Result result = 1;
 }
@@ -363,6 +310,31 @@ message ListSecurityGroupsResponse {
 	int32 total_count = 2;
 }
 
+// RevokeSecurityGroupEgressRequest represents the parameters for deletes a particular egress rule from this security group
+message RevokeSecurityGroupEgressRequest {
+	// The ID of the egress rule
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// RevokeSecurityGroupEgressResponse represents the response from deletes a particular egress rule from this security group
+message RevokeSecurityGroupEgressResponse {
+	// The Result
+	Result result = 1;
+}
+
 // RevokeSecurityGroupIngressRequest represents the parameters for deletes a particular ingress rule from this security group
 message RevokeSecurityGroupIngressRequest {
 	// The ID of the ingress rule
@@ -384,6 +356,34 @@ message RevokeSecurityGroupIngressRequest {
 
 // RevokeSecurityGroupIngressResponse represents the response from deletes a particular ingress rule from this security group
 message RevokeSecurityGroupIngressResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateSecurityGroupRequest represents the parameters for updates a security group
+message UpdateSecurityGroupRequest {
+	// The ID of the security group.
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// The new name of the security group.
+	string name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// UpdateSecurityGroupResponse represents the response from updates a security group
+message UpdateSecurityGroupResponse {
 	// The Result
 	Result result = 1;
 }
@@ -416,16 +416,16 @@ message Success {
 enum ProtocolType {
 	// Default unspecified value
 	PROTOCOL_TYPE_UNSPECIFIED = 0;
-	// TCP value
-	PROTOCOL_TYPE_TCP = 1;
-	// UDP value
-	PROTOCOL_TYPE_UDP = 2;
+	// ALL value
+	PROTOCOL_TYPE_ALL = 1;
+	// ETC value
+	PROTOCOL_TYPE_ETC = 2;
 	// ICMP value
 	PROTOCOL_TYPE_ICMP = 3;
-	// ALL value
-	PROTOCOL_TYPE_ALL = 4;
-	// ETC value
-	PROTOCOL_TYPE_ETC = 5;
+	// TCP value
+	PROTOCOL_TYPE_TCP = 4;
+	// UDP value
+	PROTOCOL_TYPE_UDP = 5;
 }
 
 // Result represents a generic operation result

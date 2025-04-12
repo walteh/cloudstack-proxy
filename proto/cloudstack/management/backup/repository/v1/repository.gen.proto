@@ -10,8 +10,8 @@ import "google/protobuf/descriptor.proto";
 service RepositoryService {
 	option (annotations.service).scope = SCOPE_USER;
 
-	// ListBackupRepositories Lists all backup repositories
-	rpc ListBackupRepositories(ListBackupRepositoriesRequest) returns (ListBackupRepositoriesResponse) {
+	// AddBackupRepository Adds a backup repository to store NAS backups
+	rpc AddBackupRepository(AddBackupRepositoryRequest) returns (AddBackupRepositoryResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -20,10 +20,72 @@ service RepositoryService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// AddBackupRepository Adds a backup repository to store NAS backups
-	rpc AddBackupRepository(AddBackupRepositoryRequest) returns (AddBackupRepositoryResponse) {
+	// ListBackupRepositories Lists all backup repositories
+	rpc ListBackupRepositories(ListBackupRepositoriesRequest) returns (ListBackupRepositoriesResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
+}
+
+// AddBackupRepositoryRequest represents the parameters for adds a backup repository to store nas backups
+message AddBackupRepositoryRequest {
+	// name of the backup repository
+	string name = 1 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// address of the backup repository
+	string address = 2 [
+		(validate.field).required = true
+	];
+
+	// type of the backup repository storage. Supported values: nfs, cephfs, cifs
+	string type = 3 [
+		(validate.field).required = true
+	];
+
+	// backup repository provider
+	string provider = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	// shared storage mount options
+	string mount_options_ = 5;
+
+	// ID of the zone where the backup repository is to be added
+	int64 zone_id = 6 [
+		(validate.field).required = true
+	];
+
+	// capacity of this backup repository
+	int64 capacity_bytes = 7;
+
+	//
+	string response_type = 8;
+}
+
+// AddBackupRepositoryResponse represents the response from adds a backup repository to store nas backups
+message AddBackupRepositoryResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteBackupRepositoryRequest represents the parameters for delete a backup repository
+message DeleteBackupRepositoryRequest {
+	// ID of the backup repository to be deleted
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteBackupRepositoryResponse represents the response from delete a backup repository
+message DeleteBackupRepositoryResponse {
+	// The Result
+	Result result = 1;
 }
 
 // ListBackupRepositoriesRequest represents the parameters for lists all backup repositories
@@ -66,68 +128,6 @@ message ListBackupRepositoriesResponse {
 
 	// The total count of BackupRepositorys
 	int32 total_count = 2;
-}
-
-// DeleteBackupRepositoryRequest represents the parameters for delete a backup repository
-message DeleteBackupRepositoryRequest {
-	// ID of the backup repository to be deleted
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// DeleteBackupRepositoryResponse represents the response from delete a backup repository
-message DeleteBackupRepositoryResponse {
-	// The Result
-	Result result = 1;
-}
-
-// AddBackupRepositoryRequest represents the parameters for adds a backup repository to store nas backups
-message AddBackupRepositoryRequest {
-	// name of the backup repository
-	string name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// address of the backup repository
-	string address = 2 [
-		(validate.field).required = true
-	];
-
-	// type of the backup repository storage. Supported values: nfs, cephfs, cifs
-	string type = 3 [
-		(validate.field).required = true
-	];
-
-	// backup repository provider
-	string provider = 4 [
-		(validate.field).string.uuid = true
-	];
-
-	// shared storage mount options
-	string mount_options = 5;
-
-	// ID of the zone where the backup repository is to be added
-	int64 zone_id = 6 [
-		(validate.field).required = true
-	];
-
-	// capacity of this backup repository
-	int64 capacity_bytes = 7;
-
-	//
-	string response_type = 8;
-}
-
-// AddBackupRepositoryResponse represents the response from adds a backup repository to store nas backups
-message AddBackupRepositoryResponse {
-	// The Result
-	Result result = 1;
 }
 
 // BackupRepository represents a BackupRepository Item

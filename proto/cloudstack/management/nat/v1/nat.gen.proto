@@ -20,13 +20,13 @@ service NatService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// EnableStaticNat Enables static NAT for given IP address
-	rpc EnableStaticNat(EnableStaticNatRequest) returns (EnableStaticNatResponse) {
+	// DisableStaticNat Disables static rule for given IP address
+	rpc DisableStaticNat(DisableStaticNatRequest) returns (DisableStaticNatResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// DisableStaticNat Disables static rule for given IP address
-	rpc DisableStaticNat(DisableStaticNatRequest) returns (DisableStaticNatResponse) {
+	// EnableStaticNat Enables static NAT for given IP address
+	rpc EnableStaticNat(EnableStaticNatRequest) returns (EnableStaticNatResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -112,6 +112,31 @@ message DeleteIpForwardingRuleResponse {
 	Result result = 1;
 }
 
+// DisableStaticNatRequest represents the parameters for disables static rule for given ip address
+message DisableStaticNatRequest {
+	// the public IP address ID for which static NAT feature is being disabled
+	int64 ip_address_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DisableStaticNatResponse represents the response from disables static rule for given ip address
+message DisableStaticNatResponse {
+	// The Result
+	Result result = 1;
+}
+
 // EnableStaticNatRequest represents the parameters for enables static nat for given ip address
 message EnableStaticNatRequest {
 	// the public IP address ID for which static NAT feature is being enabled
@@ -138,31 +163,6 @@ message EnableStaticNatRequest {
 
 // EnableStaticNatResponse represents the response from enables static nat for given ip address
 message EnableStaticNatResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DisableStaticNatRequest represents the parameters for disables static rule for given ip address
-message DisableStaticNatRequest {
-	// the public IP address ID for which static NAT feature is being disabled
-	int64 ip_address_id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DisableStaticNatResponse represents the response from disables static rule for given ip address
-message DisableStaticNatResponse {
 	// The Result
 	Result result = 1;
 }

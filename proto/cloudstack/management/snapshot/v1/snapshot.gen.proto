@@ -10,54 +10,13 @@ import "google/protobuf/descriptor.proto";
 service SnapshotService {
 	option (annotations.service).scope = SCOPE_USER;
 
-	// ListSnapshots Lists all available snapshots for the account.
-	rpc ListSnapshots(ListSnapshotsRequest) returns (ListSnapshotsResponse) {
-		option (annotations.method).scope = SCOPE_ADMIN;
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// ListSnapshotPolicies Lists snapshot policies.
-	rpc ListSnapshotPolicies(ListSnapshotPoliciesRequest) returns (ListSnapshotPoliciesResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
 	// ArchiveSnapshot Archives (moves) a snapshot on primary storage to secondary storage
 	rpc ArchiveSnapshot(ArchiveSnapshotRequest) returns (ArchiveSnapshotResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// UpdateSnapshotPolicy Updates the snapshot policy.
-	rpc UpdateSnapshotPolicy(UpdateSnapshotPolicyRequest) returns (UpdateSnapshotPolicyResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// DeleteSnapshot Deletes a snapshot of a disk volume.
-	rpc DeleteSnapshot(DeleteSnapshotRequest) returns (DeleteSnapshotResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// CreateSnapshotPolicy Creates a snapshot policy for the account.
-	rpc CreateSnapshotPolicy(CreateSnapshotPolicyRequest) returns (CreateSnapshotPolicyResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// RevertSnapshot This is supposed to revert a volume snapshot. This command is only supported with KVM so far
-	rpc RevertSnapshot(RevertSnapshotRequest) returns (RevertSnapshotResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// DeleteSnapshotPolicies Deletes snapshot policies for the account.
-	rpc DeleteSnapshotPolicies(DeleteSnapshotPoliciesRequest) returns (DeleteSnapshotPoliciesResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// CreateSnapshotFromVMSnapshot Creates an instant snapshot of a volume from existing vm snapshot.
-	rpc CreateSnapshotFromVMSnapshot(CreateSnapshotFromVMSnapshotRequest) returns (CreateSnapshotFromVMSnapshotResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// ExtractSnapshot Returns a download URL for extracting a snapshot. It must be in the Backed Up state.
-	rpc ExtractSnapshot(ExtractSnapshotRequest) returns (ExtractSnapshotResponse) {
+	// CopySnapshot Copies a snapshot from one zone to another.
+	rpc CopySnapshot(CopySnapshotRequest) returns (CopySnapshotResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -66,10 +25,370 @@ service SnapshotService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// CopySnapshot Copies a snapshot from one zone to another.
-	rpc CopySnapshot(CopySnapshotRequest) returns (CopySnapshotResponse) {
+	// CreateSnapshotFromVMSnapshot Creates an instant snapshot of a volume from existing vm snapshot.
+	rpc CreateSnapshotFromVMSnapshot(CreateSnapshotFromVMSnapshotRequest) returns (CreateSnapshotFromVMSnapshotResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
+
+	// CreateSnapshotPolicy Creates a snapshot policy for the account.
+	rpc CreateSnapshotPolicy(CreateSnapshotPolicyRequest) returns (CreateSnapshotPolicyResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// DeleteSnapshot Deletes a snapshot of a disk volume.
+	rpc DeleteSnapshot(DeleteSnapshotRequest) returns (DeleteSnapshotResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// DeleteSnapshotPolicies Deletes snapshot policies for the account.
+	rpc DeleteSnapshotPolicies(DeleteSnapshotPoliciesRequest) returns (DeleteSnapshotPoliciesResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ExtractSnapshot Returns a download URL for extracting a snapshot. It must be in the Backed Up state.
+	rpc ExtractSnapshot(ExtractSnapshotRequest) returns (ExtractSnapshotResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListSnapshotPolicies Lists snapshot policies.
+	rpc ListSnapshotPolicies(ListSnapshotPoliciesRequest) returns (ListSnapshotPoliciesResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListSnapshots Lists all available snapshots for the account.
+	rpc ListSnapshots(ListSnapshotsRequest) returns (ListSnapshotsResponse) {
+		option (annotations.method).scope = SCOPE_ADMIN;
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListSnapshotsCmdByAdmin Lists all available snapshots for the account.
+	rpc ListSnapshotsCmdByAdmin(ListSnapshotsCmdByAdminRequest) returns (ListSnapshotsCmdByAdminResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// RevertSnapshot This is supposed to revert a volume snapshot. This command is only supported with KVM so far
+	rpc RevertSnapshot(RevertSnapshotRequest) returns (RevertSnapshotResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// UpdateSnapshotPolicy Updates the snapshot policy.
+	rpc UpdateSnapshotPolicy(UpdateSnapshotPolicyRequest) returns (UpdateSnapshotPolicyResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+}
+
+// ArchiveSnapshotRequest represents the parameters for archives (moves) a snapshot on primary storage to secondary storage
+message ArchiveSnapshotRequest {
+	// The ID of the snapshot
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// ArchiveSnapshotResponse represents the response from archives (moves) a snapshot on primary storage to secondary storage
+message ArchiveSnapshotResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CopySnapshotRequest represents the parameters for copies a snapshot from one zone to another.
+message CopySnapshotRequest {
+	// the ID of the snapshot.
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// The ID of the zone in which the snapshot is currently present. If not specified then the zone of snapshot's volume will be used.
+	int64 source_zone_id = 2;
+
+	// The ID of the zone the snapshot is being copied to.
+	int64 dest_zone_id = 3;
+
+	// A comma-separated list of IDs of the zones that the snapshot needs to be copied to. Specify this list if the snapshot needs to copied to multiple zones in one go. Do not specify destzoneid and destzoneids together, however one of them is required.
+	repeated string dest_zone_ids = 4;
+
+	//
+	int64 start_event_id = 5;
+
+	//
+	string injected_job_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 7;
+}
+
+// CopySnapshotResponse represents the response from copies a snapshot from one zone to another.
+message CopySnapshotResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateSnapshotRequest represents the parameters for creates an instant snapshot of a volume.
+message CreateSnapshotRequest {
+	// The account of the snapshot. The account parameter must be used with the domainId parameter.
+	string account_name = 1;
+
+	// The domain ID of the snapshot. If used with the account parameter, specifies a domain for the account associated with the disk volume. If account is NOT provided then snapshot will be assigned to the caller account and domain.
+	int64 domain_id = 2;
+
+	// The ID of the disk volume
+	int64 volume_id = 3 [
+		(validate.field).required = true
+	];
+
+	// policy id of the snapshot, if this is null, then use MANUAL_POLICY.
+	int64 policy_id = 4;
+
+	// quiesce vm if true
+	bool quiescevm = 5 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Currently applicable only for managed storage. Valid location types: 'primary', 'secondary'. Default = 'primary'.
+	string location_type = 6;
+
+	// the name of the snapshot
+	string snapshot_name = 7 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// asynchronous backup if true
+	bool async_backup = 8 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Map of tags (key/value pairs)
+	map<string, string> tags = 9;
+
+	// A comma-separated list of IDs of the zones in which the snapshot will be made available. The snapshot will always be made available in the zone in which the volume is present.
+	repeated string zone_ids = 10;
+
+	//
+	int64 start_event_id = 11;
+
+	//
+	string injected_job_id = 12 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 13;
+}
+
+// CreateSnapshotResponse represents the response from creates an instant snapshot of a volume.
+message CreateSnapshotResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateSnapshotFromVMSnapshotRequest represents the parameters for creates an instant snapshot of a volume from existing vm snapshot.
+message CreateSnapshotFromVMSnapshotRequest {
+	// The ID of the disk volume
+	int64 volume_id = 1 [
+		(validate.field).required = true
+	];
+
+	// The ID of the VM snapshot
+	int64 vm_snapshot_id = 2 [
+		(validate.field).required = true
+	];
+
+	// the name of the snapshot
+	string snapshot_name = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// CreateSnapshotFromVMSnapshotResponse represents the response from creates an instant snapshot of a volume from existing vm snapshot.
+message CreateSnapshotFromVMSnapshotResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateSnapshotPolicyRequest represents the parameters for creates a snapshot policy for the account.
+message CreateSnapshotPolicyRequest {
+	// valid values are HOURLY, DAILY, WEEKLY, and MONTHLY
+	string interval_type = 1 [
+		(validate.field).required = true
+	];
+
+	// maximum number of snapshots to retain
+	int32 max_snaps = 2 [
+		(validate.field).required = true
+	];
+
+	// time the snapshot is scheduled to be taken. Format is:* if HOURLY, MM* if DAILY, MM:HH* if WEEKLY, MM:HH:DD (1-7)* if MONTHLY, MM:HH:DD (1-28)
+	string schedule = 3 [
+		(validate.field).required = true
+	];
+
+	// Specifies a timezone for this command. For more information on the timezone parameter, see Time Zone Format.
+	string timezone = 4 [
+		(validate.field).required = true
+	];
+
+	// the ID of the disk volume
+	int64 volume_id = 5 [
+		(validate.field).required = true
+	];
+
+	// an optional field, whether to the display the policy to the end user or not
+	bool display = 6 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Map of tags (key/value pairs)
+	map<string, string> tags = 7;
+
+	// A list of IDs of the zones in which the snapshots will be made available.The snapshots will always be made available in the zone in which the volume is present.
+	repeated string zone_ids = 8;
+
+	//
+	string response_type = 9;
+}
+
+// CreateSnapshotPolicyResponse represents the response from creates a snapshot policy for the account.
+message CreateSnapshotPolicyResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteSnapshotRequest represents the parameters for deletes a snapshot of a disk volume.
+message DeleteSnapshotRequest {
+	// The ID of the snapshot
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// The ID of the zone for the snapshot
+	int64 zone_id = 2;
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// DeleteSnapshotResponse represents the response from deletes a snapshot of a disk volume.
+message DeleteSnapshotResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteSnapshotPoliciesRequest represents the parameters for deletes snapshot policies for the account.
+message DeleteSnapshotPoliciesRequest {
+	// the Id of the snapshot policy
+	int64 id = 1;
+
+	// list of snapshots policy IDs separated by comma
+	repeated string ids = 2;
+
+	//
+	string response_type = 3;
+}
+
+// DeleteSnapshotPoliciesResponse represents the response from deletes snapshot policies for the account.
+message DeleteSnapshotPoliciesResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ExtractSnapshotRequest represents the parameters for returns a download url for extracting a snapshot. it must be in the backed up state.
+message ExtractSnapshotRequest {
+	// the ID of the snapshot
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// the ID of the zone where the snapshot is located
+	int64 zone_id = 2 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// ExtractSnapshotResponse represents the response from returns a download url for extracting a snapshot. it must be in the backed up state.
+message ExtractSnapshotResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListSnapshotPoliciesRequest represents the parameters for lists snapshot policies.
+message ListSnapshotPoliciesRequest {
+	// the ID of the disk volume
+	int64 volume_id = 1;
+
+	// the ID of the snapshot policy
+	int64 id = 2;
+
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	bool display = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 4;
+
+	//
+	int32 page = 5;
+
+	//
+	int32 page_size = 6;
+
+	//
+	string response_type = 7;
+}
+
+// ListSnapshotPoliciesResponse represents the response from lists snapshot policies.
+message ListSnapshotPoliciesResponse {
+	option (validate.message).disabled = false;
+	// The list of SnapshotPolicys
+	repeated SnapshotPolicy items = 1;
+
+	// The total count of SnapshotPolicys
+	int32 total_count = 2;
 }
 
 // ListSnapshotsRequest represents the parameters for lists all available snapshots for the account.
@@ -141,44 +460,99 @@ message ListSnapshotsResponse {
 	int32 total_count = 2;
 }
 
-// ListSnapshotPoliciesRequest represents the parameters for lists snapshot policies.
-message ListSnapshotPoliciesRequest {
+// ListSnapshotsCmdByAdminRequest represents the parameters for lists all available snapshots for the account.
+message ListSnapshotsCmdByAdminRequest {
+	// ID of the image or image cache store
+	int64 image_store_id = 1;
+
+	// ID of the storage pool
+	int64 storage_pool_id = 2;
+
+	// lists snapshot by snapshot ID
+	int64 id = 3;
+
+	// the IDs of the snapshots, mutually exclusive with id
+	repeated string ids = 4;
+
+	// valid values are HOURLY, DAILY, WEEKLY, and MONTHLY.
+	string interval_type = 5;
+
+	// lists snapshot by snapshot name
+	string snapshot_name = 6 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// valid values are MANUAL or RECURRING.
+	string snapshot_type = 7;
+
 	// the ID of the disk volume
-	int64 volume_id = 1;
+	int64 volume_id = 8;
 
-	// the ID of the snapshot policy
-	int64 id = 2;
+	// list snapshots by zone id
+	int64 zone_id = 9;
 
-	// list resources by display flag; only ROOT admin is eligible to pass this parameter
-	bool display = 3 [
+	// If set to false, list templates across zones and their storages
+	bool show_unique = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list snapshots by location type. Used only when showunique=false. Valid location types: 'primary', 'secondary'. Default is empty
+	string location_type = 11;
+
+	// List resources by tags (key/value pairs)
+	map<string, string> tags = 12;
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 13;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 14 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 15 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 16;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 17 [
 		features.field_presence = EXPLICIT
 	];
 
 	// List by keyword
-	string keyword = 4;
+	string keyword = 18;
 
 	//
-	int32 page = 5;
+	int32 page = 19;
 
 	//
-	int32 page_size = 6;
+	int32 page_size = 20;
 
 	//
-	string response_type = 7;
+	string response_type = 21;
 }
 
-// ListSnapshotPoliciesResponse represents the response from lists snapshot policies.
-message ListSnapshotPoliciesResponse {
+// ListSnapshotsCmdByAdminResponse represents the response from lists all available snapshots for the account.
+message ListSnapshotsCmdByAdminResponse {
 	option (validate.message).disabled = false;
-	// The list of SnapshotPolicys
-	repeated SnapshotPolicy items = 1;
+	// The list of Snapshots
+	repeated Snapshot items = 1;
 
-	// The total count of SnapshotPolicys
+	// The total count of Snapshots
 	int32 total_count = 2;
 }
 
-// ArchiveSnapshotRequest represents the parameters for archives (moves) a snapshot on primary storage to secondary storage
-message ArchiveSnapshotRequest {
+// RevertSnapshotRequest represents the parameters for this is supposed to revert a volume snapshot. this command is only supported with kvm so far
+message RevertSnapshotRequest {
 	// The ID of the snapshot
 	int64 id = 1 [
 		(validate.field).required = true
@@ -196,8 +570,8 @@ message ArchiveSnapshotRequest {
 	string response_type = 4;
 }
 
-// ArchiveSnapshotResponse represents the response from archives (moves) a snapshot on primary storage to secondary storage
-message ArchiveSnapshotResponse {
+// RevertSnapshotResponse represents the response from this is supposed to revert a volume snapshot. this command is only supported with kvm so far
+message RevertSnapshotResponse {
 	// The Result
 	Result result = 1;
 }
@@ -231,284 +605,6 @@ message UpdateSnapshotPolicyRequest {
 
 // UpdateSnapshotPolicyResponse represents the response from updates the snapshot policy.
 message UpdateSnapshotPolicyResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeleteSnapshotRequest represents the parameters for deletes a snapshot of a disk volume.
-message DeleteSnapshotRequest {
-	// The ID of the snapshot
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// The ID of the zone for the snapshot
-	int64 zone_id = 2;
-
-	//
-	int64 start_event_id = 3;
-
-	//
-	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 5;
-}
-
-// DeleteSnapshotResponse represents the response from deletes a snapshot of a disk volume.
-message DeleteSnapshotResponse {
-	// The Result
-	Result result = 1;
-}
-
-// CreateSnapshotPolicyRequest represents the parameters for creates a snapshot policy for the account.
-message CreateSnapshotPolicyRequest {
-	// valid values are HOURLY, DAILY, WEEKLY, and MONTHLY
-	string interval_type = 1 [
-		(validate.field).required = true
-	];
-
-	// maximum number of snapshots to retain
-	int32 max_snaps = 2 [
-		(validate.field).required = true
-	];
-
-	// time the snapshot is scheduled to be taken. Format is:* if HOURLY, MM* if DAILY, MM:HH* if WEEKLY, MM:HH:DD (1-7)* if MONTHLY, MM:HH:DD (1-28)
-	string schedule = 3 [
-		(validate.field).required = true
-	];
-
-	// Specifies a timezone for this command. For more information on the timezone parameter, see Time Zone Format.
-	string timezone = 4 [
-		(validate.field).required = true
-	];
-
-	// the ID of the disk volume
-	int64 volume_id = 5 [
-		(validate.field).required = true
-	];
-
-	// an optional field, whether to the display the policy to the end user or not
-	bool display = 6 [
-		features.field_presence = EXPLICIT
-	];
-
-	// Map of tags (key/value pairs)
-	map<string, string> tags = 7;
-
-	// A list of IDs of the zones in which the snapshots will be made available.The snapshots will always be made available in the zone in which the volume is present.
-	repeated string zone_ids = 8;
-
-	//
-	string response_type = 9;
-}
-
-// CreateSnapshotPolicyResponse represents the response from creates a snapshot policy for the account.
-message CreateSnapshotPolicyResponse {
-	// The Result
-	Result result = 1;
-}
-
-// RevertSnapshotRequest represents the parameters for this is supposed to revert a volume snapshot. this command is only supported with kvm so far
-message RevertSnapshotRequest {
-	// The ID of the snapshot
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// RevertSnapshotResponse represents the response from this is supposed to revert a volume snapshot. this command is only supported with kvm so far
-message RevertSnapshotResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeleteSnapshotPoliciesRequest represents the parameters for deletes snapshot policies for the account.
-message DeleteSnapshotPoliciesRequest {
-	// the Id of the snapshot policy
-	int64 id = 1;
-
-	// list of snapshots policy IDs separated by comma
-	repeated string ids = 2;
-
-	//
-	string response_type = 3;
-}
-
-// DeleteSnapshotPoliciesResponse represents the response from deletes snapshot policies for the account.
-message DeleteSnapshotPoliciesResponse {
-	// The Result
-	Result result = 1;
-}
-
-// CreateSnapshotFromVMSnapshotRequest represents the parameters for creates an instant snapshot of a volume from existing vm snapshot.
-message CreateSnapshotFromVMSnapshotRequest {
-	// The ID of the disk volume
-	int64 volume_id = 1 [
-		(validate.field).required = true
-	];
-
-	// The ID of the VM snapshot
-	int64 vm_snapshot_id = 2 [
-		(validate.field).required = true
-	];
-
-	// the name of the snapshot
-	string snapshot_name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	//
-	int64 start_event_id = 4;
-
-	//
-	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 6;
-}
-
-// CreateSnapshotFromVMSnapshotResponse represents the response from creates an instant snapshot of a volume from existing vm snapshot.
-message CreateSnapshotFromVMSnapshotResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ExtractSnapshotRequest represents the parameters for returns a download url for extracting a snapshot. it must be in the backed up state.
-message ExtractSnapshotRequest {
-	// the ID of the snapshot
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// the ID of the zone where the snapshot is located
-	int64 zone_id = 2 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 3;
-
-	//
-	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 5;
-}
-
-// ExtractSnapshotResponse represents the response from returns a download url for extracting a snapshot. it must be in the backed up state.
-message ExtractSnapshotResponse {
-	// The Result
-	Result result = 1;
-}
-
-// CreateSnapshotRequest represents the parameters for creates an instant snapshot of a volume.
-message CreateSnapshotRequest {
-	// The account of the snapshot. The account parameter must be used with the domainId parameter.
-	string account_name = 1;
-
-	// The domain ID of the snapshot. If used with the account parameter, specifies a domain for the account associated with the disk volume. If account is NOT provided then snapshot will be assigned to the caller account and domain.
-	int64 domain_id = 2;
-
-	// The ID of the disk volume
-	int64 volume_id = 3 [
-		(validate.field).required = true
-	];
-
-	// policy id of the snapshot, if this is null, then use MANUAL_POLICY.
-	int64 policy_id = 4;
-
-	// quiesce vm if true
-	bool quiescevm = 5 [
-		features.field_presence = EXPLICIT
-	];
-
-	// Currently applicable only for managed storage. Valid location types: 'primary', 'secondary'. Default = 'primary'.
-	string location_type = 6;
-
-	// the name of the snapshot
-	string snapshot_name = 7 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// asynchronous backup if true
-	bool async_backup = 8 [
-		features.field_presence = EXPLICIT
-	];
-
-	// Map of tags (key/value pairs)
-	map<string, string> tags = 9;
-
-	// A comma-separated list of IDs of the zones in which the snapshot will be made available. The snapshot will always be made available in the zone in which the volume is present.
-	repeated string zone_ids = 10;
-
-	//
-	int64 start_event_id = 11;
-
-	//
-	string injected_job_id = 12 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 13;
-}
-
-// CreateSnapshotResponse represents the response from creates an instant snapshot of a volume.
-message CreateSnapshotResponse {
-	// The Result
-	Result result = 1;
-}
-
-// CopySnapshotRequest represents the parameters for copies a snapshot from one zone to another.
-message CopySnapshotRequest {
-	// the ID of the snapshot.
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// The ID of the zone in which the snapshot is currently present. If not specified then the zone of snapshot's volume will be used.
-	int64 source_zone_id = 2;
-
-	// The ID of the zone the snapshot is being copied to.
-	int64 dest_zone_id = 3;
-
-	// A comma-separated list of IDs of the zones that the snapshot needs to be copied to. Specify this list if the snapshot needs to copied to multiple zones in one go. Do not specify destzoneid and destzoneids together, however one of them is required.
-	repeated string dest_zone_ids = 4;
-
-	//
-	int64 start_event_id = 5;
-
-	//
-	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 7;
-}
-
-// CopySnapshotResponse represents the response from copies a snapshot from one zone to another.
-message CopySnapshotResponse {
 	// The Result
 	Result result = 1;
 }
@@ -553,14 +649,14 @@ message Success {
 	string display_text = 2;
 }
 
-// IntervalType represents the possible values for valid values are HOURLY, DAILY, WEEKLY, and MONTHLY.
+// IntervalType represents the possible values for valid values are HOURLY, DAILY, WEEKLY, and MONTHLY
 enum IntervalType {
 	// Default unspecified value
 	INTERVAL_TYPE_UNSPECIFIED = 0;
-	// HOURLY value
-	INTERVAL_TYPE_HOURLY = 1;
 	// DAILY value
-	INTERVAL_TYPE_DAILY = 2;
+	INTERVAL_TYPE_DAILY = 1;
+	// HOURLY value
+	INTERVAL_TYPE_HOURLY = 2;
 	// WEEKLY value
 	INTERVAL_TYPE_WEEKLY = 3;
 }

@@ -15,9 +15,8 @@ service VmsnapshotService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// RevertToVMSnapshot Revert VM from a vmsnapshot.
-	rpc RevertToVMSnapshot(RevertToVMSnapshotRequest) returns (RevertToVMSnapshotResponse) {
-		option (annotations.method).scope = SCOPE_ADMIN;
+	// DeleteVMSnapshot Deletes a vmsnapshot.
+	rpc DeleteVMSnapshot(DeleteVMSnapshotRequest) returns (DeleteVMSnapshotResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -26,8 +25,14 @@ service VmsnapshotService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// DeleteVMSnapshot Deletes a vmsnapshot.
-	rpc DeleteVMSnapshot(DeleteVMSnapshotRequest) returns (DeleteVMSnapshotResponse) {
+	// RevertToVMSnapshot Revert VM from a vmsnapshot.
+	rpc RevertToVMSnapshot(RevertToVMSnapshotRequest) returns (RevertToVMSnapshotResponse) {
+		option (annotations.method).scope = SCOPE_ADMIN;
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// RevertToVMSnapshotCmdByAdmin Revert VM from a vmsnapshot.
+	rpc RevertToVMSnapshotCmdByAdmin(RevertToVMSnapshotCmdByAdminRequest) returns (RevertToVMSnapshotCmdByAdminResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 }
@@ -79,26 +84,27 @@ message CreateVMSnapshotResponse {
 	Result result = 1;
 }
 
-// RevertToVMSnapshotRequest represents the parameters for revert vm from a vmsnapshot.
-message RevertToVMSnapshotRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// The ID of the vm snapshot
-	int64 vm_snap_shot_id = 2 [
+// DeleteVMSnapshotRequest represents the parameters for deletes a vmsnapshot.
+message DeleteVMSnapshotRequest {
+	// The ID of the VM snapshot
+	int64 id = 1 [
 		(validate.field).required = true
 	];
+
 	//
-	int64 start_event_id = 3;
+	int64 start_event_id = 2;
+
 	//
-	string injected_job_id = 4 [
+	string injected_job_id = 3 [
 		(validate.field).string.uuid = true
 	];
+
 	//
-	string response_type = 5;
+	string response_type = 4;
 }
 
-// RevertToVMSnapshotResponse represents the response from revert vm from a vmsnapshot.
-message RevertToVMSnapshotResponse {
+// DeleteVMSnapshotResponse represents the response from deletes a vmsnapshot.
+message DeleteVMSnapshotResponse {
 	// The Result
 	Result result = 1;
 }
@@ -174,10 +180,34 @@ message ListVMSnapshotResponse {
 	int32 total_count = 2;
 }
 
-// DeleteVMSnapshotRequest represents the parameters for deletes a vmsnapshot.
-message DeleteVMSnapshotRequest {
-	// The ID of the VM snapshot
-	int64 id = 1 [
+// RevertToVMSnapshotRequest represents the parameters for revert vm from a vmsnapshot.
+message RevertToVMSnapshotRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// The ID of the vm snapshot
+	int64 vm_snap_shot_id = 2 [
+		(validate.field).required = true
+	];
+	//
+	int64 start_event_id = 3;
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+	//
+	string response_type = 5;
+}
+
+// RevertToVMSnapshotResponse represents the response from revert vm from a vmsnapshot.
+message RevertToVMSnapshotResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RevertToVMSnapshotCmdByAdminRequest represents the parameters for revert vm from a vmsnapshot.
+message RevertToVMSnapshotCmdByAdminRequest {
+	// The ID of the vm snapshot
+	int64 vm_snap_shot_id = 1 [
 		(validate.field).required = true
 	];
 
@@ -193,8 +223,8 @@ message DeleteVMSnapshotRequest {
 	string response_type = 4;
 }
 
-// DeleteVMSnapshotResponse represents the response from deletes a vmsnapshot.
-message DeleteVMSnapshotResponse {
+// RevertToVMSnapshotCmdByAdminResponse represents the response from revert vm from a vmsnapshot.
+message RevertToVMSnapshotCmdByAdminResponse {
 	// The Result
 	Result result = 1;
 }

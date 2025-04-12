@@ -10,24 +10,8 @@ import "google/protobuf/descriptor.proto";
 service AccountService {
 	option (annotations.service).scope = SCOPE_USER;
 
-	// EnableAccount Enables an account
-	rpc EnableAccount(EnableAccountRequest) returns (EnableAccountResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// DisableAccount Disables an account
-	rpc DisableAccount(DisableAccountRequest) returns (DisableAccountResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// ListAccounts Lists accounts and provides detailed account information for listed accounts
-	rpc ListAccounts(ListAccountsRequest) returns (ListAccountsResponse) {
-		option (annotations.method).scope = SCOPE_ADMIN;
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// UpdateAccount Updates account information for the authenticated user
-	rpc UpdateAccount(UpdateAccountRequest) returns (UpdateAccountResponse) {
+	// AddAccountToProject Adds account to a project
+	rpc AddAccountToProject(AddAccountToProjectRequest) returns (AddAccountToProjectResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -36,13 +20,13 @@ service AccountService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// DeleteAccount Deletes a account, and all users associated with this account
-	rpc DeleteAccount(DeleteAccountRequest) returns (DeleteAccountResponse) {
+	// CreateAccount Creates an account
+	rpc CreateAccount(CreateAccountRequest) returns (CreateAccountResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// CreateAccount Creates an account
-	rpc CreateAccount(CreateAccountRequest) returns (CreateAccountResponse) {
+	// DeleteAccount Deletes a account, and all users associated with this account
+	rpc DeleteAccount(DeleteAccountRequest) returns (DeleteAccountResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -56,8 +40,19 @@ service AccountService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// AddAccountToProject Adds account to a project
-	rpc AddAccountToProject(AddAccountToProjectRequest) returns (AddAccountToProjectResponse) {
+	// DisableAccount Disables an account
+	rpc DisableAccount(DisableAccountRequest) returns (DisableAccountResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// EnableAccount Enables an account
+	rpc EnableAccount(EnableAccountRequest) returns (EnableAccountResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListAccounts Lists accounts and provides detailed account information for listed accounts
+	rpc ListAccounts(ListAccountsRequest) returns (ListAccountsResponse) {
+		option (annotations.method).scope = SCOPE_ADMIN;
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -70,158 +65,46 @@ service AccountService {
 	rpc LockAccount(LockAccountRequest) returns (LockAccountResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
+
+	// UpdateAccount Updates account information for the authenticated user
+	rpc UpdateAccount(UpdateAccountRequest) returns (UpdateAccountResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
-// EnableAccountRequest represents the parameters for enables an account
-message EnableAccountRequest {
-	// Account id
-	int64 id = 1;
-
-	// Enables specified account.
-	string account_name = 2;
-
-	// Enables specified account in this domain.
-	int64 domain_id = 3;
-
-	//
-	string response_type = 4;
-}
-
-// EnableAccountResponse represents the response from enables an account
-message EnableAccountResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DisableAccountRequest represents the parameters for disables an account
-message DisableAccountRequest {
-	// Account id
-	int64 id = 1;
-
-	// Disables specified account.
-	string account_name = 2;
-
-	// Disables specified account in this domain.
-	int64 domain_id = 3;
-
-	// If true, only lock the account; else disable the account
-	bool lock_requested = 4 [
-		(validate.field).required = true,
-		features.field_presence   = EXPLICIT
+// AddAccountToProjectRequest represents the parameters for adds account to a project
+message AddAccountToProjectRequest {
+	// ID of the project to add the account to
+	int64 project_id = 1 [
+		(validate.field).required = true
 	];
 
-	//
-	int64 start_event_id = 5;
+	// name of the account to be added to the project
+	string account_name = 2;
+
+	// email to which invitation to the project is going to be sent
+	string email = 3;
+
+	// ID of the project role
+	int64 project_role_id = 4;
+
+	// Project role type to be assigned to the user - Admin/Regular; default: Regular
+	string role_type = 5;
 
 	//
-	string injected_job_id = 6 [
+	int64 start_event_id = 6;
+
+	//
+	string injected_job_id = 7 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	string response_type = 7;
+	string response_type = 8;
 }
 
-// DisableAccountResponse represents the response from disables an account
-message DisableAccountResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListAccountsRequest represents the parameters for lists accounts and provides detailed account information for listed accounts
-message ListAccountsRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// list accounts by account type. Valid account types are 1 (admin), 2 (domain-admin), and 0 (user).
-	int32 account_type = 2;
-	// list account by account ID
-	int64 id = 3;
-	// list accounts by cleanuprequired attribute (values are true or false)
-	bool cleanup_required = 4 [
-		features.field_presence = EXPLICIT
-	];
-	// list account by account name
-	string search_name = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-	// list accounts by state. Valid states are enabled, disabled, and locked.
-	string state = 6;
-	// comma separated list of account details requested, value can be a list of [ all, resource, min]
-	repeated string view_details = 7;
-	// List accounts by the Api key access value
-	string api_key_access = 8;
-	// flag to display the resource icon for accounts
-	bool show_icon = 9 [
-		features.field_presence = EXPLICIT
-	];
-	// Tag for resource type to return usage
-	string tag = 10;
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	bool list_all = 11 [
-		features.field_presence = EXPLICIT
-	];
-	// list only resources belonging to the domain specified
-	int64 domain_id = 12;
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	bool recursive = 13 [
-		features.field_presence = EXPLICIT
-	];
-	// List by keyword
-	string keyword = 14;
-	//
-	int32 page = 15;
-	//
-	int32 page_size = 16;
-	//
-	string response_type = 17;
-}
-
-// ListAccountsResponse represents the response from lists accounts and provides detailed account information for listed accounts
-message ListAccountsResponse {
-	option (validate.message).disabled = false;
-	// The list of Accounts
-	repeated Account items = 1;
-
-	// The total count of Accounts
-	int32 total_count = 2;
-}
-
-// UpdateAccountRequest represents the parameters for updates account information for the authenticated user
-message UpdateAccountRequest {
-	// Account UUID
-	int64 id = 1;
-
-	// Current account name
-	string account_name = 2;
-
-	// The UUID of the domain where the account exists
-	int64 domain_id = 3;
-
-	// The UUID of the dynamic role to set for the account
-	int64 role_id = 4;
-
-	// New name for the account
-	string new_name = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// Network domain for the account's networks; empty string will update domainName with NULL value
-	string network_domain = 6;
-
-	// Details for the account used to store specific parameters
-	map<string, string> details = 7;
-
-	// Determines if Api key access for this user is enabled, disabled or inherits the value from its parent, the domain level setting api.key.access
-	string api_key_access = 8;
-
-	//
-	string response_type = 9;
-}
-
-// UpdateAccountResponse represents the response from updates account information for the authenticated user
-message UpdateAccountResponse {
+// AddAccountToProjectResponse represents the response from adds account to a project
+message AddAccountToProjectResponse {
 	// The Result
 	Result result = 1;
 }
@@ -263,31 +146,6 @@ message AddUserToProjectRequest {
 
 // AddUserToProjectResponse represents the response from adds user to a project
 message AddUserToProjectResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeleteAccountRequest represents the parameters for deletes a account, and all users associated with this account
-message DeleteAccountRequest {
-	// Account id
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DeleteAccountResponse represents the response from deletes a account, and all users associated with this account
-message DeleteAccountResponse {
 	// The Result
 	Result result = 1;
 }
@@ -366,6 +224,31 @@ message CreateAccountResponse {
 	Result result = 1;
 }
 
+// DeleteAccountRequest represents the parameters for deletes a account, and all users associated with this account
+message DeleteAccountRequest {
+	// Account id
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteAccountResponse represents the response from deletes a account, and all users associated with this account
+message DeleteAccountResponse {
+	// The Result
+	Result result = 1;
+}
+
 // DeleteAccountFromProjectRequest represents the parameters for deletes account from the project
 message DeleteAccountFromProjectRequest {
 	// ID of the project to remove the account from
@@ -426,41 +309,119 @@ message DeleteUserFromProjectResponse {
 	Result result = 1;
 }
 
-// AddAccountToProjectRequest represents the parameters for adds account to a project
-message AddAccountToProjectRequest {
-	// ID of the project to add the account to
-	int64 project_id = 1 [
-		(validate.field).required = true
-	];
+// DisableAccountRequest represents the parameters for disables an account
+message DisableAccountRequest {
+	// Account id
+	int64 id = 1;
 
-	// name of the account to be added to the project
+	// Disables specified account.
 	string account_name = 2;
 
-	// email to which invitation to the project is going to be sent
-	string email = 3;
+	// Disables specified account in this domain.
+	int64 domain_id = 3;
 
-	// ID of the project role
-	int64 project_role_id = 4;
-
-	// Project role type to be assigned to the user - Admin/Regular; default: Regular
-	string role_type = 5;
-
-	//
-	int64 start_event_id = 6;
+	// If true, only lock the account; else disable the account
+	bool lock_requested = 4 [
+		(validate.field).required = true,
+		features.field_presence   = EXPLICIT
+	];
 
 	//
-	string injected_job_id = 7 [
+	int64 start_event_id = 5;
+
+	//
+	string injected_job_id = 6 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	string response_type = 8;
+	string response_type = 7;
 }
 
-// AddAccountToProjectResponse represents the response from adds account to a project
-message AddAccountToProjectResponse {
+// DisableAccountResponse represents the response from disables an account
+message DisableAccountResponse {
 	// The Result
 	Result result = 1;
+}
+
+// EnableAccountRequest represents the parameters for enables an account
+message EnableAccountRequest {
+	// Account id
+	int64 id = 1;
+
+	// Enables specified account.
+	string account_name = 2;
+
+	// Enables specified account in this domain.
+	int64 domain_id = 3;
+
+	//
+	string response_type = 4;
+}
+
+// EnableAccountResponse represents the response from enables an account
+message EnableAccountResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListAccountsRequest represents the parameters for lists accounts and provides detailed account information for listed accounts
+message ListAccountsRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// list accounts by account type. Valid account types are 1 (admin), 2 (domain-admin), and 0 (user).
+	int32 account_type = 2;
+	// list account by account ID
+	int64 id = 3;
+	// list accounts by cleanuprequired attribute (values are true or false)
+	bool cleanup_required_ = 4 [
+		features.field_presence = EXPLICIT
+	];
+	// list account by account name
+	string search_name = 5 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+	// list accounts by state. Valid states are enabled, disabled, and locked.
+	string state = 6;
+	// comma separated list of account details requested, value can be a list of [ all, resource, min]
+	repeated string view_details = 7;
+	// List accounts by the Api key access value
+	string api_key_access = 8;
+	// flag to display the resource icon for accounts
+	bool show_icon = 9 [
+		features.field_presence = EXPLICIT
+	];
+	// Tag for resource type to return usage
+	string tag = 10;
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 11 [
+		features.field_presence = EXPLICIT
+	];
+	// list only resources belonging to the domain specified
+	int64 domain_id = 12;
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 13 [
+		features.field_presence = EXPLICIT
+	];
+	// List by keyword
+	string keyword = 14;
+	//
+	int32 page = 15;
+	//
+	int32 page_size = 16;
+	//
+	string response_type = 17;
+}
+
+// ListAccountsResponse represents the response from lists accounts and provides detailed account information for listed accounts
+message ListAccountsResponse {
+	option (validate.message).disabled = false;
+	// The list of Accounts
+	repeated Account items = 1;
+
+	// The total count of Accounts
+	int32 total_count = 2;
 }
 
 // ListProjectAccountsRequest represents the parameters for lists project's accounts
@@ -523,6 +484,45 @@ message LockAccountRequest {
 
 // LockAccountResponse represents the response from this deprecated function used to locks an account. look for the api disableaccount instead
 message LockAccountResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateAccountRequest represents the parameters for updates account information for the authenticated user
+message UpdateAccountRequest {
+	// Account UUID
+	int64 id = 1;
+
+	// Current account name
+	string account_name = 2;
+
+	// The UUID of the domain where the account exists
+	int64 domain_id = 3;
+
+	// The UUID of the dynamic role to set for the account
+	int64 role_id = 4;
+
+	// New name for the account
+	string new_name = 5 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// Network domain for the account's networks; empty string will update domainName with NULL value
+	string network_domain = 6;
+
+	// Details for the account used to store specific parameters
+	map<string, string> details = 7;
+
+	// Determines if Api key access for this user is enabled, disabled or inherits the value from its parent, the domain level setting api.key.access
+	string api_key_access = 8;
+
+	//
+	string response_type = 9;
+}
+
+// UpdateAccountResponse represents the response from updates account information for the authenticated user
+message UpdateAccountResponse {
 	// The Result
 	Result result = 1;
 }

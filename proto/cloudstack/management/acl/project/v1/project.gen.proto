@@ -10,33 +10,18 @@ import "google/protobuf/descriptor.proto";
 service ProjectService {
 	option (annotations.service).scope = SCOPE_USER;
 
-	// DeleteProjectRole Delete Project roles in CloudStack
-	rpc DeleteProjectRole(DeleteProjectRoleRequest) returns (DeleteProjectRoleResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// UpdateProjectRole Creates a Project role
-	rpc UpdateProjectRole(UpdateProjectRoleRequest) returns (UpdateProjectRoleResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// UpdateProjectRolePermission Updates a project role permission and/or order
-	rpc UpdateProjectRolePermission(UpdateProjectRolePermissionRequest) returns (UpdateProjectRolePermissionResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
 	// CreateProjectRole Creates a Project role
 	rpc CreateProjectRole(CreateProjectRoleRequest) returns (CreateProjectRoleResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// ListProjectRoles Lists Project roles in CloudStack
-	rpc ListProjectRoles(ListProjectRolesRequest) returns (ListProjectRolesResponse) {
+	// CreateProjectRolePermission Adds API permissions to a project role
+	rpc CreateProjectRolePermission(CreateProjectRolePermissionRequest) returns (CreateProjectRolePermissionResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// CreateProjectRolePermission Adds API permissions to a project role
-	rpc CreateProjectRolePermission(CreateProjectRolePermissionRequest) returns (CreateProjectRolePermissionResponse) {
+	// DeleteProjectRole Delete Project roles in CloudStack
+	rpc DeleteProjectRole(DeleteProjectRoleRequest) returns (DeleteProjectRoleResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -49,6 +34,89 @@ service ProjectService {
 	rpc ListProjectRolePermissions(ListProjectRolePermissionsRequest) returns (ListProjectRolePermissionsResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
+
+	// ListProjectRoles Lists Project roles in CloudStack
+	rpc ListProjectRoles(ListProjectRolesRequest) returns (ListProjectRolesResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// UpdateProjectRole Creates a Project role
+	rpc UpdateProjectRole(UpdateProjectRoleRequest) returns (UpdateProjectRoleResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// UpdateProjectRolePermission Updates a project role permission and/or order
+	rpc UpdateProjectRolePermission(UpdateProjectRolePermissionRequest) returns (UpdateProjectRolePermissionResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+}
+
+// CreateProjectRoleRequest represents the parameters for creates a project role
+message CreateProjectRoleRequest {
+	// creates a project role with this unique name
+	string project_role_name = 1 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// ID of project where role is being created
+	int64 project_id = 2 [
+		(validate.field).required = true
+	];
+
+	// The description of the Project role
+	string project_role_description = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 1024
+	];
+
+	//
+	string response_type = 4;
+}
+
+// CreateProjectRoleResponse represents the response from creates a project role
+message CreateProjectRoleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateProjectRolePermissionRequest represents the parameters for adds api permissions to a project role
+message CreateProjectRolePermissionRequest {
+	// ID of the project role
+	int64 project_role_id = 1 [
+		(validate.field).required = true
+	];
+
+	// ID of project where project role permission is to be created
+	int64 project_id = 2 [
+		(validate.field).required = true
+	];
+
+	// The API name or wildcard rule such as list*
+	string rule = 3 [
+		(validate.field).required = true
+	];
+
+	// The rule permission, allow or deny. Default: deny.
+	string permission = 4 [
+		(validate.field).required = true
+	];
+
+	// The description of the role permission
+	string description = 5 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 1024
+	];
+
+	//
+	string response_type = 6;
+}
+
+// CreateProjectRolePermissionResponse represents the response from adds api permissions to a project role
+message CreateProjectRolePermissionResponse {
+	// The Result
+	Result result = 1;
 }
 
 // DeleteProjectRoleRequest represents the parameters for delete project roles in cloudstack
@@ -71,6 +139,91 @@ message DeleteProjectRoleRequest {
 message DeleteProjectRoleResponse {
 	// The Result
 	Result result = 1;
+}
+
+// DeleteProjectRolePermissionRequest represents the parameters for deletes a project role permission in the project
+message DeleteProjectRolePermissionRequest {
+	// ID of the project where the project role permission is to be deleted
+	int64 project_id = 1 [
+		(validate.field).required = true
+	];
+
+	// ID of the project role permission to be deleted
+	int64 project_role_permission_id = 2 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 3;
+}
+
+// DeleteProjectRolePermissionResponse represents the response from deletes a project role permission in the project
+message DeleteProjectRolePermissionResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListProjectRolePermissionsRequest represents the parameters for lists a project's project role permissions
+message ListProjectRolePermissionsRequest {
+	// ID of the project
+	int64 project_id = 1 [
+		(validate.field).required = true
+	];
+
+	// ID of the project role
+	int64 project_role_id = 2;
+
+	//
+	string response_type = 3;
+}
+
+// ListProjectRolePermissionsResponse represents the response from lists a project's project role permissions
+message ListProjectRolePermissionsResponse {
+	option (validate.message).disabled = false;
+	// The list of ProjectRolePermissions
+	repeated ProjectRolePermission items = 1;
+
+	// The total count of ProjectRolePermissions
+	int32 total_count = 2;
+}
+
+// ListProjectRolesRequest represents the parameters for lists project roles in cloudstack
+message ListProjectRolesRequest {
+	// List project role by project role ID.
+	int64 project_role_id = 1;
+
+	// List project role by project ID.
+	int64 project_id = 2 [
+		(validate.field).required = true
+	];
+
+	// List project role by project role name.
+	string role_name = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// List by keyword
+	string keyword = 4;
+
+	//
+	int32 page = 5;
+
+	//
+	int32 page_size = 6;
+
+	//
+	string response_type = 7;
+}
+
+// ListProjectRolesResponse represents the response from lists project roles in cloudstack
+message ListProjectRolesResponse {
+	option (validate.message).disabled = false;
+	// The list of ProjectRoles
+	repeated ProjectRole items = 1;
+
+	// The total count of ProjectRoles
+	int32 total_count = 2;
 }
 
 // UpdateProjectRoleRequest represents the parameters for creates a project role
@@ -136,159 +289,6 @@ message UpdateProjectRolePermissionRequest {
 message UpdateProjectRolePermissionResponse {
 	// The Result
 	Result result = 1;
-}
-
-// CreateProjectRoleRequest represents the parameters for creates a project role
-message CreateProjectRoleRequest {
-	// creates a project role with this unique name
-	string project_role_name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// ID of project where role is being created
-	int64 project_id = 2 [
-		(validate.field).required = true
-	];
-
-	// The description of the Project role
-	string project_role_description = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
-	];
-
-	//
-	string response_type = 4;
-}
-
-// CreateProjectRoleResponse represents the response from creates a project role
-message CreateProjectRoleResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListProjectRolesRequest represents the parameters for lists project roles in cloudstack
-message ListProjectRolesRequest {
-	// List project role by project role ID.
-	int64 project_role_id = 1;
-
-	// List project role by project ID.
-	int64 project_id = 2 [
-		(validate.field).required = true
-	];
-
-	// List project role by project role name.
-	string role_name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// List by keyword
-	string keyword = 4;
-
-	//
-	int32 page = 5;
-
-	//
-	int32 page_size = 6;
-
-	//
-	string response_type = 7;
-}
-
-// ListProjectRolesResponse represents the response from lists project roles in cloudstack
-message ListProjectRolesResponse {
-	option (validate.message).disabled = false;
-	// The list of ProjectRoles
-	repeated ProjectRole items = 1;
-
-	// The total count of ProjectRoles
-	int32 total_count = 2;
-}
-
-// CreateProjectRolePermissionRequest represents the parameters for adds api permissions to a project role
-message CreateProjectRolePermissionRequest {
-	// ID of the project role
-	int64 project_role_id = 1 [
-		(validate.field).required = true
-	];
-
-	// ID of project where project role permission is to be created
-	int64 project_id = 2 [
-		(validate.field).required = true
-	];
-
-	// The API name or wildcard rule such as list*
-	string rule = 3 [
-		(validate.field).required = true
-	];
-
-	// The rule permission, allow or deny. Default: deny.
-	string permission = 4 [
-		(validate.field).required = true
-	];
-
-	// The description of the role permission
-	string description = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
-	];
-
-	//
-	string response_type = 6;
-}
-
-// CreateProjectRolePermissionResponse represents the response from adds api permissions to a project role
-message CreateProjectRolePermissionResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeleteProjectRolePermissionRequest represents the parameters for deletes a project role permission in the project
-message DeleteProjectRolePermissionRequest {
-	// ID of the project where the project role permission is to be deleted
-	int64 project_id = 1 [
-		(validate.field).required = true
-	];
-
-	// ID of the project role permission to be deleted
-	int64 project_role_permission_id = 2 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 3;
-}
-
-// DeleteProjectRolePermissionResponse represents the response from deletes a project role permission in the project
-message DeleteProjectRolePermissionResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListProjectRolePermissionsRequest represents the parameters for lists a project's project role permissions
-message ListProjectRolePermissionsRequest {
-	// ID of the project
-	int64 project_id = 1 [
-		(validate.field).required = true
-	];
-
-	// ID of the project role
-	int64 project_role_id = 2;
-
-	//
-	string response_type = 3;
-}
-
-// ListProjectRolePermissionsResponse represents the response from lists a project's project role permissions
-message ListProjectRolePermissionsResponse {
-	option (validate.message).disabled = false;
-	// The list of ProjectRolePermissions
-	repeated ProjectRolePermission items = 1;
-
-	// The total count of ProjectRolePermissions
-	int32 total_count = 2;
 }
 
 // ProjectRole represents a ProjectRole Item

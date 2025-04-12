@@ -3,6 +3,7 @@ package metadata
 import (
 	"fmt"
 	"regexp"
+	"sort"
 	"strings"
 	"unicode"
 )
@@ -58,6 +59,11 @@ func (g *ProtoGenerator) identifyEnumsForService(commands []CommandMetadata, res
 						"Description": desc,
 					})
 				}
+
+				// Sort values for deterministic ordering
+				sort.Slice(values, func(i, j int) bool {
+					return values[i]["Name"] < values[j]["Name"]
+				})
 
 				if len(values) > 0 {
 					// Ensure Name is a string
@@ -234,6 +240,11 @@ func createEnumDefinitionFromDescription(name string, description string) map[st
 				"Description": value + " value",
 			})
 		}
+
+		// Sort enum values for deterministic ordering
+		sort.Slice(enumValues, func(i, j int) bool {
+			return enumValues[i]["Name"] < enumValues[j]["Name"]
+		})
 	}
 
 	return map[string]interface{}{

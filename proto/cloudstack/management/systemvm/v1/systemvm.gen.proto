@@ -10,33 +10,8 @@ import "google/protobuf/descriptor.proto";
 service SystemvmService {
 	option (annotations.service).scope = SCOPE_USER;
 
-	// MigrateSystemVM Attempts Migration of a system virtual machine to the host specified.
-	rpc MigrateSystemVM(MigrateSystemVMRequest) returns (MigrateSystemVMResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// RebootSystemVm Reboots a system VM.
-	rpc RebootSystemVm(RebootSystemVmRequest) returns (RebootSystemVmResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// UpgradeSystemVM Changes the service offering for a system vm (console proxy or secondary storage). The system vm must be in a "Stopped" state for this command to take effect.
-	rpc UpgradeSystemVM(UpgradeSystemVMRequest) returns (UpgradeSystemVMResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// ScaleSystemVM Scale the service offering for a system vm (console proxy or secondary storage). The system vm must be in a "Stopped" state for this command to take effect.
-	rpc ScaleSystemVM(ScaleSystemVMRequest) returns (ScaleSystemVMResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// StopSystemVm Stops a system VM.
-	rpc StopSystemVm(StopSystemVmRequest) returns (StopSystemVmResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// StartSystemVM Starts a system virtual machine.
-	rpc StartSystemVM(StartSystemVMRequest) returns (StartSystemVMResponse) {
+	// DestroySystemVm Destroys a system virtual machine.
+	rpc DestroySystemVm(DestroySystemVmRequest) returns (DestroySystemVmResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -45,8 +20,8 @@ service SystemvmService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// DestroySystemVm Destroys a system virtual machine.
-	rpc DestroySystemVm(DestroySystemVmRequest) returns (DestroySystemVmResponse) {
+	// MigrateSystemVM Attempts Migration of a system virtual machine to the host specified.
+	rpc MigrateSystemVM(MigrateSystemVMRequest) returns (MigrateSystemVMResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -54,164 +29,35 @@ service SystemvmService {
 	rpc PatchSystemVM(PatchSystemVMRequest) returns (PatchSystemVMResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
+
+	// RebootSystemVm Reboots a system VM.
+	rpc RebootSystemVm(RebootSystemVmRequest) returns (RebootSystemVmResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ScaleSystemVM Scale the service offering for a system vm (console proxy or secondary storage). The system vm must be in a "Stopped" state for this command to take effect.
+	rpc ScaleSystemVM(ScaleSystemVMRequest) returns (ScaleSystemVMResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// StartSystemVM Starts a system virtual machine.
+	rpc StartSystemVM(StartSystemVMRequest) returns (StartSystemVMResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// StopSystemVm Stops a system VM.
+	rpc StopSystemVm(StopSystemVmRequest) returns (StopSystemVmResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// UpgradeSystemVM Changes the service offering for a system vm (console proxy or secondary storage). The system vm must be in a "Stopped" state for this command to take effect.
+	rpc UpgradeSystemVM(UpgradeSystemVMRequest) returns (UpgradeSystemVMResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
-// MigrateSystemVMRequest represents the parameters for attempts migration of a system virtual machine to the host specified.
-message MigrateSystemVMRequest {
-	// destination Host ID to migrate VM to
-	int64 host_id = 1;
-
-	// the ID of the virtual machine
-	int64 virtual_machine_id = 2 [
-		(validate.field).required = true
-	];
-
-	// Destination storage pool ID to migrate VM volumes to. Required for migrating the root disk volume
-	int64 storage_id = 3;
-
-	// Automatically select a destination host which do not require storage migration, if hostId and storageId are not specified. false by default
-	bool auto_select = 4 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	int64 start_event_id = 5;
-
-	//
-	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 7;
-}
-
-// MigrateSystemVMResponse represents the response from attempts migration of a system virtual machine to the host specified.
-message MigrateSystemVMResponse {
-	// The Result
-	Result result = 1;
-}
-
-// RebootSystemVmRequest represents the parameters for reboots a system vm.
-message RebootSystemVmRequest {
-	// The ID of the system virtual machine
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// Force reboot the system VM (System VM is Stopped and then Started)
-	bool forced = 2 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	int64 start_event_id = 3;
-
-	//
-	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 5;
-}
-
-// RebootSystemVmResponse represents the response from reboots a system vm.
-message RebootSystemVmResponse {
-	// The Result
-	Result result = 1;
-}
-
-// UpgradeSystemVMRequest represents the parameters for changes the service offering for a system vm (console proxy or secondary storage). the system vm must be in a "stopped" state for this command to take effect.
-message UpgradeSystemVMRequest {
-	// The ID of the system vm
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// the service offering ID to apply to the system vm
-	int64 service_offering_id = 2 [
-		(validate.field).required = true
-	];
-
-	// name value pairs of custom parameters for cpuspeed, memory and cpunumber. example details[i].name=value
-	map<string, string> details = 3;
-
-	//
-	string response_type = 4;
-}
-
-// UpgradeSystemVMResponse represents the response from changes the service offering for a system vm (console proxy or secondary storage). the system vm must be in a "stopped" state for this command to take effect.
-message UpgradeSystemVMResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ScaleSystemVMRequest represents the parameters for scale the service offering for a system vm (console proxy or secondary storage). the system vm must be in a "stopped" state for this command to take effect.
-message ScaleSystemVMRequest {
-	// The ID of the system vm
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// the service offering ID to apply to the system vm
-	int64 service_offering_id = 2 [
-		(validate.field).required = true
-	];
-
-	// name value pairs of custom parameters for cpuspeed, memory and cpunumber. example details[i].name=value
-	map<string, string> details = 3;
-
-	//
-	int64 start_event_id = 4;
-
-	//
-	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 6;
-}
-
-// ScaleSystemVMResponse represents the response from scale the service offering for a system vm (console proxy or secondary storage). the system vm must be in a "stopped" state for this command to take effect.
-message ScaleSystemVMResponse {
-	// The Result
-	Result result = 1;
-}
-
-// StopSystemVmRequest represents the parameters for stops a system vm.
-message StopSystemVmRequest {
-	// The ID of the system virtual machine
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// Force stop the VM (vm is marked as Stopped even when command fails to be send to the backend, otherwise a force poweroff is attempted). To be used if the caller knows the VM is stopped and should be marked as such.
-	bool forced = 2 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	int64 start_event_id = 3;
-
-	//
-	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 5;
-}
-
-// StopSystemVmResponse represents the response from stops a system vm.
-message StopSystemVmResponse {
-	// The Result
-	Result result = 1;
-}
-
-// StartSystemVMRequest represents the parameters for starts a system virtual machine.
-message StartSystemVMRequest {
+// DestroySystemVmRequest represents the parameters for destroys a system virtual machine.
+message DestroySystemVmRequest {
 	// The ID of the system virtual machine
 	int64 id = 1 [
 		(validate.field).required = true
@@ -229,8 +75,8 @@ message StartSystemVMRequest {
 	string response_type = 4;
 }
 
-// StartSystemVMResponse represents the response from starts a system virtual machine.
-message StartSystemVMResponse {
+// DestroySystemVmResponse represents the response from destroys a system virtual machine.
+message DestroySystemVmResponse {
 	// The Result
 	Result result = 1;
 }
@@ -287,27 +133,38 @@ message ListSystemVMsResponse {
 	int32 total_count = 2;
 }
 
-// DestroySystemVmRequest represents the parameters for destroys a system virtual machine.
-message DestroySystemVmRequest {
-	// The ID of the system virtual machine
-	int64 id = 1 [
+// MigrateSystemVMRequest represents the parameters for attempts migration of a system virtual machine to the host specified.
+message MigrateSystemVMRequest {
+	// destination Host ID to migrate VM to
+	int64 host_id = 1;
+
+	// the ID of the virtual machine
+	int64 virtual_machine_id = 2 [
 		(validate.field).required = true
 	];
 
-	//
-	int64 start_event_id = 2;
+	// Destination storage pool ID to migrate VM volumes to. Required for migrating the root disk volume
+	int64 storage_id = 3;
+
+	// Automatically select a destination host which do not require storage migration, if hostId and storageId are not specified. false by default
+	bool auto_select = 4 [
+		features.field_presence = EXPLICIT
+	];
 
 	//
-	string injected_job_id = 3 [
+	int64 start_event_id = 5;
+
+	//
+	string injected_job_id = 6 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	string response_type = 4;
+	string response_type = 7;
 }
 
-// DestroySystemVmResponse represents the response from destroys a system virtual machine.
-message DestroySystemVmResponse {
+// MigrateSystemVMResponse represents the response from attempts migration of a system virtual machine to the host specified.
+message MigrateSystemVMResponse {
 	// The Result
 	Result result = 1;
 }
@@ -336,6 +193,149 @@ message PatchSystemVMRequest {
 
 // PatchSystemVMResponse represents the response from attempts to live patch systemvms - cpvm, ssvm
 message PatchSystemVMResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RebootSystemVmRequest represents the parameters for reboots a system vm.
+message RebootSystemVmRequest {
+	// The ID of the system virtual machine
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// Force reboot the system VM (System VM is Stopped and then Started)
+	bool forced = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// RebootSystemVmResponse represents the response from reboots a system vm.
+message RebootSystemVmResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ScaleSystemVMRequest represents the parameters for scale the service offering for a system vm (console proxy or secondary storage). the system vm must be in a "stopped" state for this command to take effect.
+message ScaleSystemVMRequest {
+	// The ID of the system vm
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// the service offering ID to apply to the system vm
+	int64 service_offering_id = 2 [
+		(validate.field).required = true
+	];
+
+	// name value pairs of custom parameters for cpuspeed, memory and cpunumber. example details[i].name=value
+	map<string, string> details = 3;
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// ScaleSystemVMResponse represents the response from scale the service offering for a system vm (console proxy or secondary storage). the system vm must be in a "stopped" state for this command to take effect.
+message ScaleSystemVMResponse {
+	// The Result
+	Result result = 1;
+}
+
+// StartSystemVMRequest represents the parameters for starts a system virtual machine.
+message StartSystemVMRequest {
+	// The ID of the system virtual machine
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// StartSystemVMResponse represents the response from starts a system virtual machine.
+message StartSystemVMResponse {
+	// The Result
+	Result result = 1;
+}
+
+// StopSystemVmRequest represents the parameters for stops a system vm.
+message StopSystemVmRequest {
+	// The ID of the system virtual machine
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// Force stop the VM (vm is marked as Stopped even when command fails to be send to the backend, otherwise a force poweroff is attempted). To be used if the caller knows the VM is stopped and should be marked as such.
+	bool forced = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// StopSystemVmResponse represents the response from stops a system vm.
+message StopSystemVmResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpgradeSystemVMRequest represents the parameters for changes the service offering for a system vm (console proxy or secondary storage). the system vm must be in a "stopped" state for this command to take effect.
+message UpgradeSystemVMRequest {
+	// The ID of the system vm
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// the service offering ID to apply to the system vm
+	int64 service_offering_id = 2 [
+		(validate.field).required = true
+	];
+
+	// name value pairs of custom parameters for cpuspeed, memory and cpunumber. example details[i].name=value
+	map<string, string> details = 3;
+
+	//
+	string response_type = 4;
+}
+
+// UpgradeSystemVMResponse represents the response from changes the service offering for a system vm (console proxy or secondary storage). the system vm must be in a "stopped" state for this command to take effect.
+message UpgradeSystemVMResponse {
 	// The Result
 	Result result = 1;
 }

@@ -10,54 +10,15 @@ import "google/protobuf/descriptor.proto";
 service DiagnosticsService {
 	option (annotations.service).scope = SCOPE_USER;
 
-	// RunDiagnostics Execute network-utility command (ping/arping/tracert) on system VMs remotely
-	rpc RunDiagnostics(RunDiagnosticsRequest) returns (RunDiagnosticsResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
 	// GetDiagnosticsData Get diagnostics and files from system VMs
 	rpc GetDiagnosticsData(GetDiagnosticsDataRequest) returns (GetDiagnosticsDataResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
-}
 
-// RunDiagnosticsRequest represents the parameters for execute network-utility command (ping/arping/tracert) on system vms remotely
-message RunDiagnosticsRequest {
-	// The ID of the system VM instance to diagnose
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// The IP/Domain address to test connection to
-	string address = 2 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
-	];
-
-	// The system VM diagnostics type  valid options are: ping, traceroute, arping
-	string type = 3 [
-		(validate.field).required = true
-	];
-
-	// Additional command line options that apply for each command
-	string optional_arguments = 4;
-
-	//
-	int64 start_event_id = 5;
-
-	//
-	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 7;
-}
-
-// RunDiagnosticsResponse represents the response from execute network-utility command (ping/arping/tracert) on system vms remotely
-message RunDiagnosticsResponse {
-	// The Result
-	Result result = 1;
+	// RunDiagnostics Execute network-utility command (ping/arping/tracert) on system VMs remotely
+	rpc RunDiagnostics(RunDiagnosticsRequest) returns (RunDiagnosticsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
 // GetDiagnosticsDataRequest represents the parameters for get diagnostics and files from system vms
@@ -84,6 +45,45 @@ message GetDiagnosticsDataRequest {
 
 // GetDiagnosticsDataResponse represents the response from get diagnostics and files from system vms
 message GetDiagnosticsDataResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RunDiagnosticsRequest represents the parameters for execute network-utility command (ping/arping/tracert) on system vms remotely
+message RunDiagnosticsRequest {
+	// The ID of the system VM instance to diagnose
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// The IP/Domain address to test connection to
+	string address = 2 [
+		(validate.field).required    = true,
+		(validate.field).string.ipv4 = true
+	];
+
+	// The system VM diagnostics type  valid options are: ping, traceroute, arping
+	string type = 3 [
+		(validate.field).required = true
+	];
+
+	// Additional command line options that apply for each command
+	string optional_arguments_ = 4;
+
+	//
+	int64 start_event_id = 5;
+
+	//
+	string injected_job_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 7;
+}
+
+// RunDiagnosticsResponse represents the response from execute network-utility command (ping/arping/tracert) on system vms remotely
+message RunDiagnosticsResponse {
 	// The Result
 	Result result = 1;
 }

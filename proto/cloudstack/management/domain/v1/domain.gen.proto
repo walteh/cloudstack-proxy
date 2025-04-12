@@ -15,8 +15,13 @@ service DomainService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// UpdateDomain Updates a domain with a new name
-	rpc UpdateDomain(UpdateDomainRequest) returns (UpdateDomainResponse) {
+	// DeleteDomain Deletes a specified domain
+	rpc DeleteDomain(DeleteDomainRequest) returns (DeleteDomainResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListDomainChildren Lists all children domains belonging to a specified domain
+	rpc ListDomainChildren(ListDomainChildrenRequest) returns (ListDomainChildrenResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -31,13 +36,8 @@ service DomainService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// DeleteDomain Deletes a specified domain
-	rpc DeleteDomain(DeleteDomainRequest) returns (DeleteDomainResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// ListDomainChildren Lists all children domains belonging to a specified domain
-	rpc ListDomainChildren(ListDomainChildrenRequest) returns (ListDomainChildrenResponse) {
+	// UpdateDomain Updates a domain with a new name
+	rpc UpdateDomain(UpdateDomainRequest) returns (UpdateDomainResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 }
@@ -68,99 +68,6 @@ message CreateDomainRequest {
 
 // CreateDomainResponse represents the response from creates a domain
 message CreateDomainResponse {
-	// The Result
-	Result result = 1;
-}
-
-// UpdateDomainRequest represents the parameters for updates a domain with a new name
-message UpdateDomainRequest {
-	// ID of domain to update
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// updates domain with this name
-	string domain_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// Network domain for the domain's networks; empty string will update domainName with NULL value
-	string network_domain = 3;
-
-	//
-	string response_type = 4;
-}
-
-// UpdateDomainResponse represents the response from updates a domain with a new name
-message UpdateDomainResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListDomainsRequest represents the parameters for lists domains and provides detailed information for listed domains
-message ListDomainsRequest {
-	// Whether to run this operation as an administrator
-	bool run_as_admin = 1;
-	// List domain by domain ID.
-	int64 id = 2;
-	// List domains by domain level.
-	int32 level = 3;
-	// List domain by domain name.
-	string domain_name = 4 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false
-	bool list_all = 5 [
-		features.field_presence = EXPLICIT
-	];
-	// comma separated list of domain details requested, value can be a list of [ all, resource, min]
-	repeated string view_details = 6;
-	// flag to display the resource icon for domains
-	bool show_icon = 7 [
-		features.field_presence = EXPLICIT
-	];
-	// Tag for resource type to return usage
-	string tag = 8;
-	// List by keyword
-	string keyword = 9;
-	//
-	int32 page = 10;
-	//
-	int32 page_size = 11;
-	//
-	string response_type = 12;
-}
-
-// ListDomainsResponse represents the response from lists domains and provides detailed information for listed domains
-message ListDomainsResponse {
-	option (validate.message).disabled = false;
-	// The list of Domains
-	repeated Domain items = 1;
-
-	// The total count of Domains
-	int32 total_count = 2;
-}
-
-// MoveDomainRequest represents the parameters for moves a domain and its children to a new parent domain.
-message MoveDomainRequest {
-	// The ID of the domain to be moved.
-	int64 domain_id = 1 [
-		(validate.field).required = true
-	];
-
-	// The ID of the new parent domain of the domain to be moved.
-	int64 parent_domain_id = 2 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 3;
-}
-
-// MoveDomainResponse represents the response from moves a domain and its children to a new parent domain.
-message MoveDomainResponse {
 	// The Result
 	Result result = 1;
 }
@@ -242,6 +149,99 @@ message ListDomainChildrenResponse {
 
 	// The total count of Domains
 	int32 total_count = 2;
+}
+
+// ListDomainsRequest represents the parameters for lists domains and provides detailed information for listed domains
+message ListDomainsRequest {
+	// Whether to run this operation as an administrator
+	bool run_as_admin = 1;
+	// List domain by domain ID.
+	int64 id = 2;
+	// List domains by domain level.
+	int32 level = 3;
+	// List domain by domain name.
+	string domain_name = 4 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false
+	bool list_all = 5 [
+		features.field_presence = EXPLICIT
+	];
+	// comma separated list of domain details requested, value can be a list of [ all, resource, min]
+	repeated string view_details = 6;
+	// flag to display the resource icon for domains
+	bool show_icon = 7 [
+		features.field_presence = EXPLICIT
+	];
+	// Tag for resource type to return usage
+	string tag = 8;
+	// List by keyword
+	string keyword = 9;
+	//
+	int32 page = 10;
+	//
+	int32 page_size = 11;
+	//
+	string response_type = 12;
+}
+
+// ListDomainsResponse represents the response from lists domains and provides detailed information for listed domains
+message ListDomainsResponse {
+	option (validate.message).disabled = false;
+	// The list of Domains
+	repeated Domain items = 1;
+
+	// The total count of Domains
+	int32 total_count = 2;
+}
+
+// MoveDomainRequest represents the parameters for moves a domain and its children to a new parent domain.
+message MoveDomainRequest {
+	// The ID of the domain to be moved.
+	int64 domain_id = 1 [
+		(validate.field).required = true
+	];
+
+	// The ID of the new parent domain of the domain to be moved.
+	int64 parent_domain_id = 2 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 3;
+}
+
+// MoveDomainResponse represents the response from moves a domain and its children to a new parent domain.
+message MoveDomainResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateDomainRequest represents the parameters for updates a domain with a new name
+message UpdateDomainRequest {
+	// ID of domain to update
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// updates domain with this name
+	string domain_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// Network domain for the domain's networks; empty string will update domainName with NULL value
+	string network_domain = 3;
+
+	//
+	string response_type = 4;
+}
+
+// UpdateDomainResponse represents the response from updates a domain with a new name
+message UpdateDomainResponse {
+	// The Result
+	Result result = 1;
 }
 
 // Domain represents a Domain Item

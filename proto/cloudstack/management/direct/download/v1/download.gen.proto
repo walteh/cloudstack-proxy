@@ -10,18 +10,13 @@ import "google/protobuf/descriptor.proto";
 service DownloadService {
 	option (annotations.service).scope = SCOPE_USER;
 
-	// ProvisionTemplateDirectDownloadCertificate Provisions a host with a direct download certificate
-	rpc ProvisionTemplateDirectDownloadCertificate(ProvisionTemplateDirectDownloadCertificateRequest) returns (ProvisionTemplateDirectDownloadCertificateResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
 	// ListTemplateDirectDownloadCertificates List the uploaded certificates for direct download templates
 	rpc ListTemplateDirectDownloadCertificates(ListTemplateDirectDownloadCertificatesRequest) returns (ListTemplateDirectDownloadCertificatesResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// UploadTemplateDirectDownloadCertificate Upload a certificate for HTTPS direct template download on KVM hosts
-	rpc UploadTemplateDirectDownloadCertificate(UploadTemplateDirectDownloadCertificateRequest) returns (UploadTemplateDirectDownloadCertificateResponse) {
+	// ProvisionTemplateDirectDownloadCertificate Provisions a host with a direct download certificate
+	rpc ProvisionTemplateDirectDownloadCertificate(ProvisionTemplateDirectDownloadCertificateRequest) returns (ProvisionTemplateDirectDownloadCertificateResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -29,28 +24,11 @@ service DownloadService {
 	rpc RevokeTemplateDirectDownloadCertificate(RevokeTemplateDirectDownloadCertificateRequest) returns (RevokeTemplateDirectDownloadCertificateResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
-}
 
-// ProvisionTemplateDirectDownloadCertificateRequest represents the parameters for provisions a host with a direct download certificate
-message ProvisionTemplateDirectDownloadCertificateRequest {
-	// the id of the direct download certificate to provision
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// the host to provision the certificate
-	int64 host_id = 2 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 3;
-}
-
-// ProvisionTemplateDirectDownloadCertificateResponse represents the response from provisions a host with a direct download certificate
-message ProvisionTemplateDirectDownloadCertificateResponse {
-	// The Result
-	Result result = 1;
+	// UploadTemplateDirectDownloadCertificate Upload a certificate for HTTPS direct template download on KVM hosts
+	rpc UploadTemplateDirectDownloadCertificate(UploadTemplateDirectDownloadCertificateRequest) returns (UploadTemplateDirectDownloadCertificateResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
 // ListTemplateDirectDownloadCertificatesRequest represents the parameters for list the uploaded certificates for direct download templates
@@ -89,6 +67,60 @@ message ListTemplateDirectDownloadCertificatesResponse {
 	int32 total_count = 2;
 }
 
+// ProvisionTemplateDirectDownloadCertificateRequest represents the parameters for provisions a host with a direct download certificate
+message ProvisionTemplateDirectDownloadCertificateRequest {
+	// the id of the direct download certificate to provision
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// the host to provision the certificate
+	int64 host_id = 2 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 3;
+}
+
+// ProvisionTemplateDirectDownloadCertificateResponse represents the response from provisions a host with a direct download certificate
+message ProvisionTemplateDirectDownloadCertificateResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RevokeTemplateDirectDownloadCertificateRequest represents the parameters for revoke a direct download certificate from hosts in a zone
+message RevokeTemplateDirectDownloadCertificateRequest {
+	// id of the certificate
+	int64 certificate_id = 1;
+
+	// (optional) alias of the SSL certificate
+	string certificate_alias = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// (optional) hypervisor type
+	string hypervisor = 3;
+
+	// (optional) zone to revoke certificate
+	int64 zone_id = 4 [
+		(validate.field).required = true
+	];
+
+	// (optional) the host ID to revoke certificate
+	int64 host_id = 5;
+
+	//
+	string response_type = 6;
+}
+
+// RevokeTemplateDirectDownloadCertificateResponse represents the response from revoke a direct download certificate from hosts in a zone
+message RevokeTemplateDirectDownloadCertificateResponse {
+	// The Result
+	Result result = 1;
+}
+
 // UploadTemplateDirectDownloadCertificateRequest represents the parameters for upload a certificate for https direct template download on kvm hosts
 message UploadTemplateDirectDownloadCertificateRequest {
 	// SSL certificate
@@ -122,38 +154,6 @@ message UploadTemplateDirectDownloadCertificateRequest {
 
 // UploadTemplateDirectDownloadCertificateResponse represents the response from upload a certificate for https direct template download on kvm hosts
 message UploadTemplateDirectDownloadCertificateResponse {
-	// The Result
-	Result result = 1;
-}
-
-// RevokeTemplateDirectDownloadCertificateRequest represents the parameters for revoke a direct download certificate from hosts in a zone
-message RevokeTemplateDirectDownloadCertificateRequest {
-	// id of the certificate
-	int64 certificate_id = 1;
-
-	// (optional) alias of the SSL certificate
-	string certificate_alias = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// (optional) hypervisor type
-	string hypervisor = 3;
-
-	// (optional) zone to revoke certificate
-	int64 zone_id = 4 [
-		(validate.field).required = true
-	];
-
-	// (optional) the host ID to revoke certificate
-	int64 host_id = 5;
-
-	//
-	string response_type = 6;
-}
-
-// RevokeTemplateDirectDownloadCertificateResponse represents the response from revoke a direct download certificate from hosts in a zone
-message RevokeTemplateDirectDownloadCertificateResponse {
 	// The Result
 	Result result = 1;
 }

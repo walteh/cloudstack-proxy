@@ -10,13 +10,8 @@ import "google/protobuf/descriptor.proto";
 service OfferingService {
 	option (annotations.service).scope = SCOPE_USER;
 
-	// ListServiceOfferings Lists all available service offerings.
-	rpc ListServiceOfferings(ListServiceOfferingsRequest) returns (ListServiceOfferingsResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// DeleteDiskOffering Updates a disk offering.
-	rpc DeleteDiskOffering(DeleteDiskOfferingRequest) returns (DeleteDiskOfferingResponse) {
+	// CreateDiskOffering Creates a disk offering.
+	rpc CreateDiskOffering(CreateDiskOfferingRequest) returns (CreateDiskOfferingResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -25,18 +20,8 @@ service OfferingService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// ListDiskOfferings Lists all available disk offerings.
-	rpc ListDiskOfferings(ListDiskOfferingsRequest) returns (ListDiskOfferingsResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// UpdateDiskOffering Updates a disk offering.
-	rpc UpdateDiskOffering(UpdateDiskOfferingRequest) returns (UpdateDiskOfferingResponse) {
-		option (annotations.method).scope = SCOPE_USER;
-	}
-
-	// CreateDiskOffering Creates a disk offering.
-	rpc CreateDiskOffering(CreateDiskOfferingRequest) returns (CreateDiskOfferingResponse) {
+	// DeleteDiskOffering Updates a disk offering.
+	rpc DeleteDiskOffering(DeleteDiskOfferingRequest) returns (DeleteDiskOfferingResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -50,121 +35,142 @@ service OfferingService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
+	// ListDiskOfferings Lists all available disk offerings.
+	rpc ListDiskOfferings(ListDiskOfferingsRequest) returns (ListDiskOfferingsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListServiceOfferings Lists all available service offerings.
+	rpc ListServiceOfferings(ListServiceOfferingsRequest) returns (ListServiceOfferingsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// UpdateDiskOffering Updates a disk offering.
+	rpc UpdateDiskOffering(UpdateDiskOfferingRequest) returns (UpdateDiskOfferingResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
 	// UpdateServiceOffering Updates a service offering.
 	rpc UpdateServiceOffering(UpdateServiceOfferingRequest) returns (UpdateServiceOfferingResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 }
 
-// ListServiceOfferingsRequest represents the parameters for lists all available service offerings.
-message ListServiceOfferingsRequest {
-	// ID of the service offering
-	int64 id = 1;
+// CreateDiskOfferingRequest represents the parameters for creates a disk offering.
+message CreateDiskOfferingRequest {
+	// size of the disk offering in GB (1GB = 1,073,741,824 bytes)
+	int64 disk_size = 1;
 
-	// name of the service offering
-	string service_offering_name = 2 [
+	// An alternate display text of the disk offering, defaults to 'name'.
+	string display_text = 2;
+
+	// name of the disk offering
+	string offering_name = 3 [
+		(validate.field).required       = true,
 		(validate.field).string.min_len = 1,
 		(validate.field).string.max_len = 255
 	];
 
-	// the ID of the virtual machine. Pass this in if you want to see the available service offering that a virtual machine can be changed to.
-	int64 virtual_machine_id = 3;
+	// tags for the disk offering
+	string tags = 4;
 
-	// is this a system vm offering
-	bool is_system = 4 [
+	// whether disk offering size is custom or not
+	bool customized = 5 [
 		features.field_presence = EXPLICIT
 	];
 
-	// the system VM type. Possible types are "consoleproxy", "secondarystoragevm" or "domainrouter".
-	string system_vm_type = 5;
+	// the ID of the containing domain(s), null for public offerings
+	repeated string domain_ids = 6;
 
-	// id of zone disk offering is associated with
-	int64 zone_id = 6;
+	// the ID of the containing zone(s), null for public offerings
+	repeated string zone_ids = 7;
 
-	// the CPU number that listed offerings must support
-	int32 cpu_number = 7;
+	// the storage type of the disk offering. Values are local and shared.
+	string storage_type = 8;
 
-	// the RAM memory that listed offering must support
-	int32 memory = 8;
+	// provisioning type used to create volumes. Valid values are thin, sparse, fat.
+	string provisioning_type = 9;
 
-	// the CPU speed that listed offerings must support
-	int32 cpu_speed = 9;
-
-	// listed offerings support root disk encryption
-	bool encrypt_root = 10 [
+	// an optional field, whether to display the offering to the end user or not.
+	bool display_offering = 10 [
 		features.field_presence = EXPLICIT
 	];
 
-	// the storage type of the service offering. Values are local and shared.
-	string storage_type = 11;
+	// bytes read rate of the disk offering
+	int64 bytes_read_rate = 11;
 
-	// Filter by state of the service offering. Defaults to 'Active'. If set to 'all' shows both Active & Inactive offerings.
-	string service_offering_state = 12;
+	// burst bytes read rate of the disk offering
+	int64 bytes_read_rate_max = 12;
 
-	// The ID of the template that listed offerings must support
-	int64 template_id = 13;
+	// length (in seconds) of the burst
+	int64 bytes_read_rate_max_length = 13;
 
-	// list objects by project; if projectid=-1 lists All VMs
-	int64 project_id = 14;
+	// bytes write rate of the disk offering
+	int64 bytes_write_rate = 14;
 
-	// list resources by account. Must be used with the domainId parameter.
-	string account_name = 15 [
-		(validate.field).cel = {
-			id:         "account_name_with_domain_id",
-			expression: "!has(account_name) || has(domain_id)",
-			message:    "account_name must be used with domain_id parameter"
-		}
-	];
+	// burst bytes write rate of the disk offering
+	int64 bytes_write_rate_max = 15;
 
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	bool list_all = 16 [
+	// length (in seconds) of the burst
+	int64 bytes_write_rate_max_length = 16;
+
+	// io requests read rate of the disk offering
+	int64 iops_read_rate = 17;
+
+	// burst requests read rate of the disk offering
+	int64 iops_read_rate_max = 18;
+
+	// length (in seconds) of the burst
+	int64 iops_read_rate_max_length = 19;
+
+	// io requests write rate of the disk offering
+	int64 iops_write_rate = 20;
+
+	// burst io requests write rate of the disk offering
+	int64 iops_write_rate_max = 21;
+
+	// length (in seconds) of the burst
+	int64 iops_write_rate_max_length = 22;
+
+	// whether disk offering iops is custom or not
+	bool customized_iops = 23 [
 		features.field_presence = EXPLICIT
 	];
 
-	// list only resources belonging to the domain specified
-	int64 domain_id = 17;
+	// min iops of the disk offering
+	int64 min_iops = 24;
 
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	bool recursive = 18 [
+	// max iops of the disk offering
+	int64 max_iops = 25;
+
+	// Hypervisor snapshot reserve space as a percent of a volume (for managed storage using Xen or VMware)
+	int32 hypervisor_snapshot_reserve = 26;
+
+	// the cache mode to use for this disk offering. none, writeback or writethrough
+	string cache_mode = 27;
+
+	// Name of the storage policy defined at vCenter, this is applicable only for VMware
+	int64 storage_policy = 28;
+
+	// To allow or disallow the resize operation on the disks created from this disk offering, if the flag is true then resize is not allowed
+	bool disk_size_strictness = 29 [
 		features.field_presence = EXPLICIT
 	];
 
-	// List by keyword
-	string keyword = 19;
+	// Volumes using this offering should be encrypted
+	bool encrypt = 30 [
+		features.field_presence = EXPLICIT
+	];
+
+	// details to specify disk offering parameters
+	map<string, string> details = 31;
 
 	//
-	int32 page = 20;
-
-	//
-	int32 page_size = 21;
-
-	//
-	string response_type = 22;
+	string response_type = 32;
 }
 
-// ListServiceOfferingsResponse represents the response from lists all available service offerings.
-message ListServiceOfferingsResponse {
-	option (validate.message).disabled = false;
-	// The list of ServiceOfferings
-	repeated ServiceOffering items = 1;
-
-	// The total count of ServiceOfferings
-	int32 total_count = 2;
-}
-
-// DeleteDiskOfferingRequest represents the parameters for updates a disk offering.
-message DeleteDiskOfferingRequest {
-	// ID of the disk offering
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// DeleteDiskOfferingResponse represents the response from updates a disk offering.
-message DeleteDiskOfferingResponse {
+// CreateDiskOfferingResponse represents the response from creates a disk offering.
+message CreateDiskOfferingResponse {
 	// The Result
 	Result result = 1;
 }
@@ -352,6 +358,57 @@ message CreateServiceOfferingResponse {
 	Result result = 1;
 }
 
+// DeleteDiskOfferingRequest represents the parameters for updates a disk offering.
+message DeleteDiskOfferingRequest {
+	// ID of the disk offering
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteDiskOfferingResponse represents the response from updates a disk offering.
+message DeleteDiskOfferingResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteServiceOfferingRequest represents the parameters for deletes a service offering.
+message DeleteServiceOfferingRequest {
+	// the ID of the service offering
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteServiceOfferingResponse represents the response from deletes a service offering.
+message DeleteServiceOfferingResponse {
+	// The Result
+	Result result = 1;
+}
+
+// IsAccountAllowedToCreateOfferingsWithTagsRequest represents the parameters for return true if the specified account is allowed to create offerings with tags.
+message IsAccountAllowedToCreateOfferingsWithTagsRequest {
+	// Account UUID
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// IsAccountAllowedToCreateOfferingsWithTagsResponse represents the response from return true if the specified account is allowed to create offerings with tags.
+message IsAccountAllowedToCreateOfferingsWithTagsResponse {
+	// The Result
+	Result result = 1;
+}
+
 // ListDiskOfferingsRequest represents the parameters for lists all available disk offerings.
 message ListDiskOfferingsRequest {
 	// ID of the disk offering
@@ -431,6 +488,102 @@ message ListDiskOfferingsResponse {
 	repeated DiskOffering items = 1;
 
 	// The total count of DiskOfferings
+	int32 total_count = 2;
+}
+
+// ListServiceOfferingsRequest represents the parameters for lists all available service offerings.
+message ListServiceOfferingsRequest {
+	// ID of the service offering
+	int64 id = 1;
+
+	// name of the service offering
+	string service_offering_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the ID of the virtual machine. Pass this in if you want to see the available service offering that a virtual machine can be changed to.
+	int64 virtual_machine_id = 3;
+
+	// is this a system vm offering
+	bool is_system = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the system VM type. Possible types are "consoleproxy", "secondarystoragevm" or "domainrouter".
+	string system_vm_type = 5;
+
+	// id of zone disk offering is associated with
+	int64 zone_id = 6;
+
+	// the CPU number that listed offerings must support
+	int32 cpu_number = 7;
+
+	// the RAM memory that listed offering must support
+	int32 memory = 8;
+
+	// the CPU speed that listed offerings must support
+	int32 cpu_speed = 9;
+
+	// listed offerings support root disk encryption
+	bool encrypt_root = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the storage type of the service offering. Values are local and shared.
+	string storage_type = 11;
+
+	// Filter by state of the service offering. Defaults to 'Active'. If set to 'all' shows both Active & Inactive offerings.
+	string service_offering_state = 12;
+
+	// The ID of the template that listed offerings must support
+	int64 template_id = 13;
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 14;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 15 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 16 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 17;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 18 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 19;
+
+	//
+	int32 page = 20;
+
+	//
+	int32 page_size = 21;
+
+	//
+	string response_type = 22;
+}
+
+// ListServiceOfferingsResponse represents the response from lists all available service offerings.
+message ListServiceOfferingsResponse {
+	option (validate.message).disabled = false;
+	// The list of ServiceOfferings
+	repeated ServiceOffering items = 1;
+
+	// The total count of ServiceOfferings
 	int32 total_count = 2;
 }
 
@@ -523,159 +676,6 @@ message UpdateDiskOfferingResponse {
 	Result result = 1;
 }
 
-// CreateDiskOfferingRequest represents the parameters for creates a disk offering.
-message CreateDiskOfferingRequest {
-	// size of the disk offering in GB (1GB = 1,073,741,824 bytes)
-	int64 disk_size = 1;
-
-	// An alternate display text of the disk offering, defaults to 'name'.
-	string display_text = 2;
-
-	// name of the disk offering
-	string offering_name = 3 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// tags for the disk offering
-	string tags = 4;
-
-	// whether disk offering size is custom or not
-	bool customized = 5 [
-		features.field_presence = EXPLICIT
-	];
-
-	// the ID of the containing domain(s), null for public offerings
-	repeated string domain_ids = 6;
-
-	// the ID of the containing zone(s), null for public offerings
-	repeated string zone_ids = 7;
-
-	// the storage type of the disk offering. Values are local and shared.
-	string storage_type = 8;
-
-	// provisioning type used to create volumes. Valid values are thin, sparse, fat.
-	string provisioning_type = 9;
-
-	// an optional field, whether to display the offering to the end user or not.
-	bool display_offering = 10 [
-		features.field_presence = EXPLICIT
-	];
-
-	// bytes read rate of the disk offering
-	int64 bytes_read_rate = 11;
-
-	// burst bytes read rate of the disk offering
-	int64 bytes_read_rate_max = 12;
-
-	// length (in seconds) of the burst
-	int64 bytes_read_rate_max_length = 13;
-
-	// bytes write rate of the disk offering
-	int64 bytes_write_rate = 14;
-
-	// burst bytes write rate of the disk offering
-	int64 bytes_write_rate_max = 15;
-
-	// length (in seconds) of the burst
-	int64 bytes_write_rate_max_length = 16;
-
-	// io requests read rate of the disk offering
-	int64 iops_read_rate = 17;
-
-	// burst requests read rate of the disk offering
-	int64 iops_read_rate_max = 18;
-
-	// length (in seconds) of the burst
-	int64 iops_read_rate_max_length = 19;
-
-	// io requests write rate of the disk offering
-	int64 iops_write_rate = 20;
-
-	// burst io requests write rate of the disk offering
-	int64 iops_write_rate_max = 21;
-
-	// length (in seconds) of the burst
-	int64 iops_write_rate_max_length = 22;
-
-	// whether disk offering iops is custom or not
-	bool customized_iops = 23 [
-		features.field_presence = EXPLICIT
-	];
-
-	// min iops of the disk offering
-	int64 min_iops = 24;
-
-	// max iops of the disk offering
-	int64 max_iops = 25;
-
-	// Hypervisor snapshot reserve space as a percent of a volume (for managed storage using Xen or VMware)
-	int32 hypervisor_snapshot_reserve = 26;
-
-	// the cache mode to use for this disk offering. none, writeback or writethrough
-	string cache_mode = 27;
-
-	// Name of the storage policy defined at vCenter, this is applicable only for VMware
-	int64 storage_policy = 28;
-
-	// To allow or disallow the resize operation on the disks created from this disk offering, if the flag is true then resize is not allowed
-	bool disk_size_strictness = 29 [
-		features.field_presence = EXPLICIT
-	];
-
-	// Volumes using this offering should be encrypted
-	bool encrypt = 30 [
-		features.field_presence = EXPLICIT
-	];
-
-	// details to specify disk offering parameters
-	map<string, string> details = 31;
-
-	//
-	string response_type = 32;
-}
-
-// CreateDiskOfferingResponse represents the response from creates a disk offering.
-message CreateDiskOfferingResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeleteServiceOfferingRequest represents the parameters for deletes a service offering.
-message DeleteServiceOfferingRequest {
-	// the ID of the service offering
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// DeleteServiceOfferingResponse represents the response from deletes a service offering.
-message DeleteServiceOfferingResponse {
-	// The Result
-	Result result = 1;
-}
-
-// IsAccountAllowedToCreateOfferingsWithTagsRequest represents the parameters for return true if the specified account is allowed to create offerings with tags.
-message IsAccountAllowedToCreateOfferingsWithTagsRequest {
-	// Account UUID
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// IsAccountAllowedToCreateOfferingsWithTagsResponse represents the response from return true if the specified account is allowed to create offerings with tags.
-message IsAccountAllowedToCreateOfferingsWithTagsResponse {
-	// The Result
-	Result result = 1;
-}
-
 // UpdateServiceOfferingRequest represents the parameters for updates a service offering.
 message UpdateServiceOfferingRequest {
 	// the ID of the service offering to be updated
@@ -729,22 +729,6 @@ message UpdateServiceOfferingResponse {
 	Result result = 1;
 }
 
-// ServiceOffering represents a ServiceOffering Item
-message ServiceOffering {
-	// The ID of the ServiceOffering
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-	// The name of the ServiceOffering
-	string name = 2;
-	// The display name of the ServiceOffering
-	string display_name = 3;
-	// The description of the ServiceOffering
-	string description = 4;
-	// The date this entity was created
-	string created = 5;
-}
-
 // DiskOffering represents a DiskOffering Item
 message DiskOffering {
 	// The ID of the DiskOffering
@@ -756,6 +740,22 @@ message DiskOffering {
 	// The display name of the DiskOffering
 	string display_name = 3;
 	// The description of the DiskOffering
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// ServiceOffering represents a ServiceOffering Item
+message ServiceOffering {
+	// The ID of the ServiceOffering
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the ServiceOffering
+	string name = 2;
+	// The display name of the ServiceOffering
+	string display_name = 3;
+	// The description of the ServiceOffering
 	string description = 4;
 	// The date this entity was created
 	string created = 5;
@@ -773,12 +773,12 @@ message Success {
 enum ProvisioningType {
 	// Default unspecified value
 	PROVISIONING_TYPE_UNSPECIFIED = 0;
-	// THIN value
-	PROVISIONING_TYPE_THIN = 1;
+	// FAT value
+	PROVISIONING_TYPE_FAT = 1;
 	// SPARSE value
 	PROVISIONING_TYPE_SPARSE = 2;
-	// FAT value
-	PROVISIONING_TYPE_FAT = 3;
+	// THIN value
+	PROVISIONING_TYPE_THIN = 3;
 }
 
 // Result represents a generic operation result

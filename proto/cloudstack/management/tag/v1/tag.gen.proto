@@ -15,13 +15,13 @@ service TagService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// ListTags List resource tag(s)
-	rpc ListTags(ListTagsRequest) returns (ListTagsResponse) {
+	// DeleteTags Deleting resource tag(s)
+	rpc DeleteTags(DeleteTagsRequest) returns (DeleteTagsResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// DeleteTags Deleting resource tag(s)
-	rpc DeleteTags(DeleteTagsRequest) returns (DeleteTagsResponse) {
+	// ListTags List resource tag(s)
+	rpc ListTags(ListTagsRequest) returns (ListTagsResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 }
@@ -60,6 +60,39 @@ message CreateTagsRequest {
 
 // CreateTagsResponse represents the response from creates resource tag(s)
 message CreateTagsResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteTagsRequest represents the parameters for deleting resource tag(s)
+message DeleteTagsRequest {
+	// Delete tags matching key/value pairs
+	map<string, string> tag = 1;
+
+	// Delete tag by resource type
+	string resource_type = 2 [
+		(validate.field).required = true
+	];
+
+	// Delete tags for resource id(s)
+	repeated string resource_ids = 3 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// DeleteTagsResponse represents the response from deleting resource tag(s)
+message DeleteTagsResponse {
 	// The Result
 	Result result = 1;
 }
@@ -129,39 +162,6 @@ message ListTagsResponse {
 
 	// The total count of ResourceTags
 	int32 total_count = 2;
-}
-
-// DeleteTagsRequest represents the parameters for deleting resource tag(s)
-message DeleteTagsRequest {
-	// Delete tags matching key/value pairs
-	map<string, string> tag = 1;
-
-	// Delete tag by resource type
-	string resource_type = 2 [
-		(validate.field).required = true
-	];
-
-	// Delete tags for resource id(s)
-	repeated string resource_ids = 3 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 4;
-
-	//
-	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 6;
-}
-
-// DeleteTagsResponse represents the response from deleting resource tag(s)
-message DeleteTagsResponse {
-	// The Result
-	Result result = 1;
 }
 
 // ResourceTag represents a ResourceTag Item

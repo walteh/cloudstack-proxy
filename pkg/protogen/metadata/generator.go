@@ -8,6 +8,7 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
 	"text/template"
 	"unicode"
@@ -288,6 +289,11 @@ func (g *ProtoGenerator) writeProtoFile(filePath, serviceName string, commands [
 		})
 	}
 
+	// Sort templateCommands by SimpleName for deterministic ordering
+	sort.Slice(templateCommands, func(i, j int) bool {
+		return templateCommands[i]["SimpleName"].(string) < templateCommands[j]["SimpleName"].(string)
+	})
+
 	// Transform response data for template
 	var templateResponses []map[string]interface{}
 
@@ -433,8 +439,40 @@ func (g *ProtoGenerator) writeProtoFile(filePath, serviceName string, commands [
 		templateResponses = append(templateResponses, successResponse)
 	}
 
+	// Sort templateResponses by MessageName for deterministic ordering
+	sort.Slice(templateResponses, func(i, j int) bool {
+		// Always put "Result" at the end
+		if templateResponses[i]["MessageName"].(string) == "Result" {
+			return false
+		}
+		if templateResponses[j]["MessageName"].(string) == "Result" {
+			return true
+		}
+		// Always put "Item" at the end
+		if templateResponses[i]["MessageName"].(string) == "Item" {
+			return false
+		}
+		if templateResponses[j]["MessageName"].(string) == "Item" {
+			return true
+		}
+		// Always put "Success" at the end
+		if templateResponses[i]["MessageName"].(string) == "Success" {
+			return false
+		}
+		if templateResponses[j]["MessageName"].(string) == "Success" {
+			return true
+		}
+		// For all others, sort alphabetically
+		return templateResponses[i]["MessageName"].(string) < templateResponses[j]["MessageName"].(string)
+	})
+
 	// Extract the enums we need for this service
 	enums := g.identifyEnumsForService(commands, responses, packagePath)
+
+	// Sort enums for deterministic ordering
+	sort.Slice(enums, func(i, j int) bool {
+		return enums[i]["Name"].(string) < enums[j]["Name"].(string)
+	})
 
 	// Create a map for the template data
 	templateData := map[string]interface{}{
@@ -631,6 +669,14 @@ func toSnakeCase(s string) string {
 			result = append(result, '_')
 		}
 		result = append(result, unicode.ToLower(r))
+	}
+
+	// check if there are any reserved words
+	reservedWords := []string{"option", "required", "repeated", "string", "bool", "int32", "int64", "float", "double", "map", "repeated", "Result", "Item", "Success"}
+	for _, word := range reservedWords {
+		if strings.Contains(string(result), word) {
+			result = append(result, '_')
+		}
 	}
 
 	return string(result)

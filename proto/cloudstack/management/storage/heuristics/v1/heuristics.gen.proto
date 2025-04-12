@@ -15,13 +15,13 @@ service HeuristicsService {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// RemoveSecondaryStorageSelector Removes an existing secondary storage selector.
-	rpc RemoveSecondaryStorageSelector(RemoveSecondaryStorageSelectorRequest) returns (RemoveSecondaryStorageSelectorResponse) {
+	// ListSecondaryStorageSelectors Lists the secondary storage selectors and their rules.
+	rpc ListSecondaryStorageSelectors(ListSecondaryStorageSelectorsRequest) returns (ListSecondaryStorageSelectorsResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
-	// ListSecondaryStorageSelectors Lists the secondary storage selectors and their rules.
-	rpc ListSecondaryStorageSelectors(ListSecondaryStorageSelectorsRequest) returns (ListSecondaryStorageSelectorsResponse) {
+	// RemoveSecondaryStorageSelector Removes an existing secondary storage selector.
+	rpc RemoveSecondaryStorageSelector(RemoveSecondaryStorageSelectorRequest) returns (RemoveSecondaryStorageSelectorResponse) {
 		option (annotations.method).scope = SCOPE_USER;
 	}
 
@@ -72,23 +72,6 @@ message CreateSecondaryStorageSelectorResponse {
 	Result result = 1;
 }
 
-// RemoveSecondaryStorageSelectorRequest represents the parameters for removes an existing secondary storage selector.
-message RemoveSecondaryStorageSelectorRequest {
-	// The unique identifier of the secondary storage selector to be removed.
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// RemoveSecondaryStorageSelectorResponse represents the response from removes an existing secondary storage selector.
-message RemoveSecondaryStorageSelectorResponse {
-	// The Result
-	Result result = 1;
-}
-
 // ListSecondaryStorageSelectorsRequest represents the parameters for lists the secondary storage selectors and their rules.
 message ListSecondaryStorageSelectorsRequest {
 	// The zone ID to be used in the search filter.
@@ -125,6 +108,23 @@ message ListSecondaryStorageSelectorsResponse {
 
 	// The total count of SecondaryStorageHeuristicss
 	int32 total_count = 2;
+}
+
+// RemoveSecondaryStorageSelectorRequest represents the parameters for removes an existing secondary storage selector.
+message RemoveSecondaryStorageSelectorRequest {
+	// The unique identifier of the secondary storage selector to be removed.
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// RemoveSecondaryStorageSelectorResponse represents the response from removes an existing secondary storage selector.
+message RemoveSecondaryStorageSelectorResponse {
+	// The Result
+	Result result = 1;
 }
 
 // UpdateSecondaryStorageSelectorRequest represents the parameters for updates an existing secondary storage selector.
