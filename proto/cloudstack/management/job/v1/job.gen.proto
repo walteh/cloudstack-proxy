@@ -8,30 +8,17 @@ import "google/protobuf/descriptor.proto";
 
 // JobService provides operations for managing Jobs
 service JobService {
-	option (annotations.service).scope = Scope_USER;
-
-	// QueryAsyncJobResult Retrieves the current status of asynchronous job.
-	rpc QueryAsyncJobResult(QueryAsyncJobResultRequest) returns (QueryAsyncJobResultResponse) {}
+	option (annotations.service).scope = SCOPE_USER;
 
 	// ListAsyncJobs Lists all pending asynchronous jobs for the account.
-	rpc ListAsyncJobs(ListAsyncJobsRequest) returns (ListAsyncJobsResponse) {}
-}
+	rpc ListAsyncJobs(ListAsyncJobsRequest) returns (ListAsyncJobsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
-// QueryAsyncJobResultRequest represents the parameters for retrieves the current status of asynchronous job.
-message QueryAsyncJobResultRequest {
-	// the ID of the asynchronous job
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// QueryAsyncJobResultResponse represents the response from retrieves the current status of asynchronous job.
-message QueryAsyncJobResultResponse {
-	// The Result
-	Result result = 1;
+	// QueryAsyncJobResult Retrieves the current status of asynchronous job.
+	rpc QueryAsyncJobResult(QueryAsyncJobResultRequest) returns (QueryAsyncJobResultResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
 // ListAsyncJobsRequest represents the parameters for lists all pending asynchronous jobs for the account.
@@ -85,6 +72,23 @@ message ListAsyncJobsResponse {
 
 	// The total count of AsyncJobs
 	int32 total_count = 2;
+}
+
+// QueryAsyncJobResultRequest represents the parameters for retrieves the current status of asynchronous job.
+message QueryAsyncJobResultRequest {
+	// the ID of the asynchronous job
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// QueryAsyncJobResultResponse represents the response from retrieves the current status of asynchronous job.
+message QueryAsyncJobResultResponse {
+	// The Result
+	Result result = 1;
 }
 
 // AsyncJob represents a AsyncJob Item

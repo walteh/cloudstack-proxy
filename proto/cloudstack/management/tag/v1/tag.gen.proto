@@ -8,47 +8,58 @@ import "google/protobuf/descriptor.proto";
 
 // TagService provides operations for managing Tags
 service TagService {
-	option (annotations.service).scope = Scope_USER;
-
-	// DeleteTags Deleting resource tag(s)
-	rpc DeleteTags(DeleteTagsRequest) returns (DeleteTagsResponse) {}
-
-	// ListTags List resource tag(s)
-	rpc ListTags(ListTagsRequest) returns (ListTagsResponse) {}
+	option (annotations.service).scope = SCOPE_USER;
 
 	// CreateTags Creates resource tag(s)
-	rpc CreateTags(CreateTagsRequest) returns (CreateTagsResponse) {}
+	rpc CreateTags(CreateTagsRequest) returns (CreateTagsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListTags List resource tag(s)
+	rpc ListTags(ListTagsRequest) returns (ListTagsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// DeleteTags Deleting resource tag(s)
+	rpc DeleteTags(DeleteTagsRequest) returns (DeleteTagsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
-// DeleteTagsRequest represents the parameters for deleting resource tag(s)
-message DeleteTagsRequest {
-	// Delete tags matching key/value pairs
-	map<string, string> tag = 1;
+// CreateTagsRequest represents the parameters for creates resource tag(s)
+message CreateTagsRequest {
+	// Map of tags (key/value pairs)
+	map<string, string> tag = 1 [
+		(validate.field).required = true
+	];
 
-	// Delete tag by resource type
+	// type of the resource
 	string resource_type = 2 [
 		(validate.field).required = true
 	];
 
-	// Delete tags for resource id(s)
+	// list of resources to create the tags for
 	repeated string resource_ids = 3 [
 		(validate.field).required = true
 	];
 
-	//
-	int64 start_event_id = 4;
+	// identifies client specific tag. When the value is not null, the tag can't be used by cloudStack code internally
+	string customer = 4;
 
 	//
-	string injected_job_id = 5 [
+	int64 start_event_id = 5;
+
+	//
+	string injected_job_id = 6 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	string response_type = 6;
+	string response_type = 7;
 }
 
-// DeleteTagsResponse represents the response from deleting resource tag(s)
-message DeleteTagsResponse {
+// CreateTagsResponse represents the response from creates resource tag(s)
+message CreateTagsResponse {
 	// The Result
 	Result result = 1;
 }
@@ -120,40 +131,35 @@ message ListTagsResponse {
 	int32 total_count = 2;
 }
 
-// CreateTagsRequest represents the parameters for creates resource tag(s)
-message CreateTagsRequest {
-	// Map of tags (key/value pairs)
-	map<string, string> tag = 1 [
-		(validate.field).required = true
-	];
+// DeleteTagsRequest represents the parameters for deleting resource tag(s)
+message DeleteTagsRequest {
+	// Delete tags matching key/value pairs
+	map<string, string> tag = 1;
 
-	// type of the resource
+	// Delete tag by resource type
 	string resource_type = 2 [
 		(validate.field).required = true
 	];
 
-	// list of resources to create the tags for
+	// Delete tags for resource id(s)
 	repeated string resource_ids = 3 [
 		(validate.field).required = true
 	];
 
-	// identifies client specific tag. When the value is not null, the tag can't be used by cloudStack code internally
-	string customer = 4;
+	//
+	int64 start_event_id = 4;
 
 	//
-	int64 start_event_id = 5;
-
-	//
-	string injected_job_id = 6 [
+	string injected_job_id = 5 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	string response_type = 7;
+	string response_type = 6;
 }
 
-// CreateTagsResponse represents the response from creates resource tag(s)
-message CreateTagsResponse {
+// DeleteTagsResponse represents the response from deleting resource tag(s)
+message DeleteTagsResponse {
 	// The Result
 	Result result = 1;
 }

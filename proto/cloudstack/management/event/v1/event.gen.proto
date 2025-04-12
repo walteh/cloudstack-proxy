@@ -8,19 +8,27 @@ import "google/protobuf/descriptor.proto";
 
 // EventService provides operations for managing Events
 service EventService {
-	option (annotations.service).scope = Scope_USER;
+	option (annotations.service).scope = SCOPE_USER;
 
 	// DeleteEvents Delete one or more events.
-	rpc DeleteEvents(DeleteEventsRequest) returns (DeleteEventsResponse) {}
-
-	// ListEvents A command to list events.
-	rpc ListEvents(ListEventsRequest) returns (ListEventsResponse) {}
+	rpc DeleteEvents(DeleteEventsRequest) returns (DeleteEventsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// ArchiveEvents Archive one or more events.
-	rpc ArchiveEvents(ArchiveEventsRequest) returns (ArchiveEventsResponse) {}
+	rpc ArchiveEvents(ArchiveEventsRequest) returns (ArchiveEventsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListEvents A command to list events.
+	rpc ListEvents(ListEventsRequest) returns (ListEventsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// ListEventTypes List Event Types
-	rpc ListEventTypes(ListEventTypesRequest) returns (ListEventTypesResponse) {}
+	rpc ListEventTypes(ListEventTypesRequest) returns (ListEventTypesResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
 // DeleteEventsRequest represents the parameters for delete one or more events.
@@ -43,6 +51,30 @@ message DeleteEventsRequest {
 
 // DeleteEventsResponse represents the response from delete one or more events.
 message DeleteEventsResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ArchiveEventsRequest represents the parameters for archive one or more events.
+message ArchiveEventsRequest {
+	// the IDs of the events
+	repeated string ids = 1;
+
+	// end date range to archive events (including) this date (use format "yyyy-MM-dd" or the new format "yyyy-MM-ddThh:mm:ss")
+	string end_date = 2;
+
+	// start date range to archive events (including) this date (use format "yyyy-MM-dd" or the new format "yyyy-MM-ddThh:mm:ss")
+	string start_date = 3;
+
+	// archive by event type
+	string type = 4;
+
+	//
+	string response_type = 5;
+}
+
+// ArchiveEventsResponse represents the response from archive one or more events.
+message ArchiveEventsResponse {
 	// The Result
 	Result result = 1;
 }
@@ -132,30 +164,6 @@ message ListEventsResponse {
 
 	// The total count of Events
 	int32 total_count = 2;
-}
-
-// ArchiveEventsRequest represents the parameters for archive one or more events.
-message ArchiveEventsRequest {
-	// the IDs of the events
-	repeated string ids = 1;
-
-	// end date range to archive events (including) this date (use format "yyyy-MM-dd" or the new format "yyyy-MM-ddThh:mm:ss")
-	string end_date = 2;
-
-	// start date range to archive events (including) this date (use format "yyyy-MM-dd" or the new format "yyyy-MM-ddThh:mm:ss")
-	string start_date = 3;
-
-	// archive by event type
-	string type = 4;
-
-	//
-	string response_type = 5;
-}
-
-// ArchiveEventsResponse represents the response from archive one or more events.
-message ArchiveEventsResponse {
-	// The Result
-	Result result = 1;
 }
 
 // ListEventTypesRequest represents the parameters for list event types

@@ -8,96 +8,47 @@ import "google/protobuf/descriptor.proto";
 
 // SecuritygroupService provides operations for managing Securitygroups
 service SecuritygroupService {
-	option (annotations.service).scope = Scope_USER;
-
-	// ListSecurityGroups Lists security groups
-	rpc ListSecurityGroups(ListSecurityGroupsRequest) returns (ListSecurityGroupsResponse) {}
+	option (annotations.service).scope = SCOPE_USER;
 
 	// RevokeSecurityGroupEgress Deletes a particular egress rule from this security group
-	rpc RevokeSecurityGroupEgress(RevokeSecurityGroupEgressRequest) returns (RevokeSecurityGroupEgressResponse) {}
+	rpc RevokeSecurityGroupEgress(RevokeSecurityGroupEgressRequest) returns (RevokeSecurityGroupEgressResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// AuthorizeSecurityGroupIngress Authorizes a particular ingress rule for this security group
-	rpc AuthorizeSecurityGroupIngress(AuthorizeSecurityGroupIngressRequest) returns (AuthorizeSecurityGroupIngressResponse) {}
-
-	// DeleteSecurityGroup Deletes security group
-	rpc DeleteSecurityGroup(DeleteSecurityGroupRequest) returns (DeleteSecurityGroupResponse) {}
+	rpc AuthorizeSecurityGroupIngress(AuthorizeSecurityGroupIngressRequest) returns (AuthorizeSecurityGroupIngressResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// UpdateSecurityGroup Updates a security group
-	rpc UpdateSecurityGroup(UpdateSecurityGroupRequest) returns (UpdateSecurityGroupResponse) {}
+	rpc UpdateSecurityGroup(UpdateSecurityGroupRequest) returns (UpdateSecurityGroupResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// DeleteSecurityGroup Deletes security group
+	rpc DeleteSecurityGroup(DeleteSecurityGroupRequest) returns (DeleteSecurityGroupResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// CreateSecurityGroup Creates a security group
-	rpc CreateSecurityGroup(CreateSecurityGroupRequest) returns (CreateSecurityGroupResponse) {}
-
-	// RevokeSecurityGroupIngress Deletes a particular ingress rule from this security group
-	rpc RevokeSecurityGroupIngress(RevokeSecurityGroupIngressRequest) returns (RevokeSecurityGroupIngressResponse) {}
+	rpc CreateSecurityGroup(CreateSecurityGroupRequest) returns (CreateSecurityGroupResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// AuthorizeSecurityGroupEgress Authorizes a particular egress rule for this security group
-	rpc AuthorizeSecurityGroupEgress(AuthorizeSecurityGroupEgressRequest) returns (AuthorizeSecurityGroupEgressResponse) {}
-}
+	rpc AuthorizeSecurityGroupEgress(AuthorizeSecurityGroupEgressRequest) returns (AuthorizeSecurityGroupEgressResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
-// ListSecurityGroupsRequest represents the parameters for lists security groups
-message ListSecurityGroupsRequest {
-	// lists security groups by name
-	string security_group_name = 1 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
+	// ListSecurityGroups Lists security groups
+	rpc ListSecurityGroups(ListSecurityGroupsRequest) returns (ListSecurityGroupsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
-	// lists security groups by virtual machine id
-	int64 virtual_machine_id = 2;
-
-	// list the security group by the id provided
-	int64 id = 3;
-
-	// List resources by tags (key/value pairs)
-	map<string, string> tags = 4;
-
-	// list objects by project; if projectid=-1 lists All VMs
-	int64 project_id = 5;
-
-	// list resources by account. Must be used with the domainId parameter.
-	string account_name = 6 [
-		(validate.field).cel = {
-			id:         "account_name_with_domain_id",
-			expression: "!has(account_name) || has(domain_id)",
-			message:    "account_name must be used with domain_id parameter"
-		}
-	];
-
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	bool list_all = 7 [
-		features.field_presence = EXPLICIT
-	];
-
-	// list only resources belonging to the domain specified
-	int64 domain_id = 8;
-
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	bool recursive = 9 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List by keyword
-	string keyword = 10;
-
-	//
-	int32 page = 11;
-
-	//
-	int32 page_size = 12;
-
-	//
-	string response_type = 13;
-}
-
-// ListSecurityGroupsResponse represents the response from lists security groups
-message ListSecurityGroupsResponse {
-	option (validate.message).disabled = false;
-	// The list of SecurityGroups
-	repeated SecurityGroup items = 1;
-
-	// The total count of SecurityGroups
-	int32 total_count = 2;
+	// RevokeSecurityGroupIngress Deletes a particular ingress rule from this security group
+	rpc RevokeSecurityGroupIngress(RevokeSecurityGroupIngressRequest) returns (RevokeSecurityGroupIngressResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
 // RevokeSecurityGroupEgressRequest represents the parameters for deletes a particular egress rule from this security group
@@ -190,6 +141,34 @@ message AuthorizeSecurityGroupIngressResponse {
 	Result result = 1;
 }
 
+// UpdateSecurityGroupRequest represents the parameters for updates a security group
+message UpdateSecurityGroupRequest {
+	// The ID of the security group.
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// The new name of the security group.
+	string name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// UpdateSecurityGroupResponse represents the response from updates a security group
+message UpdateSecurityGroupResponse {
+	// The Result
+	Result result = 1;
+}
+
 // DeleteSecurityGroupRequest represents the parameters for deletes security group
 message DeleteSecurityGroupRequest {
 	// the account of the security group. Must be specified with domain ID
@@ -216,34 +195,6 @@ message DeleteSecurityGroupRequest {
 
 // DeleteSecurityGroupResponse represents the response from deletes security group
 message DeleteSecurityGroupResponse {
-	// The Result
-	Result result = 1;
-}
-
-// UpdateSecurityGroupRequest represents the parameters for updates a security group
-message UpdateSecurityGroupRequest {
-	// The ID of the security group.
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// The new name of the security group.
-	string name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	string custom_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// UpdateSecurityGroupResponse represents the response from updates a security group
-message UpdateSecurityGroupResponse {
 	// The Result
 	Result result = 1;
 }
@@ -278,31 +229,6 @@ message CreateSecurityGroupRequest {
 
 // CreateSecurityGroupResponse represents the response from creates a security group
 message CreateSecurityGroupResponse {
-	// The Result
-	Result result = 1;
-}
-
-// RevokeSecurityGroupIngressRequest represents the parameters for deletes a particular ingress rule from this security group
-message RevokeSecurityGroupIngressRequest {
-	// The ID of the ingress rule
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// RevokeSecurityGroupIngressResponse represents the response from deletes a particular ingress rule from this security group
-message RevokeSecurityGroupIngressResponse {
 	// The Result
 	Result result = 1;
 }
@@ -368,6 +294,96 @@ message AuthorizeSecurityGroupEgressRequest {
 
 // AuthorizeSecurityGroupEgressResponse represents the response from authorizes a particular egress rule for this security group
 message AuthorizeSecurityGroupEgressResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListSecurityGroupsRequest represents the parameters for lists security groups
+message ListSecurityGroupsRequest {
+	// lists security groups by name
+	string security_group_name = 1 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// lists security groups by virtual machine id
+	int64 virtual_machine_id = 2;
+
+	// list the security group by the id provided
+	int64 id = 3;
+
+	// List resources by tags (key/value pairs)
+	map<string, string> tags = 4;
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 5;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 6 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 7 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 8;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 9 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 10;
+
+	//
+	int32 page = 11;
+
+	//
+	int32 page_size = 12;
+
+	//
+	string response_type = 13;
+}
+
+// ListSecurityGroupsResponse represents the response from lists security groups
+message ListSecurityGroupsResponse {
+	option (validate.message).disabled = false;
+	// The list of SecurityGroups
+	repeated SecurityGroup items = 1;
+
+	// The total count of SecurityGroups
+	int32 total_count = 2;
+}
+
+// RevokeSecurityGroupIngressRequest represents the parameters for deletes a particular ingress rule from this security group
+message RevokeSecurityGroupIngressRequest {
+	// The ID of the ingress rule
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// RevokeSecurityGroupIngressResponse represents the response from deletes a particular ingress rule from this security group
+message RevokeSecurityGroupIngressResponse {
 	// The Result
 	Result result = 1;
 }

@@ -9,15 +9,19 @@ import "cloudstack/annotations/annotations.proto";
 // {{ .ServiceName }} provides operations for managing {{ .PackagePath | title }}s
 service {{ .ServiceName }} {
 {{- if hasAdminService . }}
-	option (annotations.service).scope = [SCOPE_ADMIN];
+	option (annotations.service).scope = SCOPE_ADMIN;
+	option (annotations.service).scope = SCOPE_USER;
 {{- else }}
-	option (annotations.service).scope = [SCOPE_USER];
+	option (annotations.service).scope = SCOPE_USER;
 {{- end }}
 {{- range .Commands }}
 	{{ formatDescription (printf "%s %s" .SimpleName .Description) }}
 	rpc {{ .SimpleName }}({{ .SimpleName }}Request) returns ({{ .SimpleName }}Response) {
 	{{- if .HasAdminVariant }}
-		option (annotations.method).scope = [SCOPE_ADMIN];
+		option (annotations.method).scope = SCOPE_ADMIN;
+		option (annotations.method).scope = SCOPE_USER;
+	{{- else }}
+		option (annotations.method).scope = SCOPE_USER;
 	{{- end }}
 	}
 {{- end }}

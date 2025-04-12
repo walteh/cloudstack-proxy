@@ -8,137 +8,57 @@ import "google/protobuf/descriptor.proto";
 
 // RegionService provides operations for managing Regions
 service RegionService {
-	option (annotations.service).scope = Scope_USER;
-
-	// ListRegions Lists Regions
-	rpc ListRegions(ListRegionsRequest) returns (ListRegionsResponse) {}
-
-	// UpdateRegion Updates a region
-	rpc UpdateRegion(UpdateRegionRequest) returns (UpdateRegionResponse) {}
-
-	// CreatePortableIpRange adds a range of portable public IP's to a region
-	rpc CreatePortableIpRange(CreatePortableIpRangeRequest) returns (CreatePortableIpRangeResponse) {}
-
-	// ListPortableIpRanges list portable IP ranges
-	rpc ListPortableIpRanges(ListPortableIpRangesRequest) returns (ListPortableIpRangesResponse) {}
-
-	// AddRegion Adds a Region
-	rpc AddRegion(AddRegionRequest) returns (AddRegionResponse) {}
+	option (annotations.service).scope = SCOPE_USER;
 
 	// RemoveRegion Removes specified region
-	rpc RemoveRegion(RemoveRegionRequest) returns (RemoveRegionResponse) {}
+	rpc RemoveRegion(RemoveRegionRequest) returns (RemoveRegionResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListPortableIpRanges list portable IP ranges
+	rpc ListPortableIpRanges(ListPortableIpRangesRequest) returns (ListPortableIpRangesResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// AddRegion Adds a Region
+	rpc AddRegion(AddRegionRequest) returns (AddRegionResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// CreatePortableIpRange adds a range of portable public IP's to a region
+	rpc CreatePortableIpRange(CreatePortableIpRangeRequest) returns (CreatePortableIpRangeResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// UpdateRegion Updates a region
+	rpc UpdateRegion(UpdateRegionRequest) returns (UpdateRegionResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// DeletePortableIpRange deletes a range of portable public IP's associated with a region
-	rpc DeletePortableIpRange(DeletePortableIpRangeRequest) returns (DeletePortableIpRangeResponse) {}
+	rpc DeletePortableIpRange(DeletePortableIpRangeRequest) returns (DeletePortableIpRangeResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListRegions Lists Regions
+	rpc ListRegions(ListRegionsRequest) returns (ListRegionsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
-// ListRegionsRequest represents the parameters for lists regions
-message ListRegionsRequest {
-	// List Region by region ID.
-	int32 id = 1;
-
-	// List Region by region name.
-	string name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// List by keyword
-	string keyword = 3;
-
-	//
-	int32 page = 4;
-
-	//
-	int32 page_size = 5;
-
-	//
-	string response_type = 6;
-}
-
-// ListRegionsResponse represents the response from lists regions
-message ListRegionsResponse {
-	option (validate.message).disabled = false;
-	// The list of Regions
-	repeated Region items = 1;
-
-	// The total count of Regions
-	int32 total_count = 2;
-}
-
-// UpdateRegionRequest represents the parameters for updates a region
-message UpdateRegionRequest {
-	// Id of region to update
+// RemoveRegionRequest represents the parameters for removes specified region
+message RemoveRegionRequest {
+	// ID of the region to delete
 	int32 id = 1 [
 		(validate.field).required = true
 	];
 
-	// updates region with this name
-	string region_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// updates region with this end point
-	string end_point = 3;
-
 	//
-	string response_type = 4;
+	string response_type = 2;
 }
 
-// UpdateRegionResponse represents the response from updates a region
-message UpdateRegionResponse {
-	// The Result
-	Result result = 1;
-}
-
-// CreatePortableIpRangeRequest represents the parameters for adds a range of portable public ip's to a region
-message CreatePortableIpRangeRequest {
-	// Id of the Region
-	int32 region_id = 1 [
-		(validate.field).required = true
-	];
-
-	// the beginning IP address in the portable IP range
-	string start_ip = 2 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
-	];
-
-	// the ending IP address in the portable IP range
-	string end_ip = 3 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
-	];
-
-	// the gateway for the portable IP range
-	string gateway = 4 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
-	];
-
-	// the netmask of the portable IP range
-	string netmask = 5 [
-		(validate.field).required = true
-	];
-
-	// VLAN id, if not specified defaulted to untagged
-	string vlan = 6;
-
-	//
-	int64 start_event_id = 7;
-
-	//
-	string injected_job_id = 8 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 9;
-}
-
-// CreatePortableIpRangeResponse represents the response from adds a range of portable public ip's to a region
-message CreatePortableIpRangeResponse {
+// RemoveRegionResponse represents the response from removes specified region
+message RemoveRegionResponse {
 	// The Result
 	Result result = 1;
 }
@@ -203,19 +123,79 @@ message AddRegionResponse {
 	Result result = 1;
 }
 
-// RemoveRegionRequest represents the parameters for removes specified region
-message RemoveRegionRequest {
-	// ID of the region to delete
+// CreatePortableIpRangeRequest represents the parameters for adds a range of portable public ip's to a region
+message CreatePortableIpRangeRequest {
+	// Id of the Region
+	int32 region_id = 1 [
+		(validate.field).required = true
+	];
+
+	// the beginning IP address in the portable IP range
+	string start_ip = 2 [
+		(validate.field).required    = true,
+		(validate.field).string.ipv4 = true
+	];
+
+	// the ending IP address in the portable IP range
+	string end_ip = 3 [
+		(validate.field).required    = true,
+		(validate.field).string.ipv4 = true
+	];
+
+	// the gateway for the portable IP range
+	string gateway = 4 [
+		(validate.field).required    = true,
+		(validate.field).string.ipv4 = true
+	];
+
+	// the netmask of the portable IP range
+	string netmask = 5 [
+		(validate.field).required = true
+	];
+
+	// VLAN id, if not specified defaulted to untagged
+	string vlan = 6;
+
+	//
+	int64 start_event_id = 7;
+
+	//
+	string injected_job_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 9;
+}
+
+// CreatePortableIpRangeResponse represents the response from adds a range of portable public ip's to a region
+message CreatePortableIpRangeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateRegionRequest represents the parameters for updates a region
+message UpdateRegionRequest {
+	// Id of region to update
 	int32 id = 1 [
 		(validate.field).required = true
 	];
 
+	// updates region with this name
+	string region_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// updates region with this end point
+	string end_point = 3;
+
 	//
-	string response_type = 2;
+	string response_type = 4;
 }
 
-// RemoveRegionResponse represents the response from removes specified region
-message RemoveRegionResponse {
+// UpdateRegionResponse represents the response from updates a region
+message UpdateRegionResponse {
 	// The Result
 	Result result = 1;
 }
@@ -245,20 +225,38 @@ message DeletePortableIpRangeResponse {
 	Result result = 1;
 }
 
-// Region represents a Region Item
-message Region {
-	// The ID of the Region
-	string id = 1 [
-		(validate.field).string.uuid = true
+// ListRegionsRequest represents the parameters for lists regions
+message ListRegionsRequest {
+	// List Region by region ID.
+	int32 id = 1;
+
+	// List Region by region name.
+	string name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
 	];
-	// The name of the Region
-	string name = 2;
-	// The display name of the Region
-	string display_name = 3;
-	// The description of the Region
-	string description = 4;
-	// The date this entity was created
-	string created = 5;
+
+	// List by keyword
+	string keyword = 3;
+
+	//
+	int32 page = 4;
+
+	//
+	int32 page_size = 5;
+
+	//
+	string response_type = 6;
+}
+
+// ListRegionsResponse represents the response from lists regions
+message ListRegionsResponse {
+	option (validate.message).disabled = false;
+	// The list of Regions
+	repeated Region items = 1;
+
+	// The total count of Regions
+	int32 total_count = 2;
 }
 
 // PortableIpRange represents a PortableIpRange Item
@@ -272,6 +270,22 @@ message PortableIpRange {
 	// The display name of the PortableIpRange
 	string display_name = 3;
 	// The description of the PortableIpRange
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// Region represents a Region Item
+message Region {
+	// The ID of the Region
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the Region
+	string name = 2;
+	// The display name of the Region
+	string display_name = 3;
+	// The description of the Region
 	string description = 4;
 	// The date this entity was created
 	string created = 5;

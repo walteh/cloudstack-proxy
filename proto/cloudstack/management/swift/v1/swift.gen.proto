@@ -8,13 +8,17 @@ import "google/protobuf/descriptor.proto";
 
 // SwiftService provides operations for managing Swifts
 service SwiftService {
-	option (annotations.service).scope = Scope_USER;
+	option (annotations.service).scope = SCOPE_USER;
 
 	// AddSwift Adds Swift.
-	rpc AddSwift(AddSwiftRequest) returns (AddSwiftResponse) {}
+	rpc AddSwift(AddSwiftRequest) returns (AddSwiftResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// ListSwifts List Swift.
-	rpc ListSwifts(ListSwiftsRequest) returns (ListSwiftsResponse) {}
+	rpc ListSwifts(ListSwiftsRequest) returns (ListSwiftsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
 // AddSwiftRequest represents the parameters for adds swift.

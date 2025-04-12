@@ -8,19 +8,45 @@ import "google/protobuf/descriptor.proto";
 
 // AnnotationService provides operations for managing Annotations
 service AnnotationService {
-	option (annotations.service).scope = Scope_USER;
-
-	// AddAnnotation add an annotation.
-	rpc AddAnnotation(AddAnnotationRequest) returns (AddAnnotationResponse) {}
-
-	// ListAnnotations Lists annotations.
-	rpc ListAnnotations(ListAnnotationsRequest) returns (ListAnnotationsResponse) {}
+	option (annotations.service).scope = SCOPE_USER;
 
 	// RemoveAnnotation remove an annotation.
-	rpc RemoveAnnotation(RemoveAnnotationRequest) returns (RemoveAnnotationResponse) {}
+	rpc RemoveAnnotation(RemoveAnnotationRequest) returns (RemoveAnnotationResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// AddAnnotation add an annotation.
+	rpc AddAnnotation(AddAnnotationRequest) returns (AddAnnotationResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// UpdateAnnotationVisibility update an annotation visibility.
-	rpc UpdateAnnotationVisibility(UpdateAnnotationVisibilityRequest) returns (UpdateAnnotationVisibilityResponse) {}
+	rpc UpdateAnnotationVisibility(UpdateAnnotationVisibilityRequest) returns (UpdateAnnotationVisibilityResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListAnnotations Lists annotations.
+	rpc ListAnnotations(ListAnnotationsRequest) returns (ListAnnotationsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+}
+
+// RemoveAnnotationRequest represents the parameters for remove an annotation.
+message RemoveAnnotationRequest {
+	// the id of the annotation
+	string uuid = 1 [
+		(validate.field).required    = true,
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// RemoveAnnotationResponse represents the response from remove an annotation.
+message RemoveAnnotationResponse {
+	// The Result
+	Result result = 1;
 }
 
 // AddAnnotationRequest represents the parameters for add an annotation.
@@ -47,6 +73,30 @@ message AddAnnotationRequest {
 
 // AddAnnotationResponse represents the response from add an annotation.
 message AddAnnotationResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateAnnotationVisibilityRequest represents the parameters for update an annotation visibility.
+message UpdateAnnotationVisibilityRequest {
+	// the id of the annotation
+	string uuid = 1 [
+		(validate.field).required    = true,
+		(validate.field).string.uuid = true
+	];
+
+	// the annotation is visible for admins only
+	bool admins_only = 2 [
+		(validate.field).required = true,
+		features.field_presence   = EXPLICIT
+	];
+
+	//
+	string response_type = 3;
+}
+
+// UpdateAnnotationVisibilityResponse represents the response from update an annotation visibility.
+message UpdateAnnotationVisibilityResponse {
 	// The Result
 	Result result = 1;
 }
@@ -95,48 +145,6 @@ message ListAnnotationsResponse {
 
 	// The total count of Annotations
 	int32 total_count = 2;
-}
-
-// RemoveAnnotationRequest represents the parameters for remove an annotation.
-message RemoveAnnotationRequest {
-	// the id of the annotation
-	string uuid = 1 [
-		(validate.field).required    = true,
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// RemoveAnnotationResponse represents the response from remove an annotation.
-message RemoveAnnotationResponse {
-	// The Result
-	Result result = 1;
-}
-
-// UpdateAnnotationVisibilityRequest represents the parameters for update an annotation visibility.
-message UpdateAnnotationVisibilityRequest {
-	// the id of the annotation
-	string uuid = 1 [
-		(validate.field).required    = true,
-		(validate.field).string.uuid = true
-	];
-
-	// the annotation is visible for admins only
-	bool admins_only = 2 [
-		(validate.field).required = true,
-		features.field_presence   = EXPLICIT
-	];
-
-	//
-	string response_type = 3;
-}
-
-// UpdateAnnotationVisibilityResponse represents the response from update an annotation visibility.
-message UpdateAnnotationVisibilityResponse {
-	// The Result
-	Result result = 1;
 }
 
 // Annotation represents a Annotation Item

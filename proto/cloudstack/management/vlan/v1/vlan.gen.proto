@@ -8,25 +8,71 @@ import "google/protobuf/descriptor.proto";
 
 // VlanService provides operations for managing Vlans
 service VlanService {
-	option (annotations.service).scope = Scope_USER;
-
-	// CreateVlanIpRange Creates a VLAN IP range.
-	rpc CreateVlanIpRange(CreateVlanIpRangeRequest) returns (CreateVlanIpRangeResponse) {}
-
-	// ReleasePublicIpRange Releases a Public IP range back to the system pool
-	rpc ReleasePublicIpRange(ReleasePublicIpRangeRequest) returns (ReleasePublicIpRangeResponse) {}
-
-	// DedicatePublicIpRange Dedicates a Public IP range to an account
-	rpc DedicatePublicIpRange(DedicatePublicIpRangeRequest) returns (DedicatePublicIpRangeResponse) {}
-
-	// UpdateVlanIpRange Updates a VLAN IP range.
-	rpc UpdateVlanIpRange(UpdateVlanIpRangeRequest) returns (UpdateVlanIpRangeResponse) {}
+	option (annotations.service).scope = SCOPE_USER;
 
 	// DeleteVlanIpRange Deletes a VLAN IP range.
-	rpc DeleteVlanIpRange(DeleteVlanIpRangeRequest) returns (DeleteVlanIpRangeResponse) {}
+	rpc DeleteVlanIpRange(DeleteVlanIpRangeRequest) returns (DeleteVlanIpRangeResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ReleasePublicIpRange Releases a Public IP range back to the system pool
+	rpc ReleasePublicIpRange(ReleasePublicIpRangeRequest) returns (ReleasePublicIpRangeResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// CreateVlanIpRange Creates a VLAN IP range.
+	rpc CreateVlanIpRange(CreateVlanIpRangeRequest) returns (CreateVlanIpRangeResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// ListVlanIpRanges Lists all VLAN IP ranges.
-	rpc ListVlanIpRanges(ListVlanIpRangesRequest) returns (ListVlanIpRangesResponse) {}
+	rpc ListVlanIpRanges(ListVlanIpRangesRequest) returns (ListVlanIpRangesResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// UpdateVlanIpRange Updates a VLAN IP range.
+	rpc UpdateVlanIpRange(UpdateVlanIpRangeRequest) returns (UpdateVlanIpRangeResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// DedicatePublicIpRange Dedicates a Public IP range to an account
+	rpc DedicatePublicIpRange(DedicatePublicIpRangeRequest) returns (DedicatePublicIpRangeResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+}
+
+// DeleteVlanIpRangeRequest represents the parameters for deletes a vlan ip range.
+message DeleteVlanIpRangeRequest {
+	// the id of the VLAN IP range
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteVlanIpRangeResponse represents the response from deletes a vlan ip range.
+message DeleteVlanIpRangeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ReleasePublicIpRangeRequest represents the parameters for releases a public ip range back to the system pool
+message ReleasePublicIpRangeRequest {
+	// the id of the Public IP range
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// ReleasePublicIpRangeResponse represents the response from releases a public ip range back to the system pool
+message ReleasePublicIpRangeResponse {
+	// The Result
+	Result result = 1;
 }
 
 // CreateVlanIpRangeRequest represents the parameters for creates a vlan ip range.
@@ -118,49 +164,67 @@ message CreateVlanIpRangeResponse {
 	Result result = 1;
 }
 
-// ReleasePublicIpRangeRequest represents the parameters for releases a public ip range back to the system pool
-message ReleasePublicIpRangeRequest {
-	// the id of the Public IP range
-	int64 id = 1 [
-		(validate.field).required = true
+// ListVlanIpRangesRequest represents the parameters for lists all vlan ip ranges.
+message ListVlanIpRangesRequest {
+	// the account with which the VLAN IP range is associated. Must be used with the domainId parameter.
+	string account_name = 1 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
 	];
-
-	//
-	string response_type = 2;
-}
-
-// ReleasePublicIpRangeResponse represents the response from releases a public ip range back to the system pool
-message ReleasePublicIpRangeResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DedicatePublicIpRangeRequest represents the parameters for dedicates a public ip range to an account
-message DedicatePublicIpRangeRequest {
-	// the id of the VLAN IP range
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// account who will own the VLAN
-	string account_name = 2;
 
 	// project who will own the VLAN
-	int64 project_id = 3;
+	int64 project_id = 2;
 
-	// domain ID of the account owning a VLAN
-	int64 domain_id = 4 [
-		(validate.field).required = true
+	// the domain ID with which the VLAN IP range is associated.  If used with the account parameter, returns all VLAN IP ranges for that account in the specified domain.
+	int64 domain_id = 3;
+
+	// the ID of the VLAN IP range
+	int64 id = 4;
+
+	// the Pod ID of the VLAN IP range
+	int64 pod_id = 5;
+
+	// the ID or VID of the VLAN. Default is an "untagged" VLAN.
+	string vlan = 6;
+
+	// the Zone ID of the VLAN IP range
+	int64 zone_id = 7;
+
+	// network id of the VLAN IP range
+	int64 network_id = 8;
+
+	// true if VLAN is of Virtual type, false if Direct
+	bool for_virtual_network = 9 [
+		features.field_presence = EXPLICIT
 	];
 
+	// physical network id of the VLAN IP range
+	int64 physical_network_id = 10;
+
+	// List by keyword
+	string keyword = 11;
+
 	//
-	string response_type = 5;
+	int32 page = 12;
+
+	//
+	int32 page_size = 13;
+
+	//
+	string response_type = 14;
 }
 
-// DedicatePublicIpRangeResponse represents the response from dedicates a public ip range to an account
-message DedicatePublicIpRangeResponse {
-	// The Result
-	Result result = 1;
+// ListVlanIpRangesResponse represents the response from lists all vlan ip ranges.
+message ListVlanIpRangesResponse {
+	option (validate.message).disabled = false;
+	// The list of VlanIpRanges
+	repeated VlanIpRange items = 1;
+
+	// The total count of VlanIpRanges
+	int32 total_count = 2;
 }
 
 // UpdateVlanIpRangeRequest represents the parameters for updates a vlan ip range.
@@ -223,84 +287,32 @@ message UpdateVlanIpRangeResponse {
 	Result result = 1;
 }
 
-// DeleteVlanIpRangeRequest represents the parameters for deletes a vlan ip range.
-message DeleteVlanIpRangeRequest {
+// DedicatePublicIpRangeRequest represents the parameters for dedicates a public ip range to an account
+message DedicatePublicIpRangeRequest {
 	// the id of the VLAN IP range
 	int64 id = 1 [
 		(validate.field).required = true
 	];
 
-	//
-	string response_type = 2;
-}
-
-// DeleteVlanIpRangeResponse represents the response from deletes a vlan ip range.
-message DeleteVlanIpRangeResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListVlanIpRangesRequest represents the parameters for lists all vlan ip ranges.
-message ListVlanIpRangesRequest {
-	// the account with which the VLAN IP range is associated. Must be used with the domainId parameter.
-	string account_name = 1 [
-		(validate.field).cel = {
-			id:         "account_name_with_domain_id",
-			expression: "!has(account_name) || has(domain_id)",
-			message:    "account_name must be used with domain_id parameter"
-		}
-	];
+	// account who will own the VLAN
+	string account_name = 2;
 
 	// project who will own the VLAN
-	int64 project_id = 2;
+	int64 project_id = 3;
 
-	// the domain ID with which the VLAN IP range is associated.  If used with the account parameter, returns all VLAN IP ranges for that account in the specified domain.
-	int64 domain_id = 3;
-
-	// the ID of the VLAN IP range
-	int64 id = 4;
-
-	// the Pod ID of the VLAN IP range
-	int64 pod_id = 5;
-
-	// the ID or VID of the VLAN. Default is an "untagged" VLAN.
-	string vlan = 6;
-
-	// the Zone ID of the VLAN IP range
-	int64 zone_id = 7;
-
-	// network id of the VLAN IP range
-	int64 network_id = 8;
-
-	// true if VLAN is of Virtual type, false if Direct
-	bool for_virtual_network = 9 [
-		features.field_presence = EXPLICIT
+	// domain ID of the account owning a VLAN
+	int64 domain_id = 4 [
+		(validate.field).required = true
 	];
 
-	// physical network id of the VLAN IP range
-	int64 physical_network_id = 10;
-
-	// List by keyword
-	string keyword = 11;
-
 	//
-	int32 page = 12;
-
-	//
-	int32 page_size = 13;
-
-	//
-	string response_type = 14;
+	string response_type = 5;
 }
 
-// ListVlanIpRangesResponse represents the response from lists all vlan ip ranges.
-message ListVlanIpRangesResponse {
-	option (validate.message).disabled = false;
-	// The list of VlanIpRanges
-	repeated VlanIpRange items = 1;
-
-	// The total count of VlanIpRanges
-	int32 total_count = 2;
+// DedicatePublicIpRangeResponse represents the response from dedicates a public ip range to an account
+message DedicatePublicIpRangeResponse {
+	// The Result
+	Result result = 1;
 }
 
 // VlanIpRange represents a VlanIpRange Item

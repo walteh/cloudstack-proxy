@@ -8,93 +8,43 @@ import "google/protobuf/descriptor.proto";
 
 // ClusterService provides operations for managing Clusters
 service ClusterService {
-	option (annotations.service).scope = Scope_ADMIN;
-
-	// DeleteCluster Deletes a cluster.
-	rpc DeleteCluster(DeleteClusterRequest) returns (DeleteClusterResponse) {}
-
-	// ExecuteClusterDrsPlan Execute DRS for a cluster. If there is another plan in progress for the same cluster, this command will fail.
-	rpc ExecuteClusterDrsPlan(ExecuteClusterDrsPlanRequest) returns (ExecuteClusterDrsPlanResponse) {}
-
-	// GenerateClusterDrsPlan Generate DRS plan for a cluster
-	rpc GenerateClusterDrsPlan(GenerateClusterDrsPlanRequest) returns (GenerateClusterDrsPlanResponse) {}
+	option (annotations.service).scope = SCOPE_ADMIN;
+	option (annotations.service).scope = SCOPE_USER;
 
 	// AddCluster Adds a new cluster
-	rpc AddCluster(AddClusterRequest) returns (AddClusterResponse) {}
+	rpc AddCluster(AddClusterRequest) returns (AddClusterResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
-	// ListClusterDrsPlan List DRS plans for a clusters
-	rpc ListClusterDrsPlan(ListClusterDrsPlanRequest) returns (ListClusterDrsPlanResponse) {}
+	// DeleteCluster Deletes a cluster.
+	rpc DeleteCluster(DeleteClusterRequest) returns (DeleteClusterResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// GenerateClusterDrsPlan Generate DRS plan for a cluster
+	rpc GenerateClusterDrsPlan(GenerateClusterDrsPlanRequest) returns (GenerateClusterDrsPlanResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// UpdateCluster Updates an existing cluster
-	rpc UpdateCluster(UpdateClusterRequest) returns (UpdateClusterResponse) {}
+	rpc UpdateCluster(UpdateClusterRequest) returns (UpdateClusterResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ExecuteClusterDrsPlan Execute DRS for a cluster. If there is another plan in progress for the same cluster, this command will fail.
+	rpc ExecuteClusterDrsPlan(ExecuteClusterDrsPlanRequest) returns (ExecuteClusterDrsPlanResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// ListClusters Lists clusters.
-	rpc ListClusters(ListClustersRequest) returns (ListClustersResponse) {}
-}
+	rpc ListClusters(ListClustersRequest) returns (ListClustersResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
-// DeleteClusterRequest represents the parameters for deletes a cluster.
-message DeleteClusterRequest {
-	// the cluster ID
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// DeleteClusterResponse represents the response from deletes a cluster.
-message DeleteClusterResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ExecuteClusterDrsPlanRequest represents the parameters for execute drs for a cluster. if there is another plan in progress for the same cluster, this command will fail.
-message ExecuteClusterDrsPlanRequest {
-	// ID of cluster
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// Virtual Machine to destination host mapping. This parameter specifies the mapping between a vm and a host to migrate that VM. clusterid is required if this parameter is set.Format of this parameter: migrateto[vm-index].vm=<uuid>&migrateto[vm-index].host=<uuid> Where, [vm-index] indicates the index to identify the vm that you want to migrate, vm=<uuid> indicates the UUID of the vm that you want to migrate, and host=<uuid> indicates the UUID of the host where you want to migrate the vm. Example: migrateto[0].vm=<71f43cd6-69b0-4d3b-9fbc-67f50963d60b>&migrateto[0].host=<a382f181-3d2b-4413-b92d-b8931befa7e1>&migrateto[1].vm=<88de0173-55c0-4c1c-a269-83d0279eeedf>&migrateto[1].host=<95d6e97c-6766-4d67-9a30-c449c15011d1>&migrateto[2].vm=<1b331390-59f2-4796-9993-bf11c6e76225>&migrateto[2].host=<41fdb564-9d3b-447d-88ed-7628f7640cbc>
-	map<string, string> migrate_vm_to = 2;
-
-	//
-	int64 start_event_id = 3;
-
-	//
-	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 5;
-}
-
-// ExecuteClusterDrsPlanResponse represents the response from execute drs for a cluster. if there is another plan in progress for the same cluster, this command will fail.
-message ExecuteClusterDrsPlanResponse {
-	// The Result
-	Result result = 1;
-}
-
-// GenerateClusterDrsPlanRequest represents the parameters for generate drs plan for a cluster
-message GenerateClusterDrsPlanRequest {
-	// the ID of the Cluster
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// Maximum number of VMs to migrate for a DRS execution. Defaults to value of cluster's drs.vm.migrations setting
-	int32 migrations = 2;
-
-	//
-	string response_type = 3;
-}
-
-// GenerateClusterDrsPlanResponse represents the response from generate drs plan for a cluster
-message GenerateClusterDrsPlanResponse {
-	// The Result
-	Result result = 1;
+	// ListClusterDrsPlan List DRS plans for a clusters
+	rpc ListClusterDrsPlan(ListClusterDrsPlanRequest) returns (ListClusterDrsPlanResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
 // AddClusterRequest represents the parameters for adds a new cluster
@@ -197,35 +147,41 @@ message AddClusterResponse {
 	Result result = 1;
 }
 
-// ListClusterDrsPlanRequest represents the parameters for list drs plans for a clusters
-message ListClusterDrsPlanRequest {
-	// ID of the drs plan
-	int64 id = 1;
-
-	// ID of the cluster
-	int64 cluster_id = 2;
-
-	// List by keyword
-	string keyword = 3;
+// DeleteClusterRequest represents the parameters for deletes a cluster.
+message DeleteClusterRequest {
+	// the cluster ID
+	int64 id = 1 [
+		(validate.field).required = true
+	];
 
 	//
-	int32 page = 4;
-
-	//
-	int32 page_size = 5;
-
-	//
-	string response_type = 6;
+	string response_type = 2;
 }
 
-// ListClusterDrsPlanResponse represents the response from list drs plans for a clusters
-message ListClusterDrsPlanResponse {
-	option (validate.message).disabled = false;
-	// The list of ClusterDrsPlans
-	repeated ClusterDrsPlan items = 1;
+// DeleteClusterResponse represents the response from deletes a cluster.
+message DeleteClusterResponse {
+	// The Result
+	Result result = 1;
+}
 
-	// The total count of ClusterDrsPlans
-	int32 total_count = 2;
+// GenerateClusterDrsPlanRequest represents the parameters for generate drs plan for a cluster
+message GenerateClusterDrsPlanRequest {
+	// the ID of the Cluster
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// Maximum number of VMs to migrate for a DRS execution. Defaults to value of cluster's drs.vm.migrations setting
+	int32 migrations = 2;
+
+	//
+	string response_type = 3;
+}
+
+// GenerateClusterDrsPlanResponse represents the response from generate drs plan for a cluster
+message GenerateClusterDrsPlanResponse {
+	// The Result
+	Result result = 1;
 }
 
 // UpdateClusterRequest represents the parameters for updates an existing cluster
@@ -262,6 +218,34 @@ message UpdateClusterRequest {
 
 // UpdateClusterResponse represents the response from updates an existing cluster
 message UpdateClusterResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ExecuteClusterDrsPlanRequest represents the parameters for execute drs for a cluster. if there is another plan in progress for the same cluster, this command will fail.
+message ExecuteClusterDrsPlanRequest {
+	// ID of cluster
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// Virtual Machine to destination host mapping. This parameter specifies the mapping between a vm and a host to migrate that VM. clusterid is required if this parameter is set.Format of this parameter: migrateto[vm-index].vm=<uuid>&migrateto[vm-index].host=<uuid> Where, [vm-index] indicates the index to identify the vm that you want to migrate, vm=<uuid> indicates the UUID of the vm that you want to migrate, and host=<uuid> indicates the UUID of the host where you want to migrate the vm. Example: migrateto[0].vm=<71f43cd6-69b0-4d3b-9fbc-67f50963d60b>&migrateto[0].host=<a382f181-3d2b-4413-b92d-b8931befa7e1>&migrateto[1].vm=<88de0173-55c0-4c1c-a269-83d0279eeedf>&migrateto[1].host=<95d6e97c-6766-4d67-9a30-c449c15011d1>&migrateto[2].vm=<1b331390-59f2-4796-9993-bf11c6e76225>&migrateto[2].host=<41fdb564-9d3b-447d-88ed-7628f7640cbc>
+	map<string, string> migrate_vm_to = 2;
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// ExecuteClusterDrsPlanResponse represents the response from execute drs for a cluster. if there is another plan in progress for the same cluster, this command will fail.
+message ExecuteClusterDrsPlanResponse {
 	// The Result
 	Result result = 1;
 }
@@ -323,20 +307,35 @@ message ListClustersResponse {
 	int32 total_count = 2;
 }
 
-// ClusterDrsPlan represents a ClusterDrsPlan Item
-message ClusterDrsPlan {
-	// The ID of the ClusterDrsPlan
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-	// The name of the ClusterDrsPlan
-	string name = 2;
-	// The display name of the ClusterDrsPlan
-	string display_name = 3;
-	// The description of the ClusterDrsPlan
-	string description = 4;
-	// The date this entity was created
-	string created = 5;
+// ListClusterDrsPlanRequest represents the parameters for list drs plans for a clusters
+message ListClusterDrsPlanRequest {
+	// ID of the drs plan
+	int64 id = 1;
+
+	// ID of the cluster
+	int64 cluster_id = 2;
+
+	// List by keyword
+	string keyword = 3;
+
+	//
+	int32 page = 4;
+
+	//
+	int32 page_size = 5;
+
+	//
+	string response_type = 6;
+}
+
+// ListClusterDrsPlanResponse represents the response from list drs plans for a clusters
+message ListClusterDrsPlanResponse {
+	option (validate.message).disabled = false;
+	// The list of ClusterDrsPlans
+	repeated ClusterDrsPlan items = 1;
+
+	// The total count of ClusterDrsPlans
+	int32 total_count = 2;
 }
 
 // Cluster represents a Cluster Item
@@ -350,6 +349,22 @@ message Cluster {
 	// The display name of the Cluster
 	string display_name = 3;
 	// The description of the Cluster
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// ClusterDrsPlan represents a ClusterDrsPlan Item
+message ClusterDrsPlan {
+	// The ID of the ClusterDrsPlan
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the ClusterDrsPlan
+	string name = 2;
+	// The display name of the ClusterDrsPlan
+	string display_name = 3;
+	// The description of the ClusterDrsPlan
 	string description = 4;
 	// The date this entity was created
 	string created = 5;

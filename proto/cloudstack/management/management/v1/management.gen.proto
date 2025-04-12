@@ -8,10 +8,12 @@ import "google/protobuf/descriptor.proto";
 
 // ManagementService provides operations for managing Managements
 service ManagementService {
-	option (annotations.service).scope = Scope_USER;
+	option (annotations.service).scope = SCOPE_USER;
 
 	// ListMgmts Lists management servers.
-	rpc ListMgmts(ListMgmtsRequest) returns (ListMgmtsResponse) {}
+	rpc ListMgmts(ListMgmtsRequest) returns (ListMgmtsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
 // ListMgmtsRequest represents the parameters for lists management servers.

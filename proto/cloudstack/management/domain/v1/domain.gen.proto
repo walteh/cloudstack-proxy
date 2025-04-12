@@ -8,27 +8,38 @@ import "google/protobuf/descriptor.proto";
 
 // DomainService provides operations for managing Domains
 service DomainService {
-	option (annotations.service).scope = Scope_USER;
+	option (annotations.service).scope = SCOPE_USER;
 
 	// CreateDomain Creates a domain
-	rpc CreateDomain(CreateDomainRequest) returns (CreateDomainResponse) {}
-
-	// MoveDomain Moves a domain and its children to a new parent domain.
-	rpc MoveDomain(MoveDomainRequest) returns (MoveDomainResponse) {}
-
-	// ListDomains Lists domains and provides detailed information for listed domains
-	rpc ListDomains(ListDomainsRequest) returns (ListDomainsResponse) {
-		option (annotations.method).scope = Scope_ADMIN;
+	rpc CreateDomain(CreateDomainRequest) returns (CreateDomainResponse) {
+		option (annotations.method).scope = SCOPE_USER;
 	}
 
 	// UpdateDomain Updates a domain with a new name
-	rpc UpdateDomain(UpdateDomainRequest) returns (UpdateDomainResponse) {}
+	rpc UpdateDomain(UpdateDomainRequest) returns (UpdateDomainResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
-	// ListDomainChildren Lists all children domains belonging to a specified domain
-	rpc ListDomainChildren(ListDomainChildrenRequest) returns (ListDomainChildrenResponse) {}
+	// ListDomains Lists domains and provides detailed information for listed domains
+	rpc ListDomains(ListDomainsRequest) returns (ListDomainsResponse) {
+		option (annotations.method).scope = SCOPE_ADMIN;
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// MoveDomain Moves a domain and its children to a new parent domain.
+	rpc MoveDomain(MoveDomainRequest) returns (MoveDomainResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// DeleteDomain Deletes a specified domain
-	rpc DeleteDomain(DeleteDomainRequest) returns (DeleteDomainResponse) {}
+	rpc DeleteDomain(DeleteDomainRequest) returns (DeleteDomainResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListDomainChildren Lists all children domains belonging to a specified domain
+	rpc ListDomainChildren(ListDomainChildrenRequest) returns (ListDomainChildrenResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
 // CreateDomainRequest represents the parameters for creates a domain
@@ -61,24 +72,28 @@ message CreateDomainResponse {
 	Result result = 1;
 }
 
-// MoveDomainRequest represents the parameters for moves a domain and its children to a new parent domain.
-message MoveDomainRequest {
-	// The ID of the domain to be moved.
-	int64 domain_id = 1 [
+// UpdateDomainRequest represents the parameters for updates a domain with a new name
+message UpdateDomainRequest {
+	// ID of domain to update
+	int64 id = 1 [
 		(validate.field).required = true
 	];
 
-	// The ID of the new parent domain of the domain to be moved.
-	int64 parent_domain_id = 2 [
-		(validate.field).required = true
+	// updates domain with this name
+	string domain_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
 	];
+
+	// Network domain for the domain's networks; empty string will update domainName with NULL value
+	string network_domain = 3;
 
 	//
-	string response_type = 3;
+	string response_type = 4;
 }
 
-// MoveDomainResponse represents the response from moves a domain and its children to a new parent domain.
-message MoveDomainResponse {
+// UpdateDomainResponse represents the response from updates a domain with a new name
+message UpdateDomainResponse {
 	// The Result
 	Result result = 1;
 }
@@ -128,28 +143,54 @@ message ListDomainsResponse {
 	int32 total_count = 2;
 }
 
-// UpdateDomainRequest represents the parameters for updates a domain with a new name
-message UpdateDomainRequest {
-	// ID of domain to update
+// MoveDomainRequest represents the parameters for moves a domain and its children to a new parent domain.
+message MoveDomainRequest {
+	// The ID of the domain to be moved.
+	int64 domain_id = 1 [
+		(validate.field).required = true
+	];
+
+	// The ID of the new parent domain of the domain to be moved.
+	int64 parent_domain_id = 2 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 3;
+}
+
+// MoveDomainResponse represents the response from moves a domain and its children to a new parent domain.
+message MoveDomainResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteDomainRequest represents the parameters for deletes a specified domain
+message DeleteDomainRequest {
+	// ID of domain to delete
 	int64 id = 1 [
 		(validate.field).required = true
 	];
 
-	// updates domain with this name
-	string domain_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+	// true if all domain resources (child domains, accounts) have to be cleaned up, false otherwise
+	bool cleanup = 2 [
+		features.field_presence = EXPLICIT
 	];
 
-	// Network domain for the domain's networks; empty string will update domainName with NULL value
-	string network_domain = 3;
+	//
+	int64 start_event_id = 3;
 
 	//
-	string response_type = 4;
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
 }
 
-// UpdateDomainResponse represents the response from updates a domain with a new name
-message UpdateDomainResponse {
+// DeleteDomainResponse represents the response from deletes a specified domain
+message DeleteDomainResponse {
 	// The Result
 	Result result = 1;
 }
@@ -201,36 +242,6 @@ message ListDomainChildrenResponse {
 
 	// The total count of Domains
 	int32 total_count = 2;
-}
-
-// DeleteDomainRequest represents the parameters for deletes a specified domain
-message DeleteDomainRequest {
-	// ID of domain to delete
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// true if all domain resources (child domains, accounts) have to be cleaned up, false otherwise
-	bool cleanup = 2 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	int64 start_event_id = 3;
-
-	//
-	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 5;
-}
-
-// DeleteDomainResponse represents the response from deletes a specified domain
-message DeleteDomainResponse {
-	// The Result
-	Result result = 1;
 }
 
 // Domain represents a Domain Item

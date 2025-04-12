@@ -8,16 +8,81 @@ import "google/protobuf/descriptor.proto";
 
 // RepositoryService provides operations for managing Backup.Repositorys
 service RepositoryService {
-	option (annotations.service).scope = Scope_USER;
-
-	// AddBackupRepository Adds a backup repository to store NAS backups
-	rpc AddBackupRepository(AddBackupRepositoryRequest) returns (AddBackupRepositoryResponse) {}
-
-	// DeleteBackupRepository delete a backup repository
-	rpc DeleteBackupRepository(DeleteBackupRepositoryRequest) returns (DeleteBackupRepositoryResponse) {}
+	option (annotations.service).scope = SCOPE_USER;
 
 	// ListBackupRepositories Lists all backup repositories
-	rpc ListBackupRepositories(ListBackupRepositoriesRequest) returns (ListBackupRepositoriesResponse) {}
+	rpc ListBackupRepositories(ListBackupRepositoriesRequest) returns (ListBackupRepositoriesResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// DeleteBackupRepository delete a backup repository
+	rpc DeleteBackupRepository(DeleteBackupRepositoryRequest) returns (DeleteBackupRepositoryResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// AddBackupRepository Adds a backup repository to store NAS backups
+	rpc AddBackupRepository(AddBackupRepositoryRequest) returns (AddBackupRepositoryResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+}
+
+// ListBackupRepositoriesRequest represents the parameters for lists all backup repositories
+message ListBackupRepositoriesRequest {
+	// name of the backup repository
+	string name = 1 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// ID of the zone where the backup repository is to be added
+	int64 zone_id = 2;
+
+	// the backup repository provider
+	string provider = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	// ID of the backup repository
+	int64 id = 4;
+
+	// List by keyword
+	string keyword = 5;
+
+	//
+	int32 page = 6;
+
+	//
+	int32 page_size = 7;
+
+	//
+	string response_type = 8;
+}
+
+// ListBackupRepositoriesResponse represents the response from lists all backup repositories
+message ListBackupRepositoriesResponse {
+	option (validate.message).disabled = false;
+	// The list of BackupRepositorys
+	repeated BackupRepository items = 1;
+
+	// The total count of BackupRepositorys
+	int32 total_count = 2;
+}
+
+// DeleteBackupRepositoryRequest represents the parameters for delete a backup repository
+message DeleteBackupRepositoryRequest {
+	// ID of the backup repository to be deleted
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteBackupRepositoryResponse represents the response from delete a backup repository
+message DeleteBackupRepositoryResponse {
+	// The Result
+	Result result = 1;
 }
 
 // AddBackupRepositoryRequest represents the parameters for adds a backup repository to store nas backups
@@ -63,65 +128,6 @@ message AddBackupRepositoryRequest {
 message AddBackupRepositoryResponse {
 	// The Result
 	Result result = 1;
-}
-
-// DeleteBackupRepositoryRequest represents the parameters for delete a backup repository
-message DeleteBackupRepositoryRequest {
-	// ID of the backup repository to be deleted
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// DeleteBackupRepositoryResponse represents the response from delete a backup repository
-message DeleteBackupRepositoryResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListBackupRepositoriesRequest represents the parameters for lists all backup repositories
-message ListBackupRepositoriesRequest {
-	// name of the backup repository
-	string name = 1 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// ID of the zone where the backup repository is to be added
-	int64 zone_id = 2;
-
-	// the backup repository provider
-	string provider = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	// ID of the backup repository
-	int64 id = 4;
-
-	// List by keyword
-	string keyword = 5;
-
-	//
-	int32 page = 6;
-
-	//
-	int32 page_size = 7;
-
-	//
-	string response_type = 8;
-}
-
-// ListBackupRepositoriesResponse represents the response from lists all backup repositories
-message ListBackupRepositoriesResponse {
-	option (validate.message).disabled = false;
-	// The list of BackupRepositorys
-	repeated BackupRepository items = 1;
-
-	// The total count of BackupRepositorys
-	int32 total_count = 2;
 }
 
 // BackupRepository represents a BackupRepository Item

@@ -8,13 +8,17 @@ import "google/protobuf/descriptor.proto";
 
 // DiagnosticsService provides operations for managing Diagnosticss
 service DiagnosticsService {
-	option (annotations.service).scope = Scope_USER;
+	option (annotations.service).scope = SCOPE_USER;
 
 	// RunDiagnostics Execute network-utility command (ping/arping/tracert) on system VMs remotely
-	rpc RunDiagnostics(RunDiagnosticsRequest) returns (RunDiagnosticsResponse) {}
+	rpc RunDiagnostics(RunDiagnosticsRequest) returns (RunDiagnosticsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// GetDiagnosticsData Get diagnostics and files from system VMs
-	rpc GetDiagnosticsData(GetDiagnosticsDataRequest) returns (GetDiagnosticsDataResponse) {}
+	rpc GetDiagnosticsData(GetDiagnosticsDataRequest) returns (GetDiagnosticsDataResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
 // RunDiagnosticsRequest represents the parameters for execute network-utility command (ping/arping/tracert) on system vms remotely

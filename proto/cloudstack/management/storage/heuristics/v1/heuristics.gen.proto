@@ -8,19 +8,85 @@ import "google/protobuf/descriptor.proto";
 
 // HeuristicsService provides operations for managing Storage.Heuristicss
 service HeuristicsService {
-	option (annotations.service).scope = Scope_USER;
-
-	// ListSecondaryStorageSelectors Lists the secondary storage selectors and their rules.
-	rpc ListSecondaryStorageSelectors(ListSecondaryStorageSelectorsRequest) returns (ListSecondaryStorageSelectorsResponse) {}
-
-	// UpdateSecondaryStorageSelector Updates an existing secondary storage selector.
-	rpc UpdateSecondaryStorageSelector(UpdateSecondaryStorageSelectorRequest) returns (UpdateSecondaryStorageSelectorResponse) {}
+	option (annotations.service).scope = SCOPE_USER;
 
 	// CreateSecondaryStorageSelector Creates a secondary storage selector, described by the heuristic rule.
-	rpc CreateSecondaryStorageSelector(CreateSecondaryStorageSelectorRequest) returns (CreateSecondaryStorageSelectorResponse) {}
+	rpc CreateSecondaryStorageSelector(CreateSecondaryStorageSelectorRequest) returns (CreateSecondaryStorageSelectorResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// RemoveSecondaryStorageSelector Removes an existing secondary storage selector.
-	rpc RemoveSecondaryStorageSelector(RemoveSecondaryStorageSelectorRequest) returns (RemoveSecondaryStorageSelectorResponse) {}
+	rpc RemoveSecondaryStorageSelector(RemoveSecondaryStorageSelectorRequest) returns (RemoveSecondaryStorageSelectorResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListSecondaryStorageSelectors Lists the secondary storage selectors and their rules.
+	rpc ListSecondaryStorageSelectors(ListSecondaryStorageSelectorsRequest) returns (ListSecondaryStorageSelectorsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// UpdateSecondaryStorageSelector Updates an existing secondary storage selector.
+	rpc UpdateSecondaryStorageSelector(UpdateSecondaryStorageSelectorRequest) returns (UpdateSecondaryStorageSelectorResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+}
+
+// CreateSecondaryStorageSelectorRequest represents the parameters for creates a secondary storage selector, described by the heuristic rule.
+message CreateSecondaryStorageSelectorRequest {
+	// The name identifying the heuristic rule.
+	string name = 1 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// The description of the heuristic rule.
+	string description = 2 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 1024
+	];
+
+	// The zone in which the heuristic rule will be applied.
+	int64 zone_id = 3 [
+		(validate.field).required = true
+	];
+
+	// The resource type directed to a specific secondary storage by the selector. Valid options are: ISO, SNAPSHOT, TEMPLATE and VOLUME.
+	string type = 4 [
+		(validate.field).required = true
+	];
+
+	// The heuristic rule, in JavaScript language. It is required that it returns the UUID of a secondary storage pool. An example of a rule is `if (snapshot.hypervisorType === 'KVM') { '7832f261-c602-4e8e-8580-2496ffbbc45d'; }` would allocate all snapshots with the KVM hypervisor to the specified secondary storage UUID.
+	string heuristic_rule = 5 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// CreateSecondaryStorageSelectorResponse represents the response from creates a secondary storage selector, described by the heuristic rule.
+message CreateSecondaryStorageSelectorResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RemoveSecondaryStorageSelectorRequest represents the parameters for removes an existing secondary storage selector.
+message RemoveSecondaryStorageSelectorRequest {
+	// The unique identifier of the secondary storage selector to be removed.
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// RemoveSecondaryStorageSelectorResponse represents the response from removes an existing secondary storage selector.
+message RemoveSecondaryStorageSelectorResponse {
+	// The Result
+	Result result = 1;
 }
 
 // ListSecondaryStorageSelectorsRequest represents the parameters for lists the secondary storage selectors and their rules.
@@ -79,64 +145,6 @@ message UpdateSecondaryStorageSelectorRequest {
 
 // UpdateSecondaryStorageSelectorResponse represents the response from updates an existing secondary storage selector.
 message UpdateSecondaryStorageSelectorResponse {
-	// The Result
-	Result result = 1;
-}
-
-// CreateSecondaryStorageSelectorRequest represents the parameters for creates a secondary storage selector, described by the heuristic rule.
-message CreateSecondaryStorageSelectorRequest {
-	// The name identifying the heuristic rule.
-	string name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// The description of the heuristic rule.
-	string description = 2 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
-	];
-
-	// The zone in which the heuristic rule will be applied.
-	int64 zone_id = 3 [
-		(validate.field).required = true
-	];
-
-	// The resource type directed to a specific secondary storage by the selector. Valid options are: ISO, SNAPSHOT, TEMPLATE and VOLUME.
-	string type = 4 [
-		(validate.field).required = true
-	];
-
-	// The heuristic rule, in JavaScript language. It is required that it returns the UUID of a secondary storage pool. An example of a rule is `if (snapshot.hypervisorType === 'KVM') { '7832f261-c602-4e8e-8580-2496ffbbc45d'; }` would allocate all snapshots with the KVM hypervisor to the specified secondary storage UUID.
-	string heuristic_rule = 5 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 6;
-}
-
-// CreateSecondaryStorageSelectorResponse represents the response from creates a secondary storage selector, described by the heuristic rule.
-message CreateSecondaryStorageSelectorResponse {
-	// The Result
-	Result result = 1;
-}
-
-// RemoveSecondaryStorageSelectorRequest represents the parameters for removes an existing secondary storage selector.
-message RemoveSecondaryStorageSelectorRequest {
-	// The unique identifier of the secondary storage selector to be removed.
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// RemoveSecondaryStorageSelectorResponse represents the response from removes an existing secondary storage selector.
-message RemoveSecondaryStorageSelectorResponse {
 	// The Result
 	Result result = 1;
 }

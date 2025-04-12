@@ -8,68 +8,122 @@ import "google/protobuf/descriptor.proto";
 
 // AccountService provides operations for managing Accounts
 service AccountService {
-	option (annotations.service).scope = Scope_USER;
+	option (annotations.service).scope = SCOPE_USER;
 
-	// DeleteAccount Deletes a account, and all users associated with this account
-	rpc DeleteAccount(DeleteAccountRequest) returns (DeleteAccountResponse) {}
+	// EnableAccount Enables an account
+	rpc EnableAccount(EnableAccountRequest) returns (EnableAccountResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// DisableAccount Disables an account
+	rpc DisableAccount(DisableAccountRequest) returns (DisableAccountResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// ListAccounts Lists accounts and provides detailed account information for listed accounts
 	rpc ListAccounts(ListAccountsRequest) returns (ListAccountsResponse) {
-		option (annotations.method).scope = Scope_ADMIN;
+		option (annotations.method).scope = SCOPE_ADMIN;
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// UpdateAccount Updates account information for the authenticated user
+	rpc UpdateAccount(UpdateAccountRequest) returns (UpdateAccountResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// AddUserToProject Adds user to a project
+	rpc AddUserToProject(AddUserToProjectRequest) returns (AddUserToProjectResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// DeleteAccount Deletes a account, and all users associated with this account
+	rpc DeleteAccount(DeleteAccountRequest) returns (DeleteAccountResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// CreateAccount Creates an account
+	rpc CreateAccount(CreateAccountRequest) returns (CreateAccountResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// DeleteAccountFromProject Deletes account from the project
+	rpc DeleteAccountFromProject(DeleteAccountFromProjectRequest) returns (DeleteAccountFromProjectResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// DeleteUserFromProject Deletes user from the project
+	rpc DeleteUserFromProject(DeleteUserFromProjectRequest) returns (DeleteUserFromProjectResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// AddAccountToProject Adds account to a project
+	rpc AddAccountToProject(AddAccountToProjectRequest) returns (AddAccountToProjectResponse) {
+		option (annotations.method).scope = SCOPE_USER;
 	}
 
 	// ListProjectAccounts Lists project's accounts
-	rpc ListProjectAccounts(ListProjectAccountsRequest) returns (ListProjectAccountsResponse) {}
-
-	// UpdateAccount Updates account information for the authenticated user
-	rpc UpdateAccount(UpdateAccountRequest) returns (UpdateAccountResponse) {}
-
-	// AddUserToProject Adds user to a project
-	rpc AddUserToProject(AddUserToProjectRequest) returns (AddUserToProjectResponse) {}
-
-	// AddAccountToProject Adds account to a project
-	rpc AddAccountToProject(AddAccountToProjectRequest) returns (AddAccountToProjectResponse) {}
+	rpc ListProjectAccounts(ListProjectAccountsRequest) returns (ListProjectAccountsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// LockAccount This deprecated function used to locks an account. Look for the API DisableAccount instead
-	rpc LockAccount(LockAccountRequest) returns (LockAccountResponse) {}
-
-	// DeleteUserFromProject Deletes user from the project
-	rpc DeleteUserFromProject(DeleteUserFromProjectRequest) returns (DeleteUserFromProjectResponse) {}
-
-	// DeleteAccountFromProject Deletes account from the project
-	rpc DeleteAccountFromProject(DeleteAccountFromProjectRequest) returns (DeleteAccountFromProjectResponse) {}
-
-	// DisableAccount Disables an account
-	rpc DisableAccount(DisableAccountRequest) returns (DisableAccountResponse) {}
-
-	// EnableAccount Enables an account
-	rpc EnableAccount(EnableAccountRequest) returns (EnableAccountResponse) {}
-
-	// CreateAccount Creates an account
-	rpc CreateAccount(CreateAccountRequest) returns (CreateAccountResponse) {}
+	rpc LockAccount(LockAccountRequest) returns (LockAccountResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
-// DeleteAccountRequest represents the parameters for deletes a account, and all users associated with this account
-message DeleteAccountRequest {
+// EnableAccountRequest represents the parameters for enables an account
+message EnableAccountRequest {
 	// Account id
-	int64 id = 1 [
-		(validate.field).required = true
-	];
+	int64 id = 1;
 
-	//
-	int64 start_event_id = 2;
+	// Enables specified account.
+	string account_name = 2;
 
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
+	// Enables specified account in this domain.
+	int64 domain_id = 3;
 
 	//
 	string response_type = 4;
 }
 
-// DeleteAccountResponse represents the response from deletes a account, and all users associated with this account
-message DeleteAccountResponse {
+// EnableAccountResponse represents the response from enables an account
+message EnableAccountResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DisableAccountRequest represents the parameters for disables an account
+message DisableAccountRequest {
+	// Account id
+	int64 id = 1;
+
+	// Disables specified account.
+	string account_name = 2;
+
+	// Disables specified account in this domain.
+	int64 domain_id = 3;
+
+	// If true, only lock the account; else disable the account
+	bool lock_requested = 4 [
+		(validate.field).required = true,
+		features.field_presence   = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 5;
+
+	//
+	string injected_job_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 7;
+}
+
+// DisableAccountResponse represents the response from disables an account
+message DisableAccountResponse {
 	// The Result
 	Result result = 1;
 }
@@ -130,48 +184,6 @@ message ListAccountsResponse {
 	repeated Account items = 1;
 
 	// The total count of Accounts
-	int32 total_count = 2;
-}
-
-// ListProjectAccountsRequest represents the parameters for lists project's accounts
-message ListProjectAccountsRequest {
-	// ID of the project
-	int64 project_id = 1 [
-		(validate.field).required = true
-	];
-
-	// list accounts of the project by account name
-	string account_name = 2;
-
-	// list invitation by user ID
-	int64 user_id = 3;
-
-	// list accounts of the project by role
-	string role = 4;
-
-	// list accounts of the project by project role id
-	int64 project_role_id = 5;
-
-	// List by keyword
-	string keyword = 6;
-
-	//
-	int32 page = 7;
-
-	//
-	int32 page_size = 8;
-
-	//
-	string response_type = 9;
-}
-
-// ListProjectAccountsResponse represents the response from lists project's accounts
-message ListProjectAccountsResponse {
-	option (validate.message).disabled = false;
-	// The list of Projects
-	repeated Project items = 1;
-
-	// The total count of Projects
 	int32 total_count = 2;
 }
 
@@ -255,177 +267,27 @@ message AddUserToProjectResponse {
 	Result result = 1;
 }
 
-// AddAccountToProjectRequest represents the parameters for adds account to a project
-message AddAccountToProjectRequest {
-	// ID of the project to add the account to
-	int64 project_id = 1 [
-		(validate.field).required = true
-	];
-
-	// name of the account to be added to the project
-	string account_name = 2;
-
-	// email to which invitation to the project is going to be sent
-	string email = 3;
-
-	// ID of the project role
-	int64 project_role_id = 4;
-
-	// Project role type to be assigned to the user - Admin/Regular; default: Regular
-	string role_type = 5;
-
-	//
-	int64 start_event_id = 6;
-
-	//
-	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 8;
-}
-
-// AddAccountToProjectResponse represents the response from adds account to a project
-message AddAccountToProjectResponse {
-	// The Result
-	Result result = 1;
-}
-
-// LockAccountRequest represents the parameters for this deprecated function used to locks an account. look for the api disableaccount instead
-message LockAccountRequest {
-	// Locks the specified account.
-	string account_name = 1 [
-		(validate.field).required = true
-	];
-
-	// Locks the specified account on this domain.
-	int64 domain_id = 2 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 3;
-}
-
-// LockAccountResponse represents the response from this deprecated function used to locks an account. look for the api disableaccount instead
-message LockAccountResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeleteUserFromProjectRequest represents the parameters for deletes user from the project
-message DeleteUserFromProjectRequest {
-	// ID of the project to remove the user from
-	int64 project_id = 1 [
-		(validate.field).required = true
-	];
-
-	// Id of the user to be removed from the project
-	int64 user_id = 2 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 3;
-
-	//
-	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 5;
-}
-
-// DeleteUserFromProjectResponse represents the response from deletes user from the project
-message DeleteUserFromProjectResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeleteAccountFromProjectRequest represents the parameters for deletes account from the project
-message DeleteAccountFromProjectRequest {
-	// ID of the project to remove the account from
-	int64 project_id = 1 [
-		(validate.field).required = true
-	];
-
-	// name of the account to be removed from the project
-	string account_name = 2 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 3;
-
-	//
-	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 5;
-}
-
-// DeleteAccountFromProjectResponse represents the response from deletes account from the project
-message DeleteAccountFromProjectResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DisableAccountRequest represents the parameters for disables an account
-message DisableAccountRequest {
+// DeleteAccountRequest represents the parameters for deletes a account, and all users associated with this account
+message DeleteAccountRequest {
 	// Account id
-	int64 id = 1;
-
-	// Disables specified account.
-	string account_name = 2;
-
-	// Disables specified account in this domain.
-	int64 domain_id = 3;
-
-	// If true, only lock the account; else disable the account
-	bool lock_requested = 4 [
-		(validate.field).required = true,
-		features.field_presence   = EXPLICIT
+	int64 id = 1 [
+		(validate.field).required = true
 	];
 
 	//
-	int64 start_event_id = 5;
+	int64 start_event_id = 2;
 
 	//
-	string injected_job_id = 6 [
+	string injected_job_id = 3 [
 		(validate.field).string.uuid = true
 	];
-
-	//
-	string response_type = 7;
-}
-
-// DisableAccountResponse represents the response from disables an account
-message DisableAccountResponse {
-	// The Result
-	Result result = 1;
-}
-
-// EnableAccountRequest represents the parameters for enables an account
-message EnableAccountRequest {
-	// Account id
-	int64 id = 1;
-
-	// Enables specified account.
-	string account_name = 2;
-
-	// Enables specified account in this domain.
-	int64 domain_id = 3;
 
 	//
 	string response_type = 4;
 }
 
-// EnableAccountResponse represents the response from enables an account
-message EnableAccountResponse {
+// DeleteAccountResponse represents the response from deletes a account, and all users associated with this account
+message DeleteAccountResponse {
 	// The Result
 	Result result = 1;
 }
@@ -500,6 +362,167 @@ message CreateAccountRequest {
 
 // CreateAccountResponse represents the response from creates an account
 message CreateAccountResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteAccountFromProjectRequest represents the parameters for deletes account from the project
+message DeleteAccountFromProjectRequest {
+	// ID of the project to remove the account from
+	int64 project_id = 1 [
+		(validate.field).required = true
+	];
+
+	// name of the account to be removed from the project
+	string account_name = 2 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// DeleteAccountFromProjectResponse represents the response from deletes account from the project
+message DeleteAccountFromProjectResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteUserFromProjectRequest represents the parameters for deletes user from the project
+message DeleteUserFromProjectRequest {
+	// ID of the project to remove the user from
+	int64 project_id = 1 [
+		(validate.field).required = true
+	];
+
+	// Id of the user to be removed from the project
+	int64 user_id = 2 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// DeleteUserFromProjectResponse represents the response from deletes user from the project
+message DeleteUserFromProjectResponse {
+	// The Result
+	Result result = 1;
+}
+
+// AddAccountToProjectRequest represents the parameters for adds account to a project
+message AddAccountToProjectRequest {
+	// ID of the project to add the account to
+	int64 project_id = 1 [
+		(validate.field).required = true
+	];
+
+	// name of the account to be added to the project
+	string account_name = 2;
+
+	// email to which invitation to the project is going to be sent
+	string email = 3;
+
+	// ID of the project role
+	int64 project_role_id = 4;
+
+	// Project role type to be assigned to the user - Admin/Regular; default: Regular
+	string role_type = 5;
+
+	//
+	int64 start_event_id = 6;
+
+	//
+	string injected_job_id = 7 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 8;
+}
+
+// AddAccountToProjectResponse represents the response from adds account to a project
+message AddAccountToProjectResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListProjectAccountsRequest represents the parameters for lists project's accounts
+message ListProjectAccountsRequest {
+	// ID of the project
+	int64 project_id = 1 [
+		(validate.field).required = true
+	];
+
+	// list accounts of the project by account name
+	string account_name = 2;
+
+	// list invitation by user ID
+	int64 user_id = 3;
+
+	// list accounts of the project by role
+	string role = 4;
+
+	// list accounts of the project by project role id
+	int64 project_role_id = 5;
+
+	// List by keyword
+	string keyword = 6;
+
+	//
+	int32 page = 7;
+
+	//
+	int32 page_size = 8;
+
+	//
+	string response_type = 9;
+}
+
+// ListProjectAccountsResponse represents the response from lists project's accounts
+message ListProjectAccountsResponse {
+	option (validate.message).disabled = false;
+	// The list of Projects
+	repeated Project items = 1;
+
+	// The total count of Projects
+	int32 total_count = 2;
+}
+
+// LockAccountRequest represents the parameters for this deprecated function used to locks an account. look for the api disableaccount instead
+message LockAccountRequest {
+	// Locks the specified account.
+	string account_name = 1 [
+		(validate.field).required = true
+	];
+
+	// Locks the specified account on this domain.
+	int64 domain_id = 2 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 3;
+}
+
+// LockAccountResponse represents the response from this deprecated function used to locks an account. look for the api disableaccount instead
+message LockAccountResponse {
 	// The Result
 	Result result = 1;
 }

@@ -8,24 +8,99 @@ import "google/protobuf/descriptor.proto";
 
 // ZoneService provides operations for managing Zones
 service ZoneService {
-	option (annotations.service).scope = Scope_USER;
+	option (annotations.service).scope = SCOPE_USER;
+
+	// ListZonesCmdByAdmin Lists zones
+	rpc ListZonesCmdByAdmin(ListZonesCmdByAdminRequest) returns (ListZonesCmdByAdminResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// ListZones Lists zones
 	rpc ListZones(ListZonesRequest) returns (ListZonesResponse) {
-		option (annotations.method).scope = Scope_ADMIN;
+		option (annotations.method).scope = SCOPE_ADMIN;
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// DeleteZone Deletes a Zone.
+	rpc DeleteZone(DeleteZoneRequest) returns (DeleteZoneResponse) {
+		option (annotations.method).scope = SCOPE_USER;
 	}
 
 	// CreateZone Creates a Zone.
-	rpc CreateZone(CreateZoneRequest) returns (CreateZoneResponse) {}
-
-	// MarkDefaultZoneForAccount Marks a default zone for this account
-	rpc MarkDefaultZoneForAccount(MarkDefaultZoneForAccountRequest) returns (MarkDefaultZoneForAccountResponse) {}
+	rpc CreateZone(CreateZoneRequest) returns (CreateZoneResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// UpdateZone Updates a Zone.
-	rpc UpdateZone(UpdateZoneRequest) returns (UpdateZoneResponse) {}
+	rpc UpdateZone(UpdateZoneRequest) returns (UpdateZoneResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
-	// DeleteZone Deletes a Zone.
-	rpc DeleteZone(DeleteZoneRequest) returns (DeleteZoneResponse) {}
+	// MarkDefaultZoneForAccount Marks a default zone for this account
+	rpc MarkDefaultZoneForAccount(MarkDefaultZoneForAccountRequest) returns (MarkDefaultZoneForAccountResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+}
+
+// ListZonesCmdByAdminRequest represents the parameters for lists zones
+message ListZonesCmdByAdminRequest {
+	// the ID of the zone
+	int64 id = 1;
+
+	// the IDs of the zones, mutually exclusive with id
+	repeated string ids = 2;
+
+	// true if you want to retrieve all available Zones. False if you only want to return the Zones from which you have at least one VM. Default is false.
+	bool available = 3 [
+		features.field_presence = EXPLICIT
+	];
+
+	// the ID of the domain associated with the zone
+	int64 domain_id = 4;
+
+	// the name of the zone
+	string name = 5 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the network type of the zone that the virtual machine belongs to
+	string network_type = 6;
+
+	// flag to display the capacity of the zones
+	bool show_capacities = 7 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List zones by resource tags (key/value pairs)
+	map<string, string> tags = 8;
+
+	// flag to display the resource image for the zones
+	bool show_icon = 9 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 10;
+
+	//
+	int32 page = 11;
+
+	//
+	int32 page_size = 12;
+
+	//
+	string response_type = 13;
+}
+
+// ListZonesCmdByAdminResponse represents the response from lists zones
+message ListZonesCmdByAdminResponse {
+	option (validate.message).disabled = false;
+	// The list of Zones
+	repeated Zone items = 1;
+
+	// The total count of Zones
+	int32 total_count = 2;
 }
 
 // ListZonesRequest represents the parameters for lists zones
@@ -77,6 +152,23 @@ message ListZonesResponse {
 
 	// The total count of Zones
 	int32 total_count = 2;
+}
+
+// DeleteZoneRequest represents the parameters for deletes a zone.
+message DeleteZoneRequest {
+	// the ID of the Zone
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteZoneResponse represents the response from deletes a zone.
+message DeleteZoneResponse {
+	// The Result
+	Result result = 1;
 }
 
 // CreateZoneRequest represents the parameters for creates a zone.
@@ -152,41 +244,6 @@ message CreateZoneRequest {
 
 // CreateZoneResponse represents the response from creates a zone.
 message CreateZoneResponse {
-	// The Result
-	Result result = 1;
-}
-
-// MarkDefaultZoneForAccountRequest represents the parameters for marks a default zone for this account
-message MarkDefaultZoneForAccountRequest {
-	// Name of the account that is to be marked.
-	string account_name = 1 [
-		(validate.field).required = true
-	];
-
-	// Marks the account that belongs to the specified domain.
-	int64 domain_id = 2 [
-		(validate.field).required = true
-	];
-
-	// The Zone ID with which the account is to be marked.
-	int64 default_zone_id = 3 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 4;
-
-	//
-	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 6;
-}
-
-// MarkDefaultZoneForAccountResponse represents the response from marks a default zone for this account
-message MarkDefaultZoneForAccountResponse {
 	// The Result
 	Result result = 1;
 }
@@ -269,19 +326,37 @@ message UpdateZoneResponse {
 	Result result = 1;
 }
 
-// DeleteZoneRequest represents the parameters for deletes a zone.
-message DeleteZoneRequest {
-	// the ID of the Zone
-	int64 id = 1 [
+// MarkDefaultZoneForAccountRequest represents the parameters for marks a default zone for this account
+message MarkDefaultZoneForAccountRequest {
+	// Name of the account that is to be marked.
+	string account_name = 1 [
+		(validate.field).required = true
+	];
+
+	// Marks the account that belongs to the specified domain.
+	int64 domain_id = 2 [
+		(validate.field).required = true
+	];
+
+	// The Zone ID with which the account is to be marked.
+	int64 default_zone_id = 3 [
 		(validate.field).required = true
 	];
 
 	//
-	string response_type = 2;
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
 }
 
-// DeleteZoneResponse represents the response from deletes a zone.
-message DeleteZoneResponse {
+// MarkDefaultZoneForAccountResponse represents the response from marks a default zone for this account
+message MarkDefaultZoneForAccountResponse {
 	// The Result
 	Result result = 1;
 }

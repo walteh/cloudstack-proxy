@@ -8,77 +8,32 @@ import "google/protobuf/descriptor.proto";
 
 // BgpService provides operations for managing Bgps
 service BgpService {
-	option (annotations.service).scope = Scope_USER;
-
-	// CreateASNRange Creates a range of Autonomous Systems for BGP Dynamic Routing
-	rpc CreateASNRange(CreateASNRangeRequest) returns (CreateASNRangeResponse) {}
-
-	// ListASNRanges List Autonomous Systems Number Ranges
-	rpc ListASNRanges(ListASNRangesRequest) returns (ListASNRangesResponse) {}
+	option (annotations.service).scope = SCOPE_USER;
 
 	// ReleaseASNumber Releases an AS Number back to the pool
-	rpc ReleaseASNumber(ReleaseASNumberRequest) returns (ReleaseASNumberResponse) {}
-
-	// DeleteASNRange deletes a range of Autonomous Systems for BGP Dynamic Routing
-	rpc DeleteASNRange(DeleteASNRangeRequest) returns (DeleteASNRangeResponse) {}
+	rpc ReleaseASNumber(ReleaseASNumberRequest) returns (ReleaseASNumberResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// ListASNumbers List Autonomous Systems Numbers
-	rpc ListASNumbers(ListASNumbersRequest) returns (ListASNumbersResponse) {}
-}
+	rpc ListASNumbers(ListASNumbersRequest) returns (ListASNumbersResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
-// CreateASNRangeRequest represents the parameters for creates a range of autonomous systems for bgp dynamic routing
-message CreateASNRangeRequest {
-	// the zone ID
-	int64 zone_id = 1 [
-		(validate.field).required = true
-	];
+	// DeleteASNRange deletes a range of Autonomous Systems for BGP Dynamic Routing
+	rpc DeleteASNRange(DeleteASNRangeRequest) returns (DeleteASNRangeResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
-	// the start AS Number
-	int64 start_a_s_number = 2 [
-		(validate.field).required = true
-	];
+	// ListASNRanges List Autonomous Systems Number Ranges
+	rpc ListASNRanges(ListASNRangesRequest) returns (ListASNRangesResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
-	// the end AS Number
-	int64 end_a_s_number = 3 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// CreateASNRangeResponse represents the response from creates a range of autonomous systems for bgp dynamic routing
-message CreateASNRangeResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListASNRangesRequest represents the parameters for list autonomous systems number ranges
-message ListASNRangesRequest {
-	// the zone ID
-	int64 zone_id = 1;
-
-	// List by keyword
-	string keyword = 2;
-
-	//
-	int32 page = 3;
-
-	//
-	int32 page_size = 4;
-
-	//
-	string response_type = 5;
-}
-
-// ListASNRangesResponse represents the response from list autonomous systems number ranges
-message ListASNRangesResponse {
-	option (validate.message).disabled = false;
-	// The list of ASNRanges
-	repeated ASNRange items = 1;
-
-	// The total count of ASNRanges
-	int32 total_count = 2;
+	// CreateASNRange Creates a range of Autonomous Systems for BGP Dynamic Routing
+	rpc CreateASNRange(CreateASNRangeRequest) returns (CreateASNRangeResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
 // ReleaseASNumberRequest represents the parameters for releases an as number back to the pool
@@ -99,23 +54,6 @@ message ReleaseASNumberRequest {
 
 // ReleaseASNumberResponse represents the response from releases an as number back to the pool
 message ReleaseASNumberResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeleteASNRangeRequest represents the parameters for deletes a range of autonomous systems for bgp dynamic routing
-message DeleteASNRangeRequest {
-	// ID of the AS range
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// DeleteASNRangeResponse represents the response from deletes a range of autonomous systems for bgp dynamic routing
-message DeleteASNRangeResponse {
 	// The Result
 	Result result = 1;
 }
@@ -171,20 +109,76 @@ message ListASNumbersResponse {
 	int32 total_count = 2;
 }
 
-// ASNRange represents a ASNRange Item
-message ASNRange {
-	// The ID of the ASNRange
-	string id = 1 [
-		(validate.field).string.uuid = true
+// DeleteASNRangeRequest represents the parameters for deletes a range of autonomous systems for bgp dynamic routing
+message DeleteASNRangeRequest {
+	// ID of the AS range
+	int64 id = 1 [
+		(validate.field).required = true
 	];
-	// The name of the ASNRange
-	string name = 2;
-	// The display name of the ASNRange
-	string display_name = 3;
-	// The description of the ASNRange
-	string description = 4;
-	// The date this entity was created
-	string created = 5;
+
+	//
+	string response_type = 2;
+}
+
+// DeleteASNRangeResponse represents the response from deletes a range of autonomous systems for bgp dynamic routing
+message DeleteASNRangeResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListASNRangesRequest represents the parameters for list autonomous systems number ranges
+message ListASNRangesRequest {
+	// the zone ID
+	int64 zone_id = 1;
+
+	// List by keyword
+	string keyword = 2;
+
+	//
+	int32 page = 3;
+
+	//
+	int32 page_size = 4;
+
+	//
+	string response_type = 5;
+}
+
+// ListASNRangesResponse represents the response from list autonomous systems number ranges
+message ListASNRangesResponse {
+	option (validate.message).disabled = false;
+	// The list of ASNRanges
+	repeated ASNRange items = 1;
+
+	// The total count of ASNRanges
+	int32 total_count = 2;
+}
+
+// CreateASNRangeRequest represents the parameters for creates a range of autonomous systems for bgp dynamic routing
+message CreateASNRangeRequest {
+	// the zone ID
+	int64 zone_id = 1 [
+		(validate.field).required = true
+	];
+
+	// the start AS Number
+	int64 start_a_s_number = 2 [
+		(validate.field).required = true
+	];
+
+	// the end AS Number
+	int64 end_a_s_number = 3 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// CreateASNRangeResponse represents the response from creates a range of autonomous systems for bgp dynamic routing
+message CreateASNRangeResponse {
+	// The Result
+	Result result = 1;
 }
 
 // ASNumber represents a ASNumber Item
@@ -198,6 +192,22 @@ message ASNumber {
 	// The display name of the ASNumber
 	string display_name = 3;
 	// The description of the ASNumber
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// ASNRange represents a ASNRange Item
+message ASNRange {
+	// The ID of the ASNRange
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the ASNRange
+	string name = 2;
+	// The display name of the ASNRange
+	string display_name = 3;
+	// The description of the ASNRange
 	string description = 4;
 	// The date this entity was created
 	string created = 5;

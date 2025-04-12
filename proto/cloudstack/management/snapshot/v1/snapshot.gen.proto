@@ -8,160 +8,68 @@ import "google/protobuf/descriptor.proto";
 
 // SnapshotService provides operations for managing Snapshots
 service SnapshotService {
-	option (annotations.service).scope = Scope_USER;
-
-	// UpdateSnapshotPolicy Updates the snapshot policy.
-	rpc UpdateSnapshotPolicy(UpdateSnapshotPolicyRequest) returns (UpdateSnapshotPolicyResponse) {}
-
-	// CreateSnapshotFromVMSnapshot Creates an instant snapshot of a volume from existing vm snapshot.
-	rpc CreateSnapshotFromVMSnapshot(CreateSnapshotFromVMSnapshotRequest) returns (CreateSnapshotFromVMSnapshotResponse) {}
-
-	// DeleteSnapshotPolicies Deletes snapshot policies for the account.
-	rpc DeleteSnapshotPolicies(DeleteSnapshotPoliciesRequest) returns (DeleteSnapshotPoliciesResponse) {}
-
-	// DeleteSnapshot Deletes a snapshot of a disk volume.
-	rpc DeleteSnapshot(DeleteSnapshotRequest) returns (DeleteSnapshotResponse) {}
+	option (annotations.service).scope = SCOPE_USER;
 
 	// ListSnapshots Lists all available snapshots for the account.
 	rpc ListSnapshots(ListSnapshotsRequest) returns (ListSnapshotsResponse) {
-		option (annotations.method).scope = Scope_ADMIN;
+		option (annotations.method).scope = SCOPE_ADMIN;
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListSnapshotPolicies Lists snapshot policies.
+	rpc ListSnapshotPolicies(ListSnapshotPoliciesRequest) returns (ListSnapshotPoliciesResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ArchiveSnapshot Archives (moves) a snapshot on primary storage to secondary storage
+	rpc ArchiveSnapshot(ArchiveSnapshotRequest) returns (ArchiveSnapshotResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// UpdateSnapshotPolicy Updates the snapshot policy.
+	rpc UpdateSnapshotPolicy(UpdateSnapshotPolicyRequest) returns (UpdateSnapshotPolicyResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// DeleteSnapshot Deletes a snapshot of a disk volume.
+	rpc DeleteSnapshot(DeleteSnapshotRequest) returns (DeleteSnapshotResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// CreateSnapshotPolicy Creates a snapshot policy for the account.
+	rpc CreateSnapshotPolicy(CreateSnapshotPolicyRequest) returns (CreateSnapshotPolicyResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// RevertSnapshot This is supposed to revert a volume snapshot. This command is only supported with KVM so far
+	rpc RevertSnapshot(RevertSnapshotRequest) returns (RevertSnapshotResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// DeleteSnapshotPolicies Deletes snapshot policies for the account.
+	rpc DeleteSnapshotPolicies(DeleteSnapshotPoliciesRequest) returns (DeleteSnapshotPoliciesResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// CreateSnapshotFromVMSnapshot Creates an instant snapshot of a volume from existing vm snapshot.
+	rpc CreateSnapshotFromVMSnapshot(CreateSnapshotFromVMSnapshotRequest) returns (CreateSnapshotFromVMSnapshotResponse) {
+		option (annotations.method).scope = SCOPE_USER;
 	}
 
 	// ExtractSnapshot Returns a download URL for extracting a snapshot. It must be in the Backed Up state.
-	rpc ExtractSnapshot(ExtractSnapshotRequest) returns (ExtractSnapshotResponse) {}
-
-	// ListSnapshotPolicies Lists snapshot policies.
-	rpc ListSnapshotPolicies(ListSnapshotPoliciesRequest) returns (ListSnapshotPoliciesResponse) {}
-
-	// CopySnapshot Copies a snapshot from one zone to another.
-	rpc CopySnapshot(CopySnapshotRequest) returns (CopySnapshotResponse) {}
-
-	// RevertSnapshot This is supposed to revert a volume snapshot. This command is only supported with KVM so far
-	rpc RevertSnapshot(RevertSnapshotRequest) returns (RevertSnapshotResponse) {}
-
-	// CreateSnapshotPolicy Creates a snapshot policy for the account.
-	rpc CreateSnapshotPolicy(CreateSnapshotPolicyRequest) returns (CreateSnapshotPolicyResponse) {}
-
-	// ArchiveSnapshot Archives (moves) a snapshot on primary storage to secondary storage
-	rpc ArchiveSnapshot(ArchiveSnapshotRequest) returns (ArchiveSnapshotResponse) {}
+	rpc ExtractSnapshot(ExtractSnapshotRequest) returns (ExtractSnapshotResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// CreateSnapshot Creates an instant snapshot of a volume.
-	rpc CreateSnapshot(CreateSnapshotRequest) returns (CreateSnapshotResponse) {}
-}
+	rpc CreateSnapshot(CreateSnapshotRequest) returns (CreateSnapshotResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
-// UpdateSnapshotPolicyRequest represents the parameters for updates the snapshot policy.
-message UpdateSnapshotPolicyRequest {
-	// the ID of the snapshot policy
-	int64 id = 1;
-
-	// an optional field, whether to the display the snapshot policy to the end user or not.
-	bool display = 2 [
-		features.field_presence = EXPLICIT
-	];
-
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	string custom_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	int64 start_event_id = 4;
-
-	//
-	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 6;
-}
-
-// UpdateSnapshotPolicyResponse represents the response from updates the snapshot policy.
-message UpdateSnapshotPolicyResponse {
-	// The Result
-	Result result = 1;
-}
-
-// CreateSnapshotFromVMSnapshotRequest represents the parameters for creates an instant snapshot of a volume from existing vm snapshot.
-message CreateSnapshotFromVMSnapshotRequest {
-	// The ID of the disk volume
-	int64 volume_id = 1 [
-		(validate.field).required = true
-	];
-
-	// The ID of the VM snapshot
-	int64 vm_snapshot_id = 2 [
-		(validate.field).required = true
-	];
-
-	// the name of the snapshot
-	string snapshot_name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	//
-	int64 start_event_id = 4;
-
-	//
-	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 6;
-}
-
-// CreateSnapshotFromVMSnapshotResponse represents the response from creates an instant snapshot of a volume from existing vm snapshot.
-message CreateSnapshotFromVMSnapshotResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeleteSnapshotPoliciesRequest represents the parameters for deletes snapshot policies for the account.
-message DeleteSnapshotPoliciesRequest {
-	// the Id of the snapshot policy
-	int64 id = 1;
-
-	// list of snapshots policy IDs separated by comma
-	repeated string ids = 2;
-
-	//
-	string response_type = 3;
-}
-
-// DeleteSnapshotPoliciesResponse represents the response from deletes snapshot policies for the account.
-message DeleteSnapshotPoliciesResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeleteSnapshotRequest represents the parameters for deletes a snapshot of a disk volume.
-message DeleteSnapshotRequest {
-	// The ID of the snapshot
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// The ID of the zone for the snapshot
-	int64 zone_id = 2;
-
-	//
-	int64 start_event_id = 3;
-
-	//
-	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 5;
-}
-
-// DeleteSnapshotResponse represents the response from deletes a snapshot of a disk volume.
-message DeleteSnapshotResponse {
-	// The Result
-	Result result = 1;
+	// CopySnapshot Copies a snapshot from one zone to another.
+	rpc CopySnapshot(CopySnapshotRequest) returns (CopySnapshotResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
 // ListSnapshotsRequest represents the parameters for lists all available snapshots for the account.
@@ -233,36 +141,6 @@ message ListSnapshotsResponse {
 	int32 total_count = 2;
 }
 
-// ExtractSnapshotRequest represents the parameters for returns a download url for extracting a snapshot. it must be in the backed up state.
-message ExtractSnapshotRequest {
-	// the ID of the snapshot
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// the ID of the zone where the snapshot is located
-	int64 zone_id = 2 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 3;
-
-	//
-	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 5;
-}
-
-// ExtractSnapshotResponse represents the response from returns a download url for extracting a snapshot. it must be in the backed up state.
-message ExtractSnapshotResponse {
-	// The Result
-	Result result = 1;
-}
-
 // ListSnapshotPoliciesRequest represents the parameters for lists snapshot policies.
 message ListSnapshotPoliciesRequest {
 	// the ID of the disk volume
@@ -299,42 +177,8 @@ message ListSnapshotPoliciesResponse {
 	int32 total_count = 2;
 }
 
-// CopySnapshotRequest represents the parameters for copies a snapshot from one zone to another.
-message CopySnapshotRequest {
-	// the ID of the snapshot.
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// The ID of the zone in which the snapshot is currently present. If not specified then the zone of snapshot's volume will be used.
-	int64 source_zone_id = 2;
-
-	// The ID of the zone the snapshot is being copied to.
-	int64 dest_zone_id = 3;
-
-	// A comma-separated list of IDs of the zones that the snapshot needs to be copied to. Specify this list if the snapshot needs to copied to multiple zones in one go. Do not specify destzoneid and destzoneids together, however one of them is required.
-	repeated string dest_zone_ids = 4;
-
-	//
-	int64 start_event_id = 5;
-
-	//
-	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 7;
-}
-
-// CopySnapshotResponse represents the response from copies a snapshot from one zone to another.
-message CopySnapshotResponse {
-	// The Result
-	Result result = 1;
-}
-
-// RevertSnapshotRequest represents the parameters for this is supposed to revert a volume snapshot. this command is only supported with kvm so far
-message RevertSnapshotRequest {
+// ArchiveSnapshotRequest represents the parameters for archives (moves) a snapshot on primary storage to secondary storage
+message ArchiveSnapshotRequest {
 	// The ID of the snapshot
 	int64 id = 1 [
 		(validate.field).required = true
@@ -352,8 +196,69 @@ message RevertSnapshotRequest {
 	string response_type = 4;
 }
 
-// RevertSnapshotResponse represents the response from this is supposed to revert a volume snapshot. this command is only supported with kvm so far
-message RevertSnapshotResponse {
+// ArchiveSnapshotResponse represents the response from archives (moves) a snapshot on primary storage to secondary storage
+message ArchiveSnapshotResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateSnapshotPolicyRequest represents the parameters for updates the snapshot policy.
+message UpdateSnapshotPolicyRequest {
+	// the ID of the snapshot policy
+	int64 id = 1;
+
+	// an optional field, whether to the display the snapshot policy to the end user or not.
+	bool display = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// UpdateSnapshotPolicyResponse represents the response from updates the snapshot policy.
+message UpdateSnapshotPolicyResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteSnapshotRequest represents the parameters for deletes a snapshot of a disk volume.
+message DeleteSnapshotRequest {
+	// The ID of the snapshot
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// The ID of the zone for the snapshot
+	int64 zone_id = 2;
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// DeleteSnapshotResponse represents the response from deletes a snapshot of a disk volume.
+message DeleteSnapshotResponse {
 	// The Result
 	Result result = 1;
 }
@@ -406,8 +311,8 @@ message CreateSnapshotPolicyResponse {
 	Result result = 1;
 }
 
-// ArchiveSnapshotRequest represents the parameters for archives (moves) a snapshot on primary storage to secondary storage
-message ArchiveSnapshotRequest {
+// RevertSnapshotRequest represents the parameters for this is supposed to revert a volume snapshot. this command is only supported with kvm so far
+message RevertSnapshotRequest {
 	// The ID of the snapshot
 	int64 id = 1 [
 		(validate.field).required = true
@@ -425,8 +330,92 @@ message ArchiveSnapshotRequest {
 	string response_type = 4;
 }
 
-// ArchiveSnapshotResponse represents the response from archives (moves) a snapshot on primary storage to secondary storage
-message ArchiveSnapshotResponse {
+// RevertSnapshotResponse represents the response from this is supposed to revert a volume snapshot. this command is only supported with kvm so far
+message RevertSnapshotResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteSnapshotPoliciesRequest represents the parameters for deletes snapshot policies for the account.
+message DeleteSnapshotPoliciesRequest {
+	// the Id of the snapshot policy
+	int64 id = 1;
+
+	// list of snapshots policy IDs separated by comma
+	repeated string ids = 2;
+
+	//
+	string response_type = 3;
+}
+
+// DeleteSnapshotPoliciesResponse represents the response from deletes snapshot policies for the account.
+message DeleteSnapshotPoliciesResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateSnapshotFromVMSnapshotRequest represents the parameters for creates an instant snapshot of a volume from existing vm snapshot.
+message CreateSnapshotFromVMSnapshotRequest {
+	// The ID of the disk volume
+	int64 volume_id = 1 [
+		(validate.field).required = true
+	];
+
+	// The ID of the VM snapshot
+	int64 vm_snapshot_id = 2 [
+		(validate.field).required = true
+	];
+
+	// the name of the snapshot
+	string snapshot_name = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// CreateSnapshotFromVMSnapshotResponse represents the response from creates an instant snapshot of a volume from existing vm snapshot.
+message CreateSnapshotFromVMSnapshotResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ExtractSnapshotRequest represents the parameters for returns a download url for extracting a snapshot. it must be in the backed up state.
+message ExtractSnapshotRequest {
+	// the ID of the snapshot
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// the ID of the zone where the snapshot is located
+	int64 zone_id = 2 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// ExtractSnapshotResponse represents the response from returns a download url for extracting a snapshot. it must be in the backed up state.
+message ExtractSnapshotResponse {
 	// The Result
 	Result result = 1;
 }
@@ -486,6 +475,40 @@ message CreateSnapshotRequest {
 
 // CreateSnapshotResponse represents the response from creates an instant snapshot of a volume.
 message CreateSnapshotResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CopySnapshotRequest represents the parameters for copies a snapshot from one zone to another.
+message CopySnapshotRequest {
+	// the ID of the snapshot.
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// The ID of the zone in which the snapshot is currently present. If not specified then the zone of snapshot's volume will be used.
+	int64 source_zone_id = 2;
+
+	// The ID of the zone the snapshot is being copied to.
+	int64 dest_zone_id = 3;
+
+	// A comma-separated list of IDs of the zones that the snapshot needs to be copied to. Specify this list if the snapshot needs to copied to multiple zones in one go. Do not specify destzoneid and destzoneids together, however one of them is required.
+	repeated string dest_zone_ids = 4;
+
+	//
+	int64 start_event_id = 5;
+
+	//
+	string injected_job_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 7;
+}
+
+// CopySnapshotResponse represents the response from copies a snapshot from one zone to another.
+message CopySnapshotResponse {
 	// The Result
 	Result result = 1;
 }

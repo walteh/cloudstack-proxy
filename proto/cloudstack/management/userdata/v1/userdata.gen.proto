@@ -8,19 +8,77 @@ import "google/protobuf/descriptor.proto";
 
 // UserdataService provides operations for managing Userdatas
 service UserdataService {
-	option (annotations.service).scope = Scope_USER;
-
-	// ListUserData List registered userdatas
-	rpc ListUserData(ListUserDataRequest) returns (ListUserDataResponse) {}
-
-	// RegisterUserData Register a new userdata.
-	rpc RegisterUserData(RegisterUserDataRequest) returns (RegisterUserDataResponse) {}
+	option (annotations.service).scope = SCOPE_USER;
 
 	// DeleteUserData Deletes a userdata
-	rpc DeleteUserData(DeleteUserDataRequest) returns (DeleteUserDataResponse) {}
+	rpc DeleteUserData(DeleteUserDataRequest) returns (DeleteUserDataResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// LinkUserDataToTemplate Link or unlink a userdata to a template.
-	rpc LinkUserDataToTemplate(LinkUserDataToTemplateRequest) returns (LinkUserDataToTemplateResponse) {}
+	rpc LinkUserDataToTemplate(LinkUserDataToTemplateRequest) returns (LinkUserDataToTemplateResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListUserData List registered userdatas
+	rpc ListUserData(ListUserDataRequest) returns (ListUserDataResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// RegisterUserData Register a new userdata.
+	rpc RegisterUserData(RegisterUserDataRequest) returns (RegisterUserDataResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+}
+
+// DeleteUserDataRequest represents the parameters for deletes a userdata
+message DeleteUserDataRequest {
+	// the ID of the Userdata
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// an optional account for the userdata. Must be used with domainId.
+	string account_name = 2;
+
+	// an optional domainId for the userdata. If the account parameter is used, domainId must also be used.
+	int64 domain_id = 3;
+
+	// an optional project for the userdata
+	int64 project_id = 4;
+
+	//
+	string response_type = 5;
+}
+
+// DeleteUserDataResponse represents the response from deletes a userdata
+message DeleteUserDataResponse {
+	// The Result
+	Result result = 1;
+}
+
+// LinkUserDataToTemplateRequest represents the parameters for link or unlink a userdata to a template.
+message LinkUserDataToTemplateRequest {
+	// the ID of the template for the virtual machine
+	int64 template_id = 1;
+
+	// the ID of the ISO for the virtual machine
+	int64 iso_id = 2;
+
+	// the ID of the userdata that has to be linked to template/ISO. If not provided existing userdata will be unlinked from the template/ISO
+	int64 userdata_id = 3;
+
+	// an optional override policy of the userdata. Possible values are - ALLOWOVERRIDE, APPEND, DENYOVERRIDE. Default policy is allowoverride
+	string userdata_policy = 4;
+
+	//
+	string response_type = 5;
+}
+
+// LinkUserDataToTemplateResponse represents the response from link or unlink a userdata to a template.
+message LinkUserDataToTemplateResponse {
+	// The Result
+	Result result = 1;
 }
 
 // ListUserDataRequest represents the parameters for list registered userdatas
@@ -114,56 +172,6 @@ message RegisterUserDataRequest {
 
 // RegisterUserDataResponse represents the response from register a new userdata.
 message RegisterUserDataResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeleteUserDataRequest represents the parameters for deletes a userdata
-message DeleteUserDataRequest {
-	// the ID of the Userdata
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// an optional account for the userdata. Must be used with domainId.
-	string account_name = 2;
-
-	// an optional domainId for the userdata. If the account parameter is used, domainId must also be used.
-	int64 domain_id = 3;
-
-	// an optional project for the userdata
-	int64 project_id = 4;
-
-	//
-	string response_type = 5;
-}
-
-// DeleteUserDataResponse represents the response from deletes a userdata
-message DeleteUserDataResponse {
-	// The Result
-	Result result = 1;
-}
-
-// LinkUserDataToTemplateRequest represents the parameters for link or unlink a userdata to a template.
-message LinkUserDataToTemplateRequest {
-	// the ID of the template for the virtual machine
-	int64 template_id = 1;
-
-	// the ID of the ISO for the virtual machine
-	int64 iso_id = 2;
-
-	// the ID of the userdata that has to be linked to template/ISO. If not provided existing userdata will be unlinked from the template/ISO
-	int64 userdata_id = 3;
-
-	// an optional override policy of the userdata. Possible values are - ALLOWOVERRIDE, APPEND, DENYOVERRIDE. Default policy is allowoverride
-	string userdata_policy = 4;
-
-	//
-	string response_type = 5;
-}
-
-// LinkUserDataToTemplateResponse represents the response from link or unlink a userdata to a template.
-message LinkUserDataToTemplateResponse {
 	// The Result
 	Result result = 1;
 }

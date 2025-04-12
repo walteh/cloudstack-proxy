@@ -8,40 +8,157 @@ import "google/protobuf/descriptor.proto";
 
 // UserService provides operations for managing Users
 service UserService {
-	option (annotations.service).scope = Scope_USER;
-
-	// ListUsers Lists user accounts
-	rpc ListUsers(ListUsersRequest) returns (ListUsersResponse) {}
-
-	// GetUserKeys This command allows the user to query the seceret and API keys for the account
-	rpc GetUserKeys(GetUserKeysRequest) returns (GetUserKeysResponse) {}
-
-	// DisableUser Disables a user account
-	rpc DisableUser(DisableUserRequest) returns (DisableUserResponse) {}
-
-	// EnableUser Enables a user account
-	rpc EnableUser(EnableUserRequest) returns (EnableUserResponse) {}
-
-	// LockUser Locks a user account
-	rpc LockUser(LockUserRequest) returns (LockUserResponse) {}
-
-	// DeleteUser Deletes a user for an account
-	rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse) {}
-
-	// GetUser Find user account by API key
-	rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
-
-	// Register This command allows a user to register for the developer API, returning a secret key and an API key. This request is made through the integration API port, so it is a privileged command and must be made on behalf of a user. It is up to the implementer just how the username and password are entered, and then how that translates to an integration API request. Both secret key and API key should be returned to the user
-	rpc Register(RegisterRequest) returns (RegisterResponse) {}
+	option (annotations.service).scope = SCOPE_USER;
 
 	// UpdateUser Updates a user account
-	rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {}
+	rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// LockUser Locks a user account
+	rpc LockUser(LockUserRequest) returns (LockUserResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// EnableUser Enables a user account
+	rpc EnableUser(EnableUserRequest) returns (EnableUserResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListUsers Lists user accounts
+	rpc ListUsers(ListUsersRequest) returns (ListUsersResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// MoveUser Moves a user to another account in the same domain.
-	rpc MoveUser(MoveUserRequest) returns (MoveUserResponse) {}
+	rpc MoveUser(MoveUserRequest) returns (MoveUserResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// CreateUser Creates a user for an account that already exists
-	rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {}
+	rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// DeleteUser Deletes a user for an account
+	rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// GetUserKeys This command allows the user to query the seceret and API keys for the account
+	rpc GetUserKeys(GetUserKeysRequest) returns (GetUserKeysResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// Register This command allows a user to register for the developer API, returning a secret key and an API key. This request is made through the integration API port, so it is a privileged command and must be made on behalf of a user. It is up to the implementer just how the username and password are entered, and then how that translates to an integration API request. Both secret key and API key should be returned to the user
+	rpc Register(RegisterRequest) returns (RegisterResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// DisableUser Disables a user account
+	rpc DisableUser(DisableUserRequest) returns (DisableUserResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// GetUser Find user account by API key
+	rpc GetUser(GetUserRequest) returns (GetUserResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+}
+
+// UpdateUserRequest represents the parameters for updates a user account
+message UpdateUserRequest {
+	// The API key for the user. Must be specified with userSecretKey
+	string api_key = 1;
+
+	// email
+	string email = 2;
+
+	// first name
+	string firstname = 3 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// User uuid
+	int64 id = 4 [
+		(validate.field).required = true
+	];
+
+	// last name
+	string lastname = 5 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// Clear text password (default hashed to SHA256SALT). If you wish to use any other hashing algorithm, you would need to write a custom authentication adapter. Can't be passed when command is executed via integration.api.port
+	string password = 6;
+
+	// Current password that was being used by the user. You must inform the current password when updating the password.
+	string current_password = 7;
+
+	// The secret key for the user. Must be specified with userApiKey
+	string secret_key = 8;
+
+	// Determines if Api key access for this user is enabled, disabled or inherits the value from its parent, the owning account
+	string api_key_access = 9;
+
+	// Specifies a timezone for this command. For more information on the timezone parameter, see Time Zone Format.
+	string timezone = 10;
+
+	// Unique username
+	string username = 11 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// Provide true to mandate the user to use two factor authentication has to be enabled.This parameter is only used to mandate 2FA, not to disable 2FA
+	bool mandate2_f_a = 12 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	string response_type = 13;
+}
+
+// UpdateUserResponse represents the response from updates a user account
+message UpdateUserResponse {
+	// The Result
+	Result result = 1;
+}
+
+// LockUserRequest represents the parameters for locks a user account
+message LockUserRequest {
+	// Locks user by user ID.
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// LockUserResponse represents the response from locks a user account
+message LockUserResponse {
+	// The Result
+	Result result = 1;
+}
+
+// EnableUserRequest represents the parameters for enables a user account
+message EnableUserRequest {
+	// Enables user by user ID.
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// EnableUserResponse represents the response from enables a user account
+message EnableUserResponse {
+	// The Result
+	Result result = 1;
 }
 
 // ListUsersRequest represents the parameters for lists user accounts
@@ -115,194 +232,6 @@ message ListUsersResponse {
 
 	// The total count of Users
 	int32 total_count = 2;
-}
-
-// GetUserKeysRequest represents the parameters for this command allows the user to query the seceret and api keys for the account
-message GetUserKeysRequest {
-	// ID of the user whose keys are required
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// GetUserKeysResponse represents the response from this command allows the user to query the seceret and api keys for the account
-message GetUserKeysResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DisableUserRequest represents the parameters for disables a user account
-message DisableUserRequest {
-	// Disables user by user ID.
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DisableUserResponse represents the response from disables a user account
-message DisableUserResponse {
-	// The Result
-	Result result = 1;
-}
-
-// EnableUserRequest represents the parameters for enables a user account
-message EnableUserRequest {
-	// Enables user by user ID.
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// EnableUserResponse represents the response from enables a user account
-message EnableUserResponse {
-	// The Result
-	Result result = 1;
-}
-
-// LockUserRequest represents the parameters for locks a user account
-message LockUserRequest {
-	// Locks user by user ID.
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// LockUserResponse represents the response from locks a user account
-message LockUserResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeleteUserRequest represents the parameters for deletes a user for an account
-message DeleteUserRequest {
-	// id of the user to be deleted
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// DeleteUserResponse represents the response from deletes a user for an account
-message DeleteUserResponse {
-	// The Result
-	Result result = 1;
-}
-
-// GetUserRequest represents the parameters for find user account by api key
-message GetUserRequest {
-	// API key of the user
-	string api_key = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// GetUserResponse represents the response from find user account by api key
-message GetUserResponse {
-	// The Result
-	Result result = 1;
-}
-
-// RegisterRequest represents the parameters for this command allows a user to register for the developer api, returning a secret key and an api key. this request is made through the integration api port, so it is a privileged command and must be made on behalf of a user. it is up to the implementer just how the username and password are entered, and then how that translates to an integration api request. both secret key and api key should be returned to the user
-message RegisterRequest {
-	// User id
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// RegisterResponse represents the response from this command allows a user to register for the developer api, returning a secret key and an api key. this request is made through the integration api port, so it is a privileged command and must be made on behalf of a user. it is up to the implementer just how the username and password are entered, and then how that translates to an integration api request. both secret key and api key should be returned to the user
-message RegisterResponse {
-	// The Result
-	Result result = 1;
-}
-
-// UpdateUserRequest represents the parameters for updates a user account
-message UpdateUserRequest {
-	// The API key for the user. Must be specified with userSecretKey
-	string api_key = 1;
-
-	// email
-	string email = 2;
-
-	// first name
-	string firstname = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// User uuid
-	int64 id = 4 [
-		(validate.field).required = true
-	];
-
-	// last name
-	string lastname = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// Clear text password (default hashed to SHA256SALT). If you wish to use any other hashing algorithm, you would need to write a custom authentication adapter. Can't be passed when command is executed via integration.api.port
-	string password = 6;
-
-	// Current password that was being used by the user. You must inform the current password when updating the password.
-	string current_password = 7;
-
-	// The secret key for the user. Must be specified with userApiKey
-	string secret_key = 8;
-
-	// Determines if Api key access for this user is enabled, disabled or inherits the value from its parent, the owning account
-	string api_key_access = 9;
-
-	// Specifies a timezone for this command. For more information on the timezone parameter, see Time Zone Format.
-	string timezone = 10;
-
-	// Unique username
-	string username = 11 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// Provide true to mandate the user to use two factor authentication has to be enabled.This parameter is only used to mandate 2FA, not to disable 2FA
-	bool mandate2_f_a = 12 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	string response_type = 13;
-}
-
-// UpdateUserResponse represents the response from updates a user account
-message UpdateUserResponse {
-	// The Result
-	Result result = 1;
 }
 
 // MoveUserRequest represents the parameters for moves a user to another account in the same domain.
@@ -383,6 +312,99 @@ message CreateUserRequest {
 
 // CreateUserResponse represents the response from creates a user for an account that already exists
 message CreateUserResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteUserRequest represents the parameters for deletes a user for an account
+message DeleteUserRequest {
+	// id of the user to be deleted
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteUserResponse represents the response from deletes a user for an account
+message DeleteUserResponse {
+	// The Result
+	Result result = 1;
+}
+
+// GetUserKeysRequest represents the parameters for this command allows the user to query the seceret and api keys for the account
+message GetUserKeysRequest {
+	// ID of the user whose keys are required
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// GetUserKeysResponse represents the response from this command allows the user to query the seceret and api keys for the account
+message GetUserKeysResponse {
+	// The Result
+	Result result = 1;
+}
+
+// RegisterRequest represents the parameters for this command allows a user to register for the developer api, returning a secret key and an api key. this request is made through the integration api port, so it is a privileged command and must be made on behalf of a user. it is up to the implementer just how the username and password are entered, and then how that translates to an integration api request. both secret key and api key should be returned to the user
+message RegisterRequest {
+	// User id
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// RegisterResponse represents the response from this command allows a user to register for the developer api, returning a secret key and an api key. this request is made through the integration api port, so it is a privileged command and must be made on behalf of a user. it is up to the implementer just how the username and password are entered, and then how that translates to an integration api request. both secret key and api key should be returned to the user
+message RegisterResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DisableUserRequest represents the parameters for disables a user account
+message DisableUserRequest {
+	// Disables user by user ID.
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DisableUserResponse represents the response from disables a user account
+message DisableUserResponse {
+	// The Result
+	Result result = 1;
+}
+
+// GetUserRequest represents the parameters for find user account by api key
+message GetUserRequest {
+	// API key of the user
+	string api_key = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// GetUserResponse represents the response from find user account by api key
+message GetUserResponse {
 	// The Result
 	Result result = 1;
 }

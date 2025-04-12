@@ -8,52 +8,32 @@ import "google/protobuf/descriptor.proto";
 
 // NatService provides operations for managing Nats
 service NatService {
-	option (annotations.service).scope = Scope_USER;
-
-	// EnableStaticNat Enables static NAT for given IP address
-	rpc EnableStaticNat(EnableStaticNatRequest) returns (EnableStaticNatResponse) {}
+	option (annotations.service).scope = SCOPE_USER;
 
 	// CreateIpForwardingRule Creates an IP forwarding rule
-	rpc CreateIpForwardingRule(CreateIpForwardingRuleRequest) returns (CreateIpForwardingRuleResponse) {}
-
-	// ListIpForwardingRules List the IP forwarding rules
-	rpc ListIpForwardingRules(ListIpForwardingRulesRequest) returns (ListIpForwardingRulesResponse) {}
-
-	// DisableStaticNat Disables static rule for given IP address
-	rpc DisableStaticNat(DisableStaticNatRequest) returns (DisableStaticNatResponse) {}
+	rpc CreateIpForwardingRule(CreateIpForwardingRuleRequest) returns (CreateIpForwardingRuleResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// DeleteIpForwardingRule Deletes an IP forwarding rule
-	rpc DeleteIpForwardingRule(DeleteIpForwardingRuleRequest) returns (DeleteIpForwardingRuleResponse) {}
-}
+	rpc DeleteIpForwardingRule(DeleteIpForwardingRuleRequest) returns (DeleteIpForwardingRuleResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
-// EnableStaticNatRequest represents the parameters for enables static nat for given ip address
-message EnableStaticNatRequest {
-	// the public IP address ID for which static NAT feature is being enabled
-	int64 ip_address_id = 1 [
-		(validate.field).required = true
-	];
+	// EnableStaticNat Enables static NAT for given IP address
+	rpc EnableStaticNat(EnableStaticNatRequest) returns (EnableStaticNatResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
-	// the ID of the virtual machine for enabling static NAT feature
-	int64 virtual_machine_id = 2 [
-		(validate.field).required = true
-	];
+	// DisableStaticNat Disables static rule for given IP address
+	rpc DisableStaticNat(DisableStaticNatRequest) returns (DisableStaticNatResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
-	// The network of the VM the static NAT will be enabled for. Required when public IP address is not associated with any guest network yet (VPC case)
-	int64 network_id = 3;
-
-	// VM guest NIC secondary IP address for the port forwarding rule
-	string vm_secondary_ip = 4 [
-		(validate.field).string.ipv4 = true
-	];
-
-	//
-	string response_type = 5;
-}
-
-// EnableStaticNatResponse represents the response from enables static nat for given ip address
-message EnableStaticNatResponse {
-	// The Result
-	Result result = 1;
+	// ListIpForwardingRules List the IP forwarding rules
+	rpc ListIpForwardingRules(ListIpForwardingRulesRequest) returns (ListIpForwardingRulesResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
 // CreateIpForwardingRuleRequest represents the parameters for creates an ip forwarding rule
@@ -103,6 +83,86 @@ message CreateIpForwardingRuleRequest {
 
 // CreateIpForwardingRuleResponse represents the response from creates an ip forwarding rule
 message CreateIpForwardingRuleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteIpForwardingRuleRequest represents the parameters for deletes an ip forwarding rule
+message DeleteIpForwardingRuleRequest {
+	// the ID of the forwarding rule
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteIpForwardingRuleResponse represents the response from deletes an ip forwarding rule
+message DeleteIpForwardingRuleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// EnableStaticNatRequest represents the parameters for enables static nat for given ip address
+message EnableStaticNatRequest {
+	// the public IP address ID for which static NAT feature is being enabled
+	int64 ip_address_id = 1 [
+		(validate.field).required = true
+	];
+
+	// the ID of the virtual machine for enabling static NAT feature
+	int64 virtual_machine_id = 2 [
+		(validate.field).required = true
+	];
+
+	// The network of the VM the static NAT will be enabled for. Required when public IP address is not associated with any guest network yet (VPC case)
+	int64 network_id = 3;
+
+	// VM guest NIC secondary IP address for the port forwarding rule
+	string vm_secondary_ip = 4 [
+		(validate.field).string.ipv4 = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// EnableStaticNatResponse represents the response from enables static nat for given ip address
+message EnableStaticNatResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DisableStaticNatRequest represents the parameters for disables static rule for given ip address
+message DisableStaticNatRequest {
+	// the public IP address ID for which static NAT feature is being disabled
+	int64 ip_address_id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DisableStaticNatResponse represents the response from disables static rule for given ip address
+message DisableStaticNatResponse {
 	// The Result
 	Result result = 1;
 }
@@ -164,56 +224,6 @@ message ListIpForwardingRulesResponse {
 
 	// The total count of FirewallRules
 	int32 total_count = 2;
-}
-
-// DisableStaticNatRequest represents the parameters for disables static rule for given ip address
-message DisableStaticNatRequest {
-	// the public IP address ID for which static NAT feature is being disabled
-	int64 ip_address_id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DisableStaticNatResponse represents the response from disables static rule for given ip address
-message DisableStaticNatResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeleteIpForwardingRuleRequest represents the parameters for deletes an ip forwarding rule
-message DeleteIpForwardingRuleRequest {
-	// the ID of the forwarding rule
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DeleteIpForwardingRuleResponse represents the response from deletes an ip forwarding rule
-message DeleteIpForwardingRuleResponse {
-	// The Result
-	Result result = 1;
 }
 
 // FirewallRule represents a FirewallRule Item

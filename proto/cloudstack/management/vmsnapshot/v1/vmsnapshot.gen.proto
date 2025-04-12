@@ -8,49 +8,28 @@ import "google/protobuf/descriptor.proto";
 
 // VmsnapshotService provides operations for managing Vmsnapshots
 service VmsnapshotService {
-	option (annotations.service).scope = Scope_USER;
-
-	// RevertToVMSnapshotCmdByAdmin Revert VM from a vmsnapshot.
-	rpc RevertToVMSnapshotCmdByAdmin(RevertToVMSnapshotCmdByAdminRequest) returns (RevertToVMSnapshotCmdByAdminResponse) {}
+	option (annotations.service).scope = SCOPE_USER;
 
 	// CreateVMSnapshot Creates snapshot for a vm.
-	rpc CreateVMSnapshot(CreateVMSnapshotRequest) returns (CreateVMSnapshotResponse) {}
+	rpc CreateVMSnapshot(CreateVMSnapshotRequest) returns (CreateVMSnapshotResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// RevertToVMSnapshot Revert VM from a vmsnapshot.
 	rpc RevertToVMSnapshot(RevertToVMSnapshotRequest) returns (RevertToVMSnapshotResponse) {
-		option (annotations.method).scope = Scope_ADMIN;
+		option (annotations.method).scope = SCOPE_ADMIN;
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListVMSnapshot List virtual machine snapshot by conditions
+	rpc ListVMSnapshot(ListVMSnapshotRequest) returns (ListVMSnapshotResponse) {
+		option (annotations.method).scope = SCOPE_USER;
 	}
 
 	// DeleteVMSnapshot Deletes a vmsnapshot.
-	rpc DeleteVMSnapshot(DeleteVMSnapshotRequest) returns (DeleteVMSnapshotResponse) {}
-
-	// ListVMSnapshot List virtual machine snapshot by conditions
-	rpc ListVMSnapshot(ListVMSnapshotRequest) returns (ListVMSnapshotResponse) {}
-}
-
-// RevertToVMSnapshotCmdByAdminRequest represents the parameters for revert vm from a vmsnapshot.
-message RevertToVMSnapshotCmdByAdminRequest {
-	// The ID of the vm snapshot
-	int64 vm_snap_shot_id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// RevertToVMSnapshotCmdByAdminResponse represents the response from revert vm from a vmsnapshot.
-message RevertToVMSnapshotCmdByAdminResponse {
-	// The Result
-	Result result = 1;
+	rpc DeleteVMSnapshot(DeleteVMSnapshotRequest) returns (DeleteVMSnapshotResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
 // CreateVMSnapshotRequest represents the parameters for creates snapshot for a vm.
@@ -124,31 +103,6 @@ message RevertToVMSnapshotResponse {
 	Result result = 1;
 }
 
-// DeleteVMSnapshotRequest represents the parameters for deletes a vmsnapshot.
-message DeleteVMSnapshotRequest {
-	// The ID of the VM snapshot
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DeleteVMSnapshotResponse represents the response from deletes a vmsnapshot.
-message DeleteVMSnapshotResponse {
-	// The Result
-	Result result = 1;
-}
-
 // ListVMSnapshotRequest represents the parameters for list virtual machine snapshot by conditions
 message ListVMSnapshotRequest {
 	// The ID of the VM snapshot
@@ -218,6 +172,31 @@ message ListVMSnapshotResponse {
 
 	// The total count of VMSnapshots
 	int32 total_count = 2;
+}
+
+// DeleteVMSnapshotRequest represents the parameters for deletes a vmsnapshot.
+message DeleteVMSnapshotRequest {
+	// The ID of the VM snapshot
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteVMSnapshotResponse represents the response from deletes a vmsnapshot.
+message DeleteVMSnapshotResponse {
+	// The Result
+	Result result = 1;
 }
 
 // VMSnapshot represents a VMSnapshot Item

@@ -8,19 +8,27 @@ import "google/protobuf/descriptor.proto";
 
 // Ipv6Service provides operations for managing Ipv6s
 service Ipv6Service {
-	option (annotations.service).scope = Scope_USER;
+	option (annotations.service).scope = SCOPE_USER;
 
 	// UpdateIpv6FirewallRule Updates Ipv6 firewall rule with specified ID
-	rpc UpdateIpv6FirewallRule(UpdateIpv6FirewallRuleRequest) returns (UpdateIpv6FirewallRuleResponse) {}
-
-	// DeleteIpv6FirewallRule Deletes a IPv6 firewall rule
-	rpc DeleteIpv6FirewallRule(DeleteIpv6FirewallRuleRequest) returns (DeleteIpv6FirewallRuleResponse) {}
-
-	// ListIpv6FirewallRules Lists all IPv6 firewall rules
-	rpc ListIpv6FirewallRules(ListIpv6FirewallRulesRequest) returns (ListIpv6FirewallRulesResponse) {}
+	rpc UpdateIpv6FirewallRule(UpdateIpv6FirewallRuleRequest) returns (UpdateIpv6FirewallRuleResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// CreateIpv6FirewallRule Creates an Ipv6 firewall rule in the given network (the network must not belong to VPC)
-	rpc CreateIpv6FirewallRule(CreateIpv6FirewallRuleRequest) returns (CreateIpv6FirewallRuleResponse) {}
+	rpc CreateIpv6FirewallRule(CreateIpv6FirewallRuleRequest) returns (CreateIpv6FirewallRuleResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListIpv6FirewallRules Lists all IPv6 firewall rules
+	rpc ListIpv6FirewallRules(ListIpv6FirewallRulesRequest) returns (ListIpv6FirewallRulesResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// DeleteIpv6FirewallRule Deletes a IPv6 firewall rule
+	rpc DeleteIpv6FirewallRule(DeleteIpv6FirewallRuleRequest) returns (DeleteIpv6FirewallRuleResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
 // UpdateIpv6FirewallRuleRequest represents the parameters for updates ipv6 firewall rule with specified id
@@ -85,27 +93,64 @@ message UpdateIpv6FirewallRuleResponse {
 	Result result = 1;
 }
 
-// DeleteIpv6FirewallRuleRequest represents the parameters for deletes a ipv6 firewall rule
-message DeleteIpv6FirewallRuleRequest {
-	// the ID of the IPv6 firewall rule
-	int64 id = 1 [
+// CreateIpv6FirewallRuleRequest represents the parameters for creates an ipv6 firewall rule in the given network (the network must not belong to vpc)
+message CreateIpv6FirewallRuleRequest {
+	// the protocol for the Ipv6 firewall rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number
+	string protocol = 1 [
 		(validate.field).required = true
 	];
 
-	//
-	int64 start_event_id = 2;
+	// the starting port of Ipv6 firewall rule
+	int32 public_start_port = 2 [
+		(validate.field).int32.gte = 1,
+		(validate.field).int32.lte = 65535
+	];
+
+	// the ending port of Ipv6 firewall rule
+	int32 public_end_port = 3 [
+		(validate.field).int32.gte = 1,
+		(validate.field).int32.lte = 65535
+	];
+
+	// the source CIDR list to allow traffic from. Multiple entries must be separated by a single comma character (,).
+	repeated string source_cidr_list = 4;
+
+	// the destination CIDR list to allow traffic to. Multiple entries must be separated by a single comma character (,).
+	repeated string destination_cidrlist = 5;
+
+	// type of the ICMP message being sent
+	int32 icmp_type = 6;
+
+	// error code for this ICMP message
+	int32 icmp_code = 7;
+
+	// The network of the VM the Ipv6 firewall rule will be created for
+	int64 network_id = 8 [
+		(validate.field).required = true
+	];
+
+	// the traffic type for the Ipv6 firewall rule, can be ingress or egress, defaulted to ingress if not specified
+	string traffic_type = 9;
+
+	// an optional field, whether to the display the rule to the end user or not
+	bool display = 10 [
+		features.field_presence = EXPLICIT
+	];
 
 	//
-	string injected_job_id = 3 [
+	int64 start_event_id = 11;
+
+	//
+	string injected_job_id = 12 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	string response_type = 4;
+	string response_type = 13;
 }
 
-// DeleteIpv6FirewallRuleResponse represents the response from deletes a ipv6 firewall rule
-message DeleteIpv6FirewallRuleResponse {
+// CreateIpv6FirewallRuleResponse represents the response from creates an ipv6 firewall rule in the given network (the network must not belong to vpc)
+message CreateIpv6FirewallRuleResponse {
 	// The Result
 	Result result = 1;
 }
@@ -177,64 +222,27 @@ message ListIpv6FirewallRulesResponse {
 	int32 total_count = 2;
 }
 
-// CreateIpv6FirewallRuleRequest represents the parameters for creates an ipv6 firewall rule in the given network (the network must not belong to vpc)
-message CreateIpv6FirewallRuleRequest {
-	// the protocol for the Ipv6 firewall rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number
-	string protocol = 1 [
+// DeleteIpv6FirewallRuleRequest represents the parameters for deletes a ipv6 firewall rule
+message DeleteIpv6FirewallRuleRequest {
+	// the ID of the IPv6 firewall rule
+	int64 id = 1 [
 		(validate.field).required = true
 	];
 
-	// the starting port of Ipv6 firewall rule
-	int32 public_start_port = 2 [
-		(validate.field).int32.gte = 1,
-		(validate.field).int32.lte = 65535
-	];
-
-	// the ending port of Ipv6 firewall rule
-	int32 public_end_port = 3 [
-		(validate.field).int32.gte = 1,
-		(validate.field).int32.lte = 65535
-	];
-
-	// the source CIDR list to allow traffic from. Multiple entries must be separated by a single comma character (,).
-	repeated string source_cidr_list = 4;
-
-	// the destination CIDR list to allow traffic to. Multiple entries must be separated by a single comma character (,).
-	repeated string destination_cidrlist = 5;
-
-	// type of the ICMP message being sent
-	int32 icmp_type = 6;
-
-	// error code for this ICMP message
-	int32 icmp_code = 7;
-
-	// The network of the VM the Ipv6 firewall rule will be created for
-	int64 network_id = 8 [
-		(validate.field).required = true
-	];
-
-	// the traffic type for the Ipv6 firewall rule, can be ingress or egress, defaulted to ingress if not specified
-	string traffic_type = 9;
-
-	// an optional field, whether to the display the rule to the end user or not
-	bool display = 10 [
-		features.field_presence = EXPLICIT
-	];
+	//
+	int64 start_event_id = 2;
 
 	//
-	int64 start_event_id = 11;
-
-	//
-	string injected_job_id = 12 [
+	string injected_job_id = 3 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	string response_type = 13;
+	string response_type = 4;
 }
 
-// CreateIpv6FirewallRuleResponse represents the response from creates an ipv6 firewall rule in the given network (the network must not belong to vpc)
-message CreateIpv6FirewallRuleResponse {
+// DeleteIpv6FirewallRuleResponse represents the response from deletes a ipv6 firewall rule
+message DeleteIpv6FirewallRuleResponse {
 	// The Result
 	Result result = 1;
 }

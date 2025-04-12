@@ -8,10 +8,12 @@ import "google/protobuf/descriptor.proto";
 
 // ConsoleproxyService provides operations for managing Consoleproxys
 service ConsoleproxyService {
-	option (annotations.service).scope = Scope_USER;
+	option (annotations.service).scope = SCOPE_USER;
 
 	// CreateConsoleEndpoint Create a console endpoint to connect to a VM console
-	rpc CreateConsoleEndpoint(CreateConsoleEndpointRequest) returns (CreateConsoleEndpointResponse) {}
+	rpc CreateConsoleEndpoint(CreateConsoleEndpointRequest) returns (CreateConsoleEndpointResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
 // CreateConsoleEndpointRequest represents the parameters for create a console endpoint to connect to a vm console

@@ -8,89 +8,71 @@ import "google/protobuf/descriptor.proto";
 
 // AffinitygroupService provides operations for managing Affinitygroups
 service AffinitygroupService {
-	option (annotations.service).scope = Scope_USER;
+	option (annotations.service).scope = SCOPE_USER;
 
-	// ListAffinityGroups Lists affinity groups
-	rpc ListAffinityGroups(ListAffinityGroupsRequest) returns (ListAffinityGroupsResponse) {}
+	// DeleteAffinityGroup Deletes affinity group
+	rpc DeleteAffinityGroup(DeleteAffinityGroupRequest) returns (DeleteAffinityGroupResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// CreateAffinityGroup Creates an affinity/anti-affinity group
-	rpc CreateAffinityGroup(CreateAffinityGroupRequest) returns (CreateAffinityGroupResponse) {}
+	rpc CreateAffinityGroup(CreateAffinityGroupRequest) returns (CreateAffinityGroupResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// UpdateVMAffinityGroup Updates the affinity/anti-affinity group associations of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect.
 	rpc UpdateVMAffinityGroup(UpdateVMAffinityGroupRequest) returns (UpdateVMAffinityGroupResponse) {
-		option (annotations.method).scope = Scope_ADMIN;
+		option (annotations.method).scope = SCOPE_ADMIN;
+		option (annotations.method).scope = SCOPE_USER;
 	}
 
 	// ListAffinityGroupTypes Lists affinity group types available
-	rpc ListAffinityGroupTypes(ListAffinityGroupTypesRequest) returns (ListAffinityGroupTypesResponse) {}
+	rpc ListAffinityGroupTypes(ListAffinityGroupTypesRequest) returns (ListAffinityGroupTypesResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
-	// DeleteAffinityGroup Deletes affinity group
-	rpc DeleteAffinityGroup(DeleteAffinityGroupRequest) returns (DeleteAffinityGroupResponse) {}
+	// ListAffinityGroups Lists affinity groups
+	rpc ListAffinityGroups(ListAffinityGroupsRequest) returns (ListAffinityGroupsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
-// ListAffinityGroupsRequest represents the parameters for lists affinity groups
-message ListAffinityGroupsRequest {
-	// lists affinity groups by name
-	string affinity_group_name = 1 [
+// DeleteAffinityGroupRequest represents the parameters for deletes affinity group
+message DeleteAffinityGroupRequest {
+	// the account of the affinity group. Must be specified with domain ID
+	string account_name = 1;
+
+	// the domain ID of account owning the affinity group
+	int64 domain_id = 2;
+
+	// The ID of the affinity group. Mutually exclusive with name parameter
+	int64 id = 3;
+
+	// The name of the affinity group. Mutually exclusive with ID parameter
+	string name = 4 [
 		(validate.field).string.min_len = 1,
 		(validate.field).string.max_len = 255
 	];
 
-	// lists affinity groups by virtual machine ID
-	int64 virtual_machine_id = 2;
-
-	// list the affinity group by the ID provided
-	int64 id = 3;
-
-	// lists affinity groups by type
-	string affinity_group_type = 4;
-
-	// list objects by project; if projectid=-1 lists All VMs
+	// the project of the affinity group
 	int64 project_id = 5;
 
-	// list resources by account. Must be used with the domainId parameter.
-	string account_name = 6 [
-		(validate.field).cel = {
-			id:         "account_name_with_domain_id",
-			expression: "!has(account_name) || has(domain_id)",
-			message:    "account_name must be used with domain_id parameter"
-		}
-	];
-
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	bool list_all = 7 [
-		features.field_presence = EXPLICIT
-	];
-
-	// list only resources belonging to the domain specified
-	int64 domain_id = 8;
-
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	bool recursive = 9 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List by keyword
-	string keyword = 10;
+	//
+	int64 start_event_id = 6;
 
 	//
-	int32 page = 11;
+	string injected_job_id = 7 [
+		(validate.field).string.uuid = true
+	];
 
 	//
-	int32 page_size = 12;
-
-	//
-	string response_type = 13;
+	string response_type = 8;
 }
 
-// ListAffinityGroupsResponse represents the response from lists affinity groups
-message ListAffinityGroupsResponse {
-	option (validate.message).disabled = false;
-	// The list of AffinityGroups
-	repeated AffinityGroup items = 1;
-
-	// The total count of AffinityGroups
-	int32 total_count = 2;
+// DeleteAffinityGroupResponse represents the response from deletes affinity group
+message DeleteAffinityGroupResponse {
+	// The Result
+	Result result = 1;
 }
 
 // CreateAffinityGroupRequest represents the parameters for creates an affinity/anti-affinity group
@@ -193,58 +175,69 @@ message ListAffinityGroupTypesResponse {
 	int32 total_count = 2;
 }
 
-// DeleteAffinityGroupRequest represents the parameters for deletes affinity group
-message DeleteAffinityGroupRequest {
-	// the account of the affinity group. Must be specified with domain ID
-	string account_name = 1;
-
-	// the domain ID of account owning the affinity group
-	int64 domain_id = 2;
-
-	// The ID of the affinity group. Mutually exclusive with name parameter
-	int64 id = 3;
-
-	// The name of the affinity group. Mutually exclusive with ID parameter
-	string name = 4 [
+// ListAffinityGroupsRequest represents the parameters for lists affinity groups
+message ListAffinityGroupsRequest {
+	// lists affinity groups by name
+	string affinity_group_name = 1 [
 		(validate.field).string.min_len = 1,
 		(validate.field).string.max_len = 255
 	];
 
-	// the project of the affinity group
+	// lists affinity groups by virtual machine ID
+	int64 virtual_machine_id = 2;
+
+	// list the affinity group by the ID provided
+	int64 id = 3;
+
+	// lists affinity groups by type
+	string affinity_group_type = 4;
+
+	// list objects by project; if projectid=-1 lists All VMs
 	int64 project_id = 5;
 
-	//
-	int64 start_event_id = 6;
-
-	//
-	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 6 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
 	];
 
-	//
-	string response_type = 8;
-}
-
-// DeleteAffinityGroupResponse represents the response from deletes affinity group
-message DeleteAffinityGroupResponse {
-	// The Result
-	Result result = 1;
-}
-
-// AffinityGroup represents a AffinityGroup Item
-message AffinityGroup {
-	// The ID of the AffinityGroup
-	string id = 1 [
-		(validate.field).string.uuid = true
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 7 [
+		features.field_presence = EXPLICIT
 	];
-	// The name of the AffinityGroup
-	string name = 2;
-	// The display name of the AffinityGroup
-	string display_name = 3;
-	// The description of the AffinityGroup
-	string description = 4;
-	// The date this entity was created
-	string created = 5;
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 8;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 9 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 10;
+
+	//
+	int32 page = 11;
+
+	//
+	int32 page_size = 12;
+
+	//
+	string response_type = 13;
+}
+
+// ListAffinityGroupsResponse represents the response from lists affinity groups
+message ListAffinityGroupsResponse {
+	option (validate.message).disabled = false;
+	// The list of AffinityGroups
+	repeated AffinityGroup items = 1;
+
+	// The total count of AffinityGroups
+	int32 total_count = 2;
 }
 
 // AffinityGroupType represents a AffinityGroupType Item
@@ -258,6 +251,22 @@ message AffinityGroupType {
 	// The display name of the AffinityGroupType
 	string display_name = 3;
 	// The description of the AffinityGroupType
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// AffinityGroup represents a AffinityGroup Item
+message AffinityGroup {
+	// The ID of the AffinityGroup
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the AffinityGroup
+	string name = 2;
+	// The display name of the AffinityGroup
+	string display_name = 3;
+	// The description of the AffinityGroup
 	string description = 4;
 	// The date this entity was created
 	string created = 5;

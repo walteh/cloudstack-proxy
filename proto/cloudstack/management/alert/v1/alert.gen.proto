@@ -8,10 +8,12 @@ import "google/protobuf/descriptor.proto";
 
 // AlertService provides operations for managing Alerts
 service AlertService {
-	option (annotations.service).scope = Scope_USER;
+	option (annotations.service).scope = SCOPE_USER;
 
 	// GenerateAlert Generates an alert
-	rpc GenerateAlert(GenerateAlertRequest) returns (GenerateAlertResponse) {}
+	rpc GenerateAlert(GenerateAlertRequest) returns (GenerateAlertResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
 // GenerateAlertRequest represents the parameters for generates an alert

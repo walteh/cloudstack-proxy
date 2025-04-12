@@ -8,383 +8,67 @@ import "google/protobuf/descriptor.proto";
 
 // FirewallService provides operations for managing Firewalls
 service FirewallService {
-	option (annotations.service).scope = Scope_USER;
-
-	// CreateFirewallRule Creates a firewall rule for a given IP address
-	rpc CreateFirewallRule(CreateFirewallRuleRequest) returns (CreateFirewallRuleResponse) {}
-
-	// DeleteEgressFirewallRule Deletes an egress firewall rule
-	rpc DeleteEgressFirewallRule(DeleteEgressFirewallRuleRequest) returns (DeleteEgressFirewallRuleResponse) {}
-
-	// DeletePortForwardingRule Deletes a port forwarding rule
-	rpc DeletePortForwardingRule(DeletePortForwardingRuleRequest) returns (DeletePortForwardingRuleResponse) {}
-
-	// ListPortForwardingRules Lists all port forwarding rules for an IP address.
-	rpc ListPortForwardingRules(ListPortForwardingRulesRequest) returns (ListPortForwardingRulesResponse) {}
-
-	// UpdateFirewallRule Updates firewall rule
-	rpc UpdateFirewallRule(UpdateFirewallRuleRequest) returns (UpdateFirewallRuleResponse) {}
-
-	// CreateEgressFirewallRule Creates a egress firewall rule for a given network
-	rpc CreateEgressFirewallRule(CreateEgressFirewallRuleRequest) returns (CreateEgressFirewallRuleResponse) {}
-
-	// ListFirewallRules Lists all firewall rules for an IP address.
-	rpc ListFirewallRules(ListFirewallRulesRequest) returns (ListFirewallRulesResponse) {}
+	option (annotations.service).scope = SCOPE_USER;
 
 	// CreatePortForwardingRule Creates a port forwarding rule
-	rpc CreatePortForwardingRule(CreatePortForwardingRuleRequest) returns (CreatePortForwardingRuleResponse) {}
-
-	// DeleteFirewallRule Deletes a firewall rule
-	rpc DeleteFirewallRule(DeleteFirewallRuleRequest) returns (DeleteFirewallRuleResponse) {}
-
-	// UpdateEgressFirewallRule Updates egress firewall rule
-	rpc UpdateEgressFirewallRule(UpdateEgressFirewallRuleRequest) returns (UpdateEgressFirewallRuleResponse) {}
+	rpc CreatePortForwardingRule(CreatePortForwardingRuleRequest) returns (CreatePortForwardingRuleResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// ListEgressFirewallRules Lists all egress firewall rules for network ID.
-	rpc ListEgressFirewallRules(ListEgressFirewallRulesRequest) returns (ListEgressFirewallRulesResponse) {}
+	rpc ListEgressFirewallRules(ListEgressFirewallRulesRequest) returns (ListEgressFirewallRulesResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// DeleteFirewallRule Deletes a firewall rule
+	rpc DeleteFirewallRule(DeleteFirewallRuleRequest) returns (DeleteFirewallRuleResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// CreateEgressFirewallRule Creates a egress firewall rule for a given network
+	rpc CreateEgressFirewallRule(CreateEgressFirewallRuleRequest) returns (CreateEgressFirewallRuleResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// UpdateEgressFirewallRule Updates egress firewall rule
+	rpc UpdateEgressFirewallRule(UpdateEgressFirewallRuleRequest) returns (UpdateEgressFirewallRuleResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// DeleteEgressFirewallRule Deletes an egress firewall rule
+	rpc DeleteEgressFirewallRule(DeleteEgressFirewallRuleRequest) returns (DeleteEgressFirewallRuleResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListFirewallRules Lists all firewall rules for an IP address.
+	rpc ListFirewallRules(ListFirewallRulesRequest) returns (ListFirewallRulesResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// CreateFirewallRule Creates a firewall rule for a given IP address
+	rpc CreateFirewallRule(CreateFirewallRuleRequest) returns (CreateFirewallRuleResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListPortForwardingRules Lists all port forwarding rules for an IP address.
+	rpc ListPortForwardingRules(ListPortForwardingRulesRequest) returns (ListPortForwardingRulesResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// UpdatePortForwardingRule Updates a port forwarding rule. Only the private port and the virtual machine can be updated.
-	rpc UpdatePortForwardingRule(UpdatePortForwardingRuleRequest) returns (UpdatePortForwardingRuleResponse) {}
-}
-
-// CreateFirewallRuleRequest represents the parameters for creates a firewall rule for a given ip address
-message CreateFirewallRuleRequest {
-	// the IP address id of the port forwarding rule
-	int64 ip_address_id = 1 [
-		(validate.field).required = true
-	];
-
-	// the protocol for the firewall rule. Valid values are TCP/UDP/ICMP.
-	string protocol = 2 [
-		(validate.field).required = true
-	];
-
-	// the starting port of firewall rule
-	int32 public_start_port = 3 [
-		(validate.field).int32.gte = 1,
-		(validate.field).int32.lte = 65535
-	];
-
-	// the ending port of firewall rule
-	int32 public_end_port = 4 [
-		(validate.field).int32.gte = 1,
-		(validate.field).int32.lte = 65535
-	];
-
-	// the CIDR list to forward traffic from. Multiple entries must be separated by a single comma character (,).
-	repeated string cidrlist = 5;
-
-	// type of the ICMP message being sent
-	int32 icmp_type = 6;
-
-	// error code for this icmp message
-	int32 icmp_code = 7;
-
-	// type of firewallrule: system/user
-	string type = 8;
-
-	// an optional field, whether to the display the rule to the end user or not
-	bool display = 9 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	int64 start_event_id = 10;
-
-	//
-	string injected_job_id = 11 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 12;
-}
-
-// CreateFirewallRuleResponse represents the response from creates a firewall rule for a given ip address
-message CreateFirewallRuleResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeleteEgressFirewallRuleRequest represents the parameters for deletes an egress firewall rule
-message DeleteEgressFirewallRuleRequest {
-	// the ID of the firewall rule
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DeleteEgressFirewallRuleResponse represents the response from deletes an egress firewall rule
-message DeleteEgressFirewallRuleResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeletePortForwardingRuleRequest represents the parameters for deletes a port forwarding rule
-message DeletePortForwardingRuleRequest {
-	// the ID of the port forwarding rule
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DeletePortForwardingRuleResponse represents the response from deletes a port forwarding rule
-message DeletePortForwardingRuleResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListPortForwardingRulesRequest represents the parameters for lists all port forwarding rules for an ip address.
-message ListPortForwardingRulesRequest {
-	// Lists rule with the specified ID.
-	int64 id = 1;
-
-	// the ID of IP address of the port forwarding services
-	int64 ip_address_id = 2;
-
-	// list port forwarding rules for certain network
-	int64 network_id = 3;
-
-	// list resources by display flag; only ROOT admin is eligible to pass this parameter
-	bool display = 4 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List resources by tags (key/value pairs)
-	map<string, string> tags = 5;
-
-	// list objects by project; if projectid=-1 lists All VMs
-	int64 project_id = 6;
-
-	// list resources by account. Must be used with the domainId parameter.
-	string account_name = 7 [
-		(validate.field).cel = {
-			id:         "account_name_with_domain_id",
-			expression: "!has(account_name) || has(domain_id)",
-			message:    "account_name must be used with domain_id parameter"
-		}
-	];
-
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	bool list_all = 8 [
-		features.field_presence = EXPLICIT
-	];
-
-	// list only resources belonging to the domain specified
-	int64 domain_id = 9;
-
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	bool recursive = 10 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List by keyword
-	string keyword = 11;
-
-	//
-	int32 page = 12;
-
-	//
-	int32 page_size = 13;
-
-	//
-	string response_type = 14;
-}
-
-// ListPortForwardingRulesResponse represents the response from lists all port forwarding rules for an ip address.
-message ListPortForwardingRulesResponse {
-	option (validate.message).disabled = false;
-	// The list of FirewallRules
-	repeated FirewallRule items = 1;
-
-	// The total count of FirewallRules
-	int32 total_count = 2;
-}
-
-// UpdateFirewallRuleRequest represents the parameters for updates firewall rule
-message UpdateFirewallRuleRequest {
-	// the ID of the firewall rule
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// an optional field, whether to the display the rule to the end user or not
-	bool display = 2 [
-		features.field_presence = EXPLICIT
-	];
-
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	string custom_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	int64 start_event_id = 4;
-
-	//
-	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 6;
-}
-
-// UpdateFirewallRuleResponse represents the response from updates firewall rule
-message UpdateFirewallRuleResponse {
-	// The Result
-	Result result = 1;
-}
-
-// CreateEgressFirewallRuleRequest represents the parameters for creates a egress firewall rule for a given network
-message CreateEgressFirewallRuleRequest {
-	// the network id of the port forwarding rule
-	int64 network_id = 1 [
-		(validate.field).required = true
-	];
-
-	// the protocol for the firewall rule. Valid values are TCP/UDP/ICMP.
-	string protocol = 2 [
-		(validate.field).required = true
-	];
-
-	// the starting port of firewall rule
-	int32 public_start_port = 3 [
-		(validate.field).int32.gte = 1,
-		(validate.field).int32.lte = 65535
-	];
-
-	// the ending port of firewall rule
-	int32 public_end_port = 4 [
-		(validate.field).int32.gte = 1,
-		(validate.field).int32.lte = 65535
-	];
-
-	// the cidr list to forward traffic from. Multiple entries must be separated by a single comma character (,).
-	repeated string cidrlist = 5;
-
-	// the cidr list to forward traffic to. Multiple entries must be separated by a single comma character (,).
-	repeated string dest_cidr_list = 6;
-
-	// type of the icmp message being sent
-	int32 icmp_type = 7;
-
-	// error code for this icmp message
-	int32 icmp_code = 8;
-
-	// type of firewallrule: system/user
-	string type = 9;
-
-	// an optional field, whether to the display the rule to the end user or not
-	bool display = 10 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	int64 start_event_id = 11;
-
-	//
-	string injected_job_id = 12 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 13;
-}
-
-// CreateEgressFirewallRuleResponse represents the response from creates a egress firewall rule for a given network
-message CreateEgressFirewallRuleResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListFirewallRulesRequest represents the parameters for lists all firewall rules for an ip address.
-message ListFirewallRulesRequest {
-	// Lists rule with the specified ID.
-	int64 id = 1;
-
-	// the ID of IP address of the firewall services
-	int64 ip_address_id = 2;
-
-	// list firewall rules for certain network
-	int64 network_id = 3;
-
-	// list resources by display flag; only ROOT admin is eligible to pass this parameter
-	bool display = 4 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List resources by tags (key/value pairs)
-	map<string, string> tags = 5;
-
-	// list objects by project; if projectid=-1 lists All VMs
-	int64 project_id = 6;
-
-	// list resources by account. Must be used with the domainId parameter.
-	string account_name = 7 [
-		(validate.field).cel = {
-			id:         "account_name_with_domain_id",
-			expression: "!has(account_name) || has(domain_id)",
-			message:    "account_name must be used with domain_id parameter"
-		}
-	];
-
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	bool list_all = 8 [
-		features.field_presence = EXPLICIT
-	];
-
-	// list only resources belonging to the domain specified
-	int64 domain_id = 9;
-
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	bool recursive = 10 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List by keyword
-	string keyword = 11;
-
-	//
-	int32 page = 12;
-
-	//
-	int32 page_size = 13;
-
-	//
-	string response_type = 14;
-}
-
-// ListFirewallRulesResponse represents the response from lists all firewall rules for an ip address.
-message ListFirewallRulesResponse {
-	option (validate.message).disabled = false;
-	// The list of Firewalls
-	repeated Firewall items = 1;
-
-	// The total count of Firewalls
-	int32 total_count = 2;
+	rpc UpdatePortForwardingRule(UpdatePortForwardingRuleRequest) returns (UpdatePortForwardingRuleResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// DeletePortForwardingRule Deletes a port forwarding rule
+	rpc DeletePortForwardingRule(DeletePortForwardingRuleRequest) returns (DeletePortForwardingRuleResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// UpdateFirewallRule Updates firewall rule
+	rpc UpdateFirewallRule(UpdateFirewallRuleRequest) returns (UpdateFirewallRuleResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
 // CreatePortForwardingRuleRequest represents the parameters for creates a port forwarding rule
@@ -469,66 +153,6 @@ message CreatePortForwardingRuleResponse {
 	Result result = 1;
 }
 
-// DeleteFirewallRuleRequest represents the parameters for deletes a firewall rule
-message DeleteFirewallRuleRequest {
-	// the ID of the firewall rule
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DeleteFirewallRuleResponse represents the response from deletes a firewall rule
-message DeleteFirewallRuleResponse {
-	// The Result
-	Result result = 1;
-}
-
-// UpdateEgressFirewallRuleRequest represents the parameters for updates egress firewall rule
-message UpdateEgressFirewallRuleRequest {
-	// the ID of the egress firewall rule
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// an optional field, whether to the display the rule to the end user or not
-	bool display = 2 [
-		features.field_presence = EXPLICIT
-	];
-
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	string custom_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	int64 start_event_id = 4;
-
-	//
-	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 6;
-}
-
-// UpdateEgressFirewallRuleResponse represents the response from updates egress firewall rule
-message UpdateEgressFirewallRuleResponse {
-	// The Result
-	Result result = 1;
-}
-
 // ListEgressFirewallRulesRequest represents the parameters for lists all egress firewall rules for network id.
 message ListEgressFirewallRulesRequest {
 	// Lists rule with the specified ID.
@@ -596,6 +220,346 @@ message ListEgressFirewallRulesResponse {
 	int32 total_count = 2;
 }
 
+// DeleteFirewallRuleRequest represents the parameters for deletes a firewall rule
+message DeleteFirewallRuleRequest {
+	// the ID of the firewall rule
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteFirewallRuleResponse represents the response from deletes a firewall rule
+message DeleteFirewallRuleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateEgressFirewallRuleRequest represents the parameters for creates a egress firewall rule for a given network
+message CreateEgressFirewallRuleRequest {
+	// the network id of the port forwarding rule
+	int64 network_id = 1 [
+		(validate.field).required = true
+	];
+
+	// the protocol for the firewall rule. Valid values are TCP/UDP/ICMP.
+	string protocol = 2 [
+		(validate.field).required = true
+	];
+
+	// the starting port of firewall rule
+	int32 public_start_port = 3 [
+		(validate.field).int32.gte = 1,
+		(validate.field).int32.lte = 65535
+	];
+
+	// the ending port of firewall rule
+	int32 public_end_port = 4 [
+		(validate.field).int32.gte = 1,
+		(validate.field).int32.lte = 65535
+	];
+
+	// the cidr list to forward traffic from. Multiple entries must be separated by a single comma character (,).
+	repeated string cidrlist = 5;
+
+	// the cidr list to forward traffic to. Multiple entries must be separated by a single comma character (,).
+	repeated string dest_cidr_list = 6;
+
+	// type of the icmp message being sent
+	int32 icmp_type = 7;
+
+	// error code for this icmp message
+	int32 icmp_code = 8;
+
+	// type of firewallrule: system/user
+	string type = 9;
+
+	// an optional field, whether to the display the rule to the end user or not
+	bool display = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 11;
+
+	//
+	string injected_job_id = 12 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 13;
+}
+
+// CreateEgressFirewallRuleResponse represents the response from creates a egress firewall rule for a given network
+message CreateEgressFirewallRuleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateEgressFirewallRuleRequest represents the parameters for updates egress firewall rule
+message UpdateEgressFirewallRuleRequest {
+	// the ID of the egress firewall rule
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// an optional field, whether to the display the rule to the end user or not
+	bool display = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// UpdateEgressFirewallRuleResponse represents the response from updates egress firewall rule
+message UpdateEgressFirewallRuleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteEgressFirewallRuleRequest represents the parameters for deletes an egress firewall rule
+message DeleteEgressFirewallRuleRequest {
+	// the ID of the firewall rule
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteEgressFirewallRuleResponse represents the response from deletes an egress firewall rule
+message DeleteEgressFirewallRuleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListFirewallRulesRequest represents the parameters for lists all firewall rules for an ip address.
+message ListFirewallRulesRequest {
+	// Lists rule with the specified ID.
+	int64 id = 1;
+
+	// the ID of IP address of the firewall services
+	int64 ip_address_id = 2;
+
+	// list firewall rules for certain network
+	int64 network_id = 3;
+
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	bool display = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List resources by tags (key/value pairs)
+	map<string, string> tags = 5;
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 6;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 7 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 8 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 9;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 11;
+
+	//
+	int32 page = 12;
+
+	//
+	int32 page_size = 13;
+
+	//
+	string response_type = 14;
+}
+
+// ListFirewallRulesResponse represents the response from lists all firewall rules for an ip address.
+message ListFirewallRulesResponse {
+	option (validate.message).disabled = false;
+	// The list of Firewalls
+	repeated Firewall items = 1;
+
+	// The total count of Firewalls
+	int32 total_count = 2;
+}
+
+// CreateFirewallRuleRequest represents the parameters for creates a firewall rule for a given ip address
+message CreateFirewallRuleRequest {
+	// the IP address id of the port forwarding rule
+	int64 ip_address_id = 1 [
+		(validate.field).required = true
+	];
+
+	// the protocol for the firewall rule. Valid values are TCP/UDP/ICMP.
+	string protocol = 2 [
+		(validate.field).required = true
+	];
+
+	// the starting port of firewall rule
+	int32 public_start_port = 3 [
+		(validate.field).int32.gte = 1,
+		(validate.field).int32.lte = 65535
+	];
+
+	// the ending port of firewall rule
+	int32 public_end_port = 4 [
+		(validate.field).int32.gte = 1,
+		(validate.field).int32.lte = 65535
+	];
+
+	// the CIDR list to forward traffic from. Multiple entries must be separated by a single comma character (,).
+	repeated string cidrlist = 5;
+
+	// type of the ICMP message being sent
+	int32 icmp_type = 6;
+
+	// error code for this icmp message
+	int32 icmp_code = 7;
+
+	// type of firewallrule: system/user
+	string type = 8;
+
+	// an optional field, whether to the display the rule to the end user or not
+	bool display = 9 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 10;
+
+	//
+	string injected_job_id = 11 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 12;
+}
+
+// CreateFirewallRuleResponse represents the response from creates a firewall rule for a given ip address
+message CreateFirewallRuleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListPortForwardingRulesRequest represents the parameters for lists all port forwarding rules for an ip address.
+message ListPortForwardingRulesRequest {
+	// Lists rule with the specified ID.
+	int64 id = 1;
+
+	// the ID of IP address of the port forwarding services
+	int64 ip_address_id = 2;
+
+	// list port forwarding rules for certain network
+	int64 network_id = 3;
+
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	bool display = 4 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List resources by tags (key/value pairs)
+	map<string, string> tags = 5;
+
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 6;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 7 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 8 [
+		features.field_presence = EXPLICIT
+	];
+
+	// list only resources belonging to the domain specified
+	int64 domain_id = 9;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 11;
+
+	//
+	int32 page = 12;
+
+	//
+	int32 page_size = 13;
+
+	//
+	string response_type = 14;
+}
+
+// ListPortForwardingRulesResponse represents the response from lists all port forwarding rules for an ip address.
+message ListPortForwardingRulesResponse {
+	option (validate.message).disabled = false;
+	// The list of FirewallRules
+	repeated FirewallRule items = 1;
+
+	// The total count of FirewallRules
+	int32 total_count = 2;
+}
+
 // UpdatePortForwardingRuleRequest represents the parameters for updates a port forwarding rule. only the private port and the virtual machine can be updated.
 message UpdatePortForwardingRuleRequest {
 	// the ID of the port forwarding rule
@@ -654,20 +618,64 @@ message UpdatePortForwardingRuleResponse {
 	Result result = 1;
 }
 
-// FirewallRule represents a FirewallRule Item
-message FirewallRule {
-	// The ID of the FirewallRule
-	string id = 1 [
+// DeletePortForwardingRuleRequest represents the parameters for deletes a port forwarding rule
+message DeletePortForwardingRuleRequest {
+	// the ID of the port forwarding rule
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
 		(validate.field).string.uuid = true
 	];
-	// The name of the FirewallRule
-	string name = 2;
-	// The display name of the FirewallRule
-	string display_name = 3;
-	// The description of the FirewallRule
-	string description = 4;
-	// The date this entity was created
-	string created = 5;
+
+	//
+	string response_type = 4;
+}
+
+// DeletePortForwardingRuleResponse represents the response from deletes a port forwarding rule
+message DeletePortForwardingRuleResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateFirewallRuleRequest represents the parameters for updates firewall rule
+message UpdateFirewallRuleRequest {
+	// the ID of the firewall rule
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// an optional field, whether to the display the rule to the end user or not
+	bool display = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	int64 start_event_id = 4;
+
+	//
+	string injected_job_id = 5 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 6;
+}
+
+// UpdateFirewallRuleResponse represents the response from updates firewall rule
+message UpdateFirewallRuleResponse {
+	// The Result
+	Result result = 1;
 }
 
 // Firewall represents a Firewall Item
@@ -686,6 +694,22 @@ message Firewall {
 	string created = 5;
 }
 
+// FirewallRule represents a FirewallRule Item
+message FirewallRule {
+	// The ID of the FirewallRule
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the FirewallRule
+	string name = 2;
+	// The display name of the FirewallRule
+	string display_name = 3;
+	// The description of the FirewallRule
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
 // Success represents a Success Operation Response
 message Success {
 	// true if operation is executed successfully
@@ -694,7 +718,7 @@ message Success {
 	string display_text = 2;
 }
 
-// ProtocolType represents the possible values for the protocol for the firewall rule. Valid values are TCP/UDP/ICMP.
+// ProtocolType represents the possible values for the protocol for the port forwarding rule. Valid values are TCP or UDP.
 enum ProtocolType {
 	// Default unspecified value
 	PROTOCOL_TYPE_UNSPECIFIED = 0;
@@ -702,8 +726,6 @@ enum ProtocolType {
 	PROTOCOL_TYPE_TCP = 1;
 	// UDP value
 	PROTOCOL_TYPE_UDP = 2;
-	// ICMP value
-	PROTOCOL_TYPE_ICMP = 3;
 }
 
 // Result represents a generic operation result

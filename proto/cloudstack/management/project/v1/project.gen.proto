@@ -8,126 +8,52 @@ import "google/protobuf/descriptor.proto";
 
 // ProjectService provides operations for managing Projects
 service ProjectService {
-	option (annotations.service).scope = Scope_USER;
-
-	// ActivateProject Activates a project
-	rpc ActivateProject(ActivateProjectRequest) returns (ActivateProjectResponse) {}
-
-	// DeleteProjectInvitation Deletes project invitation
-	rpc DeleteProjectInvitation(DeleteProjectInvitationRequest) returns (DeleteProjectInvitationResponse) {}
-
-	// CreateProject Creates a project
-	rpc CreateProject(CreateProjectRequest) returns (CreateProjectResponse) {}
+	option (annotations.service).scope = SCOPE_USER;
 
 	// ListProjects Lists projects and provides detailed information for listed projects
-	rpc ListProjects(ListProjectsRequest) returns (ListProjectsResponse) {}
+	rpc ListProjects(ListProjectsRequest) returns (ListProjectsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
-	// UpdateProjectInvitation Accepts or declines project invitation
-	rpc UpdateProjectInvitation(UpdateProjectInvitationRequest) returns (UpdateProjectInvitationResponse) {}
-
-	// UpdateProject Updates a project
-	rpc UpdateProject(UpdateProjectRequest) returns (UpdateProjectResponse) {}
+	// CreateProject Creates a project
+	rpc CreateProject(CreateProjectRequest) returns (CreateProjectResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// SuspendProject Suspends a project
-	rpc SuspendProject(SuspendProjectRequest) returns (SuspendProjectResponse) {}
+	rpc SuspendProject(SuspendProjectRequest) returns (SuspendProjectResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// DeleteProjectInvitation Deletes project invitation
+	rpc DeleteProjectInvitation(DeleteProjectInvitationRequest) returns (DeleteProjectInvitationResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// UpdateProject Updates a project
+	rpc UpdateProject(UpdateProjectRequest) returns (UpdateProjectResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// UpdateProjectInvitation Accepts or declines project invitation
+	rpc UpdateProjectInvitation(UpdateProjectInvitationRequest) returns (UpdateProjectInvitationResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// DeleteProject Deletes a project
-	rpc DeleteProject(DeleteProjectRequest) returns (DeleteProjectResponse) {}
+	rpc DeleteProject(DeleteProjectRequest) returns (DeleteProjectResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// ListProjectInvitations Lists project invitations and provides detailed information for listed invitations
-	rpc ListProjectInvitations(ListProjectInvitationsRequest) returns (ListProjectInvitationsResponse) {}
-}
+	rpc ListProjectInvitations(ListProjectInvitationsRequest) returns (ListProjectInvitationsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
-// ActivateProjectRequest represents the parameters for activates a project
-message ActivateProjectRequest {
-	// id of the project to be modified
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// ActivateProjectResponse represents the response from activates a project
-message ActivateProjectResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeleteProjectInvitationRequest represents the parameters for deletes project invitation
-message DeleteProjectInvitationRequest {
-	// id of the invitation
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DeleteProjectInvitationResponse represents the response from deletes project invitation
-message DeleteProjectInvitationResponse {
-	// The Result
-	Result result = 1;
-}
-
-// CreateProjectRequest represents the parameters for creates a project
-message CreateProjectRequest {
-	// account who will be Admin for the project
-	string account_name = 1;
-
-	// user ID of the account to be assigned as owner of the project i.e., Project Admin
-	int64 user_id = 2;
-
-	// domain ID of the account owning a project
-	int64 domain_id = 3;
-
-	// ID of the account owning a project
-	int64 account_id = 4;
-
-	// name of the project
-	string name = 5 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// The display text of the project, defaults to the 'name´.
-	string display_text = 6;
-
-	//
-	int64 start_event_id = 7;
-
-	//
-	string injected_job_id = 8 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 9;
-}
-
-// CreateProjectResponse represents the response from creates a project
-message CreateProjectResponse {
-	// The Result
-	Result result = 1;
+	// ActivateProject Activates a project
+	rpc ActivateProject(ActivateProjectRequest) returns (ActivateProjectResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
 // ListProjectsRequest represents the parameters for lists projects and provides detailed information for listed projects
@@ -209,41 +135,94 @@ message ListProjectsResponse {
 	int32 total_count = 2;
 }
 
-// UpdateProjectInvitationRequest represents the parameters for accepts or declines project invitation
-message UpdateProjectInvitationRequest {
-	// id of the project to join
-	int64 project_id = 1 [
-		(validate.field).required = true
+// CreateProjectRequest represents the parameters for creates a project
+message CreateProjectRequest {
+	// account who will be Admin for the project
+	string account_name = 1;
+
+	// user ID of the account to be assigned as owner of the project i.e., Project Admin
+	int64 user_id = 2;
+
+	// domain ID of the account owning a project
+	int64 domain_id = 3;
+
+	// ID of the account owning a project
+	int64 account_id = 4;
+
+	// name of the project
+	string name = 5 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
 	];
 
-	// account that is joining the project
-	string account_name = 2;
-
-	// User UUID, required for adding account from external provisioning system
-	int64 user_id = 3;
-
-	// list invitations for specified account; this parameter has to be specified with domainId
-	string token = 4;
-
-	// if true, accept the invitation, decline if false. True by default
-	bool accept = 5 [
-		features.field_presence = EXPLICIT
-	];
+	// The display text of the project, defaults to the 'name´.
+	string display_text = 6;
 
 	//
-	int64 start_event_id = 6;
+	int64 start_event_id = 7;
 
 	//
-	string injected_job_id = 7 [
+	string injected_job_id = 8 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	string response_type = 8;
+	string response_type = 9;
 }
 
-// UpdateProjectInvitationResponse represents the response from accepts or declines project invitation
-message UpdateProjectInvitationResponse {
+// CreateProjectResponse represents the response from creates a project
+message CreateProjectResponse {
+	// The Result
+	Result result = 1;
+}
+
+// SuspendProjectRequest represents the parameters for suspends a project
+message SuspendProjectRequest {
+	// id of the project to be suspended
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// SuspendProjectResponse represents the response from suspends a project
+message SuspendProjectResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteProjectInvitationRequest represents the parameters for deletes project invitation
+message DeleteProjectInvitationRequest {
+	// id of the invitation
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteProjectInvitationResponse represents the response from deletes project invitation
+message DeleteProjectInvitationResponse {
 	// The Result
 	Result result = 1;
 }
@@ -296,27 +275,41 @@ message UpdateProjectResponse {
 	Result result = 1;
 }
 
-// SuspendProjectRequest represents the parameters for suspends a project
-message SuspendProjectRequest {
-	// id of the project to be suspended
-	int64 id = 1 [
+// UpdateProjectInvitationRequest represents the parameters for accepts or declines project invitation
+message UpdateProjectInvitationRequest {
+	// id of the project to join
+	int64 project_id = 1 [
 		(validate.field).required = true
 	];
 
-	//
-	int64 start_event_id = 2;
+	// account that is joining the project
+	string account_name = 2;
+
+	// User UUID, required for adding account from external provisioning system
+	int64 user_id = 3;
+
+	// list invitations for specified account; this parameter has to be specified with domainId
+	string token = 4;
+
+	// if true, accept the invitation, decline if false. True by default
+	bool accept = 5 [
+		features.field_presence = EXPLICIT
+	];
 
 	//
-	string injected_job_id = 3 [
+	int64 start_event_id = 6;
+
+	//
+	string injected_job_id = 7 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	string response_type = 4;
+	string response_type = 8;
 }
 
-// SuspendProjectResponse represents the response from suspends a project
-message SuspendProjectResponse {
+// UpdateProjectInvitationResponse represents the response from accepts or declines project invitation
+message UpdateProjectInvitationResponse {
 	// The Result
 	Result result = 1;
 }
@@ -413,6 +406,31 @@ message ListProjectInvitationsResponse {
 
 	// The total count of ProjectInvitations
 	int32 total_count = 2;
+}
+
+// ActivateProjectRequest represents the parameters for activates a project
+message ActivateProjectRequest {
+	// id of the project to be modified
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// ActivateProjectResponse represents the response from activates a project
+message ActivateProjectResponse {
+	// The Result
+	Result result = 1;
 }
 
 // Project represents a Project Item

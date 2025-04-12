@@ -8,81 +8,27 @@ import "google/protobuf/descriptor.proto";
 
 // RoutingService provides operations for managing Network.Routings
 service RoutingService {
-	option (annotations.service).scope = Scope_USER;
-
-	// CreateRoutingFirewallRule Creates a routing firewall rule in the given network in ROUTED mode
-	rpc CreateRoutingFirewallRule(CreateRoutingFirewallRuleRequest) returns (CreateRoutingFirewallRuleResponse) {}
+	option (annotations.service).scope = SCOPE_USER;
 
 	// UpdateRoutingFirewallRule Updates Routing firewall rule with specified ID
-	rpc UpdateRoutingFirewallRule(UpdateRoutingFirewallRuleRequest) returns (UpdateRoutingFirewallRuleResponse) {}
+	rpc UpdateRoutingFirewallRule(UpdateRoutingFirewallRuleRequest) returns (UpdateRoutingFirewallRuleResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// DeleteRoutingFirewallRule Deletes a routing firewall rule
-	rpc DeleteRoutingFirewallRule(DeleteRoutingFirewallRuleRequest) returns (DeleteRoutingFirewallRuleResponse) {}
+	rpc DeleteRoutingFirewallRule(DeleteRoutingFirewallRuleRequest) returns (DeleteRoutingFirewallRuleResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// ListRoutingFirewallRules Lists all Routing firewall rules
-	rpc ListRoutingFirewallRules(ListRoutingFirewallRulesRequest) returns (ListRoutingFirewallRulesResponse) {}
-}
+	rpc ListRoutingFirewallRules(ListRoutingFirewallRulesRequest) returns (ListRoutingFirewallRulesResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
-// CreateRoutingFirewallRuleRequest represents the parameters for creates a routing firewall rule in the given network in routed mode
-message CreateRoutingFirewallRuleRequest {
-	// the protocol for the firewall rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number
-	string protocol = 1 [
-		(validate.field).required = true
-	];
-
-	// the starting port of firewall rule
-	int32 public_start_port = 2 [
-		(validate.field).int32.gte = 1,
-		(validate.field).int32.lte = 65535
-	];
-
-	// the ending port of firewall rule
-	int32 public_end_port = 3 [
-		(validate.field).int32.gte = 1,
-		(validate.field).int32.lte = 65535
-	];
-
-	// the source CIDR list to allow traffic from. Multiple entries must be separated by a single comma character (,).
-	repeated string source_cidr_list = 4;
-
-	// the destination CIDR list to allow traffic to. Multiple entries must be separated by a single comma character (,).
-	repeated string destination_cidrlist = 5;
-
-	// type of the ICMP message being sent
-	int32 icmp_type = 6;
-
-	// error code for this ICMP message
-	int32 icmp_code = 7;
-
-	// The network of the VM the firewall rule will be created for
-	int64 network_id = 8 [
-		(validate.field).required = true
-	];
-
-	// the traffic type for the Routing firewall rule, can be ingress or egress, defaulted to ingress if not specified
-	string traffic_type = 9;
-
-	// an optional field, whether to the display the rule to the end user or not
-	bool display = 10 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	int64 start_event_id = 11;
-
-	//
-	string injected_job_id = 12 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 13;
-}
-
-// CreateRoutingFirewallRuleResponse represents the response from creates a routing firewall rule in the given network in routed mode
-message CreateRoutingFirewallRuleResponse {
-	// The Result
-	Result result = 1;
+	// CreateRoutingFirewallRule Creates a routing firewall rule in the given network in ROUTED mode
+	rpc CreateRoutingFirewallRule(CreateRoutingFirewallRuleRequest) returns (CreateRoutingFirewallRuleResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
 // UpdateRoutingFirewallRuleRequest represents the parameters for updates routing firewall rule with specified id
@@ -210,6 +156,68 @@ message ListRoutingFirewallRulesResponse {
 
 	// The total count of FirewallRules
 	int32 total_count = 2;
+}
+
+// CreateRoutingFirewallRuleRequest represents the parameters for creates a routing firewall rule in the given network in routed mode
+message CreateRoutingFirewallRuleRequest {
+	// the protocol for the firewall rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number
+	string protocol = 1 [
+		(validate.field).required = true
+	];
+
+	// the starting port of firewall rule
+	int32 public_start_port = 2 [
+		(validate.field).int32.gte = 1,
+		(validate.field).int32.lte = 65535
+	];
+
+	// the ending port of firewall rule
+	int32 public_end_port = 3 [
+		(validate.field).int32.gte = 1,
+		(validate.field).int32.lte = 65535
+	];
+
+	// the source CIDR list to allow traffic from. Multiple entries must be separated by a single comma character (,).
+	repeated string source_cidr_list = 4;
+
+	// the destination CIDR list to allow traffic to. Multiple entries must be separated by a single comma character (,).
+	repeated string destination_cidrlist = 5;
+
+	// type of the ICMP message being sent
+	int32 icmp_type = 6;
+
+	// error code for this ICMP message
+	int32 icmp_code = 7;
+
+	// The network of the VM the firewall rule will be created for
+	int64 network_id = 8 [
+		(validate.field).required = true
+	];
+
+	// the traffic type for the Routing firewall rule, can be ingress or egress, defaulted to ingress if not specified
+	string traffic_type = 9;
+
+	// an optional field, whether to the display the rule to the end user or not
+	bool display = 10 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 11;
+
+	//
+	string injected_job_id = 12 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 13;
+}
+
+// CreateRoutingFirewallRuleResponse represents the response from creates a routing firewall rule in the given network in routed mode
+message CreateRoutingFirewallRuleResponse {
+	// The Result
+	Result result = 1;
 }
 
 // FirewallRule represents a FirewallRule Item

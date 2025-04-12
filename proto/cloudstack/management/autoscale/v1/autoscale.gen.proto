@@ -8,125 +8,112 @@ import "google/protobuf/descriptor.proto";
 
 // AutoscaleService provides operations for managing Autoscales
 service AutoscaleService {
-	option (annotations.service).scope = Scope_USER;
-
-	// EnableAutoScaleVmGroup Enables an AutoScale Vm Group
-	rpc EnableAutoScaleVmGroup(EnableAutoScaleVmGroupRequest) returns (EnableAutoScaleVmGroupResponse) {}
-
-	// DeleteAutoScaleVmGroup Deletes a autoscale vm group.
-	rpc DeleteAutoScaleVmGroup(DeleteAutoScaleVmGroupRequest) returns (DeleteAutoScaleVmGroupResponse) {}
+	option (annotations.service).scope = SCOPE_USER;
 
 	// ListCounters List the counters for VM auto scaling
-	rpc ListCounters(ListCountersRequest) returns (ListCountersResponse) {}
-
-	// UpdateAutoScalePolicy Updates an existing autoscale policy.
-	rpc UpdateAutoScalePolicy(UpdateAutoScalePolicyRequest) returns (UpdateAutoScalePolicyResponse) {}
-
-	// DisableAutoScaleVmGroup Disables an AutoScale Vm Group
-	rpc DisableAutoScaleVmGroup(DisableAutoScaleVmGroupRequest) returns (DisableAutoScaleVmGroupResponse) {}
-
-	// UpdateAutoScaleVmProfile Updates an existing autoscale vm profile.
-	rpc UpdateAutoScaleVmProfile(UpdateAutoScaleVmProfileRequest) returns (UpdateAutoScaleVmProfileResponse) {}
-
-	// CreateCounter Adds metric counter for VM auto scaling
-	rpc CreateCounter(CreateCounterRequest) returns (CreateCounterResponse) {}
+	rpc ListCounters(ListCountersRequest) returns (ListCountersResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// UpdateAutoScaleVmGroup Updates an existing autoscale vm group.
-	rpc UpdateAutoScaleVmGroup(UpdateAutoScaleVmGroupRequest) returns (UpdateAutoScaleVmGroupResponse) {}
+	rpc UpdateAutoScaleVmGroup(UpdateAutoScaleVmGroupRequest) returns (UpdateAutoScaleVmGroupResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
-	// DeleteCounter Deletes a counter for VM auto scaling
-	rpc DeleteCounter(DeleteCounterRequest) returns (DeleteCounterResponse) {}
+	// CreateCounter Adds metric counter for VM auto scaling
+	rpc CreateCounter(CreateCounterRequest) returns (CreateCounterResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
-	// DeleteCondition Removes a condition for VM auto scaling
-	rpc DeleteCondition(DeleteConditionRequest) returns (DeleteConditionResponse) {}
-
-	// ListAutoScalePolicies Lists autoscale policies.
-	rpc ListAutoScalePolicies(ListAutoScalePoliciesRequest) returns (ListAutoScalePoliciesResponse) {}
-
-	// DeleteAutoScalePolicy Deletes a autoscale policy.
-	rpc DeleteAutoScalePolicy(DeleteAutoScalePolicyRequest) returns (DeleteAutoScalePolicyResponse) {}
-
-	// CreateAutoScalePolicy Creates an autoscale policy for a provision or deprovision action, the action is taken when the all the conditions evaluates to true for the specified duration. The policy is in effect once it is attached to a autscale vm group.
-	rpc CreateAutoScalePolicy(CreateAutoScalePolicyRequest) returns (CreateAutoScalePolicyResponse) {}
-
-	// CreateAutoScaleVmProfile Creates a profile that contains information about the virtual machine which will be provisioned automatically by autoscale feature.
-	rpc CreateAutoScaleVmProfile(CreateAutoScaleVmProfileRequest) returns (CreateAutoScaleVmProfileResponse) {}
-
-	// CreateCondition Creates a condition for VM auto scaling
-	rpc CreateCondition(CreateConditionRequest) returns (CreateConditionResponse) {}
-
-	// ListAutoScaleVmGroups Lists autoscale vm groups.
-	rpc ListAutoScaleVmGroups(ListAutoScaleVmGroupsRequest) returns (ListAutoScaleVmGroupsResponse) {}
-
-	// ListConditions List Conditions for VM auto scaling
-	rpc ListConditions(ListConditionsRequest) returns (ListConditionsResponse) {}
-
-	// CreateAutoScaleVmGroup Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
-	rpc CreateAutoScaleVmGroup(CreateAutoScaleVmGroupRequest) returns (CreateAutoScaleVmGroupResponse) {}
+	// DisableAutoScaleVmGroup Disables an AutoScale Vm Group
+	rpc DisableAutoScaleVmGroup(DisableAutoScaleVmGroupRequest) returns (DisableAutoScaleVmGroupResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// ListAutoScaleVmProfiles Lists autoscale vm profiles.
-	rpc ListAutoScaleVmProfiles(ListAutoScaleVmProfilesRequest) returns (ListAutoScaleVmProfilesResponse) {}
+	rpc ListAutoScaleVmProfiles(ListAutoScaleVmProfilesRequest) returns (ListAutoScaleVmProfilesResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// CreateAutoScaleVmGroup Creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
+	rpc CreateAutoScaleVmGroup(CreateAutoScaleVmGroupRequest) returns (CreateAutoScaleVmGroupResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListConditions List Conditions for VM auto scaling
+	rpc ListConditions(ListConditionsRequest) returns (ListConditionsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListAutoScaleVmGroups Lists autoscale vm groups.
+	rpc ListAutoScaleVmGroups(ListAutoScaleVmGroupsRequest) returns (ListAutoScaleVmGroupsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListAutoScalePolicies Lists autoscale policies.
+	rpc ListAutoScalePolicies(ListAutoScalePoliciesRequest) returns (ListAutoScalePoliciesResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// DeleteCounter Deletes a counter for VM auto scaling
+	rpc DeleteCounter(DeleteCounterRequest) returns (DeleteCounterResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// CreateCondition Creates a condition for VM auto scaling
+	rpc CreateCondition(CreateConditionRequest) returns (CreateConditionResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// DeleteAutoScaleVmGroup Deletes a autoscale vm group.
+	rpc DeleteAutoScaleVmGroup(DeleteAutoScaleVmGroupRequest) returns (DeleteAutoScaleVmGroupResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// DeleteCondition Removes a condition for VM auto scaling
+	rpc DeleteCondition(DeleteConditionRequest) returns (DeleteConditionResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// CreateAutoScalePolicy Creates an autoscale policy for a provision or deprovision action, the action is taken when the all the conditions evaluates to true for the specified duration. The policy is in effect once it is attached to a autscale vm group.
+	rpc CreateAutoScalePolicy(CreateAutoScalePolicyRequest) returns (CreateAutoScalePolicyResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// EnableAutoScaleVmGroup Enables an AutoScale Vm Group
+	rpc EnableAutoScaleVmGroup(EnableAutoScaleVmGroupRequest) returns (EnableAutoScaleVmGroupResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// UpdateAutoScalePolicy Updates an existing autoscale policy.
+	rpc UpdateAutoScalePolicy(UpdateAutoScalePolicyRequest) returns (UpdateAutoScalePolicyResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// DeleteAutoScalePolicy Deletes a autoscale policy.
+	rpc DeleteAutoScalePolicy(DeleteAutoScalePolicyRequest) returns (DeleteAutoScalePolicyResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// UpdateCondition Updates a condition for VM auto scaling
-	rpc UpdateCondition(UpdateConditionRequest) returns (UpdateConditionResponse) {}
+	rpc UpdateCondition(UpdateConditionRequest) returns (UpdateConditionResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// CreateAutoScaleVmProfile Creates a profile that contains information about the virtual machine which will be provisioned automatically by autoscale feature.
+	rpc CreateAutoScaleVmProfile(CreateAutoScaleVmProfileRequest) returns (CreateAutoScaleVmProfileResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// DeleteAutoScaleVmProfile Deletes a autoscale vm profile.
-	rpc DeleteAutoScaleVmProfile(DeleteAutoScaleVmProfileRequest) returns (DeleteAutoScaleVmProfileResponse) {}
-}
+	rpc DeleteAutoScaleVmProfile(DeleteAutoScaleVmProfileRequest) returns (DeleteAutoScaleVmProfileResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
-// EnableAutoScaleVmGroupRequest represents the parameters for enables an autoscale vm group
-message EnableAutoScaleVmGroupRequest {
-	// the ID of the autoscale group
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// EnableAutoScaleVmGroupResponse represents the response from enables an autoscale vm group
-message EnableAutoScaleVmGroupResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeleteAutoScaleVmGroupRequest represents the parameters for deletes a autoscale vm group.
-message DeleteAutoScaleVmGroupRequest {
-	// the ID of the autoscale group
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// true if all VMs have to be cleaned up, false otherwise
-	bool cleanup = 2 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	int64 start_event_id = 3;
-
-	//
-	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 5;
-}
-
-// DeleteAutoScaleVmGroupResponse represents the response from deletes a autoscale vm group.
-message DeleteAutoScaleVmGroupResponse {
-	// The Result
-	Result result = 1;
+	// UpdateAutoScaleVmProfile Updates an existing autoscale vm profile.
+	rpc UpdateAutoScaleVmProfile(UpdateAutoScaleVmProfileRequest) returns (UpdateAutoScaleVmProfileResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
 // ListCountersRequest represents the parameters for list the counters for vm auto scaling
@@ -169,180 +156,6 @@ message ListCountersResponse {
 
 	// The total count of Counters
 	int32 total_count = 2;
-}
-
-// UpdateAutoScalePolicyRequest represents the parameters for updates an existing autoscale policy.
-message UpdateAutoScalePolicyRequest {
-	// the name of the autoscale policy
-	string name = 1 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// the duration in which the conditions have to be true before action is taken
-	int32 duration = 2;
-
-	// the cool down period in which the policy should not be evaluated after the action has been taken
-	int32 quiet_time = 3;
-
-	// the list of IDs of the conditions that are being evaluated on every interval
-	repeated string condition_ids = 4;
-
-	// the ID of the autoscale policy
-	int64 id = 5 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 6;
-
-	//
-	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 8;
-}
-
-// UpdateAutoScalePolicyResponse represents the response from updates an existing autoscale policy.
-message UpdateAutoScalePolicyResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DisableAutoScaleVmGroupRequest represents the parameters for disables an autoscale vm group
-message DisableAutoScaleVmGroupRequest {
-	// the ID of the autoscale group
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DisableAutoScaleVmGroupResponse represents the response from disables an autoscale vm group
-message DisableAutoScaleVmGroupResponse {
-	// The Result
-	Result result = 1;
-}
-
-// UpdateAutoScaleVmProfileRequest represents the parameters for updates an existing autoscale vm profile.
-message UpdateAutoScaleVmProfileRequest {
-	// the ID of the autoscale vm profile
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	// the service offering of the auto deployed virtual machine
-	int64 service_offering_id = 2;
-
-	// the template of the auto deployed virtual machine
-	int64 template_id = 3;
-
-	// the time allowed for existing connections to get closed before a vm is destroyed
-	int32 expunge_vm_grace_period = 4;
-
-	// counterparam list. Example: counterparam[0].name=snmpcommunity&counterparam[0].value=public&counterparam[1].name=snmpport&counterparam[1].value=161
-	map<string, string> counter_param_list = 5;
-
-	/*
-	 * parameters other than zoneId/serviceOfferringId/templateId of the auto deployed virtual machine.
-	 * Example: otherdeployparams[0].name=serviceofferingid&otherdeployparams[0].value=a7fb50f6-01d9-11ed-8bc1-77f8f0228926&otherdeployparams[1].name=rootdisksize&otherdeployparams[1].value=10 .
-	 * Possible parameters are "rootdisksize", "diskofferingid","size", "securitygroupids", "overridediskofferingid", "keypairs", "affinitygroupids'" and "networkids".
-	 */
-	map<string, string> other_deploy_params = 6;
-
-	// an optional binary data that can be sent to the virtual machine upon a successful deployment. This binary data must be base64 encoded before adding it to the request. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
-	string user_data = 7;
-
-	// the ID of the userdata
-	int64 user_data_id = 8;
-
-	// used to specify the parameters values for the variables in userdata.
-	map<string, string> user_data_details = 9;
-
-	// the ID of the user used to launch and destroy the VMs
-	int64 autoscale_user_id = 10;
-
-	// an optional field, whether to the display the profile to the end user or not
-	bool display = 11 [
-		features.field_presence = EXPLICIT
-	];
-
-	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
-	string custom_id = 12 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	int64 start_event_id = 13;
-
-	//
-	string injected_job_id = 14 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 15;
-}
-
-// UpdateAutoScaleVmProfileResponse represents the response from updates an existing autoscale vm profile.
-message UpdateAutoScaleVmProfileResponse {
-	// The Result
-	Result result = 1;
-}
-
-// CreateCounterRequest represents the parameters for adds metric counter for vm auto scaling
-message CreateCounterRequest {
-	// Name of the counter.
-	string name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// Source of the counter.
-	string source = 2 [
-		(validate.field).required = true
-	];
-
-	// Value of the counter e.g. oid in case of snmp.
-	string value = 3 [
-		(validate.field).required = true
-	];
-
-	// Network provider of the counter.
-	string provider = 4 [
-		(validate.field).required    = true,
-		(validate.field).string.uuid = true
-	];
-
-	//
-	int64 start_event_id = 5;
-
-	//
-	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 7;
-}
-
-// CreateCounterResponse represents the response from adds metric counter for vm auto scaling
-message CreateCounterResponse {
-	// The Result
-	Result result = 1;
 }
 
 // UpdateAutoScaleVmGroupRequest represents the parameters for updates an existing autoscale vm group.
@@ -401,81 +214,101 @@ message UpdateAutoScaleVmGroupResponse {
 	Result result = 1;
 }
 
-// DeleteCounterRequest represents the parameters for deletes a counter for vm auto scaling
-message DeleteCounterRequest {
-	// the ID of the counter
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DeleteCounterResponse represents the response from deletes a counter for vm auto scaling
-message DeleteCounterResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeleteConditionRequest represents the parameters for removes a condition for vm auto scaling
-message DeleteConditionRequest {
-	// the ID of the condition.
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DeleteConditionResponse represents the response from removes a condition for vm auto scaling
-message DeleteConditionResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListAutoScalePoliciesRequest represents the parameters for lists autoscale policies.
-message ListAutoScalePoliciesRequest {
-	// the ID of the autoscale policy
-	int64 id = 1;
-
-	// the name of the autoscale policy
-	string name = 2 [
+// CreateCounterRequest represents the parameters for adds metric counter for vm auto scaling
+message CreateCounterRequest {
+	// Name of the counter.
+	string name = 1 [
+		(validate.field).required       = true,
 		(validate.field).string.min_len = 1,
 		(validate.field).string.max_len = 255
 	];
 
-	// the ID of the condition of the policy
-	int64 condition_id = 3;
+	// Source of the counter.
+	string source = 2 [
+		(validate.field).required = true
+	];
 
-	// the action to be executed if all the conditions evaluate to true for the specified duration.
-	string action = 4;
+	// Value of the counter e.g. oid in case of snmp.
+	string value = 3 [
+		(validate.field).required = true
+	];
 
-	// the ID of the autoscale vm group
-	int64 vm_group_id = 5;
+	// Network provider of the counter.
+	string provider = 4 [
+		(validate.field).required    = true,
+		(validate.field).string.uuid = true
+	];
+
+	//
+	int64 start_event_id = 5;
+
+	//
+	string injected_job_id = 6 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 7;
+}
+
+// CreateCounterResponse represents the response from adds metric counter for vm auto scaling
+message CreateCounterResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DisableAutoScaleVmGroupRequest represents the parameters for disables an autoscale vm group
+message DisableAutoScaleVmGroupRequest {
+	// the ID of the autoscale group
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DisableAutoScaleVmGroupResponse represents the response from disables an autoscale vm group
+message DisableAutoScaleVmGroupResponse {
+	// The Result
+	Result result = 1;
+}
+
+// ListAutoScaleVmProfilesRequest represents the parameters for lists autoscale vm profiles.
+message ListAutoScaleVmProfilesRequest {
+	// the ID of the autoscale vm profile
+	int64 id = 1;
+
+	// the templateid of the autoscale vm profile
+	int64 template_id = 2;
+
+	// list profiles by service offering id
+	int64 service_off_id = 3;
+
+	// the otherdeployparameters of the autoscale vm profile
+	string other_deploy_params = 4;
+
+	// availability zone for the auto deployed virtual machine
+	int64 zone_id = 5;
+
+	// list resources by display flag; only ROOT admin is eligible to pass this parameter
+	bool display = 6 [
+		features.field_presence = EXPLICIT
+	];
 
 	// list objects by project; if projectid=-1 lists All VMs
-	int64 project_id = 6;
+	int64 project_id = 7;
 
 	// list resources by account. Must be used with the domainId parameter.
-	string account_name = 7 [
+	string account_name = 8 [
 		(validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
@@ -484,203 +317,121 @@ message ListAutoScalePoliciesRequest {
 	];
 
 	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	bool list_all = 8 [
+	bool list_all = 9 [
 		features.field_presence = EXPLICIT
 	];
 
 	// list only resources belonging to the domain specified
-	int64 domain_id = 9;
+	int64 domain_id = 10;
 
 	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	bool recursive = 10 [
+	bool recursive = 11 [
 		features.field_presence = EXPLICIT
 	];
 
 	// List by keyword
-	string keyword = 11;
+	string keyword = 12;
 
 	//
-	int32 page = 12;
+	int32 page = 13;
 
 	//
-	int32 page_size = 13;
+	int32 page_size = 14;
 
 	//
-	string response_type = 14;
+	string response_type = 15;
 }
 
-// ListAutoScalePoliciesResponse represents the response from lists autoscale policies.
-message ListAutoScalePoliciesResponse {
+// ListAutoScaleVmProfilesResponse represents the response from lists autoscale vm profiles.
+message ListAutoScaleVmProfilesResponse {
 	option (validate.message).disabled = false;
-	// The list of AutoScalePolicys
-	repeated AutoScalePolicy items = 1;
+	// The list of AutoScaleVmProfiles
+	repeated AutoScaleVmProfile items = 1;
 
-	// The total count of AutoScalePolicys
+	// The total count of AutoScaleVmProfiles
 	int32 total_count = 2;
 }
 
-// DeleteAutoScalePolicyRequest represents the parameters for deletes a autoscale policy.
-message DeleteAutoScalePolicyRequest {
-	// the ID of the autoscale policy
-	int64 id = 1 [
+// CreateAutoScaleVmGroupRequest represents the parameters for creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
+message CreateAutoScaleVmGroupRequest {
+	// the ID of the load balancer rule
+	int64 lb_rule_id = 1 [
 		(validate.field).required = true
 	];
 
-	//
-	int64 start_event_id = 2;
-
-	//
-	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 4;
-}
-
-// DeleteAutoScalePolicyResponse represents the response from deletes a autoscale policy.
-message DeleteAutoScalePolicyResponse {
-	// The Result
-	Result result = 1;
-}
-
-// CreateAutoScalePolicyRequest represents the parameters for creates an autoscale policy for a provision or deprovision action, the action is taken when the all the conditions evaluates to true for the specified duration. the policy is in effect once it is attached to a autscale vm group.
-message CreateAutoScalePolicyRequest {
-	// the name of the autoscale policy
-	string name = 1 [
+	// the name of the autoscale vmgroup
+	string name = 2 [
 		(validate.field).string.min_len = 1,
 		(validate.field).string.max_len = 255
 	];
 
-	// the action to be executed if all the conditions evaluate to true for the specified duration.
-	string action = 2 [
+	// the minimum number of members in the vmgroup, the number of instances in the vm group will be equal to or more than this number.
+	int32 min_members = 3 [
 		(validate.field).required = true
 	];
 
-	// the duration in which the conditions have to be true before action is taken
-	int32 duration = 3 [
+	// the maximum number of members in the vmgroup, The number of instances in the vm group will be equal to or less than this number.
+	int32 max_members = 4 [
 		(validate.field).required = true
 	];
 
-	// the cool down period in which the policy should not be evaluated after the action has been taken
-	int32 quiet_time = 4;
+	// the frequency in which the performance counters to be collected
+	int32 interval = 5;
 
-	// the list of IDs of the conditions that are being evaluated on every interval
-	repeated string condition_ids = 5 [
+	// list of scaleup autoscale policies
+	repeated string scale_up_policy_ids = 6 [
 		(validate.field).required = true
 	];
 
-	//
-	int64 start_event_id = 6;
-
-	//
-	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 8;
-}
-
-// CreateAutoScalePolicyResponse represents the response from creates an autoscale policy for a provision or deprovision action, the action is taken when the all the conditions evaluates to true for the specified duration. the policy is in effect once it is attached to a autscale vm group.
-message CreateAutoScalePolicyResponse {
-	// The Result
-	Result result = 1;
-}
-
-// CreateAutoScaleVmProfileRequest represents the parameters for creates a profile that contains information about the virtual machine which will be provisioned automatically by autoscale feature.
-message CreateAutoScaleVmProfileRequest {
-	// availability zone for the auto deployed virtual machine
-	int64 zone_id = 1 [
+	// list of scaledown autoscale policies
+	repeated string scale_down_policy_ids = 7 [
 		(validate.field).required = true
 	];
 
-	// the service offering of the auto deployed virtual machine
-	int64 service_offering_id = 2 [
+	// the autoscale profile that contains information about the vms in the vm group.
+	int64 profile_id = 8 [
 		(validate.field).required = true
 	];
 
-	// the template of the auto deployed virtual machine
-	int64 template_id = 3 [
-		(validate.field).required = true
-	];
-
-	/*
-	 * parameters other than zoneId/serviceOfferringId/templateId of the auto deployed virtual machine.
-	 * Example: otherdeployparams[0].name=serviceofferingid&otherdeployparams[0].value=a7fb50f6-01d9-11ed-8bc1-77f8f0228926&otherdeployparams[1].name=rootdisksize&otherdeployparams[1].value=10 .
-	 * Possible parameters are "rootdisksize", "diskofferingid","size", "securitygroupids", "overridediskofferingid", "keypairs", "affinitygroupids'" and "networkids".
-	 */
-	map<string, string> other_deploy_params = 4;
-
-	// the time allowed for existing connections to get closed before a vm is expunged
-	int32 expunge_vm_grace_period = 5;
-
-	// counterparam list. Example: counterparam[0].name=snmpcommunity&counterparam[0].value=public&counterparam[1].name=snmpport&counterparam[1].value=161
-	map<string, string> counter_param_list = 6;
-
-	// an optional binary data that can be sent to the virtual machine upon a successful deployment. This binary data must be base64 encoded before adding it to the request. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
-	string user_data = 7;
-
-	// the ID of the Userdata
-	int64 user_data_id = 8;
-
-	// used to specify the parameters values for the variables in userdata.
-	map<string, string> user_data_details = 9;
-
-	// the ID of the user used to launch and destroy the VMs
-	int64 autoscale_user_id = 10;
-
-	// an optional field, whether to the display the profile to the end user or not
-	bool display = 11 [
+	// an optional field, whether to the display the group to the end user or not
+	bool display = 9 [
 		features.field_presence = EXPLICIT
 	];
 
-	// account that will own the autoscale VM profile
-	string account_name = 12;
-
-	// an optional project for the autoscale VM profile
-	int64 project_id = 13;
-
-	// domain ID of the account owning a autoscale VM profile
-	int64 domain_id = 14;
+	//
+	int64 start_event_id = 10;
 
 	//
-	int64 start_event_id = 15;
-
-	//
-	string injected_job_id = 16 [
+	string injected_job_id = 11 [
 		(validate.field).string.uuid = true
 	];
 
 	//
-	string response_type = 17;
+	string response_type = 12;
 }
 
-// CreateAutoScaleVmProfileResponse represents the response from creates a profile that contains information about the virtual machine which will be provisioned automatically by autoscale feature.
-message CreateAutoScaleVmProfileResponse {
+// CreateAutoScaleVmGroupResponse represents the response from creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
+message CreateAutoScaleVmGroupResponse {
 	// The Result
 	Result result = 1;
 }
 
-// CreateConditionRequest represents the parameters for creates a condition for vm auto scaling
-message CreateConditionRequest {
-	// ID of the Counter.
-	int64 counter_id = 1 [
-		(validate.field).required = true
-	];
+// ListConditionsRequest represents the parameters for list conditions for vm auto scaling
+message ListConditionsRequest {
+	// ID of the Condition.
+	int64 id = 1;
 
-	// Relational Operator to be used with threshold. Valid values are EQ, GT, LT, GE, LE.
-	string relational_operator = 2 [
-		(validate.field).required = true
-	];
+	// Counter-id of the condition.
+	int64 counter_id = 2;
 
-	// Value for which the Counter will be evaluated with the Operator selected.
-	int64 threshold = 3 [
-		(validate.field).required = true
-	];
+	// the ID of the policy
+	int64 policy_id = 3;
 
-	// the account of the condition. Must be used with the domainId parameter.
-	string account_name = 4 [
+	// list objects by project; if projectid=-1 lists All VMs
+	int64 project_id = 4;
+
+	// list resources by account. Must be used with the domainId parameter.
+	string account_name = 5 [
 		(validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
@@ -688,28 +439,40 @@ message CreateConditionRequest {
 		}
 	];
 
-	// an optional project for condition
-	int64 project_id = 5;
-
-	// the domain ID of the account.
-	int64 domain_id = 6;
-
-	//
-	int64 start_event_id = 7;
-
-	//
-	string injected_job_id = 8 [
-		(validate.field).string.uuid = true
+	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
+	bool list_all = 6 [
+		features.field_presence = EXPLICIT
 	];
 
+	// list only resources belonging to the domain specified
+	int64 domain_id = 7;
+
+	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
+	bool recursive = 8 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 9;
+
 	//
-	string response_type = 9;
+	int32 page = 10;
+
+	//
+	int32 page_size = 11;
+
+	//
+	string response_type = 12;
 }
 
-// CreateConditionResponse represents the response from creates a condition for vm auto scaling
-message CreateConditionResponse {
-	// The Result
-	Result result = 1;
+// ListConditionsResponse represents the response from list conditions for vm auto scaling
+message ListConditionsResponse {
+	option (validate.message).disabled = false;
+	// The list of Conditions
+	repeated Condition items = 1;
+
+	// The total count of Conditions
+	int32 total_count = 2;
 }
 
 // ListAutoScaleVmGroupsRequest represents the parameters for lists autoscale vm groups.
@@ -788,156 +551,31 @@ message ListAutoScaleVmGroupsResponse {
 	int32 total_count = 2;
 }
 
-// ListConditionsRequest represents the parameters for list conditions for vm auto scaling
-message ListConditionsRequest {
-	// ID of the Condition.
+// ListAutoScalePoliciesRequest represents the parameters for lists autoscale policies.
+message ListAutoScalePoliciesRequest {
+	// the ID of the autoscale policy
 	int64 id = 1;
 
-	// Counter-id of the condition.
-	int64 counter_id = 2;
-
-	// the ID of the policy
-	int64 policy_id = 3;
-
-	// list objects by project; if projectid=-1 lists All VMs
-	int64 project_id = 4;
-
-	// list resources by account. Must be used with the domainId parameter.
-	string account_name = 5 [
-		(validate.field).cel = {
-			id:         "account_name_with_domain_id",
-			expression: "!has(account_name) || has(domain_id)",
-			message:    "account_name must be used with domain_id parameter"
-		}
-	];
-
-	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	bool list_all = 6 [
-		features.field_presence = EXPLICIT
-	];
-
-	// list only resources belonging to the domain specified
-	int64 domain_id = 7;
-
-	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	bool recursive = 8 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List by keyword
-	string keyword = 9;
-
-	//
-	int32 page = 10;
-
-	//
-	int32 page_size = 11;
-
-	//
-	string response_type = 12;
-}
-
-// ListConditionsResponse represents the response from list conditions for vm auto scaling
-message ListConditionsResponse {
-	option (validate.message).disabled = false;
-	// The list of Conditions
-	repeated Condition items = 1;
-
-	// The total count of Conditions
-	int32 total_count = 2;
-}
-
-// CreateAutoScaleVmGroupRequest represents the parameters for creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
-message CreateAutoScaleVmGroupRequest {
-	// the ID of the load balancer rule
-	int64 lb_rule_id = 1 [
-		(validate.field).required = true
-	];
-
-	// the name of the autoscale vmgroup
+	// the name of the autoscale policy
 	string name = 2 [
 		(validate.field).string.min_len = 1,
 		(validate.field).string.max_len = 255
 	];
 
-	// the minimum number of members in the vmgroup, the number of instances in the vm group will be equal to or more than this number.
-	int32 min_members = 3 [
-		(validate.field).required = true
-	];
+	// the ID of the condition of the policy
+	int64 condition_id = 3;
 
-	// the maximum number of members in the vmgroup, The number of instances in the vm group will be equal to or less than this number.
-	int32 max_members = 4 [
-		(validate.field).required = true
-	];
+	// the action to be executed if all the conditions evaluate to true for the specified duration.
+	string action = 4;
 
-	// the frequency in which the performance counters to be collected
-	int32 interval = 5;
-
-	// list of scaleup autoscale policies
-	repeated string scale_up_policy_ids = 6 [
-		(validate.field).required = true
-	];
-
-	// list of scaledown autoscale policies
-	repeated string scale_down_policy_ids = 7 [
-		(validate.field).required = true
-	];
-
-	// the autoscale profile that contains information about the vms in the vm group.
-	int64 profile_id = 8 [
-		(validate.field).required = true
-	];
-
-	// an optional field, whether to the display the group to the end user or not
-	bool display = 9 [
-		features.field_presence = EXPLICIT
-	];
-
-	//
-	int64 start_event_id = 10;
-
-	//
-	string injected_job_id = 11 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 12;
-}
-
-// CreateAutoScaleVmGroupResponse represents the response from creates and automatically starts a virtual machine based on a service offering, disk offering, and template.
-message CreateAutoScaleVmGroupResponse {
-	// The Result
-	Result result = 1;
-}
-
-// ListAutoScaleVmProfilesRequest represents the parameters for lists autoscale vm profiles.
-message ListAutoScaleVmProfilesRequest {
-	// the ID of the autoscale vm profile
-	int64 id = 1;
-
-	// the templateid of the autoscale vm profile
-	int64 template_id = 2;
-
-	// list profiles by service offering id
-	int64 service_off_id = 3;
-
-	// the otherdeployparameters of the autoscale vm profile
-	string other_deploy_params = 4;
-
-	// availability zone for the auto deployed virtual machine
-	int64 zone_id = 5;
-
-	// list resources by display flag; only ROOT admin is eligible to pass this parameter
-	bool display = 6 [
-		features.field_presence = EXPLICIT
-	];
+	// the ID of the autoscale vm group
+	int64 vm_group_id = 5;
 
 	// list objects by project; if projectid=-1 lists All VMs
-	int64 project_id = 7;
+	int64 project_id = 6;
 
 	// list resources by account. Must be used with the domainId parameter.
-	string account_name = 8 [
+	string account_name = 7 [
 		(validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
@@ -946,39 +584,303 @@ message ListAutoScaleVmProfilesRequest {
 	];
 
 	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false. Resources dedicated to a project are listed only if using the projectid parameter.
-	bool list_all = 9 [
+	bool list_all = 8 [
 		features.field_presence = EXPLICIT
 	];
 
 	// list only resources belonging to the domain specified
-	int64 domain_id = 10;
+	int64 domain_id = 9;
 
 	// defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves.
-	bool recursive = 11 [
+	bool recursive = 10 [
 		features.field_presence = EXPLICIT
 	];
 
 	// List by keyword
-	string keyword = 12;
+	string keyword = 11;
 
 	//
-	int32 page = 13;
+	int32 page = 12;
 
 	//
-	int32 page_size = 14;
+	int32 page_size = 13;
 
 	//
-	string response_type = 15;
+	string response_type = 14;
 }
 
-// ListAutoScaleVmProfilesResponse represents the response from lists autoscale vm profiles.
-message ListAutoScaleVmProfilesResponse {
+// ListAutoScalePoliciesResponse represents the response from lists autoscale policies.
+message ListAutoScalePoliciesResponse {
 	option (validate.message).disabled = false;
-	// The list of AutoScaleVmProfiles
-	repeated AutoScaleVmProfile items = 1;
+	// The list of AutoScalePolicys
+	repeated AutoScalePolicy items = 1;
 
-	// The total count of AutoScaleVmProfiles
+	// The total count of AutoScalePolicys
 	int32 total_count = 2;
+}
+
+// DeleteCounterRequest represents the parameters for deletes a counter for vm auto scaling
+message DeleteCounterRequest {
+	// the ID of the counter
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteCounterResponse represents the response from deletes a counter for vm auto scaling
+message DeleteCounterResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateConditionRequest represents the parameters for creates a condition for vm auto scaling
+message CreateConditionRequest {
+	// ID of the Counter.
+	int64 counter_id = 1 [
+		(validate.field).required = true
+	];
+
+	// Relational Operator to be used with threshold. Valid values are EQ, GT, LT, GE, LE.
+	string relational_operator = 2 [
+		(validate.field).required = true
+	];
+
+	// Value for which the Counter will be evaluated with the Operator selected.
+	int64 threshold = 3 [
+		(validate.field).required = true
+	];
+
+	// the account of the condition. Must be used with the domainId parameter.
+	string account_name = 4 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// an optional project for condition
+	int64 project_id = 5;
+
+	// the domain ID of the account.
+	int64 domain_id = 6;
+
+	//
+	int64 start_event_id = 7;
+
+	//
+	string injected_job_id = 8 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 9;
+}
+
+// CreateConditionResponse represents the response from creates a condition for vm auto scaling
+message CreateConditionResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteAutoScaleVmGroupRequest represents the parameters for deletes a autoscale vm group.
+message DeleteAutoScaleVmGroupRequest {
+	// the ID of the autoscale group
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// true if all VMs have to be cleaned up, false otherwise
+	bool cleanup = 2 [
+		features.field_presence = EXPLICIT
+	];
+
+	//
+	int64 start_event_id = 3;
+
+	//
+	string injected_job_id = 4 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 5;
+}
+
+// DeleteAutoScaleVmGroupResponse represents the response from deletes a autoscale vm group.
+message DeleteAutoScaleVmGroupResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteConditionRequest represents the parameters for removes a condition for vm auto scaling
+message DeleteConditionRequest {
+	// the ID of the condition.
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteConditionResponse represents the response from removes a condition for vm auto scaling
+message DeleteConditionResponse {
+	// The Result
+	Result result = 1;
+}
+
+// CreateAutoScalePolicyRequest represents the parameters for creates an autoscale policy for a provision or deprovision action, the action is taken when the all the conditions evaluates to true for the specified duration. the policy is in effect once it is attached to a autscale vm group.
+message CreateAutoScalePolicyRequest {
+	// the name of the autoscale policy
+	string name = 1 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the action to be executed if all the conditions evaluate to true for the specified duration.
+	string action = 2 [
+		(validate.field).required = true
+	];
+
+	// the duration in which the conditions have to be true before action is taken
+	int32 duration = 3 [
+		(validate.field).required = true
+	];
+
+	// the cool down period in which the policy should not be evaluated after the action has been taken
+	int32 quiet_time = 4;
+
+	// the list of IDs of the conditions that are being evaluated on every interval
+	repeated string condition_ids = 5 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 6;
+
+	//
+	string injected_job_id = 7 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 8;
+}
+
+// CreateAutoScalePolicyResponse represents the response from creates an autoscale policy for a provision or deprovision action, the action is taken when the all the conditions evaluates to true for the specified duration. the policy is in effect once it is attached to a autscale vm group.
+message CreateAutoScalePolicyResponse {
+	// The Result
+	Result result = 1;
+}
+
+// EnableAutoScaleVmGroupRequest represents the parameters for enables an autoscale vm group
+message EnableAutoScaleVmGroupRequest {
+	// the ID of the autoscale group
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// EnableAutoScaleVmGroupResponse represents the response from enables an autoscale vm group
+message EnableAutoScaleVmGroupResponse {
+	// The Result
+	Result result = 1;
+}
+
+// UpdateAutoScalePolicyRequest represents the parameters for updates an existing autoscale policy.
+message UpdateAutoScalePolicyRequest {
+	// the name of the autoscale policy
+	string name = 1 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// the duration in which the conditions have to be true before action is taken
+	int32 duration = 2;
+
+	// the cool down period in which the policy should not be evaluated after the action has been taken
+	int32 quiet_time = 3;
+
+	// the list of IDs of the conditions that are being evaluated on every interval
+	repeated string condition_ids = 4;
+
+	// the ID of the autoscale policy
+	int64 id = 5 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 6;
+
+	//
+	string injected_job_id = 7 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 8;
+}
+
+// UpdateAutoScalePolicyResponse represents the response from updates an existing autoscale policy.
+message UpdateAutoScalePolicyResponse {
+	// The Result
+	Result result = 1;
+}
+
+// DeleteAutoScalePolicyRequest represents the parameters for deletes a autoscale policy.
+message DeleteAutoScalePolicyRequest {
+	// the ID of the autoscale policy
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	int64 start_event_id = 2;
+
+	//
+	string injected_job_id = 3 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 4;
+}
+
+// DeleteAutoScalePolicyResponse represents the response from deletes a autoscale policy.
+message DeleteAutoScalePolicyResponse {
+	// The Result
+	Result result = 1;
 }
 
 // UpdateConditionRequest represents the parameters for updates a condition for vm auto scaling
@@ -1016,6 +918,80 @@ message UpdateConditionResponse {
 	Result result = 1;
 }
 
+// CreateAutoScaleVmProfileRequest represents the parameters for creates a profile that contains information about the virtual machine which will be provisioned automatically by autoscale feature.
+message CreateAutoScaleVmProfileRequest {
+	// availability zone for the auto deployed virtual machine
+	int64 zone_id = 1 [
+		(validate.field).required = true
+	];
+
+	// the service offering of the auto deployed virtual machine
+	int64 service_offering_id = 2 [
+		(validate.field).required = true
+	];
+
+	// the template of the auto deployed virtual machine
+	int64 template_id = 3 [
+		(validate.field).required = true
+	];
+
+	/*
+	 * parameters other than zoneId/serviceOfferringId/templateId of the auto deployed virtual machine.
+	 * Example: otherdeployparams[0].name=serviceofferingid&otherdeployparams[0].value=a7fb50f6-01d9-11ed-8bc1-77f8f0228926&otherdeployparams[1].name=rootdisksize&otherdeployparams[1].value=10 .
+	 * Possible parameters are "rootdisksize", "diskofferingid","size", "securitygroupids", "overridediskofferingid", "keypairs", "affinitygroupids'" and "networkids".
+	 */
+	map<string, string> other_deploy_params = 4;
+
+	// the time allowed for existing connections to get closed before a vm is expunged
+	int32 expunge_vm_grace_period = 5;
+
+	// counterparam list. Example: counterparam[0].name=snmpcommunity&counterparam[0].value=public&counterparam[1].name=snmpport&counterparam[1].value=161
+	map<string, string> counter_param_list = 6;
+
+	// an optional binary data that can be sent to the virtual machine upon a successful deployment. This binary data must be base64 encoded before adding it to the request. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
+	string user_data = 7;
+
+	// the ID of the Userdata
+	int64 user_data_id = 8;
+
+	// used to specify the parameters values for the variables in userdata.
+	map<string, string> user_data_details = 9;
+
+	// the ID of the user used to launch and destroy the VMs
+	int64 autoscale_user_id = 10;
+
+	// an optional field, whether to the display the profile to the end user or not
+	bool display = 11 [
+		features.field_presence = EXPLICIT
+	];
+
+	// account that will own the autoscale VM profile
+	string account_name = 12;
+
+	// an optional project for the autoscale VM profile
+	int64 project_id = 13;
+
+	// domain ID of the account owning a autoscale VM profile
+	int64 domain_id = 14;
+
+	//
+	int64 start_event_id = 15;
+
+	//
+	string injected_job_id = 16 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 17;
+}
+
+// CreateAutoScaleVmProfileResponse represents the response from creates a profile that contains information about the virtual machine which will be provisioned automatically by autoscale feature.
+message CreateAutoScaleVmProfileResponse {
+	// The Result
+	Result result = 1;
+}
+
 // DeleteAutoScaleVmProfileRequest represents the parameters for deletes a autoscale vm profile.
 message DeleteAutoScaleVmProfileRequest {
 	// the ID of the autoscale profile
@@ -1041,6 +1017,72 @@ message DeleteAutoScaleVmProfileResponse {
 	Result result = 1;
 }
 
+// UpdateAutoScaleVmProfileRequest represents the parameters for updates an existing autoscale vm profile.
+message UpdateAutoScaleVmProfileRequest {
+	// the ID of the autoscale vm profile
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	// the service offering of the auto deployed virtual machine
+	int64 service_offering_id = 2;
+
+	// the template of the auto deployed virtual machine
+	int64 template_id = 3;
+
+	// the time allowed for existing connections to get closed before a vm is destroyed
+	int32 expunge_vm_grace_period = 4;
+
+	// counterparam list. Example: counterparam[0].name=snmpcommunity&counterparam[0].value=public&counterparam[1].name=snmpport&counterparam[1].value=161
+	map<string, string> counter_param_list = 5;
+
+	/*
+	 * parameters other than zoneId/serviceOfferringId/templateId of the auto deployed virtual machine.
+	 * Example: otherdeployparams[0].name=serviceofferingid&otherdeployparams[0].value=a7fb50f6-01d9-11ed-8bc1-77f8f0228926&otherdeployparams[1].name=rootdisksize&otherdeployparams[1].value=10 .
+	 * Possible parameters are "rootdisksize", "diskofferingid","size", "securitygroupids", "overridediskofferingid", "keypairs", "affinitygroupids'" and "networkids".
+	 */
+	map<string, string> other_deploy_params = 6;
+
+	// an optional binary data that can be sent to the virtual machine upon a successful deployment. This binary data must be base64 encoded before adding it to the request. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
+	string user_data = 7;
+
+	// the ID of the userdata
+	int64 user_data_id = 8;
+
+	// used to specify the parameters values for the variables in userdata.
+	map<string, string> user_data_details = 9;
+
+	// the ID of the user used to launch and destroy the VMs
+	int64 autoscale_user_id = 10;
+
+	// an optional field, whether to the display the profile to the end user or not
+	bool display = 11 [
+		features.field_presence = EXPLICIT
+	];
+
+	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
+	string custom_id = 12 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	int64 start_event_id = 13;
+
+	//
+	string injected_job_id = 14 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 15;
+}
+
+// UpdateAutoScaleVmProfileResponse represents the response from updates an existing autoscale vm profile.
+message UpdateAutoScaleVmProfileResponse {
+	// The Result
+	Result result = 1;
+}
+
 // Counter represents a Counter Item
 message Counter {
 	// The ID of the Counter
@@ -1057,33 +1099,17 @@ message Counter {
 	string created = 5;
 }
 
-// AutoScalePolicy represents a AutoScalePolicy Item
-message AutoScalePolicy {
-	// The ID of the AutoScalePolicy
+// AutoScaleVmProfile represents a AutoScaleVmProfile Item
+message AutoScaleVmProfile {
+	// The ID of the AutoScaleVmProfile
 	string id = 1 [
 		(validate.field).string.uuid = true
 	];
-	// The name of the AutoScalePolicy
+	// The name of the AutoScaleVmProfile
 	string name = 2;
-	// The display name of the AutoScalePolicy
+	// The display name of the AutoScaleVmProfile
 	string display_name = 3;
-	// The description of the AutoScalePolicy
-	string description = 4;
-	// The date this entity was created
-	string created = 5;
-}
-
-// AutoScaleVmGroup represents a AutoScaleVmGroup Item
-message AutoScaleVmGroup {
-	// The ID of the AutoScaleVmGroup
-	string id = 1 [
-		(validate.field).string.uuid = true
-	];
-	// The name of the AutoScaleVmGroup
-	string name = 2;
-	// The display name of the AutoScaleVmGroup
-	string display_name = 3;
-	// The description of the AutoScaleVmGroup
+	// The description of the AutoScaleVmProfile
 	string description = 4;
 	// The date this entity was created
 	string created = 5;
@@ -1105,17 +1131,33 @@ message Condition {
 	string created = 5;
 }
 
-// AutoScaleVmProfile represents a AutoScaleVmProfile Item
-message AutoScaleVmProfile {
-	// The ID of the AutoScaleVmProfile
+// AutoScaleVmGroup represents a AutoScaleVmGroup Item
+message AutoScaleVmGroup {
+	// The ID of the AutoScaleVmGroup
 	string id = 1 [
 		(validate.field).string.uuid = true
 	];
-	// The name of the AutoScaleVmProfile
+	// The name of the AutoScaleVmGroup
 	string name = 2;
-	// The display name of the AutoScaleVmProfile
+	// The display name of the AutoScaleVmGroup
 	string display_name = 3;
-	// The description of the AutoScaleVmProfile
+	// The description of the AutoScaleVmGroup
+	string description = 4;
+	// The date this entity was created
+	string created = 5;
+}
+
+// AutoScalePolicy represents a AutoScalePolicy Item
+message AutoScalePolicy {
+	// The ID of the AutoScalePolicy
+	string id = 1 [
+		(validate.field).string.uuid = true
+	];
+	// The name of the AutoScalePolicy
+	string name = 2;
+	// The display name of the AutoScalePolicy
+	string display_name = 3;
+	// The description of the AutoScalePolicy
 	string description = 4;
 	// The date this entity was created
 	string created = 5;

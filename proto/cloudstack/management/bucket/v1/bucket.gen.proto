@@ -8,19 +8,44 @@ import "google/protobuf/descriptor.proto";
 
 // BucketService provides operations for managing Buckets
 service BucketService {
-	option (annotations.service).scope = Scope_USER;
-
-	// UpdateBucket Updates Bucket properties
-	rpc UpdateBucket(UpdateBucketRequest) returns (UpdateBucketResponse) {}
+	option (annotations.service).scope = SCOPE_USER;
 
 	// DeleteBucket Deletes an empty Bucket.
-	rpc DeleteBucket(DeleteBucketRequest) returns (DeleteBucketResponse) {}
+	rpc DeleteBucket(DeleteBucketRequest) returns (DeleteBucketResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
-	// CreateBucket Creates a bucket in the specified object storage pool.
-	rpc CreateBucket(CreateBucketRequest) returns (CreateBucketResponse) {}
+	// UpdateBucket Updates Bucket properties
+	rpc UpdateBucket(UpdateBucketRequest) returns (UpdateBucketResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// ListBuckets Lists all Buckets.
-	rpc ListBuckets(ListBucketsRequest) returns (ListBucketsResponse) {}
+	rpc ListBuckets(ListBucketsRequest) returns (ListBucketsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// CreateBucket Creates a bucket in the specified object storage pool.
+	rpc CreateBucket(CreateBucketRequest) returns (CreateBucketResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+}
+
+// DeleteBucketRequest represents the parameters for deletes an empty bucket.
+message DeleteBucketRequest {
+	// The ID of the Bucket
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteBucketResponse represents the response from deletes an empty bucket.
+message DeleteBucketResponse {
+	// The Result
+	Result result = 1;
 }
 
 // UpdateBucketRequest represents the parameters for updates bucket properties
@@ -52,93 +77,6 @@ message UpdateBucketRequest {
 
 // UpdateBucketResponse represents the response from updates bucket properties
 message UpdateBucketResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeleteBucketRequest represents the parameters for deletes an empty bucket.
-message DeleteBucketRequest {
-	// The ID of the Bucket
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// DeleteBucketResponse represents the response from deletes an empty bucket.
-message DeleteBucketResponse {
-	// The Result
-	Result result = 1;
-}
-
-// CreateBucketRequest represents the parameters for creates a bucket in the specified object storage pool.
-message CreateBucketRequest {
-	// the account associated with the bucket. Must be used with the domainId parameter.
-	string account_name = 1 [
-		(validate.field).cel = {
-			id:         "account_name_with_domain_id",
-			expression: "!has(account_name) || has(domain_id)",
-			message:    "account_name must be used with domain_id parameter"
-		}
-	];
-
-	// the project associated with the bucket. Mutually exclusive with account parameter
-	int64 project_id = 2;
-
-	// the domain ID associated with the bucket. If used with the account parameter returns the bucket associated with the account for the specified domain.
-	int64 domain_id = 3;
-
-	// the name of the bucket
-	string bucket_name = 4 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
-	];
-
-	// Id of the Object Storage Pool where bucket is created
-	int64 object_storage_pool_id = 5 [
-		(validate.field).required = true
-	];
-
-	// Bucket Quota in GiB
-	int32 quota = 6 [
-		(validate.field).required = true
-	];
-
-	// Enable bucket encryption
-	bool encryption = 7 [
-		features.field_presence = EXPLICIT
-	];
-
-	// Enable bucket versioning
-	bool versioning = 8 [
-		features.field_presence = EXPLICIT
-	];
-
-	// Enable object locking in bucket
-	bool object_locking = 9 [
-		features.field_presence = EXPLICIT
-	];
-
-	// The Bucket access policy
-	string policy = 10;
-
-	//
-	int64 start_event_id = 11;
-
-	//
-	string injected_job_id = 12 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 13;
-}
-
-// CreateBucketResponse represents the response from creates a bucket in the specified object storage pool.
-message CreateBucketResponse {
 	// The Result
 	Result result = 1;
 }
@@ -209,6 +147,76 @@ message ListBucketsResponse {
 
 	// The total count of Buckets
 	int32 total_count = 2;
+}
+
+// CreateBucketRequest represents the parameters for creates a bucket in the specified object storage pool.
+message CreateBucketRequest {
+	// the account associated with the bucket. Must be used with the domainId parameter.
+	string account_name = 1 [
+		(validate.field).cel = {
+			id:         "account_name_with_domain_id",
+			expression: "!has(account_name) || has(domain_id)",
+			message:    "account_name must be used with domain_id parameter"
+		}
+	];
+
+	// the project associated with the bucket. Mutually exclusive with account parameter
+	int64 project_id = 2;
+
+	// the domain ID associated with the bucket. If used with the account parameter returns the bucket associated with the account for the specified domain.
+	int64 domain_id = 3;
+
+	// the name of the bucket
+	string bucket_name = 4 [
+		(validate.field).required       = true,
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	// Id of the Object Storage Pool where bucket is created
+	int64 object_storage_pool_id = 5 [
+		(validate.field).required = true
+	];
+
+	// Bucket Quota in GiB
+	int32 quota = 6 [
+		(validate.field).required = true
+	];
+
+	// Enable bucket encryption
+	bool encryption = 7 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Enable bucket versioning
+	bool versioning = 8 [
+		features.field_presence = EXPLICIT
+	];
+
+	// Enable object locking in bucket
+	bool object_locking = 9 [
+		features.field_presence = EXPLICIT
+	];
+
+	// The Bucket access policy
+	string policy = 10;
+
+	//
+	int64 start_event_id = 11;
+
+	//
+	string injected_job_id = 12 [
+		(validate.field).string.uuid = true
+	];
+
+	//
+	string response_type = 13;
+}
+
+// CreateBucketResponse represents the response from creates a bucket in the specified object storage pool.
+message CreateBucketResponse {
+	// The Result
+	Result result = 1;
 }
 
 // Bucket represents a Bucket Item

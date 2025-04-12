@@ -8,23 +8,31 @@ import "google/protobuf/descriptor.proto";
 
 // SshService provides operations for managing Sshs
 service SshService {
-	option (annotations.service).scope = Scope_USER;
-
-	// CreateSSHKeyPair Create a new keypair and returns the private key
-	rpc CreateSSHKeyPair(CreateSSHKeyPairRequest) returns (CreateSSHKeyPairResponse) {}
-
-	// ListSSHKeyPairs List registered keypairs
-	rpc ListSSHKeyPairs(ListSSHKeyPairsRequest) returns (ListSSHKeyPairsResponse) {}
+	option (annotations.service).scope = SCOPE_USER;
 
 	// RegisterSSHKeyPair Register a public key in a keypair under a certain name
-	rpc RegisterSSHKeyPair(RegisterSSHKeyPairRequest) returns (RegisterSSHKeyPairResponse) {}
+	rpc RegisterSSHKeyPair(RegisterSSHKeyPairRequest) returns (RegisterSSHKeyPairResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListSSHKeyPairs List registered keypairs
+	rpc ListSSHKeyPairs(ListSSHKeyPairsRequest) returns (ListSSHKeyPairsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// CreateSSHKeyPair Create a new keypair and returns the private key
+	rpc CreateSSHKeyPair(CreateSSHKeyPairRequest) returns (CreateSSHKeyPairResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// DeleteSSHKeyPair Deletes a keypair by name
-	rpc DeleteSSHKeyPair(DeleteSSHKeyPairRequest) returns (DeleteSSHKeyPairResponse) {}
+	rpc DeleteSSHKeyPair(DeleteSSHKeyPairRequest) returns (DeleteSSHKeyPairResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
-// CreateSSHKeyPairRequest represents the parameters for create a new keypair and returns the private key
-message CreateSSHKeyPairRequest {
+// RegisterSSHKeyPairRequest represents the parameters for register a public key in a keypair under a certain name
+message RegisterSSHKeyPairRequest {
 	// Name of the keypair
 	string name = 1 [
 		(validate.field).required       = true,
@@ -32,21 +40,26 @@ message CreateSSHKeyPairRequest {
 		(validate.field).string.max_len = 255
 	];
 
+	// Public key material of the keypair
+	string public_key = 2 [
+		(validate.field).required = true
+	];
+
 	// an optional account for the ssh key. Must be used with domainId.
-	string account_name = 2;
+	string account_name = 3;
 
 	// an optional domainId for the ssh key. If the account parameter is used, domainId must also be used.
-	int64 domain_id = 3;
+	int64 domain_id = 4;
 
 	// an optional project for the ssh key
-	int64 project_id = 4;
+	int64 project_id = 5;
 
 	//
-	string response_type = 5;
+	string response_type = 6;
 }
 
-// CreateSSHKeyPairResponse represents the response from create a new keypair and returns the private key
-message CreateSSHKeyPairResponse {
+// RegisterSSHKeyPairResponse represents the response from register a public key in a keypair under a certain name
+message RegisterSSHKeyPairResponse {
 	// The Result
 	Result result = 1;
 }
@@ -113,8 +126,8 @@ message ListSSHKeyPairsResponse {
 	int32 total_count = 2;
 }
 
-// RegisterSSHKeyPairRequest represents the parameters for register a public key in a keypair under a certain name
-message RegisterSSHKeyPairRequest {
+// CreateSSHKeyPairRequest represents the parameters for create a new keypair and returns the private key
+message CreateSSHKeyPairRequest {
 	// Name of the keypair
 	string name = 1 [
 		(validate.field).required       = true,
@@ -122,26 +135,21 @@ message RegisterSSHKeyPairRequest {
 		(validate.field).string.max_len = 255
 	];
 
-	// Public key material of the keypair
-	string public_key = 2 [
-		(validate.field).required = true
-	];
-
 	// an optional account for the ssh key. Must be used with domainId.
-	string account_name = 3;
+	string account_name = 2;
 
 	// an optional domainId for the ssh key. If the account parameter is used, domainId must also be used.
-	int64 domain_id = 4;
+	int64 domain_id = 3;
 
 	// an optional project for the ssh key
-	int64 project_id = 5;
+	int64 project_id = 4;
 
 	//
-	string response_type = 6;
+	string response_type = 5;
 }
 
-// RegisterSSHKeyPairResponse represents the response from register a public key in a keypair under a certain name
-message RegisterSSHKeyPairResponse {
+// CreateSSHKeyPairResponse represents the response from create a new keypair and returns the private key
+message CreateSSHKeyPairResponse {
 	// The Result
 	Result result = 1;
 }

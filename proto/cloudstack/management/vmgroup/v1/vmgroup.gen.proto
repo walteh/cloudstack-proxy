@@ -8,19 +8,27 @@ import "google/protobuf/descriptor.proto";
 
 // VmgroupService provides operations for managing Vmgroups
 service VmgroupService {
-	option (annotations.service).scope = Scope_USER;
+	option (annotations.service).scope = SCOPE_USER;
 
 	// CreateVMGroup Creates a vm group
-	rpc CreateVMGroup(CreateVMGroupRequest) returns (CreateVMGroupResponse) {}
+	rpc CreateVMGroup(CreateVMGroupRequest) returns (CreateVMGroupResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// UpdateVMGroup Updates a vm group
-	rpc UpdateVMGroup(UpdateVMGroupRequest) returns (UpdateVMGroupResponse) {}
-
-	// DeleteVMGroup Deletes a vm group
-	rpc DeleteVMGroup(DeleteVMGroupRequest) returns (DeleteVMGroupResponse) {}
+	rpc UpdateVMGroup(UpdateVMGroupRequest) returns (UpdateVMGroupResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// ListVMGroups Lists vm groups
-	rpc ListVMGroups(ListVMGroupsRequest) returns (ListVMGroupsResponse) {}
+	rpc ListVMGroups(ListVMGroupsRequest) returns (ListVMGroupsResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// DeleteVMGroup Deletes a vm group
+	rpc DeleteVMGroup(DeleteVMGroupRequest) returns (DeleteVMGroupResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
 // CreateVMGroupRequest represents the parameters for creates a vm group
@@ -70,23 +78,6 @@ message UpdateVMGroupRequest {
 
 // UpdateVMGroupResponse represents the response from updates a vm group
 message UpdateVMGroupResponse {
-	// The Result
-	Result result = 1;
-}
-
-// DeleteVMGroupRequest represents the parameters for deletes a vm group
-message DeleteVMGroupRequest {
-	// the ID of the instance group
-	int64 id = 1 [
-		(validate.field).required = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// DeleteVMGroupResponse represents the response from deletes a vm group
-message DeleteVMGroupResponse {
 	// The Result
 	Result result = 1;
 }
@@ -148,6 +139,23 @@ message ListVMGroupsResponse {
 
 	// The total count of InstanceGroups
 	int32 total_count = 2;
+}
+
+// DeleteVMGroupRequest represents the parameters for deletes a vm group
+message DeleteVMGroupRequest {
+	// the ID of the instance group
+	int64 id = 1 [
+		(validate.field).required = true
+	];
+
+	//
+	string response_type = 2;
+}
+
+// DeleteVMGroupResponse represents the response from deletes a vm group
+message DeleteVMGroupResponse {
+	// The Result
+	Result result = 1;
 }
 
 // InstanceGroup represents a InstanceGroup Item

@@ -8,22 +8,54 @@ import "google/protobuf/descriptor.proto";
 
 // CaService provides operations for managing Cas
 service CaService {
-	option (annotations.service).scope = Scope_USER;
-
-	// RevokeCertificate Revokes certificate using configured CA plugin
-	rpc RevokeCertificate(RevokeCertificateRequest) returns (RevokeCertificateResponse) {}
-
-	// IssueCertificate Issues a client certificate using configured or provided CA plugin
-	rpc IssueCertificate(IssueCertificateRequest) returns (IssueCertificateResponse) {}
+	option (annotations.service).scope = SCOPE_USER;
 
 	// ListCAProviders Lists available certificate authority providers in CloudStack
-	rpc ListCAProviders(ListCAProvidersRequest) returns (ListCAProvidersResponse) {}
+	rpc ListCAProviders(ListCAProvidersRequest) returns (ListCAProvidersResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
-	// ProvisionCertificate Issues and propagates client certificate on a connected host/agent using configured CA plugin
-	rpc ProvisionCertificate(ProvisionCertificateRequest) returns (ProvisionCertificateResponse) {}
+	// RevokeCertificate Revokes certificate using configured CA plugin
+	rpc RevokeCertificate(RevokeCertificateRequest) returns (RevokeCertificateResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// IssueCertificate Issues a client certificate using configured or provided CA plugin
+	rpc IssueCertificate(IssueCertificateRequest) returns (IssueCertificateResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// ListCaCertificate Lists the CA public certificate(s) as support by the configured/provided CA plugin
-	rpc ListCaCertificate(ListCaCertificateRequest) returns (ListCaCertificateResponse) {}
+	rpc ListCaCertificate(ListCaCertificateRequest) returns (ListCaCertificateResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ProvisionCertificate Issues and propagates client certificate on a connected host/agent using configured CA plugin
+	rpc ProvisionCertificate(ProvisionCertificateRequest) returns (ProvisionCertificateResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+}
+
+// ListCAProvidersRequest represents the parameters for lists available certificate authority providers in cloudstack
+message ListCAProvidersRequest {
+	// List CA service provider by name
+	string name = 1 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
+	];
+
+	//
+	string response_type = 2;
+}
+
+// ListCAProvidersResponse represents the response from lists available certificate authority providers in cloudstack
+message ListCAProvidersResponse {
+	option (validate.message).disabled = false;
+	// The list of CAProviders
+	repeated CAProvider items = 1;
+
+	// The total count of CAProviders
+	int32 total_count = 2;
 }
 
 // RevokeCertificateRequest represents the parameters for revokes certificate using configured ca plugin
@@ -98,25 +130,24 @@ message IssueCertificateResponse {
 	Result result = 1;
 }
 
-// ListCAProvidersRequest represents the parameters for lists available certificate authority providers in cloudstack
-message ListCAProvidersRequest {
-	// List CA service provider by name
-	string name = 1 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+// ListCaCertificateRequest represents the parameters for lists the ca public certificate(s) as support by the configured/provided ca plugin
+message ListCaCertificateRequest {
+	// Name of the CA service provider, otherwise the default configured provider plugin will be used
+	string provider = 1 [
+		(validate.field).string.uuid = true
 	];
 
 	//
 	string response_type = 2;
 }
 
-// ListCAProvidersResponse represents the response from lists available certificate authority providers in cloudstack
-message ListCAProvidersResponse {
+// ListCaCertificateResponse represents the response from lists the ca public certificate(s) as support by the configured/provided ca plugin
+message ListCaCertificateResponse {
 	option (validate.message).disabled = false;
-	// The list of CAProviders
-	repeated CAProvider items = 1;
+	// The list of Certificates
+	repeated Certificate items = 1;
 
-	// The total count of CAProviders
+	// The total count of Certificates
 	int32 total_count = 2;
 }
 
@@ -153,27 +184,6 @@ message ProvisionCertificateRequest {
 message ProvisionCertificateResponse {
 	// The Result
 	Result result = 1;
-}
-
-// ListCaCertificateRequest represents the parameters for lists the ca public certificate(s) as support by the configured/provided ca plugin
-message ListCaCertificateRequest {
-	// Name of the CA service provider, otherwise the default configured provider plugin will be used
-	string provider = 1 [
-		(validate.field).string.uuid = true
-	];
-
-	//
-	string response_type = 2;
-}
-
-// ListCaCertificateResponse represents the response from lists the ca public certificate(s) as support by the configured/provided ca plugin
-message ListCaCertificateResponse {
-	option (validate.message).disabled = false;
-	// The list of Certificates
-	repeated Certificate items = 1;
-
-	// The total count of Certificates
-	int32 total_count = 2;
 }
 
 // CAProvider represents a CAProvider Item

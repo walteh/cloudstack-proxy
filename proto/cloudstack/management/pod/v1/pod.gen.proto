@@ -8,19 +8,28 @@ import "google/protobuf/descriptor.proto";
 
 // PodService provides operations for managing Pods
 service PodService {
-	option (annotations.service).scope = Scope_ADMIN;
+	option (annotations.service).scope = SCOPE_ADMIN;
+	option (annotations.service).scope = SCOPE_USER;
 
 	// UpdatePod Updates a Pod.
-	rpc UpdatePod(UpdatePodRequest) returns (UpdatePodResponse) {}
-
-	// ListPodsBy Lists all Pods.
-	rpc ListPodsBy(ListPodsByRequest) returns (ListPodsByResponse) {}
-
-	// CreatePod Creates a new Pod.
-	rpc CreatePod(CreatePodRequest) returns (CreatePodResponse) {}
+	rpc UpdatePod(UpdatePodRequest) returns (UpdatePodResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 
 	// DeletePod Deletes a Pod.
-	rpc DeletePod(DeletePodRequest) returns (DeletePodResponse) {}
+	rpc DeletePod(DeletePodRequest) returns (DeletePodResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// CreatePod Creates a new Pod.
+	rpc CreatePod(CreatePodRequest) returns (CreatePodResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
+
+	// ListPodsBy Lists all Pods.
+	rpc ListPodsBy(ListPodsByRequest) returns (ListPodsByResponse) {
+		option (annotations.method).scope = SCOPE_USER;
+	}
 }
 
 // UpdatePodRequest represents the parameters for updates a pod.
@@ -67,49 +76,21 @@ message UpdatePodResponse {
 	Result result = 1;
 }
 
-// ListPodsByRequest represents the parameters for lists all pods.
-message ListPodsByRequest {
-	// list Pods by ID
-	int64 id = 1;
-
-	// list Pods by name
-	string pod_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+// DeletePodRequest represents the parameters for deletes a pod.
+message DeletePodRequest {
+	// the ID of the Pod
+	int64 id = 1 [
+		(validate.field).required = true
 	];
 
-	// list Pods by Zone ID
-	int64 zone_id = 3;
-
-	// list pods by allocation state
-	string allocation_state = 4;
-
-	// flag to display the capacity of the pods
-	bool show_capacities = 5 [
-		features.field_presence = EXPLICIT
-	];
-
-	// List by keyword
-	string keyword = 6;
-
 	//
-	int32 page = 7;
-
-	//
-	int32 page_size = 8;
-
-	//
-	string response_type = 9;
+	string response_type = 2;
 }
 
-// ListPodsByResponse represents the response from lists all pods.
-message ListPodsByResponse {
-	option (validate.message).disabled = false;
-	// The list of Pods
-	repeated Pod items = 1;
-
-	// The total count of Pods
-	int32 total_count = 2;
+// DeletePodResponse represents the response from deletes a pod.
+message DeletePodResponse {
+	// The Result
+	Result result = 1;
 }
 
 // CreatePodRequest represents the parameters for creates a new pod.
@@ -157,21 +138,49 @@ message CreatePodResponse {
 	Result result = 1;
 }
 
-// DeletePodRequest represents the parameters for deletes a pod.
-message DeletePodRequest {
-	// the ID of the Pod
-	int64 id = 1 [
-		(validate.field).required = true
+// ListPodsByRequest represents the parameters for lists all pods.
+message ListPodsByRequest {
+	// list Pods by ID
+	int64 id = 1;
+
+	// list Pods by name
+	string pod_name = 2 [
+		(validate.field).string.min_len = 1,
+		(validate.field).string.max_len = 255
 	];
 
+	// list Pods by Zone ID
+	int64 zone_id = 3;
+
+	// list pods by allocation state
+	string allocation_state = 4;
+
+	// flag to display the capacity of the pods
+	bool show_capacities = 5 [
+		features.field_presence = EXPLICIT
+	];
+
+	// List by keyword
+	string keyword = 6;
+
 	//
-	string response_type = 2;
+	int32 page = 7;
+
+	//
+	int32 page_size = 8;
+
+	//
+	string response_type = 9;
 }
 
-// DeletePodResponse represents the response from deletes a pod.
-message DeletePodResponse {
-	// The Result
-	Result result = 1;
+// ListPodsByResponse represents the response from lists all pods.
+message ListPodsByResponse {
+	option (validate.message).disabled = false;
+	// The list of Pods
+	repeated Pod items = 1;
+
+	// The total count of Pods
+	int32 total_count = 2;
 }
 
 // Pod represents a Pod Item
