@@ -7,7 +7,7 @@ vars:
         sh: find . -type f -name '*.schema.json'
     GO_ROOT_PKG:
         sh: cat go.mod | grep -oE '^module[^\S]+' | cut -d' ' -f2
-    GO_COMMAND: ./go
+    GO_COMMAND: ./.aliasrc/go
 
 env:
     COMPOSE_BAKE: true
@@ -24,7 +24,8 @@ tasks:
     go:upgrade:
         run: once
         cmds:
-          - ./go tool go-mod-upgrade --force
+          - |-
+            {{.GO_COMMAND}} tool go-mod-upgrade --force
           - task: go-mod-tidy
 
     go:update:
@@ -34,6 +35,12 @@ tasks:
           - for: {var: GO_MODULES}
             cmd: cd {{.ITEM}} && go get -u {{.CLI_ARGS}}
           - task: go:tidy
+
+    term:
+        desc: opens a terminal in the project root
+        platforms: [darwin]
+        cmds:
+          - cmd: open -a Terminal $(pwd)
 
     options:
         desc: generates options for structs with '//go:opts' comment
@@ -81,12 +88,14 @@ tasks:
             cmd: |-
                 set -e
                 yq -i ".packages.\"{{ .GO_ROOT_PKG }}/{{ splitList \" \" .ITEM | first }}\".interfaces.{{ splitList \" \" .ITEM | last }} = {}" {{.TMP_DIR}}/.mockery.yaml
-          - cmd: "{{.GO_COMMAND}} tool github.com/vektra/mockery/v2 --config={{.TMP_DIR}}/.mockery.yaml"
+          - cmd: |-
+                {{.GO_COMMAND}} tool github.com/vektra/mockery/v2 --config={{.TMP_DIR}}/.mockery.yaml
 
     buf:
         desc: generates protobuf files
         cmds:
-          - "{{.GO_COMMAND}} tool github.com/bufbuild/buf/cmd/buf generate"
+          - |-
+            {{.GO_COMMAND}} tool github.com/bufbuild/buf/cmd/buf generate
 
     sources:
         desc: downloads the cloudstack api list
@@ -117,7 +126,7 @@ tasks:
           - cmd: rm -rf proto/cloudstack/management
           - cmd: mkdir -p proto/cloudstack/management
           - cmd: |-
-                go run ./cmd/csp-protobuf-generator \
+                {{.GO_COMMAND}} run ./cmd/csp-protobuf-generator \
                  --metadata-dir=./gen/cloudstack-metadata \
                  --output-dir=./proto \
                  --format={{ .FORMAT }}
@@ -132,3 +141,13 @@ tasks:
           - task: protogen
             vars:
                 FORMAT: "false"
+
+    cloudstack:install:
+        desc: installs the cloudstack cli
+        dir: ../cloudstack
+        env:
+            MAVEN_OPTS: "-Xmx4g -XX:+TieredCompilation -XX:TieredStopAtLevel=1"
+        cmds:
+          - cmd: |-
+                mvn clean install -T 4C -DskipTests -Pdevloper,tart,simulator,disablecheckstyle \
+                -Dmaven.javadoc.skip=true -Dmaven.source.skip=true
