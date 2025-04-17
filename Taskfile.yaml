@@ -7,13 +7,14 @@ vars:
         sh: find . -type f -name '*.schema.json'
     GO_ROOT_PKG:
         sh: cat go.mod | grep -oE '^module[^\S]+' | cut -d' ' -f2
-    GO_COMMAND: ./.aliasrc/go
+    GO_COMMAND: ./go
 
 env:
     COMPOSE_BAKE: true
     GOPROXY: 'https://proxy.golang.org'
     GOSUMDB: sum.golang.org
     GOPRIVATE: github.com/walteh
+    DOCKER_BUILDKIT: 1
 
 tasks:
     go:tidy:
@@ -142,7 +143,7 @@ tasks:
             vars:
                 FORMAT: "false"
 
-    cloudstack:install:
+    cloudstack:management:install:
         desc: installs the cloudstack cli
         dir: ../cloudstack
         env:
@@ -151,3 +152,38 @@ tasks:
           - cmd: |-
                 mvn clean install -T 4C -DskipTests -Pdevloper,tart,simulator,disablecheckstyle \
                 -Dmaven.javadoc.skip=true -Dmaven.source.skip=true
+
+    cloudstack:management:start:
+        desc: starts the cloudstack simulator
+        dir: ../cloudstack
+        cmds:
+          - cmd: mvn -pl client jetty:run -Dsimulator -Dtart -Dorg.eclipse.jetty.annotations.maxWait=120
+
+    cloudstack:ui:install:
+        desc: installs the cloudstack ui
+        dir: ../cloudstack/ui
+        cmds:
+          - cmd: npm install
+
+    cloudstack:ui:start:
+        desc: builds the cloudstack ui
+        dir: ../cloudstack/ui
+        cmds:
+          - cmd: npm run serve
+
+    docker:start:
+        cmds:
+          - docker compose --progress=tty up -d --wait --build --remove-orphans
+
+    docker:restart:
+        cmds:
+          - task: docker:stop
+          - task: docker:start
+
+    docker:stop:
+        cmds:
+          - docker compose --progress=tty down
+
+    docker:build:
+        cmds:
+          - docker compose --progress=tty build

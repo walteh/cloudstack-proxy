@@ -1,0 +1,73 @@
+# Source for Docker containers
+[sources.docker_logs]
+type = "docker_logs"
+include_containers = ["cloudstack-proxy-mysql"]
+include_labels = []
+
+# Source for external CloudStack logs via TCP
+[sources.cloudstack_external]
+type = "socket"
+address = "0.0.0.0:4560"
+mode = "tcp"
+framing.method = "newline_delimited"
+framing.max_length = 1048576         # 1MB
+
+# Parse JSON logs from Docker
+[transforms.mysql_logs]
+type = "remap"
+inputs = ["docker_logs"]
+source = '''
+parsed, err = parse_json(.message)
+if err == null {
+  . = parsed
+} else {
+  .parsed_message = .message
+}
+.source = "mysql-container"
+'''
+
+# Parse external CloudStack logs
+[transforms.cloudstack_logs]
+type = "remap"
+inputs = ["cloudstack_external"]
+source = '''
+parsed, err = parse_json(.message)
+if err == null {
+  . = parsed
+} else {
+  .parsed_message = .message
+}
+.source = "cloudstack-external"
+'''
+
+# Merge all logs
+[transforms.all_logs]
+type = "remap"
+inputs = ["mysql_logs", "cloudstack_logs"]
+source = '''
+.timestamp = now()
+'''
+
+# Console output
+[sinks.console]
+type = "console"
+inputs = ["all_logs"]
+encoding.codec = "json"
+
+# File outputs - separate by source
+[sinks.mysql_file]
+type = "file"
+inputs = ["mysql_logs"]
+path = "/var/log/vector/mysql-%Y-%m-%d.log"
+encoding.codec = "json"
+
+[sinks.cloudstack_file]
+type = "file"
+inputs = ["cloudstack_logs"]
+path = "/var/log/vector/cloudstack-%Y-%m-%d.log"
+encoding.codec = "json"
+
+# HTTP endpoint for metrics/monitoring
+[api]
+enabled = true
+address = "0.0.0.0:8686"

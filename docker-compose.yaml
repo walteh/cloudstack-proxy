@@ -1,0 +1,84 @@
+services:
+    mysql:
+        build:
+            context: ../cloudstack
+            dockerfile: ../cloudstack-proxy/docker/mysql.Dockerfile
+            additional_contexts:
+                - maven=$HOME/.m2
+        container_name: cloudstack-proxy-mysql
+        platform: linux/arm64
+        ports:
+            - "3306:3306"
+        networks:
+            - cloudstack-network
+        volumes:
+            - cloudstack-data:/var/lib/cloudstack
+        restart: unless-stopped
+        environment:
+            - TZ=UTC
+        tmpfs:
+            - /tmp
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "10m"
+                max-file: "3"
+        healthcheck:
+            test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+            start_period: 10s
+
+    cloudstack-ui:
+        build:
+            context: ../cloudstack/ui
+            dockerfile: ../../cloudstack-proxy/docker/ui.Dockerfile
+        container_name: cloudstack-proxy-ui
+        platform: linux/arm64
+        ports:
+            - "5059:80"
+        networks:
+            - cloudstack-network
+        volumes:
+            - cloudstack-data:/var/lib/cloudstack
+
+    # Log collection service
+    vector:
+        image: timberio/vector:0.29.1-alpine
+        platform: linux/arm64
+        container_name: cloudstack-proxy-vector
+        ports:
+            - "4560:4560"  # For receiving logs
+            - "8686:8686"  # For Vector's HTTP API/monitoring
+        volumes:
+            - ./vector/config:/etc/vector
+            - ./logs:/var/log/vector
+            - /var/run/docker.sock:/var/run/docker.sock:ro  # Mount Docker socket
+            - /var/lib/docker/containers:/var/lib/docker/containers:ro
+        networks:
+            - cloudstack-network
+        restart: unless-stopped
+        command: ["--config", "/etc/vector/vector.toml"]
+        depends_on:
+            - mysql
+        healthcheck:
+            test: ["CMD", "wget", "-O", "/dev/null", "-q", "http://localhost:8686/health"]
+            interval: 10s
+            timeout: 5s
+            retries: 3
+            start_period: 5s
+
+networks:
+    cloudstack-network:
+        driver: bridge
+
+volumes:
+    cloudstack-data:
+        driver: local
+        driver_opts:
+            type: "none"
+            o: "bind"
+            device: ${PWD}/docker/.tmp/cloudstack-data
+    cloudmonkey-data:
+        driver: local
