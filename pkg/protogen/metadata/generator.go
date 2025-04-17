@@ -796,7 +796,7 @@ func getValidationRules(param ParameterMetadata, allParams []ParameterMetadata) 
 
 	// Add required validation if parameter is required
 	if param.Required {
-		rules = append(rules, "(validate.field).required = true")
+		rules = append(rules, "(buf.validate.field).required = true")
 	}
 
 	// Add specific validations based on parameter name and type
@@ -807,38 +807,38 @@ func getValidationRules(param ParameterMetadata, allParams []ParameterMetadata) 
 	// UUID validation for IDs
 	if strings.Contains(lowerName, "id") && !strings.Contains(lowerName, "cidr") &&
 		!strings.Contains(lowerName, "valid") && javaType == "java.lang.String" {
-		rules = append(rules, "(validate.field).string.uuid = true")
+		rules = append(rules, "(buf.validate.field).string.uuid = true")
 	}
 
 	// IP address validations
 	if (strings.Contains(lowerName, "ip") || strings.Contains(lowerName, "gateway")) &&
 		!strings.Contains(lowerName, "script") && javaType == "java.lang.String" {
 		if strings.Contains(lowerName, "cidr") {
-			rules = append(rules, "(validate.field).string.ipv4_prefix = true")
+			rules = append(rules, "(buf.validate.field).string.ipv4_prefix = true")
 		} else if strings.Contains(lowerName, "ipv6") {
-			rules = append(rules, "(validate.field).string.ipv6 = true")
+			rules = append(rules, "(buf.validate.field).string.ipv6 = true")
 		} else {
-			rules = append(rules, "(validate.field).string.ipv4 = true")
+			rules = append(rules, "(buf.validate.field).string.ipv4 = true")
 		}
 	}
 
 	// String length validations for names and descriptions
 	if (strings.Contains(lowerName, "name") || strings.Contains(lowerName, "description")) &&
 		javaType == "java.lang.String" {
-		rules = append(rules, "(validate.field).string.min_len = 1")
+		rules = append(rules, "(buf.validate.field).string.min_len = 1")
 
 		if strings.Contains(lowerName, "description") {
-			rules = append(rules, "(validate.field).string.max_len = 1024")
+			rules = append(rules, "(buf.validate.field).string.max_len = 1024")
 		} else {
-			rules = append(rules, "(validate.field).string.max_len = 255")
+			rules = append(rules, "(buf.validate.field).string.max_len = 255")
 		}
 	}
 
 	// Numeric range validations
 	if strings.Contains(javaType, "Integer") || strings.Contains(javaType, "int") {
 		if strings.Contains(lowerName, "port") {
-			rules = append(rules, "(validate.field).int32.gte = 1")
-			rules = append(rules, "(validate.field).int32.lte = 65535")
+			rules = append(rules, "(buf.validate.field).int32.gte = 1")
+			rules = append(rules, "(buf.validate.field).int32.lte = 65535")
 		}
 	}
 
@@ -853,7 +853,7 @@ func getValidationRules(param ParameterMetadata, allParams []ParameterMetadata) 
 		strings.Contains(param.Description, "Must be used with the domainId") {
 		// Add CEL validation to verify domainId is set when this parameter is set
 		snakeName := toSnakeCase(fieldName)
-		rules = append(rules, fmt.Sprintf("(validate.field).cel = {\n\t\t\tid: \"%s_with_domain_id\",\n\t\t\texpression: \"!has(%s) || has(domain_id)\",\n\t\t\tmessage: \"%s must be used with domain_id parameter\"\n\t\t}", snakeName, snakeName, snakeName))
+		rules = append(rules, fmt.Sprintf("(buf.validate.field).cel = {\n\t\t\tid: \"%s_with_domain_id\",\n\t\t\texpression: \"!has(%s) || has(domain_id)\",\n\t\t\tmessage: \"%s must be used with domain_id parameter\"\n\t\t}", snakeName, snakeName, snakeName))
 	}
 
 	// Format the rules if any exist
@@ -875,18 +875,18 @@ func getFieldValidation(field ResponseFieldMetadata) string {
 	// UUID validation for IDs
 	if strings.Contains(lowerName, "id") && !strings.Contains(lowerName, "cidr") &&
 		!strings.Contains(lowerName, "valid") && javaType == "java.lang.String" {
-		rules = append(rules, "(validate.field).string.uuid = true")
+		rules = append(rules, "(buf.validate.field).string.uuid = true")
 	}
 
 	// IP address validations
 	if (strings.Contains(lowerName, "ip") || strings.Contains(lowerName, "gateway")) &&
 		!strings.Contains(lowerName, "script") && javaType == "java.lang.String" {
 		if strings.Contains(lowerName, "cidr") {
-			rules = append(rules, "(validate.field).string.ipv4_prefix = true")
+			rules = append(rules, "(buf.validate.field).string.ipv4_prefix = true")
 		} else if strings.Contains(lowerName, "ipv6") {
-			rules = append(rules, "(validate.field).string.ipv6 = true")
+			rules = append(rules, "(buf.validate.field).string.ipv6 = true")
 		} else {
-			rules = append(rules, "(validate.field).string.ipv4 = true")
+			rules = append(rules, "(buf.validate.field).string.ipv4 = true")
 		}
 	}
 

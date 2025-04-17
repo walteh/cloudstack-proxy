@@ -7,8 +7,8 @@
 package configv1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -1790,7 +1790,7 @@ var File_cloudstack_management_config_v1_config_gen_proto protoreflect.FileDescr
 
 const file_cloudstack_management_config_v1_config_gen_proto_rawDesc = "" +
 	"\n" +
-	"0cloudstack/management/config/v1/config.gen.proto\x12\x1fcloudstack.management.config.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\">\n" +
+	"0cloudstack/management/config/v1/config.gen.proto\x12\x1fcloudstack.management.config.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\">\n" +
 	"\x17ListCapabilitiesRequest\x12#\n" +
 	"\rresponse_type\x18\x01 \x01(\tR\fresponseType\"\x87\x01\n" +
 	"\x18ListCapabilitiesResponse\x12C\n" +

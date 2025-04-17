@@ -18,11 +18,14 @@ env:
 
 tasks:
     go:tidy:
+        run: once
+        aliases: [go-mod-tidy]
         cmds:
           - for: {var: GO_MODULES}
             cmd: cd {{.ITEM}} && go mod tidy -e
 
     go:upgrade:
+        aliases: [go-mod-upgrade]
         run: once
         cmds:
           - |-
@@ -30,7 +33,9 @@ tasks:
           - task: go-mod-tidy
 
     go:update:
+        aliases: [go-mod-update]
         requires: {vars: [CLI_ARGS]}
+        run: once
         cmds:
           - task: go:tidy
           - for: {var: GO_MODULES}

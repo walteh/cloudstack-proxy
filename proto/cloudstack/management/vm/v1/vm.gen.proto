@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.vm.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // VmService provides operations for managing Vms
@@ -318,12 +318,12 @@ service VmService {
 message AddIpToVmNicRequest {
 	// the ID of the nic to which you want to assign private IP
 	int64 nic_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Secondary IP Address
 	string ip_addr = 2 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	//
@@ -331,7 +331,7 @@ message AddIpToVmNicRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -350,15 +350,15 @@ message AddNicToVMRequest {
 	bool run_as_admin = 1;
 	// Virtual Machine ID
 	int64 vm_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// Network ID
 	int64 net_id = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// IP Address for the new network
 	string ipaddr = 4 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 	// Mac Address for the new network
 	string macaddr = 5;
@@ -368,7 +368,7 @@ message AddNicToVMRequest {
 	int64 start_event_id = 7;
 	//
 	string injected_job_id = 8 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 9;
@@ -384,17 +384,17 @@ message AddNicToVMResponse {
 message AddNicToVMCmdByAdminRequest {
 	// Virtual Machine ID
 	int64 vm_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Network ID
 	int64 net_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// IP Address for the new network
 	string ipaddr = 3 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// Mac Address for the new network
@@ -408,7 +408,7 @@ message AddNicToVMCmdByAdminRequest {
 
 	//
 	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -425,7 +425,7 @@ message AddNicToVMCmdByAdminResponse {
 message AssignVMRequest {
 	// id of the VM to be moved
 	int64 virtual_machine_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// account name of the new VM owner.
@@ -457,28 +457,28 @@ message AssignVMResponse {
 message CreateVMScheduleRequest {
 	// ID of the VM for which schedule is to be defined
 	int64 vm_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Description of the schedule
 	string description = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 1024
 	];
 
 	// Schedule for action on VM in cron format. e.g. '0 15 10 * *' for 'at 15:00 on 10th day of every month'
 	string schedule = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Specifies a timezone for this command. For more information on the timezone parameter, see TimeZone Format.
 	string time_zone = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Action to take on the VM (start/stop/reboot/force_stop/force_reboot).
 	string action = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// start date from which the schedule becomes active. Defaults to current date plus 1 minute.Use format "yyyy-MM-dd hh:mm:ss")
@@ -506,7 +506,7 @@ message CreateVMScheduleResponse {
 message DeleteVMScheduleRequest {
 	// ID of VM
 	int64 vm_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// ID of VM schedule
@@ -531,25 +531,25 @@ message DeployVMRequest {
 	bool run_as_admin = 1;
 	// availability zone for the virtual machine
 	int64 zone_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// the ID of the service offering for the virtual machine
 	int64 service_offering_id = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// the ID of the template for the virtual machine
 	int64 template_id = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// host name for the virtual machine
 	string name = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// an optional user generated name for the virtual machine
 	string display_name = 6 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// The password of the virtual machine. If null, a random password will be generated for the VM.
 	string password = 7;
@@ -597,11 +597,11 @@ message DeployVMRequest {
 	map<string, string> ip_to_network_list = 27;
 	// the ip address for default vm's network
 	string ip_address = 28 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 	// the ipv6 address for default vm's network
 	string ip6_address = 29 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 	// the mac address for default vm's network
 	string mac_address = 30;
@@ -659,13 +659,13 @@ message DeployVMRequest {
 	];
 	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
 	string custom_id = 51 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	int64 start_event_id = 52;
 	//
 	string injected_job_id = 53 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 54;
@@ -687,29 +687,29 @@ message DeployVMCmdByAdminRequest {
 
 	// availability zone for the virtual machine
 	int64 zone_id = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the ID of the service offering for the virtual machine
 	int64 service_offering_id = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the ID of the template for the virtual machine
 	int64 template_id = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// host name for the virtual machine
 	string name = 6 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// an optional user generated name for the virtual machine
 	string display_name = 7 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// The password of the virtual machine. If null, a random password will be generated for the VM.
@@ -779,12 +779,12 @@ message DeployVMCmdByAdminRequest {
 
 	// the ip address for default vm's network
 	string ip_address = 29 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the ipv6 address for default vm's network
 	string ip6_address = 30 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the mac address for default vm's network
@@ -864,7 +864,7 @@ message DeployVMCmdByAdminRequest {
 
 	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
 	string custom_id = 52 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -872,7 +872,7 @@ message DeployVMCmdByAdminRequest {
 
 	//
 	string injected_job_id = 54 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -897,25 +897,25 @@ message DeployVnfApplianceRequest {
 	repeated string vnf_cidrlist = 3;
 	// availability zone for the virtual machine
 	int64 zone_id = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// the ID of the service offering for the virtual machine
 	int64 service_offering_id = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// the ID of the template for the virtual machine
 	int64 template_id = 6 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// host name for the virtual machine
 	string name = 7 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// an optional user generated name for the virtual machine
 	string display_name = 8 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// The password of the virtual machine. If null, a random password will be generated for the VM.
 	string password = 9;
@@ -963,11 +963,11 @@ message DeployVnfApplianceRequest {
 	map<string, string> ip_to_network_list = 29;
 	// the ip address for default vm's network
 	string ip_address = 30 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 	// the ipv6 address for default vm's network
 	string ip6_address = 31 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 	// the mac address for default vm's network
 	string mac_address = 32;
@@ -1025,13 +1025,13 @@ message DeployVnfApplianceRequest {
 	];
 	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
 	string custom_id = 53 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	int64 start_event_id = 54;
 	//
 	string injected_job_id = 55 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 56;
@@ -1055,29 +1055,29 @@ message DeployVnfApplianceCmdByAdminRequest {
 
 	// availability zone for the virtual machine
 	int64 zone_id = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the ID of the service offering for the virtual machine
 	int64 service_offering_id = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the ID of the template for the virtual machine
 	int64 template_id = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// host name for the virtual machine
 	string name = 6 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// an optional user generated name for the virtual machine
 	string display_name = 7 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// The password of the virtual machine. If null, a random password will be generated for the VM.
@@ -1147,12 +1147,12 @@ message DeployVnfApplianceCmdByAdminRequest {
 
 	// the ip address for default vm's network
 	string ip_address = 29 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the ipv6 address for default vm's network
 	string ip6_address = 30 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the mac address for default vm's network
@@ -1232,7 +1232,7 @@ message DeployVnfApplianceCmdByAdminRequest {
 
 	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
 	string custom_id = 52 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1240,7 +1240,7 @@ message DeployVnfApplianceCmdByAdminRequest {
 
 	//
 	string injected_job_id = 54 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1259,7 +1259,7 @@ message DestroyVMRequest {
 	bool run_as_admin = 1;
 	// The ID of the virtual machine
 	int64 id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// If true is passed, the vm is expunged immediately. False by default.
 	bool expunge = 3 [
@@ -1271,7 +1271,7 @@ message DestroyVMRequest {
 	int64 start_event_id = 5;
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 7;
@@ -1287,7 +1287,7 @@ message DestroyVMResponse {
 message DestroyVMCmdByAdminRequest {
 	// The ID of the virtual machine
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// If true is passed, the vm is expunged immediately. False by default.
@@ -1303,7 +1303,7 @@ message DestroyVMCmdByAdminRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1320,7 +1320,7 @@ message DestroyVMCmdByAdminResponse {
 message ExpungeVMRequest {
 	// The ID of the virtual machine
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -1328,7 +1328,7 @@ message ExpungeVMRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1345,7 +1345,7 @@ message ExpungeVMResponse {
 message GetVMPasswordRequest {
 	// The ID of the virtual machine
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -1362,7 +1362,7 @@ message GetVMPasswordResponse {
 message GetVMUserDataRequest {
 	// The ID of the virtual machine
 	int64 vm_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -1379,26 +1379,26 @@ message GetVMUserDataResponse {
 message ImportUnmanagedInstanceRequest {
 	// the cluster ID
 	int64 cluster_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the name of the instance as it is known to the hypervisor
 	string name = 2 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the display name of the instance
 	string display_name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the host name of the instance
 	string host_name = 4 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// an optional account for the virtual machine. Must be used with domainId.
@@ -1415,7 +1415,7 @@ message ImportUnmanagedInstanceRequest {
 
 	// the service offering for the virtual machine
 	int64 service_offering_id = 9 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// VM nic to network id mapping using keys nic and network
@@ -1445,7 +1445,7 @@ message ImportUnmanagedInstanceRequest {
 
 	//
 	string injected_job_id = 17 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1462,13 +1462,13 @@ message ImportUnmanagedInstanceResponse {
 message ImportVmRequest {
 	// the zone ID
 	int64 zone_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the username for the host
 	string username = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the password for the host
@@ -1479,7 +1479,7 @@ message ImportVmRequest {
 
 	// hypervisor type of the host
 	string hypervisor = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// path of the disk image
@@ -1487,7 +1487,7 @@ message ImportVmRequest {
 
 	// Source location for Import
 	string import_source = 7 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the network ID
@@ -1507,7 +1507,7 @@ message ImportVmRequest {
 
 	// (only for importing VMs from VMware to KVM) VMware ESXi host IP/Name.
 	string hostip = 13 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// (only for importing VMs from VMware to KVM) The name/ip of vCenter. Make sure it is IP address or full qualified domain name for host running vCenter server.
@@ -1515,14 +1515,14 @@ message ImportVmRequest {
 
 	// (only for importing VMs from VMware to KVM) Name of VMware datacenter.
 	string datacenter_name = 15 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// (only for importing VMs from VMware to KVM) Name of VMware cluster.
 	string cluster_name = 16 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// (only for importing VMs from VMware to KVM) optional - the host to perform the virt-v2v conversion from VMware to KVM.
@@ -1541,26 +1541,26 @@ message ImportVmRequest {
 
 	// the cluster ID
 	int64 cluster_id = 21 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the name of the instance as it is known to the hypervisor
 	string name = 22 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the display name of the instance
 	string display_name = 23 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the host name of the instance
 	string host_name = 24 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// an optional account for the virtual machine. Must be used with domainId.
@@ -1577,7 +1577,7 @@ message ImportVmRequest {
 
 	// the service offering for the virtual machine
 	int64 service_offering_id = 29 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// VM nic to network id mapping using keys nic and network
@@ -1607,7 +1607,7 @@ message ImportVmRequest {
 
 	//
 	string injected_job_id = 37 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1624,12 +1624,12 @@ message ImportVmResponse {
 message ListAffectedVmsForStorageScopeChangeRequest {
 	// the Id of the cluster the scope of the storage pool is being changed to
 	int64 cluster_id_for_scope_change = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the Id of the storage pool on which change scope operation is being done
 	int64 storage_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// List by keyword
@@ -1647,7 +1647,7 @@ message ListAffectedVmsForStorageScopeChangeRequest {
 
 // ListAffectedVmsForStorageScopeChangeResponse represents the response from list user and system vms that need to be stopped and destroyed respectively for changing the scope of the storage pool from zone to cluster.
 message ListAffectedVmsForStorageScopeChangeResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of VirtualMachines
 	repeated VirtualMachine items = 1;
 
@@ -1662,7 +1662,7 @@ message ListNicsRequest {
 
 	// the ID of the vm
 	int64 vm_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// list nic of the specific vm's network
@@ -1688,7 +1688,7 @@ message ListNicsRequest {
 
 // ListNicsResponse represents the response from list the vm nics  ip to nic
 message ListNicsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Nics
 	repeated Nic items = 1;
 
@@ -1700,13 +1700,13 @@ message ListNicsResponse {
 message ListUnmanagedInstancesRequest {
 	// the cluster ID
 	int64 cluster_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the hypervisor name of the instance
 	string name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// List by keyword
@@ -1724,7 +1724,7 @@ message ListUnmanagedInstancesRequest {
 
 // ListUnmanagedInstancesResponse represents the response from lists unmanaged virtual machines for a given cluster.
 message ListUnmanagedInstancesResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of UnmanagedInstances
 	repeated UnmanagedInstance items = 1;
 
@@ -1736,7 +1736,7 @@ message ListUnmanagedInstancesResponse {
 message ListVMScheduleRequest {
 	// ID of the VM for which schedule is to be defined
 	int64 vm_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// ID of VM schedule
@@ -1765,7 +1765,7 @@ message ListVMScheduleRequest {
 
 // ListVMScheduleResponse represents the response from list vm schedules.
 message ListVMScheduleResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of VMSchedules
 	repeated VMSchedule items = 1;
 
@@ -1785,8 +1785,8 @@ message ListVMsRequest {
 	repeated string ids = 4;
 	// name of the virtual machine (a substring match is made against the parameter value, data for all matching VMs will be returned)
 	string name = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// state of the virtual machine. Possible values are: Running, Stopped, Present, Destroyed, Expunged. Present is used for the state equal not destroyed.
 	string state = 6;
@@ -1858,7 +1858,7 @@ message ListVMsRequest {
 	int64 project_id = 31;
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 32 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -1886,7 +1886,7 @@ message ListVMsRequest {
 
 // ListVMsResponse represents the response from list the virtual machines owned by the account.
 message ListVMsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of UserVms
 	repeated UserVm items = 1;
 
@@ -1919,8 +1919,8 @@ message ListVMsCmdByAdminRequest {
 
 	// name of the virtual machine (a substring match is made against the parameter value, data for all matching VMs will be returned)
 	string name = 8 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// state of the virtual machine. Possible values are: Running, Stopped, Present, Destroyed, Expunged. Present is used for the state equal not destroyed.
@@ -2019,7 +2019,7 @@ message ListVMsCmdByAdminRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 35 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -2054,7 +2054,7 @@ message ListVMsCmdByAdminRequest {
 
 // ListVMsCmdByAdminResponse represents the response from list the virtual machines owned by the account.
 message ListVMsCmdByAdminResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of UserVms
 	repeated UserVm items = 1;
 
@@ -2066,13 +2066,13 @@ message ListVMsCmdByAdminResponse {
 message ListVmsForImportRequest {
 	// the zone ID
 	int64 zone_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the username for the host
 	string username = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the password for the host
@@ -2080,12 +2080,12 @@ message ListVmsForImportRequest {
 
 	// the host name or IP address
 	string host = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// hypervisor type of the host
 	string hypervisor = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// List by keyword
@@ -2103,7 +2103,7 @@ message ListVmsForImportRequest {
 
 // ListVmsForImportResponse represents the response from lists virtual machines on a unmanaged host
 message ListVmsForImportResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of UnmanagedInstances
 	repeated UnmanagedInstance items = 1;
 
@@ -2123,8 +2123,8 @@ message ListVnfAppliancesRequest {
 	repeated string ids = 4;
 	// name of the virtual machine (a substring match is made against the parameter value, data for all matching VMs will be returned)
 	string name = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// state of the virtual machine. Possible values are: Running, Stopped, Present, Destroyed, Expunged. Present is used for the state equal not destroyed.
 	string state = 6;
@@ -2196,7 +2196,7 @@ message ListVnfAppliancesRequest {
 	int64 project_id = 31;
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 32 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -2224,7 +2224,7 @@ message ListVnfAppliancesRequest {
 
 // ListVnfAppliancesResponse represents the response from list vnf appliance owned by the account.
 message ListVnfAppliancesResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of UserVms
 	repeated UserVm items = 1;
 
@@ -2245,8 +2245,8 @@ message ListVnfAppliancesCmdByAdminRequest {
 
 	// name of the virtual machine (a substring match is made against the parameter value, data for all matching VMs will be returned)
 	string name = 4 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// state of the virtual machine. Possible values are: Running, Stopped, Present, Destroyed, Expunged. Present is used for the state equal not destroyed.
@@ -2345,7 +2345,7 @@ message ListVnfAppliancesCmdByAdminRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 31 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -2380,7 +2380,7 @@ message ListVnfAppliancesCmdByAdminRequest {
 
 // ListVnfAppliancesCmdByAdminResponse represents the response from list vnf appliance owned by the account.
 message ListVnfAppliancesCmdByAdminResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of UserVms
 	repeated UserVm items = 1;
 
@@ -2395,7 +2395,7 @@ message MigrateVMRequest {
 
 	// the ID of the virtual machine
 	int64 virtual_machine_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Destination storage pool ID to migrate VM volumes to. Required for migrating the root disk volume
@@ -2411,7 +2411,7 @@ message MigrateVMRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -2431,7 +2431,7 @@ message MigrateVirtualMachineWithVolumeRequest {
 
 	// the ID of the virtual machine
 	int64 virtual_machine_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Storage to pool mapping. This parameter specifies the mapping between a volume and a pool where you want to migrate that volume. Format of this parameter: migrateto[volume-index].volume=<uuid>&migrateto[volume-index].pool=<uuid>Where, [volume-index] indicates the index to identify the volume that you want to migrate, volume=<uuid> indicates the UUID of the volume that you want to migrate, and pool=<uuid> indicates the UUID of the pool where you want to migrate the volume. Example: migrateto[0].volume=<71f43cd6-69b0-4d3b-9fbc-67f50963d60b>&migrateto[0].pool=<a382f181-3d2b-4413-b92d-b8931befa7e1>&migrateto[1].volume=<88de0173-55c0-4c1c-a269-83d0279eeedf>&migrateto[1].pool=<95d6e97c-6766-4d67-9a30-c449c15011d1>&migrateto[2].volume=<1b331390-59f2-4796-9993-bf11c6e76225>&migrateto[2].pool=<41fdb564-9d3b-447d-88ed-7628f7640cbc>
@@ -2447,7 +2447,7 @@ message MigrateVirtualMachineWithVolumeRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -2466,7 +2466,7 @@ message RebootVMRequest {
 	bool run_as_admin = 1;
 	// The ID of the virtual machine
 	int64 id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// Force reboot the VM (VM is Stopped and then Started)
 	bool forced = 3 [
@@ -2480,7 +2480,7 @@ message RebootVMRequest {
 	int64 start_event_id = 5;
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 7;
@@ -2496,7 +2496,7 @@ message RebootVMResponse {
 message RebootVMCmdByAdminRequest {
 	// The ID of the virtual machine
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Force reboot the VM (VM is Stopped and then Started)
@@ -2514,7 +2514,7 @@ message RebootVMCmdByAdminRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -2531,7 +2531,7 @@ message RebootVMCmdByAdminResponse {
 message RecoverVMRequest {
 	// The ID of the virtual machine
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -2548,7 +2548,7 @@ message RecoverVMResponse {
 message RemoveIpFromVmNicRequest {
 	// the ID of the secondary ip address to nic
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -2556,7 +2556,7 @@ message RemoveIpFromVmNicRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -2575,17 +2575,17 @@ message RemoveNicFromVMRequest {
 	bool run_as_admin = 1;
 	// Virtual Machine ID
 	int64 vm_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// NIC ID
 	int64 nic_id = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	//
 	int64 start_event_id = 4;
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 6;
@@ -2601,12 +2601,12 @@ message RemoveNicFromVMResponse {
 message RemoveNicFromVMCmdByAdminRequest {
 	// Virtual Machine ID
 	int64 vm_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// NIC ID
 	int64 nic_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -2614,7 +2614,7 @@ message RemoveNicFromVMCmdByAdminRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -2633,7 +2633,7 @@ message ResetVMPasswordRequest {
 	bool run_as_admin = 1;
 	// The ID of the virtual machine
 	int64 id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// The new password of the virtual machine. If null, a random password will be generated for the VM.
 	string password = 3;
@@ -2641,7 +2641,7 @@ message ResetVMPasswordRequest {
 	int64 start_event_id = 4;
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 6;
@@ -2657,7 +2657,7 @@ message ResetVMPasswordResponse {
 message ResetVMPasswordCmdByAdminRequest {
 	// The ID of the virtual machine
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The new password of the virtual machine. If null, a random password will be generated for the VM.
@@ -2668,7 +2668,7 @@ message ResetVMPasswordCmdByAdminRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -2687,7 +2687,7 @@ message ResetVMSSHKeyRequest {
 	bool run_as_admin = 1;
 	// The ID of the virtual machine
 	int64 id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// name of the ssh key pair used to login to the virtual machine
 	string name = 3;
@@ -2703,7 +2703,7 @@ message ResetVMSSHKeyRequest {
 	int64 start_event_id = 8;
 	//
 	string injected_job_id = 9 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 10;
@@ -2719,7 +2719,7 @@ message ResetVMSSHKeyResponse {
 message ResetVMSSHKeyCmdByAdminRequest {
 	// The ID of the virtual machine
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// name of the ssh key pair used to login to the virtual machine
@@ -2742,7 +2742,7 @@ message ResetVMSSHKeyCmdByAdminRequest {
 
 	//
 	string injected_job_id = 8 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -2761,7 +2761,7 @@ message ResetVMUserDataRequest {
 	bool run_as_admin = 1;
 	// The ID of the virtual machine
 	int64 id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// an optional binary data that can be sent to the virtual machine upon a successful deployment. This binary data must be base64 encoded before adding it to the request. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
 	string user_data = 3;
@@ -2789,7 +2789,7 @@ message ResetVMUserDataResponse {
 message ResetVMUserDataCmdAdminRequest {
 	// The ID of the virtual machine
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// an optional binary data that can be sent to the virtual machine upon a successful deployment. This binary data must be base64 encoded before adding it to the request. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
@@ -2826,7 +2826,7 @@ message RestoreVMRequest {
 	bool run_as_admin = 1;
 	// Virtual Machine ID
 	int64 vm_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// an optional template Id to restore vm from the new template. This can be an ISO id in case of restore vm deployed using ISO
 	int64 template_id = 3;
@@ -2844,7 +2844,7 @@ message RestoreVMRequest {
 	int64 start_event_id = 8;
 	//
 	string injected_job_id = 9 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 10;
@@ -2860,7 +2860,7 @@ message RestoreVMResponse {
 message RestoreVMCmdByAdminRequest {
 	// Virtual Machine ID
 	int64 vm_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// an optional template Id to restore vm from the new template. This can be an ISO id in case of restore vm deployed using ISO
@@ -2885,7 +2885,7 @@ message RestoreVMCmdByAdminRequest {
 
 	//
 	string injected_job_id = 8 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -2904,11 +2904,11 @@ message ScaleVMRequest {
 	bool run_as_admin = 1;
 	// The ID of the virtual machine
 	int64 id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// the ID of the service offering for the virtual machine
 	int64 service_offering_id = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// name value pairs of custom parameters for cpuspeed, memory and cpunumber. example details[i].name=value
 	map<string, string> details = 4;
@@ -2928,7 +2928,7 @@ message ScaleVMRequest {
 	int64 start_event_id = 9;
 	//
 	string injected_job_id = 10 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 11;
@@ -2944,12 +2944,12 @@ message ScaleVMResponse {
 message ScaleVMCmdByAdminRequest {
 	// The ID of the virtual machine
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the ID of the service offering for the virtual machine
 	int64 service_offering_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// name value pairs of custom parameters for cpuspeed, memory and cpunumber. example details[i].name=value
@@ -2976,7 +2976,7 @@ message ScaleVMCmdByAdminRequest {
 
 	//
 	string injected_job_id = 9 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -2995,7 +2995,7 @@ message StartVMRequest {
 	bool run_as_admin = 1;
 	// The ID of the virtual machine
 	int64 id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// destination Pod ID to deploy the VM to - parameter available for root admin only
 	int64 pod_id = 3;
@@ -3017,7 +3017,7 @@ message StartVMRequest {
 	int64 start_event_id = 9;
 	//
 	string injected_job_id = 10 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 11;
@@ -3033,7 +3033,7 @@ message StartVMResponse {
 message StartVMCmdByAdminRequest {
 	// The ID of the virtual machine
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// destination Pod ID to deploy the VM to - parameter available for root admin only
@@ -3063,7 +3063,7 @@ message StartVMCmdByAdminRequest {
 
 	//
 	string injected_job_id = 9 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -3082,7 +3082,7 @@ message StopVMRequest {
 	bool run_as_admin = 1;
 	// The ID of the virtual machine
 	int64 id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// Force stop the VM (vm is marked as Stopped even when command fails to be send to the backend, otherwise a force poweroff is attempted). This option is to be used if the caller knows the VM is stopped and should be marked as such.
 	bool forced = 3 [
@@ -3092,7 +3092,7 @@ message StopVMRequest {
 	int64 start_event_id = 4;
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 6;
@@ -3108,7 +3108,7 @@ message StopVMResponse {
 message StopVMCmdByAdminRequest {
 	// The ID of the virtual machine
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Force stop the VM (vm is marked as Stopped even when command fails to be send to the backend, otherwise a force poweroff is attempted). This option is to be used if the caller knows the VM is stopped and should be marked as such.
@@ -3121,7 +3121,7 @@ message StopVMCmdByAdminRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -3138,7 +3138,7 @@ message StopVMCmdByAdminResponse {
 message UnmanageVMInstanceRequest {
 	// The ID of the virtual machine to unmanage
 	int64 vm_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -3146,7 +3146,7 @@ message UnmanageVMInstanceRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -3165,17 +3165,17 @@ message UpdateDefaultNicForVMRequest {
 	bool run_as_admin = 1;
 	// Virtual Machine ID
 	int64 vm_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// NIC ID
 	int64 nic_id = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	//
 	int64 start_event_id = 4;
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 6;
@@ -3191,12 +3191,12 @@ message UpdateDefaultNicForVMResponse {
 message UpdateDefaultNicForVMCmdByAdminRequest {
 	// Virtual Machine ID
 	int64 vm_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// NIC ID
 	int64 nic_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -3204,7 +3204,7 @@ message UpdateDefaultNicForVMCmdByAdminRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -3223,8 +3223,8 @@ message UpdateVMRequest {
 	bool run_as_admin = 1;
 	// user generated name
 	string display_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// group of the virtual machine
 	string group = 3;
@@ -3234,7 +3234,7 @@ message UpdateVMRequest {
 	];
 	// The ID of the virtual machine
 	int64 id = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// the ID of the OS type that best represents this VM.
 	int64 os_type_id = 6;
@@ -3254,13 +3254,13 @@ message UpdateVMRequest {
 	];
 	// new host name of the vm. The VM has to be stopped/started for this update to take affect
 	string name = 12 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// instance name of the user vm
 	string instance_name = 13 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// Details in key/value pairs. 'extraconfig' is not allowed to be passed in details.
 	map<string, string> details = 14;
@@ -3282,7 +3282,7 @@ message UpdateVMRequest {
 	];
 	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
 	string custom_id = 21 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 22;
@@ -3298,8 +3298,8 @@ message UpdateVMResponse {
 message UpdateVMCmdByAdminRequest {
 	// user generated name
 	string display_name = 1 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// group of the virtual machine
@@ -3312,7 +3312,7 @@ message UpdateVMCmdByAdminRequest {
 
 	// The ID of the virtual machine
 	int64 id = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the ID of the OS type that best represents this VM.
@@ -3339,14 +3339,14 @@ message UpdateVMCmdByAdminRequest {
 
 	// new host name of the vm. The VM has to be stopped/started for this update to take affect
 	string name = 11 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// instance name of the user vm
 	string instance_name = 12 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// Details in key/value pairs. 'extraconfig' is not allowed to be passed in details.
@@ -3376,7 +3376,7 @@ message UpdateVMCmdByAdminRequest {
 
 	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
 	string custom_id = 20 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -3393,13 +3393,13 @@ message UpdateVMCmdByAdminResponse {
 message UpdateVMScheduleRequest {
 	// ID of VM schedule
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Name of the schedule
 	string description = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 1024
 	];
 
 	// Schedule for action on VM in cron format. e.g. '0 15 10 * *' for 'at 15:00 on 10th day of every month'
@@ -3433,12 +3433,12 @@ message UpdateVMScheduleResponse {
 message UpdateVmNicIpRequest {
 	// the ID of the nic to which you want to assign private IP
 	int64 nic_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Secondary IP Address
 	string ip_addr = 2 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	//
@@ -3446,7 +3446,7 @@ message UpdateVmNicIpRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -3465,11 +3465,11 @@ message UpgradeVMRequest {
 	bool run_as_admin = 1;
 	// The ID of the virtual machine
 	int64 id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// the service offering ID to apply to the virtual machine
 	int64 service_offering_id = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// name value pairs of custom parameters for cpuspeed, memory and cpunumber. example details[i].name=value
 	map<string, string> details = 4;
@@ -3499,12 +3499,12 @@ message UpgradeVMResponse {
 message UpgradeVMCmdByAdminRequest {
 	// The ID of the virtual machine
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the service offering ID to apply to the virtual machine
 	int64 service_offering_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// name value pairs of custom parameters for cpuspeed, memory and cpunumber. example details[i].name=value
@@ -3540,7 +3540,7 @@ message UpgradeVMCmdByAdminResponse {
 message Nic {
 	// The ID of the Nic
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Nic
 	string name = 2;
@@ -3556,7 +3556,7 @@ message Nic {
 message UnmanagedInstance {
 	// The ID of the UnmanagedInstance
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the UnmanagedInstance
 	string name = 2;
@@ -3572,7 +3572,7 @@ message UnmanagedInstance {
 message UserVm {
 	// The ID of the UserVm
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the UserVm
 	string name = 2;
@@ -3588,7 +3588,7 @@ message UserVm {
 message VMSchedule {
 	// The ID of the VMSchedule
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the VMSchedule
 	string name = 2;
@@ -3604,7 +3604,7 @@ message VMSchedule {
 message VirtualMachine {
 	// The ID of the VirtualMachine
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the VirtualMachine
 	string name = 2;
@@ -3634,12 +3634,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

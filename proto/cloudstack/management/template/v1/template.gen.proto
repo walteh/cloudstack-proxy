@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.template.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // TemplateService provides operations for managing Templates
@@ -148,7 +148,7 @@ message CopyTemplateRequest {
 	int64 dest_zone_id = 2;
 	// Template ID.
 	int64 id = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// ID of the zone the template is currently hosted on. If not specified and template is cross-zone, then we will sync this template to region wide image store.
 	int64 source_zone_id = 4;
@@ -158,7 +158,7 @@ message CopyTemplateRequest {
 	int64 start_event_id = 6;
 	//
 	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 8;
@@ -177,7 +177,7 @@ message CopyTemplateCmdByAdminRequest {
 
 	// Template ID.
 	int64 id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// ID of the zone the template is currently hosted on. If not specified and template is cross-zone, then we will sync this template to region wide image store.
@@ -191,7 +191,7 @@ message CopyTemplateCmdByAdminRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -222,13 +222,13 @@ message CreateTemplateRequest {
 	];
 	// the name of the template
 	string template_name = 6 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// the ID of the OS Type that best represents the OS of this template.
 	int64 os_type_id = 7 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// true if the template supports the password reset feature; default is false
 	bool password_enabled = 8 [
@@ -270,7 +270,7 @@ message CreateTemplateRequest {
 	int64 start_event_id = 22;
 	//
 	string injected_job_id = 23 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 24;
@@ -302,14 +302,14 @@ message CreateTemplateCmdByAdminRequest {
 
 	// the name of the template
 	string template_name = 5 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the ID of the OS Type that best represents the OS of this template.
 	int64 os_type_id = 6 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// true if the template supports the password reset feature; default is false
@@ -367,7 +367,7 @@ message CreateTemplateCmdByAdminRequest {
 
 	//
 	string injected_job_id = 22 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -384,7 +384,7 @@ message CreateTemplateCmdByAdminResponse {
 message DeleteTemplateRequest {
 	// the ID of the template
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the ID of zone of the template
@@ -405,7 +405,7 @@ message DeleteTemplateRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -422,7 +422,7 @@ message DeleteTemplateResponse {
 message DeleteVnfTemplateRequest {
 	// the ID of the template
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the ID of zone of the template
@@ -443,7 +443,7 @@ message DeleteVnfTemplateRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -460,7 +460,7 @@ message DeleteVnfTemplateResponse {
 message ExtractTemplateRequest {
 	// the ID of the template
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the url to which the ISO would be extracted
@@ -471,7 +471,7 @@ message ExtractTemplateRequest {
 
 	// the mode of extraction - HTTP_DOWNLOAD or FTP_UPLOAD
 	string mode = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -479,7 +479,7 @@ message ExtractTemplateRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -499,7 +499,7 @@ message GetUploadParamsForTemplateRequest {
 
 	// the target hypervisor for the template
 	string hypervisor = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the ID of the OS Type that best represents the OS of this template. Not required for VMware as the guest OS is obtained from the OVF file.
@@ -564,19 +564,19 @@ message GetUploadParamsForTemplateRequest {
 
 	// the name of the volume/template/iso
 	string name = 17 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the format for the volume/template/iso. Possible values include QCOW2, OVA, and VHD.
 	string format = 18 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the ID of the zone the volume/template/iso is to be hosted on
 	int64 zone_id = 19 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	/*
@@ -614,7 +614,7 @@ message ListTemplatePermissionsRequest {
 	bool run_as_admin = 1;
 	// the template ID
 	int64 id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	//
 	string response_type = 3;
@@ -622,7 +622,7 @@ message ListTemplatePermissionsRequest {
 
 // ListTemplatePermissionsResponse represents the response from list template visibility and all accounts that have permissions to view this template.
 message ListTemplatePermissionsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of TemplatePermissionss
 	repeated TemplatePermissions items = 1;
 
@@ -634,7 +634,7 @@ message ListTemplatePermissionsResponse {
 message ListTemplatePermissionsCmdByAdminRequest {
 	// the template ID
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -643,7 +643,7 @@ message ListTemplatePermissionsCmdByAdminRequest {
 
 // ListTemplatePermissionsCmdByAdminResponse represents the response from list template visibility and all accounts that have permissions to view this template.
 message ListTemplatePermissionsCmdByAdminResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of TemplatePermissionss
 	repeated TemplatePermissions items = 1;
 
@@ -663,12 +663,12 @@ message ListTemplatesRequest {
 	repeated string ids = 4;
 	// the template name
 	string template_name = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// possible values are "featured", "self", "selfexecutable","sharedexecutable","executable", and "community". * featured : templates that have been marked as featured and public. * self : templates that have been registered or created by the calling user. * selfexecutable : same as self, but only returns templates that can be used to deploy a new VM. * sharedexecutable : templates ready to be deployed that have been granted to the calling user by another user. * executable : templates that are owned by the calling user, or public templates, that can be used to deploy a VM. * community : templates that have been marked as public but not featured. * all : all templates (only usable by admins).
 	string template_filter = 6 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// list templates by zoneId
 	int64 zone_id = 7;
@@ -702,7 +702,7 @@ message ListTemplatesRequest {
 	int64 project_id = 17;
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 18 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -730,7 +730,7 @@ message ListTemplatesRequest {
 
 // ListTemplatesResponse represents the response from list all public, private, and privileged templates.
 message ListTemplatesResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Templates
 	repeated Template items = 1;
 
@@ -757,13 +757,13 @@ message ListTemplatesCmdByAdminRequest {
 
 	// the template name
 	string template_name = 6 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// possible values are "featured", "self", "selfexecutable","sharedexecutable","executable", and "community". * featured : templates that have been marked as featured and public. * self : templates that have been registered or created by the calling user. * selfexecutable : same as self, but only returns templates that can be used to deploy a new VM. * sharedexecutable : templates ready to be deployed that have been granted to the calling user by another user. * executable : templates that are owned by the calling user, or public templates, that can be used to deploy a VM. * community : templates that have been marked as public but not featured. * all : all templates (only usable by admins).
 	string template_filter = 7 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// list templates by zoneId
@@ -809,7 +809,7 @@ message ListTemplatesCmdByAdminRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 19 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -844,7 +844,7 @@ message ListTemplatesCmdByAdminRequest {
 
 // ListTemplatesCmdByAdminResponse represents the response from list all public, private, and privileged templates.
 message ListTemplatesCmdByAdminResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Templates
 	repeated Template items = 1;
 
@@ -864,12 +864,12 @@ message ListVnfTemplatesRequest {
 	repeated string ids = 4;
 	// the template name
 	string template_name = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// possible values are "featured", "self", "selfexecutable","sharedexecutable","executable", and "community". * featured : templates that have been marked as featured and public. * self : templates that have been registered or created by the calling user. * selfexecutable : same as self, but only returns templates that can be used to deploy a new VM. * sharedexecutable : templates ready to be deployed that have been granted to the calling user by another user. * executable : templates that are owned by the calling user, or public templates, that can be used to deploy a VM. * community : templates that have been marked as public but not featured. * all : all templates (only usable by admins).
 	string template_filter = 6 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// list templates by zoneId
 	int64 zone_id = 7;
@@ -903,7 +903,7 @@ message ListVnfTemplatesRequest {
 	int64 project_id = 17;
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 18 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -931,7 +931,7 @@ message ListVnfTemplatesRequest {
 
 // ListVnfTemplatesResponse represents the response from list all public, private, and privileged vnf templates.
 message ListVnfTemplatesResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Templates
 	repeated Template items = 1;
 
@@ -952,13 +952,13 @@ message ListVnfTemplatesCmdByAdminRequest {
 
 	// the template name
 	string template_name = 4 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// possible values are "featured", "self", "selfexecutable","sharedexecutable","executable", and "community". * featured : templates that have been marked as featured and public. * self : templates that have been registered or created by the calling user. * selfexecutable : same as self, but only returns templates that can be used to deploy a new VM. * sharedexecutable : templates ready to be deployed that have been granted to the calling user by another user. * executable : templates that are owned by the calling user, or public templates, that can be used to deploy a VM. * community : templates that have been marked as public but not featured. * all : all templates (only usable by admins).
 	string template_filter = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// list templates by zoneId
@@ -1004,7 +1004,7 @@ message ListVnfTemplatesCmdByAdminRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 17 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -1039,7 +1039,7 @@ message ListVnfTemplatesCmdByAdminRequest {
 
 // ListVnfTemplatesCmdByAdminResponse represents the response from list all public, private, and privileged vnf templates.
 message ListVnfTemplatesCmdByAdminResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Templates
 	repeated Template items = 1;
 
@@ -1051,12 +1051,12 @@ message ListVnfTemplatesCmdByAdminResponse {
 message PrepareTemplateRequest {
 	// zone ID of the template to be prepared in primary storage(s).
 	int64 zone_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// template ID of the template to be prepared in primary storage(s).
 	int64 template_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// storage pool ID of the primary storage pool to which the template should be prepared. If it is not provided the template is prepared on all the available primary storage pools.
@@ -1082,11 +1082,11 @@ message RegisterTemplateRequest {
 	string display_text = 3;
 	// the format for the template. Possible values include QCOW2, RAW, VHD and OVA.
 	string format = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// the target hypervisor for the template
 	string hypervisor = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// true if this template is a featured template, false otherwise
 	bool featured = 6 [
@@ -1098,9 +1098,9 @@ message RegisterTemplateRequest {
 	];
 	// the name of the template
 	string template_name = 8 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// the ID of the OS Type that best represents the OS of this template. Not applicable with VMware, as we honour what is defined in the template
 	int64 os_type_id = 9;
@@ -1122,7 +1122,7 @@ message RegisterTemplateRequest {
 	];
 	// the URL of where the template is hosted. Possible URL include http:// and https://
 	string url = 14 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// the ID of the zone the template is to be hosted on
 	int64 zone_id = 15;
@@ -1187,12 +1187,12 @@ message RegisterTemplateCmdByAdminRequest {
 
 	// the format for the template. Possible values include QCOW2, RAW, VHD and OVA.
 	string format = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the target hypervisor for the template
 	string hypervisor = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// true if this template is a featured template, false otherwise
@@ -1207,9 +1207,9 @@ message RegisterTemplateCmdByAdminRequest {
 
 	// the name of the template
 	string template_name = 7 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the ID of the OS Type that best represents the OS of this template. Not applicable with VMware, as we honour what is defined in the template
@@ -1237,7 +1237,7 @@ message RegisterTemplateCmdByAdminRequest {
 
 	// the URL of where the template is hosted. Possible URL include http:// and https://
 	string url = 13 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the ID of the zone the template is to be hosted on
@@ -1321,11 +1321,11 @@ message RegisterVnfTemplateRequest {
 	string display_text = 5;
 	// the format for the template. Possible values include QCOW2, RAW, VHD and OVA.
 	string format = 6 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// the target hypervisor for the template
 	string hypervisor = 7 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// true if this template is a featured template, false otherwise
 	bool featured = 8 [
@@ -1337,9 +1337,9 @@ message RegisterVnfTemplateRequest {
 	];
 	// the name of the template
 	string template_name = 10 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// the ID of the OS Type that best represents the OS of this template. Not applicable with VMware, as we honour what is defined in the template
 	int64 os_type_id = 11;
@@ -1361,7 +1361,7 @@ message RegisterVnfTemplateRequest {
 	];
 	// the URL of where the template is hosted. Possible URL include http:// and https://
 	string url = 16 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// the ID of the zone the template is to be hosted on
 	int64 zone_id = 17;
@@ -1432,12 +1432,12 @@ message RegisterVnfTemplateCmdByAdminRequest {
 
 	// the format for the template. Possible values include QCOW2, RAW, VHD and OVA.
 	string format = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the target hypervisor for the template
 	string hypervisor = 6 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// true if this template is a featured template, false otherwise
@@ -1452,9 +1452,9 @@ message RegisterVnfTemplateCmdByAdminRequest {
 
 	// the name of the template
 	string template_name = 9 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the ID of the OS Type that best represents the OS of this template. Not applicable with VMware, as we honour what is defined in the template
@@ -1482,7 +1482,7 @@ message RegisterVnfTemplateCmdByAdminRequest {
 
 	// the URL of where the template is hosted. Possible URL include http:// and https://
 	string url = 15 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the ID of the zone the template is to be hosted on
@@ -1572,12 +1572,12 @@ message UpdateTemplateRequest {
 	string display_text = 6;
 	// the ID of the image file
 	int64 id = 7 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// the name of the image file
 	string template_name = 8 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// the ID of the OS type that best represents the OS of this image.
 	int64 os_type_id = 9;
@@ -1642,13 +1642,13 @@ message UpdateTemplateCmdByAdminRequest {
 
 	// the ID of the image file
 	int64 id = 6 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the name of the image file
 	string template_name = 7 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the ID of the OS type that best represents the OS of this image.
@@ -1708,7 +1708,7 @@ message UpdateTemplatePermissionsRequest {
 
 	// the template ID
 	int64 id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// true for featured template/iso, false otherwise
@@ -1774,12 +1774,12 @@ message UpdateVnfTemplateRequest {
 	string display_text = 10;
 	// the ID of the image file
 	int64 id = 11 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// the name of the image file
 	string template_name = 12 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// the ID of the OS type that best represents the OS of this image.
 	int64 os_type_id = 13;
@@ -1860,13 +1860,13 @@ message UpdateVnfTemplateCmdByAdminRequest {
 
 	// the ID of the image file
 	int64 id = 10 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the name of the image file
 	string template_name = 11 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the ID of the OS type that best represents the OS of this image.
@@ -1923,7 +1923,7 @@ message UpdateVnfTemplateCmdByAdminResponse {
 message Template {
 	// The ID of the Template
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Template
 	string name = 2;
@@ -1939,7 +1939,7 @@ message Template {
 message TemplatePermissions {
 	// The ID of the TemplatePermissions
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the TemplatePermissions
 	string name = 2;
@@ -1969,12 +1969,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

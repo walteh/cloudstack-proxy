@@ -5,21 +5,25 @@
 			"path": "."
 		},
 		{
-			"name": "kotlin-generator",
-			"path": "generator/kotlin"
-		},
-		{
-			"name": "cloudstack-mcp",
-			"path": "../cloudstack-mcp"
-		},
-		{
-			"name": "cloudstack-java-api",
-			"path": "../cloudstack/api/src/main/java/org/apache/cloudstack"
-		},
-		{
-			"name": "cloudstack",
-			"path": "../cloudstack"
+			"name": "buf",
+			"path": "../buf"
 		}
+		// {
+		// 	"name": "kotlin-generator",
+		// 	"path": "generator/kotlin"
+		// },
+		// {
+		// 	"name": "cloudstack-mcp",
+		// 	"path": "../cloudstack-mcp"
+		// },
+		// {
+		// 	"name": "cloudstack-java-api",
+		// 	"path": "../cloudstack/api/src/main/java/org/apache/cloudstack"
+		// },
+		// {
+		// 	"name": "cloudstack",
+		// 	"path": "../cloudstack"
+		// }
 	],
 	"extensions": {
 		"recommendations": [

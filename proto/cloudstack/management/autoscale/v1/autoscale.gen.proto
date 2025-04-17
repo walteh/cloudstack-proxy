@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.autoscale.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // AutoscaleService provides operations for managing Autoscales
@@ -120,18 +120,18 @@ service AutoscaleService {
 message CreateAutoScalePolicyRequest {
 	// the name of the autoscale policy
 	string name = 1 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the action to be executed if all the conditions evaluate to true for the specified duration.
 	string action = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the duration in which the conditions have to be true before action is taken
 	int32 duration = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the cool down period in which the policy should not be evaluated after the action has been taken
@@ -139,7 +139,7 @@ message CreateAutoScalePolicyRequest {
 
 	// the list of IDs of the conditions that are being evaluated on every interval
 	repeated string condition_ids = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -147,7 +147,7 @@ message CreateAutoScalePolicyRequest {
 
 	//
 	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -164,23 +164,23 @@ message CreateAutoScalePolicyResponse {
 message CreateAutoScaleVmGroupRequest {
 	// the ID of the load balancer rule
 	int64 lb_rule_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the name of the autoscale vmgroup
 	string name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the minimum number of members in the vmgroup, the number of instances in the vm group will be equal to or more than this number.
 	int32 min_members = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the maximum number of members in the vmgroup, The number of instances in the vm group will be equal to or less than this number.
 	int32 max_members = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the frequency in which the performance counters to be collected
@@ -188,17 +188,17 @@ message CreateAutoScaleVmGroupRequest {
 
 	// list of scaleup autoscale policies
 	repeated string scale_up_policy_ids = 6 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// list of scaledown autoscale policies
 	repeated string scale_down_policy_ids = 7 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the autoscale profile that contains information about the vms in the vm group.
 	int64 profile_id = 8 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// an optional field, whether to the display the group to the end user or not
@@ -211,7 +211,7 @@ message CreateAutoScaleVmGroupRequest {
 
 	//
 	string injected_job_id = 11 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -228,17 +228,17 @@ message CreateAutoScaleVmGroupResponse {
 message CreateAutoScaleVmProfileRequest {
 	// availability zone for the auto deployed virtual machine
 	int64 zone_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the service offering of the auto deployed virtual machine
 	int64 service_offering_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the template of the auto deployed virtual machine
 	int64 template_id = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	/*
@@ -285,7 +285,7 @@ message CreateAutoScaleVmProfileRequest {
 
 	//
 	string injected_job_id = 16 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -302,22 +302,22 @@ message CreateAutoScaleVmProfileResponse {
 message CreateConditionRequest {
 	// ID of the Counter.
 	int64 counter_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Relational Operator to be used with threshold. Valid values are EQ, GT, LT, GE, LE.
 	string relational_operator = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Value for which the Counter will be evaluated with the Operator selected.
 	int64 threshold = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the account of the condition. Must be used with the domainId parameter.
 	string account_name = 4 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -335,7 +335,7 @@ message CreateConditionRequest {
 
 	//
 	string injected_job_id = 8 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -352,25 +352,25 @@ message CreateConditionResponse {
 message CreateCounterRequest {
 	// Name of the counter.
 	string name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// Source of the counter.
 	string source = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Value of the counter e.g. oid in case of snmp.
 	string value = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Network provider of the counter.
 	string provider = 4 [
-		(validate.field).required    = true,
-		(validate.field).string.uuid = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -378,7 +378,7 @@ message CreateCounterRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -395,7 +395,7 @@ message CreateCounterResponse {
 message DeleteAutoScalePolicyRequest {
 	// the ID of the autoscale policy
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -403,7 +403,7 @@ message DeleteAutoScalePolicyRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -420,7 +420,7 @@ message DeleteAutoScalePolicyResponse {
 message DeleteAutoScaleVmGroupRequest {
 	// the ID of the autoscale group
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// true if all VMs have to be cleaned up, false otherwise
@@ -433,7 +433,7 @@ message DeleteAutoScaleVmGroupRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -450,7 +450,7 @@ message DeleteAutoScaleVmGroupResponse {
 message DeleteAutoScaleVmProfileRequest {
 	// the ID of the autoscale profile
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -458,7 +458,7 @@ message DeleteAutoScaleVmProfileRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -475,7 +475,7 @@ message DeleteAutoScaleVmProfileResponse {
 message DeleteConditionRequest {
 	// the ID of the condition.
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -483,7 +483,7 @@ message DeleteConditionRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -500,7 +500,7 @@ message DeleteConditionResponse {
 message DeleteCounterRequest {
 	// the ID of the counter
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -508,7 +508,7 @@ message DeleteCounterRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -525,7 +525,7 @@ message DeleteCounterResponse {
 message DisableAutoScaleVmGroupRequest {
 	// the ID of the autoscale group
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -533,7 +533,7 @@ message DisableAutoScaleVmGroupRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -550,7 +550,7 @@ message DisableAutoScaleVmGroupResponse {
 message EnableAutoScaleVmGroupRequest {
 	// the ID of the autoscale group
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -558,7 +558,7 @@ message EnableAutoScaleVmGroupRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -578,8 +578,8 @@ message ListAutoScalePoliciesRequest {
 
 	// the name of the autoscale policy
 	string name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the ID of the condition of the policy
@@ -596,7 +596,7 @@ message ListAutoScalePoliciesRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 7 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -631,7 +631,7 @@ message ListAutoScalePoliciesRequest {
 
 // ListAutoScalePoliciesResponse represents the response from lists autoscale policies.
 message ListAutoScalePoliciesResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of AutoScalePolicys
 	repeated AutoScalePolicy items = 1;
 
@@ -646,8 +646,8 @@ message ListAutoScaleVmGroupsRequest {
 
 	// the name of the autoscale vmgroup
 	string name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the ID of the loadbalancer
@@ -672,7 +672,7 @@ message ListAutoScaleVmGroupsRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 9 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -707,7 +707,7 @@ message ListAutoScaleVmGroupsRequest {
 
 // ListAutoScaleVmGroupsResponse represents the response from lists autoscale vm groups.
 message ListAutoScaleVmGroupsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of AutoScaleVmGroups
 	repeated AutoScaleVmGroup items = 1;
 
@@ -742,7 +742,7 @@ message ListAutoScaleVmProfilesRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 8 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -777,7 +777,7 @@ message ListAutoScaleVmProfilesRequest {
 
 // ListAutoScaleVmProfilesResponse represents the response from lists autoscale vm profiles.
 message ListAutoScaleVmProfilesResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of AutoScaleVmProfiles
 	repeated AutoScaleVmProfile items = 1;
 
@@ -801,7 +801,7 @@ message ListConditionsRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 5 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -836,7 +836,7 @@ message ListConditionsRequest {
 
 // ListConditionsResponse represents the response from list conditions for vm auto scaling
 message ListConditionsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Conditions
 	repeated Condition items = 1;
 
@@ -851,8 +851,8 @@ message ListCountersRequest {
 
 	// Name of the counter.
 	string name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// Source of the counter.
@@ -860,7 +860,7 @@ message ListCountersRequest {
 
 	// Network provider of the counter.
 	string provider = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// List by keyword
@@ -878,7 +878,7 @@ message ListCountersRequest {
 
 // ListCountersResponse represents the response from list the counters for vm auto scaling
 message ListCountersResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Counters
 	repeated Counter items = 1;
 
@@ -890,8 +890,8 @@ message ListCountersResponse {
 message UpdateAutoScalePolicyRequest {
 	// the name of the autoscale policy
 	string name = 1 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the duration in which the conditions have to be true before action is taken
@@ -905,7 +905,7 @@ message UpdateAutoScalePolicyRequest {
 
 	// the ID of the autoscale policy
 	int64 id = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -913,7 +913,7 @@ message UpdateAutoScalePolicyRequest {
 
 	//
 	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -930,8 +930,8 @@ message UpdateAutoScalePolicyResponse {
 message UpdateAutoScaleVmGroupRequest {
 	// the name of the autoscale vmgroup
 	string name = 1 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the minimum number of members in the vmgroup, the number of instances in the vm group will be equal to or more than this number.
@@ -951,7 +951,7 @@ message UpdateAutoScaleVmGroupRequest {
 
 	// the ID of the autoscale group
 	int64 id = 7 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// an optional field, whether to the display the group to the end user or not
@@ -961,7 +961,7 @@ message UpdateAutoScaleVmGroupRequest {
 
 	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
 	string custom_id = 9 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -969,7 +969,7 @@ message UpdateAutoScaleVmGroupRequest {
 
 	//
 	string injected_job_id = 11 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -986,7 +986,7 @@ message UpdateAutoScaleVmGroupResponse {
 message UpdateAutoScaleVmProfileRequest {
 	// the ID of the autoscale vm profile
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the service offering of the auto deployed virtual machine
@@ -1027,7 +1027,7 @@ message UpdateAutoScaleVmProfileRequest {
 
 	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
 	string custom_id = 12 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1035,7 +1035,7 @@ message UpdateAutoScaleVmProfileRequest {
 
 	//
 	string injected_job_id = 14 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1052,17 +1052,17 @@ message UpdateAutoScaleVmProfileResponse {
 message UpdateConditionRequest {
 	// the ID of the condition.
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Relational Operator to be used with threshold. Valid values are EQ, GT, LT, GE, LE.
 	string relational_operator = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Value for which the Counter will be evaluated with the Operator selected.
 	int64 threshold = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -1070,7 +1070,7 @@ message UpdateConditionRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1087,7 +1087,7 @@ message UpdateConditionResponse {
 message AutoScalePolicy {
 	// The ID of the AutoScalePolicy
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the AutoScalePolicy
 	string name = 2;
@@ -1103,7 +1103,7 @@ message AutoScalePolicy {
 message AutoScaleVmGroup {
 	// The ID of the AutoScaleVmGroup
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the AutoScaleVmGroup
 	string name = 2;
@@ -1119,7 +1119,7 @@ message AutoScaleVmGroup {
 message AutoScaleVmProfile {
 	// The ID of the AutoScaleVmProfile
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the AutoScaleVmProfile
 	string name = 2;
@@ -1135,7 +1135,7 @@ message AutoScaleVmProfile {
 message Condition {
 	// The ID of the Condition
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Condition
 	string name = 2;
@@ -1151,7 +1151,7 @@ message Condition {
 message Counter {
 	// The ID of the Counter
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Counter
 	string name = 2;
@@ -1197,12 +1197,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

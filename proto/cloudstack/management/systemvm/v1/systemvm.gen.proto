@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.systemvm.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // SystemvmService provides operations for managing Systemvms
@@ -60,7 +60,7 @@ service SystemvmService {
 message DestroySystemVmRequest {
 	// The ID of the system virtual machine
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -68,7 +68,7 @@ message DestroySystemVmRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -91,8 +91,8 @@ message ListSystemVMsRequest {
 
 	// the name of the system VM
 	string system_vm_name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the Pod ID of the system VM
@@ -125,7 +125,7 @@ message ListSystemVMsRequest {
 
 // ListSystemVMsResponse represents the response from list system virtual machines.
 message ListSystemVMsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of SystemVms
 	repeated SystemVm items = 1;
 
@@ -140,7 +140,7 @@ message MigrateSystemVMRequest {
 
 	// the ID of the virtual machine
 	int64 virtual_machine_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Destination storage pool ID to migrate VM volumes to. Required for migrating the root disk volume
@@ -156,7 +156,7 @@ message MigrateSystemVMRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -184,7 +184,7 @@ message PatchSystemVMRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -201,7 +201,7 @@ message PatchSystemVMResponse {
 message RebootSystemVmRequest {
 	// The ID of the system virtual machine
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Force reboot the system VM (System VM is Stopped and then Started)
@@ -214,7 +214,7 @@ message RebootSystemVmRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -231,12 +231,12 @@ message RebootSystemVmResponse {
 message ScaleSystemVMRequest {
 	// The ID of the system vm
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the service offering ID to apply to the system vm
 	int64 service_offering_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// name value pairs of custom parameters for cpuspeed, memory and cpunumber. example details[i].name=value
@@ -247,7 +247,7 @@ message ScaleSystemVMRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -264,7 +264,7 @@ message ScaleSystemVMResponse {
 message StartSystemVMRequest {
 	// The ID of the system virtual machine
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -272,7 +272,7 @@ message StartSystemVMRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -289,7 +289,7 @@ message StartSystemVMResponse {
 message StopSystemVmRequest {
 	// The ID of the system virtual machine
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Force stop the VM (vm is marked as Stopped even when command fails to be send to the backend, otherwise a force poweroff is attempted). To be used if the caller knows the VM is stopped and should be marked as such.
@@ -302,7 +302,7 @@ message StopSystemVmRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -319,12 +319,12 @@ message StopSystemVmResponse {
 message UpgradeSystemVMRequest {
 	// The ID of the system vm
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the service offering ID to apply to the system vm
 	int64 service_offering_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// name value pairs of custom parameters for cpuspeed, memory and cpunumber. example details[i].name=value
@@ -344,7 +344,7 @@ message UpgradeSystemVMResponse {
 message SystemVm {
 	// The ID of the SystemVm
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the SystemVm
 	string name = 2;
@@ -374,12 +374,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

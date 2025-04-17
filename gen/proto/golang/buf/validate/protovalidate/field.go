@@ -26,7 +26,7 @@
 package protovalidate
 
 import (
-	"github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
+	"github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
 )

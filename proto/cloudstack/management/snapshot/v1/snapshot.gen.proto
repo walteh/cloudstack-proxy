@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.snapshot.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // SnapshotService provides operations for managing Snapshots
@@ -81,7 +81,7 @@ service SnapshotService {
 message ArchiveSnapshotRequest {
 	// The ID of the snapshot
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -89,7 +89,7 @@ message ArchiveSnapshotRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -106,7 +106,7 @@ message ArchiveSnapshotResponse {
 message CopySnapshotRequest {
 	// the ID of the snapshot.
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The ID of the zone in which the snapshot is currently present. If not specified then the zone of snapshot's volume will be used.
@@ -123,7 +123,7 @@ message CopySnapshotRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -146,7 +146,7 @@ message CreateSnapshotRequest {
 
 	// The ID of the disk volume
 	int64 volume_id = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// policy id of the snapshot, if this is null, then use MANUAL_POLICY.
@@ -162,8 +162,8 @@ message CreateSnapshotRequest {
 
 	// the name of the snapshot
 	string snapshot_name = 7 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// asynchronous backup if true
@@ -182,7 +182,7 @@ message CreateSnapshotRequest {
 
 	//
 	string injected_job_id = 12 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -199,18 +199,18 @@ message CreateSnapshotResponse {
 message CreateSnapshotFromVMSnapshotRequest {
 	// The ID of the disk volume
 	int64 volume_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The ID of the VM snapshot
 	int64 vm_snapshot_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the name of the snapshot
 	string snapshot_name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	//
@@ -218,7 +218,7 @@ message CreateSnapshotFromVMSnapshotRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -235,27 +235,27 @@ message CreateSnapshotFromVMSnapshotResponse {
 message CreateSnapshotPolicyRequest {
 	// valid values are HOURLY, DAILY, WEEKLY, and MONTHLY
 	string interval_type = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// maximum number of snapshots to retain
 	int32 max_snaps = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// time the snapshot is scheduled to be taken. Format is:* if HOURLY, MM* if DAILY, MM:HH* if WEEKLY, MM:HH:DD (1-7)* if MONTHLY, MM:HH:DD (1-28)
 	string schedule = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Specifies a timezone for this command. For more information on the timezone parameter, see Time Zone Format.
 	string timezone = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the ID of the disk volume
 	int64 volume_id = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// an optional field, whether to the display the policy to the end user or not
@@ -283,7 +283,7 @@ message CreateSnapshotPolicyResponse {
 message DeleteSnapshotRequest {
 	// The ID of the snapshot
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The ID of the zone for the snapshot
@@ -294,7 +294,7 @@ message DeleteSnapshotRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -329,12 +329,12 @@ message DeleteSnapshotPoliciesResponse {
 message ExtractSnapshotRequest {
 	// the ID of the snapshot
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the ID of the zone where the snapshot is located
 	int64 zone_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -342,7 +342,7 @@ message ExtractSnapshotRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -383,7 +383,7 @@ message ListSnapshotPoliciesRequest {
 
 // ListSnapshotPoliciesResponse represents the response from lists snapshot policies.
 message ListSnapshotPoliciesResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of SnapshotPolicys
 	repeated SnapshotPolicy items = 1;
 
@@ -403,8 +403,8 @@ message ListSnapshotsRequest {
 	string interval_type = 4;
 	// lists snapshot by snapshot name
 	string snapshot_name = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// valid values are MANUAL or RECURRING.
 	string snapshot_type = 6;
@@ -424,7 +424,7 @@ message ListSnapshotsRequest {
 	int64 project_id = 12;
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 13 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -452,7 +452,7 @@ message ListSnapshotsRequest {
 
 // ListSnapshotsResponse represents the response from lists all available snapshots for the account.
 message ListSnapshotsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Snapshots
 	repeated Snapshot items = 1;
 
@@ -479,8 +479,8 @@ message ListSnapshotsCmdByAdminRequest {
 
 	// lists snapshot by snapshot name
 	string snapshot_name = 6 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// valid values are MANUAL or RECURRING.
@@ -508,7 +508,7 @@ message ListSnapshotsCmdByAdminRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 14 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -543,7 +543,7 @@ message ListSnapshotsCmdByAdminRequest {
 
 // ListSnapshotsCmdByAdminResponse represents the response from lists all available snapshots for the account.
 message ListSnapshotsCmdByAdminResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Snapshots
 	repeated Snapshot items = 1;
 
@@ -555,7 +555,7 @@ message ListSnapshotsCmdByAdminResponse {
 message RevertSnapshotRequest {
 	// The ID of the snapshot
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -563,7 +563,7 @@ message RevertSnapshotRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -588,7 +588,7 @@ message UpdateSnapshotPolicyRequest {
 
 	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
 	string custom_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -596,7 +596,7 @@ message UpdateSnapshotPolicyRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -613,7 +613,7 @@ message UpdateSnapshotPolicyResponse {
 message Snapshot {
 	// The ID of the Snapshot
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Snapshot
 	string name = 2;
@@ -629,7 +629,7 @@ message Snapshot {
 message SnapshotPolicy {
 	// The ID of the SnapshotPolicy
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the SnapshotPolicy
 	string name = 2;
@@ -649,7 +649,7 @@ message Success {
 	string display_text = 2;
 }
 
-// IntervalType represents the possible values for valid values are HOURLY, DAILY, WEEKLY, and MONTHLY
+// IntervalType represents the possible values for valid values are HOURLY, DAILY, WEEKLY, and MONTHLY.
 enum IntervalType {
 	// Default unspecified value
 	INTERVAL_TYPE_UNSPECIFIED = 0;
@@ -681,12 +681,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

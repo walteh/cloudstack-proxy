@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.job.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // JobService provides operations for managing Jobs
@@ -31,7 +31,7 @@ message ListAsyncJobsRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 3 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -66,7 +66,7 @@ message ListAsyncJobsRequest {
 
 // ListAsyncJobsResponse represents the response from lists all pending asynchronous jobs for the account.
 message ListAsyncJobsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of AsyncJobs
 	repeated AsyncJob items = 1;
 
@@ -78,7 +78,7 @@ message ListAsyncJobsResponse {
 message QueryAsyncJobResultRequest {
 	// the ID of the asynchronous job
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -95,7 +95,7 @@ message QueryAsyncJobResultResponse {
 message AsyncJob {
 	// The ID of the AsyncJob
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the AsyncJob
 	string name = 2;
@@ -125,12 +125,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

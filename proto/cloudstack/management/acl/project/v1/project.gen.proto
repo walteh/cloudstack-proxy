@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.acl.project.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // ProjectService provides operations for managing Acl.Projects
@@ -55,20 +55,20 @@ service ProjectService {
 message CreateProjectRoleRequest {
 	// creates a project role with this unique name
 	string project_role_name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// ID of project where role is being created
 	int64 project_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The description of the Project role
 	string project_role_description = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 1024
 	];
 
 	//
@@ -85,28 +85,28 @@ message CreateProjectRoleResponse {
 message CreateProjectRolePermissionRequest {
 	// ID of the project role
 	int64 project_role_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// ID of project where project role permission is to be created
 	int64 project_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The API name or wildcard rule such as list*
 	string rule = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The rule permission, allow or deny. Default: deny.
 	string permission = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The description of the role permission
 	string description = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 1024
 	];
 
 	//
@@ -123,12 +123,12 @@ message CreateProjectRolePermissionResponse {
 message DeleteProjectRoleRequest {
 	// ID of the project role to be deleted
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// ID of the project from where the role is to be deleted
 	int64 project_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -145,12 +145,12 @@ message DeleteProjectRoleResponse {
 message DeleteProjectRolePermissionRequest {
 	// ID of the project where the project role permission is to be deleted
 	int64 project_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// ID of the project role permission to be deleted
 	int64 project_role_permission_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -167,7 +167,7 @@ message DeleteProjectRolePermissionResponse {
 message ListProjectRolePermissionsRequest {
 	// ID of the project
 	int64 project_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// ID of the project role
@@ -179,7 +179,7 @@ message ListProjectRolePermissionsRequest {
 
 // ListProjectRolePermissionsResponse represents the response from lists a project's project role permissions
 message ListProjectRolePermissionsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of ProjectRolePermissions
 	repeated ProjectRolePermission items = 1;
 
@@ -194,13 +194,13 @@ message ListProjectRolesRequest {
 
 	// List project role by project ID.
 	int64 project_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// List project role by project role name.
 	string role_name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// List by keyword
@@ -218,7 +218,7 @@ message ListProjectRolesRequest {
 
 // ListProjectRolesResponse represents the response from lists project roles in cloudstack
 message ListProjectRolesResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of ProjectRoles
 	repeated ProjectRole items = 1;
 
@@ -230,24 +230,24 @@ message ListProjectRolesResponse {
 message UpdateProjectRoleRequest {
 	// ID of the Project role
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// creates a project role with this unique name
 	string project_role_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// ID of project where role is being created
 	int64 project_id = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The description of the Project role
 	string project_role_description = 4 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 1024
 	];
 
 	//
@@ -264,12 +264,12 @@ message UpdateProjectRoleResponse {
 message UpdateProjectRolePermissionRequest {
 	// ID of the project role
 	int64 project_role_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// ID of project where project role permission is to be updated
 	int64 project_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The parent role permission uuid, use 0 to move this rule at the top of the list
@@ -295,7 +295,7 @@ message UpdateProjectRolePermissionResponse {
 message ProjectRole {
 	// The ID of the ProjectRole
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the ProjectRole
 	string name = 2;
@@ -311,7 +311,7 @@ message ProjectRole {
 message ProjectRolePermission {
 	// The ID of the ProjectRolePermission
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the ProjectRolePermission
 	string name = 2;
@@ -351,12 +351,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

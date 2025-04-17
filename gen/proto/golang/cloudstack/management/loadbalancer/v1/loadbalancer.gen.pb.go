@@ -7,8 +7,8 @@
 package loadbalancerv1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -4481,7 +4481,7 @@ var File_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto protorefle
 
 const file_cloudstack_management_loadbalancer_v1_loadbalancer_gen_proto_rawDesc = "" +
 	"\n" +
-	"<cloudstack/management/loadbalancer/v1/loadbalancer.gen.proto\x12%cloudstack.management.loadbalancer.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xe5\x01\n" +
+	"<cloudstack/management/loadbalancer/v1/loadbalancer.gen.proto\x12%cloudstack.management.loadbalancer.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\xe5\x01\n" +
 	"\x1fAssignCertToLoadBalancerRequest\x12$\n" +
 	"\n" +
 	"lb_rule_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\blbRuleId\x12\x1f\n" +

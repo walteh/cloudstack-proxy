@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.backup.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // BackupService provides operations for managing Backups
@@ -100,12 +100,12 @@ service BackupService {
 message AssignVirtualMachineToBackupOfferingRequest {
 	// ID of the virtual machine
 	int64 vm_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// ID of the backup offering
 	int64 offering_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -113,7 +113,7 @@ message AssignVirtualMachineToBackupOfferingRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -130,7 +130,7 @@ message AssignVirtualMachineToBackupOfferingResponse {
 message CreateBackupRequest {
 	// ID of the VM
 	int64 vm_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// backup schedule ID of the VM, if this is null, it indicates that it is a manual backup.
@@ -141,7 +141,7 @@ message CreateBackupRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -158,22 +158,22 @@ message CreateBackupResponse {
 message CreateBackupScheduleRequest {
 	// ID of the VM for which schedule is to be defined
 	int64 vm_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// valid values are HOURLY, DAILY, WEEKLY, and MONTHLY
 	string interval_type = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// custom backup schedule, the format is:for HOURLY MM*, for DAILY MM:HH*, for WEEKLY MM:HH:DD (1-7)*, for MONTHLY MM:HH:DD (1-28)
 	string schedule = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Specifies a timezone for this command. For more information on the timezone parameter, see TimeZone Format.
 	string timezone = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// maximum number of backups to retain
@@ -193,7 +193,7 @@ message CreateBackupScheduleResponse {
 message DeleteBackupRequest {
 	// id of the VM backup
 	int64 backup_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// force the deletion of backup which removes the entire backup chain but keep VM in Backup Offering
@@ -206,7 +206,7 @@ message DeleteBackupRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -223,7 +223,7 @@ message DeleteBackupResponse {
 message DeleteBackupOfferingRequest {
 	// ID of the backup offering
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -258,33 +258,33 @@ message DeleteBackupScheduleResponse {
 message ImportBackupOfferingRequest {
 	// the name of the backup offering
 	string name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the description of the backup offering
 	string description = 2 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 1024
 	];
 
 	// The backup offering ID (from backup provider side)
 	string external_id = 3 [
-		(validate.field).required    = true,
-		(validate.field).string.uuid = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The zone ID
 	int64 zone_id = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Whether users are allowed to create adhoc backups and backup schedules
 	bool user_driven_backups = 5 [
-		(validate.field).required = true,
-		features.field_presence   = EXPLICIT
+		(buf.validate.field).required = true,
+		features.field_presence       = EXPLICIT
 	];
 
 	//
@@ -292,7 +292,7 @@ message ImportBackupOfferingRequest {
 
 	//
 	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -328,7 +328,7 @@ message ListBackupOfferingsRequest {
 
 // ListBackupOfferingsResponse represents the response from lists backup offerings
 message ListBackupOfferingsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of BackupOfferings
 	repeated BackupOffering items = 1;
 
@@ -340,7 +340,7 @@ message ListBackupOfferingsResponse {
 message ListBackupProviderOfferingsRequest {
 	// The zone ID
 	int64 zone_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// List by keyword
@@ -358,7 +358,7 @@ message ListBackupProviderOfferingsRequest {
 
 // ListBackupProviderOfferingsResponse represents the response from lists external backup offerings of the provider
 message ListBackupProviderOfferingsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of BackupOfferings
 	repeated BackupOffering items = 1;
 
@@ -370,8 +370,8 @@ message ListBackupProviderOfferingsResponse {
 message ListBackupProvidersRequest {
 	// List Backup and Recovery provider by name
 	string name = 1 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	//
@@ -380,7 +380,7 @@ message ListBackupProvidersRequest {
 
 // ListBackupProvidersResponse represents the response from lists backup and recovery providers
 message ListBackupProvidersResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of BackupProviders
 	repeated BackupProvider items = 1;
 
@@ -392,7 +392,7 @@ message ListBackupProvidersResponse {
 message ListBackupScheduleRequest {
 	// ID of the VM
 	int64 vm_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -401,7 +401,7 @@ message ListBackupScheduleRequest {
 
 // ListBackupScheduleResponse represents the response from list backup schedule of a vm
 message ListBackupScheduleResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of BackupSchedules
 	repeated BackupSchedule items = 1;
 
@@ -425,7 +425,7 @@ message ListBackupsRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 5 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -460,7 +460,7 @@ message ListBackupsRequest {
 
 // ListBackupsResponse represents the response from lists vm backups
 message ListBackupsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Backups
 	repeated Backup items = 1;
 
@@ -472,7 +472,7 @@ message ListBackupsResponse {
 message RemoveVirtualMachineFromBackupOfferingRequest {
 	// ID of the virtual machine
 	int64 vm_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Whether to force remove VM from the backup offering that may also delete VM backups.
@@ -485,7 +485,7 @@ message RemoveVirtualMachineFromBackupOfferingRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -502,7 +502,7 @@ message RemoveVirtualMachineFromBackupOfferingResponse {
 message RestoreBackupRequest {
 	// ID of the backup
 	int64 backup_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -510,7 +510,7 @@ message RestoreBackupRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -527,18 +527,18 @@ message RestoreBackupResponse {
 message RestoreVolumeFromBackupAndAttachToVMRequest {
 	// ID of the VM backup
 	int64 backup_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// ID of the volume backed up
 	string volume_uuid = 2 [
-		(validate.field).required    = true,
-		(validate.field).string.uuid = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.uuid = true
 	];
 
 	// id of the VM where to attach the restored volume
 	int64 vm_id = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -546,7 +546,7 @@ message RestoreVolumeFromBackupAndAttachToVMRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -563,19 +563,19 @@ message RestoreVolumeFromBackupAndAttachToVMResponse {
 message UpdateBackupOfferingRequest {
 	// The ID of the Backup Offering to be updated
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The description of the Backup Offering to be updated
 	string description = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 1024
 	];
 
 	// The name of the Backup Offering to be updated
 	string name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// Whether to allow user driven backups or not
@@ -597,22 +597,22 @@ message UpdateBackupOfferingResponse {
 message UpdateBackupScheduleRequest {
 	// ID of the VM for which schedule is to be defined
 	int64 vm_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// valid values are HOURLY, DAILY, WEEKLY, and MONTHLY
 	string interval_type = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// custom backup schedule, the format is:for HOURLY MM*, for DAILY MM:HH*, for WEEKLY MM:HH:DD (1-7)*, for MONTHLY MM:HH:DD (1-28)
 	string schedule = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Specifies a timezone for this command. For more information on the timezone parameter, see TimeZone Format.
 	string timezone = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// maximum number of backups to retain
@@ -632,7 +632,7 @@ message UpdateBackupScheduleResponse {
 message Backup {
 	// The ID of the Backup
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Backup
 	string name = 2;
@@ -648,7 +648,7 @@ message Backup {
 message BackupOffering {
 	// The ID of the BackupOffering
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the BackupOffering
 	string name = 2;
@@ -664,7 +664,7 @@ message BackupOffering {
 message BackupProvider {
 	// The ID of the BackupProvider
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the BackupProvider
 	string name = 2;
@@ -680,7 +680,7 @@ message BackupProvider {
 message BackupSchedule {
 	// The ID of the BackupSchedule
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the BackupSchedule
 	string name = 2;
@@ -722,12 +722,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

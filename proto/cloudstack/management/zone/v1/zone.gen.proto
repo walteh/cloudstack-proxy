@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.zone.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // ZoneService provides operations for managing Zones
@@ -46,7 +46,7 @@ service ZoneService {
 message CreateZoneRequest {
 	// the first DNS for the Zone
 	string dns1 = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the second DNS for the Zone
@@ -54,12 +54,12 @@ message CreateZoneRequest {
 
 	// the first DNS for IPv6 network in the Zone
 	string ip6_dns1 = 3 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the second DNS for IPv6 network in the Zone
 	string ip6_dns2 = 4 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the guest CIDR address for the Zone
@@ -67,7 +67,7 @@ message CreateZoneRequest {
 
 	// the first internal DNS for the Zone
 	string internal_dns1 = 6 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the second internal DNS for the Zone
@@ -75,9 +75,9 @@ message CreateZoneRequest {
 
 	// the name of the Zone
 	string zone_name = 8 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// Network domain name for the networks in the zone
@@ -88,7 +88,7 @@ message CreateZoneRequest {
 
 	// network type of the zone, can be Basic or Advanced
 	string network_type = 11 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Allocation state of this Zone for allocation of new resources
@@ -123,7 +123,7 @@ message CreateZoneResponse {
 message DeleteZoneRequest {
 	// the ID of the Zone
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -152,8 +152,8 @@ message ListZonesRequest {
 	int64 domain_id = 5;
 	// the name of the zone
 	string name = 6 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// the network type of the zone that the virtual machine belongs to
 	string network_type = 7;
@@ -179,7 +179,7 @@ message ListZonesRequest {
 
 // ListZonesResponse represents the response from lists zones
 message ListZonesResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Zones
 	repeated Zone items = 1;
 
@@ -205,8 +205,8 @@ message ListZonesCmdByAdminRequest {
 
 	// the name of the zone
 	string name = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the network type of the zone that the virtual machine belongs to
@@ -240,7 +240,7 @@ message ListZonesCmdByAdminRequest {
 
 // ListZonesCmdByAdminResponse represents the response from lists zones
 message ListZonesCmdByAdminResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Zones
 	repeated Zone items = 1;
 
@@ -252,17 +252,17 @@ message ListZonesCmdByAdminResponse {
 message MarkDefaultZoneForAccountRequest {
 	// Name of the account that is to be marked.
 	string account_name = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Marks the account that belongs to the specified domain.
 	int64 domain_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The Zone ID with which the account is to be marked.
 	int64 default_zone_id = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -270,7 +270,7 @@ message MarkDefaultZoneForAccountRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -293,12 +293,12 @@ message UpdateZoneRequest {
 
 	// the first DNS for IPv6 network in the Zone
 	string ip6_dns1 = 3 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the second DNS for IPv6 network in the Zone
 	string ip6_dns2 = 4 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the guest CIDR address for the Zone
@@ -306,7 +306,7 @@ message UpdateZoneRequest {
 
 	// the ID of the Zone
 	int64 id = 6 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the first internal DNS for the Zone
@@ -317,8 +317,8 @@ message UpdateZoneRequest {
 
 	// the name of the Zone
 	string zone_name = 9 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// updates a private zone to public if set, but not vice-versa
@@ -334,7 +334,7 @@ message UpdateZoneRequest {
 
 	// the dhcp Provider for the Zone
 	string dhcp_provider = 13 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// Network domain name for the networks in the zone; empty string will update domain with NULL value
@@ -365,7 +365,7 @@ message UpdateZoneResponse {
 message Zone {
 	// The ID of the Zone
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Zone
 	string name = 2;
@@ -395,12 +395,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

@@ -7,8 +7,8 @@
 package vlanv1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -1232,7 +1232,7 @@ var File_cloudstack_management_vlan_v1_vlan_gen_proto protoreflect.FileDescripto
 
 const file_cloudstack_management_vlan_v1_vlan_gen_proto_rawDesc = "" +
 	"\n" +
-	",cloudstack/management/vlan/v1/vlan.gen.proto\x12\x1dcloudstack.management.vlan.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xd3\x05\n" +
+	",cloudstack/management/vlan/v1/vlan.gen.proto\x12\x1dcloudstack.management.vlan.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\xd3\x05\n" +
 	"\x18CreateVlanIpRangeRequest\x12!\n" +
 	"\faccount_name\x18\x01 \x01(\tR\vaccountName\x12\x1d\n" +
 	"\n" +

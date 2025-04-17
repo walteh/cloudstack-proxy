@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.management.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // ManagementService provides operations for managing Managements
@@ -23,8 +23,8 @@ message ListMgmtsRequest {
 
 	// the name of the management server
 	string host_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// Whether to return the management server peers or not. By default, the management server peers will not be returned.
@@ -47,7 +47,7 @@ message ListMgmtsRequest {
 
 // ListMgmtsResponse represents the response from lists management servers.
 message ListMgmtsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of ManagementServers
 	repeated ManagementServer items = 1;
 
@@ -59,7 +59,7 @@ message ListMgmtsResponse {
 message ManagementServer {
 	// The ID of the ManagementServer
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the ManagementServer
 	string name = 2;
@@ -89,12 +89,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

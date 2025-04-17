@@ -28,7 +28,7 @@ package protovalidate
 import (
 	"fmt"
 
-	"github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
+	"github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	"github.com/google/cel-go/cel"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"

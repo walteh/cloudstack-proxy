@@ -7,8 +7,8 @@
 package natv1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -1017,7 +1017,7 @@ var File_cloudstack_management_nat_v1_nat_gen_proto protoreflect.FileDescriptor
 
 const file_cloudstack_management_nat_v1_nat_gen_proto_rawDesc = "" +
 	"\n" +
-	"*cloudstack/management/nat/v1/nat.gen.proto\x12\x1ccloudstack.management.nat.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x8b\x03\n" +
+	"*cloudstack/management/nat/v1/nat.gen.proto\x12\x1ccloudstack.management.nat.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\x8b\x03\n" +
 	"\x1dCreateIpForwardingRuleRequest\x12*\n" +
 	"\rip_address_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\vipAddressId\x12-\n" +
 	"\n" +

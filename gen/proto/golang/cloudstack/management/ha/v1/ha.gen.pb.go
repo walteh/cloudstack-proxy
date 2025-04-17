@@ -7,8 +7,8 @@
 package hav1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -1286,7 +1286,7 @@ var File_cloudstack_management_ha_v1_ha_gen_proto protoreflect.FileDescriptor
 
 const file_cloudstack_management_ha_v1_ha_gen_proto_rawDesc = "" +
 	"\n" +
-	"(cloudstack/management/ha/v1/ha.gen.proto\x12\x1bcloudstack.management.ha.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xe7\x01\n" +
+	"(cloudstack/management/ha/v1/ha.gen.proto\x12\x1bcloudstack.management.ha.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\xe7\x01\n" +
 	"\x19ConfigureHAForHostRequest\x12\x1f\n" +
 	"\ahost_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06hostId\x12,\n" +
 	"\vha_provider\x18\x02 \x01(\tB\v\xbaH\b\xc8\x01\x01r\x03\xb0\x01\x01R\n" +

@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.vpn.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // VpnService provides operations for managing Vpns
@@ -115,14 +115,14 @@ service VpnService {
 message AddVpnUserRequest {
 	// username for the vpn user
 	string user_name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// password for the username
 	string password = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// an optional account for the vpn user. Must be used with domainId.
@@ -139,7 +139,7 @@ message AddVpnUserRequest {
 
 	//
 	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -156,12 +156,12 @@ message AddVpnUserResponse {
 message CreateRemoteAccessVpnRequest {
 	// public ip address id of the vpn server
 	int64 public_ip_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the range of ip addresses to allocate to vpn clients. The first ip in the range will be taken by the vpn server
 	string ip_range = 2 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// an optional account for the VPN. Must be used with domainId.
@@ -185,7 +185,7 @@ message CreateRemoteAccessVpnRequest {
 
 	//
 	string injected_job_id = 8 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -202,12 +202,12 @@ message CreateRemoteAccessVpnResponse {
 message CreateVpnConnectionRequest {
 	// id of the vpn gateway
 	int64 vpn_gateway_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// id of the customer gateway
 	int64 customer_gateway_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// connection is passive or not
@@ -225,7 +225,7 @@ message CreateVpnConnectionRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -242,35 +242,35 @@ message CreateVpnConnectionResponse {
 message CreateVpnCustomerGatewayRequest {
 	// name of this customer gateway
 	string name = 1 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// public ip address id of the customer gateway
 	string gateway_ip = 2 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// guest cidr list of the customer gateway. Multiple entries must be separated by a single comma character (,).
 	string peer_cidr_list = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// IPsec Preshared-Key of the customer gateway. Cannot contain newline or double quotes.
 	string ipsec_psk = 4 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// IKE policy of the customer gateway
 	string ike_policy = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// ESP policy of the customer gateway
 	string esp_policy = 6 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Lifetime of phase 1 VPN connection to the customer gateway, in seconds
@@ -291,7 +291,7 @@ message CreateVpnCustomerGatewayRequest {
 
 	// the account associated with the gateway. Must be used with the domainId parameter.
 	string account_name = 11 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -317,7 +317,7 @@ message CreateVpnCustomerGatewayRequest {
 
 	//
 	string injected_job_id = 17 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -334,7 +334,7 @@ message CreateVpnCustomerGatewayResponse {
 message CreateVpnGatewayRequest {
 	// public ip address id of the vpn gateway
 	int64 vpc_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// an optional field, whether to the display the vpn to the end user or not
@@ -347,7 +347,7 @@ message CreateVpnGatewayRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -364,7 +364,7 @@ message CreateVpnGatewayResponse {
 message DeleteRemoteAccessVpnRequest {
 	// public ip address id of the vpn server
 	int64 public_ip_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -372,7 +372,7 @@ message DeleteRemoteAccessVpnRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -389,7 +389,7 @@ message DeleteRemoteAccessVpnResponse {
 message DeleteVpnConnectionRequest {
 	// id of vpn connection
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -397,7 +397,7 @@ message DeleteVpnConnectionRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -414,7 +414,7 @@ message DeleteVpnConnectionResponse {
 message DeleteVpnCustomerGatewayRequest {
 	// id of customer gateway
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -422,7 +422,7 @@ message DeleteVpnCustomerGatewayRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -439,7 +439,7 @@ message DeleteVpnCustomerGatewayResponse {
 message DeleteVpnGatewayRequest {
 	// id of customer gateway
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -447,7 +447,7 @@ message DeleteVpnGatewayRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -481,7 +481,7 @@ message ListRemoteAccessVpnsRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 6 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -516,7 +516,7 @@ message ListRemoteAccessVpnsRequest {
 
 // ListRemoteAccessVpnsResponse represents the response from lists remote access vpns
 message ListRemoteAccessVpnsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of RemoteAccessVpns
 	repeated RemoteAccessVpn items = 1;
 
@@ -542,7 +542,7 @@ message ListVpnConnectionsRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 5 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -577,7 +577,7 @@ message ListVpnConnectionsRequest {
 
 // ListVpnConnectionsResponse represents the response from lists site to site vpn connection gateways
 message ListVpnConnectionsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Site2SiteVpnConnections
 	repeated Site2SiteVpnConnection items = 1;
 
@@ -595,7 +595,7 @@ message ListVpnCustomerGatewaysRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 3 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -630,7 +630,7 @@ message ListVpnCustomerGatewaysRequest {
 
 // ListVpnCustomerGatewaysResponse represents the response from lists site to site vpn customer gateways
 message ListVpnCustomerGatewaysResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Site2SiteCustomerGateways
 	repeated Site2SiteCustomerGateway items = 1;
 
@@ -656,7 +656,7 @@ message ListVpnGatewaysRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 5 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -691,7 +691,7 @@ message ListVpnGatewaysRequest {
 
 // ListVpnGatewaysResponse represents the response from lists site 2 site vpn gateways
 message ListVpnGatewaysResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Site2SiteVpnGateways
 	repeated Site2SiteVpnGateway items = 1;
 
@@ -706,8 +706,8 @@ message ListVpnUsersRequest {
 
 	// the username of the vpn user.
 	string user_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// list objects by project; if projectid=-1 lists All VMs
@@ -715,7 +715,7 @@ message ListVpnUsersRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 4 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -750,7 +750,7 @@ message ListVpnUsersRequest {
 
 // ListVpnUsersResponse represents the response from lists vpn users
 message ListVpnUsersResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of VpnUserss
 	repeated VpnUsers items = 1;
 
@@ -762,9 +762,9 @@ message ListVpnUsersResponse {
 message RemoveVpnUserRequest {
 	// username for the vpn user
 	string user_name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// an optional account for the vpn user. Must be used with domainId.
@@ -781,7 +781,7 @@ message RemoveVpnUserRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -798,7 +798,7 @@ message RemoveVpnUserResponse {
 message ResetVpnConnectionRequest {
 	// id of vpn connection
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// an optional account for connection. Must be used with domainId.
@@ -812,7 +812,7 @@ message ResetVpnConnectionRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -829,7 +829,7 @@ message ResetVpnConnectionResponse {
 message UpdateRemoteAccessVpnRequest {
 	// id of the remote access vpn
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// an optional field, whether to the display the vpn to the end user or not
@@ -839,7 +839,7 @@ message UpdateRemoteAccessVpnRequest {
 
 	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
 	string custom_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -847,7 +847,7 @@ message UpdateRemoteAccessVpnRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -864,7 +864,7 @@ message UpdateRemoteAccessVpnResponse {
 message UpdateVpnConnectionRequest {
 	// id of vpn connection
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// an optional field, whether to the display the vpn to the end user or not
@@ -874,7 +874,7 @@ message UpdateVpnConnectionRequest {
 
 	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
 	string custom_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -882,7 +882,7 @@ message UpdateVpnConnectionRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -899,40 +899,40 @@ message UpdateVpnConnectionResponse {
 message UpdateVpnCustomerGatewayRequest {
 	// id of customer gateway
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// name of this customer gateway
 	string name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// public ip address id of the customer gateway
 	string gateway_ip = 3 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// guest cidr of the customer gateway. Multiple entries must be separated by a single comma character (,).
 	string guest_cidr_list = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// IPsec Preshared-Key of the customer gateway. Cannot contain newline or double quotes.
 	string ipsec_psk = 5 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// IKE policy of the customer gateway
 	string ike_policy = 6 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// ESP policy of the customer gateway
 	string esp_policy = 7 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Lifetime of phase 1 VPN connection to the customer gateway, in seconds
@@ -953,7 +953,7 @@ message UpdateVpnCustomerGatewayRequest {
 
 	// the account associated with the gateway. Must be used with the domainId parameter.
 	string account_name = 12 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -976,7 +976,7 @@ message UpdateVpnCustomerGatewayRequest {
 
 	//
 	string injected_job_id = 17 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -993,7 +993,7 @@ message UpdateVpnCustomerGatewayResponse {
 message UpdateVpnGatewayRequest {
 	// id of customer gateway
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// an optional field, whether to the display the vpn to the end user or not
@@ -1003,7 +1003,7 @@ message UpdateVpnGatewayRequest {
 
 	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
 	string custom_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1011,7 +1011,7 @@ message UpdateVpnGatewayRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1028,7 +1028,7 @@ message UpdateVpnGatewayResponse {
 message RemoteAccessVpn {
 	// The ID of the RemoteAccessVpn
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the RemoteAccessVpn
 	string name = 2;
@@ -1044,7 +1044,7 @@ message RemoteAccessVpn {
 message Site2SiteCustomerGateway {
 	// The ID of the Site2SiteCustomerGateway
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Site2SiteCustomerGateway
 	string name = 2;
@@ -1060,7 +1060,7 @@ message Site2SiteCustomerGateway {
 message Site2SiteVpnConnection {
 	// The ID of the Site2SiteVpnConnection
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Site2SiteVpnConnection
 	string name = 2;
@@ -1076,7 +1076,7 @@ message Site2SiteVpnConnection {
 message Site2SiteVpnGateway {
 	// The ID of the Site2SiteVpnGateway
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Site2SiteVpnGateway
 	string name = 2;
@@ -1092,7 +1092,7 @@ message Site2SiteVpnGateway {
 message VpnUsers {
 	// The ID of the VpnUsers
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the VpnUsers
 	string name = 2;
@@ -1122,12 +1122,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.region.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // RegionService provides operations for managing Regions
@@ -50,19 +50,19 @@ service RegionService {
 message AddRegionRequest {
 	// Id of the Region
 	int32 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Name of the region
 	string region_name = 2 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// Region service endpoint
 	string end_point = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -79,30 +79,30 @@ message AddRegionResponse {
 message CreatePortableIpRangeRequest {
 	// Id of the Region
 	int32 region_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the beginning IP address in the portable IP range
 	string start_ip = 2 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the ending IP address in the portable IP range
 	string end_ip = 3 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the gateway for the portable IP range
 	string gateway = 4 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the netmask of the portable IP range
 	string netmask = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// VLAN id, if not specified defaulted to untagged
@@ -113,7 +113,7 @@ message CreatePortableIpRangeRequest {
 
 	//
 	string injected_job_id = 8 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -130,7 +130,7 @@ message CreatePortableIpRangeResponse {
 message DeletePortableIpRangeRequest {
 	// Id of the portable ip range
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -138,7 +138,7 @@ message DeletePortableIpRangeRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -174,7 +174,7 @@ message ListPortableIpRangesRequest {
 
 // ListPortableIpRangesResponse represents the response from list portable ip ranges
 message ListPortableIpRangesResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of PortableIpRanges
 	repeated PortableIpRange items = 1;
 
@@ -189,8 +189,8 @@ message ListRegionsRequest {
 
 	// List Region by region name.
 	string name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// List by keyword
@@ -208,7 +208,7 @@ message ListRegionsRequest {
 
 // ListRegionsResponse represents the response from lists regions
 message ListRegionsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Regions
 	repeated Region items = 1;
 
@@ -220,7 +220,7 @@ message ListRegionsResponse {
 message RemoveRegionRequest {
 	// ID of the region to delete
 	int32 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -237,13 +237,13 @@ message RemoveRegionResponse {
 message UpdateRegionRequest {
 	// Id of region to update
 	int32 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// updates region with this name
 	string region_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// updates region with this end point
@@ -263,7 +263,7 @@ message UpdateRegionResponse {
 message PortableIpRange {
 	// The ID of the PortableIpRange
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the PortableIpRange
 	string name = 2;
@@ -279,7 +279,7 @@ message PortableIpRange {
 message Region {
 	// The ID of the Region
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Region
 	string name = 2;
@@ -309,12 +309,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

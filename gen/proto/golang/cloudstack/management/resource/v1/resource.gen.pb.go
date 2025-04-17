@@ -7,8 +7,8 @@
 package resourcev1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -2740,7 +2740,7 @@ var File_cloudstack_management_resource_v1_resource_gen_proto protoreflect.FileD
 
 const file_cloudstack_management_resource_v1_resource_gen_proto_rawDesc = "" +
 	"\n" +
-	"4cloudstack/management/resource/v1/resource.gen.proto\x12!cloudstack.management.resource.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x9b\x01\n" +
+	"4cloudstack/management/resource/v1/resource.gen.proto\x12!cloudstack.management.resource.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\x9b\x01\n" +
 	"\x14ArchiveAlertsRequest\x12\x10\n" +
 	"\x03ids\x18\x01 \x03(\tR\x03ids\x12\x19\n" +
 	"\bend_date\x18\x02 \x01(\tR\aendDate\x12\x1d\n" +

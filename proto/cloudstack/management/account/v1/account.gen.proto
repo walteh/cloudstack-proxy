@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.account.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // AccountService provides operations for managing Accounts
@@ -81,7 +81,7 @@ service AccountService {
 message AddAccountToProjectRequest {
 	// ID of the project to add the account to
 	int64 project_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// name of the account to be added to the project
@@ -101,7 +101,7 @@ message AddAccountToProjectRequest {
 
 	//
 	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -118,14 +118,14 @@ message AddAccountToProjectResponse {
 message AddUserToProjectRequest {
 	// ID of the project to add the user to
 	int64 project_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Name of the user to be added to the project
 	string username = 2 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// email ID of user to which invitation to the project is going to be sent
@@ -142,7 +142,7 @@ message AddUserToProjectRequest {
 
 	//
 	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -171,26 +171,26 @@ message CreateAccountRequest {
 
 	// email
 	string email = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// firstname
 	string first_name = 6 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// lastname
 	string last_name = 7 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// Clear text password (Default hashed to SHA256SALT). If you wish to use any other hashing algorithm, you would need to write a custom authentication adapter See Docs section.
 	string password = 8 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Specifies a timezone for this command. For more information on the timezone parameter, see Time Zone Format.
@@ -198,9 +198,9 @@ message CreateAccountRequest {
 
 	// Unique username.
 	string user_name = 10 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// Network domain for the account's networks
@@ -211,12 +211,12 @@ message CreateAccountRequest {
 
 	// Account UUID, required for adding account from external provisioning system
 	string account_u_u_id = 13 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// User UUID, required for adding account from external provisioning system
 	string user_u_u_id = 14 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -233,7 +233,7 @@ message CreateAccountResponse {
 message DeleteAccountRequest {
 	// Account id
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -241,7 +241,7 @@ message DeleteAccountRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -258,12 +258,12 @@ message DeleteAccountResponse {
 message DeleteAccountFromProjectRequest {
 	// ID of the project to remove the account from
 	int64 project_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// name of the account to be removed from the project
 	string account_name = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -271,7 +271,7 @@ message DeleteAccountFromProjectRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -288,12 +288,12 @@ message DeleteAccountFromProjectResponse {
 message DeleteUserFromProjectRequest {
 	// ID of the project to remove the user from
 	int64 project_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Id of the user to be removed from the project
 	int64 user_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -301,7 +301,7 @@ message DeleteUserFromProjectRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -327,8 +327,8 @@ message DisableAccountRequest {
 
 	// If true, only lock the account; else disable the account
 	bool lock_requested = 4 [
-		(validate.field).required = true,
-		features.field_presence   = EXPLICIT
+		(buf.validate.field).required = true,
+		features.field_presence       = EXPLICIT
 	];
 
 	//
@@ -336,7 +336,7 @@ message DisableAccountRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -384,8 +384,8 @@ message ListAccountsRequest {
 	];
 	// list account by account name
 	string search_name = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// list accounts by state. Valid states are enabled, disabled, and locked.
 	string state = 6;
@@ -421,7 +421,7 @@ message ListAccountsRequest {
 
 // ListAccountsResponse represents the response from lists accounts and provides detailed account information for listed accounts
 message ListAccountsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Accounts
 	repeated Account items = 1;
 
@@ -444,8 +444,8 @@ message ListAccountsCmdByAdminRequest {
 
 	// list account by account name
 	string search_name = 4 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// list accounts by state. Valid states are enabled, disabled, and locked.
@@ -493,7 +493,7 @@ message ListAccountsCmdByAdminRequest {
 
 // ListAccountsCmdByAdminResponse represents the response from lists accounts and provides detailed account information for listed accounts
 message ListAccountsCmdByAdminResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Accounts
 	repeated Account items = 1;
 
@@ -505,7 +505,7 @@ message ListAccountsCmdByAdminResponse {
 message ListProjectAccountsRequest {
 	// ID of the project
 	int64 project_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// list accounts of the project by account name
@@ -535,7 +535,7 @@ message ListProjectAccountsRequest {
 
 // ListProjectAccountsResponse represents the response from lists project's accounts
 message ListProjectAccountsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Projects
 	repeated Project items = 1;
 
@@ -547,12 +547,12 @@ message ListProjectAccountsResponse {
 message LockAccountRequest {
 	// Locks the specified account.
 	string account_name = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Locks the specified account on this domain.
 	int64 domain_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -581,8 +581,8 @@ message UpdateAccountRequest {
 
 	// New name for the account
 	string new_name = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// Network domain for the account's networks; empty string will update domainName with NULL value
@@ -608,7 +608,7 @@ message UpdateAccountResponse {
 message Account {
 	// The ID of the Account
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Account
 	string name = 2;
@@ -624,7 +624,7 @@ message Account {
 message Project {
 	// The ID of the Project
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Project
 	string name = 2;
@@ -654,12 +654,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

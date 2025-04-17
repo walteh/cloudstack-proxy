@@ -3,23 +3,41 @@
 version: v2
 
 modules:
-    - name: github.com/walteh/cloudstack-proxy
-      path: proto
+  - name: github.com/walteh/cloudstack-proxy
+    path: proto
+  - name: github.com/walteh/cloudstack-proxy_remotes
+    path: remotes
+    # includes:
+    #   - proto/cloudstack
+#   - name: buf.build/bufbuild/protovalidate
+#     path: proto/remotes
+#     includes:
+#       - proto/remotes/buf/validate
 
 breaking:
     use:
-        - FILE
+      - FILE
 deps:
-    - buf.build/googleapis/googleapis
-    # - buf.build/bufbuild/protovalidate
+  - buf.build/googleapis/googleapis
+#   - proto/remotes/buf/validate
+#   - github.com/bufbuild/protovalidate/proto/protovalidate/buf/validate:main
+# - buf.build/bufbuild/protovalidate
 lint:
     use:
-        - DEFAULT
+      - DEFAULT
     except:
-        - RPC_REQUEST_RESPONSE_UNIQUE
-        - RPC_RESPONSE_STANDARD_NAME
-        - IMPORT_USED
+      - RPC_REQUEST_RESPONSE_UNIQUE
+      - RPC_RESPONSE_STANDARD_NAME
+      - IMPORT_USED
 
     rpc_allow_same_request_response: true
     rpc_allow_google_protobuf_empty_requests: true
     rpc_allow_google_protobuf_empty_responses: false
+
+---
+# yaml-language-server: $schema=https://json.schemastore.org/any.json
+
+_gdeps:
+  - repo: github.com/walteh/bufbuild
+    path: protovalidate/proto/protovalidate
+    ref: heads/main

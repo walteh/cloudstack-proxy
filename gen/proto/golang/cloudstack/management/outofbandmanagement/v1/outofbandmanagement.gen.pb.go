@@ -7,8 +7,8 @@
 package outofbandmanagementv1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -1265,7 +1265,7 @@ var File_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_pr
 
 const file_cloudstack_management_outofbandmanagement_v1_outofbandmanagement_gen_proto_rawDesc = "" +
 	"\n" +
-	"Jcloudstack/management/outofbandmanagement/v1/outofbandmanagement.gen.proto\x12,cloudstack.management.outofbandmanagement.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xe4\x01\n" +
+	"Jcloudstack/management/outofbandmanagement/v1/outofbandmanagement.gen.proto\x12,cloudstack.management.outofbandmanagement.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\xe4\x01\n" +
 	"(ChangeOutOfBandManagementPasswordRequest\x12\x1f\n" +
 	"\ahost_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06hostId\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\x12$\n" +

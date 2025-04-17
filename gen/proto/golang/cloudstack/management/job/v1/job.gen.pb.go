@@ -7,8 +7,8 @@
 package jobv1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -526,7 +526,7 @@ var File_cloudstack_management_job_v1_job_gen_proto protoreflect.FileDescriptor
 
 const file_cloudstack_management_job_v1_job_gen_proto_rawDesc = "" +
 	"\n" +
-	"*cloudstack/management/job/v1/job.gen.proto\x12\x1ccloudstack.management.job.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xde\x03\n" +
+	"*cloudstack/management/job/v1/job.gen.proto\x12\x1ccloudstack.management.job.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\xde\x03\n" +
 	"\x14ListAsyncJobsRequest\x12\x1d\n" +
 	"\n" +
 	"start_date\x18\x01 \x01(\tR\tstartDate\x120\n" +

@@ -7,8 +7,8 @@
 package userv1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -1725,7 +1725,7 @@ var File_cloudstack_management_user_v1_user_gen_proto protoreflect.FileDescripto
 
 const file_cloudstack_management_user_v1_user_gen_proto_rawDesc = "" +
 	"\n" +
-	",cloudstack/management/user/v1/user.gen.proto\x12\x1dcloudstack.management.user.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x8a\x03\n" +
+	",cloudstack/management/user/v1/user.gen.proto\x12\x1dcloudstack.management.user.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\x8a\x03\n" +
 	"\x11CreateUserRequest\x12)\n" +
 	"\faccount_name\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\vaccountName\x12\x1b\n" +
 	"\tdomain_id\x18\x02 \x01(\x03R\bdomainId\x12\x1c\n" +

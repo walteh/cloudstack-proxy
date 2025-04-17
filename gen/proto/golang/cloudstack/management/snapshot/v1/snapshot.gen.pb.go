@@ -7,8 +7,8 @@
 package snapshotv1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -24,7 +24,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// IntervalType represents the possible values for valid values are HOURLY, DAILY, WEEKLY, and MONTHLY
+// IntervalType represents the possible values for valid values are HOURLY, DAILY, WEEKLY, and MONTHLY.
 type IntervalType int32
 
 const (
@@ -2500,7 +2500,7 @@ var File_cloudstack_management_snapshot_v1_snapshot_gen_proto protoreflect.FileD
 
 const file_cloudstack_management_snapshot_v1_snapshot_gen_proto_rawDesc = "" +
 	"\n" +
-	"4cloudstack/management/snapshot/v1/snapshot.gen.proto\x12!cloudstack.management.snapshot.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xad\x01\n" +
+	"4cloudstack/management/snapshot/v1/snapshot.gen.proto\x12!cloudstack.management.snapshot.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\xad\x01\n" +
 	"\x16ArchiveSnapshotRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12$\n" +
 	"\x0estart_event_id\x18\x02 \x01(\x03R\fstartEventId\x120\n" +

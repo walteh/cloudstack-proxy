@@ -7,8 +7,8 @@
 package annotationv1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -753,7 +753,7 @@ var File_cloudstack_management_annotation_v1_annotation_gen_proto protoreflect.F
 
 const file_cloudstack_management_annotation_v1_annotation_gen_proto_rawDesc = "" +
 	"\n" +
-	"8cloudstack/management/annotation/v1/annotation.gen.proto\x12#cloudstack.management.annotation.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xcf\x01\n" +
+	"8cloudstack/management/annotation/v1/annotation.gen.proto\x12#cloudstack.management.annotation.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\xcf\x01\n" +
 	"\x14AddAnnotationRequest\x12\x1e\n" +
 	"\n" +
 	"annotation\x18\x01 \x01(\tR\n" +

@@ -29,8 +29,8 @@ import (
 	"fmt"
 	"slices"
 
-	"github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
-	pvcel "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate/protovalidate/cel"
+	"github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
+	pvcel "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate/protovalidate/cel"
 	"github.com/google/cel-go/cel"
 	"github.com/google/cel-go/interpreter"
 	"google.golang.org/protobuf/reflect/protoreflect"

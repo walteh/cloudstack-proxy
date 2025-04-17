@@ -7,8 +7,8 @@
 package hostv1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -2291,7 +2291,7 @@ var File_cloudstack_management_host_v1_host_gen_proto protoreflect.FileDescripto
 
 const file_cloudstack_management_host_v1_host_gen_proto_rawDesc = "" +
 	"\n" +
-	",cloudstack/management/host/v1/host.gen.proto\x12\x1dcloudstack.management.host.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x91\x03\n" +
+	",cloudstack/management/host/v1/host.gen.proto\x12\x1dcloudstack.management.host.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\x91\x03\n" +
 	"\x0eAddHostRequest\x12\x1d\n" +
 	"\n" +
 	"cluster_id\x18\x01 \x01(\x03R\tclusterId\x12-\n" +

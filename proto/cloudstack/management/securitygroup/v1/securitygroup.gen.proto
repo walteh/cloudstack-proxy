@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.securitygroup.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // SecuritygroupService provides operations for managing Securitygroups
@@ -58,14 +58,14 @@ message AuthorizeSecurityGroupEgressRequest {
 
 	// start port for this egress rule
 	int32 start_port = 2 [
-		(validate.field).int32.gte = 1,
-		(validate.field).int32.lte = 65535
+		(buf.validate.field).int32.gte = 1,
+		(buf.validate.field).int32.lte = 65535
 	];
 
 	// end port for this egress rule
 	int32 end_port = 3 [
-		(validate.field).int32.gte = 1,
-		(validate.field).int32.lte = 65535
+		(buf.validate.field).int32.gte = 1,
+		(buf.validate.field).int32.lte = 65535
 	];
 
 	// type of the icmp message being sent
@@ -94,8 +94,8 @@ message AuthorizeSecurityGroupEgressRequest {
 
 	// The name of the security group. Mutually exclusive with securityGroupId parameter
 	string security_group_name = 12 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	//
@@ -103,7 +103,7 @@ message AuthorizeSecurityGroupEgressRequest {
 
 	//
 	string injected_job_id = 14 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -123,14 +123,14 @@ message AuthorizeSecurityGroupIngressRequest {
 
 	// start port for this ingress rule
 	int32 start_port = 2 [
-		(validate.field).int32.gte = 1,
-		(validate.field).int32.lte = 65535
+		(buf.validate.field).int32.gte = 1,
+		(buf.validate.field).int32.lte = 65535
 	];
 
 	// end port for this ingress rule
 	int32 end_port = 3 [
-		(validate.field).int32.gte = 1,
-		(validate.field).int32.lte = 65535
+		(buf.validate.field).int32.gte = 1,
+		(buf.validate.field).int32.lte = 65535
 	];
 
 	// type of the icmp message being sent
@@ -159,8 +159,8 @@ message AuthorizeSecurityGroupIngressRequest {
 
 	// The name of the security group. Mutually exclusive with securityGroupId parameter
 	string security_group_name = 12 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	//
@@ -168,7 +168,7 @@ message AuthorizeSecurityGroupIngressRequest {
 
 	//
 	string injected_job_id = 14 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -191,15 +191,15 @@ message CreateSecurityGroupRequest {
 
 	// the description of the security group
 	string description = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 1024
 	];
 
 	// name of the security group
 	string security_group_name = 4 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// Create security group for project
@@ -231,8 +231,8 @@ message DeleteSecurityGroupRequest {
 
 	// The ID of the security group. Mutually exclusive with id parameter
 	string name = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	//
@@ -249,8 +249,8 @@ message DeleteSecurityGroupResponse {
 message ListSecurityGroupsRequest {
 	// lists security groups by name
 	string security_group_name = 1 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// lists security groups by virtual machine id
@@ -267,7 +267,7 @@ message ListSecurityGroupsRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 6 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -302,7 +302,7 @@ message ListSecurityGroupsRequest {
 
 // ListSecurityGroupsResponse represents the response from lists security groups
 message ListSecurityGroupsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of SecurityGroups
 	repeated SecurityGroup items = 1;
 
@@ -314,7 +314,7 @@ message ListSecurityGroupsResponse {
 message RevokeSecurityGroupEgressRequest {
 	// The ID of the egress rule
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -322,7 +322,7 @@ message RevokeSecurityGroupEgressRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -339,7 +339,7 @@ message RevokeSecurityGroupEgressResponse {
 message RevokeSecurityGroupIngressRequest {
 	// The ID of the ingress rule
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -347,7 +347,7 @@ message RevokeSecurityGroupIngressRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -364,18 +364,18 @@ message RevokeSecurityGroupIngressResponse {
 message UpdateSecurityGroupRequest {
 	// The ID of the security group.
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The new name of the security group.
 	string name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
 	string custom_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -392,7 +392,7 @@ message UpdateSecurityGroupResponse {
 message SecurityGroup {
 	// The ID of the SecurityGroup
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the SecurityGroup
 	string name = 2;
@@ -438,12 +438,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

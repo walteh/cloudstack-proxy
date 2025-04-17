@@ -7,8 +7,8 @@
 package vpcv1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -4354,7 +4354,7 @@ var File_cloudstack_management_vpc_v1_vpc_gen_proto protoreflect.FileDescriptor
 
 const file_cloudstack_management_vpc_v1_vpc_gen_proto_rawDesc = "" +
 	"\n" +
-	"*cloudstack/management/vpc/v1/vpc.gen.proto\x12\x1ccloudstack.management.vpc.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xd2\x03\n" +
+	"*cloudstack/management/vpc/v1/vpc.gen.proto\x12\x1ccloudstack.management.vpc.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\xd2\x03\n" +
 	"\x1bCreatePrivateGatewayRequest\x12$\n" +
 	"\agateway\x18\x01 \x01(\tB\n" +
 	"\xbaH\a\xc8\x01\x01r\x02x\x01R\agateway\x12 \n" +

@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.project.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // ProjectService provides operations for managing Projects
@@ -60,7 +60,7 @@ service ProjectService {
 message ActivateProjectRequest {
 	// id of the project to be modified
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -68,7 +68,7 @@ message ActivateProjectRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -97,9 +97,9 @@ message CreateProjectRequest {
 
 	// name of the project
 	string name = 5 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// The display text of the project, defaults to the 'name´.
@@ -110,7 +110,7 @@ message CreateProjectRequest {
 
 	//
 	string injected_job_id = 8 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -127,7 +127,7 @@ message CreateProjectResponse {
 message DeleteProjectRequest {
 	// id of the project to be deleted
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// true if all project resources have to be cleaned up, false otherwise
@@ -140,7 +140,7 @@ message DeleteProjectRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -157,7 +157,7 @@ message DeleteProjectResponse {
 message DeleteProjectInvitationRequest {
 	// id of the invitation
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -165,7 +165,7 @@ message DeleteProjectInvitationRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -199,7 +199,7 @@ message ListProjectInvitationsRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 6 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -234,7 +234,7 @@ message ListProjectInvitationsRequest {
 
 // ListProjectInvitationsResponse represents the response from lists project invitations and provides detailed information for listed invitations
 message ListProjectInvitationsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of ProjectInvitations
 	repeated ProjectInvitation items = 1;
 
@@ -249,8 +249,8 @@ message ListProjectsRequest {
 
 	// list projects by name
 	string name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// list projects by display text
@@ -264,8 +264,8 @@ message ListProjectsRequest {
 
 	// List projects by username
 	string username = 6 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// comma separated list of project details requested, value can be a list of [ all, resource, min]
@@ -278,7 +278,7 @@ message ListProjectsRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 9 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -313,7 +313,7 @@ message ListProjectsRequest {
 
 // ListProjectsResponse represents the response from lists projects and provides detailed information for listed projects
 message ListProjectsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Projects
 	repeated Project items = 1;
 
@@ -325,7 +325,7 @@ message ListProjectsResponse {
 message SuspendProjectRequest {
 	// id of the project to be suspended
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -333,7 +333,7 @@ message SuspendProjectRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -350,7 +350,7 @@ message SuspendProjectResponse {
 message UpdateProjectRequest {
 	// id of the project to be modified
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// new Admin account for the project
@@ -372,8 +372,8 @@ message UpdateProjectRequest {
 
 	// name of the project
 	string name = 7 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	//
@@ -381,7 +381,7 @@ message UpdateProjectRequest {
 
 	//
 	string injected_job_id = 9 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -398,7 +398,7 @@ message UpdateProjectResponse {
 message UpdateProjectInvitationRequest {
 	// id of the project to join
 	int64 project_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// account that is joining the project
@@ -420,7 +420,7 @@ message UpdateProjectInvitationRequest {
 
 	//
 	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -437,7 +437,7 @@ message UpdateProjectInvitationResponse {
 message Project {
 	// The ID of the Project
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Project
 	string name = 2;
@@ -453,7 +453,7 @@ message Project {
 message ProjectInvitation {
 	// The ID of the ProjectInvitation
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the ProjectInvitation
 	string name = 2;
@@ -483,12 +483,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

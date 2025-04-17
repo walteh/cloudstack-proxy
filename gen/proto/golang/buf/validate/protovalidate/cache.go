@@ -28,9 +28,9 @@ package protovalidate
 import (
 	"fmt"
 
-	"github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
-	pvcel "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate/protovalidate/cel"
-	"github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate/protovalidate/resolve"
+	"github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
+	pvcel "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate/protovalidate/cel"
+	"github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate/protovalidate/resolve"
 	"github.com/google/cel-go/cel"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"

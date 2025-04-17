@@ -7,8 +7,8 @@
 package isov1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -3609,7 +3609,7 @@ var File_cloudstack_management_iso_v1_iso_gen_proto protoreflect.FileDescriptor
 
 const file_cloudstack_management_iso_v1_iso_gen_proto_rawDesc = "" +
 	"\n" +
-	"*cloudstack/management/iso/v1/iso.gen.proto\x12\x1ccloudstack.management.iso.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x9e\x02\n" +
+	"*cloudstack/management/iso/v1/iso.gen.proto\x12\x1ccloudstack.management.iso.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\x9e\x02\n" +
 	"\x10AttachIsoRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
 	"runAsAdmin\x12\x16\n" +

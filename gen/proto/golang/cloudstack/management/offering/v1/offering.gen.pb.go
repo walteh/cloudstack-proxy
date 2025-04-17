@@ -7,8 +7,8 @@
 package offeringv1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -2588,7 +2588,7 @@ var File_cloudstack_management_offering_v1_offering_gen_proto protoreflect.FileD
 
 const file_cloudstack_management_offering_v1_offering_gen_proto_rawDesc = "" +
 	"\n" +
-	"4cloudstack/management/offering/v1/offering.gen.proto\x12!cloudstack.management.offering.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xde\v\n" +
+	"4cloudstack/management/offering/v1/offering.gen.proto\x12!cloudstack.management.offering.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\xde\v\n" +
 	"\x19CreateDiskOfferingRequest\x12\x1b\n" +
 	"\tdisk_size\x18\x01 \x01(\x03R\bdiskSize\x12!\n" +
 	"\fdisplay_text\x18\x02 \x01(\tR\vdisplayText\x122\n" +

@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.ha.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // HaService provides operations for managing Has
@@ -60,13 +60,13 @@ service HaService {
 message ConfigureHAForHostRequest {
 	// ID of the host
 	int64 host_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// HA provider
 	string ha_provider = 2 [
-		(validate.field).required    = true,
-		(validate.field).string.uuid = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -74,7 +74,7 @@ message ConfigureHAForHostRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -91,7 +91,7 @@ message ConfigureHAForHostResponse {
 message DisableHAForClusterRequest {
 	// ID of the cluster
 	int64 cluster_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -99,7 +99,7 @@ message DisableHAForClusterRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -116,7 +116,7 @@ message DisableHAForClusterResponse {
 message DisableHAForHostRequest {
 	// ID of the host
 	int64 host_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -124,7 +124,7 @@ message DisableHAForHostRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -141,7 +141,7 @@ message DisableHAForHostResponse {
 message DisableHAForZoneRequest {
 	// ID of the zone
 	int64 zone_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -149,7 +149,7 @@ message DisableHAForZoneRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -166,7 +166,7 @@ message DisableHAForZoneResponse {
 message EnableHAForClusterRequest {
 	// ID of the cluster
 	int64 cluster_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -174,7 +174,7 @@ message EnableHAForClusterRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -191,7 +191,7 @@ message EnableHAForClusterResponse {
 message EnableHAForHostRequest {
 	// ID of the host
 	int64 host_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -199,7 +199,7 @@ message EnableHAForHostRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -216,7 +216,7 @@ message EnableHAForHostResponse {
 message EnableHAForZoneRequest {
 	// ID of the zone
 	int64 zone_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -224,7 +224,7 @@ message EnableHAForZoneRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -241,7 +241,7 @@ message EnableHAForZoneResponse {
 message ListHostHAProvidersRequest {
 	// Hypervisor type of the resource
 	string hypervisor_type = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -250,7 +250,7 @@ message ListHostHAProvidersRequest {
 
 // ListHostHAProvidersResponse represents the response from lists ha providers
 message ListHostHAProvidersResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of HostHAs
 	repeated HostHA items = 1;
 
@@ -269,7 +269,7 @@ message ListHostHAResourcesRequest {
 
 // ListHostHAResourcesResponse represents the response from lists host ha resources
 message ListHostHAResourcesResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of HostHAs
 	repeated HostHA items = 1;
 
@@ -281,7 +281,7 @@ message ListHostHAResourcesResponse {
 message HostHA {
 	// The ID of the HostHA
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the HostHA
 	string name = 2;
@@ -311,12 +311,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

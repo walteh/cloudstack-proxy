@@ -16,7 +16,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        (unknown)
-// source: cloudstack/validate/validate.proto
+// source: buf/validate/validate.proto
 
 package validate
 
@@ -215,11 +215,11 @@ func (x Ignore) String() string {
 }
 
 func (Ignore) Descriptor() protoreflect.EnumDescriptor {
-	return file_cloudstack_validate_validate_proto_enumTypes[0].Descriptor()
+	return file_buf_validate_validate_proto_enumTypes[0].Descriptor()
 }
 
 func (Ignore) Type() protoreflect.EnumType {
-	return &file_cloudstack_validate_validate_proto_enumTypes[0]
+	return &file_buf_validate_validate_proto_enumTypes[0]
 }
 
 func (x Ignore) Number() protoreflect.EnumNumber {
@@ -238,7 +238,7 @@ func (x *Ignore) UnmarshalJSON(b []byte) error {
 
 // Deprecated: Use Ignore.Descriptor instead.
 func (Ignore) EnumDescriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{0}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{0}
 }
 
 // WellKnownRegex contain some well-known patterns.
@@ -277,11 +277,11 @@ func (x KnownRegex) String() string {
 }
 
 func (KnownRegex) Descriptor() protoreflect.EnumDescriptor {
-	return file_cloudstack_validate_validate_proto_enumTypes[1].Descriptor()
+	return file_buf_validate_validate_proto_enumTypes[1].Descriptor()
 }
 
 func (KnownRegex) Type() protoreflect.EnumType {
-	return &file_cloudstack_validate_validate_proto_enumTypes[1]
+	return &file_buf_validate_validate_proto_enumTypes[1]
 }
 
 func (x KnownRegex) Number() protoreflect.EnumNumber {
@@ -300,7 +300,7 @@ func (x *KnownRegex) UnmarshalJSON(b []byte) error {
 
 // Deprecated: Use KnownRegex.Descriptor instead.
 func (KnownRegex) EnumDescriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{1}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{1}
 }
 
 // `Constraint` represents a validation rule written in the Common Expression
@@ -341,7 +341,7 @@ type Constraint struct {
 
 func (x *Constraint) Reset() {
 	*x = Constraint{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[0]
+	mi := &file_buf_validate_validate_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -353,7 +353,7 @@ func (x *Constraint) String() string {
 func (*Constraint) ProtoMessage() {}
 
 func (x *Constraint) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[0]
+	mi := &file_buf_validate_validate_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -366,7 +366,7 @@ func (x *Constraint) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Constraint.ProtoReflect.Descriptor instead.
 func (*Constraint) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{0}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Constraint) GetId() string {
@@ -430,7 +430,7 @@ type MessageConstraints struct {
 
 func (x *MessageConstraints) Reset() {
 	*x = MessageConstraints{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[1]
+	mi := &file_buf_validate_validate_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -442,7 +442,7 @@ func (x *MessageConstraints) String() string {
 func (*MessageConstraints) ProtoMessage() {}
 
 func (x *MessageConstraints) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[1]
+	mi := &file_buf_validate_validate_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -455,7 +455,7 @@ func (x *MessageConstraints) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MessageConstraints.ProtoReflect.Descriptor instead.
 func (*MessageConstraints) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{1}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *MessageConstraints) GetDisabled() bool {
@@ -502,7 +502,7 @@ type OneofConstraints struct {
 
 func (x *OneofConstraints) Reset() {
 	*x = OneofConstraints{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[2]
+	mi := &file_buf_validate_validate_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -514,7 +514,7 @@ func (x *OneofConstraints) String() string {
 func (*OneofConstraints) ProtoMessage() {}
 
 func (x *OneofConstraints) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[2]
+	mi := &file_buf_validate_validate_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -527,7 +527,7 @@ func (x *OneofConstraints) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OneofConstraints.ProtoReflect.Descriptor instead.
 func (*OneofConstraints) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{2}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *OneofConstraints) GetRequired() bool {
@@ -594,7 +594,7 @@ type FieldConstraints struct {
 	//	}
 	//
 	// ```
-	Ignore *Ignore `protobuf:"varint,27,opt,name=ignore,enum=cloudstack.validate.Ignore" json:"ignore,omitempty"`
+	Ignore *Ignore `protobuf:"varint,27,opt,name=ignore,enum=buf.validate.Ignore" json:"ignore,omitempty"`
 	// Types that are valid to be assigned to Type:
 	//
 	//	*FieldConstraints_Float
@@ -625,7 +625,7 @@ type FieldConstraints struct {
 
 func (x *FieldConstraints) Reset() {
 	*x = FieldConstraints{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[3]
+	mi := &file_buf_validate_validate_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -637,7 +637,7 @@ func (x *FieldConstraints) String() string {
 func (*FieldConstraints) ProtoMessage() {}
 
 func (x *FieldConstraints) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[3]
+	mi := &file_buf_validate_validate_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -650,7 +650,7 @@ func (x *FieldConstraints) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FieldConstraints.ProtoReflect.Descriptor instead.
 func (*FieldConstraints) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{3}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *FieldConstraints) GetCel() []*Constraint {
@@ -1030,7 +1030,7 @@ type PredefinedConstraints struct {
 
 func (x *PredefinedConstraints) Reset() {
 	*x = PredefinedConstraints{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[4]
+	mi := &file_buf_validate_validate_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1042,7 +1042,7 @@ func (x *PredefinedConstraints) String() string {
 func (*PredefinedConstraints) ProtoMessage() {}
 
 func (x *PredefinedConstraints) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[4]
+	mi := &file_buf_validate_validate_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1055,7 +1055,7 @@ func (x *PredefinedConstraints) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PredefinedConstraints.ProtoReflect.Descriptor instead.
 func (*PredefinedConstraints) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{4}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *PredefinedConstraints) GetCel() []*Constraint {
@@ -1142,7 +1142,7 @@ type FloatRules struct {
 
 func (x *FloatRules) Reset() {
 	*x = FloatRules{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[5]
+	mi := &file_buf_validate_validate_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1154,7 +1154,7 @@ func (x *FloatRules) String() string {
 func (*FloatRules) ProtoMessage() {}
 
 func (x *FloatRules) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[5]
+	mi := &file_buf_validate_validate_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1167,7 +1167,7 @@ func (x *FloatRules) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FloatRules.ProtoReflect.Descriptor instead.
 func (*FloatRules) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{5}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *FloatRules) GetConst() float32 {
@@ -1428,7 +1428,7 @@ type DoubleRules struct {
 
 func (x *DoubleRules) Reset() {
 	*x = DoubleRules{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[6]
+	mi := &file_buf_validate_validate_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1440,7 +1440,7 @@ func (x *DoubleRules) String() string {
 func (*DoubleRules) ProtoMessage() {}
 
 func (x *DoubleRules) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[6]
+	mi := &file_buf_validate_validate_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1453,7 +1453,7 @@ func (x *DoubleRules) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DoubleRules.ProtoReflect.Descriptor instead.
 func (*DoubleRules) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{6}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *DoubleRules) GetConst() float64 {
@@ -1711,7 +1711,7 @@ type Int32Rules struct {
 
 func (x *Int32Rules) Reset() {
 	*x = Int32Rules{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[7]
+	mi := &file_buf_validate_validate_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1723,7 +1723,7 @@ func (x *Int32Rules) String() string {
 func (*Int32Rules) ProtoMessage() {}
 
 func (x *Int32Rules) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[7]
+	mi := &file_buf_validate_validate_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1736,7 +1736,7 @@ func (x *Int32Rules) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Int32Rules.ProtoReflect.Descriptor instead.
 func (*Int32Rules) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{7}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *Int32Rules) GetConst() int32 {
@@ -1987,7 +1987,7 @@ type Int64Rules struct {
 
 func (x *Int64Rules) Reset() {
 	*x = Int64Rules{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[8]
+	mi := &file_buf_validate_validate_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1999,7 +1999,7 @@ func (x *Int64Rules) String() string {
 func (*Int64Rules) ProtoMessage() {}
 
 func (x *Int64Rules) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[8]
+	mi := &file_buf_validate_validate_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2012,7 +2012,7 @@ func (x *Int64Rules) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Int64Rules.ProtoReflect.Descriptor instead.
 func (*Int64Rules) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{8}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *Int64Rules) GetConst() int64 {
@@ -2263,7 +2263,7 @@ type UInt32Rules struct {
 
 func (x *UInt32Rules) Reset() {
 	*x = UInt32Rules{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[9]
+	mi := &file_buf_validate_validate_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2275,7 +2275,7 @@ func (x *UInt32Rules) String() string {
 func (*UInt32Rules) ProtoMessage() {}
 
 func (x *UInt32Rules) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[9]
+	mi := &file_buf_validate_validate_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2288,7 +2288,7 @@ func (x *UInt32Rules) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UInt32Rules.ProtoReflect.Descriptor instead.
 func (*UInt32Rules) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{9}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *UInt32Rules) GetConst() uint32 {
@@ -2539,7 +2539,7 @@ type UInt64Rules struct {
 
 func (x *UInt64Rules) Reset() {
 	*x = UInt64Rules{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[10]
+	mi := &file_buf_validate_validate_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2551,7 +2551,7 @@ func (x *UInt64Rules) String() string {
 func (*UInt64Rules) ProtoMessage() {}
 
 func (x *UInt64Rules) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[10]
+	mi := &file_buf_validate_validate_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2564,7 +2564,7 @@ func (x *UInt64Rules) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UInt64Rules.ProtoReflect.Descriptor instead.
 func (*UInt64Rules) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{10}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *UInt64Rules) GetConst() uint64 {
@@ -2814,7 +2814,7 @@ type SInt32Rules struct {
 
 func (x *SInt32Rules) Reset() {
 	*x = SInt32Rules{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[11]
+	mi := &file_buf_validate_validate_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2826,7 +2826,7 @@ func (x *SInt32Rules) String() string {
 func (*SInt32Rules) ProtoMessage() {}
 
 func (x *SInt32Rules) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[11]
+	mi := &file_buf_validate_validate_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2839,7 +2839,7 @@ func (x *SInt32Rules) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SInt32Rules.ProtoReflect.Descriptor instead.
 func (*SInt32Rules) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{11}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *SInt32Rules) GetConst() int32 {
@@ -3089,7 +3089,7 @@ type SInt64Rules struct {
 
 func (x *SInt64Rules) Reset() {
 	*x = SInt64Rules{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[12]
+	mi := &file_buf_validate_validate_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3101,7 +3101,7 @@ func (x *SInt64Rules) String() string {
 func (*SInt64Rules) ProtoMessage() {}
 
 func (x *SInt64Rules) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[12]
+	mi := &file_buf_validate_validate_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3114,7 +3114,7 @@ func (x *SInt64Rules) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SInt64Rules.ProtoReflect.Descriptor instead.
 func (*SInt64Rules) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{12}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *SInt64Rules) GetConst() int64 {
@@ -3364,7 +3364,7 @@ type Fixed32Rules struct {
 
 func (x *Fixed32Rules) Reset() {
 	*x = Fixed32Rules{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[13]
+	mi := &file_buf_validate_validate_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3376,7 +3376,7 @@ func (x *Fixed32Rules) String() string {
 func (*Fixed32Rules) ProtoMessage() {}
 
 func (x *Fixed32Rules) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[13]
+	mi := &file_buf_validate_validate_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3389,7 +3389,7 @@ func (x *Fixed32Rules) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Fixed32Rules.ProtoReflect.Descriptor instead.
 func (*Fixed32Rules) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{13}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *Fixed32Rules) GetConst() uint32 {
@@ -3639,7 +3639,7 @@ type Fixed64Rules struct {
 
 func (x *Fixed64Rules) Reset() {
 	*x = Fixed64Rules{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[14]
+	mi := &file_buf_validate_validate_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3651,7 +3651,7 @@ func (x *Fixed64Rules) String() string {
 func (*Fixed64Rules) ProtoMessage() {}
 
 func (x *Fixed64Rules) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[14]
+	mi := &file_buf_validate_validate_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3664,7 +3664,7 @@ func (x *Fixed64Rules) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Fixed64Rules.ProtoReflect.Descriptor instead.
 func (*Fixed64Rules) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{14}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *Fixed64Rules) GetConst() uint64 {
@@ -3914,7 +3914,7 @@ type SFixed32Rules struct {
 
 func (x *SFixed32Rules) Reset() {
 	*x = SFixed32Rules{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[15]
+	mi := &file_buf_validate_validate_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3926,7 +3926,7 @@ func (x *SFixed32Rules) String() string {
 func (*SFixed32Rules) ProtoMessage() {}
 
 func (x *SFixed32Rules) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[15]
+	mi := &file_buf_validate_validate_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3939,7 +3939,7 @@ func (x *SFixed32Rules) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SFixed32Rules.ProtoReflect.Descriptor instead.
 func (*SFixed32Rules) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{15}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *SFixed32Rules) GetConst() int32 {
@@ -4189,7 +4189,7 @@ type SFixed64Rules struct {
 
 func (x *SFixed64Rules) Reset() {
 	*x = SFixed64Rules{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[16]
+	mi := &file_buf_validate_validate_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4201,7 +4201,7 @@ func (x *SFixed64Rules) String() string {
 func (*SFixed64Rules) ProtoMessage() {}
 
 func (x *SFixed64Rules) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[16]
+	mi := &file_buf_validate_validate_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4214,7 +4214,7 @@ func (x *SFixed64Rules) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SFixed64Rules.ProtoReflect.Descriptor instead.
 func (*SFixed64Rules) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{16}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *SFixed64Rules) GetConst() int64 {
@@ -4429,7 +4429,7 @@ type BoolRules struct {
 
 func (x *BoolRules) Reset() {
 	*x = BoolRules{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[17]
+	mi := &file_buf_validate_validate_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4441,7 +4441,7 @@ func (x *BoolRules) String() string {
 func (*BoolRules) ProtoMessage() {}
 
 func (x *BoolRules) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[17]
+	mi := &file_buf_validate_validate_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4454,7 +4454,7 @@ func (x *BoolRules) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BoolRules.ProtoReflect.Descriptor instead.
 func (*BoolRules) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{17}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *BoolRules) GetConst() bool {
@@ -4721,7 +4721,7 @@ type StringRules struct {
 
 func (x *StringRules) Reset() {
 	*x = StringRules{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[18]
+	mi := &file_buf_validate_validate_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4733,7 +4733,7 @@ func (x *StringRules) String() string {
 func (*StringRules) ProtoMessage() {}
 
 func (x *StringRules) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[18]
+	mi := &file_buf_validate_validate_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4746,7 +4746,7 @@ func (x *StringRules) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StringRules.ProtoReflect.Descriptor instead.
 func (*StringRules) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{18}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *StringRules) GetConst() string {
@@ -5337,7 +5337,7 @@ type StringRules_WellKnownRegex struct {
 	// | KNOWN_REGEX_UNSPECIFIED       | 0      |                                           |
 	// | KNOWN_REGEX_HTTP_HEADER_NAME  | 1      | HTTP header name as defined by [RFC 7230](https://datatracker.ietf.org/doc/html/rfc7230#section-3.2)  |
 	// | KNOWN_REGEX_HTTP_HEADER_VALUE | 2      | HTTP header value as defined by [RFC 7230](https://datatracker.ietf.org/doc/html/rfc7230#section-3.2.4) |
-	WellKnownRegex KnownRegex `protobuf:"varint,24,opt,name=well_known_regex,json=wellKnownRegex,enum=cloudstack.validate.KnownRegex,oneof"`
+	WellKnownRegex KnownRegex `protobuf:"varint,24,opt,name=well_known_regex,json=wellKnownRegex,enum=buf.validate.KnownRegex,oneof"`
 }
 
 func (*StringRules_Email) isStringRules_WellKnown() {}
@@ -5542,7 +5542,7 @@ type BytesRules struct {
 
 func (x *BytesRules) Reset() {
 	*x = BytesRules{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[19]
+	mi := &file_buf_validate_validate_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5554,7 +5554,7 @@ func (x *BytesRules) String() string {
 func (*BytesRules) ProtoMessage() {}
 
 func (x *BytesRules) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[19]
+	mi := &file_buf_validate_validate_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5567,7 +5567,7 @@ func (x *BytesRules) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BytesRules.ProtoReflect.Descriptor instead.
 func (*BytesRules) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{19}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *BytesRules) GetConst() []byte {
@@ -5838,7 +5838,7 @@ type EnumRules struct {
 
 func (x *EnumRules) Reset() {
 	*x = EnumRules{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[20]
+	mi := &file_buf_validate_validate_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5850,7 +5850,7 @@ func (x *EnumRules) String() string {
 func (*EnumRules) ProtoMessage() {}
 
 func (x *EnumRules) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[20]
+	mi := &file_buf_validate_validate_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5863,7 +5863,7 @@ func (x *EnumRules) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EnumRules.ProtoReflect.Descriptor instead.
 func (*EnumRules) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{20}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *EnumRules) GetConst() int32 {
@@ -5970,7 +5970,7 @@ type RepeatedRules struct {
 
 func (x *RepeatedRules) Reset() {
 	*x = RepeatedRules{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[21]
+	mi := &file_buf_validate_validate_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5982,7 +5982,7 @@ func (x *RepeatedRules) String() string {
 func (*RepeatedRules) ProtoMessage() {}
 
 func (x *RepeatedRules) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[21]
+	mi := &file_buf_validate_validate_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5995,7 +5995,7 @@ func (x *RepeatedRules) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RepeatedRules.ProtoReflect.Descriptor instead.
 func (*RepeatedRules) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{21}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *RepeatedRules) GetMinItems() uint64 {
@@ -6094,7 +6094,7 @@ type MapRules struct {
 
 func (x *MapRules) Reset() {
 	*x = MapRules{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[22]
+	mi := &file_buf_validate_validate_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6106,7 +6106,7 @@ func (x *MapRules) String() string {
 func (*MapRules) ProtoMessage() {}
 
 func (x *MapRules) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[22]
+	mi := &file_buf_validate_validate_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6119,7 +6119,7 @@ func (x *MapRules) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MapRules.ProtoReflect.Descriptor instead.
 func (*MapRules) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{22}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *MapRules) GetMinPairs() uint64 {
@@ -6183,7 +6183,7 @@ type AnyRules struct {
 
 func (x *AnyRules) Reset() {
 	*x = AnyRules{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[23]
+	mi := &file_buf_validate_validate_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6195,7 +6195,7 @@ func (x *AnyRules) String() string {
 func (*AnyRules) ProtoMessage() {}
 
 func (x *AnyRules) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[23]
+	mi := &file_buf_validate_validate_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6208,7 +6208,7 @@ func (x *AnyRules) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AnyRules.ProtoReflect.Descriptor instead.
 func (*AnyRules) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{23}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *AnyRules) GetIn() []string {
@@ -6300,7 +6300,7 @@ type DurationRules struct {
 
 func (x *DurationRules) Reset() {
 	*x = DurationRules{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[24]
+	mi := &file_buf_validate_validate_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6312,7 +6312,7 @@ func (x *DurationRules) String() string {
 func (*DurationRules) ProtoMessage() {}
 
 func (x *DurationRules) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[24]
+	mi := &file_buf_validate_validate_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6325,7 +6325,7 @@ func (x *DurationRules) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DurationRules.ProtoReflect.Descriptor instead.
 func (*DurationRules) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{24}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *DurationRules) GetConst() *durationpb.Duration {
@@ -6547,7 +6547,7 @@ type TimestampRules struct {
 
 func (x *TimestampRules) Reset() {
 	*x = TimestampRules{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[25]
+	mi := &file_buf_validate_validate_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6559,7 +6559,7 @@ func (x *TimestampRules) String() string {
 func (*TimestampRules) ProtoMessage() {}
 
 func (x *TimestampRules) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[25]
+	mi := &file_buf_validate_validate_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6572,7 +6572,7 @@ func (x *TimestampRules) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TimestampRules.ProtoReflect.Descriptor instead.
 func (*TimestampRules) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{25}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *TimestampRules) GetConst() *timestamppb.Timestamp {
@@ -6801,7 +6801,7 @@ type Violations struct {
 
 func (x *Violations) Reset() {
 	*x = Violations{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[26]
+	mi := &file_buf_validate_validate_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6813,7 +6813,7 @@ func (x *Violations) String() string {
 func (*Violations) ProtoMessage() {}
 
 func (x *Violations) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[26]
+	mi := &file_buf_validate_validate_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6826,7 +6826,7 @@ func (x *Violations) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Violations.ProtoReflect.Descriptor instead.
 func (*Violations) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{26}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *Violations) GetViolations() []*Violation {
@@ -6924,7 +6924,7 @@ type Violation struct {
 
 func (x *Violation) Reset() {
 	*x = Violation{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[27]
+	mi := &file_buf_validate_validate_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6936,7 +6936,7 @@ func (x *Violation) String() string {
 func (*Violation) ProtoMessage() {}
 
 func (x *Violation) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[27]
+	mi := &file_buf_validate_validate_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6949,7 +6949,7 @@ func (x *Violation) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Violation.ProtoReflect.Descriptor instead.
 func (*Violation) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{27}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *Violation) GetField() *FieldPath {
@@ -7001,7 +7001,7 @@ type FieldPath struct {
 
 func (x *FieldPath) Reset() {
 	*x = FieldPath{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[28]
+	mi := &file_buf_validate_validate_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7013,7 +7013,7 @@ func (x *FieldPath) String() string {
 func (*FieldPath) ProtoMessage() {}
 
 func (x *FieldPath) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[28]
+	mi := &file_buf_validate_validate_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7026,7 +7026,7 @@ func (x *FieldPath) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FieldPath.ProtoReflect.Descriptor instead.
 func (*FieldPath) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{28}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *FieldPath) GetElements() []*FieldPathElement {
@@ -7082,7 +7082,7 @@ type FieldPathElement struct {
 
 func (x *FieldPathElement) Reset() {
 	*x = FieldPathElement{}
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[29]
+	mi := &file_buf_validate_validate_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7094,7 +7094,7 @@ func (x *FieldPathElement) String() string {
 func (*FieldPathElement) ProtoMessage() {}
 
 func (x *FieldPathElement) ProtoReflect() protoreflect.Message {
-	mi := &file_cloudstack_validate_validate_proto_msgTypes[29]
+	mi := &file_buf_validate_validate_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7107,7 +7107,7 @@ func (x *FieldPathElement) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FieldPathElement.ProtoReflect.Descriptor instead.
 func (*FieldPathElement) Descriptor() ([]byte, []int) {
-	return file_cloudstack_validate_validate_proto_rawDescGZIP(), []int{29}
+	return file_buf_validate_validate_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *FieldPathElement) GetFieldNumber() int32 {
@@ -7236,38 +7236,38 @@ func (*FieldPathElement_UintKey) isFieldPathElement_Subscript() {}
 
 func (*FieldPathElement_StringKey) isFieldPathElement_Subscript() {}
 
-var file_cloudstack_validate_validate_proto_extTypes = []protoimpl.ExtensionInfo{
+var file_buf_validate_validate_proto_extTypes = []protoimpl.ExtensionInfo{
 	{
 		ExtendedType:  (*descriptorpb.MessageOptions)(nil),
 		ExtensionType: (*MessageConstraints)(nil),
 		Field:         1159,
-		Name:          "cloudstack.validate.message",
+		Name:          "buf.validate.message",
 		Tag:           "bytes,1159,opt,name=message",
-		Filename:      "cloudstack/validate/validate.proto",
+		Filename:      "buf/validate/validate.proto",
 	},
 	{
 		ExtendedType:  (*descriptorpb.OneofOptions)(nil),
 		ExtensionType: (*OneofConstraints)(nil),
 		Field:         1159,
-		Name:          "cloudstack.validate.oneof",
+		Name:          "buf.validate.oneof",
 		Tag:           "bytes,1159,opt,name=oneof",
-		Filename:      "cloudstack/validate/validate.proto",
+		Filename:      "buf/validate/validate.proto",
 	},
 	{
 		ExtendedType:  (*descriptorpb.FieldOptions)(nil),
 		ExtensionType: (*FieldConstraints)(nil),
 		Field:         1159,
-		Name:          "cloudstack.validate.field",
+		Name:          "buf.validate.field",
 		Tag:           "bytes,1159,opt,name=field",
-		Filename:      "cloudstack/validate/validate.proto",
+		Filename:      "buf/validate/validate.proto",
 	},
 	{
 		ExtendedType:  (*descriptorpb.FieldOptions)(nil),
 		ExtensionType: (*PredefinedConstraints)(nil),
 		Field:         1160,
-		Name:          "cloudstack.validate.predefined",
+		Name:          "buf.validate.predefined",
 		Tag:           "bytes,1160,opt,name=predefined",
-		Filename:      "cloudstack/validate/validate.proto",
+		Filename:      "buf/validate/validate.proto",
 	},
 }
 
@@ -7276,8 +7276,8 @@ var (
 	// Rules specify the validations to be performed on this message. By default,
 	// no validation is performed against a message.
 	//
-	// optional cloudstack.validate.MessageConstraints message = 1159;
-	E_Message = &file_cloudstack_validate_validate_proto_extTypes[0]
+	// optional buf.validate.MessageConstraints message = 1159;
+	E_Message = &file_buf_validate_validate_proto_extTypes[0]
 )
 
 // Extension fields to descriptorpb.OneofOptions.
@@ -7285,8 +7285,8 @@ var (
 	// Rules specify the validations to be performed on this oneof. By default,
 	// no validation is performed against a oneof.
 	//
-	// optional cloudstack.validate.OneofConstraints oneof = 1159;
-	E_Oneof = &file_cloudstack_validate_validate_proto_extTypes[1]
+	// optional buf.validate.OneofConstraints oneof = 1159;
+	E_Oneof = &file_buf_validate_validate_proto_extTypes[1]
 )
 
 // Extension fields to descriptorpb.FieldOptions.
@@ -7294,8 +7294,8 @@ var (
 	// Rules specify the validations to be performed on this field. By default,
 	// no validation is performed against a field.
 	//
-	// optional cloudstack.validate.FieldConstraints field = 1159;
-	E_Field = &file_cloudstack_validate_validate_proto_extTypes[2]
+	// optional buf.validate.FieldConstraints field = 1159;
+	E_Field = &file_buf_validate_validate_proto_extTypes[2]
 	// Specifies predefined rules. When extending a standard constraint message,
 	// this adds additional CEL expressions that apply when the extension is used.
 	//
@@ -7315,56 +7315,57 @@ var (
 	//
 	// ```
 	//
-	// optional cloudstack.validate.PredefinedConstraints predefined = 1160;
-	E_Predefined = &file_cloudstack_validate_validate_proto_extTypes[3]
+	// optional buf.validate.PredefinedConstraints predefined = 1160;
+	E_Predefined = &file_buf_validate_validate_proto_extTypes[3]
 )
 
-var File_cloudstack_validate_validate_proto protoreflect.FileDescriptor
+var File_buf_validate_validate_proto protoreflect.FileDescriptor
 
-const file_cloudstack_validate_validate_proto_rawDesc = "" +
+const file_buf_validate_validate_proto_rawDesc = "" +
 	"\n" +
-	"\"cloudstack/validate/validate.proto\x12\x13cloudstack.validate\x1a google/protobuf/descriptor.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"V\n" +
+	"\x1bbuf/validate/validate.proto\x12\fbuf.validate\x1a google/protobuf/descriptor.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"V\n" +
 	"\n" +
 	"Constraint\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage\x12\x1e\n" +
 	"\n" +
 	"expression\x18\x03 \x01(\tR\n" +
-	"expression\"c\n" +
+	"expression\"\\\n" +
 	"\x12MessageConstraints\x12\x1a\n" +
-	"\bdisabled\x18\x01 \x01(\bR\bdisabled\x121\n" +
-	"\x03cel\x18\x03 \x03(\v2\x1f.cloudstack.validate.ConstraintR\x03cel\".\n" +
+	"\bdisabled\x18\x01 \x01(\bR\bdisabled\x12*\n" +
+	"\x03cel\x18\x03 \x03(\v2\x18.buf.validate.ConstraintR\x03cel\".\n" +
 	"\x10OneofConstraints\x12\x1a\n" +
-	"\brequired\x18\x01 \x01(\bR\brequired\"\xaa\v\n" +
-	"\x10FieldConstraints\x121\n" +
-	"\x03cel\x18\x17 \x03(\v2\x1f.cloudstack.validate.ConstraintR\x03cel\x12\x1a\n" +
-	"\brequired\x18\x19 \x01(\bR\brequired\x123\n" +
-	"\x06ignore\x18\x1b \x01(\x0e2\x1b.cloudstack.validate.IgnoreR\x06ignore\x127\n" +
-	"\x05float\x18\x01 \x01(\v2\x1f.cloudstack.validate.FloatRulesH\x00R\x05float\x12:\n" +
-	"\x06double\x18\x02 \x01(\v2 .cloudstack.validate.DoubleRulesH\x00R\x06double\x127\n" +
-	"\x05int32\x18\x03 \x01(\v2\x1f.cloudstack.validate.Int32RulesH\x00R\x05int32\x127\n" +
-	"\x05int64\x18\x04 \x01(\v2\x1f.cloudstack.validate.Int64RulesH\x00R\x05int64\x12:\n" +
-	"\x06uint32\x18\x05 \x01(\v2 .cloudstack.validate.UInt32RulesH\x00R\x06uint32\x12:\n" +
-	"\x06uint64\x18\x06 \x01(\v2 .cloudstack.validate.UInt64RulesH\x00R\x06uint64\x12:\n" +
-	"\x06sint32\x18\a \x01(\v2 .cloudstack.validate.SInt32RulesH\x00R\x06sint32\x12:\n" +
-	"\x06sint64\x18\b \x01(\v2 .cloudstack.validate.SInt64RulesH\x00R\x06sint64\x12=\n" +
-	"\afixed32\x18\t \x01(\v2!.cloudstack.validate.Fixed32RulesH\x00R\afixed32\x12=\n" +
+	"\brequired\x18\x01 \x01(\bR\brequired\"\x89\n" +
+	"\n" +
+	"\x10FieldConstraints\x12*\n" +
+	"\x03cel\x18\x17 \x03(\v2\x18.buf.validate.ConstraintR\x03cel\x12\x1a\n" +
+	"\brequired\x18\x19 \x01(\bR\brequired\x12,\n" +
+	"\x06ignore\x18\x1b \x01(\x0e2\x14.buf.validate.IgnoreR\x06ignore\x120\n" +
+	"\x05float\x18\x01 \x01(\v2\x18.buf.validate.FloatRulesH\x00R\x05float\x123\n" +
+	"\x06double\x18\x02 \x01(\v2\x19.buf.validate.DoubleRulesH\x00R\x06double\x120\n" +
+	"\x05int32\x18\x03 \x01(\v2\x18.buf.validate.Int32RulesH\x00R\x05int32\x120\n" +
+	"\x05int64\x18\x04 \x01(\v2\x18.buf.validate.Int64RulesH\x00R\x05int64\x123\n" +
+	"\x06uint32\x18\x05 \x01(\v2\x19.buf.validate.UInt32RulesH\x00R\x06uint32\x123\n" +
+	"\x06uint64\x18\x06 \x01(\v2\x19.buf.validate.UInt64RulesH\x00R\x06uint64\x123\n" +
+	"\x06sint32\x18\a \x01(\v2\x19.buf.validate.SInt32RulesH\x00R\x06sint32\x123\n" +
+	"\x06sint64\x18\b \x01(\v2\x19.buf.validate.SInt64RulesH\x00R\x06sint64\x126\n" +
+	"\afixed32\x18\t \x01(\v2\x1a.buf.validate.Fixed32RulesH\x00R\afixed32\x126\n" +
 	"\afixed64\x18\n" +
-	" \x01(\v2!.cloudstack.validate.Fixed64RulesH\x00R\afixed64\x12@\n" +
-	"\bsfixed32\x18\v \x01(\v2\".cloudstack.validate.SFixed32RulesH\x00R\bsfixed32\x12@\n" +
-	"\bsfixed64\x18\f \x01(\v2\".cloudstack.validate.SFixed64RulesH\x00R\bsfixed64\x124\n" +
-	"\x04bool\x18\r \x01(\v2\x1e.cloudstack.validate.BoolRulesH\x00R\x04bool\x12:\n" +
-	"\x06string\x18\x0e \x01(\v2 .cloudstack.validate.StringRulesH\x00R\x06string\x127\n" +
-	"\x05bytes\x18\x0f \x01(\v2\x1f.cloudstack.validate.BytesRulesH\x00R\x05bytes\x124\n" +
-	"\x04enum\x18\x10 \x01(\v2\x1e.cloudstack.validate.EnumRulesH\x00R\x04enum\x12@\n" +
-	"\brepeated\x18\x12 \x01(\v2\".cloudstack.validate.RepeatedRulesH\x00R\brepeated\x121\n" +
-	"\x03map\x18\x13 \x01(\v2\x1d.cloudstack.validate.MapRulesH\x00R\x03map\x121\n" +
-	"\x03any\x18\x14 \x01(\v2\x1d.cloudstack.validate.AnyRulesH\x00R\x03any\x12@\n" +
-	"\bduration\x18\x15 \x01(\v2\".cloudstack.validate.DurationRulesH\x00R\bduration\x12C\n" +
-	"\ttimestamp\x18\x16 \x01(\v2#.cloudstack.validate.TimestampRulesH\x00R\ttimestampB\x06\n" +
-	"\x04typeJ\x04\b\x18\x10\x19J\x04\b\x1a\x10\x1bR\askippedR\fignore_empty\"k\n" +
-	"\x15PredefinedConstraints\x121\n" +
-	"\x03cel\x18\x01 \x03(\v2\x1f.cloudstack.validate.ConstraintR\x03celJ\x04\b\x18\x10\x19J\x04\b\x1a\x10\x1bR\x13skippedignore_empty\"\xea\x17\n" +
+	" \x01(\v2\x1a.buf.validate.Fixed64RulesH\x00R\afixed64\x129\n" +
+	"\bsfixed32\x18\v \x01(\v2\x1b.buf.validate.SFixed32RulesH\x00R\bsfixed32\x129\n" +
+	"\bsfixed64\x18\f \x01(\v2\x1b.buf.validate.SFixed64RulesH\x00R\bsfixed64\x12-\n" +
+	"\x04bool\x18\r \x01(\v2\x17.buf.validate.BoolRulesH\x00R\x04bool\x123\n" +
+	"\x06string\x18\x0e \x01(\v2\x19.buf.validate.StringRulesH\x00R\x06string\x120\n" +
+	"\x05bytes\x18\x0f \x01(\v2\x18.buf.validate.BytesRulesH\x00R\x05bytes\x12-\n" +
+	"\x04enum\x18\x10 \x01(\v2\x17.buf.validate.EnumRulesH\x00R\x04enum\x129\n" +
+	"\brepeated\x18\x12 \x01(\v2\x1b.buf.validate.RepeatedRulesH\x00R\brepeated\x12*\n" +
+	"\x03map\x18\x13 \x01(\v2\x16.buf.validate.MapRulesH\x00R\x03map\x12*\n" +
+	"\x03any\x18\x14 \x01(\v2\x16.buf.validate.AnyRulesH\x00R\x03any\x129\n" +
+	"\bduration\x18\x15 \x01(\v2\x1b.buf.validate.DurationRulesH\x00R\bduration\x12<\n" +
+	"\ttimestamp\x18\x16 \x01(\v2\x1c.buf.validate.TimestampRulesH\x00R\ttimestampB\x06\n" +
+	"\x04typeJ\x04\b\x18\x10\x19J\x04\b\x1a\x10\x1bR\askippedR\fignore_empty\"d\n" +
+	"\x15PredefinedConstraints\x12*\n" +
+	"\x03cel\x18\x01 \x03(\v2\x18.buf.validate.ConstraintR\x03celJ\x04\b\x18\x10\x19J\x04\b\x1a\x10\x1bR\x13skippedignore_empty\"\xea\x17\n" +
 	"\n" +
 	"FloatRules\x12p\n" +
 	"\x05const\x18\x01 \x01(\x02BZ\xc2HW\n" +
@@ -7913,7 +7914,7 @@ const file_cloudstack_validate_validate_proto_rawDesc = "" +
 	"bool.const\x1aFthis != rules.const ? 'value must equal %s'.format([rules.const]) : ''R\x05const\x123\n" +
 	"\aexample\x18\x02 \x03(\bB\x19\xc2H\x16\n" +
 	"\x14\n" +
-	"\fbool.example\x1a\x04trueR\aexample*\t\b\xe8\a\x10\x80\x80\x80\x80\x02\"\xb29\n" +
+	"\fbool.example\x1a\x04trueR\aexample*\t\b\xe8\a\x10\x80\x80\x80\x80\x02\"\xab9\n" +
 	"\vStringRules\x12s\n" +
 	"\x05const\x18\x01 \x01(\tB]\xc2HZ\n" +
 	"X\n" +
@@ -8044,8 +8045,8 @@ const file_cloudstack_validate_validate_proto_rawDesc = "" +
 	"\x99\x01\n" +
 	"\x14string.host_and_port\x12Avalue must be a valid host (hostname or IP address) and port pair\x1a>!rules.host_and_port || this == '' || this.isHostAndPort(true)\n" +
 	"y\n" +
-	"\x1astring.host_and_port_empty\x127value is empty, which is not a valid host and port pair\x1a\"!rules.host_and_port || this != ''H\x00R\vhostAndPort\x12\xbf\x05\n" +
-	"\x10well_known_regex\x18\x18 \x01(\x0e2\x1f.cloudstack.validate.KnownRegexB\xf1\x04\xc2H\xed\x04\n" +
+	"\x1astring.host_and_port_empty\x127value is empty, which is not a valid host and port pair\x1a\"!rules.host_and_port || this != ''H\x00R\vhostAndPort\x12\xb8\x05\n" +
+	"\x10well_known_regex\x18\x18 \x01(\x0e2\x18.buf.validate.KnownRegexB\xf1\x04\xc2H\xed\x04\n" +
 	"\xf0\x01\n" +
 	"#string.well_known_regex.header_name\x12&value must be a valid HTTP header name\x1a\xa0\x01rules.well_known_regex != 1 || this == '' || this.matches(!has(rules.strict) || rules.strict ?'^:?[0-9a-zA-Z!#$%&\\'*+-.^_|~\\x60]+$' :'^[^\\u0000\\u000A\\u000D]+$')\n" +
 	"\x8d\x01\n" +
@@ -8127,7 +8128,7 @@ const file_cloudstack_validate_validate_proto_rawDesc = "" +
 	"\venum.not_in\x1aQthis in rules.not_in ? 'value must not be in list %s'.format([rules.not_in]) : ''R\x05notIn\x123\n" +
 	"\aexample\x18\x05 \x03(\x05B\x19\xc2H\x16\n" +
 	"\x14\n" +
-	"\fenum.example\x1a\x04trueR\aexample*\t\b\xe8\a\x10\x80\x80\x80\x80\x02\"\xab\x04\n" +
+	"\fenum.example\x1a\x04trueR\aexample*\t\b\xe8\a\x10\x80\x80\x80\x80\x02\"\xa4\x04\n" +
 	"\rRepeatedRules\x12\xa8\x01\n" +
 	"\tmin_items\x18\x01 \x01(\x04B\x8a\x01\xc2H\x86\x01\n" +
 	"\x83\x01\n" +
@@ -8137,17 +8138,17 @@ const file_cloudstack_validate_validate_proto_rawDesc = "" +
 	"\x12repeated.max_items\x1aquint(this.size()) > rules.max_items ? 'value must contain no more than %s item(s)'.format([rules.max_items]) : ''R\bmaxItems\x12x\n" +
 	"\x06unique\x18\x03 \x01(\bB`\xc2H]\n" +
 	"[\n" +
-	"\x0frepeated.unique\x12(repeated value must contain unique items\x1a\x1e!rules.unique || this.unique()R\x06unique\x12;\n" +
-	"\x05items\x18\x04 \x01(\v2%.cloudstack.validate.FieldConstraintsR\x05items*\t\b\xe8\a\x10\x80\x80\x80\x80\x02\"\xc6\x03\n" +
+	"\x0frepeated.unique\x12(repeated value must contain unique items\x1a\x1e!rules.unique || this.unique()R\x06unique\x124\n" +
+	"\x05items\x18\x04 \x01(\v2\x1e.buf.validate.FieldConstraintsR\x05items*\t\b\xe8\a\x10\x80\x80\x80\x80\x02\"\xb8\x03\n" +
 	"\bMapRules\x12\x99\x01\n" +
 	"\tmin_pairs\x18\x01 \x01(\x04B|\xc2Hy\n" +
 	"w\n" +
 	"\rmap.min_pairs\x1afuint(this.size()) < rules.min_pairs ? 'map must be at least %d entries'.format([rules.min_pairs]) : ''R\bminPairs\x12\x98\x01\n" +
 	"\tmax_pairs\x18\x02 \x01(\x04B{\xc2Hx\n" +
 	"v\n" +
-	"\rmap.max_pairs\x1aeuint(this.size()) > rules.max_pairs ? 'map must be at most %d entries'.format([rules.max_pairs]) : ''R\bmaxPairs\x129\n" +
-	"\x04keys\x18\x04 \x01(\v2%.cloudstack.validate.FieldConstraintsR\x04keys\x12=\n" +
-	"\x06values\x18\x05 \x01(\v2%.cloudstack.validate.FieldConstraintsR\x06values*\t\b\xe8\a\x10\x80\x80\x80\x80\x02\"1\n" +
+	"\rmap.max_pairs\x1aeuint(this.size()) > rules.max_pairs ? 'map must be at most %d entries'.format([rules.max_pairs]) : ''R\bmaxPairs\x122\n" +
+	"\x04keys\x18\x04 \x01(\v2\x1e.buf.validate.FieldConstraintsR\x04keys\x126\n" +
+	"\x06values\x18\x05 \x01(\v2\x1e.buf.validate.FieldConstraintsR\x06values*\t\b\xe8\a\x10\x80\x80\x80\x80\x02\"1\n" +
 	"\bAnyRules\x12\x0e\n" +
 	"\x02in\x18\x02 \x03(\tR\x02in\x12\x15\n" +
 	"\x06not_in\x18\x03 \x03(\tR\x05notIn\"\xa2\x17\n" +
@@ -8240,21 +8241,21 @@ const file_cloudstack_validate_validate_proto_rawDesc = "" +
 	"\x19\n" +
 	"\x11timestamp.example\x1a\x04trueR\aexample*\t\b\xe8\a\x10\x80\x80\x80\x80\x02B\v\n" +
 	"\tless_thanB\x0e\n" +
-	"\fgreater_than\"L\n" +
+	"\fgreater_than\"E\n" +
 	"\n" +
-	"Violations\x12>\n" +
+	"Violations\x127\n" +
 	"\n" +
-	"violations\x18\x01 \x03(\v2\x1e.cloudstack.validate.ViolationR\n" +
-	"violations\"\xdf\x01\n" +
-	"\tViolation\x124\n" +
-	"\x05field\x18\x05 \x01(\v2\x1e.cloudstack.validate.FieldPathR\x05field\x122\n" +
-	"\x04rule\x18\x06 \x01(\v2\x1e.cloudstack.validate.FieldPathR\x04rule\x12#\n" +
+	"violations\x18\x01 \x03(\v2\x17.buf.validate.ViolationR\n" +
+	"violations\"\xd1\x01\n" +
+	"\tViolation\x12-\n" +
+	"\x05field\x18\x05 \x01(\v2\x17.buf.validate.FieldPathR\x05field\x12+\n" +
+	"\x04rule\x18\x06 \x01(\v2\x17.buf.validate.FieldPathR\x04rule\x12#\n" +
 	"\rconstraint_id\x18\x02 \x01(\tR\fconstraintId\x12\x18\n" +
 	"\amessage\x18\x03 \x01(\tR\amessage\x12\x17\n" +
 	"\afor_key\x18\x04 \x01(\bR\x06forKeyJ\x04\b\x01\x10\x02R\n" +
-	"field_path\"N\n" +
-	"\tFieldPath\x12A\n" +
-	"\belements\x18\x01 \x03(\v2%.cloudstack.validate.FieldPathElementR\belements\"\xcc\x03\n" +
+	"field_path\"G\n" +
+	"\tFieldPath\x12:\n" +
+	"\belements\x18\x01 \x03(\v2\x1e.buf.validate.FieldPathElementR\belements\"\xcc\x03\n" +
 	"\x10FieldPathElement\x12!\n" +
 	"\ffield_number\x18\x01 \x01(\x05R\vfieldNumber\x12\x1d\n" +
 	"\n" +
@@ -8281,62 +8282,62 @@ const file_cloudstack_validate_validate_proto_rawDesc = "" +
 	"KnownRegex\x12\x1b\n" +
 	"\x17KNOWN_REGEX_UNSPECIFIED\x10\x00\x12 \n" +
 	"\x1cKNOWN_REGEX_HTTP_HEADER_NAME\x10\x01\x12!\n" +
-	"\x1dKNOWN_REGEX_HTTP_HEADER_VALUE\x10\x02:c\n" +
-	"\amessage\x12\x1f.google.protobuf.MessageOptions\x18\x87\t \x01(\v2'.cloudstack.validate.MessageConstraintsR\amessage:[\n" +
-	"\x05oneof\x12\x1d.google.protobuf.OneofOptions\x18\x87\t \x01(\v2%.cloudstack.validate.OneofConstraintsR\x05oneof:[\n" +
-	"\x05field\x12\x1d.google.protobuf.FieldOptions\x18\x87\t \x01(\v2%.cloudstack.validate.FieldConstraintsR\x05field:j\n" +
+	"\x1dKNOWN_REGEX_HTTP_HEADER_VALUE\x10\x02:\\\n" +
+	"\amessage\x12\x1f.google.protobuf.MessageOptions\x18\x87\t \x01(\v2 .buf.validate.MessageConstraintsR\amessage:T\n" +
+	"\x05oneof\x12\x1d.google.protobuf.OneofOptions\x18\x87\t \x01(\v2\x1e.buf.validate.OneofConstraintsR\x05oneof:T\n" +
+	"\x05field\x12\x1d.google.protobuf.FieldOptions\x18\x87\t \x01(\v2\x1e.buf.validate.FieldConstraintsR\x05field:c\n" +
 	"\n" +
-	"predefined\x12\x1d.google.protobuf.FieldOptions\x18\x88\t \x01(\v2*.cloudstack.validate.PredefinedConstraintsR\n" +
-	"predefinedB\xde\x01\n" +
-	"\x17com.cloudstack.validateB\rValidateProtoP\x01ZGgithub.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate\xa2\x02\x03CVX\xaa\x02\x13Cloudstack.Validate\xca\x02\x13Cloudstack\\Validate\xe2\x02\x1fCloudstack\\Validate\\GPBMetadata\xea\x02\x14Cloudstack::Validate"
+	"predefined\x12\x1d.google.protobuf.FieldOptions\x18\x88\t \x01(\v2#.buf.validate.PredefinedConstraintsR\n" +
+	"predefinedB\xb4\x01\n" +
+	"\x10com.buf.validateB\rValidateProtoP\x01Z@github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate\xa2\x02\x03BVX\xaa\x02\fBuf.Validate\xca\x02\fBuf\\Validate\xe2\x02\x18Buf\\Validate\\GPBMetadata\xea\x02\rBuf::Validate"
 
 var (
-	file_cloudstack_validate_validate_proto_rawDescOnce sync.Once
-	file_cloudstack_validate_validate_proto_rawDescData []byte
+	file_buf_validate_validate_proto_rawDescOnce sync.Once
+	file_buf_validate_validate_proto_rawDescData []byte
 )
 
-func file_cloudstack_validate_validate_proto_rawDescGZIP() []byte {
-	file_cloudstack_validate_validate_proto_rawDescOnce.Do(func() {
-		file_cloudstack_validate_validate_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_cloudstack_validate_validate_proto_rawDesc), len(file_cloudstack_validate_validate_proto_rawDesc)))
+func file_buf_validate_validate_proto_rawDescGZIP() []byte {
+	file_buf_validate_validate_proto_rawDescOnce.Do(func() {
+		file_buf_validate_validate_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_buf_validate_validate_proto_rawDesc), len(file_buf_validate_validate_proto_rawDesc)))
 	})
-	return file_cloudstack_validate_validate_proto_rawDescData
+	return file_buf_validate_validate_proto_rawDescData
 }
 
-var file_cloudstack_validate_validate_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_cloudstack_validate_validate_proto_msgTypes = make([]protoimpl.MessageInfo, 30)
-var file_cloudstack_validate_validate_proto_goTypes = []any{
-	(Ignore)(0),                                 // 0: cloudstack.validate.Ignore
-	(KnownRegex)(0),                             // 1: cloudstack.validate.KnownRegex
-	(*Constraint)(nil),                          // 2: cloudstack.validate.Constraint
-	(*MessageConstraints)(nil),                  // 3: cloudstack.validate.MessageConstraints
-	(*OneofConstraints)(nil),                    // 4: cloudstack.validate.OneofConstraints
-	(*FieldConstraints)(nil),                    // 5: cloudstack.validate.FieldConstraints
-	(*PredefinedConstraints)(nil),               // 6: cloudstack.validate.PredefinedConstraints
-	(*FloatRules)(nil),                          // 7: cloudstack.validate.FloatRules
-	(*DoubleRules)(nil),                         // 8: cloudstack.validate.DoubleRules
-	(*Int32Rules)(nil),                          // 9: cloudstack.validate.Int32Rules
-	(*Int64Rules)(nil),                          // 10: cloudstack.validate.Int64Rules
-	(*UInt32Rules)(nil),                         // 11: cloudstack.validate.UInt32Rules
-	(*UInt64Rules)(nil),                         // 12: cloudstack.validate.UInt64Rules
-	(*SInt32Rules)(nil),                         // 13: cloudstack.validate.SInt32Rules
-	(*SInt64Rules)(nil),                         // 14: cloudstack.validate.SInt64Rules
-	(*Fixed32Rules)(nil),                        // 15: cloudstack.validate.Fixed32Rules
-	(*Fixed64Rules)(nil),                        // 16: cloudstack.validate.Fixed64Rules
-	(*SFixed32Rules)(nil),                       // 17: cloudstack.validate.SFixed32Rules
-	(*SFixed64Rules)(nil),                       // 18: cloudstack.validate.SFixed64Rules
-	(*BoolRules)(nil),                           // 19: cloudstack.validate.BoolRules
-	(*StringRules)(nil),                         // 20: cloudstack.validate.StringRules
-	(*BytesRules)(nil),                          // 21: cloudstack.validate.BytesRules
-	(*EnumRules)(nil),                           // 22: cloudstack.validate.EnumRules
-	(*RepeatedRules)(nil),                       // 23: cloudstack.validate.RepeatedRules
-	(*MapRules)(nil),                            // 24: cloudstack.validate.MapRules
-	(*AnyRules)(nil),                            // 25: cloudstack.validate.AnyRules
-	(*DurationRules)(nil),                       // 26: cloudstack.validate.DurationRules
-	(*TimestampRules)(nil),                      // 27: cloudstack.validate.TimestampRules
-	(*Violations)(nil),                          // 28: cloudstack.validate.Violations
-	(*Violation)(nil),                           // 29: cloudstack.validate.Violation
-	(*FieldPath)(nil),                           // 30: cloudstack.validate.FieldPath
-	(*FieldPathElement)(nil),                    // 31: cloudstack.validate.FieldPathElement
+var file_buf_validate_validate_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
+var file_buf_validate_validate_proto_msgTypes = make([]protoimpl.MessageInfo, 30)
+var file_buf_validate_validate_proto_goTypes = []any{
+	(Ignore)(0),                                 // 0: buf.validate.Ignore
+	(KnownRegex)(0),                             // 1: buf.validate.KnownRegex
+	(*Constraint)(nil),                          // 2: buf.validate.Constraint
+	(*MessageConstraints)(nil),                  // 3: buf.validate.MessageConstraints
+	(*OneofConstraints)(nil),                    // 4: buf.validate.OneofConstraints
+	(*FieldConstraints)(nil),                    // 5: buf.validate.FieldConstraints
+	(*PredefinedConstraints)(nil),               // 6: buf.validate.PredefinedConstraints
+	(*FloatRules)(nil),                          // 7: buf.validate.FloatRules
+	(*DoubleRules)(nil),                         // 8: buf.validate.DoubleRules
+	(*Int32Rules)(nil),                          // 9: buf.validate.Int32Rules
+	(*Int64Rules)(nil),                          // 10: buf.validate.Int64Rules
+	(*UInt32Rules)(nil),                         // 11: buf.validate.UInt32Rules
+	(*UInt64Rules)(nil),                         // 12: buf.validate.UInt64Rules
+	(*SInt32Rules)(nil),                         // 13: buf.validate.SInt32Rules
+	(*SInt64Rules)(nil),                         // 14: buf.validate.SInt64Rules
+	(*Fixed32Rules)(nil),                        // 15: buf.validate.Fixed32Rules
+	(*Fixed64Rules)(nil),                        // 16: buf.validate.Fixed64Rules
+	(*SFixed32Rules)(nil),                       // 17: buf.validate.SFixed32Rules
+	(*SFixed64Rules)(nil),                       // 18: buf.validate.SFixed64Rules
+	(*BoolRules)(nil),                           // 19: buf.validate.BoolRules
+	(*StringRules)(nil),                         // 20: buf.validate.StringRules
+	(*BytesRules)(nil),                          // 21: buf.validate.BytesRules
+	(*EnumRules)(nil),                           // 22: buf.validate.EnumRules
+	(*RepeatedRules)(nil),                       // 23: buf.validate.RepeatedRules
+	(*MapRules)(nil),                            // 24: buf.validate.MapRules
+	(*AnyRules)(nil),                            // 25: buf.validate.AnyRules
+	(*DurationRules)(nil),                       // 26: buf.validate.DurationRules
+	(*TimestampRules)(nil),                      // 27: buf.validate.TimestampRules
+	(*Violations)(nil),                          // 28: buf.validate.Violations
+	(*Violation)(nil),                           // 29: buf.validate.Violation
+	(*FieldPath)(nil),                           // 30: buf.validate.FieldPath
+	(*FieldPathElement)(nil),                    // 31: buf.validate.FieldPathElement
 	(*durationpb.Duration)(nil),                 // 32: google.protobuf.Duration
 	(*timestamppb.Timestamp)(nil),               // 33: google.protobuf.Timestamp
 	(descriptorpb.FieldDescriptorProto_Type)(0), // 34: google.protobuf.FieldDescriptorProto.Type
@@ -8344,66 +8345,66 @@ var file_cloudstack_validate_validate_proto_goTypes = []any{
 	(*descriptorpb.OneofOptions)(nil),           // 36: google.protobuf.OneofOptions
 	(*descriptorpb.FieldOptions)(nil),           // 37: google.protobuf.FieldOptions
 }
-var file_cloudstack_validate_validate_proto_depIdxs = []int32{
-	2,  // 0: cloudstack.validate.MessageConstraints.cel:type_name -> cloudstack.validate.Constraint
-	2,  // 1: cloudstack.validate.FieldConstraints.cel:type_name -> cloudstack.validate.Constraint
-	0,  // 2: cloudstack.validate.FieldConstraints.ignore:type_name -> cloudstack.validate.Ignore
-	7,  // 3: cloudstack.validate.FieldConstraints.float:type_name -> cloudstack.validate.FloatRules
-	8,  // 4: cloudstack.validate.FieldConstraints.double:type_name -> cloudstack.validate.DoubleRules
-	9,  // 5: cloudstack.validate.FieldConstraints.int32:type_name -> cloudstack.validate.Int32Rules
-	10, // 6: cloudstack.validate.FieldConstraints.int64:type_name -> cloudstack.validate.Int64Rules
-	11, // 7: cloudstack.validate.FieldConstraints.uint32:type_name -> cloudstack.validate.UInt32Rules
-	12, // 8: cloudstack.validate.FieldConstraints.uint64:type_name -> cloudstack.validate.UInt64Rules
-	13, // 9: cloudstack.validate.FieldConstraints.sint32:type_name -> cloudstack.validate.SInt32Rules
-	14, // 10: cloudstack.validate.FieldConstraints.sint64:type_name -> cloudstack.validate.SInt64Rules
-	15, // 11: cloudstack.validate.FieldConstraints.fixed32:type_name -> cloudstack.validate.Fixed32Rules
-	16, // 12: cloudstack.validate.FieldConstraints.fixed64:type_name -> cloudstack.validate.Fixed64Rules
-	17, // 13: cloudstack.validate.FieldConstraints.sfixed32:type_name -> cloudstack.validate.SFixed32Rules
-	18, // 14: cloudstack.validate.FieldConstraints.sfixed64:type_name -> cloudstack.validate.SFixed64Rules
-	19, // 15: cloudstack.validate.FieldConstraints.bool:type_name -> cloudstack.validate.BoolRules
-	20, // 16: cloudstack.validate.FieldConstraints.string:type_name -> cloudstack.validate.StringRules
-	21, // 17: cloudstack.validate.FieldConstraints.bytes:type_name -> cloudstack.validate.BytesRules
-	22, // 18: cloudstack.validate.FieldConstraints.enum:type_name -> cloudstack.validate.EnumRules
-	23, // 19: cloudstack.validate.FieldConstraints.repeated:type_name -> cloudstack.validate.RepeatedRules
-	24, // 20: cloudstack.validate.FieldConstraints.map:type_name -> cloudstack.validate.MapRules
-	25, // 21: cloudstack.validate.FieldConstraints.any:type_name -> cloudstack.validate.AnyRules
-	26, // 22: cloudstack.validate.FieldConstraints.duration:type_name -> cloudstack.validate.DurationRules
-	27, // 23: cloudstack.validate.FieldConstraints.timestamp:type_name -> cloudstack.validate.TimestampRules
-	2,  // 24: cloudstack.validate.PredefinedConstraints.cel:type_name -> cloudstack.validate.Constraint
-	1,  // 25: cloudstack.validate.StringRules.well_known_regex:type_name -> cloudstack.validate.KnownRegex
-	5,  // 26: cloudstack.validate.RepeatedRules.items:type_name -> cloudstack.validate.FieldConstraints
-	5,  // 27: cloudstack.validate.MapRules.keys:type_name -> cloudstack.validate.FieldConstraints
-	5,  // 28: cloudstack.validate.MapRules.values:type_name -> cloudstack.validate.FieldConstraints
-	32, // 29: cloudstack.validate.DurationRules.const:type_name -> google.protobuf.Duration
-	32, // 30: cloudstack.validate.DurationRules.lt:type_name -> google.protobuf.Duration
-	32, // 31: cloudstack.validate.DurationRules.lte:type_name -> google.protobuf.Duration
-	32, // 32: cloudstack.validate.DurationRules.gt:type_name -> google.protobuf.Duration
-	32, // 33: cloudstack.validate.DurationRules.gte:type_name -> google.protobuf.Duration
-	32, // 34: cloudstack.validate.DurationRules.in:type_name -> google.protobuf.Duration
-	32, // 35: cloudstack.validate.DurationRules.not_in:type_name -> google.protobuf.Duration
-	32, // 36: cloudstack.validate.DurationRules.example:type_name -> google.protobuf.Duration
-	33, // 37: cloudstack.validate.TimestampRules.const:type_name -> google.protobuf.Timestamp
-	33, // 38: cloudstack.validate.TimestampRules.lt:type_name -> google.protobuf.Timestamp
-	33, // 39: cloudstack.validate.TimestampRules.lte:type_name -> google.protobuf.Timestamp
-	33, // 40: cloudstack.validate.TimestampRules.gt:type_name -> google.protobuf.Timestamp
-	33, // 41: cloudstack.validate.TimestampRules.gte:type_name -> google.protobuf.Timestamp
-	32, // 42: cloudstack.validate.TimestampRules.within:type_name -> google.protobuf.Duration
-	33, // 43: cloudstack.validate.TimestampRules.example:type_name -> google.protobuf.Timestamp
-	29, // 44: cloudstack.validate.Violations.violations:type_name -> cloudstack.validate.Violation
-	30, // 45: cloudstack.validate.Violation.field:type_name -> cloudstack.validate.FieldPath
-	30, // 46: cloudstack.validate.Violation.rule:type_name -> cloudstack.validate.FieldPath
-	31, // 47: cloudstack.validate.FieldPath.elements:type_name -> cloudstack.validate.FieldPathElement
-	34, // 48: cloudstack.validate.FieldPathElement.field_type:type_name -> google.protobuf.FieldDescriptorProto.Type
-	34, // 49: cloudstack.validate.FieldPathElement.key_type:type_name -> google.protobuf.FieldDescriptorProto.Type
-	34, // 50: cloudstack.validate.FieldPathElement.value_type:type_name -> google.protobuf.FieldDescriptorProto.Type
-	35, // 51: cloudstack.validate.message:extendee -> google.protobuf.MessageOptions
-	36, // 52: cloudstack.validate.oneof:extendee -> google.protobuf.OneofOptions
-	37, // 53: cloudstack.validate.field:extendee -> google.protobuf.FieldOptions
-	37, // 54: cloudstack.validate.predefined:extendee -> google.protobuf.FieldOptions
-	3,  // 55: cloudstack.validate.message:type_name -> cloudstack.validate.MessageConstraints
-	4,  // 56: cloudstack.validate.oneof:type_name -> cloudstack.validate.OneofConstraints
-	5,  // 57: cloudstack.validate.field:type_name -> cloudstack.validate.FieldConstraints
-	6,  // 58: cloudstack.validate.predefined:type_name -> cloudstack.validate.PredefinedConstraints
+var file_buf_validate_validate_proto_depIdxs = []int32{
+	2,  // 0: buf.validate.MessageConstraints.cel:type_name -> buf.validate.Constraint
+	2,  // 1: buf.validate.FieldConstraints.cel:type_name -> buf.validate.Constraint
+	0,  // 2: buf.validate.FieldConstraints.ignore:type_name -> buf.validate.Ignore
+	7,  // 3: buf.validate.FieldConstraints.float:type_name -> buf.validate.FloatRules
+	8,  // 4: buf.validate.FieldConstraints.double:type_name -> buf.validate.DoubleRules
+	9,  // 5: buf.validate.FieldConstraints.int32:type_name -> buf.validate.Int32Rules
+	10, // 6: buf.validate.FieldConstraints.int64:type_name -> buf.validate.Int64Rules
+	11, // 7: buf.validate.FieldConstraints.uint32:type_name -> buf.validate.UInt32Rules
+	12, // 8: buf.validate.FieldConstraints.uint64:type_name -> buf.validate.UInt64Rules
+	13, // 9: buf.validate.FieldConstraints.sint32:type_name -> buf.validate.SInt32Rules
+	14, // 10: buf.validate.FieldConstraints.sint64:type_name -> buf.validate.SInt64Rules
+	15, // 11: buf.validate.FieldConstraints.fixed32:type_name -> buf.validate.Fixed32Rules
+	16, // 12: buf.validate.FieldConstraints.fixed64:type_name -> buf.validate.Fixed64Rules
+	17, // 13: buf.validate.FieldConstraints.sfixed32:type_name -> buf.validate.SFixed32Rules
+	18, // 14: buf.validate.FieldConstraints.sfixed64:type_name -> buf.validate.SFixed64Rules
+	19, // 15: buf.validate.FieldConstraints.bool:type_name -> buf.validate.BoolRules
+	20, // 16: buf.validate.FieldConstraints.string:type_name -> buf.validate.StringRules
+	21, // 17: buf.validate.FieldConstraints.bytes:type_name -> buf.validate.BytesRules
+	22, // 18: buf.validate.FieldConstraints.enum:type_name -> buf.validate.EnumRules
+	23, // 19: buf.validate.FieldConstraints.repeated:type_name -> buf.validate.RepeatedRules
+	24, // 20: buf.validate.FieldConstraints.map:type_name -> buf.validate.MapRules
+	25, // 21: buf.validate.FieldConstraints.any:type_name -> buf.validate.AnyRules
+	26, // 22: buf.validate.FieldConstraints.duration:type_name -> buf.validate.DurationRules
+	27, // 23: buf.validate.FieldConstraints.timestamp:type_name -> buf.validate.TimestampRules
+	2,  // 24: buf.validate.PredefinedConstraints.cel:type_name -> buf.validate.Constraint
+	1,  // 25: buf.validate.StringRules.well_known_regex:type_name -> buf.validate.KnownRegex
+	5,  // 26: buf.validate.RepeatedRules.items:type_name -> buf.validate.FieldConstraints
+	5,  // 27: buf.validate.MapRules.keys:type_name -> buf.validate.FieldConstraints
+	5,  // 28: buf.validate.MapRules.values:type_name -> buf.validate.FieldConstraints
+	32, // 29: buf.validate.DurationRules.const:type_name -> google.protobuf.Duration
+	32, // 30: buf.validate.DurationRules.lt:type_name -> google.protobuf.Duration
+	32, // 31: buf.validate.DurationRules.lte:type_name -> google.protobuf.Duration
+	32, // 32: buf.validate.DurationRules.gt:type_name -> google.protobuf.Duration
+	32, // 33: buf.validate.DurationRules.gte:type_name -> google.protobuf.Duration
+	32, // 34: buf.validate.DurationRules.in:type_name -> google.protobuf.Duration
+	32, // 35: buf.validate.DurationRules.not_in:type_name -> google.protobuf.Duration
+	32, // 36: buf.validate.DurationRules.example:type_name -> google.protobuf.Duration
+	33, // 37: buf.validate.TimestampRules.const:type_name -> google.protobuf.Timestamp
+	33, // 38: buf.validate.TimestampRules.lt:type_name -> google.protobuf.Timestamp
+	33, // 39: buf.validate.TimestampRules.lte:type_name -> google.protobuf.Timestamp
+	33, // 40: buf.validate.TimestampRules.gt:type_name -> google.protobuf.Timestamp
+	33, // 41: buf.validate.TimestampRules.gte:type_name -> google.protobuf.Timestamp
+	32, // 42: buf.validate.TimestampRules.within:type_name -> google.protobuf.Duration
+	33, // 43: buf.validate.TimestampRules.example:type_name -> google.protobuf.Timestamp
+	29, // 44: buf.validate.Violations.violations:type_name -> buf.validate.Violation
+	30, // 45: buf.validate.Violation.field:type_name -> buf.validate.FieldPath
+	30, // 46: buf.validate.Violation.rule:type_name -> buf.validate.FieldPath
+	31, // 47: buf.validate.FieldPath.elements:type_name -> buf.validate.FieldPathElement
+	34, // 48: buf.validate.FieldPathElement.field_type:type_name -> google.protobuf.FieldDescriptorProto.Type
+	34, // 49: buf.validate.FieldPathElement.key_type:type_name -> google.protobuf.FieldDescriptorProto.Type
+	34, // 50: buf.validate.FieldPathElement.value_type:type_name -> google.protobuf.FieldDescriptorProto.Type
+	35, // 51: buf.validate.message:extendee -> google.protobuf.MessageOptions
+	36, // 52: buf.validate.oneof:extendee -> google.protobuf.OneofOptions
+	37, // 53: buf.validate.field:extendee -> google.protobuf.FieldOptions
+	37, // 54: buf.validate.predefined:extendee -> google.protobuf.FieldOptions
+	3,  // 55: buf.validate.message:type_name -> buf.validate.MessageConstraints
+	4,  // 56: buf.validate.oneof:type_name -> buf.validate.OneofConstraints
+	5,  // 57: buf.validate.field:type_name -> buf.validate.FieldConstraints
+	6,  // 58: buf.validate.predefined:type_name -> buf.validate.PredefinedConstraints
 	59, // [59:59] is the sub-list for method output_type
 	59, // [59:59] is the sub-list for method input_type
 	55, // [55:59] is the sub-list for extension type_name
@@ -8411,12 +8412,12 @@ var file_cloudstack_validate_validate_proto_depIdxs = []int32{
 	0,  // [0:51] is the sub-list for field type_name
 }
 
-func init() { file_cloudstack_validate_validate_proto_init() }
-func file_cloudstack_validate_validate_proto_init() {
-	if File_cloudstack_validate_validate_proto != nil {
+func init() { file_buf_validate_validate_proto_init() }
+func file_buf_validate_validate_proto_init() {
+	if File_buf_validate_validate_proto != nil {
 		return
 	}
-	file_cloudstack_validate_validate_proto_msgTypes[3].OneofWrappers = []any{
+	file_buf_validate_validate_proto_msgTypes[3].OneofWrappers = []any{
 		(*FieldConstraints_Float)(nil),
 		(*FieldConstraints_Double)(nil),
 		(*FieldConstraints_Int32)(nil),
@@ -8439,79 +8440,79 @@ func file_cloudstack_validate_validate_proto_init() {
 		(*FieldConstraints_Duration)(nil),
 		(*FieldConstraints_Timestamp)(nil),
 	}
-	file_cloudstack_validate_validate_proto_msgTypes[5].OneofWrappers = []any{
+	file_buf_validate_validate_proto_msgTypes[5].OneofWrappers = []any{
 		(*FloatRules_Lt)(nil),
 		(*FloatRules_Lte)(nil),
 		(*FloatRules_Gt)(nil),
 		(*FloatRules_Gte)(nil),
 	}
-	file_cloudstack_validate_validate_proto_msgTypes[6].OneofWrappers = []any{
+	file_buf_validate_validate_proto_msgTypes[6].OneofWrappers = []any{
 		(*DoubleRules_Lt)(nil),
 		(*DoubleRules_Lte)(nil),
 		(*DoubleRules_Gt)(nil),
 		(*DoubleRules_Gte)(nil),
 	}
-	file_cloudstack_validate_validate_proto_msgTypes[7].OneofWrappers = []any{
+	file_buf_validate_validate_proto_msgTypes[7].OneofWrappers = []any{
 		(*Int32Rules_Lt)(nil),
 		(*Int32Rules_Lte)(nil),
 		(*Int32Rules_Gt)(nil),
 		(*Int32Rules_Gte)(nil),
 	}
-	file_cloudstack_validate_validate_proto_msgTypes[8].OneofWrappers = []any{
+	file_buf_validate_validate_proto_msgTypes[8].OneofWrappers = []any{
 		(*Int64Rules_Lt)(nil),
 		(*Int64Rules_Lte)(nil),
 		(*Int64Rules_Gt)(nil),
 		(*Int64Rules_Gte)(nil),
 	}
-	file_cloudstack_validate_validate_proto_msgTypes[9].OneofWrappers = []any{
+	file_buf_validate_validate_proto_msgTypes[9].OneofWrappers = []any{
 		(*UInt32Rules_Lt)(nil),
 		(*UInt32Rules_Lte)(nil),
 		(*UInt32Rules_Gt)(nil),
 		(*UInt32Rules_Gte)(nil),
 	}
-	file_cloudstack_validate_validate_proto_msgTypes[10].OneofWrappers = []any{
+	file_buf_validate_validate_proto_msgTypes[10].OneofWrappers = []any{
 		(*UInt64Rules_Lt)(nil),
 		(*UInt64Rules_Lte)(nil),
 		(*UInt64Rules_Gt)(nil),
 		(*UInt64Rules_Gte)(nil),
 	}
-	file_cloudstack_validate_validate_proto_msgTypes[11].OneofWrappers = []any{
+	file_buf_validate_validate_proto_msgTypes[11].OneofWrappers = []any{
 		(*SInt32Rules_Lt)(nil),
 		(*SInt32Rules_Lte)(nil),
 		(*SInt32Rules_Gt)(nil),
 		(*SInt32Rules_Gte)(nil),
 	}
-	file_cloudstack_validate_validate_proto_msgTypes[12].OneofWrappers = []any{
+	file_buf_validate_validate_proto_msgTypes[12].OneofWrappers = []any{
 		(*SInt64Rules_Lt)(nil),
 		(*SInt64Rules_Lte)(nil),
 		(*SInt64Rules_Gt)(nil),
 		(*SInt64Rules_Gte)(nil),
 	}
-	file_cloudstack_validate_validate_proto_msgTypes[13].OneofWrappers = []any{
+	file_buf_validate_validate_proto_msgTypes[13].OneofWrappers = []any{
 		(*Fixed32Rules_Lt)(nil),
 		(*Fixed32Rules_Lte)(nil),
 		(*Fixed32Rules_Gt)(nil),
 		(*Fixed32Rules_Gte)(nil),
 	}
-	file_cloudstack_validate_validate_proto_msgTypes[14].OneofWrappers = []any{
+	file_buf_validate_validate_proto_msgTypes[14].OneofWrappers = []any{
 		(*Fixed64Rules_Lt)(nil),
 		(*Fixed64Rules_Lte)(nil),
 		(*Fixed64Rules_Gt)(nil),
 		(*Fixed64Rules_Gte)(nil),
 	}
-	file_cloudstack_validate_validate_proto_msgTypes[15].OneofWrappers = []any{
+	file_buf_validate_validate_proto_msgTypes[15].OneofWrappers = []any{
 		(*SFixed32Rules_Lt)(nil),
 		(*SFixed32Rules_Lte)(nil),
 		(*SFixed32Rules_Gt)(nil),
 		(*SFixed32Rules_Gte)(nil),
 	}
-	file_cloudstack_validate_validate_proto_msgTypes[16].OneofWrappers = []any{
+	file_buf_validate_validate_proto_msgTypes[16].OneofWrappers = []any{
 		(*SFixed64Rules_Lt)(nil),
 		(*SFixed64Rules_Lte)(nil),
 		(*SFixed64Rules_Gt)(nil),
 		(*SFixed64Rules_Gte)(nil),
 	}
-	file_cloudstack_validate_validate_proto_msgTypes[18].OneofWrappers = []any{
+	file_buf_validate_validate_proto_msgTypes[18].OneofWrappers = []any{
 		(*StringRules_Email)(nil),
 		(*StringRules_Hostname)(nil),
 		(*StringRules_Ip)(nil),
@@ -8531,18 +8532,18 @@ func file_cloudstack_validate_validate_proto_init() {
 		(*StringRules_HostAndPort)(nil),
 		(*StringRules_WellKnownRegex)(nil),
 	}
-	file_cloudstack_validate_validate_proto_msgTypes[19].OneofWrappers = []any{
+	file_buf_validate_validate_proto_msgTypes[19].OneofWrappers = []any{
 		(*BytesRules_Ip)(nil),
 		(*BytesRules_Ipv4)(nil),
 		(*BytesRules_Ipv6)(nil),
 	}
-	file_cloudstack_validate_validate_proto_msgTypes[24].OneofWrappers = []any{
+	file_buf_validate_validate_proto_msgTypes[24].OneofWrappers = []any{
 		(*DurationRules_Lt)(nil),
 		(*DurationRules_Lte)(nil),
 		(*DurationRules_Gt)(nil),
 		(*DurationRules_Gte)(nil),
 	}
-	file_cloudstack_validate_validate_proto_msgTypes[25].OneofWrappers = []any{
+	file_buf_validate_validate_proto_msgTypes[25].OneofWrappers = []any{
 		(*TimestampRules_Lt)(nil),
 		(*TimestampRules_Lte)(nil),
 		(*TimestampRules_LtNow)(nil),
@@ -8550,7 +8551,7 @@ func file_cloudstack_validate_validate_proto_init() {
 		(*TimestampRules_Gte)(nil),
 		(*TimestampRules_GtNow)(nil),
 	}
-	file_cloudstack_validate_validate_proto_msgTypes[29].OneofWrappers = []any{
+	file_buf_validate_validate_proto_msgTypes[29].OneofWrappers = []any{
 		(*FieldPathElement_Index)(nil),
 		(*FieldPathElement_BoolKey)(nil),
 		(*FieldPathElement_IntKey)(nil),
@@ -8561,19 +8562,19 @@ func file_cloudstack_validate_validate_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cloudstack_validate_validate_proto_rawDesc), len(file_cloudstack_validate_validate_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_buf_validate_validate_proto_rawDesc), len(file_buf_validate_validate_proto_rawDesc)),
 			NumEnums:      2,
 			NumMessages:   30,
 			NumExtensions: 4,
 			NumServices:   0,
 		},
-		GoTypes:           file_cloudstack_validate_validate_proto_goTypes,
-		DependencyIndexes: file_cloudstack_validate_validate_proto_depIdxs,
-		EnumInfos:         file_cloudstack_validate_validate_proto_enumTypes,
-		MessageInfos:      file_cloudstack_validate_validate_proto_msgTypes,
-		ExtensionInfos:    file_cloudstack_validate_validate_proto_extTypes,
+		GoTypes:           file_buf_validate_validate_proto_goTypes,
+		DependencyIndexes: file_buf_validate_validate_proto_depIdxs,
+		EnumInfos:         file_buf_validate_validate_proto_enumTypes,
+		MessageInfos:      file_buf_validate_validate_proto_msgTypes,
+		ExtensionInfos:    file_buf_validate_validate_proto_extTypes,
 	}.Build()
-	File_cloudstack_validate_validate_proto = out.File
-	file_cloudstack_validate_validate_proto_goTypes = nil
-	file_cloudstack_validate_validate_proto_depIdxs = nil
+	File_buf_validate_validate_proto = out.File
+	file_buf_validate_validate_proto_goTypes = nil
+	file_buf_validate_validate_proto_depIdxs = nil
 }

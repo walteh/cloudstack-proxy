@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.domain.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // DomainService provides operations for managing Domains
@@ -51,9 +51,9 @@ service DomainService {
 message CreateDomainRequest {
 	// creates domain with this name
 	string domain_name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// assigns new domain a parent domain by domain ID of the parent.  If no parent domain is specified, the ROOT domain is assumed.
@@ -64,7 +64,7 @@ message CreateDomainRequest {
 
 	// Domain UUID, required for adding domain from another Region
 	string domain_u_u_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -81,7 +81,7 @@ message CreateDomainResponse {
 message DeleteDomainRequest {
 	// ID of domain to delete
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// true if all domain resources (child domains, accounts) have to be cleaned up, false otherwise
@@ -94,7 +94,7 @@ message DeleteDomainRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -114,8 +114,8 @@ message ListDomainChildrenRequest {
 
 	// list children domains by name
 	string domain_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// to return the entire tree, use the value "true". To return the first level children, use the value "false".
@@ -148,7 +148,7 @@ message ListDomainChildrenRequest {
 
 // ListDomainChildrenResponse represents the response from lists all children domains belonging to a specified domain
 message ListDomainChildrenResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Domains
 	repeated Domain items = 1;
 
@@ -166,8 +166,8 @@ message ListDomainsRequest {
 	int32 level = 3;
 	// List domain by domain name.
 	string domain_name = 4 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false
 	bool list_all = 5 [
@@ -193,7 +193,7 @@ message ListDomainsRequest {
 
 // ListDomainsResponse represents the response from lists domains and provides detailed information for listed domains
 message ListDomainsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Domains
 	repeated Domain items = 1;
 
@@ -211,8 +211,8 @@ message ListDomainsCmdByAdminRequest {
 
 	// List domain by domain name.
 	string domain_name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false
@@ -246,7 +246,7 @@ message ListDomainsCmdByAdminRequest {
 
 // ListDomainsCmdByAdminResponse represents the response from lists domains and provides detailed information for listed domains
 message ListDomainsCmdByAdminResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Domains
 	repeated Domain items = 1;
 
@@ -258,12 +258,12 @@ message ListDomainsCmdByAdminResponse {
 message MoveDomainRequest {
 	// The ID of the domain to be moved.
 	int64 domain_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The ID of the new parent domain of the domain to be moved.
 	int64 parent_domain_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -280,13 +280,13 @@ message MoveDomainResponse {
 message UpdateDomainRequest {
 	// ID of domain to update
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// updates domain with this name
 	string domain_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// Network domain for the domain's networks; empty string will update domainName with NULL value
@@ -306,7 +306,7 @@ message UpdateDomainResponse {
 message Domain {
 	// The ID of the Domain
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Domain
 	string name = 2;
@@ -336,12 +336,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

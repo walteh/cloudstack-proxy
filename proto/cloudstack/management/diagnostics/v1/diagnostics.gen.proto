@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.diagnostics.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // DiagnosticsService provides operations for managing Diagnosticss
@@ -25,7 +25,7 @@ service DiagnosticsService {
 message GetDiagnosticsDataRequest {
 	// The ID of the system VM instance to retrieve diagnostics data files from
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// A comma separated list of diagnostics data files to be retrieved. Defaults are taken from global settings if none has been provided.
@@ -36,7 +36,7 @@ message GetDiagnosticsDataRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -53,18 +53,18 @@ message GetDiagnosticsDataResponse {
 message RunDiagnosticsRequest {
 	// The ID of the system VM instance to diagnose
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The IP/Domain address to test connection to
 	string address = 2 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// The system VM diagnostics type  valid options are: ping, traceroute, arping
 	string type = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Additional command line options that apply for each command
@@ -75,7 +75,7 @@ message RunDiagnosticsRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -106,12 +106,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.volume.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // VolumeService provides operations for managing Volumes
@@ -185,18 +185,18 @@ service VolumeService {
 message AddResourceDetailRequest {
 	// Map of (key/value pairs)
 	map<string, string> details = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// type of the resource
 	string resource_type = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// resource id to create the details for
 	string resource_id = 3 [
-		(validate.field).required    = true,
-		(validate.field).string.uuid = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.uuid = true
 	];
 
 	// pass false if you want this detail to be disabled for the regular user. True by default
@@ -209,7 +209,7 @@ message AddResourceDetailRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -226,7 +226,7 @@ message AddResourceDetailResponse {
 message AssignVolumeRequest {
 	// The ID of the volume to be reassigned.
 	int64 volume_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The ID of the account to which the volume will be assigned. Mutually exclusive with parameter 'projectid'.
@@ -253,17 +253,17 @@ message AttachVolumeRequest {
 	int64 device_id = 2;
 	// the ID of the disk volume
 	int64 id = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	//     the ID of the virtual machine
 	int64 virtual_machine_id = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	//
 	int64 start_event_id = 5;
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 7;
@@ -282,12 +282,12 @@ message AttachVolumeCmdByAdminRequest {
 
 	// the ID of the disk volume
 	int64 id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//     the ID of the virtual machine
 	int64 virtual_machine_id = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -295,7 +295,7 @@ message AttachVolumeCmdByAdminRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -312,12 +312,12 @@ message AttachVolumeCmdByAdminResponse {
 message ChangeOfferingForVolumeRequest {
 	// the ID of the volume
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// new disk offering id
 	int64 new_disk_offering_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// New volume size in GB for the custom disk offering
@@ -344,7 +344,7 @@ message ChangeOfferingForVolumeRequest {
 
 	//
 	string injected_job_id = 9 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -361,7 +361,7 @@ message ChangeOfferingForVolumeResponse {
 message CheckAndRepairVolumeRequest {
 	// The ID of the volume
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// parameter to repair the volume, leaks or all are the possible values
@@ -372,7 +372,7 @@ message CheckAndRepairVolumeRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -391,7 +391,7 @@ message CreateVolumeRequest {
 	bool run_as_admin = 1;
 	// the account associated with the disk volume. Must be used with the domainId parameter.
 	string account_name = 2 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -405,8 +405,8 @@ message CreateVolumeRequest {
 	int64 disk_offering_id = 5;
 	// the name of the disk volume
 	string volume_name = 6 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// Arbitrary volume size
 	int64 size = 7;
@@ -426,13 +426,13 @@ message CreateVolumeRequest {
 	int64 virtual_machine_id = 13;
 	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
 	string custom_id = 14 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	int64 start_event_id = 15;
 	//
 	string injected_job_id = 16 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 17;
@@ -448,7 +448,7 @@ message CreateVolumeResponse {
 message CreateVolumeCmdByAdminRequest {
 	// the account associated with the disk volume. Must be used with the domainId parameter.
 	string account_name = 1 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -466,8 +466,8 @@ message CreateVolumeCmdByAdminRequest {
 
 	// the name of the disk volume
 	string volume_name = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// Arbitrary volume size
@@ -495,7 +495,7 @@ message CreateVolumeCmdByAdminRequest {
 
 	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
 	string custom_id = 13 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -503,7 +503,7 @@ message CreateVolumeCmdByAdminRequest {
 
 	//
 	string injected_job_id = 15 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -520,7 +520,7 @@ message CreateVolumeCmdByAdminResponse {
 message DeleteVolumeRequest {
 	// The ID of the disk volume
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -539,7 +539,7 @@ message DestroyVolumeRequest {
 	bool run_as_admin = 1;
 	// The ID of the volume
 	int64 id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// If true is passed, the volume is expunged immediately. False by default.
 	bool expunge = 3 [
@@ -549,7 +549,7 @@ message DestroyVolumeRequest {
 	int64 start_event_id = 4;
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 6;
@@ -565,7 +565,7 @@ message DestroyVolumeResponse {
 message DestroyVolumeCmdByAdminRequest {
 	// The ID of the volume
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// If true is passed, the volume is expunged immediately. False by default.
@@ -578,7 +578,7 @@ message DestroyVolumeCmdByAdminRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -605,7 +605,7 @@ message DetachVolumeRequest {
 	int64 start_event_id = 5;
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 7;
@@ -633,7 +633,7 @@ message DetachVolumeCmdByAdminRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -650,7 +650,7 @@ message DetachVolumeCmdByAdminResponse {
 message ExtractVolumeRequest {
 	// the ID of the volume
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the url to which the volume would be extracted
@@ -658,12 +658,12 @@ message ExtractVolumeRequest {
 
 	// the ID of the zone where the volume is located
 	int64 zone_id = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the mode of extraction - HTTP_DOWNLOAD or FTP_UPLOAD
 	string mode = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -671,7 +671,7 @@ message ExtractVolumeRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -688,7 +688,7 @@ message ExtractVolumeResponse {
 message GetUploadParamsForVolumeRequest {
 	// Image store uuid
 	string image_store_uuid = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// the ID of the disk offering. This must be a custom sized offering since during upload of volume/template size is unknown.
@@ -696,19 +696,19 @@ message GetUploadParamsForVolumeRequest {
 
 	// the name of the volume/template/iso
 	string name = 3 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the format for the volume/template/iso. Possible values include QCOW2, OVA, and VHD.
 	string format = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the ID of the zone the volume/template/iso is to be hosted on
 	int64 zone_id = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	/*
@@ -744,18 +744,18 @@ message GetUploadParamsForVolumeResponse {
 message ImportVolumeRequest {
 	// the path of the volume
 	string path = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the name of the volume. If not set, it will be set to the path of the volume.
 	string name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the ID of the storage pool
 	int64 storage_id = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the ID of the disk offering linked to the volume
@@ -775,7 +775,7 @@ message ImportVolumeRequest {
 
 	//
 	string injected_job_id = 9 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -792,12 +792,12 @@ message ImportVolumeResponse {
 message ListResourceDetailsRequest {
 	// list by resource type
 	string resource_type = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// list by resource id
 	string resource_id = 2 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// list by key
@@ -816,7 +816,7 @@ message ListResourceDetailsRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 7 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -851,7 +851,7 @@ message ListResourceDetailsRequest {
 
 // ListResourceDetailsResponse represents the response from list resource detail(s)
 message ListResourceDetailsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of ResourceTags
 	repeated ResourceTag items = 1;
 
@@ -871,8 +871,8 @@ message ListVolumesRequest {
 	repeated string ids = 4;
 	// the name of the disk volume
 	string volume_name = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// the pod id the disk volume belongs to
 	int64 pod_id = 6;
@@ -886,7 +886,7 @@ message ListVolumesRequest {
 	int64 zone_id = 10;
 	// the ID of the storage pool, available to ROOT admin only
 	string storage_id = 11 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// list volumes by disk offering of a service offering. If both service offering and disk offering are passed, service offering is ignored
 	int64 service_offering_id = 12;
@@ -916,7 +916,7 @@ message ListVolumesRequest {
 	int64 project_id = 20;
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 21 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -944,7 +944,7 @@ message ListVolumesRequest {
 
 // ListVolumesResponse represents the response from lists all volumes.
 message ListVolumesResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Volumes
 	repeated Volume items = 1;
 
@@ -965,8 +965,8 @@ message ListVolumesCmdByAdminRequest {
 
 	// the name of the disk volume
 	string volume_name = 4 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the pod id the disk volume belongs to
@@ -986,7 +986,7 @@ message ListVolumesCmdByAdminRequest {
 
 	// the ID of the storage pool, available to ROOT admin only
 	string storage_id = 10 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// list volumes by disk offering of a service offering. If both service offering and disk offering are passed, service offering is ignored
@@ -1026,7 +1026,7 @@ message ListVolumesCmdByAdminRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 20 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -1061,7 +1061,7 @@ message ListVolumesCmdByAdminRequest {
 
 // ListVolumesCmdByAdminResponse represents the response from lists all volumes.
 message ListVolumesCmdByAdminResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Volumes
 	repeated Volume items = 1;
 
@@ -1073,7 +1073,7 @@ message ListVolumesCmdByAdminResponse {
 message ListVolumesForImportRequest {
 	// the ID of the storage pool
 	int64 storage_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the path of the volume on the storage pool
@@ -1094,7 +1094,7 @@ message ListVolumesForImportRequest {
 
 // ListVolumesForImportResponse represents the response from lists unmanaged volumes on a storage pool
 message ListVolumesForImportResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of VolumeForImports
 	repeated VolumeForImport items = 1;
 
@@ -1108,11 +1108,11 @@ message MigrateVolumeRequest {
 	bool run_as_admin = 1;
 	// the ID of the volume
 	int64 volume_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// destination storage pool ID to migrate the volume to
 	int64 storage_id = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// if the volume should be live migrated when it is attached to a running vm
 	bool live_migrate = 4 [
@@ -1124,7 +1124,7 @@ message MigrateVolumeRequest {
 	int64 start_event_id = 6;
 	//
 	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 8;
@@ -1140,12 +1140,12 @@ message MigrateVolumeResponse {
 message MigrateVolumeCmdByAdminRequest {
 	// the ID of the volume
 	int64 volume_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// destination storage pool ID to migrate the volume to
 	int64 storage_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// if the volume should be live migrated when it is attached to a running vm
@@ -1161,7 +1161,7 @@ message MigrateVolumeCmdByAdminRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1180,7 +1180,7 @@ message RecoverVolumeRequest {
 	bool run_as_admin = 1;
 	// The ID of the volume
 	int64 id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	//
 	string response_type = 3;
@@ -1196,7 +1196,7 @@ message RecoverVolumeResponse {
 message RecoverVolumeCmdByAdminRequest {
 	// The ID of the volume
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -1216,13 +1216,13 @@ message RemoveResourceDetailRequest {
 
 	// Delete detail by resource type
 	string resource_type = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Delete details for resource id
 	string resource_id = 3 [
-		(validate.field).required    = true,
-		(validate.field).string.uuid = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1230,7 +1230,7 @@ message RemoveResourceDetailRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1249,7 +1249,7 @@ message ResizeVolumeRequest {
 	bool run_as_admin = 1;
 	// the ID of the disk volume
 	int64 id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// New minimum number of IOPS
 	int64 min_iops = 3;
@@ -1271,7 +1271,7 @@ message ResizeVolumeRequest {
 	int64 start_event_id = 9;
 	//
 	string injected_job_id = 10 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 11;
@@ -1287,7 +1287,7 @@ message ResizeVolumeResponse {
 message ResizeVolumeCmdByAdminRequest {
 	// the ID of the disk volume
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// New minimum number of IOPS
@@ -1317,7 +1317,7 @@ message ResizeVolumeCmdByAdminRequest {
 
 	//
 	string injected_job_id = 9 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1334,7 +1334,7 @@ message ResizeVolumeCmdByAdminResponse {
 message UnmanageVolumeRequest {
 	// The ID of the volume to unmanage
 	int64 volume_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -1342,7 +1342,7 @@ message UnmanageVolumeRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1375,8 +1375,8 @@ message UpdateVolumeRequest {
 	];
 	// new name of the volume
 	string name = 8 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// Set delete protection for the volume. If true, The volume will be protected from deletion. Note: If the volume is managed by another service like autoscaling groups or CKS, delete protection will be ignored.
 	bool delete_protection = 9 [
@@ -1384,13 +1384,13 @@ message UpdateVolumeRequest {
 	];
 	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
 	string custom_id = 10 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	int64 start_event_id = 11;
 	//
 	string injected_job_id = 12 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 13;
@@ -1426,8 +1426,8 @@ message UpdateVolumeCmdByAdminRequest {
 
 	// new name of the volume
 	string name = 7 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// Set delete protection for the volume. If true, The volume will be protected from deletion. Note: If the volume is managed by another service like autoscaling groups or CKS, delete protection will be ignored.
@@ -1437,7 +1437,7 @@ message UpdateVolumeCmdByAdminRequest {
 
 	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
 	string custom_id = 9 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1445,7 +1445,7 @@ message UpdateVolumeCmdByAdminRequest {
 
 	//
 	string injected_job_id = 11 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1464,21 +1464,21 @@ message UploadVolumeRequest {
 	bool run_as_admin = 1;
 	// the format for the volume. Possible values include QCOW2, OVA, and VHD.
 	string format = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// the name of the volume
 	string volume_name = 3 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// the URL of where the volume is hosted. Possible URL include http:// and https://
 	string url = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// the ID of the zone the volume is to be hosted on
 	int64 zone_id = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// an optional domainId. If the account parameter is used, domainId must also be used. If account is NOT provided then volume will be assigned to the caller account and domain.
 	int64 domain_id = 6;
@@ -1495,7 +1495,7 @@ message UploadVolumeRequest {
 	string checksum = 8;
 	// Image store uuid
 	string image_store_uuid = 9 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// Upload volume for the project
 	int64 project_id = 10;
@@ -1505,7 +1505,7 @@ message UploadVolumeRequest {
 	int64 start_event_id = 12;
 	//
 	string injected_job_id = 13 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 14;
@@ -1521,24 +1521,24 @@ message UploadVolumeResponse {
 message UploadVolumeCmdByAdminRequest {
 	// the format for the volume. Possible values include QCOW2, OVA, and VHD.
 	string format = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the name of the volume
 	string volume_name = 2 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the URL of where the volume is hosted. Possible URL include http:// and https://
 	string url = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the ID of the zone the volume is to be hosted on
 	int64 zone_id = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// an optional domainId. If the account parameter is used, domainId must also be used. If account is NOT provided then volume will be assigned to the caller account and domain.
@@ -1559,7 +1559,7 @@ message UploadVolumeCmdByAdminRequest {
 
 	// Image store uuid
 	string image_store_uuid = 8 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// Upload volume for the project
@@ -1573,7 +1573,7 @@ message UploadVolumeCmdByAdminRequest {
 
 	//
 	string injected_job_id = 12 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1590,7 +1590,7 @@ message UploadVolumeCmdByAdminResponse {
 message ResourceTag {
 	// The ID of the ResourceTag
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the ResourceTag
 	string name = 2;
@@ -1606,7 +1606,7 @@ message ResourceTag {
 message Volume {
 	// The ID of the Volume
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Volume
 	string name = 2;
@@ -1622,7 +1622,7 @@ message Volume {
 message VolumeForImport {
 	// The ID of the VolumeForImport
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the VolumeForImport
 	string name = 2;
@@ -1652,12 +1652,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.host.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // HostService provides operations for managing Hosts
@@ -89,14 +89,14 @@ message AddHostRequest {
 
 	// the cluster name for the host
 	string cluster_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the username for the host; required to be passed for hypervisors other than VMWare
 	string username = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the password for the host; required to be passed for hypervisors other than VMWare
@@ -104,22 +104,22 @@ message AddHostRequest {
 
 	// the Pod ID for the host
 	int64 pod_id = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the host URL
 	string url = 6 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the Zone ID for the host
 	int64 zone_id = 7 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// hypervisor type of the host
 	string hypervisor = 8 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Allocation state of this Host for allocation of new resources
@@ -142,7 +142,7 @@ message AddHostResponse {
 message AddSecondaryStorageRequest {
 	// the URL for the secondary storage
 	string url = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the Zone ID for the secondary storage
@@ -162,7 +162,7 @@ message AddSecondaryStorageResponse {
 message CancelHostAsDegradedRequest {
 	// host ID
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -170,7 +170,7 @@ message CancelHostAsDegradedRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -187,7 +187,7 @@ message CancelHostAsDegradedResponse {
 message CancelHostMaintenanceRequest {
 	// the host ID
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -195,7 +195,7 @@ message CancelHostMaintenanceRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -212,7 +212,7 @@ message CancelHostMaintenanceResponse {
 message DeclareHostAsDegradedRequest {
 	// host ID
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -220,7 +220,7 @@ message DeclareHostAsDegradedRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -237,7 +237,7 @@ message DeclareHostAsDegradedResponse {
 message DeleteHostRequest {
 	// the host ID
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Force delete the host. All HA enabled vms running on the host will be put to HA; HA disabled ones will be stopped
@@ -264,7 +264,7 @@ message DeleteHostResponse {
 message FindHostsForMigrationRequest {
 	// find hosts to which this VM can be migrated and flag the hosts with enough CPU/RAM to host the VM
 	int64 virtual_machine_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// List by keyword
@@ -303,7 +303,7 @@ message ListHostTagsRequest {
 
 // ListHostTagsResponse represents the response from lists host tags
 message ListHostTagsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of HostTags
 	repeated HostTag items = 1;
 
@@ -321,8 +321,8 @@ message ListHostsRequest {
 
 	// the name of the host
 	string host_name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the Pod ID for the host
@@ -380,7 +380,7 @@ message ListHostsRequest {
 
 // ListHostsResponse represents the response from lists hosts.
 message ListHostsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Hosts
 	repeated Host items = 1;
 
@@ -392,7 +392,7 @@ message ListHostsResponse {
 message PrepareForHostMaintenanceRequest {
 	// the host ID
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -400,7 +400,7 @@ message PrepareForHostMaintenanceRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -417,7 +417,7 @@ message PrepareForHostMaintenanceResponse {
 message ReconnectHostRequest {
 	// the host ID
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -425,7 +425,7 @@ message ReconnectHostRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -442,7 +442,7 @@ message ReconnectHostResponse {
 message ReleaseHostReservationRequest {
 	// the host ID
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -450,7 +450,7 @@ message ReleaseHostReservationRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -467,13 +467,13 @@ message ReleaseHostReservationResponse {
 message UpdateHostRequest {
 	// the ID of the host to update
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Change the name of host
 	string name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the id of Os category to update the host with
@@ -521,14 +521,14 @@ message UpdateHostPasswordRequest {
 
 	// the username for the host/cluster
 	string username = 4 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the new password for the host/cluster
 	string password = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -545,7 +545,7 @@ message UpdateHostPasswordResponse {
 message Host {
 	// The ID of the Host
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Host
 	string name = 2;
@@ -561,7 +561,7 @@ message Host {
 message HostTag {
 	// The ID of the HostTag
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the HostTag
 	string name = 2;
@@ -599,12 +599,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

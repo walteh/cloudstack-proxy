@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.bucket.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // BucketService provides operations for managing Buckets
@@ -35,7 +35,7 @@ service BucketService {
 message CreateBucketRequest {
 	// the account associated with the bucket. Must be used with the domainId parameter.
 	string account_name = 1 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -50,19 +50,19 @@ message CreateBucketRequest {
 
 	// the name of the bucket
 	string bucket_name = 4 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// Id of the Object Storage Pool where bucket is created
 	int64 object_storage_pool_id = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Bucket Quota in GiB
 	int32 quota = 6 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Enable bucket encryption
@@ -88,7 +88,7 @@ message CreateBucketRequest {
 
 	//
 	string injected_job_id = 12 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -105,7 +105,7 @@ message CreateBucketResponse {
 message DeleteBucketRequest {
 	// The ID of the Bucket
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -128,8 +128,8 @@ message ListBucketsRequest {
 
 	// the name of the bucket
 	string bucket_name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the ID of the object storage pool, available to ROOT admin only
@@ -143,7 +143,7 @@ message ListBucketsRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 7 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -178,7 +178,7 @@ message ListBucketsRequest {
 
 // ListBucketsResponse represents the response from lists all buckets.
 message ListBucketsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Buckets
 	repeated Bucket items = 1;
 
@@ -190,7 +190,7 @@ message ListBucketsResponse {
 message UpdateBucketRequest {
 	// The ID of the Bucket
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Enable/Disable Bucket Versioning
@@ -223,7 +223,7 @@ message UpdateBucketResponse {
 message Bucket {
 	// The ID of the Bucket
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Bucket
 	string name = 2;
@@ -253,12 +253,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

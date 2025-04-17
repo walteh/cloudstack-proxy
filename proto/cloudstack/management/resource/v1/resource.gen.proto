@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.resource.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // ResourceService provides operations for managing Resources
@@ -117,7 +117,7 @@ message CleanVMReservationsRequest {
 
 	//
 	string injected_job_id = 2 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -158,7 +158,7 @@ message DeleteAlertsResponse {
 message GetCloudIdentifierRequest {
 	// the user ID for the cloud identifier
 	int64 userid = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -179,7 +179,7 @@ message ListAlertTypesRequest {
 
 // ListAlertTypesResponse represents the response from lists all alerts types
 message ListAlertTypesResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Alerts
 	repeated Alert items = 1;
 
@@ -197,8 +197,8 @@ message ListAlertsRequest {
 
 	// list by alert name
 	string name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// List by keyword
@@ -216,7 +216,7 @@ message ListAlertsRequest {
 
 // ListAlertsResponse represents the response from lists all alerts.
 message ListAlertsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Alerts
 	repeated Alert items = 1;
 
@@ -264,7 +264,7 @@ message ListCapacityRequest {
 
 // ListCapacityResponse represents the response from lists all the system wide capacities.
 message ListCapacityResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Capacitys
 	repeated Capacity items = 1;
 
@@ -276,12 +276,12 @@ message ListCapacityResponse {
 message ListDetailOptionsRequest {
 	// the resource type such as UserVm, Template etc.
 	string resource_type = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the UUID of the resource (optional)
 	string resource_id = 2 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -290,7 +290,7 @@ message ListDetailOptionsRequest {
 
 // ListDetailOptionsResponse represents the response from lists all possible details and their options for a resource type such as a vm or a template
 message ListDetailOptionsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of DetailOptionss
 	repeated DetailOptions items = 1;
 
@@ -309,7 +309,7 @@ message ListHypervisorsRequest {
 
 // ListHypervisorsResponse represents the response from list hypervisors
 message ListHypervisorsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Hypervisors
 	repeated Hypervisor items = 1;
 
@@ -327,8 +327,8 @@ message ListResourceLimitsRequest {
 
 	// Type of resource (wins over resourceType if both are provided). Values are: user_vm - Instance. Number of instances a user can create. public_ip - IP. Number of public IP addresses an account can own. volume - Volume. Number of disk volumes an account can own. snapshot - Snapshot. Number of snapshots an account can own. template - Template. Number of templates an account can register/create. project - Project. Number of projects an account can own. network - Network. Number of networks an account can own. vpc - VPC. Number of VPC an account can own. cpu - CPU. Number of CPU an account can allocate for their resources. memory - Memory. Amount of RAM an account can allocate for their resources. primary_storage - PrimaryStorage. Total primary storage space (in GiB) a user can use. secondary_storage - SecondaryStorage. Total secondary storage space (in GiB) a user can use.
 	string resource_type_name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// Tag for the resource type
@@ -339,7 +339,7 @@ message ListResourceLimitsRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 6 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -374,7 +374,7 @@ message ListResourceLimitsRequest {
 
 // ListResourceLimitsResponse represents the response from lists resource limits.
 message ListResourceLimitsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of ResourceLimits
 	repeated ResourceLimit items = 1;
 
@@ -401,7 +401,7 @@ message PurgeExpungedResourcesRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -444,7 +444,7 @@ message StartRollingMaintenanceRequest {
 
 	//
 	string injected_job_id = 9 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -461,7 +461,7 @@ message StartRollingMaintenanceResponse {
 message UpdateResourceCountRequest {
 	// Update resource count for a specified account. Must be used with the domainId parameter.
 	string account_name = 1 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -470,7 +470,7 @@ message UpdateResourceCountRequest {
 
 	// If account parameter specified then updates resource counts for a specified account in this domain else update resource counts for all accounts & child domains in specified domain.
 	int64 domain_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Type of resource to update. If specifies valid values are 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 and 11. If not specified will update all resource counts0 - Instance. Number of instances a user can create. 1 - IP. Number of public IP addresses a user can own. 2 - Volume. Number of disk volumes a user can create. 3 - Snapshot. Number of snapshots a user can create. 4 - Template. Number of templates that a user can register/create. 5 - Project. Number of projects that a user can create. 6 - Network. Number of guest network a user can create. 7 - VPC. Number of VPC a user can create. 8 - CPU. Total number of CPU cores a user can use. 9 - Memory. Total Memory (in MB) a user can use. 10 - PrimaryStorage. Total primary storage space (in GiB) a user can use. 11 - SecondaryStorage. Total secondary storage space (in GiB) a user can use.
@@ -496,7 +496,7 @@ message UpdateResourceCountResponse {
 message UpdateResourceLimitRequest {
 	// Update resource for a specified account. Must be used with the domainId parameter.
 	string account_name = 1 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -514,7 +514,7 @@ message UpdateResourceLimitRequest {
 
 	// Type of resource to update. Values are 0, 1, 2, 3, 4, 6, 7, 8, 9, 10 and 11. 0 - Instance. Number of instances a user can create. 1 - IP. Number of public IP addresses a user can own. 2 - Volume. Number of disk volumes a user can create. 3 - Snapshot. Number of snapshots a user can create. 4 - Template. Number of templates that a user can register/create. 5 - Project. Number of projects a user can create. 6 - Network. Number of guest network a user can create. 7 - VPC. Number of VPC a user can create. 8 - CPU. Total number of CPU cores a user can use. 9 - Memory. Total Memory (in MB) a user can use. 10 - PrimaryStorage. Total primary storage space (in GiB) a user can use. 11 - SecondaryStorage. Total secondary storage space (in GiB) a user can use.
 	int32 resource_type = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Tag for the resource type
@@ -534,7 +534,7 @@ message UpdateResourceLimitResponse {
 message UploadCustomCertificateRequest {
 	// The certificate to be uploaded.
 	string certificate = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// An integer providing the location in a chain that the certificate will hold. Usually, this can be left empty. When creating a chain, the top level certificate should have an ID of 1, with each step in the chain incrementing by one. Example, CA with id = 1, Intermediate CA with id = 2, Site certificate with ID = 3
@@ -542,8 +542,8 @@ message UploadCustomCertificateRequest {
 
 	// A name / alias for the certificate.
 	string alias = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// The private key for the attached certificate.
@@ -551,7 +551,7 @@ message UploadCustomCertificateRequest {
 
 	// DNS domain suffix that the certificate is granted for.
 	string domain_suffix = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -559,7 +559,7 @@ message UploadCustomCertificateRequest {
 
 	//
 	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -576,7 +576,7 @@ message UploadCustomCertificateResponse {
 message Alert {
 	// The ID of the Alert
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Alert
 	string name = 2;
@@ -592,7 +592,7 @@ message Alert {
 message Capacity {
 	// The ID of the Capacity
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Capacity
 	string name = 2;
@@ -608,7 +608,7 @@ message Capacity {
 message DetailOptions {
 	// The ID of the DetailOptions
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the DetailOptions
 	string name = 2;
@@ -624,7 +624,7 @@ message DetailOptions {
 message Hypervisor {
 	// The ID of the Hypervisor
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Hypervisor
 	string name = 2;
@@ -640,7 +640,7 @@ message Hypervisor {
 message ResourceLimit {
 	// The ID of the ResourceLimit
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the ResourceLimit
 	string name = 2;
@@ -696,12 +696,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

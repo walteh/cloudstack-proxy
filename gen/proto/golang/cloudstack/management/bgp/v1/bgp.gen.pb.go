@@ -7,8 +7,8 @@
 package bgpv1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -987,7 +987,7 @@ var File_cloudstack_management_bgp_v1_bgp_gen_proto protoreflect.FileDescriptor
 
 const file_cloudstack_management_bgp_v1_bgp_gen_proto_rawDesc = "" +
 	"\n" +
-	"*cloudstack/management/bgp/v1/bgp.gen.proto\x12\x1ccloudstack.management.bgp.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xbb\x01\n" +
+	"*cloudstack/management/bgp/v1/bgp.gen.proto\x12\x1ccloudstack.management.bgp.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\xbb\x01\n" +
 	"\x15CreateASNRangeRequest\x12\x1f\n" +
 	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12/\n" +
 	"\x10start_a_s_number\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\rstartASNumber\x12+\n" +

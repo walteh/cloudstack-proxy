@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.bgp.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // BgpService provides operations for managing Bgps
@@ -40,17 +40,17 @@ service BgpService {
 message CreateASNRangeRequest {
 	// the zone ID
 	int64 zone_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the start AS Number
 	int64 start_a_s_number = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the end AS Number
 	int64 end_a_s_number = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -67,7 +67,7 @@ message CreateASNRangeResponse {
 message DeleteASNRangeRequest {
 	// ID of the AS range
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -100,7 +100,7 @@ message ListASNRangesRequest {
 
 // ListASNRangesResponse represents the response from list autonomous systems number ranges
 message ListASNRangesResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of ASNRanges
 	repeated ASNRange items = 1;
 
@@ -151,7 +151,7 @@ message ListASNumbersRequest {
 
 // ListASNumbersResponse represents the response from list autonomous systems numbers
 message ListASNumbersResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of ASNumbers
 	repeated ASNumber items = 1;
 
@@ -163,12 +163,12 @@ message ListASNumbersResponse {
 message ReleaseASNumberRequest {
 	// the zone ID
 	int64 zone_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the AS Number to be released
 	int64 as_number = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -185,7 +185,7 @@ message ReleaseASNumberResponse {
 message ASNRange {
 	// The ID of the ASNRange
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the ASNRange
 	string name = 2;
@@ -201,7 +201,7 @@ message ASNRange {
 message ASNumber {
 	// The ID of the ASNumber
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the ASNumber
 	string name = 2;
@@ -231,12 +231,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

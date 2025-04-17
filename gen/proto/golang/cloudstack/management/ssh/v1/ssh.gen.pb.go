@@ -7,8 +7,8 @@
 package sshv1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -834,7 +834,7 @@ var File_cloudstack_management_ssh_v1_ssh_gen_proto protoreflect.FileDescriptor
 
 const file_cloudstack_management_ssh_v1_ssh_gen_proto_rawDesc = "" +
 	"\n" +
-	"*cloudstack/management/ssh/v1/ssh.gen.proto\x12\x1ccloudstack.management.ssh.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xc0\x01\n" +
+	"*cloudstack/management/ssh/v1/ssh.gen.proto\x12\x1ccloudstack.management.ssh.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\xc0\x01\n" +
 	"\x17CreateSSHKeyPairRequest\x12!\n" +
 	"\x04name\x18\x01 \x01(\tB\r\xbaH\n" +
 	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x04name\x12!\n" +

@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.pod.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // PodService provides operations for managing Pods
@@ -36,24 +36,24 @@ service PodService {
 message CreatePodRequest {
 	// the name of the Pod
 	string pod_name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the Zone ID in which the Pod will be created
 	int64 zone_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the starting IP address for the Pod
 	string start_ip = 3 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the ending IP address for the Pod
 	string end_ip = 4 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the netmask for the Pod
@@ -61,7 +61,7 @@ message CreatePodRequest {
 
 	// the gateway for the Pod
 	string gateway = 6 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// Allocation state of this Pod for allocation of new resources
@@ -81,7 +81,7 @@ message CreatePodResponse {
 message DeletePodRequest {
 	// the ID of the Pod
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -101,8 +101,8 @@ message ListPodsByRequest {
 
 	// list Pods by name
 	string pod_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// list Pods by Zone ID
@@ -131,7 +131,7 @@ message ListPodsByRequest {
 
 // ListPodsByResponse represents the response from lists all pods.
 message ListPodsByResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Pods
 	repeated Pod items = 1;
 
@@ -143,23 +143,23 @@ message ListPodsByResponse {
 message UpdatePodRequest {
 	// the ID of the Pod
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the name of the Pod
 	string pod_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the starting IP address for the Pod
 	string start_ip = 3 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the ending IP address for the Pod
 	string end_ip = 4 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the netmask of the Pod
@@ -167,7 +167,7 @@ message UpdatePodRequest {
 
 	// the gateway for the Pod
 	string gateway = 6 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// Allocation state of this cluster for allocation of new resources
@@ -187,7 +187,7 @@ message UpdatePodResponse {
 message Pod {
 	// The ID of the Pod
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Pod
 	string name = 2;
@@ -217,12 +217,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

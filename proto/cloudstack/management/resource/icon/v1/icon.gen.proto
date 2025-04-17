@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.resource.icon.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // IconService provides operations for managing Resource.Icons
@@ -30,12 +30,12 @@ service IconService {
 message DeleteResourceIconRequest {
 	// list of resources to upload the icon/image for
 	repeated string resource_ids = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// type of the resource
 	string resource_type = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -52,12 +52,12 @@ message DeleteResourceIconResponse {
 message ListResourceIconRequest {
 	// list of resources to upload the icon/image for
 	repeated string resource_ids = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// type of the resource
 	string resource_type = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -66,7 +66,7 @@ message ListResourceIconRequest {
 
 // ListResourceIconResponse represents the response from lists the resource icon for the specified resource(s)
 message ListResourceIconResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of ResourceIcons
 	repeated ResourceIcon items = 1;
 
@@ -78,17 +78,17 @@ message ListResourceIconResponse {
 message UploadResourceIconRequest {
 	// list of resources to upload the icon/image for
 	repeated string resource_ids = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// type of the resource
 	string resource_type = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Base64 string representation of the resource icon/image
 	string image = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -105,7 +105,7 @@ message UploadResourceIconResponse {
 message ResourceIcon {
 	// The ID of the ResourceIcon
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the ResourceIcon
 	string name = 2;
@@ -135,12 +135,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

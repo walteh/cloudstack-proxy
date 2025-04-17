@@ -7,8 +7,8 @@
 package templatev1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -6170,7 +6170,7 @@ var File_cloudstack_management_template_v1_template_gen_proto protoreflect.FileD
 
 const file_cloudstack_management_template_v1_template_gen_proto_rawDesc = "" +
 	"\n" +
-	"4cloudstack/management/template/v1/template.gen.proto\x12!cloudstack.management.template.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xb8\x02\n" +
+	"4cloudstack/management/template/v1/template.gen.proto\x12!cloudstack.management.template.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\xb8\x02\n" +
 	"\x13CopyTemplateRequest\x12 \n" +
 	"\frun_as_admin\x18\x01 \x01(\bR\n" +
 	"runAsAdmin\x12 \n" +

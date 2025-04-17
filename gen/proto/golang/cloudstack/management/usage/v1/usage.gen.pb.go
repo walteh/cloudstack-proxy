@@ -7,8 +7,8 @@
 package usagev1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -2211,7 +2211,7 @@ var File_cloudstack_management_usage_v1_usage_gen_proto protoreflect.FileDescrip
 
 const file_cloudstack_management_usage_v1_usage_gen_proto_rawDesc = "" +
 	"\n" +
-	".cloudstack/management/usage/v1/usage.gen.proto\x12\x1ecloudstack.management.usage.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xb8\x01\n" +
+	".cloudstack/management/usage/v1/usage.gen.proto\x12\x1ecloudstack.management.usage.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\xb8\x01\n" +
 	"\x18AddTrafficMonitorRequest\x12\x1f\n" +
 	"\azone_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x06zoneId\x12\x18\n" +
 	"\x03url\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x03url\x12\x1d\n" +

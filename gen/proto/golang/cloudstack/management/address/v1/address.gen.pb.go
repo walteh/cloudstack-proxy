@@ -7,8 +7,8 @@
 package addressv1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -2488,7 +2488,7 @@ var File_cloudstack_management_address_v1_address_gen_proto protoreflect.FileDes
 
 const file_cloudstack_management_address_v1_address_gen_proto_rawDesc = "" +
 	"\n" +
-	"2cloudstack/management/address/v1/address.gen.proto\x12 cloudstack.management.address.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x8b\x01\n" +
+	"2cloudstack/management/address/v1/address.gen.proto\x12 cloudstack.management.address.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\x8b\x01\n" +
 	"\x1dAcquirePodIpCmdByAdminRequest\x12$\n" +
 	"\azone_id\x18\x01 \x01(\tB\v\xbaH\b\xc8\x01\x01r\x03\xb0\x01\x01R\x06zoneId\x12\x1f\n" +
 	"\x06pod_id\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x05podId\x12#\n" +

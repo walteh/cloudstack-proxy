@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.storage.sharedfs.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // SharedfsService provides operations for managing Storage.Sharedfss
@@ -75,7 +75,7 @@ service SharedfsService {
 message ChangeSharedFSDiskOfferingRequest {
 	// the ID of the shared filesystem
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the disk offering to use for the underlying storage
@@ -95,7 +95,7 @@ message ChangeSharedFSDiskOfferingRequest {
 
 	//
 	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -112,12 +112,12 @@ message ChangeSharedFSDiskOfferingResponse {
 message ChangeSharedFSServiceOfferingRequest {
 	// the ID of the shared filesystem
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the offering to use for the shared filesystem instance
 	int64 service_offering_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -125,7 +125,7 @@ message ChangeSharedFSServiceOfferingRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -142,14 +142,14 @@ message ChangeSharedFSServiceOfferingResponse {
 message CreateSharedFSRequest {
 	// the name of the shared filesystem.
 	string name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the account associated with the shared filesystem. Must be used with the domainId parameter.
 	string account_name = 2 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -164,8 +164,8 @@ message CreateSharedFSRequest {
 
 	// the description for the shared filesystem.
 	string description = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 1024
 	];
 
 	// the size of the shared filesystem in GiB
@@ -173,12 +173,12 @@ message CreateSharedFSRequest {
 
 	// the zone id.
 	int64 zone_id = 7 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the disk offering to use for the underlying storage. This will define the size and other specifications like encryption and qos for the shared filesystem.
 	int64 disk_offering_id = 8 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// min iops
@@ -189,22 +189,22 @@ message CreateSharedFSRequest {
 
 	// the service offering to use for the shared filesystem instance hosting the data. The offering should be HA enabled and the cpu count and memory size should be greater than equal to sharedfsvm.min.cpu.count and sharedfsvm.min.ram.size respectively
 	int64 service_offering_id = 11 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the filesystem format (XFS / EXT4) which will be installed on the shared filesystem.
 	string fs_format = 12 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the provider to be used for the shared filesystem. The list of providers can be fetched by using the listSharedFileSystemProviders API.
 	string shared_f_s_provider_name = 13 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// network to attach the shared filesystem to
 	int64 network_id = 14 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -212,7 +212,7 @@ message CreateSharedFSRequest {
 
 	//
 	string injected_job_id = 16 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -245,7 +245,7 @@ message DestroySharedFSRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -268,7 +268,7 @@ message ExpungeSharedFSRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -288,8 +288,8 @@ message ListSharedFSRequest {
 
 	// the name of the shared filesystem
 	string name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the ID of the availability zone
@@ -317,7 +317,7 @@ message ListSharedFSRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 10 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -352,7 +352,7 @@ message ListSharedFSRequest {
 
 // ListSharedFSResponse represents the response from list shared filesystems
 message ListSharedFSResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of SharedFSs
 	repeated SharedFS items = 1;
 
@@ -377,7 +377,7 @@ message ListSharedFSProvidersRequest {
 
 // ListSharedFSProvidersResponse represents the response from lists all available shared filesystem providers.
 message ListSharedFSProvidersResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of SharedFSProviders
 	repeated SharedFSProvider items = 1;
 
@@ -404,7 +404,7 @@ message RecoverSharedFSResponse {
 message RestartSharedFSRequest {
 	// the ID of the shared filesystem
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// is cleanup required
@@ -417,7 +417,7 @@ message RestartSharedFSRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -434,7 +434,7 @@ message RestartSharedFSResponse {
 message StartSharedFSRequest {
 	// the ID of the shared filesystem
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -442,7 +442,7 @@ message StartSharedFSRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -459,7 +459,7 @@ message StartSharedFSResponse {
 message StopSharedFSRequest {
 	// the ID of the shared filesystem
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Force stop the shared filesystem.
@@ -472,7 +472,7 @@ message StopSharedFSRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -489,19 +489,19 @@ message StopSharedFSResponse {
 message UpdateSharedFSRequest {
 	// the ID of the shared filesystem
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the name of the shared filesystem.
 	string name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the description for the shared filesystem.
 	string description = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 1024
 	];
 
 	//
@@ -518,7 +518,7 @@ message UpdateSharedFSResponse {
 message SharedFS {
 	// The ID of the SharedFS
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the SharedFS
 	string name = 2;
@@ -534,7 +534,7 @@ message SharedFS {
 message SharedFSProvider {
 	// The ID of the SharedFSProvider
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the SharedFSProvider
 	string name = 2;
@@ -564,12 +564,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

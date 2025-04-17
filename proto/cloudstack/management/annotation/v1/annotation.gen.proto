@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.annotation.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // AnnotationService provides operations for managing Annotations
@@ -41,7 +41,7 @@ message AddAnnotationRequest {
 
 	// the id of the entity to annotate
 	string entity_uuid = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// the annotation is visible for admins only
@@ -63,7 +63,7 @@ message AddAnnotationResponse {
 message ListAnnotationsRequest {
 	// the id of the annotation
 	string uuid = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// the entity type
@@ -71,12 +71,12 @@ message ListAnnotationsRequest {
 
 	// the id of the entity for which to show annotations
 	string entity_uuid = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// optional: the id of the user of the annotation
 	string user_uuid = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// possible values are "self" and "all". * self : annotations that have been created by the calling user. * all : all the annotations the calling user can access
@@ -97,7 +97,7 @@ message ListAnnotationsRequest {
 
 // ListAnnotationsResponse represents the response from lists annotations.
 message ListAnnotationsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Annotations
 	repeated Annotation items = 1;
 
@@ -109,8 +109,8 @@ message ListAnnotationsResponse {
 message RemoveAnnotationRequest {
 	// the id of the annotation
 	string uuid = 1 [
-		(validate.field).required    = true,
-		(validate.field).string.uuid = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -127,14 +127,14 @@ message RemoveAnnotationResponse {
 message UpdateAnnotationVisibilityRequest {
 	// the id of the annotation
 	string uuid = 1 [
-		(validate.field).required    = true,
-		(validate.field).string.uuid = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.uuid = true
 	];
 
 	// the annotation is visible for admins only
 	bool admins_only = 2 [
-		(validate.field).required = true,
-		features.field_presence   = EXPLICIT
+		(buf.validate.field).required = true,
+		features.field_presence       = EXPLICIT
 	];
 
 	//
@@ -151,7 +151,7 @@ message UpdateAnnotationVisibilityResponse {
 message Annotation {
 	// The ID of the Annotation
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Annotation
 	string name = 2;
@@ -181,12 +181,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

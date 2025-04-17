@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.vlan.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // VlanService provides operations for managing Vlans
@@ -54,7 +54,7 @@ message CreateVlanIpRangeRequest {
 
 	// the ending IP address in the VLAN IP range
 	string end_ip = 4 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// true if VLAN is of Virtual type, false if Direct
@@ -64,7 +64,7 @@ message CreateVlanIpRangeRequest {
 
 	// the gateway of the VLAN IP range
 	string gateway = 6 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the netmask of the VLAN IP range
@@ -75,7 +75,7 @@ message CreateVlanIpRangeRequest {
 
 	// the beginning IP address in the VLAN IP range
 	string start_ip = 9 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the ID or VID of the VLAN. If not specified, will be defaulted to the vlan of the network or if vlan of the network is null - to Untagged
@@ -92,22 +92,22 @@ message CreateVlanIpRangeRequest {
 
 	// the beginning IPv6 address in the IPv6 network range
 	string start_ipv6 = 14 [
-		(validate.field).string.ipv6 = true
+		(buf.validate.field).string.ipv6 = true
 	];
 
 	// the ending IPv6 address in the IPv6 network range
 	string end_ipv6 = 15 [
-		(validate.field).string.ipv6 = true
+		(buf.validate.field).string.ipv6 = true
 	];
 
 	// the gateway of the IPv6 network. Required for Shared networks and Isolated networks when it belongs to VPC
 	string ip6_gateway = 16 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the CIDR of IPv6 network, must be at least /64
 	string ip6_cidr = 17 [
-		(validate.field).string.ipv4_prefix = true
+		(buf.validate.field).string.ipv4_prefix = true
 	];
 
 	// true if IP range is set to system vms, false if not
@@ -134,7 +134,7 @@ message CreateVlanIpRangeResponse {
 message DedicatePublicIpRangeRequest {
 	// the id of the VLAN IP range
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// account who will own the VLAN
@@ -145,7 +145,7 @@ message DedicatePublicIpRangeRequest {
 
 	// domain ID of the account owning a VLAN
 	int64 domain_id = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -162,7 +162,7 @@ message DedicatePublicIpRangeResponse {
 message DeleteVlanIpRangeRequest {
 	// the id of the VLAN IP range
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -179,7 +179,7 @@ message DeleteVlanIpRangeResponse {
 message ListVlanIpRangesRequest {
 	// the account with which the VLAN IP range is associated. Must be used with the domainId parameter.
 	string account_name = 1 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -230,7 +230,7 @@ message ListVlanIpRangesRequest {
 
 // ListVlanIpRangesResponse represents the response from lists all vlan ip ranges.
 message ListVlanIpRangesResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of VlanIpRanges
 	repeated VlanIpRange items = 1;
 
@@ -242,7 +242,7 @@ message ListVlanIpRangesResponse {
 message ReleasePublicIpRangeRequest {
 	// the id of the Public IP range
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -259,12 +259,12 @@ message ReleasePublicIpRangeResponse {
 message UpdateVlanIpRangeRequest {
 	// the UUID of the VLAN IP range
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the gateway of the VLAN IP range
 	string gateway = 2 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the netmask of the VLAN IP range
@@ -272,32 +272,32 @@ message UpdateVlanIpRangeRequest {
 
 	// the beginning IP address in the VLAN IP range
 	string start_ip = 4 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the ending IP address in the VLAN IP range
 	string end_ip = 5 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the beginning IPv6 address in the IPv6 network range
 	string start_ipv6 = 6 [
-		(validate.field).string.ipv6 = true
+		(buf.validate.field).string.ipv6 = true
 	];
 
 	// the ending IPv6 address in the IPv6 network range
 	string end_ipv6 = 7 [
-		(validate.field).string.ipv6 = true
+		(buf.validate.field).string.ipv6 = true
 	];
 
 	// the gateway of the IPv6 network
 	string ip6_gateway = 8 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the CIDR of IPv6 network, must be at least /64
 	string ip6_cidr = 9 [
-		(validate.field).string.ipv4_prefix = true
+		(buf.validate.field).string.ipv4_prefix = true
 	];
 
 	// true if IP range is set to system vms, false if not
@@ -319,7 +319,7 @@ message UpdateVlanIpRangeResponse {
 message VlanIpRange {
 	// The ID of the VlanIpRange
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the VlanIpRange
 	string name = 2;
@@ -349,12 +349,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

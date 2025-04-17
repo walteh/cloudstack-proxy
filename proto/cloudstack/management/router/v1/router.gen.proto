@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.router.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // RouterService provides operations for managing Routers
@@ -80,13 +80,13 @@ service RouterService {
 message ConfigureOvsElementRequest {
 	// the ID of the ovs provider
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Enabled/Disabled the service provider
 	bool enabled = 2 [
-		(validate.field).required = true,
-		features.field_presence   = EXPLICIT
+		(buf.validate.field).required = true,
+		features.field_presence       = EXPLICIT
 	];
 
 	//
@@ -94,7 +94,7 @@ message ConfigureOvsElementRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -111,13 +111,13 @@ message ConfigureOvsElementResponse {
 message ConfigureVirtualRouterElementRequest {
 	// the ID of the virtual router provider
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Enabled/Disabled the service provider
 	bool enabled = 2 [
-		(validate.field).required = true,
-		features.field_presence   = EXPLICIT
+		(buf.validate.field).required = true,
+		features.field_presence       = EXPLICIT
 	];
 
 	//
@@ -125,7 +125,7 @@ message ConfigureVirtualRouterElementRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -142,12 +142,12 @@ message ConfigureVirtualRouterElementResponse {
 message CreateVirtualRouterElementRequest {
 	// the network service provider ID of the virtual router element
 	int64 nsp_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The provider type. Supported types are VirtualRouter (default) and VPCVirtualRouter
 	string provider_type = 2 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -155,7 +155,7 @@ message CreateVirtualRouterElementRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -172,7 +172,7 @@ message CreateVirtualRouterElementResponse {
 message DestroyRouterRequest {
 	// the ID of the router
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -180,7 +180,7 @@ message DestroyRouterRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -197,7 +197,7 @@ message DestroyRouterResponse {
 message GetRouterHealthCheckResultsRequest {
 	// the ID of the router
 	int64 router_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// if true is passed for this parameter, health checks are performed on the fly. Else last performed checks data is fetched
@@ -243,7 +243,7 @@ message ListOvsElementsRequest {
 
 // ListOvsElementsResponse represents the response from lists all available ovs elements.
 message ListOvsElementsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of OvsProviders
 	repeated OvsProvider items = 1;
 
@@ -261,8 +261,8 @@ message ListRoutersRequest {
 
 	// the name of the router
 	string router_name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the Pod ID of the router
@@ -306,7 +306,7 @@ message ListRoutersRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 15 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -341,7 +341,7 @@ message ListRoutersRequest {
 
 // ListRoutersResponse represents the response from list routers.
 message ListRoutersResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of DomainRouters
 	repeated DomainRouter items = 1;
 
@@ -377,7 +377,7 @@ message ListVirtualRouterElementsRequest {
 
 // ListVirtualRouterElementsResponse represents the response from lists all available virtual router elements.
 message ListVirtualRouterElementsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of VirtualRouterProviders
 	repeated VirtualRouterProvider items = 1;
 
@@ -389,7 +389,7 @@ message ListVirtualRouterElementsResponse {
 message RebootRouterRequest {
 	// the ID of the router
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Force reboot the router (Router is force Stopped and then Started)
@@ -402,7 +402,7 @@ message RebootRouterRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -419,7 +419,7 @@ message RebootRouterResponse {
 message StartRouterRequest {
 	// the ID of the router
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -427,7 +427,7 @@ message StartRouterRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -444,7 +444,7 @@ message StartRouterResponse {
 message StopRouterRequest {
 	// the ID of the router
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Force stop the VM (vm is marked as Stopped even when command fails to be send to the backend, otherwise a force poweroff is attempted). To be used if the caller knows the VM is stopped and should be marked as such.
@@ -457,7 +457,7 @@ message StopRouterRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -474,12 +474,12 @@ message StopRouterResponse {
 message UpgradeRouterRequest {
 	// The ID of the router
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the service offering ID to apply to the domain router
 	int64 service_offering_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -526,7 +526,7 @@ message UpgradeRouterTemplateResponse {
 message DomainRouter {
 	// The ID of the DomainRouter
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the DomainRouter
 	string name = 2;
@@ -542,7 +542,7 @@ message DomainRouter {
 message OvsProvider {
 	// The ID of the OvsProvider
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the OvsProvider
 	string name = 2;
@@ -558,7 +558,7 @@ message OvsProvider {
 message VirtualRouterProvider {
 	// The ID of the VirtualRouterProvider
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the VirtualRouterProvider
 	string name = 2;
@@ -588,12 +588,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

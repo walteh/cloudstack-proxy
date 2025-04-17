@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.ssh.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // SshService provides operations for managing Sshs
@@ -35,9 +35,9 @@ service SshService {
 message CreateSSHKeyPairRequest {
 	// Name of the keypair
 	string name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// an optional account for the ssh key. Must be used with domainId.
@@ -63,14 +63,14 @@ message CreateSSHKeyPairResponse {
 message DeleteSSHKeyPairRequest {
 	// Name of the keypair
 	string name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the account associated with the keypair. Must be used with the domainId parameter.
 	string account_name = 2 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -100,8 +100,8 @@ message ListSSHKeyPairsRequest {
 
 	// A key pair name to look for
 	string name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// A public key fingerprint to look for
@@ -112,7 +112,7 @@ message ListSSHKeyPairsRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 5 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -147,7 +147,7 @@ message ListSSHKeyPairsRequest {
 
 // ListSSHKeyPairsResponse represents the response from list registered keypairs
 message ListSSHKeyPairsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of SSHKeyPairs
 	repeated SSHKeyPair items = 1;
 
@@ -159,14 +159,14 @@ message ListSSHKeyPairsResponse {
 message RegisterSSHKeyPairRequest {
 	// Name of the keypair
 	string name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// Public key material of the keypair
 	string public_key = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// an optional account for the ssh key. Must be used with domainId.
@@ -192,7 +192,7 @@ message RegisterSSHKeyPairResponse {
 message SSHKeyPair {
 	// The ID of the SSHKeyPair
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the SSHKeyPair
 	string name = 2;
@@ -222,12 +222,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

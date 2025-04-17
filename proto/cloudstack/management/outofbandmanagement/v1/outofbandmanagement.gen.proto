@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.outofbandmanagement.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // OutofbandmanagementService provides operations for managing Outofbandmanagements
@@ -60,7 +60,7 @@ service OutofbandmanagementService {
 message ChangeOutOfBandManagementPasswordRequest {
 	// the ID of the host
 	int64 host_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the new host management interface password of maximum length 16, if none is provided a random password would be used
@@ -71,7 +71,7 @@ message ChangeOutOfBandManagementPasswordRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -88,34 +88,34 @@ message ChangeOutOfBandManagementPasswordResponse {
 message ConfigureOutOfBandManagementRequest {
 	// the ID of the host
 	int64 host_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the host management interface driver, for example: ipmitool
 	string driver = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the host management interface IP address
 	string address = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the host management interface port
 	string port = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the host management interface user
 	string username = 5 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the host management interface password
 	string password = 6 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -132,7 +132,7 @@ message ConfigureOutOfBandManagementResponse {
 message DisableOutOfBandManagementForClusterRequest {
 	// the ID of the cluster
 	int64 cluster_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -140,7 +140,7 @@ message DisableOutOfBandManagementForClusterRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -157,7 +157,7 @@ message DisableOutOfBandManagementForClusterResponse {
 message DisableOutOfBandManagementForHostRequest {
 	// the ID of the host
 	int64 host_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -165,7 +165,7 @@ message DisableOutOfBandManagementForHostRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -182,7 +182,7 @@ message DisableOutOfBandManagementForHostResponse {
 message DisableOutOfBandManagementForZoneRequest {
 	// the ID of the zone
 	int64 zone_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -190,7 +190,7 @@ message DisableOutOfBandManagementForZoneRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -207,7 +207,7 @@ message DisableOutOfBandManagementForZoneResponse {
 message EnableOutOfBandManagementForClusterRequest {
 	// the ID of the cluster
 	int64 cluster_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -215,7 +215,7 @@ message EnableOutOfBandManagementForClusterRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -232,7 +232,7 @@ message EnableOutOfBandManagementForClusterResponse {
 message EnableOutOfBandManagementForHostRequest {
 	// the ID of the host
 	int64 host_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -240,7 +240,7 @@ message EnableOutOfBandManagementForHostRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -257,7 +257,7 @@ message EnableOutOfBandManagementForHostResponse {
 message EnableOutOfBandManagementForZoneRequest {
 	// the ID of the zone
 	int64 zone_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -265,7 +265,7 @@ message EnableOutOfBandManagementForZoneRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -282,7 +282,7 @@ message EnableOutOfBandManagementForZoneResponse {
 message IssueOutOfBandManagementPowerActionRequest {
 	// the ID of the host
 	int64 host_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// optional operation timeout in seconds that overrides the global or cluster-level out-of-band management timeout setting
@@ -290,7 +290,7 @@ message IssueOutOfBandManagementPowerActionRequest {
 
 	// out-of-band management power actions, valid actions are: ON, OFF, CYCLE, RESET, SOFT, STATUS
 	string power_action = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -298,7 +298,7 @@ message IssueOutOfBandManagementPowerActionRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -329,12 +329,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

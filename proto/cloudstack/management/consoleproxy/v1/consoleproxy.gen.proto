@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.consoleproxy.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // ConsoleproxyService provides operations for managing Consoleproxys
@@ -20,7 +20,7 @@ service ConsoleproxyService {
 message CreateConsoleEndpointRequest {
 	// ID of the VM
 	int64 vm_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// (optional) extra security token, valid when the extra validation is enabled
@@ -54,12 +54,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

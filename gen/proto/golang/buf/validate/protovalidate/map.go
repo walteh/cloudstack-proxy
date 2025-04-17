@@ -29,7 +29,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
+	"github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"google.golang.org/protobuf/types/descriptorpb"

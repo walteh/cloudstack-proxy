@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.backup.repository.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // RepositoryService provides operations for managing Backup.Repositorys
@@ -30,24 +30,24 @@ service RepositoryService {
 message AddBackupRepositoryRequest {
 	// name of the backup repository
 	string name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// address of the backup repository
 	string address = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// type of the backup repository storage. Supported values: nfs, cephfs, cifs
 	string type = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// backup repository provider
 	string provider = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// shared storage mount options
@@ -55,7 +55,7 @@ message AddBackupRepositoryRequest {
 
 	// ID of the zone where the backup repository is to be added
 	int64 zone_id = 6 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// capacity of this backup repository
@@ -75,7 +75,7 @@ message AddBackupRepositoryResponse {
 message DeleteBackupRepositoryRequest {
 	// ID of the backup repository to be deleted
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -92,8 +92,8 @@ message DeleteBackupRepositoryResponse {
 message ListBackupRepositoriesRequest {
 	// name of the backup repository
 	string name = 1 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// ID of the zone where the backup repository is to be added
@@ -101,7 +101,7 @@ message ListBackupRepositoriesRequest {
 
 	// the backup repository provider
 	string provider = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// ID of the backup repository
@@ -122,7 +122,7 @@ message ListBackupRepositoriesRequest {
 
 // ListBackupRepositoriesResponse represents the response from lists all backup repositories
 message ListBackupRepositoriesResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of BackupRepositorys
 	repeated BackupRepository items = 1;
 
@@ -134,7 +134,7 @@ message ListBackupRepositoriesResponse {
 message BackupRepository {
 	// The ID of the BackupRepository
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the BackupRepository
 	string name = 2;
@@ -164,12 +164,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

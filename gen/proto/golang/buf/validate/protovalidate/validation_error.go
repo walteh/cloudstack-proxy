@@ -29,7 +29,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
+	"github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 )
 
 // A ValidationError is returned if one or more constraint violations were

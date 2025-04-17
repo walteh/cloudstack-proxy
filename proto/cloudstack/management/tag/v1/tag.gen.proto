@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.tag.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // TagService provides operations for managing Tags
@@ -30,17 +30,17 @@ service TagService {
 message CreateTagsRequest {
 	// Map of tags (key/value pairs)
 	map<string, string> tag = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// type of the resource
 	string resource_type = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// list of resources to create the tags for
 	repeated string resource_ids = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// identifies client specific tag. When the value is not null, the tag can't be used by cloudStack code internally
@@ -51,7 +51,7 @@ message CreateTagsRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -71,12 +71,12 @@ message DeleteTagsRequest {
 
 	// Delete tag by resource type
 	string resource_type = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Delete tags for resource id(s)
 	repeated string resource_ids = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -84,7 +84,7 @@ message DeleteTagsRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -104,7 +104,7 @@ message ListTagsRequest {
 
 	// list by resource id
 	string resource_id = 2 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// list by key
@@ -121,7 +121,7 @@ message ListTagsRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 7 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -156,7 +156,7 @@ message ListTagsRequest {
 
 // ListTagsResponse represents the response from list resource tag(s)
 message ListTagsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of ResourceTags
 	repeated ResourceTag items = 1;
 
@@ -168,7 +168,7 @@ message ListTagsResponse {
 message ResourceTag {
 	// The ID of the ResourceTag
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the ResourceTag
 	string name = 2;
@@ -198,12 +198,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

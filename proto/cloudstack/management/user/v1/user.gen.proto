@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.user.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // UserService provides operations for managing Users
@@ -70,7 +70,7 @@ service UserService {
 message CreateUserRequest {
 	// Creates the user under the specified account. If no account is specified, the username will be used as the account name.
 	string account_name = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Creates the user under the specified domain. Has to be accompanied with the account parameter
@@ -78,26 +78,26 @@ message CreateUserRequest {
 
 	// email
 	string email = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// firstname
 	string firstname = 4 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// lastname
 	string lastname = 5 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// Clear text password (Default hashed to SHA256SALT). If you wish to use any other hashing algorithm, you would need to write a custom authentication adapter See Docs section.
 	string password = 6 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Specifies a timezone for this command. For more information on the timezone parameter, see Time Zone Format.
@@ -105,14 +105,14 @@ message CreateUserRequest {
 
 	// Unique username.
 	string username = 8 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// User UUID, required for adding account from external provisioning system
 	string user_u_u_id = 9 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -129,7 +129,7 @@ message CreateUserResponse {
 message DeleteUserRequest {
 	// id of the user to be deleted
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -146,7 +146,7 @@ message DeleteUserResponse {
 message DisableUserRequest {
 	// Disables user by user ID.
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -154,7 +154,7 @@ message DisableUserRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -171,7 +171,7 @@ message DisableUserResponse {
 message EnableUserRequest {
 	// Enables user by user ID.
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -188,7 +188,7 @@ message EnableUserResponse {
 message GetUserRequest {
 	// API key of the user
 	string api_key = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -205,7 +205,7 @@ message GetUserResponse {
 message GetUserKeysRequest {
 	// ID of the user whose keys are required
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -231,8 +231,8 @@ message ListUsersRequest {
 
 	// List user by the username
 	string username = 4 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// List users by the Api key access value
@@ -248,7 +248,7 @@ message ListUsersRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 8 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -283,7 +283,7 @@ message ListUsersRequest {
 
 // ListUsersResponse represents the response from lists user accounts
 message ListUsersResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Users
 	repeated User items = 1;
 
@@ -295,7 +295,7 @@ message ListUsersResponse {
 message LockUserRequest {
 	// Locks user by user ID.
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -312,7 +312,7 @@ message LockUserResponse {
 message MoveUserRequest {
 	// id of the user to be moved.
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Moves the user under the specified account. If no account name is specified, it is necessary to provide an account id.
@@ -335,7 +335,7 @@ message MoveUserResponse {
 message RegisterRequest {
 	// User id
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -358,19 +358,19 @@ message UpdateUserRequest {
 
 	// first name
 	string firstname = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// User uuid
 	int64 id = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// last name
 	string lastname = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// Clear text password (default hashed to SHA256SALT). If you wish to use any other hashing algorithm, you would need to write a custom authentication adapter. Can't be passed when command is executed via integration.api.port
@@ -390,8 +390,8 @@ message UpdateUserRequest {
 
 	// Unique username
 	string username = 11 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// Provide true to mandate the user to use two factor authentication has to be enabled.This parameter is only used to mandate 2FA, not to disable 2FA
@@ -413,7 +413,7 @@ message UpdateUserResponse {
 message User {
 	// The ID of the User
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the User
 	string name = 2;
@@ -451,12 +451,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

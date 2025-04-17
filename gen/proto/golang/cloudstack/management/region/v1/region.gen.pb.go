@@ -7,8 +7,8 @@
 package regionv1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -1228,7 +1228,7 @@ var File_cloudstack_management_region_v1_region_gen_proto protoreflect.FileDescr
 
 const file_cloudstack_management_region_v1_region_gen_proto_rawDesc = "" +
 	"\n" +
-	"0cloudstack/management/region/v1/region.gen.proto\x12\x1fcloudstack.management.region.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xa4\x01\n" +
+	"0cloudstack/management/region/v1/region.gen.proto\x12\x1fcloudstack.management.region.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\xa4\x01\n" +
 	"\x10AddRegionRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x05B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12.\n" +
 	"\vregion_name\x18\x02 \x01(\tB\r\xbaH\n" +

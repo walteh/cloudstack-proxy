@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.usage.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // UsageService provides operations for managing Usages
@@ -75,12 +75,12 @@ service UsageService {
 message AddTrafficMonitorRequest {
 	// Zone in which to add the external firewall appliance.
 	int64 zone_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// URL of the traffic monitor Host
 	string url = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Traffic going into the listed zones will be metered
@@ -103,12 +103,12 @@ message AddTrafficMonitorResponse {
 message AddTrafficTypeRequest {
 	// the Physical Network ID
 	int64 physical_network_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the trafficType to be added to the physical network
 	string traffic_type = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The network name label of the physical device dedicated to this traffic on a XenServer host
@@ -137,7 +137,7 @@ message AddTrafficTypeRequest {
 
 	//
 	string injected_job_id = 11 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -154,7 +154,7 @@ message AddTrafficTypeResponse {
 message DeleteTrafficMonitorRequest {
 	// Id of the Traffic Monitor Host.
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -171,7 +171,7 @@ message DeleteTrafficMonitorResponse {
 message DeleteTrafficTypeRequest {
 	// traffic type id
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -179,7 +179,7 @@ message DeleteTrafficTypeRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -217,7 +217,7 @@ message GenerateUsageRecordsResponse {
 message ListTrafficMonitorsRequest {
 	// zone Id
 	int64 zone_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// List by keyword
@@ -235,7 +235,7 @@ message ListTrafficMonitorsRequest {
 
 // ListTrafficMonitorsResponse represents the response from list traffic monitor hosts.
 message ListTrafficMonitorsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of TrafficMonitors
 	repeated TrafficMonitor items = 1;
 
@@ -263,7 +263,7 @@ message ListTrafficTypeImplementorsRequest {
 
 // ListTrafficTypeImplementorsResponse represents the response from lists implementors of implementor of a network traffic type or implementors of all network traffic types
 message ListTrafficTypeImplementorsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of TrafficTypeImplementors
 	repeated TrafficTypeImplementor items = 1;
 
@@ -275,7 +275,7 @@ message ListTrafficTypeImplementorsResponse {
 message ListTrafficTypesRequest {
 	// the Physical Network ID
 	int64 physical_network_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// List by keyword
@@ -293,7 +293,7 @@ message ListTrafficTypesRequest {
 
 // ListTrafficTypesResponse represents the response from lists traffic types of a given physical network.
 message ListTrafficTypesResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Providers
 	repeated Provider items = 1;
 
@@ -311,12 +311,12 @@ message ListUsageRecordsRequest {
 
 	// End date range for usage record query. The recommended format is "yyyy-MM-dd'T'HH:mm:ssZ" (e.g.: "2023-01-01T12:00:00+0100"); however, the following formats are also accepted: "yyyy-MM-dd HH:mm:ss" (e.g.: "2023-01-01 12:00:00") and "yyyy-MM-dd" (e.g.: "2023-01-01" - if the time is not added, it will be interpreted as "23:59:59"). If the recommended format is not used, the date will be considered in the server timezone.
 	string end_date = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Start date range for usage record query. The recommended format is "yyyy-MM-dd'T'HH:mm:ssZ" (e.g.: "2023-01-01T12:00:00+0100"); however, the following formats are also accepted: "yyyy-MM-dd HH:mm:ss" (e.g.: "2023-01-01 12:00:00") and "yyyy-MM-dd" (e.g.: "2023-01-01" - if the time is not added, it will be interpreted as "00:00:00"). If the recommended format is not used, the date will be considered in the server timezone.
 	string start_date = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// List usage records for the specified account
@@ -330,7 +330,7 @@ message ListUsageRecordsRequest {
 
 	// List usage records for the specified usage UUID. Can be used only together with TYPE parameter.
 	string usage_id = 8 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// Flag to enable display of Tags for a resource
@@ -363,7 +363,7 @@ message ListUsageRecordsRequest {
 
 // ListUsageRecordsResponse represents the response from lists usage records for accounts
 message ListUsageRecordsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of UsageRecords
 	repeated UsageRecord items = 1;
 
@@ -379,7 +379,7 @@ message ListUsageTypesRequest {
 
 // ListUsageTypesResponse represents the response from list usage types
 message ListUsageTypesResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of UsageTypes
 	repeated UsageType items = 1;
 
@@ -391,7 +391,7 @@ message ListUsageTypesResponse {
 message RemoveRawUsageRecordsRequest {
 	// Specify the number of days (greater than zero) to remove records that are older than those number of days from today. For example, specifying 10 would result in removing all the records created before 10 days from today
 	int32 interval = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -408,7 +408,7 @@ message RemoveRawUsageRecordsResponse {
 message UpdateTrafficTypeRequest {
 	// traffic type id
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The network name label of the physical device dedicated to this traffic on a XenServer host
@@ -431,7 +431,7 @@ message UpdateTrafficTypeRequest {
 
 	//
 	string injected_job_id = 8 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -448,7 +448,7 @@ message UpdateTrafficTypeResponse {
 message Provider {
 	// The ID of the Provider
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Provider
 	string name = 2;
@@ -464,7 +464,7 @@ message Provider {
 message TrafficMonitor {
 	// The ID of the TrafficMonitor
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the TrafficMonitor
 	string name = 2;
@@ -480,7 +480,7 @@ message TrafficMonitor {
 message TrafficTypeImplementor {
 	// The ID of the TrafficTypeImplementor
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the TrafficTypeImplementor
 	string name = 2;
@@ -496,7 +496,7 @@ message TrafficTypeImplementor {
 message UsageRecord {
 	// The ID of the UsageRecord
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the UsageRecord
 	string name = 2;
@@ -512,7 +512,7 @@ message UsageRecord {
 message UsageType {
 	// The ID of the UsageType
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the UsageType
 	string name = 2;
@@ -542,12 +542,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

@@ -7,8 +7,8 @@
 package bucketv1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -895,7 +895,7 @@ var File_cloudstack_management_bucket_v1_bucket_gen_proto protoreflect.FileDescr
 
 const file_cloudstack_management_bucket_v1_bucket_gen_proto_rawDesc = "" +
 	"\n" +
-	"0cloudstack/management/bucket/v1/bucket.gen.proto\x12\x1fcloudstack.management.bucket.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x90\x05\n" +
+	"0cloudstack/management/bucket/v1/bucket.gen.proto\x12\x1fcloudstack.management.bucket.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\x90\x05\n" +
 	"\x13CreateBucketRequest\x12\xa0\x01\n" +
 	"\faccount_name\x18\x01 \x01(\tB}\xbaHz\xba\x01w\n" +
 	"\x1baccount_name_with_domain_id\x122account_name must be used with domain_id parameter\x1a$!has(account_name) || has(domain_id)R\vaccountName\x12\x1d\n" +

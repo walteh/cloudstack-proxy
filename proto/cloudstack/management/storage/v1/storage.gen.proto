@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.storage.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // StorageService provides operations for managing Storages
@@ -166,8 +166,8 @@ service StorageService {
 message AddImageStoreRequest {
 	// the name for the image store
 	string name = 1 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the URL for the image store
@@ -178,8 +178,8 @@ message AddImageStoreRequest {
 
 	// the image store provider name
 	string provider_name = 4 [
-		(validate.field).required    = true,
-		(validate.field).string.uuid = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.uuid = true
 	];
 
 	// the details for the image store. Example: details[0].key=accesskey&details[0].value=s389ddssaa&details[1].key=secretkey&details[1].value=8dshfsss
@@ -199,22 +199,22 @@ message AddImageStoreResponse {
 message AddImageStoreS3CMDRequest {
 	// S3 access key
 	string access_key = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// S3 secret key
 	string secret_key = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// S3 endpoint
 	string end_point = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Name of the storage bucket
 	string bucket_name = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Signer Algorithm to use, either S3SignerType or AWSS3V4SignerType
@@ -256,20 +256,20 @@ message AddImageStoreS3CMDResponse {
 message AddObjectStoragePoolRequest {
 	// the name for the object store
 	string name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the URL for the object store
 	string url = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the object store provider name
 	string provider_name = 3 [
-		(validate.field).required    = true,
-		(validate.field).string.uuid = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.uuid = true
 	];
 
 	// the details for the object store. Example: details[0].key=accesskey&details[0].value=s389ddssaa&details[1].key=secretkey&details[1].value=8dshfsss
@@ -292,7 +292,7 @@ message AddObjectStoragePoolResponse {
 message CancelPrimaryStorageMaintenanceRequest {
 	// the primary storage ID
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -300,7 +300,7 @@ message CancelPrimaryStorageMaintenanceRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -317,12 +317,12 @@ message CancelPrimaryStorageMaintenanceResponse {
 message ChangeStoragePoolScopeRequest {
 	// the Id of the storage pool
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the scope of the storage: cluster or zone
 	string scope = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the Id of the cluster to use if scope is being set to Cluster
@@ -333,7 +333,7 @@ message ChangeStoragePoolScopeRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -350,7 +350,7 @@ message ChangeStoragePoolScopeResponse {
 message CreateSecondaryStagingStoreRequest {
 	// the URL for the staging store
 	string url = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the Zone ID for the staging store
@@ -364,7 +364,7 @@ message CreateSecondaryStagingStoreRequest {
 
 	// the staging store provider name
 	string provider_name = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -387,9 +387,9 @@ message CreateStoragePoolRequest {
 
 	// the name for the storage pool
 	string storage_pool_name = 3 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the Pod ID for the storage pool
@@ -400,17 +400,17 @@ message CreateStoragePoolRequest {
 
 	// the URL of the storage pool
 	string url = 6 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the Zone ID for the storage pool
 	int64 zone_id = 7 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the storage provider name
 	string storage_provider_name = 8 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// the scope of the storage: cluster or zone
@@ -449,7 +449,7 @@ message CreateStoragePoolResponse {
 message DeleteImageStoreRequest {
 	// The image store ID or Secondary Storage ID.
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -466,7 +466,7 @@ message DeleteImageStoreResponse {
 message DeleteObjectStoragePoolRequest {
 	// The Object Storage ID.
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -483,7 +483,7 @@ message DeleteObjectStoragePoolResponse {
 message DeletePoolRequest {
 	// Storage pool id
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Force destroy storage pool (force expunge volumes in Destroyed state as a part of pool removal)
@@ -505,7 +505,7 @@ message DeletePoolResponse {
 message DeleteSecondaryStagingStoreRequest {
 	// the staging store ID
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -522,7 +522,7 @@ message DeleteSecondaryStagingStoreResponse {
 message DownloadImageStoreObjectRequest {
 	// id of the image store
 	int64 store_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// path to download on image store
@@ -533,7 +533,7 @@ message DownloadImageStoreObjectRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -550,7 +550,7 @@ message DownloadImageStoreObjectResponse {
 message FindStoragePoolsForMigrationRequest {
 	// the ID of the volume
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// List by keyword
@@ -576,7 +576,7 @@ message FindStoragePoolsForMigrationResponse {
 message ListImageStoreObjectsRequest {
 	// id of the image store
 	int64 store_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// path to list on image store
@@ -597,7 +597,7 @@ message ListImageStoreObjectsRequest {
 
 // ListImageStoreObjectsResponse represents the response from lists objects at specified path on an image store.
 message ListImageStoreObjectsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of DataStoreObjects
 	repeated DataStoreObject items = 1;
 
@@ -609,8 +609,8 @@ message ListImageStoreObjectsResponse {
 message ListImageStoresRequest {
 	// the name of the image store
 	string store_name = 1 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the image store protocol
@@ -618,7 +618,7 @@ message ListImageStoresRequest {
 
 	// the image store provider
 	string provider = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// the Zone ID for the image store
@@ -647,7 +647,7 @@ message ListImageStoresRequest {
 
 // ListImageStoresResponse represents the response from lists image stores.
 message ListImageStoresResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of ImageStores
 	repeated ImageStore items = 1;
 
@@ -659,13 +659,13 @@ message ListImageStoresResponse {
 message ListObjectStoragePoolsRequest {
 	// the name of the object store
 	string store_name = 1 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the object store provider
 	string provider = 2 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// the ID of the storage pool
@@ -686,7 +686,7 @@ message ListObjectStoragePoolsRequest {
 
 // ListObjectStoragePoolsResponse represents the response from lists object storage pools.
 message ListObjectStoragePoolsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of ObjectStores
 	repeated ObjectStore items = 1;
 
@@ -698,8 +698,8 @@ message ListObjectStoragePoolsResponse {
 message ListSecondaryStagingStoresRequest {
 	// the name of the staging store
 	string store_name = 1 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the staging store protocol
@@ -707,7 +707,7 @@ message ListSecondaryStagingStoresRequest {
 
 	// the staging store provider
 	string provider = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// the Zone ID for the staging store
@@ -731,7 +731,7 @@ message ListSecondaryStagingStoresRequest {
 
 // ListSecondaryStagingStoresResponse represents the response from lists secondary staging stores.
 message ListSecondaryStagingStoresResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of ImageStores
 	repeated ImageStore items = 1;
 
@@ -743,7 +743,7 @@ message ListSecondaryStagingStoresResponse {
 message ListStoragePoolObjectsRequest {
 	// id of the storage pool
 	int64 store_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// path to list on storage pool
@@ -764,7 +764,7 @@ message ListStoragePoolObjectsRequest {
 
 // ListStoragePoolObjectsResponse represents the response from lists objects at specified path on a storage pool.
 message ListStoragePoolObjectsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of DataStoreObjects
 	repeated DataStoreObject items = 1;
 
@@ -779,13 +779,13 @@ message ListStoragePoolsRequest {
 
 	// the IP address for the storage pool
 	string ip_address = 2 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the name of the storage pool
 	string storage_pool_name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the storage pool path
@@ -829,7 +829,7 @@ message ListStoragePoolsRequest {
 
 // ListStoragePoolsResponse represents the response from lists storage pools.
 message ListStoragePoolsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of StoragePools
 	repeated StoragePool items = 1;
 
@@ -841,7 +841,7 @@ message ListStoragePoolsResponse {
 message ListStorageProvidersRequest {
 	// the type of storage provider: either primary or image
 	string type = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// List by keyword
@@ -859,7 +859,7 @@ message ListStorageProvidersRequest {
 
 // ListStorageProvidersResponse represents the response from lists storage providers.
 message ListStorageProvidersResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of StorageProviders
 	repeated StorageProvider items = 1;
 
@@ -884,7 +884,7 @@ message ListStorageTagsRequest {
 
 // ListStorageTagsResponse represents the response from lists storage tags
 message ListStorageTagsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of StorageTags
 	repeated StorageTag items = 1;
 
@@ -896,12 +896,12 @@ message ListStorageTagsResponse {
 message MigrateResourcesToAnotherSecondaryStorageRequest {
 	// id of the image store from where the data is to be migrated
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// id of the destination secondary storage pool to which the resources are to be migrated
 	int64 dest_store_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// id(s) of the templates to be migrated
@@ -915,7 +915,7 @@ message MigrateResourcesToAnotherSecondaryStorageRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -932,12 +932,12 @@ message MigrateResourcesToAnotherSecondaryStorageResponse {
 message MigrateSecondaryStorageDataRequest {
 	// id of the image store from where the data is to be migrated
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// id(s) of the destination secondary storage pool(s) to which the templates are to be migrated
 	repeated string migrate_to = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Balance: if you want data to be distributed evenly among the destination stores, Complete: If you want to migrate the entire data from source image store to the destination store(s). Default: Complete
@@ -948,7 +948,7 @@ message MigrateSecondaryStorageDataRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -965,7 +965,7 @@ message MigrateSecondaryStorageDataResponse {
 message PreparePrimaryStorageForMaintenanceRequest {
 	// Primary storage ID
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -973,7 +973,7 @@ message PreparePrimaryStorageForMaintenanceRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -990,7 +990,7 @@ message PreparePrimaryStorageForMaintenanceResponse {
 message SyncStoragePoolRequest {
 	// Storage pool id
 	int64 pool_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -998,7 +998,7 @@ message SyncStoragePoolRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1015,8 +1015,8 @@ message SyncStoragePoolResponse {
 message UpdateCloudToUseObjectStoreRequest {
 	// the name for the image store
 	string name = 1 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the URL for the image store
@@ -1024,8 +1024,8 @@ message UpdateCloudToUseObjectStoreRequest {
 
 	// the image store provider name
 	string provider_name = 3 [
-		(validate.field).required    = true,
-		(validate.field).string.uuid = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.uuid = true
 	];
 
 	// the details for the image store. Example: details[0].key=accesskey&details[0].value=s389ddssaa&details[1].key=secretkey&details[1].value=8dshfsss
@@ -1045,13 +1045,13 @@ message UpdateCloudToUseObjectStoreResponse {
 message UpdateImageStoreRequest {
 	// Image Store UUID
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The new name for the Image Store.
 	string name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// If set to true, it designates the corresponding image store to read-only, hence not considering them during storage migration
@@ -1079,13 +1079,13 @@ message UpdateImageStoreResponse {
 message UpdateObjectStoragePoolRequest {
 	// Object Store ID
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the name for the object store
 	string name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the url for the object store
@@ -1105,7 +1105,7 @@ message UpdateObjectStoragePoolResponse {
 message UpdateStorageCapabilitiesRequest {
 	// Storage pool id
 	int64 pool_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -1122,13 +1122,13 @@ message UpdateStorageCapabilitiesResponse {
 message UpdateStoragePoolRequest {
 	// the Id of the storage pool
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Change the name of the storage pool
 	string name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// comma-separated list of tags for the storage pool
@@ -1170,7 +1170,7 @@ message UpdateStoragePoolResponse {
 message DataStoreObject {
 	// The ID of the DataStoreObject
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the DataStoreObject
 	string name = 2;
@@ -1186,7 +1186,7 @@ message DataStoreObject {
 message ImageStore {
 	// The ID of the ImageStore
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the ImageStore
 	string name = 2;
@@ -1202,7 +1202,7 @@ message ImageStore {
 message ObjectStore {
 	// The ID of the ObjectStore
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the ObjectStore
 	string name = 2;
@@ -1218,7 +1218,7 @@ message ObjectStore {
 message StoragePool {
 	// The ID of the StoragePool
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the StoragePool
 	string name = 2;
@@ -1234,7 +1234,7 @@ message StoragePool {
 message StorageProvider {
 	// The ID of the StorageProvider
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the StorageProvider
 	string name = 2;
@@ -1250,7 +1250,7 @@ message StorageProvider {
 message StorageTag {
 	// The ID of the StorageTag
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the StorageTag
 	string name = 2;
@@ -1280,12 +1280,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

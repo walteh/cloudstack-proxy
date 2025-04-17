@@ -7,8 +7,8 @@
 package projectv1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -1387,7 +1387,7 @@ var File_cloudstack_management_acl_project_v1_project_gen_proto protoreflect.Fil
 
 const file_cloudstack_management_acl_project_v1_project_gen_proto_rawDesc = "" +
 	"\n" +
-	"6cloudstack/management/acl/project/v1/project.gen.proto\x12$cloudstack.management.acl.project.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xe7\x01\n" +
+	"6cloudstack/management/acl/project/v1/project.gen.proto\x12$cloudstack.management.acl.project.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\xe7\x01\n" +
 	"\x18CreateProjectRoleRequest\x129\n" +
 	"\x11project_role_name\x18\x01 \x01(\tB\r\xbaH\n" +
 	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\x0fprojectRoleName\x12%\n" +

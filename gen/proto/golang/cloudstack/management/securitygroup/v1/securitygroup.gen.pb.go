@@ -7,8 +7,8 @@
 package securitygroupv1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -1570,7 +1570,7 @@ var File_cloudstack_management_securitygroup_v1_securitygroup_gen_proto protoref
 
 const file_cloudstack_management_securitygroup_v1_securitygroup_gen_proto_rawDesc = "" +
 	"\n" +
-	">cloudstack/management/securitygroup/v1/securitygroup.gen.proto\x12&cloudstack.management.securitygroup.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x9c\x06\n" +
+	">cloudstack/management/securitygroup/v1/securitygroup.gen.proto\x12&cloudstack.management.securitygroup.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\x9c\x06\n" +
 	"#AuthorizeSecurityGroupEgressRequest\x12\x1a\n" +
 	"\bprotocol\x18\x01 \x01(\tR\bprotocol\x12*\n" +
 	"\n" +

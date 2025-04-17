@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.config.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // ConfigService provides operations for managing Configs
@@ -59,7 +59,7 @@ message ListCapabilitiesRequest {
 
 // ListCapabilitiesResponse represents the response from lists capabilities
 message ListCapabilitiesResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Capabilitiess
 	repeated Capabilities items = 1;
 
@@ -87,7 +87,7 @@ message ListCfgGroupsByRequest {
 
 // ListCfgGroupsByResponse represents the response from lists all configuration groups (primarily used for ui).
 message ListCfgGroupsByResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of ConfigurationGroups
 	repeated ConfigurationGroup items = 1;
 
@@ -102,8 +102,8 @@ message ListCfgsByRequest {
 
 	// lists configuration by name
 	string config_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the ID of the Zone to update the parameter value for corresponding zone
@@ -148,7 +148,7 @@ message ListCfgsByRequest {
 
 // ListCfgsByResponse represents the response from lists all configurations.
 message ListCfgsByResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Configurations
 	repeated Configuration items = 1;
 
@@ -173,7 +173,7 @@ message ListDeploymentPlannersRequest {
 
 // ListDeploymentPlannersResponse represents the response from lists all deploymentplanners available.
 message ListDeploymentPlannersResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of DeploymentPlannerss
 	repeated DeploymentPlanners items = 1;
 
@@ -204,7 +204,7 @@ message ListHypervisorCapabilitiesRequest {
 
 // ListHypervisorCapabilitiesResponse represents the response from lists all hypervisor capabilities.
 message ListHypervisorCapabilitiesResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of HypervisorCapabilitiess
 	repeated HypervisorCapabilities items = 1;
 
@@ -216,9 +216,9 @@ message ListHypervisorCapabilitiesResponse {
 message ResetCfgRequest {
 	// the name of the configuration
 	string cfg_name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the ID of the Zone to reset the parameter value for corresponding zone
@@ -253,9 +253,9 @@ message ResetCfgResponse {
 message UpdateCfgRequest {
 	// the name of the configuration
 	string cfg_name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the value of the configuration
@@ -338,7 +338,7 @@ message UpdateHypervisorCapabilitiesResponse {
 message Capabilities {
 	// The ID of the Capabilities
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Capabilities
 	string name = 2;
@@ -354,7 +354,7 @@ message Capabilities {
 message Configuration {
 	// The ID of the Configuration
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Configuration
 	string name = 2;
@@ -370,7 +370,7 @@ message Configuration {
 message ConfigurationGroup {
 	// The ID of the ConfigurationGroup
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the ConfigurationGroup
 	string name = 2;
@@ -386,7 +386,7 @@ message ConfigurationGroup {
 message DeploymentPlanners {
 	// The ID of the DeploymentPlanners
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the DeploymentPlanners
 	string name = 2;
@@ -402,7 +402,7 @@ message DeploymentPlanners {
 message HypervisorCapabilities {
 	// The ID of the HypervisorCapabilities
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the HypervisorCapabilities
 	string name = 2;
@@ -432,12 +432,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

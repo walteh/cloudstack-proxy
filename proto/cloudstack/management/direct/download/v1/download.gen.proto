@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.direct.download.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // DownloadService provides operations for managing Direct.Downloads
@@ -59,7 +59,7 @@ message ListTemplateDirectDownloadCertificatesRequest {
 
 // ListTemplateDirectDownloadCertificatesResponse represents the response from list the uploaded certificates for direct download templates
 message ListTemplateDirectDownloadCertificatesResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of DirectDownloadCertificates
 	repeated DirectDownloadCertificate items = 1;
 
@@ -71,12 +71,12 @@ message ListTemplateDirectDownloadCertificatesResponse {
 message ProvisionTemplateDirectDownloadCertificateRequest {
 	// the id of the direct download certificate to provision
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the host to provision the certificate
 	int64 host_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -96,8 +96,8 @@ message RevokeTemplateDirectDownloadCertificateRequest {
 
 	// (optional) alias of the SSL certificate
 	string certificate_alias = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// (optional) hypervisor type
@@ -105,7 +105,7 @@ message RevokeTemplateDirectDownloadCertificateRequest {
 
 	// (optional) zone to revoke certificate
 	int64 zone_id = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// (optional) the host ID to revoke certificate
@@ -125,24 +125,24 @@ message RevokeTemplateDirectDownloadCertificateResponse {
 message UploadTemplateDirectDownloadCertificateRequest {
 	// SSL certificate
 	string certificate = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Name for the uploaded certificate
 	string name = 2 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// Hypervisor type
 	string hypervisor = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Zone to upload certificate
 	int64 zone_id = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// (optional) the host ID to upload certificate
@@ -162,7 +162,7 @@ message UploadTemplateDirectDownloadCertificateResponse {
 message DirectDownloadCertificate {
 	// The ID of the DirectDownloadCertificate
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the DirectDownloadCertificate
 	string name = 2;
@@ -192,12 +192,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

@@ -7,8 +7,8 @@
 package vpnv1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -3750,7 +3750,7 @@ var File_cloudstack_management_vpn_v1_vpn_gen_proto protoreflect.FileDescriptor
 
 const file_cloudstack_management_vpn_v1_vpn_gen_proto_rawDesc = "" +
 	"\n" +
-	"*cloudstack/management/vpn/v1/vpn.gen.proto\x12\x1ccloudstack.management.vpn.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xbf\x02\n" +
+	"*cloudstack/management/vpn/v1/vpn.gen.proto\x12\x1ccloudstack.management.vpn.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\xbf\x02\n" +
 	"\x11AddVpnUserRequest\x12*\n" +
 	"\tuser_name\x18\x01 \x01(\tB\r\xbaH\n" +
 	"\xc8\x01\x01r\x05\x10\x01\x18\xff\x01R\buserName\x12\"\n" +

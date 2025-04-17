@@ -7,8 +7,8 @@
 package eventv1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -952,7 +952,7 @@ var File_cloudstack_management_event_v1_event_gen_proto protoreflect.FileDescrip
 
 const file_cloudstack_management_event_v1_event_gen_proto_rawDesc = "" +
 	"\n" +
-	".cloudstack/management/event/v1/event.gen.proto\x12\x1ecloudstack.management.event.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x9b\x01\n" +
+	".cloudstack/management/event/v1/event.gen.proto\x12\x1ecloudstack.management.event.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\x9b\x01\n" +
 	"\x14ArchiveEventsRequest\x12\x10\n" +
 	"\x03ids\x18\x01 \x03(\tR\x03ids\x12\x19\n" +
 	"\bend_date\x18\x02 \x01(\tR\aendDate\x12\x1d\n" +

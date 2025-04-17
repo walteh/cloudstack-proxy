@@ -7,8 +7,8 @@
 package volumev1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -5759,7 +5759,7 @@ var File_cloudstack_management_volume_v1_volume_gen_proto protoreflect.FileDescr
 
 const file_cloudstack_management_volume_v1_volume_gen_proto_rawDesc = "" +
 	"\n" +
-	"0cloudstack/management/volume/v1/volume.gen.proto\x12\x1fcloudstack.management.volume.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xb9\x03\n" +
+	"0cloudstack/management/volume/v1/volume.gen.proto\x12\x1fcloudstack.management.volume.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\xb9\x03\n" +
 	"\x18AddResourceDetailRequest\x12h\n" +
 	"\adetails\x18\x01 \x03(\v2F.cloudstack.management.volume.v1.AddResourceDetailRequest.DetailsEntryB\x06\xbaH\x03\xc8\x01\x01R\adetails\x12+\n" +
 	"\rresource_type\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\fresourceType\x12,\n" +

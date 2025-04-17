@@ -33,7 +33,6 @@ plugins:
     include_imports: true
     opt:
       - paths=source_relative
-      - buf_validate_file=cloudstack/validate/validate.proto
     # inputs:
     # - git_repo: https://github.com/bufbuild/protovalidate
     #   subdir: proto/protovalidate

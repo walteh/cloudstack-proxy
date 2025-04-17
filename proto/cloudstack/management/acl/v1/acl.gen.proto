@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.acl.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // AclService provides operations for managing Acls
@@ -70,9 +70,9 @@ service AclService {
 message CreateRoleRequest {
 	// Creates a role with this unique name
 	string role_name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// ID of the role to be cloned from. Either roleid or type must be passed in
@@ -88,8 +88,8 @@ message CreateRoleRequest {
 
 	// The description of the role
 	string role_description = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 1024
 	];
 
 	//
@@ -106,23 +106,23 @@ message CreateRoleResponse {
 message CreateRolePermissionRequest {
 	// ID of the role
 	int64 role_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The API name or wildcard rule such as list*
 	string rule = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The rule permission, allow or deny. Default: deny.
 	string permission = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The description of the role permission
 	string description = 4 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 1024
 	];
 
 	//
@@ -139,7 +139,7 @@ message CreateRolePermissionResponse {
 message DeleteRoleRequest {
 	// ID of the role
 	int64 role_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -156,7 +156,7 @@ message DeleteRoleResponse {
 message DeleteRolePermissionRequest {
 	// ID of the role permission
 	int64 role_permission_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -173,7 +173,7 @@ message DeleteRolePermissionResponse {
 message DisableRoleRequest {
 	// ID of the role
 	int64 role_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -190,7 +190,7 @@ message DisableRoleResponse {
 message EnableRoleRequest {
 	// ID of the role
 	int64 role_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -207,14 +207,14 @@ message EnableRoleResponse {
 message ImportRoleRequest {
 	// Creates a role with this unique name
 	string role_name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// Rules param list, rule and permission is must. Example: rules[0].rule=create*&rules[0].permission=allow&rules[0].description=create%20rule&rules[1].rule=list*&rules[1].permission=allow&rules[1].description=listing
 	map<string, string> rules = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Force create a role with the same name. This overrides the role type, description and rule permissions for the existing role. Default is false.
@@ -232,8 +232,8 @@ message ImportRoleRequest {
 
 	// The description of the role
 	string role_description = 6 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 1024
 	];
 
 	//
@@ -257,7 +257,7 @@ message ListRolePermissionsRequest {
 
 // ListRolePermissionsResponse represents the response from lists role permissions
 message ListRolePermissionsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of RolePermissions
 	repeated RolePermission items = 1;
 
@@ -272,8 +272,8 @@ message ListRolesRequest {
 
 	// List role by role name.
 	string role_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// List role by role type, valid options are: Admin, ResourceAdmin, DomainAdmin, User.
@@ -297,7 +297,7 @@ message ListRolesRequest {
 
 // ListRolesResponse represents the response from lists dynamic roles in cloudstack
 message ListRolesResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Roles
 	repeated Role items = 1;
 
@@ -309,19 +309,19 @@ message ListRolesResponse {
 message UpdateRoleRequest {
 	// ID of the role
 	int64 role_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// creates a role with this unique name
 	string role_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// The description of the role
 	string role_description = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 1024
 	];
 
 	// Indicates whether the role will be visible to all users (public) or only to root admins (private).
@@ -346,7 +346,7 @@ message UpdateRoleResponse {
 message UpdateRolePermissionRequest {
 	// ID of the role
 	int64 role_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The parent role permission uuid, use 0 to move this rule at the top of the list
@@ -372,7 +372,7 @@ message UpdateRolePermissionResponse {
 message Role {
 	// The ID of the Role
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Role
 	string name = 2;
@@ -388,7 +388,7 @@ message Role {
 message RolePermission {
 	// The ID of the RolePermission
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the RolePermission
 	string name = 2;
@@ -428,12 +428,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

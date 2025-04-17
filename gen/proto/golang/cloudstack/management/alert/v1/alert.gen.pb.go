@@ -7,8 +7,8 @@
 package alertv1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -317,7 +317,7 @@ var File_cloudstack_management_alert_v1_alert_gen_proto protoreflect.FileDescrip
 
 const file_cloudstack_management_alert_v1_alert_gen_proto_rawDesc = "" +
 	"\n" +
-	".cloudstack/management/alert/v1/alert.gen.proto\x12\x1ecloudstack.management.alert.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xb3\x02\n" +
+	".cloudstack/management/alert/v1/alert.gen.proto\x12\x1ecloudstack.management.alert.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\xb3\x02\n" +
 	"\x14GenerateAlertRequest\x12\x1a\n" +
 	"\x04type\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x04type\x12!\n" +
 	"\x04name\x18\x02 \x01(\tB\r\xbaH\n" +

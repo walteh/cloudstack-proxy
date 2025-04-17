@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.ca.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // CaService provides operations for managing Cas
@@ -46,7 +46,7 @@ message IssueCertificateRequest {
 
 	// Comma separated list of IP addresses, the certificate should be issued for
 	string addresses = 3 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// Certificate validity duration in number of days, when not provided the default configured value will be used
@@ -54,7 +54,7 @@ message IssueCertificateRequest {
 
 	// Name of the CA service provider, otherwise the default configured provider plugin will be used
 	string provider = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -62,7 +62,7 @@ message IssueCertificateRequest {
 
 	//
 	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -79,8 +79,8 @@ message IssueCertificateResponse {
 message ListCAProvidersRequest {
 	// List CA service provider by name
 	string name = 1 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	//
@@ -89,7 +89,7 @@ message ListCAProvidersRequest {
 
 // ListCAProvidersResponse represents the response from lists available certificate authority providers in cloudstack
 message ListCAProvidersResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of CAProviders
 	repeated CAProvider items = 1;
 
@@ -101,7 +101,7 @@ message ListCAProvidersResponse {
 message ListCaCertificateRequest {
 	// Name of the CA service provider, otherwise the default configured provider plugin will be used
 	string provider = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -110,7 +110,7 @@ message ListCaCertificateRequest {
 
 // ListCaCertificateResponse represents the response from lists the ca public certificate(s) as support by the configured/provided ca plugin
 message ListCaCertificateResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Certificates
 	repeated Certificate items = 1;
 
@@ -122,7 +122,7 @@ message ListCaCertificateResponse {
 message ProvisionCertificateRequest {
 	// The host/agent uuid to which the certificate has to be provisioned (issued and propagated)
 	int64 host_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Whether to attempt reconnection with host/agent after successful deployment of certificate. When option is not provided, configured global setting is used
@@ -132,7 +132,7 @@ message ProvisionCertificateRequest {
 
 	// Name of the CA service provider, otherwise the default configured provider plugin will be used
 	string provider = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -140,7 +140,7 @@ message ProvisionCertificateRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -157,7 +157,7 @@ message ProvisionCertificateResponse {
 message RevokeCertificateRequest {
 	// The certificate serial number, as a hex value
 	string serial = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The certificate CN
@@ -165,7 +165,7 @@ message RevokeCertificateRequest {
 
 	// Name of the CA service provider, otherwise the default configured provider plugin will be used
 	string provider = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -173,7 +173,7 @@ message RevokeCertificateRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -190,7 +190,7 @@ message RevokeCertificateResponse {
 message CAProvider {
 	// The ID of the CAProvider
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the CAProvider
 	string name = 2;
@@ -206,7 +206,7 @@ message CAProvider {
 message Certificate {
 	// The ID of the Certificate
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Certificate
 	string name = 2;
@@ -236,12 +236,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

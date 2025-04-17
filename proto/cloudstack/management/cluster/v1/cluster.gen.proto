@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.cluster.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // ClusterService provides operations for managing Clusters
@@ -51,9 +51,9 @@ service ClusterService {
 message AddClusterRequest {
 	// the cluster name
 	string cluster_name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the password for the host
@@ -61,7 +61,7 @@ message AddClusterRequest {
 
 	// the Pod ID for the host
 	int64 pod_id = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the URL
@@ -69,18 +69,18 @@ message AddClusterRequest {
 
 	// the username for the cluster
 	string username = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the Zone ID for the cluster
 	int64 zone_id = 6 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// hypervisor type of the cluster: XenServer,KVM,VMware,Hyperv,BareMetal,Simulator,Ovm3
 	string hypervisor = 7 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the CPU arch of the cluster. Valid options are: x86_64, aarch64
@@ -88,7 +88,7 @@ message AddClusterRequest {
 
 	// type of the cluster: CloudManaged, ExternalManaged
 	string cluster_type = 9 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Allocation state of this cluster for allocation of new resources
@@ -96,8 +96,8 @@ message AddClusterRequest {
 
 	// the username for the VSM associated with this cluster
 	string vsmusername = 11 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the password for the VSM associated with this cluster
@@ -105,7 +105,7 @@ message AddClusterRequest {
 
 	// the ipaddress of the VSM associated with this cluster
 	string vsmipaddress = 13 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// Type of virtual switch used for guest traffic in the cluster. Allowed values are, vmwaresvs (for VMware standard vSwitch) and vmwaredvs (for VMware distributed vSwitch)
@@ -116,14 +116,14 @@ message AddClusterRequest {
 
 	// Name of virtual switch used for guest traffic in the cluster. This would override zone wide traffic label setting.
 	string v_switch_name_guest_traffic = 16 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// Name of virtual switch used for public traffic in the cluster.  This would override zone wide traffic label setting.
 	string v_switch_name_public_traffic = 17 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// Ovm3 native pooling enabled for cluster
@@ -134,7 +134,7 @@ message AddClusterRequest {
 
 	// Ovm3 vip to use for pool (and cluster)
 	string ovm3vip = 20 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	//
@@ -151,7 +151,7 @@ message AddClusterResponse {
 message DeleteClusterRequest {
 	// the cluster ID
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -168,7 +168,7 @@ message DeleteClusterResponse {
 message ExecuteClusterDrsPlanRequest {
 	// ID of cluster
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Virtual Machine to destination host mapping. This parameter specifies the mapping between a vm and a host to migrate that VM. clusterid is required if this parameter is set.Format of this parameter: migrateto[vm-index].vm=<uuid>&migrateto[vm-index].host=<uuid> Where, [vm-index] indicates the index to identify the vm that you want to migrate, vm=<uuid> indicates the UUID of the vm that you want to migrate, and host=<uuid> indicates the UUID of the host where you want to migrate the vm. Example: migrateto[0].vm=<71f43cd6-69b0-4d3b-9fbc-67f50963d60b>&migrateto[0].host=<a382f181-3d2b-4413-b92d-b8931befa7e1>&migrateto[1].vm=<88de0173-55c0-4c1c-a269-83d0279eeedf>&migrateto[1].host=<95d6e97c-6766-4d67-9a30-c449c15011d1>&migrateto[2].vm=<1b331390-59f2-4796-9993-bf11c6e76225>&migrateto[2].host=<41fdb564-9d3b-447d-88ed-7628f7640cbc>
@@ -179,7 +179,7 @@ message ExecuteClusterDrsPlanRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -196,7 +196,7 @@ message ExecuteClusterDrsPlanResponse {
 message GenerateClusterDrsPlanRequest {
 	// the ID of the Cluster
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Maximum number of VMs to migrate for a DRS execution. Defaults to value of cluster's drs.vm.migrations setting
@@ -235,7 +235,7 @@ message ListClusterDrsPlanRequest {
 
 // ListClusterDrsPlanResponse represents the response from list drs plans for a clusters
 message ListClusterDrsPlanResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of ClusterDrsPlans
 	repeated ClusterDrsPlan items = 1;
 
@@ -250,8 +250,8 @@ message ListClustersRequest {
 
 	// lists clusters by the cluster name
 	string cluster_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// lists clusters by Pod ID
@@ -292,7 +292,7 @@ message ListClustersRequest {
 
 // ListClustersResponse represents the response from lists clusters.
 message ListClustersResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Clusters
 	repeated Cluster items = 1;
 
@@ -304,13 +304,13 @@ message ListClustersResponse {
 message UpdateClusterRequest {
 	// the ID of the Cluster
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the cluster name
 	string cluster_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// hypervisor type of the cluster
@@ -342,7 +342,7 @@ message UpdateClusterResponse {
 message Cluster {
 	// The ID of the Cluster
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Cluster
 	string name = 2;
@@ -358,7 +358,7 @@ message Cluster {
 message ClusterDrsPlan {
 	// The ID of the ClusterDrsPlan
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the ClusterDrsPlan
 	string name = 2;
@@ -388,12 +388,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

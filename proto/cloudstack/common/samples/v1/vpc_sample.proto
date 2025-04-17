@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.vpc.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // VPCService provides operations for managing VPCs
@@ -26,7 +26,7 @@ message CreateVPCRequest {
 
 	// The CIDR of the VPC
 	string cidr = 3 [
-		(validate.field).string.ipv4_prefix = true
+		(buf.validate.field).string.ipv4_prefix = true
 	];
 
 	// The CIDR size of the VPC
@@ -34,12 +34,12 @@ message CreateVPCRequest {
 
 	// The ID of the VPC offering
 	string vpc_offering_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The ID of the availability zone
 	string zone_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The network domain for the VPC
@@ -59,23 +59,23 @@ message CreateVPCRequest {
 	// DNS servers for the VPC
 	message DNSServers {
 		string ipv4_dns1 = 1 [
-			(validate.field).string.ipv4 = true
+			(buf.validate.field).string.ipv4 = true
 		];
 		string ipv4_dns2 = 2 [
-			(validate.field).string.ipv4 = true
+			(buf.validate.field).string.ipv4 = true
 		];
 		string ipv6_dns1 = 3 [
-			(validate.field).string.ipv6 = true
+			(buf.validate.field).string.ipv6 = true
 		];
 		string ipv6_dns2 = 4 [
-			(validate.field).string.ipv6 = true
+			(buf.validate.field).string.ipv6 = true
 		];
 	}
 	DNSServers dns_servers = 11;
 
 	// The source NAT IP address
 	string source_nat_ip = 12 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// The AS Number for the VPC tiers
@@ -92,13 +92,13 @@ message CreateVPCResponse {
 message ListVPCsRequest {
 	// The ID of the VPC to list
 	string id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The ID of the zone to list VPCs from
 	string zone_id = 2 [
-		(validate.field).string.uuid = true,
-		(validate.field).required    = true
+		(buf.validate.field).string.uuid = true,
+		(buf.validate.field).required    = true
 	];
 
 	// The name of the VPC to list
@@ -109,12 +109,12 @@ message ListVPCsRequest {
 
 	// The CIDR to filter by
 	string cidr = 5 [
-		(validate.field).string.ipv4_prefix = true
+		(buf.validate.field).string.ipv4_prefix = true
 	];
 
 	// The ID of the VPC offering to filter by
 	string vpc_offering_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The state to filter by
@@ -122,30 +122,30 @@ message ListVPCsRequest {
 
 	// Whether to filter by restart required
 	bool restart_required = 8 [
-		(validate.field).required = false
+		(buf.validate.field).required = false
 	];
 
 	// Whether to show resource icons
 	bool show_resource_icon = 9 [
-		(validate.field).required = false
+		(buf.validate.field).required = false
 	];
 
 	// The page number to list
 	int32 page = 10 [
-		default                   = 1,
-		(validate.field).required = false
+		default                       = 1,
+		(buf.validate.field).required = false
 	];
 
 	// The page size
 	int32 page_size = 11 [
-		default                   = 10,
-		(validate.field).required = false
+		default                       = 10,
+		(buf.validate.field).required = false
 	];
 }
 
 // ListVPCsResponse represents the response from listing VPCs
 message ListVPCsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of VPCs
 	repeated VPC vpcs = 1;
 
@@ -175,11 +175,11 @@ message VPC {
 
 	// The ID of the zone
 	string zone_id = 7 [
-		(validate.field).string.uuid = true,
-		(validate.field).cel         = {
-			id:                  "zone_id",
-			expression:          "value.id == 'zone_id'",
-			message:             "zone_id must be a valid UUID"
+		(buf.validate.field).string.uuid = true,
+		(buf.validate.field).cel         = {
+			id:                      "zone_id",
+			expression:              "value.id == 'zone_id'",
+			message:                 "zone_id must be a valid UUID"
 		}
 	];
 

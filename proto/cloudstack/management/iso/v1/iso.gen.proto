@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.iso.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // IsoService provides operations for managing Isos
@@ -114,11 +114,11 @@ message AttachIsoRequest {
 	bool run_as_admin = 1;
 	// the ID of the ISO file
 	int64 id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// the ID of the virtual machine
 	int64 virtual_machine_id = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// If true, ejects existing ISO before attaching on VMware. Default: false
 	bool forced = 4 [
@@ -128,7 +128,7 @@ message AttachIsoRequest {
 	int64 start_event_id = 5;
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 7;
@@ -144,12 +144,12 @@ message AttachIsoResponse {
 message AttachIsoCmdByAdminRequest {
 	// the ID of the ISO file
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the ID of the virtual machine
 	int64 virtual_machine_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// If true, ejects existing ISO before attaching on VMware. Default: false
@@ -162,7 +162,7 @@ message AttachIsoCmdByAdminRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -183,7 +183,7 @@ message CopyIsoRequest {
 	int64 dest_zone_id = 2;
 	// Template ID.
 	int64 id = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// ID of the zone the template is currently hosted on. If not specified and template is cross-zone, then we will sync this template to region wide image store.
 	int64 source_zone_id = 4;
@@ -193,7 +193,7 @@ message CopyIsoRequest {
 	int64 start_event_id = 6;
 	//
 	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 8;
@@ -212,7 +212,7 @@ message CopyIsoCmdByAdminRequest {
 
 	// Template ID.
 	int64 id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// ID of the zone the template is currently hosted on. If not specified and template is cross-zone, then we will sync this template to region wide image store.
@@ -226,7 +226,7 @@ message CopyIsoCmdByAdminRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -243,7 +243,7 @@ message CopyIsoCmdByAdminResponse {
 message DeleteIsoRequest {
 	// the ID of the ISO file
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the ID of the zone of the ISO file. If not specified, the ISO will be deleted from all the zones
@@ -254,7 +254,7 @@ message DeleteIsoRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -273,7 +273,7 @@ message DetachIsoRequest {
 	bool run_as_admin = 1;
 	// The ID of the virtual machine
 	int64 virtual_machine_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// If true, ejects the ISO before detaching on VMware. Default: false
 	bool forced = 3 [
@@ -283,7 +283,7 @@ message DetachIsoRequest {
 	int64 start_event_id = 4;
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 6;
@@ -299,7 +299,7 @@ message DetachIsoResponse {
 message DetachIsoCmdByAdminRequest {
 	// The ID of the virtual machine
 	int64 virtual_machine_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// If true, ejects the ISO before detaching on VMware. Default: false
@@ -312,7 +312,7 @@ message DetachIsoCmdByAdminRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -329,7 +329,7 @@ message DetachIsoCmdByAdminResponse {
 message ExtractIsoRequest {
 	// the ID of the ISO file
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the URL to which the ISO would be extracted
@@ -340,7 +340,7 @@ message ExtractIsoRequest {
 
 	// the mode of extraction - HTTP_DOWNLOAD or FTP_UPLOAD
 	string mode = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -348,7 +348,7 @@ message ExtractIsoRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -391,19 +391,19 @@ message GetUploadParamsForIsoRequest {
 
 	// the name of the volume/template/iso
 	string name = 7 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the format for the volume/template/iso. Possible values include QCOW2, OVA, and VHD.
 	string format = 8 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the ID of the zone the volume/template/iso is to be hosted on
 	int64 zone_id = 9 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	/*
@@ -441,7 +441,7 @@ message ListIsoPermissionsRequest {
 	bool run_as_admin = 1;
 	// the template ID
 	int64 id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	//
 	string response_type = 3;
@@ -449,7 +449,7 @@ message ListIsoPermissionsRequest {
 
 // ListIsoPermissionsResponse represents the response from list iso visibility and all accounts that have permissions to view this iso.
 message ListIsoPermissionsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of TemplatePermissionss
 	repeated TemplatePermissions items = 1;
 
@@ -461,7 +461,7 @@ message ListIsoPermissionsResponse {
 message ListIsoPermissionsCmdByAdminRequest {
 	// the template ID
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -470,7 +470,7 @@ message ListIsoPermissionsCmdByAdminRequest {
 
 // ListIsoPermissionsCmdByAdminResponse represents the response from list iso visibility and all accounts that have permissions to view this iso.
 message ListIsoPermissionsCmdByAdminResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of TemplatePermissionss
 	repeated TemplatePermissions items = 1;
 
@@ -502,8 +502,8 @@ message ListIsosRequest {
 	string iso_filter = 7;
 	// list all ISOs by name
 	string iso_name = 8 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// the ID of the zone
 	int64 zone_id = 9;
@@ -527,7 +527,7 @@ message ListIsosRequest {
 	int64 project_id = 15;
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 16 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -555,7 +555,7 @@ message ListIsosRequest {
 
 // ListIsosResponse represents the response from lists all available iso files.
 message ListIsosResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Templates
 	repeated Template items = 1;
 
@@ -597,8 +597,8 @@ message ListIsosCmdByAdminRequest {
 
 	// list all ISOs by name
 	string iso_name = 9 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the ID of the zone
@@ -630,7 +630,7 @@ message ListIsosCmdByAdminRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 17 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -665,7 +665,7 @@ message ListIsosCmdByAdminRequest {
 
 // ListIsosCmdByAdminResponse represents the response from lists all available iso files.
 message ListIsosCmdByAdminResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Templates
 	repeated Template items = 1;
 
@@ -697,19 +697,19 @@ message RegisterIsoRequest {
 	];
 	// the name of the ISO
 	string iso_name = 7 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// the ID of the OS type that best represents the OS of this ISO. If the ISO is bootable this parameter needs to be passed
 	int64 os_type_id = 8;
 	// the URL to where the ISO is currently being hosted
 	string url = 9 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// the ID of the zone you wish to register the ISO to.
 	int64 zone_id = 10 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// an optional domainId. If the account parameter is used, domainId must also be used.
 	int64 domain_id = 11;
@@ -728,7 +728,7 @@ message RegisterIsoRequest {
 	int64 project_id = 14;
 	// Image store UUID
 	string image_store_uuid = 15 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// true if ISO contains XS/VMWare tools inorder to support dynamic scaling of VM CPU/memory
 	bool is_dynamically_scalable = 16 [
@@ -781,9 +781,9 @@ message RegisterIsoCmdByAdminRequest {
 
 	// the name of the ISO
 	string iso_name = 6 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the ID of the OS type that best represents the OS of this ISO. If the ISO is bootable this parameter needs to be passed
@@ -791,12 +791,12 @@ message RegisterIsoCmdByAdminRequest {
 
 	// the URL to where the ISO is currently being hosted
 	string url = 8 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the ID of the zone you wish to register the ISO to.
 	int64 zone_id = 9 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// an optional domainId. If the account parameter is used, domainId must also be used.
@@ -820,7 +820,7 @@ message RegisterIsoCmdByAdminRequest {
 
 	// Image store UUID
 	string image_store_uuid = 14 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// true if ISO contains XS/VMWare tools inorder to support dynamic scaling of VM CPU/memory
@@ -867,12 +867,12 @@ message UpdateIsoRequest {
 	string display_text = 4;
 	// the ID of the image file
 	int64 id = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// the name of the image file
 	string template_name = 6 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// the ID of the OS type that best represents the OS of this image.
 	int64 os_type_id = 7;
@@ -931,13 +931,13 @@ message UpdateIsoCmdByAdminRequest {
 
 	// the ID of the image file
 	int64 id = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the name of the image file
 	string template_name = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the ID of the OS type that best represents the OS of this image.
@@ -997,7 +997,7 @@ message UpdateIsoPermissionsRequest {
 
 	// the template ID
 	int64 id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// true for featured template/iso, false otherwise
@@ -1035,7 +1035,7 @@ message UpdateIsoPermissionsResponse {
 message Template {
 	// The ID of the Template
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Template
 	string name = 2;
@@ -1051,7 +1051,7 @@ message Template {
 message TemplatePermissions {
 	// The ID of the TemplatePermissions
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the TemplatePermissions
 	string name = 2;
@@ -1081,12 +1081,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

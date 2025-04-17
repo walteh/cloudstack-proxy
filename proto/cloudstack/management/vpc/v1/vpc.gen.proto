@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.vpc.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // VpcService provides operations for managing Vpcs
@@ -118,19 +118,19 @@ service VpcService {
 message CreatePrivateGatewayRequest {
 	// the gateway of the Private gateway
 	string gateway = 1 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the netmask of the Private gateway
 	string netmask = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the IP address of the Private gateaway
 	string ip_address = 3 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the uuid of the network offering to use for the private gateways network connection
@@ -138,7 +138,7 @@ message CreatePrivateGatewayRequest {
 
 	// the VPC network belongs to
 	int64 vpc_id = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// source NAT supported value. Default value false. If 'true' source NAT is enabled on the private gateway 'false': sourcenat is not supported
@@ -157,7 +157,7 @@ message CreatePrivateGatewayRequest {
 
 	//
 	string injected_job_id = 10 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -185,19 +185,19 @@ message CreatePrivateGatewayByAdminRequest {
 
 	// the gateway of the Private gateway
 	string gateway = 4 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the netmask of the Private gateway
 	string netmask = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the IP address of the Private gateaway
 	string ip_address = 6 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the uuid of the network offering to use for the private gateways network connection
@@ -205,7 +205,7 @@ message CreatePrivateGatewayByAdminRequest {
 
 	// the VPC network belongs to
 	int64 vpc_id = 8 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// source NAT supported value. Default value false. If 'true' source NAT is enabled on the private gateway 'false': sourcenat is not supported
@@ -224,7 +224,7 @@ message CreatePrivateGatewayByAdminRequest {
 
 	//
 	string injected_job_id = 13 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -241,12 +241,12 @@ message CreatePrivateGatewayByAdminResponse {
 message CreateStaticRouteRequest {
 	// the gateway id we are creating static route for
 	int64 gateway_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// static route cidr
 	string cidr = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -254,7 +254,7 @@ message CreateStaticRouteRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -273,7 +273,7 @@ message CreateVPCRequest {
 	bool run_as_admin = 1;
 	// the account associated with the VPC. Must be used with the domainId parameter.
 	string account_name = 2 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -285,13 +285,13 @@ message CreateVPCRequest {
 	int64 project_id = 4;
 	// the ID of the availability zone
 	int64 zone_id = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// the name of the VPC
 	string vpc_name = 6 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// The display text of the VPC, defaults to its 'name'.
 	string display_text = 7;
@@ -301,7 +301,7 @@ message CreateVPCRequest {
 	int32 cidr_size = 9;
 	// the ID of the VPC offering
 	int64 vpc_offering = 10 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// VPC network domain. All networks inside the VPC will belong to this domain
 	string network_domain = 11;
@@ -321,18 +321,18 @@ message CreateVPCRequest {
 	string ip4_dns2 = 16;
 	// the first IPv6 DNS for the VPC
 	string ip6_dns1 = 17 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 	// the second IPv6 DNS for the VPC
 	string ip6_dns2 = 18 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 	/*
 	 * IPV4 address to be assigned to the public interface of the network router.This address will be used as source NAT address for the networks in ths VPC.
 	 * If an address is given and it cannot be acquired, an error will be returned and the network won´t be implemented,
 	 */
 	string source_nat_i_p = 19 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 	// the AS Number of the VPC tiers
 	int64 as_number = 20;
@@ -340,7 +340,7 @@ message CreateVPCRequest {
 	int64 start_event_id = 21;
 	//
 	string injected_job_id = 22 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 23;
@@ -359,7 +359,7 @@ message CreateVPCCmdByAdminRequest {
 
 	// the account associated with the VPC. Must be used with the domainId parameter.
 	string account_name = 2 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -374,14 +374,14 @@ message CreateVPCCmdByAdminRequest {
 
 	// the ID of the availability zone
 	int64 zone_id = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the name of the VPC
 	string vpc_name = 6 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// The display text of the VPC, defaults to its 'name'.
@@ -395,7 +395,7 @@ message CreateVPCCmdByAdminRequest {
 
 	// the ID of the VPC offering
 	int64 vpc_offering = 10 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// VPC network domain. All networks inside the VPC will belong to this domain
@@ -422,12 +422,12 @@ message CreateVPCCmdByAdminRequest {
 
 	// the first IPv6 DNS for the VPC
 	string ip6_dns1 = 17 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the second IPv6 DNS for the VPC
 	string ip6_dns2 = 18 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	/*
@@ -435,7 +435,7 @@ message CreateVPCCmdByAdminRequest {
 	 * If an address is given and it cannot be acquired, an error will be returned and the network won´t be implemented,
 	 */
 	string source_nat_i_p = 19 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the AS Number of the VPC tiers
@@ -446,7 +446,7 @@ message CreateVPCCmdByAdminRequest {
 
 	//
 	string injected_job_id = 22 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -463,9 +463,9 @@ message CreateVPCCmdByAdminResponse {
 message CreateVPCOfferingRequest {
 	// the name of the vpc offering
 	string vpc_offering_name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the display text of the vpc offering, defaults to the 'name'
@@ -523,7 +523,7 @@ message CreateVPCOfferingRequest {
 
 	//
 	string injected_job_id = 17 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -540,7 +540,7 @@ message CreateVPCOfferingResponse {
 message DeletePrivateGatewayRequest {
 	// the ID of the private gateway
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -548,7 +548,7 @@ message DeletePrivateGatewayRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -565,7 +565,7 @@ message DeletePrivateGatewayResponse {
 message DeleteStaticRouteRequest {
 	// the ID of the static route
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -573,7 +573,7 @@ message DeleteStaticRouteRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -590,7 +590,7 @@ message DeleteStaticRouteResponse {
 message DeleteVPCRequest {
 	// the ID of the VPC
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -598,7 +598,7 @@ message DeleteVPCRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -615,7 +615,7 @@ message DeleteVPCResponse {
 message DeleteVPCOfferingRequest {
 	// the ID of the VPC offering
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -623,7 +623,7 @@ message DeleteVPCOfferingRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -643,7 +643,7 @@ message ListPrivateGatewaysRequest {
 
 	// list gateways by ip address
 	string ip_address = 2 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// list gateways by vlan
@@ -660,7 +660,7 @@ message ListPrivateGatewaysRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 7 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -695,7 +695,7 @@ message ListPrivateGatewaysRequest {
 
 // ListPrivateGatewaysResponse represents the response from list private gateways
 message ListPrivateGatewaysResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of PrivateGateways
 	repeated PrivateGateway items = 1;
 
@@ -710,7 +710,7 @@ message ListPrivateGatewaysCmdByAdminRequest {
 
 	// list gateways by ip address
 	string ip_address = 2 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// list gateways by vlan
@@ -727,7 +727,7 @@ message ListPrivateGatewaysCmdByAdminRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 7 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -762,7 +762,7 @@ message ListPrivateGatewaysCmdByAdminRequest {
 
 // ListPrivateGatewaysCmdByAdminResponse represents the response from list private gateways
 message ListPrivateGatewaysCmdByAdminResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of PrivateGateways
 	repeated PrivateGateway items = 1;
 
@@ -792,7 +792,7 @@ message ListStaticRoutesRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 7 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -827,7 +827,7 @@ message ListStaticRoutesRequest {
 
 // ListStaticRoutesResponse represents the response from lists all static routes
 message ListStaticRoutesResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of StaticRoutes
 	repeated StaticRoute items = 1;
 
@@ -842,8 +842,8 @@ message ListVPCOfferingsRequest {
 
 	// list VPC offerings by name
 	string vpc_off_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// list VPC offerings by display text
@@ -881,7 +881,7 @@ message ListVPCOfferingsRequest {
 
 // ListVPCOfferingsResponse represents the response from lists vpc offerings
 message ListVPCOfferingsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of VpcOfferings
 	repeated VpcOffering items = 1;
 
@@ -899,8 +899,8 @@ message ListVPCsRequest {
 	int64 zone_id = 3;
 	// list by name of the VPC
 	string vpc_name = 4 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// List by display text of the VPC
 	string display_text = 5;
@@ -930,7 +930,7 @@ message ListVPCsRequest {
 	int64 project_id = 14;
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 15 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -958,7 +958,7 @@ message ListVPCsRequest {
 
 // ListVPCsResponse represents the response from lists vpcs
 message ListVPCsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Vpcs
 	repeated Vpc items = 1;
 
@@ -976,8 +976,8 @@ message ListVPCsCmdByAdminRequest {
 
 	// list by name of the VPC
 	string vpc_name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// List by display text of the VPC
@@ -1018,7 +1018,7 @@ message ListVPCsCmdByAdminRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 14 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -1053,7 +1053,7 @@ message ListVPCsCmdByAdminRequest {
 
 // ListVPCsCmdByAdminResponse represents the response from lists vpcs
 message ListVPCsCmdByAdminResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Vpcs
 	repeated Vpc items = 1;
 
@@ -1065,7 +1065,7 @@ message ListVPCsCmdByAdminResponse {
 message RestartVPCRequest {
 	// the id of the VPC
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// If cleanup old network elements
@@ -1088,7 +1088,7 @@ message RestartVPCRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1107,12 +1107,12 @@ message UpdateVPCRequest {
 	bool run_as_admin = 1;
 	// the id of the VPC
 	int64 id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// the name of the VPC
 	string vpc_name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// the display text of the VPC
 	string display_text = 4;
@@ -1124,17 +1124,17 @@ message UpdateVPCRequest {
 	int32 public_mtu = 6;
 	// IPV4 address to be assigned to the public interface of the network router. This address must already be acquired for this VPC
 	string source_nat_i_p = 7 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
 	string custom_id = 8 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	int64 start_event_id = 9;
 	//
 	string injected_job_id = 10 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 11;
@@ -1150,13 +1150,13 @@ message UpdateVPCResponse {
 message UpdateVPCCmdByAdminRequest {
 	// the id of the VPC
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the name of the VPC
 	string vpc_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the display text of the VPC
@@ -1172,12 +1172,12 @@ message UpdateVPCCmdByAdminRequest {
 
 	// IPV4 address to be assigned to the public interface of the network router. This address must already be acquired for this VPC
 	string source_nat_i_p = 6 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
 	string custom_id = 7 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1185,7 +1185,7 @@ message UpdateVPCCmdByAdminRequest {
 
 	//
 	string injected_job_id = 9 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1202,13 +1202,13 @@ message UpdateVPCCmdByAdminResponse {
 message UpdateVPCOfferingRequest {
 	// the id of the VPC offering
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the name of the VPC offering
 	string vpc_off_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the display text of the VPC offering
@@ -1219,12 +1219,12 @@ message UpdateVPCOfferingRequest {
 
 	// the ID of the containing domain(s) as comma separated string, public for public offerings
 	string domain_ids = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// the ID of the containing zone(s) as comma separated string, all for all zones offerings
 	string zone_ids = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// sort key of the VPC offering, integer
@@ -1235,7 +1235,7 @@ message UpdateVPCOfferingRequest {
 
 	//
 	string injected_job_id = 9 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1252,7 +1252,7 @@ message UpdateVPCOfferingResponse {
 message PrivateGateway {
 	// The ID of the PrivateGateway
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the PrivateGateway
 	string name = 2;
@@ -1268,7 +1268,7 @@ message PrivateGateway {
 message StaticRoute {
 	// The ID of the StaticRoute
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the StaticRoute
 	string name = 2;
@@ -1284,7 +1284,7 @@ message StaticRoute {
 message Vpc {
 	// The ID of the Vpc
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Vpc
 	string name = 2;
@@ -1300,7 +1300,7 @@ message Vpc {
 message VpcOffering {
 	// The ID of the VpcOffering
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the VpcOffering
 	string name = 2;
@@ -1330,12 +1330,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

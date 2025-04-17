@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.userdata.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // UserdataService provides operations for managing Userdatas
@@ -35,7 +35,7 @@ service UserdataService {
 message DeleteUserDataRequest {
 	// the ID of the Userdata
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// an optional account for the userdata. Must be used with domainId.
@@ -88,8 +88,8 @@ message ListUserDataRequest {
 
 	// Userdata name to look for
 	string name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// list objects by project; if projectid=-1 lists All VMs
@@ -97,7 +97,7 @@ message ListUserDataRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 4 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -132,7 +132,7 @@ message ListUserDataRequest {
 
 // ListUserDataResponse represents the response from list registered userdatas
 message ListUserDataResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of UserDatas
 	repeated UserData items = 1;
 
@@ -144,9 +144,9 @@ message ListUserDataResponse {
 message RegisterUserDataRequest {
 	// Name of the userdata
 	string name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// an optional account for the userdata. Must be used with domainId.
@@ -160,7 +160,7 @@ message RegisterUserDataRequest {
 
 	// Base64 encoded userdata content. Using HTTP GET (via querystring), you can send up to 4KB of data after base64 encoding. Using HTTP POST (via POST body), you can send up to 1MB of data after base64 encoding. You also need to change vm.userdata.max.length value
 	string user_data = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// comma separated list of variables declared in userdata content
@@ -180,7 +180,7 @@ message RegisterUserDataResponse {
 message UserData {
 	// The ID of the UserData
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the UserData
 	string name = 2;
@@ -210,12 +210,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

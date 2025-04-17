@@ -7,8 +7,8 @@
 package gslbv1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -1150,7 +1150,7 @@ var File_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto protoreflect.Fil
 
 const file_cloudstack_management_region_ha_gslb_v1_gslb_gen_proto_rawDesc = "" +
 	"\n" +
-	"6cloudstack/management/region/ha/gslb/v1/gslb.gen.proto\x12'cloudstack.management.region.ha.gslb.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xe4\x03\n" +
+	"6cloudstack/management/region/ha/gslb/v1/gslb.gen.proto\x12'cloudstack.management.region.ha.gslb.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\xe4\x03\n" +
 	"%AssignToGlobalLoadBalancerRuleRequest\x12\x16\n" +
 	"\x02id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x02id\x12=\n" +
 	"\x17load_balancer_rules_ids\x18\x02 \x03(\tB\x06\xbaH\x03\xc8\x01\x01R\x14loadBalancerRulesIds\x12\x9e\x01\n" +

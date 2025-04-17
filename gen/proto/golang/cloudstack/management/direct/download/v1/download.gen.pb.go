@@ -7,8 +7,8 @@
 package downloadv1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -780,7 +780,7 @@ var File_cloudstack_management_direct_download_v1_download_gen_proto protoreflec
 
 const file_cloudstack_management_direct_download_v1_download_gen_proto_rawDesc = "" +
 	"\n" +
-	";cloudstack/management/direct/download/v1/download.gen.proto\x12(cloudstack.management.direct.download.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xee\x01\n" +
+	";cloudstack/management/direct/download/v1/download.gen.proto\x12(cloudstack.management.direct.download.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\xee\x01\n" +
 	"-ListTemplateDirectDownloadCertificatesRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x17\n" +
 	"\azone_id\x18\x02 \x01(\x03R\x06zoneId\x12$\n" +

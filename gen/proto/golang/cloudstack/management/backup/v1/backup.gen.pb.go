@@ -7,8 +7,8 @@
 package backupv1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -2752,7 +2752,7 @@ var File_cloudstack_management_backup_v1_backup_gen_proto protoreflect.FileDescr
 
 const file_cloudstack_management_backup_v1_backup_gen_proto_rawDesc = "" +
 	"\n" +
-	"0cloudstack/management/backup/v1/backup.gen.proto\x12\x1fcloudstack.management.backup.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xf0\x01\n" +
+	"0cloudstack/management/backup/v1/backup.gen.proto\x12\x1fcloudstack.management.backup.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\xf0\x01\n" +
 	"+AssignVirtualMachineToBackupOfferingRequest\x12\x1b\n" +
 	"\x05vm_id\x18\x01 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\x04vmId\x12'\n" +
 	"\voffering_id\x18\x02 \x01(\x03B\x06\xbaH\x03\xc8\x01\x01R\n" +

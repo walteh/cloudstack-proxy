@@ -7,8 +7,8 @@
 package ipv6v1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -1033,7 +1033,7 @@ var File_cloudstack_management_ipv6_v1_ipv6_gen_proto protoreflect.FileDescripto
 
 const file_cloudstack_management_ipv6_v1_ipv6_gen_proto_rawDesc = "" +
 	"\n" +
-	",cloudstack/management/ipv6/v1/ipv6.gen.proto\x12\x1dcloudstack.management.ipv6.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xb0\x04\n" +
+	",cloudstack/management/ipv6/v1/ipv6.gen.proto\x12\x1dcloudstack.management.ipv6.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\xb0\x04\n" +
 	"\x1dCreateIpv6FirewallRuleRequest\x12\"\n" +
 	"\bprotocol\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bprotocol\x127\n" +
 	"\x11public_start_port\x18\x02 \x01(\x05B\v\xbaH\b\x1a\x06\x18\xff\xff\x03(\x01R\x0fpublicStartPort\x123\n" +

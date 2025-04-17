@@ -29,7 +29,7 @@ import (
 	"fmt"
 	"sync"
 
-	pvcel "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate/protovalidate/cel"
+	pvcel "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate/protovalidate/cel"
 	"github.com/google/cel-go/cel"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"

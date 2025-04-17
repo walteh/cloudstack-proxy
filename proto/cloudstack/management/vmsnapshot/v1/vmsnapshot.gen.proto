@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.vmsnapshot.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // VmsnapshotService provides operations for managing Vmsnapshots
@@ -41,19 +41,19 @@ service VmsnapshotService {
 message CreateVMSnapshotRequest {
 	// The ID of the vm
 	int64 vm_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The description of the snapshot
 	string description = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 1024
 	];
 
 	// The display name of the snapshot
 	string display_name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// snapshot memory if true
@@ -71,7 +71,7 @@ message CreateVMSnapshotRequest {
 
 	//
 	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -88,7 +88,7 @@ message CreateVMSnapshotResponse {
 message DeleteVMSnapshotRequest {
 	// The ID of the VM snapshot
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -96,7 +96,7 @@ message DeleteVMSnapshotRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -125,8 +125,8 @@ message ListVMSnapshotRequest {
 
 	// lists snapshot by snapshot name or display name
 	string vm_snapshot_name = 5 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// List resources by tags (key/value pairs)
@@ -137,7 +137,7 @@ message ListVMSnapshotRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 8 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -172,7 +172,7 @@ message ListVMSnapshotRequest {
 
 // ListVMSnapshotResponse represents the response from list virtual machine snapshot by conditions
 message ListVMSnapshotResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of VMSnapshots
 	repeated VMSnapshot items = 1;
 
@@ -186,13 +186,13 @@ message RevertToVMSnapshotRequest {
 	bool run_as_admin = 1;
 	// The ID of the vm snapshot
 	int64 vm_snap_shot_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	//
 	int64 start_event_id = 3;
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 5;
@@ -208,7 +208,7 @@ message RevertToVMSnapshotResponse {
 message RevertToVMSnapshotCmdByAdminRequest {
 	// The ID of the vm snapshot
 	int64 vm_snap_shot_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -216,7 +216,7 @@ message RevertToVMSnapshotCmdByAdminRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -233,7 +233,7 @@ message RevertToVMSnapshotCmdByAdminResponse {
 message VMSnapshot {
 	// The ID of the VMSnapshot
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the VMSnapshot
 	string name = 2;
@@ -263,12 +263,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

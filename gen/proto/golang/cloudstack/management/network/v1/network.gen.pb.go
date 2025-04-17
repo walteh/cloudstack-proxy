@@ -7,8 +7,8 @@
 package networkv1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -12653,7 +12653,7 @@ var File_cloudstack_management_network_v1_network_gen_proto protoreflect.FileDes
 
 const file_cloudstack_management_network_v1_network_gen_proto_rawDesc = "" +
 	"\n" +
-	"2cloudstack/management/network/v1/network.gen.proto\x12 cloudstack.management.network.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\xf9\x01\n" +
+	"2cloudstack/management/network/v1/network.gen.proto\x12 cloudstack.management.network.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\xf9\x01\n" +
 	"\x17AddNetworkDeviceRequest\x12\x12\n" +
 	"\x04type\x18\x01 \x01(\tR\x04type\x12g\n" +
 	"\n" +

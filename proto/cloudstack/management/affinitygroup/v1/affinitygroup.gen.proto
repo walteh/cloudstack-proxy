@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.affinitygroup.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // AffinitygroupService provides operations for managing Affinitygroups
@@ -55,20 +55,20 @@ message CreateAffinityGroupRequest {
 
 	// optional description of the affinity group
 	string description = 4 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 1024
 	];
 
 	// name of the affinity group
 	string affinity_group_name = 5 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// Type of the affinity group from the available affinity/anti-affinity group types
 	string affinity_group_type = 6 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -76,7 +76,7 @@ message CreateAffinityGroupRequest {
 
 	//
 	string injected_job_id = 8 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -102,8 +102,8 @@ message DeleteAffinityGroupRequest {
 
 	// The name of the affinity group. Mutually exclusive with ID parameter
 	string name = 4 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the project of the affinity group
@@ -114,7 +114,7 @@ message DeleteAffinityGroupRequest {
 
 	//
 	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -144,7 +144,7 @@ message ListAffinityGroupTypesRequest {
 
 // ListAffinityGroupTypesResponse represents the response from lists affinity group types available
 message ListAffinityGroupTypesResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of AffinityGroupTypes
 	repeated AffinityGroupType items = 1;
 
@@ -156,8 +156,8 @@ message ListAffinityGroupTypesResponse {
 message ListAffinityGroupsRequest {
 	// lists affinity groups by name
 	string affinity_group_name = 1 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// lists affinity groups by virtual machine ID
@@ -174,7 +174,7 @@ message ListAffinityGroupsRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 6 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -209,7 +209,7 @@ message ListAffinityGroupsRequest {
 
 // ListAffinityGroupsResponse represents the response from lists affinity groups
 message ListAffinityGroupsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of AffinityGroups
 	repeated AffinityGroup items = 1;
 
@@ -223,7 +223,7 @@ message UpdateVMAffinityGroupRequest {
 	bool run_as_admin = 1;
 	// The ID of the virtual machine
 	int64 id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// comma separated list of affinity groups id that are going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupnames parameter
 	repeated string affinity_group_id_list = 3;
@@ -233,7 +233,7 @@ message UpdateVMAffinityGroupRequest {
 	int64 start_event_id = 5;
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 7;
@@ -249,7 +249,7 @@ message UpdateVMAffinityGroupResponse {
 message UpdateVMAffinityGroupCmdByAdminRequest {
 	// The ID of the virtual machine
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// comma separated list of affinity groups id that are going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupnames parameter
@@ -263,7 +263,7 @@ message UpdateVMAffinityGroupCmdByAdminRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -280,7 +280,7 @@ message UpdateVMAffinityGroupCmdByAdminResponse {
 message AffinityGroup {
 	// The ID of the AffinityGroup
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the AffinityGroup
 	string name = 2;
@@ -296,7 +296,7 @@ message AffinityGroup {
 message AffinityGroupType {
 	// The ID of the AffinityGroupType
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the AffinityGroupType
 	string name = 2;
@@ -326,12 +326,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

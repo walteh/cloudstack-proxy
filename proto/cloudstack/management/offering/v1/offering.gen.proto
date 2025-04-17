@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.offering.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // OfferingService provides operations for managing Offerings
@@ -66,9 +66,9 @@ message CreateDiskOfferingRequest {
 
 	// name of the disk offering
 	string offering_name = 3 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// tags for the disk offering
@@ -197,9 +197,9 @@ message CreateServiceOfferingRequest {
 
 	// the name of the service offering
 	string service_offering_name = 6 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the HA for the service offering
@@ -362,7 +362,7 @@ message CreateServiceOfferingResponse {
 message DeleteDiskOfferingRequest {
 	// ID of the disk offering
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -379,7 +379,7 @@ message DeleteDiskOfferingResponse {
 message DeleteServiceOfferingRequest {
 	// the ID of the service offering
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -396,7 +396,7 @@ message DeleteServiceOfferingResponse {
 message IsAccountAllowedToCreateOfferingsWithTagsRequest {
 	// Account UUID
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -416,8 +416,8 @@ message ListDiskOfferingsRequest {
 
 	// name of the disk offering
 	string disk_offering_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// id of zone disk offering is associated with
@@ -448,7 +448,7 @@ message ListDiskOfferingsRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 11 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -483,7 +483,7 @@ message ListDiskOfferingsRequest {
 
 // ListDiskOfferingsResponse represents the response from lists all available disk offerings.
 message ListDiskOfferingsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of DiskOfferings
 	repeated DiskOffering items = 1;
 
@@ -498,8 +498,8 @@ message ListServiceOfferingsRequest {
 
 	// name of the service offering
 	string service_offering_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the ID of the virtual machine. Pass this in if you want to see the available service offering that a virtual machine can be changed to.
@@ -544,7 +544,7 @@ message ListServiceOfferingsRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 15 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -579,7 +579,7 @@ message ListServiceOfferingsRequest {
 
 // ListServiceOfferingsResponse represents the response from lists all available service offerings.
 message ListServiceOfferingsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of ServiceOfferings
 	repeated ServiceOffering items = 1;
 
@@ -594,13 +594,13 @@ message UpdateDiskOfferingRequest {
 
 	// ID of the disk offering
 	int64 id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// updates name of the disk offering with this value
 	string disk_offering_name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// sort key of the disk offering, integer
@@ -613,12 +613,12 @@ message UpdateDiskOfferingRequest {
 
 	// the ID of the containing domain(s) as comma separated string, public for public offerings
 	string domain_ids = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// the ID of the containing zone(s) as comma separated string, all for all zones offerings
 	string zone_ids = 7 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// comma-separated list of tags for the disk offering, tags should match with existing storage pool tags
@@ -680,7 +680,7 @@ message UpdateDiskOfferingResponse {
 message UpdateServiceOfferingRequest {
 	// the ID of the service offering to be updated
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the display text of the service offering to be updated
@@ -688,8 +688,8 @@ message UpdateServiceOfferingRequest {
 
 	// the name of the service offering to be updated
 	string service_offering_name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// sort key of the service offering, integer
@@ -697,12 +697,12 @@ message UpdateServiceOfferingRequest {
 
 	// the ID of the containing domain(s) as comma separated string, public for public offerings
 	string domain_ids = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// the ID of the containing zone(s) as comma separated string, all for all zones offerings
 	string zone_ids = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// comma-separated list of tags for the service offering, tags should match with existing storage pool tags
@@ -733,7 +733,7 @@ message UpdateServiceOfferingResponse {
 message DiskOffering {
 	// The ID of the DiskOffering
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the DiskOffering
 	string name = 2;
@@ -749,7 +749,7 @@ message DiskOffering {
 message ServiceOffering {
 	// The ID of the ServiceOffering
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the ServiceOffering
 	string name = 2;
@@ -791,12 +791,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job

@@ -7,8 +7,8 @@
 package iconv1
 
 import (
+	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/buf/validate"
 	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/annotations"
-	_ "github.com/walteh/cloudstack-proxy/gen/proto/golang/cloudstack/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/descriptorpb"
@@ -592,7 +592,7 @@ var File_cloudstack_management_resource_icon_v1_icon_gen_proto protoreflect.File
 
 const file_cloudstack_management_resource_icon_v1_icon_gen_proto_rawDesc = "" +
 	"\n" +
-	"5cloudstack/management/resource/icon/v1/icon.gen.proto\x12&cloudstack.management.resource.icon.v1\x1a(cloudstack/annotations/annotations.proto\x1a\"cloudstack/validate/validate.proto\x1a google/protobuf/descriptor.proto\"\x98\x01\n" +
+	"5cloudstack/management/resource/icon/v1/icon.gen.proto\x12&cloudstack.management.resource.icon.v1\x1a\x1bbuf/validate/validate.proto\x1a(cloudstack/annotations/annotations.proto\x1a google/protobuf/descriptor.proto\"\x98\x01\n" +
 	"\x19DeleteResourceIconRequest\x12)\n" +
 	"\fresource_ids\x18\x01 \x03(\tB\x06\xbaH\x03\xc8\x01\x01R\vresourceIds\x12+\n" +
 	"\rresource_type\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\fresourceType\x12#\n" +

@@ -2,8 +2,8 @@ edition = "2023";
 
 package cloudstack.management.network.v1;
 
+import "buf/validate/validate.proto";
 import "cloudstack/annotations/annotations.proto";
-import "cloudstack/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 
 // NetworkService provides operations for managing Networks
@@ -361,7 +361,7 @@ message AddNetworkDeviceResponse {
 message AddNetworkServiceProviderRequest {
 	// the Physical Network ID to add the provider to
 	int64 physical_network_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the destination Physical Network ID to bridge to
@@ -369,9 +369,9 @@ message AddNetworkServiceProviderRequest {
 
 	// the name for the physical network service provider
 	string name = 3 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the list of services to be enabled for this physical network service provider
@@ -382,7 +382,7 @@ message AddNetworkServiceProviderRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -399,12 +399,12 @@ message AddNetworkServiceProviderResponse {
 message CreateGuestNetworkIpv6PrefixRequest {
 	// UUID of zone to which the IPv6 prefix belongs to.
 	int64 zone_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The /56 or higher IPv6 CIDR for network prefix.
 	string prefix = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -412,7 +412,7 @@ message CreateGuestNetworkIpv6PrefixRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -429,7 +429,7 @@ message CreateGuestNetworkIpv6PrefixResponse {
 message CreateIpv4SubnetForGuestNetworkRequest {
 	// The zone Ipv4 subnet which the IPv4 subnet belongs to.
 	int64 parent_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The CIDR of this Ipv4 subnet.
@@ -443,7 +443,7 @@ message CreateIpv4SubnetForGuestNetworkRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -460,12 +460,12 @@ message CreateIpv4SubnetForGuestNetworkResponse {
 message CreateIpv4SubnetForZoneRequest {
 	// UUID of the zone which the IPv4 subnet belongs to.
 	int64 zone_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The CIDR of the IPv4 subnet.
 	string subnet = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// account who will own the IPv4 subnet
@@ -482,7 +482,7 @@ message CreateIpv4SubnetForZoneRequest {
 
 	//
 	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -499,29 +499,29 @@ message CreateIpv4SubnetForZoneResponse {
 message CreateManagementNetworkIpRangeRequest {
 	// UUID of POD, where the IP range belongs to.
 	int64 pod_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The gateway for the management network.
 	string gateway = 2 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// The netmask for the management network.
 	string netmask = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The starting IP address.
 	string start_ip = 4 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// The ending IP address.
 	string end_ip = 5 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// Specify if range is dedicated for CPVM and SSVM.
@@ -537,7 +537,7 @@ message CreateManagementNetworkIpRangeRequest {
 
 	//
 	string injected_job_id = 9 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -556,35 +556,35 @@ message CreateNetworkRequest {
 	bool run_as_admin = 1;
 	// the name of the network
 	string name = 2 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// the display text of the network
 	string display_text = 3;
 	// the network offering ID
 	int64 network_offering_id = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// the zone ID for the network
 	int64 zone_id = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// the physical network ID the network belongs to
 	int64 physical_network_id = 6;
 	// the gateway of the network. Required for shared networks and isolated networks when it belongs to VPC
 	string gateway = 7 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 	// the netmask of the network. Required for shared networks and isolated networks when it belongs to VPC
 	string netmask = 8;
 	// the beginning IP address in the network IP range
 	string start_ip = 9 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 	// the ending IP address in the network IP range. If not specified, will be defaulted to startIP
 	string end_ip = 10 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 	// the isolated private VLAN for this network
 	string isolated_pvlan = 11;
@@ -608,27 +608,27 @@ message CreateNetworkRequest {
 	int64 vpc_id = 19;
 	// Tungsten-Fabric virtual router the network belongs to
 	string tungsten_virtual_router_uuid = 20 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// the beginning IPv6 address in the IPv6 network range
 	string start_ipv6 = 21 [
-		(validate.field).string.ipv6 = true
+		(buf.validate.field).string.ipv6 = true
 	];
 	// the ending IPv6 address in the IPv6 network range
 	string end_ipv6 = 22 [
-		(validate.field).string.ipv6 = true
+		(buf.validate.field).string.ipv6 = true
 	];
 	// the gateway of the IPv6 network. Required for Shared networks
 	string ip6_gateway = 23 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 	// the CIDR of IPv6 network, must be at least /64
 	string ip6_cidr = 24 [
-		(validate.field).string.ipv4_prefix = true
+		(buf.validate.field).string.ipv4_prefix = true
 	];
 	// ID of the network in an external system.
 	string external_id = 25 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// an optional field, whether to the display the network to the end user or not.
 	bool display_network = 26 [
@@ -648,18 +648,18 @@ message CreateNetworkRequest {
 	string ip4_dns2 = 32;
 	// the first IPv6 DNS for the network
 	string ip6_dns1 = 33 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 	// the second IPv6 DNS for the network
 	string ip6_dns2 = 34 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 	/*
 	 * IPV4 address to be assigned to the public interface of the network router. This address will be used as source NAT address for the network.
 	 * If an address is given and it cannot be acquired, an error will be returned and the network won´t be implemented,
 	 */
 	string source_nat_i_p = 35 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 	// the CIDR size of IPv4 network. For regular users, this is required for isolated networks with ROUTED mode.
 	int32 cidr_size = 36;
@@ -679,19 +679,19 @@ message CreateNetworkResponse {
 message CreateNetworkACLRequest {
 	// the protocol for the ACL rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number
 	string protocol = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the starting port of ACL
 	int32 public_start_port = 2 [
-		(validate.field).int32.gte = 1,
-		(validate.field).int32.lte = 65535
+		(buf.validate.field).int32.gte = 1,
+		(buf.validate.field).int32.lte = 65535
 	];
 
 	// the ending port of ACL
 	int32 public_end_port = 3 [
-		(validate.field).int32.gte = 1,
-		(validate.field).int32.lte = 65535
+		(buf.validate.field).int32.gte = 1,
+		(buf.validate.field).int32.lte = 65535
 	];
 
 	// the CIDR list to allow traffic from/to. Multiple entries must be separated by a single comma character (,).
@@ -731,7 +731,7 @@ message CreateNetworkACLRequest {
 
 	//
 	string injected_job_id = 15 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -748,15 +748,15 @@ message CreateNetworkACLResponse {
 message CreateNetworkACLListRequest {
 	// Name of the network ACL list
 	string name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// Description of the network ACL list
 	string description = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 1024
 	];
 
 	// ID of the VPC associated with this network ACL list
@@ -772,7 +772,7 @@ message CreateNetworkACLListRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -802,12 +802,12 @@ message CreateNetworkCmdByAdminRequest {
 
 	// IPV4 address to be assigned to a router in a shared network
 	string router_ip = 4 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// IPV6 address to be assigned to a router in a shared network
 	string router_ipv6 = 5 [
-		(validate.field).string.ipv6 = true
+		(buf.validate.field).string.ipv6 = true
 	];
 
 	// Ids of the Bgp Peer for the network
@@ -815,9 +815,9 @@ message CreateNetworkCmdByAdminRequest {
 
 	// the name of the network
 	string name = 7 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the display text of the network
@@ -825,12 +825,12 @@ message CreateNetworkCmdByAdminRequest {
 
 	// the network offering ID
 	int64 network_offering_id = 9 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the zone ID for the network
 	int64 zone_id = 10 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the physical network ID the network belongs to
@@ -838,7 +838,7 @@ message CreateNetworkCmdByAdminRequest {
 
 	// the gateway of the network. Required for shared networks and isolated networks when it belongs to VPC
 	string gateway = 12 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the netmask of the network. Required for shared networks and isolated networks when it belongs to VPC
@@ -846,12 +846,12 @@ message CreateNetworkCmdByAdminRequest {
 
 	// the beginning IP address in the network IP range
 	string start_ip = 14 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the ending IP address in the network IP range. If not specified, will be defaulted to startIP
 	string end_ip = 15 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the isolated private VLAN for this network
@@ -885,32 +885,32 @@ message CreateNetworkCmdByAdminRequest {
 
 	// Tungsten-Fabric virtual router the network belongs to
 	string tungsten_virtual_router_uuid = 25 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// the beginning IPv6 address in the IPv6 network range
 	string start_ipv6 = 26 [
-		(validate.field).string.ipv6 = true
+		(buf.validate.field).string.ipv6 = true
 	];
 
 	// the ending IPv6 address in the IPv6 network range
 	string end_ipv6 = 27 [
-		(validate.field).string.ipv6 = true
+		(buf.validate.field).string.ipv6 = true
 	];
 
 	// the gateway of the IPv6 network. Required for Shared networks
 	string ip6_gateway = 28 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the CIDR of IPv6 network, must be at least /64
 	string ip6_cidr = 29 [
-		(validate.field).string.ipv4_prefix = true
+		(buf.validate.field).string.ipv4_prefix = true
 	];
 
 	// ID of the network in an external system.
 	string external_id = 30 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// an optional field, whether to the display the network to the end user or not.
@@ -938,12 +938,12 @@ message CreateNetworkCmdByAdminRequest {
 
 	// the first IPv6 DNS for the network
 	string ip6_dns1 = 38 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the second IPv6 DNS for the network
 	string ip6_dns2 = 39 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	/*
@@ -951,7 +951,7 @@ message CreateNetworkCmdByAdminRequest {
 	 * If an address is given and it cannot be acquired, an error will be returned and the network won´t be implemented,
 	 */
 	string source_nat_i_p = 40 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the CIDR size of IPv4 network. For regular users, this is required for isolated networks with ROUTED mode.
@@ -974,9 +974,9 @@ message CreateNetworkCmdByAdminResponse {
 message CreateNetworkOfferingRequest {
 	// the name of the network offering
 	string network_offering_name = 1 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the display text of the network offering, defaults to the value of 'name'.
@@ -984,7 +984,7 @@ message CreateNetworkOfferingRequest {
 
 	// the traffic type for the network offering. Supported type in current release is GUEST only
 	string traffictype = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the tags for the network offering.
@@ -1011,8 +1011,8 @@ message CreateNetworkOfferingRequest {
 
 	// guest type of the network offering: Shared or Isolated
 	string guest_iptype = 10 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// The internet protocol of network offering. Options are ipv4 and dualstack. Default is ipv4. dualstack will create a network offering that supports both IPv4 and IPv6
@@ -1120,7 +1120,7 @@ message CreateNetworkPermissionsRequest {
 
 	// the network ID
 	int64 network_id = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// a comma delimited list of projects within owner's domain. If specified, "op" parameter has to be passed in.
@@ -1140,7 +1140,7 @@ message CreateNetworkPermissionsResponse {
 message CreatePhysicalNetworkRequest {
 	// the Zone ID for the physical network
 	int64 zone_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the VLAN for the physical network
@@ -1163,9 +1163,9 @@ message CreatePhysicalNetworkRequest {
 
 	// the name of the physical network
 	string network_name = 8 [
-		(validate.field).required       = true,
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).required       = true,
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	//
@@ -1173,7 +1173,7 @@ message CreatePhysicalNetworkRequest {
 
 	//
 	string injected_job_id = 10 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1190,18 +1190,18 @@ message CreatePhysicalNetworkResponse {
 message CreateStorageNetworkIpRangeRequest {
 	// UUID of pod where the ip range belongs to
 	int64 pod_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the beginning IP address
 	string start_ip = 2 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the ending IP address
 	string end_ip = 3 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// Optional. The vlan the ip range sits on, default to Null when it is not specified which means your network is not on any Vlan. This is mainly for Vmware as other hypervisors can directly retrieve bridge from physical network traffic type table
@@ -1209,13 +1209,13 @@ message CreateStorageNetworkIpRangeRequest {
 
 	// the netmask for storage network
 	string netmask = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the gateway for storage network
 	string gateway = 6 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	//
@@ -1223,7 +1223,7 @@ message CreateStorageNetworkIpRangeRequest {
 
 	//
 	string injected_job_id = 8 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1240,7 +1240,7 @@ message CreateStorageNetworkIpRangeResponse {
 message DedicateGuestVlanRangeRequest {
 	// guest vlan range to be dedicated
 	string vlan = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// account who will own the VLAN
@@ -1254,7 +1254,7 @@ message DedicateGuestVlanRangeRequest {
 
 	// physical network ID of the vlan
 	int64 physical_network_id = 5 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -1271,7 +1271,7 @@ message DedicateGuestVlanRangeResponse {
 message DedicateIpv4SubnetForZoneRequest {
 	// Id of the guest network IPv4 subnet
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// account who will own the IPv4 subnet
@@ -1288,7 +1288,7 @@ message DedicateIpv4SubnetForZoneRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1305,7 +1305,7 @@ message DedicateIpv4SubnetForZoneResponse {
 message DeleteGuestNetworkIpv6PrefixRequest {
 	// Id of the guest network IPv6 prefix
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -1313,7 +1313,7 @@ message DeleteGuestNetworkIpv6PrefixRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1330,7 +1330,7 @@ message DeleteGuestNetworkIpv6PrefixResponse {
 message DeleteIpv4SubnetForGuestNetworkRequest {
 	// Id of the guest network IPv4 subnet
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -1338,7 +1338,7 @@ message DeleteIpv4SubnetForGuestNetworkRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1355,7 +1355,7 @@ message DeleteIpv4SubnetForGuestNetworkResponse {
 message DeleteIpv4SubnetForZoneRequest {
 	// Id of the guest network IPv4 subnet
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -1363,7 +1363,7 @@ message DeleteIpv4SubnetForZoneRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1380,24 +1380,24 @@ message DeleteIpv4SubnetForZoneResponse {
 message DeleteManagementNetworkIpRangeRequest {
 	// UUID of POD, where the IP range belongs to.
 	int64 pod_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The starting IP address.
 	string start_ip = 2 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// The ending IP address.
 	string end_ip = 3 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// The vlan id the ip range sits on
 	string vlan = 4 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -1405,7 +1405,7 @@ message DeleteManagementNetworkIpRangeRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1422,7 +1422,7 @@ message DeleteManagementNetworkIpRangeResponse {
 message DeleteNetworkRequest {
 	// the ID of the network
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// Force delete a network. Network will be marked as 'Destroy' even when commands to shutdown and cleanup to the backend fails.
@@ -1435,7 +1435,7 @@ message DeleteNetworkRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1452,7 +1452,7 @@ message DeleteNetworkResponse {
 message DeleteNetworkACLRequest {
 	// the ID of the network ACL
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -1460,7 +1460,7 @@ message DeleteNetworkACLRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1477,7 +1477,7 @@ message DeleteNetworkACLResponse {
 message DeleteNetworkACLListRequest {
 	// the ID of the network ACL
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -1485,7 +1485,7 @@ message DeleteNetworkACLListRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1502,7 +1502,7 @@ message DeleteNetworkACLListResponse {
 message DeleteNetworkDeviceRequest {
 	// Id of network device to delete
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -1519,7 +1519,7 @@ message DeleteNetworkDeviceResponse {
 message DeleteNetworkOfferingRequest {
 	// the ID of the network offering
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -1536,7 +1536,7 @@ message DeleteNetworkOfferingResponse {
 message DeleteNetworkServiceProviderRequest {
 	// the ID of the network service provider
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -1544,7 +1544,7 @@ message DeleteNetworkServiceProviderRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1561,7 +1561,7 @@ message DeleteNetworkServiceProviderResponse {
 message DeletePhysicalNetworkRequest {
 	// the ID of the Physical network
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -1569,7 +1569,7 @@ message DeletePhysicalNetworkRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1586,7 +1586,7 @@ message DeletePhysicalNetworkResponse {
 message DeleteStorageNetworkIpRangeRequest {
 	// the uuid of the storage network ip range
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -1594,7 +1594,7 @@ message DeleteStorageNetworkIpRangeRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -1614,7 +1614,7 @@ message ListDedicatedGuestVlanRangesRequest {
 
 	// the account with which the guest VLAN range is associated. Must be used with the domainId parameter.
 	string account_name = 2 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -1651,7 +1651,7 @@ message ListDedicatedGuestVlanRangesRequest {
 
 // ListDedicatedGuestVlanRangesResponse represents the response from lists dedicated guest vlan ranges
 message ListDedicatedGuestVlanRangesResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of GuestVlanRanges
 	repeated GuestVlanRange items = 1;
 
@@ -1682,7 +1682,7 @@ message ListGuestNetworkIpv6PrefixesRequest {
 
 // ListGuestNetworkIpv6PrefixesResponse represents the response from lists guest network ipv6 prefixes
 message ListGuestNetworkIpv6PrefixesResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of DataCenterGuestIpv6Prefixs
 	repeated DataCenterGuestIpv6Prefix items = 1;
 
@@ -1724,7 +1724,7 @@ message ListGuestVlansRequest {
 
 // ListGuestVlansResponse represents the response from lists all guest vlans
 message ListGuestVlansResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of GuestVlans
 	repeated GuestVlan items = 1;
 
@@ -1767,7 +1767,7 @@ message ListIpv4SubnetsForGuestNetworkRequest {
 
 // ListIpv4SubnetsForGuestNetworkResponse represents the response from lists ipv4 subnets for guest networks.
 message ListIpv4SubnetsForGuestNetworkResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Ipv4SubnetForGuestNetworks
 	repeated Ipv4SubnetForGuestNetwork items = 1;
 
@@ -1788,7 +1788,7 @@ message ListIpv4SubnetsForZoneRequest {
 
 	// the account which the IPv4 subnet is dedicated to. Must be used with the domainId parameter.
 	string account_name = 4 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -1816,7 +1816,7 @@ message ListIpv4SubnetsForZoneRequest {
 
 // ListIpv4SubnetsForZoneResponse represents the response from lists ipv4 subnets for zone.
 message ListIpv4SubnetsForZoneResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of DataCenterIpv4Subnets
 	repeated DataCenterIpv4Subnet items = 1;
 
@@ -1837,8 +1837,8 @@ message ListNetworkACLListsRequest {
 
 	// list network ACLs by specified name
 	string name = 4 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// list resources by display flag; only ROOT admin is eligible to pass this parameter
@@ -1851,7 +1851,7 @@ message ListNetworkACLListsRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 7 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -1886,7 +1886,7 @@ message ListNetworkACLListsRequest {
 
 // ListNetworkACLListsResponse represents the response from lists all network acls
 message ListNetworkACLListsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of NetworkACLs
 	repeated NetworkACL items = 1;
 
@@ -1927,7 +1927,7 @@ message ListNetworkACLsRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 10 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -1962,7 +1962,7 @@ message ListNetworkACLsRequest {
 
 // ListNetworkACLsResponse represents the response from lists all network acl items
 message ListNetworkACLsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of NetworkACLItems
 	repeated NetworkACLItem items = 1;
 
@@ -1993,7 +1993,7 @@ message ListNetworkDeviceRequest {
 
 // ListNetworkDeviceResponse represents the response from list network devices
 message ListNetworkDeviceResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of NetworkDevices
 	repeated NetworkDevice items = 1;
 
@@ -2018,7 +2018,7 @@ message ListNetworkIsolationMethodsRequest {
 
 // ListNetworkIsolationMethodsResponse represents the response from lists supported methods of network isolation
 message ListNetworkIsolationMethodsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of IsolationMethods
 	repeated IsolationMethod items = 1;
 
@@ -2033,8 +2033,8 @@ message ListNetworkOfferingsRequest {
 
 	// list network offerings by name
 	string network_offering_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// list network offerings by display text
@@ -2070,7 +2070,7 @@ message ListNetworkOfferingsRequest {
 
 	// list network offerings by guest type: shared or isolated
 	string guest_ip_type = 12 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// list network offerings supporting certain services
@@ -2117,7 +2117,7 @@ message ListNetworkOfferingsRequest {
 
 // ListNetworkOfferingsResponse represents the response from lists all available network offerings.
 message ListNetworkOfferingsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of NetworkOfferings
 	repeated NetworkOffering items = 1;
 
@@ -2129,7 +2129,7 @@ message ListNetworkOfferingsResponse {
 message ListNetworkPermissionsRequest {
 	// Lists network permission by network ID
 	int64 network_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -2138,7 +2138,7 @@ message ListNetworkPermissionsRequest {
 
 // ListNetworkPermissionsResponse represents the response from list network visibility and all accounts that have permissions to view this network.
 message ListNetworkPermissionsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of NetworkPermissionss
 	repeated NetworkPermissions items = 1;
 
@@ -2150,7 +2150,7 @@ message ListNetworkPermissionsResponse {
 message ListNetworkProtocolsRequest {
 	// The option of network protocols. Supported values are: protocolnumber, icmptype.
 	string option_ = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -2159,7 +2159,7 @@ message ListNetworkProtocolsRequest {
 
 // ListNetworkProtocolsResponse represents the response from lists details of network protocols
 message ListNetworkProtocolsResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of NetworkProtocols
 	repeated NetworkProtocol items = 1;
 
@@ -2174,8 +2174,8 @@ message ListNetworkServiceProvidersRequest {
 
 	// list providers by name
 	string name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// list providers by state
@@ -2196,7 +2196,7 @@ message ListNetworkServiceProvidersRequest {
 
 // ListNetworkServiceProvidersResponse represents the response from lists network serviceproviders for a given physical network.
 message ListNetworkServiceProvidersResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Providers
 	repeated Provider items = 1;
 
@@ -2268,7 +2268,7 @@ message ListNetworksRequest {
 	int64 project_id = 22;
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 23 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -2296,7 +2296,7 @@ message ListNetworksRequest {
 
 // ListNetworksResponse represents the response from lists all available networks.
 message ListNetworksResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Networks
 	repeated Network items = 1;
 
@@ -2390,7 +2390,7 @@ message ListNetworksCmdByAdminRequest {
 
 	// list resources by account. Must be used with the domainId parameter.
 	string account_name = 23 [
-		(validate.field).cel = {
+		(buf.validate.field).cel = {
 			id:         "account_name_with_domain_id",
 			expression: "!has(account_name) || has(domain_id)",
 			message:    "account_name must be used with domain_id parameter"
@@ -2425,7 +2425,7 @@ message ListNetworksCmdByAdminRequest {
 
 // ListNetworksCmdByAdminResponse represents the response from lists all available networks.
 message ListNetworksCmdByAdminResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Networks
 	repeated Network items = 1;
 
@@ -2443,8 +2443,8 @@ message ListPhysicalNetworksRequest {
 
 	// search by name
 	string network_name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// List by keyword
@@ -2462,7 +2462,7 @@ message ListPhysicalNetworksRequest {
 
 // ListPhysicalNetworksResponse represents the response from lists physical networks
 message ListPhysicalNetworksResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of PhysicalNetworks
 	repeated PhysicalNetwork items = 1;
 
@@ -2496,7 +2496,7 @@ message ListStorageNetworkIpRangeRequest {
 
 // ListStorageNetworkIpRangeResponse represents the response from list a storage network ip range.
 message ListStorageNetworkIpRangeResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of StorageNetworkIpRanges
 	repeated StorageNetworkIpRange items = 1;
 
@@ -2508,7 +2508,7 @@ message ListStorageNetworkIpRangeResponse {
 message ListSupportedNetworkServicesRequest {
 	// network service provider name
 	string provider_name = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// network service name to list providers and capabilities of
@@ -2529,7 +2529,7 @@ message ListSupportedNetworkServicesRequest {
 
 // ListSupportedNetworkServicesResponse represents the response from lists all network services provided by cloudstack or for the given provider.
 message ListSupportedNetworkServicesResponse {
-	option (validate.message).disabled = false;
+	option (buf.validate.message).disabled = false;
 	// The list of Services
 	repeated Service items = 1;
 
@@ -2541,12 +2541,12 @@ message ListSupportedNetworkServicesResponse {
 message MigrateNetworkRequest {
 	// the ID of the network
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// network offering ID
 	int64 network_offering_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// true if previous network migration cmd failed
@@ -2559,7 +2559,7 @@ message MigrateNetworkRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -2576,12 +2576,12 @@ message MigrateNetworkResponse {
 message MigrateVPCRequest {
 	// the ID of the vpc
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// vpc offering ID
 	int64 vpc_offering_id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// network offering ids for each network in the vpc. Example: tierNetworkOfferings[0].networkId=networkId1&tierNetworkOfferings[0].networkOfferingId=newNetworkofferingId1&tierNetworkOfferings[1].networkId=networkId2&tierNetworkOfferings[1].networkOfferingId=newNetworkofferingId2
@@ -2597,7 +2597,7 @@ message MigrateVPCRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -2614,18 +2614,18 @@ message MigrateVPCResponse {
 message MoveNetworkAclItemRequest {
 	// The ID of the network ACL rule that is being moved to a new position.
 	string uuid_rule_being_moved = 1 [
-		(validate.field).required    = true,
-		(validate.field).string.uuid = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The ID of the first rule that is right before the new position where the rule being moved is going to be placed. This value can be 'NULL' if the rule is being moved to the first position of the network ACL list.
 	string previous_acl_rule_uuid = 2 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The ID of the rule that is right after the new position where the rule being moved is going to be placed. This value can be 'NULL' if the rule is being moved to the last position of the network ACL list.
 	string next_acl_rule_uuid = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// Md5 hash used to check the consistency of the ACL rule list before applying the ACL rule move. This check is useful to manage concurrency problems that may happen when multiple users are editing the same ACL rule listing. The parameter is not required. Therefore, if the user does not send it, they assume the risk of moving ACL rules without checking the consistency of the access control list before executing the move. We use MD5 hash function on a String that is composed of all UUIDs of the ACL rules in concatenated in their respective order (order defined via 'number' field).
@@ -2633,7 +2633,7 @@ message MoveNetworkAclItemRequest {
 
 	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
 	string custom_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -2641,7 +2641,7 @@ message MoveNetworkAclItemRequest {
 
 	//
 	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -2658,7 +2658,7 @@ message MoveNetworkAclItemResponse {
 message ReleaseDedicatedGuestVlanRangeRequest {
 	// the ID of the dedicated guest vlan range
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -2666,7 +2666,7 @@ message ReleaseDedicatedGuestVlanRangeRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -2683,7 +2683,7 @@ message ReleaseDedicatedGuestVlanRangeResponse {
 message ReleaseDedicatedIpv4SubnetForZoneRequest {
 	// Id of the guest network IPv4 subnet
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -2691,7 +2691,7 @@ message ReleaseDedicatedIpv4SubnetForZoneRequest {
 
 	//
 	string injected_job_id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -2714,7 +2714,7 @@ message RemoveNetworkPermissionsRequest {
 
 	// the network ID
 	int64 network_id = 3 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// a comma delimited list of projects within owner's domain. If specified, "op" parameter has to be passed in.
@@ -2734,7 +2734,7 @@ message RemoveNetworkPermissionsResponse {
 message ReplaceNetworkACLListRequest {
 	// the ID of the network ACL
 	int64 acl_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the ID of the network
@@ -2748,7 +2748,7 @@ message ReplaceNetworkACLListRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -2765,7 +2765,7 @@ message ReplaceNetworkACLListResponse {
 message ResetNetworkPermissionsRequest {
 	// the network ID
 	int64 network_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -2782,7 +2782,7 @@ message ResetNetworkPermissionsResponse {
 message RestartNetworkRequest {
 	// The ID of the network to restart.
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// If cleanup old network elements
@@ -2805,7 +2805,7 @@ message RestartNetworkRequest {
 
 	//
 	string injected_job_id = 6 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -2822,12 +2822,12 @@ message RestartNetworkResponse {
 message UpdateIpv4SubnetForZoneRequest {
 	// Id of the guest network IPv4 subnet
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The new CIDR of the IPv4 subnet.
 	string subnet = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	//
@@ -2835,7 +2835,7 @@ message UpdateIpv4SubnetForZoneRequest {
 
 	//
 	string injected_job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -2854,12 +2854,12 @@ message UpdateNetworkRequest {
 	bool run_as_admin = 1;
 	// the ID of the network
 	int64 id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 	// the new name for the network
 	string name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 	// the new display text for the network
 	string display_text = 4;
@@ -2895,25 +2895,25 @@ message UpdateNetworkRequest {
 	string ip4_dns2 = 15;
 	// the first IPv6 DNS for the network. Empty string will update the first IPv6 DNS with the value from the zone
 	string ip6_dns1 = 16 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 	// the second IPv6 DNS for the network. Empty string will update the second IPv6 DNS with the value from the zone
 	string ip6_dns2 = 17 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 	// IPV4 address to be assigned to the public interface of the network router. This address must already be acquired for this network
 	string source_nat_i_p = 18 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
 	string custom_id = 19 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	int64 start_event_id = 20;
 	//
 	string injected_job_id = 21 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	//
 	string response_type = 22;
@@ -2929,7 +2929,7 @@ message UpdateNetworkResponse {
 message UpdateNetworkACLItemRequest {
 	// the ID of the network ACL item
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the protocol for the ACL rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number
@@ -2937,14 +2937,14 @@ message UpdateNetworkACLItemRequest {
 
 	// the starting port of ACL
 	int32 public_start_port = 3 [
-		(validate.field).int32.gte = 1,
-		(validate.field).int32.lte = 65535
+		(buf.validate.field).int32.gte = 1,
+		(buf.validate.field).int32.lte = 65535
 	];
 
 	// the ending port of ACL
 	int32 public_end_port = 4 [
-		(validate.field).int32.gte = 1,
-		(validate.field).int32.lte = 65535
+		(buf.validate.field).int32.gte = 1,
+		(buf.validate.field).int32.lte = 65535
 	];
 
 	// the cidr list to allow traffic from/to. Multiple entries must be separated by a single comma character (,).
@@ -2980,7 +2980,7 @@ message UpdateNetworkACLItemRequest {
 
 	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
 	string custom_id = 14 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -2988,7 +2988,7 @@ message UpdateNetworkACLItemRequest {
 
 	//
 	string injected_job_id = 16 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -3005,7 +3005,7 @@ message UpdateNetworkACLItemResponse {
 message UpdateNetworkACLListRequest {
 	// the ID of the network ACL
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// an optional field, whether to the display the list to the end user or not
@@ -3015,19 +3015,19 @@ message UpdateNetworkACLListRequest {
 
 	// Name of the network ACL list
 	string name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// Description of the network ACL list
 	string description = 4 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 1024
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 1024
 	];
 
 	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
 	string custom_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -3035,7 +3035,7 @@ message UpdateNetworkACLListRequest {
 
 	//
 	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -3057,13 +3057,13 @@ message UpdateNetworkCmdByAdminRequest {
 
 	// the ID of the network
 	int64 id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the new name for the network
 	string name = 3 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the new display text for the network
@@ -3112,22 +3112,22 @@ message UpdateNetworkCmdByAdminRequest {
 
 	// the first IPv6 DNS for the network. Empty string will update the first IPv6 DNS with the value from the zone
 	string ip6_dns1 = 16 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the second IPv6 DNS for the network. Empty string will update the second IPv6 DNS with the value from the zone
 	string ip6_dns2 = 17 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// IPV4 address to be assigned to the public interface of the network router. This address must already be acquired for this network
 	string source_nat_i_p = 18 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only
 	string custom_id = 19 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -3135,7 +3135,7 @@ message UpdateNetworkCmdByAdminRequest {
 
 	//
 	string injected_job_id = 21 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -3155,8 +3155,8 @@ message UpdateNetworkOfferingRequest {
 
 	// the name of the network offering
 	string network_offering_name = 2 [
-		(validate.field).string.min_len = 1,
-		(validate.field).string.max_len = 255
+		(buf.validate.field).string.min_len = 1,
+		(buf.validate.field).string.max_len = 255
 	];
 
 	// the display text of the network offering
@@ -3184,12 +3184,12 @@ message UpdateNetworkOfferingRequest {
 
 	// the ID of the containing domain(s) as comma separated string, public for public offerings
 	string domain_ids = 10 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// the ID of the containing zone(s) as comma separated string, all for all zones offerings
 	string zone_ids = 11 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -3209,7 +3209,7 @@ message UpdateNetworkServiceProviderRequest {
 
 	// network service provider id
 	int64 id = 2 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the list of services to be enabled for this physical network service provider
@@ -3220,7 +3220,7 @@ message UpdateNetworkServiceProviderRequest {
 
 	//
 	string injected_job_id = 5 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -3237,7 +3237,7 @@ message UpdateNetworkServiceProviderResponse {
 message UpdatePhysicalNetworkRequest {
 	// physical network id
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the speed for the physical network[1G/10G]
@@ -3257,7 +3257,7 @@ message UpdatePhysicalNetworkRequest {
 
 	//
 	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -3274,29 +3274,29 @@ message UpdatePhysicalNetworkResponse {
 message UpdatePodManagementNetworkIpRangeRequest {
 	// UUID of POD, where the IP range belongs to.
 	int64 pod_id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// The current starting IP address.
 	string current_start_ip = 2 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// The current ending IP address.
 	string current_end_ip = 3 [
-		(validate.field).required    = true,
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).required    = true,
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// The new starting IP address.
 	string new_start_ip = 4 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// The new ending IP address.
 	string new_end_ip = 5 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	//
@@ -3304,7 +3304,7 @@ message UpdatePodManagementNetworkIpRangeRequest {
 
 	//
 	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -3321,17 +3321,17 @@ message UpdatePodManagementNetworkIpRangeResponse {
 message UpdateStorageNetworkIpRangeRequest {
 	// UUID of storage network ip range
 	int64 id = 1 [
-		(validate.field).required = true
+		(buf.validate.field).required = true
 	];
 
 	// the beginning IP address
 	string start_ip = 2 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// the ending IP address
 	string end_ip = 3 [
-		(validate.field).string.ipv4 = true
+		(buf.validate.field).string.ipv4 = true
 	];
 
 	// Optional. the vlan the ip range sits on
@@ -3345,7 +3345,7 @@ message UpdateStorageNetworkIpRangeRequest {
 
 	//
 	string injected_job_id = 7 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	//
@@ -3362,7 +3362,7 @@ message UpdateStorageNetworkIpRangeResponse {
 message DataCenterGuestIpv6Prefix {
 	// The ID of the DataCenterGuestIpv6Prefix
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the DataCenterGuestIpv6Prefix
 	string name = 2;
@@ -3378,7 +3378,7 @@ message DataCenterGuestIpv6Prefix {
 message DataCenterIpv4Subnet {
 	// The ID of the DataCenterIpv4Subnet
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the DataCenterIpv4Subnet
 	string name = 2;
@@ -3394,7 +3394,7 @@ message DataCenterIpv4Subnet {
 message GuestVlan {
 	// The ID of the GuestVlan
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the GuestVlan
 	string name = 2;
@@ -3410,7 +3410,7 @@ message GuestVlan {
 message GuestVlanRange {
 	// The ID of the GuestVlanRange
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the GuestVlanRange
 	string name = 2;
@@ -3426,7 +3426,7 @@ message GuestVlanRange {
 message Ipv4SubnetForGuestNetwork {
 	// The ID of the Ipv4SubnetForGuestNetwork
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Ipv4SubnetForGuestNetwork
 	string name = 2;
@@ -3442,7 +3442,7 @@ message Ipv4SubnetForGuestNetwork {
 message IsolationMethod {
 	// The ID of the IsolationMethod
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the IsolationMethod
 	string name = 2;
@@ -3458,7 +3458,7 @@ message IsolationMethod {
 message Network {
 	// The ID of the Network
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Network
 	string name = 2;
@@ -3474,7 +3474,7 @@ message Network {
 message NetworkACL {
 	// The ID of the NetworkACL
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the NetworkACL
 	string name = 2;
@@ -3490,7 +3490,7 @@ message NetworkACL {
 message NetworkACLItem {
 	// The ID of the NetworkACLItem
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the NetworkACLItem
 	string name = 2;
@@ -3506,7 +3506,7 @@ message NetworkACLItem {
 message NetworkDevice {
 	// The ID of the NetworkDevice
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the NetworkDevice
 	string name = 2;
@@ -3522,7 +3522,7 @@ message NetworkDevice {
 message NetworkOffering {
 	// The ID of the NetworkOffering
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the NetworkOffering
 	string name = 2;
@@ -3538,7 +3538,7 @@ message NetworkOffering {
 message NetworkPermissions {
 	// The ID of the NetworkPermissions
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the NetworkPermissions
 	string name = 2;
@@ -3554,7 +3554,7 @@ message NetworkPermissions {
 message NetworkProtocol {
 	// The ID of the NetworkProtocol
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the NetworkProtocol
 	string name = 2;
@@ -3570,7 +3570,7 @@ message NetworkProtocol {
 message PhysicalNetwork {
 	// The ID of the PhysicalNetwork
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the PhysicalNetwork
 	string name = 2;
@@ -3586,7 +3586,7 @@ message PhysicalNetwork {
 message Provider {
 	// The ID of the Provider
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Provider
 	string name = 2;
@@ -3602,7 +3602,7 @@ message Provider {
 message Service {
 	// The ID of the Service
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the Service
 	string name = 2;
@@ -3618,7 +3618,7 @@ message Service {
 message StorageNetworkIpRange {
 	// The ID of the StorageNetworkIpRange
 	string id = 1 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 	// The name of the StorageNetworkIpRange
 	string name = 2;
@@ -3662,12 +3662,12 @@ message Result {
 
 	// The ID of the resource affected by the operation
 	string id = 3 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The job ID for an async operation
 	string job_id = 4 [
-		(validate.field).string.uuid = true
+		(buf.validate.field).string.uuid = true
 	];
 
 	// The status of the job
