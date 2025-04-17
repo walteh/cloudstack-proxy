@@ -11,8 +11,7 @@ modules:
 breaking:
     use:
       - FILE
-deps:
-  - buf.build/googleapis/googleapis
+deps: []
 lint:
     use:
       - DEFAULT
@@ -35,3 +34,9 @@ buf3pd:
         repo: github.com/bufbuild/protovalidate
         path: proto/protovalidate
         ref: heads/main
+      - type: git
+        repo: github.com/googleapis/googleapis
+        path: .
+        filter:
+          - "google/api/**"
+        ref: heads/master
