@@ -9,7 +9,6 @@ import (
 	"os/exec"
 	"path/filepath"
 	"slices"
-	"sort"
 	"strings"
 
 	"github.com/bmatcuk/doublestar/v4"
@@ -119,7 +118,7 @@ func main() {
 		var tryLoc *DepFiles
 
 		// if storedLockDep != nil {
-		tryLoc, ok, err = NewDepFilesFromLocal(ctx, cfg, storedLockDep)
+		tryLoc, ok, err = NewDepFilesFromLocal(ctx, cfg, dep)
 		if err != nil {
 			log.Fatal().Err(errors.Errorf("processing git dependency: %w", err)).Msg("failed to process git dependency")
 		}
@@ -180,7 +179,7 @@ func main() {
 	}
 
 	for _, depFiles := range depFilesToUpdate {
-		err := depFiles.WriteToDir(outputPath)
+		err := depFiles.WriteToDir(filepath.Join(outputPath, filepath.Base(depFiles.DepInfo.Repo)))
 		if err != nil {
 			log.Fatal().Err(errors.Errorf("writing dependency files: %w", err)).Msg("failed to write dependency files")
 		}
@@ -264,13 +263,9 @@ type DepFiles struct {
 	commitMetadata string
 }
 
-func NewDepFilesFromLocal(ctx context.Context, cfg *Buf3pdConfig, storedLockDep *LockDep) (*DepFiles, bool, error) {
+func NewDepFilesFromLocal(ctx context.Context, cfg *Buf3pdConfig, dep Buf3pdDep) (*DepFiles, bool, error) {
 
-	if storedLockDep == nil {
-		return nil, false, nil
-	}
-
-	pth := filepath.Join(cfg.Path, storedLockDep.Prefix)
+	pth := filepath.Join(cfg.Path, filepath.Base(dep.Repo))
 
 	zerolog.Ctx(ctx).Info().Str("path", pth).Msg("processing local dependency")
 
@@ -292,13 +287,8 @@ func NewDepFilesFromLocal(ctx context.Context, cfg *Buf3pdConfig, storedLockDep 
 	}
 
 	depFiles := &DepFiles{
-		DepInfo: Buf3pdDep{
-			Type: "local",
-			Path: storedLockDep.Path,
-			Repo: storedLockDep.Repo,
-			Ref:  storedLockDep.Ref,
-		},
-		Files: []*File{},
+		DepInfo: dep,
+		Files:   []*File{},
 	}
 
 	for _, file := range protoFiles {
@@ -308,7 +298,7 @@ func NewDepFilesFromLocal(ctx context.Context, cfg *Buf3pdConfig, storedLockDep 
 			return nil, false, errors.Errorf("reading file: %w", err)
 		}
 		depFiles.Files = append(depFiles.Files, &File{
-			Path:    filepath.Join(storedLockDep.Prefix, file),
+			Path:    file,
 			Content: content,
 		})
 	}
@@ -374,38 +364,38 @@ func (d *DepFiles) SortedFiles() []*File {
 	return d.Files
 }
 
-func longestCommonPrefix(strs []string) string {
-	var longestPrefix string = ""
-	var endPrefix = false
+// func longestCommonPrefix(strs []string) string {
+// 	var longestPrefix string = ""
+// 	var endPrefix = false
 
-	if len(strs) > 0 {
-		sort.Strings(strs)
-		first := string(strs[0])
-		last := string(strs[len(strs)-1])
+// 	if len(strs) > 0 {
+// 		sort.Strings(strs)
+// 		first := string(strs[0])
+// 		last := string(strs[len(strs)-1])
 
-		for i := 0; i < len(first); i++ {
-			if !endPrefix && string(last[i]) == string(first[i]) {
-				longestPrefix += string(last[i])
-			} else {
-				endPrefix = true
-			}
-		}
-	}
-	return longestPrefix
-}
+// 		for i := 0; i < len(first); i++ {
+// 			if !endPrefix && string(last[i]) == string(first[i]) {
+// 				longestPrefix += string(last[i])
+// 			} else {
+// 				endPrefix = true
+// 			}
+// 		}
+// 	}
+// 	return longestPrefix
+// }
 
-func (d *DepFiles) MostSpecificSharedPath() string {
-	files := make([]string, len(d.Files))
-	for i, file := range d.Files {
-		files[i] = file.Path
-	}
-	lcp := longestCommonPrefix(files)
-	if strings.HasSuffix(lcp, "/") {
-		return strings.TrimSuffix(lcp, "/")
-	}
+// func (d *DepFiles) MostSpecificSharedPath() string {
+// 	files := make([]string, len(d.Files))
+// 	for i, file := range d.Files {
+// 		files[i] = file.Path
+// 	}
+// 	lcp := longestCommonPrefix(files)
+// 	if strings.HasSuffix(lcp, "/") {
+// 		return strings.TrimSuffix(lcp, "/")
+// 	}
 
-	return filepath.Dir(lcp)
-}
+// 	return filepath.Dir(lcp)
+// }
 
 func (d *DepFiles) AddAllNestedProtoFiles(ctx context.Context, path string, filters ...string) error {
 	files, err := doublestar.Glob(os.DirFS(path), "**/*.proto")
@@ -524,7 +514,7 @@ func (d *DepFiles) LockEntry() (*LockDep, error) {
 		Ref:  d.DepInfo.Ref,
 		// Commit: d.Commit,
 		Digest: digest,
-		Prefix: d.MostSpecificSharedPath(),
+		// Prefix: d.MostSpecificSharedPath(),
 	}, nil
 }
 

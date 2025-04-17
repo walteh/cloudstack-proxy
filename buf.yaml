@@ -5,8 +5,10 @@ version: v2
 modules:
   - name: github.com/walteh/cloudstack-proxy/proto
     path: proto
-  - name: github.com/walteh/cloudstack-proxy/gen/proto-remotes
-    path: gen/proto-remotes
+  - name: github.com/googleapis/googleapis
+    path: gen/buf3pd/googleapis
+  - name: github.com/bufbuild/protovalidate
+    path: gen/buf3pd/protovalidate
 
 breaking:
     use:
@@ -28,7 +30,7 @@ lint:
 # yaml-language-server: $schema=https://json.schemastore.org/any.json
 
 buf3pd:
-    path: gen/proto-remotes
+    path: gen/buf3pd
     deps:
       - type: git
         repo: github.com/bufbuild/protovalidate
@@ -38,5 +40,5 @@ buf3pd:
         repo: github.com/googleapis/googleapis
         path: .
         filter:
-          - "google/api/**"
+          - "google/{api,longrunning,rpc,servicecontrol,logging,type}/**"
         ref: heads/master

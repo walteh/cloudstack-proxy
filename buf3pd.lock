@@ -5,15 +5,15 @@ deps:
       path: proto/protovalidate
       ref: heads/main
       digest: 58b59af8ca3bc462683d24f92187783146187e5876a940d9bfbb777b5db558c2
-      prefix: buf/validate
+      prefix: ""
       metadata:
         commit: c9f2cb4e4aa2676f9eaea044d36001a2676ef124
         type: git
     - repo: github.com/googleapis/googleapis
       path: .
       ref: heads/master
-      digest: f59c8a8b346a72d8e8a0000a4835f46ae4e07a3ee751d3125a7514452acf1b25
-      prefix: google/api
+      digest: 05586242093a059944000e7109957c1e23ef604abccc9f086bfa81380c7e0fde
+      prefix: ""
       metadata:
         commit: c759e924aa786f3df0e64499daf97d46a27edb31
         type: git
