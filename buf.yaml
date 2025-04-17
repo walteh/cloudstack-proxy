@@ -3,25 +3,16 @@
 version: v2
 
 modules:
-  - name: github.com/walteh/cloudstack-proxy
+  - name: github.com/walteh/cloudstack-proxy/proto
     path: proto
-  - name: github.com/walteh/cloudstack-proxy_remotes
-    path: remotes
-    # includes:
-    #   - proto/cloudstack
-#   - name: buf.build/bufbuild/protovalidate
-#     path: proto/remotes
-#     includes:
-#       - proto/remotes/buf/validate
+  - name: github.com/walteh/cloudstack-proxy/gen/proto-remotes
+    path: gen/proto-remotes
 
 breaking:
     use:
       - FILE
 deps:
   - buf.build/googleapis/googleapis
-#   - proto/remotes/buf/validate
-#   - github.com/bufbuild/protovalidate/proto/protovalidate/buf/validate:main
-# - buf.build/bufbuild/protovalidate
 lint:
     use:
       - DEFAULT
@@ -37,7 +28,10 @@ lint:
 ---
 # yaml-language-server: $schema=https://json.schemastore.org/any.json
 
-_gdeps:
-  - repo: github.com/walteh/bufbuild
-    path: protovalidate/proto/protovalidate
-    ref: heads/main
+buf3pd:
+    path: gen/proto-remotes
+    deps:
+      - type: git
+        repo: github.com/bufbuild/protovalidate
+        path: proto/protovalidate
+        ref: heads/main
