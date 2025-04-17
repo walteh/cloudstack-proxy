@@ -5,11 +5,15 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"flag"
+	"fmt"
 	"os"
 	"os/exec"
 	"path/filepath"
+	"slices"
+	"sort"
 	"strings"
 
+	"github.com/bmatcuk/doublestar/v4"
 	"github.com/rs/zerolog"
 	"gitlab.com/tozd/go/errors"
 	"gopkg.in/yaml.v3"
@@ -43,23 +47,29 @@ type BufYaml struct {
 
 // LockDep represents a dependency entry in the lock file
 type LockDep struct {
-	Type   string `yaml:"type"`
-	Repo   string `yaml:"repo"`
-	Path   string `yaml:"path"`
-	Ref    string `yaml:"ref"`
+	Repo     string          `yaml:"repo"`
+	Path     string          `yaml:"path"`
+	Ref      string          `yaml:"ref"`
+	Digest   string          `yaml:"digest"`
+	Prefix   string          `yaml:"prefix"`
+	Metadata LockDepMetadata `yaml:"metadata"`
+}
+
+type LockDepMetadata struct {
 	Commit string `yaml:"commit"`
-	Digest string `yaml:"digest"`
+	Type   string `yaml:"type"`
 }
 
 // LockFile represents the structure of the buf3pd.lock.yaml file
 type LockFile struct {
-	Version string     `yaml:"version"`
-	Deps    []*LockDep `yaml:"deps"`
+	Version        string     `yaml:"version"`
+	Deps           []*LockDep `yaml:"deps"`
+	commitMetadata string
 }
 
 func main() {
 	ctx := context.Background()
-	logger := zerolog.New(os.Stdout).With().Timestamp().Logger()
+	logger := zerolog.New(zerolog.ConsoleWriter{Out: os.Stdout}).With().Timestamp().Logger()
 	ctx = logger.WithContext(ctx)
 
 	log := zerolog.Ctx(ctx)
@@ -78,7 +88,7 @@ func main() {
 		log.Fatal().Err(errors.Errorf("resolving absolute path for workdir: %w", err)).Msg("failed to start")
 	}
 
-	cfg, err := readBuf3pdConfig(filepath.Join(absWorkDir, *bufYamlPath))
+	cfg, err := readBuf3pdConfig(ctx, filepath.Join(absWorkDir, *bufYamlPath))
 	if err != nil {
 		log.Fatal().Err(errors.Errorf("reading buf3pd config: %w", err)).Msg("failed to read buf3pd config")
 	}
@@ -89,6 +99,12 @@ func main() {
 		log.Fatal().Err(errors.Errorf("reading lock file: %w", err)).Msg("failed to read lock file")
 	}
 
+	// Create the output directory if it doesn't exist
+	outputPath := filepath.Join(absWorkDir, cfg.Path)
+	if err := os.MkdirAll(outputPath, 0755); err != nil {
+		log.Fatal().Err(errors.Errorf("creating output directory: %w", err)).Msg("failed to create output directory")
+	}
+
 	depFilesToUpdate := []*DepFiles{}
 
 	for _, dep := range cfg.Deps {
@@ -97,13 +113,25 @@ func main() {
 			continue
 		}
 
-		tryLoc, ok, err := NewDepFilesFromLocal(ctx, dep, dep.Path)
+		storedLockDep := lockFile.EntryFor(dep)
+
+		var ok bool
+		var tryLoc *DepFiles
+
+		// if storedLockDep != nil {
+		tryLoc, ok, err = NewDepFilesFromLocal(ctx, cfg, storedLockDep)
 		if err != nil {
 			log.Fatal().Err(errors.Errorf("processing git dependency: %w", err)).Msg("failed to process git dependency")
 		}
-		storedLockDep := lockFile.EntryFor(dep)
+		// }
+
+		var depFiles *DepFiles
+		var lockDep *LockDep
+
+		var skipRemote = false
 
 		if ok {
+			// Local dependency found
 			realLockDep, err := tryLoc.LockEntry()
 			if err != nil {
 				log.Fatal().Err(errors.Errorf("creating lock entry: %w", err)).Msg("failed to create lock entry")
@@ -111,21 +139,33 @@ func main() {
 
 			if storedLockDep != nil && storedLockDep.Compare(realLockDep) {
 				log.Info().Str("repo", dep.Repo).Str("path", dep.Path).Str("ref", dep.Ref).Msg("dependency already processed")
-				continue
+				skipRemote = true
+				realLockDep.Metadata = storedLockDep.Metadata
+			} else {
+				log.Warn().Any("storedLockDep", storedLockDep).Any("realLockDep", realLockDep).Msg("dependency already processed, but with different commit")
 			}
 
+			log.Info().Str("repo", dep.Repo).Str("path", dep.Path).Str("ref", dep.Ref).Msg("using local dependency")
+			depFiles = tryLoc
+			lockDep = realLockDep
 		}
 
-		log.Info().Str("repo", dep.Repo).Str("path", dep.Path).Str("ref", dep.Ref).Msg("processing git dependency")
+		if !skipRemote {
+			// No local dependency, fetch from remote
+			log.Info().Str("repo", dep.Repo).Str("path", dep.Path).Str("ref", dep.Ref).Msg("processing git dependency from remote")
 
-		depFiles, err := NewDepFilesFromRemote(dep)
-		if err != nil {
-			log.Fatal().Err(errors.Errorf("processing git dependency: %w", err)).Msg("failed to process git dependency")
-		}
+			remoteDepFiles, err := NewDepFilesFromRemote(ctx, dep)
+			if err != nil {
+				log.Fatal().Err(errors.Errorf("processing git dependency: %w", err)).Msg("failed to process git dependency")
+			}
 
-		lockDep, err := depFiles.LockEntry()
-		if err != nil {
-			log.Fatal().Err(errors.Errorf("creating lock entry: %w", err)).Msg("failed to create lock entry")
+			remoteLockDep, err := remoteDepFiles.LockEntry()
+			if err != nil {
+				log.Fatal().Err(errors.Errorf("creating lock entry: %w", err)).Msg("failed to create lock entry")
+			}
+
+			depFiles = remoteDepFiles
+			lockDep = remoteLockDep
 		}
 
 		if storedLockDep != nil {
@@ -136,11 +176,11 @@ func main() {
 
 		depFilesToUpdate = append(depFilesToUpdate, depFiles)
 
-		log.Info().Str("repo", dep.Repo).Str("commit", depFiles.Commit).Msg("successfully processed dependency")
+		log.Info().Str("repo", dep.Repo).Str("prefix", lockDep.Prefix).Msg("successfully processed dependency")
 	}
 
 	for _, depFiles := range depFilesToUpdate {
-		err := depFiles.WriteToDir(filepath.Join(absWorkDir, depFiles.DepInfo.Path))
+		err := depFiles.WriteToDir(outputPath)
 		if err != nil {
 			log.Fatal().Err(errors.Errorf("writing dependency files: %w", err)).Msg("failed to write dependency files")
 		}
@@ -181,7 +221,11 @@ func readLockFile(path string) (*LockFile, error) {
 	return &lockFile, nil
 }
 
-func readBuf3pdConfig(path string) (*Buf3pdConfig, error) {
+func readBuf3pdConfig(ctx context.Context, path string) (*Buf3pdConfig, error) {
+
+	log := zerolog.Ctx(ctx)
+
+	log.Info().Str("path", path).Msg("reading buf3pd config")
 	// Parse buf.yaml
 	bufYamlContent, err := os.ReadFile(path)
 	if err != nil {
@@ -200,57 +244,79 @@ func readBuf3pdConfig(path string) (*Buf3pdConfig, error) {
 
 	content := sections[1]
 
-	var buf3pdConfig Buf3pdConfig
+	var buf3pdConfig struct {
+		Buf3pd *Buf3pdConfig `yaml:"buf3pd"`
+	}
 	if err := yaml.Unmarshal([]byte(content), &buf3pdConfig); err != nil {
 		return nil, errors.Errorf("unmarshalling buf3pd config: %w", err)
 	}
 
-	return &buf3pdConfig, nil
+	if buf3pdConfig.Buf3pd == nil || len(buf3pdConfig.Buf3pd.Deps) == 0 {
+		return nil, errors.New("buf3pd config does not contain any dependencies")
+	}
+
+	return buf3pdConfig.Buf3pd, nil
 }
 
 type DepFiles struct {
-	DepInfo Buf3pdDep         `yaml:"dep"`
-	Files   map[string][]byte `yaml:"files"`
-	Commit  string            `yaml:"commit"`
+	DepInfo        Buf3pdDep `yaml:"dep"`
+	Files          []*File   `yaml:"files"`
+	commitMetadata string
 }
 
-func NewDepFilesFromLocal(ctx context.Context, dep Buf3pdDep, path string) (*DepFiles, bool, error) {
-	files, err := filepath.Glob(filepath.Join(path, "**/*.proto"))
+func NewDepFilesFromLocal(ctx context.Context, cfg *Buf3pdConfig, storedLockDep *LockDep) (*DepFiles, bool, error) {
+
+	if storedLockDep == nil {
+		return nil, false, nil
+	}
+
+	pth := filepath.Join(cfg.Path, storedLockDep.Prefix)
+
+	zerolog.Ctx(ctx).Info().Str("path", pth).Msg("processing local dependency")
+
+	// Check if directory exists
+	if _, err := os.Stat(pth); os.IsNotExist(err) {
+		zerolog.Ctx(ctx).Warn().Str("path", pth).Msg("directory does not exist, skipping local dependency")
+		return nil, false, nil
+	}
+
+	// Find all proto files in the directory
+	protoFiles, err := doublestar.Glob(os.DirFS(pth), "**/*.proto")
 	if err != nil {
-		return nil, false, errors.Errorf("getting files: %w", err)
+		return nil, false, errors.Errorf("walking directory: %w", err)
+	}
+
+	if len(protoFiles) == 0 {
+		zerolog.Ctx(ctx).Warn().Str("path", pth).Msg("no proto files found, skipping local dependency")
+		return nil, false, nil
 	}
 
 	depFiles := &DepFiles{
-		DepInfo: dep,
-		Files:   make(map[string][]byte),
+		DepInfo: Buf3pdDep{
+			Type: "local",
+			Path: storedLockDep.Path,
+			Repo: storedLockDep.Repo,
+			Ref:  storedLockDep.Ref,
+		},
+		Files: []*File{},
 	}
 
-	for _, file := range files {
-		content, err := os.ReadFile(file)
+	for _, file := range protoFiles {
+		fullPath := filepath.Join(pth, file)
+		content, err := os.ReadFile(fullPath)
 		if err != nil {
 			return nil, false, errors.Errorf("reading file: %w", err)
 		}
-		depFiles.Files[file] = content
-	}
-
-	depFiles.Commit = "local"
-
-	// try to get the commit hash from the commit.txt file
-	commitFile := filepath.Join(path, "commit.txt")
-	if _, err := os.Stat(commitFile); err == nil {
-		commit, err := os.ReadFile(commitFile)
-		if err != nil {
-			return nil, false, errors.Errorf("reading commit file: %w", err)
-		}
-		depFiles.Commit = strings.TrimSpace(string(commit))
-	} else {
-		zerolog.Ctx(ctx).Warn().Str("path", commitFile).Msg("commit.txt file not found, using local commit")
+		depFiles.Files = append(depFiles.Files, &File{
+			Path:    filepath.Join(storedLockDep.Prefix, file),
+			Content: content,
+		})
 	}
 
 	return depFiles, true, nil
 }
 
-func NewDepFilesFromRemote(dep Buf3pdDep) (*DepFiles, error) {
+func NewDepFilesFromRemote(ctx context.Context, dep Buf3pdDep) (*DepFiles, error) {
 	tempDir, err := os.MkdirTemp("", "buf3pd-git-")
 	if err != nil {
 		return nil, errors.Errorf("creating temp directory: %w", err)
@@ -264,7 +330,7 @@ func NewDepFilesFromRemote(dep Buf3pdDep) (*DepFiles, error) {
 	}
 
 	// fetch the tags
-	cmd = exec.Command("git", "fetch", dep.Ref)
+	cmd = exec.Command("git", "fetch", "origin", "--tags")
 	cmd.Dir = tempDir
 	if output, err := cmd.CombinedOutput(); err != nil {
 		return nil, errors.Errorf("git fetch: %w: %s", err, string(output))
@@ -287,71 +353,146 @@ func NewDepFilesFromRemote(dep Buf3pdDep) (*DepFiles, error) {
 	commit := strings.TrimSpace(string(commitHash))
 
 	depFiles := &DepFiles{
-		DepInfo: dep,
-		Files:   make(map[string][]byte),
-		Commit:  commit,
+		commitMetadata: commit,
+		DepInfo:        dep,
+		Files:          []*File{},
 	}
 
-	if err := depFiles.AddAllNestedProtoFiles(tempDir); err != nil {
+	if err := depFiles.AddAllNestedProtoFiles(ctx, filepath.Join(tempDir, dep.Path)); err != nil {
 		return nil, errors.Errorf("adding all nested proto files: %w", err)
+	}
+
+	if len(depFiles.Files) == 0 {
+		return nil, errors.New("no proto files found")
 	}
 
 	return depFiles, nil
 }
 
-func (d *DepFiles) AddAllNestedProtoFiles(path string) error {
-	files, err := filepath.Glob(filepath.Join(path, "**/*.proto"))
+func (d *DepFiles) SortedFiles() []*File {
+
+	return d.Files
+}
+
+func longestCommonPrefix(strs []string) string {
+	var longestPrefix string = ""
+	var endPrefix = false
+
+	if len(strs) > 0 {
+		sort.Strings(strs)
+		first := string(strs[0])
+		last := string(strs[len(strs)-1])
+
+		for i := 0; i < len(first); i++ {
+			if !endPrefix && string(last[i]) == string(first[i]) {
+				longestPrefix += string(last[i])
+			} else {
+				endPrefix = true
+			}
+		}
+	}
+	return longestPrefix
+}
+
+func (d *DepFiles) MostSpecificSharedPath() string {
+	files := make([]string, len(d.Files))
+	for i, file := range d.Files {
+		files[i] = file.Path
+	}
+	lcp := longestCommonPrefix(files)
+	if strings.HasSuffix(lcp, "/") {
+		return strings.TrimSuffix(lcp, "/")
+	}
+
+	return filepath.Dir(lcp)
+}
+
+func (d *DepFiles) AddAllNestedProtoFiles(ctx context.Context, path string) error {
+	files, err := doublestar.Glob(os.DirFS(path), "**/*.proto")
 	if err != nil {
 		return errors.Errorf("getting files: %w", err)
 	}
 
+	if len(files) == 0 {
+		return errors.New("no proto files found in: " + path)
+	}
+
 	for _, file := range files {
-		if err := d.AddFile(file); err != nil {
+		zerolog.Ctx(ctx).Info().Str("file", file).Str("path", path).Msg("adding file")
+
+		if err := d.AddFile(path, file); err != nil {
 			return errors.Errorf("adding file: %w", err)
 		}
 	}
 
+	slices.SortFunc(d.Files, func(a, b *File) int {
+		return strings.Compare(a.Path, b.Path)
+	})
+
 	return nil
 }
 
-func (d *DepFiles) AddFile(path string) error {
-	content, err := os.ReadFile(path)
+func (d *DepFiles) AddFile(path string, file string) error {
+	content, err := os.ReadFile(filepath.Join(path, file))
 	if err != nil {
 		return errors.Errorf("reading file: %w", err)
 	}
 
-	d.Files[path] = content
+	d.Files = append(d.Files, &File{
+		Path:    file,
+		Content: content,
+	})
 
 	return nil
 }
 
+const zeroHash = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+
 func (d *DepFiles) CalculateDigest() (string, error) {
 	hash := sha256.New()
 
-	for _, content := range d.Files {
-		_, err := hash.Write(content)
+	// ensure the files are sorted
+	slices.SortFunc(d.Files, func(a, b *File) int {
+		return strings.Compare(a.Path, b.Path)
+	})
+
+	for _, file := range d.Files {
+		fmt.Println(file.Path)
+		_, err := hash.Write([]byte(file.Path))
+		if err != nil {
+			return "", errors.Errorf("writing to hash: %w", err)
+		}
+		_, err = hash.Write(file.Content)
 		if err != nil {
 			return "", errors.Errorf("writing to hash: %w", err)
 		}
 	}
 
-	return hex.EncodeToString(hash.Sum(nil)), nil
+	out := hex.EncodeToString(hash.Sum(nil))
+
+	if out == zeroHash {
+		return "", errors.New("zero hash")
+	}
+
+	return out, nil
 }
 
 func (d *DepFiles) WriteToDir(relPath string) error {
-	if err := os.MkdirAll(relPath, 0755); err != nil {
-		return errors.Errorf("creating output directory: %w", err)
-	}
-	for ipath, content := range d.Files {
-		if err := os.WriteFile(filepath.Join(relPath, ipath), content, 0644); err != nil {
+
+	for _, file := range d.Files {
+		outfilePath := filepath.Join(relPath, file.Path)
+		if err := os.MkdirAll(filepath.Dir(outfilePath), 0755); err != nil {
+			return errors.Errorf("creating output directory: %w", err)
+		}
+		if err := os.WriteFile(outfilePath, file.Content, 0644); err != nil {
 			return errors.Errorf("writing file: %w", err)
 		}
 	}
 
-	// write a commit.txt file
-	if err := os.WriteFile(filepath.Join(relPath, "commit.txt"), []byte(d.Commit), 0644); err != nil {
-		return errors.Errorf("writing commit file: %w", err)
-	}
+	// // write a commit.txt file
+	// if err := os.WriteFile(filepath.Join(relPath, "commit.txt"), []byte(d.Commit), 0644); err != nil {
+	// 	return errors.Errorf("writing commit file: %w", err)
+	// }
 
 	return nil
 }
@@ -363,25 +504,34 @@ func (d *DepFiles) LockEntry() (*LockDep, error) {
 	}
 
 	return &LockDep{
-		Type:   d.DepInfo.Type,
-		Repo:   d.DepInfo.Repo,
-		Path:   d.DepInfo.Path,
-		Ref:    d.DepInfo.Ref,
-		Commit: d.Commit,
+		Metadata: LockDepMetadata{
+			Type:   d.DepInfo.Type,
+			Commit: d.commitMetadata,
+		},
+		Repo: d.DepInfo.Repo,
+		Path: d.DepInfo.Path,
+		Ref:  d.DepInfo.Ref,
+		// Commit: d.Commit,
 		Digest: digest,
+		Prefix: d.MostSpecificSharedPath(),
 	}, nil
 }
 
 // compare two lock entries
 func (l *LockDep) Compare(other *LockDep) bool {
-	return l.Repo == other.Repo && l.Path == other.Path && l.Ref == other.Ref && l.Commit == other.Commit && l.Digest == other.Digest
+	return l.Repo == other.Repo && l.Path == other.Path && l.Ref == other.Ref && l.Digest == other.Digest && l.Prefix == other.Prefix
 }
 
 func (me *LockFile) EntryFor(dep Buf3pdDep) *LockDep {
-	for _, dep := range me.Deps {
-		if dep.Compare(dep) {
-			return dep
+	for _, lockDep := range me.Deps {
+		if lockDep.Repo == dep.Repo && lockDep.Path == dep.Path && lockDep.Ref == dep.Ref {
+			return lockDep
 		}
 	}
 	return nil
+}
+
+type File struct {
+	Path    string `json:"path"`
+	Content []byte `json:"content"`
 }
